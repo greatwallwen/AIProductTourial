@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" font-family="'PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif">
+  <desc>案例一 C4 系统上下文图：申请企业与审批人员使用事项申报审批系统；系统对接省统一身份认证与政务短信网关；电子证照平台为演进期对接（虚线）。</desc>
+  <defs>
+    <marker id="c1arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="44" font-size="20" font-weight="700" fill="#1a1a1a">C4 · L1 系统上下文：事项申报审批系统</text>
+  <text x="40" y="70" font-size="13" fill="#666">回答一个问题：系统边界内外有谁。外部三方均不受本系统控制——协议由对方规定</text>
+
+  <!-- 人物：申请企业 -->
+  <g>
+    <circle cx="150" cy="180" r="16" fill="#08427b"/>
+    <path d="M 118 232 Q 150 196 182 232 L 182 248 L 118 248 Z" fill="#08427b"/>
+    <text x="150" y="272" font-size="14" font-weight="600" fill="#1a1a1a" text-anchor="middle">申请企业 / 个体经营者</text>
+    <text x="150" y="292" font-size="11" fill="#777" text-anchor="middle">经政务服务网入口访问</text>
+  </g>
+
+  <!-- 人物：审批人员 -->
+  <g>
+    <circle cx="150" cy="440" r="16" fill="#08427b"/>
+    <path d="M 118 492 Q 150 456 182 492 L 182 508 L 118 508 Z" fill="#08427b"/>
+    <text x="150" y="532" font-size="14" font-weight="600" fill="#1a1a1a" text-anchor="middle">审批人员</text>
+    <text x="150" y="552" font-size="11" fill="#777" text-anchor="middle">窗口 · 业务科室 · 科长 · 监察</text>
+  </g>
+
+  <!-- 本系统 -->
+  <rect x="440" y="260" width="330" height="150" rx="10" fill="#1168bd"/>
+  <text x="605" y="310" font-size="17" font-weight="700" fill="#fff" text-anchor="middle">事项申报审批系统</text>
+  <text x="605" y="336" font-size="11" fill="#cfe3f7" text-anchor="middle">[软件系统]</text>
+  <text x="605" y="362" font-size="12" fill="#cfe3f7" text-anchor="middle">事项目录 · 申报受理 · 多级审批</text>
+  <text x="605" y="382" font-size="12" fill="#cfe3f7" text-anchor="middle">时限监察 · 全程留痕</text>
+
+  <!-- 外部系统 -->
+  <g>
+    <rect x="950" y="150" width="210" height="86" rx="8" fill="#999999"/>
+    <text x="1055" y="186" font-size="14" font-weight="600" fill="#fff" text-anchor="middle">省统一身份认证</text>
+    <text x="1055" y="210" font-size="11" fill="#eee" text-anchor="middle">[外部系统] 政务服务网 SSO</text>
+
+    <rect x="950" y="300" width="210" height="86" rx="8" fill="#999999"/>
+    <text x="1055" y="336" font-size="14" font-weight="600" fill="#fff" text-anchor="middle">政务短信网关</text>
+    <text x="1055" y="360" font-size="11" fill="#eee" text-anchor="middle">[外部系统] 政务网内服务</text>
+
+    <rect x="950" y="450" width="210" height="86" rx="8" fill="none" stroke="#999" stroke-width="2" stroke-dasharray="7 5"/>
+    <text x="1055" y="486" font-size="14" font-weight="600" fill="#888" text-anchor="middle">电子证照平台</text>
+    <text x="1055" y="510" font-size="11" fill="#999" text-anchor="middle">[外部系统] 本期不对接（E-01）</text>
+  </g>
+
+  <!-- 连线 -->
+  <path d="M 195 230 L 436 300" fill="none" stroke="#555" stroke-width="1.6" marker-end="url(#c1arr)"/>
+  <rect x="240" y="230" width="160" height="20" fill="#fff"/>
+  <text x="320" y="244" font-size="12" fill="#555" text-anchor="middle">提交申报 · 查询进度</text>
+
+  <path d="M 195 460 L 436 380" fill="none" stroke="#555" stroke-width="1.6" marker-end="url(#c1arr)"/>
+  <rect x="230" y="430" width="180" height="20" fill="#fff"/>
+  <text x="320" y="444" font-size="12" fill="#555" text-anchor="middle">受理 · 审批 · 超期监察</text>
+
+  <path d="M 774 300 L 946 205 " fill="none" stroke="#555" stroke-width="1.6" marker-end="url(#c1arr)"/>
+  <rect x="780" y="230" width="150" height="20" fill="#fff"/>
+  <text x="855" y="244" font-size="12" fill="#555" text-anchor="middle">OIDC 授权码登录</text>
+
+  <path d="M 774 342 L 946 342" fill="none" stroke="#555" stroke-width="1.6" marker-end="url(#c1arr)"/>
+  <rect x="790" y="320" width="140" height="20" fill="#fff"/>
+  <text x="860" y="334" font-size="12" fill="#555" text-anchor="middle">办结/补正短信通知</text>
+
+  <path d="M 774 400 L 946 480" fill="none" stroke="#999" stroke-width="1.6" stroke-dasharray="7 5" marker-end="url(#c1arr)"/>
+  <rect x="790" y="425" width="150" height="20" fill="#fff"/>
+  <text x="865" y="439" font-size="12" fill="#999" text-anchor="middle">证照签发（演进）</text>
+
+  <!-- 图例 -->
+  <g>
+    <circle cx="546" cy="622" r="7" fill="#08427b"/>
+    <text x="562" y="626" font-size="11" fill="#555">人物/角色</text>
+    <rect x="646" y="614" width="26" height="16" rx="4" fill="#1168bd"/>
+    <text x="680" y="626" font-size="11" fill="#555">本系统</text>
+    <rect x="748" y="614" width="26" height="16" rx="4" fill="#999999"/>
+    <text x="782" y="626" font-size="11" fill="#555">外部系统</text>
+    <line x1="862" y1="622" x2="898" y2="622" stroke="#999" stroke-width="1.6" stroke-dasharray="7 5"/>
+    <text x="906" y="626" font-size="11" fill="#555">演进期对接（本期不做）</text>
+  </g>
+</svg>

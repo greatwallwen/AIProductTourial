@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" font-family="'PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif">
+  <desc>申报审批全流程泳道图：申请企业、窗口人员、业务科室、科长四条泳道；含提交、受理/补正往返、审查、审批、办结通知全流程；跨泳道箭头即系统关键交互点。</desc>
+  <defs>
+    <marker id="swarr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="44" font-size="20" font-weight="700" fill="#1a1a1a">申报审批全流程泳道图（第①步产出物）</text>
+  <text x="40" y="70" font-size="13" fill="#666">跨泳道的每一条箭头，都是未来系统的一次状态流转；括号内为对应的状态机动作名</text>
+
+  <!-- 泳道背景 -->
+  <g>
+    <rect x="140" y="100" width="1020" height="160" fill="#eef3f8"/>
+    <rect x="140" y="260" width="1020" height="160" fill="#fdf6ec"/>
+    <rect x="140" y="420" width="1020" height="160" fill="#f0f7f0"/>
+    <rect x="140" y="580" width="1020" height="160" fill="#eef3f8"/>
+    <rect x="40" y="100" width="100" height="640" fill="#dfe8f0" stroke="#8a97a3" stroke-width="1"/>
+    <rect x="40" y="100" width="1120" height="640" fill="none" stroke="#8a97a3" stroke-width="1.4"/>
+    <line x1="40" y1="260" x2="1160" y2="260" stroke="#8a97a3" stroke-width="1"/>
+    <line x1="40" y1="420" x2="1160" y2="420" stroke="#8a97a3" stroke-width="1"/>
+    <line x1="40" y1="580" x2="1160" y2="580" stroke="#8a97a3" stroke-width="1"/>
+    <text x="90" y="176" font-size="13" font-weight="600" fill="#1a1a1a" text-anchor="middle">申请企业</text>
+    <text x="90" y="336" font-size="13" font-weight="600" fill="#1a1a1a" text-anchor="middle">窗口人员</text>
+    <text x="90" y="496" font-size="13" font-weight="600" fill="#1a1a1a" text-anchor="middle">业务科室</text>
+    <text x="90" y="656" font-size="13" font-weight="600" fill="#1a1a1a" text-anchor="middle">科长</text>
+  </g>
+
+  <!-- 泳道1：企业 -->
+  <rect x="200" y="155" width="160" height="50" rx="8" fill="#fff" stroke="#8a97a3" stroke-width="1.5"/>
+  <text x="280" y="176" font-size="12" font-weight="600" fill="#1a1a1a" text-anchor="middle">按事项要求</text>
+  <text x="280" y="194" font-size="12" font-weight="600" fill="#1a1a1a" text-anchor="middle">提交申报与材料</text>
+  <rect x="420" y="155" width="160" height="50" rx="8" fill="#fff" stroke="#8a97a3" stroke-width="1.5"/>
+  <text x="500" y="176" font-size="12" font-weight="600" fill="#1a1a1a" text-anchor="middle">补正材料</text>
+  <text x="500" y="194" font-size="12" font-weight="600" fill="#1a1a1a" text-anchor="middle">重新提交</text>
+  <rect x="900" y="155" width="180" height="50" rx="8" fill="#fff" stroke="#2e7d32" stroke-width="2"/>
+  <text x="990" y="176" font-size="12" font-weight="600" fill="#2e7d32" text-anchor="middle">收到办结短信</text>
+  <text x="990" y="194" font-size="12" font-weight="600" fill="#2e7d32" text-anchor="middle">领取证照</text>
+
+  <!-- 泳道2：窗口 -->
+  <rect x="200" y="315" width="300" height="50" rx="8" fill="#fff" stroke="#8a97a3" stroke-width="1.5"/>
+  <text x="350" y="336" font-size="12" font-weight="600" fill="#1a1a1a" text-anchor="middle">受理审查：材料齐全→受理；</text>
+  <text x="350" y="354" font-size="12" font-weight="600" fill="#1a1a1a" text-anchor="middle">不齐→一次性告知补正</text>
+  <rect x="860" y="315" width="240" height="50" rx="8" fill="#fff" stroke="#8a97a3" stroke-width="1.5"/>
+  <text x="980" y="336" font-size="12" font-weight="600" fill="#1a1a1a" text-anchor="middle">办结发证</text>
+  <text x="980" y="354" font-size="12" font-weight="600" fill="#1a1a1a" text-anchor="middle">推送短信通知</text>
+
+  <!-- 泳道3：科室 -->
+  <rect x="560" y="475" width="200" height="50" rx="8" fill="#fff" stroke="#8a97a3" stroke-width="1.5"/>
+  <text x="660" y="496" font-size="12" font-weight="600" fill="#1a1a1a" text-anchor="middle">初审并出具</text>
+  <text x="660" y="514" font-size="12" font-weight="600" fill="#1a1a1a" text-anchor="middle">审查意见</text>
+
+  <!-- 泳道4：科长 -->
+  <rect x="700" y="635" width="260" height="50" rx="8" fill="#fff" stroke="#8a97a3" stroke-width="1.5"/>
+  <text x="830" y="656" font-size="12" font-weight="600" fill="#1a1a1a" text-anchor="middle">审批决定</text>
+  <text x="830" y="674" font-size="12" font-weight="600" fill="#1a1a1a" text-anchor="middle">（通过 / 不予通过）</text>
+  <rect x="1000" y="635" width="140" height="50" rx="8" fill="#fdf0f0" stroke="#c62828" stroke-width="2"/>
+  <text x="1070" y="665" font-size="12" font-weight="600" fill="#c62828" text-anchor="middle">不予通过 ■</text>
+
+  <!-- 箭头 -->
+  <line x1="280" y1="205" x2="280" y2="311" stroke="#555" stroke-width="1.6" marker-end="url(#swarr)"/>
+  <rect x="288" y="240" width="94" height="17" fill="#eef3f8"/>
+  <text x="292" y="253" font-size="11" fill="#555" font-family="monospace">submit</text>
+
+  <line x1="460" y1="315" x2="460" y2="207" stroke="#555" stroke-width="1.6" marker-end="url(#swarr)"/>
+  <rect x="330" y="273" width="126" height="17" fill="#fff" opacity="0"/>
+  <text x="454" y="250" font-size="11" fill="#555" text-anchor="end" font-family="monospace">request_supplement</text>
+
+  <line x1="540" y1="205" x2="540" y2="311" stroke="#555" stroke-width="1.6" marker-end="url(#swarr)"/>
+  <text x="548" y="250" font-size="11" fill="#555" font-family="monospace">resubmit</text>
+
+  <path d="M 350 365 L 350 500 L 556 500" fill="none" stroke="#555" stroke-width="1.6" marker-end="url(#swarr)"/>
+  <rect x="360" y="440" width="180" height="17" fill="#f0f7f0"/>
+  <text x="364" y="453" font-size="11" fill="#555" font-family="monospace">accept → start_review</text>
+
+  <path d="M 660 525 L 660 660 L 696 660" fill="none" stroke="#555" stroke-width="1.6" marker-end="url(#swarr)"/>
+  <text x="668" y="600" font-size="11" fill="#555">提交审批</text>
+
+  <path d="M 830 635 L 830 369" fill="none" stroke="#555" stroke-width="1.6" marker-end="url(#swarr)"/>
+  <rect x="838" y="430" width="70" height="17" fill="#f0f7f0"/>
+  <text x="842" y="443" font-size="11" fill="#555" font-family="monospace">approve</text>
+
+  <line x1="964" y1="660" x2="996" y2="660" stroke="#c62828" stroke-width="1.6" marker-end="url(#swarr)"/>
+  <text x="980" y="650" font-size="11" fill="#c62828" text-anchor="middle" font-family="monospace">deny</text>
+
+  <line x1="980" y1="315" x2="980" y2="207" stroke="#555" stroke-width="1.6" marker-end="url(#swarr)"/>
+  <rect x="986" y="252" width="80" height="17" fill="#eef3f8"/>
+  <text x="990" y="265" font-size="11" fill="#555" font-family="monospace">conclude</text>
+
+  <!-- 图例 -->
+  <g>
+    <rect x="700" y="762" width="24" height="15" rx="4" fill="#fff" stroke="#8a97a3" stroke-width="1.5"/>
+    <text x="732" y="774" font-size="11" fill="#555">活动</text>
+    <rect x="786" y="762" width="24" height="15" rx="4" fill="#fdf0f0" stroke="#c62828" stroke-width="2"/>
+    <text x="818" y="774" font-size="11" fill="#555">否定终点</text>
+    <line x1="892" y1="770" x2="924" y2="770" stroke="#555" stroke-width="1.6" marker-end="url(#swarr)"/>
+    <text x="932" y="774" font-size="11" fill="#555">流转（标注＝状态机动作名）</text>
+  </g>
+</svg>

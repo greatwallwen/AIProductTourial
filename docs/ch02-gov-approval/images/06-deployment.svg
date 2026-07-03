@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" font-family="'PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif">
+  <desc>政务外网部署图（等保三级分区）：接入区（Nginx+WAF）、应用区（API 双节点主备）、数据区（PostgreSQL 主备、MinIO、备份存储）；每日全备并定时传送异地备份机房；对接政务网内统一认证与短信网关。</desc>
+  <defs>
+    <marker id="dparr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="44" font-size="20" font-weight="700" fill="#1a1a1a">部署图：政务外网 · 等保三级分区（C-01 / C-02）</text>
+  <text x="40" y="70" font-size="13" fill="#666">画的是约束表描述的真实机房：没有公网；双节点为了 RTO 不是为了性能；备份链路支撑 RPO ≤ 24h</text>
+
+  <!-- 政务外网边界 -->
+  <rect x="40" y="100" width="1120" height="560" rx="14" fill="none" stroke="#444" stroke-width="1.8" stroke-dasharray="8 5"/>
+  <text x="60" y="128" font-size="13" font-weight="600" fill="#444">政务外网（无公网出口）</text>
+
+  <!-- 统一接入（政务网内） -->
+  <rect x="70" y="180" width="170" height="80" rx="8" fill="#999999"/>
+  <text x="155" y="214" font-size="13" font-weight="600" fill="#fff" text-anchor="middle">政务服务网</text>
+  <text x="155" y="236" font-size="11" fill="#eee" text-anchor="middle">统一接入 / 门户</text>
+
+  <!-- 接入区 -->
+  <rect x="300" y="150" width="230" height="240" rx="10" fill="#eef3f8" stroke="#8a97a3" stroke-width="1.4"/>
+  <text x="316" y="176" font-size="13" font-weight="600" fill="#1a1a1a">接入区</text>
+  <rect x="330" y="200" width="170" height="70" rx="8" fill="#438dd5"/>
+  <text x="415" y="230" font-size="13" font-weight="600" fill="#fff" text-anchor="middle">Nginx 反向代理</text>
+  <text x="415" y="252" font-size="11" fill="#e8f1fa" text-anchor="middle">TLS 终止 · WAF</text>
+
+  <!-- 应用区 -->
+  <rect x="590" y="150" width="250" height="300" rx="10" fill="#fdf6ec" stroke="#8a97a3" stroke-width="1.4"/>
+  <text x="606" y="176" font-size="13" font-weight="600" fill="#1a1a1a">应用区</text>
+  <rect x="620" y="200" width="190" height="66" rx="8" fill="#438dd5"/>
+  <text x="715" y="228" font-size="13" font-weight="600" fill="#fff" text-anchor="middle">API 节点 A（主）</text>
+  <text x="715" y="250" font-size="11" fill="#e8f1fa" text-anchor="middle">Node.js 单体 · 双机热备 VIP</text>
+  <rect x="620" y="290" width="190" height="66" rx="8" fill="#85bbf0"/>
+  <text x="715" y="318" font-size="13" font-weight="600" fill="#1a1a1a" text-anchor="middle">API 节点 B（备）</text>
+  <text x="715" y="340" font-size="11" fill="#333" text-anchor="middle">keepalived 故障漂移（Q-03）</text>
+  <text x="715" y="424" font-size="11" fill="#777" text-anchor="middle">发布：先备后主滚动，不中断</text>
+
+  <!-- 数据区 -->
+  <rect x="880" y="150" width="250" height="420" rx="10" fill="#f0f7f0" stroke="#8a97a3" stroke-width="1.4"/>
+  <text x="896" y="176" font-size="13" font-weight="600" fill="#1a1a1a">数据区</text>
+  <g>
+    <ellipse cx="1005" cy="212" rx="80" ry="11" fill="#438dd5"/>
+    <rect x="925" y="212" width="160" height="52" fill="#438dd5"/>
+    <ellipse cx="1005" cy="264" rx="80" ry="11" fill="#438dd5"/>
+    <text x="1005" y="238" font-size="12" font-weight="600" fill="#fff" text-anchor="middle">PostgreSQL 主</text>
+  </g>
+  <g>
+    <ellipse cx="1005" cy="306" rx="80" ry="11" fill="#85bbf0"/>
+    <rect x="925" y="306" width="160" height="46" fill="#85bbf0"/>
+    <ellipse cx="1005" cy="352" rx="80" ry="11" fill="#85bbf0"/>
+    <text x="1005" y="332" font-size="12" font-weight="600" fill="#1a1a1a" text-anchor="middle">PostgreSQL 备</text>
+  </g>
+  <rect x="925" y="390" width="160" height="56" rx="8" fill="#438dd5"/>
+  <text x="1005" y="414" font-size="12" font-weight="600" fill="#fff" text-anchor="middle">MinIO</text>
+  <text x="1005" y="434" font-size="11" fill="#e8f1fa" text-anchor="middle">申报材料对象存储</text>
+  <rect x="925" y="466" width="160" height="56" rx="8" fill="#8a97a3"/>
+  <text x="1005" y="490" font-size="12" font-weight="600" fill="#fff" text-anchor="middle">备份存储</text>
+  <text x="1005" y="510" font-size="11" fill="#eee" text-anchor="middle">每日全量备份（三级要求）</text>
+
+  <!-- 防火墙 -->
+  <g fill="#c62828">
+    <polygon points="265,235 285,215 305,235 285,255"/>
+    <polygon points="545,235 565,215 585,235 565,255"/>
+    <polygon points="850,235 870,215 890,235 870,255"/>
+  </g>
+  <text x="285" y="282" font-size="10" fill="#c62828" text-anchor="middle">FW</text>
+  <text x="565" y="282" font-size="10" fill="#c62828" text-anchor="middle">FW</text>
+  <text x="870" y="282" font-size="10" fill="#c62828" text-anchor="middle">FW</text>
+
+  <!-- 政务网内公共服务 -->
+  <rect x="300" y="480" width="230" height="140" rx="10" fill="#eef3f8" stroke="#8a97a3" stroke-width="1.4"/>
+  <text x="316" y="506" font-size="13" font-weight="600" fill="#1a1a1a">政务网内公共服务</text>
+  <rect x="322" y="520" width="186" height="40" rx="6" fill="#999999"/>
+  <text x="415" y="545" font-size="12" fill="#fff" text-anchor="middle">省统一身份认证</text>
+  <rect x="322" y="570" width="186" height="40" rx="6" fill="#999999"/>
+  <text x="415" y="595" font-size="12" fill="#fff" text-anchor="middle">政务短信网关</text>
+
+  <!-- 异地备份 -->
+  <rect x="980" y="690" width="180" height="56" rx="8" fill="#999999"/>
+  <text x="1070" y="714" font-size="12" font-weight="600" fill="#fff" text-anchor="middle">异地备份机房</text>
+  <text x="1070" y="734" font-size="11" fill="#eee" text-anchor="middle">定时批量传送（三级）</text>
+
+  <!-- 连线 -->
+  <line x1="240" y1="235" x2="262" y2="235" stroke="#555" stroke-width="1.6"/>
+  <line x1="308" y1="235" x2="326" y2="235" stroke="#555" stroke-width="1.6" marker-end="url(#dparr)"/>
+  <line x1="500" y1="235" x2="542" y2="235" stroke="#555" stroke-width="1.6"/>
+  <line x1="588" y1="235" x2="616" y2="235" stroke="#555" stroke-width="1.6" marker-end="url(#dparr)"/>
+  <line x1="810" y1="235" x2="847" y2="235" stroke="#555" stroke-width="1.6"/>
+  <line x1="893" y1="235" x2="921" y2="235" stroke="#555" stroke-width="1.6" marker-end="url(#dparr)"/>
+  <text x="857" y="205" font-size="10" fill="#555" text-anchor="middle">SQL/S3</text>
+
+  <line x1="715" y1="266" x2="715" y2="286" stroke="#8a97a3" stroke-width="1.4" stroke-dasharray="4 3"/>
+  <line x1="1005" y1="275" x2="1005" y2="292" stroke="#8a97a3" stroke-width="1.4" marker-end="url(#dparr)"/>
+  <text x="1096" y="286" font-size="10" fill="#555">流复制</text>
+
+  <path d="M 1005 363 L 1005 386" fill="none" stroke="#8a97a3" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <path d="M 925 240 L 902 240 L 902 494 L 921 494" fill="none" stroke="#555" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#dparr)"/>
+  <text x="896" y="560" font-size="10" fill="#555" text-anchor="end">每日全备</text>
+
+  <path d="M 1070 524 L 1070 686" fill="none" stroke="#555" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#dparr)"/>
+  <text x="1080" y="640" font-size="10" fill="#555">异地传送</text>
+
+  <path d="M 660 450 L 660 540 L 512 540" fill="none" stroke="#555" stroke-width="1.4" marker-end="url(#dparr)"/>
+  <text x="668" y="520" font-size="10" fill="#555">OIDC / 短信 HTTP</text>
+
+  <!-- 图例 -->
+  <g>
+    <rect x="70" y="690" width="24" height="15" rx="4" fill="#438dd5"/>
+    <text x="102" y="702" font-size="11" fill="#555">本系统节点</text>
+    <rect x="196" y="690" width="24" height="15" rx="4" fill="#999999"/>
+    <text x="228" y="702" font-size="11" fill="#555">外部/公共设施</text>
+    <polygon points="352,690 362,680 372,690 362,700" fill="#c62828"/>
+    <text x="382" y="702" font-size="11" fill="#555">防火墙（最小端口开放）</text>
+    <line x1="540" y1="697" x2="572" y2="697" stroke="#555" stroke-width="1.4" stroke-dasharray="5 4"/>
+    <text x="580" y="702" font-size="11" fill="#555">备份/复制链路</text>
+    <rect x="700" y="690" width="24" height="15" rx="4" fill="none" stroke="#444" stroke-width="1.5" stroke-dasharray="8 5"/>
+    <text x="732" y="702" font-size="11" fill="#555">网络边界</text>
+  </g>
+</svg>

@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" font-family="'PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif">
+  <desc>SLA 计时与升级时序图：工单创建投递两个延迟任务；首次回复按 ID 取消首响任务；解决超时时 Worker 消费到期任务执行升级——延迟队列的取消语义是 Redis 的入场证据。</desc>
+  <defs>
+    <marker id="slarr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#555"/>
+    </marker>
+    <marker id="slarrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#999"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="44" font-size="20" font-weight="700" fill="#1a1a1a">SLA 计时：可取消的分钟级延迟任务（ADR-005）</text>
+  <text x="40" y="70" font-size="13" fill="#666">任务 ID = sla:{ticketId}:{type} —— 取消 = removeJob(id)；对照案例二"一条 SQL 的到期提醒"：同一语义，两个量级，两种答案</text>
+
+  <!-- 生命线头 -->
+  <g>
+    <rect x="70" y="100" width="160" height="52" rx="8" fill="#438dd5"/>
+    <text x="150" y="126" font-size="12" font-weight="600" fill="#fff" text-anchor="middle">API 实例（任一）</text>
+    <text x="150" y="144" font-size="10" fill="#e8f1fa" text-anchor="middle">工单服务</text>
+    <rect x="330" y="100" width="160" height="52" rx="8" fill="#85bbf0"/>
+    <text x="410" y="126" font-size="12" font-weight="600" fill="#1a1a1a" text-anchor="middle">Redis / BullMQ</text>
+    <text x="410" y="144" font-size="10" fill="#333" text-anchor="middle">sla 队列（延迟任务）</text>
+    <rect x="590" y="100" width="160" height="52" rx="8" fill="#438dd5"/>
+    <text x="670" y="126" font-size="12" font-weight="600" fill="#fff" text-anchor="middle">Worker（竞争消费）</text>
+    <rect x="850" y="100" width="140" height="52" rx="8" fill="#438dd5"/>
+    <text x="920" y="126" font-size="12" font-weight="600" fill="#fff" text-anchor="middle">PostgreSQL</text>
+    <rect x="1040" y="100" width="120" height="52" rx="8" fill="#999999"/>
+    <text x="1100" y="126" font-size="12" font-weight="600" fill="#fff" text-anchor="middle">通知渠道</text>
+  </g>
+  <g stroke="#b8c2cb" stroke-width="1.2" stroke-dasharray="4 4">
+    <line x1="150" y1="152" x2="150" y2="670"/>
+    <line x1="410" y1="152" x2="410" y2="670"/>
+    <line x1="670" y1="152" x2="670" y2="670"/>
+    <line x1="920" y1="152" x2="920" y2="670"/>
+    <line x1="1100" y1="152" x2="1100" y2="670"/>
+  </g>
+
+  <!-- 场景1：创建 -->
+  <rect x="55" y="180" width="1105" height="110" fill="#eef3f8" opacity="0.55"/>
+  <text x="70" y="200" font-size="11" font-weight="600" fill="#1168bd">工单创建（priority=high：首响 30min / 解决 4h）</text>
+  <line x1="150" y1="224" x2="916" y2="224" stroke="#555" stroke-width="1.5" marker-end="url(#slarr)"/>
+  <text x="530" y="214" font-size="11" fill="#333" text-anchor="middle">INSERT 工单（事务）</text>
+  <line x1="150" y1="256" x2="406" y2="256" stroke="#555" stroke-width="1.5" marker-end="url(#slarr)"/>
+  <text x="278" y="246" font-size="11" fill="#333" text-anchor="middle">add('sla:42:first_response', delay=30min)</text>
+  <line x1="150" y1="278" x2="406" y2="278" stroke="#555" stroke-width="1.5" marker-end="url(#slarr)"/>
+  <text x="278" y="270" font-size="11" fill="#333" text-anchor="middle">add('sla:42:resolve', delay=4h)</text>
+
+  <!-- 场景2：取消 -->
+  <rect x="55" y="310" width="1105" height="100" fill="#f0f7f0" opacity="0.55"/>
+  <text x="70" y="330" font-size="11" font-weight="600" fill="#2e7d32">客服 12 分钟后首次回复 —— 首响达标</text>
+  <line x1="150" y1="356" x2="916" y2="356" stroke="#555" stroke-width="1.5" marker-end="url(#slarr)"/>
+  <text x="530" y="346" font-size="11" fill="#333" text-anchor="middle">记录首响时间</text>
+  <line x1="150" y1="386" x2="406" y2="386" stroke="#2e7d32" stroke-width="1.6" marker-end="url(#slarr)"/>
+  <text x="278" y="376" font-size="11" fill="#2e7d32" text-anchor="middle" font-family="monospace">removeJob('sla:42:first_response') ✂</text>
+
+  <!-- 场景3：超时升级 -->
+  <rect x="55" y="430" width="1105" height="160" fill="#fdf0f0" opacity="0.55"/>
+  <text x="70" y="450" font-size="11" font-weight="600" fill="#c62828">4 小时后仍未 resolve —— 解决超时</text>
+  <line x1="410" y1="480" x2="666" y2="480" stroke="#c62828" stroke-width="1.5" marker-end="url(#slarr)"/>
+  <text x="538" y="470" font-size="11" fill="#c62828" text-anchor="middle">'sla:42:resolve' 到期出队（仅一个 Worker 抢到）</text>
+  <line x1="670" y1="512" x2="916" y2="512" stroke="#555" stroke-width="1.5" marker-end="url(#slarr)"/>
+  <text x="794" y="502" font-size="11" fill="#333" text-anchor="middle">工单标记 sla_breached · 记录事件</text>
+  <line x1="670" y1="544" x2="1096" y2="544" stroke="#555" stroke-width="1.5" marker-end="url(#slarr)"/>
+  <text x="884" y="534" font-size="11" fill="#333" text-anchor="middle">升级通知（主管邮件 / Webhook）</text>
+  <text x="410" y="574" font-size="10.5" fill="#777" text-anchor="middle">任务执行幂等：以工单当前状态复核后才动作</text>
+
+  <!-- 底部 -->
+  <text x="600" y="630" font-size="12.5" font-weight="600" fill="#1a1a1a" text-anchor="middle">入场证据链：分钟级精度 × 数万活动计时器 × 多实例竞争消费 × 可按 ID 取消——四条同时成立，Redis 才配得上它的运维成本</text>
+
+  <!-- 图例 -->
+  <g>
+    <rect x="700" y="682" width="24" height="14" rx="3" fill="#eef3f8"/>
+    <text x="732" y="694" font-size="11" fill="#555">创建</text>
+    <rect x="790" y="682" width="24" height="14" rx="3" fill="#f0f7f0"/>
+    <text x="822" y="694" font-size="11" fill="#555">取消（达标）</text>
+    <rect x="912" y="682" width="24" height="14" rx="3" fill="#fdf0f0"/>
+    <text x="944" y="694" font-size="11" fill="#555">超时升级</text>
+  </g>
+</svg>

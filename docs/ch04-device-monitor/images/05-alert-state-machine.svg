@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 540" font-family="'PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif">
+  <desc>告警状态机：无活动告警时越限新建 firing；持续越限只更新 last_ts 与 peak_value；值班确认转 acked；值回落后 firing 与 acked 均自动 resolved；新一轮越限产生新告警实例。</desc>
+  <defs>
+    <marker id="alarr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="44" font-size="20" font-weight="700" fill="#1a1a1a">告警状态机：有状态，不是"发通知"</text>
+  <text x="40" y="70" font-size="13" fill="#666">部分唯一索引 UNIQUE(rule_id) WHERE status IN ('firing','acked') 在数据库层兜底——同一规则最多一条活动告警</text>
+
+  <circle cx="90" cy="240" r="8" fill="#1a1a1a"/>
+  <text x="90" y="212" font-size="11" fill="#555" text-anchor="middle">正常（无活动告警）</text>
+  <line x1="98" y1="240" x2="186" y2="240" stroke="#555" stroke-width="1.6" marker-end="url(#alarr)"/>
+  <text x="142" y="228" font-size="11" fill="#555" text-anchor="middle" font-family="monospace">越限</text>
+
+  <rect x="190" y="210" width="200" height="60" rx="10" fill="#fdf0f0" stroke="#c62828" stroke-width="1.8"/>
+  <text x="290" y="236" font-size="14" font-weight="600" fill="#c62828" text-anchor="middle" font-family="monospace">firing</text>
+  <text x="290" y="258" font-size="11" fill="#c62828" text-anchor="middle">告警中（未确认）</text>
+
+  <!-- 自环 -->
+  <path d="M 250 208 C 230 158 350 158 330 208" fill="none" stroke="#c62828" stroke-width="1.5" marker-end="url(#alarr)"/>
+  <text x="290" y="152" font-size="11" fill="#c62828" text-anchor="middle">持续越限：只更新 last_ts / peak_value，不新增</text>
+
+  <rect x="530" y="210" width="200" height="60" rx="10" fill="#fdf6ec" stroke="#e65100" stroke-width="1.8"/>
+  <text x="630" y="236" font-size="14" font-weight="600" fill="#e65100" text-anchor="middle" font-family="monospace">acked</text>
+  <text x="630" y="258" font-size="11" fill="#e65100" text-anchor="middle">已确认（处理中）</text>
+
+  <line x1="392" y1="240" x2="526" y2="240" stroke="#555" stroke-width="1.6" marker-end="url(#alarr)"/>
+  <text x="459" y="228" font-size="11" fill="#555" text-anchor="middle" font-family="monospace">ack（值班确认）</text>
+
+  <rect x="880" y="210" width="220" height="60" rx="10" fill="#f0f7f0" stroke="#2e7d32" stroke-width="2.4"/>
+  <rect x="885" y="215" width="210" height="50" rx="7" fill="none" stroke="#2e7d32" stroke-width="1"/>
+  <text x="990" y="236" font-size="14" font-weight="600" fill="#2e7d32" text-anchor="middle" font-family="monospace">resolved</text>
+  <text x="990" y="258" font-size="11" fill="#2e7d32" text-anchor="middle">已恢复（终态）</text>
+
+  <line x1="732" y1="240" x2="876" y2="240" stroke="#2e7d32" stroke-width="1.6" marker-end="url(#alarr)"/>
+  <text x="804" y="228" font-size="11" fill="#2e7d32" text-anchor="middle">值回落 → 自动恢复</text>
+
+  <path d="M 340 272 C 480 360 800 360 930 274" fill="none" stroke="#2e7d32" stroke-width="1.6" marker-end="url(#alarr)"/>
+  <text x="635" y="352" font-size="11" fill="#2e7d32" text-anchor="middle">值回落 → 自动恢复（未确认也恢复，恢复通知照发）</text>
+
+  <path d="M 990 272 C 950 430 340 430 292 276" fill="none" stroke="#8a97a3" stroke-width="1.4" stroke-dasharray="6 4" marker-end="url(#alarr)"/>
+  <text x="640" y="428" font-size="11" fill="#777" text-anchor="middle">再次越限 ⇒ 新建一条告警实例（历史告警是审计记录，不复活）</text>
+
+  <!-- 图例 -->
+  <g>
+    <rect x="660" y="486" width="24" height="15" rx="4" fill="#fdf0f0" stroke="#c62828" stroke-width="1.6"/>
+    <text x="692" y="498" font-size="11" fill="#555">告警中</text>
+    <rect x="756" y="486" width="24" height="15" rx="4" fill="#fdf6ec" stroke="#e65100" stroke-width="1.6"/>
+    <text x="788" y="498" font-size="11" fill="#555">已确认</text>
+    <rect x="852" y="486" width="24" height="15" rx="4" fill="#f0f7f0" stroke="#2e7d32" stroke-width="2"/>
+    <text x="884" y="498" font-size="11" fill="#555">终态（双框）</text>
+    <line x1="972" y1="493" x2="1004" y2="493" stroke="#8a97a3" stroke-width="1.4" stroke-dasharray="6 4"/>
+    <text x="1012" y="498" font-size="11" fill="#555">新实例</text>
+  </g>
+</svg>

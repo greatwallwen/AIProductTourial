@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" font-family="'PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif">
+  <desc>遥测数据模型：窄表一行一点；hypertable 按天分块并 30 天自动老化；三级连续聚合 1min/1h/1d 分别保留 180 天与 3 年；查询按窗口跨度自动路由粒度。</desc>
+  <defs>
+    <marker id="tmarr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="44" font-size="20" font-weight="700" fill="#1a1a1a">遥测数据模型：窄表 · 分块 · 分层老化</text>
+  <text x="40" y="70" font-size="13" fill="#666">Q-04 的兑现处：磁盘占用有上界——原始 30 天、分钟级 180 天、小时/天级 3 年</text>
+
+  <!-- 窄表 -->
+  <g>
+    <rect x="50" y="120" width="330" height="200" rx="8" fill="#fff" stroke="#8a97a3" stroke-width="1.5"/>
+    <rect x="50" y="120" width="330" height="34" rx="8" fill="#1168bd"/>
+    <rect x="50" y="140" width="330" height="14" fill="#1168bd"/>
+    <text x="215" y="143" font-size="13" font-weight="600" fill="#fff" text-anchor="middle">telemetry_raw · 窄表（一行一点）</text>
+    <g font-size="11" font-family="monospace">
+      <text x="66" y="178" fill="#555" font-weight="600">device_id  metric           ts        value</text>
+      <text x="66" y="202" fill="#333">HYD-PMP-01 pump_vibration     …06:53:59   0.63</text>
+      <text x="66" y="224" fill="#333">HYD-CLR-01 oil_temperature    …06:54:28  54.09</text>
+      <text x="66" y="246" fill="#333">HYD-CLR-01 cooling_efficiency …06:54:28  19.90</text>
+    </g>
+    <text x="66" y="278" font-size="10.5" fill="#2e7d32">UNIQUE(device_id, metric, ts) —— 幂等与序列查询同一索引</text>
+    <text x="66" y="300" font-size="10.5" fill="#777">为什么不是宽表：指标集因设备而异，宽表长满 NULL 列</text>
+  </g>
+
+  <!-- hypertable 分块 -->
+  <g>
+    <rect x="440" y="120" width="710" height="200" rx="8" fill="#eef3f8" stroke="#8a97a3" stroke-width="1.4"/>
+    <text x="456" y="148" font-size="12" font-weight="600" fill="#1a1a1a">hypertable：按天自动分块（chunk），应用只见一张表</text>
+    <g>
+      <rect x="470" y="170" width="90" height="70" rx="6" fill="#c9d2da"/>
+      <text x="515" y="200" font-size="10" fill="#666" text-anchor="middle">D-32</text>
+      <text x="515" y="220" font-size="10" fill="#c62828" text-anchor="middle">已删除</text>
+      <rect x="575" y="170" width="90" height="70" rx="6" fill="#c9d2da"/>
+      <text x="620" y="200" font-size="10" fill="#666" text-anchor="middle">D-31</text>
+      <text x="620" y="220" font-size="10" fill="#c62828" text-anchor="middle">已删除</text>
+      <rect x="680" y="170" width="90" height="70" rx="6" fill="#85bbf0"/>
+      <text x="725" y="200" font-size="10" fill="#1a1a1a" text-anchor="middle">D-30</text>
+      <text x="725" y="220" font-size="10" fill="#333" text-anchor="middle">已压缩</text>
+      <rect x="785" y="170" width="90" height="70" rx="6" fill="#85bbf0"/>
+      <text x="830" y="200" font-size="10" fill="#1a1a1a" text-anchor="middle">…</text>
+      <rect x="890" y="170" width="90" height="70" rx="6" fill="#438dd5"/>
+      <text x="935" y="200" font-size="10" fill="#fff" text-anchor="middle">昨天</text>
+      <rect x="995" y="170" width="90" height="70" rx="6" fill="#1168bd"/>
+      <text x="1040" y="200" font-size="10" fill="#fff" text-anchor="middle">今天</text>
+      <text x="1040" y="220" font-size="10" fill="#cfe3f7" text-anchor="middle">写入中</text>
+    </g>
+    <line x1="470" y1="262" x2="1090" y2="262" stroke="#8a97a3" stroke-width="1.2" marker-end="url(#tmarr)"/>
+    <text x="780" y="282" font-size="10.5" fill="#555" text-anchor="middle">时间 →　add_retention_policy('telemetry_raw', INTERVAL '30 days') 自动老化</text>
+  </g>
+
+  <!-- 三级聚合 -->
+  <g>
+    <rect x="50" y="380" width="330" height="70" rx="8" fill="#f0f7f0" stroke="#a5c2a5" stroke-width="1.4"/>
+    <text x="215" y="408" font-size="12.5" font-weight="600" fill="#2e7d32" text-anchor="middle">1min 连续聚合 · 保留 180 天</text>
+    <text x="215" y="432" font-size="10.5" fill="#555" text-anchor="middle">cnt / avg / min / max，看板近期曲线</text>
+
+    <rect x="440" y="380" width="330" height="70" rx="8" fill="#f0f7f0" stroke="#a5c2a5" stroke-width="1.4"/>
+    <text x="605" y="408" font-size="12.5" font-weight="600" fill="#2e7d32" text-anchor="middle">1h 连续聚合 · 保留 3 年</text>
+    <text x="605" y="432" font-size="10.5" fill="#555" text-anchor="middle">跨月历史曲线（Q-03 的答案）</text>
+
+    <rect x="830" y="380" width="320" height="70" rx="8" fill="#f0f7f0" stroke="#a5c2a5" stroke-width="1.4"/>
+    <text x="990" y="408" font-size="12.5" font-weight="600" fill="#2e7d32" text-anchor="middle">1d 连续聚合 · 保留 3 年</text>
+    <text x="990" y="432" font-size="10.5" fill="#555" text-anchor="middle">运行报表（班次/日/月）</text>
+  </g>
+  <path d="M 215 322 L 215 376" fill="none" stroke="#555" stroke-width="1.4" marker-end="url(#tmarr)"/>
+  <path d="M 500 322 L 560 376" fill="none" stroke="#555" stroke-width="1.4" marker-end="url(#tmarr)"/>
+  <path d="M 760 322 L 950 376" fill="none" stroke="#555" stroke-width="1.4" marker-end="url(#tmarr)"/>
+
+  <!-- 查询路由 -->
+  <rect x="50" y="500" width="1100" height="80" rx="10" fill="#fdf6ec" stroke="#d9c8a9" stroke-width="1.2"/>
+  <text x="70" y="530" font-size="12.5" font-weight="600" fill="#1a1a1a">查询自动选粒度（api 进程）：</text>
+  <text x="70" y="558" font-size="12" fill="#555">窗口 ≤ 6 小时 → raw（细节诊断）；≤ 7 天 → 1min；≤ 90 天 → 1h；更长 → 1d。调用方无需理解存储分层。</text>
+
+  <!-- 图例 -->
+  <g>
+    <rect x="700" y="614" width="24" height="15" rx="4" fill="#1168bd"/>
+    <text x="732" y="626" font-size="11" fill="#555">热数据块</text>
+    <rect x="800" y="614" width="24" height="15" rx="4" fill="#85bbf0"/>
+    <text x="832" y="626" font-size="11" fill="#555">压缩块</text>
+    <rect x="892" y="614" width="24" height="15" rx="4" fill="#c9d2da"/>
+    <text x="924" y="626" font-size="11" fill="#555">超期删除</text>
+    <rect x="1010" y="614" width="24" height="15" rx="4" fill="#f0f7f0" stroke="#a5c2a5" stroke-width="1.2"/>
+    <text x="1042" y="626" font-size="11" fill="#555">连续聚合</text>
+  </g>
+</svg>

@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" font-family="'PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif">
+  <desc>案例三部署图：三车间边缘层（设备+网关）经工厂环网汇聚至机房一台物理服务器（EMQX、ingest、api、TimescaleDB 四组件同机不同进程）；办公网仅可单向 HTTPS 访问看板。</desc>
+  <defs>
+    <marker id="dp3arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="44" font-size="20" font-weight="700" fill="#1a1a1a">部署图：边缘与机房两层——进程拆分 ≠ 机器拆分</text>
+  <text x="40" y="70" font-size="13" fill="#666">四个组件同一台物理服务器（C-02 预算）；ADR-003 拆的是发布与故障边界，不是硬件</text>
+
+  <!-- 边缘层 -->
+  <rect x="40" y="100" width="360" height="470" rx="12" fill="none" stroke="#444" stroke-width="1.6" stroke-dasharray="8 5"/>
+  <text x="56" y="126" font-size="13" font-weight="600" fill="#444">车间边缘层（生产网）</text>
+
+  <g>
+    <rect x="70" y="150" width="300" height="115" rx="10" fill="#eef3f8" stroke="#8a97a3" stroke-width="1.2"/>
+    <text x="86" y="174" font-size="12" font-weight="600" fill="#1a1a1a">一车间</text>
+    <rect x="90" y="186" width="120" height="60" rx="6" fill="#999999"/>
+    <text x="150" y="212" font-size="11" fill="#fff" text-anchor="middle">设备 ×700</text>
+    <text x="150" y="230" font-size="9" fill="#eee" text-anchor="middle">Modbus TCP/RTU</text>
+    <rect x="232" y="186" width="118" height="60" rx="6" fill="#7a7a7a"/>
+    <text x="291" y="208" font-size="11" fill="#fff" text-anchor="middle">网关 ×2</text>
+    <text x="291" y="226" font-size="9" fill="#eee" text-anchor="middle">S7-1200 · 本地缓存</text>
+    <line x1="212" y1="216" x2="228" y2="216" stroke="#555" stroke-width="1.4" marker-end="url(#dp3arr)"/>
+  </g>
+  <g>
+    <rect x="70" y="285" width="300" height="115" rx="10" fill="#eef3f8" stroke="#8a97a3" stroke-width="1.2"/>
+    <text x="86" y="309" font-size="12" font-weight="600" fill="#1a1a1a">二车间</text>
+    <rect x="90" y="321" width="120" height="60" rx="6" fill="#999999"/>
+    <text x="150" y="347" font-size="11" fill="#fff" text-anchor="middle">设备 ×800</text>
+    <rect x="232" y="321" width="118" height="60" rx="6" fill="#7a7a7a"/>
+    <text x="291" y="347" font-size="11" fill="#fff" text-anchor="middle">网关 ×2</text>
+    <line x1="212" y1="351" x2="228" y2="351" stroke="#555" stroke-width="1.4" marker-end="url(#dp3arr)"/>
+  </g>
+  <g>
+    <rect x="70" y="420" width="300" height="115" rx="10" fill="#eef3f8" stroke="#8a97a3" stroke-width="1.2"/>
+    <text x="86" y="444" font-size="12" font-weight="600" fill="#1a1a1a">泵房/动力站</text>
+    <rect x="90" y="456" width="120" height="60" rx="6" fill="#999999"/>
+    <text x="150" y="482" font-size="11" fill="#fff" text-anchor="middle">设备 ×500</text>
+    <rect x="232" y="456" width="118" height="60" rx="6" fill="#7a7a7a"/>
+    <text x="291" y="482" font-size="11" fill="#fff" text-anchor="middle">网关 ×1</text>
+    <line x1="212" y1="486" x2="228" y2="486" stroke="#555" stroke-width="1.4" marker-end="url(#dp3arr)"/>
+  </g>
+
+  <!-- 环网 -->
+  <line x1="400" y1="335" x2="470" y2="335" stroke="#555" stroke-width="2.2" marker-end="url(#dp3arr)"/>
+  <text x="435" y="322" font-size="10" fill="#555" text-anchor="middle">工厂环网</text>
+  <text x="435" y="352" font-size="10" fill="#e65100" text-anchor="middle">弱网段（C-03）</text>
+
+  <!-- 机房 -->
+  <rect x="480" y="100" width="420" height="470" rx="12" fill="none" stroke="#444" stroke-width="1.6" stroke-dasharray="8 5"/>
+  <text x="496" y="126" font-size="13" font-weight="600" fill="#444">工厂机房（生产网）</text>
+
+  <rect x="510" y="150" width="360" height="390" rx="10" fill="#fdf6ec" stroke="#8a97a3" stroke-width="1.4"/>
+  <text x="526" y="176" font-size="12" font-weight="600" fill="#1a1a1a">物理服务器 ×1（16C64G · 8TB）</text>
+  <rect x="536" y="192" width="150" height="70" rx="8" fill="#438dd5"/>
+  <text x="611" y="222" font-size="12" font-weight="600" fill="#fff" text-anchor="middle">EMQX</text>
+  <text x="611" y="242" font-size="9" fill="#e8f1fa" text-anchor="middle">MQTT Broker</text>
+  <rect x="704" y="192" width="150" height="70" rx="8" fill="#438dd5"/>
+  <text x="779" y="222" font-size="12" font-weight="600" fill="#fff" text-anchor="middle">ingest 进程</text>
+  <text x="779" y="242" font-size="9" fill="#e8f1fa" text-anchor="middle">独立重启不断采</text>
+  <rect x="536" y="282" width="150" height="70" rx="8" fill="#438dd5"/>
+  <text x="611" y="312" font-size="12" font-weight="600" fill="#fff" text-anchor="middle">api 进程</text>
+  <text x="611" y="332" font-size="9" fill="#e8f1fa" text-anchor="middle">查询/看板/报表</text>
+  <g>
+    <ellipse cx="779" cy="292" rx="75" ry="10" fill="#438dd5"/>
+    <rect x="704" y="292" width="150" height="50" fill="#438dd5"/>
+    <ellipse cx="779" cy="342" rx="75" ry="10" fill="#438dd5"/>
+    <text x="779" y="316" font-size="11" font-weight="600" fill="#fff" text-anchor="middle">TimescaleDB</text>
+    <text x="779" y="334" font-size="9" fill="#e8f1fa" text-anchor="middle">数据盘 RAID</text>
+  </g>
+  <text x="690" y="392" font-size="10.5" fill="#777" text-anchor="middle">四组件同机不同进程：故障与发布边界已隔离</text>
+  <rect x="536" y="420" width="318" height="52" rx="8" fill="#8a97a3"/>
+  <text x="695" y="442" font-size="11" font-weight="600" fill="#fff" text-anchor="middle">本地备份盘</text>
+  <text x="695" y="460" font-size="9.5" fill="#eee" text-anchor="middle">每日聚合库备份（raw 不备份——30 天可再生数据）</text>
+
+  <!-- 办公网 -->
+  <rect x="960" y="220" width="200" height="230" rx="12" fill="#f0f7f0" stroke="#8a97a3" stroke-width="1.3"/>
+  <text x="976" y="246" font-size="12" font-weight="600" fill="#444">办公网</text>
+  <g>
+    <circle cx="1060" cy="300" r="13" fill="#08427b"/>
+    <path d="M 1034 342 Q 1060 312 1086 342 L 1086 354 L 1034 354 Z" fill="#08427b"/>
+    <text x="1060" y="378" font-size="11" font-weight="600" fill="#1a1a1a" text-anchor="middle">值班/主管看板</text>
+    <text x="1060" y="398" font-size="10" fill="#777" text-anchor="middle">浏览器</text>
+  </g>
+
+  <!-- 防火墙 -->
+  <polygon points="906,320 926,300 946,320 926,340" fill="#c62828"/>
+  <text x="926" y="362" font-size="10" fill="#c62828" text-anchor="middle">FW</text>
+  <line x1="1030" y1="320" x2="950" y2="320" stroke="#555" stroke-width="1.6"/>
+  <line x1="902" y1="320" x2="874" y2="318" stroke="#555" stroke-width="1.6" marker-end="url(#dp3arr)"/>
+  <text x="990" y="308" font-size="10" fill="#555" text-anchor="middle">仅 HTTPS 单向（C-05）</text>
+
+  <!-- 图例 -->
+  <g>
+    <rect x="510" y="600" width="24" height="15" rx="4" fill="#438dd5"/>
+    <text x="542" y="612" font-size="11" fill="#555">本系统组件</text>
+    <rect x="640" y="600" width="24" height="15" rx="4" fill="#999999"/>
+    <text x="672" y="612" font-size="11" fill="#555">设备/网关</text>
+    <polygon points="760,600 770,590 780,600 770,610" fill="#c62828"/>
+    <text x="790" y="612" font-size="11" fill="#555">防火墙</text>
+    <rect x="860" y="600" width="24" height="15" rx="4" fill="none" stroke="#444" stroke-width="1.5" stroke-dasharray="8 5"/>
+    <text x="892" y="612" font-size="11" fill="#555">网络边界</text>
+  </g>
+</svg>

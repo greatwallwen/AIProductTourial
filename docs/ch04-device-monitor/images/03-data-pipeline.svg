@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" font-family="'PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif">
+  <desc>动画：遥测数据流管道——设备经网关（Modbus 归一、断网缓存）、MQTT QoS1 约400点/秒、ingest 单事务（幂等+聚合+告警）写入 TimescaleDB（raw 30天/聚合3年），api 自动选粒度供看板秒级刷新；数据点沿管道流动。</desc>
+  <defs>
+    <marker id="pparr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#999"/>
+    </marker>
+    <path id="pipeMain" d="M 130 260 L 305 260 L 495 260 L 685 260 L 940 260"/>
+    <path id="pipeRead" d="M 940 330 L 940 470 L 700 470 L 420 470"/>
+  </defs>
+
+  <text x="40" y="44" font-size="20" font-weight="700" fill="#1a1a1a">数据流管道：从传感器到看板（动画）</text>
+  <text x="40" y="70" font-size="13" fill="#666">每段都有协议与速率标注——架构图上没有数字，就还不算做完第③步（质量场景量化）</text>
+
+  <!-- 可见轨道 -->
+  <use href="#pipeMain" fill="none" stroke="#dfe5ea" stroke-width="5"/>
+  <use href="#pipeRead" fill="none" stroke="#dfe5ea" stroke-width="5"/>
+
+  <!-- 站点 -->
+  <g>
+    <rect x="50" y="200" width="160" height="120" rx="10" fill="#999999"/>
+    <text x="130" y="230" font-size="13" font-weight="600" fill="#fff" text-anchor="middle">液压设备 ×2000</text>
+    <text x="130" y="252" font-size="10" fill="#eee" text-anchor="middle">主泵·冷却·阀·作动器</text>
+    <text x="130" y="274" font-size="10" fill="#eee" text-anchor="middle">采样每 5s/台</text>
+    <text x="130" y="300" font-size="10" fill="#eee" text-anchor="middle">Modbus TCP/RTU</text>
+
+    <rect x="250" y="200" width="150" height="120" rx="10" fill="#999999"/>
+    <text x="325" y="230" font-size="13" font-weight="600" fill="#fff" text-anchor="middle">车间网关</text>
+    <text x="325" y="252" font-size="10" fill="#eee" text-anchor="middle">S7-1200 协议归一</text>
+    <rect x="270" y="266" width="110" height="34" rx="5" fill="#7a7a7a"/>
+    <text x="325" y="288" font-size="10" fill="#fff" text-anchor="middle">断网本地缓存 ★</text>
+
+    <rect x="430" y="200" width="140" height="120" rx="10" fill="#438dd5"/>
+    <text x="500" y="234" font-size="13" font-weight="600" fill="#fff" text-anchor="middle">EMQX</text>
+    <text x="500" y="256" font-size="10" fill="#e8f1fa" text-anchor="middle">MQTT Broker</text>
+    <text x="500" y="278" font-size="10" fill="#e8f1fa" text-anchor="middle">QoS 1 · 共享订阅</text>
+
+    <rect x="610" y="186" width="170" height="148" rx="10" fill="#438dd5"/>
+    <text x="695" y="214" font-size="13" font-weight="600" fill="#fff" text-anchor="middle">ingest 进程</text>
+    <text x="695" y="238" font-size="10" fill="#e8f1fa" text-anchor="middle">① 幂等写入（去重）</text>
+    <text x="695" y="258" font-size="10" fill="#e8f1fa" text-anchor="middle">② 增量聚合 UPSERT</text>
+    <text x="695" y="278" font-size="10" fill="#e8f1fa" text-anchor="middle">③ 告警内存匹配</text>
+    <text x="695" y="302" font-size="10" font-weight="600" fill="#fff" text-anchor="middle">——同一事务——</text>
+
+    <g>
+      <ellipse cx="940" cy="206" rx="100" ry="13" fill="#438dd5"/>
+      <rect x="840" y="206" width="200" height="108" fill="#438dd5"/>
+      <ellipse cx="940" cy="314" rx="100" ry="13" fill="#438dd5"/>
+      <text x="940" y="240" font-size="13" font-weight="600" fill="#fff" text-anchor="middle">TimescaleDB</text>
+      <text x="940" y="262" font-size="10" fill="#e8f1fa" text-anchor="middle">raw（30 天保留）</text>
+      <text x="940" y="282" font-size="10" fill="#e8f1fa" text-anchor="middle">1min/1h/1d 连续聚合（3 年）</text>
+      <text x="940" y="302" font-size="10" fill="#e8f1fa" text-anchor="middle">3456 万行/天 · 磁盘有上界</text>
+    </g>
+
+    <rect x="620" y="420" width="160" height="100" rx="10" fill="#438dd5"/>
+    <text x="700" y="452" font-size="13" font-weight="600" fill="#fff" text-anchor="middle">api 进程</text>
+    <text x="700" y="474" font-size="10" fill="#e8f1fa" text-anchor="middle">自动选粒度查询</text>
+    <text x="700" y="494" font-size="10" fill="#e8f1fa" text-anchor="middle">SSE / 轮询推送</text>
+
+    <rect x="280" y="420" width="140" height="100" rx="10" fill="#f4f6f8" stroke="#8a97a3" stroke-width="1.5"/>
+    <text x="350" y="456" font-size="13" font-weight="600" fill="#1a1a1a" text-anchor="middle">值班看板</text>
+    <text x="350" y="478" font-size="10" fill="#777" text-anchor="middle">当前值 · 告警</text>
+    <text x="350" y="498" font-size="10" fill="#777" text-anchor="middle">刷新 &lt; 5s（R-02）</text>
+  </g>
+
+  <!-- 段标注 -->
+  <g font-size="11" fill="#e65100" font-weight="600" text-anchor="middle">
+    <text x="230" y="180">Modbus</text>
+    <text x="415" y="180">MQTT 3.1.1 · QoS 1</text>
+    <text x="415" y="197">≈400 点/秒</text>
+    <text x="590" y="180">共享订阅</text>
+    <text x="810" y="180">单事务写</text>
+    <text x="940" y="380">读走聚合，不扫 raw</text>
+    <text x="520" y="452">SSE · 秒级</text>
+  </g>
+
+  <!-- 流动粒子（写路径 3 颗错峰 + 读路径 1 颗） -->
+  <circle r="6" fill="#e65100" opacity="0">
+    <animateMotion dur="5s" begin="0s" repeatCount="indefinite"><mpath href="#pipeMain"/></animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.05;0.93;1" dur="5s" begin="0s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="6" fill="#e65100" opacity="0">
+    <animateMotion dur="5s" begin="1.7s" repeatCount="indefinite"><mpath href="#pipeMain"/></animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.05;0.93;1" dur="5s" begin="1.7s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="6" fill="#e65100" opacity="0">
+    <animateMotion dur="5s" begin="3.4s" repeatCount="indefinite"><mpath href="#pipeMain"/></animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.05;0.93;1" dur="5s" begin="3.4s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="6" fill="#2e7d32" opacity="0">
+    <animateMotion dur="6s" begin="0.8s" repeatCount="indefinite"><mpath href="#pipeRead"/></animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.05;0.93;1" dur="6s" begin="0.8s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- 底部结论 -->
+  <text x="600" y="580" font-size="13" font-weight="600" fill="#1a1a1a" text-anchor="middle">写路径（橙）持续而平稳，读路径（绿）偶发而突发——特征相反，所以进程分离（ADR-003）</text>
+
+  <!-- 图例 -->
+  <g>
+    <circle cx="806" cy="618" r="6" fill="#e65100"/>
+    <text x="820" y="622" font-size="11" fill="#555">遥测数据点（写路径）</text>
+    <circle cx="976" cy="618" r="6" fill="#2e7d32"/>
+    <text x="990" y="622" font-size="11" fill="#555">查询结果（读路径）</text>
+  </g>
+</svg>

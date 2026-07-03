@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 740" font-family="'PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif">
+  <desc>钉钉待办推送时序图：业务事务只落出站表并提交；重试扫描任务每分钟取到期消息经适配器推送钉钉；成功置 sent，失败退避重试 1m/5m/30m/2h，超 24h 置 dead 并告警人工处理。</desc>
+  <defs>
+    <marker id="sqarr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#555"/>
+    </marker>
+    <marker id="sqarrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#999"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="44" font-size="20" font-weight="700" fill="#1a1a1a">钉钉待办推送：出站表把"调用成功"改写为"落表成功"</text>
+  <text x="40" y="70" font-size="13" fill="#666">业务事务与外部可用性彻底解耦（ADR-004）：钉钉宕机一天，合同流程分毫不损，待办晚到而已</text>
+
+  <!-- 生命线头 -->
+  <g>
+    <rect x="60" y="100" width="170" height="52" rx="8" fill="#438dd5"/>
+    <text x="145" y="126" font-size="12" font-weight="600" fill="#fff" text-anchor="middle">approval 服务</text>
+    <text x="145" y="144" font-size="10" fill="#e8f1fa" text-anchor="middle">（业务事务内）</text>
+    <rect x="300" y="100" width="170" height="52" rx="8" fill="#85bbf0"/>
+    <text x="385" y="126" font-size="12" font-weight="600" fill="#1a1a1a" text-anchor="middle">outbound_messages</text>
+    <text x="385" y="144" font-size="10" fill="#333" text-anchor="middle">出站重试表（PG）</text>
+    <rect x="540" y="100" width="170" height="52" rx="8" fill="#438dd5"/>
+    <text x="625" y="126" font-size="12" font-weight="600" fill="#fff" text-anchor="middle">重试扫描任务</text>
+    <text x="625" y="144" font-size="10" fill="#e8f1fa" text-anchor="middle">node-cron 每分钟</text>
+    <rect x="780" y="100" width="170" height="52" rx="8" fill="#438dd5"/>
+    <text x="865" y="126" font-size="12" font-weight="600" fill="#fff" text-anchor="middle">钉钉适配器</text>
+    <text x="865" y="144" font-size="10" fill="#e8f1fa" text-anchor="middle">integration/dingtalk</text>
+    <rect x="1000" y="100" width="160" height="52" rx="8" fill="#999999"/>
+    <text x="1080" y="126" font-size="12" font-weight="600" fill="#fff" text-anchor="middle">钉钉开放平台</text>
+    <text x="1080" y="144" font-size="10" fill="#eee" text-anchor="middle">[外部]</text>
+  </g>
+
+  <!-- 生命线 -->
+  <g stroke="#b8c2cb" stroke-width="1.2" stroke-dasharray="4 4">
+    <line x1="145" y1="152" x2="145" y2="690"/>
+    <line x1="385" y1="152" x2="385" y2="690"/>
+    <line x1="625" y1="152" x2="625" y2="690"/>
+    <line x1="865" y1="152" x2="865" y2="690"/>
+    <line x1="1080" y1="152" x2="1080" y2="690"/>
+  </g>
+
+  <!-- 消息 -->
+  <line x1="145" y1="200" x2="381" y2="200" stroke="#555" stroke-width="1.6" marker-end="url(#sqarr)"/>
+  <text x="263" y="190" font-size="11.5" fill="#333" text-anchor="middle">INSERT 待办消息（与审批链生成同一事务）</text>
+
+  <rect x="70" y="222" width="220" height="34" rx="6" fill="#f0f7f0" stroke="#a5c2a5" stroke-width="1"/>
+  <text x="180" y="244" font-size="11.5" fill="#2e7d32" text-anchor="middle">COMMIT —— 业务到此已成功</text>
+
+  <line x1="625" y1="300" x2="389" y2="300" stroke="#555" stroke-width="1.6" marker-end="url(#sqarr)"/>
+  <text x="507" y="290" font-size="11.5" fill="#333" text-anchor="middle">SELECT status='pending' 且 next_retry ≤ now</text>
+  <line x1="385" y1="326" x2="621" y2="326" stroke="#999" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#sqarrR)"/>
+  <text x="507" y="318" font-size="11" fill="#777" text-anchor="middle">到期消息列表</text>
+
+  <line x1="625" y1="368" x2="861" y2="368" stroke="#555" stroke-width="1.6" marker-end="url(#sqarr)"/>
+  <text x="743" y="358" font-size="11.5" fill="#333" text-anchor="middle">push(message)</text>
+  <line x1="865" y1="400" x2="1076" y2="400" stroke="#555" stroke-width="1.6" marker-end="url(#sqarr)"/>
+  <text x="970" y="390" font-size="11.5" fill="#333" text-anchor="middle">POST 创建待办</text>
+
+  <!-- alt 框 -->
+  <rect x="330" y="430" width="820" height="230" fill="none" stroke="#8a97a3" stroke-width="1.4"/>
+  <path d="M 330 430 L 400 430 L 400 448 L 386 462 L 330 462 Z" fill="#eef3f8" stroke="#8a97a3" stroke-width="1.2"/>
+  <text x="358" y="450" font-size="11" font-weight="600" fill="#444">alt</text>
+
+  <text x="352" y="484" font-size="11" font-weight="600" fill="#2e7d32">[成功]</text>
+  <line x1="1076" y1="502" x2="869" y2="502" stroke="#999" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#sqarrR)"/>
+  <text x="970" y="494" font-size="11" fill="#2e7d32" text-anchor="middle">200 OK</text>
+  <line x1="625" y1="530" x2="389" y2="530" stroke="#555" stroke-width="1.6" marker-end="url(#sqarr)"/>
+  <text x="507" y="522" font-size="11.5" fill="#2e7d32" text-anchor="middle">UPDATE status='sent'</text>
+
+  <line x1="330" y1="552" x2="1150" y2="552" stroke="#8a97a3" stroke-width="1" stroke-dasharray="6 4"/>
+  <text x="352" y="576" font-size="11" font-weight="600" fill="#c62828">[失败 / 超时]</text>
+  <line x1="1076" y1="596" x2="869" y2="596" stroke="#c62828" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#sqarrR)"/>
+  <text x="970" y="588" font-size="11" fill="#c62828" text-anchor="middle">5xx / timeout</text>
+  <line x1="625" y1="626" x2="389" y2="626" stroke="#c62828" stroke-width="1.6" marker-end="url(#sqarr)"/>
+  <text x="507" y="616" font-size="11.5" fill="#c62828" text-anchor="middle">retry_count+1，next_retry=退避</text>
+  <text x="507" y="646" font-size="10.5" fill="#777" text-anchor="middle">退避序列：1min → 5min → 30min → 2h；累计 24h 未达 → status='dead' + 告警人工</text>
+
+  <!-- 图例 -->
+  <g>
+    <line x1="700" y1="706" x2="732" y2="706" stroke="#555" stroke-width="1.6" marker-end="url(#sqarr)"/>
+    <text x="740" y="710" font-size="11" fill="#555">同步调用</text>
+    <line x1="820" y1="706" x2="852" y2="706" stroke="#999" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#sqarrR)"/>
+    <text x="860" y="710" font-size="11" fill="#555">返回</text>
+    <rect x="920" y="698" width="24" height="15" rx="4" fill="#f0f7f0" stroke="#a5c2a5" stroke-width="1"/>
+    <text x="952" y="710" font-size="11" fill="#555">事务边界注记</text>
+  </g>
+</svg>

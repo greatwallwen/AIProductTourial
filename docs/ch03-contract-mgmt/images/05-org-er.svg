@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" font-family="'PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif">
+  <desc>案例二 ER 图：业务域（contracts、approval_tasks、contract_seq）与组织权限域（departments 物化路径、users 软删除、routing_rules 法务维护）；路由规则在提交时物化为审批任务。</desc>
+  <defs>
+    <marker id="er2arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="44" font-size="20" font-weight="700" fill="#1a1a1a">核心 ER 图：业务域 ＋ 组织权限域</text>
+  <text x="40" y="70" font-size="13" fill="#666">左：示例工程已实现；右：生产设计（ADR-002/003），映射关系见 3.4 节</text>
+
+  <!-- 业务域边界 -->
+  <rect x="50" y="100" width="530" height="500" rx="12" fill="none" stroke="#444" stroke-width="1.3" stroke-dasharray="6 4"/>
+  <text x="66" y="124" font-size="12" font-weight="600" fill="#444">业务域（示例工程实现）</text>
+
+  <!-- contracts -->
+  <g>
+    <rect x="76" y="140" width="230" height="216" rx="8" fill="#fff" stroke="#8a97a3" stroke-width="1.5"/>
+    <rect x="76" y="140" width="230" height="34" rx="8" fill="#1168bd"/>
+    <rect x="76" y="160" width="230" height="14" fill="#1168bd"/>
+    <text x="191" y="163" font-size="13" font-weight="600" fill="#fff" text-anchor="middle">contracts · 合同</text>
+    <g font-size="11.5" fill="#333" font-family="monospace">
+      <text x="90" y="196">contract_no  UQ</text>
+      <text x="90" y="217">title / counterparty</text>
+      <text x="90" y="238">amount_cents（存分！）</text>
+      <text x="90" y="259">sign/effective/expire_date</text>
+      <text x="90" y="280">owner</text>
+      <text x="90" y="301">status（状态机管辖）</text>
+    </g>
+    <text x="90" y="330" font-size="10.5" fill="#e65100">expired 是派生状态，不在此表</text>
+  </g>
+
+  <!-- approval_tasks -->
+  <g>
+    <rect x="336" y="140" width="224" height="216" rx="8" fill="#fff" stroke="#8a97a3" stroke-width="1.5"/>
+    <rect x="336" y="140" width="224" height="34" rx="8" fill="#438dd5"/>
+    <rect x="336" y="160" width="224" height="14" fill="#438dd5"/>
+    <text x="448" y="163" font-size="13" font-weight="600" fill="#fff" text-anchor="middle">approval_tasks · 审批链</text>
+    <g font-size="11.5" fill="#333" font-family="monospace">
+      <text x="350" y="196">contract_id  FK</text>
+      <text x="350" y="217">round（驳回重提+1）</text>
+      <text x="350" y="238">step_no / role / assignee</text>
+      <text x="350" y="259">status pending/approved/</text>
+      <text x="350" y="280">       rejected/skipped</text>
+      <text x="350" y="301">opinion / decided_at</text>
+    </g>
+    <text x="350" y="330" font-size="10.5" fill="#2e7d32">链＝提交时的规则快照</text>
+  </g>
+
+  <!-- contract_seq -->
+  <g>
+    <rect x="76" y="420" width="230" height="110" rx="8" fill="#f4f6f8" stroke="#8a97a3" stroke-width="1.5"/>
+    <rect x="76" y="420" width="230" height="34" rx="8" fill="#8a97a3"/>
+    <rect x="76" y="440" width="230" height="14" fill="#8a97a3"/>
+    <text x="191" y="443" font-size="13" font-weight="600" fill="#fff" text-anchor="middle">contract_seq · 发号器</text>
+    <g font-size="11.5" fill="#333" font-family="monospace">
+      <text x="90" y="478">year  PK</text>
+      <text x="90" y="499">seq（HT-{年}-{4位}）</text>
+    </g>
+  </g>
+
+  <!-- 组织权限域边界 -->
+  <rect x="620" y="100" width="530" height="500" rx="12" fill="none" stroke="#e65100" stroke-width="1.3" stroke-dasharray="6 4"/>
+  <text x="636" y="124" font-size="12" font-weight="600" fill="#e65100">组织权限域（生产设计）</text>
+
+  <!-- departments -->
+  <g>
+    <rect x="646" y="140" width="230" height="150" rx="8" fill="#fff" stroke="#8a97a3" stroke-width="1.5"/>
+    <rect x="646" y="140" width="230" height="34" rx="8" fill="#438dd5"/>
+    <rect x="646" y="160" width="230" height="14" fill="#438dd5"/>
+    <text x="761" y="163" font-size="13" font-weight="600" fill="#fff" text-anchor="middle">departments · 部门</text>
+    <g font-size="11.5" fill="#333" font-family="monospace">
+      <text x="660" y="196">id PK / name</text>
+      <text x="660" y="217">path '/1/14/107/'</text>
+      <text x="660" y="238">parent_id</text>
+    </g>
+    <text x="660" y="266" font-size="10.5" fill="#2e7d32">物化路径：子树＝LIKE 前缀</text>
+  </g>
+
+  <!-- users -->
+  <g>
+    <rect x="906" y="140" width="220" height="150" rx="8" fill="#fff" stroke="#8a97a3" stroke-width="1.5"/>
+    <rect x="906" y="140" width="220" height="34" rx="8" fill="#438dd5"/>
+    <rect x="906" y="160" width="220" height="14" fill="#438dd5"/>
+    <text x="1016" y="163" font-size="13" font-weight="600" fill="#fff" text-anchor="middle">users · 人员</text>
+    <g font-size="11.5" fill="#333" font-family="monospace">
+      <text x="920" y="196">id PK / name</text>
+      <text x="920" y="217">dept_id FK / role</text>
+      <text x="920" y="238">data_scope（五档）</text>
+      <text x="920" y="259">deleted_at（软删除）</text>
+    </g>
+  </g>
+
+  <!-- routing_rules -->
+  <g>
+    <rect x="646" y="380" width="330" height="170" rx="8" fill="#fff" stroke="#e65100" stroke-width="1.8"/>
+    <rect x="646" y="380" width="330" height="34" rx="8" fill="#e65100"/>
+    <rect x="646" y="400" width="330" height="14" fill="#e65100"/>
+    <text x="811" y="403" font-size="13" font-weight="600" fill="#fff" text-anchor="middle">routing_rules · 路由规则（法务维护）</text>
+    <g font-size="11.5" fill="#333" font-family="monospace">
+      <text x="660" y="436">contract_type（民法典19类对齐）</text>
+      <text x="660" y="457">amount_min / amount_max</text>
+      <text x="660" y="478">chain JSON（环节序列）</text>
+      <text x="660" y="499">updated_by / updated_at</text>
+    </g>
+    <text x="660" y="528" font-size="10.5" fill="#e65100">规则即数据：改规则＝改数据，零发版（Q-01）</text>
+  </g>
+
+  <!-- 关系 -->
+  <line x1="308" y1="240" x2="332" y2="240" stroke="#555" stroke-width="1.6" marker-end="url(#er2arr)"/>
+  <text x="310" y="230" font-size="10" fill="#555">1</text>
+  <text x="324" y="230" font-size="10" fill="#555">N</text>
+
+  <path d="M 306 458 L 400 458 L 400 360" fill="none" stroke="#8a97a3" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#er2arr)"/>
+  <text x="410" y="420" font-size="10.5" fill="#777">同事务取号</text>
+
+  <line x1="878" y1="215" x2="902" y2="215" stroke="#555" stroke-width="1.6" marker-end="url(#er2arr)"/>
+  <text x="880" y="205" font-size="10" fill="#555">1</text>
+  <text x="894" y="205" font-size="10" fill="#555">N</text>
+
+  <path d="M 644 465 L 448 465 L 448 360" fill="none" stroke="#e65100" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#er2arr)"/>
+  <rect x="470" y="440" width="128" height="17" fill="#fff"/>
+  <text x="534" y="453" font-size="11" fill="#e65100" text-anchor="middle">提交时物化（快照）</text>
+
+  <!-- 图例 -->
+  <g>
+    <rect x="646" y="616" width="24" height="15" rx="4" fill="#fff" stroke="#8a97a3" stroke-width="1.5"/>
+    <text x="678" y="628" font-size="11" fill="#555">实体</text>
+    <rect x="732" y="616" width="24" height="15" rx="4" fill="#fff" stroke="#e65100" stroke-width="1.8"/>
+    <text x="764" y="628" font-size="11" fill="#555">规则实体（业务人员可改）</text>
+    <line x1="930" y1="623" x2="962" y2="623" stroke="#e65100" stroke-width="1.6" stroke-dasharray="6 4"/>
+    <text x="970" y="628" font-size="11" fill="#555">物化关系</text>
+  </g>
+</svg>

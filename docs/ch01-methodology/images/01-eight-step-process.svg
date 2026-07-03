@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" font-family="'PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif">
+  <desc>产品视角的架构设计八步流程：①业务与干系人分析 ②约束识别 ③质量属性场景化 ④架构风格选型 ⑤C4分层建模 ⑥数据与接口设计 ⑦横切设计 ⑧ADR与演进规划。②③为架构分岔源头。</desc>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="44" font-size="20" font-weight="700" fill="#1a1a1a">产品视角的架构设计：八步流程</text>
+  <text x="40" y="70" font-size="13" fill="#666">按序开始，随时回头修正上游产出物；橙色描边的两步是四个案例架构分岔的源头（详见 1.3 节）</text>
+
+  <!-- 第一行：①②③④ -->
+  <g>
+    <rect x="40" y="100" width="250" height="120" rx="8" fill="#f4f6f8" stroke="#8a97a3" stroke-width="1.5"/>
+    <text x="60" y="135" font-size="15" font-weight="600" fill="#1a1a1a">① 业务与干系人分析</text>
+    <text x="60" y="165" font-size="12" fill="#555">产出物：需求清单（含演进档）</text>
+    <text x="60" y="186" font-size="12" fill="#555">干系人清单及其冲突点</text>
+
+    <rect x="320" y="100" width="250" height="120" rx="8" fill="#f4f6f8" stroke="#e65100" stroke-width="2.5"/>
+    <text x="340" y="135" font-size="15" font-weight="600" fill="#1a1a1a">② 约束识别</text>
+    <text x="340" y="165" font-size="12" fill="#555">产出物：约束清单</text>
+    <text x="340" y="186" font-size="12" fill="#555">每条注明来源与可否谈判</text>
+
+    <rect x="600" y="100" width="250" height="120" rx="8" fill="#f4f6f8" stroke="#e65100" stroke-width="2.5"/>
+    <text x="620" y="135" font-size="15" font-weight="600" fill="#1a1a1a">③ 质量属性场景化</text>
+    <text x="620" y="165" font-size="12" fill="#555">产出物：3~5 条六要素场景</text>
+    <text x="620" y="186" font-size="12" fill="#555">响应度量必须是数字</text>
+
+    <rect x="880" y="100" width="250" height="120" rx="8" fill="#f4f6f8" stroke="#8a97a3" stroke-width="1.5"/>
+    <text x="900" y="135" font-size="15" font-weight="600" fill="#1a1a1a">④ 架构风格选型</text>
+    <text x="900" y="165" font-size="12" fill="#555">产出物：风格对比表（列＝</text>
+    <text x="900" y="186" font-size="12" fill="#555">C-xx/Q-xx）＋ 首篇 ADR</text>
+  </g>
+  <line x1="292" y1="160" x2="316" y2="160" stroke="#555" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="572" y1="160" x2="596" y2="160" stroke="#555" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="852" y1="160" x2="876" y2="160" stroke="#555" stroke-width="1.6" marker-end="url(#arr)"/>
+
+  <!-- 换行连接线 ④ → ⑤ -->
+  <path d="M 1005 222 L 1005 265 L 165 265 L 165 316" fill="none" stroke="#555" stroke-width="1.6" marker-end="url(#arr)"/>
+
+  <!-- 第二行：⑤⑥⑦⑧ -->
+  <g>
+    <rect x="40" y="320" width="250" height="120" rx="8" fill="#f4f6f8" stroke="#8a97a3" stroke-width="1.5"/>
+    <text x="60" y="355" font-size="15" font-weight="600" fill="#1a1a1a">⑤ C4 分层建模</text>
+    <text x="60" y="385" font-size="12" fill="#555">产出物：上下文图＋容器图</text>
+    <text x="60" y="406" font-size="12" fill="#555">组件图只画有争议的局部</text>
+
+    <rect x="320" y="320" width="250" height="120" rx="8" fill="#f4f6f8" stroke="#8a97a3" stroke-width="1.5"/>
+    <text x="340" y="355" font-size="15" font-weight="600" fill="#1a1a1a">⑥ 数据与接口设计</text>
+    <text x="340" y="385" font-size="12" fill="#555">产出物：ER 图·状态机·</text>
+    <text x="340" y="406" font-size="12" fill="#555">OpenAPI 契约（契约即代码）</text>
+
+    <rect x="600" y="320" width="250" height="120" rx="8" fill="#f4f6f8" stroke="#8a97a3" stroke-width="1.5"/>
+    <text x="620" y="355" font-size="15" font-weight="600" fill="#1a1a1a">⑦ 横切设计</text>
+    <text x="620" y="385" font-size="12" fill="#555">产出物：权限模型·审计方案·</text>
+    <text x="620" y="406" font-size="12" fill="#555">部署图（按真实机房画）</text>
+
+    <rect x="880" y="320" width="250" height="120" rx="8" fill="#f4f6f8" stroke="#8a97a3" stroke-width="1.5"/>
+    <text x="900" y="355" font-size="15" font-weight="600" fill="#1a1a1a">⑧ ADR 与演进规划</text>
+    <text x="900" y="385" font-size="12" fill="#555">产出物：ADR 归档＋</text>
+    <text x="900" y="406" font-size="12" fill="#555">演进触发表（条件→改造）</text>
+  </g>
+  <line x1="292" y1="380" x2="316" y2="380" stroke="#555" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="572" y1="380" x2="596" y2="380" stroke="#555" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="852" y1="380" x2="876" y2="380" stroke="#555" stroke-width="1.6" marker-end="url(#arr)"/>
+
+  <!-- 备注带 -->
+  <rect x="40" y="470" width="1090" height="64" rx="8" fill="#fdf6ec" stroke="#d9c8a9" stroke-width="1"/>
+  <text x="60" y="496" font-size="12" fill="#555">流程性质（1.2 节）：瀑布的形状、迭代的用法——依赖关系是真的，一次走通是假的；ADR 在①~⑦步随决策当场记录，第⑧步只做归档；</text>
+  <text x="60" y="518" font-size="12" fill="#555">全部产出物装订起来即架构设计文档（结构对应 arc42 §1~§9）。重心在前四步：第⑤⑥步长得像的两个系统，可以因②③完全不同。</text>
+
+  <!-- 图例 -->
+  <g>
+    <rect x="700" y="560" width="26" height="16" rx="4" fill="#f4f6f8" stroke="#8a97a3" stroke-width="1.5"/>
+    <text x="734" y="573" font-size="11" fill="#555">步骤（含核心产出物）</text>
+    <rect x="880" y="560" width="26" height="16" rx="4" fill="#f4f6f8" stroke="#e65100" stroke-width="2.5"/>
+    <text x="914" y="573" font-size="11" fill="#555">架构分岔源头</text>
+    <line x1="1020" y1="568" x2="1052" y2="568" stroke="#555" stroke-width="1.6" marker-end="url(#arr)"/>
+    <text x="1060" y="573" font-size="11" fill="#555">执行顺序</text>
+  </g>
+</svg>

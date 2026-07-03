@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 540" font-family="'PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif">
+  <desc>订阅计费状态机（生产设计）：trialing 试用、active 活跃、past_due 宽限、suspended 欠费只读、canceled 取消；由支付回调与 BullMQ 延迟任务共同驱动。</desc>
+  <defs>
+    <marker id="sbarr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="44" font-size="20" font-weight="700" fill="#1a1a1a">订阅计费状态机（ADR-004，生产设计）</text>
+  <text x="40" y="70" font-size="13" fill="#666">驱动力标注在边上：支付回调（幂等）、BullMQ 延迟任务、用户操作——全自动无人工（C-02）</text>
+
+  <circle cx="70" cy="210" r="8" fill="#1a1a1a"/>
+  <line x1="78" y1="210" x2="106" y2="210" stroke="#555" stroke-width="1.6" marker-end="url(#sbarr)"/>
+
+  <rect x="110" y="180" width="170" height="60" rx="10" fill="#eef3f8" stroke="#8a97a3" stroke-width="1.6"/>
+  <text x="195" y="206" font-size="13" font-weight="600" fill="#1a1a1a" text-anchor="middle" font-family="monospace">trialing</text>
+  <text x="195" y="228" font-size="11" fill="#777" text-anchor="middle">试用（14 天）</text>
+
+  <rect x="390" y="180" width="170" height="60" rx="10" fill="#f0f7f0" stroke="#2e7d32" stroke-width="1.8"/>
+  <text x="475" y="206" font-size="13" font-weight="600" fill="#2e7d32" text-anchor="middle" font-family="monospace">active</text>
+  <text x="475" y="228" font-size="11" fill="#2e7d32" text-anchor="middle">活跃（按席位计费）</text>
+
+  <rect x="670" y="180" width="170" height="60" rx="10" fill="#fdf6ec" stroke="#e65100" stroke-width="1.6"/>
+  <text x="755" y="206" font-size="13" font-weight="600" fill="#e65100" text-anchor="middle" font-family="monospace">past_due</text>
+  <text x="755" y="228" font-size="11" fill="#777" text-anchor="middle">宽限（7 天催缴）</text>
+
+  <rect x="950" y="180" width="180" height="60" rx="10" fill="#fdf0f0" stroke="#c62828" stroke-width="1.6"/>
+  <text x="1040" y="206" font-size="13" font-weight="600" fill="#c62828" text-anchor="middle" font-family="monospace">suspended</text>
+  <text x="1040" y="228" font-size="11" fill="#c62828" text-anchor="middle">欠费降级（只读）</text>
+
+  <rect x="530" y="400" width="180" height="60" rx="10" fill="#f4f6f8" stroke="#8a97a3" stroke-width="2.4"/>
+  <rect x="535" y="405" width="170" height="50" rx="7" fill="none" stroke="#8a97a3" stroke-width="1"/>
+  <text x="620" y="426" font-size="13" font-weight="600" fill="#1a1a1a" text-anchor="middle" font-family="monospace">canceled</text>
+  <text x="620" y="448" font-size="11" fill="#777" text-anchor="middle">已取消（数据保留 30 天后删）</text>
+
+  <line x1="282" y1="210" x2="386" y2="210" stroke="#555" stroke-width="1.6" marker-end="url(#sbarr)"/>
+  <text x="334" y="196" font-size="10.5" fill="#555" text-anchor="middle">支付成功（回调，幂等）</text>
+  <line x1="562" y1="210" x2="666" y2="210" stroke="#555" stroke-width="1.6" marker-end="url(#sbarr)"/>
+  <text x="614" y="196" font-size="10.5" fill="#555" text-anchor="middle">续费失败（延迟任务）</text>
+  <line x1="842" y1="210" x2="946" y2="210" stroke="#555" stroke-width="1.6" marker-end="url(#sbarr)"/>
+  <text x="894" y="196" font-size="10.5" fill="#555" text-anchor="middle">宽限到期（延迟任务）</text>
+
+  <path d="M 755 178 C 700 110 530 110 478 176" fill="none" stroke="#2e7d32" stroke-width="1.6" marker-end="url(#sbarr)"/>
+  <text x="616" y="112" font-size="10.5" fill="#2e7d32" text-anchor="middle">补缴成功 → 恢复 active</text>
+  <path d="M 1030 178 C 960 90 540 90 470 176" fill="none" stroke="#2e7d32" stroke-width="1.4" stroke-dasharray="6 4" marker-end="url(#sbarr)"/>
+  <text x="750" y="84" font-size="10.5" fill="#2e7d32" text-anchor="middle">补缴恢复（含数据完整性检查）</text>
+
+  <path d="M 250 242 C 330 330 460 380 526 416" fill="none" stroke="#555" stroke-width="1.4" marker-end="url(#sbarr)"/>
+  <text x="330" y="330" font-size="10.5" fill="#555" text-anchor="middle">试用到期未付（延迟任务）</text>
+  <path d="M 500 242 C 540 300 570 340 600 396" fill="none" stroke="#555" stroke-width="1.4" marker-end="url(#sbarr)"/>
+  <text x="588" y="316" font-size="10.5" fill="#555" text-anchor="middle">用户取消</text>
+  <path d="M 1040 242 C 1000 350 800 410 714 428" fill="none" stroke="#555" stroke-width="1.4" marker-end="url(#sbarr)"/>
+  <text x="920" y="356" font-size="10.5" fill="#555" text-anchor="middle">欠费超 30 天</text>
+
+  <!-- 图例 -->
+  <g>
+    <line x1="720" y1="500" x2="752" y2="500" stroke="#2e7d32" stroke-width="1.6"/>
+    <text x="760" y="504" font-size="11" fill="#555">恢复路径</text>
+    <rect x="850" y="492" width="24" height="15" rx="4" fill="#f4f6f8" stroke="#8a97a3" stroke-width="2.2"/>
+    <text x="882" y="504" font-size="11" fill="#555">终态（双框）</text>
+    <text x="990" y="504" font-size="11" fill="#555">边标注＝迁移驱动力</text>
+  </g>
+</svg>

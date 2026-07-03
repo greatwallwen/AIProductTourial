@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" font-family="'PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif">
+  <desc>案例三 C4 容器图：EMQX、ingest 进程（只写）、api 进程（只读遥测）、TimescaleDB、看板 SPA；容器边界（进程）承担架构语义。</desc>
+  <defs>
+    <marker id="d2arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="44" font-size="20" font-weight="700" fill="#1a1a1a">C4 · L2 容器图：容器边界这次承担了架构语义</text>
+  <text x="40" y="70" font-size="13" fill="#666">写读两条路径进程级隔离（ADR-003）；两进程共库、同仓库、无进程间调用——耦合点只有 schema</text>
+
+  <!-- 网关（外部） -->
+  <rect x="60" y="300" width="180" height="90" rx="8" fill="#999999"/>
+  <text x="150" y="334" font-size="13" font-weight="600" fill="#fff" text-anchor="middle">车间网关 ×N</text>
+  <text x="150" y="356" font-size="10" fill="#eee" text-anchor="middle">[外部] S7-1200 等</text>
+  <text x="150" y="374" font-size="10" fill="#eee" text-anchor="middle">断网本地缓存</text>
+
+  <!-- 边界 -->
+  <rect x="300" y="100" width="620" height="600" rx="12" fill="none" stroke="#444" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="316" y="126" font-size="12" fill="#444">设备监控系统 [系统边界]</text>
+
+  <!-- EMQX -->
+  <rect x="340" y="300" width="170" height="100" rx="8" fill="#438dd5"/>
+  <text x="425" y="336" font-size="13" font-weight="600" fill="#fff" text-anchor="middle">EMQX</text>
+  <text x="425" y="358" font-size="10" fill="#e8f1fa" text-anchor="middle">[容器：MQTT Broker]</text>
+  <text x="425" y="378" font-size="10" fill="#e8f1fa" text-anchor="middle">QoS 1 · 共享订阅</text>
+
+  <!-- ingest -->
+  <rect x="580" y="160" width="300" height="180" rx="8" fill="#438dd5"/>
+  <text x="730" y="192" font-size="14" font-weight="600" fill="#fff" text-anchor="middle">ingest 进程 [容器：Node.js]</text>
+  <text x="730" y="212" font-size="10" fill="#e8f1fa" text-anchor="middle">只写路径 · 发布不中断采集（Q-02）</text>
+  <g>
+    <rect x="602" y="228" width="120" height="44" rx="6" fill="#85bbf0"/>
+    <text x="662" y="254" font-size="11" fill="#1a1a1a" text-anchor="middle">幂等写入</text>
+    <rect x="740" y="228" width="120" height="44" rx="6" fill="#85bbf0"/>
+    <text x="800" y="254" font-size="11" fill="#1a1a1a" text-anchor="middle">增量聚合</text>
+    <rect x="602" y="282" width="120" height="44" rx="6" fill="#85bbf0"/>
+    <text x="662" y="308" font-size="11" fill="#1a1a1a" text-anchor="middle">告警内存匹配</text>
+    <rect x="740" y="282" width="120" height="44" rx="6" fill="#85bbf0"/>
+    <text x="800" y="308" font-size="11" fill="#1a1a1a" text-anchor="middle">同一事务提交</text>
+  </g>
+
+  <!-- api -->
+  <rect x="580" y="440" width="300" height="160" rx="8" fill="#438dd5"/>
+  <text x="730" y="472" font-size="14" font-weight="600" fill="#fff" text-anchor="middle">api 进程 [容器：Node.js/Fastify]</text>
+  <text x="730" y="492" font-size="10" fill="#e8f1fa" text-anchor="middle">只读遥测 · 可随时发布重启</text>
+  <g>
+    <rect x="602" y="508" width="120" height="40" rx="6" fill="#85bbf0"/>
+    <text x="662" y="532" font-size="11" fill="#1a1a1a" text-anchor="middle">自动选粒度查询</text>
+    <rect x="740" y="508" width="120" height="40" rx="6" fill="#85bbf0"/>
+    <text x="800" y="532" font-size="11" fill="#1a1a1a" text-anchor="middle">看板 SSE/轮询</text>
+    <rect x="602" y="556" width="120" height="34" rx="6" fill="#85bbf0"/>
+    <text x="662" y="577" font-size="11" fill="#1a1a1a" text-anchor="middle">台账 · 报表</text>
+    <rect x="740" y="556" width="120" height="34" rx="6" fill="#85bbf0"/>
+    <text x="800" y="577" font-size="11" fill="#1a1a1a" text-anchor="middle">告警查询/确认</text>
+  </g>
+
+  <!-- DB -->
+  <g>
+    <ellipse cx="425" cy="510" rx="95" ry="13" fill="#438dd5"/>
+    <rect x="330" y="510" width="190" height="76" fill="#438dd5"/>
+    <ellipse cx="425" cy="586" rx="95" ry="13" fill="#438dd5"/>
+    <text x="425" y="540" font-size="13" font-weight="600" fill="#fff" text-anchor="middle">TimescaleDB</text>
+    <text x="425" y="560" font-size="10" fill="#e8f1fa" text-anchor="middle">hypertable · 连续聚合</text>
+    <text x="425" y="577" font-size="10" fill="#e8f1fa" text-anchor="middle">raw 30天 / 聚合 3年</text>
+  </g>
+
+  <!-- 看板 -->
+  <g>
+    <circle cx="1030" cy="480" r="13" fill="#08427b"/>
+    <path d="M 1004 522 Q 1030 492 1056 522 L 1056 534 L 1004 534 Z" fill="#08427b"/>
+    <text x="1030" y="556" font-size="11" font-weight="600" fill="#1a1a1a" text-anchor="middle">值班员/主管</text>
+  </g>
+
+  <!-- 连线 -->
+  <line x1="244" y1="345" x2="336" y2="345" stroke="#555" stroke-width="1.8" marker-end="url(#d2arr)"/>
+  <text x="290" y="335" font-size="10" fill="#555" text-anchor="middle">MQTT ≈400点/秒</text>
+  <path d="M 512 330 L 576 280" fill="none" stroke="#555" stroke-width="1.6" marker-end="url(#d2arr)"/>
+  <text x="548" y="290" font-size="10" fill="#555" text-anchor="middle">订阅</text>
+  <path d="M 620 344 L 480 500" fill="none" stroke="#555" stroke-width="1.8" marker-end="url(#d2arr)"/>
+  <rect x="500" y="424" width="118" height="17" fill="#fff"/>
+  <text x="559" y="437" font-size="10" fill="#555" text-anchor="middle">写（事务：raw+聚合+告警）</text>
+  <path d="M 576 520 L 524 520" fill="none" stroke="#555" stroke-width="1.6" marker-end="url(#d2arr)"/>
+  <text x="550" y="510" font-size="10" fill="#555" text-anchor="middle">读</text>
+  <path d="M 884 520 L 1000 512" fill="none" stroke="#555" stroke-width="1.6" marker-end="url(#d2arr)"/>
+  <text x="942" y="504" font-size="10" fill="#555" text-anchor="middle">HTTPS</text>
+
+  <!-- 隔离标注 -->
+  <path d="M 730 344 L 730 436" fill="none" stroke="#c62828" stroke-width="1.4" stroke-dasharray="3 4"/>
+  <rect x="742" y="378" width="150" height="18" fill="#fff"/>
+  <text x="817" y="392" font-size="11" fill="#c62828" text-anchor="middle">无进程间调用（共库解耦）</text>
+
+  <!-- 图例 -->
+  <g>
+    <circle cx="356" cy="726" r="7" fill="#08427b"/>
+    <text x="372" y="730" font-size="11" fill="#555">人物</text>
+    <rect x="432" y="718" width="26" height="16" rx="4" fill="#438dd5"/>
+    <text x="466" y="730" font-size="11" fill="#555">容器（进程/存储）</text>
+    <rect x="600" y="718" width="26" height="16" rx="4" fill="#85bbf0"/>
+    <text x="634" y="730" font-size="11" fill="#555">模块</text>
+    <rect x="700" y="718" width="26" height="16" rx="4" fill="#999999"/>
+    <text x="734" y="730" font-size="11" fill="#555">外部</text>
+    <line x1="800" y1="726" x2="832" y2="726" stroke="#c62828" stroke-width="1.4" stroke-dasharray="3 4"/>
+    <text x="840" y="730" font-size="11" fill="#555">进程隔离线</text>
+  </g>
+</svg>

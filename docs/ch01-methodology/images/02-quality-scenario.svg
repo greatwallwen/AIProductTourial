@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" font-family="'PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif">
+  <desc>SEI 质量属性场景六要素：刺激源、刺激、环境、制品、响应、响应度量；下方为政务案例 Q-01 的填写实例，把"高性能"翻译为 95 分位小于 800 毫秒。</desc>
+  <defs>
+    <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="44" font-size="20" font-weight="700" fill="#1a1a1a">质量属性场景：六要素结构</text>
+  <text x="40" y="70" font-size="13" fill="#666">来源：SEI 场景法（Bass/Clements/Kazman《Software Architecture in Practice》）。价值在于强制具体化——响应度量必须是数字</text>
+
+  <!-- 通用结构行 -->
+  <g>
+    <rect x="40" y="120" width="180" height="110" rx="8" fill="#f4f6f8" stroke="#8a97a3" stroke-width="1.5"/>
+    <text x="60" y="152" font-size="15" font-weight="600" fill="#1a1a1a">刺激源</text>
+    <text x="60" y="180" font-size="12" fill="#555">谁/什么发起</text>
+    <text x="60" y="200" font-size="12" fill="#555">（人、系统、时钟）</text>
+
+    <rect x="262" y="120" width="180" height="110" rx="8" fill="#f4f6f8" stroke="#8a97a3" stroke-width="1.5"/>
+    <text x="282" y="152" font-size="15" font-weight="600" fill="#1a1a1a">刺激</text>
+    <text x="282" y="180" font-size="12" fill="#555">到达系统的事件</text>
+    <text x="282" y="200" font-size="12" fill="#555">或条件</text>
+
+    <!-- 环境（虚线容器）包住制品 -->
+    <rect x="484" y="102" width="220" height="146" rx="10" fill="none" stroke="#444" stroke-width="1.5" stroke-dasharray="6 4"/>
+    <text x="500" y="122" font-size="12" fill="#444">环境：系统所处状态</text>
+    <rect x="504" y="136" width="180" height="94" rx="8" fill="#eef3f8" stroke="#8a97a3" stroke-width="1.5"/>
+    <text x="524" y="166" font-size="15" font-weight="600" fill="#1a1a1a">制品</text>
+    <text x="524" y="192" font-size="12" fill="#555">被刺激的部分：</text>
+    <text x="524" y="212" font-size="12" fill="#555">整系统/某容器/某模块</text>
+
+    <rect x="746" y="120" width="180" height="110" rx="8" fill="#f4f6f8" stroke="#8a97a3" stroke-width="1.5"/>
+    <text x="766" y="152" font-size="15" font-weight="600" fill="#1a1a1a">响应</text>
+    <text x="766" y="180" font-size="12" fill="#555">系统应表现出的</text>
+    <text x="766" y="200" font-size="12" fill="#555">可观察行为</text>
+
+    <rect x="968" y="120" width="192" height="110" rx="8" fill="#f4f6f8" stroke="#e65100" stroke-width="2.5"/>
+    <text x="988" y="152" font-size="15" font-weight="600" fill="#1a1a1a">响应度量</text>
+    <text x="988" y="180" font-size="12" fill="#555">可验收的数字：</text>
+    <text x="988" y="200" font-size="12" fill="#555">时间/比例/次数/时长</text>
+  </g>
+  <line x1="222" y1="175" x2="258" y2="175" stroke="#555" stroke-width="1.6" marker-end="url(#arr2)"/>
+  <line x1="444" y1="175" x2="500" y2="175" stroke="#555" stroke-width="1.6" marker-end="url(#arr2)"/>
+  <line x1="706" y1="175" x2="742" y2="175" stroke="#555" stroke-width="1.6" marker-end="url(#arr2)"/>
+  <line x1="928" y1="175" x2="964" y2="175" stroke="#555" stroke-width="1.6" marker-end="url(#arr2)"/>
+
+  <!-- 实例带 -->
+  <rect x="40" y="290" width="1120" height="170" rx="10" fill="#f0f7f0" stroke="#a5c2a5" stroke-width="1"/>
+  <text x="60" y="322" font-size="14" font-weight="600" fill="#2e7d32">填写实例（第 2 章政务案例 Q-01，质量属性：性能效率）</text>
+
+  <text x="60"  y="360" font-size="12" font-weight="600" fill="#1a1a1a">刺激源</text>
+  <text x="60"  y="382" font-size="12" fill="#555">400 名审批人员</text>
+  <text x="282" y="360" font-size="12" font-weight="600" fill="#1a1a1a">刺激</text>
+  <text x="282" y="382" font-size="12" fill="#555">并发查询待办列表</text>
+  <text x="504" y="360" font-size="12" font-weight="600" fill="#1a1a1a">环境 ＋ 制品</text>
+  <text x="504" y="382" font-size="12" fill="#555">工作日 9:00 高峰；</text>
+  <text x="504" y="402" font-size="12" fill="#555">API 单体＋数据库</text>
+  <text x="766" y="360" font-size="12" font-weight="600" fill="#1a1a1a">响应</text>
+  <text x="766" y="382" font-size="12" fill="#555">列表正常返回</text>
+  <text x="988" y="360" font-size="12" font-weight="600" fill="#e65100">响应度量</text>
+  <text x="988" y="382" font-size="12" font-weight="600" fill="#e65100">95 分位 &lt; 800ms</text>
+
+  <text x="60" y="440" font-size="12" fill="#555">对比不可证伪的写法："系统应具备高性能" ——无法验收、无法裁决任何设计争议；上面这条则直接告诉你：这个量级不需要缓存层。</text>
+
+  <!-- 图例 -->
+  <g>
+    <rect x="762" y="510" width="26" height="16" rx="4" fill="#f4f6f8" stroke="#8a97a3" stroke-width="1.5"/>
+    <text x="796" y="523" font-size="11" fill="#555">要素</text>
+    <rect x="850" y="510" width="26" height="16" rx="4" fill="none" stroke="#444" stroke-width="1.5" stroke-dasharray="6 4"/>
+    <text x="884" y="523" font-size="11" fill="#555">环境（容器）</text>
+    <rect x="972" y="510" width="26" height="16" rx="4" fill="#f4f6f8" stroke="#e65100" stroke-width="2.5"/>
+    <text x="1006" y="523" font-size="11" fill="#555">必须是数字的要素</text>
+  </g>
+</svg>
