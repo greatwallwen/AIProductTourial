@@ -1,0 +1,281 @@
+{
+ "num": 3,
+ "title": "涉众地图与价值交换｜政务材料预审服务",
+ "industry": "政务服务",
+ "role": "政务产品负责人",
+ "saasType": "list_review",
+ "uiId": "ui_03_gov_material_checklist",
+ "slug": "gov_material_checklist",
+ "uiStrategy": "saas_workbench｜list_review｜中密度工作台",
+ "largeScreenRef": "不适用，采用专业 SaaS 工作台",
+ "components": [
+  "筛选栏",
+  "指标卡",
+  "状态表格",
+  "补充抽屉",
+  "批量操作",
+  "验收面板"
+ ],
+ "skills": [
+  "stakeholder-map",
+  "service-blueprint",
+  "public-service-kpi"
+ ],
+ "rp": null,
+ "highImpact": true,
+ "riskBoundary": "不得替代法定审批结论",
+ "decisionAction": "围绕材料预审服务判断优先级、责任人和验收动作。",
+ "dataset": "dataset/pm_network_cases/nyc_311_service_requests_5000.csv",
+ "metricChainNames": [
+  "办件编号覆盖率",
+  "材料名称处理时长",
+  "补正原因异常数",
+  "承诺时限完成率",
+  "经办窗口复核通过率"
+ ],
+ "exceptionStates": [
+  "字段缺失",
+  "流程超时",
+  "复核未完成",
+  "验收失败"
+ ],
+ "fields": [
+  "办件编号",
+  "材料名称",
+  "补正原因",
+  "承诺时限",
+  "经办窗口",
+  "审批科室",
+  "群众反馈"
+ ],
+ "kpis": [
+  {
+   "name": "办件编号覆盖率",
+   "value": 30,
+   "unit": "%",
+   "trend": "+10%"
+  },
+  {
+   "name": "材料名称处理时长",
+   "value": 0,
+   "unit": "",
+   "trend": "+9%"
+  },
+  {
+   "name": "补正原因异常数",
+   "value": 407,
+   "unit": "",
+   "trend": "+10%"
+  },
+  {
+   "name": "承诺时限完成率",
+   "value": 35,
+   "unit": "%",
+   "trend": "+10%"
+  },
+  {
+   "name": "经办窗口复核通过率",
+   "value": 35,
+   "unit": "%",
+   "trend": "-4%"
+  }
+ ],
+ "queue": [
+  {
+   "id": 1,
+   "state": "字段缺失",
+   "owner": "产品-王",
+   "fields": {
+    "办件编号": "2025-09-19",
+    "材料名称": "",
+    "补正原因": "DSNY",
+    "承诺时限": "Noise",
+    "经办窗口": "No Heat",
+    "审批科室": "Open",
+    "群众反馈": "MANHATTAN"
+   }
+  },
+  {
+   "id": 2,
+   "state": "流程超时",
+   "owner": "风控-赵",
+   "fields": {
+    "办件编号": "2025-11-20",
+    "材料名称": "",
+    "补正原因": "DEP",
+    "承诺时限": "Street Condition",
+    "经办窗口": "Leak",
+    "审批科室": "Open",
+    "群众反馈": "MANHATTAN"
+   }
+  },
+  {
+   "id": 3,
+   "state": "复核未完成",
+   "owner": "客服-陈",
+   "fields": {
+    "办件编号": "2025-11-04",
+    "材料名称": "",
+    "补正原因": "DOT",
+    "承诺时限": "Street Condition",
+    "经办窗口": "Pothole",
+    "审批科室": "Open",
+    "群众反馈": "BROOKLYN"
+   }
+  },
+  {
+   "id": 4,
+   "state": "验收失败",
+   "owner": "供应链-孙",
+   "fields": {
+    "办件编号": "2025-12-22",
+    "材料名称": "",
+    "补正原因": "DEP",
+    "承诺时限": "Street Condition",
+    "经办窗口": "Pothole",
+    "审批科室": "Open",
+    "群众反馈": "MANHATTAN"
+   }
+  },
+  {
+   "id": 5,
+   "state": "字段缺失",
+   "owner": "数据-周",
+   "fields": {
+    "办件编号": "2025-09-09",
+    "材料名称": "",
+    "补正原因": "DSNY",
+    "承诺时限": "Noise",
+    "经办窗口": "Pothole",
+    "审批科室": "Open",
+    "群众反馈": "BRONX"
+   }
+  },
+  {
+   "id": 6,
+   "state": "流程超时",
+   "owner": "运营-李",
+   "fields": {
+    "办件编号": "2025-12-20",
+    "材料名称": "",
+    "补正原因": "DEP",
+    "承诺时限": "Water System",
+    "经办窗口": "Blocked Driveway",
+    "审批科室": "Open",
+    "群众反馈": "BROOKLYN"
+   }
+  },
+  {
+   "id": 7,
+   "state": "复核未完成",
+   "owner": "产品-王",
+   "fields": {
+    "办件编号": "2025-12-10",
+    "材料名称": "",
+    "补正原因": "DOT",
+    "承诺时限": "Noise",
+    "经办窗口": "Pothole",
+    "审批科室": "Open",
+    "群众反馈": "STATEN ISLAND"
+   }
+  },
+  {
+   "id": 8,
+   "state": "验收失败",
+   "owner": "风控-赵",
+   "fields": {
+    "办件编号": "2025-12-17",
+    "材料名称": "",
+    "补正原因": "DSNY",
+    "承诺时限": "Street Condition",
+    "经办窗口": "Pothole",
+    "审批科室": "Open",
+    "群众反馈": "BRONX"
+   }
+  }
+ ],
+ "chart": {
+  "type": "sparkline",
+  "data": [
+   {
+    "x": 0,
+    "y": 49
+   },
+   {
+    "x": 1,
+    "y": 50
+   },
+   {
+    "x": 2,
+    "y": 51
+   },
+   {
+    "x": 3,
+    "y": 35
+   },
+   {
+    "x": 4,
+    "y": 43
+   },
+   {
+    "x": 5,
+    "y": 47
+   },
+   {
+    "x": 6,
+    "y": 33
+   },
+   {
+    "x": 7,
+    "y": 42
+   },
+   {
+    "x": 8,
+    "y": 31
+   },
+   {
+    "x": 9,
+    "y": 41
+   },
+   {
+    "x": 10,
+    "y": 46
+   },
+   {
+    "x": 11,
+    "y": 33
+   }
+  ]
+ },
+ "rowCount": 1500,
+ "exceptionCount": 407,
+ "responsible": [
+  "产品-王",
+  "风控-赵",
+  "客服-陈",
+  "供应链-孙",
+  "数据-周"
+ ],
+ "actions": [
+  {
+   "label": "处置：字段缺失",
+   "owner": "产品-王",
+   "due": "1d"
+  },
+  {
+   "label": "处置：流程超时",
+   "owner": "风控-赵",
+   "due": "3d"
+  },
+  {
+   "label": "处置：复核未完成",
+   "owner": "客服-陈",
+   "due": "5d"
+  },
+  {
+   "label": "处置：验收失败",
+   "owner": "供应链-孙",
+   "due": "7d"
+  }
+ ]
+}

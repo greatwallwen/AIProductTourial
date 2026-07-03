@@ -1,14 +1,5 @@
-# 依赖与构建产物
 node_modules/
-
-# 运行时数据库
-data/*.db
-data/*.db-wal
-data/*.db-shm
-
-# 数据集原始大文件（由 scripts/fetch-datasets.mjs 重新下载，见 dataset/MANIFEST.md）
+coderef/react_pm_cases/dist/
 dataset/_raw/
-
-# 系统/编辑器
-.DS_Store
 *.log
+.DS_Store

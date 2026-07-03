@@ -1,0 +1,162 @@
+{
+ "num": 37,
+ "title": "Loop Engineering｜代码修复闭环",
+ "industry": "软件工程",
+ "role": "技术产品经理",
+ "saasType": "workflow_pipeline",
+ "uiId": "ui_37_loop_engineering_flow",
+ "slug": "loop_engineering_flow",
+ "uiStrategy": "saas_workbench｜workflow_pipeline｜中密度工作台",
+ "largeScreenRef": "不适用，采用专业 SaaS 工作台",
+ "components": [
+  "阶段泳道",
+  "任务卡片",
+  "流转状态",
+  "阻塞项",
+  "版本记录",
+  "验收点"
+ ],
+ "skills": [
+  "loop-orchestrator",
+  "regression-guard",
+  "checker-report"
+ ],
+ "rp": null,
+ "highImpact": false,
+ "riskBoundary": "同一失败连续两轮必须停止",
+ "decisionAction": "围绕AI 修复闭环判断优先级、责任人和验收动作。",
+ "dataset": "outputs/11_loop_engineering/loop_report_sample.json",
+ "metricChainNames": [
+  "Cycle覆盖率",
+  "builder处理时长",
+  "checker异常数",
+  "失败项完成率",
+  "回归复核通过率"
+ ],
+ "exceptionStates": [
+  "字段缺失",
+  "流程超时",
+  "复核未完成",
+  "验收失败"
+ ],
+ "fields": [
+  "Cycle",
+  "builder",
+  "checker",
+  "失败项",
+  "回归",
+  "ALL GREEN"
+ ],
+ "kpis": [
+  {
+   "name": "Cycle覆盖率",
+   "value": 21,
+   "unit": "%"
+  },
+  {
+   "name": "builder处理时长",
+   "value": 28,
+   "unit": ""
+  },
+  {
+   "name": "checker异常数",
+   "value": 35,
+   "unit": ""
+  },
+  {
+   "name": "失败项完成率",
+   "value": 42,
+   "unit": "%"
+  },
+  {
+   "name": "回归复核通过率",
+   "value": 49,
+   "unit": "%"
+  }
+ ],
+ "queue": [
+  {
+   "id": 1,
+   "state": "失败",
+   "owner": "fix-a",
+   "fields": {
+    "cycle": 1,
+    "builder": "fix-a",
+    "checker": "run-tests",
+    "fails": [
+     "t3",
+     "t7"
+    ],
+    "regression": 0,
+    "allGreen": false
+   }
+  },
+  {
+   "id": 2,
+   "state": "失败",
+   "owner": "fix-b",
+   "fields": {
+    "cycle": 2,
+    "builder": "fix-b",
+    "checker": "run-tests",
+    "fails": [
+     "t7"
+    ],
+    "regression": 0,
+    "allGreen": false
+   }
+  },
+  {
+   "id": 3,
+   "state": "ALL GREEN",
+   "owner": "fix-c",
+   "fields": {
+    "cycle": 3,
+    "builder": "fix-c",
+    "checker": "run-tests",
+    "fails": [],
+    "regression": 0,
+    "allGreen": true
+   }
+  }
+ ],
+ "chart": {
+  "type": "pipeline",
+  "data": [
+   {
+    "stage": "C1",
+    "count": 2
+   },
+   {
+    "stage": "C2",
+    "count": 1
+   },
+   {
+    "stage": "C3",
+    "count": 0
+   }
+  ]
+ },
+ "rowCount": 3,
+ "exceptionCount": 3,
+ "responsible": [
+  "—"
+ ],
+ "actions": [
+  {
+   "label": "处置：字段缺失",
+   "owner": "—",
+   "due": "1d"
+  },
+  {
+   "label": "处置：流程超时",
+   "owner": "—",
+   "due": "2d"
+  },
+  {
+   "label": "处置：复核未完成",
+   "owner": "—",
+   "due": "3d"
+  }
+ ]
+}

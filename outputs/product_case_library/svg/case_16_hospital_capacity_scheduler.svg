@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 540" font-family="PingFang SC,Microsoft YaHei,sans-serif">
+  <rect width="920" height="540" fill="#f6f7f9"/>
+  <text x="40" y="46" font-size="20" font-weight="700" fill="#0f172a">医院预约容量调度</text>
+  <text x="40" y="70" font-size="12" fill="#64748b">医疗运营 · hr_efficiency_screen · 数据 dataset/product_cases/aicourse_healthcare_diabetes.csv（520 行，异常 61）</text>
+  <text x="40" y="90" font-size="11" fill="#94a3b8">读图顺序：先看指标链 → 再看异常队列与责任对象 → 最后看行动入口与验收边界</text>
+  
+   <rect x="40" y="96" width="156" height="72" rx="10" fill="#ffffff" stroke="#e5e7eb"/>
+   <text x="52" y="120" font-size="11" fill="#94a3b8">人效产出</text>
+   <text x="52" y="150" font-size="22" font-weight="700" fill="#0f172a">520</text>
+   <rect x="212" y="96" width="156" height="72" rx="10" fill="#ffffff" stroke="#e5e7eb"/>
+   <text x="224" y="120" font-size="11" fill="#94a3b8">在编人数</text>
+   <text x="224" y="150" font-size="22" font-weight="700" fill="#0f172a">520</text>
+   <rect x="384" y="96" width="156" height="72" rx="10" fill="#ffffff" stroke="#e5e7eb"/>
+   <text x="396" y="120" font-size="11" fill="#94a3b8">招聘达成率</text>
+   <text x="396" y="150" font-size="22" font-weight="700" fill="#0f172a">12%</text>
+   <rect x="556" y="96" width="156" height="72" rx="10" fill="#ffffff" stroke="#e5e7eb"/>
+   <text x="568" y="120" font-size="11" fill="#94a3b8">薪酬成本率</text>
+   <text x="568" y="150" font-size="22" font-weight="700" fill="#0f172a">14%</text>
+   <rect x="728" y="96" width="156" height="72" rx="10" fill="#ffffff" stroke="#e5e7eb"/>
+   <text x="740" y="120" font-size="11" fill="#94a3b8">流失预警人数</text>
+   <text x="740" y="150" font-size="22" font-weight="700" fill="#0f172a">520</text>
+  <text x="40" y="216" font-size="12" font-weight="600" fill="#334155">异常队列 · 责任对象</text>
+  <text x="560" y="216" font-size="12" font-weight="600" fill="#334155">行动入口</text>
+  
+   <rect x="40" y="232" width="500" height="34" rx="7" fill="#f8fafc" stroke="#eef1f4"/>
+   <rect x="52" y="240" width="74" height="18" rx="5" fill="#fee2e2"/>
+   <text x="60" y="253" font-size="10.5" fill="#b91c1c" font-weight="600">招聘延期</text>
+   <text x="140" y="253" font-size="11" fill="#475569">检验 · 客服-陈</text>
+   <rect x="40" y="272" width="500" height="34" rx="7" fill="#f8fafc" stroke="#eef1f4"/>
+   <rect x="52" y="280" width="74" height="18" rx="5" fill="#fee2e2"/>
+   <text x="60" y="293" font-size="10.5" fill="#b91c1c" font-weight="600">人效偏低</text>
+   <text x="140" y="293" font-size="11" fill="#475569">检验 · 供应链-孙</text>
+   <rect x="40" y="312" width="500" height="34" rx="7" fill="#f8fafc" stroke="#eef1f4"/>
+   <rect x="52" y="320" width="74" height="18" rx="5" fill="#fee2e2"/>
+   <text x="60" y="333" font-size="10.5" fill="#b91c1c" font-weight="600">编制超配</text>
+   <text x="140" y="333" font-size="11" fill="#475569">骨科 · 数据-周</text>
+   <rect x="40" y="352" width="500" height="34" rx="7" fill="#f8fafc" stroke="#eef1f4"/>
+   <rect x="52" y="360" width="74" height="18" rx="5" fill="#fee2e2"/>
+   <text x="60" y="373" font-size="10.5" fill="#b91c1c" font-weight="600">流失预警</text>
+   <text x="140" y="373" font-size="11" fill="#475569">心内 · 运营-李</text>
+   <rect x="40" y="392" width="500" height="34" rx="7" fill="#f8fafc" stroke="#eef1f4"/>
+   <rect x="52" y="400" width="74" height="18" rx="5" fill="#fee2e2"/>
+   <text x="60" y="413" font-size="10.5" fill="#b91c1c" font-weight="600">招聘延期</text>
+   <text x="140" y="413" font-size="11" fill="#475569">心内 · 产品-王</text>
+   <rect x="560" y="232" width="106" height="40" rx="9" fill="#4f46e5"/>
+   <text x="572" y="257" font-size="11" fill="#fff" font-weight="600">处置：招聘延期</text>
+   <rect x="678" y="232" width="106" height="40" rx="9" fill="#4f46e5"/>
+   <text x="690" y="257" font-size="11" fill="#fff" font-weight="600">处置：人效偏低</text>
+   <rect x="796" y="232" width="106" height="40" rx="9" fill="#4f46e5"/>
+   <text x="808" y="257" font-size="11" fill="#fff" font-weight="600">处置：编制超配</text>
+  <text x="560" y="300" font-size="11" fill="#64748b" width="320">决策动作：</text>
+  <foreignObject x="560" y="286" width="320" height="120"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:11px;color:#475569;line-height:1.5">决策动作：判断岗位产出、编制缺口和流失风险，形成组织调整建议。<br/>风险边界：不得自动诊断或替代医生决策</div></foreignObject>
+  <rect x="40" y="470" width="840" height="34" rx="8" fill="#fffbeb" stroke="#fde68a"/><text x="54" y="492" font-size="11.5" fill="#92400e">⚠ 高影响行业：保留人工复核，不得自动授信/处罚/诊断/拒绝交易</text>
+  <text x="40" y="524" font-size="10.5" fill="#cbd5e1">UI 原型 ui_16_hospital_capacity_scheduler · Skill persona-scenario + journey-map + human-review</text>
+</svg>

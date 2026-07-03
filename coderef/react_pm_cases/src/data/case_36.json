@@ -1,0 +1,218 @@
+{
+ "num": 36,
+ "title": "Harness Coding 验收｜原型字段核验",
+ "industry": "零售经营",
+ "role": "AI 产品经理",
+ "saasType": "experiment_harness",
+ "uiId": "ui_36_prototype_harness_board",
+ "slug": "prototype_harness_board",
+ "uiStrategy": "saas_workbench｜experiment_harness｜中密度工作台",
+ "largeScreenRef": "不适用，采用专业 SaaS 工作台",
+ "components": [
+  "检查清单",
+  "测试数据",
+  "失败原因",
+  "修复优先级",
+  "报告导出",
+  "回归记录"
+ ],
+ "skills": [
+  "harness-builder",
+  "checker-report",
+  "regression-guard"
+ ],
+ "rp": null,
+ "highImpact": false,
+ "riskBoundary": "不得降低检查项换取通过",
+ "decisionAction": "围绕原型验收护栏判断优先级、责任人和验收动作。",
+ "dataset": "outputs/05_harness/prototype_test_report.json",
+ "metricChainNames": [
+  "字段覆盖率",
+  "数据来源处理时长",
+  "状态异常数",
+  "体验问题完成率",
+  "风险项复核通过率"
+ ],
+ "exceptionStates": [
+  "字段缺失",
+  "流程超时",
+  "复核未完成",
+  "验收失败"
+ ],
+ "fields": [
+  "字段",
+  "数据来源",
+  "状态",
+  "体验问题",
+  "风险项",
+  "修复优先级"
+ ],
+ "kpis": [
+  {
+   "name": "字段覆盖率",
+   "value": 0.83,
+   "unit": "%"
+  },
+  {
+   "name": "数据来源处理时长",
+   "value": 3,
+   "unit": ""
+  },
+  {
+   "name": "状态异常数",
+   "value": 0.75,
+   "unit": ""
+  },
+  {
+   "name": "体验问题完成率",
+   "value": 0.9,
+   "unit": "%"
+  },
+  {
+   "name": "风险项复核通过率",
+   "value": 49,
+   "unit": "%"
+  }
+ ],
+ "queue": [
+  {
+   "id": 1,
+   "state": "待修",
+   "owner": "—",
+   "fields": {
+    "field": "指标链",
+    "source": "预计算",
+    "status": "待修",
+    "issue": "字段缺失",
+    "risk": "中",
+    "priority": "P0"
+   }
+  },
+  {
+   "id": 2,
+   "state": "通过",
+   "owner": "—",
+   "fields": {
+    "field": "异常队列",
+    "source": "dataset",
+    "status": "通过",
+    "issue": "",
+    "risk": "低",
+    "priority": "P2"
+   }
+  },
+  {
+   "id": 3,
+   "state": "通过",
+   "owner": "—",
+   "fields": {
+    "field": "责任对象",
+    "source": "dataset",
+    "status": "通过",
+    "issue": "",
+    "risk": "低",
+    "priority": "P2"
+   }
+  },
+  {
+   "id": 4,
+   "state": "通过",
+   "owner": "—",
+   "fields": {
+    "field": "行动入口",
+    "source": "预计算",
+    "status": "通过",
+    "issue": "",
+    "risk": "低",
+    "priority": "P2"
+   }
+  },
+  {
+   "id": 5,
+   "state": "待修",
+   "owner": "—",
+   "fields": {
+    "field": "数据来源",
+    "source": "dataset",
+    "status": "待修",
+    "issue": "字段缺失",
+    "risk": "低",
+    "priority": "P0"
+   }
+  },
+  {
+   "id": 6,
+   "state": "通过",
+   "owner": "—",
+   "fields": {
+    "field": "验收边界",
+    "source": "dataset",
+    "status": "通过",
+    "issue": "",
+    "risk": "中",
+    "priority": "P2"
+   }
+  },
+  {
+   "id": 7,
+   "state": "通过",
+   "owner": "—",
+   "fields": {
+    "field": "指标链",
+    "source": "预计算",
+    "status": "通过",
+    "issue": "",
+    "risk": "低",
+    "priority": "P2"
+   }
+  },
+  {
+   "id": 8,
+   "state": "通过",
+   "owner": "—",
+   "fields": {
+    "field": "异常队列",
+    "source": "dataset",
+    "status": "通过",
+    "issue": "",
+    "risk": "低",
+    "priority": "P2"
+   }
+  }
+ ],
+ "chart": {
+  "type": "pipeline",
+  "data": [
+   {
+    "stage": "通过",
+    "count": 9
+   },
+   {
+    "stage": "待修",
+    "count": 3
+   }
+  ]
+ },
+ "rowCount": 12,
+ "exceptionCount": 8,
+ "responsible": [
+  "—"
+ ],
+ "actions": [
+  {
+   "label": "处置：字段缺失",
+   "owner": "—",
+   "due": "1d"
+  },
+  {
+   "label": "处置：流程超时",
+   "owner": "—",
+   "due": "2d"
+  },
+  {
+   "label": "处置：复核未完成",
+   "owner": "—",
+   "due": "3d"
+  }
+ ]
+}

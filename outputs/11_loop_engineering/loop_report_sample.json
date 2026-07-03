@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "case": 37,
+    "rule": "同一失败连续两轮必须停止"
+  },
+  "cycles": [
+    {
+      "cycle": 1,
+      "builder": "fix-a",
+      "checker": "run-tests",
+      "fails": [
+        "t3",
+        "t7"
+      ],
+      "regression": 0,
+      "allGreen": false
+    },
+    {
+      "cycle": 2,
+      "builder": "fix-b",
+      "checker": "run-tests",
+      "fails": [
+        "t7"
+      ],
+      "regression": 0,
+      "allGreen": false
+    },
+    {
+      "cycle": 3,
+      "builder": "fix-c",
+      "checker": "run-tests",
+      "fails": [],
+      "regression": 0,
+      "allGreen": true
+    }
+  ],
+  "result": "ALL GREEN"
+}

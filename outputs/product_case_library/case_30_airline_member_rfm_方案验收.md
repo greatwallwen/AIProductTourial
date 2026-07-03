@@ -1,0 +1,26 @@
+# RFM 分层运营策略（实操 30·方案验收）
+
+> 数据来源：`dataset/reference_data_analysis/2-air_data.csv`（800 行，异常 10）。本卡字段与指标均回到该数据，未使用数据外字段。
+
+## 交付物
+
+RFM 分层运营策略
+
+## 验收清单
+
+- 必含字段：会员号、最近飞行、飞行频次、里程、客舱、运营动作
+- 必含指标链：线索数、商机转化率、合同金额、回款率、客户跟进超时数
+- 必含异常状态：转化率下滑、回款逾期、客户跟进超时、区域掉队
+- 必含 Skill：rfm-segmentation、lifecycle-action、privacy-boundary
+
+## 合格标准
+
+业务场景具体、指标链完整、异常状态可追踪、行动入口明确、验收条件可执行。
+
+## 不合格标准
+
+使用泛化产品名称、缺少行业指标、只描述页面不说明业务取舍、越过「不得输出歧视性或不可解释规则」。
+
+## 验收结论
+
+PASS — 指标链 5 项、异常队列 10 项均回到 `dataset/reference_data_analysis/2-air_data.csv`；可运行原型见工作台路由 `#/case/30`，截图 `assets/screenshots/premium_case_30_airline_member_rfm_desktop.png`。

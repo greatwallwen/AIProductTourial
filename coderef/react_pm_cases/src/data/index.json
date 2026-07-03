@@ -1,0 +1,214 @@
+{
+ "projectName": "产品经理转型实操知识库",
+ "cases": [
+  {
+   "num": 1,
+   "title": "技术任务转产品问题｜电商早会异常订单台",
+   "slug": "morning_ops_grid",
+   "uiId": "ui_01_morning_ops_grid",
+   "saasType": "executive_dashboard",
+   "industry": "电商零售",
+   "phase": "角色转型",
+   "highImpact": false,
+   "rp": "RP01"
+  },
+  {
+   "num": 2,
+   "title": "项目经理转产品经理｜研发排期价值评审台",
+   "slug": "value_schedule_axis",
+   "uiId": "ui_02_value_schedule_axis",
+   "saasType": "matrix_decision",
+   "industry": "软件研发管理",
+   "phase": "角色转型",
+   "highImpact": false,
+   "rp": "RP02"
+  },
+  {
+   "num": 3,
+   "title": "涉众地图与价值交换｜政务材料预审服务",
+   "slug": "gov_material_checklist",
+   "uiId": "ui_03_gov_material_checklist",
+   "saasType": "list_review",
+   "industry": "政务服务",
+   "phase": "用户洞察",
+   "highImpact": true,
+   "rp": null
+  },
+  {
+   "num": 6,
+   "title": "AI 产品经理工作流｜银行客服知识治理",
+   "slug": "bank_knowledge_governance",
+   "uiId": "ui_06_bank_knowledge_governance",
+   "saasType": "knowledge_workspace",
+   "industry": "银行客服",
+   "phase": "AI协作",
+   "highImpact": true,
+   "rp": "RP13"
+  },
+  {
+   "num": 7,
+   "title": "用户访谈｜保险理赔复核队列",
+   "slug": "insurance_claim_review",
+   "uiId": "ui_07_insurance_claim_review",
+   "saasType": "review_queue",
+   "industry": "保险理赔",
+   "phase": "用户洞察",
+   "highImpact": true,
+   "rp": "RP06"
+  },
+  {
+   "num": 14,
+   "title": "需求变更控制｜物流异常派单扩城",
+   "slug": "logistics_change_control",
+   "uiId": "ui_14_logistics_change_control",
+   "saasType": "sales_funnel_screen",
+   "industry": "物流配送",
+   "phase": "需求管理",
+   "highImpact": false,
+   "rp": "RP03"
+  },
+  {
+   "num": 16,
+   "title": "目标用户与场景｜医院预约容量调度",
+   "slug": "hospital_capacity_scheduler",
+   "uiId": "ui_16_hospital_capacity_scheduler",
+   "saasType": "hr_efficiency_screen",
+   "industry": "医疗运营",
+   "phase": "用户洞察",
+   "highImpact": true,
+   "rp": "RP04"
+  },
+  {
+   "num": 23,
+   "title": "业务流程优化｜电商退换货履约",
+   "slug": "return_fulfillment_swimlane",
+   "uiId": "ui_23_return_fulfillment_swimlane",
+   "saasType": "workflow_pipeline",
+   "industry": "电商售后",
+   "phase": "详细设计",
+   "highImpact": false,
+   "rp": "RP09"
+  },
+  {
+   "num": 26,
+   "title": "PRD 片段｜滞销 SKU 提醒",
+   "slug": "sku_prd_fields",
+   "uiId": "ui_26_sku_prd_fields",
+   "saasType": "configuration",
+   "industry": "电商运营",
+   "phase": "需求管理",
+   "highImpact": false,
+   "rp": "RP05"
+  },
+  {
+   "num": 28,
+   "title": "权限与风控规则｜金融复核工作台",
+   "slug": "finance_review_queue",
+   "uiId": "ui_28_finance_review_queue",
+   "saasType": "finance_cashflow_screen",
+   "industry": "金融风控",
+   "phase": "详细设计",
+   "highImpact": true,
+   "rp": null
+  },
+  {
+   "num": 29,
+   "title": "经营分析助手｜零售门店晨会驾驶舱",
+   "slug": "retail_morning_dashboard",
+   "uiId": "ui_29_retail_morning_dashboard",
+   "saasType": "executive_dashboard",
+   "industry": "零售门店",
+   "phase": "数据指标",
+   "highImpact": false,
+   "rp": null
+  },
+  {
+   "num": 30,
+   "title": "RFM 客户分层｜航空会员价值运营",
+   "slug": "airline_member_rfm",
+   "uiId": "ui_30_airline_member_rfm",
+   "saasType": "sales_funnel_screen",
+   "industry": "航空会员",
+   "phase": "数据指标",
+   "highImpact": false,
+   "rp": "RP11"
+  },
+  {
+   "num": 31,
+   "title": "漏斗分析｜广告投放转化复盘",
+   "slug": "ad_conversion_funnel",
+   "uiId": "ui_31_ad_conversion_funnel",
+   "saasType": "sales_funnel_screen",
+   "industry": "广告投放",
+   "phase": "数据指标",
+   "highImpact": false,
+   "rp": null
+  },
+  {
+   "num": 35,
+   "title": "Vibe Coding 原型｜零售经营驾驶舱",
+   "slug": "retail_vibe_prototype",
+   "uiId": "ui_35_retail_vibe_prototype",
+   "saasType": "record_detail",
+   "industry": "零售经营",
+   "phase": "质量验收",
+   "highImpact": false,
+   "rp": null
+  },
+  {
+   "num": 36,
+   "title": "Harness Coding 验收｜原型字段核验",
+   "slug": "prototype_harness_board",
+   "uiId": "ui_36_prototype_harness_board",
+   "saasType": "experiment_harness",
+   "industry": "零售经营",
+   "phase": "质量验收",
+   "highImpact": false,
+   "rp": null
+  },
+  {
+   "num": 37,
+   "title": "Loop Engineering｜代码修复闭环",
+   "slug": "loop_engineering_flow",
+   "uiId": "ui_37_loop_engineering_flow",
+   "saasType": "workflow_pipeline",
+   "industry": "软件工程",
+   "phase": "质量验收",
+   "highImpact": false,
+   "rp": null
+  },
+  {
+   "num": 38,
+   "title": "产品经理 Skill｜需求澄清流水线",
+   "slug": "pm_skill_pipeline",
+   "uiId": "ui_38_pm_skill_pipeline",
+   "saasType": "configuration",
+   "industry": "企业协作",
+   "phase": "质量验收",
+   "highImpact": false,
+   "rp": null
+  },
+  {
+   "num": 39,
+   "title": "React + shadcn/ui 后台｜积分运营控制台",
+   "slug": "points_admin_console",
+   "uiId": "ui_39_points_admin_console",
+   "saasType": "hr_efficiency_screen",
+   "industry": "会员运营",
+   "phase": "质量验收",
+   "highImpact": false,
+   "rp": null
+  },
+  {
+   "num": 43,
+   "title": "综合闭环｜产业知识游戏化平台",
+   "slug": "knowledge_quest_map",
+   "uiId": "ui_43_knowledge_quest_map",
+   "saasType": "knowledge_workspace",
+   "industry": "产业知识",
+   "phase": "综合闭环",
+   "highImpact": false,
+   "rp": null
+  }
+ ]
+}

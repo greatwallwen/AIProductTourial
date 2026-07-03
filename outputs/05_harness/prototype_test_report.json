@@ -1,0 +1,118 @@
+{
+  "meta": {
+    "case": 36,
+    "note": "原型验收护栏样本"
+  },
+  "checks": [
+    "字段",
+    "数据来源",
+    "状态",
+    "体验问题",
+    "风险项",
+    "修复优先级"
+  ],
+  "items": [
+    {
+      "field": "指标链",
+      "source": "预计算",
+      "status": "待修",
+      "issue": "字段缺失",
+      "risk": "中",
+      "priority": "P0"
+    },
+    {
+      "field": "异常队列",
+      "source": "dataset",
+      "status": "通过",
+      "issue": "",
+      "risk": "低",
+      "priority": "P2"
+    },
+    {
+      "field": "责任对象",
+      "source": "dataset",
+      "status": "通过",
+      "issue": "",
+      "risk": "低",
+      "priority": "P2"
+    },
+    {
+      "field": "行动入口",
+      "source": "预计算",
+      "status": "通过",
+      "issue": "",
+      "risk": "低",
+      "priority": "P2"
+    },
+    {
+      "field": "数据来源",
+      "source": "dataset",
+      "status": "待修",
+      "issue": "字段缺失",
+      "risk": "低",
+      "priority": "P0"
+    },
+    {
+      "field": "验收边界",
+      "source": "dataset",
+      "status": "通过",
+      "issue": "",
+      "risk": "中",
+      "priority": "P2"
+    },
+    {
+      "field": "指标链",
+      "source": "预计算",
+      "status": "通过",
+      "issue": "",
+      "risk": "低",
+      "priority": "P2"
+    },
+    {
+      "field": "异常队列",
+      "source": "dataset",
+      "status": "通过",
+      "issue": "",
+      "risk": "低",
+      "priority": "P2"
+    },
+    {
+      "field": "责任对象",
+      "source": "dataset",
+      "status": "待修",
+      "issue": "字段缺失",
+      "risk": "低",
+      "priority": "P0"
+    },
+    {
+      "field": "行动入口",
+      "source": "预计算",
+      "status": "通过",
+      "issue": "",
+      "risk": "低",
+      "priority": "P2"
+    },
+    {
+      "field": "数据来源",
+      "source": "dataset",
+      "status": "通过",
+      "issue": "",
+      "risk": "中",
+      "priority": "P2"
+    },
+    {
+      "field": "验收边界",
+      "source": "dataset",
+      "status": "通过",
+      "issue": "",
+      "risk": "低",
+      "priority": "P2"
+    }
+  ],
+  "metrics": {
+    "字段覆盖率": 0.83,
+    "状态异常数": 3,
+    "体验问题完成率": 0.75,
+    "风险项复核通过率": 0.9
+  }
+}

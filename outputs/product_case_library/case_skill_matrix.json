@@ -1,0 +1,303 @@
+{
+  "meta": {
+    "projectName": "产品经理转型实操知识库",
+    "projectNameEn": "PM Transformation Hands-on Knowledge Base",
+    "caseCount": 19
+  },
+  "caseToSkills": {
+    "1": [
+      "problem-framing",
+      "metric-definition",
+      "acceptance-criteria"
+    ],
+    "2": [
+      "role-transition",
+      "outcome-mapping",
+      "release-risk"
+    ],
+    "3": [
+      "stakeholder-map",
+      "service-blueprint",
+      "public-service-kpi"
+    ],
+    "6": [
+      "ai-product-boundary",
+      "eval-design",
+      "human-review"
+    ],
+    "7": [
+      "grill-me",
+      "interview-synthesis",
+      "human-review"
+    ],
+    "14": [
+      "change-impact",
+      "release-risk",
+      "rollback-plan"
+    ],
+    "16": [
+      "persona-scenario",
+      "journey-map",
+      "human-review"
+    ],
+    "23": [
+      "process-redesign",
+      "service-blueprint",
+      "acceptance-mapping"
+    ],
+    "26": [
+      "prd-fragment",
+      "acceptance-criteria",
+      "field-validation"
+    ],
+    "28": [
+      "risk-rule-design",
+      "human-review",
+      "compliance-boundary"
+    ],
+    "29": [
+      "dashboard-requirement",
+      "kpi-tree",
+      "action-summary"
+    ],
+    "30": [
+      "rfm-segmentation",
+      "lifecycle-action",
+      "privacy-boundary"
+    ],
+    "31": [
+      "funnel-analysis",
+      "budget-decision",
+      "metric-definition"
+    ],
+    "35": [
+      "vibe-coding",
+      "ui-prompt-card",
+      "prototype-test"
+    ],
+    "36": [
+      "harness-builder",
+      "checker-report",
+      "regression-guard"
+    ],
+    "37": [
+      "loop-orchestrator",
+      "regression-guard",
+      "checker-report"
+    ],
+    "38": [
+      "skill-builder",
+      "skill-validator",
+      "acceptance-criteria"
+    ],
+    "39": [
+      "react-ui",
+      "shadcn-admin",
+      "accessibility-check"
+    ],
+    "43": [
+      "gamification-design",
+      "learning-evaluation",
+      "skill-validator"
+    ]
+  },
+  "skillToCases": {
+    "problem-framing": [
+      1
+    ],
+    "metric-definition": [
+      1,
+      31
+    ],
+    "acceptance-criteria": [
+      1,
+      26,
+      38
+    ],
+    "role-transition": [
+      2
+    ],
+    "outcome-mapping": [
+      2
+    ],
+    "release-risk": [
+      2,
+      14
+    ],
+    "stakeholder-map": [
+      3
+    ],
+    "service-blueprint": [
+      3,
+      23
+    ],
+    "public-service-kpi": [
+      3
+    ],
+    "ai-product-boundary": [
+      6
+    ],
+    "eval-design": [
+      6
+    ],
+    "human-review": [
+      6,
+      7,
+      16,
+      28
+    ],
+    "grill-me": [
+      7
+    ],
+    "interview-synthesis": [
+      7
+    ],
+    "change-impact": [
+      14
+    ],
+    "rollback-plan": [
+      14
+    ],
+    "persona-scenario": [
+      16
+    ],
+    "journey-map": [
+      16
+    ],
+    "process-redesign": [
+      23
+    ],
+    "acceptance-mapping": [
+      23
+    ],
+    "prd-fragment": [
+      26
+    ],
+    "field-validation": [
+      26
+    ],
+    "risk-rule-design": [
+      28
+    ],
+    "compliance-boundary": [
+      28
+    ],
+    "dashboard-requirement": [
+      29
+    ],
+    "kpi-tree": [
+      29
+    ],
+    "action-summary": [
+      29
+    ],
+    "rfm-segmentation": [
+      30
+    ],
+    "lifecycle-action": [
+      30
+    ],
+    "privacy-boundary": [
+      30
+    ],
+    "funnel-analysis": [
+      31
+    ],
+    "budget-decision": [
+      31
+    ],
+    "vibe-coding": [
+      35
+    ],
+    "ui-prompt-card": [
+      35
+    ],
+    "prototype-test": [
+      35
+    ],
+    "harness-builder": [
+      36
+    ],
+    "checker-report": [
+      36,
+      37
+    ],
+    "regression-guard": [
+      36,
+      37
+    ],
+    "loop-orchestrator": [
+      37
+    ],
+    "skill-builder": [
+      38
+    ],
+    "skill-validator": [
+      38,
+      43
+    ],
+    "react-ui": [
+      39
+    ],
+    "shadcn-admin": [
+      39
+    ],
+    "accessibility-check": [
+      39
+    ],
+    "gamification-design": [
+      43
+    ],
+    "learning-evaluation": [
+      43
+    ]
+  },
+  "distinctSkills": [
+    "acceptance-criteria",
+    "acceptance-mapping",
+    "accessibility-check",
+    "action-summary",
+    "ai-product-boundary",
+    "budget-decision",
+    "change-impact",
+    "checker-report",
+    "compliance-boundary",
+    "dashboard-requirement",
+    "eval-design",
+    "field-validation",
+    "funnel-analysis",
+    "gamification-design",
+    "grill-me",
+    "harness-builder",
+    "human-review",
+    "interview-synthesis",
+    "journey-map",
+    "kpi-tree",
+    "learning-evaluation",
+    "lifecycle-action",
+    "loop-orchestrator",
+    "metric-definition",
+    "outcome-mapping",
+    "persona-scenario",
+    "prd-fragment",
+    "privacy-boundary",
+    "problem-framing",
+    "process-redesign",
+    "prototype-test",
+    "public-service-kpi",
+    "react-ui",
+    "regression-guard",
+    "release-risk",
+    "rfm-segmentation",
+    "risk-rule-design",
+    "role-transition",
+    "rollback-plan",
+    "service-blueprint",
+    "shadcn-admin",
+    "skill-builder",
+    "skill-validator",
+    "stakeholder-map",
+    "ui-prompt-card",
+    "vibe-coding"
+  ]
+}

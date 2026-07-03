@@ -1,0 +1,465 @@
+{
+  "meta": {
+    "projectName": "产品经理转型实操知识库",
+    "projectNameEn": "PM Transformation Hands-on Knowledge Base",
+    "caseCount": 19
+  },
+  "cases": [
+    {
+      "num": 1,
+      "title": "技术任务转产品问题｜电商早会异常订单台",
+      "uiId": "ui_01_morning_ops_grid",
+      "slug": "morning_ops_grid",
+      "uiStrategy": "dashboard_plus_saas｜executive_dashboard｜驾驶舱高密度",
+      "saasType": "executive_dashboard",
+      "saasLayout": "executive_dashboard｜左侧导航 + 顶部筛选 + 右侧详情抽屉｜驾驶舱高密度",
+      "components": [
+        "目标达成",
+        "收入趋势",
+        "业务结构",
+        "区域排行",
+        "异常告警",
+        "行动队列"
+      ],
+      "largeScreenRef": "经营｜企业经营驾驶舱大屏",
+      "skills": [
+        "problem-framing",
+        "metric-definition",
+        "acceptance-criteria"
+      ],
+      "phase": "角色转型"
+    },
+    {
+      "num": 2,
+      "title": "项目经理转产品经理｜研发排期价值评审台",
+      "uiId": "ui_02_value_schedule_axis",
+      "slug": "value_schedule_axis",
+      "uiStrategy": "saas_workbench｜matrix_decision｜高密度业务表格",
+      "saasType": "matrix_decision",
+      "saasLayout": "matrix_decision｜左侧导航 + 顶部筛选 + 右侧详情抽屉｜高密度业务表格",
+      "components": [
+        "二维矩阵",
+        "字段轴",
+        "优先级标签",
+        "决策说明",
+        "评分栏",
+        "复核入口"
+      ],
+      "largeScreenRef": "不适用，采用专业 SaaS 工作台",
+      "skills": [
+        "role-transition",
+        "outcome-mapping",
+        "release-risk"
+      ],
+      "phase": "角色转型"
+    },
+    {
+      "num": 3,
+      "title": "涉众地图与价值交换｜政务材料预审服务",
+      "uiId": "ui_03_gov_material_checklist",
+      "slug": "gov_material_checklist",
+      "uiStrategy": "saas_workbench｜list_review｜中密度工作台",
+      "saasType": "list_review",
+      "saasLayout": "list_review｜左侧导航 + 顶部筛选 + 右侧详情抽屉｜中密度工作台",
+      "components": [
+        "筛选栏",
+        "指标卡",
+        "状态表格",
+        "补充抽屉",
+        "批量操作",
+        "验收面板"
+      ],
+      "largeScreenRef": "不适用，采用专业 SaaS 工作台",
+      "skills": [
+        "stakeholder-map",
+        "service-blueprint",
+        "public-service-kpi"
+      ],
+      "phase": "用户洞察"
+    },
+    {
+      "num": 6,
+      "title": "AI 产品经理工作流｜银行客服知识治理",
+      "uiId": "ui_06_bank_knowledge_governance",
+      "slug": "bank_knowledge_governance",
+      "uiStrategy": "saas_workbench｜knowledge_workspace｜中密度工作台",
+      "saasType": "knowledge_workspace",
+      "saasLayout": "knowledge_workspace｜左侧导航 + 顶部筛选 + 右侧详情抽屉｜中密度工作台",
+      "components": [
+        "知识目录",
+        "任务地图",
+        "问答记录",
+        "命中材料",
+        "错题复盘",
+        "能力画像"
+      ],
+      "largeScreenRef": "不适用，采用专业 SaaS 工作台",
+      "skills": [
+        "ai-product-boundary",
+        "eval-design",
+        "human-review"
+      ],
+      "phase": "AI协作"
+    },
+    {
+      "num": 7,
+      "title": "用户访谈｜保险理赔复核队列",
+      "uiId": "ui_07_insurance_claim_review",
+      "slug": "insurance_claim_review",
+      "uiStrategy": "saas_workbench｜review_queue｜高密度业务表格",
+      "saasType": "review_queue",
+      "saasLayout": "review_queue｜左侧导航 + 顶部筛选 + 右侧详情抽屉｜高密度业务表格",
+      "components": [
+        "复核队列",
+        "证据摘要",
+        "风险标签",
+        "人工处理",
+        "留痕记录",
+        "升级入口"
+      ],
+      "largeScreenRef": "不适用，采用专业 SaaS 工作台",
+      "skills": [
+        "grill-me",
+        "interview-synthesis",
+        "human-review"
+      ],
+      "phase": "用户洞察"
+    },
+    {
+      "num": 14,
+      "title": "需求变更控制｜物流异常派单扩城",
+      "uiId": "ui_14_logistics_change_control",
+      "slug": "logistics_change_control",
+      "uiStrategy": "dashboard_plus_saas｜sales_funnel_screen｜驾驶舱高密度",
+      "saasType": "sales_funnel_screen",
+      "saasLayout": "sales_funnel_screen｜左侧导航 + 顶部筛选 + 右侧详情抽屉｜驾驶舱高密度",
+      "components": [
+        "销售漏斗",
+        "目标进度",
+        "客户跟进",
+        "回款风险",
+        "区域作战",
+        "销售排行"
+      ],
+      "largeScreenRef": "销售｜销售区域作战大屏",
+      "skills": [
+        "change-impact",
+        "release-risk",
+        "rollback-plan"
+      ],
+      "phase": "需求管理"
+    },
+    {
+      "num": 16,
+      "title": "目标用户与场景｜医院预约容量调度",
+      "uiId": "ui_16_hospital_capacity_scheduler",
+      "slug": "hospital_capacity_scheduler",
+      "uiStrategy": "dashboard_plus_saas｜hr_efficiency_screen｜驾驶舱高密度",
+      "saasType": "hr_efficiency_screen",
+      "saasLayout": "hr_efficiency_screen｜左侧导航 + 顶部筛选 + 右侧详情抽屉｜驾驶舱高密度",
+      "components": [
+        "人效产出",
+        "招聘进度",
+        "组织编制",
+        "薪酬成本",
+        "流失预警",
+        "岗位效率"
+      ],
+      "largeScreenRef": "人效｜组织编制管理大屏",
+      "skills": [
+        "persona-scenario",
+        "journey-map",
+        "human-review"
+      ],
+      "phase": "用户洞察"
+    },
+    {
+      "num": 23,
+      "title": "业务流程优化｜电商退换货履约",
+      "uiId": "ui_23_return_fulfillment_swimlane",
+      "slug": "return_fulfillment_swimlane",
+      "uiStrategy": "saas_workbench｜workflow_pipeline｜中密度工作台",
+      "saasType": "workflow_pipeline",
+      "saasLayout": "workflow_pipeline｜左侧导航 + 顶部筛选 + 右侧详情抽屉｜中密度工作台",
+      "components": [
+        "阶段泳道",
+        "任务卡片",
+        "流转状态",
+        "阻塞项",
+        "版本记录",
+        "验收点"
+      ],
+      "largeScreenRef": "不适用，采用专业 SaaS 工作台",
+      "skills": [
+        "process-redesign",
+        "service-blueprint",
+        "acceptance-mapping"
+      ],
+      "phase": "详细设计"
+    },
+    {
+      "num": 26,
+      "title": "PRD 片段｜滞销 SKU 提醒",
+      "uiId": "ui_26_sku_prd_fields",
+      "slug": "sku_prd_fields",
+      "uiStrategy": "saas_workbench｜configuration｜中密度工作台",
+      "saasType": "configuration",
+      "saasLayout": "configuration｜左侧导航 + 顶部筛选 + 右侧详情抽屉｜中密度工作台",
+      "components": [
+        "规则表单",
+        "参数分组",
+        "预览区",
+        "成本/风险提示",
+        "发布记录",
+        "回滚入口"
+      ],
+      "largeScreenRef": "不适用，采用专业 SaaS 工作台",
+      "skills": [
+        "prd-fragment",
+        "acceptance-criteria",
+        "field-validation"
+      ],
+      "phase": "需求管理"
+    },
+    {
+      "num": 28,
+      "title": "权限与风控规则｜金融复核工作台",
+      "uiId": "ui_28_finance_review_queue",
+      "slug": "finance_review_queue",
+      "uiStrategy": "dashboard_plus_saas｜finance_cashflow_screen｜驾驶舱高密度",
+      "saasType": "finance_cashflow_screen",
+      "saasLayout": "finance_cashflow_screen｜左侧导航 + 顶部筛选 + 右侧详情抽屉｜驾驶舱高密度",
+      "components": [
+        "收入利润",
+        "成本费用",
+        "现金流",
+        "应收账款",
+        "预算执行",
+        "经营质量"
+      ],
+      "largeScreenRef": "财务｜应收账款分析大屏",
+      "skills": [
+        "risk-rule-design",
+        "human-review",
+        "compliance-boundary"
+      ],
+      "phase": "详细设计"
+    },
+    {
+      "num": 29,
+      "title": "经营分析助手｜零售门店晨会驾驶舱",
+      "uiId": "ui_29_retail_morning_dashboard",
+      "slug": "retail_morning_dashboard",
+      "uiStrategy": "dashboard_plus_saas｜executive_dashboard｜驾驶舱高密度",
+      "saasType": "executive_dashboard",
+      "saasLayout": "executive_dashboard｜左侧导航 + 顶部筛选 + 右侧详情抽屉｜驾驶舱高密度",
+      "components": [
+        "目标达成",
+        "收入趋势",
+        "业务结构",
+        "区域排行",
+        "异常告警",
+        "行动队列"
+      ],
+      "largeScreenRef": "经营｜企业经营驾驶舱大屏",
+      "skills": [
+        "dashboard-requirement",
+        "kpi-tree",
+        "action-summary"
+      ],
+      "phase": "数据指标"
+    },
+    {
+      "num": 30,
+      "title": "RFM 客户分层｜航空会员价值运营",
+      "uiId": "ui_30_airline_member_rfm",
+      "slug": "airline_member_rfm",
+      "uiStrategy": "dashboard_plus_saas｜sales_funnel_screen｜驾驶舱高密度",
+      "saasType": "sales_funnel_screen",
+      "saasLayout": "sales_funnel_screen｜左侧导航 + 顶部筛选 + 右侧详情抽屉｜驾驶舱高密度",
+      "components": [
+        "销售漏斗",
+        "目标进度",
+        "客户跟进",
+        "回款风险",
+        "区域作战",
+        "销售排行"
+      ],
+      "largeScreenRef": "销售｜客户跟进管理大屏",
+      "skills": [
+        "rfm-segmentation",
+        "lifecycle-action",
+        "privacy-boundary"
+      ],
+      "phase": "数据指标"
+    },
+    {
+      "num": 31,
+      "title": "漏斗分析｜广告投放转化复盘",
+      "uiId": "ui_31_ad_conversion_funnel",
+      "slug": "ad_conversion_funnel",
+      "uiStrategy": "dashboard_plus_saas｜sales_funnel_screen｜驾驶舱高密度",
+      "saasType": "sales_funnel_screen",
+      "saasLayout": "sales_funnel_screen｜左侧导航 + 顶部筛选 + 右侧详情抽屉｜驾驶舱高密度",
+      "components": [
+        "销售漏斗",
+        "目标进度",
+        "客户跟进",
+        "回款风险",
+        "区域作战",
+        "销售排行"
+      ],
+      "largeScreenRef": "销售｜销售漏斗分析大屏",
+      "skills": [
+        "funnel-analysis",
+        "budget-decision",
+        "metric-definition"
+      ],
+      "phase": "数据指标"
+    },
+    {
+      "num": 35,
+      "title": "Vibe Coding 原型｜零售经营驾驶舱",
+      "uiId": "ui_35_retail_vibe_prototype",
+      "slug": "retail_vibe_prototype",
+      "uiStrategy": "saas_workbench｜record_detail｜中密度工作台",
+      "saasType": "record_detail",
+      "saasLayout": "record_detail｜左侧导航 + 顶部筛选 + 右侧详情抽屉｜中密度工作台",
+      "components": [
+        "记录详情",
+        "字段分组",
+        "证据列表",
+        "协作纪要",
+        "审计记录",
+        "操作栏"
+      ],
+      "largeScreenRef": "不适用，采用专业 SaaS 工作台",
+      "skills": [
+        "vibe-coding",
+        "ui-prompt-card",
+        "prototype-test"
+      ],
+      "phase": "质量验收"
+    },
+    {
+      "num": 36,
+      "title": "Harness Coding 验收｜原型字段核验",
+      "uiId": "ui_36_prototype_harness_board",
+      "slug": "prototype_harness_board",
+      "uiStrategy": "saas_workbench｜experiment_harness｜中密度工作台",
+      "saasType": "experiment_harness",
+      "saasLayout": "experiment_harness｜左侧导航 + 顶部筛选 + 右侧详情抽屉｜中密度工作台",
+      "components": [
+        "检查清单",
+        "测试数据",
+        "失败原因",
+        "修复优先级",
+        "报告导出",
+        "回归记录"
+      ],
+      "largeScreenRef": "不适用，采用专业 SaaS 工作台",
+      "skills": [
+        "harness-builder",
+        "checker-report",
+        "regression-guard"
+      ],
+      "phase": "质量验收"
+    },
+    {
+      "num": 37,
+      "title": "Loop Engineering｜代码修复闭环",
+      "uiId": "ui_37_loop_engineering_flow",
+      "slug": "loop_engineering_flow",
+      "uiStrategy": "saas_workbench｜workflow_pipeline｜中密度工作台",
+      "saasType": "workflow_pipeline",
+      "saasLayout": "workflow_pipeline｜左侧导航 + 顶部筛选 + 右侧详情抽屉｜中密度工作台",
+      "components": [
+        "阶段泳道",
+        "任务卡片",
+        "流转状态",
+        "阻塞项",
+        "版本记录",
+        "验收点"
+      ],
+      "largeScreenRef": "不适用，采用专业 SaaS 工作台",
+      "skills": [
+        "loop-orchestrator",
+        "regression-guard",
+        "checker-report"
+      ],
+      "phase": "质量验收"
+    },
+    {
+      "num": 38,
+      "title": "产品经理 Skill｜需求澄清流水线",
+      "uiId": "ui_38_pm_skill_pipeline",
+      "slug": "pm_skill_pipeline",
+      "uiStrategy": "saas_workbench｜configuration｜中密度工作台",
+      "saasType": "configuration",
+      "saasLayout": "configuration｜左侧导航 + 顶部筛选 + 右侧详情抽屉｜中密度工作台",
+      "components": [
+        "规则表单",
+        "参数分组",
+        "预览区",
+        "成本/风险提示",
+        "发布记录",
+        "回滚入口"
+      ],
+      "largeScreenRef": "不适用，采用专业 SaaS 工作台",
+      "skills": [
+        "skill-builder",
+        "skill-validator",
+        "acceptance-criteria"
+      ],
+      "phase": "质量验收"
+    },
+    {
+      "num": 39,
+      "title": "React + shadcn/ui 后台｜积分运营控制台",
+      "uiId": "ui_39_points_admin_console",
+      "slug": "points_admin_console",
+      "uiStrategy": "dashboard_plus_saas｜hr_efficiency_screen｜驾驶舱高密度",
+      "saasType": "hr_efficiency_screen",
+      "saasLayout": "hr_efficiency_screen｜左侧导航 + 顶部筛选 + 右侧详情抽屉｜驾驶舱高密度",
+      "components": [
+        "人效产出",
+        "招聘进度",
+        "组织编制",
+        "薪酬成本",
+        "流失预警",
+        "岗位效率"
+      ],
+      "largeScreenRef": "人效｜人效分析大屏",
+      "skills": [
+        "react-ui",
+        "shadcn-admin",
+        "accessibility-check"
+      ],
+      "phase": "质量验收"
+    },
+    {
+      "num": 43,
+      "title": "综合闭环｜产业知识游戏化平台",
+      "uiId": "ui_43_knowledge_quest_map",
+      "slug": "knowledge_quest_map",
+      "uiStrategy": "saas_workbench｜knowledge_workspace｜中密度工作台",
+      "saasType": "knowledge_workspace",
+      "saasLayout": "knowledge_workspace｜左侧导航 + 顶部筛选 + 右侧详情抽屉｜中密度工作台",
+      "components": [
+        "知识目录",
+        "任务地图",
+        "问答记录",
+        "命中材料",
+        "错题复盘",
+        "能力画像"
+      ],
+      "largeScreenRef": "不适用，采用专业 SaaS 工作台",
+      "skills": [
+        "gamification-design",
+        "learning-evaluation",
+        "skill-validator"
+      ],
+      "phase": "综合闭环"
+    }
+  ]
+}

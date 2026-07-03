@@ -1,0 +1,678 @@
+{
+  "meta": {
+    "projectName": "产品经理转型实操知识库",
+    "projectNameEn": "PM Transformation Hands-on Knowledge Base",
+    "caseCount": 19
+  },
+  "cases": [
+    {
+      "num": 1,
+      "title": "技术任务转产品问题｜电商早会异常订单台",
+      "industry": "电商零售",
+      "role": "运营主管",
+      "scenario": "电商早会异常订单台",
+      "dataset": "dataset/order_data.csv",
+      "publicRef": "https://archive.ics.uci.edu/dataset/352/online+retail",
+      "fields": [
+        "订单号",
+        "SKU",
+        "库存天数",
+        "毛利率",
+        "异常原因",
+        "责任人",
+        "处理时限"
+      ],
+      "metricChain": [
+        "经营目标达成率",
+        "销售额同比",
+        "区域贡献",
+        "异常订单数",
+        "责任部门闭环率"
+      ],
+      "exceptionStates": [
+        "目标未达成",
+        "区域下滑",
+        "异常订单",
+        "责任未闭环"
+      ],
+      "decisionAction": "识别未达成区域、定位异常业务线，并生成责任部门行动队列。",
+      "riskBoundary": "不得把查询慢等同于产品问题",
+      "deliverable": "产品问题定义卡",
+      "highImpact": false,
+      "phase": "角色转型"
+    },
+    {
+      "num": 2,
+      "title": "项目经理转产品经理｜研发排期价值评审台",
+      "industry": "软件研发管理",
+      "role": "项目经理",
+      "scenario": "研发排期价值评审台",
+      "dataset": "dataset/product_cases/aicourse_hr_employees.csv",
+      "publicRef": "https://github.com/deanpeters/Product-Manager-Skills",
+      "fields": [
+        "需求项",
+        "业务价值",
+        "研发工期",
+        "依赖团队",
+        "风险等级",
+        "上线目标"
+      ],
+      "metricChain": [
+        "需求项覆盖率",
+        "业务价值处理时长",
+        "研发工期异常数",
+        "依赖团队完成率",
+        "风险等级复核通过率"
+      ],
+      "exceptionStates": [
+        "字段缺失",
+        "流程超时",
+        "复核未完成",
+        "验收失败"
+      ],
+      "decisionAction": "围绕跨部门研发排期判断优先级、责任人和验收动作。",
+      "riskBoundary": "不得只用进度解释产品优先级",
+      "deliverable": "角色差异分析表",
+      "highImpact": false,
+      "phase": "角色转型"
+    },
+    {
+      "num": 3,
+      "title": "涉众地图与价值交换｜政务材料预审服务",
+      "industry": "政务服务",
+      "role": "政务产品负责人",
+      "scenario": "政务材料预审服务",
+      "dataset": "dataset/pm_network_cases/nyc_311_service_requests_5000.csv",
+      "publicRef": "https://design-system.service.gov.uk/",
+      "fields": [
+        "办件编号",
+        "材料名称",
+        "补正原因",
+        "承诺时限",
+        "经办窗口",
+        "审批科室",
+        "群众反馈"
+      ],
+      "metricChain": [
+        "办件编号覆盖率",
+        "材料名称处理时长",
+        "补正原因异常数",
+        "承诺时限完成率",
+        "经办窗口复核通过率"
+      ],
+      "exceptionStates": [
+        "字段缺失",
+        "流程超时",
+        "复核未完成",
+        "验收失败"
+      ],
+      "decisionAction": "围绕材料预审服务判断优先级、责任人和验收动作。",
+      "riskBoundary": "不得替代法定审批结论",
+      "deliverable": "涉众地图和价值交换图",
+      "highImpact": true,
+      "phase": "用户洞察"
+    },
+    {
+      "num": 6,
+      "title": "AI 产品经理工作流｜银行客服知识治理",
+      "industry": "银行客服",
+      "role": "AI 产品经理",
+      "scenario": "银行客服知识治理",
+      "dataset": "dataset/product_cases/aicourse_financial_transactions.csv",
+      "publicRef": "https://github.com/VoltAgent/awesome-agent-skills",
+      "fields": [
+        "问题类别",
+        "知识来源",
+        "命中率",
+        "风险答案",
+        "人工接管",
+        "留痕编号"
+      ],
+      "metricChain": [
+        "问题类别覆盖率",
+        "知识来源处理时长",
+        "命中率异常数",
+        "风险答案完成率",
+        "人工接管复核通过率"
+      ],
+      "exceptionStates": [
+        "字段缺失",
+        "流程超时",
+        "复核未完成",
+        "验收失败"
+      ],
+      "decisionAction": "围绕银行客服知识库判断优先级、责任人和验收动作。",
+      "riskBoundary": "不得输出自动授信或最终处置建议",
+      "deliverable": "AI 产品工作流蓝图",
+      "highImpact": true,
+      "phase": "AI协作"
+    },
+    {
+      "num": 7,
+      "title": "用户访谈｜保险理赔复核队列",
+      "industry": "保险理赔",
+      "role": "保险运营产品经理",
+      "scenario": "保险理赔复核队列",
+      "dataset": "dataset/product_cases/aicourse_financial_transactions.csv",
+      "publicRef": "https://github.com/travisvn/awesome-claude-skills",
+      "fields": [
+        "案件号",
+        "理赔类型",
+        "申请金额",
+        "证据完整度",
+        "风险信号",
+        "复核人"
+      ],
+      "metricChain": [
+        "案件号覆盖率",
+        "理赔类型处理时长",
+        "申请金额异常数",
+        "证据完整度完成率",
+        "风险信号复核通过率"
+      ],
+      "exceptionStates": [
+        "字段缺失",
+        "流程超时",
+        "复核未完成",
+        "验收失败"
+      ],
+      "decisionAction": "围绕理赔复核队列判断优先级、责任人和验收动作。",
+      "riskBoundary": "不得自动拒赔，必须保留人工复核",
+      "deliverable": "访谈提纲与洞察卡",
+      "highImpact": true,
+      "phase": "用户洞察"
+    },
+    {
+      "num": 14,
+      "title": "需求变更控制｜物流异常派单扩城",
+      "industry": "物流配送",
+      "role": "物流产品经理",
+      "scenario": "物流异常派单扩城",
+      "dataset": "dataset/product_cases/aicourse_logistics_delivery.csv",
+      "publicRef": "https://onfleet.com/blog/dispatch-management/",
+      "fields": [
+        "城市",
+        "运单",
+        "异常类型",
+        "规则版本",
+        "客服话术",
+        "回滚条件"
+      ],
+      "metricChain": [
+        "线索数",
+        "商机转化率",
+        "合同金额",
+        "回款率",
+        "客户跟进超时数"
+      ],
+      "exceptionStates": [
+        "转化率下滑",
+        "回款逾期",
+        "客户跟进超时",
+        "区域掉队"
+      ],
+      "decisionAction": "判断漏斗断点、回款风险和区域销售动作优先级。",
+      "riskBoundary": "不得在无回滚条件下扩大范围",
+      "deliverable": "需求变更影响评估",
+      "highImpact": false,
+      "phase": "需求管理"
+    },
+    {
+      "num": 16,
+      "title": "目标用户与场景｜医院预约容量调度",
+      "industry": "医疗运营",
+      "role": "医疗运营产品经理",
+      "scenario": "医院预约容量调度",
+      "dataset": "dataset/product_cases/aicourse_healthcare_diabetes.csv",
+      "publicRef": "https://github.com/vintasoftware/medplum-ai-concierge",
+      "fields": [
+        "科室",
+        "医生",
+        "预约槽",
+        "等待时间",
+        "加号规则",
+        "人工协调"
+      ],
+      "metricChain": [
+        "人效产出",
+        "在编人数",
+        "招聘达成率",
+        "薪酬成本率",
+        "流失预警人数"
+      ],
+      "exceptionStates": [
+        "招聘延期",
+        "人效偏低",
+        "编制超配",
+        "流失预警"
+      ],
+      "decisionAction": "判断岗位产出、编制缺口和流失风险，形成组织调整建议。",
+      "riskBoundary": "不得自动诊断或替代医生决策",
+      "deliverable": "目标用户与场景矩阵",
+      "highImpact": true,
+      "phase": "用户洞察"
+    },
+    {
+      "num": 23,
+      "title": "业务流程优化｜电商退换货履约",
+      "industry": "电商售后",
+      "role": "售后产品经理",
+      "scenario": "电商退换货履约",
+      "dataset": "dataset/product_cases/aicourse_ecommerce_orders.csv",
+      "publicRef": "https://archive.ics.uci.edu/dataset/352/online+retail",
+      "fields": [
+        "售后单",
+        "客服审核",
+        "仓库收货",
+        "退款",
+        "补偿",
+        "超时原因"
+      ],
+      "metricChain": [
+        "售后单覆盖率",
+        "客服审核处理时长",
+        "仓库收货异常数",
+        "退款完成率",
+        "补偿复核通过率"
+      ],
+      "exceptionStates": [
+        "字段缺失",
+        "流程超时",
+        "复核未完成",
+        "验收失败"
+      ],
+      "decisionAction": "围绕退换货履约判断优先级、责任人和验收动作。",
+      "riskBoundary": "不得只增加按钮而不重构流程",
+      "deliverable": "现状/优化流程图",
+      "highImpact": false,
+      "phase": "详细设计"
+    },
+    {
+      "num": 26,
+      "title": "PRD 片段｜滞销 SKU 提醒",
+      "industry": "电商运营",
+      "role": "运营产品经理",
+      "scenario": "滞销 SKU 提醒",
+      "dataset": "dataset/sku.csv",
+      "publicRef": "https://www.atlassian.com/software/confluence/templates/product-requirements",
+      "fields": [
+        "SKU",
+        "品类",
+        "销量",
+        "库存",
+        "阈值",
+        "提醒状态"
+      ],
+      "metricChain": [
+        "SKU覆盖率",
+        "品类处理时长",
+        "销量异常数",
+        "库存完成率",
+        "阈值复核通过率"
+      ],
+      "exceptionStates": [
+        "字段缺失",
+        "流程超时",
+        "复核未完成",
+        "验收失败"
+      ],
+      "decisionAction": "围绕滞销提醒页面判断优先级、责任人和验收动作。",
+      "riskBoundary": "不得使用数据集中不存在的字段",
+      "deliverable": "PRD 片段",
+      "highImpact": false,
+      "phase": "需求管理"
+    },
+    {
+      "num": 28,
+      "title": "权限与风控规则｜金融复核工作台",
+      "industry": "金融风控",
+      "role": "风控产品经理",
+      "scenario": "金融复核工作台",
+      "dataset": "dataset/reference_data_analysis/28-creditcardfraud_sample.csv",
+      "publicRef": "https://archive.ics.uci.edu/dataset/222/bank+marketing",
+      "fields": [
+        "交易号",
+        "账户信号",
+        "风险等级",
+        "命中规则",
+        "证据摘要",
+        "复核权限",
+        "复核结论",
+        "留痕"
+      ],
+      "metricChain": [
+        "高风险交易占比",
+        "人工复核完成率",
+        "规则命中准确率",
+        "误报率",
+        "升级处理时长"
+      ],
+      "exceptionStates": [
+        "高风险待复核",
+        "证据不足",
+        "权限越界",
+        "超时未处理"
+      ],
+      "decisionAction": "识别现金流缺口、逾期应收和预算偏差，形成复核与催收动作。",
+      "riskBoundary": "不得自动处罚、不得自动授信、不得自动拒绝交易",
+      "deliverable": "权限矩阵与风控规则",
+      "highImpact": true,
+      "phase": "详细设计"
+    },
+    {
+      "num": 29,
+      "title": "经营分析助手｜零售门店晨会驾驶舱",
+      "industry": "零售门店",
+      "role": "门店运营主管",
+      "scenario": "零售门店晨会驾驶舱",
+      "dataset": "dataset/order_data.csv",
+      "publicRef": "https://archive.ics.uci.edu/dataset/352/online+retail",
+      "fields": [
+        "门店",
+        "SKU",
+        "销售额",
+        "毛利率",
+        "异常",
+        "责任人"
+      ],
+      "metricChain": [
+        "经营目标达成率",
+        "销售额同比",
+        "区域贡献",
+        "异常订单数",
+        "责任部门闭环率"
+      ],
+      "exceptionStates": [
+        "目标未达成",
+        "区域下滑",
+        "异常订单",
+        "责任未闭环"
+      ],
+      "decisionAction": "识别未达成区域、定位异常业务线，并生成责任部门行动队列。",
+      "riskBoundary": "不得只展示指标，不给出行动入口",
+      "deliverable": "经营分析指标卡",
+      "highImpact": false,
+      "phase": "数据指标"
+    },
+    {
+      "num": 30,
+      "title": "RFM 客户分层｜航空会员价值运营",
+      "industry": "航空会员",
+      "role": "会员产品经理",
+      "scenario": "航空会员价值运营",
+      "dataset": "dataset/reference_data_analysis/2-air_data.csv",
+      "publicRef": "https://archive.ics.uci.edu/dataset/352/online+retail",
+      "fields": [
+        "会员号",
+        "最近飞行",
+        "飞行频次",
+        "里程",
+        "客舱",
+        "运营动作"
+      ],
+      "metricChain": [
+        "线索数",
+        "商机转化率",
+        "合同金额",
+        "回款率",
+        "客户跟进超时数"
+      ],
+      "exceptionStates": [
+        "转化率下滑",
+        "回款逾期",
+        "客户跟进超时",
+        "区域掉队"
+      ],
+      "decisionAction": "判断漏斗断点、回款风险和区域销售动作优先级。",
+      "riskBoundary": "不得输出歧视性或不可解释规则",
+      "deliverable": "RFM 分层运营策略",
+      "highImpact": false,
+      "phase": "数据指标"
+    },
+    {
+      "num": 31,
+      "title": "漏斗分析｜广告投放转化复盘",
+      "industry": "广告投放",
+      "role": "投放产品经理",
+      "scenario": "广告投放转化复盘",
+      "dataset": "dataset/reference_data_analysis/18-ad_performance.csv",
+      "publicRef": "https://carbondesignsystem.com/",
+      "fields": [
+        "渠道",
+        "曝光",
+        "点击",
+        "注册",
+        "订单",
+        "预算"
+      ],
+      "metricChain": [
+        "线索数",
+        "商机转化率",
+        "合同金额",
+        "回款率",
+        "客户跟进超时数"
+      ],
+      "exceptionStates": [
+        "转化率下滑",
+        "回款逾期",
+        "客户跟进超时",
+        "区域掉队"
+      ],
+      "decisionAction": "判断漏斗断点、回款风险和区域销售动作优先级。",
+      "riskBoundary": "不得只按点击率做预算决策",
+      "deliverable": "漏斗与预算建议",
+      "highImpact": false,
+      "phase": "数据指标"
+    },
+    {
+      "num": 35,
+      "title": "Vibe Coding 原型｜零售经营驾驶舱",
+      "industry": "零售经营",
+      "role": "AI 产品经理",
+      "scenario": "零售经营驾驶舱",
+      "dataset": "dataset/order_data.csv",
+      "publicRef": "https://github.com/arhamkhnz/next-shadcn-admin-dashboard",
+      "fields": [
+        "需求卡",
+        "页面目标",
+        "组件",
+        "字段",
+        "状态",
+        "截图"
+      ],
+      "metricChain": [
+        "需求卡覆盖率",
+        "页面目标处理时长",
+        "组件异常数",
+        "字段完成率",
+        "状态复核通过率"
+      ],
+      "exceptionStates": [
+        "字段缺失",
+        "流程超时",
+        "复核未完成",
+        "验收失败"
+      ],
+      "decisionAction": "围绕零售经营原型判断优先级、责任人和验收动作。",
+      "riskBoundary": "不得用页面效果替代字段和验收",
+      "deliverable": "React 原型需求卡",
+      "highImpact": false,
+      "phase": "质量验收"
+    },
+    {
+      "num": 36,
+      "title": "Harness Coding 验收｜原型字段核验",
+      "industry": "零售经营",
+      "role": "AI 产品经理",
+      "scenario": "原型字段核验",
+      "dataset": "outputs/05_harness/prototype_test_report.json",
+      "publicRef": "https://github.com/walkinglabs/learn-harness-engineering",
+      "fields": [
+        "字段",
+        "数据来源",
+        "状态",
+        "体验问题",
+        "风险项",
+        "修复优先级"
+      ],
+      "metricChain": [
+        "字段覆盖率",
+        "数据来源处理时长",
+        "状态异常数",
+        "体验问题完成率",
+        "风险项复核通过率"
+      ],
+      "exceptionStates": [
+        "字段缺失",
+        "流程超时",
+        "复核未完成",
+        "验收失败"
+      ],
+      "decisionAction": "围绕原型验收护栏判断优先级、责任人和验收动作。",
+      "riskBoundary": "不得降低检查项换取通过",
+      "deliverable": "Harness 验收清单",
+      "highImpact": false,
+      "phase": "质量验收"
+    },
+    {
+      "num": 37,
+      "title": "Loop Engineering｜代码修复闭环",
+      "industry": "软件工程",
+      "role": "技术产品经理",
+      "scenario": "代码修复闭环",
+      "dataset": "outputs/11_loop_engineering/loop_report_sample.json",
+      "publicRef": "https://github.com/softdaddy-o/soft-harness",
+      "fields": [
+        "Cycle",
+        "builder",
+        "checker",
+        "失败项",
+        "回归",
+        "ALL GREEN"
+      ],
+      "metricChain": [
+        "Cycle覆盖率",
+        "builder处理时长",
+        "checker异常数",
+        "失败项完成率",
+        "回归复核通过率"
+      ],
+      "exceptionStates": [
+        "字段缺失",
+        "流程超时",
+        "复核未完成",
+        "验收失败"
+      ],
+      "decisionAction": "围绕AI 修复闭环判断优先级、责任人和验收动作。",
+      "riskBoundary": "同一失败连续两轮必须停止",
+      "deliverable": "Loop 执行报告",
+      "highImpact": false,
+      "phase": "质量验收"
+    },
+    {
+      "num": 38,
+      "title": "产品经理 Skill｜需求澄清流水线",
+      "industry": "企业协作",
+      "role": "产品负责人",
+      "scenario": "需求澄清流水线",
+      "dataset": "outputs/07_skills/pm_skills.md",
+      "publicRef": "https://github.com/phuryn/pm-skills",
+      "fields": [
+        "触发条件",
+        "输入",
+        "澄清问题",
+        "PRD 片段",
+        "验收标准",
+        "复用范围"
+      ],
+      "metricChain": [
+        "触发条件覆盖率",
+        "输入处理时长",
+        "澄清问题异常数",
+        "PRD 片段完成率",
+        "验收标准复核通过率"
+      ],
+      "exceptionStates": [
+        "字段缺失",
+        "流程超时",
+        "复核未完成",
+        "验收失败"
+      ],
+      "decisionAction": "围绕需求澄清 Skill判断优先级、责任人和验收动作。",
+      "riskBoundary": "不得把 Skill 写成不可验证的长文本",
+      "deliverable": "产品经理 Skill 模板",
+      "highImpact": false,
+      "phase": "质量验收"
+    },
+    {
+      "num": 39,
+      "title": "React + shadcn/ui 后台｜积分运营控制台",
+      "industry": "会员运营",
+      "role": "增长产品经理",
+      "scenario": "积分运营控制台",
+      "dataset": "dataset/ex-17-RFM.csv",
+      "publicRef": "https://github.com/arhamkhnz/next-shadcn-admin-dashboard",
+      "fields": [
+        "任务",
+        "权益",
+        "积分成本",
+        "等级",
+        "风控",
+        "运营动作"
+      ],
+      "metricChain": [
+        "人效产出",
+        "在编人数",
+        "招聘达成率",
+        "薪酬成本率",
+        "流失预警人数"
+      ],
+      "exceptionStates": [
+        "招聘延期",
+        "人效偏低",
+        "编制超配",
+        "流失预警"
+      ],
+      "decisionAction": "判断岗位产出、编制缺口和流失风险，形成组织调整建议。",
+      "riskBoundary": "不得让运营动作和成本脱节",
+      "deliverable": "React 后台页面",
+      "highImpact": false,
+      "phase": "质量验收"
+    },
+    {
+      "num": 43,
+      "title": "综合闭环｜产业知识游戏化平台",
+      "industry": "产业知识",
+      "role": "知识产品经理小组",
+      "scenario": "产业知识游戏化平台",
+      "dataset": "outputs/10_knowledge_gamification/knowledge_quest_bank.json",
+      "publicRef": "https://docs.github.com/en/get-started/start-your-journey/git-and-github-learning-resources",
+      "fields": [
+        "知识卡",
+        "关卡",
+        "题库",
+        "徽章",
+        "错题",
+        "能力画像"
+      ],
+      "metricChain": [
+        "知识卡覆盖率",
+        "关卡处理时长",
+        "题库异常数",
+        "徽章完成率",
+        "错题复核通过率"
+      ],
+      "exceptionStates": [
+        "字段缺失",
+        "流程超时",
+        "复核未完成",
+        "验收失败"
+      ],
+      "decisionAction": "围绕产业知识学习闭环判断优先级、责任人和验收动作。",
+      "riskBoundary": "不得让游戏化脱离学习目标",
+      "deliverable": "知识游戏化产品方案包",
+      "highImpact": false,
+      "phase": "综合闭环"
+    }
+  ]
+}

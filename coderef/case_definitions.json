@@ -1,0 +1,1762 @@
+{
+  "generatedFrom": "ref-handbook.md (draft) + refinements",
+  "caseCount": 19,
+  "archetypes": {
+    "executive_dashboard": [
+      "驾驶舱高密度",
+      [
+        "目标达成",
+        "收入趋势",
+        "业务结构",
+        "区域排行",
+        "异常告警",
+        "行动队列"
+      ]
+    ],
+    "sales_funnel_screen": [
+      "驾驶舱高密度",
+      [
+        "销售漏斗",
+        "目标进度",
+        "客户跟进",
+        "回款风险",
+        "区域作战",
+        "销售排行"
+      ]
+    ],
+    "finance_cashflow_screen": [
+      "驾驶舱高密度",
+      [
+        "收入利润",
+        "成本费用",
+        "现金流",
+        "应收账款",
+        "预算执行",
+        "经营质量"
+      ]
+    ],
+    "hr_efficiency_screen": [
+      "驾驶舱高密度",
+      [
+        "人效产出",
+        "招聘进度",
+        "组织编制",
+        "薪酬成本",
+        "流失预警",
+        "岗位效率"
+      ]
+    ],
+    "production_oee_screen": [
+      "驾驶舱高密度",
+      [
+        "OEE",
+        "设备稼动率",
+        "质量缺陷",
+        "订单交付",
+        "停机预警",
+        "车间异常"
+      ]
+    ],
+    "matrix_decision": [
+      "高密度业务表格",
+      [
+        "二维矩阵",
+        "字段轴",
+        "优先级标签",
+        "决策说明",
+        "评分栏",
+        "复核入口"
+      ]
+    ],
+    "review_queue": [
+      "高密度业务表格",
+      [
+        "复核队列",
+        "证据摘要",
+        "风险标签",
+        "人工处理",
+        "留痕记录",
+        "升级入口"
+      ]
+    ],
+    "list_review": [
+      "中密度工作台",
+      [
+        "筛选栏",
+        "指标卡",
+        "状态表格",
+        "补充抽屉",
+        "批量操作",
+        "验收面板"
+      ]
+    ],
+    "record_detail": [
+      "中密度工作台",
+      [
+        "记录详情",
+        "字段分组",
+        "证据列表",
+        "协作纪要",
+        "审计记录",
+        "操作栏"
+      ]
+    ],
+    "knowledge_workspace": [
+      "中密度工作台",
+      [
+        "知识目录",
+        "任务地图",
+        "问答记录",
+        "命中材料",
+        "错题复盘",
+        "能力画像"
+      ]
+    ],
+    "workflow_pipeline": [
+      "中密度工作台",
+      [
+        "阶段泳道",
+        "任务卡片",
+        "流转状态",
+        "阻塞项",
+        "版本记录",
+        "验收点"
+      ]
+    ],
+    "configuration": [
+      "中密度工作台",
+      [
+        "规则表单",
+        "参数分组",
+        "预览区",
+        "成本/风险提示",
+        "发布记录",
+        "回滚入口"
+      ]
+    ],
+    "experiment_harness": [
+      "中密度工作台",
+      [
+        "检查清单",
+        "测试数据",
+        "失败原因",
+        "修复优先级",
+        "报告导出",
+        "回归记录"
+      ]
+    ]
+  },
+  "cases": [
+    {
+      "num": 1,
+      "uiId": "ui_01_morning_ops_grid",
+      "slug": "morning_ops_grid",
+      "saasType": "executive_dashboard",
+      "phase": "角色转型",
+      "title": "技术任务转产品问题｜电商早会异常订单台",
+      "module": "技术任务转产品问题",
+      "scenario": "电商早会异常订单台",
+      "industry": "电商零售",
+      "role": "运营主管",
+      "dataset": "dataset/order_data.csv",
+      "publicRef": "https://archive.ics.uci.edu/dataset/352/online+retail",
+      "skills": [
+        "problem-framing",
+        "metric-definition",
+        "acceptance-criteria"
+      ],
+      "rp": {
+        "id": "RP01",
+        "title": "同一条软件需求的三种角色表达",
+        "produce": "角色差异卡, 产品问题清单",
+        "accept": "同一需求必须分别呈现研发视角、项目经理视角和产品经理视角，并能指出产品问题。"
+      },
+      "highImpact": false,
+      "fields": [
+        "订单号",
+        "SKU",
+        "库存天数",
+        "毛利率",
+        "异常原因",
+        "责任人",
+        "处理时限"
+      ],
+      "metricChain": [
+        "经营目标达成率",
+        "销售额同比",
+        "区域贡献",
+        "异常订单数",
+        "责任部门闭环率"
+      ],
+      "exceptionStates": [
+        "目标未达成",
+        "区域下滑",
+        "异常订单",
+        "责任未闭环"
+      ],
+      "decisionAction": "识别未达成区域、定位异常业务线，并生成责任部门行动队列。",
+      "riskBoundary": "不得把查询慢等同于产品问题",
+      "uiStrategy": "dashboard_plus_saas｜executive_dashboard｜驾驶舱高密度",
+      "largeScreenRef": "经营｜企业经营驾驶舱大屏",
+      "saasComponents": [
+        "目标达成",
+        "收入趋势",
+        "业务结构",
+        "区域排行",
+        "异常告警",
+        "行动队列"
+      ],
+      "deliverable": "产品问题定义卡",
+      "mustFields": [
+        "订单号",
+        "SKU",
+        "库存天数",
+        "毛利率",
+        "异常原因",
+        "责任人"
+      ],
+      "mustMetrics": [
+        "经营目标达成率",
+        "销售额同比",
+        "区域贡献",
+        "异常订单数",
+        "责任部门闭环率"
+      ],
+      "mustExceptions": [
+        "目标未达成",
+        "区域下滑",
+        "异常订单",
+        "责任未闭环"
+      ],
+      "mustSkills": [
+        "problem-framing",
+        "metric-definition",
+        "acceptance-criteria"
+      ],
+      "story": "电商零售场景中，运营主管围绕异常订单和高风险 SKU做日常判断。运营主管需要围绕“异常订单和高风险 SKU”完成“在早会前完成风险识别”，并把结果转成可验证的产品交付物。核心不是把页面做出来，而是把指标、异常、责任和行动连成闭环。"
+    },
+    {
+      "num": 2,
+      "uiId": "ui_02_value_schedule_axis",
+      "slug": "value_schedule_axis",
+      "saasType": "matrix_decision",
+      "phase": "角色转型",
+      "title": "项目经理转产品经理｜研发排期价值评审台",
+      "module": "项目经理转产品经理",
+      "scenario": "研发排期价值评审台",
+      "industry": "软件研发管理",
+      "role": "项目经理",
+      "dataset": "dataset/product_cases/aicourse_hr_employees.csv",
+      "publicRef": "https://github.com/deanpeters/Product-Manager-Skills",
+      "skills": [
+        "role-transition",
+        "outcome-mapping",
+        "release-risk"
+      ],
+      "rp": {
+        "id": "RP02",
+        "title": "内部系统功能的三层价值表达",
+        "produce": "价值三层拆解表",
+        "accept": "至少包含用户价值、业务价值、系统价值，且每层都有可观察指标。"
+      },
+      "highImpact": false,
+      "fields": [
+        "需求项",
+        "业务价值",
+        "研发工期",
+        "依赖团队",
+        "风险等级",
+        "上线目标"
+      ],
+      "metricChain": [
+        "需求项覆盖率",
+        "业务价值处理时长",
+        "研发工期异常数",
+        "依赖团队完成率",
+        "风险等级复核通过率"
+      ],
+      "exceptionStates": [
+        "字段缺失",
+        "流程超时",
+        "复核未完成",
+        "验收失败"
+      ],
+      "decisionAction": "围绕跨部门研发排期判断优先级、责任人和验收动作。",
+      "riskBoundary": "不得只用进度解释产品优先级",
+      "uiStrategy": "saas_workbench｜matrix_decision｜高密度业务表格",
+      "largeScreenRef": "不适用，采用专业 SaaS 工作台",
+      "saasComponents": [
+        "二维矩阵",
+        "字段轴",
+        "优先级标签",
+        "决策说明",
+        "评分栏",
+        "复核入口"
+      ],
+      "deliverable": "角色差异分析表",
+      "mustFields": [
+        "需求项",
+        "业务价值",
+        "研发工期",
+        "依赖团队",
+        "风险等级",
+        "上线目标"
+      ],
+      "mustMetrics": [
+        "需求项覆盖率",
+        "业务价值处理时长",
+        "研发工期异常数",
+        "依赖团队完成率",
+        "风险等级复核通过率"
+      ],
+      "mustExceptions": [
+        "字段缺失",
+        "流程超时",
+        "复核未完成",
+        "验收失败"
+      ],
+      "mustSkills": [
+        "role-transition",
+        "outcome-mapping",
+        "release-risk"
+      ],
+      "story": "软件研发管理场景中，项目经理围绕跨部门研发排期做日常判断。项目经理需要围绕“跨部门研发排期”完成“从交付排期转向价值取舍”，并把结果转成可验证的产品交付物。核心不是把页面做出来，而是把指标、异常、责任和行动连成闭环。"
+    },
+    {
+      "num": 3,
+      "uiId": "ui_03_gov_material_checklist",
+      "slug": "gov_material_checklist",
+      "saasType": "list_review",
+      "phase": "用户洞察",
+      "title": "涉众地图与价值交换｜政务材料预审服务",
+      "module": "涉众地图与价值交换",
+      "scenario": "政务材料预审服务",
+      "industry": "政务服务",
+      "role": "政务产品负责人",
+      "dataset": "dataset/pm_network_cases/nyc_311_service_requests_5000.csv",
+      "publicRef": "https://design-system.service.gov.uk/",
+      "skills": [
+        "stakeholder-map",
+        "service-blueprint",
+        "public-service-kpi"
+      ],
+      "rp": null,
+      "highImpact": true,
+      "fields": [
+        "办件编号",
+        "材料名称",
+        "补正原因",
+        "承诺时限",
+        "经办窗口",
+        "审批科室",
+        "群众反馈"
+      ],
+      "metricChain": [
+        "办件编号覆盖率",
+        "材料名称处理时长",
+        "补正原因异常数",
+        "承诺时限完成率",
+        "经办窗口复核通过率"
+      ],
+      "exceptionStates": [
+        "字段缺失",
+        "流程超时",
+        "复核未完成",
+        "验收失败"
+      ],
+      "decisionAction": "围绕材料预审服务判断优先级、责任人和验收动作。",
+      "riskBoundary": "不得替代法定审批结论",
+      "uiStrategy": "saas_workbench｜list_review｜中密度工作台",
+      "largeScreenRef": "不适用，采用专业 SaaS 工作台",
+      "saasComponents": [
+        "筛选栏",
+        "指标卡",
+        "状态表格",
+        "补充抽屉",
+        "批量操作",
+        "验收面板"
+      ],
+      "deliverable": "涉众地图和价值交换图",
+      "mustFields": [
+        "办件编号",
+        "材料名称",
+        "补正原因",
+        "承诺时限",
+        "经办窗口",
+        "审批科室"
+      ],
+      "mustMetrics": [
+        "办件编号覆盖率",
+        "材料名称处理时长",
+        "补正原因异常数",
+        "承诺时限完成率",
+        "经办窗口复核通过率"
+      ],
+      "mustExceptions": [
+        "字段缺失",
+        "流程超时",
+        "复核未完成",
+        "验收失败"
+      ],
+      "mustSkills": [
+        "stakeholder-map",
+        "service-blueprint",
+        "public-service-kpi"
+      ],
+      "story": "政务服务场景中，政务产品负责人围绕材料预审服务做日常判断。政务产品负责人需要围绕“材料预审服务”完成“降低窗口返工和群众补正次数”，并把结果转成可验证的产品交付物。核心不是把页面做出来，而是把指标、异常、责任和行动连成闭环。"
+    },
+    {
+      "num": 6,
+      "uiId": "ui_06_bank_knowledge_governance",
+      "slug": "bank_knowledge_governance",
+      "saasType": "knowledge_workspace",
+      "phase": "AI协作",
+      "title": "AI 产品经理工作流｜银行客服知识治理",
+      "module": "AI 产品经理工作流",
+      "scenario": "银行客服知识治理",
+      "industry": "银行客服",
+      "role": "AI 产品经理",
+      "dataset": "dataset/product_cases/aicourse_financial_transactions.csv",
+      "publicRef": "https://github.com/VoltAgent/awesome-agent-skills",
+      "skills": [
+        "ai-product-boundary",
+        "eval-design",
+        "human-review"
+      ],
+      "rp": {
+        "id": "RP13",
+        "title": "本地资料知识库问答流程",
+        "produce": "知识库配置记录, 问答测试记录, 召回改进清单",
+        "accept": "至少测试 3 个问题，记录命中材料、答案质量和改进点。"
+      },
+      "highImpact": true,
+      "fields": [
+        "问题类别",
+        "知识来源",
+        "命中率",
+        "风险答案",
+        "人工接管",
+        "留痕编号"
+      ],
+      "metricChain": [
+        "问题类别覆盖率",
+        "知识来源处理时长",
+        "命中率异常数",
+        "风险答案完成率",
+        "人工接管复核通过率"
+      ],
+      "exceptionStates": [
+        "字段缺失",
+        "流程超时",
+        "复核未完成",
+        "验收失败"
+      ],
+      "decisionAction": "围绕银行客服知识库判断优先级、责任人和验收动作。",
+      "riskBoundary": "不得输出自动授信或最终处置建议",
+      "uiStrategy": "saas_workbench｜knowledge_workspace｜中密度工作台",
+      "largeScreenRef": "不适用，采用专业 SaaS 工作台",
+      "saasComponents": [
+        "知识目录",
+        "任务地图",
+        "问答记录",
+        "命中材料",
+        "错题复盘",
+        "能力画像"
+      ],
+      "deliverable": "AI 产品工作流蓝图",
+      "mustFields": [
+        "问题类别",
+        "知识来源",
+        "命中率",
+        "风险答案",
+        "人工接管",
+        "留痕编号"
+      ],
+      "mustMetrics": [
+        "问题类别覆盖率",
+        "知识来源处理时长",
+        "命中率异常数",
+        "风险答案完成率",
+        "人工接管复核通过率"
+      ],
+      "mustExceptions": [
+        "字段缺失",
+        "流程超时",
+        "复核未完成",
+        "验收失败"
+      ],
+      "mustSkills": [
+        "ai-product-boundary",
+        "eval-design",
+        "human-review"
+      ],
+      "story": "银行客服场景中，AI 产品经理围绕银行客服知识库做日常判断。AI 产品经理需要围绕“银行客服知识库”完成“治理问答边界和上线评估”，并把结果转成可验证的产品交付物。核心不是把页面做出来，而是把指标、异常、责任和行动连成闭环。"
+    },
+    {
+      "num": 7,
+      "uiId": "ui_07_insurance_claim_review",
+      "slug": "insurance_claim_review",
+      "saasType": "review_queue",
+      "phase": "用户洞察",
+      "title": "用户访谈｜保险理赔复核队列",
+      "module": "用户访谈",
+      "scenario": "保险理赔复核队列",
+      "industry": "保险理赔",
+      "role": "保险运营产品经理",
+      "dataset": "dataset/product_cases/aicourse_financial_transactions.csv",
+      "publicRef": "https://github.com/travisvn/awesome-claude-skills",
+      "skills": [
+        "grill-me",
+        "interview-synthesis",
+        "human-review"
+      ],
+      "rp": {
+        "id": "RP06",
+        "title": "AI 访谈纪要转需求并人工复核",
+        "produce": "AI 生成需求清单, 人工复核记录, 风险标注",
+        "accept": "AI 输出必须逐条人工复核，并标出不确定、越权或证据不足的内容。"
+      },
+      "highImpact": true,
+      "fields": [
+        "案件号",
+        "理赔类型",
+        "申请金额",
+        "证据完整度",
+        "风险信号",
+        "复核人"
+      ],
+      "metricChain": [
+        "案件号覆盖率",
+        "理赔类型处理时长",
+        "申请金额异常数",
+        "证据完整度完成率",
+        "风险信号复核通过率"
+      ],
+      "exceptionStates": [
+        "字段缺失",
+        "流程超时",
+        "复核未完成",
+        "验收失败"
+      ],
+      "decisionAction": "围绕理赔复核队列判断优先级、责任人和验收动作。",
+      "riskBoundary": "不得自动拒赔，必须保留人工复核",
+      "uiStrategy": "saas_workbench｜review_queue｜高密度业务表格",
+      "largeScreenRef": "不适用，采用专业 SaaS 工作台",
+      "saasComponents": [
+        "复核队列",
+        "证据摘要",
+        "风险标签",
+        "人工处理",
+        "留痕记录",
+        "升级入口"
+      ],
+      "deliverable": "访谈提纲与洞察卡",
+      "mustFields": [
+        "案件号",
+        "理赔类型",
+        "申请金额",
+        "证据完整度",
+        "风险信号",
+        "复核人"
+      ],
+      "mustMetrics": [
+        "案件号覆盖率",
+        "理赔类型处理时长",
+        "申请金额异常数",
+        "证据完整度完成率",
+        "风险信号复核通过率"
+      ],
+      "mustExceptions": [
+        "字段缺失",
+        "流程超时",
+        "复核未完成",
+        "验收失败"
+      ],
+      "mustSkills": [
+        "grill-me",
+        "interview-synthesis",
+        "human-review"
+      ],
+      "story": "保险理赔场景中，保险运营产品经理围绕理赔复核队列做日常判断。保险运营产品经理需要围绕“理赔复核队列”完成“通过访谈找出复核优先级”，并把结果转成可验证的产品交付物。核心不是把页面做出来，而是把指标、异常、责任和行动连成闭环。"
+    },
+    {
+      "num": 14,
+      "uiId": "ui_14_logistics_change_control",
+      "slug": "logistics_change_control",
+      "saasType": "sales_funnel_screen",
+      "phase": "需求管理",
+      "title": "需求变更控制｜物流异常派单扩城",
+      "module": "需求变更控制",
+      "scenario": "物流异常派单扩城",
+      "industry": "物流配送",
+      "role": "物流产品经理",
+      "dataset": "dataset/product_cases/aicourse_logistics_delivery.csv",
+      "publicRef": "https://onfleet.com/blog/dispatch-management/",
+      "skills": [
+        "change-impact",
+        "release-risk",
+        "rollback-plan"
+      ],
+      "rp": {
+        "id": "RP03",
+        "title": "产品评审会协作纪要",
+        "produce": "产品评审纪要, 验收口径清单",
+        "accept": "纪要必须覆盖需求、范围、风险、验收口径和责任人。"
+      },
+      "highImpact": false,
+      "fields": [
+        "城市",
+        "运单",
+        "异常类型",
+        "规则版本",
+        "客服话术",
+        "回滚条件"
+      ],
+      "metricChain": [
+        "线索数",
+        "商机转化率",
+        "合同金额",
+        "回款率",
+        "客户跟进超时数"
+      ],
+      "exceptionStates": [
+        "转化率下滑",
+        "回款逾期",
+        "客户跟进超时",
+        "区域掉队"
+      ],
+      "decisionAction": "判断漏斗断点、回款风险和区域销售动作优先级。",
+      "riskBoundary": "不得在无回滚条件下扩大范围",
+      "uiStrategy": "dashboard_plus_saas｜sales_funnel_screen｜驾驶舱高密度",
+      "largeScreenRef": "销售｜销售区域作战大屏",
+      "saasComponents": [
+        "销售漏斗",
+        "目标进度",
+        "客户跟进",
+        "回款风险",
+        "区域作战",
+        "销售排行"
+      ],
+      "deliverable": "需求变更影响评估",
+      "mustFields": [
+        "城市",
+        "运单",
+        "异常类型",
+        "规则版本",
+        "客服话术",
+        "回滚条件"
+      ],
+      "mustMetrics": [
+        "线索数",
+        "商机转化率",
+        "合同金额",
+        "回款率",
+        "客户跟进超时数"
+      ],
+      "mustExceptions": [
+        "转化率下滑",
+        "回款逾期",
+        "客户跟进超时",
+        "区域掉队"
+      ],
+      "mustSkills": [
+        "change-impact",
+        "release-risk",
+        "rollback-plan"
+      ],
+      "story": "物流配送场景中，物流产品经理围绕异常派单扩城做日常判断。物流产品经理需要围绕“异常派单扩城”完成“评估需求变更的影响和回滚策略”，并把结果转成可验证的产品交付物。核心不是把页面做出来，而是把指标、异常、责任和行动连成闭环。"
+    },
+    {
+      "num": 16,
+      "uiId": "ui_16_hospital_capacity_scheduler",
+      "slug": "hospital_capacity_scheduler",
+      "saasType": "hr_efficiency_screen",
+      "phase": "用户洞察",
+      "title": "目标用户与场景｜医院预约容量调度",
+      "module": "目标用户与场景",
+      "scenario": "医院预约容量调度",
+      "industry": "医疗运营",
+      "role": "医疗运营产品经理",
+      "dataset": "dataset/product_cases/aicourse_healthcare_diabetes.csv",
+      "publicRef": "https://github.com/vintasoftware/medplum-ai-concierge",
+      "skills": [
+        "persona-scenario",
+        "journey-map",
+        "human-review"
+      ],
+      "rp": {
+        "id": "RP04",
+        "title": "用户体验五层与服务蓝图",
+        "produce": "用户体验地图, 服务蓝图, 用户故事, 体验五层拆解",
+        "accept": "体验地图、用户故事和服务蓝图必须描述同一个用户任务。"
+      },
+      "highImpact": true,
+      "fields": [
+        "科室",
+        "医生",
+        "预约槽",
+        "等待时间",
+        "加号规则",
+        "人工协调"
+      ],
+      "metricChain": [
+        "人效产出",
+        "在编人数",
+        "招聘达成率",
+        "薪酬成本率",
+        "流失预警人数"
+      ],
+      "exceptionStates": [
+        "招聘延期",
+        "人效偏低",
+        "编制超配",
+        "流失预警"
+      ],
+      "decisionAction": "判断岗位产出、编制缺口和流失风险，形成组织调整建议。",
+      "riskBoundary": "不得自动诊断或替代医生决策",
+      "uiStrategy": "dashboard_plus_saas｜hr_efficiency_screen｜驾驶舱高密度",
+      "largeScreenRef": "人效｜组织编制管理大屏",
+      "saasComponents": [
+        "人效产出",
+        "招聘进度",
+        "组织编制",
+        "薪酬成本",
+        "流失预警",
+        "岗位效率"
+      ],
+      "deliverable": "目标用户与场景矩阵",
+      "mustFields": [
+        "科室",
+        "医生",
+        "预约槽",
+        "等待时间",
+        "加号规则",
+        "人工协调"
+      ],
+      "mustMetrics": [
+        "人效产出",
+        "在编人数",
+        "招聘达成率",
+        "薪酬成本率",
+        "流失预警人数"
+      ],
+      "mustExceptions": [
+        "招聘延期",
+        "人效偏低",
+        "编制超配",
+        "流失预警"
+      ],
+      "mustSkills": [
+        "persona-scenario",
+        "journey-map",
+        "human-review"
+      ],
+      "story": "医疗运营场景中，医疗运营产品经理围绕预约容量调度做日常判断。医疗运营产品经理需要围绕“预约容量调度”完成“平衡患者等待和医护资源”，并把结果转成可验证的产品交付物。核心不是把页面做出来，而是把指标、异常、责任和行动连成闭环。"
+    },
+    {
+      "num": 23,
+      "uiId": "ui_23_return_fulfillment_swimlane",
+      "slug": "return_fulfillment_swimlane",
+      "saasType": "workflow_pipeline",
+      "phase": "详细设计",
+      "title": "业务流程优化｜电商退换货履约",
+      "module": "业务流程优化",
+      "scenario": "电商退换货履约",
+      "industry": "电商售后",
+      "role": "售后产品经理",
+      "dataset": "dataset/product_cases/aicourse_ecommerce_orders.csv",
+      "publicRef": "https://archive.ics.uci.edu/dataset/352/online+retail",
+      "skills": [
+        "process-redesign",
+        "service-blueprint",
+        "acceptance-mapping"
+      ],
+      "rp": {
+        "id": "RP09",
+        "title": "核心功能流程图、状态图与用户测试",
+        "produce": "Mermaid 流程图, Mermaid 状态图, 用户测试提纲",
+        "accept": "流程图、状态图必须对应同一核心功能，用户测试问题不少于 5 条。"
+      },
+      "highImpact": false,
+      "fields": [
+        "售后单",
+        "客服审核",
+        "仓库收货",
+        "退款",
+        "补偿",
+        "超时原因"
+      ],
+      "metricChain": [
+        "售后单覆盖率",
+        "客服审核处理时长",
+        "仓库收货异常数",
+        "退款完成率",
+        "补偿复核通过率"
+      ],
+      "exceptionStates": [
+        "字段缺失",
+        "流程超时",
+        "复核未完成",
+        "验收失败"
+      ],
+      "decisionAction": "围绕退换货履约判断优先级、责任人和验收动作。",
+      "riskBoundary": "不得只增加按钮而不重构流程",
+      "uiStrategy": "saas_workbench｜workflow_pipeline｜中密度工作台",
+      "largeScreenRef": "不适用，采用专业 SaaS 工作台",
+      "saasComponents": [
+        "阶段泳道",
+        "任务卡片",
+        "流转状态",
+        "阻塞项",
+        "版本记录",
+        "验收点"
+      ],
+      "deliverable": "现状/优化流程图",
+      "mustFields": [
+        "售后单",
+        "客服审核",
+        "仓库收货",
+        "退款",
+        "补偿",
+        "超时原因"
+      ],
+      "mustMetrics": [
+        "售后单覆盖率",
+        "客服审核处理时长",
+        "仓库收货异常数",
+        "退款完成率",
+        "补偿复核通过率"
+      ],
+      "mustExceptions": [
+        "字段缺失",
+        "流程超时",
+        "复核未完成",
+        "验收失败"
+      ],
+      "mustSkills": [
+        "process-redesign",
+        "service-blueprint",
+        "acceptance-mapping"
+      ],
+      "story": "电商售后场景中，售后产品经理围绕退换货履约做日常判断。售后产品经理需要围绕“退换货履约”完成“优化跨角色流程和异常处理”，并把结果转成可验证的产品交付物。核心不是把页面做出来，而是把指标、异常、责任和行动连成闭环。"
+    },
+    {
+      "num": 26,
+      "uiId": "ui_26_sku_prd_fields",
+      "slug": "sku_prd_fields",
+      "saasType": "configuration",
+      "phase": "需求管理",
+      "title": "PRD 片段｜滞销 SKU 提醒",
+      "module": "PRD 片段",
+      "scenario": "滞销 SKU 提醒",
+      "industry": "电商运营",
+      "role": "运营产品经理",
+      "dataset": "dataset/sku.csv",
+      "publicRef": "https://www.atlassian.com/software/confluence/templates/product-requirements",
+      "skills": [
+        "prd-fragment",
+        "acceptance-criteria",
+        "field-validation"
+      ],
+      "rp": {
+        "id": "RP05",
+        "title": "一句话需求拆成 PRD 片段",
+        "produce": "需求拆解表, 服务蓝图, 关键页面, 验收规则, PRD 片段",
+        "accept": "PRD 片段必须包含功能名、需求描述、页面设计、用户旅程、用户故事、实现逻辑和功能细节。"
+      },
+      "highImpact": false,
+      "fields": [
+        "SKU",
+        "品类",
+        "销量",
+        "库存",
+        "阈值",
+        "提醒状态"
+      ],
+      "metricChain": [
+        "SKU覆盖率",
+        "品类处理时长",
+        "销量异常数",
+        "库存完成率",
+        "阈值复核通过率"
+      ],
+      "exceptionStates": [
+        "字段缺失",
+        "流程超时",
+        "复核未完成",
+        "验收失败"
+      ],
+      "decisionAction": "围绕滞销提醒页面判断优先级、责任人和验收动作。",
+      "riskBoundary": "不得使用数据集中不存在的字段",
+      "uiStrategy": "saas_workbench｜configuration｜中密度工作台",
+      "largeScreenRef": "不适用，采用专业 SaaS 工作台",
+      "saasComponents": [
+        "规则表单",
+        "参数分组",
+        "预览区",
+        "成本/风险提示",
+        "发布记录",
+        "回滚入口"
+      ],
+      "deliverable": "PRD 片段",
+      "mustFields": [
+        "SKU",
+        "品类",
+        "销量",
+        "库存",
+        "阈值",
+        "提醒状态"
+      ],
+      "mustMetrics": [
+        "SKU覆盖率",
+        "品类处理时长",
+        "销量异常数",
+        "库存完成率",
+        "阈值复核通过率"
+      ],
+      "mustExceptions": [
+        "字段缺失",
+        "流程超时",
+        "复核未完成",
+        "验收失败"
+      ],
+      "mustSkills": [
+        "prd-fragment",
+        "acceptance-criteria",
+        "field-validation"
+      ],
+      "story": "电商运营场景中，运营产品经理围绕滞销提醒页面做日常判断。运营产品经理需要围绕“滞销提醒页面”完成“把一句话需求写成 PRD 片段”，并把结果转成可验证的产品交付物。核心不是把页面做出来，而是把指标、异常、责任和行动连成闭环。"
+    },
+    {
+      "num": 28,
+      "uiId": "ui_28_finance_review_queue",
+      "slug": "finance_review_queue",
+      "saasType": "finance_cashflow_screen",
+      "phase": "详细设计",
+      "title": "权限与风控规则｜金融复核工作台",
+      "module": "权限与风控规则",
+      "scenario": "金融复核工作台",
+      "industry": "金融风控",
+      "role": "风控产品经理",
+      "dataset": "dataset/reference_data_analysis/28-creditcardfraud_sample.csv",
+      "publicRef": "https://archive.ics.uci.edu/dataset/222/bank+marketing",
+      "skills": [
+        "risk-rule-design",
+        "human-review",
+        "compliance-boundary"
+      ],
+      "rp": null,
+      "highImpact": true,
+      "fields": [
+        "交易号",
+        "账户信号",
+        "风险等级",
+        "命中规则",
+        "证据摘要",
+        "复核权限",
+        "复核结论",
+        "留痕"
+      ],
+      "metricChain": [
+        "高风险交易占比",
+        "人工复核完成率",
+        "规则命中准确率",
+        "误报率",
+        "升级处理时长"
+      ],
+      "exceptionStates": [
+        "高风险待复核",
+        "证据不足",
+        "权限越界",
+        "超时未处理"
+      ],
+      "decisionAction": "识别现金流缺口、逾期应收和预算偏差，形成复核与催收动作。",
+      "riskBoundary": "不得自动处罚、不得自动授信、不得自动拒绝交易",
+      "uiStrategy": "dashboard_plus_saas｜finance_cashflow_screen｜驾驶舱高密度",
+      "largeScreenRef": "财务｜应收账款分析大屏",
+      "saasComponents": [
+        "收入利润",
+        "成本费用",
+        "现金流",
+        "应收账款",
+        "预算执行",
+        "经营质量"
+      ],
+      "deliverable": "权限矩阵与风控规则",
+      "mustFields": [
+        "交易号",
+        "账户信号",
+        "风险等级",
+        "命中规则",
+        "证据摘要",
+        "复核权限",
+        "复核结论",
+        "留痕"
+      ],
+      "mustMetrics": [
+        "高风险交易占比",
+        "人工复核完成率",
+        "规则命中准确率",
+        "误报率",
+        "升级处理时长"
+      ],
+      "mustExceptions": [
+        "高风险待复核",
+        "证据不足",
+        "权限越界",
+        "超时未处理"
+      ],
+      "mustSkills": [
+        "risk-rule-design",
+        "human-review",
+        "compliance-boundary"
+      ],
+      "story": "金融风控场景中，风控产品经理围绕金融交易复核做日常判断。风控产品经理需要围绕“金融交易复核”完成“设计人工复核与权限边界”，并把结果转成可验证的产品交付物。核心不是把页面做出来，而是把指标、异常、责任和行动连成闭环。"
+    },
+    {
+      "num": 29,
+      "uiId": "ui_29_retail_morning_dashboard",
+      "slug": "retail_morning_dashboard",
+      "saasType": "executive_dashboard",
+      "phase": "数据指标",
+      "title": "经营分析助手｜零售门店晨会驾驶舱",
+      "module": "经营分析助手",
+      "scenario": "零售门店晨会驾驶舱",
+      "industry": "零售门店",
+      "role": "门店运营主管",
+      "dataset": "dataset/order_data.csv",
+      "publicRef": "https://archive.ics.uci.edu/dataset/352/online+retail",
+      "skills": [
+        "dashboard-requirement",
+        "kpi-tree",
+        "action-summary"
+      ],
+      "rp": null,
+      "highImpact": false,
+      "fields": [
+        "门店",
+        "SKU",
+        "销售额",
+        "毛利率",
+        "异常",
+        "责任人"
+      ],
+      "metricChain": [
+        "经营目标达成率",
+        "销售额同比",
+        "区域贡献",
+        "异常订单数",
+        "责任部门闭环率"
+      ],
+      "exceptionStates": [
+        "目标未达成",
+        "区域下滑",
+        "异常订单",
+        "责任未闭环"
+      ],
+      "decisionAction": "识别未达成区域、定位异常业务线，并生成责任部门行动队列。",
+      "riskBoundary": "不得只展示指标，不给出行动入口",
+      "uiStrategy": "dashboard_plus_saas｜executive_dashboard｜驾驶舱高密度",
+      "largeScreenRef": "经营｜企业经营驾驶舱大屏",
+      "saasComponents": [
+        "目标达成",
+        "收入趋势",
+        "业务结构",
+        "区域排行",
+        "异常告警",
+        "行动队列"
+      ],
+      "deliverable": "经营分析指标卡",
+      "mustFields": [
+        "门店",
+        "SKU",
+        "销售额",
+        "毛利率",
+        "异常",
+        "责任人"
+      ],
+      "mustMetrics": [
+        "经营目标达成率",
+        "销售额同比",
+        "区域贡献",
+        "异常订单数",
+        "责任部门闭环率"
+      ],
+      "mustExceptions": [
+        "目标未达成",
+        "区域下滑",
+        "异常订单",
+        "责任未闭环"
+      ],
+      "mustSkills": [
+        "dashboard-requirement",
+        "kpi-tree",
+        "action-summary"
+      ],
+      "story": "零售门店场景中，门店运营主管围绕门店晨会经营信号做日常判断。门店运营主管需要围绕“门店晨会经营信号”完成“3 分钟内完成异常识别和责任分派”，并把结果转成可验证的产品交付物。核心不是把页面做出来，而是把指标、异常、责任和行动连成闭环。"
+    },
+    {
+      "num": 30,
+      "uiId": "ui_30_airline_member_rfm",
+      "slug": "airline_member_rfm",
+      "saasType": "sales_funnel_screen",
+      "phase": "数据指标",
+      "title": "RFM 客户分层｜航空会员价值运营",
+      "module": "RFM 客户分层",
+      "scenario": "航空会员价值运营",
+      "industry": "航空会员",
+      "role": "会员产品经理",
+      "dataset": "dataset/reference_data_analysis/2-air_data.csv",
+      "publicRef": "https://archive.ics.uci.edu/dataset/352/online+retail",
+      "skills": [
+        "rfm-segmentation",
+        "lifecycle-action",
+        "privacy-boundary"
+      ],
+      "rp": {
+        "id": "RP11",
+        "title": "AI-Excel 数据分析转产品判断",
+        "produce": "指标分析表, 产品改进建议",
+        "accept": "RFM、趋势或异常检测结果必须转化为明确产品判断，不能停留在图表描述。"
+      },
+      "highImpact": false,
+      "fields": [
+        "会员号",
+        "最近飞行",
+        "飞行频次",
+        "里程",
+        "客舱",
+        "运营动作"
+      ],
+      "metricChain": [
+        "线索数",
+        "商机转化率",
+        "合同金额",
+        "回款率",
+        "客户跟进超时数"
+      ],
+      "exceptionStates": [
+        "转化率下滑",
+        "回款逾期",
+        "客户跟进超时",
+        "区域掉队"
+      ],
+      "decisionAction": "判断漏斗断点、回款风险和区域销售动作优先级。",
+      "riskBoundary": "不得输出歧视性或不可解释规则",
+      "uiStrategy": "dashboard_plus_saas｜sales_funnel_screen｜驾驶舱高密度",
+      "largeScreenRef": "销售｜客户跟进管理大屏",
+      "saasComponents": [
+        "销售漏斗",
+        "目标进度",
+        "客户跟进",
+        "回款风险",
+        "区域作战",
+        "销售排行"
+      ],
+      "deliverable": "RFM 分层运营策略",
+      "mustFields": [
+        "会员号",
+        "最近飞行",
+        "飞行频次",
+        "里程",
+        "客舱",
+        "运营动作"
+      ],
+      "mustMetrics": [
+        "线索数",
+        "商机转化率",
+        "合同金额",
+        "回款率",
+        "客户跟进超时数"
+      ],
+      "mustExceptions": [
+        "转化率下滑",
+        "回款逾期",
+        "客户跟进超时",
+        "区域掉队"
+      ],
+      "mustSkills": [
+        "rfm-segmentation",
+        "lifecycle-action",
+        "privacy-boundary"
+      ],
+      "story": "航空会员场景中，会员产品经理围绕航空会员价值做日常判断。会员产品经理需要围绕“航空会员价值”完成“用分层指导差异化运营”，并把结果转成可验证的产品交付物。核心不是把页面做出来，而是把指标、异常、责任和行动连成闭环。"
+    },
+    {
+      "num": 31,
+      "uiId": "ui_31_ad_conversion_funnel",
+      "slug": "ad_conversion_funnel",
+      "saasType": "sales_funnel_screen",
+      "phase": "数据指标",
+      "title": "漏斗分析｜广告投放转化复盘",
+      "module": "漏斗分析",
+      "scenario": "广告投放转化复盘",
+      "industry": "广告投放",
+      "role": "投放产品经理",
+      "dataset": "dataset/reference_data_analysis/18-ad_performance.csv",
+      "publicRef": "https://carbondesignsystem.com/",
+      "skills": [
+        "funnel-analysis",
+        "budget-decision",
+        "metric-definition"
+      ],
+      "rp": null,
+      "highImpact": false,
+      "fields": [
+        "渠道",
+        "曝光",
+        "点击",
+        "注册",
+        "订单",
+        "预算"
+      ],
+      "metricChain": [
+        "线索数",
+        "商机转化率",
+        "合同金额",
+        "回款率",
+        "客户跟进超时数"
+      ],
+      "exceptionStates": [
+        "转化率下滑",
+        "回款逾期",
+        "客户跟进超时",
+        "区域掉队"
+      ],
+      "decisionAction": "判断漏斗断点、回款风险和区域销售动作优先级。",
+      "riskBoundary": "不得只按点击率做预算决策",
+      "uiStrategy": "dashboard_plus_saas｜sales_funnel_screen｜驾驶舱高密度",
+      "largeScreenRef": "销售｜销售漏斗分析大屏",
+      "saasComponents": [
+        "销售漏斗",
+        "目标进度",
+        "客户跟进",
+        "回款风险",
+        "区域作战",
+        "销售排行"
+      ],
+      "deliverable": "漏斗与预算建议",
+      "mustFields": [
+        "渠道",
+        "曝光",
+        "点击",
+        "注册",
+        "订单",
+        "预算"
+      ],
+      "mustMetrics": [
+        "线索数",
+        "商机转化率",
+        "合同金额",
+        "回款率",
+        "客户跟进超时数"
+      ],
+      "mustExceptions": [
+        "转化率下滑",
+        "回款逾期",
+        "客户跟进超时",
+        "区域掉队"
+      ],
+      "mustSkills": [
+        "funnel-analysis",
+        "budget-decision",
+        "metric-definition"
+      ],
+      "story": "广告投放场景中，投放产品经理围绕广告转化漏斗做日常判断。投放产品经理需要围绕“广告转化漏斗”完成“判断预算加码、缩减或观察”，并把结果转成可验证的产品交付物。核心不是把页面做出来，而是把指标、异常、责任和行动连成闭环。"
+    },
+    {
+      "num": 35,
+      "uiId": "ui_35_retail_vibe_prototype",
+      "slug": "retail_vibe_prototype",
+      "saasType": "record_detail",
+      "phase": "质量验收",
+      "title": "Vibe Coding 原型｜零售经营驾驶舱",
+      "module": "Vibe Coding 原型",
+      "scenario": "零售经营驾驶舱",
+      "industry": "零售经营",
+      "role": "AI 产品经理",
+      "dataset": "dataset/order_data.csv",
+      "publicRef": "https://github.com/arhamkhnz/next-shadcn-admin-dashboard",
+      "skills": [
+        "vibe-coding",
+        "ui-prompt-card",
+        "prototype-test"
+      ],
+      "rp": null,
+      "highImpact": false,
+      "fields": [
+        "需求卡",
+        "页面目标",
+        "组件",
+        "字段",
+        "状态",
+        "截图"
+      ],
+      "metricChain": [
+        "需求卡覆盖率",
+        "页面目标处理时长",
+        "组件异常数",
+        "字段完成率",
+        "状态复核通过率"
+      ],
+      "exceptionStates": [
+        "字段缺失",
+        "流程超时",
+        "复核未完成",
+        "验收失败"
+      ],
+      "decisionAction": "围绕零售经营原型判断优先级、责任人和验收动作。",
+      "riskBoundary": "不得用页面效果替代字段和验收",
+      "uiStrategy": "saas_workbench｜record_detail｜中密度工作台",
+      "largeScreenRef": "不适用，采用专业 SaaS 工作台",
+      "saasComponents": [
+        "记录详情",
+        "字段分组",
+        "证据列表",
+        "协作纪要",
+        "审计记录",
+        "操作栏"
+      ],
+      "deliverable": "React 原型需求卡",
+      "mustFields": [
+        "需求卡",
+        "页面目标",
+        "组件",
+        "字段",
+        "状态",
+        "截图"
+      ],
+      "mustMetrics": [
+        "需求卡覆盖率",
+        "页面目标处理时长",
+        "组件异常数",
+        "字段完成率",
+        "状态复核通过率"
+      ],
+      "mustExceptions": [
+        "字段缺失",
+        "流程超时",
+        "复核未完成",
+        "验收失败"
+      ],
+      "mustSkills": [
+        "vibe-coding",
+        "ui-prompt-card",
+        "prototype-test"
+      ],
+      "story": "零售经营场景中，AI 产品经理围绕零售经营原型做日常判断。AI 产品经理需要围绕“零售经营原型”完成“用需求卡生成可评审页面”，并把结果转成可验证的产品交付物。核心不是把页面做出来，而是把指标、异常、责任和行动连成闭环。"
+    },
+    {
+      "num": 36,
+      "uiId": "ui_36_prototype_harness_board",
+      "slug": "prototype_harness_board",
+      "saasType": "experiment_harness",
+      "phase": "质量验收",
+      "title": "Harness Coding 验收｜原型字段核验",
+      "module": "Harness Coding 验收",
+      "scenario": "原型字段核验",
+      "industry": "零售经营",
+      "role": "AI 产品经理",
+      "dataset": "outputs/05_harness/prototype_test_report.json",
+      "publicRef": "https://github.com/walkinglabs/learn-harness-engineering",
+      "skills": [
+        "harness-builder",
+        "checker-report",
+        "regression-guard"
+      ],
+      "rp": null,
+      "highImpact": false,
+      "fields": [
+        "字段",
+        "数据来源",
+        "状态",
+        "体验问题",
+        "风险项",
+        "修复优先级"
+      ],
+      "metricChain": [
+        "字段覆盖率",
+        "数据来源处理时长",
+        "状态异常数",
+        "体验问题完成率",
+        "风险项复核通过率"
+      ],
+      "exceptionStates": [
+        "字段缺失",
+        "流程超时",
+        "复核未完成",
+        "验收失败"
+      ],
+      "decisionAction": "围绕原型验收护栏判断优先级、责任人和验收动作。",
+      "riskBoundary": "不得降低检查项换取通过",
+      "uiStrategy": "saas_workbench｜experiment_harness｜中密度工作台",
+      "largeScreenRef": "不适用，采用专业 SaaS 工作台",
+      "saasComponents": [
+        "检查清单",
+        "测试数据",
+        "失败原因",
+        "修复优先级",
+        "报告导出",
+        "回归记录"
+      ],
+      "deliverable": "Harness 验收清单",
+      "mustFields": [
+        "字段",
+        "数据来源",
+        "状态",
+        "体验问题",
+        "风险项",
+        "修复优先级"
+      ],
+      "mustMetrics": [
+        "字段覆盖率",
+        "数据来源处理时长",
+        "状态异常数",
+        "体验问题完成率",
+        "风险项复核通过率"
+      ],
+      "mustExceptions": [
+        "字段缺失",
+        "流程超时",
+        "复核未完成",
+        "验收失败"
+      ],
+      "mustSkills": [
+        "harness-builder",
+        "checker-report",
+        "regression-guard"
+      ],
+      "story": "零售经营场景中，AI 产品经理围绕原型验收护栏做日常判断。AI 产品经理需要围绕“原型验收护栏”完成“验证原型是否满足业务目标”，并把结果转成可验证的产品交付物。核心不是把页面做出来，而是把指标、异常、责任和行动连成闭环。"
+    },
+    {
+      "num": 37,
+      "uiId": "ui_37_loop_engineering_flow",
+      "slug": "loop_engineering_flow",
+      "saasType": "workflow_pipeline",
+      "phase": "质量验收",
+      "title": "Loop Engineering｜代码修复闭环",
+      "module": "Loop Engineering",
+      "scenario": "代码修复闭环",
+      "industry": "软件工程",
+      "role": "技术产品经理",
+      "dataset": "outputs/11_loop_engineering/loop_report_sample.json",
+      "publicRef": "https://github.com/softdaddy-o/soft-harness",
+      "skills": [
+        "loop-orchestrator",
+        "regression-guard",
+        "checker-report"
+      ],
+      "rp": null,
+      "highImpact": false,
+      "fields": [
+        "Cycle",
+        "builder",
+        "checker",
+        "失败项",
+        "回归",
+        "ALL GREEN"
+      ],
+      "metricChain": [
+        "Cycle覆盖率",
+        "builder处理时长",
+        "checker异常数",
+        "失败项完成率",
+        "回归复核通过率"
+      ],
+      "exceptionStates": [
+        "字段缺失",
+        "流程超时",
+        "复核未完成",
+        "验收失败"
+      ],
+      "decisionAction": "围绕AI 修复闭环判断优先级、责任人和验收动作。",
+      "riskBoundary": "同一失败连续两轮必须停止",
+      "uiStrategy": "saas_workbench｜workflow_pipeline｜中密度工作台",
+      "largeScreenRef": "不适用，采用专业 SaaS 工作台",
+      "saasComponents": [
+        "阶段泳道",
+        "任务卡片",
+        "流转状态",
+        "阻塞项",
+        "版本记录",
+        "验收点"
+      ],
+      "deliverable": "Loop 执行报告",
+      "mustFields": [
+        "Cycle",
+        "builder",
+        "checker",
+        "失败项",
+        "回归",
+        "ALL GREEN"
+      ],
+      "mustMetrics": [
+        "Cycle覆盖率",
+        "builder处理时长",
+        "checker异常数",
+        "失败项完成率",
+        "回归复核通过率"
+      ],
+      "mustExceptions": [
+        "字段缺失",
+        "流程超时",
+        "复核未完成",
+        "验收失败"
+      ],
+      "mustSkills": [
+        "loop-orchestrator",
+        "regression-guard",
+        "checker-report"
+      ],
+      "story": "软件工程场景中，技术产品经理围绕AI 修复闭环做日常判断。技术产品经理需要围绕“AI 修复闭环”完成“把修复、检查和停止规则制度化”，并把结果转成可验证的产品交付物。核心不是把页面做出来，而是把指标、异常、责任和行动连成闭环。"
+    },
+    {
+      "num": 38,
+      "uiId": "ui_38_pm_skill_pipeline",
+      "slug": "pm_skill_pipeline",
+      "saasType": "configuration",
+      "phase": "质量验收",
+      "title": "产品经理 Skill｜需求澄清流水线",
+      "module": "产品经理 Skill",
+      "scenario": "需求澄清流水线",
+      "industry": "企业协作",
+      "role": "产品负责人",
+      "dataset": "outputs/07_skills/pm_skills.md",
+      "publicRef": "https://github.com/phuryn/pm-skills",
+      "skills": [
+        "skill-builder",
+        "skill-validator",
+        "acceptance-criteria"
+      ],
+      "rp": null,
+      "highImpact": false,
+      "fields": [
+        "触发条件",
+        "输入",
+        "澄清问题",
+        "PRD 片段",
+        "验收标准",
+        "复用范围"
+      ],
+      "metricChain": [
+        "触发条件覆盖率",
+        "输入处理时长",
+        "澄清问题异常数",
+        "PRD 片段完成率",
+        "验收标准复核通过率"
+      ],
+      "exceptionStates": [
+        "字段缺失",
+        "流程超时",
+        "复核未完成",
+        "验收失败"
+      ],
+      "decisionAction": "围绕需求澄清 Skill判断优先级、责任人和验收动作。",
+      "riskBoundary": "不得把 Skill 写成不可验证的长文本",
+      "uiStrategy": "saas_workbench｜configuration｜中密度工作台",
+      "largeScreenRef": "不适用，采用专业 SaaS 工作台",
+      "saasComponents": [
+        "规则表单",
+        "参数分组",
+        "预览区",
+        "成本/风险提示",
+        "发布记录",
+        "回滚入口"
+      ],
+      "deliverable": "产品经理 Skill 模板",
+      "mustFields": [
+        "触发条件",
+        "输入",
+        "澄清问题",
+        "PRD 片段",
+        "验收标准",
+        "复用范围"
+      ],
+      "mustMetrics": [
+        "触发条件覆盖率",
+        "输入处理时长",
+        "澄清问题异常数",
+        "PRD 片段完成率",
+        "验收标准复核通过率"
+      ],
+      "mustExceptions": [
+        "字段缺失",
+        "流程超时",
+        "复核未完成",
+        "验收失败"
+      ],
+      "mustSkills": [
+        "skill-builder",
+        "skill-validator",
+        "acceptance-criteria"
+      ],
+      "story": "企业协作场景中，产品负责人围绕需求澄清 Skill做日常判断。产品负责人需要围绕“需求澄清 Skill”完成“封装可复用的产品工作流”，并把结果转成可验证的产品交付物。核心不是把页面做出来，而是把指标、异常、责任和行动连成闭环。"
+    },
+    {
+      "num": 39,
+      "uiId": "ui_39_points_admin_console",
+      "slug": "points_admin_console",
+      "saasType": "hr_efficiency_screen",
+      "phase": "质量验收",
+      "title": "React + shadcn/ui 后台｜积分运营控制台",
+      "module": "React + shadcn/ui 后台",
+      "scenario": "积分运营控制台",
+      "industry": "会员运营",
+      "role": "增长产品经理",
+      "dataset": "dataset/ex-17-RFM.csv",
+      "publicRef": "https://github.com/arhamkhnz/next-shadcn-admin-dashboard",
+      "skills": [
+        "react-ui",
+        "shadcn-admin",
+        "accessibility-check"
+      ],
+      "rp": null,
+      "highImpact": false,
+      "fields": [
+        "任务",
+        "权益",
+        "积分成本",
+        "等级",
+        "风控",
+        "运营动作"
+      ],
+      "metricChain": [
+        "人效产出",
+        "在编人数",
+        "招聘达成率",
+        "薪酬成本率",
+        "流失预警人数"
+      ],
+      "exceptionStates": [
+        "招聘延期",
+        "人效偏低",
+        "编制超配",
+        "流失预警"
+      ],
+      "decisionAction": "判断岗位产出、编制缺口和流失风险，形成组织调整建议。",
+      "riskBoundary": "不得让运营动作和成本脱节",
+      "uiStrategy": "dashboard_plus_saas｜hr_efficiency_screen｜驾驶舱高密度",
+      "largeScreenRef": "人效｜人效分析大屏",
+      "saasComponents": [
+        "人效产出",
+        "招聘进度",
+        "组织编制",
+        "薪酬成本",
+        "流失预警",
+        "岗位效率"
+      ],
+      "deliverable": "React 后台页面",
+      "mustFields": [
+        "任务",
+        "权益",
+        "积分成本",
+        "等级",
+        "风控",
+        "运营动作"
+      ],
+      "mustMetrics": [
+        "人效产出",
+        "在编人数",
+        "招聘达成率",
+        "薪酬成本率",
+        "流失预警人数"
+      ],
+      "mustExceptions": [
+        "招聘延期",
+        "人效偏低",
+        "编制超配",
+        "流失预警"
+      ],
+      "mustSkills": [
+        "react-ui",
+        "shadcn-admin",
+        "accessibility-check"
+      ],
+      "story": "会员运营场景中，增长产品经理围绕积分运营控制台做日常判断。增长产品经理需要围绕“积分运营控制台”完成“组织可操作的运营后台”，并把结果转成可验证的产品交付物。核心不是把页面做出来，而是把指标、异常、责任和行动连成闭环。"
+    },
+    {
+      "num": 43,
+      "uiId": "ui_43_knowledge_quest_map",
+      "slug": "knowledge_quest_map",
+      "saasType": "knowledge_workspace",
+      "phase": "综合闭环",
+      "title": "综合闭环｜产业知识游戏化平台",
+      "module": "综合闭环",
+      "scenario": "产业知识游戏化平台",
+      "industry": "产业知识",
+      "role": "知识产品经理小组",
+      "dataset": "outputs/10_knowledge_gamification/knowledge_quest_bank.json",
+      "publicRef": "https://docs.github.com/en/get-started/start-your-journey/git-and-github-learning-resources",
+      "skills": [
+        "gamification-design",
+        "learning-evaluation",
+        "skill-validator"
+      ],
+      "rp": null,
+      "highImpact": false,
+      "fields": [
+        "知识卡",
+        "关卡",
+        "题库",
+        "徽章",
+        "错题",
+        "能力画像"
+      ],
+      "metricChain": [
+        "知识卡覆盖率",
+        "关卡处理时长",
+        "题库异常数",
+        "徽章完成率",
+        "错题复核通过率"
+      ],
+      "exceptionStates": [
+        "字段缺失",
+        "流程超时",
+        "复核未完成",
+        "验收失败"
+      ],
+      "decisionAction": "围绕产业知识学习闭环判断优先级、责任人和验收动作。",
+      "riskBoundary": "不得让游戏化脱离学习目标",
+      "uiStrategy": "saas_workbench｜knowledge_workspace｜中密度工作台",
+      "largeScreenRef": "不适用，采用专业 SaaS 工作台",
+      "saasComponents": [
+        "知识目录",
+        "任务地图",
+        "问答记录",
+        "命中材料",
+        "错题复盘",
+        "能力画像"
+      ],
+      "deliverable": "知识游戏化产品方案包",
+      "mustFields": [
+        "知识卡",
+        "关卡",
+        "题库",
+        "徽章",
+        "错题",
+        "能力画像"
+      ],
+      "mustMetrics": [
+        "知识卡覆盖率",
+        "关卡处理时长",
+        "题库异常数",
+        "徽章完成率",
+        "错题复核通过率"
+      ],
+      "mustExceptions": [
+        "字段缺失",
+        "流程超时",
+        "复核未完成",
+        "验收失败"
+      ],
+      "mustSkills": [
+        "gamification-design",
+        "learning-evaluation",
+        "skill-validator"
+      ],
+      "story": "产业知识场景中，知识产品经理小组围绕产业知识学习闭环做日常判断。知识产品经理小组需要围绕“产业知识学习闭环”完成“用任务、反馈和复盘提升知识掌握”，并把结果转成可验证的产品交付物。核心不是把页面做出来，而是把指标、异常、责任和行动连成闭环。"
+    }
+  ],
+  "projectName": "产品经理转型实操知识库",
+  "projectNameEn": "PM Transformation Hands-on Knowledge Base"
+}

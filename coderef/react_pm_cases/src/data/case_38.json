@@ -1,0 +1,88 @@
+{
+ "num": 38,
+ "title": "产品经理 Skill｜需求澄清流水线",
+ "industry": "企业协作",
+ "role": "产品负责人",
+ "saasType": "configuration",
+ "uiId": "ui_38_pm_skill_pipeline",
+ "slug": "pm_skill_pipeline",
+ "uiStrategy": "saas_workbench｜configuration｜中密度工作台",
+ "largeScreenRef": "不适用，采用专业 SaaS 工作台",
+ "components": [
+  "规则表单",
+  "参数分组",
+  "预览区",
+  "成本/风险提示",
+  "发布记录",
+  "回滚入口"
+ ],
+ "skills": [
+  "skill-builder",
+  "skill-validator",
+  "acceptance-criteria"
+ ],
+ "rp": null,
+ "highImpact": false,
+ "riskBoundary": "不得把 Skill 写成不可验证的长文本",
+ "decisionAction": "围绕需求澄清 Skill判断优先级、责任人和验收动作。",
+ "dataset": "outputs/07_skills/pm_skills.md",
+ "metricChainNames": [
+  "触发条件覆盖率",
+  "输入处理时长",
+  "澄清问题异常数",
+  "PRD 片段完成率",
+  "验收标准复核通过率"
+ ],
+ "exceptionStates": [
+  "字段缺失",
+  "流程超时",
+  "复核未完成",
+  "验收失败"
+ ],
+ "fields": [
+  "触发条件",
+  "输入",
+  "澄清问题",
+  "PRD 片段",
+  "验收标准",
+  "复用范围"
+ ],
+ "kpis": [
+  {
+   "name": "触发条件覆盖率",
+   "value": 22,
+   "unit": "%"
+  },
+  {
+   "name": "输入处理时长",
+   "value": 33,
+   "unit": ""
+  },
+  {
+   "name": "澄清问题异常数",
+   "value": 44,
+   "unit": ""
+  },
+  {
+   "name": "PRD 片段完成率",
+   "value": 55,
+   "unit": "%"
+  },
+  {
+   "name": "验收标准复核通过率",
+   "value": 66,
+   "unit": "%"
+  }
+ ],
+ "queue": [],
+ "chart": {
+  "type": "sparkline",
+  "data": []
+ },
+ "rowCount": 46,
+ "exceptionCount": 0,
+ "responsible": [
+  "—"
+ ],
+ "actions": []
+}
