@@ -98,6 +98,16 @@ ok(); if (!has('code/server/services/openapi.ts') || !/openapi\.json/.test(rd('c
 ok(); if (!tut.includes('数字化系统全景')) bad('教程缺「数字化系统全景」章');
 ok(); if (!has('outputs/product_case_library/svg/fig_system_panorama.svg')) bad('缺系统全景 SVG');
 ok(); if ((tut.match(/在数字化系统中的位置/g) || []).length < defs.cases.length) bad('案例未全部标注系统位置');
+// 维度 B/C：概念实验室 + 产品化前端
+for (const f of ['code/web/src/lab.tsx', 'code/web/src/pages.tsx', 'code/web/src/chart3d.tsx']) { ok(); if (!has(f)) bad('缺前端文件 ' + f); }
+const lab = rd('code/web/src/lab.tsx');
+for (const k of ['tokenizer', 'context', 'rag', 'agent']) { ok(); if (!lab.includes(k + ':')) bad(`概念实验室缺 ${k} 交互`); }
+ok(); if (!/data-theme|useTheme/.test(rd('code/web/src/App.tsx'))) bad('缺亮/暗主题切换');
+const pg = rd('code/web/src/pages.tsx');
+ok(); if (!/PrincipleIndex/.test(pg)) bad('缺原理索引双向溯源');
+ok(); if (!/ApiDocs|openapi/i.test(pg)) bad('缺在线 API 文档页');
+ok(); if (!/lazy\(\(\) => import\('\.\/chart3d'\)\)/.test(rd('code/web/src/screens.tsx'))) bad('three.js 未懒加载(代码分割)');
+ok(); if (!/focus-visible/.test(rd('code/web/src/index.css'))) bad('缺 a11y 焦点可达样式');
 
 console.log(`\n检查 ${checks} 项，失败 ${fail} 项`);
 if (fail) { console.log('\n✗ NOT GREEN'); process.exit(1); }

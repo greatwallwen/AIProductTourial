@@ -1,6 +1,7 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
 import { fetchSearch, fetchDbQuery, fetchPoints3d, fetchHealth } from './lib/api';
+// three.js 独立 chunk，仅在渲染 3D 案例时动态加载（首屏不含 three）
+const Chart3D = lazy(() => import('./chart3d'));
 
 // 架构/向量库/PG/3D 案例的「真实后端」案例屏：全部 live 调后端接口。
 
@@ -86,28 +87,7 @@ function ArchScreen() {
   );
 }
 
-// —— three.js 3D 散点（R3F）：调 /api/points3d 渲染真实经营数据点 ——
-function Cloud({ points }: { points: Array<{ x: number; y: number; z: number; c: number }> }) {
-  const ref = useRef<any>(null);
-  useFrame((_, dt) => { if (ref.current) ref.current.rotation.y += dt * 0.16; });
-  const { positions, colors } = useMemo(() => {
-    const xs = points.map((p) => p.x), ys = points.map((p) => p.y), zs = points.map((p) => p.z);
-    const nrm = (v: number, a: number[]) => { const mn = Math.min(...a), mx = Math.max(...a); return ((v - mn) / ((mx - mn) || 1)) * 2 - 1; };
-    const pal = [[0.2, 0.83, 0.6], [0.98, 0.75, 0.14], [0.4, 0.7, 1], [0.66, 0.33, 0.97], [0.94, 0.44, 0.44]];
-    const pos = new Float32Array(points.length * 3), col = new Float32Array(points.length * 3);
-    points.forEach((p, i) => { pos[i * 3] = nrm(p.x, xs); pos[i * 3 + 1] = nrm(p.y, ys); pos[i * 3 + 2] = nrm(p.z, zs); const c = pal[p.c % pal.length]; col[i * 3] = c[0]; col[i * 3 + 1] = c[1]; col[i * 3 + 2] = c[2]; });
-    return { positions: pos, colors: col };
-  }, [points]);
-  return (
-    <points ref={ref}>
-      <bufferGeometry>
-        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
-        <bufferAttribute attach="attributes-color" args={[colors, 3]} />
-      </bufferGeometry>
-      <pointsMaterial size={0.07} vertexColors sizeAttenuation transparent opacity={0.9} />
-    </points>
-  );
-}
+// —— three.js 3D 散点：真三维在独立 chunk（chart3d.tsx，懒加载）；无 WebGL 退化为等距投影伪 3D ——
 // 无 WebGL（如无头环境）时退化为等距投影伪 3D 散点（同一份真实数据点）
 function PseudoScatter({ points }: { points: Array<{ x: number; y: number; z: number; c: number }> }) {
   const W = 760, H = 420, cx = W / 2, cy = H / 2 + 60;
@@ -137,10 +117,7 @@ function ThreeScreen() {
     <section className="card">
       <div className="card-h"><h2>三维经营散点 · three.js</h2><span className="muted">{d?.count ?? '…'} 点 · 单价×数量×金额，色=品类 · /api/points3d{!hasWebGL && ' · 等距投影(无 WebGL)'}</span></div>
       <div style={{ height: 440, borderRadius: 10, overflow: 'hidden', background: 'var(--bg2)' }}>
-        {d && hasWebGL && <Canvas camera={{ position: [2.6, 1.9, 2.6], fov: 50 }} gl={{ antialias: true }}>
-          <ambientLight intensity={0.9} />
-          <Cloud points={d.points} />
-        </Canvas>}
+        {d && hasWebGL && <Suspense fallback={<div className="muted" style={{ padding: 20 }}>加载 three.js…</div>}><Chart3D points={d.points} /></Suspense>}
         {d && !hasWebGL && <PseudoScatter points={d.points} />}
       </div>
     </section>

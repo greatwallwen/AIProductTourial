@@ -4,6 +4,35 @@ import { Routes, Route, NavLink, useParams, Navigate } from 'react-router-dom';
 import themesData from './themes.json';
 import { fetchIndex, fetchCaseData, type IndexData } from './lib/api';
 import { SpecialScreen } from './screens';
+import { LabPage } from './lab';
+import { Home, Search, PrincipleIndex, ApiDocs } from './pages';
+
+// 亮/暗主题：切换 <html data-theme> 并持久化
+function useTheme(): [string, () => void] {
+  const [theme, setTheme] = useState<string>(() => localStorage.getItem('pmkb-theme') || 'dark');
+  useEffect(() => { document.documentElement.dataset.theme = theme; localStorage.setItem('pmkb-theme', theme); }, [theme]);
+  return [theme, () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))];
+}
+
+function TopNav() {
+  const [theme, toggle] = useTheme();
+  const link = ({ isActive }: { isActive: boolean }) => 'topnav-link' + (isActive ? ' on' : '');
+  return (
+    <header className="topnav">
+      <nav aria-label="主导航" style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
+        <NavLink to="/" end className={link}>首页</NavLink>
+        <NavLink to="/cases" className={link}>案例</NavLink>
+        <NavLink to="/lab/tokenizer" className={link}>概念实验室</NavLink>
+        <NavLink to="/principles" className={link}>原理索引</NavLink>
+        <NavLink to="/api-docs" className={link}>API 文档</NavLink>
+      </nav>
+      <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+        <NavLink to="/search" className="topnav-link" aria-label="搜索">🔍 搜索</NavLink>
+        <button className="topnav-link" onClick={toggle} aria-label="切换亮暗主题">{theme === 'dark' ? '☀ 亮色' : '☾ 暗色'}</button>
+      </div>
+    </header>
+  );
+}
 
 // 多套设计系统令牌（单一来源 design/themes.json）：按案例 design 注入 CSS 变量，故各案例配色各异
 const THEMES: Record<string, any> = {};
@@ -263,9 +292,16 @@ export default function App() {
     <div className="shell">
       <Sidebar idx={idx} />
       <main className="main">
+        <TopNav />
         <Routes>
-          <Route path="/" element={<Overview idx={idx} />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/cases" element={<Overview idx={idx} />} />
           <Route path="/case/:num" element={<CaseScreen />} />
+          <Route path="/lab" element={<LabPage />} />
+          <Route path="/lab/:demo" element={<LabPage />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/principles" element={<PrincipleIndex />} />
+          <Route path="/api-docs" element={<ApiDocs />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </main>
