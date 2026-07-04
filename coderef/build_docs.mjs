@@ -15,37 +15,84 @@ const vm = (n) => JSON.parse(readFileSync(join(ROOT, 'coderef', 'react_pm_cases'
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const theme = (id) => THEMES[id] || THEMES['graphite-hud'];
 
-// 每案例深色大屏风信息图（按案例 design 上色 → 各案例风格各异）
+// 状态严重度 → 主题色
+function sevColor(t, s) {
+  if (/严重|高|越界|拒|失败|未闭环|未达成|超时|不足|待复核|越权/.test(s)) return t.bad;
+  if (/预警|中|滞销|阻塞|待|下滑|异常/.test(s)) return t.warn;
+  if (/GREEN|通过|正常|完成/.test(s)) return t.ok;
+  return t.accent2;
+}
+// 数据驱动图表面板（柱/漏斗/管线/折线），含网格、坐标轴、数值、标签
+function chartSvg(t, chart, X, Y, W, H) {
+  const base = Y + H - 22, top = Y + 6, ph = base - top;
+  if (!chart || !chart.data || !chart.data.length) return `<text x="${X + W / 2}" y="${Y + H / 2}" font-size="11" fill="${t.muted}" text-anchor="middle">无图表数据</text>`;
+  const grid = [0.25, 0.5, 0.75, 1].map((f) => `<line x1="${X}" y1="${(base - ph * f).toFixed(1)}" x2="${X + W}" y2="${(base - ph * f).toFixed(1)}" stroke="${t.grid}" stroke-dasharray="2 3"/>`).join('');
+  const axis = `<line x1="${X}" y1="${base}" x2="${X + W}" y2="${base}" stroke="${t.border}"/><line x1="${X}" y1="${top}" x2="${X}" y2="${base}" stroke="${t.border}"/>`;
+  if (chart.type === 'bars' || chart.type === 'pipeline') {
+    const key = chart.type === 'bars' ? 'value' : 'count', lab = chart.type === 'bars' ? 'label' : 'stage';
+    const data = chart.data.slice(0, 7); const max = Math.max(...data.map((x) => x[key])) || 1; const bw = (W - 12) / data.length;
+    const bars = data.map((x, i) => { const h = (x[key] / max) * ph; const bx = X + 6 + i * bw; return `<rect x="${bx.toFixed(1)}" y="${(base - h).toFixed(1)}" width="${(bw - 10).toFixed(1)}" height="${h.toFixed(1)}" rx="3" fill="${t.accent}" opacity="0.9"/><text x="${(bx + (bw - 10) / 2).toFixed(1)}" y="${(base - h - 4).toFixed(1)}" font-size="8.5" fill="${t.ink2}" text-anchor="middle">${esc(String(x[key]))}</text><text x="${(bx + (bw - 10) / 2).toFixed(1)}" y="${base + 13}" font-size="8" fill="${t.muted}" text-anchor="middle">${esc(String(x[lab] ?? '').slice(0, 5))}</text>`; }).join('');
+    return grid + axis + bars;
+  }
+  if (chart.type === 'funnel') {
+    const data = chart.data.slice(0, 7); const max = data[0].value || 1; const rh = ph / data.length;
+    return grid + data.map((x, i) => { const w = (x.value / max) * W; return `<rect x="${(X + (W - w) / 2).toFixed(1)}" y="${(top + i * rh + 2).toFixed(1)}" width="${w.toFixed(1)}" height="${(rh - 5).toFixed(1)}" rx="3" fill="${t.accent}" opacity="${(0.9 - i * 0.08).toFixed(2)}"/><text x="${X + W / 2}" y="${(top + i * rh + rh / 2 + 3).toFixed(1)}" font-size="9" fill="#04121a" text-anchor="middle" font-weight="700">${esc(String(x.stage))} · ${esc(String(x.value))}</text>`; }).join('');
+  }
+  const ys = chart.data.map((x) => x.y); const mx = Math.max(...ys), mn = Math.min(...ys);
+  const pts = chart.data.map((x, i) => `${(X + (i / (chart.data.length - 1)) * W).toFixed(1)},${(base - ((x.y - mn) / ((mx - mn) || 1)) * ph).toFixed(1)}`);
+  return grid + axis + `<polygon points="${X},${base} ${pts.join(' ')} ${X + W},${base}" fill="${t.accent}" opacity="0.12"/><polyline points="${pts.join(' ')}" fill="none" stroke="${t.accent}" stroke-width="2.5" filter="url(#glow)"/>` + chart.data.map((x, i) => `<circle cx="${(X + (i / (chart.data.length - 1)) * W).toFixed(1)}" cy="${(base - ((x.y - mn) / ((mx - mn) || 1)) * ph).toFixed(1)}" r="2.5" fill="${t.accent2}"/>`).join('');
+}
+// 每案例深色大屏风信息图（专业级：头部/KPI/数据驱动图表/严重度队列/行动·决策；按案例 design 上色）
 function svg(c, d) {
   const t = theme(c.design);
-  const W = 960, H = 560, kx = (i) => 40 + i * 178;
-  const kpis = d.kpis.slice(0, 5).map((k, i) => `
-   <rect x="${kx(i)}" y="104" width="162" height="76" rx="10" fill="${t.panel}" stroke="${t.border}"/>
-   <rect x="${kx(i)}" y="104" width="162" height="2" fill="${t.accent}"/>
-   <text x="${kx(i) + 12}" y="128" font-size="11" fill="${t.muted}">${esc(k.name).slice(0, 10)}</text>
-   <text x="${kx(i) + 12}" y="160" font-size="23" font-weight="750" fill="${t.ink}">${esc(String(k.value))}${esc(k.unit || '')}</text>`).join('');
-  const q = d.queue.slice(0, 5).map((row, i) => `
-   <rect x="40" y="${248 + i * 42}" width="520" height="34" rx="7" fill="${t.panelSoft}" stroke="${t.border}"/>
-   <rect x="52" y="${256 + i * 42}" width="78" height="18" rx="5" fill="${t.bad}" opacity="0.22"/>
-   <text x="60" y="${269 + i * 42}" font-size="10.5" fill="${t.bad}" font-weight="700">${esc(row.state).slice(0, 6)}</text>
-   <text x="144" y="${269 + i * 42}" font-size="11" fill="${t.ink2}">${esc(Object.values(row.fields)[0] || '')} · ${esc(row.owner || '')}</text>`).join('');
+  const W = 1000, H = 620, kpiY = 116, kx = (i) => 36 + i * 190;
+  const kpis = d.kpis.slice(0, 5).map((k, i) => {
+    const tr = String(k.trend || ''); const up = tr.startsWith('+'); const tc = up ? t.ok : t.bad;
+    return `<rect x="${kx(i)}" y="${kpiY}" width="176" height="82" rx="11" fill="${t.panel}" stroke="${t.border}"/>
+    <rect x="${kx(i)}" y="${kpiY}" width="176" height="3" rx="1.5" fill="url(#acc)"/>
+    <circle cx="${kx(i) + 20}" cy="${kpiY + 23}" r="7" fill="none" stroke="${t.accent}" stroke-width="1.5"/><circle cx="${kx(i) + 20}" cy="${kpiY + 23}" r="2.5" fill="${t.accent}"/>
+    <text x="${kx(i) + 34}" y="${kpiY + 27}" font-size="10.5" fill="${t.muted}">${esc(k.name).slice(0, 9)}</text>
+    <text x="${kx(i) + 14}" y="${kpiY + 60}" font-size="24" font-weight="750" fill="${t.ink}">${esc(String(k.value))}<tspan font-size="12" fill="${t.muted}">${esc(k.unit || '')}</tspan></text>
+    ${tr ? `<text x="${kx(i) + 162}" y="${kpiY + 60}" font-size="11" fill="${tc}" text-anchor="end">${up ? '▲' : '▼'}${esc(tr.replace(/^[+-]/, ''))}</text>` : ''}`;
+  }).join('');
+  const q = d.queue.slice(0, 5).map((row, i) => { const sc = sevColor(t, row.state); const y = 264 + i * 34; return `
+    <rect x="524" y="${y}" width="440" height="28" rx="7" fill="${t.panelSoft}" stroke="${t.border}"/>
+    <rect x="532" y="${y + 7}" width="4" height="14" rx="2" fill="${sc}"/>
+    <rect x="544" y="${y + 6}" width="70" height="16" rx="5" fill="${sc}" opacity="0.2"/><text x="550" y="${y + 18}" font-size="9.5" fill="${sc}" font-weight="700">${esc(row.state).slice(0, 6)}</text>
+    <text x="624" y="${y + 18}" font-size="10" fill="${t.ink2}">${esc(String(Object.values(row.fields || {})[0] || '')).slice(0, 16)}</text>
+    <rect x="884" y="${y + 6}" width="72" height="16" rx="8" fill="${t.accent2}" opacity="0.16"/><text x="920" y="${y + 18}" font-size="9.5" fill="${t.accent2}" text-anchor="middle">${esc(row.owner || '—').slice(0, 6)}</text>`; }).join('');
   const acts = d.actions.slice(0, 3).map((a, i) => `
-   <rect x="${592 + i * 122}" y="248" width="110" height="42" rx="9" fill="${t.accent}"/>
-   <text x="${592 + i * 122 + 12}" y="273" font-size="11" fill="#04121a" font-weight="700">${esc(a.label).slice(0, 8)}</text>`).join('');
+    <rect x="${36 + i * 180}" y="548" width="168" height="46" rx="10" fill="url(#acc)"/>
+    <text x="${36 + i * 180 + 14}" y="569" font-size="11.5" fill="#04121a" font-weight="750">${esc(a.label).slice(0, 10)}</text>
+    <text x="${36 + i * 180 + 14}" y="584" font-size="9" fill="#04121a" opacity="0.75">${esc((a.owner || '') + ' · ' + (a.due || ''))}</text>`).join('');
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" font-family="PingFang SC,Microsoft YaHei,sans-serif">
-  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${t.bg}"/><stop offset="1" stop-color="${t.bg2}"/></linearGradient>
-  <pattern id="grid" width="26" height="26" patternUnits="userSpaceOnUse"><path d="M26 0H0V26" fill="none" stroke="${t.grid}" stroke-width="1"/></pattern></defs>
-  <rect width="${W}" height="${H}" fill="url(#bg)"/><rect width="${W}" height="${H}" fill="url(#grid)" opacity="0.5"/>
-  <text x="40" y="50" font-size="21" font-weight="750" fill="${t.ink}">${esc(c.scenario)}</text>
-  <text x="40" y="74" font-size="12" fill="${t.ink2}">${esc(c.industry)} · ${esc(c.saasType)} · 设计 ${esc(c.design)} · 数据 ${esc(c.dataset)}（${d.rowCount} 行，异常 ${d.exceptionCount}）</text>
-  <text x="40" y="96" font-size="11" fill="${t.muted}">读图顺序：指标链 → 异常队列与责任对象 → 行动入口与验收边界</text>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${t.bg}"/><stop offset="1" stop-color="${t.bg2}"/></linearGradient>
+    <linearGradient id="acc" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${t.accent}"/><stop offset="1" stop-color="${t.accent2}"/></linearGradient>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="${t.grid}" stroke-width="1"/></pattern>
+    <filter id="glow"><feGaussianBlur stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="${W}" height="${H}" fill="url(#bg)"/><rect width="${W}" height="${H}" fill="url(#grid)" opacity="0.4"/>
+  <rect x="0" y="0" width="${W}" height="92" fill="${t.panel}" opacity="0.45"/>
+  <rect x="36" y="28" width="4" height="36" rx="2" fill="url(#acc)"/>
+  <text x="50" y="46" font-size="22" font-weight="750" fill="${t.ink}">${esc(c.scenario)}</text>
+  <text x="50" y="70" font-size="11.5" fill="${t.ink2}">${esc(c.industry)} · ${esc(c.saasType)} · 数据 ${esc(c.dataset)}（${d.rowCount} 行 · 异常 ${d.exceptionCount}）</text>
+  <rect x="${W - 258}" y="26" width="222" height="22" rx="11" fill="${t.panelSoft}" stroke="${t.border}"/><text x="${W - 147}" y="41" font-size="10" fill="${t.accent}" text-anchor="middle">设计 ${esc(c.design)} · ${esc(c.systemLayer || '')}·${esc(c.systemStage || '')}</text>
+  <text x="${W - 36}" y="70" font-size="9.5" fill="${t.muted}" text-anchor="end">读图：指标链 → 异常队列/责任 → 行动/验收</text>
   ${kpis}
-  <text x="40" y="230" font-size="12" font-weight="600" fill="${t.ink}">异常队列 · 责任对象</text>
-  <text x="592" y="230" font-size="12" font-weight="600" fill="${t.ink}">行动入口</text>
-  ${q}${acts}
-  <foreignObject x="592" y="308" width="330" height="150"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:11px;color:${t.ink2};line-height:1.6">决策动作：${esc(c.decisionAction)}<br/>风险边界：${esc(c.riskBoundary)}</div></foreignObject>
-  ${c.highImpact ? `<rect x="40" y="486" width="880" height="34" rx="8" fill="${t.warn}" opacity="0.14"/><text x="54" y="508" font-size="11.5" fill="${t.warn}">⚠ 高影响行业：保留人工复核，不得自动授信/处罚/诊断/拒绝交易</text>` : ''}
-  <text x="40" y="544" font-size="10.5" fill="${t.muted}">UI 原型 ${esc(c.uiId)} · 演示原理 ${(c.demonstrates || []).join(' · ')} · Skill ${esc(c.skills.join(' + '))}</text>
+  <rect x="24" y="216" width="476" height="230" rx="12" fill="${t.panel}" stroke="${t.border}"/>
+  <text x="40" y="240" font-size="12.5" font-weight="650" fill="${t.ink}">指标趋势 / 结构</text><rect x="40" y="246" width="28" height="2" fill="${t.accent}"/>
+  <text x="484" y="240" font-size="9.5" fill="${t.muted}" text-anchor="end">${esc((c.largeScreenRef || '').slice(0, 16))}</text>
+  ${chartSvg(t, d.chart, 44, 256, 432, 176)}
+  <rect x="512" y="216" width="464" height="230" rx="12" fill="${t.panel}" stroke="${t.border}"/>
+  <text x="528" y="240" font-size="12.5" font-weight="650" fill="${t.ink}">异常队列 · 责任对象</text><rect x="528" y="246" width="28" height="2" fill="${t.warn}"/>
+  <text x="960" y="240" font-size="9.5" fill="${t.muted}" text-anchor="end">${d.exceptionCount} 项 · 取前 ${Math.min(5, d.queue.length)}</text>
+  ${q}
+  ${c.highImpact ? `<rect x="36" y="460" width="940" height="30" rx="8" fill="${t.warn}" opacity="0.14"/><text x="50" y="479" font-size="11" fill="${t.warn}">⚠ 高影响行业：保留人工复核，不得自动授信/处罚/诊断/拒绝交易</text>` : `<text x="36" y="479" font-size="10.5" fill="${t.muted}">演示原理 ${(c.demonstrates || []).join(' · ')} · UI ${esc(c.uiId)} · Skill ${esc(c.skills.join(' + '))}</text>`}
+  <text x="36" y="522" font-size="11" fill="${t.muted}">行动入口 · 责任 · 时限</text>
+  ${acts}
+  <rect x="588" y="510" width="388" height="88" rx="10" fill="${t.panelSoft}" stroke="${t.border}"/>
+  <foreignObject x="602" y="516" width="360" height="76"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:10.5px;color:${t.ink2};line-height:1.5">决策动作：${esc(c.decisionAction)}<br/>风险边界：${esc(c.riskBoundary)}</div></foreignObject>
 </svg>`;
 }
 

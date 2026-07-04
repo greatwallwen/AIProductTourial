@@ -1,53 +1,78 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="PingFang SC,Microsoft YaHei,sans-serif">
-  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#06110d"/><stop offset="1" stop-color="#08140f"/></linearGradient>
-  <pattern id="grid" width="26" height="26" patternUnits="userSpaceOnUse"><path d="M26 0H0V26" fill="none" stroke="#123026" stroke-width="1"/></pattern></defs>
-  <rect width="960" height="560" fill="url(#bg)"/><rect width="960" height="560" fill="url(#grid)" opacity="0.5"/>
-  <text x="40" y="50" font-size="21" font-weight="750" fill="#e7f5ee">代码修复闭环</text>
-  <text x="40" y="74" font-size="12" fill="#9ac4b2">软件工程 · workflow_pipeline · 设计 emerald-flow · 数据 outputs/11_loop_engineering/loop_report_sample.json（3 行，异常 3）</text>
-  <text x="40" y="96" font-size="11" fill="#4f7a68">读图顺序：指标链 → 异常队列与责任对象 → 行动入口与验收边界</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" font-family="PingFang SC,Microsoft YaHei,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#06110d"/><stop offset="1" stop-color="#08140f"/></linearGradient>
+    <linearGradient id="acc" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#10b981"/><stop offset="1" stop-color="#34d399"/></linearGradient>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#123026" stroke-width="1"/></pattern>
+    <filter id="glow"><feGaussianBlur stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1000" height="620" fill="url(#bg)"/><rect width="1000" height="620" fill="url(#grid)" opacity="0.4"/>
+  <rect x="0" y="0" width="1000" height="92" fill="#0c1a14" opacity="0.45"/>
+  <rect x="36" y="28" width="4" height="36" rx="2" fill="url(#acc)"/>
+  <text x="50" y="46" font-size="22" font-weight="750" fill="#e7f5ee">代码修复闭环</text>
+  <text x="50" y="70" font-size="11.5" fill="#9ac4b2">软件工程 · workflow_pipeline · 数据 outputs/11_loop_engineering/loop_report_sample.json（3 行 · 异常 3）</text>
+  <rect x="742" y="26" width="222" height="22" rx="11" fill="#0a1712" stroke="#17342a"/><text x="853" y="41" font-size="10" fill="#10b981" text-anchor="middle">设计 emerald-flow · 业务应用·验收</text>
+  <text x="964" y="70" font-size="9.5" fill="#4f7a68" text-anchor="end">读图：指标链 → 异常队列/责任 → 行动/验收</text>
+  <rect x="36" y="116" width="176" height="82" rx="11" fill="#0c1a14" stroke="#17342a"/>
+    <rect x="36" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
+    <circle cx="56" cy="139" r="7" fill="none" stroke="#10b981" stroke-width="1.5"/><circle cx="56" cy="139" r="2.5" fill="#10b981"/>
+    <text x="70" y="143" font-size="10.5" fill="#4f7a68">Cycle覆盖率</text>
+    <text x="50" y="176" font-size="24" font-weight="750" fill="#e7f5ee">21<tspan font-size="12" fill="#4f7a68">%</tspan></text>
+    <rect x="226" y="116" width="176" height="82" rx="11" fill="#0c1a14" stroke="#17342a"/>
+    <rect x="226" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
+    <circle cx="246" cy="139" r="7" fill="none" stroke="#10b981" stroke-width="1.5"/><circle cx="246" cy="139" r="2.5" fill="#10b981"/>
+    <text x="260" y="143" font-size="10.5" fill="#4f7a68">builder处理</text>
+    <text x="240" y="176" font-size="24" font-weight="750" fill="#e7f5ee">28<tspan font-size="12" fill="#4f7a68"></tspan></text>
+    <rect x="416" y="116" width="176" height="82" rx="11" fill="#0c1a14" stroke="#17342a"/>
+    <rect x="416" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
+    <circle cx="436" cy="139" r="7" fill="none" stroke="#10b981" stroke-width="1.5"/><circle cx="436" cy="139" r="2.5" fill="#10b981"/>
+    <text x="450" y="143" font-size="10.5" fill="#4f7a68">checker异常</text>
+    <text x="430" y="176" font-size="24" font-weight="750" fill="#e7f5ee">35<tspan font-size="12" fill="#4f7a68"></tspan></text>
+    <rect x="606" y="116" width="176" height="82" rx="11" fill="#0c1a14" stroke="#17342a"/>
+    <rect x="606" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
+    <circle cx="626" cy="139" r="7" fill="none" stroke="#10b981" stroke-width="1.5"/><circle cx="626" cy="139" r="2.5" fill="#10b981"/>
+    <text x="640" y="143" font-size="10.5" fill="#4f7a68">失败项完成率</text>
+    <text x="620" y="176" font-size="24" font-weight="750" fill="#e7f5ee">42<tspan font-size="12" fill="#4f7a68">%</tspan></text>
+    <rect x="796" y="116" width="176" height="82" rx="11" fill="#0c1a14" stroke="#17342a"/>
+    <rect x="796" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
+    <circle cx="816" cy="139" r="7" fill="none" stroke="#10b981" stroke-width="1.5"/><circle cx="816" cy="139" r="2.5" fill="#10b981"/>
+    <text x="830" y="143" font-size="10.5" fill="#4f7a68">回归复核通过率</text>
+    <text x="810" y="176" font-size="24" font-weight="750" fill="#e7f5ee">49<tspan font-size="12" fill="#4f7a68">%</tspan></text>
+    
+  <rect x="24" y="216" width="476" height="230" rx="12" fill="#0c1a14" stroke="#17342a"/>
+  <text x="40" y="240" font-size="12.5" font-weight="650" fill="#e7f5ee">指标趋势 / 结构</text><rect x="40" y="246" width="28" height="2" fill="#10b981"/>
+  <text x="484" y="240" font-size="9.5" fill="#4f7a68" text-anchor="end">不适用，采用专业 SaaS 工作</text>
+  <line x1="44" y1="373.0" x2="476" y2="373.0" stroke="#123026" stroke-dasharray="2 3"/><line x1="44" y1="336.0" x2="476" y2="336.0" stroke="#123026" stroke-dasharray="2 3"/><line x1="44" y1="299.0" x2="476" y2="299.0" stroke="#123026" stroke-dasharray="2 3"/><line x1="44" y1="262.0" x2="476" y2="262.0" stroke="#123026" stroke-dasharray="2 3"/><line x1="44" y1="410" x2="476" y2="410" stroke="#17342a"/><line x1="44" y1="262" x2="44" y2="410" stroke="#17342a"/><rect x="50.0" y="262.0" width="130.0" height="148.0" rx="3" fill="#10b981" opacity="0.9"/><text x="115.0" y="258.0" font-size="8.5" fill="#9ac4b2" text-anchor="middle">2</text><text x="115.0" y="423" font-size="8" fill="#4f7a68" text-anchor="middle">C1</text><rect x="190.0" y="336.0" width="130.0" height="74.0" rx="3" fill="#10b981" opacity="0.9"/><text x="255.0" y="332.0" font-size="8.5" fill="#9ac4b2" text-anchor="middle">1</text><text x="255.0" y="423" font-size="8" fill="#4f7a68" text-anchor="middle">C2</text><rect x="330.0" y="410.0" width="130.0" height="0.0" rx="3" fill="#10b981" opacity="0.9"/><text x="395.0" y="406.0" font-size="8.5" fill="#9ac4b2" text-anchor="middle">0</text><text x="395.0" y="423" font-size="8" fill="#4f7a68" text-anchor="middle">C3</text>
+  <rect x="512" y="216" width="464" height="230" rx="12" fill="#0c1a14" stroke="#17342a"/>
+  <text x="528" y="240" font-size="12.5" font-weight="650" fill="#e7f5ee">异常队列 · 责任对象</text><rect x="528" y="246" width="28" height="2" fill="#fbbf24"/>
+  <text x="960" y="240" font-size="9.5" fill="#4f7a68" text-anchor="end">3 项 · 取前 3</text>
   
-   <rect x="40" y="104" width="162" height="76" rx="10" fill="#0c1a14" stroke="#17342a"/>
-   <rect x="40" y="104" width="162" height="2" fill="#10b981"/>
-   <text x="52" y="128" font-size="11" fill="#4f7a68">Cycle覆盖率</text>
-   <text x="52" y="160" font-size="23" font-weight="750" fill="#e7f5ee">21%</text>
-   <rect x="218" y="104" width="162" height="76" rx="10" fill="#0c1a14" stroke="#17342a"/>
-   <rect x="218" y="104" width="162" height="2" fill="#10b981"/>
-   <text x="230" y="128" font-size="11" fill="#4f7a68">builder处理时</text>
-   <text x="230" y="160" font-size="23" font-weight="750" fill="#e7f5ee">28</text>
-   <rect x="396" y="104" width="162" height="76" rx="10" fill="#0c1a14" stroke="#17342a"/>
-   <rect x="396" y="104" width="162" height="2" fill="#10b981"/>
-   <text x="408" y="128" font-size="11" fill="#4f7a68">checker异常数</text>
-   <text x="408" y="160" font-size="23" font-weight="750" fill="#e7f5ee">35</text>
-   <rect x="574" y="104" width="162" height="76" rx="10" fill="#0c1a14" stroke="#17342a"/>
-   <rect x="574" y="104" width="162" height="2" fill="#10b981"/>
-   <text x="586" y="128" font-size="11" fill="#4f7a68">失败项完成率</text>
-   <text x="586" y="160" font-size="23" font-weight="750" fill="#e7f5ee">42%</text>
-   <rect x="752" y="104" width="162" height="76" rx="10" fill="#0c1a14" stroke="#17342a"/>
-   <rect x="752" y="104" width="162" height="2" fill="#10b981"/>
-   <text x="764" y="128" font-size="11" fill="#4f7a68">回归复核通过率</text>
-   <text x="764" y="160" font-size="23" font-weight="750" fill="#e7f5ee">49%</text>
-  <text x="40" y="230" font-size="12" font-weight="600" fill="#e7f5ee">异常队列 · 责任对象</text>
-  <text x="592" y="230" font-size="12" font-weight="600" fill="#e7f5ee">行动入口</text>
+    <rect x="524" y="264" width="440" height="28" rx="7" fill="#0a1712" stroke="#17342a"/>
+    <rect x="532" y="271" width="4" height="14" rx="2" fill="#fb7185"/>
+    <rect x="544" y="270" width="70" height="16" rx="5" fill="#fb7185" opacity="0.2"/><text x="550" y="282" font-size="9.5" fill="#fb7185" font-weight="700">失败</text>
+    <text x="624" y="282" font-size="10" fill="#9ac4b2">1</text>
+    <rect x="884" y="270" width="72" height="16" rx="8" fill="#34d399" opacity="0.16"/><text x="920" y="282" font-size="9.5" fill="#34d399" text-anchor="middle">fix-a</text>
+    <rect x="524" y="298" width="440" height="28" rx="7" fill="#0a1712" stroke="#17342a"/>
+    <rect x="532" y="305" width="4" height="14" rx="2" fill="#fb7185"/>
+    <rect x="544" y="304" width="70" height="16" rx="5" fill="#fb7185" opacity="0.2"/><text x="550" y="316" font-size="9.5" fill="#fb7185" font-weight="700">失败</text>
+    <text x="624" y="316" font-size="10" fill="#9ac4b2">2</text>
+    <rect x="884" y="304" width="72" height="16" rx="8" fill="#34d399" opacity="0.16"/><text x="920" y="316" font-size="9.5" fill="#34d399" text-anchor="middle">fix-b</text>
+    <rect x="524" y="332" width="440" height="28" rx="7" fill="#0a1712" stroke="#17342a"/>
+    <rect x="532" y="339" width="4" height="14" rx="2" fill="#34d399"/>
+    <rect x="544" y="338" width="70" height="16" rx="5" fill="#34d399" opacity="0.2"/><text x="550" y="350" font-size="9.5" fill="#34d399" font-weight="700">ALL GR</text>
+    <text x="624" y="350" font-size="10" fill="#9ac4b2">3</text>
+    <rect x="884" y="338" width="72" height="16" rx="8" fill="#34d399" opacity="0.16"/><text x="920" y="350" font-size="9.5" fill="#34d399" text-anchor="middle">fix-c</text>
+  <text x="36" y="479" font-size="10.5" fill="#4f7a68">演示原理 2.3 · 4.3 · UI ui_37_loop_engineering_flow · Skill loop-orchestrator + regression-guard + checker-report</text>
+  <text x="36" y="522" font-size="11" fill="#4f7a68">行动入口 · 责任 · 时限</text>
   
-   <rect x="40" y="248" width="520" height="34" rx="7" fill="#0a1712" stroke="#17342a"/>
-   <rect x="52" y="256" width="78" height="18" rx="5" fill="#fb7185" opacity="0.22"/>
-   <text x="60" y="269" font-size="10.5" fill="#fb7185" font-weight="700">失败</text>
-   <text x="144" y="269" font-size="11" fill="#9ac4b2">1 · fix-a</text>
-   <rect x="40" y="290" width="520" height="34" rx="7" fill="#0a1712" stroke="#17342a"/>
-   <rect x="52" y="298" width="78" height="18" rx="5" fill="#fb7185" opacity="0.22"/>
-   <text x="60" y="311" font-size="10.5" fill="#fb7185" font-weight="700">失败</text>
-   <text x="144" y="311" font-size="11" fill="#9ac4b2">2 · fix-b</text>
-   <rect x="40" y="332" width="520" height="34" rx="7" fill="#0a1712" stroke="#17342a"/>
-   <rect x="52" y="340" width="78" height="18" rx="5" fill="#fb7185" opacity="0.22"/>
-   <text x="60" y="353" font-size="10.5" fill="#fb7185" font-weight="700">ALL GR</text>
-   <text x="144" y="353" font-size="11" fill="#9ac4b2">3 · fix-c</text>
-   <rect x="592" y="248" width="110" height="42" rx="9" fill="#10b981"/>
-   <text x="604" y="273" font-size="11" fill="#04121a" font-weight="700">处置：字段缺失</text>
-   <rect x="714" y="248" width="110" height="42" rx="9" fill="#10b981"/>
-   <text x="726" y="273" font-size="11" fill="#04121a" font-weight="700">处置：流程超时</text>
-   <rect x="836" y="248" width="110" height="42" rx="9" fill="#10b981"/>
-   <text x="848" y="273" font-size="11" fill="#04121a" font-weight="700">处置：复核未完成</text>
-  <foreignObject x="592" y="308" width="330" height="150"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:11px;color:#9ac4b2;line-height:1.6">决策动作：围绕AI 修复闭环判断优先级、责任人和验收动作。<br/>风险边界：同一失败连续两轮必须停止</div></foreignObject>
-  
-  <text x="40" y="544" font-size="10.5" fill="#4f7a68">UI 原型 ui_37_loop_engineering_flow · 演示原理 2.3 · 4.3 · Skill loop-orchestrator + regression-guard + checker-report</text>
+    <rect x="36" y="548" width="168" height="46" rx="10" fill="url(#acc)"/>
+    <text x="50" y="569" font-size="11.5" fill="#04121a" font-weight="750">处置：字段缺失</text>
+    <text x="50" y="584" font-size="9" fill="#04121a" opacity="0.75">— · 1d</text>
+    <rect x="216" y="548" width="168" height="46" rx="10" fill="url(#acc)"/>
+    <text x="230" y="569" font-size="11.5" fill="#04121a" font-weight="750">处置：流程超时</text>
+    <text x="230" y="584" font-size="9" fill="#04121a" opacity="0.75">— · 2d</text>
+    <rect x="396" y="548" width="168" height="46" rx="10" fill="url(#acc)"/>
+    <text x="410" y="569" font-size="11.5" fill="#04121a" font-weight="750">处置：复核未完成</text>
+    <text x="410" y="584" font-size="9" fill="#04121a" opacity="0.75">— · 3d</text>
+  <rect x="588" y="510" width="388" height="88" rx="10" fill="#0a1712" stroke="#17342a"/>
+  <foreignObject x="602" y="516" width="360" height="76"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:10.5px;color:#9ac4b2;line-height:1.5">决策动作：围绕AI 修复闭环判断优先级、责任人和验收动作。<br/>风险边界：同一失败连续两轮必须停止</div></foreignObject>
 </svg>

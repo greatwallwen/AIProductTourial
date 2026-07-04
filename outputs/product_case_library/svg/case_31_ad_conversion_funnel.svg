@@ -1,61 +1,88 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="PingFang SC,Microsoft YaHei,sans-serif">
-  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b0a06"/><stop offset="1" stop-color="#12100a"/></linearGradient>
-  <pattern id="grid" width="26" height="26" patternUnits="userSpaceOnUse"><path d="M26 0H0V26" fill="none" stroke="#2a2110" stroke-width="1"/></pattern></defs>
-  <rect width="960" height="560" fill="url(#bg)"/><rect width="960" height="560" fill="url(#grid)" opacity="0.5"/>
-  <text x="40" y="50" font-size="21" font-weight="750" fill="#f6efe2">广告投放转化复盘</text>
-  <text x="40" y="74" font-size="12" fill="#c9b48f">广告投放 · sales_funnel_screen · 设计 amber-funnel · 数据 dataset/reference_data_analysis/18-ad_performance.csv（6 行，异常 6）</text>
-  <text x="40" y="96" font-size="11" fill="#7a6640">读图顺序：指标链 → 异常队列与责任对象 → 行动入口与验收边界</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" font-family="PingFang SC,Microsoft YaHei,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b0a06"/><stop offset="1" stop-color="#12100a"/></linearGradient>
+    <linearGradient id="acc" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f59e0b"/><stop offset="1" stop-color="#fbbf24"/></linearGradient>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#2a2110" stroke-width="1"/></pattern>
+    <filter id="glow"><feGaussianBlur stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1000" height="620" fill="url(#bg)"/><rect width="1000" height="620" fill="url(#grid)" opacity="0.4"/>
+  <rect x="0" y="0" width="1000" height="92" fill="#17130b" opacity="0.45"/>
+  <rect x="36" y="28" width="4" height="36" rx="2" fill="url(#acc)"/>
+  <text x="50" y="46" font-size="22" font-weight="750" fill="#f6efe2">广告投放转化复盘</text>
+  <text x="50" y="70" font-size="11.5" fill="#c9b48f">广告投放 · sales_funnel_screen · 数据 dataset/reference_data_analysis/18-ad_performance.csv（6 行 · 异常 6）</text>
+  <rect x="742" y="26" width="222" height="22" rx="11" fill="#141009" stroke="#3a2c14"/><text x="853" y="41" font-size="10" fill="#f59e0b" text-anchor="middle">设计 amber-funnel · 能力智能·洞察</text>
+  <text x="964" y="70" font-size="9.5" fill="#7a6640" text-anchor="end">读图：指标链 → 异常队列/责任 → 行动/验收</text>
+  <rect x="36" y="116" width="176" height="82" rx="11" fill="#17130b" stroke="#3a2c14"/>
+    <rect x="36" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
+    <circle cx="56" cy="139" r="7" fill="none" stroke="#f59e0b" stroke-width="1.5"/><circle cx="56" cy="139" r="2.5" fill="#f59e0b"/>
+    <text x="70" y="143" font-size="10.5" fill="#7a6640">线索数</text>
+    <text x="50" y="176" font-size="24" font-weight="750" fill="#f6efe2">6<tspan font-size="12" fill="#7a6640"></tspan></text>
+    <text x="198" y="176" font-size="11" fill="#f87171" text-anchor="end">▼6%</text><rect x="226" y="116" width="176" height="82" rx="11" fill="#17130b" stroke="#3a2c14"/>
+    <rect x="226" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
+    <circle cx="246" cy="139" r="7" fill="none" stroke="#f59e0b" stroke-width="1.5"/><circle cx="246" cy="139" r="2.5" fill="#f59e0b"/>
+    <text x="260" y="143" font-size="10.5" fill="#7a6640">商机转化率</text>
+    <text x="240" y="176" font-size="24" font-weight="750" fill="#f6efe2">99<tspan font-size="12" fill="#7a6640">%</tspan></text>
+    <text x="388" y="176" font-size="11" fill="#34d399" text-anchor="end">▲2%</text><rect x="416" y="116" width="176" height="82" rx="11" fill="#17130b" stroke="#3a2c14"/>
+    <rect x="416" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
+    <circle cx="436" cy="139" r="7" fill="none" stroke="#f59e0b" stroke-width="1.5"/><circle cx="436" cy="139" r="2.5" fill="#f59e0b"/>
+    <text x="450" y="143" font-size="10.5" fill="#7a6640">合同金额</text>
+    <text x="430" y="176" font-size="24" font-weight="750" fill="#f6efe2">119575<tspan font-size="12" fill="#7a6640"></tspan></text>
+    <text x="578" y="176" font-size="11" fill="#34d399" text-anchor="end">▲9%</text><rect x="606" y="116" width="176" height="82" rx="11" fill="#17130b" stroke="#3a2c14"/>
+    <rect x="606" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
+    <circle cx="626" cy="139" r="7" fill="none" stroke="#f59e0b" stroke-width="1.5"/><circle cx="626" cy="139" r="2.5" fill="#f59e0b"/>
+    <text x="640" y="143" font-size="10.5" fill="#7a6640">回款率</text>
+    <text x="620" y="176" font-size="24" font-weight="750" fill="#f6efe2">91<tspan font-size="12" fill="#7a6640">%</tspan></text>
+    <text x="768" y="176" font-size="11" fill="#f87171" text-anchor="end">▼7%</text><rect x="796" y="116" width="176" height="82" rx="11" fill="#17130b" stroke="#3a2c14"/>
+    <rect x="796" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
+    <circle cx="816" cy="139" r="7" fill="none" stroke="#f59e0b" stroke-width="1.5"/><circle cx="816" cy="139" r="2.5" fill="#f59e0b"/>
+    <text x="830" y="143" font-size="10.5" fill="#7a6640">客户跟进超时数</text>
+    <text x="810" y="176" font-size="24" font-weight="750" fill="#f6efe2">6<tspan font-size="12" fill="#7a6640"></tspan></text>
+    <text x="958" y="176" font-size="11" fill="#f87171" text-anchor="end">▼8%</text>
+  <rect x="24" y="216" width="476" height="230" rx="12" fill="#17130b" stroke="#3a2c14"/>
+  <text x="40" y="240" font-size="12.5" font-weight="650" fill="#f6efe2">指标趋势 / 结构</text><rect x="40" y="246" width="28" height="2" fill="#f59e0b"/>
+  <text x="484" y="240" font-size="9.5" fill="#7a6640" text-anchor="end">销售｜销售漏斗分析大屏</text>
+  <line x1="44" y1="373.0" x2="476" y2="373.0" stroke="#2a2110" stroke-dasharray="2 3"/><line x1="44" y1="336.0" x2="476" y2="336.0" stroke="#2a2110" stroke-dasharray="2 3"/><line x1="44" y1="299.0" x2="476" y2="299.0" stroke="#2a2110" stroke-dasharray="2 3"/><line x1="44" y1="262.0" x2="476" y2="262.0" stroke="#2a2110" stroke-dasharray="2 3"/><rect x="44.0" y="264.0" width="432.0" height="19.7" rx="3" fill="#f59e0b" opacity="0.90"/><text x="260" y="277.3" font-size="9" fill="#04121a" text-anchor="middle" font-weight="700">曝光 · 36</text><rect x="110.0" y="288.7" width="300.0" height="19.7" rx="3" fill="#f59e0b" opacity="0.82"/><text x="260" y="302.0" font-size="9" fill="#04121a" text-anchor="middle" font-weight="700">点击 · 25</text><rect x="164.0" y="313.3" width="192.0" height="19.7" rx="3" fill="#f59e0b" opacity="0.74"/><text x="260" y="326.7" font-size="9" fill="#04121a" text-anchor="middle" font-weight="700">加购 · 16</text><rect x="200.0" y="338.0" width="120.0" height="19.7" rx="3" fill="#f59e0b" opacity="0.66"/><text x="260" y="351.3" font-size="9" fill="#04121a" text-anchor="middle" font-weight="700">下单 · 10</text><rect x="224.0" y="362.7" width="72.0" height="19.7" rx="3" fill="#f59e0b" opacity="0.58"/><text x="260" y="376.0" font-size="9" fill="#04121a" text-anchor="middle" font-weight="700">支付 · 6</text><rect x="242.0" y="387.3" width="36.0" height="19.7" rx="3" fill="#f59e0b" opacity="0.50"/><text x="260" y="400.7" font-size="9" fill="#04121a" text-anchor="middle" font-weight="700">复购 · 3</text>
+  <rect x="512" y="216" width="464" height="230" rx="12" fill="#17130b" stroke="#3a2c14"/>
+  <text x="528" y="240" font-size="12.5" font-weight="650" fill="#f6efe2">异常队列 · 责任对象</text><rect x="528" y="246" width="28" height="2" fill="#f59e0b"/>
+  <text x="960" y="240" font-size="9.5" fill="#7a6640" text-anchor="end">6 项 · 取前 5</text>
   
-   <rect x="40" y="104" width="162" height="76" rx="10" fill="#17130b" stroke="#3a2c14"/>
-   <rect x="40" y="104" width="162" height="2" fill="#f59e0b"/>
-   <text x="52" y="128" font-size="11" fill="#7a6640">线索数</text>
-   <text x="52" y="160" font-size="23" font-weight="750" fill="#f6efe2">6</text>
-   <rect x="218" y="104" width="162" height="76" rx="10" fill="#17130b" stroke="#3a2c14"/>
-   <rect x="218" y="104" width="162" height="2" fill="#f59e0b"/>
-   <text x="230" y="128" font-size="11" fill="#7a6640">商机转化率</text>
-   <text x="230" y="160" font-size="23" font-weight="750" fill="#f6efe2">99%</text>
-   <rect x="396" y="104" width="162" height="76" rx="10" fill="#17130b" stroke="#3a2c14"/>
-   <rect x="396" y="104" width="162" height="2" fill="#f59e0b"/>
-   <text x="408" y="128" font-size="11" fill="#7a6640">合同金额</text>
-   <text x="408" y="160" font-size="23" font-weight="750" fill="#f6efe2">119575</text>
-   <rect x="574" y="104" width="162" height="76" rx="10" fill="#17130b" stroke="#3a2c14"/>
-   <rect x="574" y="104" width="162" height="2" fill="#f59e0b"/>
-   <text x="586" y="128" font-size="11" fill="#7a6640">回款率</text>
-   <text x="586" y="160" font-size="23" font-weight="750" fill="#f6efe2">91%</text>
-   <rect x="752" y="104" width="162" height="76" rx="10" fill="#17130b" stroke="#3a2c14"/>
-   <rect x="752" y="104" width="162" height="2" fill="#f59e0b"/>
-   <text x="764" y="128" font-size="11" fill="#7a6640">客户跟进超时数</text>
-   <text x="764" y="160" font-size="23" font-weight="750" fill="#f6efe2">6</text>
-  <text x="40" y="230" font-size="12" font-weight="600" fill="#f6efe2">异常队列 · 责任对象</text>
-  <text x="592" y="230" font-size="12" font-weight="600" fill="#f6efe2">行动入口</text>
+    <rect x="524" y="264" width="440" height="28" rx="7" fill="#141009" stroke="#3a2c14"/>
+    <rect x="532" y="271" width="4" height="14" rx="2" fill="#f59e0b"/>
+    <rect x="544" y="270" width="70" height="16" rx="5" fill="#f59e0b" opacity="0.2"/><text x="550" y="282" font-size="9.5" fill="#f59e0b" font-weight="700">转化率下滑</text>
+    <text x="624" y="282" font-size="10" fill="#c9b48f">信息流A</text>
+    <rect x="884" y="270" width="72" height="16" rx="8" fill="#fbbf24" opacity="0.16"/><text x="920" y="282" font-size="9.5" fill="#fbbf24" text-anchor="middle">风控-赵</text>
+    <rect x="524" y="298" width="440" height="28" rx="7" fill="#141009" stroke="#3a2c14"/>
+    <rect x="532" y="305" width="4" height="14" rx="2" fill="#fbbf24"/>
+    <rect x="544" y="304" width="70" height="16" rx="5" fill="#fbbf24" opacity="0.2"/><text x="550" y="316" font-size="9.5" fill="#fbbf24" font-weight="700">回款逾期</text>
+    <text x="624" y="316" font-size="10" fill="#c9b48f">信息流B</text>
+    <rect x="884" y="304" width="72" height="16" rx="8" fill="#fbbf24" opacity="0.16"/><text x="920" y="316" font-size="9.5" fill="#fbbf24" text-anchor="middle">客服-陈</text>
+    <rect x="524" y="332" width="440" height="28" rx="7" fill="#141009" stroke="#3a2c14"/>
+    <rect x="532" y="339" width="4" height="14" rx="2" fill="#f87171"/>
+    <rect x="544" y="338" width="70" height="16" rx="5" fill="#f87171" opacity="0.2"/><text x="550" y="350" font-size="9.5" fill="#f87171" font-weight="700">客户跟进超时</text>
+    <text x="624" y="350" font-size="10" fill="#c9b48f">搜索</text>
+    <rect x="884" y="338" width="72" height="16" rx="8" fill="#fbbf24" opacity="0.16"/><text x="920" y="350" font-size="9.5" fill="#fbbf24" text-anchor="middle">供应链-孙</text>
+    <rect x="524" y="366" width="440" height="28" rx="7" fill="#141009" stroke="#3a2c14"/>
+    <rect x="532" y="373" width="4" height="14" rx="2" fill="#fbbf24"/>
+    <rect x="544" y="372" width="70" height="16" rx="5" fill="#fbbf24" opacity="0.2"/><text x="550" y="384" font-size="9.5" fill="#fbbf24" font-weight="700">区域掉队</text>
+    <text x="624" y="384" font-size="10" fill="#c9b48f">社交</text>
+    <rect x="884" y="372" width="72" height="16" rx="8" fill="#fbbf24" opacity="0.16"/><text x="920" y="384" font-size="9.5" fill="#fbbf24" text-anchor="middle">数据-周</text>
+    <rect x="524" y="400" width="440" height="28" rx="7" fill="#141009" stroke="#3a2c14"/>
+    <rect x="532" y="407" width="4" height="14" rx="2" fill="#f59e0b"/>
+    <rect x="544" y="406" width="70" height="16" rx="5" fill="#f59e0b" opacity="0.2"/><text x="550" y="418" font-size="9.5" fill="#f59e0b" font-weight="700">转化率下滑</text>
+    <text x="624" y="418" font-size="10" fill="#c9b48f">联盟</text>
+    <rect x="884" y="406" width="72" height="16" rx="8" fill="#fbbf24" opacity="0.16"/><text x="920" y="418" font-size="9.5" fill="#fbbf24" text-anchor="middle">运营-李</text>
+  <text x="36" y="479" font-size="10.5" fill="#7a6640">演示原理 3.2 · 4.3 · UI ui_31_ad_conversion_funnel · Skill funnel-analysis + budget-decision + metric-definition</text>
+  <text x="36" y="522" font-size="11" fill="#7a6640">行动入口 · 责任 · 时限</text>
   
-   <rect x="40" y="248" width="520" height="34" rx="7" fill="#141009" stroke="#3a2c14"/>
-   <rect x="52" y="256" width="78" height="18" rx="5" fill="#f87171" opacity="0.22"/>
-   <text x="60" y="269" font-size="10.5" fill="#f87171" font-weight="700">转化率下滑</text>
-   <text x="144" y="269" font-size="11" fill="#c9b48f">信息流A · 风控-赵</text>
-   <rect x="40" y="290" width="520" height="34" rx="7" fill="#141009" stroke="#3a2c14"/>
-   <rect x="52" y="298" width="78" height="18" rx="5" fill="#f87171" opacity="0.22"/>
-   <text x="60" y="311" font-size="10.5" fill="#f87171" font-weight="700">回款逾期</text>
-   <text x="144" y="311" font-size="11" fill="#c9b48f">信息流B · 客服-陈</text>
-   <rect x="40" y="332" width="520" height="34" rx="7" fill="#141009" stroke="#3a2c14"/>
-   <rect x="52" y="340" width="78" height="18" rx="5" fill="#f87171" opacity="0.22"/>
-   <text x="60" y="353" font-size="10.5" fill="#f87171" font-weight="700">客户跟进超时</text>
-   <text x="144" y="353" font-size="11" fill="#c9b48f">搜索 · 供应链-孙</text>
-   <rect x="40" y="374" width="520" height="34" rx="7" fill="#141009" stroke="#3a2c14"/>
-   <rect x="52" y="382" width="78" height="18" rx="5" fill="#f87171" opacity="0.22"/>
-   <text x="60" y="395" font-size="10.5" fill="#f87171" font-weight="700">区域掉队</text>
-   <text x="144" y="395" font-size="11" fill="#c9b48f">社交 · 数据-周</text>
-   <rect x="40" y="416" width="520" height="34" rx="7" fill="#141009" stroke="#3a2c14"/>
-   <rect x="52" y="424" width="78" height="18" rx="5" fill="#f87171" opacity="0.22"/>
-   <text x="60" y="437" font-size="10.5" fill="#f87171" font-weight="700">转化率下滑</text>
-   <text x="144" y="437" font-size="11" fill="#c9b48f">联盟 · 运营-李</text>
-   <rect x="592" y="248" width="110" height="42" rx="9" fill="#f59e0b"/>
-   <text x="604" y="273" font-size="11" fill="#04121a" font-weight="700">处置：转化率下滑</text>
-   <rect x="714" y="248" width="110" height="42" rx="9" fill="#f59e0b"/>
-   <text x="726" y="273" font-size="11" fill="#04121a" font-weight="700">处置：回款逾期</text>
-   <rect x="836" y="248" width="110" height="42" rx="9" fill="#f59e0b"/>
-   <text x="848" y="273" font-size="11" fill="#04121a" font-weight="700">处置：客户跟进超</text>
-  <foreignObject x="592" y="308" width="330" height="150"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:11px;color:#c9b48f;line-height:1.6">决策动作：判断漏斗断点、回款风险和区域销售动作优先级。<br/>风险边界：不得只按点击率做预算决策</div></foreignObject>
-  
-  <text x="40" y="544" font-size="10.5" fill="#7a6640">UI 原型 ui_31_ad_conversion_funnel · 演示原理 3.2 · 4.3 · Skill funnel-analysis + budget-decision + metric-definition</text>
+    <rect x="36" y="548" width="168" height="46" rx="10" fill="url(#acc)"/>
+    <text x="50" y="569" font-size="11.5" fill="#04121a" font-weight="750">处置：转化率下滑</text>
+    <text x="50" y="584" font-size="9" fill="#04121a" opacity="0.75">风控-赵 · 1d</text>
+    <rect x="216" y="548" width="168" height="46" rx="10" fill="url(#acc)"/>
+    <text x="230" y="569" font-size="11.5" fill="#04121a" font-weight="750">处置：回款逾期</text>
+    <text x="230" y="584" font-size="9" fill="#04121a" opacity="0.75">客服-陈 · 3d</text>
+    <rect x="396" y="548" width="168" height="46" rx="10" fill="url(#acc)"/>
+    <text x="410" y="569" font-size="11.5" fill="#04121a" font-weight="750">处置：客户跟进超时</text>
+    <text x="410" y="584" font-size="9" fill="#04121a" opacity="0.75">供应链-孙 · 5d</text>
+  <rect x="588" y="510" width="388" height="88" rx="10" fill="#141009" stroke="#3a2c14"/>
+  <foreignObject x="602" y="516" width="360" height="76"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:10.5px;color:#c9b48f;line-height:1.5">决策动作：判断漏斗断点、回款风险和区域销售动作优先级。<br/>风险边界：不得只按点击率做预算决策</div></foreignObject>
 </svg>

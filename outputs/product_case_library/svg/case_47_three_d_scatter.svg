@@ -1,55 +1,80 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="PingFang SC,Microsoft YaHei,sans-serif">
-  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a0e14"/><stop offset="1" stop-color="#0d1220"/></linearGradient>
-  <pattern id="grid" width="26" height="26" patternUnits="userSpaceOnUse"><path d="M26 0H0V26" fill="none" stroke="#16202e" stroke-width="1"/></pattern></defs>
-  <rect width="960" height="560" fill="url(#bg)"/><rect width="960" height="560" fill="url(#grid)" opacity="0.5"/>
-  <text x="40" y="50" font-size="21" font-weight="750" fill="#e6edf6">经营三维散点可视化</text>
-  <text x="40" y="74" font-size="12" fill="#9fb0c3">数据可视化 · scene_3d · 设计 graphite-hud · 数据 dataset/order_data.csv（1200 行，异常 225）</text>
-  <text x="40" y="96" font-size="11" fill="#5b6b7f">读图顺序：指标链 → 异常队列与责任对象 → 行动入口与验收边界</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" font-family="PingFang SC,Microsoft YaHei,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a0e14"/><stop offset="1" stop-color="#0d1220"/></linearGradient>
+    <linearGradient id="acc" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#38bdf8"/></linearGradient>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#16202e" stroke-width="1"/></pattern>
+    <filter id="glow"><feGaussianBlur stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1000" height="620" fill="url(#bg)"/><rect width="1000" height="620" fill="url(#grid)" opacity="0.4"/>
+  <rect x="0" y="0" width="1000" height="92" fill="#121826" opacity="0.45"/>
+  <rect x="36" y="28" width="4" height="36" rx="2" fill="url(#acc)"/>
+  <text x="50" y="46" font-size="22" font-weight="750" fill="#e6edf6">经营三维散点可视化</text>
+  <text x="50" y="70" font-size="11.5" fill="#9fb0c3">数据可视化 · scene_3d · 数据 dataset/order_data.csv（1200 行 · 异常 225）</text>
+  <rect x="742" y="26" width="222" height="22" rx="11" fill="#0f1522" stroke="#1e2a3a"/><text x="853" y="41" font-size="10" fill="#22d3ee" text-anchor="middle">设计 graphite-hud · 底座平台·洞察</text>
+  <text x="964" y="70" font-size="9.5" fill="#5b6b7f" text-anchor="end">读图：指标链 → 异常队列/责任 → 行动/验收</text>
+  <rect x="36" y="116" width="176" height="82" rx="11" fill="#121826" stroke="#1e2a3a"/>
+    <rect x="36" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
+    <circle cx="56" cy="139" r="7" fill="none" stroke="#22d3ee" stroke-width="1.5"/><circle cx="56" cy="139" r="2.5" fill="#22d3ee"/>
+    <text x="70" y="143" font-size="10.5" fill="#5b6b7f">数据点数</text>
+    <text x="50" y="176" font-size="24" font-weight="750" fill="#e6edf6">1200<tspan font-size="12" fill="#5b6b7f"></tspan></text>
+    <text x="198" y="176" font-size="11" fill="#34d399" text-anchor="end">▲10%</text><rect x="226" y="116" width="176" height="82" rx="11" fill="#121826" stroke="#1e2a3a"/>
+    <rect x="226" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
+    <circle cx="246" cy="139" r="7" fill="none" stroke="#22d3ee" stroke-width="1.5"/><circle cx="246" cy="139" r="2.5" fill="#22d3ee"/>
+    <text x="260" y="143" font-size="10.5" fill="#5b6b7f">品类数</text>
+    <text x="240" y="176" font-size="24" font-weight="750" fill="#e6edf6">1200<tspan font-size="12" fill="#5b6b7f"></tspan></text>
+    <text x="388" y="176" font-size="11" fill="#34d399" text-anchor="end">▲10%</text><rect x="416" y="116" width="176" height="82" rx="11" fill="#121826" stroke="#1e2a3a"/>
+    <rect x="416" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
+    <circle cx="436" cy="139" r="7" fill="none" stroke="#22d3ee" stroke-width="1.5"/><circle cx="436" cy="139" r="2.5" fill="#22d3ee"/>
+    <text x="450" y="143" font-size="10.5" fill="#5b6b7f">最大金额</text>
+    <text x="430" y="176" font-size="24" font-weight="750" fill="#e6edf6">16630819<tspan font-size="12" fill="#5b6b7f"></tspan></text>
+    <text x="578" y="176" font-size="11" fill="#34d399" text-anchor="end">▲2%</text><rect x="606" y="116" width="176" height="82" rx="11" fill="#121826" stroke="#1e2a3a"/>
+    <rect x="606" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
+    <circle cx="626" cy="139" r="7" fill="none" stroke="#22d3ee" stroke-width="1.5"/><circle cx="626" cy="139" r="2.5" fill="#22d3ee"/>
+    <text x="640" y="143" font-size="10.5" fill="#5b6b7f">均价</text>
+    <text x="620" y="176" font-size="24" font-weight="750" fill="#e6edf6">720<tspan font-size="12" fill="#5b6b7f"></tspan></text>
+    <text x="768" y="176" font-size="11" fill="#34d399" text-anchor="end">▲10%</text>
+  <rect x="24" y="216" width="476" height="230" rx="12" fill="#121826" stroke="#1e2a3a"/>
+  <text x="40" y="240" font-size="12.5" font-weight="650" fill="#e6edf6">指标趋势 / 结构</text><rect x="40" y="246" width="28" height="2" fill="#22d3ee"/>
+  <text x="484" y="240" font-size="9.5" fill="#5b6b7f" text-anchor="end">数据｜三维经营散点大屏</text>
+  <line x1="44" y1="373.0" x2="476" y2="373.0" stroke="#16202e" stroke-dasharray="2 3"/><line x1="44" y1="336.0" x2="476" y2="336.0" stroke="#16202e" stroke-dasharray="2 3"/><line x1="44" y1="299.0" x2="476" y2="299.0" stroke="#16202e" stroke-dasharray="2 3"/><line x1="44" y1="262.0" x2="476" y2="262.0" stroke="#16202e" stroke-dasharray="2 3"/><line x1="44" y1="410" x2="476" y2="410" stroke="#1e2a3a"/><line x1="44" y1="262" x2="44" y2="410" stroke="#1e2a3a"/><polygon points="44,410 44.0,410.0 83.3,396.5 122.5,383.1 161.8,369.6 201.1,356.2 240.4,342.7 279.6,329.3 318.9,315.8 358.2,302.4 397.5,288.9 436.7,275.5 476.0,262.0 476,410" fill="#22d3ee" opacity="0.12"/><polyline points="44.0,410.0 83.3,396.5 122.5,383.1 161.8,369.6 201.1,356.2 240.4,342.7 279.6,329.3 318.9,315.8 358.2,302.4 397.5,288.9 436.7,275.5 476.0,262.0" fill="none" stroke="#22d3ee" stroke-width="2.5" filter="url(#glow)"/><circle cx="44.0" cy="410.0" r="2.5" fill="#38bdf8"/><circle cx="83.3" cy="396.5" r="2.5" fill="#38bdf8"/><circle cx="122.5" cy="383.1" r="2.5" fill="#38bdf8"/><circle cx="161.8" cy="369.6" r="2.5" fill="#38bdf8"/><circle cx="201.1" cy="356.2" r="2.5" fill="#38bdf8"/><circle cx="240.4" cy="342.7" r="2.5" fill="#38bdf8"/><circle cx="279.6" cy="329.3" r="2.5" fill="#38bdf8"/><circle cx="318.9" cy="315.8" r="2.5" fill="#38bdf8"/><circle cx="358.2" cy="302.4" r="2.5" fill="#38bdf8"/><circle cx="397.5" cy="288.9" r="2.5" fill="#38bdf8"/><circle cx="436.7" cy="275.5" r="2.5" fill="#38bdf8"/><circle cx="476.0" cy="262.0" r="2.5" fill="#38bdf8"/>
+  <rect x="512" y="216" width="464" height="230" rx="12" fill="#121826" stroke="#1e2a3a"/>
+  <text x="528" y="240" font-size="12.5" font-weight="650" fill="#e6edf6">异常队列 · 责任对象</text><rect x="528" y="246" width="28" height="2" fill="#fbbf24"/>
+  <text x="960" y="240" font-size="9.5" fill="#5b6b7f" text-anchor="end">225 项 · 取前 5</text>
   
-   <rect x="40" y="104" width="162" height="76" rx="10" fill="#121826" stroke="#1e2a3a"/>
-   <rect x="40" y="104" width="162" height="2" fill="#22d3ee"/>
-   <text x="52" y="128" font-size="11" fill="#5b6b7f">数据点数</text>
-   <text x="52" y="160" font-size="23" font-weight="750" fill="#e6edf6">1200</text>
-   <rect x="218" y="104" width="162" height="76" rx="10" fill="#121826" stroke="#1e2a3a"/>
-   <rect x="218" y="104" width="162" height="2" fill="#22d3ee"/>
-   <text x="230" y="128" font-size="11" fill="#5b6b7f">品类数</text>
-   <text x="230" y="160" font-size="23" font-weight="750" fill="#e6edf6">1200</text>
-   <rect x="396" y="104" width="162" height="76" rx="10" fill="#121826" stroke="#1e2a3a"/>
-   <rect x="396" y="104" width="162" height="2" fill="#22d3ee"/>
-   <text x="408" y="128" font-size="11" fill="#5b6b7f">最大金额</text>
-   <text x="408" y="160" font-size="23" font-weight="750" fill="#e6edf6">16630819</text>
-   <rect x="574" y="104" width="162" height="76" rx="10" fill="#121826" stroke="#1e2a3a"/>
-   <rect x="574" y="104" width="162" height="2" fill="#22d3ee"/>
-   <text x="586" y="128" font-size="11" fill="#5b6b7f">均价</text>
-   <text x="586" y="160" font-size="23" font-weight="750" fill="#e6edf6">720</text>
-  <text x="40" y="230" font-size="12" font-weight="600" fill="#e6edf6">异常队列 · 责任对象</text>
-  <text x="592" y="230" font-size="12" font-weight="600" fill="#e6edf6">行动入口</text>
+    <rect x="524" y="264" width="440" height="28" rx="7" fill="#0f1522" stroke="#1e2a3a"/>
+    <rect x="532" y="271" width="4" height="14" rx="2" fill="#38bdf8"/>
+    <rect x="544" y="270" width="70" height="16" rx="5" fill="#38bdf8" opacity="0.2"/><text x="550" y="282" font-size="9.5" fill="#38bdf8" font-weight="700">离群点</text>
+    <text x="624" y="282" font-size="10" fill="#9fb0c3">母婴</text>
+    <rect x="884" y="270" width="72" height="16" rx="8" fill="#38bdf8" opacity="0.16"/><text x="920" y="282" font-size="9.5" fill="#38bdf8" text-anchor="middle">产品-王</text>
+    <rect x="524" y="298" width="440" height="28" rx="7" fill="#0f1522" stroke="#1e2a3a"/>
+    <rect x="532" y="305" width="4" height="14" rx="2" fill="#38bdf8"/>
+    <rect x="544" y="304" width="70" height="16" rx="5" fill="#38bdf8" opacity="0.2"/><text x="550" y="316" font-size="9.5" fill="#38bdf8" font-weight="700">空品类</text>
+    <text x="624" y="316" font-size="10" fill="#9fb0c3">家居</text>
+    <rect x="884" y="304" width="72" height="16" rx="8" fill="#38bdf8" opacity="0.16"/><text x="920" y="316" font-size="9.5" fill="#38bdf8" text-anchor="middle">风控-赵</text>
+    <rect x="524" y="332" width="440" height="28" rx="7" fill="#0f1522" stroke="#1e2a3a"/>
+    <rect x="532" y="339" width="4" height="14" rx="2" fill="#38bdf8"/>
+    <rect x="544" y="338" width="70" height="16" rx="5" fill="#38bdf8" opacity="0.2"/><text x="550" y="350" font-size="9.5" fill="#38bdf8" font-weight="700">离群点</text>
+    <text x="624" y="350" font-size="10" fill="#9fb0c3">家居</text>
+    <rect x="884" y="338" width="72" height="16" rx="8" fill="#38bdf8" opacity="0.16"/><text x="920" y="350" font-size="9.5" fill="#38bdf8" text-anchor="middle">客服-陈</text>
+    <rect x="524" y="366" width="440" height="28" rx="7" fill="#0f1522" stroke="#1e2a3a"/>
+    <rect x="532" y="373" width="4" height="14" rx="2" fill="#38bdf8"/>
+    <rect x="544" y="372" width="70" height="16" rx="5" fill="#38bdf8" opacity="0.2"/><text x="550" y="384" font-size="9.5" fill="#38bdf8" font-weight="700">空品类</text>
+    <text x="624" y="384" font-size="10" fill="#9fb0c3">母婴</text>
+    <rect x="884" y="372" width="72" height="16" rx="8" fill="#38bdf8" opacity="0.16"/><text x="920" y="384" font-size="9.5" fill="#38bdf8" text-anchor="middle">供应链-孙</text>
+    <rect x="524" y="400" width="440" height="28" rx="7" fill="#0f1522" stroke="#1e2a3a"/>
+    <rect x="532" y="407" width="4" height="14" rx="2" fill="#38bdf8"/>
+    <rect x="544" y="406" width="70" height="16" rx="5" fill="#38bdf8" opacity="0.2"/><text x="550" y="418" font-size="9.5" fill="#38bdf8" font-weight="700">离群点</text>
+    <text x="624" y="418" font-size="10" fill="#9fb0c3">食品</text>
+    <rect x="884" y="406" width="72" height="16" rx="8" fill="#38bdf8" opacity="0.16"/><text x="920" y="418" font-size="9.5" fill="#38bdf8" text-anchor="middle">数据-周</text>
+  <text x="36" y="479" font-size="10.5" fill="#5b6b7f">演示原理 3.3 · 5.1 · UI ui_47_three_scatter · Skill capstone-product-flow + evidence-pack + traceability-check</text>
+  <text x="36" y="522" font-size="11" fill="#5b6b7f">行动入口 · 责任 · 时限</text>
   
-   <rect x="40" y="248" width="520" height="34" rx="7" fill="#0f1522" stroke="#1e2a3a"/>
-   <rect x="52" y="256" width="78" height="18" rx="5" fill="#f87171" opacity="0.22"/>
-   <text x="60" y="269" font-size="10.5" fill="#f87171" font-weight="700">离群点</text>
-   <text x="144" y="269" font-size="11" fill="#9fb0c3">母婴 · 产品-王</text>
-   <rect x="40" y="290" width="520" height="34" rx="7" fill="#0f1522" stroke="#1e2a3a"/>
-   <rect x="52" y="298" width="78" height="18" rx="5" fill="#f87171" opacity="0.22"/>
-   <text x="60" y="311" font-size="10.5" fill="#f87171" font-weight="700">空品类</text>
-   <text x="144" y="311" font-size="11" fill="#9fb0c3">家居 · 风控-赵</text>
-   <rect x="40" y="332" width="520" height="34" rx="7" fill="#0f1522" stroke="#1e2a3a"/>
-   <rect x="52" y="340" width="78" height="18" rx="5" fill="#f87171" opacity="0.22"/>
-   <text x="60" y="353" font-size="10.5" fill="#f87171" font-weight="700">离群点</text>
-   <text x="144" y="353" font-size="11" fill="#9fb0c3">家居 · 客服-陈</text>
-   <rect x="40" y="374" width="520" height="34" rx="7" fill="#0f1522" stroke="#1e2a3a"/>
-   <rect x="52" y="382" width="78" height="18" rx="5" fill="#f87171" opacity="0.22"/>
-   <text x="60" y="395" font-size="10.5" fill="#f87171" font-weight="700">空品类</text>
-   <text x="144" y="395" font-size="11" fill="#9fb0c3">母婴 · 供应链-孙</text>
-   <rect x="40" y="416" width="520" height="34" rx="7" fill="#0f1522" stroke="#1e2a3a"/>
-   <rect x="52" y="424" width="78" height="18" rx="5" fill="#f87171" opacity="0.22"/>
-   <text x="60" y="437" font-size="10.5" fill="#f87171" font-weight="700">离群点</text>
-   <text x="144" y="437" font-size="11" fill="#9fb0c3">食品 · 数据-周</text>
-   <rect x="592" y="248" width="110" height="42" rx="9" fill="#22d3ee"/>
-   <text x="604" y="273" font-size="11" fill="#04121a" font-weight="700">处置：离群点</text>
-   <rect x="714" y="248" width="110" height="42" rx="9" fill="#22d3ee"/>
-   <text x="726" y="273" font-size="11" fill="#04121a" font-weight="700">处置：空品类</text>
-  <foreignObject x="592" y="308" width="330" height="150"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:11px;color:#9fb0c3;line-height:1.6">决策动作：用 three.js/R3F 把经营数据渲染成可交互三维散点，暴露多维离群<br/>风险边界：三维仅作探索，不替代统计结论</div></foreignObject>
-  
-  <text x="40" y="544" font-size="10.5" fill="#5b6b7f">UI 原型 ui_47_three_scatter · 演示原理 3.3 · 5.1 · Skill capstone-product-flow + evidence-pack + traceability-check</text>
+    <rect x="36" y="548" width="168" height="46" rx="10" fill="url(#acc)"/>
+    <text x="50" y="569" font-size="11.5" fill="#04121a" font-weight="750">处置：离群点</text>
+    <text x="50" y="584" font-size="9" fill="#04121a" opacity="0.75">产品-王 · 1d</text>
+    <rect x="216" y="548" width="168" height="46" rx="10" fill="url(#acc)"/>
+    <text x="230" y="569" font-size="11.5" fill="#04121a" font-weight="750">处置：空品类</text>
+    <text x="230" y="584" font-size="9" fill="#04121a" opacity="0.75">风控-赵 · 3d</text>
+  <rect x="588" y="510" width="388" height="88" rx="10" fill="#0f1522" stroke="#1e2a3a"/>
+  <foreignObject x="602" y="516" width="360" height="76"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:10.5px;color:#9fb0c3;line-height:1.5">决策动作：用 three.js/R3F 把经营数据渲染成可交互三维散点，暴露多维离群<br/>风险边界：三维仅作探索，不替代统计结论</div></foreignObject>
 </svg>
