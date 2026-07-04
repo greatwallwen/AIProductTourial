@@ -23,3 +23,5 @@ export const fetchRfm = () => getJson<any>('/api/rfm');
 export const fetchHospital = () => getJson<any>('/api/hospital');
 
 export const fetchAdFunnel = () => getJson<any>('/api/adfunnel');
+
+export const fetchRiskReview = () => getJson<any>('/api/riskreview');

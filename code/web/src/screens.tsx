@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
-import { fetchSearch, fetchDbQuery, fetchPoints3d, fetchHealth, fetchRfm, fetchHospital, fetchAdFunnel } from './lib/api';
+import { fetchSearch, fetchDbQuery, fetchPoints3d, fetchHealth, fetchRfm, fetchHospital, fetchAdFunnel, fetchRiskReview } from './lib/api';
 // three.js 独立 chunk，仅在渲染 3D 案例时动态加载（首屏不含 three）
 const Chart3D = lazy(() => import('./chart3d'));
 
@@ -236,10 +236,48 @@ function AdFunnelScreen() {
   );
 }
 
+// —— 金融风控复核专属 demo（案例28，高影响）：风险分布 + 高优先复核队列（高风险×大金额），保留人工复核 ——
+function RiskScreen() {
+  const [d, setD] = useState<any>(null);
+  useEffect(() => { fetchRiskReview().then(setD); }, []);
+  if (!d) return <section className="card"><div className="muted">加载风控队列…</div></section>;
+  const lc: Record<string, string> = { '高': 'var(--bad)', '中': 'var(--warn)', '低': 'var(--ok)' };
+  return (
+    <>
+      <div className="banner" style={{ color: 'var(--bad)', borderColor: 'var(--bad)' }}>{d.total} 笔交易 · 高风险 <b>{d.highRate}%</b> · 待复核 {d.reviewRate}%。人工复核有限，按「风险等级 × 金额」优先——高影响行业：<b>保留人工复核，模型不得自动拒付</b>。</div>
+      <div className="cols">
+        <section className="card">
+          <div className="card-h"><h2>风险等级分布</h2><span className="muted">笔数 · 均金额</span></div>
+          {d.levels.map((x: any) => (
+            <div key={x.name} style={{ margin: '10px 0' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12 }}><span style={{ color: lc[x.name] || 'var(--ink)' }}>● {x.name}风险</span><span className="mono">{x.count} 笔 · 均 {x.avgAmt.toLocaleString('zh-CN')}</span></div>
+              <div style={{ height: 8, background: 'var(--panelSoft)', borderRadius: 4, marginTop: 3 }}><div style={{ width: `${(x.count / d.total) * 100}%`, height: '100%', background: lc[x.name] || 'var(--accent)', borderRadius: 4 }} /></div>
+            </div>
+          ))}
+        </section>
+        <section className="card">
+          <div className="card-h"><h2>高优先复核队列</h2><span className="muted">高风险 × 大金额 Top8</span></div>
+          <div className="tbl-wrap">
+            <table className="tbl">
+              <thead><tr><th>交易号</th><th>金额</th><th>渠道</th><th>风险信号</th><th>命中规则</th></tr></thead>
+              <tbody>
+                {d.priority.map((p: any, i: number) => (
+                  <tr key={i}><td className="mono cell">{p.txn}</td><td className="mono">{p.amt.toLocaleString('zh-CN')}</td><td>{p.ch}</td><td><span className="badge bad">{p.sig}</span></td><td className="mono">{p.rules}</td></tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </>
+  );
+}
+
 export function SpecialScreen({ screen }: { screen: string }) {
   if (screen === 'rfm') return <RfmScreen />;
   if (screen === 'capacity') return <HospitalScreen />;
   if (screen === 'adfunnel') return <AdFunnelScreen />;
+  if (screen === 'riskreview') return <RiskScreen />;
   if (screen === 'rag') return <RagScreen />;
   if (screen === 'db') return <DbScreen />;
   if (screen === 'arch') return <ArchScreen />;

@@ -88,3 +88,20 @@ export function adFunnel() {
   const channels = Object.entries(cm).map(([name, m]) => ({ name, imp: m.imp, clk: m.clk, cvt: m.cvt, cost: m.cost, ctr: Math.round(m.clk / Math.max(1, m.imp) * 10000) / 100, cvr: Math.round(m.cvt / Math.max(1, m.clk) * 10000) / 100, cpa: m.cvt ? Math.round(m.cost / m.cvt) : 0 })).sort((a, b) => b.cvr - a.cvr);
   return { channels, best: channels[0]?.name, worst: channels[channels.length - 1]?.name };
 }
+
+/** 金融风控复核真实分析（案例28 专属 demo）：按风险等级分布 + 高优先复核队列（高风险×大金额），高影响保留人工复核。 */
+export function riskReview() {
+  const t = parseCsv(join(ROOT, 'dataset', 'reference_data_analysis', '28-creditcardfraud_sample.csv'));
+  const ci = (n: string) => t.head.indexOf(n);
+  const [amt, ch, sig, lvl, rev, rules] = ['金额', '渠道', '风险信号', '风险等级', '复核', '命中规则数'].map(ci);
+  const rows = t.rows;
+  const lm: Record<string, { n: number; amt: number }> = {};
+  for (const r of rows) { const k = r[lvl] || '—'; (lm[k] ||= { n: 0, amt: 0 }); lm[k].n++; lm[k].amt += Number(r[amt]) || 0; }
+  const order = { '高': 0, '中': 1, '低': 2 } as any;
+  const levels = Object.entries(lm).map(([name, m]) => ({ name, count: m.n, avgAmt: Math.round(m.amt / m.n) })).sort((a, b) => (order[a.name] ?? 9) - (order[b.name] ?? 9));
+  const priority = rows.filter((r) => r[lvl] === '高').map((r) => ({ txn: r[0], amt: Number(r[amt]) || 0, ch: r[ch], sig: r[sig], rules: Number(r[rules]) || 0 })).sort((a, b) => b.amt - a.amt).slice(0, 8);
+  const total = rows.length;
+  const highRate = Math.round(rows.filter((r) => r[lvl] === '高').length / total * 1000) / 10;
+  const reviewRate = Math.round(rows.filter((r) => /待复核|是/.test(r[rev] || '')).length / total * 1000) / 10;
+  return { total, highRate, reviewRate, levels, priority };
+}
