@@ -25,8 +25,8 @@ export async function apiRoutes(app: any) {
   app.get('/api/openapi.json', async () => openapiSpec());
   app.get('/api/search', async (req: any) => {
     const q = String(req.query.q || 'product roadmap');
-    const v = getVs();
-    return { query: q, corpus: v.size, hits: v.search(q, 5) };
+    const r = getVs().search(q, 3, 10); // 召回 top-10 → 重排 top-3
+    return { ...r, hits: r.reranked.map((x: any) => ({ id: x.id, score: x.rerank, snippet: x.snippet })) };
   });
   app.get('/api/db/query', async (req: any) => {
     const region = req.query.region ? String(req.query.region) : null;

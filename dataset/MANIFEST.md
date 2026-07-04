@@ -26,3 +26,8 @@ JSON 产物（方法论案例输入）：outputs/05_harness/prototype_test_repor
 ## 网络下载真实图形（vendored）
 
 - `assets/vendor/lucide/`：**Lucide 图标**（来源 https://github.com/lucide-icons/lucide ，**ISC 许可**，见同目录 LICENSE）。10 个概念图标（brain/binary/layers/workflow/box/network/cpu/boxes 等）内联进 §1「AI 核心概念底层链路」图 fig_ai_foundations 加以优化。真实下载图形，非教学合成，已注明来源与许可。
+
+## AI agent 参考包（vendored 权威内容 + 真实原理图）
+
+- `docs/_source/reference/`：5 份权威讲解（AI基础/RAG/MCP/AI Agent/Agent Skill），源用户提供的 `AI agent/` 参考包，用于深化 §1。
+- `assets/vendor/aiagent/`：57 张**真实原理图**（源同上），已内嵌进 §1（Tokenizer/RAG 五环节/Prompt/Tool/ReAct）。真实素材，非教学合成，已注明来源。

@@ -41,11 +41,19 @@ export class VectorStore {
     for (const [t, x] of a) { const y = b.get(t); if (y) dot += x * y; }
     return na && nb ? dot / Math.sqrt(na * nb) : 0;
   }
-  search(query: string, k = 5): Array<{ id: string; score: number; snippet: string }> {
+  /** 两阶段 RAG：先 cosine 粗召回 top-N，再「cosine×词项覆盖」精排 top-k（模拟 Cross-Encoder 重排）。 */
+  search(query: string, k = 3, recallN = 10) {
     const qtf = new Map<string, number>(); for (const t of tokenize(query)) qtf.set(t, (qtf.get(t) || 0) + 1);
-    const qv = this.vec(qtf);
-    return this.docs.map((d) => ({ id: d.id, score: Number(this.cos(qv, this.vec(d.tf)).toFixed(4)), snippet: d.text.replace(/\s+/g, ' ').slice(0, 120) }))
-      .sort((a, b) => b.score - a.score).slice(0, k);
+    const qv = this.vec(qtf); const qterms = [...qtf.keys()];
+    // 召回：全库粗排（成本低、覆盖广）
+    const recall = this.docs.map((d) => {
+      const overlap = qterms.length ? qterms.filter((t) => d.tf.has(t)).length / qterms.length : 0;
+      return { id: d.id, cosine: Number(this.cos(qv, this.vec(d.tf)).toFixed(4)), overlap: Number(overlap.toFixed(3)), snippet: d.text.replace(/\s+/g, ' ').slice(0, 120) };
+    }).sort((a, b) => b.cosine - a.cosine).slice(0, recallN);
+    // 重排：精排（成本高、精度高）→ 锁定最相关 top-k
+    const reranked = recall.map((r) => ({ ...r, rerank: Number((r.cosine * (0.5 + 0.5 * r.overlap)).toFixed(4)) }))
+      .sort((a, b) => b.rerank - a.rerank).slice(0, k);
+    return { query, corpus: this.docs.length, recallN, k, recall, reranked };
   }
   get size(): number { return this.docs.length; }
 }

@@ -112,6 +112,11 @@ ok(); if (!/focus-visible/.test(rd('code/web/src/index.css'))) bad('缺 a11y 焦
 ok(); if (!has('assets/vendor/lucide/LICENSE')) bad('缺 vendored 真实图形(assets/vendor)');
 ok(); if (!/vendor/.test(rd('dataset/MANIFEST.md'))) bad('MANIFEST 未注明 vendored 图形来源/许可');
 ok(); if (!/loadIcon/.test(rd('code/tools/build_docs.mjs'))) bad('未用下载的真实图形优化图形');
+// 维度 B：aiagent 权威内容 vendored + §1 嵌真图 + RAG 两阶段重排
+ok(); if (readdirSync(join(ROOT, 'docs', '_source', 'reference')).filter((f) => f.endsWith('.md')).length < 5) bad('aiagent 参考文档 < 5');
+ok(); if (!has('assets/vendor/aiagent') || readdirSync(join(ROOT, 'assets', 'vendor', 'aiagent')).filter((f) => f.endsWith('.png')).length < 10) bad('aiagent 真实原理图 < 10');
+ok(); if ((tut.match(/aiagent\/image/g) || []).length < 5) bad('§1 未嵌入 aiagent 真实原理图');
+ok(); if (!/reranked/.test(rd('code/server/vector/store.ts')) || !/recallN/.test(rd('code/server/routes/api.ts'))) bad('RAG 未实现召回→重排两阶段');
 
 console.log(`\n检查 ${checks} 项，失败 ${fail} 项`);
 if (fail) { console.log('\n✗ NOT GREEN'); process.exit(1); }

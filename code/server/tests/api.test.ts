@@ -12,6 +12,8 @@ test('后端 API 全绿', async () => {
   assert.equal(d.statusCode, 200); assert.ok(d.json().kpis.length >= 3); assert.ok(d.json().rowCount > 0, '实时读 CSV 行数 > 0');
   const s = await app.inject({ url: '/api/search?q=product roadmap' });
   assert.ok(s.json().corpus > 0, '向量语料 > 0'); assert.ok(s.json().hits.length > 0, '检索命中 > 0');
+  assert.ok(s.json().recall.length >= s.json().reranked.length, '两阶段：召回 >= 重排');
+  assert.equal(s.json().recallN, 10, '粗召回 top-10');
   const q = await app.inject({ url: '/api/db/query' });
   assert.ok(q.json().rows.length > 0, 'SQLite 真实查询有结果');
   const tk = await app.inject({ url: '/api/tokenize?text=今天天气怎么样？Hello AI' });

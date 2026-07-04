@@ -76,10 +76,15 @@ function RagPlayground() {
           style={{ flex: 1, background: 'var(--panelSoft)', border: '1px solid var(--border)', borderRadius: 8, color: 'var(--ink)', padding: '8px 12px' }} />
         <button className="act-btn" onClick={run}>{loading ? '检索中…' : '检索'}</button>
       </div>
-      <div className="muted" style={{ marginBottom: 8 }}>语料 {res?.corpus ?? '…'} 篇 · 返回 top {res?.hits?.length ?? 0}</div>
-      {(res?.hits || []).map((h: any, i: number) => (
+      <div className="comp-row" style={{ marginBottom: 10 }}>
+        {['分片', '索引', `召回 top-${res?.recallN ?? 10}`, `重排 top-${res?.k ?? 3}`, '生成'].map((s, i) => (
+          <span key={i} className="chip soft">{i + 1}·{s}</span>
+        ))}
+      </div>
+      <div className="muted" style={{ marginBottom: 8 }}>语料 {res?.corpus ?? '…'} 篇 · <b>召回</b> {res?.recall?.length ?? 0} 条（cosine 粗排）→ <b>重排</b> {res?.reranked?.length ?? 0} 条（Cross-Encoder 精排）→ 生成</div>
+      {(res?.reranked || res?.hits || []).map((h: any, i: number) => (
         <div key={i} className="card" style={{ marginBottom: 8, padding: '10px 12px' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between' }}><span className="mono" style={{ color: 'var(--accent)' }}>{h.id}</span><span className="badge ok">相似度 {h.score}</span></div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8 }}><span className="mono" style={{ color: 'var(--accent)' }}>{h.id}</span><span className="badge ok">重排 {h.rerank ?? h.score}</span></div>
           <div className="muted" style={{ marginTop: 4, fontSize: 11.5 }}>{h.snippet}</div>
         </div>
       ))}
