@@ -1,5 +1,5 @@
 import { join } from 'node:path';
-import { listCases, caseData } from '../services/cases.ts';
+import { listCases, caseData, getIndex } from '../services/cases.ts';
 import { VectorStore } from '../vector/store.ts';
 import { buildOrdersDb, query } from '../db/relational.ts';
 /** HTTP 层：只做输入输出，业务委托 services；统一响应结构。 */
@@ -12,6 +12,7 @@ function getDb() { if (!db) db = buildOrdersDb(join(ROOT, 'dataset', 'order_data
 export async function apiRoutes(app: any) {
   app.get('/api/health', async () => ({ ok: true, service: 'pm-kb-server' }));
   app.get('/api/cases', async () => listCases());
+  app.get('/api/index', async () => getIndex());
   app.get('/api/case/:num/data', async (req: any, reply: any) => {
     const d = caseData(Number(req.params.num));
     if (!d) return reply.code(404).send({ error: { code: 'CASE_NOT_FOUND', message: '案例不存在' } });
