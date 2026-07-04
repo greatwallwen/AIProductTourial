@@ -9,13 +9,13 @@
 | ex-17-RFM.csv | 800 | 教学合成（对齐 UCI Online Retail 352 衍生 RFM） | 75b8f77999153277… |
 | product_cases/aicourse_hr_employees.csv | 145 | 教学合成 | 57cea00aa91fd7bd… |
 | product_cases/aicourse_financial_transactions.csv | 900 | 教学合成 | f89218bdfc9d1adc… |
-| product_cases/aicourse_logistics_delivery.csv | 700 | 教学合成 | 45e7ee80916d0905… |
+| product_cases/aicourse_logistics_delivery.csv | 700 | 教学合成 | 14ddf7b28b660250… |
 | product_cases/hospital_scheduling.csv | 520 | 教学合成 | 0147b719d4e9fce1… |
 | product_cases/aicourse_ecommerce_orders.csv | 1000 | 教学合成 | 7dfaaf48dc1fb8f5… |
 | reference_data_analysis/28-creditcardfraud_sample.csv | 600 | 教学合成（对齐 UCI Bank/CreditCard） | 7d44876e026d5526… |
 | reference_data_analysis/2-air_data.csv | 800 | 教学合成（航空会员 RFM，分层与 R/F/M 强相关、埋高价值流失群） | 304b2a8588d0a70f… |
 | reference_data_analysis/18-ad_performance.csv | 30 | 教学合成（广告投放漏斗，渠道×活动 30 行，埋落地页/优质渠道差异） | 824e768208b26f1b… |
-| pm_network_cases/nyc_311_service_requests_5000.csv | 3000 | 真实（NYC 311 Socrata data.cityofnewyork.us） | 5aabfdb3b461d0ed… |
+| pm_network_cases/nyc_311_service_requests_5000.csv | 3000 | 真实（NYC 311 Socrata data.cityofnewyork.us） | 0d8cbb12607a4e59… |
 
 JSON 产物（方法论案例输入）：outputs/05_harness/prototype_test_report.json、outputs/11_loop_engineering/loop_report_sample.json、outputs/10_knowledge_gamification/knowledge_quest_bank.json、outputs/07_skills/pm_skills.md
 
