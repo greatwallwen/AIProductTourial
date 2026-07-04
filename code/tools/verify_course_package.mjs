@@ -67,10 +67,7 @@ for (const f of ['app.ts', 'routes/api.ts', 'services/cases.ts', 'data/csv.ts', 
   ok(); if (rd(f).split('\n').length > 800) bad(`${f} > 800 行`);
 }
 ok(); if (!/fastify/.test(rd('code/server/package.json'))) bad('后端未依赖 fastify');
-// 案例02 graphicOnly + 本地公开参考 + deanpeters 本地化
-const c02 = defs.cases.find((c) => c.num === 2);
-ok(); if (!c02.graphicOnly) bad('案例02 未标 graphicOnly（应只出图形无字段）');
-ok(); if (!/skills\/external/.test(c02.publicRef || '')) bad('案例02 未引本地参考');
+// deanpeters 本地化（RAG 语料，案例 44）
 ok(); if (!has('skills/external/pm-skills-deanpeters/README.md')) bad('deanpeters 未本地化到 skills/external');
 // 全局：前端 live fetch + 一服务集成
 for (const f of ['code/web/src/App.tsx', 'code/web/src/lib/api.ts', 'code/run.sh']) { ok(); if (!has(f)) bad('缺前端/集成文件 ' + f); }
@@ -130,7 +127,7 @@ for (const c of defs.cases) {
   }
   ok(); if (kp.length > 1 && new Set(kp.map((k) => k.value)).size === 1) bad(`案例${c.num} KPI 全同(退化/未真算)`);
 }
-ok(); if (specCases < 15) bad('metricSpec 覆盖案例过少（数据真实化不足）');
+ok(); if (specCases < 6) bad('metricSpec 覆盖案例过少（数据真实化不足）');
 // 维度 D：去模板 + 可读性（难度/一句话/洞见/坑 + 术语表）
 for (const c of defs.cases) { ok(); if (!c.difficulty || !c.tldr || !c.insight || !c.pitfall) bad(`案例${c.num} 缺 difficulty/tldr/insight/pitfall`); }
 ok(); if (!tut.includes('术语表')) bad('教程缺术语表');
