@@ -28,8 +28,8 @@
  "metricChainNames": [
   "表行数",
   "区域数",
-  "聚合耗时",
-  "索引命中"
+  "品类数",
+  "总销售额(元)"
  ],
  "exceptionStates": [
   "慢查询",
@@ -55,26 +55,22 @@
   {
    "name": "表行数",
    "value": 1200,
-   "unit": "",
-   "trend": "+2%"
+   "unit": ""
   },
   {
    "name": "区域数",
-   "value": 1200,
-   "unit": "",
-   "trend": "-5%"
+   "value": 6,
+   "unit": ""
   },
   {
-   "name": "聚合耗时",
-   "value": 900,
-   "unit": "",
-   "trend": "-3%"
+   "name": "品类数",
+   "value": 6,
+   "unit": ""
   },
   {
-   "name": "索引命中",
-   "value": 600,
-   "unit": "",
-   "trend": "-2%"
+   "name": "总销售额(元)",
+   "value": 16630819,
+   "unit": ""
   }
  ],
  "queue": [

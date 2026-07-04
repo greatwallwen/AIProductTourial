@@ -32,11 +32,11 @@
  "decisionAction": "围绕跨部门研发排期判断优先级、责任人和验收动作。",
  "dataset": "dataset/product_cases/aicourse_hr_employees.csv",
  "metricChainNames": [
-  "需求项覆盖率",
-  "业务价值处理时长",
-  "研发工期异常数",
-  "依赖团队完成率",
-  "风险等级复核通过率"
+  "评审员工数",
+  "平均人效",
+  "高流失风险率",
+  "部门数",
+  "平均司龄(年)"
  ],
  "exceptionStates": [
   "字段缺失",
@@ -62,34 +62,29 @@
  "theoryOp": "把原理 2.1、2.7 落成可运行操作：围绕跨部门研发排期判断优先级、责任人和验收动作。（底座依赖 44/45/46/47）",
  "kpis": [
   {
-   "name": "需求项覆盖率",
-   "value": 7,
-   "unit": "%",
-   "trend": "-3%"
+   "name": "评审员工数",
+   "value": 145,
+   "unit": ""
   },
   {
-   "name": "业务价值处理时长",
-   "value": 0,
-   "unit": "",
-   "trend": "-6%"
+   "name": "平均人效",
+   "value": 119.87,
+   "unit": ""
   },
   {
-   "name": "研发工期异常数",
-   "value": 10,
-   "unit": "",
-   "trend": "+10%"
+   "name": "高流失风险率",
+   "value": 27.6,
+   "unit": "%"
   },
   {
-   "name": "依赖团队完成率",
-   "value": 8,
-   "unit": "%",
-   "trend": "-8%"
+   "name": "部门数",
+   "value": 6,
+   "unit": ""
   },
   {
-   "name": "风险等级复核通过率",
-   "value": 9,
-   "unit": "%",
-   "trend": "-4%"
+   "name": "平均司龄(年)",
+   "value": 5.97,
+   "unit": ""
   }
  ],
  "queue": [

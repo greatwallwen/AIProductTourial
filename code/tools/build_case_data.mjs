@@ -12,6 +12,24 @@ function splitLine(l){ const out=[]; let cur='',q=false; for(const c of l){ if(c
 const num=(v)=>{ const n=parseFloat(String(v).replace(/[^\d.\-]/g,'')); return isFinite(n)?n:0; };
 const hashSeed=(s)=>{ let h=2166136261; for(const c of s)h=Math.imul(h^c.charCodeAt(0),16777619); return (h>>>0); };
 
+// 真实列驱动的指标计算（替代启发式）：按 metricSpec 从数据真算，值域合理、可溯源
+function computeMetrics(head, rows) {
+  const idx = (c) => head.findIndex(h => h === c);
+  return (spec) => spec.map(m => {
+    const ci = m.col ? idx(m.col) : -1; const vals = ci >= 0 ? rows.map(r => r[ci]) : [];
+    let value = 0, unit = '';
+    if (m.agg === 'count') value = rows.length;
+    else if (m.agg === 'distinct') value = new Set(vals.filter(v => v !== '' && v != null)).size;
+    else if (m.agg === 'sum') value = Math.round(vals.reduce((a, v) => a + num(v), 0));
+    else if (m.agg === 'max') value = Math.round(Math.max(0, ...vals.map(num)));
+    else if (m.agg === 'avg') { const arr = vals.map(num); let v = arr.length ? arr.reduce((a, b) => a + b, 0) / arr.length : 0; if (/率|占比|利率/.test(m.name) && v <= 1) { v *= 100; unit = '%'; } value = Math.round(v * 100) / 100; }
+    else if (m.agg === 'rate') { const re = m.arg ? new RegExp(m.arg) : null; const hit = vals.filter(v => { const s = (v == null ? '' : v).toString().trim(); return re ? re.test(s) : (s !== ''); }).length; value = Math.round(hit / Math.max(1, rows.length) * 1000) / 10; unit = '%'; }
+    else if (m.agg === 'rateGte') { const hit = vals.filter(v => num(v) >= m.arg).length; value = Math.round(hit / Math.max(1, rows.length) * 1000) / 10; unit = '%'; }
+    else if (m.agg === 'rateLte') { const hit = vals.filter(v => num(v) <= m.arg).length; value = Math.round(hit / Math.max(1, rows.length) * 1000) / 10; unit = '%'; }
+    if (!unit && /率|占比/.test(m.name)) unit = '%';
+    return { name: m.name, value, unit };
+  });
+}
 function buildFromCsv(c){
   const p = join(ROOT, c.dataset);
   const { head, rows } = parseCsv(p);
@@ -19,16 +37,11 @@ function buildFromCsv(c){
   // 异常列：名字含 异常/风险/status/状态/复核 且值非空/非正常
   const abIdx = head.findIndex(h=>/异常|风险信号|风险等级|status|状态|复核|是否爽约|是否扩城/i.test(h));
   const exRows = abIdx>=0 ? rows.filter(r=>{ const v=(r[abIdx]||'').trim(); return v && !/正常|免复核|否|已完成|Closed|低/.test(v); }) : rows.slice(0,10);
-  // 指标链：把每个指标名映射为一个从数据算出的值（rate→百分比，count→计数，其余→均值/占比）
   const seed = hashSeed(c.uiId);
-  const kpis = c.metricChain.map((m,i)=>{
-    let val, unit=''; 
-    if(/率|占比/.test(m)){ val=Math.round((exRows.length/Math.max(1,rows.length))*100* (0.6+((seed>>i)&7)/10)); unit='%'; if(val>100)val=100-((seed>>i)&9); }
-    else if(/异常.*数|异常数/.test(m)){ val=exRows.length; } else if(/数$/.test(m)){ val=rows.length; } else if(/额|产出|花费|缺口/.test(m)){ const ci=head.findIndex(h=>/金额|额|花费|产出|里程/.test(h)); val=ci>=0?Math.round(rows.reduce((a,r)=>a+num(r[ci]),0)):rows.length; } else if(/时长|时效|等待/.test(m)){ const ci=head.findIndex(h=>/时效|等待|时长/.test(h)); val=ci>=0?Math.round(rows.reduce((a,r)=>a+num(r[ci]),0)/Math.max(1,rows.length)):0; }
-    else { val = Math.round(rows.length*(0.3+((seed>>(i+2))&15)/20)); }
-    const trend = ((seed>>(i*3))&1)? '+'+(1+((seed>>i)&9))+'%' : '-'+(1+((seed>>(i+1))&7))+'%';
-    return { name:m, value:val, unit, trend };
-  });
+  // 指标：优先按 metricSpec 从真实列真算（值域合理、可溯源）；无 spec 退化为行数
+  const kpis = Array.isArray(c.metricSpec)
+    ? computeMetrics(head, rows)(c.metricSpec)
+    : c.metricChain.map((m) => ({ name: m, value: rows.length, unit: /率|占比/.test(m) ? '%' : '' }));
   // 异常队列（取前 8，字段用 case.fields）
   const fieldIdx = c.fields.map(f=>col(f));
   const queue = exRows.slice(0,8).map((r,i)=>{

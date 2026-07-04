@@ -32,11 +32,11 @@
  "decisionAction": "围绕理赔复核队列判断优先级、责任人和验收动作。",
  "dataset": "dataset/product_cases/aicourse_financial_transactions.csv",
  "metricChainNames": [
-  "案件号覆盖率",
-  "理赔类型处理时长",
-  "申请金额异常数",
-  "证据完整度完成率",
-  "风险信号复核通过率"
+  "交易数",
+  "风险信号率",
+  "高风险率",
+  "已复核率",
+  "平均金额(元)"
  ],
  "exceptionStates": [
   "字段缺失",
@@ -62,34 +62,29 @@
  "theoryOp": "把原理 2.7、3.2 落成可运行操作：围绕理赔复核队列判断优先级、责任人和验收动作。（底座依赖 44/45/46/47）",
  "kpis": [
   {
-   "name": "案件号覆盖率",
-   "value": 79,
-   "unit": "%",
-   "trend": "-4%"
+   "name": "交易数",
+   "value": 900,
+   "unit": ""
   },
   {
-   "name": "理赔类型处理时长",
+   "name": "风险信号率",
+   "value": 100,
+   "unit": "%"
+  },
+  {
+   "name": "高风险率",
+   "value": 31.1,
+   "unit": "%"
+  },
+  {
+   "name": "已复核率",
    "value": 0,
-   "unit": "",
-   "trend": "-6%"
+   "unit": "%"
   },
   {
-   "name": "申请金额异常数",
-   "value": 592,
-   "unit": "",
-   "trend": "+10%"
-  },
-  {
-   "name": "证据完整度完成率",
-   "value": 79,
-   "unit": "%",
-   "trend": "+9%"
-  },
-  {
-   "name": "风险信号复核通过率",
-   "value": 86,
-   "unit": "%",
-   "trend": "-8%"
+   "name": "平均金额(元)",
+   "value": 39999.6,
+   "unit": ""
   }
  ],
  "queue": [

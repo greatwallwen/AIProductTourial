@@ -27,11 +27,11 @@
  "decisionAction": "围绕材料预审服务判断优先级、责任人和验收动作。",
  "dataset": "dataset/pm_network_cases/nyc_311_service_requests_5000.csv",
  "metricChainNames": [
-  "办件编号覆盖率",
-  "材料名称处理时长",
-  "补正原因异常数",
-  "承诺时限完成率",
-  "经办窗口复核通过率"
+  "办件数",
+  "办结率",
+  "机构数",
+  "投诉类型数",
+  "行政区数"
  ],
  "exceptionStates": [
   "字段缺失",
@@ -58,34 +58,29 @@
  "theoryOp": "把原理 2.7、3.2 落成可运行操作：围绕材料预审服务判断优先级、责任人和验收动作。（底座依赖 44/45/46/47）",
  "kpis": [
   {
-   "name": "办件编号覆盖率",
-   "value": 30,
-   "unit": "%",
-   "trend": "+10%"
+   "name": "办件数",
+   "value": 1500,
+   "unit": ""
   },
   {
-   "name": "材料名称处理时长",
-   "value": 0,
-   "unit": "",
-   "trend": "+9%"
+   "name": "办结率",
+   "value": 72.9,
+   "unit": "%"
   },
   {
-   "name": "补正原因异常数",
-   "value": 407,
-   "unit": "",
-   "trend": "+10%"
+   "name": "机构数",
+   "value": 5,
+   "unit": ""
   },
   {
-   "name": "承诺时限完成率",
-   "value": 35,
-   "unit": "%",
-   "trend": "+10%"
+   "name": "投诉类型数",
+   "value": 5,
+   "unit": ""
   },
   {
-   "name": "经办窗口复核通过率",
-   "value": 35,
-   "unit": "%",
-   "trend": "-4%"
+   "name": "行政区数",
+   "value": 5,
+   "unit": ""
   }
  ],
  "queue": [

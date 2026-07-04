@@ -32,11 +32,11 @@
  "decisionAction": "判断漏斗断点、回款风险和区域销售动作优先级。",
  "dataset": "dataset/product_cases/aicourse_logistics_delivery.csv",
  "metricChainNames": [
-  "线索数",
-  "商机转化率",
-  "合同金额",
-  "回款率",
-  "客户跟进超时数"
+  "运单数",
+  "异常率",
+  "扩城率",
+  "城市数",
+  "平均实际时效(h)"
  ],
  "exceptionStates": [
   "转化率下滑",
@@ -62,34 +62,29 @@
  "theoryOp": "把原理 3.4、4.1 落成可运行操作：判断漏斗断点、回款风险和区域销售动作优先级。（底座依赖 44/45/46/47）",
  "kpis": [
   {
-   "name": "线索数",
+   "name": "运单数",
    "value": 700,
-   "unit": "",
-   "trend": "-1%"
+   "unit": ""
   },
   {
-   "name": "商机转化率",
-   "value": 46,
-   "unit": "%",
-   "trend": "-1%"
+   "name": "异常率",
+   "value": 77.3,
+   "unit": "%"
   },
   {
-   "name": "合同金额",
-   "value": 700,
-   "unit": "",
-   "trend": "+9%"
+   "name": "扩城率",
+   "value": 23.6,
+   "unit": "%"
   },
   {
-   "name": "回款率",
-   "value": 77,
-   "unit": "%",
-   "trend": "+9%"
+   "name": "城市数",
+   "value": 8,
+   "unit": ""
   },
   {
-   "name": "客户跟进超时数",
-   "value": 700,
-   "unit": "",
-   "trend": "-4%"
+   "name": "平均实际时效(h)",
+   "value": 62.96,
+   "unit": ""
   }
  ],
  "queue": [

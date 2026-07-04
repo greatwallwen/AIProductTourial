@@ -28,8 +28,8 @@
  "metricChainNames": [
   "数据点数",
   "品类数",
-  "最大金额",
-  "均价"
+  "最大金额(元)",
+  "客单价均值(元)"
  ],
  "exceptionStates": [
   "离群点",
@@ -53,26 +53,22 @@
   {
    "name": "数据点数",
    "value": 1200,
-   "unit": "",
-   "trend": "+10%"
+   "unit": ""
   },
   {
    "name": "品类数",
-   "value": 1200,
-   "unit": "",
-   "trend": "+10%"
+   "value": 6,
+   "unit": ""
   },
   {
-   "name": "最大金额",
-   "value": 16630819,
-   "unit": "",
-   "trend": "+2%"
+   "name": "最大金额(元)",
+   "value": 51121,
+   "unit": ""
   },
   {
-   "name": "均价",
-   "value": 720,
-   "unit": "",
-   "trend": "+10%"
+   "name": "客单价均值(元)",
+   "value": 451.98,
+   "unit": ""
   }
  ],
  "queue": [

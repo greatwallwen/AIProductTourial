@@ -27,11 +27,11 @@
  "decisionAction": "识别现金流缺口、逾期应收和预算偏差，形成复核与催收动作。",
  "dataset": "dataset/reference_data_analysis/28-creditcardfraud_sample.csv",
  "metricChainNames": [
-  "高风险交易占比",
-  "人工复核完成率",
-  "规则命中准确率",
-  "误报率",
-  "升级处理时长"
+  "交易数",
+  "高风险率",
+  "已复核率",
+  "平均命中规则数",
+  "渠道数"
  ],
  "exceptionStates": [
   "高风险待复核",
@@ -59,34 +59,29 @@
  "theoryOp": "把原理 3.3、3.5 落成可运行操作：识别现金流缺口、逾期应收和预算偏差，形成复核与催收动作。（底座依赖 44/45/46/47）",
  "kpis": [
   {
-   "name": "高风险交易占比",
-   "value": 8,
-   "unit": "%",
-   "trend": "-3%"
+   "name": "交易数",
+   "value": 600,
+   "unit": ""
   },
   {
-   "name": "人工复核完成率",
-   "value": 7,
-   "unit": "%",
-   "trend": "-6%"
+   "name": "高风险率",
+   "value": 8.3,
+   "unit": "%"
   },
   {
-   "name": "规则命中准确率",
-   "value": 9,
-   "unit": "%",
-   "trend": "+2%"
-  },
-  {
-   "name": "误报率",
-   "value": 7,
-   "unit": "%",
-   "trend": "+9%"
-  },
-  {
-   "name": "升级处理时长",
+   "name": "已复核率",
    "value": 0,
-   "unit": "",
-   "trend": "+2%"
+   "unit": "%"
+  },
+  {
+   "name": "平均命中规则数",
+   "value": 0.25,
+   "unit": ""
+  },
+  {
+   "name": "渠道数",
+   "value": 3,
+   "unit": ""
   }
  ],
  "queue": [

@@ -32,11 +32,11 @@
  "decisionAction": "围绕滞销提醒页面判断优先级、责任人和验收动作。",
  "dataset": "dataset/sku.csv",
  "metricChainNames": [
-  "SKU覆盖率",
-  "品类处理时长",
-  "销量异常数",
-  "库存完成率",
-  "阈值复核通过率"
+  "SKU数",
+  "滞销率",
+  "品类数",
+  "平均库存天数",
+  "毛利率均值"
  ],
  "exceptionStates": [
   "字段缺失",
@@ -62,34 +62,29 @@
  "theoryOp": "把原理 3.4、4.1 落成可运行操作：围绕滞销提醒页面判断优先级、责任人和验收动作。（底座依赖 44/45/46/47）",
  "kpis": [
   {
-   "name": "SKU覆盖率",
-   "value": 63,
-   "unit": "%",
-   "trend": "+2%"
+   "name": "SKU数",
+   "value": 300,
+   "unit": ""
   },
   {
-   "name": "品类处理时长",
-   "value": 0,
-   "unit": "",
-   "trend": "-2%"
+   "name": "滞销率",
+   "value": 32.7,
+   "unit": "%"
   },
   {
-   "name": "销量异常数",
-   "value": 171,
-   "unit": "",
-   "trend": "+2%"
+   "name": "品类数",
+   "value": 6,
+   "unit": ""
   },
   {
-   "name": "库存完成率",
-   "value": 34,
-   "unit": "%",
-   "trend": "+9%"
+   "name": "平均库存天数",
+   "value": 94.51,
+   "unit": ""
   },
   {
-   "name": "阈值复核通过率",
-   "value": 57,
-   "unit": "%",
-   "trend": "+1%"
+   "name": "毛利率均值",
+   "value": 31.62,
+   "unit": "%"
   }
  ],
  "queue": [

@@ -32,11 +32,11 @@
  "decisionAction": "判断岗位产出、编制缺口和流失风险，形成组织调整建议。",
  "dataset": "dataset/product_cases/aicourse_healthcare_diabetes.csv",
  "metricChainNames": [
-  "人效产出",
-  "在编人数",
-  "招聘达成率",
-  "薪酬成本率",
-  "流失预警人数"
+  "就诊数",
+  "号源利用率均值",
+  "爽约率",
+  "科室数",
+  "平均等待(分)"
  ],
  "exceptionStates": [
   "招聘延期",
@@ -62,34 +62,29 @@
  "theoryOp": "把原理 2.7、3.2 落成可运行操作：判断岗位产出、编制缺口和流失风险，形成组织调整建议。（底座依赖 44/45/46/47）",
  "kpis": [
   {
-   "name": "人效产出",
+   "name": "就诊数",
    "value": 520,
-   "unit": "",
-   "trend": "+2%"
+   "unit": ""
   },
   {
-   "name": "在编人数",
-   "value": 520,
-   "unit": "",
-   "trend": "-5%"
+   "name": "号源利用率均值",
+   "value": 69.54,
+   "unit": "%"
   },
   {
-   "name": "招聘达成率",
-   "value": 12,
-   "unit": "%",
-   "trend": "-7%"
+   "name": "爽约率",
+   "value": 11.7,
+   "unit": "%"
   },
   {
-   "name": "薪酬成本率",
-   "value": 14,
-   "unit": "%",
-   "trend": "+1%"
+   "name": "科室数",
+   "value": 5,
+   "unit": ""
   },
   {
-   "name": "流失预警人数",
-   "value": 520,
-   "unit": "",
-   "trend": "-2%"
+   "name": "平均等待(分)",
+   "value": 95.87,
+   "unit": ""
   }
  ],
  "queue": [

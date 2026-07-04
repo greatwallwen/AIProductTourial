@@ -9,7 +9,7 @@
 ## 验收清单
 
 - 必含字段：SKU、品类、区域、金额、毛利率
-- 必含指标链：表行数、区域数、聚合耗时、索引命中
+- 必含指标链：表行数、区域数、品类数、总销售额(元)
 - 必含异常状态：慢查询、全表扫描、空结果
 - 必含 Skill：capstone-product-flow、evidence-pack、traceability-check
 

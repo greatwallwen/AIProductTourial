@@ -117,6 +117,20 @@ ok(); if (readdirSync(join(ROOT, 'docs', '_source', 'reference')).filter((f) => 
 ok(); if (!has('assets/vendor/aiagent') || readdirSync(join(ROOT, 'assets', 'vendor', 'aiagent')).filter((f) => f.endsWith('.png')).length < 10) bad('aiagent 真实原理图 < 10');
 ok(); if ((tut.match(/aiagent\/image/g) || []).length < 5) bad('§1 未嵌入 aiagent 真实原理图');
 ok(); if (!/reranked/.test(rd('code/server/vector/store.ts')) || !/recall/.test(rd('code/server/vector/store.ts')) || !/reranked/.test(rd('code/server/routes/api.ts'))) bad('RAG 未实现召回→重排两阶段');
+// 维度 C：数据真实化 — metricSpec 真算 + KPI 值域/非退化守卫
+let specCases = 0;
+for (const c of defs.cases) {
+  if (!Array.isArray(c.metricSpec)) continue; specCases++;
+  const dp = `code/data/case_${pad(c.num)}.json`; if (!has(dp)) continue;
+  const kp = jj(dp).kpis || [];
+  ok(); if (kp.length !== c.metricSpec.length) bad(`案例${c.num} KPI 数与 metricSpec 不符`);
+  for (const k of kp) {
+    ok(); if (k.unit === '%' && (k.value < 0 || k.value > 100)) bad(`案例${c.num} 率值越界 ${k.name}=${k.value}`);
+    ok(); if (!Number.isFinite(k.value)) bad(`案例${c.num} KPI 非数 ${k.name}`);
+  }
+  ok(); if (kp.length > 1 && new Set(kp.map((k) => k.value)).size === 1) bad(`案例${c.num} KPI 全同(退化/未真算)`);
+}
+ok(); if (specCases < 15) bad('metricSpec 覆盖案例过少（数据真实化不足）');
 
 console.log(`\n检查 ${checks} 项，失败 ${fail} 项`);
 if (fail) { console.log('\n✗ NOT GREEN'); process.exit(1); }

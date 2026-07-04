@@ -9,7 +9,7 @@
 ## 验收清单
 
 - 必含字段：品类、单价、数量、金额
-- 必含指标链：数据点数、品类数、最大金额、均价
+- 必含指标链：数据点数、品类数、最大金额(元)、客单价均值(元)
 - 必含异常状态：离群点、空品类
 - 必含 Skill：capstone-product-flow、evidence-pack、traceability-check
 

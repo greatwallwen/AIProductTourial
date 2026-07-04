@@ -32,11 +32,11 @@
  "decisionAction": "判断漏斗断点、回款风险和区域销售动作优先级。",
  "dataset": "dataset/reference_data_analysis/2-air_data.csv",
  "metricChainNames": [
-  "线索数",
-  "商机转化率",
-  "合同金额",
-  "回款率",
-  "客户跟进超时数"
+  "会员数",
+  "年飞行次数均值",
+  "年消费总额(元)",
+  "高价值分层占比",
+  "里程余额均值"
  ],
  "exceptionStates": [
   "转化率下滑",
@@ -62,34 +62,29 @@
  "theoryOp": "把原理 3.2、4.3 落成可运行操作：判断漏斗断点、回款风险和区域销售动作优先级。（数字化底座本身）",
  "kpis": [
   {
-   "name": "线索数",
+   "name": "会员数",
    "value": 800,
-   "unit": "",
-   "trend": "+2%"
+   "unit": ""
   },
   {
-   "name": "商机转化率",
-   "value": 1,
-   "unit": "%",
-   "trend": "-2%"
+   "name": "年飞行次数均值",
+   "value": 25.93,
+   "unit": ""
   },
   {
-   "name": "合同金额",
-   "value": 80135293,
-   "unit": "",
-   "trend": "+2%"
+   "name": "年消费总额(元)",
+   "value": 48741887,
+   "unit": ""
   },
   {
-   "name": "回款率",
-   "value": 1,
-   "unit": "%",
-   "trend": "-5%"
+   "name": "高价值分层占比",
+   "value": 8.6,
+   "unit": "%"
   },
   {
-   "name": "客户跟进超时数",
-   "value": 800,
-   "unit": "",
-   "trend": "+9%"
+   "name": "里程余额均值",
+   "value": 100169.12,
+   "unit": ""
   }
  ],
  "queue": [

@@ -15,29 +15,29 @@
   <rect x="36" y="116" width="176" height="82" rx="11" fill="#0c1626" stroke="#1c2c46"/>
     <rect x="36" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
     <circle cx="56" cy="139" r="7" fill="none" stroke="#06b6d4" stroke-width="1.5"/><circle cx="56" cy="139" r="2.5" fill="#06b6d4"/>
-    <text x="70" y="143" font-size="10.5" fill="#566484">需求项覆盖率</text>
-    <text x="50" y="176" font-size="24" font-weight="750" fill="#e8eefb">7<tspan font-size="12" fill="#566484">%</tspan></text>
-    <text x="198" y="176" font-size="11" fill="#f472b6" text-anchor="end">▼3%</text><rect x="226" y="116" width="176" height="82" rx="11" fill="#0c1626" stroke="#1c2c46"/>
+    <text x="70" y="143" font-size="10.5" fill="#566484">评审员工数</text>
+    <text x="50" y="176" font-size="24" font-weight="750" fill="#e8eefb">145<tspan font-size="12" fill="#566484"></tspan></text>
+    <rect x="226" y="116" width="176" height="82" rx="11" fill="#0c1626" stroke="#1c2c46"/>
     <rect x="226" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
     <circle cx="246" cy="139" r="7" fill="none" stroke="#06b6d4" stroke-width="1.5"/><circle cx="246" cy="139" r="2.5" fill="#06b6d4"/>
-    <text x="260" y="143" font-size="10.5" fill="#566484">业务价值处理时长</text>
-    <text x="240" y="176" font-size="24" font-weight="750" fill="#e8eefb">0<tspan font-size="12" fill="#566484"></tspan></text>
-    <text x="388" y="176" font-size="11" fill="#f472b6" text-anchor="end">▼6%</text><rect x="416" y="116" width="176" height="82" rx="11" fill="#0c1626" stroke="#1c2c46"/>
+    <text x="260" y="143" font-size="10.5" fill="#566484">平均人效</text>
+    <text x="240" y="176" font-size="24" font-weight="750" fill="#e8eefb">119.87<tspan font-size="12" fill="#566484"></tspan></text>
+    <rect x="416" y="116" width="176" height="82" rx="11" fill="#0c1626" stroke="#1c2c46"/>
     <rect x="416" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
     <circle cx="436" cy="139" r="7" fill="none" stroke="#06b6d4" stroke-width="1.5"/><circle cx="436" cy="139" r="2.5" fill="#06b6d4"/>
-    <text x="450" y="143" font-size="10.5" fill="#566484">研发工期异常数</text>
-    <text x="430" y="176" font-size="24" font-weight="750" fill="#e8eefb">10<tspan font-size="12" fill="#566484"></tspan></text>
-    <text x="578" y="176" font-size="11" fill="#34d399" text-anchor="end">▲10%</text><rect x="606" y="116" width="176" height="82" rx="11" fill="#0c1626" stroke="#1c2c46"/>
+    <text x="450" y="143" font-size="10.5" fill="#566484">高流失风险率</text>
+    <text x="430" y="176" font-size="24" font-weight="750" fill="#e8eefb">27.6<tspan font-size="12" fill="#566484">%</tspan></text>
+    <rect x="606" y="116" width="176" height="82" rx="11" fill="#0c1626" stroke="#1c2c46"/>
     <rect x="606" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
     <circle cx="626" cy="139" r="7" fill="none" stroke="#06b6d4" stroke-width="1.5"/><circle cx="626" cy="139" r="2.5" fill="#06b6d4"/>
-    <text x="640" y="143" font-size="10.5" fill="#566484">依赖团队完成率</text>
-    <text x="620" y="176" font-size="24" font-weight="750" fill="#e8eefb">8<tspan font-size="12" fill="#566484">%</tspan></text>
-    <text x="768" y="176" font-size="11" fill="#f472b6" text-anchor="end">▼8%</text><rect x="796" y="116" width="176" height="82" rx="11" fill="#0c1626" stroke="#1c2c46"/>
+    <text x="640" y="143" font-size="10.5" fill="#566484">部门数</text>
+    <text x="620" y="176" font-size="24" font-weight="750" fill="#e8eefb">6<tspan font-size="12" fill="#566484"></tspan></text>
+    <rect x="796" y="116" width="176" height="82" rx="11" fill="#0c1626" stroke="#1c2c46"/>
     <rect x="796" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
     <circle cx="816" cy="139" r="7" fill="none" stroke="#06b6d4" stroke-width="1.5"/><circle cx="816" cy="139" r="2.5" fill="#06b6d4"/>
-    <text x="830" y="143" font-size="10.5" fill="#566484">风险等级复核通过率</text>
-    <text x="810" y="176" font-size="24" font-weight="750" fill="#e8eefb">9<tspan font-size="12" fill="#566484">%</tspan></text>
-    <text x="958" y="176" font-size="11" fill="#f472b6" text-anchor="end">▼4%</text>
+    <text x="830" y="143" font-size="10.5" fill="#566484">平均司龄(年)</text>
+    <text x="810" y="176" font-size="24" font-weight="750" fill="#e8eefb">5.97<tspan font-size="12" fill="#566484"></tspan></text>
+    
   <rect x="24" y="216" width="476" height="230" rx="12" fill="#0c1626" stroke="#1c2c46"/>
   <text x="40" y="240" font-size="12.5" font-weight="650" fill="#e8eefb">指标趋势 / 结构</text><rect x="40" y="246" width="28" height="2" fill="#06b6d4"/>
   <text x="484" y="240" font-size="9.5" fill="#566484" text-anchor="end">不适用，采用专业 SaaS 工作</text>

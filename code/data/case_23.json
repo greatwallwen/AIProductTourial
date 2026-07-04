@@ -32,11 +32,11 @@
  "decisionAction": "围绕退换货履约判断优先级、责任人和验收动作。",
  "dataset": "dataset/product_cases/aicourse_ecommerce_orders.csv",
  "metricChainNames": [
-  "售后单覆盖率",
-  "客服审核处理时长",
-  "仓库收货异常数",
-  "退款完成率",
-  "补偿复核通过率"
+  "售后单数",
+  "异常率",
+  "SKU数",
+  "平均时效(天)",
+  "申请类型数"
  ],
  "exceptionStates": [
   "字段缺失",
@@ -62,34 +62,29 @@
  "theoryOp": "把原理 3.3、3.5 落成可运行操作：围绕退换货履约判断优先级、责任人和验收动作。（底座依赖 44/45/46/47）",
  "kpis": [
   {
-   "name": "售后单覆盖率",
-   "value": 64,
-   "unit": "%",
-   "trend": "-6%"
+   "name": "售后单数",
+   "value": 1000,
+   "unit": ""
   },
   {
-   "name": "客服审核处理时长",
-   "value": 8,
-   "unit": "",
-   "trend": "+10%"
+   "name": "异常率",
+   "value": 22.5,
+   "unit": "%"
   },
   {
-   "name": "仓库收货异常数",
-   "value": 799,
-   "unit": "",
-   "trend": "+1%"
+   "name": "SKU数",
+   "value": 283,
+   "unit": ""
   },
   {
-   "name": "退款完成率",
-   "value": 72,
-   "unit": "%",
-   "trend": "+10%"
+   "name": "平均时效(天)",
+   "value": 8.15,
+   "unit": ""
   },
   {
-   "name": "补偿复核通过率",
-   "value": 88,
-   "unit": "%",
-   "trend": "+2%"
+   "name": "申请类型数",
+   "value": 3,
+   "unit": ""
   }
  ],
  "queue": [

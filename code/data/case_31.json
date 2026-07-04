@@ -27,11 +27,11 @@
  "decisionAction": "判断漏斗断点、回款风险和区域销售动作优先级。",
  "dataset": "dataset/reference_data_analysis/18-ad_performance.csv",
  "metricChainNames": [
-  "线索数",
-  "商机转化率",
-  "合同金额",
-  "回款率",
-  "客户跟进超时数"
+  "渠道数",
+  "总曝光",
+  "总点击",
+  "总转化",
+  "平均CPA"
  ],
  "exceptionStates": [
   "转化率下滑",
@@ -57,34 +57,29 @@
  "theoryOp": "把原理 3.2、4.3 落成可运行操作：判断漏斗断点、回款风险和区域销售动作优先级。（数字化底座本身）",
  "kpis": [
   {
-   "name": "线索数",
+   "name": "渠道数",
    "value": 6,
-   "unit": "",
-   "trend": "-6%"
+   "unit": ""
   },
   {
-   "name": "商机转化率",
-   "value": 99,
-   "unit": "%",
-   "trend": "+2%"
+   "name": "总曝光",
+   "value": 1657329,
+   "unit": ""
   },
   {
-   "name": "合同金额",
-   "value": 119575,
-   "unit": "",
-   "trend": "+9%"
+   "name": "总点击",
+   "value": 73821,
+   "unit": ""
   },
   {
-   "name": "回款率",
-   "value": 91,
-   "unit": "%",
-   "trend": "-7%"
+   "name": "总转化",
+   "value": 3869,
+   "unit": ""
   },
   {
-   "name": "客户跟进超时数",
-   "value": 6,
-   "unit": "",
-   "trend": "-8%"
+   "name": "平均CPA",
+   "value": 39.1,
+   "unit": ""
   }
  ],
  "queue": [

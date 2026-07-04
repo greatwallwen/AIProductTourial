@@ -32,11 +32,11 @@
  "decisionAction": "围绕银行客服知识库判断优先级、责任人和验收动作。",
  "dataset": "dataset/product_cases/aicourse_financial_transactions.csv",
  "metricChainNames": [
-  "问题类别覆盖率",
-  "知识来源处理时长",
-  "命中率异常数",
-  "风险答案完成率",
-  "人工接管复核通过率"
+  "交易数",
+  "高风险率",
+  "已复核率",
+  "渠道数",
+  "平均金额(元)"
  ],
  "exceptionStates": [
   "字段缺失",
@@ -62,34 +62,29 @@
  "theoryOp": "把原理 2.4、2.6 落成可运行操作：围绕银行客服知识库判断优先级、责任人和验收动作。（数字化底座本身）",
  "kpis": [
   {
-   "name": "问题类别覆盖率",
-   "value": 59,
-   "unit": "%",
-   "trend": "+10%"
+   "name": "交易数",
+   "value": 900,
+   "unit": ""
   },
   {
-   "name": "知识来源处理时长",
+   "name": "高风险率",
+   "value": 31.1,
+   "unit": "%"
+  },
+  {
+   "name": "已复核率",
    "value": 0,
-   "unit": "",
-   "trend": "+2%"
+   "unit": "%"
   },
   {
-   "name": "命中率异常数",
-   "value": 53,
-   "unit": "%",
-   "trend": "+1%"
+   "name": "渠道数",
+   "value": 4,
+   "unit": ""
   },
   {
-   "name": "风险答案完成率",
-   "value": 46,
-   "unit": "%",
-   "trend": "+10%"
-  },
-  {
-   "name": "人工接管复核通过率",
-   "value": 66,
-   "unit": "%",
-   "trend": "-3%"
+   "name": "平均金额(元)",
+   "value": 39999.6,
+   "unit": ""
   }
  ],
  "queue": [
