@@ -87,6 +87,14 @@ for (const ep of ['/api/search', '/api/db/query', '/api/points3d']) { ok(); if (
 ok(); if (!has('code/web/src/screens.tsx')) bad('前端缺 screens.tsx（架构/向量/PG/3D 案例屏）');
 ok(); if (!/@react-three\/fiber/.test(rd('code/web/package.json'))) bad('前端未装 three.js/R3F');
 ok(); if (!/PseudoScatter|hasWebGL/.test(rd('code/web/src/screens.tsx'))) bad('3D 无 WebGL 退化(伪 3D)未实现');
+// 维度 A/D/E：数字化主线标签 + 术语 + 备注叙事 + tokenize/openapi
+for (const c of defs.cases) { ok(); if (!c.systemLayer || !c.systemStage || !c.theoryOp) bad(`案例${c.num} 缺系统主线标签(systemLayer/systemStage/theoryOp)`); }
+ok(); if ([...new Set(defs.cases.map((c) => c.systemLayer))].length < 3) bad('systemLayer 分层不足 3（底座/能力/应用）');
+ok(); if (/信息化/.test(tut)) bad('教程含「信息化」（应改数字化）');
+ok(); if (!has('docs/_source/_ref-annotation-style.md')) bad('缺 issue#4 备注范例存档');
+ok(); if (!/黄仁勋|你有没有想过|你问 ChatGPT/.test(rd('docs/_source/00-ai-foundations.md'))) bad('§1 备注未按 issue#4 富叙事重写');
+ok(); if (!/tokenize/.test(rd('code/server/routes/api.ts')) || !has('code/server/services/tokenize.ts')) bad('缺 /api/tokenize 后端');
+ok(); if (!has('code/server/services/openapi.ts') || !/openapi\.json/.test(rd('code/server/routes/api.ts'))) bad('缺 /api/openapi.json');
 
 console.log(`\n检查 ${checks} 项，失败 ${fail} 项`);
 if (fail) { console.log('\n✗ NOT GREEN'); process.exit(1); }
