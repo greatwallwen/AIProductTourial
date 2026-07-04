@@ -116,7 +116,7 @@ ok(); if (!/loadIcon/.test(rd('code/tools/build_docs.mjs'))) bad('未用下载�
 ok(); if (readdirSync(join(ROOT, 'docs', '_source', 'reference')).filter((f) => f.endsWith('.md')).length < 5) bad('aiagent 参考文档 < 5');
 ok(); if (!has('assets/vendor/aiagent') || readdirSync(join(ROOT, 'assets', 'vendor', 'aiagent')).filter((f) => f.endsWith('.png')).length < 10) bad('aiagent 真实原理图 < 10');
 ok(); if ((tut.match(/aiagent\/image/g) || []).length < 5) bad('§1 未嵌入 aiagent 真实原理图');
-ok(); if (!/reranked/.test(rd('code/server/vector/store.ts')) || !/recallN/.test(rd('code/server/routes/api.ts'))) bad('RAG 未实现召回→重排两阶段');
+ok(); if (!/reranked/.test(rd('code/server/vector/store.ts')) || !/recall/.test(rd('code/server/vector/store.ts')) || !/reranked/.test(rd('code/server/routes/api.ts'))) bad('RAG 未实现召回→重排两阶段');
 
 console.log(`\n检查 ${checks} 项，失败 ${fail} 项`);
 if (fail) { console.log('\n✗ NOT GREEN'); process.exit(1); }
