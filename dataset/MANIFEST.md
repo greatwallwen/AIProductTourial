@@ -13,21 +13,8 @@
 | product_cases/aicourse_healthcare_diabetes.csv | 520 | 教学合成 | ba7e7bb16faaa4d8… |
 | product_cases/aicourse_ecommerce_orders.csv | 1000 | 教学合成 | 7dfaaf48dc1fb8f5… |
 | reference_data_analysis/28-creditcardfraud_sample.csv | 600 | 教学合成（对齐 UCI Bank/CreditCard） | 7d44876e026d5526… |
-| reference_data_analysis/2-air_data.csv | 800 | 教学合成（航空会员 RFM） | af00cb9318ce191c… |
+| reference_data_analysis/2-air_data.csv | 800 | 教学合成（航空会员 RFM，分层与 R/F/M 强相关、埋高价值流失群） | 304b2a8588d0a70f… |
 | reference_data_analysis/18-ad_performance.csv | 6 | 教学合成（广告投放漏斗） | dea1bef8ce455716… |
-| pm_network_cases/nyc_311_service_requests_5000.csv | 1500 | 教学合成（对齐 NYC 311，联网失败回退） | 2b78768e19ef6c05… |
+| pm_network_cases/nyc_311_service_requests_5000.csv | 3000 | 真实（NYC 311 Socrata data.cityofnewyork.us） | 0d8cbb12607a4e59… |
 
 JSON 产物（方法论案例输入）：outputs/05_harness/prototype_test_report.json、outputs/11_loop_engineering/loop_report_sample.json、outputs/10_knowledge_gamification/knowledge_quest_bank.json、outputs/07_skills/pm_skills.md
-
-## 本地化公开参考
-
-- `skills/external/pm-skills-deanpeters/`：源 https://github.com/deanpeters/Product-Manager-Skills （MIT）；已 vendor 到本地，案例 02 引本地路径；194 篇 md 作向量检索(RAG)语料。
-
-## 网络下载真实图形（vendored）
-
-- `assets/vendor/lucide/`：**Lucide 图标**（来源 https://github.com/lucide-icons/lucide ，**ISC 许可**，见同目录 LICENSE）。10 个概念图标（brain/binary/layers/workflow/box/network/cpu/boxes 等）内联进 §1「AI 核心概念底层链路」图 fig_ai_foundations 加以优化。真实下载图形，非教学合成，已注明来源与许可。
-
-## AI agent 参考包（vendored 权威内容 + 真实原理图）
-
-- `docs/_source/reference/`：5 份权威讲解（AI基础/RAG/MCP/AI Agent/Agent Skill），源用户提供的 `AI agent/` 参考包，用于深化 §1。
-- `assets/vendor/aiagent/`：57 张**真实原理图**（源同上），已内嵌进 §1（Tokenizer/RAG 五环节/Prompt/Tool/ReAct）。真实素材，非教学合成，已注明来源。

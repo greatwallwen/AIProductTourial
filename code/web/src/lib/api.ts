@@ -17,3 +17,5 @@ export const fetchHealth = () => getJson<any>('/api/health');
 export const fetchTokenize = (text: string) => getJson<any>(`/api/tokenize?text=${encodeURIComponent(text)}`);
 export const fetchOpenapi = () => getJson<any>('/api/openapi.json');
 export const fetchCasesList = () => getJson<any[]>('/api/cases');
+
+export const fetchRfm = () => getJson<any>('/api/rfm');

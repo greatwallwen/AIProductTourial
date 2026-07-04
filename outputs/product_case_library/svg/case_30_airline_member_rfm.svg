@@ -21,22 +21,22 @@
     <rect x="226" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
     <circle cx="246" cy="139" r="7" fill="none" stroke="#f59e0b" stroke-width="1.5"/><circle cx="246" cy="139" r="2.5" fill="#f59e0b"/>
     <text x="260" y="143" font-size="10.5" fill="#7a6640">年飞行次数均值</text>
-    <text x="240" y="176" font-size="24" font-weight="750" fill="#f6efe2">25.93<tspan font-size="12" fill="#7a6640"></tspan></text>
+    <text x="240" y="176" font-size="24" font-weight="750" fill="#f6efe2">14.46<tspan font-size="12" fill="#7a6640"></tspan></text>
     <rect x="416" y="116" width="176" height="82" rx="11" fill="#17130b" stroke="#3a2c14"/>
     <rect x="416" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
     <circle cx="436" cy="139" r="7" fill="none" stroke="#f59e0b" stroke-width="1.5"/><circle cx="436" cy="139" r="2.5" fill="#f59e0b"/>
     <text x="450" y="143" font-size="10.5" fill="#7a6640">年消费总额(元)</text>
-    <text x="430" y="176" font-size="24" font-weight="750" fill="#f6efe2">48741887<tspan font-size="12" fill="#7a6640"></tspan></text>
+    <text x="430" y="176" font-size="24" font-weight="750" fill="#f6efe2">43732680<tspan font-size="12" fill="#7a6640"></tspan></text>
     <rect x="606" y="116" width="176" height="82" rx="11" fill="#17130b" stroke="#3a2c14"/>
     <rect x="606" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
     <circle cx="626" cy="139" r="7" fill="none" stroke="#f59e0b" stroke-width="1.5"/><circle cx="626" cy="139" r="2.5" fill="#f59e0b"/>
     <text x="640" y="143" font-size="10.5" fill="#7a6640">高价值分层占比</text>
-    <text x="620" y="176" font-size="24" font-weight="750" fill="#f6efe2">8.6<tspan font-size="12" fill="#7a6640">%</tspan></text>
+    <text x="620" y="176" font-size="24" font-weight="750" fill="#f6efe2">55.1<tspan font-size="12" fill="#7a6640">%</tspan></text>
     <rect x="796" y="116" width="176" height="82" rx="11" fill="#17130b" stroke="#3a2c14"/>
     <rect x="796" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
     <circle cx="816" cy="139" r="7" fill="none" stroke="#f59e0b" stroke-width="1.5"/><circle cx="816" cy="139" r="2.5" fill="#f59e0b"/>
     <text x="830" y="143" font-size="10.5" fill="#7a6640">里程余额均值</text>
-    <text x="810" y="176" font-size="24" font-weight="750" fill="#f6efe2">100169.12<tspan font-size="12" fill="#7a6640"></tspan></text>
+    <text x="810" y="176" font-size="24" font-weight="750" fill="#f6efe2">46686.77<tspan font-size="12" fill="#7a6640"></tspan></text>
     
   <rect x="24" y="216" width="476" height="230" rx="12" fill="#17130b" stroke="#3a2c14"/>
   <text x="40" y="240" font-size="12.5" font-weight="650" fill="#f6efe2">指标趋势 / 结构</text><rect x="40" y="246" width="28" height="2" fill="#f59e0b"/>
@@ -49,27 +49,27 @@
     <rect x="524" y="264" width="440" height="28" rx="7" fill="#141009" stroke="#3a2c14"/>
     <rect x="532" y="271" width="4" height="14" rx="2" fill="#f59e0b"/>
     <rect x="544" y="270" width="70" height="16" rx="5" fill="#f59e0b" opacity="0.2"/><text x="550" y="282" font-size="9.5" fill="#f59e0b" font-weight="700">转化率下滑</text>
-    <text x="624" y="282" font-size="10" fill="#c9b48f">A223095</text>
+    <text x="624" y="282" font-size="10" fill="#c9b48f">A653657</text>
     <rect x="884" y="270" width="72" height="16" rx="8" fill="#fbbf24" opacity="0.16"/><text x="920" y="282" font-size="9.5" fill="#fbbf24" text-anchor="middle">—</text>
     <rect x="524" y="298" width="440" height="28" rx="7" fill="#141009" stroke="#3a2c14"/>
     <rect x="532" y="305" width="4" height="14" rx="2" fill="#fbbf24"/>
     <rect x="544" y="304" width="70" height="16" rx="5" fill="#fbbf24" opacity="0.2"/><text x="550" y="316" font-size="9.5" fill="#fbbf24" font-weight="700">回款逾期</text>
-    <text x="624" y="316" font-size="10" fill="#c9b48f">A731050</text>
+    <text x="624" y="316" font-size="10" fill="#c9b48f">A526800</text>
     <rect x="884" y="304" width="72" height="16" rx="8" fill="#fbbf24" opacity="0.16"/><text x="920" y="316" font-size="9.5" fill="#fbbf24" text-anchor="middle">—</text>
     <rect x="524" y="332" width="440" height="28" rx="7" fill="#141009" stroke="#3a2c14"/>
     <rect x="532" y="339" width="4" height="14" rx="2" fill="#f87171"/>
     <rect x="544" y="338" width="70" height="16" rx="5" fill="#f87171" opacity="0.2"/><text x="550" y="350" font-size="9.5" fill="#f87171" font-weight="700">客户跟进超时</text>
-    <text x="624" y="350" font-size="10" fill="#c9b48f">A697021</text>
+    <text x="624" y="350" font-size="10" fill="#c9b48f">A803385</text>
     <rect x="884" y="338" width="72" height="16" rx="8" fill="#fbbf24" opacity="0.16"/><text x="920" y="350" font-size="9.5" fill="#fbbf24" text-anchor="middle">—</text>
     <rect x="524" y="366" width="440" height="28" rx="7" fill="#141009" stroke="#3a2c14"/>
     <rect x="532" y="373" width="4" height="14" rx="2" fill="#fbbf24"/>
     <rect x="544" y="372" width="70" height="16" rx="5" fill="#fbbf24" opacity="0.2"/><text x="550" y="384" font-size="9.5" fill="#fbbf24" font-weight="700">区域掉队</text>
-    <text x="624" y="384" font-size="10" fill="#c9b48f">A716741</text>
+    <text x="624" y="384" font-size="10" fill="#c9b48f">A312767</text>
     <rect x="884" y="372" width="72" height="16" rx="8" fill="#fbbf24" opacity="0.16"/><text x="920" y="384" font-size="9.5" fill="#fbbf24" text-anchor="middle">—</text>
     <rect x="524" y="400" width="440" height="28" rx="7" fill="#141009" stroke="#3a2c14"/>
     <rect x="532" y="407" width="4" height="14" rx="2" fill="#f59e0b"/>
     <rect x="544" y="406" width="70" height="16" rx="5" fill="#f59e0b" opacity="0.2"/><text x="550" y="418" font-size="9.5" fill="#f59e0b" font-weight="700">转化率下滑</text>
-    <text x="624" y="418" font-size="10" fill="#c9b48f">A835900</text>
+    <text x="624" y="418" font-size="10" fill="#c9b48f">A242885</text>
     <rect x="884" y="406" width="72" height="16" rx="8" fill="#fbbf24" opacity="0.16"/><text x="920" y="418" font-size="9.5" fill="#fbbf24" text-anchor="middle">—</text>
   <text x="36" y="479" font-size="10.5" fill="#7a6640">演示原理 3.2 · 4.3 · UI ui_30_airline_member_rfm · Skill rfm-segmentation + lifecycle-action + privacy-boundary</text>
   <text x="36" y="522" font-size="11" fill="#7a6640">行动入口 · 责任 · 时限</text>

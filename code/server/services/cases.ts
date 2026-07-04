@@ -45,3 +45,20 @@ export function points3d() {
   const pts = t.rows.slice(0, 140).map((r) => ({ x: Number(r[pi]) || 0, y: Number(r[qi]) || 0, z: Number(r[ai]) || 0, c: cats.indexOf(r[cat]) }));
   return { count: pts.length, categories: cats, points: pts };
 }
+
+/** 航空会员 RFM 真实分析（案例30 专属 demo 驱动）：从真实列真算分层、高价值流失、R×F 散点。 */
+export function rfm() {
+  const t = parseCsv(join(ROOT, 'dataset', 'reference_data_analysis', '2-air_data.csv'));
+  const ci = (n: string) => t.head.indexOf(n);
+  const [rC, fC, mC, segC] = ['最近乘机天数', '年飞行次数', '年消费', '分层'].map(ci);
+  const members = t.rows.map((r) => ({ r: Number(r[rC]) || 0, f: Number(r[fC]) || 0, m: Number(r[mC]) || 0, seg: (r[segC] || '未分层').trim() }));
+  const segMap: Record<string, { count: number; spend: number }> = {};
+  for (const mem of members) { (segMap[mem.seg] ||= { count: 0, spend: 0 }); segMap[mem.seg].count++; segMap[mem.seg].spend += mem.m; }
+  const segments = Object.entries(segMap).map(([name, v]) => ({ name, count: v.count, avgSpend: Math.round(v.spend / v.count) })).sort((a, b) => b.avgSpend - a.avgSpend);
+  // 高价值流失：M 前 40% 且 R 后 40%（久未乘机）
+  const q = (arr: number[], p: number) => { const s = [...arr].sort((a, b) => a - b); return s[Math.floor(s.length * p)]; };
+  const mHi = q(members.map((x) => x.m), 0.6), rHi = q(members.map((x) => x.r), 0.6);
+  const churn = members.filter((x) => x.m >= mHi && x.r >= rHi);
+  const scatter = members.filter((_, i) => i % 4 === 0).slice(0, 140).map((x) => ({ x: x.r, y: x.f, m: x.m, seg: x.seg }));
+  return { total: members.length, segments, churnRisk: churn.length, churnRate: Math.round(churn.length / members.length * 1000) / 10, mHi, rHi, scatter };
+}

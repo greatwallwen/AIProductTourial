@@ -55,8 +55,21 @@ for(const [name,[n,header,gen]] of Object.entries(gens)){ const r=rng(name.lengt
 // ---- reference_data_analysis/*.csv ----
 { const r=rng(281); const rows=[]; for(let i=0;i<600;i++){ const amt=rf(r,1,50000); const fraud=r()<0.08; rows.push(['T'+ri(r,1e6,9e6),amt,pick(r,['线上','线下','跨境']),ri(r,0,23),fraud?pick(r,['盗刷','套现','异常商户']):'正常',fraud?'高':(amt>20000?'中':'低'),fraud||amt>20000?'待复核':'免复核',fraud?ri(r,1,5):'']); }
   results.push({...writeCsv('reference_data_analysis/28-creditcardfraud_sample.csv',['交易号','金额','渠道','小时','风险信号','风险等级','复核','命中规则数'],rows),label:'教学合成（对齐 UCI Bank/CreditCard）'}); }
-{ const r=rng(302); const rows=[]; for(let i=0;i<800;i++){ const R=ri(r,1,400),F=ri(r,1,50),M=rf(r,300,120000); rows.push(['A'+ri(r,1e5,9e5),pick(r,['白金','金卡','银卡','普卡']),R,F,M,R<60&&F>20?'高价值':(R>200?'流失预警':'成长'),ri(r,0,200000)]); }
-  results.push({...writeCsv('reference_data_analysis/2-air_data.csv',['会员号','卡等级','最近乘机天数','年飞行次数','年消费','分层','里程余额'],rows),label:'教学合成（航空会员 RFM）'}); }
+{ const r=rng(302); const rows=[];
+  // 分层优先生成：R/F/M 与分层强相关，并埋入「高价值流失」群（历史高 M、近期高 R）——见 dataset/design/case_30.md
+  const segs=[
+    {name:'重要价值',p:0.08,R:[1,40],F:[30,60],M:[80000,150000]},
+    {name:'重要保持',p:0.15,R:[20,90],F:[20,40],M:[50000,100000]},
+    {name:'重要发展',p:0.20,R:[10,60],F:[3,15],M:[30000,70000]},
+    {name:'高价值流失',p:0.12,R:[180,400],F:[2,10],M:[70000,140000]},
+    {name:'一般维持',p:0.25,R:[60,180],F:[5,20],M:[15000,45000]},
+    {name:'流失预警',p:0.20,R:[200,400],F:[1,8],M:[5000,30000]},
+  ];
+  for(let i=0;i<800;i++){ let x=r(),acc=0,seg=segs[segs.length-1]; for(const s of segs){acc+=s.p; if(x<=acc){seg=s;break;}}
+    const R=ri(r,seg.R[0],seg.R[1]),F=ri(r,seg.F[0],seg.F[1]),M=Math.round(rf(r,seg.M[0],seg.M[1]));
+    const card=M>100000?'白金':M>60000?'金卡':M>35000?'银卡':'普卡'; const miles=Math.round(F*rf(r,2000,4500));
+    rows.push(['A'+ri(r,1e5,9e5),card,R,F,M,seg.name,miles]); }
+  results.push({...writeCsv('reference_data_analysis/2-air_data.csv',['会员号','卡等级','最近乘机天数','年飞行次数','年消费','分层','里程余额'],rows),label:'教学合成（航空会员 RFM，分层与 R/F/M 强相关、埋高价值流失群）'}); }
 { const r=rng(318); const rows=[]; for(const ch of ['信息流A','信息流B','搜索','社交','联盟','视频']){ let imp=ri(r,50000,500000); const clk=Math.round(imp*rf(r,0.01,0.06)); const cvt=Math.round(clk*rf(r,0.02,0.15)); const cost=rf(r,clk*0.8,clk*3.5); rows.push([ch,imp,clk,cvt,cost,rf(r,cost/Math.max(1,cvt),cost/Math.max(1,cvt),2),rf(r,clk/imp,clk/imp,4),rf(r,cvt/Math.max(1,clk),cvt/Math.max(1,clk),4)]); }
   results.push({...writeCsv('reference_data_analysis/18-ad_performance.csv',['渠道','曝光','点击','转化','花费','CPA','CTR','CVR'],rows),label:'教学合成（广告投放漏斗）'}); }
 

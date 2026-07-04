@@ -7,7 +7,10 @@ test('后端 API 全绿', async () => {
   const h = await app.inject({ method: 'GET', url: '/api/health' });
   assert.equal(h.statusCode, 200); assert.equal(h.json().ok, true);
   const cs = await app.inject({ url: '/api/cases' });
-  assert.ok(Array.isArray(cs.json()) && cs.json().length >= 20, '案例列表 >= 20');
+  assert.ok(Array.isArray(cs.json()) && cs.json().length >= 10, '案例列表 >= 10（精品集）');
+  const rf = await app.inject({ url: '/api/rfm' });
+  assert.ok(rf.json().total > 0 && rf.json().segments.length >= 2, 'RFM 分层');
+  assert.ok(rf.json().churnRate >= 0 && rf.json().churnRate <= 100, '高价值流失率∈[0,100]');
   const d = await app.inject({ url: '/api/case/1/data' });
   assert.equal(d.statusCode, 200); assert.ok(d.json().kpis.length >= 3); assert.ok(d.json().rowCount > 0, '实时读 CSV 行数 > 0');
   const s = await app.inject({ url: '/api/search?q=product roadmap' });
