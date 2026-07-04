@@ -99,7 +99,12 @@ function svg(c, d) {
 // §1-§4 理念/原理深色信息图
 function figSvg(id) {
   const t = theme('graphite-hud');
-  const head = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 380" font-family="PingFang SC,sans-serif"><rect width="900" height="380" fill="${t.bg}"/><rect width="900" height="380" fill="none"/>`;
+  const head = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 380" font-family="PingFang SC,Microsoft YaHei,sans-serif">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${t.bg}"/><stop offset="1" stop-color="${t.bg2}"/></linearGradient>
+  <linearGradient id="acc" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${t.accent}"/><stop offset="1" stop-color="${t.accent2}"/></linearGradient>
+  <pattern id="g" width="26" height="26" patternUnits="userSpaceOnUse"><path d="M26 0H0V26" fill="none" stroke="${t.grid}" stroke-width="1"/></pattern>
+  <filter id="glow"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+  <rect width="900" height="380" fill="url(#bg)"/><rect width="900" height="380" fill="url(#g)" opacity="0.4"/><rect x="0" y="0" width="6" height="380" fill="url(#acc)"/>`;
   if (id === 'fig_ideology_loops') {
     const ring = (r, col, lab) => `<circle cx="300" cy="190" r="${r}" fill="none" stroke="${col}" stroke-width="2" opacity="0.9"/><text x="300" y="${190 - r + 20}" font-size="12" fill="${col}" text-anchor="middle">${lab}</text>`;
     return head + ring(150, t.muted, '外层 · 真实用户与市场（周）') + ring(105, t.accent2, '中层 · 开发者判断（时）') + ring(60, t.accent, '内层 · Agent 执行（分）') +
