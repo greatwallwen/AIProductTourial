@@ -82,7 +82,7 @@
       "industry": "医疗运营",
       "role": "医疗运营产品经理",
       "scenario": "医院预约容量调度",
-      "dataset": "dataset/product_cases/aicourse_healthcare_diabetes.csv",
+      "dataset": "dataset/product_cases/hospital_scheduling.csv",
       "publicRef": "https://github.com/vintasoftware/medplum-ai-concierge",
       "fields": [
         "科室",
@@ -192,12 +192,12 @@
       "dataset": "dataset/reference_data_analysis/18-ad_performance.csv",
       "publicRef": "https://carbondesignsystem.com/",
       "fields": [
+        "活动",
         "渠道",
         "曝光",
         "点击",
-        "注册",
-        "订单",
-        "预算"
+        "转化",
+        "花费"
       ],
       "metricChain": [
         "渠道数",

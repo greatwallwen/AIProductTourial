@@ -441,7 +441,7 @@
       "scenario": "医院预约容量调度",
       "industry": "医疗运营",
       "role": "医疗运营产品经理",
-      "dataset": "dataset/product_cases/aicourse_healthcare_diabetes.csv",
+      "dataset": "dataset/product_cases/hospital_scheduling.csv",
       "publicRef": "https://github.com/vintasoftware/medplum-ai-concierge",
       "skills": [
         "persona-scenario",
@@ -844,12 +844,12 @@
       "rp": null,
       "highImpact": false,
       "fields": [
+        "活动",
         "渠道",
         "曝光",
         "点击",
-        "注册",
-        "订单",
-        "预算"
+        "转化",
+        "花费"
       ],
       "metricChain": [
         "渠道数",
@@ -878,12 +878,12 @@
       ],
       "deliverable": "漏斗与预算建议",
       "mustFields": [
+        "活动",
         "渠道",
         "曝光",
         "点击",
-        "注册",
-        "订单",
-        "预算"
+        "转化",
+        "花费"
       ],
       "mustMetrics": [
         "渠道数",

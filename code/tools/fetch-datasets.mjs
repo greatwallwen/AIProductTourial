@@ -46,7 +46,7 @@ const gens={
  aicourse_hr_employees:[145,['员工号','部门','职级','司龄年','人效产出','绩效','流失风险'],r=>['E'+ri(r,10000,99999),pick(r,['研发','产品','销售','客服','供应链','职能']),pick(r,['P4','P5','P6','P7','M1','M2']),rf(r,0.2,12,1),rf(r,60,180),pick(r,['A','B+','B','C']),pick(r,['低','中','高'])]],
  aicourse_financial_transactions:[900,['交易号','账户','金额','渠道','时间','风险信号','风险等级','是否复核'],r=>{const amt=rf(r,10,80000);const hi=amt>30000||r()<0.12;return ['TX'+ri(r,1e6,9e6),'ACC'+ri(r,1000,9999),amt,pick(r,['网银','移动','POS','代扣']),iso(BASE,-ri(r,0,90)),hi?pick(r,['大额','异地','高频','夜间']):'正常',hi?pick(r,['高','中']):'低',hi?'待复核':'免复核'];}],
  aicourse_logistics_delivery:[700,['运单号','线路','城市','计划时效h','实际时效h','异常类型','是否扩城','责任方'],r=>{const plan=ri(r,12,72);const act=plan+ri(r,-6,48);const ab=act>plan+6;return ['WB'+ri(r,1e5,9e5),'L'+ri(r,1,40),pick(r,['北京','上海','广州','成都','杭州','武汉','西安','沈阳']),plan,act,ab?pick(r,['超时','破损','改派','缺车']):'',ab&&r()<0.3?'是':'否',ab?pick(r,['干线','网点','客服']):''];}],
- aicourse_healthcare_diabetes:[520,['就诊号','科室','预约时段','等待分钟','号源利用率','是否爽约','复核标记'],r=>['P'+ri(r,1e5,9e5),pick(r,['内分泌','心内','骨科','影像','检验']),pick(r,['08-10','10-12','14-16','16-18']),ri(r,5,180),rf(r,0.4,1.0),r()<0.14?'是':'否','需人工复核']],
+ hospital_scheduling:[520,['就诊号','科室','预约时段','等待分钟','号源利用率','是否爽约','复核标记'],r=>['P'+ri(r,1e5,9e5),pick(r,['内分泌','心内','骨科','影像','检验']),pick(r,['08-10','10-12','14-16','16-18']),ri(r,5,180),rf(r,0.4,1.0),r()<0.14?'是':'否','需人工复核']],
  aicourse_ecommerce_orders:[1000,['订单号','SKU','状态','申请类型','时效天','异常','责任环节'],r=>{const ab=r()<0.22;return ['RO'+ri(r,1e6,9e6),'SKU'+ri(r,1000,1299),pick(r,['已下单','已发货','退货中','换货中','已完成']),pick(r,['退货','换货','仅退款']),ri(r,1,15),ab?pick(r,['超时未处理','拒收','物流异常','库存不符']):'',ab?pick(r,['仓储','客服','商家','物流']):''];}],
 };
 for(const [name,[n,header,gen]] of Object.entries(gens)){ const r=rng(name.length*7+1); const rows=Array.from({length:n},()=>gen(r));
@@ -70,8 +70,14 @@ for(const [name,[n,header,gen]] of Object.entries(gens)){ const r=rng(name.lengt
     const card=M>100000?'白金':M>60000?'金卡':M>35000?'银卡':'普卡'; const miles=Math.round(F*rf(r,2000,4500));
     rows.push(['A'+ri(r,1e5,9e5),card,R,F,M,seg.name,miles]); }
   results.push({...writeCsv('reference_data_analysis/2-air_data.csv',['会员号','卡等级','最近乘机天数','年飞行次数','年消费','分层','里程余额'],rows),label:'教学合成（航空会员 RFM，分层与 R/F/M 强相关、埋高价值流失群）'}); }
-{ const r=rng(318); const rows=[]; for(const ch of ['信息流A','信息流B','搜索','社交','联盟','视频']){ let imp=ri(r,50000,500000); const clk=Math.round(imp*rf(r,0.01,0.06)); const cvt=Math.round(clk*rf(r,0.02,0.15)); const cost=rf(r,clk*0.8,clk*3.5); rows.push([ch,imp,clk,cvt,cost,rf(r,cost/Math.max(1,cvt),cost/Math.max(1,cvt),2),rf(r,clk/imp,clk/imp,4),rf(r,cvt/Math.max(1,clk),cvt/Math.max(1,clk),4)]); }
-  results.push({...writeCsv('reference_data_analysis/18-ad_performance.csv',['渠道','曝光','点击','转化','花费','CPA','CTR','CVR'],rows),label:'教学合成（广告投放漏斗）'}); }
+{ const r=rng(318); const rows=[]; const camps=['品牌曝光','夏促','新品','回流','会员日'];
+  // 数据故事：搜索/会员日 CVR 高（优质）；信息流A 点击高但 CVR 低（落地页问题）——复盘要把预算从量大挪到效率高
+  for(const ch of ['信息流A','信息流B','搜索','社交','联盟','视频']){ for(const cp of camps){
+    const imp=ri(r,20000,300000); const clk=Math.round(imp*rf(r,0.008,0.06));
+    const cvr=(ch==='搜索'||cp==='会员日')?rf(r,0.08,0.18):(ch==='信息流A')?rf(r,0.01,0.035):rf(r,0.02,0.09);
+    const cvt=Math.round(clk*cvr); const cost=Math.round(rf(r,clk*0.8,clk*3.2));
+    rows.push([cp,ch,imp,clk,cvt,cost,cvt?Math.round(cost/cvt):0,Number((clk/imp).toFixed(4)),Number((cvt/Math.max(1,clk)).toFixed(4))]); }}
+  results.push({...writeCsv('reference_data_analysis/18-ad_performance.csv',['活动','渠道','曝光','点击','转化','花费','CPA','CTR','CVR'],rows),label:'教学合成（广告投放漏斗，渠道×活动 30 行，埋落地页/优质渠道差异）'}); }
 
 // ---- pm_network_cases/nyc_311：尝试真实 Socrata，失败则合成 ----
 let nyc311Real=false;

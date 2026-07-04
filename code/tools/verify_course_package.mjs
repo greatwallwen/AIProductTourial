@@ -153,6 +153,12 @@ for (const c of defs.cases) {
 ok(); if (/owner:\s*rec\[.*pickOwner|const owner\b[^\n]*pickOwner/.test(rd('code/tools/build_case_data.mjs'))) bad('队列 owner 仍哈希伪造（应取真实责任列）');
 // P2 深度标杆：案例30 航空 RFM 专属 demo + 设计过的数据集（带 design.md）
 ok(); if (!has('dataset/design/case_30.md')) bad('案例30 缺数据集设计说明 dataset/design/case_30.md');
+// 逐案数据集设计说明（CSV 业务案例须有 dataset/design/case_NN.md）
+for (const c of defs.cases) {
+  if (!c.dataset.endsWith('.csv') || (c.screen && c.num !== 30)) continue;
+  ok(); if (!has(`dataset/design/case_${pad(c.num)}.md`)) bad(`案例${c.num} 缺数据集设计说明 dataset/design/case_${pad(c.num)}.md`);
+}
+ok(); if (has('dataset/product_cases/aicourse_healthcare_diabetes.csv')) bad('误名 healthcare_diabetes 未清除（应为 hospital_scheduling）');
 ok(); if (defs.cases.find((c) => c.num === 30)?.screen !== 'rfm') bad('案例30 未接专属 RFM demo（screen≠rfm）');
 ok(); if (!/api\/rfm/.test(rd('code/server/routes/api.ts')) || !/RfmScreen/.test(rd('code/web/src/screens.tsx'))) bad('缺 RFM 后端/前端');
 // 图表数据驱动守卫：CSV 案例的图表必须是真实列聚合（有 by 说明），不得哈希噪声

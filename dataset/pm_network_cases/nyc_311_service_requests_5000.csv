@@ -248,8 +248,8 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69566405,2026-07-03T01:12:37.000,2026-07-03T01:35:50.000,NYPD,Noise - Residential,Loud Music/Party,Closed,BROOKLYN
 69574613,2026-07-03T01:12:36.000,,NYPD,Illegal Fireworks,N/A,In Progress,QUEENS
 69567184,2026-07-03T01:12:29.000,,NYPD,Noise - Residential,Loud Music/Party,In Progress,BRONX
-69569366,2026-07-03T01:12:28.000,,DOHMH,Rodent,Condition Attracting Rodents,In Progress,QUEENS
 69572805,2026-07-03T01:12:28.000,,NYPD,Illegal Fireworks,N/A,In Progress,QUEENS
+69569366,2026-07-03T01:12:28.000,,DOHMH,Rodent,Condition Attracting Rodents,In Progress,QUEENS
 69569087,2026-07-03T01:12:26.000,,NYPD,Noise - Street/Sidewalk,Loud Music/Party,In Progress,BRONX
 69572866,2026-07-03T01:12:20.000,,NYPD,Noise - Residential,Loud Talking,In Progress,BRONX
 69578420,2026-07-03T01:12:16.000,,NYPD,Illegal Fireworks,N/A,In Progress,QUEENS
@@ -363,8 +363,8 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69569096,2026-07-03T00:56:56.000,,NYPD,Noise - Vehicle,Car/Truck Music,In Progress,BRONX
 69571003,2026-07-03T00:56:53.000,,NYPD,Noise - Residential,Loud Music/Party,In Progress,QUEENS
 69570364,2026-07-03T00:56:31.000,2026-07-03T01:10:15.000,NYPD,Noise - Street/Sidewalk,Loud Music/Party,Closed,BRONX
-69567133,2026-07-03T00:56:29.000,,NYPD,Illegal Parking,Blocked Sidewalk,In Progress,QUEENS
 69578470,2026-07-03T00:56:29.000,,NYPD,Noise - Residential,Loud Music/Party,In Progress,BROOKLYN
+69567133,2026-07-03T00:56:29.000,,NYPD,Illegal Parking,Blocked Sidewalk,In Progress,QUEENS
 69564540,2026-07-03T00:56:22.000,2026-07-03T01:09:00.000,NYPD,Noise - Street/Sidewalk,Loud Music/Party,Closed,BRONX
 69578495,2026-07-03T00:56:17.000,,NYPD,Noise - Street/Sidewalk,Loud Music/Party,In Progress,BRONX
 69572852,2026-07-03T00:56:14.000,,NYPD,Noise - Residential,Banging/Pounding,In Progress,BRONX
@@ -816,9 +816,9 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69570963,2026-07-02T23:52:39.000,,NYPD,Illegal Fireworks,N/A,In Progress,BRONX
 69567341,2026-07-02T23:52:13.000,,DSNY,Dirty Condition,Trash,In Progress,QUEENS
 69574022,2026-07-02T23:52:08.000,2026-07-03T00:56:10.000,NYPD,Noise - Street/Sidewalk,Loud Music/Party,Closed,BRONX
-69568856,2026-07-02T23:52:00.000,,DEP,Water System,No Water (WNW),Open,BRONX
 69563594,2026-07-02T23:52:00.000,2026-07-02T23:52:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69572026,2026-07-02T23:52:00.000,,DOT,Traffic Signal Condition,Controller,Open,QUEENS
+69568856,2026-07-02T23:52:00.000,,DEP,Water System,No Water (WNW),Open,BRONX
 69569407,2026-07-02T23:52:00.000,2026-07-02T23:52:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,MANHATTAN
 69565533,2026-07-02T23:52:00.000,2026-07-02T23:52:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BROOKLYN
 69578458,2026-07-02T23:51:58.000,,NYPD,Noise - Residential,Banging/Pounding,In Progress,BRONX
@@ -970,8 +970,8 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69568247,2026-07-02T23:38:37.000,2026-07-03T00:50:47.000,NYPD,Noise - Commercial,Loud Music/Party,Closed,MANHATTAN
 69578243,2026-07-02T23:38:35.000,2026-07-03T00:03:32.000,NYPD,Drug Activity,Use Indoor,Closed,MANHATTAN
 69564773,2026-07-02T23:38:32.000,,HPD,PLUMBING,WATER SUPPLY,Open,BRONX
-69568011,2026-07-02T23:38:31.000,2026-07-02T23:59:15.000,NYPD,Illegal Parking,Posted Parking Sign Violation,Closed,BROOKLYN
 69570302,2026-07-02T23:38:31.000,2026-07-02T23:48:04.000,NYPD,Noise - Residential,Loud Music/Party,Closed,QUEENS
+69568011,2026-07-02T23:38:31.000,2026-07-02T23:59:15.000,NYPD,Illegal Parking,Posted Parking Sign Violation,Closed,BROOKLYN
 69566761,2026-07-02T23:38:29.000,,HPD,PLUMBING,WATER SUPPLY,Open,BRONX
 69576220,2026-07-02T23:38:29.000,,HPD,PLUMBING,WATER SUPPLY,Open,BRONX
 69564755,2026-07-02T23:38:26.000,,HPD,PLUMBING,WATER SUPPLY,Open,BRONX
@@ -1022,8 +1022,8 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69576633,2026-07-02T23:35:30.000,,NYPD,Noise - Street/Sidewalk,Loud Music/Party,In Progress,BRONX
 69573653,2026-07-02T23:35:28.000,2026-07-03T00:44:15.000,NYPD,Illegal Parking,Double Parked Blocking Traffic,Closed,BRONX
 69576248,2026-07-02T23:35:25.000,,HPD,SAFETY,SMOKE DETECTOR,Open,MANHATTAN
-69576221,2026-07-02T23:35:21.000,,HPD,PLUMBING,WATER SUPPLY,Open,BRONX
 69567225,2026-07-02T23:35:21.000,,NYPD,Noise - Vehicle,Car/Truck Music,In Progress,BRONX
+69576221,2026-07-02T23:35:21.000,,HPD,PLUMBING,WATER SUPPLY,Open,BRONX
 69574068,2026-07-02T23:35:21.000,2026-07-03T01:33:36.000,NYPD,Noise - Street/Sidewalk,Loud Music/Party,Closed,BRONX
 69571014,2026-07-02T23:35:20.000,,NYPD,Noise - Street/Sidewalk,Loud Music/Party,In Progress,BRONX
 69572387,2026-07-02T23:35:15.000,,HPD,HEAT/HOT WATER,APARTMENT ONLY,Open,BROOKLYN
@@ -1034,8 +1034,8 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69570888,2026-07-02T23:35:05.000,,DOHMH,Food Establishment,Kitchen/Food Prep Area,In Progress,BROOKLYN
 69578087,2026-07-02T23:35:03.000,,HPD,PLUMBING,WATER SUPPLY,Open,BRONX
 69568214,2026-07-02T23:35:02.000,2026-07-02T23:44:28.000,NYPD,Illegal Fireworks,N/A,Closed,STATEN ISLAND
-69568575,2026-07-02T23:34:57.000,,HPD,HEAT/HOT WATER,ENTIRE BUILDING,Open,BRONX
 69578033,2026-07-02T23:34:57.000,,HPD,PLUMBING,WATER SUPPLY,Open,BRONX
+69568575,2026-07-02T23:34:57.000,,HPD,HEAT/HOT WATER,ENTIRE BUILDING,Open,BRONX
 69566308,2026-07-02T23:34:55.000,2026-07-03T01:19:34.000,NYPD,Illegal Fireworks,N/A,Closed,BRONX
 69566512,2026-07-02T23:34:51.000,2026-07-03T01:37:31.000,NYPD,Noise - Street/Sidewalk,Loud Music/Party,Closed,MANHATTAN
 69565130,2026-07-02T23:34:46.000,,NYPD,Illegal Parking,Blocked Hydrant,In Progress,QUEENS
@@ -1046,8 +1046,8 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69572864,2026-07-02T23:34:17.000,,NYPD,Noise - Residential,Loud Music/Party,In Progress,BRONX
 69573962,2026-07-02T23:34:10.000,2026-07-02T23:49:08.000,NYPD,Noise - Residential,Loud Music/Party,Closed,QUEENS
 69577428,2026-07-02T23:34:07.000,2026-07-03T00:44:57.000,NYPD,Illegal Parking,Double Parked Blocking Traffic,Closed,BRONX
-69569413,2026-07-02T23:34:00.000,2026-07-02T23:34:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69565543,2026-07-02T23:34:00.000,2026-07-02T23:34:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
+69569413,2026-07-02T23:34:00.000,2026-07-02T23:34:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69573188,2026-07-02T23:34:00.000,2026-07-02T23:34:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69576923,2026-07-02T23:34:00.000,2026-07-02T23:34:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69574723,2026-07-02T23:33:57.000,,NYPD,Noise - Vehicle,Car/Truck Music,In Progress,BRONX
@@ -1157,10 +1157,10 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69568679,2026-07-02T23:25:22.000,,HPD,PLUMBING,WATER SUPPLY,Open,BRONX
 69571816,2026-07-02T23:25:17.000,2026-07-03T00:18:42.000,NYPD,Illegal Parking,Blocked Sidewalk,Closed,BROOKLYN
 69570899,2026-07-02T23:25:05.000,,DPR,Damaged Tree,Entire Tree Has Fallen Down,In Progress,BRONX
-69569417,2026-07-02T23:25:00.000,2026-07-02T23:25:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
+69565910,2026-07-02T23:25:00.000,2026-07-02T23:30:00.000,DEP,Water System,Dirty Water (WE),Closed,MANHATTAN
 69563990,2026-07-02T23:25:00.000,,DEP,Water System,Dirty Water (WE),Open,BRONX
 69564341,2026-07-02T23:25:00.000,,DOT,Traffic Signal Condition,Controller,Open,QUEENS
-69565910,2026-07-02T23:25:00.000,2026-07-02T23:30:00.000,DEP,Water System,Dirty Water (WE),Closed,MANHATTAN
+69569417,2026-07-02T23:25:00.000,2026-07-02T23:25:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69568190,2026-07-02T23:25:00.000,,DOT,Traffic Signal Condition,Controller,Open,BRONX
 69571349,2026-07-02T23:25:00.000,2026-07-02T23:25:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69577660,2026-07-02T23:24:49.000,2026-07-03T01:54:10.000,NYPD,Illegal Fireworks,N/A,Closed,BRONX
@@ -1178,8 +1178,8 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69570405,2026-07-02T23:23:25.000,2026-07-03T00:55:47.000,NYPD,Noise - Street/Sidewalk,Loud Music/Party,Closed,BRONX
 69566324,2026-07-02T23:23:21.000,2026-07-02T23:25:32.000,NYPD,Noise - Commercial,Banging/Pounding,Closed,BROOKLYN
 69571790,2026-07-02T23:23:20.000,2026-07-03T01:23:34.000,NYPD,Illegal Parking,Blocked Hydrant,Closed,QUEENS
-69563602,2026-07-02T23:23:00.000,2026-07-02T23:23:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,QUEENS
 69563604,2026-07-02T23:23:00.000,2026-07-02T23:23:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
+69563602,2026-07-02T23:23:00.000,2026-07-02T23:23:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,QUEENS
 69563603,2026-07-02T23:23:00.000,2026-07-02T23:23:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,QUEENS
 69575043,2026-07-02T23:23:00.000,2026-07-02T23:23:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69576925,2026-07-02T23:23:00.000,2026-07-02T23:23:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
@@ -1216,10 +1216,10 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69564402,2026-07-02T23:21:25.000,2026-07-03T01:47:54.000,NYPD,Noise - Commercial,Loud Music/Party,Closed,BRONX
 69575908,2026-07-02T23:21:24.000,2026-07-03T00:45:51.000,NYPD,Noise - Street/Sidewalk,Loud Music/Party,Closed,MANHATTAN
 69566497,2026-07-02T23:21:20.000,2026-07-03T01:15:33.000,NYPD,Noise - Street/Sidewalk,Loud Music/Party,Closed,BROOKLYN
-69566945,2026-07-02T23:21:00.000,,DEP,Water System,No Water (WNW),Open,BRONX
 69564342,2026-07-02T23:21:00.000,,DOT,Traffic Signal Condition,Controller,Open,QUEENS
 69565547,2026-07-02T23:21:00.000,2026-07-02T23:21:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,MANHATTAN
 69569419,2026-07-02T23:21:00.000,2026-07-02T23:21:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,MANHATTAN
+69566945,2026-07-02T23:21:00.000,,DEP,Water System,No Water (WNW),Open,BRONX
 69571725,2026-07-02T23:21:00.000,,DEP,Water System,Dirty Water (WE),Open,BRONX
 69573192,2026-07-02T23:21:00.000,2026-07-02T23:21:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,QUEENS
 69564406,2026-07-02T23:20:59.000,2026-07-03T00:14:50.000,NYPD,Noise - Residential,Banging/Pounding,Closed,BRONX
@@ -1229,8 +1229,8 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69566319,2026-07-02T23:20:17.000,2026-07-03T01:14:35.000,NYPD,Illegal Fireworks,N/A,Closed,BROOKLYN
 69574695,2026-07-02T23:20:16.000,,NYPD,Noise - Street/Sidewalk,Loud Music/Party,In Progress,BRONX
 69564469,2026-07-02T23:20:11.000,2026-07-03T01:47:08.000,NYPD,Noise - Residential,Loud Music/Party,Closed,BRONX
-69568010,2026-07-02T23:20:04.000,2026-07-03T00:44:41.000,NYPD,Illegal Parking,Posted Parking Sign Violation,Closed,BROOKLYN
 69577666,2026-07-02T23:20:04.000,2026-07-02T23:26:13.000,NYPD,Illegal Fireworks,N/A,Closed,BROOKLYN
+69568010,2026-07-02T23:20:04.000,2026-07-03T00:44:41.000,NYPD,Illegal Parking,Posted Parking Sign Violation,Closed,BROOKLYN
 69571352,2026-07-02T23:20:00.000,2026-07-02T23:20:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69575747,2026-07-02T23:20:00.000,,DOT,Traffic Signal Condition,Controller,Open,BRONX
 69567506,2026-07-02T23:19:47.000,,DOT,Ferry Inquiry,Lost and Found,In Progress,Unspecified
@@ -1272,11 +1272,11 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69578428,2026-07-02T23:17:08.000,,NYPD,Illegal Fireworks,N/A,In Progress,QUEENS
 69576588,2026-07-02T23:17:08.000,,NYPD,Noise - Residential,Loud Music/Party,In Progress,BROOKLYN
 69569421,2026-07-02T23:17:00.000,2026-07-02T23:17:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
-69576927,2026-07-02T23:17:00.000,2026-07-02T23:17:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69569420,2026-07-02T23:17:00.000,2026-07-02T23:17:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69567537,2026-07-02T23:17:00.000,2026-07-02T23:17:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,MANHATTAN
 69571355,2026-07-02T23:17:00.000,2026-07-02T23:17:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BROOKLYN
 69573193,2026-07-02T23:17:00.000,2026-07-02T23:17:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BROOKLYN
+69576927,2026-07-02T23:17:00.000,2026-07-02T23:17:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69565177,2026-07-02T23:16:50.000,,NYPD,Noise - Residential,Loud Music/Party,In Progress,MANHATTAN
 69578430,2026-07-02T23:16:48.000,,NYPD,Illegal Parking,Blocked Hydrant,In Progress,BROOKLYN
 69572110,2026-07-02T23:16:38.000,2026-07-03T00:17:52.000,NYPD,Noise - Park,Loud Music/Party,Closed,BROOKLYN
@@ -1338,9 +1338,9 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69568509,2026-07-02T23:10:01.000,,HPD,ELECTRIC,POWER OUTAGE,Open,MANHATTAN
 69572321,2026-07-02T23:10:01.000,,HPD,ELECTRIC,OUTLET/SWITCH,Open,MANHATTAN
 69574139,2026-07-02T23:10:01.000,,HPD,ELECTRIC,POWER OUTAGE,Open,BRONX
-69578485,2026-07-02T23:10:00.000,,NYPD,Noise - Street/Sidewalk,Loud Music/Party,In Progress,MANHATTAN
 69564624,2026-07-02T23:10:00.000,,HPD,ELECTRIC,POWER OUTAGE,Open,QUEENS
 69573873,2026-07-02T23:10:00.000,,DOT,Street Light Condition,Street Light Out,Open,STATEN ISLAND
+69578485,2026-07-02T23:10:00.000,,NYPD,Noise - Street/Sidewalk,Loud Music/Party,In Progress,MANHATTAN
 69573547,2026-07-02T23:10:00.000,,DEP,Water Conservation,"Wasting Faucets,Sinks,Flushometer,Urinal,Etc. - Private Residence (CWR)",Open,BRONX
 69573973,2026-07-02T23:09:49.000,2026-07-02T23:49:59.000,NYPD,Noise - Residential,Loud Music/Party,Closed,QUEENS
 69576582,2026-07-02T23:09:32.000,,NYPD,Noise - Residential,Banging/Pounding,In Progress,QUEENS
@@ -1369,8 +1369,8 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69574296,2026-07-02T23:07:03.000,,HPD,PLUMBING,WATER SUPPLY,Open,BRONX
 69568641,2026-07-02T23:07:02.000,,HPD,PLUMBING,WATER SUPPLY,Open,BRONX
 69574118,2026-07-02T23:07:02.000,,HPD,ELECTRIC,LIGHTING,Open,BRONX
-69577637,2026-07-02T23:07:00.000,,DOT,Traffic Signal Condition,Controller,Open,BRONX
 69563609,2026-07-02T23:07:00.000,2026-07-02T23:07:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BROOKLYN
+69577637,2026-07-02T23:07:00.000,,DOT,Traffic Signal Condition,Controller,Open,BRONX
 69578072,2026-07-02T23:06:57.000,,HPD,PLUMBING,WATER SUPPLY,Open,BRONX
 69578506,2026-07-02T23:06:36.000,,NYPD,Noise - Street/Sidewalk,Loud Music/Party,In Progress,BRONX
 69570278,2026-07-02T23:06:29.000,2026-07-03T00:34:16.000,NYPD,Noise - Residential,Loud Music/Party,Closed,MANHATTAN
@@ -1479,8 +1479,8 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69577633,2026-07-02T22:58:00.000,,DOT,Traffic Signal Condition,Controller,Open,BROOKLYN
 69576932,2026-07-02T22:58:00.000,2026-07-02T22:58:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69573200,2026-07-02T22:58:00.000,2026-07-02T22:58:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,MANHATTAN
-69570290,2026-07-02T22:57:59.000,2026-07-02T23:50:14.000,NYPD,Noise - Residential,Loud Music/Party,Closed,QUEENS
 69566751,2026-07-02T22:57:59.000,,HPD,PLUMBING,WATER SUPPLY,Open,BRONX
+69570290,2026-07-02T22:57:59.000,2026-07-02T23:50:14.000,NYPD,Noise - Residential,Loud Music/Party,Closed,QUEENS
 69574655,2026-07-02T22:57:50.000,,NYPD,Noise - Residential,Banging/Pounding,In Progress,BRONX
 69566676,2026-07-02T22:57:49.000,,HPD,HEAT/HOT WATER,ENTIRE BUILDING,Open,BRONX
 69564107,2026-07-02T22:57:47.000,2026-07-03T01:55:15.000,NYPD,Illegal Parking,Blocked Sidewalk,Closed,BRONX
@@ -1555,9 +1555,9 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69570171,2026-07-02T22:52:34.000,2026-07-02T23:25:33.000,NYPD,Illegal Fireworks,N/A,Closed,BROOKLYN
 69568351,2026-07-02T22:52:20.000,2026-07-03T01:14:30.000,NYPD,Noise - Residential,Loud Talking,Closed,QUEENS
 69568218,2026-07-02T22:52:01.000,2026-07-02T23:02:11.000,NYPD,Illegal Fireworks,N/A,Closed,QUEENS
-69569433,2026-07-02T22:52:00.000,2026-07-02T22:52:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69563614,2026-07-02T22:52:00.000,2026-07-02T22:52:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69569787,2026-07-02T22:52:00.000,,DEP,Water System,Dirty Water (WE),Open,BRONX
+69569433,2026-07-02T22:52:00.000,2026-07-02T22:52:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69569434,2026-07-02T22:52:00.000,2026-07-02T22:52:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69566254,2026-07-02T22:52:00.000,,DOT,Traffic Signal Condition,Controller,Open,QUEENS
 69575735,2026-07-02T22:52:00.000,,DOT,Traffic Signal Condition,Controller,Open,QUEENS
@@ -1672,8 +1672,8 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69564560,2026-07-02T22:44:39.000,2026-07-03T00:37:16.000,NYPD,Noise - Street/Sidewalk,Loud Talking,Closed,BROOKLYN
 69572525,2026-07-02T22:44:34.000,,HPD,PLUMBING,WATER SUPPLY,Open,BRONX
 69576624,2026-07-02T22:44:31.000,,NYPD,Noise - Street/Sidewalk,Loud Music/Party,In Progress,BRONX
-69564811,2026-07-02T22:44:27.000,,HPD,PLUMBING,WATER SUPPLY,Open,BRONX
 69578415,2026-07-02T22:44:27.000,,DOHMH,Food Establishment,Rodents/Insects/Garbage,In Progress,MANHATTAN
+69564811,2026-07-02T22:44:27.000,,HPD,PLUMBING,WATER SUPPLY,Open,BRONX
 69570653,2026-07-02T22:44:22.000,,HPD,PLUMBING,WATER SUPPLY,Open,BRONX
 69572526,2026-07-02T22:44:20.000,,HPD,PLUMBING,WATER SUPPLY,Open,BRONX
 69568234,2026-07-02T22:44:01.000,2026-07-03T01:22:54.000,NYPD,Illegal Fireworks,N/A,Closed,QUEENS
@@ -1725,10 +1725,10 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69564451,2026-07-02T22:41:17.000,2026-07-03T00:18:06.000,NYPD,Noise - Residential,Loud Music/Party,Closed,BRONX
 69572528,2026-07-02T22:41:05.000,,HPD,PLUMBING,WATER SUPPLY,Open,BRONX
 69570657,2026-07-02T22:41:04.000,,HPD,PLUMBING,WATER SUPPLY,Open,BRONX
-69575406,2026-07-02T22:41:00.000,,DEP,Water System,Dirty Water (WE),Open,BRONX
 69563619,2026-07-02T22:41:00.000,2026-07-02T22:41:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BROOKLYN
 69563620,2026-07-02T22:41:00.000,2026-07-02T22:41:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BROOKLYN
 69577313,2026-07-02T22:41:00.000,,DEP,Water System,Leak (Use Comments) (WA2),Open,QUEENS
+69575406,2026-07-02T22:41:00.000,,DEP,Water System,Dirty Water (WE),Open,BRONX
 69564190,2026-07-02T22:40:54.000,2026-07-02T23:18:33.000,NYPD,Noise - Commercial,Car/Truck Horn,Closed,BROOKLYN
 69570342,2026-07-02T22:40:52.000,2026-07-02T23:42:02.000,NYPD,Noise - Street/Sidewalk,Loud Music/Party,Closed,BROOKLYN
 69576701,2026-07-02T22:40:47.000,2026-07-03T00:26:35.000,NYPD,Encampment,N/A,Closed,QUEENS
@@ -1742,11 +1742,11 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69566315,2026-07-02T22:40:07.000,2026-07-02T23:04:31.000,NYPD,Illegal Fireworks,N/A,Closed,QUEENS
 69568237,2026-07-02T22:40:05.000,2026-07-02T23:40:57.000,NYPD,Illegal Fireworks,N/A,Closed,BRONX
 69572259,2026-07-02T22:40:04.000,2026-07-02T23:02:49.000,NYPD,Noise - Street/Sidewalk,Loud Music/Party,Closed,QUEENS
-69576939,2026-07-02T22:40:00.000,2026-07-02T22:40:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,QUEENS
 69571372,2026-07-02T22:40:00.000,2026-07-02T22:40:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69569440,2026-07-02T22:40:00.000,2026-07-02T22:40:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,MANHATTAN
 69569439,2026-07-02T22:40:00.000,2026-07-02T22:40:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69576368,2026-07-02T22:40:00.000,2026-07-02T23:03:00.000,DEP,Water System,No Water (WNW),Closed,BRONX
+69576939,2026-07-02T22:40:00.000,2026-07-02T22:40:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,QUEENS
 69573206,2026-07-02T22:40:00.000,2026-07-02T22:40:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69572233,2026-07-02T22:39:58.000,2026-07-03T00:52:48.000,NYPD,Noise - Street/Sidewalk,Loud Music/Party,Closed,BRONX
 69564411,2026-07-02T22:39:53.000,2026-07-02T23:56:45.000,NYPD,Noise - Residential,Banging/Pounding,Closed,BROOKLYN
@@ -1847,8 +1847,8 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69577853,2026-07-02T22:33:15.000,2026-07-02T23:50:27.000,NYPD,Noise - Street/Sidewalk,Loud Talking,Closed,BROOKLYN
 69564369,2026-07-02T22:33:06.000,2026-07-02T23:03:05.000,NYPD,Illegal Fireworks,N/A,Closed,QUEENS
 69570308,2026-07-02T22:33:03.000,2026-07-02T22:43:53.000,NYPD,Noise - Residential,Loud Music/Party,Closed,QUEENS
-69576943,2026-07-02T22:33:00.000,2026-07-02T22:33:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,MANHATTAN
 69563625,2026-07-02T22:33:00.000,2026-07-02T22:33:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
+69576943,2026-07-02T22:33:00.000,2026-07-02T22:33:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,MANHATTAN
 69575057,2026-07-02T22:33:00.000,2026-07-02T22:33:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69573209,2026-07-02T22:33:00.000,2026-07-02T22:33:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BROOKLYN
 69570263,2026-07-02T22:32:50.000,2026-07-02T23:39:45.000,NYPD,Noise - Residential,Banging/Pounding,Closed,BRONX
@@ -1923,10 +1923,10 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69570406,2026-07-02T22:28:12.000,2026-07-02T22:33:29.000,NYPD,Noise - Street/Sidewalk,Loud Music/Party,Closed,BRONX
 69566518,2026-07-02T22:28:10.000,2026-07-02T23:42:16.000,NYPD,Noise - Street/Sidewalk,Loud Music/Party,Closed,BRONX
 69569055,2026-07-02T22:28:10.000,,NYPD,Noise - Residential,Loud Music/Party,In Progress,QUEENS
+69577291,2026-07-02T22:28:00.000,,DEP,Sewer,Manhole Overflow (Use Comments) (SA1),Open,BRONX
 69563628,2026-07-02T22:28:00.000,2026-07-02T22:28:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,MANHATTAN
 69567555,2026-07-02T22:28:00.000,2026-07-02T22:28:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,MANHATTAN
 69565561,2026-07-02T22:28:00.000,2026-07-02T22:28:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
-69577291,2026-07-02T22:28:00.000,,DEP,Sewer,Manhole Overflow (Use Comments) (SA1),Open,BRONX
 69574621,2026-07-02T22:27:57.000,,NYPD,Illegal Parking,Commercial Overnight Parking,In Progress,BROOKLYN
 69565180,2026-07-02T22:27:45.000,,NYPD,Noise - Residential,Loud Music/Party,In Progress,QUEENS
 69572078,2026-07-02T22:27:40.000,2026-07-02T23:41:14.000,NYPD,Illegal Fireworks,N/A,Closed,BRONX
@@ -1951,8 +1951,8 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69570880,2026-07-02T22:26:16.000,,NYPD,Blocked Driveway,Partial Access,In Progress,BRONX
 69564126,2026-07-02T22:26:10.000,2026-07-03T01:59:49.000,NYPD,Illegal Parking,Commercial Overnight Parking,Closed,QUEENS
 69574061,2026-07-02T22:26:08.000,2026-07-03T01:24:49.000,NYPD,Noise - Street/Sidewalk,Loud Music/Party,Closed,MANHATTAN
-69567557,2026-07-02T22:26:00.000,2026-07-02T22:26:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69569446,2026-07-02T22:26:00.000,2026-07-02T22:26:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,MANHATTAN
+69567557,2026-07-02T22:26:00.000,2026-07-02T22:26:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69565564,2026-07-02T22:26:00.000,2026-07-02T22:26:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69573212,2026-07-02T22:26:00.000,2026-07-02T22:26:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69573830,2026-07-02T22:26:00.000,,DOT,Street Light Condition,Street Light Out,Open,BROOKLYN
@@ -2019,8 +2019,8 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69570354,2026-07-02T22:22:18.000,2026-07-02T22:41:24.000,NYPD,Noise - Street/Sidewalk,Loud Music/Party,Closed,BRONX
 69567027,2026-07-02T22:22:07.000,,DPR,Damaged Tree,Branch or Limb Has Fallen Down,In Progress,QUEENS
 69568381,2026-07-02T22:22:06.000,2026-07-02T23:02:28.000,NYPD,Noise - Street/Sidewalk,Loud Music/Party,Closed,BRONX
-69571384,2026-07-02T22:22:00.000,2026-07-02T22:22:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69563631,2026-07-02T22:22:00.000,2026-07-02T22:22:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
+69571384,2026-07-02T22:22:00.000,2026-07-02T22:22:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69569401,2026-07-02T22:22:00.000,,DEP,Noise,Noise: air condition/ventilation equipment (NV1),Open,MANHATTAN
 69567559,2026-07-02T22:22:00.000,2026-07-02T22:22:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69573213,2026-07-02T22:22:00.000,2026-07-02T22:22:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
@@ -2035,8 +2035,8 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69575443,2026-07-02T22:21:30.000,2026-07-03T01:21:38.000,NYPD,Illegal Parking,Blocked Hydrant,Closed,QUEENS
 69566742,2026-07-02T22:21:27.000,,HPD,PLUMBING,WATER SUPPLY,Open,BRONX
 69576187,2026-07-02T22:21:27.000,,HPD,PLUMBING,WATER SUPPLY,Open,BRONX
-69564494,2026-07-02T22:21:13.000,2026-07-02T22:57:02.000,NYPD,Noise - Street/Sidewalk,Loud Music/Party,Closed,BRONX
 69566501,2026-07-02T22:21:13.000,2026-07-02T22:41:30.000,NYPD,Noise - Street/Sidewalk,Loud Music/Party,Closed,QUEENS
+69564494,2026-07-02T22:21:13.000,2026-07-02T22:57:02.000,NYPD,Noise - Street/Sidewalk,Loud Music/Party,Closed,BRONX
 69563632,2026-07-02T22:21:00.000,2026-07-02T22:21:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69572014,2026-07-02T22:21:00.000,,DOT,Traffic Signal Condition,Controller,Open,MANHATTAN
 69575060,2026-07-02T22:21:00.000,2026-07-02T22:21:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
@@ -2099,13 +2099,13 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69570407,2026-07-02T22:17:23.000,2026-07-03T01:26:45.000,NYPD,Noise - Street/Sidewalk,Loud Music/Party,Closed,MANHATTAN
 69577839,2026-07-02T22:17:18.000,2026-07-02T22:53:24.000,NYPD,Noise - Street/Sidewalk,Loud Music/Party,Closed,BRONX
 69572263,2026-07-02T22:17:05.000,2026-07-03T01:15:55.000,NYPD,Noise - Street/Sidewalk,Loud Music/Party,Closed,QUEENS
-69567561,2026-07-02T22:17:00.000,2026-07-02T22:17:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
-69576946,2026-07-02T22:17:00.000,2026-07-02T22:17:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69563635,2026-07-02T22:17:00.000,2026-07-02T22:17:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
+69567561,2026-07-02T22:17:00.000,2026-07-02T22:17:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69571699,2026-07-02T22:17:00.000,,DEP,Lead,Lead Kit Request (Residential) (L10),Open,MANHATTAN
 69571387,2026-07-02T22:17:00.000,2026-07-02T22:17:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69569452,2026-07-02T22:17:00.000,2026-07-02T22:17:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69565568,2026-07-02T22:17:00.000,2026-07-02T22:17:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
+69576946,2026-07-02T22:17:00.000,2026-07-02T22:17:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69566491,2026-07-02T22:16:52.000,2026-07-02T22:40:31.000,NYPD,Noise - Street/Sidewalk,Loud Music/Party,Closed,BRONX
 69564408,2026-07-02T22:16:49.000,2026-07-02T22:22:06.000,NYPD,Noise - Residential,Banging/Pounding,Closed,MANHATTAN
 69577850,2026-07-02T22:16:47.000,2026-07-02T22:45:21.000,NYPD,Noise - Street/Sidewalk,Loud Talking,Closed,BRONX
@@ -2147,10 +2147,10 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69577750,2026-07-02T22:14:38.000,2026-07-02T22:48:34.000,NYPD,Noise - Residential,Loud Music/Party,Closed,BRONX
 69575833,2026-07-02T22:14:20.000,2026-07-03T01:32:07.000,NYPD,Noise - Residential,Banging/Pounding,Closed,BRONX
 69574516,2026-07-02T22:14:19.000,,NYPD,Blocked Driveway,No Access,In Progress,BROOKLYN
-69565290,2026-07-02T22:14:01.000,2026-07-02T23:30:41.000,NYPD,Encampment,N/A,Closed,MANHATTAN
 69576706,2026-07-02T22:14:01.000,,DHS,Encampment,N/A,In Progress,MANHATTAN
-69567564,2026-07-02T22:14:00.000,2026-07-02T22:14:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
+69565290,2026-07-02T22:14:01.000,2026-07-02T23:30:41.000,NYPD,Encampment,N/A,Closed,MANHATTAN
 69563637,2026-07-02T22:14:00.000,2026-07-02T22:14:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
+69567564,2026-07-02T22:14:00.000,2026-07-02T22:14:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69571389,2026-07-02T22:14:00.000,2026-07-02T22:14:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69569455,2026-07-02T22:14:00.000,2026-07-02T22:14:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69567565,2026-07-02T22:14:00.000,2026-07-02T22:14:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
@@ -2200,7 +2200,6 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69564532,2026-07-02T22:10:25.000,2026-07-02T22:36:13.000,NYPD,Noise - Street/Sidewalk,Loud Music/Party,Closed,BROOKLYN
 69572196,2026-07-02T22:10:19.000,2026-07-02T22:11:11.000,NYPD,Noise - Street/Sidewalk,Loud Music/Party,Closed,MANHATTAN
 69578476,2026-07-02T22:10:06.000,,NYPD,Noise - Street/Sidewalk,Loud Music/Party,In Progress,BRONX
-69576306,2026-07-02T22:10:00.000,,DOT,Traffic Signal Condition,Underground,Open,MANHATTAN
 69571391,2026-07-02T22:10:00.000,2026-07-02T22:10:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,MANHATTAN
 69565570,2026-07-02T22:10:00.000,2026-07-02T22:10:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69565571,2026-07-02T22:10:00.000,2026-07-02T22:10:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,MANHATTAN
@@ -2208,6 +2207,7 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69568355,2026-07-02T22:10:00.000,2026-07-02T22:35:32.000,NYPD,Noise - Residential,Loud Talking,Closed,MANHATTAN
 69576951,2026-07-02T22:10:00.000,2026-07-02T22:10:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69575069,2026-07-02T22:10:00.000,2026-07-02T22:10:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,MANHATTAN
+69576306,2026-07-02T22:10:00.000,,DOT,Traffic Signal Condition,Underground,Open,MANHATTAN
 69570995,2026-07-02T22:09:57.000,,NYPD,Noise - Commercial,Loud Music/Party,In Progress,BRONX
 69564552,2026-07-02T22:09:55.000,2026-07-03T00:07:34.000,NYPD,Noise - Street/Sidewalk,Loud Music/Party,Closed,QUEENS
 69566537,2026-07-02T22:09:44.000,2026-07-03T01:16:35.000,NYPD,Noise - Street/Sidewalk,Loud Talking,Closed,BROOKLYN
@@ -2221,10 +2221,10 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69570466,2026-07-02T22:09:10.000,,HPD,ELECTRIC,OUTLET/SWITCH,Open,BRONX
 69566520,2026-07-02T22:09:03.000,2026-07-02T22:33:59.000,NYPD,Noise - Street/Sidewalk,Loud Music/Party,Closed,BRONX
 69575641,2026-07-02T22:09:01.000,2026-07-03T00:15:35.000,NYPD,Blocked Driveway,No Access,Closed,BROOKLYN
-69574394,2026-07-02T22:09:00.000,2026-07-02T22:58:00.000,DEP,Water System,LOW WATER PRESSURE - WLWP,Closed,BRONX
 69563640,2026-07-02T22:09:00.000,2026-07-02T22:09:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69565572,2026-07-02T22:09:00.000,2026-07-02T22:09:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,MANHATTAN
 69568192,2026-07-02T22:09:00.000,,DOT,Traffic Signal Condition,Controller,Open,BRONX
+69574394,2026-07-02T22:09:00.000,2026-07-02T22:58:00.000,DEP,Water System,LOW WATER PRESSURE - WLWP,Closed,BRONX
 69573532,2026-07-02T22:09:00.000,,DEP,Water System,Dirty Water (WE),Open,QUEENS
 69573218,2026-07-02T22:09:00.000,2026-07-02T22:09:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69576952,2026-07-02T22:09:00.000,2026-07-02T22:09:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
@@ -2435,10 +2435,10 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69569013,2026-07-02T21:55:18.000,,NYPD,Illegal Fireworks,N/A,In Progress,BRONX
 69566401,2026-07-02T21:55:15.000,2026-07-03T00:46:44.000,NYPD,Noise - Residential,Loud Music/Party,Closed,BRONX
 69564665,2026-07-02T21:55:00.000,,HPD,HEAT/HOT WATER,ENTIRE BUILDING,Open,BRONX
-69573521,2026-07-02T21:55:00.000,,DEP,Noise,"Noise, Barking Dog (NR5)",Open,MANHATTAN
 69570146,2026-07-02T21:55:00.000,,DOT,Traffic Signal Condition,Controller,Open,QUEENS
 69571400,2026-07-02T21:55:00.000,2026-07-02T21:55:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69569461,2026-07-02T21:55:00.000,2026-07-02T21:55:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
+69573521,2026-07-02T21:55:00.000,,DEP,Noise,"Noise, Barking Dog (NR5)",Open,MANHATTAN
 69576962,2026-07-02T21:55:00.000,2026-07-02T21:55:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69576963,2026-07-02T21:55:00.000,2026-07-02T21:55:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69577376,2026-07-02T21:54:24.000,2026-07-02T22:25:43.000,NYPD,Illegal Parking,Blocked Hydrant,Closed,QUEENS
@@ -2517,13 +2517,13 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69575763,2026-07-02T21:50:07.000,2026-07-02T22:30:46.000,NYPD,Illegal Fireworks,N/A,Closed,BRONX
 69566162,2026-07-02T21:50:04.000,2026-07-02T23:00:55.000,NYPD,Blocked Driveway,No Access,Closed,BROOKLYN
 69571015,2026-07-02T21:50:03.000,,NYPD,Noise - Street/Sidewalk,Loud Music/Party,In Progress,BRONX
-69570754,2026-07-02T21:50:00.000,2026-07-02T22:09:00.000,DEP,Water System,LOW WATER PRESSURE - WLWP,Closed,BRONX
-69565583,2026-07-02T21:50:00.000,2026-07-02T21:50:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69567572,2026-07-02T21:50:00.000,2026-07-02T21:50:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
-69565584,2026-07-02T21:50:00.000,2026-07-02T21:50:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69567573,2026-07-02T21:50:00.000,2026-07-02T21:50:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
-69577580,2026-07-02T21:50:00.000,,DOT,Traffic Signal Condition,Veh Signal Lamp,Open,BROOKLYN
+69570754,2026-07-02T21:50:00.000,2026-07-02T22:09:00.000,DEP,Water System,LOW WATER PRESSURE - WLWP,Closed,BRONX
 69576966,2026-07-02T21:50:00.000,2026-07-02T21:50:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
+69565583,2026-07-02T21:50:00.000,2026-07-02T21:50:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
+69565584,2026-07-02T21:50:00.000,2026-07-02T21:50:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
+69577580,2026-07-02T21:50:00.000,,DOT,Traffic Signal Condition,Veh Signal Lamp,Open,BROOKLYN
 69575072,2026-07-02T21:50:00.000,2026-07-02T21:50:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69566777,2026-07-02T21:49:39.000,,HPD,PLUMBING,WATER SUPPLY,Open,BRONX
 69572625,2026-07-02T21:49:39.000,,HPD,HEAT/HOT WATER,APARTMENT ONLY,Open,BRONX
@@ -2632,8 +2632,8 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69576882,2026-07-02T21:43:13.000,,OOS,Cannabis Retailer,Unlicensed,In Progress,BROOKLYN
 69567328,2026-07-02T21:43:08.000,2026-07-02T22:00:49.000,NYPD,Panhandling,N/A,Closed,MANHATTAN
 69567938,2026-07-02T21:43:04.000,2026-07-02T22:42:47.000,NYPD,Illegal Parking,Blocked Hydrant,Closed,QUEENS
-69571408,2026-07-02T21:43:00.000,2026-07-02T21:43:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69563652,2026-07-02T21:43:00.000,2026-07-02T21:43:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
+69571408,2026-07-02T21:43:00.000,2026-07-02T21:43:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69567574,2026-07-02T21:43:00.000,2026-07-02T21:43:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,MANHATTAN
 69575075,2026-07-02T21:43:00.000,2026-07-02T21:43:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69573229,2026-07-02T21:43:00.000,2026-07-02T21:43:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
@@ -2751,8 +2751,8 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69576975,2026-07-02T21:36:00.000,2026-07-02T21:36:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69578245,2026-07-02T21:36:00.000,2026-07-02T21:44:00.000,DEP,Water System,No Water (WNW),Closed,BRONX
 69568382,2026-07-02T21:35:58.000,2026-07-02T21:53:00.000,NYPD,Noise - Street/Sidewalk,Loud Music/Party,Closed,BRONX
-69569006,2026-07-02T21:35:56.000,,NYPD,Illegal Fireworks,N/A,In Progress,BRONX
 69572260,2026-07-02T21:35:56.000,2026-07-02T22:00:13.000,NYPD,Noise - Street/Sidewalk,Loud Music/Party,Closed,BROOKLYN
+69569006,2026-07-02T21:35:56.000,,NYPD,Illegal Fireworks,N/A,In Progress,BRONX
 69577682,2026-07-02T21:35:52.000,2026-07-03T00:57:03.000,NYPD,Illegal Fireworks,N/A,Closed,MANHATTAN
 69564508,2026-07-02T21:35:49.000,2026-07-02T22:26:56.000,NYPD,Noise - Street/Sidewalk,Loud Music/Party,Closed,BRONX
 69571875,2026-07-02T21:35:42.000,2026-07-02T21:43:24.000,NYPD,Illegal Parking,Posted Parking Sign Violation,Closed,QUEENS
@@ -2774,11 +2774,11 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69571807,2026-07-02T21:34:33.000,2026-07-03T01:22:20.000,NYPD,Illegal Parking,Blocked Sidewalk,Closed,QUEENS
 69571801,2026-07-02T21:34:23.000,2026-07-02T23:06:54.000,NYPD,Illegal Parking,Blocked Hydrant,Closed,QUEENS
 69565383,2026-07-02T21:34:12.000,2026-07-02T21:51:28.000,NYPD,Illegal Parking,Blocked Crosswalk,Closed,MANHATTAN
-69571418,2026-07-02T21:34:00.000,2026-07-02T21:34:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
-69571417,2026-07-02T21:34:00.000,2026-07-02T21:34:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69563658,2026-07-02T21:34:00.000,2026-07-02T21:34:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69563657,2026-07-02T21:34:00.000,2026-07-02T21:34:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BROOKLYN
+69571418,2026-07-02T21:34:00.000,2026-07-02T21:34:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69567582,2026-07-02T21:34:00.000,2026-07-02T21:34:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
+69571417,2026-07-02T21:34:00.000,2026-07-02T21:34:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69568193,2026-07-02T21:34:00.000,,DOT,Traffic Signal Condition,Controller,Open,BRONX
 69571416,2026-07-02T21:34:00.000,2026-07-02T21:34:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69569477,2026-07-02T21:34:00.000,2026-07-02T21:34:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
@@ -2817,8 +2817,8 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69578431,2026-07-02T21:32:19.000,,NYPD,Illegal Parking,Blocked Hydrant,In Progress,MANHATTAN
 69568451,2026-07-02T21:32:14.000,2026-07-02T21:50:25.000,NYPD,Noise - Street/Sidewalk,Loud Talking,Closed,QUEENS
 69566459,2026-07-02T21:32:11.000,2026-07-02T22:47:22.000,NYPD,Noise - Street/Sidewalk,Loud Music/Party,Closed,QUEENS
-69563659,2026-07-02T21:32:00.000,2026-07-02T21:32:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69569775,2026-07-02T21:32:00.000,,DEP,Sewer,Catch Basin Clogged/Flooding (Use Comments) (SC),Open,BRONX
+69563659,2026-07-02T21:32:00.000,2026-07-02T21:32:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69569478,2026-07-02T21:32:00.000,2026-07-02T21:32:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69571419,2026-07-02T21:32:00.000,2026-07-02T21:32:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69571420,2026-07-02T21:32:00.000,2026-07-02T21:32:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
@@ -2854,9 +2854,9 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69572191,2026-07-02T21:30:18.000,2026-07-03T01:38:09.000,NYPD,Noise - Residential,Loud Talking,Closed,BRONX
 69564797,2026-07-02T21:30:17.000,,HPD,PLUMBING,WATER SUPPLY,Open,BRONX
 69573091,2026-07-02T21:30:07.000,,DSNY,Obstruction,Merchandise,In Progress,MANHATTAN
-69571423,2026-07-02T21:30:00.000,2026-07-02T21:30:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69563661,2026-07-02T21:30:00.000,2026-07-02T21:30:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69569481,2026-07-02T21:30:00.000,2026-07-02T21:30:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
+69571423,2026-07-02T21:30:00.000,2026-07-02T21:30:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69567879,2026-07-02T21:30:00.000,,DEP,Water System,Dirty Water (WE),Open,MANHATTAN
 69567585,2026-07-02T21:30:00.000,2026-07-02T21:30:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69571421,2026-07-02T21:30:00.000,2026-07-02T21:30:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
@@ -2895,8 +2895,8 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69570705,2026-07-02T21:28:42.000,,HPD,UNSANITARY CONDITION,MOLD,Open,BRONX
 69577905,2026-07-02T21:28:42.000,,HPD,ELECTRIC,OUTLET/SWITCH,Open,BRONX
 69577893,2026-07-02T21:28:42.000,,HPD,DOOR/WINDOW,WINDOW FRAME,Open,BRONX
-69568076,2026-07-02T21:28:40.000,2026-07-02T22:25:22.000,NYPD,Blocked Driveway,No Access,Closed,QUEENS
 69564799,2026-07-02T21:28:40.000,,HPD,PLUMBING,WATER SUPPLY,Open,BRONX
+69568076,2026-07-02T21:28:40.000,2026-07-02T22:25:22.000,NYPD,Blocked Driveway,No Access,Closed,QUEENS
 69578079,2026-07-02T21:28:37.000,,HPD,PLUMBING,WATER SUPPLY,Open,BRONX
 69572132,2026-07-02T21:28:35.000,2026-07-02T21:50:24.000,NYPD,Noise - Residential,Banging/Pounding,Closed,MANHATTAN
 69565030,2026-07-02T21:28:34.000,,NYPD,Blocked Driveway,Partial Access,In Progress,QUEENS
@@ -2931,9 +2931,9 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69577964,2026-07-02T21:26:12.000,,HPD,HEAT/HOT WATER,ENTIRE BUILDING,Open,BRONX
 69578082,2026-07-02T21:26:10.000,,HPD,PLUMBING,WATER SUPPLY,Open,BRONX
 69566026,2026-07-02T21:26:02.000,2026-07-02T22:24:46.000,NYPD,Illegal Parking,Commercial Overnight Parking,Closed,STATEN ISLAND
-69571426,2026-07-02T21:26:00.000,2026-07-02T21:26:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69563662,2026-07-02T21:26:00.000,2026-07-02T21:26:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69567588,2026-07-02T21:26:00.000,2026-07-02T21:26:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
+69571426,2026-07-02T21:26:00.000,2026-07-02T21:26:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69569483,2026-07-02T21:26:00.000,2026-07-02T21:26:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69575407,2026-07-02T21:26:00.000,,DEP,Water System,Dirty Water (WE),Open,BROOKLYN
 69573237,2026-07-02T21:26:00.000,2026-07-02T21:26:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
@@ -2948,10 +2948,10 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69566521,2026-07-02T21:25:05.000,2026-07-02T21:55:23.000,NYPD,Noise - Street/Sidewalk,Loud Music/Party,Closed,BRONX
 69564380,2026-07-02T21:25:01.000,2026-07-02T22:13:48.000,NYPD,Illegal Fireworks,N/A,Closed,BROOKLYN
 69567589,2026-07-02T21:25:00.000,2026-07-02T21:25:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
+69568189,2026-07-02T21:25:00.000,,DOT,Traffic Signal Condition,Controller,Open,MANHATTAN
 69565596,2026-07-02T21:25:00.000,2026-07-02T21:25:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69569484,2026-07-02T21:25:00.000,2026-07-02T21:25:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69569485,2026-07-02T21:25:00.000,2026-07-02T21:25:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
-69568189,2026-07-02T21:25:00.000,,DOT,Traffic Signal Condition,Controller,Open,MANHATTAN
 69569486,2026-07-02T21:25:00.000,2026-07-02T21:25:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69576981,2026-07-02T21:25:00.000,2026-07-02T21:25:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69575404,2026-07-02T21:25:00.000,2026-07-02T21:31:00.000,DEP,Water System,Dirty Water (WE),Closed,BRONX
@@ -2964,12 +2964,12 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69570501,2026-07-02T21:24:13.000,,HPD,GENERAL,CABINET,Open,QUEENS
 69566471,2026-07-02T21:24:11.000,2026-07-02T22:32:54.000,NYPD,Noise - Street/Sidewalk,Loud Music/Party,Closed,BRONX
 69577663,2026-07-02T21:24:11.000,2026-07-02T21:59:18.000,NYPD,Illegal Fireworks,N/A,Closed,QUEENS
-69571427,2026-07-02T21:24:00.000,2026-07-02T21:24:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
+69575878,2026-07-02T21:24:00.000,2026-07-02T21:25:03.000,NYPD,Noise - Residential,Loud Music/Party,Closed,MANHATTAN
 69563665,2026-07-02T21:24:00.000,2026-07-02T21:24:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,MANHATTAN
 69563663,2026-07-02T21:24:00.000,2026-07-02T21:24:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69563664,2026-07-02T21:24:00.000,2026-07-02T21:24:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
+69571427,2026-07-02T21:24:00.000,2026-07-02T21:24:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69572023,2026-07-02T21:24:00.000,2026-07-02T22:25:00.000,DOT,Traffic Signal Condition,Controller,Closed,BRONX
-69575878,2026-07-02T21:24:00.000,2026-07-02T21:25:03.000,NYPD,Noise - Residential,Loud Music/Party,Closed,MANHATTAN
 69576982,2026-07-02T21:24:00.000,2026-07-02T21:24:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69576983,2026-07-02T21:24:00.000,2026-07-02T21:24:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69573238,2026-07-02T21:24:00.000,2026-07-02T21:24:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,QUEENS
@@ -2981,12 +2981,12 @@ unique_key,created_date,closed_date,agency,complaint_type,descriptor,status,boro
 69568432,2026-07-02T21:23:30.000,2026-07-03T01:51:03.000,NYPD,Noise - Street/Sidewalk,Loud Music/Party,Closed,BRONX
 69566025,2026-07-02T21:23:07.000,2026-07-02T22:19:35.000,NYPD,Illegal Parking,Commercial Overnight Parking,Closed,QUEENS
 69575522,2026-07-02T21:23:05.000,2026-07-02T22:20:27.000,NYPD,Illegal Parking,Double Parked Blocking Traffic,Closed,QUEENS
-69573239,2026-07-02T21:23:00.000,2026-07-02T21:23:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,MANHATTAN
 69567590,2026-07-02T21:23:00.000,2026-07-02T21:23:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69567591,2026-07-02T21:23:00.000,2026-07-02T21:23:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,QUEENS
 69565597,2026-07-02T21:23:00.000,2026-07-02T21:23:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69569487,2026-07-02T21:23:00.000,2026-07-02T21:23:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,MANHATTAN
 69575089,2026-07-02T21:23:00.000,2026-07-02T21:23:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,MANHATTAN
+69573239,2026-07-02T21:23:00.000,2026-07-02T21:23:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,MANHATTAN
 69573240,2026-07-02T21:23:00.000,2026-07-02T21:23:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69576984,2026-07-02T21:23:00.000,2026-07-02T21:23:00.000,DEP,Water System,Fire Hydrant Emergency (FHE),Closed,BRONX
 69564577,2026-07-02T21:22:42.000,2026-07-03T00:36:59.000,NYPD,Non-Emergency Police Matter,Other (complaint details),Closed,BROOKLYN
