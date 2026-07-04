@@ -2,7 +2,7 @@
   "meta": {
     "projectName": "产品经理转型实操知识库",
     "projectNameEn": "PM Transformation Hands-on Knowledge Base",
-    "caseCount": 21
+    "caseCount": 25
   },
   "cases": [
     {
@@ -745,6 +745,130 @@
       "deliverable": "知识游戏化产品方案包",
       "highImpact": false,
       "phase": "综合闭环"
+    },
+    {
+      "num": 44,
+      "title": "AI协作｜知识库语义检索(RAG)",
+      "industry": "AI 应用",
+      "role": "AI 产品经理",
+      "scenario": "产品知识库语义检索",
+      "dataset": "skills/external/pm-skills-deanpeters/README.md",
+      "publicRef": "本地：skills/external/pm-skills-deanpeters（RAG 语料）｜pgvector github.com/pgvector/pgvector",
+      "fields": [
+        "查询",
+        "命中文档",
+        "相似度",
+        "片段"
+      ],
+      "metricChain": [
+        "语料规模",
+        "命中率",
+        "Top1 相似度",
+        "检索延迟"
+      ],
+      "exceptionStates": [
+        "低相似",
+        "无命中",
+        "越权语料"
+      ],
+      "decisionAction": "用真实向量检索为问答/推荐提供高相关片段，替代全量塞入",
+      "riskBoundary": "不得把低相似片段当作事实回答",
+      "deliverable": "RAG 检索方案与验收",
+      "highImpact": false,
+      "phase": "AI协作"
+    },
+    {
+      "num": 45,
+      "title": "系统架构｜关系库查询(PostgreSQL)",
+      "industry": "数据工程",
+      "role": "数据产品经理",
+      "scenario": "经营数据关系库查询",
+      "dataset": "dataset/order_data.csv",
+      "publicRef": "https://www.postgresql.org/docs/current/ ｜ pgvector github.com/pgvector/pgvector",
+      "fields": [
+        "SKU",
+        "品类",
+        "区域",
+        "金额",
+        "毛利率"
+      ],
+      "metricChain": [
+        "表行数",
+        "区域数",
+        "聚合耗时",
+        "索引命中"
+      ],
+      "exceptionStates": [
+        "慢查询",
+        "全表扫描",
+        "空结果"
+      ],
+      "decisionAction": "用真实 SQL（建表/索引/参数化聚合）支撑经营分析，讲清 PostgreSQL 架构",
+      "riskBoundary": "本地 SQLite 演示、生产为 PostgreSQL；不得把演示数据当真账",
+      "deliverable": "关系库查询与 PG 架构说明",
+      "highImpact": false,
+      "phase": "系统架构"
+    },
+    {
+      "num": 46,
+      "title": "系统架构｜子系统分解与接口契约",
+      "industry": "系统架构",
+      "role": "架构型产品经理",
+      "scenario": "后端子系统分解与契约",
+      "dataset": "rules/backend.md",
+      "publicRef": "Software Engineering at Google https://abseil.io/resources/swe-book/ ｜ 12factor.net",
+      "fields": [
+        "子系统",
+        "职责",
+        "接口",
+        "契约"
+      ],
+      "metricChain": [
+        "子系统数",
+        "接口数",
+        "契约覆盖",
+        "健康检查"
+      ],
+      "exceptionStates": [
+        "职责越界",
+        "契约缺失",
+        "循环依赖"
+      ],
+      "decisionAction": "把 §3 架构流程落到本仓库真运行后端：分层/边界/契约在代码里可查",
+      "riskBoundary": "架构决策须可追溯（ADR），不得口头拍板",
+      "deliverable": "子系统分解图与接口契约",
+      "highImpact": false,
+      "phase": "系统架构"
+    },
+    {
+      "num": 47,
+      "title": "数据指标｜三维经营散点(three.js)",
+      "industry": "数据可视化",
+      "role": "可视化产品经理",
+      "scenario": "经营三维散点可视化",
+      "dataset": "dataset/order_data.csv",
+      "publicRef": "React Three Fiber https://github.com/pmndrs/react-three-fiber",
+      "fields": [
+        "品类",
+        "单价",
+        "数量",
+        "金额"
+      ],
+      "metricChain": [
+        "数据点数",
+        "品类数",
+        "最大金额",
+        "均价"
+      ],
+      "exceptionStates": [
+        "离群点",
+        "空品类"
+      ],
+      "decisionAction": "用 three.js/R3F 把经营数据渲染成可交互三维散点，暴露多维离群",
+      "riskBoundary": "三维仅作探索，不替代统计结论",
+      "deliverable": "三维散点可视化方案",
+      "highImpact": false,
+      "phase": "数据指标"
     }
   ]
 }

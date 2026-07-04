@@ -1,0 +1,26 @@
+# RAG 检索方案与验收（实操 44·方案验收）
+
+> 数据来源：`skills/external/pm-skills-deanpeters/README.md`（46 行，异常 0）。字段与指标均回到该数据。演示原理 1.3、3.3，采用设计 emerald-flow。
+
+## 交付物
+
+RAG 检索方案与验收
+
+## 验收清单
+
+- 必含字段：查询、命中文档、相似度、片段
+- 必含指标链：语料规模、命中率、Top1 相似度、检索延迟
+- 必含异常状态：低相似、无命中、越权语料
+- 必含 Skill：capstone-product-flow、evidence-pack、traceability-check
+
+## 合格标准
+
+业务场景具体、指标链完整、异常状态可追踪、行动入口明确、验收条件可执行。
+
+## 不合格标准
+
+使用泛化产品名称、缺少行业指标、只描述页面不说明业务取舍、越过「不得把低相似片段当作事实回答」。
+
+## 验收结论
+
+PASS — 指标链 4 项、异常队列 0 项均回到 `skills/external/pm-skills-deanpeters/README.md`；可运行原型见工作台路由 `#/case/44`（设计 emerald-flow），截图 `assets/screenshots/premium_case_44_rag_knowledge_retrieval_desktop.png`。

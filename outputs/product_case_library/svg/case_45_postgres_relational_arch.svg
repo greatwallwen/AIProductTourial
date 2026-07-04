@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="PingFang SC,Microsoft YaHei,sans-serif">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0c0e11"/><stop offset="1" stop-color="#101318"/></linearGradient>
+  <pattern id="grid" width="26" height="26" patternUnits="userSpaceOnUse"><path d="M26 0H0V26" fill="none" stroke="#1c222b" stroke-width="1"/></pattern></defs>
+  <rect width="960" height="560" fill="url(#bg)"/><rect width="960" height="560" fill="url(#grid)" opacity="0.5"/>
+  <text x="40" y="50" font-size="21" font-weight="750" fill="#e8ecf1">经营数据关系库查询</text>
+  <text x="40" y="74" font-size="12" fill="#a2adbb">数据工程 · db_console · 设计 steel-queue · 数据 dataset/order_data.csv（1200 行，异常 225）</text>
+  <text x="40" y="96" font-size="11" fill="#606b7a">读图顺序：指标链 → 异常队列与责任对象 → 行动入口与验收边界</text>
+  
+   <rect x="40" y="104" width="162" height="76" rx="10" fill="#161a20" stroke="#28303c"/>
+   <rect x="40" y="104" width="162" height="2" fill="#60a5fa"/>
+   <text x="52" y="128" font-size="11" fill="#606b7a">表行数</text>
+   <text x="52" y="160" font-size="23" font-weight="750" fill="#e8ecf1">1200</text>
+   <rect x="218" y="104" width="162" height="76" rx="10" fill="#161a20" stroke="#28303c"/>
+   <rect x="218" y="104" width="162" height="2" fill="#60a5fa"/>
+   <text x="230" y="128" font-size="11" fill="#606b7a">区域数</text>
+   <text x="230" y="160" font-size="23" font-weight="750" fill="#e8ecf1">1200</text>
+   <rect x="396" y="104" width="162" height="76" rx="10" fill="#161a20" stroke="#28303c"/>
+   <rect x="396" y="104" width="162" height="2" fill="#60a5fa"/>
+   <text x="408" y="128" font-size="11" fill="#606b7a">聚合耗时</text>
+   <text x="408" y="160" font-size="23" font-weight="750" fill="#e8ecf1">900</text>
+   <rect x="574" y="104" width="162" height="76" rx="10" fill="#161a20" stroke="#28303c"/>
+   <rect x="574" y="104" width="162" height="2" fill="#60a5fa"/>
+   <text x="586" y="128" font-size="11" fill="#606b7a">索引命中</text>
+   <text x="586" y="160" font-size="23" font-weight="750" fill="#e8ecf1">600</text>
+  <text x="40" y="230" font-size="12" font-weight="600" fill="#e8ecf1">异常队列 · 责任对象</text>
+  <text x="592" y="230" font-size="12" font-weight="600" fill="#e8ecf1">行动入口</text>
+  
+   <rect x="40" y="248" width="520" height="34" rx="7" fill="#12151b" stroke="#28303c"/>
+   <rect x="52" y="256" width="78" height="18" rx="5" fill="#f87171" opacity="0.22"/>
+   <text x="60" y="269" font-size="10.5" fill="#f87171" font-weight="700">慢查询</text>
+   <text x="144" y="269" font-size="11" fill="#a2adbb">SKU1013 · 产品-王</text>
+   <rect x="40" y="290" width="520" height="34" rx="7" fill="#12151b" stroke="#28303c"/>
+   <rect x="52" y="298" width="78" height="18" rx="5" fill="#f87171" opacity="0.22"/>
+   <text x="60" y="311" font-size="10.5" fill="#f87171" font-weight="700">全表扫描</text>
+   <text x="144" y="311" font-size="11" fill="#a2adbb">SKU1015 · 风控-赵</text>
+   <rect x="40" y="332" width="520" height="34" rx="7" fill="#12151b" stroke="#28303c"/>
+   <rect x="52" y="340" width="78" height="18" rx="5" fill="#f87171" opacity="0.22"/>
+   <text x="60" y="353" font-size="10.5" fill="#f87171" font-weight="700">空结果</text>
+   <text x="144" y="353" font-size="11" fill="#a2adbb">SKU1026 · 客服-陈</text>
+   <rect x="40" y="374" width="520" height="34" rx="7" fill="#12151b" stroke="#28303c"/>
+   <rect x="52" y="382" width="78" height="18" rx="5" fill="#f87171" opacity="0.22"/>
+   <text x="60" y="395" font-size="10.5" fill="#f87171" font-weight="700">慢查询</text>
+   <text x="144" y="395" font-size="11" fill="#a2adbb">SKU1013 · 供应链-孙</text>
+   <rect x="40" y="416" width="520" height="34" rx="7" fill="#12151b" stroke="#28303c"/>
+   <rect x="52" y="424" width="78" height="18" rx="5" fill="#f87171" opacity="0.22"/>
+   <text x="60" y="437" font-size="10.5" fill="#f87171" font-weight="700">全表扫描</text>
+   <text x="144" y="437" font-size="11" fill="#a2adbb">SKU1006 · 数据-周</text>
+   <rect x="592" y="248" width="110" height="42" rx="9" fill="#60a5fa"/>
+   <text x="604" y="273" font-size="11" fill="#04121a" font-weight="700">处置：慢查询</text>
+   <rect x="714" y="248" width="110" height="42" rx="9" fill="#60a5fa"/>
+   <text x="726" y="273" font-size="11" fill="#04121a" font-weight="700">处置：全表扫描</text>
+   <rect x="836" y="248" width="110" height="42" rx="9" fill="#60a5fa"/>
+   <text x="848" y="273" font-size="11" fill="#04121a" font-weight="700">处置：空结果</text>
+  <foreignObject x="592" y="308" width="330" height="150"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:11px;color:#a2adbb;line-height:1.6">决策动作：用真实 SQL（建表/索引/参数化聚合）支撑经营分析，讲清 PostgreSQL 架构<br/>风险边界：本地 SQLite 演示、生产为 PostgreSQL；不得把演示数据当真账</div></foreignObject>
+  
+  <text x="40" y="544" font-size="10.5" fill="#606b7a">UI 原型 ui_45_pg_relational · 演示原理 3.3 · 4.1 · Skill capstone-product-flow + evidence-pack + traceability-check</text>
+</svg>

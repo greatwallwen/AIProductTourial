@@ -31,6 +31,17 @@ export function caseData(num: number) {
     vm.liveComputed = true;
   }
   vm.graphicOnly = !!c.graphicOnly;
+  vm.screen = c.screen || null; // 特殊案例屏：rag/db/arch/3d
   vm.demonstrates = c.demonstrates;
   return vm;
+}
+
+/** 三维散点真实数据点（three.js 案例）：读经营 CSV → 单价×数量×金额，色=品类。 */
+export function points3d() {
+  const t = parseCsv(join(ROOT, 'dataset', 'order_data.csv'));
+  const ci = (n: string) => t.head.indexOf(n);
+  const [pi, qi, ai, cat] = [ci('单价'), ci('数量'), ci('金额'), ci('品类')];
+  const cats = [...new Set(t.rows.map((r) => r[cat]))];
+  const pts = t.rows.slice(0, 140).map((r) => ({ x: Number(r[pi]) || 0, y: Number(r[qi]) || 0, z: Number(r[ai]) || 0, c: cats.indexOf(r[cat]) }));
+  return { count: pts.length, categories: cats, points: pts };
 }

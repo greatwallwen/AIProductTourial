@@ -1,0 +1,83 @@
+{
+ "num": 44,
+ "title": "AI协作｜知识库语义检索(RAG)",
+ "industry": "AI 应用",
+ "role": "AI 产品经理",
+ "saasType": "rag_search",
+ "uiId": "ui_44_rag_retrieval",
+ "slug": "rag_knowledge_retrieval",
+ "uiStrategy": "dashboard_plus_saas",
+ "largeScreenRef": "AI｜语义检索命中大屏",
+ "components": [
+  "查询框",
+  "命中列表",
+  "相似度条",
+  "片段预览",
+  "语料统计"
+ ],
+ "skills": [
+  "capstone-product-flow",
+  "evidence-pack",
+  "traceability-check"
+ ],
+ "rp": null,
+ "highImpact": false,
+ "riskBoundary": "不得把低相似片段当作事实回答",
+ "decisionAction": "用真实向量检索为问答/推荐提供高相关片段，替代全量塞入",
+ "dataset": "skills/external/pm-skills-deanpeters/README.md",
+ "metricChainNames": [
+  "语料规模",
+  "命中率",
+  "Top1 相似度",
+  "检索延迟"
+ ],
+ "exceptionStates": [
+  "低相似",
+  "无命中",
+  "越权语料"
+ ],
+ "fields": [
+  "查询",
+  "命中文档",
+  "相似度",
+  "片段"
+ ],
+ "design": "emerald-flow",
+ "demonstrates": [
+  "1.3",
+  "3.3"
+ ],
+ "kpis": [
+  {
+   "name": "语料规模",
+   "value": 22,
+   "unit": ""
+  },
+  {
+   "name": "命中率",
+   "value": 33,
+   "unit": "%"
+  },
+  {
+   "name": "Top1 相似度",
+   "value": 44,
+   "unit": ""
+  },
+  {
+   "name": "检索延迟",
+   "value": 55,
+   "unit": ""
+  }
+ ],
+ "queue": [],
+ "chart": {
+  "type": "sparkline",
+  "data": []
+ },
+ "rowCount": 46,
+ "exceptionCount": 0,
+ "responsible": [
+  "—"
+ ],
+ "actions": []
+}

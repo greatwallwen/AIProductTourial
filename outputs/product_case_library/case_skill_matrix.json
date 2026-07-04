@@ -2,7 +2,7 @@
   "meta": {
     "projectName": "产品经理转型实操知识库",
     "projectNameEn": "PM Transformation Hands-on Knowledge Base",
-    "caseCount": 21
+    "caseCount": 25
   },
   "caseToSkills": {
     "1": [
@@ -109,6 +109,26 @@
       "gamification-design",
       "learning-evaluation",
       "skill-validator"
+    ],
+    "44": [
+      "capstone-product-flow",
+      "evidence-pack",
+      "traceability-check"
+    ],
+    "45": [
+      "capstone-product-flow",
+      "evidence-pack",
+      "traceability-check"
+    ],
+    "46": [
+      "capstone-product-flow",
+      "evidence-pack",
+      "traceability-check"
+    ],
+    "47": [
+      "capstone-product-flow",
+      "evidence-pack",
+      "traceability-check"
     ]
   },
   "skillToCases": {
@@ -256,13 +276,25 @@
       39
     ],
     "capstone-product-flow": [
-      41
+      41,
+      44,
+      45,
+      46,
+      47
     ],
     "evidence-pack": [
-      41
+      41,
+      44,
+      45,
+      46,
+      47
     ],
     "traceability-check": [
-      41
+      41,
+      44,
+      45,
+      46,
+      47
     ],
     "growth-capstone": [
       42

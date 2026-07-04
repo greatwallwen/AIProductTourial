@@ -2,7 +2,7 @@
   "meta": {
     "projectName": "产品经理转型实操知识库",
     "projectNameEn": "PM Transformation Hands-on Knowledge Base",
-    "caseCount": 21
+    "caseCount": 25
   },
   "archetypes": {
     "executive_dashboard": {
@@ -160,6 +160,26 @@
         "报告导出",
         "回归记录"
       ]
+    },
+    "rag_search": {
+      "density": "语义检索命中面板",
+      "layout": "左侧导航 + 顶部筛选 + 右侧详情抽屉",
+      "components": "相似度排序"
+    },
+    "db_console": {
+      "density": "关系库查询台",
+      "layout": "左侧导航 + 顶部筛选 + 右侧详情抽屉",
+      "components": "表结构与索引"
+    },
+    "arch_board": {
+      "density": "子系统分解图",
+      "layout": "左侧导航 + 顶部筛选 + 右侧详情抽屉",
+      "components": "分层边界与接口契约"
+    },
+    "scene_3d": {
+      "density": "三维散点场景",
+      "layout": "左侧导航 + 顶部筛选 + 右侧详情抽屉",
+      "components": "轨道交互"
     }
   }
 }

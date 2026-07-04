@@ -77,6 +77,16 @@ for (const f of ['code/web/src/App.tsx', 'code/web/src/lib/api.ts', 'code/run.sh
 ok(); if (!/fetchIndex|\/api\//.test(rd('code/web/src/lib/api.ts'))) bad('前端未走后端 API（live fetch）');
 ok(); if (!/(webDist|fastifyStatic)/.test(rd('code/server/app.ts'))) bad('后端未托管前端静态包（一服务）');
 ok(); if (rd('code/web/src/App.tsx').split('\n').length > 800) bad('code/web/src/App.tsx > 800 行');
+// 全局：架构相关新案例（向量库 RAG / PostgreSQL / 系统架构 / three.js 3D）+ 其真实后端能力
+for (const [num, screen] of [[44, 'rag'], [45, 'db'], [46, 'arch'], [47, '3d']]) {
+  const c = defs.cases.find((x) => x.num === num);
+  ok(); if (!c || c.screen !== screen) bad(`案例${num} 缺失或 screen≠${screen}`);
+}
+const apiSrc = rd('code/server/routes/api.ts');
+for (const ep of ['/api/search', '/api/db/query', '/api/points3d']) { ok(); if (!apiSrc.includes(ep)) bad(`后端缺接口 ${ep}`); }
+ok(); if (!has('code/web/src/screens.tsx')) bad('前端缺 screens.tsx（架构/向量/PG/3D 案例屏）');
+ok(); if (!/@react-three\/fiber/.test(rd('code/web/package.json'))) bad('前端未装 three.js/R3F');
+ok(); if (!/PseudoScatter|hasWebGL/.test(rd('code/web/src/screens.tsx'))) bad('3D 无 WebGL 退化(伪 3D)未实现');
 
 console.log(`\n检查 ${checks} 项，失败 ${fail} 项`);
 if (fail) { console.log('\n✗ NOT GREEN'); process.exit(1); }

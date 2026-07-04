@@ -8,3 +8,8 @@ async function getJson<T>(url: string): Promise<T> {
 }
 export const fetchIndex = () => getJson<IndexData>('/api/index');
 export const fetchCaseData = (num: string) => getJson<any>(`/api/case/${num}/data`);
+
+export const fetchSearch = (q: string) => getJson<any>(`/api/search?q=${encodeURIComponent(q)}`);
+export const fetchDbQuery = () => getJson<any>('/api/db/query');
+export const fetchPoints3d = () => getJson<any>('/api/points3d');
+export const fetchHealth = () => getJson<any>('/api/health');

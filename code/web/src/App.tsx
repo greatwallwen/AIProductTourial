@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { Routes, Route, NavLink, useParams, Navigate } from 'react-router-dom';
 import themesData from './themes.json';
 import { fetchIndex, fetchCaseData, type IndexData } from './lib/api';
+import { SpecialScreen } from './screens';
 
 // 多套设计系统令牌（单一来源 design/themes.json）：按案例 design 注入 CSS 变量，故各案例配色各异
 const THEMES: Record<string, any> = {};
@@ -17,7 +18,7 @@ function themeVars(designId: string): CSSProperties {
   return v as CSSProperties;
 }
 
-const PHASES = ['角色转型', '用户洞察', '需求管理', '详细设计', '数据指标', 'AI协作', '质量验收', '综合闭环'];
+const PHASES = ['角色转型', '用户洞察', '需求管理', '详细设计', '系统架构', '数据指标', 'AI协作', '质量验收', '综合闭环'];
 const pad = (n: number) => String(n).padStart(2, '0');
 
 function Sidebar({ idx }: { idx: IndexData }) {
@@ -200,6 +201,8 @@ function CaseScreen() {
           <MatrixChart points={matrixPoints} />
           <div className="comp-row">{(c.components || []).map((x: string) => <span key={x} className="chip soft">{x}</span>)}</div>
         </section>
+      ) : c.screen ? (
+        <SpecialScreen screen={c.screen} />
       ) : (
         <>
           <div className="kpis">

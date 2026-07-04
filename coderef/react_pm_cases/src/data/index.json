@@ -231,6 +231,50 @@
    "phase": "综合闭环",
    "highImpact": false,
    "rp": null
+  },
+  {
+   "num": 44,
+   "title": "AI协作｜知识库语义检索(RAG)",
+   "slug": "rag_knowledge_retrieval",
+   "uiId": "ui_44_rag_retrieval",
+   "saasType": "rag_search",
+   "industry": "AI 应用",
+   "phase": "AI协作",
+   "highImpact": false,
+   "rp": null
+  },
+  {
+   "num": 45,
+   "title": "系统架构｜关系库查询(PostgreSQL)",
+   "slug": "postgres_relational_arch",
+   "uiId": "ui_45_pg_relational",
+   "saasType": "db_console",
+   "industry": "数据工程",
+   "phase": "系统架构",
+   "highImpact": false,
+   "rp": null
+  },
+  {
+   "num": 46,
+   "title": "系统架构｜子系统分解与接口契约",
+   "slug": "system_arch_flow",
+   "uiId": "ui_46_arch_contract",
+   "saasType": "arch_board",
+   "industry": "系统架构",
+   "phase": "系统架构",
+   "highImpact": false,
+   "rp": null
+  },
+  {
+   "num": 47,
+   "title": "数据指标｜三维经营散点(three.js)",
+   "slug": "three_d_scatter",
+   "uiId": "ui_47_three_scatter",
+   "saasType": "scene_3d",
+   "industry": "数据可视化",
+   "phase": "数据指标",
+   "highImpact": false,
+   "rp": null
   }
  ]
 }

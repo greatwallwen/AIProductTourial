@@ -2,7 +2,7 @@
   "meta": {
     "projectName": "产品经理转型实操知识库",
     "projectNameEn": "PM Transformation Hands-on Knowledge Base",
-    "caseCount": 21
+    "caseCount": 25
   },
   "cases": [
     {
@@ -508,6 +508,98 @@
         "skill-validator"
       ],
       "phase": "综合闭环"
+    },
+    {
+      "num": 44,
+      "title": "AI协作｜知识库语义检索(RAG)",
+      "uiId": "ui_44_rag_retrieval",
+      "slug": "rag_knowledge_retrieval",
+      "uiStrategy": "dashboard_plus_saas",
+      "saasType": "rag_search",
+      "saasLayout": "rag_search｜左侧导航 + 顶部筛选 + 右侧详情抽屉｜语义检索命中面板",
+      "components": [
+        "查询框",
+        "命中列表",
+        "相似度条",
+        "片段预览",
+        "语料统计"
+      ],
+      "largeScreenRef": "AI｜语义检索命中大屏",
+      "skills": [
+        "capstone-product-flow",
+        "evidence-pack",
+        "traceability-check"
+      ],
+      "phase": "AI协作"
+    },
+    {
+      "num": 45,
+      "title": "系统架构｜关系库查询(PostgreSQL)",
+      "uiId": "ui_45_pg_relational",
+      "slug": "postgres_relational_arch",
+      "uiStrategy": "dashboard_plus_saas",
+      "saasType": "db_console",
+      "saasLayout": "db_console｜左侧导航 + 顶部筛选 + 右侧详情抽屉｜关系库查询台",
+      "components": [
+        "表结构",
+        "SQL 查询",
+        "结果表",
+        "区域聚合",
+        "执行说明"
+      ],
+      "largeScreenRef": "数据｜关系库查询大屏",
+      "skills": [
+        "capstone-product-flow",
+        "evidence-pack",
+        "traceability-check"
+      ],
+      "phase": "系统架构"
+    },
+    {
+      "num": 46,
+      "title": "系统架构｜子系统分解与接口契约",
+      "uiId": "ui_46_arch_contract",
+      "slug": "system_arch_flow",
+      "uiStrategy": "dashboard_plus_saas",
+      "saasType": "arch_board",
+      "saasLayout": "arch_board｜左侧导航 + 顶部筛选 + 右侧详情抽屉｜子系统分解图",
+      "components": [
+        "子系统图",
+        "分层边界",
+        "接口契约",
+        "健康检查",
+        "ADR 记录"
+      ],
+      "largeScreenRef": "架构｜子系统与数据流大屏",
+      "skills": [
+        "capstone-product-flow",
+        "evidence-pack",
+        "traceability-check"
+      ],
+      "phase": "系统架构"
+    },
+    {
+      "num": 47,
+      "title": "数据指标｜三维经营散点(three.js)",
+      "uiId": "ui_47_three_scatter",
+      "slug": "three_d_scatter",
+      "uiStrategy": "dashboard_plus_saas",
+      "saasType": "scene_3d",
+      "saasLayout": "scene_3d｜左侧导航 + 顶部筛选 + 右侧详情抽屉｜三维散点场景",
+      "components": [
+        "三维散点",
+        "坐标轴",
+        "品类图例",
+        "离群标记",
+        "轨道控制"
+      ],
+      "largeScreenRef": "数据｜三维经营散点大屏",
+      "skills": [
+        "capstone-product-flow",
+        "evidence-pack",
+        "traceability-check"
+      ],
+      "phase": "数据指标"
     }
   ]
 }
