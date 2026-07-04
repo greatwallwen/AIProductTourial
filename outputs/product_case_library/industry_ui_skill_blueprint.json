@@ -2,7 +2,7 @@
   "meta": {
     "projectName": "产品经理转型实操知识库",
     "projectNameEn": "PM Transformation Hands-on Knowledge Base",
-    "caseCount": 12
+    "caseCount": 11
   },
   "cases": [
     {
@@ -28,30 +28,6 @@
         "acceptance-criteria"
       ],
       "phase": "角色转型"
-    },
-    {
-      "num": 6,
-      "title": "AI 产品经理工作流｜银行客服知识治理",
-      "uiId": "ui_06_bank_knowledge_governance",
-      "slug": "bank_knowledge_governance",
-      "uiStrategy": "saas_workbench｜knowledge_workspace｜中密度工作台",
-      "saasType": "knowledge_workspace",
-      "saasLayout": "knowledge_workspace｜左侧导航 + 顶部筛选 + 右侧详情抽屉｜中密度工作台",
-      "components": [
-        "知识目录",
-        "任务地图",
-        "问答记录",
-        "命中材料",
-        "错题复盘",
-        "能力画像"
-      ],
-      "largeScreenRef": "不适用，采用专业 SaaS 工作台",
-      "skills": [
-        "ai-product-boundary",
-        "eval-design",
-        "human-review"
-      ],
-      "phase": "AI协作"
     },
     {
       "num": 14,

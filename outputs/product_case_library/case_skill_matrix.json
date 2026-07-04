@@ -2,18 +2,13 @@
   "meta": {
     "projectName": "产品经理转型实操知识库",
     "projectNameEn": "PM Transformation Hands-on Knowledge Base",
-    "caseCount": 12
+    "caseCount": 11
   },
   "caseToSkills": {
     "1": [
       "problem-framing",
       "metric-definition",
       "acceptance-criteria"
-    ],
-    "6": [
-      "ai-product-boundary",
-      "eval-design",
-      "human-review"
     ],
     "14": [
       "change-impact",
@@ -77,17 +72,6 @@
     "acceptance-criteria": [
       1
     ],
-    "ai-product-boundary": [
-      6
-    ],
-    "eval-design": [
-      6
-    ],
-    "human-review": [
-      6,
-      16,
-      28
-    ],
     "change-impact": [
       14
     ],
@@ -102,6 +86,10 @@
     ],
     "journey-map": [
       16
+    ],
+    "human-review": [
+      16,
+      28
     ],
     "risk-rule-design": [
       28
@@ -148,12 +136,10 @@
   },
   "distinctSkills": [
     "acceptance-criteria",
-    "ai-product-boundary",
     "budget-decision",
     "capstone-product-flow",
     "change-impact",
     "compliance-boundary",
-    "eval-design",
     "evidence-pack",
     "funnel-analysis",
     "human-review",

@@ -2,7 +2,7 @@
   "meta": {
     "projectName": "产品经理转型实操知识库",
     "projectNameEn": "PM Transformation Hands-on Knowledge Base",
-    "caseCount": 12
+    "caseCount": 11
   },
   "mapping": {
     "RP01": {
@@ -28,12 +28,6 @@
       "title": "AI-Excel 数据分析转产品判断",
       "produce": "指标分析表, 产品改进建议",
       "accept": "RFM、趋势或异常检测结果必须转化为明确产品判断，不能停留在图表描述。"
-    },
-    "RP13": {
-      "case": 6,
-      "title": "本地资料知识库问答流程",
-      "produce": "知识库配置记录, 问答测试记录, 召回改进清单",
-      "accept": "至少测试 3 个问题，记录命中材料、答案质量和改进点。"
     }
   }
 }

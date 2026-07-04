@@ -2,7 +2,7 @@
   "meta": {
     "projectName": "产品经理转型实操知识库",
     "projectNameEn": "PM Transformation Hands-on Knowledge Base",
-    "caseCount": 12
+    "caseCount": 11
   },
   "cases": [
     {
@@ -40,41 +40,6 @@
       "deliverable": "产品问题定义卡",
       "highImpact": false,
       "phase": "角色转型"
-    },
-    {
-      "num": 6,
-      "title": "AI 产品经理工作流｜银行客服知识治理",
-      "industry": "银行客服",
-      "role": "AI 产品经理",
-      "scenario": "银行客服知识治理",
-      "dataset": "dataset/product_cases/aicourse_financial_transactions.csv",
-      "publicRef": "https://github.com/VoltAgent/awesome-agent-skills",
-      "fields": [
-        "问题类别",
-        "知识来源",
-        "命中率",
-        "风险答案",
-        "人工接管",
-        "留痕编号"
-      ],
-      "metricChain": [
-        "交易数",
-        "高风险率",
-        "已复核率",
-        "渠道数",
-        "平均金额(元)"
-      ],
-      "exceptionStates": [
-        "字段缺失",
-        "流程超时",
-        "复核未完成",
-        "验收失败"
-      ],
-      "decisionAction": "围绕银行客服知识库判断优先级、责任人和验收动作。",
-      "riskBoundary": "不得输出自动授信或最终处置建议",
-      "deliverable": "AI 产品工作流蓝图",
-      "highImpact": true,
-      "phase": "AI协作"
     },
     {
       "num": 14,
@@ -190,7 +155,7 @@
       "role": "会员产品经理",
       "scenario": "航空会员价值运营",
       "dataset": "dataset/reference_data_analysis/2-air_data.csv",
-      "publicRef": "https://archive.ics.uci.edu/dataset/352/online+retail",
+      "publicRef": "RFM 会员价值方法论（Arthur Hughes《Strategic Database Marketing》）；本案数据设计见 dataset/design/case_30.md",
       "fields": [
         "会员号",
         "最近飞行",

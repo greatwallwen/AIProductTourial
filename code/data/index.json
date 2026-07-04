@@ -17,21 +17,6 @@
    "tldr": "电商早会异常订单台：识别未达成区域、定位异常业务线，并生成责任部门行动队列"
   },
   {
-   "num": 6,
-   "title": "AI 产品经理工作流｜银行客服知识治理",
-   "slug": "bank_knowledge_governance",
-   "uiId": "ui_06_bank_knowledge_governance",
-   "saasType": "knowledge_workspace",
-   "industry": "银行客服",
-   "phase": "AI协作",
-   "highImpact": true,
-   "rp": "RP13",
-   "systemLayer": "能力智能",
-   "systemStage": "治理",
-   "difficulty": "高阶",
-   "tldr": "银行客服知识治理：围绕银行客服知识库判断优先级、责任人和验收动作"
-  },
-  {
    "num": 14,
    "title": "需求变更控制｜物流异常派单扩城",
    "slug": "logistics_change_control",
