@@ -12,7 +12,9 @@
    "highImpact": false,
    "rp": "RP01",
    "systemLayer": "业务应用",
-   "systemStage": "洞察"
+   "systemStage": "洞察",
+   "difficulty": "入门",
+   "tldr": "电商早会异常订单台：识别未达成区域、定位异常业务线，并生成责任部门行动队列"
   },
   {
    "num": 2,
@@ -25,7 +27,9 @@
    "highImpact": false,
    "rp": "RP02",
    "systemLayer": "业务应用",
-   "systemStage": "洞察"
+   "systemStage": "洞察",
+   "difficulty": "入门",
+   "tldr": "研发排期价值评审台：围绕跨部门研发排期判断优先级、责任人和验收动作"
   },
   {
    "num": 3,
@@ -38,7 +42,9 @@
    "highImpact": true,
    "rp": null,
    "systemLayer": "业务应用",
-   "systemStage": "洞察"
+   "systemStage": "洞察",
+   "difficulty": "入门",
+   "tldr": "政务材料预审服务：围绕材料预审服务判断优先级、责任人和验收动作"
   },
   {
    "num": 6,
@@ -51,7 +57,9 @@
    "highImpact": true,
    "rp": "RP13",
    "systemLayer": "能力智能",
-   "systemStage": "治理"
+   "systemStage": "治理",
+   "difficulty": "高阶",
+   "tldr": "银行客服知识治理：围绕银行客服知识库判断优先级、责任人和验收动作"
   },
   {
    "num": 7,
@@ -64,7 +72,9 @@
    "highImpact": true,
    "rp": "RP06",
    "systemLayer": "业务应用",
-   "systemStage": "洞察"
+   "systemStage": "洞察",
+   "difficulty": "入门",
+   "tldr": "保险理赔复核队列：围绕理赔复核队列判断优先级、责任人和验收动作"
   },
   {
    "num": 14,
@@ -77,7 +87,9 @@
    "highImpact": false,
    "rp": "RP03",
    "systemLayer": "业务应用",
-   "systemStage": "决策"
+   "systemStage": "决策",
+   "difficulty": "进阶",
+   "tldr": "物流异常派单扩城：判断漏斗断点、回款风险和区域销售动作优先级"
   },
   {
    "num": 16,
@@ -90,7 +102,9 @@
    "highImpact": true,
    "rp": "RP04",
    "systemLayer": "业务应用",
-   "systemStage": "洞察"
+   "systemStage": "洞察",
+   "difficulty": "入门",
+   "tldr": "医院预约容量调度：判断岗位产出、编制缺口和流失风险，形成组织调整建议"
   },
   {
    "num": 23,
@@ -103,7 +117,9 @@
    "highImpact": false,
    "rp": "RP09",
    "systemLayer": "业务应用",
-   "systemStage": "执行"
+   "systemStage": "执行",
+   "difficulty": "进阶",
+   "tldr": "电商退换货履约：围绕退换货履约判断优先级、责任人和验收动作"
   },
   {
    "num": 26,
@@ -116,7 +132,9 @@
    "highImpact": false,
    "rp": "RP05",
    "systemLayer": "业务应用",
-   "systemStage": "决策"
+   "systemStage": "决策",
+   "difficulty": "进阶",
+   "tldr": "滞销 SKU 提醒：围绕滞销提醒页面判断优先级、责任人和验收动作"
   },
   {
    "num": 28,
@@ -129,7 +147,9 @@
    "highImpact": true,
    "rp": null,
    "systemLayer": "业务应用",
-   "systemStage": "执行"
+   "systemStage": "执行",
+   "difficulty": "进阶",
+   "tldr": "金融复核工作台：识别现金流缺口、逾期应收和预算偏差，形成复核与催收动作"
   },
   {
    "num": 29,
@@ -142,7 +162,9 @@
    "highImpact": false,
    "rp": null,
    "systemLayer": "业务应用",
-   "systemStage": "洞察"
+   "systemStage": "洞察",
+   "difficulty": "进阶",
+   "tldr": "零售门店晨会驾驶舱：识别未达成区域、定位异常业务线，并生成责任部门行动队列"
   },
   {
    "num": 30,
@@ -155,7 +177,9 @@
    "highImpact": false,
    "rp": "RP11",
    "systemLayer": "能力智能",
-   "systemStage": "洞察"
+   "systemStage": "洞察",
+   "difficulty": "进阶",
+   "tldr": "航空会员价值运营：判断漏斗断点、回款风险和区域销售动作优先级"
   },
   {
    "num": 31,
@@ -168,7 +192,9 @@
    "highImpact": false,
    "rp": null,
    "systemLayer": "能力智能",
-   "systemStage": "洞察"
+   "systemStage": "洞察",
+   "difficulty": "进阶",
+   "tldr": "广告投放转化复盘：判断漏斗断点、回款风险和区域销售动作优先级"
   },
   {
    "num": 35,
@@ -181,7 +207,9 @@
    "highImpact": false,
    "rp": null,
    "systemLayer": "业务应用",
-   "systemStage": "验收"
+   "systemStage": "验收",
+   "difficulty": "高阶",
+   "tldr": "零售经营驾驶舱：围绕零售经营原型判断优先级、责任人和验收动作"
   },
   {
    "num": 36,
@@ -194,7 +222,9 @@
    "highImpact": false,
    "rp": null,
    "systemLayer": "业务应用",
-   "systemStage": "验收"
+   "systemStage": "验收",
+   "difficulty": "高阶",
+   "tldr": "原型字段核验：围绕原型验收护栏判断优先级、责任人和验收动作"
   },
   {
    "num": 37,
@@ -207,7 +237,9 @@
    "highImpact": false,
    "rp": null,
    "systemLayer": "业务应用",
-   "systemStage": "验收"
+   "systemStage": "验收",
+   "difficulty": "高阶",
+   "tldr": "代码修复闭环：围绕AI 修复闭环判断优先级、责任人和验收动作"
   },
   {
    "num": 38,
@@ -220,7 +252,9 @@
    "highImpact": false,
    "rp": null,
    "systemLayer": "业务应用",
-   "systemStage": "验收"
+   "systemStage": "验收",
+   "difficulty": "高阶",
+   "tldr": "需求澄清流水线：围绕需求澄清 Skill判断优先级、责任人和验收动作"
   },
   {
    "num": 39,
@@ -233,7 +267,9 @@
    "highImpact": false,
    "rp": null,
    "systemLayer": "业务应用",
-   "systemStage": "验收"
+   "systemStage": "验收",
+   "difficulty": "高阶",
+   "tldr": "积分运营控制台：判断岗位产出、编制缺口和流失风险，形成组织调整建议"
   },
   {
    "num": 41,
@@ -246,7 +282,9 @@
    "highImpact": false,
    "rp": null,
    "systemLayer": "业务应用",
-   "systemStage": "增长"
+   "systemStage": "增长",
+   "difficulty": "高阶",
+   "tldr": "零售经营产品方案：从数据端到端得出零售经营改进方案并落成可验收交付物"
   },
   {
    "num": 42,
@@ -259,7 +297,9 @@
    "highImpact": false,
    "rp": null,
    "systemLayer": "能力智能",
-   "systemStage": "增长"
+   "systemStage": "增长",
+   "difficulty": "高阶",
+   "tldr": "会员积分增长方案：从会员数据得出积分增长方案并保留反欺诈边界"
   },
   {
    "num": 43,
@@ -272,7 +312,9 @@
    "highImpact": false,
    "rp": null,
    "systemLayer": "业务应用",
-   "systemStage": "增长"
+   "systemStage": "增长",
+   "difficulty": "高阶",
+   "tldr": "产业知识游戏化平台：围绕产业知识学习闭环判断优先级、责任人和验收动作"
   },
   {
    "num": 44,
@@ -285,7 +327,9 @@
    "highImpact": false,
    "rp": null,
    "systemLayer": "底座平台",
-   "systemStage": "治理"
+   "systemStage": "治理",
+   "difficulty": "高阶",
+   "tldr": "产品知识库语义检索：用真实向量检索为问答/推荐提供高相关片段，替代全量塞入"
   },
   {
    "num": 45,
@@ -298,7 +342,9 @@
    "highImpact": false,
    "rp": null,
    "systemLayer": "底座平台",
-   "systemStage": "治理"
+   "systemStage": "治理",
+   "difficulty": "高阶",
+   "tldr": "经营数据关系库查询：用真实 SQL（建表/索引/参数化聚合）支撑经营分析，讲清 PostgreSQL 架构"
   },
   {
    "num": 46,
@@ -311,7 +357,9 @@
    "highImpact": false,
    "rp": null,
    "systemLayer": "底座平台",
-   "systemStage": "治理"
+   "systemStage": "治理",
+   "difficulty": "高阶",
+   "tldr": "后端子系统分解与契约：把 §3 架构流程落到本仓库真运行后端：分层/边界/契约在代码里可查"
   },
   {
    "num": 47,
@@ -324,7 +372,9 @@
    "highImpact": false,
    "rp": null,
    "systemLayer": "底座平台",
-   "systemStage": "洞察"
+   "systemStage": "洞察",
+   "difficulty": "进阶",
+   "tldr": "经营三维散点可视化：用 three.js/R3F 把经营数据渲染成可交互三维散点，暴露多维离群"
   }
  ]
 }

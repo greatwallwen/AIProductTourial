@@ -131,6 +131,11 @@ for (const c of defs.cases) {
   ok(); if (kp.length > 1 && new Set(kp.map((k) => k.value)).size === 1) bad(`案例${c.num} KPI 全同(退化/未真算)`);
 }
 ok(); if (specCases < 15) bad('metricSpec 覆盖案例过少（数据真实化不足）');
+// 维度 D：去模板 + 可读性（难度/一句话/洞见/坑 + 术语表）
+for (const c of defs.cases) { ok(); if (!c.difficulty || !c.tldr || !c.insight || !c.pitfall) bad(`案例${c.num} 缺 difficulty/tldr/insight/pitfall`); }
+ok(); if (!tut.includes('术语表')) bad('教程缺术语表');
+ok(); if (!tut.includes('🎯 **一句话**')) bad('案例未标一句话/难度');
+ok(); if (!/data-theme|useTheme/.test(rd('code/web/src/App.tsx'))) bad('主题切换缺失');
 
 console.log(`\n检查 ${checks} 项，失败 ${fail} 项`);
 if (fail) { console.log('\n✗ NOT GREEN'); process.exit(1); }

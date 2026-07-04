@@ -51,6 +51,10 @@
  "systemLayer": "底座平台",
  "systemStage": "治理",
  "theoryOp": "把原理 3.3、4.1 落成可运行操作：用真实 SQL（建表/索引/参数化聚合）支撑经营分析，讲清 PostgreSQL 架构（数字化底座本身）",
+ "difficulty": "高阶",
+ "tldr": "经营数据关系库查询：用真实 SQL（建表/索引/参数化聚合）支撑经营分析，讲清 PostgreSQL 架构",
+ "insight": "别只做「db_console」页面——把「表行数」等指标 → 异常 → 责任 → 行动串成闭环，落在 治理 环节，才是这个案例的价值。",
+ "pitfall": "常见坑：越过「本地 SQLite 演示、生产为 PostgreSQL；不得把演示数据当真账」，或用泛化指标硬套——本案例指标已按数据集真实列（metricSpec）真算，别再编造。",
  "kpis": [
   {
    "name": "表行数",

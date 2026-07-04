@@ -225,7 +225,18 @@ const H = [`# ${defs.projectName}`, '',
   '- 案例总览与 5 个 manifest：`outputs/product_case_library/*.json`',
   '- 多套设计系统：`design/*.md`（令牌 `design/themes.json`）｜工程规范：`rules/`｜Skill 与 Loop：`skills/`',
   '- React 工作台：`code/web`（`npm ci && npm run build && npm run preview`，一案例一路由 `#/case/NN`）',
-  '- 数据：`node code/tools/fetch-datasets.mjs`｜预计算：`node code/tools/build_case_data.mjs`｜校验：`node code/tools/verify_course_package.mjs`', '',
+  '- 数据：`node code/tools/fetch-datasets.mjs`｜预计算：`node code/tools/build_case_data.mjs`｜校验：`node code/tools/verify_course_package.mjs`',
+  '- **统一运行/纠错约定**：`bash code/run.sh` 起一个服务（Fastify+node:sqlite 托管 API+前端），浏览器 `#/case/NN` 即真后端实时数据；遵 `rules/`（DRY / 单文件<800 行 / 类型 / 中文注释）；`verify_course_package.mjs` 逐项核验。以下每个案例不再重复这段。', '',
+  '## 术语表（先备着，看案例时随时回查）', '',
+  '| 术语 | 一句话 |', '|---|---|',
+  '| Token | 大模型处理文本的最小计量单位；1 Token≈1.5~2 汉字（§1.2） |',
+  '| Context / 上下文窗口 | 单次运算的全部输入 / 其最大 Token 容量（§1.3） |',
+  '| RAG | 检索增强生成：分片→索引→召回→重排→生成，只喂高相关片段（§1.3） |',
+  '| Embedding / 向量库 | 把文本转成向量 / 存向量+原文、按相似度检索（§1.3、案例44） |',
+  '| Agent / ReAct | 自主分步的智能体 / 思考→调用工具→观察→再思考的循环（§1.6） |',
+  '| systemLayer / systemStage | 案例在数字化系统的「层（底座/能力/应用）/ 环节（采集→…→增长）」 |',
+  '| metricSpec | 案例指标的真实列计算规格（保证 KPI 真算、可溯源、非编造） |',
+  '| 难度 | 入门 / 进阶 / 高阶，标在每个案例头部 |', '',
   '# 第二部分 · 案例演示与验证', '',
   '## 数字化系统全景（先看这张图）', '',
   '第一部分讲的理念、原理、规范、设计，不是散点——它们共同构成**一套数字化系统**。后面 25 个案例，正是这套系统在不同环节、不同层的**实操演示**：',
@@ -244,13 +255,14 @@ for (const c of defs.cases) {
   H.push(`\n---\n\n## 实操 ${pad(c.num)}：${c.title}\n`);
   H.push(`> **本案例演示/验证**：原理 ${(c.demonstrates || []).join('、')}｜**采用设计** \`${c.design}\`（见 design/${c.design}.md）\n`);
   H.push(`> **在数字化系统中的位置**：${c.systemLayer}层 · ${c.systemStage}环节｜**理论→实操**：${c.theoryOp}\n`);
+  H.push(`> 🎚 **难度** ${c.difficulty}｜🎯 **一句话** ${c.tldr}\n>\n> 💡 **洞见**：${c.insight}\n>\n> ⚠ **常见坑**：${c.pitfall}\n`);
   H.push(`### 项目场景故事\n\n${c.story}\n\n**现状问题**\n\n- 决策依赖的关键指标：${c.metricChain.join('、')}。\n- 现场常见异常：${c.exceptionStates.join('、')}。\n- 只做通用页面无法支撑「${c.decisionAction}」。\n\n**本次任务**\n\n- 明确岗位、指标链、异常状态与决策动作。\n- 使用 \`${c.skills[0]}\` 与 \`${c.skills[1]}\` 完成分析，产出 \`${c.deliverable}\`，用 \`${c.skills[2]}\` 验收。\n`);
   H.push(`### 任务目标与数据\n\n${kv([['行业', c.industry], ['真实业务场景', c.scenario], ['岗位', c.role], ['数据或资料', '`' + c.dataset + '`（' + d.rowCount + ' 行，异常 ' + d.exceptionCount + '）'], ['公开参考', c.publicRef], ['行业字段', c.fields.join('、')], ['指标链（真实值）', d.kpis.map((k) => k.name + ' ' + k.value + (k.unit || '')).join('，')], ['决策动作', c.decisionAction], ['风险边界', c.riskBoundary + (c.highImpact ? '（高影响行业·人工复核）' : '')], ['UI 原型', '`' + c.uiId + '`（' + c.saasType + '）'], ['采用设计', c.design], ['SaaS 组件', c.saasComponents.join('、')]])}\n`);
   H.push(`### Prompt 实操\n\n**Prompt 1：${c.scenario} - 问题定义**\n\n\`\`\`text\n${buildPrompt(c, d, 'def')}\n\`\`\`\n\n**Prompt 2：${c.scenario} - 方案验收**\n\n\`\`\`text\n${buildPrompt(c, d, 'accept')}\n\`\`\`\n`);
   H.push(`### 图形/原型/表单\n\n![${c.scenario} · 信息图](outputs/product_case_library/svg/case_${pad(c.num)}_${c.slug}.svg)\n\n![${c.scenario} · 可运行大屏原型截图](assets/screenshots/premium_case_${pad(c.num)}_${c.slug}_desktop.png)\n\n- 图形类型：${c.slug}（设计 ${c.design}）\n- 看图顺序：先看指标链，再看异常队列和责任对象，最后看行动入口与验收边界。\n- UI 差异：本案例采用 \`${c.uiId}\` + 设计 \`${c.design}\`，不得复用通用表格占位；可运行原型见 \`#/case/${pad(c.num)}\`。\n`);
   H.push(`### 交付物与验收\n\n${kv([['交付物', c.deliverable], ['必含字段', c.fields.join('、')], ['必含指标链', c.metricChain.join('、')], ['必含异常状态', c.exceptionStates.join('、')], ['必含 Skill', c.skills.join('、')]])}\n\n- 合格标准：业务场景具体、指标链完整、异常状态可追踪、行动入口明确、验收条件可执行。\n- 不合格标准：使用泛化产品名称、缺少行业指标、只描述页面不说明业务取舍、越过「${c.riskBoundary}」。\n- 交付物文件：\`outputs/product_case_library/case_${pad(c.num)}_${c.slug}_问题定义.md\`、\`…_方案验收.md\`。\n`);
   if (c.rp) H.push(`\n**指定实操融合**\n\n- ${c.rp.id}：${c.rp.title}\n  - 产出：${c.rp.produce}\n  - 验收：${c.rp.accept}\n`);
-  H.push(`\n**跑通与纠错**：\`npm run build\` 通过后 \`npm run preview\` 访问 \`#/case/${pad(c.num)}\`；遵 rules/ 约束（单文件<800行、DRY、TS、中文注释）；\`verify_course_package.mjs\` 逐项核验字段/指标/Skill/截图/设计。\n`);
+  H.push(`\n> 运行本案例：\`bash code/run.sh\` 起服务后访问 \`#/case/${pad(c.num)}\`（真后端实时数据）。跑通/纠错/约束的统一说明见「使用入口」，不再逐案例赘述。\n`);
 }
 writeFileSync(join(ROOT, '产品经理转型实操知识库.md'), H.join('\n') + '\n');
 console.log('单一教程 md + SVG + 交付物 生成完毕。cases', defs.cases.length, '| figs 4');

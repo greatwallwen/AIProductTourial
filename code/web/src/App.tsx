@@ -218,6 +218,7 @@ function CaseScreen() {
           <h1>{scene}</h1>
           <div className="muted">{mod} · UI 原型 <code>{c.uiId}</code> · 数据 <code>{c.dataset}</code>（{c.rowCount} 行，异常 {c.exceptionCount}）{c.liveComputed && <span className="chip soft" style={{ marginLeft: 8 }}>后端实时</span>}</div>
           {c.demonstrates && <div className="demos">▹ 演示原理 {c.demonstrates.join(' · ')} · 设计 <code>{c.design}</code></div>}
+          {c.difficulty && <div className="demos" style={{ color: 'var(--ink2)' }}><span className="badge neutral" style={{ marginRight: 6 }}>难度 {c.difficulty}</span>🎯 {c.tldr}</div>}
         </div>
         <div className="skills">{(c.skills || []).map((s: string) => <span key={s} className="chip ghost">{s}</span>)}</div>
       </div>
