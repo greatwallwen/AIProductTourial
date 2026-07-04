@@ -120,3 +120,16 @@ export function dispatch() {
   const total = rows.length, lateRate = Math.round(rows.filter((r) => (Number(r[actual]) || 0) > (Number(r[plan]) || 0)).length / total * 1000) / 10;
   return { total, lateRate, cities, anomalies };
 }
+
+/** 零售经营真实分析（案例01 专属 demo）：品类销售额/毛利率/异常率 + 异常订单 triage（按金额）。 */
+export function retail() {
+  const t = parseCsv(join(ROOT, 'dataset', 'order_data.csv'));
+  const ci = (n: string) => t.head.indexOf(n);
+  const [cat, region, amt, margin, anom, resp, sku] = ['品类', '区域', '金额', '毛利率', '异常原因', '责任人', 'SKU'].map(ci);
+  const rows = t.rows;
+  const cm: Record<string, { amt: number; margin: number; n: number; anom: number }> = {};
+  for (const r of rows) { const k = r[cat] || '—'; (cm[k] ||= { amt: 0, margin: 0, n: 0, anom: 0 }); const m = cm[k]; m.amt += Number(r[amt]) || 0; m.margin += Number(r[margin]) || 0; m.n++; if ((r[anom] || '').trim()) m.anom++; }
+  const cats = Object.entries(cm).map(([name, m]) => { let mg = m.margin / m.n; if (mg <= 1) mg *= 100; return { name, revenue: Math.round(m.amt), avgMargin: Math.round(mg * 10) / 10, anomRate: Math.round(m.anom / m.n * 1000) / 10 }; }).sort((a, b) => b.revenue - a.revenue);
+  const triage = rows.filter((r) => (r[anom] || '').trim()).map((r) => ({ sku: r[sku], cat: r[cat], region: r[region], amt: Number(r[amt]) || 0, reason: r[anom], resp: r[resp] })).sort((a, b) => b.amt - a.amt).slice(0, 8);
+  return { total: rows.length, anomCount: rows.filter((r) => (r[anom] || '').trim()).length, cats, triage };
+}

@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
-import { fetchSearch, fetchDbQuery, fetchPoints3d, fetchHealth, fetchRfm, fetchHospital, fetchAdFunnel, fetchRiskReview, fetchDispatch } from './lib/api';
+import { fetchSearch, fetchDbQuery, fetchPoints3d, fetchHealth, fetchRfm, fetchHospital, fetchAdFunnel, fetchRiskReview, fetchDispatch, fetchRetail } from './lib/api';
 // three.js 独立 chunk，仅在渲染 3D 案例时动态加载（首屏不含 three）
 const Chart3D = lazy(() => import('./chart3d'));
 
@@ -314,12 +314,59 @@ function DispatchScreen() {
   );
 }
 
+// —— 零售早会经营专属 demo（案例01）：品类经营 + 异常订单 triage，早会即行动 ——
+function RetailScreen() {
+  const [d, setD] = useState<any>(null);
+  useEffect(() => { fetchRetail().then(setD); }, []);
+  if (!d) return <section className="card"><div className="muted">加载经营数据…</div></section>;
+  const maxRev = Math.max(...d.cats.map((x: any) => x.revenue), 1);
+  return (
+    <>
+      <div className="banner" style={{ color: 'var(--accent)', borderColor: 'var(--accent)' }}>{d.total} 单 · 异常 <b>{d.anomCount}</b> 单。早会看什么？先看品类经营（谁贡献收入、谁毛利偏低、谁异常高发），再把大额异常当场派人跟进——看板要变行动。</div>
+      <div className="cols">
+        <section className="card">
+          <div className="card-h"><h2>品类经营（按销售额）</h2><span className="muted">收入 · 均毛利 · 异常率</span></div>
+          <div className="tbl-wrap">
+            <table className="tbl">
+              <thead><tr><th>品类</th><th>销售额（条）</th><th>均毛利</th><th>异常率</th></tr></thead>
+              <tbody>
+                {d.cats.map((x: any) => (
+                  <tr key={x.name}>
+                    <td style={{ color: 'var(--ink)' }}>{x.name}</td>
+                    <td><div style={{ display: 'flex', alignItems: 'center', gap: 6 }}><div style={{ width: `${(x.revenue / maxRev) * 80}px`, height: 8, background: 'var(--accent)', borderRadius: 4 }} /><span className="mono">{x.revenue.toLocaleString('zh-CN')}</span></div></td>
+                    <td><span className="mono" style={{ color: x.avgMargin < 32 ? 'var(--warn)' : 'var(--ok)' }}>{x.avgMargin}%</span></td>
+                    <td><span className="mono" style={{ color: x.anomRate > 20 ? 'var(--bad)' : 'var(--ink2)' }}>{x.anomRate}%</span></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section className="card">
+          <div className="card-h"><h2>大额异常订单 · 当场派单</h2><span className="muted">按金额 Top8</span></div>
+          <div className="tbl-wrap">
+            <table className="tbl">
+              <thead><tr><th>SKU</th><th>品类</th><th>区域</th><th>金额</th><th>异常</th><th>责任</th></tr></thead>
+              <tbody>
+                {d.triage.map((t: any, i: number) => (
+                  <tr key={i}><td className="mono cell">{t.sku}</td><td>{t.cat}</td><td>{t.region}</td><td className="mono">{Math.round(t.amt).toLocaleString('zh-CN')}</td><td><span className="badge warn">{t.reason}</span></td><td><span className="chip owner">{t.resp || '—'}</span></td></tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </>
+  );
+}
+
 export function SpecialScreen({ screen }: { screen: string }) {
   if (screen === 'rfm') return <RfmScreen />;
   if (screen === 'capacity') return <HospitalScreen />;
   if (screen === 'adfunnel') return <AdFunnelScreen />;
   if (screen === 'riskreview') return <RiskScreen />;
   if (screen === 'dispatch') return <DispatchScreen />;
+  if (screen === 'retail') return <RetailScreen />;
   if (screen === 'rag') return <RagScreen />;
   if (screen === 'db') return <DbScreen />;
   if (screen === 'arch') return <ArchScreen />;
