@@ -146,7 +146,52 @@ function buildPrompt(c, d, stage) {
 - 验收条件：结论回到数据或公开参考（${c.publicRef}）；不得越过「${c.riskBoundary}」${c.highImpact ? '；高影响行业保留人工复核' : ''}；\`node coderef/verify_course_package.mjs\` 必须 ALL GREEN。`;
 }
 
+// 数字化系统全景：纵向三层 × 横向数据价值闭环，25 案例作为节点串成一个系统
+function panoramaSvg() {
+  const t = theme('graphite-hud');
+  const W = 1240, H = 720;
+  const stages = ['采集', '治理', '洞察', '决策', '执行', '验收', '增长'];
+  const stageFull = ['采集接入', '治理存储', '洞察分析', '决策研判', '执行落地', '质量验收', '增长闭环'];
+  const layers = ['业务应用', '能力智能', '底座平台'];
+  const x0 = 70, colW = (W - x0 - 30) / stages.length, y0 = 100, rowH = 176;
+  const cells = {};
+  for (const c of defs.cases) { const li = layers.indexOf(c.systemLayer); const si = Math.max(0, stages.indexOf(c.systemStage)); (cells[li + '|' + si] = cells[li + '|' + si] || []).push(c); }
+  let s = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" font-family="PingFang SC,Microsoft YaHei,sans-serif">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${t.bg}"/><stop offset="1" stop-color="${t.bg2}"/></linearGradient>
+  <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="${t.grid}" stroke-width="1"/></pattern></defs>
+  <rect width="${W}" height="${H}" fill="url(#bg)"/><rect width="${W}" height="${H}" fill="url(#grid)" opacity="0.35"/>
+  <rect x="36" y="24" width="4" height="34" rx="2" fill="${t.accent}"/>
+  <text x="50" y="42" font-size="22" font-weight="750" fill="${t.ink}">数字化系统全景 · 25 案例串成一个系统</text>
+  <text x="50" y="64" font-size="12" fill="${t.ink2}">纵向三层（业务应用 / 能力智能 / 底座平台）× 横向数据价值闭环（采集→治理→洞察→决策→执行→验收→增长→回采集）</text>`;
+  for (let i = 0; i < stages.length; i++) {
+    const cx = x0 + i * colW + colW / 2;
+    s += `<text x="${cx.toFixed(0)}" y="${y0 - 8}" font-size="11.5" font-weight="650" fill="${t.accent}" text-anchor="middle">${stageFull[i]}</text>`;
+    if (i < stages.length - 1) s += `<text x="${(x0 + (i + 1) * colW).toFixed(0)}" y="${y0 - 8}" font-size="13" fill="${t.muted}" text-anchor="middle">›</text>`;
+  }
+  for (let r = 0; r < layers.length; r++) {
+    const y = y0 + r * rowH;
+    s += `<rect x="${x0}" y="${y}" width="${(colW * stages.length).toFixed(0)}" height="${rowH - 16}" rx="10" fill="${t.panel}" opacity="0.4" stroke="${t.border}"/>`;
+    s += `<text x="36" y="${y + 22}" font-size="12.5" font-weight="700" fill="${r === 2 ? t.accent2 : t.ink}" transform="rotate(-90 36 ${y + 22})" text-anchor="end">${layers[r]}</text>`;
+  }
+  for (let i = 0; i <= stages.length; i++) s += `<line x1="${(x0 + i * colW).toFixed(0)}" y1="${y0}" x2="${(x0 + i * colW).toFixed(0)}" y2="${y0 + layers.length * rowH - 16}" stroke="${t.grid}"/>`;
+  for (const key in cells) {
+    const [li, si] = key.split('|').map(Number);
+    const list = cells[key].slice(0, 4);
+    list.forEach((c, k) => {
+      const nx = x0 + si * colW + 8, ny = y0 + li * rowH + 34 + k * 32;
+      const col = c.systemLayer === '底座平台' ? t.accent2 : (c.systemLayer === '能力智能' ? t.warn : t.accent);
+      s += `<rect x="${nx.toFixed(0)}" y="${ny}" width="${(colW - 16).toFixed(0)}" height="27" rx="6" fill="${t.panelSoft}" stroke="${col}" stroke-opacity="0.5"/>
+      <rect x="${nx.toFixed(0)}" y="${ny}" width="3" height="27" rx="1.5" fill="${col}"/>
+      <text x="${(nx + 10).toFixed(0)}" y="${ny + 18}" font-size="9.5" fill="${t.ink2}"><tspan fill="${col}" font-weight="700">${pad(c.num)}</tspan> ${esc(c.scenario.slice(0, 6))}</text>`;
+    });
+    if (cells[key].length > 4) s += `<text x="${(x0 + si * colW + 12).toFixed(0)}" y="${(y0 + li * rowH + 34 + 4 * 32 + 14)}" font-size="9" fill="${t.muted}">+${cells[key].length - 4} 更多</text>`;
+  }
+  s += `<text x="50" y="${H - 18}" font-size="10.5" fill="${t.muted}">底座平台（44 向量库 / 45 关系库 / 46 架构契约 / 47 三维）支撑上层；业务应用按闭环各就各位——同一套数字化系统，25 案例是它不同环节的实操演示。</text></svg>`;
+  return s;
+}
+
 // ============ 生成 SVG + 交付物 ============
+writeFileSync(join(CLIB, 'svg', 'fig_system_panorama.svg'), panoramaSvg());
 for (const id of ['fig_ai_foundations', 'fig_ideology_loops', 'fig_arch_flow', 'fig_engineering_rules', 'fig_designs'])
   writeFileSync(join(CLIB, 'svg', `${id}.svg`), figSvg(id));
 for (const c of defs.cases) {
@@ -169,7 +214,15 @@ const H = [`# ${defs.projectName}`, '',
   '- React 工作台：`coderef/react_pm_cases`（`npm ci && npm run build && npm run preview`，一案例一路由 `#/case/NN`）',
   '- 数据：`node coderef/fetch-datasets.mjs`｜预计算：`node coderef/build_case_data.mjs`｜校验：`node coderef/verify_course_package.mjs`', '',
   '# 第二部分 · 案例演示与验证', '',
-  '## 案例总览', '',
+  '## 数字化系统全景（先看这张图）', '',
+  '第一部分讲的理念、原理、规范、设计，不是散点——它们共同构成**一套数字化系统**。后面 25 个案例，正是这套系统在不同环节、不同层的**实操演示**：',
+  '',
+  '![数字化系统全景](outputs/product_case_library/svg/fig_system_panorama.svg)',
+  '',
+  '- **纵向三层**：`底座平台`（数据接入/存储/治理/架构，44 向量库·45 关系库·46 架构契约·47 三维）→ `能力智能`（指标/检索/AI）→ `业务应用`（业务场景）。底座支撑上层。',
+  '- **横向数据价值闭环**：`采集接入 → 治理存储 → 洞察分析 → 决策研判 → 执行落地 → 质量验收 → 增长闭环`，再反馈回采集。每个业务案例都是这条闭环上的一个节点。',
+  '- **怎么读**：先在全景里定位一个案例在「哪一层·哪一环节」，再进它的章节看它把前面**哪条理论落成了什么实际操作**。',
+  '', '## 案例总览', '',
   '| # | 场景 | 行业 | 阶段 | 演示原理 | 设计 | UI 原型 | Skill |', '|---|---|---|---|---|---|---|---|'];
 for (const c of defs.cases) H.push(`| ${pad(c.num)} | ${c.scenario} | ${c.industry} | ${c.phase} | ${(c.demonstrates || []).join('/')} | ${c.design} | \`${c.uiId}\` | ${c.skills.join('+')} |`);
 H.push('');
@@ -177,6 +230,7 @@ for (const c of defs.cases) {
   const d = vm(c.num);
   H.push(`\n---\n\n## 实操 ${pad(c.num)}：${c.title}\n`);
   H.push(`> **本案例演示/验证**：原理 ${(c.demonstrates || []).join('、')}｜**采用设计** \`${c.design}\`（见 design/${c.design}.md）\n`);
+  H.push(`> **在数字化系统中的位置**：${c.systemLayer}层 · ${c.systemStage}环节｜**理论→实操**：${c.theoryOp}\n`);
   H.push(`### 项目场景故事\n\n${c.story}\n\n**现状问题**\n\n- 决策依赖的关键指标：${c.metricChain.join('、')}。\n- 现场常见异常：${c.exceptionStates.join('、')}。\n- 只做通用页面无法支撑「${c.decisionAction}」。\n\n**本次任务**\n\n- 明确岗位、指标链、异常状态与决策动作。\n- 使用 \`${c.skills[0]}\` 与 \`${c.skills[1]}\` 完成分析，产出 \`${c.deliverable}\`，用 \`${c.skills[2]}\` 验收。\n`);
   H.push(`### 任务目标与数据\n\n${kv([['行业', c.industry], ['真实业务场景', c.scenario], ['岗位', c.role], ['数据或资料', '`' + c.dataset + '`（' + d.rowCount + ' 行，异常 ' + d.exceptionCount + '）'], ['公开参考', c.publicRef], ['行业字段', c.fields.join('、')], ['指标链（真实值）', d.kpis.map((k) => k.name + ' ' + k.value + (k.unit || '')).join('，')], ['决策动作', c.decisionAction], ['风险边界', c.riskBoundary + (c.highImpact ? '（高影响行业·人工复核）' : '')], ['UI 原型', '`' + c.uiId + '`（' + c.saasType + '）'], ['采用设计', c.design], ['SaaS 组件', c.saasComponents.join('、')]])}\n`);
   H.push(`### Prompt 实操\n\n**Prompt 1：${c.scenario} - 问题定义**\n\n\`\`\`text\n${buildPrompt(c, d, 'def')}\n\`\`\`\n\n**Prompt 2：${c.scenario} - 方案验收**\n\n\`\`\`text\n${buildPrompt(c, d, 'accept')}\n\`\`\`\n`);
