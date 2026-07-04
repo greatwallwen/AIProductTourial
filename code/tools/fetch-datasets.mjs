@@ -92,6 +92,14 @@ const man=['# 数据集清单（'+JSON.parse(readFileSync(join(ROOT,'code', 'too
  '为课堂可复现，除标注「真实」外均为**确定性教学合成**数据（固定种子生成，字段与结构对齐所引用的真实公开数据集；publicRef 见各案例）。**不把合成数据说成真实。** 生成：`node code/tools/fetch-datasets.mjs`。','','| 文件 | 行/项 | 性质 | sha256 |','|---|---|---|---|'];
 for(const x of results){ const buf=readFileSync(x.p); const h=createHash('sha256').update(buf).digest('hex').slice(0,16); man.push(`| ${x.rel} | ${x.n??'-'} | ${x.label} | ${h}… |`); }
 man.push('','JSON 产物（方法论案例输入）：outputs/05_harness/prototype_test_report.json、outputs/11_loop_engineering/loop_report_sample.json、outputs/10_knowledge_gamification/knowledge_quest_bank.json、outputs/07_skills/pm_skills.md');
+man.push('',
+  '## vendored 真实素材（非合成，注明来源/许可）',
+  '- `assets/vendor/lucide/`：Lucide 图标（github.com/lucide-icons/lucide，ISC 许可），内联进 §1 概念图。',
+  '- `assets/vendor/aiagent/`：57 张真实 AI 原理图 + `docs/_source/reference/` 5 份权威文档（源用户提供的 `AI agent/` 参考包），深化 §1。',
+  '- `skills/external/pm-skills-deanpeters/`：deanpeters/Product-Manager-Skills（MIT），案例44 RAG 语料。',
+  '',
+  '## 逐案数据集设计说明',
+  '- 精品案例的数据集设计意图/字段义/数据故事见 `dataset/design/case_NN.md`（如 case_30 航空 RFM）。');
 writeFileSync(join(DS,'MANIFEST.md'),man.join('\n')+'\n');
 console.log('生成数据集', results.length, '个；NYC311 真实:', nyc311Real);
 console.log(results.map(x=>x.rel+(x.n?`(${x.n})`:'')).join('  '));

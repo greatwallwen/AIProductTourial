@@ -18,3 +18,11 @@
 | pm_network_cases/nyc_311_service_requests_5000.csv | 3000 | 真实（NYC 311 Socrata data.cityofnewyork.us） | 0d8cbb12607a4e59… |
 
 JSON 产物（方法论案例输入）：outputs/05_harness/prototype_test_report.json、outputs/11_loop_engineering/loop_report_sample.json、outputs/10_knowledge_gamification/knowledge_quest_bank.json、outputs/07_skills/pm_skills.md
+
+## vendored 真实素材（非合成，注明来源/许可）
+- `assets/vendor/lucide/`：Lucide 图标（github.com/lucide-icons/lucide，ISC 许可），内联进 §1 概念图。
+- `assets/vendor/aiagent/`：57 张真实 AI 原理图 + `docs/_source/reference/` 5 份权威文档（源用户提供的 `AI agent/` 参考包），深化 §1。
+- `skills/external/pm-skills-deanpeters/`：deanpeters/Product-Manager-Skills（MIT），案例44 RAG 语料。
+
+## 逐案数据集设计说明
+- 精品案例的数据集设计意图/字段义/数据故事见 `dataset/design/case_NN.md`（如 case_30 航空 RFM）。
