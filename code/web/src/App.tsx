@@ -6,6 +6,9 @@ import { fetchIndex, fetchCaseData, type IndexData } from './lib/api';
 import { SpecialScreen } from './screens';
 import { LabPage } from './lab';
 import { Home, Search, PrincipleIndex, ApiDocs } from './pages';
+import { GamePage } from './game';
+import { Challenge } from './challenge';
+import { markViewed } from './progress';
 
 // 亮/暗主题：切换 <html data-theme> 并持久化
 function useTheme(): [string, () => void] {
@@ -23,6 +26,7 @@ function TopNav() {
         <NavLink to="/" end className={link}>首页</NavLink>
         <NavLink to="/cases" className={link}>案例</NavLink>
         <NavLink to="/lab/tokenizer" className={link}>概念实验室</NavLink>
+        <NavLink to="/game" className={link}>小游戏</NavLink>
         <NavLink to="/principles" className={link}>原理索引</NavLink>
         <NavLink to="/api-docs" className={link}>API 文档</NavLink>
       </nav>
@@ -202,7 +206,7 @@ function CaseScreen() {
   const { num } = useParams();
   const [c, setC] = useState<any>(null);
   const [err, setErr] = useState(false);
-  useEffect(() => { setC(null); setErr(false); fetchCaseData(num || '').then(setC).catch(() => setErr(true)); }, [num]);
+  useEffect(() => { setC(null); setErr(false); fetchCaseData(num || '').then((d) => { setC(d); markViewed(d.num); }).catch(() => setErr(true)); }, [num]);
   if (err) return <Navigate to="/" />;
   if (!c) return <div className="page"><div className="muted">加载中…</div></div>;
   const [mod, scene] = c.title.split('｜');
@@ -281,6 +285,7 @@ function CaseScreen() {
           </div>
         </>
       )}
+      <Challenge data={c} />
     </div>
   );
 }
@@ -300,6 +305,7 @@ export default function App() {
           <Route path="/case/:num" element={<CaseScreen />} />
           <Route path="/lab" element={<LabPage />} />
           <Route path="/lab/:demo" element={<LabPage />} />
+          <Route path="/game" element={<GamePage />} />
           <Route path="/search" element={<Search />} />
           <Route path="/principles" element={<PrincipleIndex />} />
           <Route path="/api-docs" element={<ApiDocs />} />

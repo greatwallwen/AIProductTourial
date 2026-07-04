@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { fetchIndex, fetchOpenapi, type IndexData } from './lib/api';
+import { getProgress } from './progress';
 
 const pad = (n: number) => String(n).padStart(2, '0');
 const STAGES = ['采集', '治理', '洞察', '决策', '执行', '验收', '增长'];
@@ -15,6 +16,7 @@ export function Home() {
     for (const c of (idx?.cases as any[]) || []) { const k = `${c.systemLayer}|${c.systemStage}`; (m[k] = m[k] || []).push(c); }
     return m;
   }, [idx]);
+  const prog = idx ? getProgress(idx.cases.length) : null;
   const paths = [
     { name: '新手路径', desc: '从早会异常台入门，走一遍洞察→决策→执行', to: '/case/01', color: 'var(--accent)' },
     { name: '架构路径', desc: '数字化底座：向量库 / 关系库 / 子系统契约 / 3D', to: '/case/46', color: 'var(--accent2)' },
@@ -24,6 +26,19 @@ export function Home() {
     <div className="page">
       <div className="topbar"><div><div className="crumb">数字化产品经理转型实操知识库</div><h1>把理论，做成一个能跑的数字化系统</h1>
         <div className="muted">先讲 AI 底层 / Loop / 架构 / 规范 / 设计，再用 25 个案例串成一套数字化系统的实操演示——真数据、真后端、真原型。</div></div></div>
+      {prog && (
+        <div className="card" style={{ marginBottom: 16, display: 'flex', alignItems: 'center', gap: 16 }}>
+          <svg width="72" height="72" viewBox="0 0 72 72" aria-label={`学习进度 ${prog.pct}%`}>
+            <circle cx="36" cy="36" r="30" fill="none" stroke="var(--border)" strokeWidth="7" />
+            <circle cx="36" cy="36" r="30" fill="none" stroke="var(--accent)" strokeWidth="7" strokeLinecap="round" strokeDasharray={`${(prog.pct / 100) * 188} 999`} transform="rotate(-90 36 36)" />
+            <text x="36" y="41" textAnchor="middle" fontSize="15" fontWeight="700" fill="var(--ink)">{prog.pct}%</text>
+          </svg>
+          <div>
+            <div style={{ fontWeight: 650, color: 'var(--ink)' }}>学习进度：看过 {prog.viewed}/{prog.total} 案例 · 决策题答对 {prog.correct}</div>
+            <div className="ov-top" style={{ marginTop: 6 }}>{prog.badges.length ? prog.badges.map((b) => <span key={b} className="chip soft">{b}</span>) : <span className="muted">浏览案例、玩概念游戏、答对「你来决策」来点亮成就 →</span>}</div>
+          </div>
+        </div>
+      )}
       <div className="grid-cards" style={{ marginBottom: 20 }}>
         {paths.map((p) => (
           <NavLink key={p.name} to={p.to} className="ov-card" style={{ borderTop: `2px solid ${p.color}` }}>

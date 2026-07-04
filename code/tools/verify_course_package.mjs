@@ -136,6 +136,11 @@ for (const c of defs.cases) { ok(); if (!c.difficulty || !c.tldr || !c.insight |
 ok(); if (!tut.includes('术语表')) bad('教程缺术语表');
 ok(); if (!tut.includes('🎯 **一句话**')) bad('案例未标一句话/难度');
 ok(); if (!/data-theme|useTheme/.test(rd('code/web/src/App.tsx'))) bad('主题切换缺失');
+// 维度 D：趣味互动（案例内决策题 + 休闲游戏 + 学习进度成就）
+for (const f of ['challenge.tsx', 'game.tsx', 'progress.ts']) { ok(); if (!has('code/web/src/' + f)) bad('缺趣味互动 code/web/src/' + f); }
+ok(); if (!/GamePage/.test(rd('code/web/src/App.tsx')) || !/\/game/.test(rd('code/web/src/App.tsx'))) bad('缺休闲小游戏路由');
+ok(); if (!/Challenge/.test(rd('code/web/src/App.tsx'))) bad('案例内未接入决策题挑战');
+ok(); if (!/getProgress/.test(rd('code/web/src/pages.tsx')) || !/markViewed/.test(rd('code/web/src/App.tsx'))) bad('缺学习进度/成就');
 
 console.log(`\n检查 ${checks} 项，失败 ${fail} 项`);
 if (fail) { console.log('\n✗ NOT GREEN'); process.exit(1); }
