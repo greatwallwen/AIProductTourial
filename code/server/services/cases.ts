@@ -62,3 +62,18 @@ export function rfm() {
   const scatter = members.filter((_, i) => i % 4 === 0).slice(0, 140).map((x) => ({ x: x.r, y: x.f, m: x.m, seg: x.seg }));
   return { total: members.length, segments, churnRisk: churn.length, churnRate: Math.round(churn.length / members.length * 1000) / 10, mHi, rHi, scatter };
 }
+
+/** 医院容量调度真实分析（案例16 专属 demo）：按科室真算就诊数/均等待/号源利用率/爽约率 + 时段分布。 */
+export function hospital() {
+  const t = parseCsv(join(ROOT, 'dataset', 'product_cases', 'hospital_scheduling.csv'));
+  const ci = (n: string) => t.head.indexOf(n);
+  const [dept, slot, wait, util, noshow] = ['科室', '预约时段', '等待分钟', '号源利用率', '是否爽约'].map(ci);
+  const rows = t.rows;
+  const dm: Record<string, { n: number; wait: number; util: number; noshow: number }> = {};
+  for (const r of rows) { const k = r[dept] || '—'; (dm[k] ||= { n: 0, wait: 0, util: 0, noshow: 0 }); const m = dm[k]; m.n++; m.wait += Number(r[wait]) || 0; m.util += Number(r[util]) || 0; if ((r[noshow] || '') === '是') m.noshow++; }
+  const depts = Object.entries(dm).map(([name, m]) => ({ name, count: m.n, avgWait: Math.round(m.wait / m.n), utilRate: Math.round(m.util / m.n * 1000) / 10, noshowRate: Math.round(m.noshow / m.n * 1000) / 10 })).sort((a, b) => b.avgWait - a.avgWait);
+  const sm: Record<string, number> = {}; for (const r of rows) sm[r[slot]] = (sm[r[slot]] || 0) + 1;
+  const slots = Object.entries(sm).sort().map(([name, count]) => ({ name, count }));
+  const avgNoshow = Math.round(rows.filter((r) => (r[noshow] || '') === '是').length / rows.length * 1000) / 10;
+  return { total: rows.length, avgNoshow, depts, slots };
+}

@@ -8,6 +8,8 @@ test('后端 API 全绿', async () => {
   assert.equal(h.statusCode, 200); assert.equal(h.json().ok, true);
   const cs = await app.inject({ url: '/api/cases' });
   assert.ok(Array.isArray(cs.json()) && cs.json().length >= 10, '案例列表 >= 10（精品集）');
+  const hp = await app.inject({ url: '/api/hospital' });
+  assert.ok(hp.json().depts.length >= 2 && hp.json().avgNoshow >= 0, '医院科室容量');
   const rf = await app.inject({ url: '/api/rfm' });
   assert.ok(rf.json().total > 0 && rf.json().segments.length >= 2, 'RFM 分层');
   assert.ok(rf.json().churnRate >= 0 && rf.json().churnRate <= 100, '高价值流失率∈[0,100]');

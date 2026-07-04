@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
-import { fetchSearch, fetchDbQuery, fetchPoints3d, fetchHealth, fetchRfm } from './lib/api';
+import { fetchSearch, fetchDbQuery, fetchPoints3d, fetchHealth, fetchRfm, fetchHospital } from './lib/api';
 // three.js 独立 chunk，仅在渲染 3D 案例时动态加载（首屏不含 three）
 const Chart3D = lazy(() => import('./chart3d'));
 
@@ -159,8 +159,51 @@ function RfmScreen() {
   );
 }
 
+// —— 医院容量调度专属 demo（案例16）：按科室号源利用率/爽约率/均等待 + 时段分布 ——
+function HospitalScreen() {
+  const [d, setD] = useState<any>(null);
+  useEffect(() => { fetchHospital().then(setD); }, []);
+  if (!d) return <section className="card"><div className="muted">加载科室容量…</div></section>;
+  const maxWait = Math.max(...d.depts.map((x: any) => x.avgWait), 1);
+  const maxSlot = Math.max(...d.slots.map((x: any) => x.count), 1);
+  const wc = (r: number) => r >= 14 ? 'var(--bad)' : r >= 10 ? 'var(--warn)' : 'var(--ok)';
+  return (
+    <>
+      <div className="banner" style={{ color: 'var(--warn)', borderColor: 'var(--warn)' }}>平均爽约率 <b>{d.avgNoshow}%</b>（{d.total} 就诊）——爽约高的科室号源被浪费、等待长的科室患者体验差，容量调度要按科室差异分别施策，不能一刀切。</div>
+      <div className="cols">
+        <section className="card">
+          <div className="card-h"><h2>科室容量（按均等待排序）</h2><span className="muted">条长=均等待 · 色=爽约风险</span></div>
+          <div className="tbl-wrap">
+            <table className="tbl">
+              <thead><tr><th>科室</th><th>就诊数</th><th>均等待(分)</th><th>号源利用率</th><th>爽约率</th></tr></thead>
+              <tbody>
+                {d.depts.map((x: any) => (
+                  <tr key={x.name}>
+                    <td style={{ color: 'var(--ink)' }}>{x.name}</td><td className="mono">{x.count}</td>
+                    <td><div style={{ display: 'flex', alignItems: 'center', gap: 6 }}><div style={{ width: `${(x.avgWait / maxWait) * 70}px`, height: 8, background: 'var(--accent)', borderRadius: 4 }} /><span className="mono">{x.avgWait}</span></div></td>
+                    <td className="mono">{x.utilRate}%</td>
+                    <td><span className="badge" style={{ background: 'color-mix(in srgb,' + wc(x.noshowRate) + ' 20%,transparent)', color: wc(x.noshowRate) }}>{x.noshowRate}%</span></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section className="card">
+          <div className="card-h"><h2>预约时段分布</h2><span className="muted">识别高峰时段做分时放号</span></div>
+          <svg className="chart" viewBox="0 0 480 240">
+            <line x1="40" y1="210" x2="470" y2="210" stroke="var(--border)" />
+            {d.slots.map((s: any, i: number) => { const bw = 420 / d.slots.length, h = (s.count / maxSlot) * 170; return (<g key={i}><rect x={44 + i * bw} y={210 - h} width={bw - 14} height={h} rx="4" fill="var(--accent2)" /><text x={44 + i * bw + (bw - 14) / 2} y={226} className="axis">{s.name}</text><text x={44 + i * bw + (bw - 14) / 2} y={210 - h - 4} className="val">{s.count}</text></g>); })}
+          </svg>
+        </section>
+      </div>
+    </>
+  );
+}
+
 export function SpecialScreen({ screen }: { screen: string }) {
   if (screen === 'rfm') return <RfmScreen />;
+  if (screen === 'capacity') return <HospitalScreen />;
   if (screen === 'rag') return <RagScreen />;
   if (screen === 'db') return <DbScreen />;
   if (screen === 'arch') return <ArchScreen />;

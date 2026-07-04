@@ -161,6 +161,8 @@ for (const c of defs.cases) {
 ok(); if (has('dataset/product_cases/aicourse_healthcare_diabetes.csv')) bad('误名 healthcare_diabetes 未清除（应为 hospital_scheduling）');
 ok(); if (defs.cases.find((c) => c.num === 30)?.screen !== 'rfm') bad('案例30 未接专属 RFM demo（screen≠rfm）');
 ok(); if (!/api\/rfm/.test(rd('code/server/routes/api.ts')) || !/RfmScreen/.test(rd('code/web/src/screens.tsx'))) bad('缺 RFM 后端/前端');
+// 专属 demo：案例16 医院容量
+ok(); if (defs.cases.find((c) => c.num === 16)?.screen !== 'capacity' || !/api\/hospital/.test(rd('code/server/routes/api.ts')) || !/HospitalScreen/.test(rd('code/web/src/screens.tsx'))) bad('案例16 医院容量专属 demo 缺失');
 // 图表数据驱动守卫：CSV 案例的图表必须是真实列聚合（有 by 说明），不得哈希噪声
 ok(); if (/\(\(seed *>> *i\) *& *63\)|seed *>> *\(i *% *20\)/.test(rd('code/tools/build_case_data.mjs'))) bad('图表仍用 saasType 哈希噪声');
 for (const c of defs.cases) {

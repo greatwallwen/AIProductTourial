@@ -19,3 +19,5 @@ export const fetchOpenapi = () => getJson<any>('/api/openapi.json');
 export const fetchCasesList = () => getJson<any[]>('/api/cases');
 
 export const fetchRfm = () => getJson<any>('/api/rfm');
+
+export const fetchHospital = () => getJson<any>('/api/hospital');
