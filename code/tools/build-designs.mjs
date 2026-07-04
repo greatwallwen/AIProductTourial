@@ -2,7 +2,7 @@
 /** 由 design/themes.json（单一来源）生成每套 DESIGN.md（voltagent 格式，人读；令牌供 React 主题化）。DRY：色板只定义一次。 */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
-const ROOT = resolve(import.meta.dirname, '..');
+const ROOT = resolve(import.meta.dirname, '..', '..');
 const { themes } = JSON.parse(readFileSync(join(ROOT, 'design', 'themes.json'), 'utf8'));
 for (const th of themes) {
   const t = th.t;

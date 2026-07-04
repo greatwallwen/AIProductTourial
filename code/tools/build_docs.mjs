@@ -4,14 +4,14 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 
-const ROOT = resolve(import.meta.dirname, '..');
-const defs = JSON.parse(readFileSync(join(ROOT, 'coderef', 'case_definitions.json'), 'utf8'));
+const ROOT = resolve(import.meta.dirname, '..', '..');
+const defs = JSON.parse(readFileSync(join(ROOT, 'code', 'tools', 'case_definitions.json'), 'utf8'));
 const THEMES = {};
 for (const th of JSON.parse(readFileSync(join(ROOT, 'design', 'themes.json'), 'utf8')).themes) THEMES[th.id] = th.t;
 const CLIB = join(ROOT, 'outputs', 'product_case_library');
 mkdirSync(join(CLIB, 'svg'), { recursive: true });
 const pad = (n) => String(n).padStart(2, '0');
-const vm = (n) => JSON.parse(readFileSync(join(ROOT, 'coderef', 'react_pm_cases', 'src', 'data', `case_${pad(n)}.json`), 'utf8'));
+const vm = (n) => JSON.parse(readFileSync(join(ROOT, 'code', 'data', `case_${pad(n)}.json`), 'utf8'));
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const theme = (id) => THEMES[id] || THEMES['graphite-hud'];
 // 加载 vendored 的真实图标（Lucide，ISC 许可，assets/vendor/lucide）→ 取内层路径内联
@@ -154,9 +154,9 @@ function buildPrompt(c, d, stage) {
 - 指标链：${c.metricChain.join('、')}（当前真实值：${d.kpis.map((k) => k.name + '=' + k.value + (k.unit || '')).join('，')}）。
 - 异常状态：${c.exceptionStates.join('、')}。
 - 使用 Skill：${c.skills[0]}、${c.skills[1]}，并用 ${c.skills[2]} 做验收（结构化 Skill 见 skills/pm_skills.md）。
-- 原型（技术契约，遵 rules/ 约束：DRY、单文件<800行、TS 类型、中文注释）：在 \`coderef/react_pm_cases\`（Vite+React+TS）路由 \`#/case/${pad(c.num)}\`，按 \`${c.uiId}\`（${c.saasType}）与设计 \`${c.design}\` 渲染；数据经 \`build_case_data.mjs\` 预计算，页面必须体现指标链、异常队列、责任对象与行动入口，不得复用通用表格占位。
+- 原型（技术契约，遵 rules/ 约束：DRY、单文件<800行、TS 类型、中文注释）：在 \`code/web\`（Vite+React+TS）路由 \`#/case/${pad(c.num)}\`，按 \`${c.uiId}\`（${c.saasType}）与设计 \`${c.design}\` 渲染；数据经 \`build_case_data.mjs\` 预计算，页面必须体现指标链、异常队列、责任对象与行动入口，不得复用通用表格占位。
 - 输出：${c.deliverable}，保存为 \`outputs/product_case_library/case_${pad(c.num)}_${c.slug}_${stage === 'def' ? '问题定义' : '方案验收'}.md\`。
-- 验收条件：结论回到数据或公开参考（${c.publicRef}）；不得越过「${c.riskBoundary}」${c.highImpact ? '；高影响行业保留人工复核' : ''}；\`node coderef/verify_course_package.mjs\` 必须 ALL GREEN。`;
+- 验收条件：结论回到数据或公开参考（${c.publicRef}）；不得越过「${c.riskBoundary}」${c.highImpact ? '；高影响行业保留人工复核' : ''}；\`node code/tools/verify_course_package.mjs\` 必须 ALL GREEN。`;
 }
 
 // 数字化系统全景：纵向三层 × 横向数据价值闭环，25 案例作为节点串成一个系统
@@ -217,15 +217,15 @@ for (const c of defs.cases) {
 // ============ 合成单一教程 md ============
 const src = (f) => readFileSync(join(ROOT, 'docs', '_source', f), 'utf8').trim();
 const H = [`# ${defs.projectName}`, '',
-  `> 面向技术骨干与项目经理的产品经理转型实操知识库。**整体逻辑：先讲系统设计的理念、原理、工程规范与多套设计，再用不同案例来演示、验证**。真数据、可运行深色大屏原型（\`coderef/react_pm_cases\`）、真截图、结构化 Skill、Node 校验护栏。`, '',
+  `> 面向技术骨干与项目经理的产品经理转型实操知识库。**整体逻辑：先讲系统设计的理念、原理、工程规范与多套设计，再用不同案例来演示、验证**。真数据、可运行深色大屏原型（\`code/web\`）、真截图、结构化 Skill、Node 校验护栏。`, '',
   `> 写法：构建契约式 Prompt + 可运行成品 + 跑通纠错 + 交付物验收；可用 Trae / CodeBuddy 等任一 Agent 工具（Loop 为工具无关的开发模式）。数据真实/合成显式标注（\`dataset/MANIFEST.md\`）；高影响行业保留人工复核。`, '',
   '# 第一部分 · 系统设计理念与原理', '',
   src('00-ai-foundations.md'), '', src('01-ideology.md'), '', src('02-architecture.md'), '', src('03-engineering.md'), '', src('04-designs.md'), '',
   '## 使用入口', '',
   '- 案例总览与 5 个 manifest：`outputs/product_case_library/*.json`',
   '- 多套设计系统：`design/*.md`（令牌 `design/themes.json`）｜工程规范：`rules/`｜Skill 与 Loop：`skills/`',
-  '- React 工作台：`coderef/react_pm_cases`（`npm ci && npm run build && npm run preview`，一案例一路由 `#/case/NN`）',
-  '- 数据：`node coderef/fetch-datasets.mjs`｜预计算：`node coderef/build_case_data.mjs`｜校验：`node coderef/verify_course_package.mjs`', '',
+  '- React 工作台：`code/web`（`npm ci && npm run build && npm run preview`，一案例一路由 `#/case/NN`）',
+  '- 数据：`node code/tools/fetch-datasets.mjs`｜预计算：`node code/tools/build_case_data.mjs`｜校验：`node code/tools/verify_course_package.mjs`', '',
   '# 第二部分 · 案例演示与验证', '',
   '## 数字化系统全景（先看这张图）', '',
   '第一部分讲的理念、原理、规范、设计，不是散点——它们共同构成**一套数字化系统**。后面 25 个案例，正是这套系统在不同环节、不同层的**实操演示**：',

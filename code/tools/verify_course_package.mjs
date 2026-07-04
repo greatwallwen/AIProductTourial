@@ -2,12 +2,12 @@
 /** 全量校验护栏：逐案例 数据/预计算/SVG/交付物/截图/Skill/高影响 + 全局 单一教程/多设计/rules/skills/文件<800行/无工具品牌/design·demonstrates。ALL GREEN 才通过。 */
 import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
 import { join, resolve, extname } from 'node:path';
-const ROOT = resolve(import.meta.dirname, '..');
+const ROOT = resolve(import.meta.dirname, '..', '..');
 const pad = (n) => String(n).padStart(2, '0');
 const rd = (p) => readFileSync(join(ROOT, p), 'utf8');
 const jj = (p) => JSON.parse(rd(p));
 const has = (p) => existsSync(join(ROOT, p));
-const defs = jj('coderef/case_definitions.json');
+const defs = jj('code/tools/case_definitions.json');
 const skillsMd = rd('skills/pm_skills.md');
 let fail = 0, checks = 0;
 const bad = (m) => { fail++; console.log('  ✗ ' + m); };
@@ -18,7 +18,7 @@ console.log(`验校 ${defs.projectName} · ${defs.cases.length} 案例\n`);
 for (const c of defs.cases) {
   const n = pad(c.num), tag = `[${n} ${c.slug}]`;
   ok(); if (!has(c.dataset)) bad(`${tag} 数据集缺失 ${c.dataset}`);
-  const dp = `coderef/react_pm_cases/src/data/case_${n}.json`;
+  const dp = `code/data/case_${n}.json`;
   ok(); if (!has(dp)) { bad(`${tag} 预计算缺失`); continue; }
   const d = jj(dp);
   ok(); if (!(d.kpis?.length >= 3)) bad(`${tag} 指标链 < 3`);
@@ -54,7 +54,7 @@ ok(); if (!/只读/.test(rd('skills/loop_engineering/checker.role.md'))) bad('ch
 
 // 全局：源码单文件 < 800 行
 const walk = (dir) => { const out = []; for (const e of readdirSync(join(ROOT, dir))) { const p = join(dir, e); if (statSync(join(ROOT, p)).isDirectory()) { if (!['node_modules', 'dist', 'data'].includes(e)) out.push(...walk(p)); } else if (['.mjs', '.ts', '.tsx', '.css'].includes(extname(e))) out.push(p); } return out; };
-for (const f of walk('coderef')) { const ln = rd(f).split('\n').length; ok(); if (ln > 800) bad(`${f} ${ln} 行 > 800`); }
+for (const f of walk('code/tools')) { const ln = rd(f).split('\n').length; ok(); if (ln > 800) bad(`${f} ${ln} 行 > 800`); }
 
 // 全局：无具体编程工具品牌特写（Loop 工具无关）
 for (const f of ['产品经理转型实操知识库.md', 'skills/loop_engineering/README.md', 'skills/loop_engineering/loop.orchestrator.md', 'rules/ai-dev-constraints.md']) {
@@ -111,7 +111,7 @@ ok(); if (!/focus-visible/.test(rd('code/web/src/index.css'))) bad('缺 a11y 焦
 // 维度 E：网络下载真实图形 vendored + 使用 + 来源注明
 ok(); if (!has('assets/vendor/lucide/LICENSE')) bad('缺 vendored 真实图形(assets/vendor)');
 ok(); if (!/vendor/.test(rd('dataset/MANIFEST.md'))) bad('MANIFEST 未注明 vendored 图形来源/许可');
-ok(); if (!/loadIcon/.test(rd('coderef/build_docs.mjs'))) bad('未用下载的真实图形优化图形');
+ok(); if (!/loadIcon/.test(rd('code/tools/build_docs.mjs'))) bad('未用下载的真实图形优化图形');
 
 console.log(`\n检查 ${checks} 项，失败 ${fail} 项`);
 if (fail) { console.log('\n✗ NOT GREEN'); process.exit(1); }

@@ -1,5 +1,8 @@
 node_modules/
-coderef/react_pm_cases/dist/
+code/web/dist/
 dataset/_raw/
 *.log
 .DS_Store
+
+# 参考源包（选择性 vendored，勿整包提交）
+AI agent/

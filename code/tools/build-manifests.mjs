@@ -2,10 +2,10 @@
 /** 从 case_definitions.json（唯一 source of truth）生成 outputs/product_case_library 下 5 个 manifest。 */
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join, resolve } from 'node:path';
-const ROOT = resolve(import.meta.dirname, '..');
+const ROOT = resolve(import.meta.dirname, '..', '..');
 const OUT = join(ROOT, 'outputs', 'product_case_library');
 mkdirSync(OUT, { recursive: true });
-const defs = JSON.parse(readFileSync(join(ROOT, 'coderef', 'case_definitions.json'), 'utf8'));
+const defs = JSON.parse(readFileSync(join(ROOT, 'code', 'tools', 'case_definitions.json'), 'utf8'));
 const meta = { projectName: defs.projectName, projectNameEn: defs.projectNameEn, caseCount: defs.cases.length };
 const w = (name, obj) => writeFileSync(join(OUT, name), JSON.stringify(obj, null, 2));
 

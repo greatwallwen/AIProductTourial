@@ -3,12 +3,12 @@
  * 生成/下载课程数据集到 dataset/。为课堂可复现，默认确定性「教学合成」数据（种子固定，字段与结构
  * 对齐所引用的真实公开数据集，publicRef 见 case_definitions/ MANIFEST）；政务 311 尝试拉真实 Socrata。
  * 禁止把合成数据说成真实——MANIFEST 显式标注 real/synthetic。
- * 用法：node coderef/fetch-datasets.mjs
+ * 用法：node code/tools/fetch-datasets.mjs
  */
 import { writeFileSync, mkdirSync, readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { join, resolve, dirname } from 'node:path';
-const ROOT = resolve(import.meta.dirname, '..');
+const ROOT = resolve(import.meta.dirname, '..', '..');
 const DS = join(ROOT, 'dataset');
 // 确定性 PRNG（mulberry32），禁用 Date/Math.random 以保证可复现
 function rng(seed){ let a=seed>>>0; return ()=>{ a|=0; a=a+0x6D2B79F5|0; let t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
@@ -75,8 +75,8 @@ writeJson('outputs/11_loop_engineering/loop_report_sample.json',{meta:{case:37,r
 writeJson('outputs/10_knowledge_gamification/knowledge_quest_bank.json',{meta:{case:'15/43',note:'产业知识游戏化题库'},tracks:['需求管理','用户洞察','数据指标'],quests:Array.from({length:20},(_,i)=>({id:'Q'+(i+1),track:['需求管理','用户洞察','数据指标'][i%3],title:'关卡'+(i+1),skill:['problem-framing','metric-definition','journey-map'][i%3],points:10+(i%5)*5,pass:'答案回到数据或资料'}))});
 
 // ---- MANIFEST ----
-const man=['# 数据集清单（'+JSON.parse(readFileSync(join(ROOT,'coderef','case_definitions.json'),'utf8')).projectName+'）','',
- '为课堂可复现，除标注「真实」外均为**确定性教学合成**数据（固定种子生成，字段与结构对齐所引用的真实公开数据集；publicRef 见各案例）。**不把合成数据说成真实。** 生成：`node coderef/fetch-datasets.mjs`。','','| 文件 | 行/项 | 性质 | sha256 |','|---|---|---|---|'];
+const man=['# 数据集清单（'+JSON.parse(readFileSync(join(ROOT,'code', 'tools','case_definitions.json'),'utf8')).projectName+'）','',
+ '为课堂可复现，除标注「真实」外均为**确定性教学合成**数据（固定种子生成，字段与结构对齐所引用的真实公开数据集；publicRef 见各案例）。**不把合成数据说成真实。** 生成：`node code/tools/fetch-datasets.mjs`。','','| 文件 | 行/项 | 性质 | sha256 |','|---|---|---|---|'];
 for(const x of results){ const buf=readFileSync(x.p); const h=createHash('sha256').update(buf).digest('hex').slice(0,16); man.push(`| ${x.rel} | ${x.n??'-'} | ${x.label} | ${h}… |`); }
 man.push('','JSON 产物（方法论案例输入）：outputs/05_harness/prototype_test_report.json、outputs/11_loop_engineering/loop_report_sample.json、outputs/10_knowledge_gamification/knowledge_quest_bank.json、outputs/07_skills/pm_skills.md');
 writeFileSync(join(DS,'MANIFEST.md'),man.join('\n')+'\n');

@@ -2,9 +2,9 @@
 /** 由 skill_definitions.json + case_definitions.json 生成结构化可验证 Skill 库 outputs/07_skills/pm_skills.md。 */
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join, resolve } from 'node:path';
-const ROOT = resolve(import.meta.dirname, '..');
-const skills = JSON.parse(readFileSync(join(ROOT,'coderef','skill_definitions.json'),'utf8')).skills;
-const defs = JSON.parse(readFileSync(join(ROOT,'coderef','case_definitions.json'),'utf8'));
+const ROOT = resolve(import.meta.dirname, '..', '..');
+const skills = JSON.parse(readFileSync(join(ROOT,'code', 'tools','skill_definitions.json'),'utf8')).skills;
+const defs = JSON.parse(readFileSync(join(ROOT,'code', 'tools','case_definitions.json'),'utf8'));
 const usedBy = {}; for (const c of defs.cases) for (const s of c.skills) (usedBy[s]??=[]).push(`${c.num} ${c.scenario}`);
 const CHECKERS = new Set(['acceptance-criteria','checker-report','regression-guard','skill-validator','human-review','compliance-boundary','field-validation','eval-design','prototype-test','accessibility-check','acceptance-mapping']);
 mkdirSync(join(ROOT,'skills'),{recursive:true});

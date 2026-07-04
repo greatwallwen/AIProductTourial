@@ -3,7 +3,7 @@
 A hands-on knowledge base that helps engineers and project managers transition into product management. One PM workflow (role-shift → user insight → requirements → positioning → design → metrics → AI collaboration → QA → capstone) runs across **21 real industry scenarios**, each delivered as: **real data → runnable React prototype → real screenshot → two deliverables → handbook chapter → machine-verified**.
 
 - Datasets: `dataset/` (+ `MANIFEST.md`, real vs. synthetic explicitly labeled)
-- Runnable workbench: `coderef/react_pm_cases` (Vite + React + TS, one route per case `#/case/NN`)
+- Runnable workbench: `code/web` (Vite + React + TS, one route per case `#/case/NN`)
 - Manifests / SVGs / deliverables: `outputs/product_case_library/`
 - Structured skills (46): `outputs/07_skills/pm_skills.md`
 - Screenshots: `assets/screenshots/`
@@ -12,10 +12,10 @@ A hands-on knowledge base that helps engineers and project managers transition i
 ## Quickstart
 
 ```bash
-node coderef/fetch-datasets.mjs && node coderef/build_case_data.mjs
-node coderef/build-manifests.mjs && node coderef/build-skills.mjs && node coderef/build_docs.mjs
-cd coderef/react_pm_cases && npm ci && npm run build && npm run preview   # http://localhost:4173/#/
-node coderef/verify_course_package.mjs   # ALL GREEN
+node code/tools/fetch-datasets.mjs && node code/tools/build_case_data.mjs
+node code/tools/build-manifests.mjs && node code/tools/build-skills.mjs && node code/tools/build_docs.mjs
+bash code/run.sh   # 一服务托管 API+前端 http://localhost:5200/#/
+node code/tools/verify_course_package.mjs   # ALL GREEN
 ```
 
 ## Guardrails

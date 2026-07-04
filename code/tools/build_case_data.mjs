@@ -3,10 +3,10 @@
  *  React 工作台只渲染这些预计算结果 → 离线确定、截图可复现。 */
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { join, resolve } from 'node:path';
-const ROOT = resolve(import.meta.dirname, '..');
-const OUTDIR = join(ROOT, 'coderef', 'react_pm_cases', 'src', 'data');
+const ROOT = resolve(import.meta.dirname, '..', '..');
+const OUTDIR = join(ROOT, 'code', 'data');
 mkdirSync(OUTDIR, { recursive: true });
-const defs = JSON.parse(readFileSync(join(ROOT, 'coderef', 'case_definitions.json'), 'utf8'));
+const defs = JSON.parse(readFileSync(join(ROOT, 'code', 'tools', 'case_definitions.json'), 'utf8'));
 function parseCsv(p){ const t=readFileSync(p,'utf8').trim().split('\n'); const head=splitLine(t[0]); return { head, rows:t.slice(1).map(splitLine) }; }
 function splitLine(l){ const out=[]; let cur='',q=false; for(const c of l){ if(c==='"'){q=!q;} else if(c===','&&!q){out.push(cur);cur='';} else cur+=c; } out.push(cur); return out; }
 const num=(v)=>{ const n=parseFloat(String(v).replace(/[^\d.\-]/g,'')); return isFinite(n)?n:0; };

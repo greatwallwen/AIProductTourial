@@ -19,17 +19,17 @@
 | `rules/` | 工程规范（AI 约束 / 前端 Monorepo·微前端 / 后端分层），对齐 Google/OWASP/Conventional Commits 等并注来源 |
 | `skills/` | `pm_skills.md`（52 结构化 Skill）+ `loop_engineering/`（builder/checker/loop/停机规则/记忆区，**工具无关**，不特写任何具体编程工具） |
 | `dataset/` | 各案例数据 + `MANIFEST.md`（真实/教学合成显式标注） |
-| `coderef/react_pm_cases/` | Vite + React + TS 深色大屏工作台，一案例一路由 `#/case/NN`，按 design 主题化 |
-| `coderef/*.mjs` | 数据生成/预计算/manifest/设计/skills/文档/校验（单文件均 < 800 行） |
+| `code/web/` | Vite + React + TS 深色大屏工作台，一案例一路由 `#/case/NN`，按 design 主题化 |
+| `code/tools/*.mjs` | 数据生成/预计算/manifest/设计/skills/文档/校验（单文件均 < 800 行） |
 | `outputs/product_case_library/` | 5 manifest + 25 SVG + 42 交付物 md | `assets/screenshots/` | 22 张深色大屏截图 |
 
 ## 快速开始
 
 ```bash
-node coderef/fetch-datasets.mjs && node coderef/build_case_data.mjs
-node coderef/build-manifests.mjs && node coderef/build-skills.mjs && node coderef/build-designs.mjs && node coderef/build_docs.mjs
-cd coderef/react_pm_cases && npm ci && npm run build && npm run preview   # http://localhost:4173/#/
-node coderef/verify_course_package.mjs   # ALL GREEN（含单一md/多设计/skills/文件<800/无工具品牌）
+node code/tools/fetch-datasets.mjs && node code/tools/build_case_data.mjs
+node code/tools/build-manifests.mjs && node code/tools/build-skills.mjs && node code/tools/build-designs.mjs && node code/tools/build_docs.mjs
+bash code/run.sh   # 一服务托管 API+前端 http://localhost:5200/#/
+node code/tools/verify_course_package.mjs   # ALL GREEN（含单一md/多设计/skills/文件<800/无工具品牌）
 ```
 
 ## 质量红线
