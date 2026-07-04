@@ -22,3 +22,7 @@ JSON 产物（方法论案例输入）：outputs/05_harness/prototype_test_repor
 ## 本地化公开参考
 
 - `skills/external/pm-skills-deanpeters/`：源 https://github.com/deanpeters/Product-Manager-Skills （MIT）；已 vendor 到本地，案例 02 引本地路径；194 篇 md 作向量检索(RAG)语料。
+
+## 网络下载真实图形（vendored）
+
+- `assets/vendor/lucide/`：**Lucide 图标**（来源 https://github.com/lucide-icons/lucide ，**ISC 许可**，见同目录 LICENSE）。10 个概念图标（brain/binary/layers/workflow/box/network/cpu/boxes 等）内联进 §1「AI 核心概念底层链路」图 fig_ai_foundations 加以优化。真实下载图形，非教学合成，已注明来源与许可。

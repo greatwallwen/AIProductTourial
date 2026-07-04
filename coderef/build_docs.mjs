@@ -14,6 +14,10 @@ const pad = (n) => String(n).padStart(2, '0');
 const vm = (n) => JSON.parse(readFileSync(join(ROOT, 'coderef', 'react_pm_cases', 'src', 'data', `case_${pad(n)}.json`), 'utf8'));
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const theme = (id) => THEMES[id] || THEMES['graphite-hud'];
+// 加载 vendored 的真实图标（Lucide，ISC 许可，assets/vendor/lucide）→ 取内层路径内联
+function loadIcon(name) {
+  try { const s = readFileSync(join(ROOT, 'assets', 'vendor', 'lucide', name + '.svg'), 'utf8'); const m = s.match(/<svg[^>]*>([\s\S]*)<\/svg>/); return m ? m[1].trim() : ''; } catch { return ''; }
+}
 
 // 状态严重度 → 主题色
 function sevColor(t, s) {
@@ -121,8 +125,12 @@ function figSvg(id) {
   }
   if (id === 'fig_ai_foundations') {
     const chain = ['LLM', 'Token', 'Context', 'Prompt', 'Tool', 'MCP', 'Agent', 'Skill'];
-    return head + chain.map((s, i) => `<rect x="${20 + i * 108}" y="160" width="94" height="60" rx="9" fill="${t.panel}" stroke="${t.border}"/><rect x="${20 + i * 108}" y="160" width="94" height="2" fill="${t.accent}"/><text x="${20 + i * 108 + 47}" y="196" font-size="13" fill="${t.ink}" text-anchor="middle">${s}</text>${i < chain.length - 1 ? `<text x="${20 + i * 108 + 100}" y="196" font-size="15" fill="${t.accent}">›</text>` : ''}`).join('') +
-      `<text x="20" y="90" font-size="14" fill="${t.ink}">AI 核心概念底层链路（从底层到上层）</text><text x="20" y="300" font-size="11" fill="${t.muted}">LLM 逐词生成 · Token 计量 · Context 记忆 · Prompt 驱动 · Tool/MCP 触达 · Agent/Skill 自主</text></svg>`;
+    const icons = ['brain', 'binary', 'layers', 'workflow', 'box', 'network', 'cpu', 'boxes'];
+    return head + chain.map((s, i) => { const bx = 20 + i * 108, inner = loadIcon(icons[i]);
+      return `<rect x="${bx}" y="152" width="94" height="72" rx="9" fill="${t.panel}" stroke="${t.border}"/><rect x="${bx}" y="152" width="94" height="2" fill="${t.accent}"/>
+      <g transform="translate(${bx + 37},164) scale(0.85)" stroke="${t.accent}" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${inner}</g>
+      <text x="${bx + 47}" y="212" font-size="13" fill="${t.ink}" text-anchor="middle">${s}</text>${i < chain.length - 1 ? `<text x="${bx + 100}" y="192" font-size="15" fill="${t.accent}">›</text>` : ''}`; }).join('') +
+      `<text x="20" y="90" font-size="14" fill="${t.ink}">AI 核心概念底层链路（从底层到上层）</text><text x="20" y="300" font-size="11" fill="${t.muted}">LLM 逐词生成 · Token 计量 · Context 记忆 · Prompt 驱动 · Tool/MCP 触达 · Agent/Skill 自主 · 图标 Lucide(ISC)</text></svg>`;
   }
   // fig_designs
   const ids = Object.keys(THEMES);

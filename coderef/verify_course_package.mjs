@@ -108,6 +108,10 @@ ok(); if (!/PrincipleIndex/.test(pg)) bad('缺原理索引双向溯源');
 ok(); if (!/ApiDocs|openapi/i.test(pg)) bad('缺在线 API 文档页');
 ok(); if (!/lazy\(\(\) => import\('\.\/chart3d'\)\)/.test(rd('code/web/src/screens.tsx'))) bad('three.js 未懒加载(代码分割)');
 ok(); if (!/focus-visible/.test(rd('code/web/src/index.css'))) bad('缺 a11y 焦点可达样式');
+// 维度 E：网络下载真实图形 vendored + 使用 + 来源注明
+ok(); if (!has('assets/vendor/lucide/LICENSE')) bad('缺 vendored 真实图形(assets/vendor)');
+ok(); if (!/vendor/.test(rd('dataset/MANIFEST.md'))) bad('MANIFEST 未注明 vendored 图形来源/许可');
+ok(); if (!/loadIcon/.test(rd('coderef/build_docs.mjs'))) bad('未用下载的真实图形优化图形');
 
 console.log(`\n检查 ${checks} 项，失败 ${fail} 项`);
 if (fail) { console.log('\n✗ NOT GREEN'); process.exit(1); }
