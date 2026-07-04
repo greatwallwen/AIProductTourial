@@ -360,6 +360,43 @@ function RetailScreen() {
   );
 }
 
+// —— 零售经营方案专属 demo（案例41 综合闭环）：从真实数据合成「现状→问题→动作→责任」的可交付方案 ——
+function PlanScreen() {
+  const [d, setD] = useState<any>(null);
+  useEffect(() => { fetchRetail().then(setD); }, []);
+  if (!d) return <section className="card"><div className="muted">合成经营方案…</div></section>;
+  const byRev = [...d.cats].sort((a: any, b: any) => b.revenue - a.revenue);
+  const byMargin = [...d.cats].sort((a: any, b: any) => a.avgMargin - b.avgMargin);
+  const byAnom = [...d.cats].sort((a: any, b: any) => b.anomRate - a.anomRate);
+  const actions = [
+    { q: `${byMargin[0].name} 毛利最低（${byMargin[0].avgMargin}%）`, a: `复盘 ${byMargin[0].name} 定价与采购成本，目标毛利 +2pct`, owner: '产品-王' },
+    { q: `${byAnom[0].name} 异常率最高（${byAnom[0].anomRate}%）`, a: `治理 ${byAnom[0].name} 异常订单，压降异常率至 15% 以下`, owner: '运营-李' },
+    { q: `${byRev[0].name} 是收入支柱（${byRev[0].revenue.toLocaleString('zh-CN')}）`, a: `保供 ${byRev[0].name}，避免缺货丢单，稳住基本盘`, owner: '供应链-孙' },
+  ];
+  return (
+    <>
+      <div className="banner" style={{ color: 'var(--accent2)', borderColor: 'var(--accent2)' }}>综合闭环：把 {d.total} 单经营数据端到端合成一份<b>可验收的经营方案</b>——不是给一堆图，而是「现状→问题→动作→责任」，每个动作有人有目标。</div>
+      <section className="card">
+        <div className="card-h"><h2>经营现状（真实数据）</h2></div>
+        <div className="grid-cards" style={{ gridTemplateColumns: 'repeat(auto-fill,minmax(180px,1fr))' }}>
+          {[['收入支柱', byRev[0].name, byRev[0].revenue.toLocaleString('zh-CN'), 'var(--ok)'], ['毛利洼地', byMargin[0].name, byMargin[0].avgMargin + '%', 'var(--warn)'], ['异常高发', byAnom[0].name, byAnom[0].anomRate + '%', 'var(--bad)'], ['异常订单', '合计', d.anomCount + ' 单', 'var(--accent)']].map((x: any) => (
+            <div key={x[0]} className="kpi"><div className="kpi-name">{x[0]}</div><div className="kpi-val" style={{ fontSize: 18 }}>{x[1]}</div><div className="mono" style={{ color: x[3], fontSize: 12 }}>{x[2]}</div></div>
+          ))}
+        </div>
+      </section>
+      <section className="card" style={{ marginTop: 14 }}>
+        <div className="card-h"><h2>改进动作（问题 → 动作 → 责任）</h2><span className="muted">可验收</span></div>
+        {actions.map((x, i) => (
+          <div key={i} className="card" style={{ marginBottom: 8, padding: '10px 12px', borderLeft: '3px solid var(--accent2)' }}>
+            <div style={{ fontSize: 12.5, color: 'var(--ink)' }}>⚠ {x.q}</div>
+            <div style={{ fontSize: 12.5, marginTop: 5 }}>→ {x.a} <span className="chip owner" style={{ marginLeft: 8 }}>{x.owner}</span></div>
+          </div>
+        ))}
+      </section>
+    </>
+  );
+}
+
 export function SpecialScreen({ screen }: { screen: string }) {
   if (screen === 'rfm') return <RfmScreen />;
   if (screen === 'capacity') return <HospitalScreen />;
@@ -367,6 +404,7 @@ export function SpecialScreen({ screen }: { screen: string }) {
   if (screen === 'riskreview') return <RiskScreen />;
   if (screen === 'dispatch') return <DispatchScreen />;
   if (screen === 'retail') return <RetailScreen />;
+  if (screen === 'plan') return <PlanScreen />;
   if (screen === 'rag') return <RagScreen />;
   if (screen === 'db') return <DbScreen />;
   if (screen === 'arch') return <ArchScreen />;

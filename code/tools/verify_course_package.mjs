@@ -162,6 +162,7 @@ ok(); if (has('dataset/product_cases/aicourse_healthcare_diabetes.csv')) bad('�
 ok(); if (defs.cases.find((c) => c.num === 30)?.screen !== 'rfm') bad('案例30 未接专属 RFM demo（screen≠rfm）');
 ok(); if (!/api\/rfm/.test(rd('code/server/routes/api.ts')) || !/RfmScreen/.test(rd('code/web/src/screens.tsx'))) bad('缺 RFM 后端/前端');
 // 专属 demo：案例16 医院容量
+ok(); if (defs.cases.filter((c) => c.screen).length < defs.cases.length) bad('存在非专属 demo 案例（应 11/11 有 screen）');
 ok(); if (defs.cases.find((c) => c.num === 14)?.screen !== 'dispatch' || !/api\/dispatch/.test(rd('code/server/routes/api.ts')) || !/DispatchScreen/.test(rd('code/web/src/screens.tsx'))) bad('案例14 物流派单专属 demo 缺失');
 ok(); if (defs.cases.find((c) => c.num === 28)?.screen !== 'riskreview' || !/api\/riskreview/.test(rd('code/server/routes/api.ts')) || !/RiskScreen/.test(rd('code/web/src/screens.tsx'))) bad('案例28 风控复核专属 demo 缺失');
 ok(); if (defs.cases.find((c) => c.num === 31)?.screen !== 'adfunnel' || !/api\/adfunnel/.test(rd('code/server/routes/api.ts')) || !/AdFunnelScreen/.test(rd('code/web/src/screens.tsx'))) bad('案例31 广告漏斗专属 demo 缺失');
