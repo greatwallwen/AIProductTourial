@@ -57,5 +57,5 @@
    <text x="848" y="273" font-size="11" fill="#04121a" font-weight="700">处置：编制超配</text>
   <foreignObject x="592" y="308" width="330" height="150"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:11px;color:#9fb0c3;line-height:1.6">决策动作：判断岗位产出、编制缺口和流失风险，形成组织调整建议。<br/>风险边界：不得让运营动作和成本脱节</div></foreignObject>
   
-  <text x="40" y="544" font-size="10.5" fill="#5b6b7f">UI 原型 ui_39_points_admin_console · 演示原理 1.3 · 3.3 · Skill react-ui + shadcn-admin + accessibility-check</text>
+  <text x="40" y="544" font-size="10.5" fill="#5b6b7f">UI 原型 ui_39_points_admin_console · 演示原理 2.3 · 4.3 · Skill react-ui + shadcn-admin + accessibility-check</text>
 </svg>

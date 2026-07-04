@@ -48,7 +48,7 @@
       "role": "项目经理",
       "scenario": "研发排期价值评审台",
       "dataset": "dataset/product_cases/aicourse_hr_employees.csv",
-      "publicRef": "https://github.com/deanpeters/Product-Manager-Skills",
+      "publicRef": "本地：skills/external/pm-skills-deanpeters（源 deanpeters/Product-Manager-Skills）",
       "fields": [
         "需求项",
         "业务价值",

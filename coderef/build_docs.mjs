@@ -67,6 +67,11 @@ function figSvg(id) {
     const rs = ['成熟优先', 'DRY 复用', '目录清晰', '单文件≤800行', '类型安全', '中文注释', '错误处理', '安全红线'];
     return head + rs.map((s, i) => `<rect x="${30 + (i % 4) * 215}" y="${90 + Math.floor(i / 4) * 110}" width="195" height="90" rx="10" fill="${t.panel}" stroke="${t.border}"/><text x="${30 + (i % 4) * 215 + 16}" y="${90 + Math.floor(i / 4) * 110 + 50}" font-size="14" fill="${t.accent}">${s}</text>`).join('') + '</svg>';
   }
+  if (id === 'fig_ai_foundations') {
+    const chain = ['LLM', 'Token', 'Context', 'Prompt', 'Tool', 'MCP', 'Agent', 'Skill'];
+    return head + chain.map((s, i) => `<rect x="${20 + i * 108}" y="160" width="94" height="60" rx="9" fill="${t.panel}" stroke="${t.border}"/><rect x="${20 + i * 108}" y="160" width="94" height="2" fill="${t.accent}"/><text x="${20 + i * 108 + 47}" y="196" font-size="13" fill="${t.ink}" text-anchor="middle">${s}</text>${i < chain.length - 1 ? `<text x="${20 + i * 108 + 100}" y="196" font-size="15" fill="${t.accent}">›</text>` : ''}`).join('') +
+      `<text x="20" y="90" font-size="14" fill="${t.ink}">AI 核心概念底层链路（从底层到上层）</text><text x="20" y="300" font-size="11" fill="${t.muted}">LLM 逐词生成 · Token 计量 · Context 记忆 · Prompt 驱动 · Tool/MCP 触达 · Agent/Skill 自主</text></svg>`;
+  }
   // fig_designs
   const ids = Object.keys(THEMES);
   return head + ids.map((k, i) => { const tt = THEMES[k]; return `<rect x="${30 + i * 172}" y="120" width="156" height="140" rx="12" fill="${tt.panel}" stroke="${tt.border}"/><rect x="${46 + i * 172}" y="140" width="124" height="40" rx="8" fill="${tt.accent}"/><text x="${46 + i * 172}" y="210" font-size="12" fill="${tt.ink}">${k}</text>`; }).join('') + `<text x="30" y="80" font-size="14" fill="${t.ink}">多套设计系统（各不相同）</text></svg>`;
@@ -95,7 +100,7 @@ function buildPrompt(c, d, stage) {
 }
 
 // ============ 生成 SVG + 交付物 ============
-for (const id of ['fig_ideology_loops', 'fig_arch_flow', 'fig_engineering_rules', 'fig_designs'])
+for (const id of ['fig_ai_foundations', 'fig_ideology_loops', 'fig_arch_flow', 'fig_engineering_rules', 'fig_designs'])
   writeFileSync(join(CLIB, 'svg', `${id}.svg`), figSvg(id));
 for (const c of defs.cases) {
   const d = vm(c.num);
@@ -110,7 +115,7 @@ const H = [`# ${defs.projectName}`, '',
   `> 面向技术骨干与项目经理的产品经理转型实操知识库。**整体逻辑：先讲系统设计的理念、原理、工程规范与多套设计，再用不同案例来演示、验证**。真数据、可运行深色大屏原型（\`coderef/react_pm_cases\`）、真截图、结构化 Skill、Node 校验护栏。`, '',
   `> 写法：构建契约式 Prompt + 可运行成品 + 跑通纠错 + 交付物验收；可用 Trae / CodeBuddy 等任一 Agent 工具（Loop 为工具无关的开发模式）。数据真实/合成显式标注（\`dataset/MANIFEST.md\`）；高影响行业保留人工复核。`, '',
   '# 第一部分 · 系统设计理念与原理', '',
-  src('01-ideology.md'), '', src('02-architecture.md'), '', src('03-engineering.md'), '', src('04-designs.md'), '',
+  src('00-ai-foundations.md'), '', src('01-ideology.md'), '', src('02-architecture.md'), '', src('03-engineering.md'), '', src('04-designs.md'), '',
   '## 使用入口', '',
   '- 案例总览与 5 个 manifest：`outputs/product_case_library/*.json`',
   '- 多套设计系统：`design/*.md`（令牌 `design/themes.json`）｜工程规范：`rules/`｜Skill 与 Loop：`skills/`',

@@ -1,6 +1,6 @@
 # 漏斗与预算建议（实操 31·问题定义）
 
-> 数据来源：`dataset/reference_data_analysis/18-ad_performance.csv`（6 行，异常 6）。字段与指标均回到该数据。演示原理 2.2、3.3，采用设计 amber-funnel。
+> 数据来源：`dataset/reference_data_analysis/18-ad_performance.csv`（6 行，异常 6）。字段与指标均回到该数据。演示原理 3.2、4.3，采用设计 amber-funnel。
 
 ## 产品问题
 

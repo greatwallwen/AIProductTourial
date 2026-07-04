@@ -54,8 +54,8 @@
  ],
  "design": "graphite-hud",
  "demonstrates": [
-  "1.7",
-  "2.2"
+  "2.7",
+  "3.2"
  ],
  "kpis": [
   {

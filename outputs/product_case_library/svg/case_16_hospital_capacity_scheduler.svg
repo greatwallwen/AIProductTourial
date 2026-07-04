@@ -57,5 +57,5 @@
    <text x="848" y="273" font-size="11" fill="#04121a" font-weight="700">处置：编制超配</text>
   <foreignObject x="592" y="308" width="330" height="150"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:11px;color:#9fb0c3;line-height:1.6">决策动作：判断岗位产出、编制缺口和流失风险，形成组织调整建议。<br/>风险边界：不得自动诊断或替代医生决策</div></foreignObject>
   <rect x="40" y="486" width="880" height="34" rx="8" fill="#fbbf24" opacity="0.14"/><text x="54" y="508" font-size="11.5" fill="#fbbf24">⚠ 高影响行业：保留人工复核，不得自动授信/处罚/诊断/拒绝交易</text>
-  <text x="40" y="544" font-size="10.5" fill="#5b6b7f">UI 原型 ui_16_hospital_capacity_scheduler · 演示原理 1.7 · 2.2 · Skill persona-scenario + journey-map + human-review</text>
+  <text x="40" y="544" font-size="10.5" fill="#5b6b7f">UI 原型 ui_16_hospital_capacity_scheduler · 演示原理 2.7 · 3.2 · Skill persona-scenario + journey-map + human-review</text>
 </svg>

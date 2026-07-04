@@ -1,6 +1,6 @@
 # Harness 验收清单（实操 36·方案验收）
 
-> 数据来源：`outputs/05_harness/prototype_test_report.json`（12 行，异常 8）。字段与指标均回到该数据。演示原理 1.3、3.3，采用设计 cyan-matrix。
+> 数据来源：`outputs/05_harness/prototype_test_report.json`（12 行，异常 8）。字段与指标均回到该数据。演示原理 2.3、4.3，采用设计 cyan-matrix。
 
 ## 交付物
 

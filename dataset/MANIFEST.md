@@ -18,3 +18,7 @@
 | pm_network_cases/nyc_311_service_requests_5000.csv | 1500 | 教学合成（对齐 NYC 311，联网失败回退） | 2b78768e19ef6c05… |
 
 JSON 产物（方法论案例输入）：outputs/05_harness/prototype_test_report.json、outputs/11_loop_engineering/loop_report_sample.json、outputs/10_knowledge_gamification/knowledge_quest_bank.json、outputs/07_skills/pm_skills.md
+
+## 本地化公开参考
+
+- `skills/external/pm-skills-deanpeters/`：源 https://github.com/deanpeters/Product-Manager-Skills （MIT）；已 vendor 到本地，案例 02 引本地路径；194 篇 md 作向量检索(RAG)语料。

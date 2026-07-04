@@ -50,8 +50,8 @@
  ],
  "design": "steel-queue",
  "demonstrates": [
-  "1.7",
-  "2.2"
+  "2.7",
+  "3.2"
  ],
  "kpis": [
   {

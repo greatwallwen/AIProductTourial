@@ -1,6 +1,6 @@
 # 目标用户与场景矩阵（实操 16·方案验收）
 
-> 数据来源：`dataset/product_cases/aicourse_healthcare_diabetes.csv`（520 行，异常 61）。字段与指标均回到该数据。演示原理 1.7、2.2，采用设计 graphite-hud。
+> 数据来源：`dataset/product_cases/aicourse_healthcare_diabetes.csv`（520 行，异常 61）。字段与指标均回到该数据。演示原理 2.7、3.2，采用设计 graphite-hud。
 
 ## 交付物
 

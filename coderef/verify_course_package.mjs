@@ -38,7 +38,7 @@ for (const c of defs.cases) {
 
 // 全局：单一教程结构
 const tut = rd('产品经理转型实操知识库.md');
-for (const m of ['# 第一部分', '# 第二部分', '## 1. 理念', '## 2. 系统架构', '## 3. 工程规范', '## 4. 设计系统']) { ok(); if (!tut.includes(m)) bad(`教程缺章节「${m}」`); }
+for (const m of ['# 第一部分', '# 第二部分', '## 1. AI 核心概念底层', '## 2. 理念', '## 3. 系统架构', '## 4. 工程规范', '## 5. 设计系统']) { ok(); if (!tut.includes(m)) bad(`教程缺章节「${m}」`); }
 ok(); if (readdirSync(ROOT).filter((f) => f.endsWith('.md') && /教程|手册|知识库/.test(f)).length !== 1) bad('教程 md 不唯一');
 
 // 全局：多套设计（≥5 且配色相异）
@@ -60,6 +60,18 @@ for (const f of walk('coderef')) { const ln = rd(f).split('\n').length; ok(); if
 for (const f of ['产品经理转型实操知识库.md', 'skills/loop_engineering/README.md', 'skills/loop_engineering/loop.orchestrator.md', 'rules/ai-dev-constraints.md']) {
   ok(); if (/Claude Code|\.claude\b|Cursor\b/.test(rd(f))) bad(`${f} 含具体工具品牌特写`);
 }
+
+// 全局：真后端 code/server 存在且各文件 <800 行
+for (const f of ['app.ts', 'routes/api.ts', 'services/cases.ts', 'data/csv.ts', 'db/relational.ts', 'vector/store.ts', 'tests/api.test.ts'].map((x) => 'code/server/' + x)) {
+  ok(); if (!has(f)) { bad('缺后端文件 ' + f); continue; }
+  ok(); if (rd(f).split('\n').length > 800) bad(`${f} > 800 行`);
+}
+ok(); if (!/fastify/.test(rd('code/server/package.json'))) bad('后端未依赖 fastify');
+// 案例02 graphicOnly + 本地公开参考 + deanpeters 本地化
+const c02 = defs.cases.find((c) => c.num === 2);
+ok(); if (!c02.graphicOnly) bad('案例02 未标 graphicOnly（应只出图形无字段）');
+ok(); if (!/skills\/external/.test(c02.publicRef || '')) bad('案例02 未引本地参考');
+ok(); if (!has('skills/external/pm-skills-deanpeters/README.md')) bad('deanpeters 未本地化到 skills/external');
 
 console.log(`\n检查 ${checks} 项，失败 ${fail} 项`);
 if (fail) { console.log('\n✗ NOT GREEN'); process.exit(1); }

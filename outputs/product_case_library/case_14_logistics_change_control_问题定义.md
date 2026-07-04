@@ -1,6 +1,6 @@
 # 需求变更影响评估（实操 14·问题定义）
 
-> 数据来源：`dataset/product_cases/aicourse_logistics_delivery.csv`（700 行，异常 541）。字段与指标均回到该数据。演示原理 2.4、3.1，采用设计 amber-funnel。
+> 数据来源：`dataset/product_cases/aicourse_logistics_delivery.csv`（700 行，异常 541）。字段与指标均回到该数据。演示原理 3.4、4.1，采用设计 amber-funnel。
 
 ## 产品问题
 
