@@ -1,6 +1,6 @@
 # 权限矩阵与风控规则（实操 28·问题定义）
 
-> 数据来源：`dataset/reference_data_analysis/28-creditcardfraud_sample.csv`（600 行，异常 50）。本卡字段与指标均回到该数据，未使用数据外字段。
+> 数据来源：`dataset/reference_data_analysis/28-creditcardfraud_sample.csv`（600 行，异常 50）。字段与指标均回到该数据。演示原理 2.3、2.5，采用设计 cyan-matrix。
 
 ## 产品问题
 

@@ -1,6 +1,6 @@
 # AI 产品工作流蓝图（实操 06·问题定义）
 
-> 数据来源：`dataset/product_cases/aicourse_financial_transactions.csv`（900 行，异常 592）。本卡字段与指标均回到该数据，未使用数据外字段。
+> 数据来源：`dataset/product_cases/aicourse_financial_transactions.csv`（900 行，异常 592）。字段与指标均回到该数据。演示原理 1.4、1.6，采用设计 emerald-flow。
 
 ## 产品问题
 

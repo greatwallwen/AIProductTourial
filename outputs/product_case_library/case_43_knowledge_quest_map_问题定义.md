@@ -1,6 +1,6 @@
 # 知识游戏化产品方案包（实操 43·问题定义）
 
-> 数据来源：`outputs/10_knowledge_gamification/knowledge_quest_bank.json`（20 行，异常 8）。本卡字段与指标均回到该数据，未使用数据外字段。
+> 数据来源：`outputs/10_knowledge_gamification/knowledge_quest_bank.json`（20 行，异常 8）。字段与指标均回到该数据。演示原理 1.7、2.1、3.1，采用设计 emerald-flow。
 
 ## 产品问题
 

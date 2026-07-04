@@ -1,6 +1,6 @@
 # 访谈提纲与洞察卡（实操 07·问题定义）
 
-> 数据来源：`dataset/product_cases/aicourse_financial_transactions.csv`（900 行，异常 592）。本卡字段与指标均回到该数据，未使用数据外字段。
+> 数据来源：`dataset/product_cases/aicourse_financial_transactions.csv`（900 行，异常 592）。字段与指标均回到该数据。演示原理 1.7、2.2，采用设计 steel-queue。
 
 ## 产品问题
 

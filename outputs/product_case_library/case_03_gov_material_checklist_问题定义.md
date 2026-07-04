@@ -1,6 +1,6 @@
 # 涉众地图和价值交换图（实操 03·问题定义）
 
-> 数据来源：`dataset/pm_network_cases/nyc_311_service_requests_5000.csv`（1500 行，异常 407）。本卡字段与指标均回到该数据，未使用数据外字段。
+> 数据来源：`dataset/pm_network_cases/nyc_311_service_requests_5000.csv`（1500 行，异常 407）。字段与指标均回到该数据。演示原理 1.7、2.2，采用设计 steel-queue。
 
 ## 产品问题
 

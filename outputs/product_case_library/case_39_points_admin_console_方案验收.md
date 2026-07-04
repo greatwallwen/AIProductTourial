@@ -1,6 +1,6 @@
 # React 后台页面（实操 39·方案验收）
 
-> 数据来源：`dataset/ex-17-RFM.csv`（800 行，异常 10）。本卡字段与指标均回到该数据，未使用数据外字段。
+> 数据来源：`dataset/ex-17-RFM.csv`（800 行，异常 10）。字段与指标均回到该数据。演示原理 1.3、3.3，采用设计 graphite-hud。
 
 ## 交付物
 
@@ -23,4 +23,4 @@ React 后台页面
 
 ## 验收结论
 
-PASS — 指标链 5 项、异常队列 10 项均回到 `dataset/ex-17-RFM.csv`；可运行原型见工作台路由 `#/case/39`，截图 `assets/screenshots/premium_case_39_points_admin_console_desktop.png`。
+PASS — 指标链 5 项、异常队列 10 项均回到 `dataset/ex-17-RFM.csv`；可运行原型见工作台路由 `#/case/39`（设计 graphite-hud），截图 `assets/screenshots/premium_case_39_points_admin_console_desktop.png`。

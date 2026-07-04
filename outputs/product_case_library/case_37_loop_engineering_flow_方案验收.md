@@ -1,6 +1,6 @@
 # Loop 执行报告（实操 37·方案验收）
 
-> 数据来源：`outputs/11_loop_engineering/loop_report_sample.json`（3 行，异常 3）。本卡字段与指标均回到该数据，未使用数据外字段。
+> 数据来源：`outputs/11_loop_engineering/loop_report_sample.json`（3 行，异常 3）。字段与指标均回到该数据。演示原理 1.3、3.3，采用设计 emerald-flow。
 
 ## 交付物
 
@@ -23,4 +23,4 @@ Loop 执行报告
 
 ## 验收结论
 
-PASS — 指标链 5 项、异常队列 3 项均回到 `outputs/11_loop_engineering/loop_report_sample.json`；可运行原型见工作台路由 `#/case/37`，截图 `assets/screenshots/premium_case_37_loop_engineering_flow_desktop.png`。
+PASS — 指标链 5 项、异常队列 3 项均回到 `outputs/11_loop_engineering/loop_report_sample.json`；可运行原型见工作台路由 `#/case/37`（设计 emerald-flow），截图 `assets/screenshots/premium_case_37_loop_engineering_flow_desktop.png`。

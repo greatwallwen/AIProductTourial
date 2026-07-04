@@ -49,6 +49,11 @@
   "复核结论",
   "留痕"
  ],
+ "design": "cyan-matrix",
+ "demonstrates": [
+  "2.3",
+  "2.5"
+ ],
  "kpis": [
   {
    "name": "高风险交易占比",

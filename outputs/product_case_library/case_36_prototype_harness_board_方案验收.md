@@ -1,6 +1,6 @@
 # Harness 验收清单（实操 36·方案验收）
 
-> 数据来源：`outputs/05_harness/prototype_test_report.json`（12 行，异常 8）。本卡字段与指标均回到该数据，未使用数据外字段。
+> 数据来源：`outputs/05_harness/prototype_test_report.json`（12 行，异常 8）。字段与指标均回到该数据。演示原理 1.3、3.3，采用设计 cyan-matrix。
 
 ## 交付物
 
@@ -23,4 +23,4 @@ Harness 验收清单
 
 ## 验收结论
 
-PASS — 指标链 5 项、异常队列 8 项均回到 `outputs/05_harness/prototype_test_report.json`；可运行原型见工作台路由 `#/case/36`，截图 `assets/screenshots/premium_case_36_prototype_harness_board_desktop.png`。
+PASS — 指标链 5 项、异常队列 8 项均回到 `outputs/05_harness/prototype_test_report.json`；可运行原型见工作台路由 `#/case/36`（设计 cyan-matrix），截图 `assets/screenshots/premium_case_36_prototype_harness_board_desktop.png`。

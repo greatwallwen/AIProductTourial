@@ -1,6 +1,6 @@
 # RFM 分层运营策略（实操 30·方案验收）
 
-> 数据来源：`dataset/reference_data_analysis/2-air_data.csv`（800 行，异常 10）。本卡字段与指标均回到该数据，未使用数据外字段。
+> 数据来源：`dataset/reference_data_analysis/2-air_data.csv`（800 行，异常 10）。字段与指标均回到该数据。演示原理 2.2、3.3，采用设计 amber-funnel。
 
 ## 交付物
 
@@ -23,4 +23,4 @@ RFM 分层运营策略
 
 ## 验收结论
 
-PASS — 指标链 5 项、异常队列 10 项均回到 `dataset/reference_data_analysis/2-air_data.csv`；可运行原型见工作台路由 `#/case/30`，截图 `assets/screenshots/premium_case_30_airline_member_rfm_desktop.png`。
+PASS — 指标链 5 项、异常队列 10 项均回到 `dataset/reference_data_analysis/2-air_data.csv`；可运行原型见工作台路由 `#/case/30`（设计 amber-funnel），截图 `assets/screenshots/premium_case_30_airline_member_rfm_desktop.png`。

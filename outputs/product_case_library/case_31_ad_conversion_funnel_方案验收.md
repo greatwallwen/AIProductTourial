@@ -1,6 +1,6 @@
 # 漏斗与预算建议（实操 31·方案验收）
 
-> 数据来源：`dataset/reference_data_analysis/18-ad_performance.csv`（6 行，异常 6）。本卡字段与指标均回到该数据，未使用数据外字段。
+> 数据来源：`dataset/reference_data_analysis/18-ad_performance.csv`（6 行，异常 6）。字段与指标均回到该数据。演示原理 2.2、3.3，采用设计 amber-funnel。
 
 ## 交付物
 
@@ -23,4 +23,4 @@
 
 ## 验收结论
 
-PASS — 指标链 5 项、异常队列 6 项均回到 `dataset/reference_data_analysis/18-ad_performance.csv`；可运行原型见工作台路由 `#/case/31`，截图 `assets/screenshots/premium_case_31_ad_conversion_funnel_desktop.png`。
+PASS — 指标链 5 项、异常队列 6 项均回到 `dataset/reference_data_analysis/18-ad_performance.csv`；可运行原型见工作台路由 `#/case/31`（设计 amber-funnel），截图 `assets/screenshots/premium_case_31_ad_conversion_funnel_desktop.png`。

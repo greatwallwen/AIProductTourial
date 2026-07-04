@@ -1,6 +1,6 @@
 # 角色差异分析表（实操 02·问题定义）
 
-> 数据来源：`dataset/product_cases/aicourse_hr_employees.csv`（145 行，异常 10）。本卡字段与指标均回到该数据，未使用数据外字段。
+> 数据来源：`dataset/product_cases/aicourse_hr_employees.csv`（145 行，异常 10）。字段与指标均回到该数据。演示原理 1.1、1.7，采用设计 cyan-matrix。
 
 ## 产品问题
 

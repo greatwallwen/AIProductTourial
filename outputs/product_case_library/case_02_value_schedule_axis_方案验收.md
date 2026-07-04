@@ -1,6 +1,6 @@
 # 角色差异分析表（实操 02·方案验收）
 
-> 数据来源：`dataset/product_cases/aicourse_hr_employees.csv`（145 行，异常 10）。本卡字段与指标均回到该数据，未使用数据外字段。
+> 数据来源：`dataset/product_cases/aicourse_hr_employees.csv`（145 行，异常 10）。字段与指标均回到该数据。演示原理 1.1、1.7，采用设计 cyan-matrix。
 
 ## 交付物
 
@@ -23,4 +23,4 @@
 
 ## 验收结论
 
-PASS — 指标链 5 项、异常队列 10 项均回到 `dataset/product_cases/aicourse_hr_employees.csv`；可运行原型见工作台路由 `#/case/02`，截图 `assets/screenshots/premium_case_02_value_schedule_axis_desktop.png`。
+PASS — 指标链 5 项、异常队列 10 项均回到 `dataset/product_cases/aicourse_hr_employees.csv`；可运行原型见工作台路由 `#/case/02`（设计 cyan-matrix），截图 `assets/screenshots/premium_case_02_value_schedule_axis_desktop.png`。

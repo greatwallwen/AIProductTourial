@@ -47,6 +47,11 @@
   "风控",
   "运营动作"
  ],
+ "design": "graphite-hud",
+ "demonstrates": [
+  "1.3",
+  "3.3"
+ ],
  "kpis": [
   {
    "name": "人效产出",

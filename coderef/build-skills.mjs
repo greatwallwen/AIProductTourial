@@ -7,7 +7,7 @@ const skills = JSON.parse(readFileSync(join(ROOT,'coderef','skill_definitions.js
 const defs = JSON.parse(readFileSync(join(ROOT,'coderef','case_definitions.json'),'utf8'));
 const usedBy = {}; for (const c of defs.cases) for (const s of c.skills) (usedBy[s]??=[]).push(`${c.num} ${c.scenario}`);
 const CHECKERS = new Set(['acceptance-criteria','checker-report','regression-guard','skill-validator','human-review','compliance-boundary','field-validation','eval-design','prototype-test','accessibility-check','acceptance-mapping']);
-mkdirSync(join(ROOT,'outputs','07_skills'),{recursive:true});
+mkdirSync(join(ROOT,'skills'),{recursive:true});
 const out = [`# ${defs.projectName} · Skill 库`,'',
  '每个 Skill 六槽结构化（触发条件/输入/澄清问题/PRD 片段/验收标准/复用范围），可被 `verify_course_package.mjs` 校验。禁止写成不可验证的长文本。','',
  `共 ${Object.keys(skills).length} 个 Skill。`,''];
@@ -23,5 +23,5 @@ for (const [id, purpose] of Object.entries(skills)) {
    `- 验收标准：产出可回溯到数据或公开资料，指标链完整、异常可追踪、不越过案例风险边界`,
    `- 复用范围：${cases.length?cases.join('；'):'通用'}`,'');
 }
-writeFileSync(join(ROOT,'outputs','07_skills','pm_skills.md'), out.join('\n'));
+writeFileSync(join(ROOT,'skills','pm_skills.md'), out.join('\n'));
 console.log('pm_skills.md:', Object.keys(skills).length, 'skills');

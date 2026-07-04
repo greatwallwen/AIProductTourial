@@ -1,6 +1,6 @@
 # 现状/优化流程图（实操 23·问题定义）
 
-> 数据来源：`dataset/product_cases/aicourse_ecommerce_orders.csv`（1000 行，异常 799）。本卡字段与指标均回到该数据，未使用数据外字段。
+> 数据来源：`dataset/product_cases/aicourse_ecommerce_orders.csv`（1000 行，异常 799）。字段与指标均回到该数据。演示原理 2.3、2.5，采用设计 emerald-flow。
 
 ## 产品问题
 

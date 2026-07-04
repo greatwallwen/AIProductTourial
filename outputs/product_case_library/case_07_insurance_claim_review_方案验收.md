@@ -1,6 +1,6 @@
 # 访谈提纲与洞察卡（实操 07·方案验收）
 
-> 数据来源：`dataset/product_cases/aicourse_financial_transactions.csv`（900 行，异常 592）。本卡字段与指标均回到该数据，未使用数据外字段。
+> 数据来源：`dataset/product_cases/aicourse_financial_transactions.csv`（900 行，异常 592）。字段与指标均回到该数据。演示原理 1.7、2.2，采用设计 steel-queue。
 
 ## 交付物
 
@@ -23,4 +23,4 @@
 
 ## 验收结论
 
-PASS — 指标链 5 项、异常队列 592 项均回到 `dataset/product_cases/aicourse_financial_transactions.csv`；可运行原型见工作台路由 `#/case/07`，截图 `assets/screenshots/premium_case_07_insurance_claim_review_desktop.png`。高影响行业人工复核边界已在原型顶部横幅声明。
+PASS — 指标链 5 项、异常队列 592 项均回到 `dataset/product_cases/aicourse_financial_transactions.csv`；可运行原型见工作台路由 `#/case/07`（设计 steel-queue），截图 `assets/screenshots/premium_case_07_insurance_claim_review_desktop.png`。

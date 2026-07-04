@@ -47,6 +47,11 @@
   "回归",
   "ALL GREEN"
  ],
+ "design": "emerald-flow",
+ "demonstrates": [
+  "1.3",
+  "3.3"
+ ],
  "kpis": [
   {
    "name": "Cycle覆盖率",

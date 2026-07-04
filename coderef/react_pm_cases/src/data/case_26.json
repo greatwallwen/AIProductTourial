@@ -52,6 +52,11 @@
   "阈值",
   "提醒状态"
  ],
+ "design": "cyan-matrix",
+ "demonstrates": [
+  "2.4",
+  "3.1"
+ ],
  "kpis": [
   {
    "name": "SKU覆盖率",

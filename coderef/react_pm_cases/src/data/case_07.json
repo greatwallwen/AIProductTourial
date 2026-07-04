@@ -52,6 +52,11 @@
   "风险信号",
   "复核人"
  ],
+ "design": "steel-queue",
+ "demonstrates": [
+  "1.7",
+  "2.2"
+ ],
  "kpis": [
   {
    "name": "案件号覆盖率",

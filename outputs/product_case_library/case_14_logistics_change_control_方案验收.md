@@ -1,6 +1,6 @@
 # 需求变更影响评估（实操 14·方案验收）
 
-> 数据来源：`dataset/product_cases/aicourse_logistics_delivery.csv`（700 行，异常 541）。本卡字段与指标均回到该数据，未使用数据外字段。
+> 数据来源：`dataset/product_cases/aicourse_logistics_delivery.csv`（700 行，异常 541）。字段与指标均回到该数据。演示原理 2.4、3.1，采用设计 amber-funnel。
 
 ## 交付物
 
@@ -23,4 +23,4 @@
 
 ## 验收结论
 
-PASS — 指标链 5 项、异常队列 541 项均回到 `dataset/product_cases/aicourse_logistics_delivery.csv`；可运行原型见工作台路由 `#/case/14`，截图 `assets/screenshots/premium_case_14_logistics_change_control_desktop.png`。
+PASS — 指标链 5 项、异常队列 541 项均回到 `dataset/product_cases/aicourse_logistics_delivery.csv`；可运行原型见工作台路由 `#/case/14`（设计 amber-funnel），截图 `assets/screenshots/premium_case_14_logistics_change_control_desktop.png`。

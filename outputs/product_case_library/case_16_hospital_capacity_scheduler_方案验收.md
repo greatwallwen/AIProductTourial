@@ -1,6 +1,6 @@
 # 目标用户与场景矩阵（实操 16·方案验收）
 
-> 数据来源：`dataset/product_cases/aicourse_healthcare_diabetes.csv`（520 行，异常 61）。本卡字段与指标均回到该数据，未使用数据外字段。
+> 数据来源：`dataset/product_cases/aicourse_healthcare_diabetes.csv`（520 行，异常 61）。字段与指标均回到该数据。演示原理 1.7、2.2，采用设计 graphite-hud。
 
 ## 交付物
 
@@ -23,4 +23,4 @@
 
 ## 验收结论
 
-PASS — 指标链 5 项、异常队列 61 项均回到 `dataset/product_cases/aicourse_healthcare_diabetes.csv`；可运行原型见工作台路由 `#/case/16`，截图 `assets/screenshots/premium_case_16_hospital_capacity_scheduler_desktop.png`。高影响行业人工复核边界已在原型顶部横幅声明。
+PASS — 指标链 5 项、异常队列 61 项均回到 `dataset/product_cases/aicourse_healthcare_diabetes.csv`；可运行原型见工作台路由 `#/case/16`（设计 graphite-hud），截图 `assets/screenshots/premium_case_16_hospital_capacity_scheduler_desktop.png`。

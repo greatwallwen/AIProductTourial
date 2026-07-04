@@ -1,29 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 540" font-family="PingFang SC,Microsoft YaHei,sans-serif">
-  <rect width="920" height="540" fill="#f6f7f9"/>
-  <text x="40" y="46" font-size="20" font-weight="700" fill="#0f172a">需求澄清流水线</text>
-  <text x="40" y="70" font-size="12" fill="#64748b">企业协作 · configuration · 数据 outputs/07_skills/pm_skills.md（46 行，异常 0）</text>
-  <text x="40" y="90" font-size="11" fill="#94a3b8">读图顺序：先看指标链 → 再看异常队列与责任对象 → 最后看行动入口与验收边界</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="PingFang SC,Microsoft YaHei,sans-serif">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#060b12"/><stop offset="1" stop-color="#0a1220"/></linearGradient>
+  <pattern id="grid" width="26" height="26" patternUnits="userSpaceOnUse"><path d="M26 0H0V26" fill="none" stroke="#142138" stroke-width="1"/></pattern></defs>
+  <rect width="960" height="560" fill="url(#bg)"/><rect width="960" height="560" fill="url(#grid)" opacity="0.5"/>
+  <text x="40" y="50" font-size="21" font-weight="750" fill="#e8eefb">需求澄清流水线</text>
+  <text x="40" y="74" font-size="12" fill="#9fb2d4">企业协作 · configuration · 设计 cyan-matrix · 数据 skills/pm_skills.md（46 行，异常 0）</text>
+  <text x="40" y="96" font-size="11" fill="#566484">读图顺序：指标链 → 异常队列与责任对象 → 行动入口与验收边界</text>
   
-   <rect x="40" y="96" width="156" height="72" rx="10" fill="#ffffff" stroke="#e5e7eb"/>
-   <text x="52" y="120" font-size="11" fill="#94a3b8">触发条件覆盖率</text>
-   <text x="52" y="150" font-size="22" font-weight="700" fill="#0f172a">22%</text>
-   <rect x="212" y="96" width="156" height="72" rx="10" fill="#ffffff" stroke="#e5e7eb"/>
-   <text x="224" y="120" font-size="11" fill="#94a3b8">输入处理时长</text>
-   <text x="224" y="150" font-size="22" font-weight="700" fill="#0f172a">33</text>
-   <rect x="384" y="96" width="156" height="72" rx="10" fill="#ffffff" stroke="#e5e7eb"/>
-   <text x="396" y="120" font-size="11" fill="#94a3b8">澄清问题异常数</text>
-   <text x="396" y="150" font-size="22" font-weight="700" fill="#0f172a">44</text>
-   <rect x="556" y="96" width="156" height="72" rx="10" fill="#ffffff" stroke="#e5e7eb"/>
-   <text x="568" y="120" font-size="11" fill="#94a3b8">PRD 片段完成率</text>
-   <text x="568" y="150" font-size="22" font-weight="700" fill="#0f172a">55%</text>
-   <rect x="728" y="96" width="156" height="72" rx="10" fill="#ffffff" stroke="#e5e7eb"/>
-   <text x="740" y="120" font-size="11" fill="#94a3b8">验收标准复核通过率</text>
-   <text x="740" y="150" font-size="22" font-weight="700" fill="#0f172a">66%</text>
-  <text x="40" y="216" font-size="12" font-weight="600" fill="#334155">异常队列 · 责任对象</text>
-  <text x="560" y="216" font-size="12" font-weight="600" fill="#334155">行动入口</text>
+   <rect x="40" y="104" width="162" height="76" rx="10" fill="#0c1626" stroke="#1c2c46"/>
+   <rect x="40" y="104" width="162" height="2" fill="#06b6d4"/>
+   <text x="52" y="128" font-size="11" fill="#566484">触发条件覆盖率</text>
+   <text x="52" y="160" font-size="23" font-weight="750" fill="#e8eefb">22%</text>
+   <rect x="218" y="104" width="162" height="76" rx="10" fill="#0c1626" stroke="#1c2c46"/>
+   <rect x="218" y="104" width="162" height="2" fill="#06b6d4"/>
+   <text x="230" y="128" font-size="11" fill="#566484">输入处理时长</text>
+   <text x="230" y="160" font-size="23" font-weight="750" fill="#e8eefb">33</text>
+   <rect x="396" y="104" width="162" height="76" rx="10" fill="#0c1626" stroke="#1c2c46"/>
+   <rect x="396" y="104" width="162" height="2" fill="#06b6d4"/>
+   <text x="408" y="128" font-size="11" fill="#566484">澄清问题异常数</text>
+   <text x="408" y="160" font-size="23" font-weight="750" fill="#e8eefb">44</text>
+   <rect x="574" y="104" width="162" height="76" rx="10" fill="#0c1626" stroke="#1c2c46"/>
+   <rect x="574" y="104" width="162" height="2" fill="#06b6d4"/>
+   <text x="586" y="128" font-size="11" fill="#566484">PRD 片段完成率</text>
+   <text x="586" y="160" font-size="23" font-weight="750" fill="#e8eefb">55%</text>
+   <rect x="752" y="104" width="162" height="76" rx="10" fill="#0c1626" stroke="#1c2c46"/>
+   <rect x="752" y="104" width="162" height="2" fill="#06b6d4"/>
+   <text x="764" y="128" font-size="11" fill="#566484">验收标准复核通过率</text>
+   <text x="764" y="160" font-size="23" font-weight="750" fill="#e8eefb">66%</text>
+  <text x="40" y="230" font-size="12" font-weight="600" fill="#e8eefb">异常队列 · 责任对象</text>
+  <text x="592" y="230" font-size="12" font-weight="600" fill="#e8eefb">行动入口</text>
   
-  <text x="560" y="300" font-size="11" fill="#64748b" width="320">决策动作：</text>
-  <foreignObject x="560" y="286" width="320" height="120"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:11px;color:#475569;line-height:1.5">决策动作：围绕需求澄清 Skill判断优先级、责任人和验收动作。<br/>风险边界：不得把 Skill 写成不可验证的长文本</div></foreignObject>
+  <foreignObject x="592" y="308" width="330" height="150"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:11px;color:#9fb2d4;line-height:1.6">决策动作：围绕需求澄清 Skill判断优先级、责任人和验收动作。<br/>风险边界：不得把 Skill 写成不可验证的长文本</div></foreignObject>
   
-  <text x="40" y="524" font-size="10.5" fill="#cbd5e1">UI 原型 ui_38_pm_skill_pipeline · Skill skill-builder + skill-validator + acceptance-criteria</text>
+  <text x="40" y="544" font-size="10.5" fill="#566484">UI 原型 ui_38_pm_skill_pipeline · 演示原理 1.3 · 3.3 · Skill skill-builder + skill-validator + acceptance-criteria</text>
 </svg>

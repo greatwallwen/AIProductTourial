@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="PingFang SC,Microsoft YaHei,sans-serif">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a0e14"/><stop offset="1" stop-color="#0d1220"/></linearGradient>
+  <pattern id="grid" width="26" height="26" patternUnits="userSpaceOnUse"><path d="M26 0H0V26" fill="none" stroke="#16202e" stroke-width="1"/></pattern></defs>
+  <rect width="960" height="560" fill="url(#bg)"/><rect width="960" height="560" fill="url(#grid)" opacity="0.5"/>
+  <text x="40" y="50" font-size="21" font-weight="750" fill="#e6edf6">零售经营产品方案</text>
+  <text x="40" y="74" font-size="12" fill="#9fb0c3">零售经营 · executive_dashboard · 设计 graphite-hud · 数据 dataset/order_data.csv（1200 行，异常 225）</text>
+  <text x="40" y="96" font-size="11" fill="#5b6b7f">读图顺序：指标链 → 异常队列与责任对象 → 行动入口与验收边界</text>
+  
+   <rect x="40" y="104" width="162" height="76" rx="10" fill="#121826" stroke="#1e2a3a"/>
+   <rect x="40" y="104" width="162" height="2" fill="#22d3ee"/>
+   <text x="52" y="128" font-size="11" fill="#5b6b7f">营收达成率</text>
+   <text x="52" y="160" font-size="23" font-weight="750" fill="#e6edf6">15%</text>
+   <rect x="218" y="104" width="162" height="76" rx="10" fill="#121826" stroke="#1e2a3a"/>
+   <rect x="218" y="104" width="162" height="2" fill="#22d3ee"/>
+   <text x="230" y="128" font-size="11" fill="#5b6b7f">毛利率</text>
+   <text x="230" y="160" font-size="23" font-weight="750" fill="#e6edf6">13%</text>
+   <rect x="396" y="104" width="162" height="76" rx="10" fill="#121826" stroke="#1e2a3a"/>
+   <rect x="396" y="104" width="162" height="2" fill="#22d3ee"/>
+   <text x="408" y="128" font-size="11" fill="#5b6b7f">复购率</text>
+   <text x="408" y="160" font-size="23" font-weight="750" fill="#e6edf6">19%</text>
+   <rect x="574" y="104" width="162" height="76" rx="10" fill="#121826" stroke="#1e2a3a"/>
+   <rect x="574" y="104" width="162" height="2" fill="#22d3ee"/>
+   <text x="586" y="128" font-size="11" fill="#5b6b7f">动销率</text>
+   <text x="586" y="160" font-size="23" font-weight="750" fill="#e6edf6">15%</text>
+   <rect x="752" y="104" width="162" height="76" rx="10" fill="#121826" stroke="#1e2a3a"/>
+   <rect x="752" y="104" width="162" height="2" fill="#22d3ee"/>
+   <text x="764" y="128" font-size="11" fill="#5b6b7f">责任闭环率</text>
+   <text x="764" y="160" font-size="23" font-weight="750" fill="#e6edf6">21%</text>
+  <text x="40" y="230" font-size="12" font-weight="600" fill="#e6edf6">异常队列 · 责任对象</text>
+  <text x="592" y="230" font-size="12" font-weight="600" fill="#e6edf6">行动入口</text>
+  
+   <rect x="40" y="248" width="520" height="34" rx="7" fill="#0f1522" stroke="#1e2a3a"/>
+   <rect x="52" y="256" width="78" height="18" rx="5" fill="#f87171" opacity="0.22"/>
+   <text x="60" y="269" font-size="10.5" fill="#f87171" font-weight="700">目标未达成</text>
+   <text x="144" y="269" font-size="11" fill="#9fb0c3">581.69 · 仓配-王</text>
+   <rect x="40" y="290" width="520" height="34" rx="7" fill="#0f1522" stroke="#1e2a3a"/>
+   <rect x="52" y="298" width="78" height="18" rx="5" fill="#f87171" opacity="0.22"/>
+   <text x="60" y="311" font-size="10.5" fill="#f87171" font-weight="700">滞销</text>
+   <text x="144" y="311" font-size="11" fill="#9fb0c3">371.62 · 运营-李</text>
+   <rect x="40" y="332" width="520" height="34" rx="7" fill="#0f1522" stroke="#1e2a3a"/>
+   <rect x="52" y="340" width="78" height="18" rx="5" fill="#f87171" opacity="0.22"/>
+   <text x="60" y="353" font-size="10.5" fill="#f87171" font-weight="700">毛利异常</text>
+   <text x="144" y="353" font-size="11" fill="#9fb0c3">336.27 · 运营-李</text>
+   <rect x="40" y="374" width="520" height="34" rx="7" fill="#0f1522" stroke="#1e2a3a"/>
+   <rect x="52" y="382" width="78" height="18" rx="5" fill="#f87171" opacity="0.22"/>
+   <text x="60" y="395" font-size="10.5" fill="#f87171" font-weight="700">责任未闭环</text>
+   <text x="144" y="395" font-size="11" fill="#9fb0c3">765.53 · 采购-赵</text>
+   <rect x="40" y="416" width="520" height="34" rx="7" fill="#0f1522" stroke="#1e2a3a"/>
+   <rect x="52" y="424" width="78" height="18" rx="5" fill="#f87171" opacity="0.22"/>
+   <text x="60" y="437" font-size="10.5" fill="#f87171" font-weight="700">目标未达成</text>
+   <text x="144" y="437" font-size="11" fill="#9fb0c3">834.92 · 采购-赵</text>
+   <rect x="592" y="248" width="110" height="42" rx="9" fill="#22d3ee"/>
+   <text x="604" y="273" font-size="11" fill="#04121a" font-weight="700">处置：目标未达成</text>
+   <rect x="714" y="248" width="110" height="42" rx="9" fill="#22d3ee"/>
+   <text x="726" y="273" font-size="11" fill="#04121a" font-weight="700">处置：滞销</text>
+   <rect x="836" y="248" width="110" height="42" rx="9" fill="#22d3ee"/>
+   <text x="848" y="273" font-size="11" fill="#04121a" font-weight="700">处置：毛利异常</text>
+  <foreignObject x="592" y="308" width="330" height="150"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:11px;color:#9fb0c3;line-height:1.6">决策动作：从数据端到端得出零售经营改进方案并落成可验收交付物<br/>风险边界：不得脱离数据编造结论</div></foreignObject>
+  
+  <text x="40" y="544" font-size="10.5" fill="#5b6b7f">UI 原型 ui_41_retail_capstone_board · 演示原理 1.7 · 2.1 · 3.1 · Skill capstone-product-flow + evidence-pack + traceability-check</text>
+</svg>

@@ -1,40 +1,36 @@
 # 产品经理转型实操知识库
 
-面向技术骨干与项目经理的**产品经理转型实操知识库**。同一套 PM 工作流（角色转型 → 用户洞察 → 需求管理 → 产品定位 → 详细设计 → 数据指标 → AI 协作 → 质量验收 → 综合闭环），在 **19 个真实行业场景**各走一遍，每个案例都做到：**真数据 → 可运行 React 原型 → 真截图 → 两份交付物 → 手册章节 → 可校验**。
+面向技术骨干与项目经理的**产品经理转型实操知识库**。**整体逻辑：先讲系统设计的理念、原理、工程规范与多套设计，再用不同案例来演示、验证**。唯一教程文件是 `产品经理转型实操知识库.md`。
+
+## 教程结构（单一 md）
+
+- **第一部分 · 理念与原理**：`1.` 理念框架（三层 Loop / 提示词→上下文→脚手架→循环 / 控制论「传感器即设计」/ Loop 六件套 / 何时建 Loop / AI 软件工程四框架 Superpowers·GSD·GStack·Trellis）；`2.` 系统架构设计（产品视角，约束→质量属性→分解→契约→ADR→部署）；`3.` 工程规范与代码约束（沉淀到 `rules/`）；`4.` 多套设计系统（`design/`）。编号 `1./1.1/1.1.1`，每节配 `备注` 与 SVG。
+- **第二部分 · 案例演示与验证**：21 个案例（含综合案例），每个标注**演示的原理 + 采用的设计**，做到 真数据 → 可运行深色大屏原型 → 真截图 → 两份交付物 → 章节 → 可校验。
 
 ## 目录结构
 
 | 目录 | 内容 |
 |---|---|
-| `dataset/` | 各案例数据集 + `MANIFEST.md`（来源/许可/sha256，真实与教学合成显式标注） |
-| `coderef/react_pm_cases/` | Vite + React + TS 工作台，一案例一路由 `#/case/NN` |
-| `coderef/*.mjs` | 数据生成、预计算、manifest 生成、文档生成、全量校验 |
-| `outputs/product_case_library/` | 5 个 manifest + 19 张 SVG + 38 份交付物 md |
-| `outputs/07_skills/pm_skills.md` | 46 个结构化可验证 Skill（六槽） |
-| `assets/screenshots/` | 20 张真实运行截图 |
-| `产品经理转型实操知识库.md` | 主手册（19 案例五段式，内嵌 SVG 与截图） |
+| `design/` | ≥5 套**各不相同**的深色大屏设计系统（`themes.json` 单一来源令牌 + `*.md` 人读文档），案例分设计 → 风格各异 |
+| `rules/` | 工程规范（AI 约束 / 前端 Monorepo·微前端 / 后端分层），对齐 Google/OWASP/Conventional Commits 等并注来源 |
+| `skills/` | `pm_skills.md`（52 结构化 Skill）+ `loop_engineering/`（builder/checker/loop/停机规则/记忆区，**工具无关**，不特写任何具体编程工具） |
+| `dataset/` | 各案例数据 + `MANIFEST.md`（真实/教学合成显式标注） |
+| `coderef/react_pm_cases/` | Vite + React + TS 深色大屏工作台，一案例一路由 `#/case/NN`，按 design 主题化 |
+| `coderef/*.mjs` | 数据生成/预计算/manifest/设计/skills/文档/校验（单文件均 < 800 行） |
+| `outputs/product_case_library/` | 5 manifest + 25 SVG + 42 交付物 md | `assets/screenshots/` | 22 张深色大屏截图 |
 
 ## 快速开始
 
 ```bash
-node coderef/fetch-datasets.mjs        # 生成/下载数据集 → dataset/
-node coderef/build_case_data.mjs       # 真实数据 → 每案例预计算 JSON
-node coderef/build-manifests.mjs       # 5 个 manifest
-node coderef/build-skills.mjs          # Skill 库
-node coderef/build_docs.mjs            # SVG + 交付物 + 主手册
-cd coderef/react_pm_cases && npm ci && npm run build && npm run preview  # 工作台 http://localhost:4173/#/
-node coderef/verify_course_package.mjs # 全量校验 ALL GREEN
+node coderef/fetch-datasets.mjs && node coderef/build_case_data.mjs
+node coderef/build-manifests.mjs && node coderef/build-skills.mjs && node coderef/build-designs.mjs && node coderef/build_docs.mjs
+cd coderef/react_pm_cases && npm ci && npm run build && npm run preview   # http://localhost:4173/#/
+node coderef/verify_course_package.mjs   # ALL GREEN（含单一md/多设计/skills/文件<800/无工具品牌）
 ```
 
 ## 质量红线
 
-- **真实/合成显式标注**：数据集在 `MANIFEST.md` 逐一标注真实公开源或「教学合成」，绝不谎称真实。
-- **高影响行业**（金融/医疗/政务/银行/保险）：保留人工复核，不得自动授信、处罚、诊断、拒绝交易；原型顶部横幅与交付物均声明边界。
-- **可运行 + 可校验**：每案例有可访问路由与真截图；`verify_course_package.mjs` 逐项核验字段/指标/Skill/截图，ALL GREEN 才算完成。
-- **不得通用表格占位**：每屏按各自 UI 原型渲染，数据与视觉各异。
-
-## 写法说明
-
-写法参照 AI 编程实操标准：每案例以**构建契约式 Prompt**（功能+技术+目录+验收）驱动，产出真正可运行的成品并给「跑通与纠错」。手册每章含：项目场景故事 / 任务目标与数据 / Prompt 实操 / 图形·原型·表单 / 交付物与验收（+ 指定实操融合）。
-
-> 数据为课堂可复现的确定性教学合成（结构对齐所引用真实公开数据集，如 UCI Online Retail 352、NYC 311、UCI Bank）；接入真实数据见 `coderef/fetch-datasets.mjs`。
+- **教程一个 md**；**DESIGN.md 多套且各不相同**；**理念/原理在前、案例演示验证在后**。
+- **Loop 工具无关**（理念/开发模式/skills/prompt），不特写具体编程工具（可用 Trae/CodeBuddy 泛指）。
+- **代码约束**（DRY / 单文件 < 800 行 / 组件拆分 / 类型安全 / 中文"为什么"注释 / 错误处理 / 成熟方案优先 / 最小改动）既写进教程 `3.` 章又约束本仓库代码，`verify` 守护。
+- 大屏**不同风格**、深色科技风、真实数字、信息密度高；高影响行业保留人工复核；真实/合成数据显式标注。

@@ -2,7 +2,7 @@
   "meta": {
     "projectName": "产品经理转型实操知识库",
     "projectNameEn": "PM Transformation Hands-on Knowledge Base",
-    "caseCount": 19
+    "caseCount": 21
   },
   "caseToSkills": {
     "1": [
@@ -94,6 +94,16 @@
       "react-ui",
       "shadcn-admin",
       "accessibility-check"
+    ],
+    "41": [
+      "capstone-product-flow",
+      "evidence-pack",
+      "traceability-check"
+    ],
+    "42": [
+      "growth-capstone",
+      "incentive-design",
+      "fraud-boundary"
     ],
     "43": [
       "gamification-design",
@@ -245,6 +255,24 @@
     "accessibility-check": [
       39
     ],
+    "capstone-product-flow": [
+      41
+    ],
+    "evidence-pack": [
+      41
+    ],
+    "traceability-check": [
+      41
+    ],
+    "growth-capstone": [
+      42
+    ],
+    "incentive-design": [
+      42
+    ],
+    "fraud-boundary": [
+      42
+    ],
     "gamification-design": [
       43
     ],
@@ -259,17 +287,22 @@
     "action-summary",
     "ai-product-boundary",
     "budget-decision",
+    "capstone-product-flow",
     "change-impact",
     "checker-report",
     "compliance-boundary",
     "dashboard-requirement",
     "eval-design",
+    "evidence-pack",
     "field-validation",
+    "fraud-boundary",
     "funnel-analysis",
     "gamification-design",
     "grill-me",
+    "growth-capstone",
     "harness-builder",
     "human-review",
+    "incentive-design",
     "interview-synthesis",
     "journey-map",
     "kpi-tree",
@@ -297,6 +330,7 @@
     "skill-builder",
     "skill-validator",
     "stakeholder-map",
+    "traceability-check",
     "ui-prompt-card",
     "vibe-coding"
   ]

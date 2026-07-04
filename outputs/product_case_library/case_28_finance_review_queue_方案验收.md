@@ -1,6 +1,6 @@
 # 权限矩阵与风控规则（实操 28·方案验收）
 
-> 数据来源：`dataset/reference_data_analysis/28-creditcardfraud_sample.csv`（600 行，异常 50）。本卡字段与指标均回到该数据，未使用数据外字段。
+> 数据来源：`dataset/reference_data_analysis/28-creditcardfraud_sample.csv`（600 行，异常 50）。字段与指标均回到该数据。演示原理 2.3、2.5，采用设计 cyan-matrix。
 
 ## 交付物
 
@@ -23,4 +23,4 @@
 
 ## 验收结论
 
-PASS — 指标链 5 项、异常队列 50 项均回到 `dataset/reference_data_analysis/28-creditcardfraud_sample.csv`；可运行原型见工作台路由 `#/case/28`，截图 `assets/screenshots/premium_case_28_finance_review_queue_desktop.png`。高影响行业人工复核边界已在原型顶部横幅声明。
+PASS — 指标链 5 项、异常队列 50 项均回到 `dataset/reference_data_analysis/28-creditcardfraud_sample.csv`；可运行原型见工作台路由 `#/case/28`（设计 cyan-matrix），截图 `assets/screenshots/premium_case_28_finance_review_queue_desktop.png`。

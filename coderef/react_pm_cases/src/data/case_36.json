@@ -47,6 +47,11 @@
   "风险项",
   "修复优先级"
  ],
+ "design": "cyan-matrix",
+ "demonstrates": [
+  "1.3",
+  "3.3"
+ ],
  "kpis": [
   {
    "name": "字段覆盖率",

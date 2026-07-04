@@ -1,6 +1,6 @@
 # 知识游戏化产品方案包（实操 43·方案验收）
 
-> 数据来源：`outputs/10_knowledge_gamification/knowledge_quest_bank.json`（20 行，异常 8）。本卡字段与指标均回到该数据，未使用数据外字段。
+> 数据来源：`outputs/10_knowledge_gamification/knowledge_quest_bank.json`（20 行，异常 8）。字段与指标均回到该数据。演示原理 1.7、2.1、3.1，采用设计 emerald-flow。
 
 ## 交付物
 
@@ -23,4 +23,4 @@
 
 ## 验收结论
 
-PASS — 指标链 5 项、异常队列 8 项均回到 `outputs/10_knowledge_gamification/knowledge_quest_bank.json`；可运行原型见工作台路由 `#/case/43`，截图 `assets/screenshots/premium_case_43_knowledge_quest_map_desktop.png`。
+PASS — 指标链 5 项、异常队列 8 项均回到 `outputs/10_knowledge_gamification/knowledge_quest_bank.json`；可运行原型见工作台路由 `#/case/43`（设计 emerald-flow），截图 `assets/screenshots/premium_case_43_knowledge_quest_map_desktop.png`。

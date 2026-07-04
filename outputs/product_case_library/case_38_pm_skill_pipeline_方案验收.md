@@ -1,6 +1,6 @@
 # 产品经理 Skill 模板（实操 38·方案验收）
 
-> 数据来源：`outputs/07_skills/pm_skills.md`（46 行，异常 0）。本卡字段与指标均回到该数据，未使用数据外字段。
+> 数据来源：`skills/pm_skills.md`（46 行，异常 0）。字段与指标均回到该数据。演示原理 1.3、3.3，采用设计 cyan-matrix。
 
 ## 交付物
 
@@ -23,4 +23,4 @@
 
 ## 验收结论
 
-PASS — 指标链 5 项、异常队列 0 项均回到 `outputs/07_skills/pm_skills.md`；可运行原型见工作台路由 `#/case/38`，截图 `assets/screenshots/premium_case_38_pm_skill_pipeline_desktop.png`。
+PASS — 指标链 5 项、异常队列 0 项均回到 `skills/pm_skills.md`；可运行原型见工作台路由 `#/case/38`（设计 cyan-matrix），截图 `assets/screenshots/premium_case_38_pm_skill_pipeline_desktop.png`。

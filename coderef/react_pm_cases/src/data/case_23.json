@@ -52,6 +52,11 @@
   "补偿",
   "超时原因"
  ],
+ "design": "emerald-flow",
+ "demonstrates": [
+  "2.3",
+  "2.5"
+ ],
  "kpis": [
   {
    "name": "售后单覆盖率",

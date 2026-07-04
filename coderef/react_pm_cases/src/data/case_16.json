@@ -52,6 +52,11 @@
   "加号规则",
   "人工协调"
  ],
+ "design": "graphite-hud",
+ "demonstrates": [
+  "1.7",
+  "2.2"
+ ],
  "kpis": [
   {
    "name": "人效产出",

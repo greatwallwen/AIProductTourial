@@ -1,6 +1,6 @@
 # AI 产品工作流蓝图（实操 06·方案验收）
 
-> 数据来源：`dataset/product_cases/aicourse_financial_transactions.csv`（900 行，异常 592）。本卡字段与指标均回到该数据，未使用数据外字段。
+> 数据来源：`dataset/product_cases/aicourse_financial_transactions.csv`（900 行，异常 592）。字段与指标均回到该数据。演示原理 1.4、1.6，采用设计 emerald-flow。
 
 ## 交付物
 
@@ -23,4 +23,4 @@ AI 产品工作流蓝图
 
 ## 验收结论
 
-PASS — 指标链 5 项、异常队列 592 项均回到 `dataset/product_cases/aicourse_financial_transactions.csv`；可运行原型见工作台路由 `#/case/06`，截图 `assets/screenshots/premium_case_06_bank_knowledge_governance_desktop.png`。高影响行业人工复核边界已在原型顶部横幅声明。
+PASS — 指标链 5 项、异常队列 592 项均回到 `dataset/product_cases/aicourse_financial_transactions.csv`；可运行原型见工作台路由 `#/case/06`（设计 emerald-flow），截图 `assets/screenshots/premium_case_06_bank_knowledge_governance_desktop.png`。

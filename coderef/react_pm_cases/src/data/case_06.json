@@ -52,6 +52,11 @@
   "人工接管",
   "留痕编号"
  ],
+ "design": "emerald-flow",
+ "demonstrates": [
+  "1.4",
+  "1.6"
+ ],
  "kpis": [
   {
    "name": "问题类别覆盖率",

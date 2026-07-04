@@ -53,6 +53,11 @@
   "责任人",
   "处理时限"
  ],
+ "design": "graphite-hud",
+ "demonstrates": [
+  "1.1",
+  "1.7"
+ ],
  "kpis": [
   {
    "name": "经营目标达成率",

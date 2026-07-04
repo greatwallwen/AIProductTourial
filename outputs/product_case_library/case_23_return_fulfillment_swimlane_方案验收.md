@@ -1,6 +1,6 @@
 # 现状/优化流程图（实操 23·方案验收）
 
-> 数据来源：`dataset/product_cases/aicourse_ecommerce_orders.csv`（1000 行，异常 799）。本卡字段与指标均回到该数据，未使用数据外字段。
+> 数据来源：`dataset/product_cases/aicourse_ecommerce_orders.csv`（1000 行，异常 799）。字段与指标均回到该数据。演示原理 2.3、2.5，采用设计 emerald-flow。
 
 ## 交付物
 
@@ -23,4 +23,4 @@
 
 ## 验收结论
 
-PASS — 指标链 5 项、异常队列 799 项均回到 `dataset/product_cases/aicourse_ecommerce_orders.csv`；可运行原型见工作台路由 `#/case/23`，截图 `assets/screenshots/premium_case_23_return_fulfillment_swimlane_desktop.png`。
+PASS — 指标链 5 项、异常队列 799 项均回到 `dataset/product_cases/aicourse_ecommerce_orders.csv`；可运行原型见工作台路由 `#/case/23`（设计 emerald-flow），截图 `assets/screenshots/premium_case_23_return_fulfillment_swimlane_desktop.png`。

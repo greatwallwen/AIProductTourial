@@ -2,7 +2,7 @@
   "meta": {
     "projectName": "产品经理转型实操知识库",
     "projectNameEn": "PM Transformation Hands-on Knowledge Base",
-    "caseCount": 19
+    "caseCount": 21
   },
   "cases": [
     {
@@ -436,6 +436,54 @@
         "accessibility-check"
       ],
       "phase": "质量验收"
+    },
+    {
+      "num": 41,
+      "title": "综合闭环｜零售经营产品方案",
+      "uiId": "ui_41_retail_capstone_board",
+      "slug": "retail_capstone_board",
+      "uiStrategy": "dashboard_plus_saas",
+      "saasType": "executive_dashboard",
+      "saasLayout": "executive_dashboard｜左侧导航 + 顶部筛选 + 右侧详情抽屉｜驾驶舱高密度",
+      "components": [
+        "目标达成",
+        "收入趋势",
+        "业务结构",
+        "区域排行",
+        "异常告警",
+        "行动队列"
+      ],
+      "largeScreenRef": "经营｜企业经营驾驶舱大屏",
+      "skills": [
+        "capstone-product-flow",
+        "evidence-pack",
+        "traceability-check"
+      ],
+      "phase": "综合闭环"
+    },
+    {
+      "num": 42,
+      "title": "综合闭环｜会员积分增长方案",
+      "uiId": "ui_42_member_growth_capstone",
+      "slug": "member_growth_capstone",
+      "uiStrategy": "dashboard_plus_saas",
+      "saasType": "hr_efficiency_screen",
+      "saasLayout": "hr_efficiency_screen｜左侧导航 + 顶部筛选 + 右侧详情抽屉｜驾驶舱高密度",
+      "components": [
+        "人效产出",
+        "招聘进度",
+        "组织编制",
+        "薪酬成本",
+        "流失预警",
+        "岗位效率"
+      ],
+      "largeScreenRef": "经营｜企业经营驾驶舱大屏",
+      "skills": [
+        "growth-capstone",
+        "incentive-design",
+        "fraud-boundary"
+      ],
+      "phase": "综合闭环"
     },
     {
       "num": 43,

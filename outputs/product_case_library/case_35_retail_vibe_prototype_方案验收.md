@@ -1,6 +1,6 @@
 # React 原型需求卡（实操 35·方案验收）
 
-> 数据来源：`dataset/order_data.csv`（1200 行，异常 225）。本卡字段与指标均回到该数据，未使用数据外字段。
+> 数据来源：`dataset/order_data.csv`（1200 行，异常 225）。字段与指标均回到该数据。演示原理 1.3、3.3，采用设计 steel-queue。
 
 ## 交付物
 
@@ -23,4 +23,4 @@ React 原型需求卡
 
 ## 验收结论
 
-PASS — 指标链 5 项、异常队列 225 项均回到 `dataset/order_data.csv`；可运行原型见工作台路由 `#/case/35`，截图 `assets/screenshots/premium_case_35_retail_vibe_prototype_desktop.png`。
+PASS — 指标链 5 项、异常队列 225 项均回到 `dataset/order_data.csv`；可运行原型见工作台路由 `#/case/35`（设计 steel-queue），截图 `assets/screenshots/premium_case_35_retail_vibe_prototype_desktop.png`。

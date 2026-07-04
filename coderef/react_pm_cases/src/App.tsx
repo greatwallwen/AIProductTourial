@@ -1,5 +1,20 @@
+import type { CSSProperties } from 'react';
 import { Routes, Route, NavLink, useParams, Navigate } from 'react-router-dom';
 import indexData from './data/index.json';
+import themesData from './themes.json';
+
+// 多套设计系统令牌（单一来源 design/themes.json）：按案例的 design 注入 CSS 变量，故各案例配色各异
+const THEMES: Record<string, any> = {};
+for (const th of (themesData as any).themes) THEMES[th.id] = th.t;
+function themeVars(designId: string): CSSProperties {
+  const t = THEMES[designId] || THEMES['graphite-hud'];
+  const v: Record<string, string> = {
+    '--bg': t.bg, '--bg2': t.bg2, '--panel': t.panel, '--panelSoft': t.panelSoft, '--border': t.border,
+    '--grid': t.grid, '--ink': t.ink, '--ink2': t.ink2, '--muted': t.muted, '--accent': t.accent,
+    '--accent2': t.accent2, '--ok': t.ok, '--warn': t.warn, '--bad': t.bad, '--glow': t.glow,
+  };
+  return v as CSSProperties;
+}
 
 // 载入 build_case_data 预计算的每案例视图模型（真实数据 → 离线确定）
 const mods = import.meta.glob('./data/case_*.json', { eager: true }) as Record<string, { default: any }>;
@@ -141,12 +156,13 @@ function CaseScreen() {
   if (!c) return <Navigate to="/" />;
   const [mod, scene] = c.title.split('｜');
   return (
-    <div className="page">
+    <div className="page" style={themeVars(c.design)}>
       <div className="topbar">
         <div>
           <div className="crumb">{c.phase} · 实操 {pad(c.num)} · {c.industry}</div>
           <h1>{scene}</h1>
           <div className="muted">{mod} · UI 原型 <code>{c.uiId}</code> · 数据 <code>{c.dataset}</code>（{c.rowCount} 行，异常 {c.exceptionCount}）</div>
+          {c.demonstrates && <div className="demos">▹ 演示原理 {c.demonstrates.join(' · ')} · 设计 <code>{c.design}</code></div>}
         </div>
         <div className="skills">{c.skills.map((s: string) => <span key={s} className="chip ghost">{s}</span>)}</div>
       </div>

@@ -52,6 +52,11 @@
   "风险等级",
   "上线目标"
  ],
+ "design": "cyan-matrix",
+ "demonstrates": [
+  "1.1",
+  "1.7"
+ ],
  "kpis": [
   {
    "name": "需求项覆盖率",

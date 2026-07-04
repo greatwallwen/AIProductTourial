@@ -1,6 +1,6 @@
 # 涉众地图和价值交换图（实操 03·方案验收）
 
-> 数据来源：`dataset/pm_network_cases/nyc_311_service_requests_5000.csv`（1500 行，异常 407）。本卡字段与指标均回到该数据，未使用数据外字段。
+> 数据来源：`dataset/pm_network_cases/nyc_311_service_requests_5000.csv`（1500 行，异常 407）。字段与指标均回到该数据。演示原理 1.7、2.2，采用设计 steel-queue。
 
 ## 交付物
 
@@ -23,4 +23,4 @@
 
 ## 验收结论
 
-PASS — 指标链 5 项、异常队列 407 项均回到 `dataset/pm_network_cases/nyc_311_service_requests_5000.csv`；可运行原型见工作台路由 `#/case/03`，截图 `assets/screenshots/premium_case_03_gov_material_checklist_desktop.png`。高影响行业人工复核边界已在原型顶部横幅声明。
+PASS — 指标链 5 项、异常队列 407 项均回到 `dataset/pm_network_cases/nyc_311_service_requests_5000.csv`；可运行原型见工作台路由 `#/case/03`（设计 steel-queue），截图 `assets/screenshots/premium_case_03_gov_material_checklist_desktop.png`。

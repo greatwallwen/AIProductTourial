@@ -1,6 +1,6 @@
 # PRD 片段（实操 26·方案验收）
 
-> 数据来源：`dataset/sku.csv`（300 行，异常 171）。本卡字段与指标均回到该数据，未使用数据外字段。
+> 数据来源：`dataset/sku.csv`（300 行，异常 171）。字段与指标均回到该数据。演示原理 2.4、3.1，采用设计 cyan-matrix。
 
 ## 交付物
 
@@ -23,4 +23,4 @@ PRD 片段
 
 ## 验收结论
 
-PASS — 指标链 5 项、异常队列 171 项均回到 `dataset/sku.csv`；可运行原型见工作台路由 `#/case/26`，截图 `assets/screenshots/premium_case_26_sku_prd_fields_desktop.png`。
+PASS — 指标链 5 项、异常队列 171 项均回到 `dataset/sku.csv`；可运行原型见工作台路由 `#/case/26`（设计 cyan-matrix），截图 `assets/screenshots/premium_case_26_sku_prd_fields_desktop.png`。

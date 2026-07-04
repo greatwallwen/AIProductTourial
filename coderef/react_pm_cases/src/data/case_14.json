@@ -52,6 +52,11 @@
   "客服话术",
   "回滚条件"
  ],
+ "design": "amber-funnel",
+ "demonstrates": [
+  "2.4",
+  "3.1"
+ ],
  "kpis": [
   {
    "name": "线索数",

@@ -47,6 +47,11 @@
   "订单",
   "预算"
  ],
+ "design": "amber-funnel",
+ "demonstrates": [
+  "2.2",
+  "3.3"
+ ],
  "kpis": [
   {
    "name": "线索数",

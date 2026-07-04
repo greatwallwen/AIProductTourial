@@ -200,6 +200,28 @@
    "rp": null
   },
   {
+   "num": 41,
+   "title": "综合闭环｜零售经营产品方案",
+   "slug": "retail_capstone_board",
+   "uiId": "ui_41_retail_capstone_board",
+   "saasType": "executive_dashboard",
+   "industry": "零售经营",
+   "phase": "综合闭环",
+   "highImpact": false,
+   "rp": null
+  },
+  {
+   "num": 42,
+   "title": "综合闭环｜会员积分增长方案",
+   "slug": "member_growth_capstone",
+   "uiId": "ui_42_member_growth_capstone",
+   "saasType": "hr_efficiency_screen",
+   "industry": "会员增长",
+   "phase": "综合闭环",
+   "highImpact": false,
+   "rp": null
+  },
+  {
    "num": 43,
    "title": "综合闭环｜产业知识游戏化平台",
    "slug": "knowledge_quest_map",

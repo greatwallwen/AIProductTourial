@@ -47,6 +47,11 @@
   "状态",
   "截图"
  ],
+ "design": "steel-queue",
+ "demonstrates": [
+  "1.3",
+  "3.3"
+ ],
  "kpis": [
   {
    "name": "需求卡覆盖率",
