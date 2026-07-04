@@ -167,31 +167,32 @@
   }
  ],
  "chart": {
-  "type": "funnel",
+  "type": "bars",
+  "by": "渠道 → Σ曝光",
   "data": [
    {
-    "stage": "曝光",
-    "value": 36
+    "label": "社交",
+    "value": 498124
    },
    {
-    "stage": "点击",
-    "value": 25
+    "label": "联盟",
+    "value": 426832
    },
    {
-    "stage": "加购",
-    "value": 16
+    "label": "信息流B",
+    "value": 277977
    },
    {
-    "stage": "下单",
-    "value": 10
+    "label": "视频",
+    "value": 277734
    },
    {
-    "stage": "支付",
-    "value": 6
+    "label": "搜索",
+    "value": 89698
    },
    {
-    "stage": "复购",
-    "value": 3
+    "label": "信息流A",
+    "value": 86964
    }
   ]
  },

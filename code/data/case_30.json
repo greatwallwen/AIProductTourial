@@ -198,31 +198,24 @@
   }
  ],
  "chart": {
-  "type": "funnel",
+  "type": "bars",
+  "by": "卡等级 → Σ年消费",
   "data": [
    {
-    "stage": "曝光",
-    "value": 3456
+    "label": "金卡",
+    "value": 15187584
    },
    {
-    "stage": "点击",
-    "value": 2385
+    "label": "白金",
+    "value": 13094871
    },
    {
-    "stage": "加购",
-    "value": 1574
+    "label": "银卡",
+    "value": 8784208
    },
    {
-    "stage": "下单",
-    "value": 992
-   },
-   {
-    "stage": "支付",
-    "value": 595
-   },
-   {
-    "stage": "复购",
-    "value": 339
+    "label": "普卡",
+    "value": 6666017
    }
   ]
  },

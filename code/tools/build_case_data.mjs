@@ -59,22 +59,27 @@ function buildFromCsv(c){
     actions: c.exceptionStates.slice(0,4).map((s,i)=>({ label:`处置：${s}`, owner: pickOwner(seed+i), due:`${1+i*2}d` })) };
 }
 function pickOwner(s){ const o=['运营-李','产品-王','风控-赵','客服-陈','供应链-孙','数据-周']; return o[s%o.length]; }
+// 数据驱动图表（替代 saasType 哈希噪声）：按真实分类列聚合真实数值列，图表反映本案例真实数据故事
 function buildChart(c, head, rows){
-  const t=c.saasType;
-  if(t==='sales_funnel_screen'){ // 漏斗
-    const stages=['曝光','点击','加购','下单','支付','复购']; let v=Math.max(50,rows.length*6);
-    return { type:'funnel', data: stages.map((s,i)=>{ v=Math.round(v*(0.72-i*0.03)); return {stage:s, value:v}; }) };
+  const idxOf=(re)=>head.findIndex(h=>re.test(h));
+  const sumCol=idxOf(/金额|消费|花费|曝光|点击|转化|里程/);
+  const avgCol=idxOf(/等待|时效|利用率|毛利率|人效|频次|评分/);
+  const catCol=idxOf(/品类|区域|渠道|科室|城市|分层|卡等级|状态|部门|线路|申请类型|异常类型|风险等级/);
+  if(catCol>=0 && sumCol>=0){ // 按分类求和真实数值
+    const agg={}; for(const r of rows){ const k=(r[catCol]||'—').toString().slice(0,6); agg[k]=(agg[k]||0)+num(r[sumCol]); }
+    return { type:'bars', by:`${head[catCol]} → Σ${head[sumCol]}`, data:Object.entries(agg).sort((a,b)=>b[1]-a[1]).slice(0,7).map(([label,value])=>({label,value:Math.round(value)})) };
   }
-  if(t==='executive_dashboard'||t==='finance_cashflow_screen'||t==='hr_efficiency_screen'){ // 分区柱
-    const cats=['华东','华北','华南','华中','西南','东北'];
-    const seed=hashSeed(c.uiId);
-    return { type:'bars', data: cats.map((k,i)=>({label:k, value: 40+((seed>>i)&63)})) };
+  if(catCol>=0 && avgCol>=0){ // 按分类求真实均值
+    const s={},n={}; for(const r of rows){ const k=(r[catCol]||'—').toString().slice(0,6); s[k]=(s[k]||0)+num(r[avgCol]); n[k]=(n[k]||0)+1; }
+    return { type:'bars', by:`${head[catCol]} → 均${head[avgCol]}`, data:Object.keys(s).slice(0,7).map(k=>({label:k,value:Math.round(s[k]/n[k]*10)/10})) };
   }
-  if(t==='workflow_pipeline'){ const st=['受理','处理','复核','完成']; return { type:'pipeline', data: st.map((s,i)=>({stage:s, count: Math.max(1,Math.round(rows.length*(0.4-i*0.09)))})) }; }
-  if(t==='review_queue'||t==='list_review'||t==='matrix_decision'||t==='record_detail'||t==='configuration'||t==='experiment_harness'||t==='knowledge_workspace'){
-    const seed=hashSeed(c.uiId); return { type:'sparkline', data: Array.from({length:12},(_,i)=>({x:i, y: 20+((seed>>(i%20))&31)})) };
+  const distCol = sumCol>=0?sumCol:avgCol;
+  if(distCol>=0){ // 数值真实分布直方
+    const vals=rows.map(r=>num(r[distCol])).filter(v=>v>0); const mx=Math.max(...vals,1),bins=6,h=Array(bins).fill(0);
+    for(const v of vals) h[Math.min(bins-1,Math.floor(v/mx*bins))]++;
+    return { type:'bars', by:`${head[distCol]} 分布`, data:h.map((v,i)=>({label:`${Math.round(mx/bins*i)}+`,value:v})) };
   }
-  return { type:'sparkline', data: Array.from({length:12},(_,i)=>({x:i,y:10+i})) };
+  return { type:'bars', by:'记录数', data:[{label:'总量',value:rows.length}] };
 }
 function buildFromJson(c){ // 方法论案例：读 outputs/*.json
   const p=join(ROOT, c.dataset); const j=JSON.parse(readFileSync(p,'utf8'));

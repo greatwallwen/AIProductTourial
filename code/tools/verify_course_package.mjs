@@ -154,6 +154,13 @@ ok(); if (/owner:\s*rec\[.*pickOwner|const owner\b[^\n]*pickOwner/.test(rd('code
 ok(); if (!has('dataset/design/case_30.md')) bad('案例30 缺数据集设计说明 dataset/design/case_30.md');
 ok(); if (defs.cases.find((c) => c.num === 30)?.screen !== 'rfm') bad('案例30 未接专属 RFM demo（screen≠rfm）');
 ok(); if (!/api\/rfm/.test(rd('code/server/routes/api.ts')) || !/RfmScreen/.test(rd('code/web/src/screens.tsx'))) bad('缺 RFM 后端/前端');
+// 图表数据驱动守卫：CSV 案例的图表必须是真实列聚合（有 by 说明），不得哈希噪声
+ok(); if (/\(\(seed *>> *i\) *& *63\)|seed *>> *\(i *% *20\)/.test(rd('code/tools/build_case_data.mjs'))) bad('图表仍用 saasType 哈希噪声');
+for (const c of defs.cases) {
+  if (!c.dataset.endsWith('.csv') || c.screen) continue;
+  const dp = `code/data/case_${pad(c.num)}.json`;
+  ok(); if (has(dp) && !jj(dp).chart?.by) bad(`案例${c.num} 图表非数据驱动（缺 by 聚合说明）`);
+}
 
 console.log(`\n检查 ${checks} 项，失败 ${fail} 项`);
 if (fail) { console.log('\n✗ NOT GREEN'); process.exit(1); }

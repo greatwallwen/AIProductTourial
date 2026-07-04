@@ -251,7 +251,7 @@ function CaseScreen() {
 
           <div className="cols">
             <section className="card">
-              <div className="card-h"><h2>{c.saasType} · 趋势/结构</h2><span className="muted">{c.largeScreenRef}</span></div>
+              <div className="card-h"><h2>{c.chart?.by || `${c.saasType} · 趋势/结构`}</h2><span className="muted">真实数据聚合</span></div>
               <Chart chart={c.chart} />
               <div className="comp-row">{(c.components || []).map((x: string) => <span key={x} className="chip soft">{x}</span>)}</div>
             </section>

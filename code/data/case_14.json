@@ -198,31 +198,36 @@
   }
  ],
  "chart": {
-  "type": "funnel",
+  "type": "bars",
+  "by": "线路 → 均计划时效h",
   "data": [
    {
-    "stage": "曝光",
-    "value": 3024
+    "label": "L15",
+    "value": 37.2
    },
    {
-    "stage": "点击",
-    "value": 2087
+    "label": "L39",
+    "value": 32.1
    },
    {
-    "stage": "加购",
-    "value": 1377
+    "label": "L11",
+    "value": 38.9
    },
    {
-    "stage": "下单",
-    "value": 868
+    "label": "L14",
+    "value": 41.2
    },
    {
-    "stage": "支付",
-    "value": 521
+    "label": "L17",
+    "value": 42.6
    },
    {
-    "stage": "复购",
-    "value": 297
+    "label": "L33",
+    "value": 39.9
+   },
+   {
+    "label": "L10",
+    "value": 38.2
    }
   ]
  },

@@ -199,30 +199,27 @@
  ],
  "chart": {
   "type": "bars",
+  "by": "科室 → 均等待分钟",
   "data": [
    {
-    "label": "华东",
-    "value": 89
+    "label": "心内",
+    "value": 91.1
    },
    {
-    "label": "华北",
-    "value": 64
+    "label": "内分泌",
+    "value": 98.2
    },
    {
-    "label": "华南",
-    "value": 52
+    "label": "检验",
+    "value": 95.9
    },
    {
-    "label": "华中",
-    "value": 46
+    "label": "骨科",
+    "value": 94
    },
    {
-    "label": "西南",
-    "value": 75
-   },
-   {
-    "label": "东北",
-    "value": 89
+    "label": "影像",
+    "value": 100.1
    }
   ]
  },

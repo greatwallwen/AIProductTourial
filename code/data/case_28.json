@@ -212,30 +212,19 @@
  ],
  "chart": {
   "type": "bars",
+  "by": "渠道 → Σ金额",
   "data": [
    {
-    "label": "华东",
-    "value": 60
+    "label": "跨境",
+    "value": 5403594
    },
    {
-    "label": "华北",
-    "value": 82
+    "label": "线上",
+    "value": 4840282
    },
    {
-    "label": "华南",
-    "value": 61
-   },
-   {
-    "label": "华中",
-    "value": 50
-   },
-   {
-    "label": "西南",
-    "value": 77
-   },
-   {
-    "label": "东北",
-    "value": 90
+    "label": "线下",
+    "value": 4537861
    }
   ]
  },
