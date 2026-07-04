@@ -105,3 +105,18 @@ export function riskReview() {
   const reviewRate = Math.round(rows.filter((r) => /待复核|是/.test(r[rev] || '')).length / total * 1000) / 10;
   return { total, highRate, reviewRate, levels, priority };
 }
+
+/** 物流派单调度真实分析（案例14 专属 demo）：按城市真算超时率/均延误/扩城率 + 异常类型分布，定位扩城候选。 */
+export function dispatch() {
+  const t = parseCsv(join(ROOT, 'dataset', 'product_cases', 'aicourse_logistics_delivery.csv'));
+  const ci = (n: string) => t.head.indexOf(n);
+  const [city, plan, actual, anom, expand] = ['城市', '计划时效h', '实际时效h', '异常类型', '是否扩城'].map(ci);
+  const rows = t.rows;
+  const cm: Record<string, { n: number; late: number; delay: number; expand: number }> = {};
+  for (const r of rows) { const k = r[city] || '—'; (cm[k] ||= { n: 0, late: 0, delay: 0, expand: 0 }); const m = cm[k]; m.n++; const p = Number(r[plan]) || 0, a = Number(r[actual]) || 0; if (a > p) { m.late++; m.delay += a - p; } if ((r[expand] || '') === '是') m.expand++; }
+  const cities = Object.entries(cm).map(([name, m]) => ({ name, count: m.n, lateRate: Math.round(m.late / m.n * 1000) / 10, avgDelay: m.late ? Math.round(m.delay / m.late * 10) / 10 : 0, expandRate: Math.round(m.expand / m.n * 1000) / 10 })).sort((a, b) => b.lateRate - a.lateRate);
+  const am: Record<string, number> = {}; for (const r of rows) { const k = r[anom] || '正常'; am[k] = (am[k] || 0) + 1; }
+  const anomalies = Object.entries(am).sort((a, b) => b[1] - a[1]).map(([name, count]) => ({ name, count }));
+  const total = rows.length, lateRate = Math.round(rows.filter((r) => (Number(r[actual]) || 0) > (Number(r[plan]) || 0)).length / total * 1000) / 10;
+  return { total, lateRate, cities, anomalies };
+}

@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
-import { fetchSearch, fetchDbQuery, fetchPoints3d, fetchHealth, fetchRfm, fetchHospital, fetchAdFunnel, fetchRiskReview } from './lib/api';
+import { fetchSearch, fetchDbQuery, fetchPoints3d, fetchHealth, fetchRfm, fetchHospital, fetchAdFunnel, fetchRiskReview, fetchDispatch } from './lib/api';
 // three.js 独立 chunk，仅在渲染 3D 案例时动态加载（首屏不含 three）
 const Chart3D = lazy(() => import('./chart3d'));
 
@@ -273,11 +273,53 @@ function RiskScreen() {
   );
 }
 
+// —— 物流派单调度专属 demo（案例14）：按城市超时率/延误/扩城率 + 异常类型分布，定位扩城候选 ——
+function DispatchScreen() {
+  const [d, setD] = useState<any>(null);
+  useEffect(() => { fetchDispatch().then(setD); }, []);
+  if (!d) return <section className="card"><div className="muted">加载派单调度…</div></section>;
+  const maxAnom = Math.max(...d.anomalies.map((x: any) => x.count), 1);
+  return (
+    <>
+      <div className="banner" style={{ color: 'var(--warn)', borderColor: 'var(--warn)' }}>{d.total} 运单 · 总超时率 <b>{d.lateRate}%</b>。扩城要看「超时率高 + 单量大 + 已在扩城」的城市，而非单量绝对值——下表按超时率排序，顶部即扩仓派单候选。</div>
+      <div className="cols">
+        <section className="card">
+          <div className="card-h"><h2>城市时效（按超时率排序）</h2><span className="muted">超时率高+单量大 = 扩城候选</span></div>
+          <div className="tbl-wrap">
+            <table className="tbl">
+              <thead><tr><th>城市</th><th>单量</th><th>超时率</th><th>均延误(h)</th><th>扩城率</th></tr></thead>
+              <tbody>
+                {d.cities.slice(0, 8).map((x: any) => (
+                  <tr key={x.name}>
+                    <td style={{ color: 'var(--ink)' }}>{x.name}</td><td className="mono">{x.count}</td>
+                    <td><span className="badge" style={{ background: 'color-mix(in srgb,var(--bad) ' + Math.round(x.lateRate / 100 * 25) + '%,transparent)', color: 'var(--bad)' }}>{x.lateRate}%</span></td>
+                    <td className="mono">{x.avgDelay}</td><td className="mono">{x.expandRate}%</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section className="card">
+          <div className="card-h"><h2>异常类型分布</h2><span className="muted">对症派单/改派</span></div>
+          {d.anomalies.map((x: any) => (
+            <div key={x.name} style={{ margin: '9px 0' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12 }}><span style={{ color: 'var(--ink)' }}>{x.name}</span><span className="mono">{x.count}</span></div>
+              <div style={{ height: 8, background: 'var(--panelSoft)', borderRadius: 4, marginTop: 3 }}><div style={{ width: `${(x.count / maxAnom) * 100}%`, height: '100%', background: x.name === '正常' ? 'var(--ok)' : 'var(--warn)', borderRadius: 4 }} /></div>
+            </div>
+          ))}
+        </section>
+      </div>
+    </>
+  );
+}
+
 export function SpecialScreen({ screen }: { screen: string }) {
   if (screen === 'rfm') return <RfmScreen />;
   if (screen === 'capacity') return <HospitalScreen />;
   if (screen === 'adfunnel') return <AdFunnelScreen />;
   if (screen === 'riskreview') return <RiskScreen />;
+  if (screen === 'dispatch') return <DispatchScreen />;
   if (screen === 'rag') return <RagScreen />;
   if (screen === 'db') return <DbScreen />;
   if (screen === 'arch') return <ArchScreen />;
