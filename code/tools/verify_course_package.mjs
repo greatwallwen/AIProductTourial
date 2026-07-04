@@ -141,6 +141,9 @@ for (const f of ['challenge.tsx', 'game.tsx', 'progress.ts']) { ok(); if (!has('
 ok(); if (!/GamePage/.test(rd('code/web/src/App.tsx')) || !/\/game/.test(rd('code/web/src/App.tsx'))) bad('缺休闲小游戏路由');
 ok(); if (!/Challenge/.test(rd('code/web/src/App.tsx'))) bad('案例内未接入决策题挑战');
 ok(); if (!/getProgress/.test(rd('code/web/src/pages.tsx')) || !/markViewed/.test(rd('code/web/src/App.tsx'))) bad('缺学习进度/成就');
+// 维度 E：前端 vitest 测试
+ok(); if (!has('code/web/src/progress.test.ts')) bad('缺前端 vitest 测试');
+ok(); if (!/vitest/.test(rd('code/web/package.json'))) bad('未装 vitest');
 
 console.log(`\n检查 ${checks} 项，失败 ${fail} 项`);
 if (fail) { console.log('\n✗ NOT GREEN'); process.exit(1); }
