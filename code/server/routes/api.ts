@@ -1,5 +1,7 @@
 import { join } from 'node:path';
 import { listCases, caseData, getIndex, points3d } from '../services/cases.ts';
+import { tokenize } from '../services/tokenize.ts';
+import { openapiSpec } from '../services/openapi.ts';
 import { VectorStore } from '../vector/store.ts';
 import { buildOrdersDb, query } from '../db/relational.ts';
 /** HTTP 层：只做输入输出，业务委托 services；统一响应结构。 */
@@ -19,6 +21,8 @@ export async function apiRoutes(app: any) {
     return d;
   });
   app.get('/api/points3d', async () => points3d());
+  app.get('/api/tokenize', async (req: any) => tokenize(String(req.query.text ?? '你好，今天天气怎么样？Hello AI Agent 2026')));
+  app.get('/api/openapi.json', async () => openapiSpec());
   app.get('/api/search', async (req: any) => {
     const q = String(req.query.q || 'product roadmap');
     const v = getVs();

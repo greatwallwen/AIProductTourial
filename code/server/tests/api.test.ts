@@ -14,5 +14,10 @@ test('后端 API 全绿', async () => {
   assert.ok(s.json().corpus > 0, '向量语料 > 0'); assert.ok(s.json().hits.length > 0, '检索命中 > 0');
   const q = await app.inject({ url: '/api/db/query' });
   assert.ok(q.json().rows.length > 0, 'SQLite 真实查询有结果');
+  const tk = await app.inject({ url: '/api/tokenize?text=今天天气怎么样？Hello AI' });
+  assert.ok(tk.json().count > 0 && tk.json().tokens.length > 0, '分词有 Token');
+  assert.ok(tk.json().ratio > 0, '量化换算比有值');
+  const oa = await app.inject({ url: '/api/openapi.json' });
+  assert.ok(oa.json().paths['/api/tokenize'] && oa.json().openapi.startsWith('3.'), 'OpenAPI 覆盖 tokenize');
   await app.close();
 });

@@ -10,7 +10,9 @@
    "industry": "电商零售",
    "phase": "角色转型",
    "highImpact": false,
-   "rp": "RP01"
+   "rp": "RP01",
+   "systemLayer": "业务应用",
+   "systemStage": "洞察"
   },
   {
    "num": 2,
@@ -21,7 +23,9 @@
    "industry": "软件研发管理",
    "phase": "角色转型",
    "highImpact": false,
-   "rp": "RP02"
+   "rp": "RP02",
+   "systemLayer": "业务应用",
+   "systemStage": "洞察"
   },
   {
    "num": 3,
@@ -32,7 +36,9 @@
    "industry": "政务服务",
    "phase": "用户洞察",
    "highImpact": true,
-   "rp": null
+   "rp": null,
+   "systemLayer": "业务应用",
+   "systemStage": "洞察"
   },
   {
    "num": 6,
@@ -43,7 +49,9 @@
    "industry": "银行客服",
    "phase": "AI协作",
    "highImpact": true,
-   "rp": "RP13"
+   "rp": "RP13",
+   "systemLayer": "能力智能",
+   "systemStage": "治理"
   },
   {
    "num": 7,
@@ -54,7 +62,9 @@
    "industry": "保险理赔",
    "phase": "用户洞察",
    "highImpact": true,
-   "rp": "RP06"
+   "rp": "RP06",
+   "systemLayer": "业务应用",
+   "systemStage": "洞察"
   },
   {
    "num": 14,
@@ -65,7 +75,9 @@
    "industry": "物流配送",
    "phase": "需求管理",
    "highImpact": false,
-   "rp": "RP03"
+   "rp": "RP03",
+   "systemLayer": "业务应用",
+   "systemStage": "决策"
   },
   {
    "num": 16,
@@ -76,7 +88,9 @@
    "industry": "医疗运营",
    "phase": "用户洞察",
    "highImpact": true,
-   "rp": "RP04"
+   "rp": "RP04",
+   "systemLayer": "业务应用",
+   "systemStage": "洞察"
   },
   {
    "num": 23,
@@ -87,7 +101,9 @@
    "industry": "电商售后",
    "phase": "详细设计",
    "highImpact": false,
-   "rp": "RP09"
+   "rp": "RP09",
+   "systemLayer": "业务应用",
+   "systemStage": "执行"
   },
   {
    "num": 26,
@@ -98,7 +114,9 @@
    "industry": "电商运营",
    "phase": "需求管理",
    "highImpact": false,
-   "rp": "RP05"
+   "rp": "RP05",
+   "systemLayer": "业务应用",
+   "systemStage": "决策"
   },
   {
    "num": 28,
@@ -109,7 +127,9 @@
    "industry": "金融风控",
    "phase": "详细设计",
    "highImpact": true,
-   "rp": null
+   "rp": null,
+   "systemLayer": "业务应用",
+   "systemStage": "执行"
   },
   {
    "num": 29,
@@ -120,7 +140,9 @@
    "industry": "零售门店",
    "phase": "数据指标",
    "highImpact": false,
-   "rp": null
+   "rp": null,
+   "systemLayer": "业务应用",
+   "systemStage": "洞察"
   },
   {
    "num": 30,
@@ -131,7 +153,9 @@
    "industry": "航空会员",
    "phase": "数据指标",
    "highImpact": false,
-   "rp": "RP11"
+   "rp": "RP11",
+   "systemLayer": "能力智能",
+   "systemStage": "洞察"
   },
   {
    "num": 31,
@@ -142,7 +166,9 @@
    "industry": "广告投放",
    "phase": "数据指标",
    "highImpact": false,
-   "rp": null
+   "rp": null,
+   "systemLayer": "能力智能",
+   "systemStage": "洞察"
   },
   {
    "num": 35,
@@ -153,7 +179,9 @@
    "industry": "零售经营",
    "phase": "质量验收",
    "highImpact": false,
-   "rp": null
+   "rp": null,
+   "systemLayer": "业务应用",
+   "systemStage": "验收"
   },
   {
    "num": 36,
@@ -164,7 +192,9 @@
    "industry": "零售经营",
    "phase": "质量验收",
    "highImpact": false,
-   "rp": null
+   "rp": null,
+   "systemLayer": "业务应用",
+   "systemStage": "验收"
   },
   {
    "num": 37,
@@ -175,7 +205,9 @@
    "industry": "软件工程",
    "phase": "质量验收",
    "highImpact": false,
-   "rp": null
+   "rp": null,
+   "systemLayer": "业务应用",
+   "systemStage": "验收"
   },
   {
    "num": 38,
@@ -186,7 +218,9 @@
    "industry": "企业协作",
    "phase": "质量验收",
    "highImpact": false,
-   "rp": null
+   "rp": null,
+   "systemLayer": "业务应用",
+   "systemStage": "验收"
   },
   {
    "num": 39,
@@ -197,7 +231,9 @@
    "industry": "会员运营",
    "phase": "质量验收",
    "highImpact": false,
-   "rp": null
+   "rp": null,
+   "systemLayer": "业务应用",
+   "systemStage": "验收"
   },
   {
    "num": 41,
@@ -208,7 +244,9 @@
    "industry": "零售经营",
    "phase": "综合闭环",
    "highImpact": false,
-   "rp": null
+   "rp": null,
+   "systemLayer": "业务应用",
+   "systemStage": "增长"
   },
   {
    "num": 42,
@@ -219,7 +257,9 @@
    "industry": "会员增长",
    "phase": "综合闭环",
    "highImpact": false,
-   "rp": null
+   "rp": null,
+   "systemLayer": "能力智能",
+   "systemStage": "增长"
   },
   {
    "num": 43,
@@ -230,7 +270,9 @@
    "industry": "产业知识",
    "phase": "综合闭环",
    "highImpact": false,
-   "rp": null
+   "rp": null,
+   "systemLayer": "业务应用",
+   "systemStage": "增长"
   },
   {
    "num": 44,
@@ -241,7 +283,9 @@
    "industry": "AI 应用",
    "phase": "AI协作",
    "highImpact": false,
-   "rp": null
+   "rp": null,
+   "systemLayer": "底座平台",
+   "systemStage": "治理"
   },
   {
    "num": 45,
@@ -252,7 +296,9 @@
    "industry": "数据工程",
    "phase": "系统架构",
    "highImpact": false,
-   "rp": null
+   "rp": null,
+   "systemLayer": "底座平台",
+   "systemStage": "治理"
   },
   {
    "num": 46,
@@ -263,7 +309,9 @@
    "industry": "系统架构",
    "phase": "系统架构",
    "highImpact": false,
-   "rp": null
+   "rp": null,
+   "systemLayer": "底座平台",
+   "systemStage": "治理"
   },
   {
    "num": 47,
@@ -274,7 +322,9 @@
    "industry": "数据可视化",
    "phase": "数据指标",
    "highImpact": false,
-   "rp": null
+   "rp": null,
+   "systemLayer": "底座平台",
+   "systemStage": "洞察"
   }
  ]
 }
