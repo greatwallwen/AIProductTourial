@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
-import { fetchSearch, fetchDbQuery, fetchPoints3d, fetchHealth, fetchRfm, fetchHospital } from './lib/api';
+import { fetchSearch, fetchDbQuery, fetchPoints3d, fetchHealth, fetchRfm, fetchHospital, fetchAdFunnel } from './lib/api';
 // three.js 独立 chunk，仅在渲染 3D 案例时动态加载（首屏不含 three）
 const Chart3D = lazy(() => import('./chart3d'));
 
@@ -201,9 +201,45 @@ function HospitalScreen() {
   );
 }
 
+// —— 广告投放漏斗专属 demo（案例31）：按渠道 CTR/CVR/CPA 对比 + 漏斗断点，把预算从量大挪到效率高 ——
+function AdFunnelScreen() {
+  const [d, setD] = useState<any>(null);
+  useEffect(() => { fetchAdFunnel().then(setD); }, []);
+  if (!d) return <section className="card"><div className="muted">加载投放漏斗…</div></section>;
+  const maxCvr = Math.max(...d.channels.map((x: any) => x.cvr), 1);
+  return (
+    <>
+      <div className="banner" style={{ color: 'var(--ok)', borderColor: 'var(--ok)' }}>复盘结论：<b>{d.best}</b> 转化效率最高（优质渠道，该加预算）；<b>{d.worst}</b> 点击不低但转化垫底（落地页/人群问题，该查断点）。别只看曝光/点击，按 CVR/CPA 重分配预算。</div>
+      <section className="card">
+        <div className="card-h"><h2>渠道漏斗对比（按 CVR 排序）</h2><span className="muted">曝光→点击→转化 · CTR/CVR/CPA 真算</span></div>
+        <div className="tbl-wrap">
+          <table className="tbl">
+            <thead><tr><th>渠道</th><th>曝光</th><th>点击</th><th>转化</th><th>CTR</th><th>CVR（条）</th><th>CPA</th></tr></thead>
+            <tbody>
+              {d.channels.map((x: any) => {
+                const tag = x.name === d.best ? 'ok' : x.name === d.worst ? 'bad' : 'neutral';
+                return (
+                  <tr key={x.name}>
+                    <td style={{ color: 'var(--ink)' }}>{x.name}{x.name === d.best ? ' ✦' : x.name === d.worst ? ' ⚠' : ''}</td>
+                    <td className="mono">{x.imp.toLocaleString('zh-CN')}</td><td className="mono">{x.clk.toLocaleString('zh-CN')}</td><td className="mono">{x.cvt}</td>
+                    <td className="mono">{x.ctr}%</td>
+                    <td><div style={{ display: 'flex', alignItems: 'center', gap: 6 }}><div style={{ width: `${(x.cvr / maxCvr) * 90}px`, height: 8, background: `var(--${tag === 'neutral' ? 'accent' : tag})`, borderRadius: 4 }} /><span className="mono">{x.cvr}%</span></div></td>
+                    <td><span className={'badge ' + tag}>{x.cpa}</span></td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </>
+  );
+}
+
 export function SpecialScreen({ screen }: { screen: string }) {
   if (screen === 'rfm') return <RfmScreen />;
   if (screen === 'capacity') return <HospitalScreen />;
+  if (screen === 'adfunnel') return <AdFunnelScreen />;
   if (screen === 'rag') return <RagScreen />;
   if (screen === 'db') return <DbScreen />;
   if (screen === 'arch') return <ArchScreen />;

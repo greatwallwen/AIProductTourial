@@ -77,3 +77,14 @@ export function hospital() {
   const avgNoshow = Math.round(rows.filter((r) => (r[noshow] || '') === '是').length / rows.length * 1000) / 10;
   return { total: rows.length, avgNoshow, depts, slots };
 }
+
+/** 广告投放漏斗真实分析（案例31 专属 demo）：按渠道聚合曝光→点击→转化，算 CTR/CVR/CPA，找优质/落地页问题渠道。 */
+export function adFunnel() {
+  const t = parseCsv(join(ROOT, 'dataset', 'reference_data_analysis', '18-ad_performance.csv'));
+  const ci = (n: string) => t.head.indexOf(n);
+  const [ch, imp, clk, cvt, cost] = ['渠道', '曝光', '点击', '转化', '花费'].map(ci);
+  const cm: Record<string, { imp: number; clk: number; cvt: number; cost: number }> = {};
+  for (const r of t.rows) { const k = r[ch] || '—'; (cm[k] ||= { imp: 0, clk: 0, cvt: 0, cost: 0 }); const m = cm[k]; m.imp += Number(r[imp]) || 0; m.clk += Number(r[clk]) || 0; m.cvt += Number(r[cvt]) || 0; m.cost += Number(r[cost]) || 0; }
+  const channels = Object.entries(cm).map(([name, m]) => ({ name, imp: m.imp, clk: m.clk, cvt: m.cvt, cost: m.cost, ctr: Math.round(m.clk / Math.max(1, m.imp) * 10000) / 100, cvr: Math.round(m.cvt / Math.max(1, m.clk) * 10000) / 100, cpa: m.cvt ? Math.round(m.cost / m.cvt) : 0 })).sort((a, b) => b.cvr - a.cvr);
+  return { channels, best: channels[0]?.name, worst: channels[channels.length - 1]?.name };
+}
