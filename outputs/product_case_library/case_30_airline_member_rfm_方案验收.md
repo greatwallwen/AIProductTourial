@@ -23,4 +23,4 @@ RFM 分层运营策略
 
 ## 验收结论
 
-PASS — 指标链 5 项、异常队列 10 项均回到 `dataset/reference_data_analysis/2-air_data.csv`；可运行原型见工作台路由 `#/case/30`（设计 amber-funnel），截图 `assets/screenshots/premium_case_30_airline_member_rfm_desktop.png`。
+**PASS** — 指标链 5 项均为回到 `dataset/reference_data_analysis/2-air_data.csv` 的真实计算值；字段/异常/Skill 齐备；可运行原型见 `#/case/30`（设计 amber-funnel），截图 `assets/screenshots/premium_case_30_airline_member_rfm_desktop.png`。

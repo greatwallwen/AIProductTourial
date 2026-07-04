@@ -47,30 +47,30 @@
   <text x="960" y="240" font-size="9.5" fill="#566484" text-anchor="end">171 项 · 取前 5</text>
   
     <rect x="524" y="264" width="440" height="28" rx="7" fill="#0a1220" stroke="#1c2c46"/>
-    <rect x="532" y="271" width="4" height="14" rx="2" fill="#a855f7"/>
-    <rect x="544" y="270" width="70" height="16" rx="5" fill="#a855f7" opacity="0.2"/><text x="550" y="282" font-size="9.5" fill="#a855f7" font-weight="700">字段缺失</text>
+    <rect x="532" y="271" width="4" height="14" rx="2" fill="#fbbf24"/>
+    <rect x="544" y="270" width="70" height="16" rx="5" fill="#fbbf24" opacity="0.2"/><text x="550" y="282" font-size="9.5" fill="#fbbf24" font-weight="700">预警</text>
     <text x="624" y="282" font-size="10" fill="#9fb2d4">SKU1003</text>
-    <rect x="884" y="270" width="72" height="16" rx="8" fill="#a855f7" opacity="0.16"/><text x="920" y="282" font-size="9.5" fill="#a855f7" text-anchor="middle">客服-陈</text>
+    <rect x="884" y="270" width="72" height="16" rx="8" fill="#a855f7" opacity="0.16"/><text x="920" y="282" font-size="9.5" fill="#a855f7" text-anchor="middle">—</text>
     <rect x="524" y="298" width="440" height="28" rx="7" fill="#0a1220" stroke="#1c2c46"/>
-    <rect x="532" y="305" width="4" height="14" rx="2" fill="#f472b6"/>
-    <rect x="544" y="304" width="70" height="16" rx="5" fill="#f472b6" opacity="0.2"/><text x="550" y="316" font-size="9.5" fill="#f472b6" font-weight="700">流程超时</text>
+    <rect x="532" y="305" width="4" height="14" rx="2" fill="#fbbf24"/>
+    <rect x="544" y="304" width="70" height="16" rx="5" fill="#fbbf24" opacity="0.2"/><text x="550" y="316" font-size="9.5" fill="#fbbf24" font-weight="700">滞销</text>
     <text x="624" y="316" font-size="10" fill="#9fb2d4">SKU1004</text>
-    <rect x="884" y="304" width="72" height="16" rx="8" fill="#a855f7" opacity="0.16"/><text x="920" y="316" font-size="9.5" fill="#a855f7" text-anchor="middle">供应链-孙</text>
+    <rect x="884" y="304" width="72" height="16" rx="8" fill="#a855f7" opacity="0.16"/><text x="920" y="316" font-size="9.5" fill="#a855f7" text-anchor="middle">—</text>
     <rect x="524" y="332" width="440" height="28" rx="7" fill="#0a1220" stroke="#1c2c46"/>
-    <rect x="532" y="339" width="4" height="14" rx="2" fill="#34d399"/>
-    <rect x="544" y="338" width="70" height="16" rx="5" fill="#34d399" opacity="0.2"/><text x="550" y="350" font-size="9.5" fill="#34d399" font-weight="700">复核未完成</text>
+    <rect x="532" y="339" width="4" height="14" rx="2" fill="#fbbf24"/>
+    <rect x="544" y="338" width="70" height="16" rx="5" fill="#fbbf24" opacity="0.2"/><text x="550" y="350" font-size="9.5" fill="#fbbf24" font-weight="700">预警</text>
     <text x="624" y="350" font-size="10" fill="#9fb2d4">SKU1005</text>
-    <rect x="884" y="338" width="72" height="16" rx="8" fill="#a855f7" opacity="0.16"/><text x="920" y="350" font-size="9.5" fill="#a855f7" text-anchor="middle">数据-周</text>
+    <rect x="884" y="338" width="72" height="16" rx="8" fill="#a855f7" opacity="0.16"/><text x="920" y="350" font-size="9.5" fill="#a855f7" text-anchor="middle">—</text>
     <rect x="524" y="366" width="440" height="28" rx="7" fill="#0a1220" stroke="#1c2c46"/>
-    <rect x="532" y="373" width="4" height="14" rx="2" fill="#f472b6"/>
-    <rect x="544" y="372" width="70" height="16" rx="5" fill="#f472b6" opacity="0.2"/><text x="550" y="384" font-size="9.5" fill="#f472b6" font-weight="700">验收失败</text>
+    <rect x="532" y="373" width="4" height="14" rx="2" fill="#fbbf24"/>
+    <rect x="544" y="372" width="70" height="16" rx="5" fill="#fbbf24" opacity="0.2"/><text x="550" y="384" font-size="9.5" fill="#fbbf24" font-weight="700">滞销</text>
     <text x="624" y="384" font-size="10" fill="#9fb2d4">SKU1007</text>
-    <rect x="884" y="372" width="72" height="16" rx="8" fill="#a855f7" opacity="0.16"/><text x="920" y="384" font-size="9.5" fill="#a855f7" text-anchor="middle">运营-李</text>
+    <rect x="884" y="372" width="72" height="16" rx="8" fill="#a855f7" opacity="0.16"/><text x="920" y="384" font-size="9.5" fill="#a855f7" text-anchor="middle">—</text>
     <rect x="524" y="400" width="440" height="28" rx="7" fill="#0a1220" stroke="#1c2c46"/>
-    <rect x="532" y="407" width="4" height="14" rx="2" fill="#a855f7"/>
-    <rect x="544" y="406" width="70" height="16" rx="5" fill="#a855f7" opacity="0.2"/><text x="550" y="418" font-size="9.5" fill="#a855f7" font-weight="700">字段缺失</text>
+    <rect x="532" y="407" width="4" height="14" rx="2" fill="#fbbf24"/>
+    <rect x="544" y="406" width="70" height="16" rx="5" fill="#fbbf24" opacity="0.2"/><text x="550" y="418" font-size="9.5" fill="#fbbf24" font-weight="700">滞销</text>
     <text x="624" y="418" font-size="10" fill="#9fb2d4">SKU1009</text>
-    <rect x="884" y="406" width="72" height="16" rx="8" fill="#a855f7" opacity="0.16"/><text x="920" y="418" font-size="9.5" fill="#a855f7" text-anchor="middle">产品-王</text>
+    <rect x="884" y="406" width="72" height="16" rx="8" fill="#a855f7" opacity="0.16"/><text x="920" y="418" font-size="9.5" fill="#a855f7" text-anchor="middle">—</text>
   <text x="36" y="479" font-size="10.5" fill="#566484">演示原理 3.4 · 4.1 · UI ui_26_sku_prd_fields · Skill prd-fragment + acceptance-criteria + field-validation</text>
   <text x="36" y="522" font-size="11" fill="#566484">行动入口 · 责任 · 时限</text>
   

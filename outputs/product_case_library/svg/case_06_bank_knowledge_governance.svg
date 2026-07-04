@@ -48,29 +48,29 @@
   
     <rect x="524" y="264" width="440" height="28" rx="7" fill="#0a1712" stroke="#17342a"/>
     <rect x="532" y="271" width="4" height="14" rx="2" fill="#34d399"/>
-    <rect x="544" y="270" width="70" height="16" rx="5" fill="#34d399" opacity="0.2"/><text x="550" y="282" font-size="9.5" fill="#34d399" font-weight="700">字段缺失</text>
-    <text x="624" y="282" font-size="10" fill="#9ac4b2">74302.86</text>
-    <rect x="884" y="270" width="72" height="16" rx="8" fill="#34d399" opacity="0.16"/><text x="920" y="282" font-size="9.5" fill="#34d399" text-anchor="middle">客服-陈</text>
+    <rect x="544" y="270" width="70" height="16" rx="5" fill="#34d399" opacity="0.2"/><text x="550" y="282" font-size="9.5" fill="#34d399" font-weight="700">夜间</text>
+    <text x="624" y="282" font-size="10" fill="#9ac4b2">—</text>
+    <rect x="884" y="270" width="72" height="16" rx="8" fill="#34d399" opacity="0.16"/><text x="920" y="282" font-size="9.5" fill="#34d399" text-anchor="middle">—</text>
     <rect x="524" y="298" width="440" height="28" rx="7" fill="#0a1712" stroke="#17342a"/>
-    <rect x="532" y="305" width="4" height="14" rx="2" fill="#fb7185"/>
-    <rect x="544" y="304" width="70" height="16" rx="5" fill="#fb7185" opacity="0.2"/><text x="550" y="316" font-size="9.5" fill="#fb7185" font-weight="700">流程超时</text>
-    <text x="624" y="316" font-size="10" fill="#9ac4b2">78151.39</text>
-    <rect x="884" y="304" width="72" height="16" rx="8" fill="#34d399" opacity="0.16"/><text x="920" y="316" font-size="9.5" fill="#34d399" text-anchor="middle">供应链-孙</text>
+    <rect x="532" y="305" width="4" height="14" rx="2" fill="#34d399"/>
+    <rect x="544" y="304" width="70" height="16" rx="5" fill="#34d399" opacity="0.2"/><text x="550" y="316" font-size="9.5" fill="#34d399" font-weight="700">异地</text>
+    <text x="624" y="316" font-size="10" fill="#9ac4b2">—</text>
+    <rect x="884" y="304" width="72" height="16" rx="8" fill="#34d399" opacity="0.16"/><text x="920" y="316" font-size="9.5" fill="#34d399" text-anchor="middle">—</text>
     <rect x="524" y="332" width="440" height="28" rx="7" fill="#0a1712" stroke="#17342a"/>
     <rect x="532" y="339" width="4" height="14" rx="2" fill="#34d399"/>
-    <rect x="544" y="338" width="70" height="16" rx="5" fill="#34d399" opacity="0.2"/><text x="550" y="350" font-size="9.5" fill="#34d399" font-weight="700">复核未完成</text>
-    <text x="624" y="350" font-size="10" fill="#9ac4b2">66187.04</text>
-    <rect x="884" y="338" width="72" height="16" rx="8" fill="#34d399" opacity="0.16"/><text x="920" y="350" font-size="9.5" fill="#34d399" text-anchor="middle">数据-周</text>
+    <rect x="544" y="338" width="70" height="16" rx="5" fill="#34d399" opacity="0.2"/><text x="550" y="350" font-size="9.5" fill="#34d399" font-weight="700">异地</text>
+    <text x="624" y="350" font-size="10" fill="#9ac4b2">—</text>
+    <rect x="884" y="338" width="72" height="16" rx="8" fill="#34d399" opacity="0.16"/><text x="920" y="350" font-size="9.5" fill="#34d399" text-anchor="middle">—</text>
     <rect x="524" y="366" width="440" height="28" rx="7" fill="#0a1712" stroke="#17342a"/>
     <rect x="532" y="373" width="4" height="14" rx="2" fill="#fb7185"/>
-    <rect x="544" y="372" width="70" height="16" rx="5" fill="#fb7185" opacity="0.2"/><text x="550" y="384" font-size="9.5" fill="#fb7185" font-weight="700">验收失败</text>
-    <text x="624" y="384" font-size="10" fill="#9ac4b2">69417.01</text>
-    <rect x="884" y="372" width="72" height="16" rx="8" fill="#34d399" opacity="0.16"/><text x="920" y="384" font-size="9.5" fill="#34d399" text-anchor="middle">运营-李</text>
+    <rect x="544" y="372" width="70" height="16" rx="5" fill="#fb7185" opacity="0.2"/><text x="550" y="384" font-size="9.5" fill="#fb7185" font-weight="700">高频</text>
+    <text x="624" y="384" font-size="10" fill="#9ac4b2">—</text>
+    <rect x="884" y="372" width="72" height="16" rx="8" fill="#34d399" opacity="0.16"/><text x="920" y="384" font-size="9.5" fill="#34d399" text-anchor="middle">—</text>
     <rect x="524" y="400" width="440" height="28" rx="7" fill="#0a1712" stroke="#17342a"/>
     <rect x="532" y="407" width="4" height="14" rx="2" fill="#34d399"/>
-    <rect x="544" y="406" width="70" height="16" rx="5" fill="#34d399" opacity="0.2"/><text x="550" y="418" font-size="9.5" fill="#34d399" font-weight="700">字段缺失</text>
-    <text x="624" y="418" font-size="10" fill="#9ac4b2">34707.62</text>
-    <rect x="884" y="406" width="72" height="16" rx="8" fill="#34d399" opacity="0.16"/><text x="920" y="418" font-size="9.5" fill="#34d399" text-anchor="middle">产品-王</text>
+    <rect x="544" y="406" width="70" height="16" rx="5" fill="#34d399" opacity="0.2"/><text x="550" y="418" font-size="9.5" fill="#34d399" font-weight="700">夜间</text>
+    <text x="624" y="418" font-size="10" fill="#9ac4b2">—</text>
+    <rect x="884" y="406" width="72" height="16" rx="8" fill="#34d399" opacity="0.16"/><text x="920" y="418" font-size="9.5" fill="#34d399" text-anchor="middle">—</text>
   <rect x="36" y="460" width="940" height="30" rx="8" fill="#fbbf24" opacity="0.14"/><text x="50" y="479" font-size="11" fill="#fbbf24">⚠ 高影响行业：保留人工复核，不得自动授信/处罚/诊断/拒绝交易</text>
   <text x="36" y="522" font-size="11" fill="#4f7a68">行动入口 · 责任 · 时限</text>
   

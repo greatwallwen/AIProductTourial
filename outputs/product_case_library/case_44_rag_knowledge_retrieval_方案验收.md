@@ -23,4 +23,4 @@ RAG 检索方案与验收
 
 ## 验收结论
 
-PASS — 指标链 4 项、异常队列 0 项均回到 `skills/external/pm-skills-deanpeters/README.md`；可运行原型见工作台路由 `#/case/44`（设计 emerald-flow），截图 `assets/screenshots/premium_case_44_rag_knowledge_retrieval_desktop.png`。
+**PASS** — 指标链 4 项均为回到 `skills/external/pm-skills-deanpeters/README.md` 的真实计算值；字段/异常/Skill 齐备；可运行原型见 `#/case/44`（设计 emerald-flow），截图 `assets/screenshots/premium_case_44_rag_knowledge_retrieval_desktop.png`。

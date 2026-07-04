@@ -42,11 +42,15 @@ function buildFromCsv(c){
   const kpis = Array.isArray(c.metricSpec)
     ? computeMetrics(head, rows)(c.metricSpec)
     : c.metricChain.map((m) => ({ name: m, value: rows.length, unit: /率|占比/.test(m) ? '%' : '' }));
-  // 异常队列（取前 8，字段用 case.fields）
+  // 异常队列（诚信映射）：字段只填真实存在的列（缺则 —，绝不错位）；状态取真实异常列；责任取真实责任列（无则空，不伪造）
   const fieldIdx = c.fields.map(f=>col(f));
+  const respName = c.fields.find(f=>/责任|负责|责任人|责任环节|责任方|复核权限/.test(f));
+  const respIdx = respName!==undefined ? col(respName) : head.findIndex(h=>/责任人|责任方|责任环节|经办|负责人/.test(h));
   const queue = exRows.slice(0,8).map((r,i)=>{
-    const rec = {}; c.fields.forEach((f,j)=>{ rec[f] = fieldIdx[j]>=0? r[fieldIdx[j]] : (r[j+ (head.length>c.fields.length?head.length-c.fields.length:0)]||''); });
-    return { id:i+1, state: c.exceptionStates[i % Math.max(1,c.exceptionStates.length)] || '待处理', owner: rec[c.fields.find(f=>/责任|负责|责任人|责任环节|责任方|复核权限/.test(f))||''] || pickOwner(seed+i), fields: rec };
+    const rec = {}; c.fields.forEach((f,j)=>{ rec[f] = fieldIdx[j]>=0 ? r[fieldIdx[j]] : '—'; });
+    const state = (abIdx>=0 && (r[abIdx]||'').trim()) ? String(r[abIdx]).trim() : (c.exceptionStates[i % Math.max(1,c.exceptionStates.length)] || '待处理');
+    const owner = respIdx>=0 ? (r[respIdx]||'') : '';
+    return { id:i+1, state, owner, fields: rec };
   });
   // 图表序列（按 archetype）
   const chart = buildChart(c, head, rows);

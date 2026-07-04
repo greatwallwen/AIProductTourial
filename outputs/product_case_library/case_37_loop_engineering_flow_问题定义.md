@@ -14,11 +14,11 @@
 
 ## 指标链（取自真实数据）
 
-- Cycle覆盖率：21%（undefined）
-- builder处理时长：28（undefined）
-- checker异常数：35（undefined）
-- 失败项完成率：42%（undefined）
-- 回归复核通过率：49%（undefined）
+- Cycle覆盖率：21%
+- builder处理时长：28
+- checker异常数：35
+- 失败项完成率：42%
+- 回归复核通过率：49%
 
 ## 异常状态与责任
 

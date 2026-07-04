@@ -49,28 +49,28 @@
     <rect x="524" y="264" width="440" height="28" rx="7" fill="#0f1522" stroke="#1e2a3a"/>
     <rect x="532" y="271" width="4" height="14" rx="2" fill="#38bdf8"/>
     <rect x="544" y="270" width="70" height="16" rx="5" fill="#38bdf8" opacity="0.2"/><text x="550" y="282" font-size="9.5" fill="#38bdf8" font-weight="700">招聘延期</text>
-    <text x="624" y="282" font-size="10" fill="#9fb0c3">45687.85</text>
-    <rect x="884" y="270" width="72" height="16" rx="8" fill="#38bdf8" opacity="0.16"/><text x="920" y="282" font-size="9.5" fill="#38bdf8" text-anchor="middle">供应链-孙</text>
+    <text x="624" y="282" font-size="10" fill="#9fb0c3">—</text>
+    <rect x="884" y="270" width="72" height="16" rx="8" fill="#38bdf8" opacity="0.16"/><text x="920" y="282" font-size="9.5" fill="#38bdf8" text-anchor="middle">—</text>
     <rect x="524" y="298" width="440" height="28" rx="7" fill="#0f1522" stroke="#1e2a3a"/>
     <rect x="532" y="305" width="4" height="14" rx="2" fill="#38bdf8"/>
     <rect x="544" y="304" width="70" height="16" rx="5" fill="#38bdf8" opacity="0.2"/><text x="550" y="316" font-size="9.5" fill="#38bdf8" font-weight="700">人效偏低</text>
-    <text x="624" y="316" font-size="10" fill="#9fb0c3">44650.3</text>
-    <rect x="884" y="304" width="72" height="16" rx="8" fill="#38bdf8" opacity="0.16"/><text x="920" y="316" font-size="9.5" fill="#38bdf8" text-anchor="middle">数据-周</text>
+    <text x="624" y="316" font-size="10" fill="#9fb0c3">—</text>
+    <rect x="884" y="304" width="72" height="16" rx="8" fill="#38bdf8" opacity="0.16"/><text x="920" y="316" font-size="9.5" fill="#38bdf8" text-anchor="middle">—</text>
     <rect x="524" y="332" width="440" height="28" rx="7" fill="#0f1522" stroke="#1e2a3a"/>
     <rect x="532" y="339" width="4" height="14" rx="2" fill="#38bdf8"/>
     <rect x="544" y="338" width="70" height="16" rx="5" fill="#38bdf8" opacity="0.2"/><text x="550" y="350" font-size="9.5" fill="#38bdf8" font-weight="700">编制超配</text>
-    <text x="624" y="350" font-size="10" fill="#9fb0c3">32700.73</text>
-    <rect x="884" y="338" width="72" height="16" rx="8" fill="#38bdf8" opacity="0.16"/><text x="920" y="350" font-size="9.5" fill="#38bdf8" text-anchor="middle">运营-李</text>
+    <text x="624" y="350" font-size="10" fill="#9fb0c3">—</text>
+    <rect x="884" y="338" width="72" height="16" rx="8" fill="#38bdf8" opacity="0.16"/><text x="920" y="350" font-size="9.5" fill="#38bdf8" text-anchor="middle">—</text>
     <rect x="524" y="366" width="440" height="28" rx="7" fill="#0f1522" stroke="#1e2a3a"/>
     <rect x="532" y="373" width="4" height="14" rx="2" fill="#fbbf24"/>
     <rect x="544" y="372" width="70" height="16" rx="5" fill="#fbbf24" opacity="0.2"/><text x="550" y="384" font-size="9.5" fill="#fbbf24" font-weight="700">流失预警</text>
-    <text x="624" y="384" font-size="10" fill="#9fb0c3">44837.44</text>
-    <rect x="884" y="372" width="72" height="16" rx="8" fill="#38bdf8" opacity="0.16"/><text x="920" y="384" font-size="9.5" fill="#38bdf8" text-anchor="middle">产品-王</text>
+    <text x="624" y="384" font-size="10" fill="#9fb0c3">—</text>
+    <rect x="884" y="372" width="72" height="16" rx="8" fill="#38bdf8" opacity="0.16"/><text x="920" y="384" font-size="9.5" fill="#38bdf8" text-anchor="middle">—</text>
     <rect x="524" y="400" width="440" height="28" rx="7" fill="#0f1522" stroke="#1e2a3a"/>
     <rect x="532" y="407" width="4" height="14" rx="2" fill="#38bdf8"/>
     <rect x="544" y="406" width="70" height="16" rx="5" fill="#38bdf8" opacity="0.2"/><text x="550" y="418" font-size="9.5" fill="#38bdf8" font-weight="700">招聘延期</text>
-    <text x="624" y="418" font-size="10" fill="#9fb0c3">6481.12</text>
-    <rect x="884" y="406" width="72" height="16" rx="8" fill="#38bdf8" opacity="0.16"/><text x="920" y="418" font-size="9.5" fill="#38bdf8" text-anchor="middle">风控-赵</text>
+    <text x="624" y="418" font-size="10" fill="#9fb0c3">—</text>
+    <rect x="884" y="406" width="72" height="16" rx="8" fill="#38bdf8" opacity="0.16"/><text x="920" y="418" font-size="9.5" fill="#38bdf8" text-anchor="middle">—</text>
   <text x="36" y="479" font-size="10.5" fill="#5b6b7f">演示原理 2.3 · 4.3 · UI ui_39_points_admin_console · Skill react-ui + shadcn-admin + accessibility-check</text>
   <text x="36" y="522" font-size="11" fill="#5b6b7f">行动入口 · 责任 · 时限</text>
   

@@ -23,4 +23,4 @@ PRD 片段
 
 ## 验收结论
 
-PASS — 指标链 5 项、异常队列 171 项均回到 `dataset/sku.csv`；可运行原型见工作台路由 `#/case/26`（设计 cyan-matrix），截图 `assets/screenshots/premium_case_26_sku_prd_fields_desktop.png`。
+**PASS** — 指标链 5 项均为回到 `dataset/sku.csv` 的真实计算值；字段/异常/Skill 齐备；可运行原型见 `#/case/26`（设计 cyan-matrix），截图 `assets/screenshots/premium_case_26_sku_prd_fields_desktop.png`。

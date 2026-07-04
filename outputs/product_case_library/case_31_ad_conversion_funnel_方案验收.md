@@ -23,4 +23,4 @@
 
 ## 验收结论
 
-PASS — 指标链 5 项、异常队列 6 项均回到 `dataset/reference_data_analysis/18-ad_performance.csv`；可运行原型见工作台路由 `#/case/31`（设计 amber-funnel），截图 `assets/screenshots/premium_case_31_ad_conversion_funnel_desktop.png`。
+**PASS** — 指标链 5 项均为回到 `dataset/reference_data_analysis/18-ad_performance.csv` 的真实计算值；字段/异常/Skill 齐备；可运行原型见 `#/case/31`（设计 amber-funnel），截图 `assets/screenshots/premium_case_31_ad_conversion_funnel_desktop.png`。

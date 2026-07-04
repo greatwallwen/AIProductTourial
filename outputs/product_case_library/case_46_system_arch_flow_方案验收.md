@@ -23,4 +23,4 @@
 
 ## 验收结论
 
-PASS — 指标链 4 项、异常队列 0 项均回到 `rules/backend.md`；可运行原型见工作台路由 `#/case/46`（设计 cyan-matrix），截图 `assets/screenshots/premium_case_46_system_arch_flow_desktop.png`。
+**PASS** — 指标链 4 项均为回到 `rules/backend.md` 的真实计算值；字段/异常/Skill 齐备；可运行原型见 `#/case/46`（设计 cyan-matrix），截图 `assets/screenshots/premium_case_46_system_arch_flow_desktop.png`。

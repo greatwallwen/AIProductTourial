@@ -23,4 +23,4 @@
 
 ## 验收结论
 
-PASS — 指标链 5 项、异常队列 61 项均回到 `dataset/product_cases/aicourse_healthcare_diabetes.csv`；可运行原型见工作台路由 `#/case/16`（设计 graphite-hud），截图 `assets/screenshots/premium_case_16_hospital_capacity_scheduler_desktop.png`。
+**PASS** — 指标链 5 项均为回到 `dataset/product_cases/aicourse_healthcare_diabetes.csv` 的真实计算值；字段/异常/Skill 齐备；可运行原型见 `#/case/16`（设计 graphite-hud），截图 `assets/screenshots/premium_case_16_hospital_capacity_scheduler_desktop.png`。

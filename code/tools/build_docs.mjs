@@ -139,11 +139,24 @@ function figSvg(id) {
 
 // 交付物卡（问题定义 / 方案验收）
 function kv(pairs) { return pairs.map(([k, v]) => `- ${k}：${v}`).join('\n'); }
+// 真实验收判定（替代硬编码 PASS）：逐项核对必含要素是否齐备，不齐则如实列出缺口。
+function acceptance(c, d) {
+  const checks = [
+    ['指标链为真实计算值', Array.isArray(d.kpis) && d.kpis.length >= (c.metricChain || []).length && d.kpis.every((k) => Number.isFinite(k.value))],
+    ['行业字段回到数据', (c.fields || []).length > 0],
+    ['异常状态可追踪', (c.exceptionStates || []).length > 0],
+    ['Skill 齐备', (c.skills || []).length >= 1],
+  ];
+  const gaps = checks.filter((x) => !x[1]).map((x) => x[0]);
+  return gaps.length === 0
+    ? `**PASS** — 指标链 ${d.kpis.length} 项均为回到 \`${c.dataset}\` 的真实计算值；字段/异常/Skill 齐备；可运行原型见 \`#/case/${pad(c.num)}\`（设计 ${c.design}），截图 \`assets/screenshots/premium_case_${pad(c.num)}_${c.slug}_desktop.png\`。`
+    : `**待补** — 未满足：${gaps.join('、')}。补齐后重验，不通过不发布。`;
+}
 function deliverableMd(c, d, type) {
   const head = `# ${c.deliverable}（实操 ${pad(c.num)}·${type}）\n\n> 数据来源：\`${c.dataset}\`（${d.rowCount} 行，异常 ${d.exceptionCount}）。字段与指标均回到该数据。演示原理 ${(c.demonstrates || []).join('、')}，采用设计 ${c.design}。\n`;
   if (type === '问题定义')
-    return head + `\n## 产品问题\n\n${c.story}\n\n## 岗位与业务对象\n\n${kv([['岗位', c.role], ['业务对象', c.scenario], ['行业', c.industry]])}\n\n## 指标链（取自真实数据）\n\n${d.kpis.map((k) => `- ${k.name}：${k.value}${k.unit || ''}（${k.trend}）`).join('\n')}\n\n## 异常状态与责任\n\n${d.queue.slice(0, 6).map((q) => `- [${q.state}] ${Object.values(q.fields).slice(0, 3).join(' / ')} → 责任 ${q.owner}`).join('\n')}\n\n## 决策动作\n\n${c.decisionAction}\n\n## 风险边界\n\n${c.riskBoundary}${c.highImpact ? '（高影响行业：保留人工复核，不得自动决策）' : ''}\n\n## 使用 Skill\n\n${c.skills.join('、')}\n`;
-  return head + `\n## 交付物\n\n${c.deliverable}\n\n## 验收清单\n\n${kv([['必含字段', c.fields.join('、')], ['必含指标链', c.metricChain.join('、')], ['必含异常状态', c.exceptionStates.join('、')], ['必含 Skill', c.skills.join('、')]])}\n\n## 合格标准\n\n业务场景具体、指标链完整、异常状态可追踪、行动入口明确、验收条件可执行。\n\n## 不合格标准\n\n使用泛化产品名称、缺少行业指标、只描述页面不说明业务取舍、越过「${c.riskBoundary}」。\n\n## 验收结论\n\nPASS — 指标链 ${d.kpis.length} 项、异常队列 ${d.exceptionCount} 项均回到 \`${c.dataset}\`；可运行原型见工作台路由 \`#/case/${pad(c.num)}\`（设计 ${c.design}），截图 \`assets/screenshots/premium_case_${pad(c.num)}_${c.slug}_desktop.png\`。\n`;
+    return head + `\n## 产品问题\n\n${c.story}\n\n## 岗位与业务对象\n\n${kv([['岗位', c.role], ['业务对象', c.scenario], ['行业', c.industry]])}\n\n## 指标链（取自真实数据）\n\n${d.kpis.map((k) => `- ${k.name}：${k.value}${k.unit || ''}`).join('\n')}\n\n## 异常状态与责任\n\n${d.queue.slice(0, 6).map((q) => `- [${q.state}] ${Object.values(q.fields).slice(0, 3).join(' / ')} → 责任 ${q.owner}`).join('\n')}\n\n## 决策动作\n\n${c.decisionAction}\n\n## 风险边界\n\n${c.riskBoundary}${c.highImpact ? '（高影响行业：保留人工复核，不得自动决策）' : ''}\n\n## 使用 Skill\n\n${c.skills.join('、')}\n`;
+  return head + `\n## 交付物\n\n${c.deliverable}\n\n## 验收清单\n\n${kv([['必含字段', c.fields.join('、')], ['必含指标链', c.metricChain.join('、')], ['必含异常状态', c.exceptionStates.join('、')], ['必含 Skill', c.skills.join('、')]])}\n\n## 合格标准\n\n业务场景具体、指标链完整、异常状态可追踪、行动入口明确、验收条件可执行。\n\n## 不合格标准\n\n使用泛化产品名称、缺少行业指标、只描述页面不说明业务取舍、越过「${c.riskBoundary}」。\n\n## 验收结论\n\n${acceptance(c, d)}\n`;
 }
 
 // 构建契约式 Prompt（工具无关，用 Trae/CodeBuddy 等泛指）

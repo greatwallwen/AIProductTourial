@@ -48,29 +48,29 @@
   
     <rect x="524" y="264" width="440" height="28" rx="7" fill="#12151b" stroke="#28303c"/>
     <rect x="532" y="271" width="4" height="14" rx="2" fill="#94a3b8"/>
-    <rect x="544" y="270" width="70" height="16" rx="5" fill="#94a3b8" opacity="0.2"/><text x="550" y="282" font-size="9.5" fill="#94a3b8" font-weight="700">字段缺失</text>
-    <text x="624" y="282" font-size="10" fill="#a2adbb">22685.91</text>
-    <rect x="884" y="270" width="72" height="16" rx="8" fill="#94a3b8" opacity="0.16"/><text x="920" y="282" font-size="9.5" fill="#94a3b8" text-anchor="middle">运营-李</text>
+    <rect x="544" y="270" width="70" height="16" rx="5" fill="#94a3b8" opacity="0.2"/><text x="550" y="282" font-size="9.5" fill="#94a3b8" font-weight="700">退货激增</text>
+    <text x="624" y="282" font-size="10" fill="#a2adbb">—</text>
+    <rect x="884" y="270" width="72" height="16" rx="8" fill="#94a3b8" opacity="0.16"/><text x="920" y="282" font-size="9.5" fill="#94a3b8" text-anchor="middle">仓配-王</text>
     <rect x="524" y="298" width="440" height="28" rx="7" fill="#12151b" stroke="#28303c"/>
-    <rect x="532" y="305" width="4" height="14" rx="2" fill="#f87171"/>
-    <rect x="544" y="304" width="70" height="16" rx="5" fill="#f87171" opacity="0.2"/><text x="550" y="316" font-size="9.5" fill="#f87171" font-weight="700">流程超时</text>
-    <text x="624" y="316" font-size="10" fill="#a2adbb">1858.1</text>
-    <rect x="884" y="304" width="72" height="16" rx="8" fill="#94a3b8" opacity="0.16"/><text x="920" y="316" font-size="9.5" fill="#94a3b8" text-anchor="middle">产品-王</text>
+    <rect x="532" y="305" width="4" height="14" rx="2" fill="#fbbf24"/>
+    <rect x="544" y="304" width="70" height="16" rx="5" fill="#fbbf24" opacity="0.2"/><text x="550" y="316" font-size="9.5" fill="#fbbf24" font-weight="700">毛利异常</text>
+    <text x="624" y="316" font-size="10" fill="#a2adbb">—</text>
+    <rect x="884" y="304" width="72" height="16" rx="8" fill="#94a3b8" opacity="0.16"/><text x="920" y="316" font-size="9.5" fill="#94a3b8" text-anchor="middle">运营-李</text>
     <rect x="524" y="332" width="440" height="28" rx="7" fill="#12151b" stroke="#28303c"/>
-    <rect x="532" y="339" width="4" height="14" rx="2" fill="#34d399"/>
-    <rect x="544" y="338" width="70" height="16" rx="5" fill="#34d399" opacity="0.2"/><text x="550" y="350" font-size="9.5" fill="#34d399" font-weight="700">复核未完成</text>
-    <text x="624" y="350" font-size="10" fill="#a2adbb">5380.32</text>
-    <rect x="884" y="338" width="72" height="16" rx="8" fill="#94a3b8" opacity="0.16"/><text x="920" y="350" font-size="9.5" fill="#94a3b8" text-anchor="middle">风控-赵</text>
+    <rect x="532" y="339" width="4" height="14" rx="2" fill="#94a3b8"/>
+    <rect x="544" y="338" width="70" height="16" rx="5" fill="#94a3b8" opacity="0.2"/><text x="550" y="350" font-size="9.5" fill="#94a3b8" font-weight="700">缺货</text>
+    <text x="624" y="350" font-size="10" fill="#a2adbb">—</text>
+    <rect x="884" y="338" width="72" height="16" rx="8" fill="#94a3b8" opacity="0.16"/><text x="920" y="350" font-size="9.5" fill="#94a3b8" text-anchor="middle">运营-李</text>
     <rect x="524" y="366" width="440" height="28" rx="7" fill="#12151b" stroke="#28303c"/>
-    <rect x="532" y="373" width="4" height="14" rx="2" fill="#f87171"/>
-    <rect x="544" y="372" width="70" height="16" rx="5" fill="#f87171" opacity="0.2"/><text x="550" y="384" font-size="9.5" fill="#f87171" font-weight="700">验收失败</text>
-    <text x="624" y="384" font-size="10" fill="#a2adbb">2296.59</text>
-    <rect x="884" y="372" width="72" height="16" rx="8" fill="#94a3b8" opacity="0.16"/><text x="920" y="384" font-size="9.5" fill="#94a3b8" text-anchor="middle">客服-陈</text>
+    <rect x="532" y="373" width="4" height="14" rx="2" fill="#fbbf24"/>
+    <rect x="544" y="372" width="70" height="16" rx="5" fill="#fbbf24" opacity="0.2"/><text x="550" y="384" font-size="9.5" fill="#fbbf24" font-weight="700">滞销</text>
+    <text x="624" y="384" font-size="10" fill="#a2adbb">—</text>
+    <rect x="884" y="372" width="72" height="16" rx="8" fill="#94a3b8" opacity="0.16"/><text x="920" y="384" font-size="9.5" fill="#94a3b8" text-anchor="middle">采购-赵</text>
     <rect x="524" y="400" width="440" height="28" rx="7" fill="#12151b" stroke="#28303c"/>
-    <rect x="532" y="407" width="4" height="14" rx="2" fill="#94a3b8"/>
-    <rect x="544" y="406" width="70" height="16" rx="5" fill="#94a3b8" opacity="0.2"/><text x="550" y="418" font-size="9.5" fill="#94a3b8" font-weight="700">字段缺失</text>
-    <text x="624" y="418" font-size="10" fill="#a2adbb">26717.44</text>
-    <rect x="884" y="406" width="72" height="16" rx="8" fill="#94a3b8" opacity="0.16"/><text x="920" y="418" font-size="9.5" fill="#94a3b8" text-anchor="middle">供应链-孙</text>
+    <rect x="532" y="407" width="4" height="14" rx="2" fill="#fbbf24"/>
+    <rect x="544" y="406" width="70" height="16" rx="5" fill="#fbbf24" opacity="0.2"/><text x="550" y="418" font-size="9.5" fill="#fbbf24" font-weight="700">滞销</text>
+    <text x="624" y="418" font-size="10" fill="#a2adbb">—</text>
+    <rect x="884" y="406" width="72" height="16" rx="8" fill="#94a3b8" opacity="0.16"/><text x="920" y="418" font-size="9.5" fill="#94a3b8" text-anchor="middle">采购-赵</text>
   <text x="36" y="479" font-size="10.5" fill="#606b7a">演示原理 2.3 · 4.3 · UI ui_35_retail_vibe_prototype · Skill vibe-coding + ui-prompt-card + prototype-test</text>
   <text x="36" y="522" font-size="11" fill="#606b7a">行动入口 · 责任 · 时限</text>
   

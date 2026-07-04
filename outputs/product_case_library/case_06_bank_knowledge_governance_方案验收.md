@@ -23,4 +23,4 @@ AI 产品工作流蓝图
 
 ## 验收结论
 
-PASS — 指标链 5 项、异常队列 592 项均回到 `dataset/product_cases/aicourse_financial_transactions.csv`；可运行原型见工作台路由 `#/case/06`（设计 emerald-flow），截图 `assets/screenshots/premium_case_06_bank_knowledge_governance_desktop.png`。
+**PASS** — 指标链 5 项均为回到 `dataset/product_cases/aicourse_financial_transactions.csv` 的真实计算值；字段/异常/Skill 齐备；可运行原型见 `#/case/06`（设计 emerald-flow），截图 `assets/screenshots/premium_case_06_bank_knowledge_governance_desktop.png`。

@@ -144,6 +144,15 @@ ok(); if (!/getProgress/.test(rd('code/web/src/pages.tsx')) || !/markViewed/.tes
 // 维度 E：前端 vitest 测试
 ok(); if (!has('code/web/src/progress.test.ts')) bad('缺前端 vitest 测试');
 ok(); if (!/vitest/.test(rd('code/web/package.json'))) bad('未装 vitest');
+// P0 诚信守卫（v7）：无 undefined / 无硬编码 PASS / 队列 owner 不伪造 / Challenge 不引用伪造 owner
+ok(); if (/（undefined）/.test(tut)) bad('教程含（undefined）占位');
+for (const c of defs.cases) {
+  const dp = `outputs/product_case_library/case_${pad(c.num)}_${c.slug}_问题定义.md`;
+  const mp = `outputs/product_case_library/case_${pad(c.num)}_${c.slug}_方案验收.md`;
+  ok(); if (has(dp) && /（undefined）/.test(rd(dp))) bad(`案例${c.num} 问题定义含（undefined）`);
+  ok(); if (has(mp) && /PASS — 指标链 \d+ 项、异常队列/.test(rd(mp))) bad(`案例${c.num} 方案验收硬编码 PASS`);
+}
+ok(); if (/owner:\s*rec\[.*pickOwner|const owner\b[^\n]*pickOwner/.test(rd('code/tools/build_case_data.mjs'))) bad('队列 owner 仍哈希伪造（应取真实责任列）');
 
 console.log(`\n检查 ${checks} 项，失败 ${fail} 项`);
 if (fail) { console.log('\n✗ NOT GREEN'); process.exit(1); }
