@@ -127,22 +127,11 @@ function buildFromMd(c){
   }
   return { kpis, queue:[], chart, rowCount:kpis[0]?.value||0, exceptionCount:0, responsible:['—'], actions:[] };
 }
-function buildFromJson(c){ // 方法论案例：读 outputs/*.json
-  const p=join(ROOT, c.dataset); const j=JSON.parse(readFileSync(p,'utf8'));
-  const kpis=c.metricChain.map((m,i)=>({name:m, value: (j.metrics&&Object.values(j.metrics)[i])??((i+3)*7), unit: /率/.test(m)?'%':'' }));
-  let queue=[], chart={type:'sparkline',data:[]};
-  if(j.items){ queue=j.items.slice(0,8).map((it,i)=>({id:i+1,state:it.status||it.priority||'—',owner:'—',fields:it})); chart={type:'pipeline',data:[{stage:'通过',count:j.items.filter(x=>/通过|pass/i.test(x.status||'')).length},{stage:'待修',count:j.items.filter(x=>/待/.test(x.status||'')).length}]}; }
-  if(j.cycles){ queue=j.cycles.map((cy,i)=>({id:i+1,state:cy.allGreen?'ALL GREEN':'失败',owner:cy.builder,fields:cy})); chart={type:'pipeline',data:j.cycles.map(cy=>({stage:'C'+cy.cycle,count:cy.fails.length}))}; }
-  if(j.quests){ queue=j.quests.slice(0,8).map((q,i)=>({id:i+1,state:q.track,owner:q.skill,fields:q})); chart={type:'bars',data:j.tracks.map(t=>({label:t,value:j.quests.filter(q=>q.track===t).length*10}))}; }
-  return { kpis, queue, chart, rowCount:(j.items||j.cycles||j.quests||[]).length, exceptionCount:queue.length,
-    responsible:['—'], actions:c.exceptionStates.slice(0,3).map((s,i)=>({label:`处置：${s}`,owner:'—',due:`${i+1}d`})) };
-}
 let ok=0;
 for(const c of defs.cases){
   let vm;
   try{
-    if(c.dataset.endsWith('.json')) vm=buildFromJson(c);
-    else if(c.dataset.endsWith('.md')) vm=buildFromMd(c);
+    if(c.dataset.endsWith('.md')) vm=buildFromMd(c);
     else vm=buildFromCsv(c);
   }catch(e){ console.error('FAIL case',c.num,e.message); continue; }
   const out={ num:c.num, title:c.title, industry:c.industry, role:c.role, saasType:c.saasType, uiId:c.uiId, slug:c.slug,

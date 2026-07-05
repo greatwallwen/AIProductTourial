@@ -5,8 +5,6 @@
 | 文件 | 行/项 | 性质 | sha256 |
 |---|---|---|---|
 | order_data.csv | 4500 | 真实基座 UCI Online Retail II（CC BY 4.0）+ 标注合成叠加(毛利率/库存天数/责任人/处理时限) | eaa853c1e499fe93… |
-| sku.csv | 300 | 教学合成（对齐 UCI Online Retail 352） | 32fa6f1becd042c7… |
-| ex-17-RFM.csv | 800 | 教学合成（对齐 UCI Online Retail 352 衍生 RFM） | 75b8f77999153277… |
 | reference_data_analysis/28-credit_default_sample.csv | 3000 | 真实基座 UCI Default of Credit Card Clients（CC BY 4.0，30000 名台湾信用卡客户真实违约） | ffd577718235c34c… |
 | product_cases/hospital_ed_timely.csv | 4077 | 真实基座 CMS Timely & Effective Care - Hospital（公共领域，美国急诊及时性） | 9dfdf4af63c4ab1f… |
 | product_cases/flights_ontime.csv | 1500 | 真实基座 US DOT On-Time Performance 2024-06（公共领域，611k 航班抽样，起飞城市延误/取消/原因全真实） | 4283411911b2e308… |
@@ -24,7 +22,7 @@
 
 > 快照由一次性采样脚本生成（等距抽样、无随机、无联网）；生成器读快照后归一化。真实列直接用真实效应；缺失列为确定性教学合成叠加、已标注，绝不把叠加说成真实。
 
-JSON 产物（方法论案例输入）：outputs/05_harness/prototype_test_report.json、outputs/11_loop_engineering/loop_report_sample.json、outputs/10_knowledge_gamification/knowledge_quest_bank.json、skills/pm_skills.md
+结构化 Skill 库：skills/pm_skills.md（由 build-skills.mjs 生成）。
 
 ## vendored 真实素材（非合成，注明来源/许可）
 - `assets/vendor/lucide/`：Lucide 图标（github.com/lucide-icons/lucide，ISC 许可），内联进 §1 概念图。

@@ -158,7 +158,6 @@ for (const c of defs.cases) {
   if (!c.dataset.endsWith('.csv') || (c.screen && c.num !== 30)) continue;
   ok(); if (!has(`dataset/design/case_${pad(c.num)}.md`)) bad(`案例${c.num} 缺数据集设计说明 dataset/design/case_${pad(c.num)}.md`);
 }
-ok(); if (has('dataset/product_cases/aicourse_healthcare_diabetes.csv')) bad('误名 healthcare_diabetes 未清除（应为 hospital_scheduling）');
 ok(); if (defs.cases.find((c) => c.num === 30)?.screen !== 'rfm') bad('案例30 未接专属 RFM demo（screen≠rfm）');
 ok(); if (!/api\/rfm/.test(rd('code/server/routes/api.ts')) || !/RfmScreen/.test(rd('code/web/src/screens.tsx'))) bad('缺 RFM 后端/前端');
 // 专属 demo：案例16 医院容量

@@ -17,11 +17,7 @@ const ri=(r,lo,hi)=>lo+Math.floor(r()*(hi-lo+1));
 const rf=(r,lo,hi,d=2)=>Number((lo+r()*(hi-lo)).toFixed(d));
 const csv=(rows)=>rows.map(row=>row.map(v=>{const s=String(v);return /[",\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s;}).join(',')).join('\n')+'\n';
 function writeCsv(rel, header, rows){ const p=join(DS,rel); mkdirSync(dirname(p),{recursive:true}); writeFileSync(p, csv([header,...rows])); return {rel,n:rows.length,p}; }
-function writeJson(rel, obj){ const p=join(ROOT,rel); mkdirSync(dirname(p),{recursive:true}); writeFileSync(p, JSON.stringify(obj,null,2)); return {rel,p}; }
-const iso=(base,days)=>new Date(base+days*86400000).toISOString().slice(0,10);
-const BASE=Date.parse('2026-01-01T00:00:00Z'); // 固定基准，可复现
 const results=[];
-const T=(rel,label)=>({rel,label});
 
 // ---- 读仓内固定真实快照（dataset/real/*，构建期零联网、确定性；来源/许可/sha 见 MANIFEST）----
 const REAL=join(DS,'real');
@@ -48,17 +44,7 @@ const cn=(c)=>CN_COUNTRY[c]||c;
       isReturn?'退货':'', isReturn?pick(r,owners):'', isReturn?ri(r,4,72):'']; });
   results.push({...writeCsv('order_data.csv',['订单号','日期','SKU','品类','区域','数量','单价','金额','毛利率','库存天数','异常原因','责任人','处理时限h'],rows),label:'真实基座 UCI Online Retail II（CC BY 4.0）+ 标注合成叠加(毛利率/库存天数/责任人/处理时限)'}); }
 
-// ---- sku.csv ----
-{ const r=rng(102); const rows=[]; for(let i=0;i<300;i++){ const sold=ri(r,0,500); const stock=ri(r,0,900); const days=stock&&sold?Math.round(stock/Math.max(1,sold/30)):ri(r,1,240);
-   rows.push(['SKU'+String(1000+i), pick(r,['家居','数码','服饰','食品','美妆','母婴']), stock, sold, days, rf(r,0.05,0.6), days>90?'滞销':(days>45?'预警':'正常')]); }
-  results.push({...writeCsv('sku.csv',['SKU','品类','库存量','30天销量','库存天数','毛利率','状态'],rows),label:'教学合成（对齐 UCI Online Retail 352）'}); }
-
-// ---- ex-17-RFM.csv（会员 RFM；对齐 Online Retail 衍生）----
-{ const r=rng(117); const rows=[]; for(let i=0;i<800;i++){ const rec=ri(r,1,365),freq=ri(r,1,60),mon=rf(r,50,50000); const R=rec<30?5:rec<90?4:rec<180?3:rec<270?2:1; const F=freq>30?5:freq>15?4:freq>7?3:freq>3?2:1; const M=mon>20000?5:mon>10000?4:mon>4000?3:mon>1000?2:1;
-   rows.push(['M'+String(10000+i), rec, freq, mon, R, F, M, ''+R+F+M, (R>=4&&F>=4)?'重要价值':(R>=4?'新客活跃':(F>=4?'重要保持':(R<=2?'流失预警':'一般')))]); }
-  results.push({...writeCsv('ex-17-RFM.csv',['会员ID','最近购买天数R','购买频次F','消费金额M','R分','F分','M分','RFM','分层'],rows),label:'教学合成（对齐 UCI Online Retail 352 衍生 RFM）'}); }
-
-// 注：原 aicourse_hr_employees / aicourse_ecommerce_orders / aicourse_financial_transactions 已移除——均为无案例引用的孤儿合成集。
+// 注：原 sku.csv / ex-17-RFM.csv / aicourse_hr_employees / aicourse_ecommerce_orders / aicourse_financial_transactions 已移除——均为无案例引用的孤儿合成集。
 
 // ---- reference_data_analysis/28-credit_default_sample.csv：真实基座 UCI Default of Credit Card Clients（CC BY 4.0，台湾信用卡客户）----
 // 全部由真实字段派生：账单金额(BILL_AMT1)、额度档(按真实 LIMIT_BAL 分档)、最近逾期月数与风险等级(按真实逐月还款状态 PAY_* 与违约标记 Y)、命中规则数。无合成叠加。
@@ -122,10 +108,8 @@ const cn=(c)=>CN_COUNTRY[c]||c;
 // 注：原 pm_network_cases/nyc_311 已移除——无案例引用（孤儿），且原实现走 live fetch 破坏构建期可复现。
 // 计分案例一律用仓内固定快照（dataset/real/*）或确定性合成，禁止构建期联网。
 
-// ---- outputs/*.json（方法论案例输入产物）----
-writeJson('outputs/05_harness/prototype_test_report.json',{meta:{case:36,note:'原型验收护栏样本'},checks:['字段','数据来源','状态','体验问题','风险项','修复优先级'],items:Array.from({length:12},(_,i)=>({field:['指标链','异常队列','责任对象','行动入口','数据来源','验收边界'][i%6],source:i%3?'dataset':'预计算',status:i%4?'通过':'待修',issue:i%4?'':'字段缺失',risk:i%5?'低':'中',priority:i%4?'P2':'P0'})),metrics:{字段覆盖率:0.83,状态异常数:3,体验问题完成率:0.75,风险项复核通过率:0.9}});
-writeJson('outputs/11_loop_engineering/loop_report_sample.json',{meta:{case:37,rule:'同一失败连续两轮必须停止'},cycles:[{cycle:1,builder:'fix-a',checker:'run-tests',fails:['t3','t7'],regression:0,allGreen:false},{cycle:2,builder:'fix-b',checker:'run-tests',fails:['t7'],regression:0,allGreen:false},{cycle:3,builder:'fix-c',checker:'run-tests',fails:[],regression:0,allGreen:true}],result:'ALL GREEN'});
-writeJson('outputs/10_knowledge_gamification/knowledge_quest_bank.json',{meta:{case:'15/43',note:'产业知识游戏化题库'},tracks:['需求管理','用户洞察','数据指标'],quests:Array.from({length:20},(_,i)=>({id:'Q'+(i+1),track:['需求管理','用户洞察','数据指标'][i%3],title:'关卡'+(i+1),skill:['problem-framing','metric-definition','journey-map'][i%3],points:10+(i%5)*5,pass:'答案回到数据或资料'}))});
+// 注：原 outputs/05_harness、10_knowledge_gamification、11_loop_engineering 三份 JSON 产物已移除——
+// 对应的方法论案例(36/37/43)在 v7 已精简掉，无案例引用（buildFromJson 分支亦随之弃用）。
 
 // ---- MANIFEST ----
 // 真实基座快照来源/许可（dataset/real/*，采样自公开数据集、构建期零联网）
@@ -141,7 +125,7 @@ for(const x of results){ const buf=readFileSync(x.p); const h=createHash('sha256
 man.push('','## 真实基座快照（dataset/real/*，采样自公开数据集，构建期零联网）','','| 快照 | 来源 | 许可 | 用于 | sha256 |','|---|---|---|---|---|');
 for(const [f,src,lic,url,use] of REAL_SOURCES){ const h=createHash('sha256').update(readFileSync(join(REAL,f))).digest('hex').slice(0,16); man.push(`| dataset/real/${f} | [${src}](${url}) | ${lic} | ${use} | ${h}… |`); }
 man.push('','> 快照由一次性采样脚本生成（等距抽样、无随机、无联网）；生成器读快照后归一化。真实列直接用真实效应；缺失列为确定性教学合成叠加、已标注，绝不把叠加说成真实。');
-man.push('','JSON 产物（方法论案例输入）：outputs/05_harness/prototype_test_report.json、outputs/11_loop_engineering/loop_report_sample.json、outputs/10_knowledge_gamification/knowledge_quest_bank.json、skills/pm_skills.md');
+man.push('','结构化 Skill 库：skills/pm_skills.md（由 build-skills.mjs 生成）。');
 man.push('',
   '## vendored 真实素材（非合成，注明来源/许可）',
   '- `assets/vendor/lucide/`：Lucide 图标（github.com/lucide-icons/lucide，ISC 许可），内联进 §1 概念图。',

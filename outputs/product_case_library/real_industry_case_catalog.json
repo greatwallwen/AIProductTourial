@@ -12,7 +12,7 @@
       "role": "运营主管",
       "scenario": "电商早会异常订单台",
       "dataset": "dataset/order_data.csv",
-      "publicRef": "https://archive.ics.uci.edu/dataset/352/online+retail",
+      "publicRef": "https://archive.ics.uci.edu/dataset/502/online+retail+ii（真实英国电商订单，CC BY 4.0）",
       "fields": [
         "订单号",
         "SKU",
@@ -43,70 +43,69 @@
     },
     {
       "num": 14,
-      "title": "需求变更控制｜物流异常派单扩城",
-      "industry": "物流配送",
-      "role": "物流产品经理",
-      "scenario": "物流异常派单扩城",
-      "dataset": "dataset/product_cases/aicourse_logistics_delivery.csv",
-      "publicRef": "https://onfleet.com/blog/dispatch-management/",
+      "title": "需求变更控制｜航班准点运营调度",
+      "industry": "航空运输",
+      "role": "运营产品经理",
+      "scenario": "航班准点运营调度",
+      "dataset": "dataset/product_cases/flights_ontime.csv",
+      "publicRef": "https://www.transtats.bts.gov/（US DOT BTS On-Time Performance 2024-06，公共领域/美国政府作品）",
       "fields": [
+        "航班号",
         "城市",
-        "运单",
+        "航司",
         "异常类型",
-        "规则版本",
-        "客服话术",
-        "回滚条件"
+        "责任方"
       ],
       "metricChain": [
-        "运单数",
-        "异常率",
-        "扩城率",
+        "航班数",
+        "延误率",
+        "取消率",
         "城市数",
         "平均实际时效(h)"
       ],
       "exceptionStates": [
-        "转化率下滑",
-        "回款逾期",
-        "客户跟进超时",
-        "区域掉队"
+        "航班延误",
+        "航班取消",
+        "航班备降",
+        "枢纽承压"
       ],
-      "decisionAction": "判断漏斗断点、回款风险和区域销售动作优先级。",
-      "riskBoundary": "不得在无回滚条件下扩大范围",
+      "decisionAction": "按起飞城市真算延误率/取消率与延误原因，排出高延误枢纽的增容/调度优先级。",
+      "riskBoundary": "增容/调度须基于真实延误数据，不得脱离数据拍板",
       "deliverable": "需求变更影响评估",
       "highImpact": false,
       "phase": "需求管理"
     },
     {
       "num": 16,
-      "title": "目标用户与场景｜医院预约容量调度",
+      "title": "目标用户与场景｜医院急诊及时性运营",
       "industry": "医疗运营",
       "role": "医疗运营产品经理",
-      "scenario": "医院预约容量调度",
-      "dataset": "dataset/product_cases/hospital_scheduling.csv",
-      "publicRef": "https://github.com/vintasoftware/medplum-ai-concierge",
+      "scenario": "医院急诊及时性运营",
+      "dataset": "dataset/product_cases/hospital_ed_timely.csv",
+      "publicRef": "https://data.cms.gov/provider-data/dataset/yv7e-xc69（CMS Timely and Effective Care - Hospital，公共领域）",
       "fields": [
-        "科室",
-        "医生",
-        "预约槽",
-        "等待时间",
-        "加号规则",
-        "人工协调"
+        "医院",
+        "州",
+        "急诊量级",
+        "中位急诊时长分",
+        "未就诊离开率",
+        "运营预警"
       ],
       "metricChain": [
-        "就诊数",
-        "号源利用率均值",
-        "爽约率",
-        "科室数",
-        "平均等待(分)"
+        "医院数",
+        "中位急诊时长(分)",
+        "未就诊离开率均值",
+        "急诊量级数",
+        "高负荷预警率"
       ],
       "exceptionStates": [
-        "招聘延期",
-        "人效偏低",
-        "编制超配",
-        "流失预警"
+        "号源紧张",
+        "候诊超时",
+        "爽约高发",
+        "排班冲突"
       ],
-      "decisionAction": "判断岗位产出、编制缺口和流失风险，形成组织调整建议。",
-      "riskBoundary": "不得自动诊断或替代医生决策",
+      "decisionAction": "判断各科室号源利用率与等待/爽约，形成放号、加号与分时预约的调度动作。",
+      "riskBoundary": "不得自动改号/分诊或替代医生决策",
       "deliverable": "目标用户与场景矩阵",
       "highImpact": true,
       "phase": "用户洞察"
@@ -117,24 +116,24 @@
       "industry": "金融风控",
       "role": "风控产品经理",
       "scenario": "金融复核工作台",
-      "dataset": "dataset/reference_data_analysis/28-creditcardfraud_sample.csv",
-      "publicRef": "https://archive.ics.uci.edu/dataset/222/bank+marketing",
+      "dataset": "dataset/reference_data_analysis/28-credit_default_sample.csv",
+      "publicRef": "https://archive.ics.uci.edu/dataset/350/default+of+credit+card+clients（真实信用卡客户违约，CC BY 4.0）",
       "fields": [
         "交易号",
-        "账户信号",
+        "额度档",
+        "账单金额",
+        "最近逾期月数",
+        "风险信号",
         "风险等级",
-        "命中规则",
-        "证据摘要",
-        "复核权限",
-        "复核结论",
-        "留痕"
+        "命中规则数",
+        "复核"
       ],
       "metricChain": [
-        "交易数",
+        "账户数",
         "高风险率",
-        "已复核率",
+        "待复核率",
         "平均命中规则数",
-        "渠道数"
+        "额度档数"
       ],
       "exceptionStates": [
         "高风险待复核",
@@ -142,7 +141,7 @@
         "权限越界",
         "超时未处理"
       ],
-      "decisionAction": "识别现金流缺口、逾期应收和预算偏差，形成复核与催收动作。",
+      "decisionAction": "按风险等级×金额×命中规则排序复核队列，把有限人工投给最该看的高风险交易。",
       "riskBoundary": "不得自动处罚、不得自动授信、不得自动拒绝交易",
       "deliverable": "权限矩阵与风控规则",
       "highImpact": true,
@@ -172,12 +171,12 @@
         "里程余额均值"
       ],
       "exceptionStates": [
-        "转化率下滑",
-        "回款逾期",
-        "客户跟进超时",
-        "区域掉队"
+        "高价值流失",
+        "里程临期",
+        "久未乘机",
+        "权益未用"
       ],
-      "decisionAction": "判断漏斗断点、回款风险和区域销售动作优先级。",
+      "decisionAction": "按 R/F/M 分层识别高价值流失群，对不同层给定向挽回/升舱/权益动作。",
       "riskBoundary": "不得输出歧视性或不可解释规则",
       "deliverable": "RFM 分层运营策略",
       "highImpact": false,
@@ -208,11 +207,11 @@
       ],
       "exceptionStates": [
         "转化率下滑",
-        "回款逾期",
-        "客户跟进超时",
-        "区域掉队"
+        "CPA过高",
+        "创意点击低",
+        "落地页转化低"
       ],
-      "decisionAction": "判断漏斗断点、回款风险和区域销售动作优先级。",
+      "decisionAction": "定位各渠道漏斗断点（曝光/点击/转化），把预算从量大挪到效率高的渠道。",
       "riskBoundary": "不得只按点击率做预算决策",
       "deliverable": "漏斗与预算建议",
       "highImpact": false,
@@ -225,7 +224,7 @@
       "role": "经营负责人",
       "scenario": "零售经营产品方案",
       "dataset": "dataset/order_data.csv",
-      "publicRef": "https://archive.ics.uci.edu/dataset/352/online+retail",
+      "publicRef": "https://archive.ics.uci.edu/dataset/502/online+retail+ii（真实英国电商订单，CC BY 4.0）",
       "fields": [
         "商品",
         "门店",
@@ -269,10 +268,10 @@
         "片段"
       ],
       "metricChain": [
-        "语料规模",
-        "命中率",
-        "Top1 相似度",
-        "检索延迟"
+        "语料篇数",
+        "语料总字(万)",
+        "平均篇幅(字)",
+        "覆盖主题数"
       ],
       "exceptionStates": [
         "低相似",
@@ -292,7 +291,7 @@
       "role": "数据产品经理",
       "scenario": "经营数据关系库查询",
       "dataset": "dataset/order_data.csv",
-      "publicRef": "https://www.postgresql.org/docs/current/ ｜ pgvector github.com/pgvector/pgvector",
+      "publicRef": "https://www.postgresql.org/docs/current/ ｜ 数据：UCI Online Retail II（CC BY 4.0）",
       "fields": [
         "SKU",
         "品类",
@@ -334,8 +333,8 @@
       "metricChain": [
         "子系统数",
         "接口数",
-        "契约覆盖",
-        "健康检查"
+        "后端模块数",
+        "契约断言数"
       ],
       "exceptionStates": [
         "职责越界",
