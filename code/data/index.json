@@ -14,26 +14,26 @@
    "systemLayer": "业务应用",
    "systemStage": "洞察",
    "difficulty": "入门",
-   "tldr": "电商早会异常订单台：识别未达成区域、定位异常业务线，并生成责任部门行动队列"
+   "tldr": "电商早会经营台：按真实订单看品类营收/区域结构/退货，把异常当场派成行动"
   },
   {
    "num": 14,
-   "title": "需求变更控制｜物流异常派单扩城",
+   "title": "需求变更控制｜航班准点运营调度",
    "slug": "logistics_change_control",
    "uiId": "ui_14_logistics_change_control",
    "saasType": "sales_funnel_screen",
-   "industry": "物流配送",
+   "industry": "航空运输",
    "phase": "需求管理",
    "highImpact": false,
    "rp": "RP03",
    "systemLayer": "业务应用",
    "systemStage": "决策",
    "difficulty": "进阶",
-   "tldr": "物流异常派单扩城：判断漏斗断点、回款风险和区域销售动作优先级"
+   "tldr": "航班准点运营调度：按真实起飞城市延误/取消/原因，定位需增容的高延误枢纽"
   },
   {
    "num": 16,
-   "title": "目标用户与场景｜医院预约容量调度",
+   "title": "目标用户与场景｜医院急诊及时性运营",
    "slug": "hospital_capacity_scheduler",
    "uiId": "ui_16_hospital_capacity_scheduler",
    "saasType": "hr_efficiency_screen",
@@ -44,7 +44,7 @@
    "systemLayer": "业务应用",
    "systemStage": "洞察",
    "difficulty": "入门",
-   "tldr": "医院预约容量调度：判断岗位产出、编制缺口和流失风险，形成组织调整建议"
+   "tldr": "医院急诊及时性：按真实急诊量级看等待与未就诊离开，定位需增容/分流的高负荷急诊"
   },
   {
    "num": 28,
@@ -59,7 +59,7 @@
    "systemLayer": "业务应用",
    "systemStage": "执行",
    "difficulty": "进阶",
-   "tldr": "金融复核工作台：识别现金流缺口、逾期应收和预算偏差，形成复核与催收动作"
+   "tldr": "金融复核工作台：真实信用卡违约数据，按风险等级×账单金额排序，低额度违约最高"
   },
   {
    "num": 30,
@@ -74,7 +74,7 @@
    "systemLayer": "能力智能",
    "systemStage": "洞察",
    "difficulty": "进阶",
-   "tldr": "航空会员价值运营：判断漏斗断点、回款风险和区域销售动作优先级"
+   "tldr": "航空会员价值运营：按 R/F/M 分层识别高价值流失群，做定向挽回与权益运营"
   },
   {
    "num": 31,
@@ -89,7 +89,7 @@
    "systemLayer": "能力智能",
    "systemStage": "洞察",
    "difficulty": "进阶",
-   "tldr": "广告投放转化复盘：判断漏斗断点、回款风险和区域销售动作优先级"
+   "tldr": "广告投放转化复盘：定位各渠道漏斗断点，把预算从量大挪到效率高的渠道"
   },
   {
    "num": 41,
@@ -104,7 +104,7 @@
    "systemLayer": "业务应用",
    "systemStage": "增长",
    "difficulty": "高阶",
-   "tldr": "零售经营产品方案：从数据端到端得出零售经营改进方案并落成可验收交付物"
+   "tldr": "零售经营产品方案：从真实订单端到端得出经营改进方案并落成可验收交付物"
   },
   {
    "num": 44,
@@ -134,7 +134,7 @@
    "systemLayer": "底座平台",
    "systemStage": "治理",
    "difficulty": "高阶",
-   "tldr": "经营数据关系库查询：用真实 SQL（建表/索引/参数化聚合）支撑经营分析，讲清 PostgreSQL 架构"
+   "tldr": "经营数据关系库查询：把真实订单用真实 SQL（建表/索引/参数化聚合）支撑经营分析"
   },
   {
    "num": 46,
@@ -164,7 +164,7 @@
    "systemLayer": "底座平台",
    "systemStage": "洞察",
    "difficulty": "进阶",
-   "tldr": "经营三维散点可视化：用 three.js/R3F 把经营数据渲染成可交互三维散点，暴露多维离群"
+   "tldr": "经营三维散点：把真实订单数据渲染成可交互三维散点，暴露多维离群"
   }
  ]
 }

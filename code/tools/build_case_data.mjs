@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /** 读 case_definitions.json + 各案例真实数据集 → 每案例视图模型 case_NN.json（指标链/异常队列/责任/行动/图表）。
  *  React 工作台只渲染这些预计算结果 → 离线确定、截图可复现。 */
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, statSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 const ROOT = resolve(import.meta.dirname, '..', '..');
 const OUTDIR = join(ROOT, 'code', 'data');
@@ -34,8 +34,9 @@ function buildFromCsv(c){
   const p = join(ROOT, c.dataset);
   const { head, rows } = parseCsv(p);
   const col = (name)=>head.findIndex(h=>h===name);
-  // 异常列：名字含 异常/风险/status/状态/复核 且值非空/非正常
-  const abIdx = head.findIndex(h=>/异常|风险信号|风险等级|status|状态|复核|是否爽约|是否扩城/i.test(h));
+  // 异常列：优先 case_definitions 显式 abColumn，否则按名字启发（异常/风险/status/状态/复核…）。
+  // 解析出的列名会写进 case_NN.json（下方 return 的 abColumn），前端 live 复算「只按此列」——单一真源，消除 build 与 server 两套正则的分叉。
+  const abIdx = c.abColumn ? col(c.abColumn) : head.findIndex(h=>/异常|风险信号|风险等级|status|状态|复核|是否爽约|是否扩城/i.test(h));
   const exRows = abIdx>=0 ? rows.filter(r=>{ const v=(r[abIdx]||'').trim(); return v && !/正常|免复核|否|已完成|Closed|低/.test(v); }) : rows.slice(0,10);
   const seed = hashSeed(c.uiId);
   // 指标：优先按 metricSpec 从真实列真算（值域合理、可溯源）；无 spec 退化为行数
@@ -54,7 +55,7 @@ function buildFromCsv(c){
   });
   // 图表序列（按 archetype）
   const chart = buildChart(c, head, rows);
-  return { kpis, queue, chart, rowCount: rows.length, exceptionCount: exRows.length,
+  return { kpis, queue, chart, rowCount: rows.length, exceptionCount: exRows.length, abColumn: abIdx>=0?head[abIdx]:null,
     responsible: [...new Set(queue.map(q=>q.owner).filter(Boolean))].slice(0,5),
     actions: c.exceptionStates.slice(0,4).map((s,i)=>({ label:`处置：${s}`, owner: pickOwner(seed+i), due:`${1+i*2}d` })) };
 }
@@ -81,6 +82,51 @@ function buildChart(c, head, rows){
   }
   return { type:'bars', by:'记录数', data:[{label:'总量',value:rows.length}] };
 }
+// 递归收集某扩展名文件（供 .md 案例真算：语料/后端 dogfood）
+function walkFiles(dir, ext){
+  const out=[];
+  for(const e of readdirSync(dir)){ const p=join(dir,e);
+    if(e==='node_modules'||e==='dist') continue;
+    if(statSync(p).isDirectory()) out.push(...walkFiles(p,ext));
+    else if(e.endsWith(ext)) out.push(p);
+  }
+  return out;
+}
+// .md 数据集案例（44 RAG 语料 / 46 后端 dogfood）：指标一律从真实来源真算，绝不用占位顺子
+function buildFromMd(c){
+  let kpis=[], chart={type:'sparkline',data:[]};
+  if(c.num===44){ // 真实读 deanpeters 语料目录：篇数/字数/主题
+    const dir=join(ROOT,'skills','external','pm-skills-deanpeters');
+    const files=walkFiles(dir,'.md');
+    const chars=files.reduce((a,f)=>a+readFileSync(f,'utf8').length,0);
+    const byTop={}; for(const f of files){ const rel=f.slice(dir.length+1).split(/[\\/]/); const t=rel.length>1?rel[0]:'(根)'; byTop[t]=(byTop[t]||0)+1; }
+    kpis=[
+      {name:'语料篇数',value:files.length,unit:''},
+      {name:'语料总字(万)',value:Math.round(chars/10000),unit:''},
+      {name:'平均篇幅(字)',value:Math.round(chars/Math.max(1,files.length)),unit:''},
+      {name:'覆盖主题数',value:Object.keys(byTop).length,unit:''},
+    ];
+    chart={type:'bars',by:'主题目录 → 语料篇数',data:Object.entries(byTop).sort((a,b)=>b[1]-a[1]).slice(0,7).map(([label,value])=>({label,value}))};
+  } else if(c.num===46){ // 真实统计本仓库运行后端：子系统/接口/模块/测试
+    const sdir=join(ROOT,'code','server');
+    const mods=readdirSync(sdir).filter(e=>{ try{return statSync(join(sdir,e)).isDirectory()&&!['tests','node_modules','dist'].includes(e);}catch{return false;} });
+    const tsFiles=walkFiles(sdir,'.ts');
+    const api=readFileSync(join(sdir,'routes','api.ts'),'utf8');
+    const routes=new Set(api.match(/'\/api\/[a-z0-9/:]+'/gi)||[]);
+    const testSrc=existsSync(join(sdir,'tests','api.test.ts'))?readFileSync(join(sdir,'tests','api.test.ts'),'utf8'):'';
+    const asserts=(testSrc.match(/\bassert(\.[a-zA-Z]+)?\s*\(/g)||[]).length;
+    kpis=[
+      {name:'子系统数',value:mods.length,unit:''},
+      {name:'接口数',value:routes.size,unit:''},
+      {name:'后端模块数',value:tsFiles.length,unit:''},
+      {name:'契约断言数',value:asserts,unit:''},
+    ];
+    chart={type:'bars',by:'子系统 → 模块文件数',data:mods.map(m=>({label:m,value:walkFiles(join(sdir,m),'.ts').length}))};
+  } else { // 其它 .md：按指标链回到真实可得量（不用顺子占位）
+    kpis=c.metricChain.map((m)=>({name:m,value:0,unit:/率/.test(m)?'%':''}));
+  }
+  return { kpis, queue:[], chart, rowCount:kpis[0]?.value||0, exceptionCount:0, responsible:['—'], actions:[] };
+}
 function buildFromJson(c){ // 方法论案例：读 outputs/*.json
   const p=join(ROOT, c.dataset); const j=JSON.parse(readFileSync(p,'utf8'));
   const kpis=c.metricChain.map((m,i)=>({name:m, value: (j.metrics&&Object.values(j.metrics)[i])??((i+3)*7), unit: /率/.test(m)?'%':'' }));
@@ -96,7 +142,7 @@ for(const c of defs.cases){
   let vm;
   try{
     if(c.dataset.endsWith('.json')) vm=buildFromJson(c);
-    else if(c.dataset.endsWith('.md')) vm={kpis:c.metricChain.map((m,i)=>({name:m,value:(i+2)*11,unit:/率/.test(m)?'%':''})),queue:[],chart:{type:'sparkline',data:[]},rowCount:46,exceptionCount:0,responsible:['—'],actions:[]};
+    else if(c.dataset.endsWith('.md')) vm=buildFromMd(c);
     else vm=buildFromCsv(c);
   }catch(e){ console.error('FAIL case',c.num,e.message); continue; }
   const out={ num:c.num, title:c.title, industry:c.industry, role:c.role, saasType:c.saasType, uiId:c.uiId, slug:c.slug,

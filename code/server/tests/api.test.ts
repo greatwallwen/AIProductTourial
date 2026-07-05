@@ -6,6 +6,7 @@ test('后端 API 全绿', async () => {
   const app = await buildApp();
   const h = await app.inject({ method: 'GET', url: '/api/health' });
   assert.equal(h.statusCode, 200); assert.equal(h.json().ok, true);
+  assert.ok(h.json().subsystems.length >= 4 && h.json().checker, '后端子系统清单(dogfood)');
   const cs = await app.inject({ url: '/api/cases' });
   assert.ok(Array.isArray(cs.json()) && cs.json().length >= 10, '案例列表 >= 10（精品集）');
   const rt = await app.inject({ url: '/api/retail' });
@@ -17,7 +18,7 @@ test('后端 API 全绿', async () => {
   const af = await app.inject({ url: '/api/adfunnel' });
   assert.ok(af.json().channels.length >= 2 && af.json().best, '广告渠道漏斗');
   const hp = await app.inject({ url: '/api/hospital' });
-  assert.ok(hp.json().depts.length >= 2 && hp.json().avgNoshow >= 0, '医院科室容量');
+  assert.ok(hp.json().depts.length >= 2 && hp.json().warnRate >= 0 && hp.json().avgWaitAll > 0, '医院急诊及时性(真实CMS)');
   const rf = await app.inject({ url: '/api/rfm' });
   assert.ok(rf.json().total > 0 && rf.json().segments.length >= 2, 'RFM 分层');
   assert.ok(rf.json().churnRate >= 0 && rf.json().churnRate <= 100, '高价值流失率∈[0,100]');

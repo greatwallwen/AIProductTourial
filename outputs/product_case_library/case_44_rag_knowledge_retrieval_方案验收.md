@@ -1,6 +1,6 @@
 # RAG 检索方案与验收（实操 44·方案验收）
 
-> 数据来源：`skills/external/pm-skills-deanpeters/README.md`（46 行，异常 0）。字段与指标均回到该数据。演示原理 1.3、3.3，采用设计 emerald-flow。
+> 数据来源：`skills/external/pm-skills-deanpeters/README.md`（194 行，异常 0）。字段与指标均回到该数据。演示原理 1.3、3.3，采用设计 emerald-flow。
 
 ## 交付物
 
@@ -9,7 +9,7 @@ RAG 检索方案与验收
 ## 验收清单
 
 - 必含字段：查询、命中文档、相似度、片段
-- 必含指标链：语料规模、命中率、Top1 相似度、检索延迟
+- 必含指标链：语料篇数、语料总字(万)、平均篇幅(字)、覆盖主题数
 - 必含异常状态：低相似、无命中、越权语料
 - 必含 Skill：capstone-product-flow、evidence-pack、traceability-check
 

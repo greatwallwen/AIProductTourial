@@ -1,0 +1,1501 @@
+起飞城市,州,航司,计划分,实际分,到达延误分,取消,备降,主延误原因
+"Charleston, SC",SC,9E,120,111,-19,0,0,
+"Charlottesville, VA",VA,9E,107,103,-16,0,0,
+"Norfolk, VA",VA,9E,86,151,62,0,0,空管
+"New York, NY",NY,9E,198,191,34,0,0,航司
+"Charlotte, NC",NC,9E,129,103,-28,0,0,
+"Fayetteville, AR",AR,9E,113,101,-22,0,0,
+"Charleston, SC",SC,9E,122,112,-10,0,0,
+"Atlanta, GA",GA,9E,71,59,-17,0,0,
+"New York, NY",NY,9E,145,126,-28,0,0,
+"New York, NY",NY,9E,136,140,-6,0,0,
+"New York, NY",NY,9E,76,72,-13,0,0,
+"New York, NY",NY,9E,135,108,-34,0,0,
+"Charleston, SC",SC,9E,119,0,0,1,0,
+"Minneapolis, MN",MN,9E,120,130,10,0,0,
+"New York, NY",NY,9E,129,113,-21,0,0,
+"Pittsburgh, PA",PA,9E,136,170,66,0,0,空管
+"Atlanta, GA",GA,9E,72,65,1,0,0,
+"Detroit, MI",MI,9E,68,61,74,0,0,前序航班晚到
+"New York, NY",NY,9E,122,101,-26,0,0,
+"Knoxville, TN",TN,9E,104,93,-20,0,0,
+"Myrtle Beach, SC",SC,9E,111,100,-25,0,0,
+"Atlanta, GA",GA,9E,96,87,-14,0,0,
+"Cleveland, OH",OH,9E,105,88,65,0,0,前序航班晚到
+"Omaha, NE",NE,9E,80,77,-5,0,0,
+"Detroit, MI",MI,9E,73,79,0,0,0,
+"Appleton, WI",WI,9E,75,84,4,0,0,
+"New York, NY",NY,9E,70,48,-29,0,0,
+"New York, NY",NY,9E,93,72,79,0,0,航司
+"New York, NY",NY,9E,89,82,-12,0,0,
+"Raleigh/Durham, NC",NC,9E,99,94,-5,0,0,
+"New York, NY",NY,9E,83,67,-21,0,0,
+"Washington, DC",VA,9E,80,86,2,0,0,
+"New York, NY",NY,9E,85,81,0,0,0,
+"Atlanta, GA",GA,9E,58,43,-20,0,0,
+"New York, NY",NY,9E,94,64,-38,0,0,
+"Cincinnati, OH",KY,9E,88,75,-18,0,0,
+"Syracuse, NY",NY,9E,75,62,-22,0,0,
+"Atlanta, GA",GA,9E,97,88,-11,0,0,
+"Minneapolis, MN",MN,9E,110,129,55,0,0,航司
+"Atlanta, GA",GA,9E,53,41,-17,0,0,
+"White Plains, NY",NY,9E,146,133,-15,0,0,
+"Bangor, ME",ME,9E,94,85,16,0,0,航司
+"Dallas/Fort Worth, TX",TX,AA,88,76,-14,0,0,
+"Philadelphia, PA",PA,AA,215,199,12,0,0,
+"Los Angeles, CA",CA,AA,186,194,-1,0,0,
+"Seattle, WA",WA,AA,174,169,-8,0,0,
+"Dallas/Fort Worth, TX",TX,AA,213,207,-7,0,0,
+"Oklahoma City, OK",OK,AA,66,68,-3,0,0,
+"Phoenix, AZ",AZ,AA,174,180,-3,0,0,
+"Charlotte, NC",NC,AA,119,103,-22,0,0,
+"Dallas/Fort Worth, TX",TX,AA,201,193,-7,0,0,
+"Miami, FL",FL,AA,185,208,78,0,0,空管
+"Charleston, SC",SC,AA,181,166,-23,0,0,
+"Washington, DC",VA,AA,96,81,-21,0,0,
+"Bakersfield, CA",CA,AA,187,219,30,0,0,空管
+"Los Angeles, CA",CA,AA,253,231,-27,0,0,
+"Dallas/Fort Worth, TX",TX,AA,178,167,-16,0,0,
+"El Paso, TX",TX,AA,108,104,17,0,0,前序航班晚到
+"Philadelphia, PA",PA,AA,258,249,5,0,0,
+"Charlotte, NC",NC,AA,102,101,33,0,0,前序航班晚到
+"New York, NY",NY,AA,196,177,-26,0,0,
+"Charlotte, NC",NC,AA,81,81,9,0,0,
+"San Juan, PR",PR,AA,225,241,10,0,0,
+"Albany, NY",NY,AA,130,118,-15,0,0,
+"Pittsburgh, PA",PA,AA,177,170,-7,0,0,
+"Charlotte, NC",NC,AA,88,61,354,0,0,航司
+"Charlotte, NC",NC,AA,54,79,131,0,0,航司
+"Charlotte, NC",NC,AA,56,47,-17,0,0,
+"Oklahoma City, OK",OK,AA,156,151,-13,0,0,
+"Las Vegas, NV",NV,AA,271,248,-26,0,0,
+"San Diego, CA",CA,AA,187,188,25,0,0,航司
+"Los Angeles, CA",CA,AA,185,182,28,0,0,前序航班晚到
+"Los Angeles, CA",CA,AA,291,297,8,0,0,
+"Charlotte, NC",NC,AA,133,170,91,0,0,前序航班晚到
+"Hartford, CT",CT,AA,156,147,23,0,0,前序航班晚到
+"Pensacola, FL",FL,AA,125,121,-8,0,0,
+"Charlotte, NC",NC,AA,118,116,-3,0,0,
+"Fort Myers, FL",FL,AA,125,138,8,0,0,
+"New York, NY",NY,AA,234,218,-21,0,0,
+"Chicago, IL",IL,AA,121,169,294,0,0,前序航班晚到
+"San Antonio, TX",TX,AA,141,145,1,0,0,
+"Dallas/Fort Worth, TX",TX,AA,93,87,-12,0,0,
+"Dallas/Fort Worth, TX",TX,AA,152,151,33,0,0,前序航班晚到
+"Orlando, FL",FL,AA,155,176,20,0,0,空管
+"San Antonio, TX",TX,AA,173,170,132,0,0,前序航班晚到
+"Charlotte, NC",NC,AA,215,219,22,0,0,航司
+"Orlando, FL",FL,AA,185,174,-12,0,0,
+"Boston, MA",MA,AA,104,96,7,0,0,
+"Austin, TX",TX,AA,167,183,10,0,0,
+"New Orleans, LA",LA,AA,106,99,14,0,0,
+"Omaha, NE",NE,AA,153,134,-24,0,0,
+"Charlotte, NC",NC,AA,333,0,0,1,0,
+"Salt Lake City, UT",UT,AA,158,144,-21,0,0,
+"Charlotte, NC",NC,AA,293,278,-10,0,0,
+"Indianapolis, IN",IN,AA,105,119,252,0,0,前序航班晚到
+"Charlotte, NC",NC,AA,108,101,-6,0,0,
+"Burbank, CA",CA,AA,93,101,0,0,0,
+"Pittsburgh, PA",PA,AA,88,78,8,0,0,
+"Philadelphia, PA",PA,AA,132,116,-21,0,0,
+"Seattle, WA",WA,AA,307,278,-37,0,0,
+"Tampa, FL",FL,AA,158,141,58,0,0,前序航班晚到
+"Philadelphia, PA",PA,AA,133,0,0,1,0,
+"Austin, TX",TX,AA,73,61,-19,0,0,
+"Burbank, CA",CA,AA,93,85,-17,0,0,
+"Jacksonville, FL",FL,AA,89,69,-21,0,0,
+"Buffalo, NY",NY,AA,74,71,-11,0,0,
+"Chicago, IL",IL,AA,189,171,-17,0,0,
+"Miami, FL",FL,AA,185,0,0,1,0,
+"San Diego, CA",CA,AA,188,171,-19,0,0,
+"Portland, OR",OR,AA,157,145,-22,0,0,
+"Charlotte, NC",NC,AA,106,96,-12,0,0,
+"Charlotte, NC",NC,AA,112,0,0,1,0,
+"Phoenix, AZ",AZ,AA,293,302,5,0,0,
+"Dallas/Fort Worth, TX",TX,AA,198,187,54,0,0,航司
+"Charlotte, NC",NC,AA,68,64,-10,0,0,
+"Charleston, SC",SC,AA,69,95,78,0,0,前序航班晚到
+"Phoenix, AZ",AZ,AA,79,64,118,0,0,前序航班晚到
+"Seattle, WA",WA,AA,241,232,-10,0,0,
+"Charlotte, NC",NC,AA,212,206,139,0,0,前序航班晚到
+"San Diego, CA",CA,AA,250,226,-26,0,0,
+"Dallas/Fort Worth, TX",TX,AA,201,192,110,0,0,前序航班晚到
+"Cleveland, OH",OH,AA,171,157,-20,0,0,
+"Charlotte, NC",NC,AA,128,119,5,0,0,
+"Austin, TX",TX,AA,245,220,-23,0,0,
+"Dallas/Fort Worth, TX",TX,AA,143,128,370,0,0,前序航班晚到
+"Phoenix, AZ",AZ,AA,115,109,-10,0,0,
+"Charlotte, NC",NC,AA,75,83,40,0,0,航司
+"Miami, FL",FL,AA,209,211,43,0,0,前序航班晚到
+"Boston, MA",MA,AA,144,132,-21,0,0,
+"Phoenix, AZ",AZ,AA,74,87,7,0,0,
+"Charlotte, NC",NC,AA,98,92,60,0,0,前序航班晚到
+"Miami, FL",FL,AA,178,154,-31,0,0,
+"San Francisco, CA",CA,AA,347,329,-25,0,0,
+"Charlotte, NC",NC,AA,53,38,-20,0,0,
+"Washington, DC",VA,AA,124,93,-34,0,0,
+"Washington, DC",VA,AA,110,104,-12,0,0,
+"Charlotte, NC",NC,AA,78,74,-5,0,0,
+"Dallas/Fort Worth, TX",TX,AA,171,157,-19,0,0,
+"Los Angeles, CA",CA,AA,290,266,-9,0,0,
+"Boston, MA",MA,AA,377,371,-14,0,0,
+"Miami, FL",FL,AA,202,200,-6,0,0,
+"Philadelphia, PA",PA,AA,143,130,12,0,0,
+"Charlotte, NC",NC,AA,54,50,-10,0,0,
+"Detroit, MI",MI,AA,250,234,-24,0,0,
+"Las Vegas, NV",NV,AA,263,246,-21,0,0,
+"Miami, FL",FL,AA,198,169,-23,0,0,
+"Philadelphia, PA",PA,AA,97,93,4,0,0,
+"Orlando, FL",FL,AA,113,99,-21,0,0,
+"Charlotte, NC",NC,AA,118,110,27,0,0,航司
+"Madison, WI",WI,AA,146,144,-1,0,0,
+"Chicago, IL",IL,AA,85,95,73,0,0,前序航班晚到
+"Miami, FL",FL,AA,136,136,-7,0,0,
+"Orlando, FL",FL,AA,177,158,1,0,0,
+"New Orleans, LA",LA,AA,106,94,-19,0,0,
+"Dallas/Fort Worth, TX",TX,AA,171,164,39,0,0,航司
+"Charlotte, NC",NC,AA,121,105,-5,0,0,
+"Indianapolis, IN",IN,AA,230,236,0,0,0,
+"Washington, DC",VA,AA,145,120,-33,0,0,
+"Washington, DC",VA,AA,126,121,-5,0,0,
+"Dallas/Fort Worth, TX",TX,AA,80,60,-25,0,0,
+"Philadelphia, PA",PA,AA,337,311,217,0,0,航司
+"Phoenix, AZ",AZ,AA,288,257,-37,0,0,
+"Chicago, IL",IL,AA,259,257,4,0,0,
+"Tulsa, OK",OK,AA,78,76,-9,0,0,
+"Miami, FL",FL,AA,155,147,-4,0,0,
+"Denver, CO",CO,AA,205,188,149,0,0,前序航班晚到
+"Charlotte, NC",NC,AA,133,126,26,0,0,航司
+"Dallas/Fort Worth, TX",TX,AA,140,0,0,1,0,
+"Washington, DC",VA,AA,205,196,-10,0,0,
+"Charlotte Amalie, VI",VI,AA,245,0,0,0,1,
+"Charlotte, NC",NC,AA,156,137,14,0,0,
+"Austin, TX",TX,AA,187,171,-24,0,0,
+"Philadelphia, PA",PA,AA,190,165,22,0,0,航司
+"St. Louis, MO",MO,AA,117,124,30,0,0,前序航班晚到
+"Philadelphia, PA",PA,AA,243,219,-30,0,0,
+"Portland, OR",OR,AA,227,215,99,0,0,前序航班晚到
+"Colorado Springs, CO",CO,AA,112,124,6,0,0,
+"Indianapolis, IN",IN,AA,115,97,-17,0,0,
+"Miami, FL",FL,AA,360,331,35,0,0,前序航班晚到
+"Nashville, TN",TN,AA,139,144,0,0,0,
+"Richmond, VA",VA,AA,87,68,-21,0,0,
+"Philadelphia, PA",PA,AA,70,68,-3,0,0,
+"Dallas/Fort Worth, TX",TX,AA,198,186,-15,0,0,
+"Minneapolis, MN",MN,AA,94,72,-33,0,0,
+"St. Louis, MO",MO,AA,113,100,-16,0,0,
+"Dallas/Fort Worth, TX",TX,AA,127,112,12,0,0,
+"Charlotte, NC",NC,AA,105,101,-4,0,0,
+"Detroit, MI",MI,AA,82,100,9,0,0,
+"Philadelphia, PA",PA,AA,252,227,-29,0,0,
+"Dallas/Fort Worth, TX",TX,AA,176,178,8,0,0,
+"Chicago, IL",IL,AA,118,109,-19,0,0,
+"Charlotte, NC",NC,AA,85,84,201,0,0,航司
+"Dallas/Fort Worth, TX",TX,AA,136,123,0,0,0,
+"Panama City, FL",FL,AA,129,132,-8,0,0,
+"Albuquerque, NM",NM,AA,109,100,11,0,0,
+"Honolulu, HI",HI,AA,440,421,-22,0,0,
+"Little Rock, AR",AR,AA,124,111,5,0,0,
+"Charlotte, NC",NC,AA,342,341,-2,0,0,
+"Miami, FL",FL,AA,130,126,1,0,0,
+"Miami, FL",FL,AA,74,51,639,0,0,航司
+"Miami, FL",FL,AA,205,196,168,0,0,天气
+"Grand Rapids, MI",MI,AA,163,160,-3,0,0,
+"Boston, MA",MA,AA,176,217,56,0,0,空管
+"Dallas/Fort Worth, TX",TX,AA,223,208,-8,0,0,
+"Dallas/Fort Worth, TX",TX,AA,148,130,-17,0,0,
+"Dallas/Fort Worth, TX",TX,AA,192,198,9,0,0,
+"Phoenix, AZ",AZ,AA,112,109,-6,0,0,
+"New York, NY",NY,AA,156,147,-15,0,0,
+"Portland, ME",ME,AA,148,126,-30,0,0,
+"Boston, MA",MA,AA,142,126,-20,0,0,
+"Chicago, IL",IL,AA,164,159,128,0,0,前序航班晚到
+"Savannah, GA",GA,AA,97,88,-12,0,0,
+"Charlotte, NC",NC,AA,133,105,21,0,0,前序航班晚到
+"Santa Ana, CA",CA,AA,82,78,2,0,0,
+"Raleigh/Durham, NC",NC,AA,83,74,-17,0,0,
+"Phoenix, AZ",AZ,AA,270,244,21,0,0,前序航班晚到
+"Dallas/Fort Worth, TX",TX,AA,183,179,38,0,0,航司
+"Miami, FL",FL,AA,165,136,-28,0,0,
+"Washington, DC",VA,AA,134,127,32,0,0,天气
+"Washington, DC",VA,AA,200,183,-12,0,0,
+"Phoenix, AZ",AZ,AA,71,68,5,0,0,
+"Charlotte, NC",NC,AA,85,77,33,0,0,航司
+"Charlotte, NC",NC,AA,61,52,145,0,0,前序航班晚到
+"Miami, FL",FL,AA,170,139,-33,0,0,
+"Cleveland, OH",OH,AA,102,94,8,0,0,
+"Columbus, OH",OH,AA,165,159,-11,0,0,
+"Christiansted, VI",VI,AA,180,172,52,0,0,前序航班晚到
+"Dallas/Fort Worth, TX",TX,AA,201,173,-9,0,0,
+"Charlotte, NC",NC,AA,94,88,-10,0,0,
+"Key West, FL",FL,AA,181,190,1053,0,0,天气
+"Wilmington, NC",NC,AA,73,68,-13,0,0,
+"Charlotte, NC",NC,AA,111,110,4,0,0,
+"Dallas/Fort Worth, TX",TX,AA,193,202,7,0,0,
+"Hartford, CT",CT,AA,130,115,-24,0,0,
+"Washington, DC",VA,AA,210,226,38,0,0,前序航班晚到
+"Philadelphia, PA",PA,AA,166,161,368,0,0,前序航班晚到
+"Ontario, CA",CA,AA,180,191,7,0,0,
+"Dallas/Fort Worth, TX",TX,AA,76,61,-18,0,0,
+"Chicago, IL",IL,AA,193,211,20,0,0,空管
+"Charlotte, NC",NC,AA,133,117,-10,0,0,
+"Houston, TX",TX,AA,157,0,0,0,1,
+"Washington, DC",VA,AA,121,159,116,0,0,前序航班晚到
+"Chicago, IL",IL,AA,120,106,-18,0,0,
+"Indianapolis, IN",IN,AA,142,137,916,0,0,前序航班晚到
+"Charlotte, NC",NC,AA,77,75,121,0,0,前序航班晚到
+"Charlotte, NC",NC,AA,63,50,-17,0,0,
+"Phoenix, AZ",AZ,AA,292,283,-12,0,0,
+"Eugene, OR",OR,AA,154,0,0,1,0,
+"Los Angeles, CA",CA,AA,310,295,-14,0,0,
+"New York, NY",NY,AA,232,212,-26,0,0,
+"Dallas/Fort Worth, TX",TX,AA,152,147,-2,0,0,
+"New York, NY",NY,AA,192,189,-7,0,0,
+"Seattle, WA",WA,AS,333,310,11,0,0,
+"New York, NY",NY,AS,395,378,-22,0,0,
+"Seattle, WA",WA,AS,123,128,-3,0,0,
+"Seattle, WA",WA,AS,215,223,16,0,0,空管
+"Phoenix, AZ",AZ,AS,162,168,-5,0,0,
+"Anchorage, AK",AK,AS,210,212,17,0,0,航司
+"Seattle, WA",WA,AS,167,167,-7,0,0,
+"San Francisco, CA",CA,AS,344,310,-29,0,0,
+"Seattle, WA",WA,AS,167,178,20,0,0,空管
+"Austin, TX",TX,AS,255,249,260,0,0,航司
+"Juneau, AK",AK,AS,45,50,3,0,0,
+"Seattle, WA",WA,AS,153,167,66,0,0,天气
+"Anchorage, AK",AK,AS,368,391,40,0,0,空管
+"San Diego, CA",CA,AS,349,304,-50,0,0,
+"Philadelphia, PA",PA,AS,346,370,20,0,0,空管
+"Santa Ana, CA",CA,AS,171,185,0,0,0,
+"Boston, MA",MA,AS,365,367,1,0,0,
+"New York, NY",NY,AS,361,364,-6,0,0,
+"Albuquerque, NM",NM,AS,192,191,0,0,0,
+"Phoenix, AZ",AZ,AS,349,333,-21,0,0,
+"Kona, HI",HI,AS,328,322,-13,0,0,
+"Anchorage, AK",AK,AS,208,221,9,0,0,
+"Honolulu, HI",HI,AS,337,333,-7,0,0,
+"Cincinnati, OH",KY,AS,297,300,20,0,0,前序航班晚到
+"Seattle, WA",WA,AS,170,184,21,0,0,空管
+"Orlando, FL",FL,AS,374,376,12,0,0,
+"Salt Lake City, UT",UT,AS,293,283,-11,0,0,
+"Portland, OR",OR,AS,133,132,43,0,0,前序航班晚到
+"Anchorage, AK",AK,AS,102,96,40,0,0,航司
+"Denver, CO",CO,AS,177,183,80,0,0,前序航班晚到
+"Phoenix, AZ",AZ,AS,340,341,0,0,0,
+"Honolulu, HI",HI,AS,330,319,-16,0,0,
+"San Diego, CA",CA,AS,336,316,-23,0,0,
+"Seattle, WA",WA,AS,69,72,3,0,0,
+"Columbus, OH",OH,AS,307,303,32,0,0,前序航班晚到
+"San Jose, CA",CA,AS,124,126,-14,0,0,
+"Seattle, WA",WA,AS,189,193,-5,0,0,
+"San Diego, CA",CA,AS,174,170,-19,0,0,
+"Seattle, WA",WA,AS,105,98,-13,0,0,
+"Bethel, AK",AK,AS,75,89,-3,0,0,
+"Las Vegas, NV",NV,AS,94,114,106,0,0,前序航班晚到
+"Seattle, WA",WA,AS,150,164,10,0,0,
+"Las Vegas, NV",NV,AS,136,138,94,0,0,空管
+"Seattle, WA",WA,AS,124,117,-8,0,0,
+"Lihue, HI",HI,AS,347,351,-12,0,0,
+"Newark, NJ",NJ,AS,357,392,42,0,0,空管
+"Boise, ID",ID,AS,93,97,3,0,0,
+"Seattle, WA",WA,AS,244,237,-5,0,0,
+"Oakland, CA",CA,AS,126,131,-1,0,0,
+"Seattle, WA",WA,AS,301,281,-13,0,0,
+"San Jose, CA",CA,AS,136,127,1,0,0,
+"Seattle, WA",WA,AS,247,234,16,0,0,航司
+"Anchorage, AK",AK,AS,213,199,-17,0,0,
+"Salt Lake City, UT",UT,AS,128,121,-15,0,0,
+"New York, NY",NY,B6,150,135,-9,0,0,
+"Washington, DC",VA,B6,149,137,-13,0,0,
+"Salt Lake City, UT",UT,B6,263,249,-24,0,0,
+"Atlanta, GA",GA,B6,138,123,-15,0,0,
+"Orlando, FL",FL,B6,167,168,-1,0,0,
+"Fort Lauderdale, FL",FL,B6,178,164,14,0,0,
+"Washington, DC",VA,B6,163,137,-35,0,0,
+"Buffalo, NY",NY,B6,89,75,-25,0,0,
+"New York, NY",NY,B6,374,347,-35,0,0,
+"Aguadilla, PR",PR,B6,236,230,-15,0,0,
+"New York, NY",NY,B6,193,174,-19,0,0,
+"Orlando, FL",FL,B6,109,103,-2,0,0,
+"Orlando, FL",FL,B6,161,152,7,0,0,
+"Tampa, FL",FL,B6,165,172,3,0,0,
+"Dallas/Fort Worth, TX",TX,B6,224,249,78,0,0,航司
+"Boston, MA",MA,B6,173,162,-13,0,0,
+"San Antonio, TX",TX,B6,248,244,-9,0,0,
+"Boston, MA",MA,B6,208,172,220,0,0,航司
+"Boston, MA",MA,B6,80,62,-33,0,0,
+"Fort Lauderdale, FL",FL,B6,140,0,0,1,0,
+"San Diego, CA",CA,B6,342,323,-27,0,0,
+"New York, NY",NY,B6,228,215,-20,0,0,
+"Las Vegas, NV",NV,B6,279,277,26,0,0,航司
+"Newark, NJ",NJ,B6,181,159,-33,0,0,
+"Miami, FL",FL,B6,209,198,-1,0,0,
+"Hartford, CT",CT,B6,189,183,-15,0,0,
+"Pittsburgh, PA",PA,B6,101,93,-2,0,0,
+"San Juan, PR",PR,B6,170,158,-9,0,0,
+"Las Vegas, NV",NV,B6,312,300,6,0,0,
+"New York, NY",NY,B6,182,157,-31,0,0,
+"Milwaukee, WI",WI,B6,148,123,36,0,0,前序航班晚到
+"Raleigh/Durham, NC",NC,B6,100,92,-13,0,0,
+"Charleston, SC",SC,B6,114,106,-8,0,0,
+"Washington, DC",VA,B6,155,148,-14,0,0,
+"Detroit, MI",MI,B6,117,110,-17,0,0,
+"Boston, MA",MA,B6,395,429,200,0,0,前序航班晚到
+"Boston, MA",MA,B6,245,241,16,0,0,航司
+"Orlando, FL",FL,B6,176,168,22,0,0,前序航班晚到
+"New York, NY",NY,B6,146,178,87,0,0,航司
+"New York, NY",NY,B6,143,170,36,0,0,空管
+"White Plains, NY",NY,B6,169,176,67,0,0,空管
+"Seattle, WA",WA,B6,328,314,29,0,0,前序航班晚到
+"San Juan, PR",PR,B6,184,170,-5,0,0,
+"San Juan, PR",PR,B6,170,167,1,0,0,
+"Newark, NJ",NJ,B6,165,154,-2,0,0,
+"Fort Myers, FL",FL,B6,169,176,133,0,0,前序航班晚到
+"Washington, DC",VA,B6,154,126,33,0,0,前序航班晚到
+"Miami, FL",FL,B6,190,209,137,0,0,前序航班晚到
+"Pittsburgh, PA",PA,B6,100,82,-26,0,0,
+"New York, NY",NY,DL,639,635,125,0,0,航司
+"Seattle, WA",WA,DL,341,309,-30,0,0,
+"Boston, MA",MA,DL,314,318,-7,0,0,
+"Atlanta, GA",GA,DL,236,220,-11,0,0,
+"Lihue, HI",HI,DL,337,316,0,0,0,
+"San Francisco, CA",CA,DL,350,313,-40,0,0,
+"Minneapolis, MN",MN,DL,343,349,2,0,0,
+"Atlanta, GA",GA,DL,279,280,5,0,0,
+"Bozeman, MT",MT,DL,223,205,-9,0,0,
+"Detroit, MI",MI,DL,290,291,-9,0,0,
+"Denver, CO",CO,DL,175,160,-15,0,0,
+"Salt Lake City, UT",UT,DL,296,283,76,0,0,航司
+"New York, NY",NY,DL,286,291,9,0,0,
+"Las Vegas, NV",NV,DL,242,228,-17,0,0,
+"Orlando, FL",FL,DL,324,315,-15,0,0,
+"Las Vegas, NV",NV,DL,330,300,-36,0,0,
+"Detroit, MI",MI,DL,306,294,60,0,0,前序航班晚到
+"Honolulu, HI",HI,DL,360,374,22,0,0,空管
+"Dallas/Fort Worth, TX",TX,DL,243,223,-27,0,0,
+"Atlanta, GA",GA,DL,110,134,17,0,0,空管
+"Atlanta, GA",GA,DL,120,120,30,0,0,前序航班晚到
+"Norfolk, VA",VA,DL,110,99,-8,0,0,
+"Atlanta, GA",GA,DL,93,92,-8,0,0,
+"Billings, MT",MT,DL,81,70,-15,0,0,
+"Atlanta, GA",GA,DL,91,91,19,0,0,航司
+"Minneapolis, MN",MN,DL,102,121,18,0,0,空管
+"Atlanta, GA",GA,DL,130,131,0,0,0,
+"Washington, DC",VA,DL,119,101,-19,0,0,
+"Salt Lake City, UT",UT,DL,143,131,-11,0,0,
+"San Francisco, CA",CA,DL,93,76,-19,0,0,
+"Salt Lake City, UT",UT,DL,101,97,-6,0,0,
+"Minneapolis, MN",MN,DL,203,185,19,0,0,航司
+"Salt Lake City, UT",UT,DL,106,104,-9,0,0,
+"Minneapolis, MN",MN,DL,106,124,16,0,0,空管
+"Atlanta, GA",GA,DL,110,105,18,0,0,前序航班晚到
+"Minneapolis, MN",MN,DL,101,86,-21,0,0,
+"Salt Lake City, UT",UT,DL,194,179,-15,0,0,
+"Orlando, FL",FL,DL,95,81,-9,0,0,
+"Atlanta, GA",GA,DL,88,144,137,0,0,航司
+"Orlando, FL",FL,DL,162,154,76,0,0,前序航班晚到
+"New York, NY",NY,DL,257,240,-17,0,0,
+"Atlanta, GA",GA,DL,220,221,0,0,0,
+"San Antonio, TX",TX,DL,154,139,-17,0,0,
+"Miami, FL",FL,DL,304,304,975,0,0,航司
+"Orlando, FL",FL,DL,288,282,-13,0,0,
+"Tampa, FL",FL,DL,169,166,1,0,0,
+"Denver, CO",CO,DL,178,182,17,0,0,航司
+"Austin, TX",TX,DL,168,169,7,0,0,
+"Salt Lake City, UT",UT,DL,247,242,-10,0,0,
+"Minneapolis, MN",MN,DL,242,246,28,0,0,前序航班晚到
+"Rochester, NY",NY,DL,132,118,7,0,0,
+"St. Louis, MO",MO,DL,97,82,-21,0,0,
+"Minneapolis, MN",MN,DL,242,231,-20,0,0,
+"Minneapolis, MN",MN,DL,220,200,-17,0,0,
+"Atlanta, GA",GA,DL,92,95,-2,0,0,
+"Charleston, SC",SC,DL,152,127,-27,0,0,
+"Raleigh/Durham, NC",NC,DL,111,108,11,0,0,
+"Portland, OR",OR,DL,205,197,-12,0,0,
+"Atlanta, GA",GA,DL,90,101,7,0,0,
+"Sarasota/Bradenton, FL",FL,DL,179,154,-34,0,0,
+"Atlanta, GA",GA,DL,132,125,12,0,0,
+"Orlando, FL",FL,DL,190,185,12,0,0,
+"Phoenix, AZ",AZ,DL,183,169,-21,0,0,
+"Atlanta, GA",GA,DL,93,90,-6,0,0,
+"Minneapolis, MN",MN,DL,186,172,-1,0,0,
+"Detroit, MI",MI,DL,91,89,-7,0,0,
+"Detroit, MI",MI,DL,233,210,-26,0,0,
+"Seattle, WA",WA,DL,167,188,14,0,0,
+"San Francisco, CA",CA,DL,225,200,-4,0,0,
+"West Palm Beach/Palm Beach, FL",FL,DL,173,169,-4,0,0,
+"Philadelphia, PA",PA,DL,135,120,-19,0,0,
+"Fort Lauderdale, FL",FL,DL,173,180,4,0,0,
+"Phoenix, AZ",AZ,DL,188,174,32,0,0,航司
+"Louisville, KY",KY,DL,84,78,-10,0,0,
+"Santa Ana, CA",CA,DL,180,177,-14,0,0,
+"Austin, TX",TX,DL,252,252,-12,0,0,
+"Detroit, MI",MI,DL,101,86,-16,0,0,
+"Atlanta, GA",GA,DL,74,68,-8,0,0,
+"Atlanta, GA",GA,DL,73,66,-3,0,0,
+"Atlanta, GA",GA,DL,67,63,-1,0,0,
+"Atlanta, GA",GA,DL,66,54,-21,0,0,
+"Charlotte, NC",NC,DL,74,60,-26,0,0,
+"Myrtle Beach, SC",SC,DL,83,75,-11,0,0,
+"Greensboro/High Point, NC",NC,DL,80,71,-11,0,0,
+"Charlotte, NC",NC,DL,73,72,-8,0,0,
+"Seattle, WA",WA,DL,294,280,-3,0,0,
+"Anchorage, AK",AK,DL,333,326,-1,0,0,
+"Los Angeles, CA",CA,DL,181,173,22,0,0,航司
+"San Jose, CA",CA,DL,287,263,-22,0,0,
+"New York, NY",NY,DL,376,375,-3,0,0,
+"New York, NY",NY,DL,399,392,7,0,0,
+"Los Angeles, CA",CA,DL,174,188,10,0,0,
+"Atlanta, GA",GA,DL,191,176,15,0,0,
+"New York, NY",NY,DL,265,284,448,0,0,空管
+"Detroit, MI",MI,DL,112,108,-8,0,0,
+"Sacramento, CA",CA,DL,270,262,-12,0,0,
+"Las Vegas, NV",NV,DL,235,239,169,0,0,航司
+"Los Angeles, CA",CA,DL,240,247,-2,0,0,
+"New York, NY",NY,DL,355,335,-17,0,0,
+"Los Angeles, CA",CA,DL,220,196,-24,0,0,
+"New York, NY",NY,DL,351,372,18,0,0,空管
+"Atlanta, GA",GA,DL,302,322,81,0,0,前序航班晚到
+"Salt Lake City, UT",UT,DL,121,119,-3,0,0,
+"Denver, CO",CO,DL,189,168,-25,0,0,
+"Minneapolis, MN",MN,DL,107,89,-24,0,0,
+"New York, NY",NY,DL,185,186,-3,0,0,
+"Tulsa, OK",OK,DL,122,110,-19,0,0,
+"Miami, FL",FL,DL,132,0,0,0,1,
+"Austin, TX",TX,DL,270,260,4,0,0,
+"St. Louis, MO",MO,DL,92,87,-7,0,0,
+"Salt Lake City, UT",UT,DL,90,82,-12,0,0,
+"Fort Myers, FL",FL,DL,175,157,5,0,0,
+"Houston, TX",TX,DL,123,123,209,0,0,前序航班晚到
+"Denver, CO",CO,DL,134,116,57,0,0,空管
+"Seattle, WA",WA,DL,165,158,-8,0,0,
+"Pensacola, FL",FL,DL,77,72,-13,0,0,
+"Louisville, KY",KY,DL,86,75,-17,0,0,
+"Salt Lake City, UT",UT,DL,86,82,-7,0,0,
+"Atlanta, GA",GA,DL,143,141,-5,0,0,
+"Orlando, FL",FL,DL,183,139,822,0,0,航司
+"Atlanta, GA",GA,DL,79,66,87,0,0,航司
+"Minneapolis, MN",MN,DL,86,98,86,0,0,前序航班晚到
+"Fayetteville, AR",AR,DL,110,100,-16,0,0,
+"Richmond, VA",VA,DL,105,89,-18,0,0,
+"Philadelphia, PA",PA,DL,101,97,-10,0,0,
+"Atlanta, GA",GA,DL,55,48,-15,0,0,
+"Panama City, FL",FL,DL,71,87,10,0,0,
+"Nashville, TN",TN,DL,133,135,-4,0,0,
+"Lexington, KY",KY,DL,86,81,-5,0,0,
+"Salt Lake City, UT",UT,DL,210,203,0,0,0,
+"Seattle, WA",WA,DL,216,200,15,0,0,
+"Minneapolis, MN",MN,DL,199,205,2,0,0,
+"Atlanta, GA",GA,DL,97,92,-11,0,0,
+"Minneapolis, MN",MN,DL,200,204,18,0,0,航司
+"Daytona Beach, FL",FL,DL,88,80,-13,0,0,
+"Los Angeles, CA",CA,DL,115,110,-10,0,0,
+"New York, NY",NY,DL,199,218,32,0,0,空管
+"Atlanta, GA",GA,DL,69,62,41,0,0,航司
+"Louisville, KY",KY,DL,94,79,-23,0,0,
+"Newark, NJ",NJ,DL,130,133,0,0,0,
+"Newark, NJ",NJ,DL,140,136,-6,0,0,
+"Salt Lake City, UT",UT,DL,195,186,66,0,0,前序航班晚到
+"Boston, MA",MA,DL,85,75,-17,0,0,
+"Las Vegas, NV",NV,DL,169,165,28,0,0,前序航班晚到
+"Raleigh/Durham, NC",NC,DL,83,77,-11,0,0,
+"Chicago, IL",IL,DL,162,185,14,0,0,
+"Minneapolis, MN",MN,DL,175,166,-9,0,0,
+"Houston, TX",TX,DL,176,171,-5,0,0,
+"Detroit, MI",MI,DL,106,97,-15,0,0,
+"New Orleans, LA",LA,DL,179,176,-6,0,0,
+"Tampa, FL",FL,DL,193,185,-9,0,0,
+"San Antonio, TX",TX,DL,175,182,1,0,0,
+"Washington, DC",VA,DL,144,130,-17,0,0,
+"Denver, CO",CO,DL,185,177,-3,0,0,
+"Denver, CO",CO,DL,241,224,-17,0,0,
+"Detroit, MI",MI,DL,119,105,-14,0,0,
+"Minneapolis, MN",MN,DL,169,160,-13,0,0,
+"Atlanta, GA",GA,DL,130,120,0,0,0,
+"Salt Lake City, UT",UT,DL,163,158,7,0,0,
+"Providence, RI",RI,DL,128,115,-14,0,0,
+"St. Louis, MO",MO,DL,90,81,-16,0,0,
+"Seattle, WA",WA,DL,165,151,56,0,0,航司
+"Orlando, FL",FL,DL,161,165,4,0,0,
+"Atlanta, GA",GA,DL,62,85,25,0,0,空管
+"Minneapolis, MN",MN,DL,157,148,-18,0,0,
+"Salt Lake City, UT",UT,DL,145,136,-14,0,0,
+"Atlanta, GA",GA,DL,146,145,-9,0,0,
+"Albuquerque, NM",NM,DL,154,140,-17,0,0,
+"Chicago, IL",IL,DL,135,133,0,0,0,
+"Milwaukee, WI",WI,DL,85,90,270,0,0,前序航班晚到
+"Minneapolis, MN",MN,DL,152,158,7,0,0,
+"Minneapolis, MN",MN,DL,148,135,-11,0,0,
+"Dallas/Fort Worth, TX",TX,DL,153,136,-19,0,0,
+"Denver, CO",CO,DL,120,108,-17,0,0,
+"Detroit, MI",MI,DL,135,131,-3,0,0,
+"Atlanta, GA",GA,DL,67,48,-25,0,0,
+"Atlanta, GA",GA,DL,59,53,-9,0,0,
+"Little Rock, AR",AR,DL,98,85,-20,0,0,
+"Greensboro/High Point, NC",NC,DL,80,79,-13,0,0,
+"Asheville, NC",NC,DL,67,65,85,0,0,航司
+"Jackson/Vicksburg, MS",MS,DL,86,66,-26,0,0,
+"Minneapolis, MN",MN,DL,258,264,4,0,0,
+"Salt Lake City, UT",UT,DL,137,126,-16,0,0,
+"Salt Lake City, UT",UT,DL,225,212,-3,0,0,
+"Salt Lake City, UT",UT,DL,224,213,-7,0,0,
+"Los Angeles, CA",CA,DL,276,268,21,0,0,航司
+"Anchorage, AK",AK,DL,220,205,-24,0,0,
+"Detroit, MI",MI,DL,285,276,16,0,0,航司
+"Philadelphia, PA",PA,DL,137,107,-30,0,0,
+"Los Angeles, CA",CA,DL,355,344,-12,0,0,
+"New York, NY",NY,DL,135,116,75,0,0,航司
+"Los Angeles, CA",CA,DL,339,308,-32,0,0,
+"Albuquerque, NM",NM,DL,190,197,3,0,0,
+"Washington, DC",VA,DL,344,348,9,0,0,
+"Minneapolis, MN",MN,DL,154,143,2,0,0,
+"Detroit, MI",MI,DL,164,156,-12,0,0,
+"Cincinnati, OH",KY,DL,176,158,-21,0,0,
+"Minneapolis, MN",MN,DL,196,202,3,0,0,
+"Atlanta, GA",GA,DL,112,104,-9,0,0,
+"Salt Lake City, UT",UT,DL,120,126,6,0,0,
+"Tampa, FL",FL,DL,94,91,29,0,0,前序航班晚到
+"Atlanta, GA",GA,DL,97,91,11,0,0,
+"Minneapolis, MN",MN,DL,125,122,-6,0,0,
+"Minneapolis, MN",MN,DL,112,108,-8,0,0,
+"Myrtle Beach, SC",SC,DL,117,118,8,0,0,
+"Nashville, TN",TN,DL,63,66,6,0,0,
+"New York, NY",NY,DL,245,236,-11,0,0,
+"Salt Lake City, UT",UT,DL,117,115,-5,0,0,
+"Salt Lake City, UT",UT,DL,115,115,0,0,0,
+"Salt Lake City, UT",UT,DL,117,112,31,0,0,航司
+"Miami, FL",FL,DL,114,118,16,0,0,天气
+"Houston, TX",TX,DL,134,124,-18,0,0,
+"Atlanta, GA",GA,DL,107,107,12,0,0,
+"Boston, MA",MA,DL,204,202,20,0,0,航司
+"Atlanta, GA",GA,DL,108,106,-5,0,0,
+"Portland, OR",OR,DL,113,102,-17,0,0,
+"Key West, FL",FL,DL,124,113,-7,0,0,
+"Fort Lauderdale, FL",FL,DL,116,112,-10,0,0,
+"Detroit, MI",MI,DL,174,166,9,0,0,
+"Atlanta, GA",GA,F9,119,108,-15,0,0,
+"Pensacola, FL",FL,F9,110,111,-8,0,0,
+"New York, NY",NY,F9,151,155,4,0,0,
+"Denver, CO",CO,F9,99,86,1,0,0,
+"Phoenix, AZ",AZ,F9,158,164,1,0,0,
+"Charlotte, NC",NC,F9,163,141,16,0,0,前序航班晚到
+"Dallas/Fort Worth, TX",TX,F9,143,136,29,0,0,前序航班晚到
+"Atlanta, GA",GA,F9,138,140,101,0,0,航司
+"Christiansted, VI",VI,F9,42,48,0,0,0,
+"Atlanta, GA",GA,F9,215,230,69,0,0,前序航班晚到
+"Houston, TX",TX,F9,161,145,-26,0,0,
+"Las Vegas, NV",NV,F9,116,123,5,0,0,
+"Houston, TX",TX,F9,169,159,7,0,0,
+"Phoenix, AZ",AZ,F9,85,81,-8,0,0,
+"Cincinnati, OH",KY,F9,134,122,54,0,0,前序航班晚到
+"Charlotte, NC",NC,F9,106,98,830,0,0,航司
+"Chicago, IL",IL,F9,172,158,-1,0,0,
+"Denver, CO",CO,F9,227,214,-11,0,0,
+"Philadelphia, PA",PA,F9,217,253,94,0,0,航司
+"Denver, CO",CO,F9,234,242,86,0,0,航司
+"Chicago, IL",IL,F9,123,126,12,0,0,
+"Tampa, FL",FL,F9,168,168,78,0,0,前序航班晚到
+"Denver, CO",CO,F9,144,168,26,0,0,空管
+"San Francisco, CA",CA,F9,295,342,136,0,0,前序航班晚到
+"Austin, TX",TX,F9,180,172,42,0,0,前序航班晚到
+"Las Vegas, NV",NV,F9,129,113,-19,0,0,
+"Philadelphia, PA",PA,F9,137,116,15,0,0,
+"Ontario, CA",CA,F9,135,151,24,0,0,空管
+"Salt Lake City, UT",UT,F9,107,92,11,0,0,
+"Denver, CO",CO,F9,241,235,-15,0,0,
+"New York, NY",NY,F9,232,224,-13,0,0,
+"New Orleans, LA",LA,F9,183,177,-12,0,0,
+"Cincinnati, OH",KY,F9,150,154,-6,0,0,
+"Denver, CO",CO,F9,182,168,62,0,0,前序航班晚到
+"Miami, FL",FL,F9,125,233,105,0,0,空管
+"Atlanta, GA",GA,F9,99,110,46,0,0,前序航班晚到
+"Ontario, CA",CA,F9,135,131,-16,0,0,
+"Denver, CO",CO,F9,166,144,29,0,0,前序航班晚到
+"Charlotte, NC",NC,F9,110,94,10,0,0,
+"Cleveland, OH",OH,F9,180,187,-6,0,0,
+"Cleveland, OH",OH,F9,172,156,-20,0,0,
+"Philadelphia, PA",PA,F9,171,195,21,0,0,空管
+"Las Vegas, NV",NV,F9,106,95,45,0,0,前序航班晚到
+"Denver, CO",CO,F9,144,180,26,0,0,空管
+"Philadelphia, PA",PA,F9,169,177,8,0,0,
+"San Francisco, CA",CA,F9,204,213,45,0,0,前序航班晚到
+"Jacksonville, FL",FL,G4,113,124,3,0,0,
+"Fort Lauderdale, FL",FL,G4,164,157,-3,0,0,
+"Los Angeles, CA",CA,G4,194,339,160,0,0,空管
+"Phoenix, AZ",AZ,G4,121,119,-11,0,0,
+"Norfolk, VA",VA,G4,112,114,70,0,0,前序航班晚到
+"Sarasota/Bradenton, FL",FL,G4,138,132,107,0,0,前序航班晚到
+"St. Petersburg, FL",FL,G4,62,60,-11,0,0,
+"Las Vegas, NV",NV,G4,222,212,3,0,0,
+"Myrtle Beach, SC",SC,G4,110,105,15,0,0,
+"Fort Lauderdale, FL",FL,G4,123,114,24,0,0,空管
+"Lexington, KY",KY,G4,94,95,117,0,0,天气
+"Medford, OR",OR,G4,107,103,11,0,0,
+"Springfield, MO",MO,G4,134,118,-33,0,0,
+"Las Vegas, NV",NV,G4,162,163,-6,0,0,
+"Phoenix, AZ",AZ,G4,201,197,-8,0,0,
+"Cincinnati, OH",KY,G4,108,109,-9,0,0,
+"Los Angeles, CA",CA,G4,212,214,1,0,0,
+"Newark, NJ",NJ,G4,165,120,-55,0,0,
+"Asheville, NC",NC,G4,98,128,167,0,0,前序航班晚到
+"Flint, MI",MI,G4,175,163,-22,0,0,
+"Asheville, NC",NC,G4,97,98,-5,0,0,
+"Fayetteville, AR",AR,G4,211,209,43,0,0,航司
+"Washington, DC",VA,G4,193,203,63,0,0,空管
+"Grand Rapids, MI",MI,G4,170,166,0,0,0,
+"Key West, FL",FL,G4,122,112,-8,0,0,
+"Phoenix, AZ",AZ,G4,141,156,5,0,0,
+"Washington, DC",VA,G4,120,117,21,0,0,前序航班晚到
+"Phoenix, AZ",AZ,G4,171,171,-13,0,0,
+"Missoula, MT",MT,G4,168,161,-11,0,0,
+"Santa Ana, CA",CA,G4,101,104,-11,0,0,
+"Los Angeles, CA",CA,HA,345,339,-11,0,0,
+"Portland, OR",OR,HA,350,346,-9,0,0,
+"San Jose, CA",CA,HA,330,315,-13,0,0,
+"Kona, HI",HI,HA,325,315,-15,0,0,
+"Honolulu, HI",HI,HA,335,325,0,0,0,
+"Honolulu, HI",HI,HA,56,56,-6,0,0,
+"Honolulu, HI",HI,HA,40,43,-4,0,0,
+"Hilo, HI",HI,HA,57,58,20,0,0,前序航班晚到
+"Hilo, HI",HI,HA,57,57,1,0,0,
+"Kona, HI",HI,HA,51,56,6,0,0,
+"Honolulu, HI",HI,HA,43,52,11,0,0,
+"Honolulu, HI",HI,HA,48,56,9,0,0,
+"Honolulu, HI",HI,HA,48,48,2,0,0,
+"Lihue, HI",HI,HA,38,33,-1,0,0,
+"Honolulu, HI",HI,HA,46,48,12,0,0,
+"Hilo, HI",HI,HA,54,53,-9,0,0,
+"Lubbock, TX",TX,MQ,77,81,9,0,0,
+"Miami, FL",FL,MQ,110,97,-15,0,0,
+"Traverse City, MI",MI,MQ,76,77,0,0,0,
+"Hartford, CT",CT,MQ,90,88,-7,0,0,
+"Bloomington/Normal, IL",IL,MQ,139,131,-16,0,0,
+"Dallas/Fort Worth, TX",TX,MQ,74,134,140,0,0,前序航班晚到
+"Raleigh/Durham, NC",NC,MQ,139,145,38,0,0,前序航班晚到
+"Miami, FL",FL,MQ,158,136,-23,0,0,
+"Champaign/Urbana, IL",IL,MQ,66,54,-17,0,0,
+"Birmingham, AL",AL,MQ,128,116,74,0,0,航司
+"Columbus, OH",OH,MQ,89,89,-7,0,0,
+"Fayetteville, AR",AR,MQ,83,73,-13,0,0,
+"Dallas/Fort Worth, TX",TX,MQ,113,107,-8,0,0,
+"Indianapolis, IN",IN,MQ,76,63,-22,0,0,
+"Garden City, KS",KS,MQ,84,101,17,0,0,空管
+"Midland/Odessa, TX",TX,MQ,81,93,8,0,0,
+"Atlanta, GA",GA,MQ,85,83,135,0,0,前序航班晚到
+"Dallas/Fort Worth, TX",TX,MQ,144,132,-19,0,0,
+"Columbia, MO",MO,MQ,83,75,46,0,0,前序航班晚到
+"Wichita, KS",KS,MQ,80,79,8,0,0,
+"Dallas/Fort Worth, TX",TX,MQ,88,83,-7,0,0,
+"Dallas/Fort Worth, TX",TX,MQ,133,122,-12,0,0,
+"Dallas/Fort Worth, TX",TX,MQ,39,60,125,0,0,前序航班晚到
+"Indianapolis, IN",IN,MQ,76,79,25,0,0,航司
+"Greer, SC",SC,MQ,125,131,0,0,0,
+"Springfield, MO",MO,MQ,91,112,13,0,0,
+"Dallas/Fort Worth, TX",TX,MQ,118,136,185,0,0,前序航班晚到
+"Cincinnati, OH",KY,MQ,92,99,-2,0,0,
+"Asheville, NC",NC,MQ,125,114,-17,0,0,
+"Oklahoma City, OK",OK,MQ,186,174,-18,0,0,
+"Dallas/Fort Worth, TX",TX,MQ,92,84,-13,0,0,
+"Dallas/Fort Worth, TX",TX,MQ,101,92,0,0,0,
+"Atlanta, GA",GA,MQ,132,114,-27,0,0,
+"Monterey, CA",CA,MQ,111,111,-2,0,0,
+"Fort Smith, AR",AR,MQ,76,66,82,0,0,前序航班晚到
+"Chicago, IL",IL,MQ,138,132,-7,0,0,
+"Dallas/Fort Worth, TX",TX,MQ,77,70,15,0,0,
+"Lubbock, TX",TX,MQ,76,65,179,0,0,前序航班晚到
+"Dallas/Fort Worth, TX",TX,MQ,89,92,1,0,0,
+"Tampa, FL",FL,MQ,118,178,165,0,0,前序航班晚到
+"Austin, TX",TX,MQ,176,0,0,1,0,
+"Chicago, IL",IL,MQ,129,116,-16,0,0,
+"Dallas/Fort Worth, TX",TX,MQ,100,105,10,0,0,
+"Charlotte, NC",NC,MQ,69,55,-14,0,0,
+"Albuquerque, NM",NM,MQ,106,103,25,0,0,航司
+"Killeen, TX",TX,MQ,62,50,43,0,0,前序航班晚到
+"Louisville, KY",KY,MQ,143,131,-15,0,0,
+"Jackson/Vicksburg, MS",MS,MQ,101,118,35,0,0,前序航班晚到
+"Dallas/Fort Worth, TX",TX,MQ,92,90,31,0,0,航司
+"Oklahoma City, OK",OK,MQ,147,128,-24,0,0,
+"Dallas/Fort Worth, TX",TX,MQ,174,197,24,0,0,空管
+"Dallas/Fort Worth, TX",TX,MQ,76,66,-8,0,0,
+"Phoenix, AZ",AZ,MQ,57,51,-11,0,0,
+"Huntsville, AL",AL,MQ,126,118,-1,0,0,
+"Chicago, IL",IL,MQ,86,84,-5,0,0,
+"Chicago, IL",IL,MQ,59,61,19,0,0,航司
+"Dallas/Fort Worth, TX",TX,MQ,80,70,-10,0,0,
+"Abilene, TX",TX,MQ,63,72,60,0,0,前序航班晚到
+"Knoxville, TN",TN,MQ,126,119,-13,0,0,
+"Billings, MT",MT,MQ,170,159,141,0,0,航司
+"Scranton/Wilkes-Barre, PA",PA,MQ,136,121,-21,0,0,
+"Dallas/Fort Worth, TX",TX,MQ,77,70,0,0,0,
+"Dallas/Fort Worth, TX",TX,NK,128,181,77,0,0,空管
+"Orlando, FL",FL,NK,191,181,83,0,0,空管
+"Pensacola, FL",FL,NK,103,92,-18,0,0,
+"Fort Lauderdale, FL",FL,NK,66,52,0,0,0,
+"Baltimore, MD",MD,NK,310,279,-38,0,0,
+"Boston, MA",MA,NK,178,239,82,0,0,空管
+"Boston, MA",MA,NK,191,172,-33,0,0,
+"San Jose, CA",CA,NK,316,293,91,0,0,前序航班晚到
+"Orlando, FL",FL,NK,187,176,-3,0,0,
+"Newark, NJ",NJ,NK,168,153,-15,0,0,
+"Newark, NJ",NJ,NK,130,114,-22,0,0,
+"New Orleans, LA",LA,NK,115,0,0,1,0,
+"Cleveland, OH",OH,NK,159,148,-1,0,0,
+"Atlantic City, NJ",NJ,NK,152,147,-11,0,0,
+"Kansas City, MO",MO,NK,182,188,18,0,0,前序航班晚到
+"San Antonio, TX",TX,NK,168,154,-14,0,0,
+"Chicago, IL",IL,NK,149,142,59,0,0,航司
+"Sacramento, CA",CA,NK,92,80,5,0,0,
+"Las Vegas, NV",NV,NK,77,60,14,0,0,
+"Orlando, FL",FL,NK,128,109,-23,0,0,
+"Myrtle Beach, SC",SC,NK,106,93,-21,0,0,
+"Charlotte, NC",NC,NK,295,291,41,0,0,前序航班晚到
+"Detroit, MI",MI,NK,113,138,24,0,0,空管
+"Las Vegas, NV",NV,NK,288,296,6,0,0,
+"Atlanta, GA",GA,NK,115,108,-11,0,0,
+"Newark, NJ",NJ,NK,190,175,-25,0,0,
+"San Jose, CA",CA,NK,216,233,8,0,0,
+"Los Angeles, CA",CA,NK,246,246,5,0,0,
+"Los Angeles, CA",CA,NK,81,71,-16,0,0,
+"Philadelphia, PA",PA,NK,213,218,3,0,0,
+"Baltimore, MD",MD,NK,343,331,-15,0,0,
+"San Diego, CA",CA,NK,297,278,1,0,0,
+"Miami, FL",FL,NK,157,146,-17,0,0,
+"Los Angeles, CA",CA,NK,305,326,41,0,0,空管
+"New Orleans, LA",LA,NK,98,87,23,0,0,前序航班晚到
+"Orlando, FL",FL,NK,127,112,-26,0,0,
+"Las Vegas, NV",NV,NK,244,249,-1,0,0,
+"Fort Lauderdale, FL",FL,NK,326,330,1,0,0,
+"Fort Myers, FL",FL,NK,176,167,-17,0,0,
+"New York, NY",NY,NK,122,149,26,0,0,空管
+"Nashville, TN",TN,NK,158,148,-15,0,0,
+"Orlando, FL",FL,NK,149,133,-21,0,0,
+"Baltimore, MD",MD,NK,158,161,5,0,0,
+"Columbus, OH",OH,NK,159,134,31,0,0,航司
+"New York, NY",NY,NK,181,216,132,0,0,空管
+"Fort Lauderdale, FL",FL,NK,158,157,-3,0,0,
+"Chicago, IL",IL,NK,169,0,0,1,0,
+"Fort Lauderdale, FL",FL,NK,158,152,-6,0,0,
+"Chicago, IL",IL,NK,128,112,-6,0,0,
+"Orlando, FL",FL,NK,74,85,36,0,0,空管
+"Dallas/Fort Worth, TX",TX,NK,215,183,-38,0,0,
+"Fort Lauderdale, FL",FL,NK,314,293,-25,0,0,
+"Nashville, TN",TN,NK,235,223,91,0,0,前序航班晚到
+"Los Angeles, CA",CA,NK,265,254,-18,0,0,
+"Boston, MA",MA,NK,133,116,130,0,0,空管
+"Miami, FL",FL,NK,169,164,104,0,0,前序航班晚到
+"Boston, MA",MA,NK,88,111,36,0,0,空管
+"Charlotte, NC",NC,OH,127,116,-6,0,0,
+"Myrtle Beach, SC",SC,OH,105,108,-10,0,0,
+"Richmond, VA",VA,OH,85,74,-5,0,0,
+"Louisville, KY",KY,OH,143,134,-14,0,0,
+"Washington, DC",VA,OH,98,77,28,0,0,航司
+"Nashville, TN",TN,OH,92,75,18,0,0,航司
+"Columbia, SC",SC,OH,94,0,0,1,0,
+"Washington, DC",VA,OH,101,104,-4,0,0,
+"Washington, DC",VA,OH,111,111,0,0,0,
+"Jackson/Vicksburg, MS",MS,OH,118,113,6,0,0,
+"Washington, DC",VA,OH,110,95,1,0,0,
+"Washington, DC",VA,OH,84,84,-10,0,0,
+"Savannah, GA",GA,OH,106,109,-5,0,0,
+"South Bend, IN",IN,OH,114,117,-1,0,0,
+"Allentown/Bethlehem/Easton, PA",PA,OH,116,99,-22,0,0,
+"Philadelphia, PA",PA,OH,118,96,-30,0,0,
+"Washington, DC",VA,OH,83,69,31,0,0,航司
+"Charlotte, NC",NC,OH,79,61,-24,0,0,
+"Norfolk, VA",VA,OH,62,52,-16,0,0,
+"Atlanta, GA",GA,OH,116,123,-3,0,0,
+"Charlotte, NC",NC,OH,92,0,0,1,0,
+"Lafayette, LA",LA,OH,138,155,13,0,0,
+"Hartford, CT",CT,OH,92,84,-21,0,0,
+"Jackson/Vicksburg, MS",MS,OH,121,108,-24,0,0,
+"Charlotte, NC",NC,OH,68,76,6,0,0,
+"Rochester, NY",NY,OH,81,66,390,0,0,天气
+"Charleston/Dunbar, WV",WV,OH,84,88,5,0,0,
+"Grand Rapids, MI",MI,OH,105,104,61,0,0,前序航班晚到
+"Jacksonville, FL",FL,OH,118,130,2,0,0,
+"Philadelphia, PA",PA,OH,140,127,-20,0,0,
+"Charlotte, NC",NC,OH,132,121,117,0,0,航司
+"Charlotte, NC",NC,OH,65,47,-20,0,0,
+"Norfolk, VA",VA,OH,89,81,-15,0,0,
+"Washington, DC",VA,OH,136,147,7,0,0,
+"St. Louis, MO",MO,OH,129,132,-6,0,0,
+"Louisville, KY",KY,OH,95,133,151,0,0,天气
+"Charlotte, NC",NC,OH,95,103,69,0,0,前序航班晚到
+"Birmingham, AL",AL,OH,130,109,-35,0,0,
+"Wilmington, NC",NC,OH,71,80,-2,0,0,
+"Charlotte, NC",NC,OH,131,141,79,0,0,前序航班晚到
+"Charlotte, NC",NC,OH,110,95,2,0,0,
+"Washington, DC",VA,OH,171,184,38,0,0,航司
+"Savannah, GA",GA,OH,88,58,92,0,0,前序航班晚到
+"Washington, DC",VA,OH,60,46,-21,0,0,
+"Washington, DC",VA,OH,160,149,-5,0,0,
+"Hartford, CT",CT,OH,82,79,-7,0,0,
+"Missoula, MT",MT,OO,90,0,0,0,1,
+"Detroit, MI",MI,OO,70,75,7,0,0,
+"Louisville, KY",KY,OO,95,106,7,0,0,
+"Rapid City, SD",SD,OO,95,86,155,0,0,天气
+"Cedar Rapids/Iowa City, IA",IA,OO,80,71,104,0,0,航司
+"Phoenix, AZ",AZ,OO,67,57,-15,0,0,
+"Louisville, KY",KY,OO,132,136,1,0,0,
+"Roanoke, VA",VA,OO,125,111,-18,0,0,
+"Durango, CO",CO,OO,92,61,-41,0,0,
+"Chicago, IL",IL,OO,99,89,-6,0,0,
+"Atlanta, GA",GA,OO,111,107,-6,0,0,
+"Dallas/Fort Worth, TX",TX,OO,83,72,-16,0,0,
+"Houston, TX",TX,OO,81,80,7,0,0,
+"Albany, GA",GA,OO,70,79,94,0,0,航司
+"Detroit, MI",MI,OO,102,84,4,0,0,
+"El Paso, TX",TX,OO,125,127,-2,0,0,
+"Salt Lake City, UT",UT,OO,85,68,-31,0,0,
+"Denver, CO",CO,OO,104,90,-16,0,0,
+"Bend/Redmond, OR",OR,OO,101,109,4,0,0,
+"Washington, DC",VA,OO,180,172,-8,0,0,
+"Spokane, WA",WA,OO,75,78,-7,0,0,
+"Detroit, MI",MI,OO,120,116,-11,0,0,
+"Richmond, VA",VA,OO,110,104,-12,0,0,
+"Brunswick, GA",GA,OO,75,92,10,0,0,
+"Seattle, WA",WA,OO,175,170,16,0,0,航司
+"Minneapolis, MN",MN,OO,62,50,-22,0,0,
+"Chicago, IL",IL,OO,105,94,-17,0,0,
+"Killeen, TX",TX,OO,68,79,167,0,0,航司
+"Fargo, ND",ND,OO,120,106,1049,0,0,航司
+"Tyler, TX",TX,OO,66,51,186,0,0,天气
+"Minneapolis, MN",MN,OO,102,121,40,0,0,天气
+"Detroit, MI",MI,OO,78,81,303,0,0,天气
+"Denver, CO",CO,OO,62,55,-8,0,0,
+"Phoenix, AZ",AZ,OO,125,117,-13,0,0,
+"Lincoln, NE",NE,OO,105,95,-5,0,0,
+"Chicago, IL",IL,OO,130,127,17,0,0,航司
+"Chicago, IL",IL,OO,121,110,1,0,0,
+"Denver, CO",CO,OO,53,47,5,0,0,
+"Laredo, TX",TX,OO,92,87,-12,0,0,
+"Aspen, CO",CO,OO,132,141,3,0,0,
+"Los Angeles, CA",CA,OO,131,112,-17,0,0,
+"Minneapolis, MN",MN,OO,116,120,163,0,0,天气
+"Detroit, MI",MI,OO,61,56,88,0,0,天气
+"Monterey, CA",CA,OO,49,39,-24,0,0,
+"Durango, CO",CO,OO,86,88,-8,0,0,
+"El Paso, TX",TX,OO,136,130,-10,0,0,
+"Chicago, IL",IL,OO,117,103,-1,0,0,
+"Houston, TX",TX,OO,116,106,-16,0,0,
+"Minneapolis, MN",MN,OO,72,79,4,0,0,
+"Monterey, CA",CA,OO,115,116,-16,0,0,
+"Grand Junction, CO",CO,OO,84,100,6,0,0,
+"Idaho Falls, ID",ID,OO,63,52,-17,0,0,
+"Seattle, WA",WA,OO,66,72,-4,0,0,
+"Los Angeles, CA",CA,OO,120,140,14,0,0,
+"Denver, CO",CO,OO,71,68,-8,0,0,
+"San Diego, CA",CA,OO,64,58,23,0,0,航司
+"Salt Lake City, UT",UT,OO,138,139,-8,0,0,
+"Oklahoma City, OK",OK,OO,108,103,28,0,0,航司
+"Akron, OH",OH,OO,105,104,-11,0,0,
+"Los Angeles, CA",CA,OO,120,120,-2,0,0,
+"Colorado Springs, CO",CO,OO,62,49,-21,0,0,
+"Washington, DC",VA,OO,105,76,-31,0,0,
+"Minneapolis, MN",MN,OO,69,73,-1,0,0,
+"Pasco/Kennewick/Richland, WA",WA,OO,103,96,-13,0,0,
+"Chicago, IL",IL,OO,124,109,-19,0,0,
+"Denver, CO",CO,OO,130,135,16,0,0,前序航班晚到
+"South Bend, IN",IN,OO,62,61,-8,0,0,
+"Arcata/Eureka, CA",CA,OO,116,105,-20,0,0,
+"Minneapolis, MN",MN,OO,145,179,34,0,0,航司
+"Tulsa, OK",OK,OO,134,117,-24,0,0,
+"Chicago, IL",IL,OO,65,74,36,0,0,航司
+"Tulsa, OK",OK,OO,77,77,-10,0,0,
+"Chicago, IL",IL,OO,86,120,277,0,0,天气
+"Denver, CO",CO,OO,78,64,-14,0,0,
+"Boise, ID",ID,OO,65,60,-8,0,0,
+"Seattle, WA",WA,OO,119,106,42,0,0,前序航班晚到
+"San Diego, CA",CA,OO,125,118,-14,0,0,
+"Salt Lake City, UT",UT,OO,62,50,-17,0,0,
+"Salt Lake City, UT",UT,OO,98,99,-2,0,0,
+"Minneapolis, MN",MN,OO,64,59,-9,0,0,
+"Chicago, IL",IL,OO,121,118,-8,0,0,
+"Colorado Springs, CO",CO,OO,55,63,1,0,0,
+"Chicago, IL",IL,OO,68,56,-18,0,0,
+"Denver, CO",CO,OO,117,116,-4,0,0,
+"Chicago, IL",IL,OO,60,50,-1,0,0,
+"Seattle, WA",WA,OO,129,127,-3,0,0,
+"Houston, TX",TX,OO,166,148,172,0,0,前序航班晚到
+"Arcata/Eureka, CA",CA,OO,76,62,242,0,0,航司
+"Appleton, WI",WI,OO,78,72,52,0,0,航司
+"Dallas/Fort Worth, TX",TX,OO,97,119,21,0,0,航司
+"Midland/Odessa, TX",TX,OO,113,108,51,0,0,天气
+"Waco, TX",TX,OO,58,60,-10,0,0,
+"San Francisco, CA",CA,OO,130,121,-11,0,0,
+"Salt Lake City, UT",UT,OO,62,54,-4,0,0,
+"Tucson, AZ",AZ,OO,118,114,1,0,0,
+"Salt Lake City, UT",UT,OO,110,99,-17,0,0,
+"San Diego, CA",CA,OO,128,135,-3,0,0,
+"San Jose, CA",CA,OO,107,112,-6,0,0,
+"Burbank, CA",CA,OO,148,144,-11,0,0,
+"Spokane, WA",WA,OO,128,136,22,0,0,前序航班晚到
+"Portland, OR",OR,OO,150,151,4,0,0,
+"Los Angeles, CA",CA,OO,82,61,-22,0,0,
+"San Jose, CA",CA,OO,143,141,-7,0,0,
+"Indianapolis, IN",IN,OO,71,64,-6,0,0,
+"San Francisco, CA",CA,OO,96,104,1,0,0,
+"Lincoln, NE",NE,OO,113,114,-1,0,0,
+"Phoenix, AZ",AZ,OO,53,49,-14,0,0,
+"Denver, CO",CO,OO,105,104,-11,0,0,
+"Chicago, IL",IL,OO,111,111,0,0,0,
+"Sacramento, CA",CA,OO,70,71,-2,0,0,
+"Colorado Springs, CO",CO,OO,117,110,-17,0,0,
+"Salt Lake City, UT",UT,OO,115,116,-6,0,0,
+"Dallas/Fort Worth, TX",TX,OO,82,69,-20,0,0,
+"Dallas/Fort Worth, TX",TX,OO,115,96,2,0,0,
+"Cleveland, OH",OH,OO,109,95,424,0,0,天气
+"Salt Lake City, UT",UT,OO,54,52,-11,0,0,
+"Denver, CO",CO,OO,104,108,4,0,0,
+"Fresno, CA",CA,OO,97,100,-2,0,0,
+"Chicago, IL",IL,OO,57,39,-10,0,0,
+"Chicago, IL",IL,OO,153,132,38,0,0,航司
+"Lansing, MI",MI,OO,48,50,55,0,0,航司
+"Minot, ND",ND,OO,96,96,213,0,0,天气
+"Sacramento, CA",CA,OO,94,87,42,0,0,天气
+"Fresno, CA",CA,OO,75,75,-5,0,0,
+"Salt Lake City, UT",UT,OO,132,151,70,0,0,前序航班晚到
+"Seattle, WA",WA,OO,150,150,-4,0,0,
+"Spokane, WA",WA,OO,63,68,-2,0,0,
+"Burbank, CA",CA,OO,124,116,18,0,0,前序航班晚到
+"San Francisco, CA",CA,OO,92,81,17,0,0,航司
+"Minneapolis, MN",MN,OO,90,91,5,0,0,
+"Tyler, TX",TX,OO,63,50,21,0,0,前序航班晚到
+"Aspen, CO",CO,OO,65,53,-22,0,0,
+"Fort Wayne, IN",IN,OO,70,87,11,0,0,
+"Chicago, IL",IL,OO,92,110,10,0,0,
+"Phoenix, AZ",AZ,OO,84,78,2,0,0,
+"Bozeman, MT",MT,OO,81,84,15,0,0,
+"Detroit, MI",MI,OO,80,76,-9,0,0,
+"Syracuse, NY",NY,OO,85,65,-29,0,0,
+"Dallas/Fort Worth, TX",TX,OO,81,85,2,0,0,
+"Los Angeles, CA",CA,OO,56,45,-12,0,0,
+"Denver, CO",CO,OO,104,95,0,0,0,
+"Denver, CO",CO,OO,91,85,-11,0,0,
+"Bozeman, MT",MT,OO,115,101,-18,0,0,
+"Detroit, MI",MI,OO,75,67,-10,0,0,
+"Madison, WI",WI,OO,80,80,2,0,0,
+"Denver, CO",CO,OO,53,53,-3,0,0,
+"Seattle, WA",WA,OO,155,145,27,0,0,航司
+"Green Bay, WI",WI,OO,73,90,17,0,0,航司
+"Dallas/Fort Worth, TX",TX,OO,72,62,-14,0,0,
+"Burbank, CA",CA,OO,111,111,-5,0,0,
+"Seattle, WA",WA,OO,71,64,-12,0,0,
+"Chicago, IL",IL,OO,60,56,-10,0,0,
+"Raleigh/Durham, NC",NC,UA,170,163,-10,0,0,
+"Denver, CO",CO,UA,172,177,5,0,0,
+"Newark, NJ",NJ,UA,155,206,50,0,0,空管
+"Houston, TX",TX,UA,237,227,-11,0,0,
+"Newark, NJ",NJ,UA,159,0,0,1,0,
+"Newark, NJ",NJ,UA,170,200,127,0,0,空管
+"Washington, DC",VA,UA,111,92,-22,0,0,
+"Seattle, WA",WA,UA,264,246,-18,0,0,
+"Denver, CO",CO,UA,100,0,0,0,1,
+"Chicago, IL",IL,UA,135,121,-4,0,0,
+"Houston, TX",TX,UA,209,224,11,0,0,
+"Newark, NJ",NJ,UA,102,97,0,0,0,
+"Houston, TX",TX,UA,242,239,1,0,0,
+"Denver, CO",CO,UA,75,66,16,0,0,航司
+"Denver, CO",CO,UA,429,417,4,0,0,
+"Washington, DC",VA,UA,71,59,54,0,0,航司
+"San Francisco, CA",CA,UA,333,322,-18,0,0,
+"Chicago, IL",IL,UA,182,178,-3,0,0,
+"Chicago, IL",IL,UA,262,252,6,0,0,
+"Newark, NJ",NJ,UA,347,335,4,0,0,
+"Boston, MA",MA,UA,391,393,-5,0,0,
+"Chicago, IL",IL,UA,286,304,21,0,0,空管
+"Pittsburgh, PA",PA,UA,176,165,-14,0,0,
+"Denver, CO",CO,UA,140,131,0,0,0,
+"Newark, NJ",NJ,UA,89,97,6,0,0,
+"Denver, CO",CO,UA,159,149,-12,0,0,
+"Chicago, IL",IL,UA,96,106,8,0,0,
+"Denver, CO",CO,UA,66,67,-9,0,0,
+"Newark, NJ",NJ,UA,365,383,14,0,0,
+"Austin, TX",TX,UA,225,231,9,0,0,
+"Cleveland, OH",OH,UA,105,79,-34,0,0,
+"Cincinnati, OH",KY,UA,179,166,40,0,0,航司
+"San Francisco, CA",CA,UA,84,69,25,0,0,前序航班晚到
+"San Francisco, CA",CA,UA,167,148,-18,0,0,
+"San Francisco, CA",CA,UA,240,247,2,0,0,
+"Houston, TX",TX,UA,279,281,-1,0,0,
+"Newark, NJ",NJ,UA,310,291,-25,0,0,
+"Spokane, WA",WA,UA,142,116,-33,0,0,
+"Newark, NJ",NJ,UA,101,89,37,0,0,航司
+"Charlotte, NC",NC,UA,131,132,1,0,0,
+"New Orleans, LA",LA,UA,186,163,-19,0,0,
+"Santa Ana, CA",CA,UA,199,188,-17,0,0,
+"Denver, CO",CO,UA,175,176,1,0,0,
+"Denver, CO",CO,UA,151,141,14,0,0,
+"Medford, OR",OR,UA,151,134,-15,0,0,
+"San Diego, CA",CA,UA,98,92,111,0,0,空管
+"Raleigh/Durham, NC",NC,UA,141,124,-23,0,0,
+"San Diego, CA",CA,UA,146,158,9,0,0,
+"Billings, MT",MT,UA,105,91,65,0,0,前序航班晚到
+"Chicago, IL",IL,UA,93,83,6,0,0,
+"San Francisco, CA",CA,UA,82,74,-9,0,0,
+"Jackson, WY",WY,UA,94,85,-6,0,0,
+"Denver, CO",CO,UA,133,116,-26,0,0,
+"Saipan, TT",TT,UA,45,71,25,0,0,空管
+"Denver, CO",CO,UA,211,218,24,0,0,空管
+"Newark, NJ",NJ,UA,354,363,4,0,0,
+"Sacramento, CA",CA,UA,146,138,-11,0,0,
+"Denver, CO",CO,UA,89,78,16,0,0,航司
+"Chicago, IL",IL,UA,97,88,-12,0,0,
+"Los Angeles, CA",CA,UA,258,253,-9,0,0,
+"Newark, NJ",NJ,UA,171,145,-19,0,0,
+"Grand Rapids, MI",MI,UA,173,151,21,0,0,天气
+"San Diego, CA",CA,UA,314,332,12,0,0,
+"Baltimore, MD",MD,UA,131,131,-6,0,0,
+"Houston, TX",TX,UA,75,73,4,0,0,
+"Salt Lake City, UT",UT,UA,89,81,-16,0,0,
+"Newark, NJ",NJ,UA,222,210,-19,0,0,
+"Great Falls, MT",MT,UA,120,121,0,0,0,
+"Austin, TX",TX,UA,225,224,256,0,0,前序航班晚到
+"Boston, MA",MA,UA,104,100,37,0,0,天气
+"Columbus, OH",OH,UA,85,76,11,0,0,
+"Newark, NJ",NJ,UA,360,350,57,0,0,前序航班晚到
+"Anchorage, AK",AK,UA,319,316,-10,0,0,
+"Dallas/Fort Worth, TX",TX,UA,71,65,-12,0,0,
+"Jackson, WY",WY,UA,145,143,-6,0,0,
+"Boston, MA",MA,UA,284,277,-14,0,0,
+"Orlando, FL",FL,UA,153,169,13,0,0,
+"Houston, TX",TX,UA,195,204,7,0,0,
+"Newark, NJ",NJ,UA,96,92,-16,0,0,
+"Los Angeles, CA",CA,UA,349,328,-20,0,0,
+"Newark, NJ",NJ,UA,384,347,53,0,0,前序航班晚到
+"Denver, CO",CO,UA,119,116,-4,0,0,
+"Washington, DC",VA,UA,348,314,4,0,0,
+"Newark, NJ",NJ,UA,183,172,-15,0,0,
+"Houston, TX",TX,UA,186,172,-14,0,0,
+"Newark, NJ",NJ,UA,159,145,-22,0,0,
+"Denver, CO",CO,UA,164,154,35,0,0,前序航班晚到
+"Chicago, IL",IL,UA,138,121,0,0,0,
+"Washington, DC",VA,UA,165,184,18,0,0,空管
+"Denver, CO",CO,UA,94,95,92,0,0,前序航班晚到
+"Newark, NJ",NJ,UA,225,201,-36,0,0,
+"Chicago, IL",IL,UA,235,226,60,0,0,前序航班晚到
+"Los Angeles, CA",CA,UA,303,280,-15,0,0,
+"Los Angeles, CA",CA,UA,346,333,-17,0,0,
+"Denver, CO",CO,UA,96,94,27,0,0,航司
+"Hartford, CT",CT,UA,268,269,1,0,0,
+"Atlanta, GA",GA,UA,134,118,-18,0,0,
+"Newark, NJ",NJ,UA,354,339,-8,0,0,
+"Houston, TX",TX,UA,204,204,-1,0,0,
+"San Diego, CA",CA,UA,150,128,-37,0,0,
+"Houston, TX",TX,UA,216,206,-6,0,0,
+"Denver, CO",CO,UA,224,216,-17,0,0,
+"San Francisco, CA",CA,UA,133,123,-13,0,0,
+"Denver, CO",CO,UA,221,224,2,0,0,
+"Nashville, TN",TN,UA,115,101,209,0,0,前序航班晚到
+"Denver, CO",CO,UA,115,105,75,0,0,前序航班晚到
+"Denver, CO",CO,UA,149,138,-18,0,0,
+"Chicago, IL",IL,UA,154,143,-13,0,0,
+"Houston, TX",TX,UA,137,123,-17,0,0,
+"Chicago, IL",IL,UA,393,382,-24,0,0,
+"Houston, TX",TX,UA,187,162,56,0,0,前序航班晚到
+"Houston, TX",TX,UA,168,169,-1,0,0,
+"Newark, NJ",NJ,UA,82,71,-16,0,0,
+"Newark, NJ",NJ,UA,225,212,92,0,0,前序航班晚到
+"Grand Rapids, MI",MI,UA,68,48,-23,0,0,
+"Denver, CO",CO,UA,203,196,43,0,0,航司
+"Billings, MT",MT,UA,102,89,-23,0,0,
+"San Francisco, CA",CA,UA,121,117,-10,0,0,
+"Chicago, IL",IL,UA,237,229,-10,0,0,
+"Chicago, IL",IL,UA,198,176,-27,0,0,
+"Chicago, IL",IL,UA,277,293,12,0,0,
+"New Orleans, LA",LA,UA,177,183,-3,0,0,
+"Denver, CO",CO,UA,81,73,-11,0,0,
+"San Antonio, TX",TX,UA,204,208,5,0,0,
+"Chicago, IL",IL,UA,122,135,13,0,0,
+"Denver, CO",CO,UA,206,249,56,0,0,空管
+"Chicago, IL",IL,UA,227,221,-6,0,0,
+"Chicago, IL",IL,UA,93,106,46,0,0,前序航班晚到
+"Raleigh/Durham, NC",NC,UA,172,167,-8,0,0,
+"Ontario, CA",CA,UA,85,95,5,0,0,
+"Houston, TX",TX,UA,231,232,5,0,0,
+"Denver, CO",CO,UA,103,97,-19,0,0,
+"San Antonio, TX",TX,UA,218,214,-11,0,0,
+"Ontario, CA",CA,UA,143,123,-20,0,0,
+"Houston, TX",TX,UA,132,166,59,0,0,空管
+"Portland, OR",OR,UA,245,253,14,0,0,
+"Denver, CO",CO,UA,236,255,14,0,0,
+"Chicago, IL",IL,UA,95,79,-18,0,0,
+"Pittsburgh, PA",PA,UA,99,88,-12,0,0,
+"Los Angeles, CA",CA,UA,325,308,10,0,0,
+"Chicago, IL",IL,UA,174,166,-8,0,0,
+"Los Angeles, CA",CA,UA,78,87,9,0,0,
+"Newark, NJ",NJ,UA,153,143,-16,0,0,
+"Chicago, IL",IL,UA,118,108,12,0,0,
+"Dallas/Fort Worth, TX",TX,UA,130,114,-22,0,0,
+"Orlando, FL",FL,UA,153,160,166,0,0,天气
+"Houston, TX",TX,UA,76,74,6,0,0,
+"Pittsburgh, PA",PA,UA,206,193,-15,0,0,
+"Newark, NJ",NJ,UA,256,249,-8,0,0,
+"Los Angeles, CA",CA,UA,95,107,28,0,0,前序航班晚到
+"Chicago, IL",IL,UA,79,76,-5,0,0,
+"Houston, TX",TX,UA,169,232,156,0,0,天气
+"Madison, WI",WI,UA,148,141,-11,0,0,
+"Denver, CO",CO,UA,123,122,12,0,0,
+"Denver, CO",CO,UA,149,128,-27,0,0,
+"Buffalo, NY",NY,WN,115,100,-18,0,0,
+"Dallas, TX",TX,WN,190,179,21,0,0,前序航班晚到
+"Honolulu, HI",HI,WN,60,61,-1,0,0,
+"Las Vegas, NV",NV,WN,80,68,-17,0,0,
+"Chicago, IL",IL,WN,260,257,2,0,0,
+"Phoenix, AZ",AZ,WN,90,81,-13,0,0,
+"San Francisco, CA",CA,WN,80,86,5,0,0,
+"Albuquerque, NM",NM,WN,100,89,-11,0,0,
+"Nashville, TN",TN,WN,85,74,8,0,0,
+"Cincinnati, OH",KY,WN,85,84,-3,0,0,
+"Denver, CO",CO,WN,120,101,-24,0,0,
+"Houston, TX",TX,WN,70,77,70,0,0,航司
+"Los Angeles, CA",CA,WN,135,134,-8,0,0,
+"Chicago, IL",IL,WN,65,55,-17,0,0,
+"Oakland, CA",CA,WN,90,83,-5,0,0,
+"Pittsburgh, PA",PA,WN,150,146,-8,0,0,
+"San Jose, CA",CA,WN,80,72,-11,0,0,
+"Tulsa, OK",OK,WN,180,165,-20,0,0,
+"Phoenix, AZ",AZ,WN,260,269,11,0,0,
+"San Diego, CA",CA,WN,95,94,24,0,0,前序航班晚到
+"Santa Ana, CA",CA,WN,80,75,-2,0,0,
+"Atlanta, GA",GA,WN,105,96,-7,0,0,
+"Burbank, CA",CA,WN,70,60,36,0,0,前序航班晚到
+"Dallas, TX",TX,WN,100,106,3,0,0,
+"Denver, CO",CO,WN,115,105,-5,0,0,
+"Houston, TX",TX,WN,130,110,-22,0,0,
+"Los Angeles, CA",CA,WN,205,225,83,0,0,前序航班晚到
+"Chicago, IL",IL,WN,135,126,6,0,0,
+"Oakland, CA",CA,WN,85,76,26,0,0,航司
+"Phoenix, AZ",AZ,WN,130,117,4,0,0,
+"San Francisco, CA",CA,WN,85,86,12,0,0,
+"St. Louis, MO",MO,WN,75,69,-9,0,0,
+"Nashville, TN",TN,WN,110,82,-29,0,0,
+"Charleston, SC",SC,WN,95,88,-2,0,0,
+"Denver, CO",CO,WN,140,125,-18,0,0,
+"Houston, TX",TX,WN,185,183,-2,0,0,
+"Los Angeles, CA",CA,WN,175,170,-3,0,0,
+"Sacramento, CA",CA,WN,80,73,-9,0,0,
+"Atlanta, GA",GA,WN,100,80,26,0,0,航司
+"Burbank, CA",CA,WN,80,68,-11,0,0,
+"Dallas, TX",TX,WN,120,115,40,0,0,航司
+"Denver, CO",CO,WN,155,160,21,0,0,前序航班晚到
+"Houston, TX",TX,WN,90,92,-2,0,0,
+"Los Angeles, CA",CA,WN,120,111,-11,0,0,
+"Chicago, IL",IL,WN,105,101,-8,0,0,
+"Oakland, CA",CA,WN,120,102,0,0,0,
+"Pittsburgh, PA",PA,WN,135,126,-9,0,0,
+"San Jose, CA",CA,WN,80,71,-10,0,0,
+"Tampa, FL",FL,WN,135,141,0,0,0,
+"Nashville, TN",TN,WN,170,161,-8,0,0,
+"Baltimore, MD",MD,WN,75,75,-2,0,0,
+"Denver, CO",CO,WN,125,117,-14,0,0,
+"Grand Rapids, MI",MI,WN,95,129,29,0,0,空管
+"Las Vegas, NV",NV,WN,190,168,6,0,0,
+"Kansas City, MO",MO,WN,185,172,-8,0,0,
+"Las Vegas, NV",NV,WN,90,86,56,0,0,航司
+"Orlando, FL",FL,WN,175,172,7,0,0,
+"Oakland, CA",CA,WN,145,141,-4,0,0,
+"Phoenix, AZ",AZ,WN,105,110,37,0,0,航司
+"San Jose, CA",CA,WN,80,81,-2,0,0,
+"Tampa, FL",FL,WN,145,135,26,0,0,前序航班晚到
+"Nashville, TN",TN,WN,140,125,-17,0,0,
+"Baltimore, MD",MD,WN,75,60,24,0,0,前序航班晚到
+"Denver, CO",CO,WN,200,188,139,0,0,前序航班晚到
+"Honolulu, HI",HI,WN,45,42,-5,0,0,
+"Las Vegas, NV",NV,WN,170,176,36,0,0,航司
+"Kansas City, MO",MO,WN,110,101,-6,0,0,
+"Manchester, NH",NH,WN,95,79,-2,0,0,
+"Portland, OR",OR,WN,90,88,-3,0,0,
+"San Diego, CA",CA,WN,90,76,-20,0,0,
+"Sacramento, CA",CA,WN,90,84,-8,0,0,
+"Atlanta, GA",GA,WN,250,241,-10,0,0,
+"Burbank, CA",CA,WN,140,139,-3,0,0,
+"Dallas, TX",TX,WN,100,97,10,0,0,
+"Baltimore, MD",MD,WN,75,59,-2,0,0,
+"Denver, CO",CO,WN,235,239,14,0,0,
+"Greer, SC",SC,WN,140,135,-14,0,0,
+"Las Vegas, NV",NV,WN,80,76,75,0,0,航司
+"Orlando, FL",FL,WN,235,211,-24,0,0,
+"Milwaukee, WI",WI,WN,160,157,0,0,0,
+"Phoenix, AZ",AZ,WN,85,82,25,0,0,前序航班晚到
+"San Diego, CA",CA,WN,95,89,-8,0,0,
+"Sarasota/Bradenton, FL",FL,WN,140,165,36,0,0,空管
+"Austin, TX",TX,WN,60,54,23,0,0,前序航班晚到
+"Baltimore, MD",MD,WN,200,201,21,0,0,航司
+"Dallas, TX",TX,WN,170,159,-11,0,0,
+"Denver, CO",CO,WN,155,146,-11,0,0,
+"Houston, TX",TX,WN,160,130,-15,0,0,
+"Los Angeles, CA",CA,WN,95,74,13,0,0,
+"Chicago, IL",IL,WN,65,74,22,0,0,前序航班晚到
+"Oakland, CA",CA,WN,95,90,9,0,0,
+"Phoenix, AZ",AZ,WN,175,164,6,0,0,
+"San Jose, CA",CA,WN,150,141,-10,0,0,
+"Chicago, IL",IL,WN,70,64,16,0,0,航司
+"Oakland, CA",CA,WN,245,239,0,0,0,
+"Phoenix, AZ",AZ,WN,115,111,-9,0,0,
+"San Jose, CA",CA,WN,210,204,6,0,0,
+"St. Louis, MO",MO,WN,225,238,91,0,0,前序航班晚到
+"Nashville, TN",TN,WN,135,125,-14,0,0,
+"Cleveland, OH",OH,WN,260,259,-5,0,0,
+"Denver, CO",CO,WN,145,143,-1,0,0,
+"Houston, TX",TX,WN,120,114,0,0,0,
+"Lubbock, TX",TX,WN,70,65,-14,0,0,
+"Chicago, IL",IL,WN,125,112,-9,0,0,
+"Ontario, CA",CA,WN,70,63,-12,0,0,
+"San Diego, CA",CA,WN,175,197,25,0,0,空管
+"Santa Ana, CA",CA,WN,80,78,-2,0,0,
+"Atlanta, GA",GA,WN,85,84,40,0,0,航司
+"Baltimore, MD",MD,WN,115,102,8,0,0,
+"Dallas, TX",TX,WN,170,152,-22,0,0,
+"Denver, CO",CO,WN,215,189,-30,0,0,
+"Orlando, FL",FL,WN,130,106,20,0,0,前序航班晚到
+"Minneapolis, MN",MN,WN,200,191,-9,0,0,
+"Phoenix, AZ",AZ,WN,195,196,40,0,0,前序航班晚到
+"Seattle, WA",WA,WN,145,138,-13,0,0,
+"Tampa, FL",FL,WN,135,131,-4,0,0,
+"Nashville, TN",TN,WN,95,87,7,0,0,
+"Baltimore, MD",MD,WN,105,103,78,0,0,航司
+"Denver, CO",CO,WN,125,117,124,0,0,前序航班晚到
+"Spokane, WA",WA,WN,135,135,9,0,0,
+"Las Vegas, NV",NV,WN,190,187,-4,0,0,
+"Kansas City, MO",MO,WN,220,203,2,0,0,
+"Milwaukee, WI",WI,WN,90,90,-2,0,0,
+"Phoenix, AZ",AZ,WN,70,62,-8,0,0,
+"San Diego, CA",CA,WN,80,82,35,0,0,前序航班晚到
+"Santa Ana, CA",CA,WN,80,69,45,0,0,航司
+"Austin, TX",TX,WN,140,125,-20,0,0,
+"Burbank, CA",CA,WN,80,72,-14,0,0,
+"Dallas, TX",TX,WN,65,64,0,0,0,
+"Denver, CO",CO,WN,195,184,-11,0,0,
+"Austin, TX",TX,WN,145,147,29,0,0,空管
+"Baltimore, MD",MD,WN,110,115,26,0,0,航司
+"Dallas, TX",TX,WN,185,203,19,0,0,空管
+"Denver, CO",CO,WN,155,152,59,0,0,前序航班晚到
+"Wichita, KS",KS,WN,75,72,76,0,0,前序航班晚到
+"Los Angeles, CA",CA,WN,90,73,28,0,0,前序航班晚到
+"Chicago, IL",IL,WN,110,108,8,0,0,
+"Oakland, CA",CA,WN,55,58,3,0,0,
+"Pittsburgh, PA",PA,WN,65,54,-14,0,0,
+"San Jose, CA",CA,WN,90,76,-8,0,0,
+"Tampa, FL",FL,WN,145,134,33,0,0,前序航班晚到
+"Nashville, TN",TN,WN,255,250,3,0,0,
+"Columbus, OH",OH,WN,80,70,-14,0,0,
+"Denver, CO",CO,WN,140,134,6,0,0,
+"Houston, TX",TX,WN,135,148,13,0,0,
+"New York, NY",NY,WN,145,144,35,0,0,航司
+"Chicago, IL",IL,WN,130,131,21,0,0,航司
+"Norfolk, VA",VA,WN,60,47,44,0,0,前序航班晚到
+"San Diego, CA",CA,WN,200,179,-23,0,0,
+"Omaha, NE",NE,WN,80,74,13,0,0,
+"Richmond, VA",VA,WN,50,48,9,0,0,
+"Salt Lake City, UT",UT,WN,90,88,-3,0,0,
+"Valparaiso, FL",FL,WN,85,80,-12,0,0,
+"Nashville, TN",TN,WN,245,241,-6,0,0,
+"Colorado Springs, CO",CO,WN,205,202,4,0,0,
+"Denver, CO",CO,WN,225,271,46,0,0,空管
+"Houston, TX",TX,WN,145,137,24,0,0,航司
+"Los Angeles, CA",CA,WN,145,129,-17,0,0,
+"Chicago, IL",IL,WN,110,99,-12,0,0,
+"Oakland, CA",CA,WN,115,110,-6,0,0,
+"Pittsburgh, PA",PA,WN,140,132,75,0,0,前序航班晚到
+"San Juan, PR",PR,WN,275,277,30,0,0,前序航班晚到
+"Albuquerque, NM",NM,WN,125,123,-8,0,0,
+"Boise, ID",ID,WN,125,110,36,0,0,前序航班晚到
+"Cincinnati, OH",KY,WN,60,57,-4,0,0,
+"Denver, CO",CO,WN,110,110,10,0,0,
+"Houston, TX",TX,WN,190,184,-7,0,0,
+"Denver, CO",CO,WN,145,130,-16,0,0,
+"Houston, TX",TX,WN,75,62,1,0,0,
+"Las Vegas, NV",NV,WN,255,247,-8,0,0,
+"Orlando, FL",FL,WN,165,149,27,0,0,前序航班晚到
+"Minneapolis, MN",MN,WN,80,89,27,0,0,前序航班晚到
+"Phoenix, AZ",AZ,WN,105,99,19,0,0,航司
+"San Antonio, TX",TX,WN,205,209,10,0,0,
+"Santa Ana, CA",CA,WN,75,66,-16,0,0,
+"Austin, TX",TX,WN,130,121,-13,0,0,
+"Baltimore, MD",MD,WN,330,312,-17,0,0,
+"Washington, DC",VA,WN,185,170,-14,0,0,
+"Greer, SC",SC,WN,55,50,-17,0,0,
+"Las Vegas, NV",NV,WN,135,126,-13,0,0,
+"Orlando, FL",FL,WN,120,112,116,0,0,前序航班晚到
+"Oakland, CA",CA,WN,90,84,-11,0,0,
+"Pittsburgh, PA",PA,WN,145,135,18,0,0,前序航班晚到
+"San Juan, PR",PR,WN,290,306,14,0,0,
+"Albuquerque, NM",NM,WN,95,90,-7,0,0,
+"Nashville, TN",TN,WN,210,206,23,0,0,前序航班晚到
+"St. Louis, MO",MO,WN,145,140,6,0,0,
+"Austin, TX",TX,WN,125,124,-5,0,0,
+"Baltimore, MD",MD,WN,85,78,52,0,0,前序航班晚到
+"Washington, DC",VA,WN,155,141,-2,0,0,
+"Fort Lauderdale, FL",FL,WN,155,142,33,0,0,前序航班晚到
+"Las Vegas, NV",NV,WN,75,66,26,0,0,航司
+"Orlando, FL",FL,WN,90,91,4,0,0,
+"Milwaukee, WI",WI,WN,225,224,13,0,0,
+"Phoenix, AZ",AZ,WN,105,105,-5,0,0,
+"Savannah, GA",GA,WN,100,87,-19,0,0,
+"St. Louis, MO",MO,WN,145,0,0,0,1,
+"Birmingham, AL",AL,WN,105,93,30,0,0,前序航班晚到
+"Baltimore, MD",MD,WN,55,50,166,0,0,航司
+"Washington, DC",VA,WN,130,122,1,0,0,
+"Greer, SC",SC,WN,70,66,14,0,0,
+"Las Vegas, NV",NV,WN,210,195,-18,0,0,
+"Orlando, FL",FL,WN,140,145,8,0,0,
+"Minneapolis, MN",MN,WN,125,118,-7,0,0,
+"Houston, TX",TX,WN,100,85,-15,0,0,
+"Los Angeles, CA",CA,WN,355,334,-26,0,0,
+"Chicago, IL",IL,WN,105,126,22,0,0,空管
+"Oakland, CA",CA,WN,115,108,-12,0,0,
+"Pittsburgh, PA",PA,WN,275,284,3,0,0,
+"San Jose, CA",CA,WN,80,96,21,0,0,空管
+"Tampa, FL",FL,WN,225,227,33,0,0,航司
+"Baltimore, MD",MD,WN,100,102,2,0,0,
+"Dallas, TX",TX,WN,80,86,36,0,0,前序航班晚到
+"Des Moines, IA",IA,WN,60,59,4,0,0,
+"Kona, HI",HI,WN,50,53,-3,0,0,
+"Long Beach, CA",CA,WN,235,232,-9,0,0,
+"Chicago, IL",IL,WN,90,91,46,0,0,前序航班晚到
+"Ontario, CA",CA,WN,65,73,5,0,0,
+"Rochester, NY",NY,WN,75,63,-13,0,0,
+"Sacramento, CA",CA,WN,85,78,-9,0,0,
+"Atlanta, GA",GA,WN,110,108,-3,0,0,
+"Burbank, CA",CA,WN,145,130,-21,0,0,
+"Dallas, TX",TX,WN,140,112,-20,0,0,
+"Denver, CO",CO,WN,135,130,37,0,0,前序航班晚到
+"Wichita, KS",KS,WN,75,68,3,0,0,
+"New York, NY",NY,WN,140,124,-17,0,0,
+"Chicago, IL",IL,WN,85,78,-10,0,0,
+"Ontario, CA",CA,WN,170,163,-8,0,0,
+"Fort Myers, FL",FL,WN,150,139,-12,0,0,
+"Houston, TX",TX,WN,60,62,61,0,0,前序航班晚到
+"Las Vegas, NV",NV,WN,155,156,11,0,0,
+"Orlando, FL",FL,WN,140,138,-7,0,0,
+"New Orleans, LA",LA,WN,85,84,33,0,0,前序航班晚到
+"Phoenix, AZ",AZ,WN,205,196,-5,0,0,
+"San Antonio, TX",TX,WN,180,182,-5,0,0,
+"St. Louis, MO",MO,WN,70,58,16,0,0,前序航班晚到
+"Austin, TX",TX,WN,165,166,-1,0,0,
+"Baltimore, MD",MD,WN,155,183,101,0,0,空管
+"Dallas, TX",TX,WN,105,97,-11,0,0,
+"El Paso, TX",TX,WN,105,106,-3,0,0,
+"Las Vegas, NV",NV,WN,70,66,-8,0,0,
+"Kansas City, MO",MO,WN,90,74,-12,0,0,
+"Chicago, IL",IL,WN,70,56,14,0,0,
+"Philadelphia, PA",PA,WN,125,115,-11,0,0,
+"San Diego, CA",CA,WN,95,88,-1,0,0,
+"St. Louis, MO",MO,WN,85,83,-5,0,0,
+"Austin, TX",TX,WN,155,154,224,0,0,前序航班晚到
+"Baltimore, MD",MD,WN,70,54,-6,0,0,
+"Rochester, NY",NY,WN,105,108,32,0,0,前序航班晚到
+"Sacramento, CA",CA,WN,235,230,-6,0,0,
+"Atlanta, GA",GA,WN,135,125,-8,0,0,
+"Burbank, CA",CA,WN,120,122,2,0,0,
+"Dallas, TX",TX,WN,110,116,7,0,0,
+"Denver, CO",CO,WN,150,154,15,0,0,
+"Houston, TX",TX,WN,65,64,-8,0,0,
+"Las Vegas, NV",NV,WN,190,184,-1,0,0,
+"Orlando, FL",FL,WN,175,167,62,0,0,航司
+"Oakland, CA",CA,WN,255,248,-5,0,0,
+"Phoenix, AZ",AZ,WN,135,144,26,0,0,航司
+"Seattle, WA",WA,WN,165,183,64,0,0,航司
+"St. Louis, MO",MO,WN,205,197,-1,0,0,
+"Austin, TX",TX,WN,80,73,0,0,0,
+"Baltimore, MD",MD,WN,100,94,25,0,0,前序航班晚到
+"Dallas, TX",TX,WN,145,134,-2,0,0,
+"Detroit, MI",MI,WN,85,78,-9,0,0,
+"Jacksonville, FL",FL,WN,115,105,182,0,0,航司
+"New York, NY",NY,WN,170,143,-28,0,0,
+"Valparaiso, FL",FL,WN,90,74,55,0,0,前序航班晚到
+"Nashville, TN",TN,WN,245,223,237,0,0,前序航班晚到
+"Colorado Springs, CO",CO,WN,50,44,-14,0,0,
+"Denver, CO",CO,WN,140,136,4,0,0,
+"Houston, TX",TX,WN,145,135,321,0,0,前序航班晚到
+"Los Angeles, CA",CA,WN,140,130,-12,0,0,
+"Chicago, IL",IL,WN,70,66,-3,0,0,
+"Oakland, CA",CA,WN,90,89,-3,0,0,
+"Pensacola, FL",FL,WN,135,130,-4,0,0,
+"San Juan, PR",PR,WN,190,189,11,0,0,
+"Albuquerque, NM",NM,WN,95,88,-15,0,0,
+"Nashville, TN",TN,WN,245,256,10,0,0,
+"Columbus, OH",OH,WN,160,153,11,0,0,
+"Denver, CO",CO,WN,140,126,61,0,0,前序航班晚到
+"Houston, TX",TX,WN,65,0,0,1,0,
+"Las Vegas, NV",NV,WN,80,80,36,0,0,前序航班晚到
+"Orlando, FL",FL,WN,160,198,151,0,0,前序航班晚到
+"Minneapolis, MN",MN,WN,125,111,-18,0,0,
+"Dallas, TX",TX,WN,65,64,33,0,0,前序航班晚到
+"Denver, CO",CO,WN,170,173,7,0,0,
+"Indianapolis, IN",IN,WN,165,154,12,0,0,
+"New York, NY",NY,WN,160,150,-11,0,0,
+"Chicago, IL",IL,WN,95,87,-14,0,0,
+"Ontario, CA",CA,WN,195,175,-21,0,0,
+"Fort Myers, FL",FL,WN,155,152,21,0,0,航司
+"Sacramento, CA",CA,WN,115,109,16,0,0,航司
+"Atlanta, GA",GA,WN,115,100,-16,0,0,
+"Burbank, CA",CA,WN,240,218,-24,0,0,
+"Dallas, TX",TX,WN,145,142,-6,0,0,
+"Denver, CO",CO,WN,85,80,8,0,0,
+"Houston, TX",TX,WN,165,178,38,0,0,前序航班晚到
+"Los Angeles, CA",CA,WN,240,230,73,0,0,前序航班晚到
+"Chicago, IL",IL,WN,110,103,19,0,0,航司
+"Oakland, CA",CA,WN,145,148,3,0,0,
+"Phoenix, AZ",AZ,WN,105,91,36,0,0,航司
+"Seattle, WA",WA,WN,170,175,-1,0,0,
+"St. Louis, MO",MO,WN,145,146,1,0,0,
+"Tulsa, OK",OK,YX,190,181,-12,0,0,
+"New York, NY",NY,YX,115,94,-30,0,0,
+"New York, NY",NY,YX,173,173,-5,0,0,
+"Raleigh/Durham, NC",NC,YX,152,142,18,0,0,前序航班晚到
+"Omaha, NE",NE,YX,178,163,-21,0,0,
+"New York, NY",NY,YX,131,124,-14,0,0,
+"Washington, DC",VA,YX,134,134,-2,0,0,
+"New York, NY",NY,YX,74,80,-1,0,0,
+"Washington, DC",VA,YX,145,138,-16,0,0,
+"Washington, DC",VA,YX,102,80,26,0,0,前序航班晚到
+"Washington, DC",VA,YX,166,156,-16,0,0,
+"Raleigh/Durham, NC",NC,YX,99,92,5,0,0,
+"Traverse City, MI",MI,YX,119,125,-4,0,0,
+"Jacksonville, FL",FL,YX,118,118,-4,0,0,
+"Columbus, OH",OH,YX,93,83,-19,0,0,
+"New York, NY",NY,YX,184,193,-1,0,0,
+"New York, NY",NY,YX,94,66,-37,0,0,
+"New York, NY",NY,YX,94,86,-13,0,0,
+"New York, NY",NY,YX,92,81,-15,0,0,
+"Greensboro/High Point, NC",NC,YX,93,96,-4,0,0,
+"Nashville, TN",TN,YX,143,150,4,0,0,
+"Milwaukee, WI",WI,YX,122,136,34,0,0,前序航班晚到
+"Indianapolis, IN",IN,YX,106,90,-25,0,0,
+"New York, NY",NY,YX,141,120,-28,0,0,
+"Chicago, IL",IL,YX,74,75,-1,0,0,
+"Washington, DC",VA,YX,186,184,-12,0,0,
+"Nantucket, MA",MA,YX,78,82,-5,0,0,
+"Boston, MA",MA,YX,105,101,-12,0,0,
+"Boston, MA",MA,YX,154,137,-21,0,0,
+"Detroit, MI",MI,YX,63,55,-10,0,0,
+"Boston, MA",MA,YX,98,104,0,0,0,
+"Nantucket, MA",MA,YX,80,75,-14,0,0,
+"Baltimore, MD",MD,YX,101,122,17,0,0,空管
+"Martha's Vineyard, MA",MA,YX,66,74,56,0,0,空管
+"Traverse City, MI",MI,YX,130,126,-13,0,0,
+"New York, NY",NY,YX,122,112,-16,0,0,
+"Washington, DC",VA,YX,107,96,-18,0,0,
+"New York, NY",NY,YX,74,75,-6,0,0,
+"New York, NY",NY,YX,139,181,43,0,0,空管
+"Indianapolis, IN",IN,YX,137,137,58,0,0,空管
+"Boston, MA",MA,YX,114,109,-14,0,0,
+"Indianapolis, IN",IN,YX,137,109,-31,0,0,
+"New York, NY",NY,YX,120,101,-25,0,0,
+"Boston, MA",MA,YX,90,94,295,0,0,前序航班晚到
+"Newark, NJ",NJ,YX,125,101,-29,0,0,
+"Greer, SC",SC,YX,130,131,15,0,0,
+"Portland, ME",ME,YX,99,96,-8,0,0,
+"St. Louis, MO",MO,YX,160,132,218,0,0,前序航班晚到
+"Buffalo, NY",NY,YX,91,0,0,1,0,
+"Charleston, SC",SC,YX,118,108,-16,0,0,
+"Indianapolis, IN",IN,YX,78,80,-2,0,0,
+"Greensboro/High Point, NC",NC,YX,105,87,-24,0,0,
+"Washington, DC",VA,YX,82,76,-7,0,0,
+"Grand Rapids, MI",MI,YX,124,125,-1,0,0,
+"Newark, NJ",NJ,YX,120,100,-25,0,0,
+"Newark, NJ",NJ,YX,101,85,-4,0,0,
+"Providence, RI",RI,YX,87,78,-21,0,0,
+"Syracuse, NY",NY,YX,82,54,-33,0,0,

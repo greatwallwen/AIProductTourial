@@ -26,10 +26,10 @@
  "decisionAction": "用真实向量检索为问答/推荐提供高相关片段，替代全量塞入",
  "dataset": "skills/external/pm-skills-deanpeters/README.md",
  "metricChainNames": [
-  "语料规模",
-  "命中率",
-  "Top1 相似度",
-  "检索延迟"
+  "语料篇数",
+  "语料总字(万)",
+  "平均篇幅(字)",
+  "覆盖主题数"
  ],
  "exceptionStates": [
   "低相似",
@@ -56,32 +56,62 @@
  "pitfall": "常见坑：① 只召回不重排，相关度不够；② 把低相似片段当事实回答；③ 语料不切分/不更新，检索质量随时间劣化。",
  "kpis": [
   {
-   "name": "语料规模",
-   "value": 22,
+   "name": "语料篇数",
+   "value": 194,
    "unit": ""
   },
   {
-   "name": "命中率",
-   "value": 33,
-   "unit": "%"
-  },
-  {
-   "name": "Top1 相似度",
-   "value": 44,
+   "name": "语料总字(万)",
+   "value": 191,
    "unit": ""
   },
   {
-   "name": "检索延迟",
-   "value": 55,
+   "name": "平均篇幅(字)",
+   "value": 9838,
+   "unit": ""
+  },
+  {
+   "name": "覆盖主题数",
+   "value": 8,
    "unit": ""
   }
  ],
  "queue": [],
  "chart": {
-  "type": "sparkline",
-  "data": []
+  "type": "bars",
+  "by": "主题目录 → 语料篇数",
+  "data": [
+   {
+    "label": "skills",
+    "value": 120
+   },
+   {
+    "label": "docs",
+    "value": 46
+   },
+   {
+    "label": "(根)",
+    "value": 9
+   },
+   {
+    "label": "commands",
+    "value": 7
+   },
+   {
+    "label": "research",
+    "value": 7
+   },
+   {
+    "label": "catalog",
+    "value": 3
+   },
+   {
+    "label": "app",
+    "value": 1
+   }
+  ]
  },
- "rowCount": 46,
+ "rowCount": 194,
  "exceptionCount": 0,
  "responsible": [
   "—"

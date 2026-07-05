@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/** 由 skill_definitions.json + case_definitions.json 生成结构化可验证 Skill 库 outputs/07_skills/pm_skills.md。 */
+/** 由 skill_definitions.json + case_definitions.json 生成结构化可验证 Skill 库 skills/pm_skills.md。 */
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 const ROOT = resolve(import.meta.dirname, '..', '..');

@@ -3,6 +3,9 @@
   "private": true,
   "type": "module",
   "version": "1.0.0",
+  "engines": {
+    "node": ">=22.18"
+  },
   "scripts": {
     "start": "node --experimental-sqlite app.ts",
     "test": "node --experimental-sqlite --test tests/*.test.ts"

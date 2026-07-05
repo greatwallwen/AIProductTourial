@@ -1,6 +1,6 @@
 # 需求变更影响评估（实操 14·方案验收）
 
-> 数据来源：`dataset/product_cases/aicourse_logistics_delivery.csv`（700 行，异常 268）。字段与指标均回到该数据。演示原理 3.4、4.1，采用设计 amber-funnel。
+> 数据来源：`dataset/product_cases/flights_ontime.csv`（1500 行，异常 406）。字段与指标均回到该数据。演示原理 3.4、4.1，采用设计 amber-funnel。
 
 ## 交付物
 
@@ -8,9 +8,9 @@
 
 ## 验收清单
 
-- 必含字段：城市、运单、异常类型、规则版本、客服话术、回滚条件
-- 必含指标链：运单数、异常率、扩城率、城市数、平均实际时效(h)
-- 必含异常状态：转化率下滑、回款逾期、客户跟进超时、区域掉队
+- 必含字段：航班号、城市、航司、异常类型、责任方
+- 必含指标链：航班数、延误率、取消率、城市数、平均实际时效(h)
+- 必含异常状态：航班延误、航班取消、航班备降、枢纽承压
 - 必含 Skill：change-impact、release-risk、rollback-plan
 
 ## 合格标准
@@ -19,8 +19,8 @@
 
 ## 不合格标准
 
-使用泛化产品名称、缺少行业指标、只描述页面不说明业务取舍、越过「不得在无回滚条件下扩大范围」。
+使用泛化产品名称、缺少行业指标、只描述页面不说明业务取舍、越过「增容/调度须基于真实延误数据，不得脱离数据拍板」。
 
 ## 验收结论
 
-**PASS** — 指标链 5 项均为回到 `dataset/product_cases/aicourse_logistics_delivery.csv` 的真实计算值；字段/异常/Skill 齐备；可运行原型见 `#/case/14`（设计 amber-funnel），截图 `assets/screenshots/premium_case_14_logistics_change_control_desktop.png`。
+**PASS** — 指标链 5 项均为回到 `dataset/product_cases/flights_ontime.csv` 的真实计算值；字段/异常/Skill 齐备；可运行原型见 `#/case/14`（设计 amber-funnel），截图 `assets/screenshots/premium_case_14_logistics_change_control_desktop.png`。

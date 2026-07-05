@@ -40,49 +40,49 @@
     
   <rect x="24" y="216" width="476" height="230" rx="12" fill="#17130b" stroke="#3a2c14"/>
   <text x="40" y="240" font-size="12.5" font-weight="650" fill="#f6efe2">指标趋势 / 结构</text><rect x="40" y="246" width="28" height="2" fill="#f59e0b"/>
-  <text x="484" y="240" font-size="9.5" fill="#7a6640" text-anchor="end">销售｜客户跟进管理大屏</text>
+  <text x="484" y="240" font-size="9.5" fill="#7a6640" text-anchor="end">会员｜RFM 价值运营大屏</text>
   <line x1="44" y1="373.0" x2="476" y2="373.0" stroke="#2a2110" stroke-dasharray="2 3"/><line x1="44" y1="336.0" x2="476" y2="336.0" stroke="#2a2110" stroke-dasharray="2 3"/><line x1="44" y1="299.0" x2="476" y2="299.0" stroke="#2a2110" stroke-dasharray="2 3"/><line x1="44" y1="262.0" x2="476" y2="262.0" stroke="#2a2110" stroke-dasharray="2 3"/><line x1="44" y1="410" x2="476" y2="410" stroke="#3a2c14"/><line x1="44" y1="262" x2="44" y2="410" stroke="#3a2c14"/><rect x="50.0" y="262.0" width="95.0" height="148.0" rx="3" fill="#f59e0b" opacity="0.9"/><text x="97.5" y="258.0" font-size="8.5" fill="#c9b48f" text-anchor="middle">15187584</text><text x="97.5" y="423" font-size="8" fill="#7a6640" text-anchor="middle">金卡</text><rect x="155.0" y="282.4" width="95.0" height="127.6" rx="3" fill="#f59e0b" opacity="0.9"/><text x="202.5" y="278.4" font-size="8.5" fill="#c9b48f" text-anchor="middle">13094871</text><text x="202.5" y="423" font-size="8" fill="#7a6640" text-anchor="middle">白金</text><rect x="260.0" y="324.4" width="95.0" height="85.6" rx="3" fill="#f59e0b" opacity="0.9"/><text x="307.5" y="320.4" font-size="8.5" fill="#c9b48f" text-anchor="middle">8784208</text><text x="307.5" y="423" font-size="8" fill="#7a6640" text-anchor="middle">银卡</text><rect x="365.0" y="345.0" width="95.0" height="65.0" rx="3" fill="#f59e0b" opacity="0.9"/><text x="412.5" y="341.0" font-size="8.5" fill="#c9b48f" text-anchor="middle">6666017</text><text x="412.5" y="423" font-size="8" fill="#7a6640" text-anchor="middle">普卡</text>
   <rect x="512" y="216" width="464" height="230" rx="12" fill="#17130b" stroke="#3a2c14"/>
   <text x="528" y="240" font-size="12.5" font-weight="650" fill="#f6efe2">异常队列 · 责任对象</text><rect x="528" y="246" width="28" height="2" fill="#f59e0b"/>
   <text x="960" y="240" font-size="9.5" fill="#7a6640" text-anchor="end">10 项 · 取前 5</text>
   
     <rect x="524" y="264" width="440" height="28" rx="7" fill="#141009" stroke="#3a2c14"/>
-    <rect x="532" y="271" width="4" height="14" rx="2" fill="#f59e0b"/>
-    <rect x="544" y="270" width="70" height="16" rx="5" fill="#f59e0b" opacity="0.2"/><text x="550" y="282" font-size="9.5" fill="#f59e0b" font-weight="700">转化率下滑</text>
+    <rect x="532" y="271" width="4" height="14" rx="2" fill="#f87171"/>
+    <rect x="544" y="270" width="70" height="16" rx="5" fill="#f87171" opacity="0.2"/><text x="550" y="282" font-size="9.5" fill="#f87171" font-weight="700">高价值流失</text>
     <text x="624" y="282" font-size="10" fill="#c9b48f">A653657</text>
     <rect x="884" y="270" width="72" height="16" rx="8" fill="#fbbf24" opacity="0.16"/><text x="920" y="282" font-size="9.5" fill="#fbbf24" text-anchor="middle">—</text>
     <rect x="524" y="298" width="440" height="28" rx="7" fill="#141009" stroke="#3a2c14"/>
     <rect x="532" y="305" width="4" height="14" rx="2" fill="#fbbf24"/>
-    <rect x="544" y="304" width="70" height="16" rx="5" fill="#fbbf24" opacity="0.2"/><text x="550" y="316" font-size="9.5" fill="#fbbf24" font-weight="700">回款逾期</text>
+    <rect x="544" y="304" width="70" height="16" rx="5" fill="#fbbf24" opacity="0.2"/><text x="550" y="316" font-size="9.5" fill="#fbbf24" font-weight="700">里程临期</text>
     <text x="624" y="316" font-size="10" fill="#c9b48f">A526800</text>
     <rect x="884" y="304" width="72" height="16" rx="8" fill="#fbbf24" opacity="0.16"/><text x="920" y="316" font-size="9.5" fill="#fbbf24" text-anchor="middle">—</text>
     <rect x="524" y="332" width="440" height="28" rx="7" fill="#141009" stroke="#3a2c14"/>
-    <rect x="532" y="339" width="4" height="14" rx="2" fill="#f87171"/>
-    <rect x="544" y="338" width="70" height="16" rx="5" fill="#f87171" opacity="0.2"/><text x="550" y="350" font-size="9.5" fill="#f87171" font-weight="700">客户跟进超时</text>
+    <rect x="532" y="339" width="4" height="14" rx="2" fill="#fbbf24"/>
+    <rect x="544" y="338" width="70" height="16" rx="5" fill="#fbbf24" opacity="0.2"/><text x="550" y="350" font-size="9.5" fill="#fbbf24" font-weight="700">久未乘机</text>
     <text x="624" y="350" font-size="10" fill="#c9b48f">A803385</text>
     <rect x="884" y="338" width="72" height="16" rx="8" fill="#fbbf24" opacity="0.16"/><text x="920" y="350" font-size="9.5" fill="#fbbf24" text-anchor="middle">—</text>
     <rect x="524" y="366" width="440" height="28" rx="7" fill="#141009" stroke="#3a2c14"/>
     <rect x="532" y="373" width="4" height="14" rx="2" fill="#fbbf24"/>
-    <rect x="544" y="372" width="70" height="16" rx="5" fill="#fbbf24" opacity="0.2"/><text x="550" y="384" font-size="9.5" fill="#fbbf24" font-weight="700">区域掉队</text>
+    <rect x="544" y="372" width="70" height="16" rx="5" fill="#fbbf24" opacity="0.2"/><text x="550" y="384" font-size="9.5" fill="#fbbf24" font-weight="700">权益未用</text>
     <text x="624" y="384" font-size="10" fill="#c9b48f">A312767</text>
     <rect x="884" y="372" width="72" height="16" rx="8" fill="#fbbf24" opacity="0.16"/><text x="920" y="384" font-size="9.5" fill="#fbbf24" text-anchor="middle">—</text>
     <rect x="524" y="400" width="440" height="28" rx="7" fill="#141009" stroke="#3a2c14"/>
-    <rect x="532" y="407" width="4" height="14" rx="2" fill="#f59e0b"/>
-    <rect x="544" y="406" width="70" height="16" rx="5" fill="#f59e0b" opacity="0.2"/><text x="550" y="418" font-size="9.5" fill="#f59e0b" font-weight="700">转化率下滑</text>
+    <rect x="532" y="407" width="4" height="14" rx="2" fill="#f87171"/>
+    <rect x="544" y="406" width="70" height="16" rx="5" fill="#f87171" opacity="0.2"/><text x="550" y="418" font-size="9.5" fill="#f87171" font-weight="700">高价值流失</text>
     <text x="624" y="418" font-size="10" fill="#c9b48f">A242885</text>
     <rect x="884" y="406" width="72" height="16" rx="8" fill="#fbbf24" opacity="0.16"/><text x="920" y="418" font-size="9.5" fill="#fbbf24" text-anchor="middle">—</text>
   <text x="36" y="479" font-size="10.5" fill="#7a6640">演示原理 3.2 · 4.3 · UI ui_30_airline_member_rfm · Skill rfm-segmentation + lifecycle-action + privacy-boundary</text>
   <text x="36" y="522" font-size="11" fill="#7a6640">行动入口 · 责任 · 时限</text>
   
     <rect x="36" y="548" width="168" height="46" rx="10" fill="url(#acc)"/>
-    <text x="50" y="569" font-size="11.5" fill="#04121a" font-weight="750">处置：转化率下滑</text>
+    <text x="50" y="569" font-size="11.5" fill="#04121a" font-weight="750">处置：高价值流失</text>
     <text x="50" y="584" font-size="9" fill="#04121a" opacity="0.75">数据-周 · 1d</text>
     <rect x="216" y="548" width="168" height="46" rx="10" fill="url(#acc)"/>
-    <text x="230" y="569" font-size="11.5" fill="#04121a" font-weight="750">处置：回款逾期</text>
+    <text x="230" y="569" font-size="11.5" fill="#04121a" font-weight="750">处置：里程临期</text>
     <text x="230" y="584" font-size="9" fill="#04121a" opacity="0.75">运营-李 · 3d</text>
     <rect x="396" y="548" width="168" height="46" rx="10" fill="url(#acc)"/>
-    <text x="410" y="569" font-size="11.5" fill="#04121a" font-weight="750">处置：客户跟进超时</text>
+    <text x="410" y="569" font-size="11.5" fill="#04121a" font-weight="750">处置：久未乘机</text>
     <text x="410" y="584" font-size="9" fill="#04121a" opacity="0.75">产品-王 · 5d</text>
   <rect x="588" y="510" width="388" height="88" rx="10" fill="#141009" stroke="#3a2c14"/>
-  <foreignObject x="602" y="516" width="360" height="76"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:10.5px;color:#c9b48f;line-height:1.5">决策动作：判断漏斗断点、回款风险和区域销售动作优先级。<br/>风险边界：不得输出歧视性或不可解释规则</div></foreignObject>
+  <foreignObject x="602" y="516" width="360" height="76"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:10.5px;color:#c9b48f;line-height:1.5">决策动作：按 R/F/M 分层识别高价值流失群，对不同层给定向挽回/升舱/权益动作。<br/>风险边界：不得输出歧视性或不可解释规则</div></foreignObject>
 </svg>

@@ -139,6 +139,8 @@ function figSvg(id) {
 
 // 交付物卡（问题定义 / 方案验收）
 function kv(pairs) { return pairs.map(([k, v]) => `- ${k}：${v}`).join('\n'); }
+// 难度 → 星级（与第一部分标记体系一致：入门★☆☆ / 进阶★★☆ / 高阶★★★）
+function stars(difficulty) { return ({ '入门': '★☆☆', '进阶': '★★☆', '高阶': '★★★' })[difficulty] || '★★☆'; }
 // 真实验收判定（替代硬编码 PASS）：逐项核对必含要素是否齐备，不齐则如实列出缺口。
 function acceptance(c, d) {
   const checks = [
@@ -160,20 +162,37 @@ function deliverableMd(c, d, type) {
 }
 
 // 构建契约式 Prompt（工具无关，用 Trae/CodeBuddy 等泛指）
+// Prompt 1（问题定义）与 Prompt 2（方案验收）职责不同、内容差异化，不再是同一段换两个字。
 function buildPrompt(c, d, stage) {
-  return `请以产品经理身份，用 AI 编程工具（如 Trae、CodeBuddy 等任一 Agent 工具）完成「${c.scenario}」的${stage === 'def' ? '产品问题定义' : '方案验收'}，并产出可运行原型：
-- 场景与岗位：${c.role} 面向「${c.scenario}」，把判断转成可验证的产品交付物；核心是把指标→异常→责任→行动连成闭环。
-- 数据：读取 \`${c.dataset}\`，只使用数据/资料中存在的字段（${c.fields.join('、')}）。
-- 指标链：${c.metricChain.join('、')}（当前真实值：${d.kpis.map((k) => k.name + '=' + k.value + (k.unit || '')).join('，')}）。
-- 异常状态：${c.exceptionStates.join('、')}。
-- 使用 Skill：${c.skills[0]}、${c.skills[1]}，并用 ${c.skills[2]} 做验收（结构化 Skill 见 skills/pm_skills.md）。
-- 原型（技术契约，遵 rules/ 约束：DRY、单文件<800行、TS 类型、中文注释）：在 \`code/web\`（Vite+React+TS）路由 \`#/case/${pad(c.num)}\`，按 \`${c.uiId}\`（${c.saasType}）与设计 \`${c.design}\` 渲染；数据经 \`build_case_data.mjs\` 预计算，页面必须体现指标链、异常队列、责任对象与行动入口，不得复用通用表格占位。
-- 输出：${c.deliverable}，保存为 \`outputs/product_case_library/case_${pad(c.num)}_${c.slug}_${stage === 'def' ? '问题定义' : '方案验收'}.md\`。
-- 验收条件：结论回到数据或公开参考（${c.publicRef}）；不得越过「${c.riskBoundary}」${c.highImpact ? '；高影响行业保留人工复核' : ''}；\`node code/tools/verify_course_package.mjs\` 必须 ALL GREEN。`;
+  const head = '请以产品经理身份，用 AI 编程工具（如 Trae、CodeBuddy 等任一 Agent 工具）';
+  const dataLine = `- 数据：读取 \`${c.dataset}\`，只使用其中真实存在的字段（${c.fields.join('、')}）。`;
+  const kpiLine = `- 指标链：${c.metricChain.join('、')}（当前真实值：${d.kpis.map((k) => k.name + '=' + k.value + (k.unit || '')).join('，')}）。`;
+  if (stage === 'def') {
+    // 第一步：想清楚问题，不写代码——聚焦岗位/指标/异常/决策动作/边界。
+    return `${head}完成「${c.scenario}」的**产品问题定义**（这一步先把问题想清楚，不写代码）：
+- 岗位与场景：${c.role} 面向「${c.scenario}」，把业务判断转成一份可验证的产品问题定义。
+${dataLine}
+${kpiLine}
+- 现场异常：要盯的是 ${c.exceptionStates.join('、')}——说清每类异常谁负责、如何被发现。
+- 决策动作：这份定义最终要支撑的关键决策是——${c.decisionAction}
+- 使用 Skill：用 ${c.skills[0]}、${c.skills[1]} 完成分析（结构化 Skill 见 skills/pm_skills.md）。
+- 输出：${c.deliverable}，保存为 \`outputs/product_case_library/case_${pad(c.num)}_${c.slug}_问题定义.md\`。
+- 边界：结论必须回到数据或公开参考（${c.publicRef}）；不得越过「${c.riskBoundary}」${c.highImpact ? '；高影响行业保留人工复核' : ''}。`;
+  }
+  // 第二步：把定义做成可运行原型并逐项验收——聚焦技术契约/UI/ALL GREEN。
+  return `${head}完成「${c.scenario}」的**方案验收**（把上一步的问题定义做成可运行原型，并逐项验收）：
+- 目标：基于问题定义，产出一个可运行的深色大屏原型，让指标链、异常队列、责任、行动都能在页面上看到、点得动。
+${dataLine}
+${kpiLine}
+- 原型（技术契约，遵 rules/ 约束：DRY、单文件<800行、TS 类型、中文注释）：在 \`code/web\`（Vite+React+TS）路由 \`#/case/${pad(c.num)}\`，按 \`${c.uiId}\`（${c.saasType}）与设计 \`${c.design}\` 渲染；数据经 \`build_case_data.mjs\` 预计算，不得复用通用表格占位。
+- 使用 Skill：用 ${c.skills[2]} 做验收（结构化 Skill 见 skills/pm_skills.md）。
+- 输出：${c.deliverable}，保存为 \`outputs/product_case_library/case_${pad(c.num)}_${c.slug}_方案验收.md\`。
+- 验收条件：指标链回到真实数据、异常可追踪、行动入口明确；不得越过「${c.riskBoundary}」${c.highImpact ? '；高影响行业保留人工复核' : ''}；\`node code/tools/verify_course_package.mjs\` 必须 ALL GREEN。`;
 }
 
-// 数字化系统全景：纵向三层 × 横向数据价值闭环，25 案例作为节点串成一个系统
+// 数字化系统全景：纵向三层 × 横向数据价值闭环，全部案例作为节点串成一个系统
 function panoramaSvg() {
+  const N = defs.cases.length;
   const t = theme('graphite-hud');
   const W = 1240, H = 720;
   const stages = ['采集', '治理', '洞察', '决策', '执行', '验收', '增长'];
@@ -187,7 +206,7 @@ function panoramaSvg() {
   <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="${t.grid}" stroke-width="1"/></pattern></defs>
   <rect width="${W}" height="${H}" fill="url(#bg)"/><rect width="${W}" height="${H}" fill="url(#grid)" opacity="0.35"/>
   <rect x="36" y="24" width="4" height="34" rx="2" fill="${t.accent}"/>
-  <text x="50" y="42" font-size="22" font-weight="750" fill="${t.ink}">数字化系统全景 · 25 案例串成一个系统</text>
+  <text x="50" y="42" font-size="22" font-weight="750" fill="${t.ink}">数字化系统全景 · ${N} 案例串成一个系统</text>
   <text x="50" y="64" font-size="12" fill="${t.ink2}">纵向三层（业务应用 / 能力智能 / 底座平台）× 横向数据价值闭环（采集→治理→洞察→决策→执行→验收→增长→回采集）</text>`;
   for (let i = 0; i < stages.length; i++) {
     const cx = x0 + i * colW + colW / 2;
@@ -212,7 +231,7 @@ function panoramaSvg() {
     });
     if (cells[key].length > 4) s += `<text x="${(x0 + si * colW + 12).toFixed(0)}" y="${(y0 + li * rowH + 34 + 4 * 32 + 14)}" font-size="9" fill="${t.muted}">+${cells[key].length - 4} 更多</text>`;
   }
-  s += `<text x="50" y="${H - 18}" font-size="10.5" fill="${t.muted}">底座平台（44 向量库 / 45 关系库 / 46 架构契约 / 47 三维）支撑上层；业务应用按闭环各就各位——同一套数字化系统，25 案例是它不同环节的实操演示。</text></svg>`;
+  s += `<text x="50" y="${H - 18}" font-size="10.5" fill="${t.muted}">底座平台（44 向量库 / 45 关系库 / 46 架构契约 / 47 三维）支撑上层；业务应用按闭环各就各位——同一套数字化系统，${N} 案例是它不同环节的实操演示。</text></svg>`;
   return s;
 }
 
@@ -232,6 +251,71 @@ const src = (f) => readFileSync(join(ROOT, 'docs', '_source', f), 'utf8').trim()
 const H = [`# ${defs.projectName}`, '',
   `> 面向技术骨干与项目经理的产品经理转型实操知识库。**整体逻辑：先讲系统设计的理念、原理、工程规范与多套设计，再用不同案例来演示、验证**。真数据、可运行深色大屏原型（\`code/web\`）、真截图、结构化 Skill、Node 校验护栏。`, '',
   `> 写法：构建契约式 Prompt + 可运行成品 + 跑通纠错 + 交付物验收；可用 Trae / CodeBuddy 等任一 Agent 工具（Loop 为工具无关的开发模式）。数据真实/合成显式标注（\`dataset/MANIFEST.md\`）；高影响行业保留人工复核。`, '',
+  '## 读前须知', '',
+  '> **这是什么**：一份帮技术骨干、项目经理转型产品经理的实操知识库。它不只讲道理——每条理念都配了**真数据 + 可运行的全栈 demo + 真截图 + 可机器校验**。',
+  '>',
+  '> **这不是什么**：不是纯理论读物，也不是某个具体工具的说明书（开发模式工具无关，可用 Trae / CodeBuddy 等任一 Agent 工具）。',
+  '>',
+  '> **面向谁**：① 转型中的产品经理（哪怕没有技术背景）；② 想补业务与产品视角的工程师。',
+  '>',
+  '> **前置**：会用浏览器和命令行即可；无需先懂 AI 或会写代码。',
+  '>',
+  '> **读完你能**：看懂 AI 产品的底层概念，会用「理念 → 原理 → 规范 → 设计 → 案例」这套方法做数字化产品，并能把 11 个真实行业案例**跑起来、改起来**。', '',
+  '### 为什么现在学 · AI 时代的真实信号', '',
+  '- 📈 **岗位在爆发**：据脉脉高聘《2025 年度人才迁徙报告》（2025-12），**AI 产品经理岗位量同比增长 369.36%、在所有岗位中居首**（[新华网](http://www.news.cn/tech/20251215/db15c57301044b78b55b9d4c30a4e93b/c.html)）。',
+  '- 🧪 **技能在换代**：OpenAI 首席产品官 Kevin Weil 称「**写 evals（评测）正成为产品经理的核心技能，可能是最重要的一件事**」（[Lenny’s Newsletter](https://www.lennysnewsletter.com/p/kevin-weil-open-ai)）；吴恩达亦指出「严谨的 evals + 错误分析，是团队做 AI 智能体进展的最大预测因素」（[The Batch, 2025-10](https://www.deeplearning.ai/the-batch/improve-agentic-performance-with-evals-and-error-analysis-part-1)）。',
+  '- 🧭 **角色在分化**：AI 产品专家 Marily Nika（前 Google/Meta）把 AI PM 分为三类——**AI 体验型 / AI 构建型 / AI 增强型**（《The AI Product Playbook》）。',
+  '- 💡 **研究者也在「像 PM 一样思考」**：智能体研究者姚顺雨（ReAct、Tree of Thoughts 作者）2025 年底加入腾讯任**首席科学家**（注：科学家/研究负责人，非产品经理），提出「AI 从解题转向命题、评测比训练更重要」；微软 CPO Aparna Chennapragada 亦称「**提示词集正在成为新的 PRD**」。',
+  '',
+  '### AI 产品经理能力地图（五层，先对号入座）', '',
+  '> 哪些是你已有的通用底座、哪些是 AI 时代要新补的硬核？用这张图定位自己。',
+  '',
+  '| 层 | 能力 | 一句话 | 通用 / AI 新增 |', '|---|---|---|---|',
+  '| L0 通用底座 | 问题定义 / 指标体系 / 用户洞察 / 优先级 / 协作交付 | 传统 PM 的看家本领，AI 时代照样是地基 | 通用 |',
+  '| L1 AI 认知 | 大模型 / Token / 上下文 / RAG / Agent 原理与边界 | 看懂 AI 能做什么、不能做什么、会怎么错 | AI 新增 |',
+  '| L2 AI 产品化硬核 | **评测(evals)** / 数据·提示词即规格 / 检索质量 / 成本-延迟-质量权衡 | 把「大模型」做成「可用产品」的真功夫 | **AI 新增（当前最缺）** |',
+  '| L3 AI 治理 | 安全红线 / 人工复核 / 隐私合规 / 高影响行业边界 | 让 AI 产品不出事、出事能兜底 | AI 新增 |',
+  '| L4 协作交付 | 与研发/研究协作 / Loop 开发模式 / 验收与可追溯 | 把判断落成能跑、能验收的东西 | 通用 + AI 新增 |',
+  '',
+  '> 本书正沿这张图展开：§1 补 L1 认知、§2 讲 L4 的 Loop、§3/§4 打 L0/L4 的工程底子、§5 补交付；11 个案例把 L2/L3 的硬核与治理落到真实数据上。',
+  '',
+  '### 三条转型路线（对号入座）', '',
+  '- 🧑‍💼 **传统 PM**：底子在 L0，要补 L1/L2 的 AI 硬核。入口：案例 30/31（数据指标）→ 44（RAG 检索）。',
+  '- 🧑‍💻 **技术骨干**：底子在工程，要补 L0 的业务/用户视角。入口：案例 45/46（架构底座）→ 01/41（经营判断）。',
+  '- 🧑‍🔧 **项目经理**：强在协作交付，要补 L1/L2 + 数据判断。入口：案例 14（变更控制）→ 28（规则设计）。',
+  '',
+  '### 推荐学习顺序（按难度与依赖排过序）', '',
+  '- 🟢 **入门线（业务应用，难度平缓递增）**：01 电商早会 → 16 医院急诊 → 31 广告漏斗 → 14 跨境履约 → 28 金融复核 → 41 零售闭环。',
+  '- 🔵 **底座支线（技术/AI 底座，随时可插入）**：45 关系库 → 46 架构契约 → 44 RAG 检索 → 47 三维散点。',
+  '- 这条主线替代了旧版「第一站放在进阶案例」的错配；专业读者可直接走底座支线。',
+  '',
+  '### 怎么读这本书（标记体系）', '',
+  '本书同时服务两类读者——转型中的产品经理（可能没有技术背景）和想补业务视角的技术人。正文用三档标记帮你各取所需，**新手只读 🟢 也能走通全书，专业读者可循 🔵 / ⭐ 直取深度**：', '',
+  '- 🟢 **必读主线**：无论新手老手都该读，跳过会断链。',
+  '- 🔵 **选读·进阶**：深一层的原理或动手扩展，新手可先跳过、日后回看。',
+  '- ⭐ **深度**：面向专业读者的权衡与延伸，不影响主线理解。',
+  '- 难度星级 **★☆☆ 入门 / ★★☆ 进阶 / ★★★ 高阶**，标在每章每节与每个案例头部。',
+  '- 每章以「🎯 学习目标」开头、「本章小结 + 练习」收尾；练习答案放在可折叠块里——先自己想，再展开。',
+  '- 📖 **随时能查**：遇到不懂的词（Token / RAG / eval / 幻觉…），直接翻到文末「术语表」——一句话一个词，看案例时随时回查。', '',
+  '### 两条阅读路线', '',
+  '- 🟢 **30 分钟快速上手线**（新手 / 赶时间）：读前须知 → §1 全章（含每节 🔵 实验室动手）→ 跑通最平缓的入门案例（推荐**案例 01 电商早会经营台**，真实英国电商订单）→ 玩一局概念配对小游戏 `#/game`。',
+  '- 🔵 **系统精读线**（想学透 / 专业人士）：第一部分 §1→§5 逐章精读（含 🔵 选读、⭐ 深度、每章练习）→ 第二部分 11 案例逐个跑通并做练习 → 深挖 `rules/` 工程规范与 `skills/` 技能库。', '',
+  '### 学习路线图', '',
+  '| 章节 | 前置 | 难度 | 预计 | 谁该重点看 |', '|---|---|---|---|---|',
+  '| §1 AI 核心概念底层 | 无 | ★☆☆ | 20min | **所有人必读**，尤其非技术背景 |',
+  '| §2 会 Loop 的产品工程 | §1 | ★★☆ | 20min | 想懂 AI 开发模式的 PM |',
+  '| §3 系统架构设计 | §2 | ★★★ | 20min | 要和研发对话、技术转 PM |',
+  '| §4 工程规范与约束 | 无 | ★★☆ | 15min | 想判断「代码好坏」的 PM |',
+  '| §5 设计系统 | 无 | ★★☆ | 12min | 关注大屏 / 可视化的 PM |',
+  '| 第二部分 · 11 案例 | 第一部分 | ★☆☆→★★★ | 每例 ~15min | 所有人，**边读边跑、动手验证** |', '',
+  '### 🚀 10 分钟先跑通（先见成品，再学原理）', '',
+  '别急着从头读——先花 10 分钟把成品跑起来，有了全局直觉再回来学原理（这叫「先玩整个游戏」）：', '',
+  '1. **环境**：Node ≥ 22（要用到实验性的 `node:sqlite`）。检查：`node -v`。',
+  '2. **一条命令起服务**：`bash code/run.sh`（Fastify + node:sqlite，一个服务同时托管后端 API 与前端）。',
+  '3. **你应看到**：终端打印 `… http://localhost:5200`；浏览器打开它 → 首页是「数字化系统全景」，点任一节点进入案例。',
+  '4. **先玩这三个**：`#/lab/tokenizer`（亲手把一句话分词）、`#/case/01`（电商早会经营台，最平缓的入门案例）、`#/game`（AI 概念配对小游戏）。',
+  '',
+  '> 跑不起来？环境要求、预期输出与**常见报错排查表**见文末「[使用入口](#使用入口)」。', '',
   '# 第一部分 · 系统设计理念与原理', '',
   src('00-ai-foundations.md'), '', src('01-ideology.md'), '', src('02-architecture.md'), '', src('03-engineering.md'), '', src('04-designs.md'), '',
   '## 使用入口', '',
@@ -240,6 +324,18 @@ const H = [`# ${defs.projectName}`, '',
   '- React 工作台：`code/web`（`npm ci && npm run build && npm run preview`，一案例一路由 `#/case/NN`）',
   '- 数据：`node code/tools/fetch-datasets.mjs`｜预计算：`node code/tools/build_case_data.mjs`｜校验：`node code/tools/verify_course_package.mjs`',
   '- **统一运行/纠错约定**：`bash code/run.sh` 起一个服务（Fastify+node:sqlite 托管 API+前端），浏览器 `#/case/NN` 即真后端实时数据；遵 `rules/`（DRY / 单文件<800 行 / 类型 / 中文注释）；`verify_course_package.mjs` 逐项核验。以下每个案例不再重复这段。', '',
+  '### 环境要求与预期输出', '',
+  '| 项 | 要求 / 你应看到 |', '|---|---|',
+  '| Node 版本 | **≥ 22**（用到实验性 `node:sqlite`）；先 `node -v` 确认 |',
+  '| 启动命令 | `bash code/run.sh`（首次会装依赖 + 构建前端，约 1–2 分钟） |',
+  '| 预期输出 | 终端出现监听地址 `… http://localhost:5200`；浏览器打开是「数字化系统全景」首页 |',
+  '| 数据 / 校验 | `node code/tools/build_case_data.mjs` 打印 `11 / 11 cases`；`node code/tools/verify_course_package.mjs` 末行 `✅ ALL GREEN` |', '',
+  '### 常见报错排查', '',
+  '| 现象 | 可能原因 | 处理 |', '|---|---|---|',
+  '| `node:sqlite` 相关报错 / `SQLite is not defined` | Node 版本过低 | 升级到 Node ≥ 22（推荐 nvm：`nvm install 22 && nvm use 22`） |',
+  '| `EADDRINUSE :5200` | 5200 端口被占用 | 关掉占用该端口的进程，或改 `code/run.sh` 里的端口后重试 |',
+  '| 页面空白 / 接口 404 | 前端未构建或服务未起 | 确认 `bash code/run.sh` 正常打印监听地址，再刷新浏览器 |',
+  '| `npm ci` 失败 | 依赖未装或网络问题 | 到 `code/web`、`code/server` 分别 `npm install` 后重试 |', '',
   '## 术语表（先备着，看案例时随时回查）', '',
   '| 术语 | 一句话 |', '|---|---|',
   '| Token | 大模型处理文本的最小计量单位；1 Token≈1.5~2 汉字（§1.2） |',
@@ -247,12 +343,27 @@ const H = [`# ${defs.projectName}`, '',
   '| RAG | 检索增强生成：分片→索引→召回→重排→生成，只喂高相关片段（§1.3） |',
   '| Embedding / 向量库 | 把文本转成向量 / 存向量+原文、按相似度检索（§1.3、案例44） |',
   '| Agent / ReAct | 自主分步的智能体 / 思考→调用工具→观察→再思考的循环（§1.6） |',
+  '| Tool / MCP | 模型可调用的函数 / 一套通用的工具接入标准（§1.5） |',
+  '| 质量属性场景 | 把非功能需求写成「刺激→环境→响应→度量」的可量化场景（SEI 风格，§3.2） |',
+  '| ADR | 架构决策记录：背景→决策→后果，把「为什么这样选」留痕（Nygard，§3.5） |',
+  '| 适应度函数 | 把架构边界写成能自动跑的断言，守住模块边界不被破坏（§3.3） |',
+  '| 幂等 | 同一写操作重复执行，结果不变（如重发一次不会多下一单，§3.4） |',
+  '| DRY / 单一职责 | 同一知识只表示一次 / 一个模块只有一个改变它的理由（§4.1、§4.2） |',
+  '| RFM | 用最近消费 R、频次 F、金额 M 给客户分层的经典方法（案例 30） |',
+  '| Cross-Encoder / 重排 | RAG 里粗召回后再精排相关片段的第二阶段（§1.3、案例 44） |',
+  '| Design Token | 把颜色/字号/圆角等最小设计决策抽成变量单一来源（§5.5、`design/themes.json`） |',
   '| systemLayer / systemStage | 案例在数字化系统的「层（底座/能力/应用）/ 环节（采集→…→增长）」 |',
   '| metricSpec | 案例指标的真实列计算规格（保证 KPI 真算、可溯源、非编造） |',
-  '| 难度 | 入门 / 进阶 / 高阶，标在每个案例头部 |', '',
+  '| eval / 评测 | 用离线测试集 + 打分器量化「AI 回答好不好」，是 AI 产品的验收标尺（能力地图 L2、§2 传感器） |',
+  '| 幻觉 / hallucination | 模型一本正经地编造不实内容；RAG、评测、人工复核都是为压住它（§1.3、案例 44） |',
+  '| context rot / 上下文腐烂 | 上下文太长、关键信息在中间时模型「读不到」，长上下文性能衰减（§1.3） |',
+  '| harness / 脚手架 | 把模型包成能自动「跑→验→改」的外壳（如本教程的 `verify`），是 Loop 的骨架（§2） |',
+  '| vibe coding | 只凭感觉让 AI 生成、不看评测与验收；本书反其道而行，强调 evals 与护栏（§2、§4） |',
+  '| 难度 ★ | ★☆☆ 入门 / ★★☆ 进阶 / ★★★ 高阶，标在每章每节与每个案例头部 |', '',
+  '> 📚 **进一步阅读**：本教程各章规范与概念的权威出处（Google Style Guides、SWE at Google、OWASP、12-Factor、Conventional Commits 等）汇总在 [`rules/references.md`](rules/references.md)；Loop 工程的可复用实操文件见 [`skills/loop_engineering/`](skills/loop_engineering)。', '',
   '# 第二部分 · 案例演示与验证', '',
   '## 数字化系统全景（先看这张图）', '',
-  '第一部分讲的理念、原理、规范、设计，不是散点——它们共同构成**一套数字化系统**。后面 25 个案例，正是这套系统在不同环节、不同层的**实操演示**：',
+  `第一部分讲的理念、原理、规范、设计，不是散点——它们共同构成**一套数字化系统**。后面 ${defs.cases.length} 个代表性案例，正是这套系统在不同环节、不同层的**实操演示**：`,
   '',
   '![数字化系统全景](outputs/product_case_library/svg/fig_system_panorama.svg)',
   '',
@@ -263,19 +374,32 @@ const H = [`# ${defs.projectName}`, '',
   '| # | 场景 | 行业 | 阶段 | 演示原理 | 设计 | UI 原型 | Skill |', '|---|---|---|---|---|---|---|---|'];
 for (const c of defs.cases) H.push(`| ${pad(c.num)} | ${c.scenario} | ${c.industry} | ${c.phase} | ${(c.demonstrates || []).join('/')} | ${c.design} | \`${c.uiId}\` | ${c.skills.join('+')} |`);
 H.push('');
+// 原理 → 案例 反查（从各案 demonstrates 反转；只列被演示到的原理，避免空节/自相矛盾）
+{ const revMap = {};
+  for (const c of defs.cases) for (const op of (c.demonstrates || [])) (revMap[op] = revMap[op] || []).push(c.num);
+  const rows = Object.entries(revMap).sort((a, b) => a[0].localeCompare(b[0], undefined, { numeric: true }));
+  H.push('## 原理 → 案例 反查（哪个原理，被哪些案例演示）', '',
+    '> 读完第一部分某个原理，想马上看它怎么落地？按这张表直达（自动从各案例 `demonstrates` 反转生成，只列被真实演示到的原理）。', '',
+    '| 原理 | 演示它的案例 |', '|---|---|');
+  for (const [op, nums] of rows) H.push(`| §${op} | ${nums.map((n) => '案例 ' + pad(n)).join('、')} |`);
+  H.push(''); }
 for (const c of defs.cases) {
   const d = vm(c.num);
   H.push(`\n---\n\n## 实操 ${pad(c.num)}：${c.title}\n`);
   H.push(`> **本案例演示/验证**：原理 ${(c.demonstrates || []).join('、')}｜**采用设计** \`${c.design}\`（见 design/${c.design}.md）\n`);
   H.push(`> **在数字化系统中的位置**：${c.systemLayer}层 · ${c.systemStage}环节｜**理论→实操**：${c.theoryOp}\n`);
-  H.push(`> 🎚 **难度** ${c.difficulty}｜🎯 **一句话** ${c.tldr}\n>\n> 💡 **洞见**：${c.insight}\n>\n> ⚠ **常见坑**：${c.pitfall}\n`);
+  H.push(`> 🎚 **难度** ${stars(c.difficulty)} ${c.difficulty}｜🎯 **一句话** ${c.tldr}｜**前置** 建议先读完第一部分\n>\n> 💡 **洞见**：${c.insight}\n>\n> ⚠ **常见坑**：${c.pitfall}\n`);
   H.push(`### 项目场景故事\n\n${c.story}\n\n**现状问题**\n\n- 决策依赖的关键指标：${c.metricChain.join('、')}。\n- 现场常见异常：${c.exceptionStates.join('、')}。\n- 只做通用页面无法支撑「${c.decisionAction}」。\n\n**本次任务**\n\n- 明确岗位、指标链、异常状态与决策动作。\n- 使用 \`${c.skills[0]}\` 与 \`${c.skills[1]}\` 完成分析，产出 \`${c.deliverable}\`，用 \`${c.skills[2]}\` 验收。\n`);
   H.push(`### 任务目标与数据\n\n${kv([['行业', c.industry], ['真实业务场景', c.scenario], ['岗位', c.role], ['数据或资料', '`' + c.dataset + '`（' + d.rowCount + ' 行，异常 ' + d.exceptionCount + '）'], ['公开参考', c.publicRef], ['行业字段', c.fields.join('、')], ['指标链（真实值）', d.kpis.map((k) => k.name + ' ' + k.value + (k.unit || '')).join('，')], ['决策动作', c.decisionAction], ['风险边界', c.riskBoundary + (c.highImpact ? '（高影响行业·人工复核）' : '')], ['UI 原型', '`' + c.uiId + '`（' + c.saasType + '）'], ['采用设计', c.design], ['SaaS 组件', c.saasComponents.join('、')]])}\n`);
   H.push(`### Prompt 实操\n\n**Prompt 1：${c.scenario} - 问题定义**\n\n\`\`\`text\n${buildPrompt(c, d, 'def')}\n\`\`\`\n\n**Prompt 2：${c.scenario} - 方案验收**\n\n\`\`\`text\n${buildPrompt(c, d, 'accept')}\n\`\`\`\n`);
-  H.push(`### 图形/原型/表单\n\n![${c.scenario} · 信息图](outputs/product_case_library/svg/case_${pad(c.num)}_${c.slug}.svg)\n\n![${c.scenario} · 可运行大屏原型截图](assets/screenshots/premium_case_${pad(c.num)}_${c.slug}_desktop.png)\n\n- 图形类型：${c.slug}（设计 ${c.design}）\n- 看图顺序：先看指标链，再看异常队列和责任对象，最后看行动入口与验收边界。\n- UI 差异：本案例采用 \`${c.uiId}\` + 设计 \`${c.design}\`，不得复用通用表格占位；可运行原型见 \`#/case/${pad(c.num)}\`。\n`);
+  H.push(`### 图形/原型/表单\n\n![${c.scenario} · 信息图](outputs/product_case_library/svg/case_${pad(c.num)}_${c.slug}.svg)\n\n![${c.scenario} · 可运行大屏原型截图](assets/screenshots/premium_case_${pad(c.num)}_${c.slug}_desktop.png)\n\n- 图形类型：${c.slug}（设计 ${c.design}）\n- 看图顺序：${c.readingOrder || '先看指标链，再看异常队列和责任对象，最后看行动入口与验收边界。'}\n- UI 差异：本案例采用 \`${c.uiId}\` + 设计 \`${c.design}\`，不得复用通用表格占位；可运行原型见 \`#/case/${pad(c.num)}\`。\n`);
   H.push(`### 交付物与验收\n\n${kv([['交付物', c.deliverable], ['必含字段', c.fields.join('、')], ['必含指标链', c.metricChain.join('、')], ['必含异常状态', c.exceptionStates.join('、')], ['必含 Skill', c.skills.join('、')]])}\n\n- 合格标准：业务场景具体、指标链完整、异常状态可追踪、行动入口明确、验收条件可执行。\n- 不合格标准：使用泛化产品名称、缺少行业指标、只描述页面不说明业务取舍、越过「${c.riskBoundary}」。\n- 交付物文件：\`outputs/product_case_library/case_${pad(c.num)}_${c.slug}_问题定义.md\`、\`…_方案验收.md\`。\n`);
   if (c.rp) H.push(`\n**指定实操融合**\n\n- ${c.rp.id}：${c.rp.title}\n  - 产出：${c.rp.produce}\n  - 验收：${c.rp.accept}\n`);
-  H.push(`\n> 运行本案例：\`bash code/run.sh\` 起服务后访问 \`#/case/${pad(c.num)}\`（真后端实时数据）。跑通/纠错/约束的统一说明见「使用入口」，不再逐案例赘述。\n`);
+  H.push(`### 跟着做（动手复现）\n\n1. 起服务：\`bash code/run.sh\`，浏览器打开 \`#/case/${pad(c.num)}\`（本案专属大屏）。\n2. **你应看到**：指标链（${c.metricChain.slice(0, 3).join(' / ')} …）、异常队列与责任对象、行动入口，数据全部来自真实后端实时计算。\n3. **动手改一改**：${c.tryThis || '换一个维度或筛选，观察指标怎么变；再点页面里的「决策题挑战」做一次判断。'}\n`);
+  if (c.deepDive) H.push(`\n<details>\n<summary>⭐ 深度（专业读者）：权衡 · 失效模式 · 何时别用</summary>\n\n${c.deepDive}\n</details>\n`);
+  if (c.exercises && c.exercises.length) H.push(`### 练习（做完再进下一个案例）\n\n${c.exercises.map((e, i) => `${i + 1}. **${e.type}**：${e.q}`).join('\n')}\n`);
+  H.push(`\n> **小结**：本案用「${c.scenario}」演示了原理 ${(c.demonstrates || []).join('、')}，把理论落成可运行、可验收的产品判断。运行：\`bash code/run.sh\` 起服务后访问 \`#/case/${pad(c.num)}\`（真后端实时数据）；跑通/纠错/约束的统一说明见「使用入口」，不再逐案例赘述。\n`);
 }
+H.push('', src('99-capstone.md'), '');
 writeFileSync(join(ROOT, '产品经理转型实操知识库.md'), H.join('\n') + '\n');
 console.log('单一教程 md + SVG + 交付物 生成完毕。cases', defs.cases.length, '| figs 4');

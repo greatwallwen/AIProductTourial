@@ -175,6 +175,82 @@ for (const c of defs.cases) {
   ok(); if (has(dp) && !jj(dp).chart?.by) bad(`案例${c.num} 图表非数据驱动（缺 by 聚合说明）`);
 }
 
+// ============ v8：教学法 + 诚信增强守卫 ============
+const N = defs.cases.length;
+const rdmEn = rd('README.md'), rdmCn = rd('README-cn.md');
+// 1) 案例数口径一致：正文/两个 README 不得再现旧口径(25/21)
+ok(); if (/25 个?案例|25 案例|21 real industry/.test(tut + rdmCn + rdmEn)) bad(`存在旧案例数口径(25/21)，应统一为 ${N}`);
+ok(); if (!new RegExp(`${N} representative`).test(rdmEn)) bad(`README.md 未把案例数标为 ${N}`);
+// 2) 禁顺子占位假指标：任何案例 KPI 不得为 (i+2)*11 序列(22/33/44/55)；全案例 KPI 非退化
+for (const c of defs.cases) {
+  const dp = `code/data/case_${pad(c.num)}.json`; if (!has(dp)) continue;
+  const kp = jj(dp).kpis || [];
+  ok(); if (kp.length >= 4 && kp.slice(0, 4).every((k, i) => k.value === (i + 2) * 11)) bad(`案例${c.num} KPI 仍是顺子占位(22/33/44/55)`);
+  ok(); if (kp.length > 1 && new Set(kp.map((k) => k.value)).size === 1) bad(`案例${c.num} KPI 全同(退化/未真算)`);
+}
+// 44/46 关键真实值下限（防回退占位）
+ok(); if (((jj('code/data/case_44.json').kpis || [])[0]?.value || 0) < 100) bad('案例44 语料篇数应为真实统计(≥100)，疑似占位');
+ok(); if (((jj('code/data/case_46.json').kpis || []).find((k) => k.name === '接口数')?.value || 0) < 5) bad('案例46 接口数应为真实统计(≥5)，疑似占位');
+// 3) 跨行业词泄漏 + 决策动作去重
+ok(); if (/薪酬|招聘|编制超配/.test(tut)) bad('教程含跨行业错配词(HR 词泄漏到非人力案例)');
+const _das = defs.cases.map((c) => c.decisionAction);
+ok(); if (new Set(_das).size !== _das.length) bad('案例 decisionAction 存在雷同(应各案例专属)');
+// 4) 教学支架：每理论章须有 学习目标/小结/练习
+for (const f of ['00-ai-foundations', '01-ideology', '02-architecture', '03-engineering', '04-designs']) {
+  const s = rd(`docs/_source/${f}.md`);
+  ok(); if (!/本章学习目标/.test(s)) bad(`${f} 缺「学习目标」`);
+  ok(); if (!/本章小结/.test(s)) bad(`${f} 缺「本章小结」`);
+  ok(); if (!/### 练习/.test(s)) bad(`${f} 缺「练习」`);
+}
+// 正文须有 导读/路线/排查/预期输出 + lab/game 引导 + 三档标记
+for (const m of ['## 读前须知', '### 学习路线图', '### 常见报错排查', '你应看到', '#/lab/tokenizer', '#/game', '🟢 **必读**']) {
+  ok(); if (!tut.includes(m)) bad(`教程缺教学支架「${m}」`);
+}
+// 每案例须有 跟着做 + 练习(exercises)
+ok(); if ((tut.match(/### 跟着做（动手复现）/g) || []).length < N) bad('部分案例缺「跟着做」动手环节');
+ok(); if ((tut.match(/### 练习/g) || []).length < N + 5) bad(`练习不足(应 ≥ 5 理论章 + ${N} 案例)`);
+for (const c of defs.cases) { ok(); if (!Array.isArray(c.exercises) || c.exercises.length < 2) bad(`案例${c.num} 缺练习(exercises<2)`); }
+// 5) README 死链：旧死链不得复现，关键引用须存在
+ok(); if (/outputs\/07_skills/.test(rdmEn)) bad('README.md 仍含死链 outputs/07_skills');
+ok(); if (rdmEn.includes('skills/pm_skills.md') && !has('skills/pm_skills.md')) bad('README.md 引用 skills/pm_skills.md 不存在');
+
+// ============ v10：真实数据基座 + 埋点 + 诚信增强守卫 ============
+// A) 前端案例数不得硬编码（应从 /api 动态取）——旧「25」曾从此泄漏（verify 此前只扫 md/README）
+{ const webSrc = walk('code/web/src').filter((f) => /\.(tsx|ts)$/.test(f)).map((f) => rd(f)).join('\n');
+  ok(); if (/\d+\s*个?案例|\d+\s*案例串/.test(webSrc)) bad('前端 code/web/src 仍写死案例数（应从 /api 动态取）'); }
+// B) MANIFEST 死链守卫（此前只守 README）
+const man = rd('dataset/MANIFEST.md');
+ok(); if (/outputs\/07_skills/.test(man)) bad('MANIFEST 仍含死链 outputs/07_skills');
+// C) 真实数据基座快照：文件存在 + MANIFEST 溯源(来源/许可)齐全
+for (const f of ['retail_online_retail_ii.csv', 'finance_uci_default_credit.csv', 'hospital_cms_ed_timely.csv', 'flights_usdot_ontime.csv']) { ok(); if (!has('dataset/real/' + f)) bad('缺真实基座快照 dataset/real/' + f); }
+ok(); if (!/真实基座快照/.test(man) || !/CC BY 4\.0/.test(man) || !/公共领域/.test(man)) bad('MANIFEST 缺真实基座溯源(来源/许可)');
+// D) 迁移到真实基座的案例，其 dataset 性质须在 MANIFEST 标为「真实基座」
+for (const rel of ['order_data.csv', '28-credit_default_sample.csv', 'hospital_ed_timely.csv', 'flights_ontime.csv']) { const line = man.split('\n').find((l) => l.includes(rel)); ok(); if (!line || !/真实基座/.test(line)) bad(`MANIFEST 未把 ${rel} 标为真实基座`); }
+// E) 叠加诚信：合成叠加须显式标注「教学合成」，绝不把合成说成真实
+ok(); if (!/教学合成叠加|标注合成叠加/.test(man)) bad('MANIFEST 未标注教学合成叠加列');
+// F) 旧的编造具体断言不得复现（噪声当信号的老洞见）
+ok(); if (/家居 ?571|心内 ?91|跨境 ?540/.test(tut)) bad('教程仍含旧编造具体断言(家居571/心内91/跨境540)');
+// G) 信号-噪声（关键）：真实分组效应须显著，防回退到「噪声当信号」——直接读真实 CSV 复算
+const parseCsvV = (p) => { const t = rd(p).trim().split('\n'); const sp = (l) => { const o = []; let c = '', q = false; for (const ch of l) { if (ch === '"') q = !q; else if (ch === ',' && !q) { o.push(c); c = ''; } else c += ch; } o.push(c); return o; }; const head = sp(t[0]); return { rows: t.slice(1).map(sp), ci: (n) => head.indexOf(n) }; };
+{ const s = parseCsvV('dataset/product_cases/hospital_ed_timely.csv'); const V = s.ci('急诊量级'), W = s.ci('中位急诊时长分');
+  const g = {}; for (const r of s.rows) { const k = r[V]; if (k === '未标注') continue; (g[k] ||= [0, 0]); g[k][0]++; g[k][1] += Number(r[W]) || 0; }
+  const means = Object.values(g).map(([n, w]) => w / n); const ratio = Math.max(...means) / Math.min(...means);
+  ok(); if (!(ratio >= 1.2)) bad(`案例16 急诊量级→等待 组间效应过弱(极差比 ${ratio.toFixed(2)}<1.2，疑似噪声当信号)`); }
+{ const s = parseCsvV('dataset/reference_data_analysis/28-credit_default_sample.csv'); const T = s.ci('额度档'), L = s.ci('风险等级');
+  const g = {}; for (const r of s.rows) { const k = r[T]; (g[k] ||= [0, 0]); g[k][0]++; if (r[L] === '高') g[k][1]++; }
+  const rates = Object.values(g).map(([n, h]) => h / n * 100); const spread = Math.max(...rates) - Math.min(...rates);
+  ok(); if (!(spread >= 10)) bad(`案例28 额度档→高风险 组间效应过弱(极差 ${spread.toFixed(1)}pct<10)`); }
+{ const s = parseCsvV('dataset/product_cases/flights_ontime.csv'); const C = s.ci('城市'), A = s.ci('异常类型');
+  const g = {}; for (const r of s.rows) { const k = r[C]; (g[k] ||= [0, 0]); g[k][0]++; if (r[A] === '延误') g[k][1]++; }
+  const rates = Object.values(g).filter(([n]) => n >= 8).map(([n, l]) => l / n * 100); const spread = Math.max(...rates) - Math.min(...rates);
+  ok(); if (!(spread >= 15)) bad(`案例14 起飞城市→延误 组间效应过弱(极差 ${spread.toFixed(1)}pct<15，疑似噪声当信号)`); }
+// H) 新增教学内容出现性 + 每案去模板字段
+for (const m of ['AI 产品经理能力地图', '三条转型路线', '推荐学习顺序', '为什么现在学', 'Loop 0', '原理 → 案例 反查', '结课 Capstone', '⭐ 深度']) { ok(); if (!tut.includes(m)) bad(`教程缺新增内容「${m}」`); }
+for (const c of defs.cases) { ok(); if (!c.readingOrder || !c.tryThis) bad(`案例${c.num} 缺去模板字段 readingOrder/tryThis`); }
+// I) 叙事钩子诚信：姚顺雨须标为首席科学家(非 PM)；prompt-sets 归 Aparna 而非吴恩达
+ok(); if (tut.includes('姚顺雨') && !/姚顺雨[^。]{0,60}首席科学家/.test(tut)) bad('姚顺雨须标注为首席科学家(非产品经理)');
+ok(); if (/吴恩达[^。]{0,40}(新的 PRD|提示词集|prompt set)/i.test(tut)) bad('把 prompt-sets/新PRD 误植吴恩达(实为 Aparna Chennapragada)');
+
 console.log(`\n检查 ${checks} 项，失败 ${fail} 项`);
 if (fail) { console.log('\n✗ NOT GREEN'); process.exit(1); }
 console.log('\n✅ ALL GREEN');

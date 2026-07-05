@@ -28,8 +28,8 @@
  "metricChainNames": [
   "子系统数",
   "接口数",
-  "契约覆盖",
-  "健康检查"
+  "后端模块数",
+  "契约断言数"
  ],
  "exceptionStates": [
   "职责越界",
@@ -57,31 +57,53 @@
  "kpis": [
   {
    "name": "子系统数",
-   "value": 22,
+   "value": 5,
    "unit": ""
   },
   {
    "name": "接口数",
-   "value": 33,
+   "value": 14,
    "unit": ""
   },
   {
-   "name": "契约覆盖",
-   "value": 44,
+   "name": "后端模块数",
+   "value": 9,
    "unit": ""
   },
   {
-   "name": "健康检查",
-   "value": 55,
+   "name": "契约断言数",
+   "value": 22,
    "unit": ""
   }
  ],
  "queue": [],
  "chart": {
-  "type": "sparkline",
-  "data": []
+  "type": "bars",
+  "by": "子系统 → 模块文件数",
+  "data": [
+   {
+    "label": "data",
+    "value": 1
+   },
+   {
+    "label": "db",
+    "value": 1
+   },
+   {
+    "label": "routes",
+    "value": 1
+   },
+   {
+    "label": "services",
+    "value": 3
+   },
+   {
+    "label": "vector",
+    "value": 1
+   }
+  ]
  },
- "rowCount": 46,
+ "rowCount": 5,
  "exceptionCount": 0,
  "responsible": [
   "—"

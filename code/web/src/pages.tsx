@@ -25,7 +25,7 @@ export function Home() {
   return (
     <div className="page">
       <div className="topbar"><div><div className="crumb">数字化产品经理转型实操知识库</div><h1>把理论，做成一个能跑的数字化系统</h1>
-        <div className="muted">先讲 AI 底层 / Loop / 架构 / 规范 / 设计，再用 25 个案例串成一套数字化系统的实操演示——真数据、真后端、真原型。</div></div></div>
+        <div className="muted">先讲 AI 底层 / Loop / 架构 / 规范 / 设计，再用 {idx?.cases.length ?? ''} 个案例串成一套数字化系统的实操演示——真数据、真后端、真原型。</div></div></div>
       {prog && (
         <div className="card" style={{ marginBottom: 16, display: 'flex', alignItems: 'center', gap: 16 }}>
           <svg width="72" height="72" viewBox="0 0 72 72" aria-label={`学习进度 ${prog.pct}%`}>
@@ -47,7 +47,7 @@ export function Home() {
         ))}
       </div>
       <section className="card">
-        <div className="card-h"><h2>数字化系统全景 · 25 案例串成一个系统</h2><span className="muted">纵向三层 × 横向数据价值闭环 · 点节点进案例</span></div>
+        <div className="card-h"><h2>数字化系统全景 · {idx?.cases.length ?? ''} 案例串成一个系统</h2><span className="muted">纵向三层 × 横向数据价值闭环 · 点节点进案例</span></div>
         <div style={{ overflowX: 'auto' }}>
           <table style={{ borderCollapse: 'collapse', width: '100%', minWidth: 720 }}>
             <thead><tr><th style={{ padding: 6 }}></th>{STAGES.map((s) => <th key={s} style={{ padding: 6, fontSize: 11, color: 'var(--accent)', fontWeight: 650 }}>{s}</th>)}</tr></thead>

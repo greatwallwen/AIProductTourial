@@ -7,14 +7,14 @@
  "uiId": "ui_31_ad_conversion_funnel",
  "slug": "ad_conversion_funnel",
  "uiStrategy": "dashboard_plus_saas｜sales_funnel_screen｜驾驶舱高密度",
- "largeScreenRef": "销售｜销售漏斗分析大屏",
+ "largeScreenRef": "投放｜广告转化漏斗大屏",
  "components": [
-  "销售漏斗",
-  "目标进度",
-  "客户跟进",
-  "回款风险",
-  "区域作战",
-  "销售排行"
+  "渠道漏斗",
+  "曝光点击",
+  "转化成本",
+  "CPA排行",
+  "预算分配",
+  "创意诊断"
  ],
  "skills": [
   "funnel-analysis",
@@ -24,7 +24,7 @@
  "rp": null,
  "highImpact": false,
  "riskBoundary": "不得只按点击率做预算决策",
- "decisionAction": "判断漏斗断点、回款风险和区域销售动作优先级。",
+ "decisionAction": "定位各渠道漏斗断点（曝光/点击/转化），把预算从量大挪到效率高的渠道。",
  "dataset": "dataset/reference_data_analysis/18-ad_performance.csv",
  "metricChainNames": [
   "渠道数",
@@ -35,9 +35,9 @@
  ],
  "exceptionStates": [
   "转化率下滑",
-  "回款逾期",
-  "客户跟进超时",
-  "区域掉队"
+  "CPA过高",
+  "创意点击低",
+  "落地页转化低"
  ],
  "fields": [
   "活动",
@@ -54,9 +54,9 @@
  ],
  "systemLayer": "能力智能",
  "systemStage": "洞察",
- "theoryOp": "把原理 3.2、4.3 落成可运行操作：判断漏斗断点、回款风险和区域销售动作优先级。（数字化底座本身）",
+ "theoryOp": "把原理 3.2、4.3 落成可运行操作：定位各渠道漏斗断点（曝光/点击/转化），把预算从量大挪到效率高的渠道。（数字化底座本身）",
  "difficulty": "进阶",
- "tldr": "广告投放转化复盘：判断漏斗断点、回款风险和区域销售动作优先级",
+ "tldr": "广告投放转化复盘：定位各渠道漏斗断点，把预算从量大挪到效率高的渠道",
  "insight": "复盘关键是看「每个渠道的漏斗断点」：曝光高转化低是创意问题，点击高转化低是落地页问题。本案按渠道聚合真实曝光/点击/转化，才能把预算从「量大」挪到「效率高」。",
  "pitfall": "常见坑：① 只看曝光/点击等虚荣指标，不看 CPA/CVR；② 预算按历史惯性分配，不按当期真实转化效率复盘调整。",
  "kpis": [
@@ -102,7 +102,7 @@
   },
   {
    "id": 2,
-   "state": "回款逾期",
+   "state": "CPA过高",
    "owner": "",
    "fields": {
     "活动": "夏促",
@@ -115,7 +115,7 @@
   },
   {
    "id": 3,
-   "state": "客户跟进超时",
+   "state": "创意点击低",
    "owner": "",
    "fields": {
     "活动": "新品",
@@ -128,7 +128,7 @@
   },
   {
    "id": 4,
-   "state": "区域掉队",
+   "state": "落地页转化低",
    "owner": "",
    "fields": {
     "活动": "回流",
@@ -154,7 +154,7 @@
   },
   {
    "id": 6,
-   "state": "回款逾期",
+   "state": "CPA过高",
    "owner": "",
    "fields": {
     "活动": "品牌曝光",
@@ -167,7 +167,7 @@
   },
   {
    "id": 7,
-   "state": "客户跟进超时",
+   "state": "创意点击低",
    "owner": "",
    "fields": {
     "活动": "夏促",
@@ -180,7 +180,7 @@
   },
   {
    "id": 8,
-   "state": "区域掉队",
+   "state": "落地页转化低",
    "owner": "",
    "fields": {
     "活动": "新品",
@@ -224,6 +224,7 @@
  },
  "rowCount": 30,
  "exceptionCount": 10,
+ "abColumn": null,
  "responsible": [],
  "actions": [
   {
@@ -232,17 +233,17 @@
    "due": "1d"
   },
   {
-   "label": "处置：回款逾期",
+   "label": "处置：CPA过高",
    "owner": "客服-陈",
    "due": "3d"
   },
   {
-   "label": "处置：客户跟进超时",
+   "label": "处置：创意点击低",
    "owner": "供应链-孙",
    "due": "5d"
   },
   {
-   "label": "处置：区域掉队",
+   "label": "处置：落地页转化低",
    "owner": "数据-周",
    "due": "7d"
   }

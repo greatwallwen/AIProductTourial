@@ -9,34 +9,34 @@
   <rect x="0" y="0" width="1000" height="92" fill="#0c1626" opacity="0.45"/>
   <rect x="36" y="28" width="4" height="36" rx="2" fill="url(#acc)"/>
   <text x="50" y="46" font-size="22" font-weight="750" fill="#e8eefb">后端子系统分解与契约</text>
-  <text x="50" y="70" font-size="11.5" fill="#9fb2d4">系统架构 · arch_board · 数据 rules/backend.md（46 行 · 异常 0）</text>
+  <text x="50" y="70" font-size="11.5" fill="#9fb2d4">系统架构 · arch_board · 数据 rules/backend.md（5 行 · 异常 0）</text>
   <rect x="742" y="26" width="222" height="22" rx="11" fill="#0a1220" stroke="#1c2c46"/><text x="853" y="41" font-size="10" fill="#06b6d4" text-anchor="middle">设计 cyan-matrix · 底座平台·治理</text>
   <text x="964" y="70" font-size="9.5" fill="#566484" text-anchor="end">读图：指标链 → 异常队列/责任 → 行动/验收</text>
   <rect x="36" y="116" width="176" height="82" rx="11" fill="#0c1626" stroke="#1c2c46"/>
     <rect x="36" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
     <circle cx="56" cy="139" r="7" fill="none" stroke="#06b6d4" stroke-width="1.5"/><circle cx="56" cy="139" r="2.5" fill="#06b6d4"/>
     <text x="70" y="143" font-size="10.5" fill="#566484">子系统数</text>
-    <text x="50" y="176" font-size="24" font-weight="750" fill="#e8eefb">22<tspan font-size="12" fill="#566484"></tspan></text>
+    <text x="50" y="176" font-size="24" font-weight="750" fill="#e8eefb">5<tspan font-size="12" fill="#566484"></tspan></text>
     <rect x="226" y="116" width="176" height="82" rx="11" fill="#0c1626" stroke="#1c2c46"/>
     <rect x="226" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
     <circle cx="246" cy="139" r="7" fill="none" stroke="#06b6d4" stroke-width="1.5"/><circle cx="246" cy="139" r="2.5" fill="#06b6d4"/>
     <text x="260" y="143" font-size="10.5" fill="#566484">接口数</text>
-    <text x="240" y="176" font-size="24" font-weight="750" fill="#e8eefb">33<tspan font-size="12" fill="#566484"></tspan></text>
+    <text x="240" y="176" font-size="24" font-weight="750" fill="#e8eefb">14<tspan font-size="12" fill="#566484"></tspan></text>
     <rect x="416" y="116" width="176" height="82" rx="11" fill="#0c1626" stroke="#1c2c46"/>
     <rect x="416" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
     <circle cx="436" cy="139" r="7" fill="none" stroke="#06b6d4" stroke-width="1.5"/><circle cx="436" cy="139" r="2.5" fill="#06b6d4"/>
-    <text x="450" y="143" font-size="10.5" fill="#566484">契约覆盖</text>
-    <text x="430" y="176" font-size="24" font-weight="750" fill="#e8eefb">44<tspan font-size="12" fill="#566484"></tspan></text>
+    <text x="450" y="143" font-size="10.5" fill="#566484">后端模块数</text>
+    <text x="430" y="176" font-size="24" font-weight="750" fill="#e8eefb">9<tspan font-size="12" fill="#566484"></tspan></text>
     <rect x="606" y="116" width="176" height="82" rx="11" fill="#0c1626" stroke="#1c2c46"/>
     <rect x="606" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
     <circle cx="626" cy="139" r="7" fill="none" stroke="#06b6d4" stroke-width="1.5"/><circle cx="626" cy="139" r="2.5" fill="#06b6d4"/>
-    <text x="640" y="143" font-size="10.5" fill="#566484">健康检查</text>
-    <text x="620" y="176" font-size="24" font-weight="750" fill="#e8eefb">55<tspan font-size="12" fill="#566484"></tspan></text>
+    <text x="640" y="143" font-size="10.5" fill="#566484">契约断言数</text>
+    <text x="620" y="176" font-size="24" font-weight="750" fill="#e8eefb">22<tspan font-size="12" fill="#566484"></tspan></text>
     
   <rect x="24" y="216" width="476" height="230" rx="12" fill="#0c1626" stroke="#1c2c46"/>
   <text x="40" y="240" font-size="12.5" font-weight="650" fill="#e8eefb">指标趋势 / 结构</text><rect x="40" y="246" width="28" height="2" fill="#06b6d4"/>
   <text x="484" y="240" font-size="9.5" fill="#566484" text-anchor="end">架构｜子系统与数据流大屏</text>
-  <text x="260" y="344" font-size="11" fill="#566484" text-anchor="middle">无图表数据</text>
+  <line x1="44" y1="373.0" x2="476" y2="373.0" stroke="#142138" stroke-dasharray="2 3"/><line x1="44" y1="336.0" x2="476" y2="336.0" stroke="#142138" stroke-dasharray="2 3"/><line x1="44" y1="299.0" x2="476" y2="299.0" stroke="#142138" stroke-dasharray="2 3"/><line x1="44" y1="262.0" x2="476" y2="262.0" stroke="#142138" stroke-dasharray="2 3"/><line x1="44" y1="410" x2="476" y2="410" stroke="#1c2c46"/><line x1="44" y1="262" x2="44" y2="410" stroke="#1c2c46"/><rect x="50.0" y="360.7" width="74.0" height="49.3" rx="3" fill="#06b6d4" opacity="0.9"/><text x="87.0" y="356.7" font-size="8.5" fill="#9fb2d4" text-anchor="middle">1</text><text x="87.0" y="423" font-size="8" fill="#566484" text-anchor="middle">data</text><rect x="134.0" y="360.7" width="74.0" height="49.3" rx="3" fill="#06b6d4" opacity="0.9"/><text x="171.0" y="356.7" font-size="8.5" fill="#9fb2d4" text-anchor="middle">1</text><text x="171.0" y="423" font-size="8" fill="#566484" text-anchor="middle">db</text><rect x="218.0" y="360.7" width="74.0" height="49.3" rx="3" fill="#06b6d4" opacity="0.9"/><text x="255.0" y="356.7" font-size="8.5" fill="#9fb2d4" text-anchor="middle">1</text><text x="255.0" y="423" font-size="8" fill="#566484" text-anchor="middle">route</text><rect x="302.0" y="262.0" width="74.0" height="148.0" rx="3" fill="#06b6d4" opacity="0.9"/><text x="339.0" y="258.0" font-size="8.5" fill="#9fb2d4" text-anchor="middle">3</text><text x="339.0" y="423" font-size="8" fill="#566484" text-anchor="middle">servi</text><rect x="386.0" y="360.7" width="74.0" height="49.3" rx="3" fill="#06b6d4" opacity="0.9"/><text x="423.0" y="356.7" font-size="8.5" fill="#9fb2d4" text-anchor="middle">1</text><text x="423.0" y="423" font-size="8" fill="#566484" text-anchor="middle">vecto</text>
   <rect x="512" y="216" width="464" height="230" rx="12" fill="#0c1626" stroke="#1c2c46"/>
   <text x="528" y="240" font-size="12.5" font-weight="650" fill="#e8eefb">异常队列 · 责任对象</text><rect x="528" y="246" width="28" height="2" fill="#fbbf24"/>
   <text x="960" y="240" font-size="9.5" fill="#566484" text-anchor="end">0 项 · 取前 0</text>

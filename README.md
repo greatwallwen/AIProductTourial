@@ -1,11 +1,11 @@
 # PM Transformation Hands-on Knowledge Base（产品经理转型实操知识库）
 
-A hands-on knowledge base that helps engineers and project managers transition into product management. One PM workflow (role-shift → user insight → requirements → positioning → design → metrics → AI collaboration → QA → capstone) runs across **21 real industry scenarios**, each delivered as: **real data → runnable React prototype → real screenshot → two deliverables → handbook chapter → machine-verified**.
+A hands-on knowledge base that helps engineers and project managers transition into product management. One PM workflow (role-shift → user insight → requirements → positioning → design → metrics → AI collaboration → QA → capstone) runs across **11 representative industry scenarios**, each delivered as: **real data → runnable React prototype → real screenshot → two deliverables → handbook chapter → machine-verified**.
 
 - Datasets: `dataset/` (+ `MANIFEST.md`, real vs. synthetic explicitly labeled)
 - Runnable workbench: `code/web` (Vite + React + TS, one route per case `#/case/NN`)
 - Manifests / SVGs / deliverables: `outputs/product_case_library/`
-- Structured skills (46): `outputs/07_skills/pm_skills.md`
+- Structured skills (52): `skills/pm_skills.md`
 - Screenshots: `assets/screenshots/`
 - Master handbook (Chinese): `产品经理转型实操知识库.md` · Chinese README: `README-cn.md`
 
