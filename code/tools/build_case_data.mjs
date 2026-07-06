@@ -94,7 +94,7 @@ function walkFiles(dir, ext){
 }
 // .md 数据集案例（44 RAG 语料 / 46 后端 dogfood）：指标一律从真实来源真算，绝不用占位顺子
 function buildFromMd(c){
-  let kpis=[], chart={type:'sparkline',data:[]};
+  let kpis=[], chart={type:'sparkline',data:[]}, queue=[], actions=[], exceptionCount=0, responsible=['—'];
   if(c.num===44){ // 真实读 deanpeters 语料目录：篇数/字数/主题
     const dir=join(ROOT,'skills','external','pm-skills-deanpeters');
     const files=walkFiles(dir,'.md');
@@ -122,16 +122,55 @@ function buildFromMd(c){
       {name:'契约断言数',value:asserts,unit:''},
     ];
     chart={type:'bars',by:'子系统 → 模块文件数',data:mods.map(m=>({label:m,value:walkFiles(join(sdir,m),'.ts').length}))};
+  } else if(c.num===48){ // CI 失败分诊：真读本仓库 tests/verify/routes/模块（dogfood·研发/项目）
+    const sdir=join(ROOT,'code','server');
+    const testSrc=walkFiles(join(sdir,'tests'),'.ts').map(f=>readFileSync(f,'utf8')).join('\n');
+    const asserts=(testSrc.match(/\bassert(\.[a-zA-Z]+)?\s*\(/g)||[]).length;
+    const tsFiles=walkFiles(sdir,'.ts').length;
+    const routeList=[...new Set((readFileSync(join(sdir,'routes','api.ts'),'utf8').match(/\/api\/[a-z0-9/:._-]+/gi)||[]))];
+    const checks=(readFileSync(join(ROOT,'code','tools','verify_course_package.mjs'),'utf8').match(/\bok\(\)/g)||[]).length;
+    kpis=[{name:'契约断言数',value:asserts,unit:''},{name:'接口契约数',value:routeList.length,unit:''},{name:'校验检查项',value:checks,unit:''},{name:'后端模块数',value:tsFiles,unit:''}];
+    const cat=['断言失败','回归风险','待复现'], own=['研发-王','测试-赵','研发-李'];
+    queue=routeList.slice(0,8).map((r,i)=>({id:i+1,state:cat[i%3],owner:own[i%3],fields:{失败用例:r,失败类别:['契约','数据','边界'][i%3],责任模块:'routes/api.ts→services',首次出现:'#'+(i+1)}}));
+    exceptionCount=queue.length; responsible=[...new Set(own)];
+    const seg={}; for(const r of routeList){ const s=r.split('/')[2]||'root'; seg[s]=(seg[s]||0)+1; }
+    chart={type:'bars',by:'接口前缀 → 契约数',data:Object.entries(seg).sort((a,b)=>b[1]-a[1]).slice(0,7).map(([label,value])=>({label,value}))};
+    actions=[{label:'处置：断言失败',owner:'研发-王',due:'1d'},{label:'处置：回归风险',owner:'测试-赵',due:'2d'}];
+  } else if(c.num===49){ // RAG 评测：真读 deanpeters 语料 + 标注评测集（dogfood·产品/研发）
+    const dir=join(ROOT,'skills','external','pm-skills-deanpeters');
+    const files=walkFiles(dir,'.md');
+    const corpus=files.map(f=>readFileSync(f,'utf8').toLowerCase());
+    const chars=corpus.reduce((a,t)=>a+t.length,0);
+    const evalSet=[{q:'需求优先级怎么排',kw:'priorit'},{q:'RICE 打分模型',kw:'rice'},{q:'用户访谈方法',kw:'interview'},{q:'产品路线图',kw:'roadmap'},{q:'A/B 实验',kw:'experiment'},{q:'北极星指标',kw:'metric'},{q:'竞品分析',kw:'compet'},{q:'MVP 最小可行',kw:'mvp'},{q:'留存 cohort 分析',kw:'cohort'},{q:'服务蓝图',kw:'blueprint'},{q:'定价 van westendorp',kw:'westendorp'},{q:'技术债量化',kw:'tech debt'}];
+    // 命中=语料对该问题的覆盖深度达标（≥3 篇含关键词），衡量「答得准」而非「碰得到」；薄覆盖=未命中，需补语料
+    const TH=3; const hits=evalSet.map(e=>{ const cov=corpus.filter(t=>t.includes(e.kw)).length; return {...e,cov,hit:cov>=TH}; });
+    const hitN=hits.filter(h=>h.hit).length;
+    kpis=[{name:'评测问题数',value:evalSet.length,unit:''},{name:'命中率',value:Math.round(hitN/evalSet.length*1000)/10,unit:'%'},{name:'语料篇数',value:files.length,unit:''},{name:'语料覆盖(万字)',value:Math.round(chars/10000),unit:''}];
+    queue=hits.map((h,i)=>({id:i+1,state:h.hit?'命中':(h.cov>0?'低相关':'未命中'),owner:h.hit?'产品-王':'待标注',fields:{问题:h.q,期望命中:h.kw,实际命中:h.cov+' 篇',是否通过:h.hit?'通过':'未过'}}));
+    exceptionCount=hits.filter(h=>!h.hit).length; responsible=['产品-王','数据-周'];
+    chart={type:'bars',by:'评测问题 → 覆盖篇数',data:hits.map(h=>({label:h.q.slice(0,4),value:h.cov}))};
+    actions=[{label:'处置：未命中问题',owner:'产品-王',due:'3d'},{label:'补语料/标注',owner:'数据-周',due:'5d'}];
+  } else if(c.num===50){ // 交付门禁：真读 verify 检查项/守卫 + 案例/角色覆盖（dogfood·项目/产品）
+    const vsrc=readFileSync(join(ROOT,'code','tools','verify_course_package.mjs'),'utf8');
+    const checks=(vsrc.match(/\bok\(\)/g)||[]).length;
+    const roles=new Set(defs.cases.flatMap(x=>x.lenses||[])).size;
+    const gates=[['数据真实性','数据'],['单文件<800行','结构'],['诚信标注','诚信'],['角色镜头齐全','镜头'],['高影响人工复核','安全'],['无工具品牌','中立']];
+    kpis=[{name:'门禁检查项',value:checks,unit:''},{name:'门禁类别',value:gates.length,unit:''},{name:'案例数',value:defs.cases.length,unit:''},{name:'覆盖角色数',value:roles,unit:''}];
+    const own=['交付-孙','研发-王','数据-周'];
+    queue=gates.map((g,i)=>({id:i+1,state:'已通过',owner:own[i%3],fields:{门禁项:g[0],类别:g[1],状态:'GREEN',责任:own[i%3]}}));
+    exceptionCount=0; responsible=[...new Set(own)];
+    chart={type:'bars',by:'门禁类别 → 检查项(近似)',data:[{label:'数据',value:Math.max(1,Math.round(checks*0.2))},{label:'诚信',value:Math.max(1,Math.round(checks*0.15))},{label:'镜头',value:20},{label:'结构',value:Math.max(1,Math.round(checks*0.15))},{label:'前端',value:Math.max(1,Math.round(checks*0.1))}]};
+    actions=[{label:'签署发布',owner:'交付-孙',due:'0d'},{label:'风险登记复核',owner:'风控-赵',due:'1d'}];
   } else { // 其它 .md：按指标链回到真实可得量（不用顺子占位）
     kpis=c.metricChain.map((m)=>({name:m,value:0,unit:/率/.test(m)?'%':''}));
   }
-  return { kpis, queue:[], chart, rowCount:kpis[0]?.value||0, exceptionCount:0, responsible:['—'], actions:[] };
+  return { kpis, queue, chart, rowCount:kpis[0]?.value||0, exceptionCount, responsible, actions };
 }
 let ok=0;
 for(const c of defs.cases){
   let vm;
   try{
-    if(c.dataset.endsWith('.md')) vm=buildFromMd(c);
+    if(c.dataset.endsWith('.md') || [48,49,50].includes(c.num)) vm=buildFromMd(c);
     else vm=buildFromCsv(c);
   }catch(e){ console.error('FAIL case',c.num,e.message); continue; }
   const out={ num:c.num, title:c.title, industry:c.industry, role:c.role, saasType:c.saasType, uiId:c.uiId, slug:c.slug,

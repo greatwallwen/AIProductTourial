@@ -1678,6 +1678,241 @@
         "研发",
         "产品"
       ]
+    },
+    {
+      "num": 48,
+      "slug": "ci_triage_loop",
+      "uiId": "ui_48_ci_triage",
+      "screen": "triage",
+      "design": "steel-queue",
+      "title": "CI 失败分诊 Loop（研发·项目镜头）",
+      "scenario": "CI 失败分诊台",
+      "industry": "研发效能",
+      "saasType": "ci_triage",
+      "role": "研发 Tech Lead / 交付负责人",
+      "phase": "质量验收",
+      "systemLayer": "能力智能",
+      "systemStage": "验收",
+      "dataset": "code/server/tests + verify + routes（本仓库自身·dogfood）",
+      "publicRef": "本仓库 code/server/tests、verify_course_package.mjs、routes/api.ts",
+      "lenses": [
+        "研发",
+        "项目"
+      ],
+      "demonstrates": [
+        "2.3",
+        "2.5",
+        "4.3"
+      ],
+      "theoryOp": "把 §2 的 checker/inspector 落成一个真实的 CI 失败分诊 Loop：失败自动归类、指责任、给建议",
+      "fields": [
+        "失败用例",
+        "失败类别",
+        "责任模块",
+        "首次出现"
+      ],
+      "metricChain": [
+        "测试用例数",
+        "契约断言数",
+        "校验检查项",
+        "接口数"
+      ],
+      "exceptionStates": [
+        "断言失败",
+        "回归风险",
+        "待复现"
+      ],
+      "skills": [
+        "harness-builder",
+        "checker-report",
+        "regression-guard"
+      ],
+      "saasComponents": [
+        "失败列表",
+        "分类标签",
+        "责任映射",
+        "重试面板"
+      ],
+      "deliverable": "CI 失败分诊报告",
+      "decisionAction": "把一次 CI 失败自动分诊到「哪个模块、哪类问题、谁来修」，人只做确认",
+      "riskBoundary": "分诊只做建议，合并/发布仍需人工确认，不自动 force-merge",
+      "highImpact": false,
+      "uiStrategy": "dark-ops",
+      "largeScreenRef": "DevOps 失败分诊台",
+      "difficulty": "进阶",
+      "tldr": "让 CI 失败自己分好类、指好责任，人只做确认",
+      "insight": "「先建 Inspector 再建 Loop」在研发镜头的落地：分诊台就是那个 Inspector，它把「红了」变成「哪里红、谁负责、怎么修」。数据全来自本仓库自身的测试与校验，不是编的。",
+      "pitfall": "最危险的不是分错类，而是让分诊台直接自动合并/发布——那是跳过 L2 直上 L3。分诊只出建议，人来拍板。",
+      "story": "你们的 CI 一红，群里就开始「是不是我这块」的猜谜，半小时过去还没定位。把这件事做成一个分诊 Loop：每次失败自动按「哪个测试、哪类断言、哪个模块」归类，给出责任建议与重试入口——人只需确认，不再猜谜。本案的数据就是本仓库自己的测试套件、校验器与接口契约（dogfood）。",
+      "readingOrder": "先看四个真实计量（测试/断言/校验项/接口），再看分诊队列怎么把失败指到模块与责任，最后看「只建议不自动合并」的边界。",
+      "tryThis": "给 code/server 新增一个会失败的断言，重跑 node --test，观察分诊台把它归到哪个类别、指给哪个模块。",
+      "deepDive": "为什么分诊只到「建议」就停？因为「同一失败连续两轮必须停、叫人」（stop-rules）——自动重试修不动的错误只会烧钱烧时间。分诊台是 L1→L2，force-merge 是 L3，跨级就是事故。",
+      "exercises": [
+        {
+          "type": "巩固",
+          "q": "本案的「真实数据」具体来自本仓库哪三处？为什么说它是 dogfood？"
+        },
+        {
+          "type": "挑战",
+          "q": "给这个分诊 Loop 设计 L0→L3 的四级毕业考，写清每级的退出条件与护栏。"
+        }
+      ]
+    },
+    {
+      "num": 49,
+      "slug": "rag_eval_harness",
+      "uiId": "ui_49_rag_eval",
+      "screen": "eval",
+      "design": "cyan-matrix",
+      "title": "RAG 评测台 / eval harness（产品·研发镜头）",
+      "scenario": "RAG 回答评测台",
+      "industry": "AI 产品",
+      "saasType": "rag_eval",
+      "role": "AI 产品经理 / 应用研发",
+      "phase": "质量验收",
+      "systemLayer": "能力智能",
+      "systemStage": "验收",
+      "dataset": "skills/external/pm-skills-deanpeters 语料 + 标注 Q/A（dogfood）",
+      "publicRef": "deanpeters PM-Skills 语料 + 本书标注评测集",
+      "lenses": [
+        "产品",
+        "研发"
+      ],
+      "demonstrates": [
+        "2.6",
+        "1.3"
+      ],
+      "theoryOp": "把「evals 是当前最缺的技能」落成一个可跑的评测台：离线用标注集量化 RAG 回答好不好",
+      "fields": [
+        "问题",
+        "期望命中",
+        "实际命中",
+        "是否通过"
+      ],
+      "metricChain": [
+        "评测问题数",
+        "命中率",
+        "语料篇数",
+        "语料覆盖(万字)"
+      ],
+      "exceptionStates": [
+        "未命中",
+        "低相关",
+        "待标注"
+      ],
+      "skills": [
+        "eval-design",
+        "harness-builder",
+        "acceptance-criteria"
+      ],
+      "saasComponents": [
+        "评测集",
+        "命中矩阵",
+        "分数卡",
+        "错误分析"
+      ],
+      "deliverable": "RAG 评测报告（命中率/错误分析）",
+      "decisionAction": "用离线评测集量化「RAG 回答好不好」，据此决定能不能上线、还差哪些语料",
+      "riskBoundary": "评测分数是发布参考，不替代人工抽检；分数高不等于零幻觉",
+      "highImpact": false,
+      "uiStrategy": "dark-matrix",
+      "largeScreenRef": "AI 评测/eval 台",
+      "difficulty": "进阶",
+      "tldr": "用标注评测集给 RAG 回答打分，把「感觉还行」变成「命中率多少」",
+      "insight": "OpenAI/吴恩达都说 evals 是 AI 产品的头号新技能，本书前面反复讲、却一直没有一个能跑的评测案例——这一案就是补上它。评测集 × 真实语料，离线算命中，把 vibe 变成数字。",
+      "pitfall": "把命中率当成唯一真理。评测集覆盖不全时，高分可能只是「考了会的」；所以要配错误分析 + 人工抽检，别让分数剧场化（§2 的「验证剧场」）。",
+      "story": "你给产品接了个 RAG 问答，老板问「它到底答得准不准」，你只能说「我试了几个感觉还行」。把「感觉」变成「评测台」：定一组标注好的问题与期望命中，让系统离线跑一遍，算出命中率、列出没答对的，再决定上不上线。本案的语料就是本书已本地化的 deanpeters PM 语料（dogfood）。",
+      "readingOrder": "先看评测集规模与命中率，再看命中矩阵里哪些问题没答对，最后看「分数是参考、不替代抽检」的边界。",
+      "tryThis": "往评测集里加两道你关心的问题、指定期望命中关键词，重跑 build_case_data，看命中率怎么变。",
+      "deepDive": "为什么离线评测集比线上 A/B 先行？因为归纳问题（§1.7）——模型在没见过的问法上会自信地错；一组固定、可复现的评测集，是你在上线前唯一能反复量化的「验证」，正是「没有免费午餐」下只能验证不能证明的日常版。",
+      "exercises": [
+        {
+          "type": "巩固",
+          "q": "本案的评测集与语料分别来自哪里？命中率是怎么算出来的（真实计算，不是编的）？"
+        },
+        {
+          "type": "挑战",
+          "q": "设计一个「错误分析」流程：命中率从 60% 提到 80%，你会先看哪些没命中的问题、怎么补语料？"
+        }
+      ]
+    },
+    {
+      "num": 50,
+      "slug": "delivery_gates_board",
+      "uiId": "ui_50_delivery_gates",
+      "screen": "gates",
+      "design": "graphite-hud",
+      "title": "交付门禁看板（项目·产品镜头）",
+      "scenario": "交付门禁看板",
+      "industry": "交付治理",
+      "saasType": "delivery_gates",
+      "role": "项目/交付负责人",
+      "phase": "质量验收",
+      "systemLayer": "底座平台",
+      "systemStage": "验收",
+      "dataset": "verify 检查项 + 守卫规则 + 角色覆盖（本仓库自身·dogfood）",
+      "publicRef": "本仓库 verify_course_package.mjs 检查与守卫、案例与角色覆盖",
+      "lenses": [
+        "项目",
+        "产品"
+      ],
+      "demonstrates": [
+        "4.4",
+        "2.3"
+      ],
+      "theoryOp": "把 §6 的「门禁 + 风险登记」落成本书自己的发布门禁看板：能不能发布靠一组可自动核对的关卡",
+      "fields": [
+        "门禁项",
+        "类别",
+        "状态",
+        "责任"
+      ],
+      "metricChain": [
+        "门禁检查项",
+        "守卫规则数",
+        "案例数",
+        "覆盖角色数"
+      ],
+      "exceptionStates": [
+        "未过",
+        "待补",
+        "需人工确认"
+      ],
+      "skills": [
+        "release-risk",
+        "traceability-check",
+        "human-review"
+      ],
+      "saasComponents": [
+        "门禁清单",
+        "通过率",
+        "风险登记",
+        "签署"
+      ],
+      "deliverable": "交付门禁与风险登记",
+      "decisionAction": "用一块门禁看板决定「能不能发布」，把「差不多了」变成一组可自动核对的关卡",
+      "riskBoundary": "门禁绿灯是发布的必要条件而非充分条件；高影响项仍需人工签署",
+      "highImpact": false,
+      "uiStrategy": "dark-ops",
+      "largeScreenRef": "交付门禁/发布看板",
+      "difficulty": "进阶",
+      "tldr": "把「能不能发布」变成一块可自动核对的门禁看板，而不是拍脑袋",
+      "insight": "这一案最「元」：它把本书自己的发布门禁（verify 的数百项检查 + 三绿）做成一个案例——门禁即 evals 即验收，研发的 verify、产品的 evals、项目的门禁，是同一块看板的三张脸。",
+      "pitfall": "把「门禁全绿」当成「一定没问题」。门禁是必要条件不是充分条件——它只拦住你写进去的风险；没写成守卫的风险，绿灯照样放行。所以要持续把新风险补进风险登记。",
+      "story": "发布前的老问题：到底「好了没有」？靠谁拍胸脯，还是靠一块看板？本案把本书自己的发布门禁做成看板——verify 的每一项检查、每一条守卫规则、案例与角色覆盖，全列成可自动核对的关卡，红一项就发不了。这就是项目镜头的收口，也是研发的 verify、产品的 evals 的同一块门禁（dogfood）。",
+      "readingOrder": "先看门禁检查项与守卫规则的真实数量，再看门禁清单逐项状态与责任，最后看「绿灯是必要非充分、高影响需人工签署」的边界。",
+      "tryThis": "在 verify 里故意让一条守卫失败，重跑，观察门禁看板的通过状态与「发不了」的结论。",
+      "deepDive": "为什么说「门禁即 evals 即验收」？因为三者本质同构：都是把「对不对/好不好/能不能发」变成一组可自动、可复现的断言。区别只在角色关心的那一面——研发看代码断言、产品看回答质量、项目看发布关卡，共享同一块门禁。",
+      "exercises": [
+        {
+          "type": "巩固",
+          "q": "本案门禁看板的检查项数量从哪来（真实计算）？为什么说「门禁是必要非充分条件」？"
+        },
+        {
+          "type": "挑战",
+          "q": "给你负责的一个真实交付列一张最小风险登记（3 条），每条写：风险、怎么自动检测成门禁、触发后谁签署。"
+        }
+      ]
     }
   ],
   "projectName": "产品经理转型实操知识库",

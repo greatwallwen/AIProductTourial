@@ -1,0 +1,221 @@
+{
+ "num": 48,
+ "title": "CI 失败分诊 Loop（研发·项目镜头）",
+ "industry": "研发效能",
+ "role": "研发 Tech Lead / 交付负责人",
+ "saasType": "ci_triage",
+ "uiId": "ui_48_ci_triage",
+ "slug": "ci_triage_loop",
+ "uiStrategy": "dark-ops",
+ "largeScreenRef": "DevOps 失败分诊台",
+ "components": [
+  "失败列表",
+  "分类标签",
+  "责任映射",
+  "重试面板"
+ ],
+ "skills": [
+  "harness-builder",
+  "checker-report",
+  "regression-guard"
+ ],
+ "highImpact": false,
+ "riskBoundary": "分诊只做建议，合并/发布仍需人工确认，不自动 force-merge",
+ "decisionAction": "把一次 CI 失败自动分诊到「哪个模块、哪类问题、谁来修」，人只做确认",
+ "dataset": "code/server/tests + verify + routes（本仓库自身·dogfood）",
+ "metricChainNames": [
+  "测试用例数",
+  "契约断言数",
+  "校验检查项",
+  "接口数"
+ ],
+ "exceptionStates": [
+  "断言失败",
+  "回归风险",
+  "待复现"
+ ],
+ "fields": [
+  "失败用例",
+  "失败类别",
+  "责任模块",
+  "首次出现"
+ ],
+ "design": "steel-queue",
+ "demonstrates": [
+  "2.3",
+  "2.5",
+  "4.3"
+ ],
+ "systemLayer": "能力智能",
+ "systemStage": "验收",
+ "theoryOp": "把 §2 的 checker/inspector 落成一个真实的 CI 失败分诊 Loop：失败自动归类、指责任、给建议",
+ "difficulty": "进阶",
+ "tldr": "让 CI 失败自己分好类、指好责任，人只做确认",
+ "insight": "「先建 Inspector 再建 Loop」在研发镜头的落地：分诊台就是那个 Inspector，它把「红了」变成「哪里红、谁负责、怎么修」。数据全来自本仓库自身的测试与校验，不是编的。",
+ "pitfall": "最危险的不是分错类，而是让分诊台直接自动合并/发布——那是跳过 L2 直上 L3。分诊只出建议，人来拍板。",
+ "kpis": [
+  {
+   "name": "契约断言数",
+   "value": 22,
+   "unit": ""
+  },
+  {
+   "name": "接口契约数",
+   "value": 15,
+   "unit": ""
+  },
+  {
+   "name": "校验检查项",
+   "value": 139,
+   "unit": ""
+  },
+  {
+   "name": "后端模块数",
+   "value": 9,
+   "unit": ""
+  }
+ ],
+ "queue": [
+  {
+   "id": 1,
+   "state": "断言失败",
+   "owner": "研发-王",
+   "fields": {
+    "失败用例": "/api/health",
+    "失败类别": "契约",
+    "责任模块": "routes/api.ts→services",
+    "首次出现": "#1"
+   }
+  },
+  {
+   "id": 2,
+   "state": "回归风险",
+   "owner": "测试-赵",
+   "fields": {
+    "失败用例": "/api/cases",
+    "失败类别": "数据",
+    "责任模块": "routes/api.ts→services",
+    "首次出现": "#2"
+   }
+  },
+  {
+   "id": 3,
+   "state": "待复现",
+   "owner": "研发-李",
+   "fields": {
+    "失败用例": "/api/index",
+    "失败类别": "边界",
+    "责任模块": "routes/api.ts→services",
+    "首次出现": "#3"
+   }
+  },
+  {
+   "id": 4,
+   "state": "断言失败",
+   "owner": "研发-王",
+   "fields": {
+    "失败用例": "/api/case/:num/data",
+    "失败类别": "契约",
+    "责任模块": "routes/api.ts→services",
+    "首次出现": "#4"
+   }
+  },
+  {
+   "id": 5,
+   "state": "回归风险",
+   "owner": "测试-赵",
+   "fields": {
+    "失败用例": "/api/points3d",
+    "失败类别": "数据",
+    "责任模块": "routes/api.ts→services",
+    "首次出现": "#5"
+   }
+  },
+  {
+   "id": 6,
+   "state": "待复现",
+   "owner": "研发-李",
+   "fields": {
+    "失败用例": "/api/rfm",
+    "失败类别": "边界",
+    "责任模块": "routes/api.ts→services",
+    "首次出现": "#6"
+   }
+  },
+  {
+   "id": 7,
+   "state": "断言失败",
+   "owner": "研发-王",
+   "fields": {
+    "失败用例": "/api/hospital",
+    "失败类别": "契约",
+    "责任模块": "routes/api.ts→services",
+    "首次出现": "#7"
+   }
+  },
+  {
+   "id": 8,
+   "state": "回归风险",
+   "owner": "测试-赵",
+   "fields": {
+    "失败用例": "/api/adfunnel",
+    "失败类别": "数据",
+    "责任模块": "routes/api.ts→services",
+    "首次出现": "#8"
+   }
+  }
+ ],
+ "chart": {
+  "type": "bars",
+  "by": "接口前缀 → 契约数",
+  "data": [
+   {
+    "label": "health",
+    "value": 1
+   },
+   {
+    "label": "cases",
+    "value": 1
+   },
+   {
+    "label": "index",
+    "value": 1
+   },
+   {
+    "label": "case",
+    "value": 1
+   },
+   {
+    "label": "points3d",
+    "value": 1
+   },
+   {
+    "label": "rfm",
+    "value": 1
+   },
+   {
+    "label": "hospital",
+    "value": 1
+   }
+  ]
+ },
+ "rowCount": 22,
+ "exceptionCount": 8,
+ "responsible": [
+  "研发-王",
+  "测试-赵",
+  "研发-李"
+ ],
+ "actions": [
+  {
+   "label": "处置：断言失败",
+   "owner": "研发-王",
+   "due": "1d"
+  },
+  {
+   "label": "处置：回归风险",
+   "owner": "测试-赵",
+   "due": "2d"
+  }
+ ]
+}

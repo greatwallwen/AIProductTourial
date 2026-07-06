@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" font-family="PingFang SC,Microsoft YaHei,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a0e14"/><stop offset="1" stop-color="#0d1220"/></linearGradient>
+    <linearGradient id="acc" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#38bdf8"/></linearGradient>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#16202e" stroke-width="1"/></pattern>
+    <filter id="glow"><feGaussianBlur stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1000" height="620" fill="url(#bg)"/><rect width="1000" height="620" fill="url(#grid)" opacity="0.4"/>
+  <rect x="0" y="0" width="1000" height="92" fill="#121826" opacity="0.45"/>
+  <rect x="36" y="28" width="4" height="36" rx="2" fill="url(#acc)"/>
+  <text x="50" y="46" font-size="22" font-weight="750" fill="#e6edf6">交付门禁看板</text>
+  <text x="50" y="70" font-size="11.5" fill="#9fb0c3">交付治理 · delivery_gates · 数据 verify 检查项 + 守卫规则 + 角色覆盖（本仓库自身·dogfood）（139 行 · 异常 0）</text>
+  <rect x="742" y="26" width="222" height="22" rx="11" fill="#0f1522" stroke="#1e2a3a"/><text x="853" y="41" font-size="10" fill="#22d3ee" text-anchor="middle">设计 graphite-hud · 底座平台·验收</text>
+  <text x="964" y="70" font-size="9.5" fill="#5b6b7f" text-anchor="end">读图：指标链 → 异常队列/责任 → 行动/验收</text>
+  <rect x="36" y="116" width="176" height="82" rx="11" fill="#121826" stroke="#1e2a3a"/>
+    <rect x="36" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
+    <circle cx="56" cy="139" r="7" fill="none" stroke="#22d3ee" stroke-width="1.5"/><circle cx="56" cy="139" r="2.5" fill="#22d3ee"/>
+    <text x="70" y="143" font-size="10.5" fill="#5b6b7f">门禁检查项</text>
+    <text x="50" y="176" font-size="24" font-weight="750" fill="#e6edf6">139<tspan font-size="12" fill="#5b6b7f"></tspan></text>
+    <rect x="226" y="116" width="176" height="82" rx="11" fill="#121826" stroke="#1e2a3a"/>
+    <rect x="226" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
+    <circle cx="246" cy="139" r="7" fill="none" stroke="#22d3ee" stroke-width="1.5"/><circle cx="246" cy="139" r="2.5" fill="#22d3ee"/>
+    <text x="260" y="143" font-size="10.5" fill="#5b6b7f">守卫规则数</text>
+    <text x="240" y="176" font-size="24" font-weight="750" fill="#e6edf6">139<tspan font-size="12" fill="#5b6b7f"></tspan></text>
+    <rect x="416" y="116" width="176" height="82" rx="11" fill="#121826" stroke="#1e2a3a"/>
+    <rect x="416" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
+    <circle cx="436" cy="139" r="7" fill="none" stroke="#22d3ee" stroke-width="1.5"/><circle cx="436" cy="139" r="2.5" fill="#22d3ee"/>
+    <text x="450" y="143" font-size="10.5" fill="#5b6b7f">案例数</text>
+    <text x="430" y="176" font-size="24" font-weight="750" fill="#e6edf6">14<tspan font-size="12" fill="#5b6b7f"></tspan></text>
+    <rect x="606" y="116" width="176" height="82" rx="11" fill="#121826" stroke="#1e2a3a"/>
+    <rect x="606" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
+    <circle cx="626" cy="139" r="7" fill="none" stroke="#22d3ee" stroke-width="1.5"/><circle cx="626" cy="139" r="2.5" fill="#22d3ee"/>
+    <text x="640" y="143" font-size="10.5" fill="#5b6b7f">覆盖角色数</text>
+    <text x="620" y="176" font-size="24" font-weight="750" fill="#e6edf6">3<tspan font-size="12" fill="#5b6b7f"></tspan></text>
+    
+  <rect x="24" y="216" width="476" height="230" rx="12" fill="#121826" stroke="#1e2a3a"/>
+  <text x="40" y="240" font-size="12.5" font-weight="650" fill="#e6edf6">指标趋势 / 结构</text><rect x="40" y="246" width="28" height="2" fill="#22d3ee"/>
+  <text x="484" y="240" font-size="9.5" fill="#5b6b7f" text-anchor="end">交付门禁/发布看板</text>
+  <line x1="44" y1="373.0" x2="476" y2="373.0" stroke="#16202e" stroke-dasharray="2 3"/><line x1="44" y1="336.0" x2="476" y2="336.0" stroke="#16202e" stroke-dasharray="2 3"/><line x1="44" y1="299.0" x2="476" y2="299.0" stroke="#16202e" stroke-dasharray="2 3"/><line x1="44" y1="262.0" x2="476" y2="262.0" stroke="#16202e" stroke-dasharray="2 3"/><line x1="44" y1="410" x2="476" y2="410" stroke="#1e2a3a"/><line x1="44" y1="262" x2="44" y2="410" stroke="#1e2a3a"/><rect x="50.0" y="262.0" width="74.0" height="148.0" rx="3" fill="#22d3ee" opacity="0.9"/><text x="87.0" y="258.0" font-size="8.5" fill="#9fb0c3" text-anchor="middle">28</text><text x="87.0" y="423" font-size="8" fill="#5b6b7f" text-anchor="middle">数据</text><rect x="134.0" y="299.0" width="74.0" height="111.0" rx="3" fill="#22d3ee" opacity="0.9"/><text x="171.0" y="295.0" font-size="8.5" fill="#9fb0c3" text-anchor="middle">21</text><text x="171.0" y="423" font-size="8" fill="#5b6b7f" text-anchor="middle">诚信</text><rect x="218.0" y="304.3" width="74.0" height="105.7" rx="3" fill="#22d3ee" opacity="0.9"/><text x="255.0" y="300.3" font-size="8.5" fill="#9fb0c3" text-anchor="middle">20</text><text x="255.0" y="423" font-size="8" fill="#5b6b7f" text-anchor="middle">镜头</text><rect x="302.0" y="299.0" width="74.0" height="111.0" rx="3" fill="#22d3ee" opacity="0.9"/><text x="339.0" y="295.0" font-size="8.5" fill="#9fb0c3" text-anchor="middle">21</text><text x="339.0" y="423" font-size="8" fill="#5b6b7f" text-anchor="middle">结构</text><rect x="386.0" y="336.0" width="74.0" height="74.0" rx="3" fill="#22d3ee" opacity="0.9"/><text x="423.0" y="332.0" font-size="8.5" fill="#9fb0c3" text-anchor="middle">14</text><text x="423.0" y="423" font-size="8" fill="#5b6b7f" text-anchor="middle">前端</text>
+  <rect x="512" y="216" width="464" height="230" rx="12" fill="#121826" stroke="#1e2a3a"/>
+  <text x="528" y="240" font-size="12.5" font-weight="650" fill="#e6edf6">异常队列 · 责任对象</text><rect x="528" y="246" width="28" height="2" fill="#fbbf24"/>
+  <text x="960" y="240" font-size="9.5" fill="#5b6b7f" text-anchor="end">0 项 · 取前 5</text>
+  
+    <rect x="524" y="264" width="440" height="28" rx="7" fill="#0f1522" stroke="#1e2a3a"/>
+    <rect x="532" y="271" width="4" height="14" rx="2" fill="#34d399"/>
+    <rect x="544" y="270" width="70" height="16" rx="5" fill="#34d399" opacity="0.2"/><text x="550" y="282" font-size="9.5" fill="#34d399" font-weight="700">已通过</text>
+    <text x="624" y="282" font-size="10" fill="#9fb0c3">数据真实性</text>
+    <rect x="884" y="270" width="72" height="16" rx="8" fill="#38bdf8" opacity="0.16"/><text x="920" y="282" font-size="9.5" fill="#38bdf8" text-anchor="middle">交付-孙</text>
+    <rect x="524" y="298" width="440" height="28" rx="7" fill="#0f1522" stroke="#1e2a3a"/>
+    <rect x="532" y="305" width="4" height="14" rx="2" fill="#34d399"/>
+    <rect x="544" y="304" width="70" height="16" rx="5" fill="#34d399" opacity="0.2"/><text x="550" y="316" font-size="9.5" fill="#34d399" font-weight="700">已通过</text>
+    <text x="624" y="316" font-size="10" fill="#9fb0c3">单文件&lt;800行</text>
+    <rect x="884" y="304" width="72" height="16" rx="8" fill="#38bdf8" opacity="0.16"/><text x="920" y="316" font-size="9.5" fill="#38bdf8" text-anchor="middle">研发-王</text>
+    <rect x="524" y="332" width="440" height="28" rx="7" fill="#0f1522" stroke="#1e2a3a"/>
+    <rect x="532" y="339" width="4" height="14" rx="2" fill="#34d399"/>
+    <rect x="544" y="338" width="70" height="16" rx="5" fill="#34d399" opacity="0.2"/><text x="550" y="350" font-size="9.5" fill="#34d399" font-weight="700">已通过</text>
+    <text x="624" y="350" font-size="10" fill="#9fb0c3">诚信标注</text>
+    <rect x="884" y="338" width="72" height="16" rx="8" fill="#38bdf8" opacity="0.16"/><text x="920" y="350" font-size="9.5" fill="#38bdf8" text-anchor="middle">数据-周</text>
+    <rect x="524" y="366" width="440" height="28" rx="7" fill="#0f1522" stroke="#1e2a3a"/>
+    <rect x="532" y="373" width="4" height="14" rx="2" fill="#34d399"/>
+    <rect x="544" y="372" width="70" height="16" rx="5" fill="#34d399" opacity="0.2"/><text x="550" y="384" font-size="9.5" fill="#34d399" font-weight="700">已通过</text>
+    <text x="624" y="384" font-size="10" fill="#9fb0c3">角色镜头齐全</text>
+    <rect x="884" y="372" width="72" height="16" rx="8" fill="#38bdf8" opacity="0.16"/><text x="920" y="384" font-size="9.5" fill="#38bdf8" text-anchor="middle">交付-孙</text>
+    <rect x="524" y="400" width="440" height="28" rx="7" fill="#0f1522" stroke="#1e2a3a"/>
+    <rect x="532" y="407" width="4" height="14" rx="2" fill="#34d399"/>
+    <rect x="544" y="406" width="70" height="16" rx="5" fill="#34d399" opacity="0.2"/><text x="550" y="418" font-size="9.5" fill="#34d399" font-weight="700">已通过</text>
+    <text x="624" y="418" font-size="10" fill="#9fb0c3">高影响人工复核</text>
+    <rect x="884" y="406" width="72" height="16" rx="8" fill="#38bdf8" opacity="0.16"/><text x="920" y="418" font-size="9.5" fill="#38bdf8" text-anchor="middle">研发-王</text>
+  <text x="36" y="479" font-size="10.5" fill="#5b6b7f">演示原理 4.4 · 2.3 · UI ui_50_delivery_gates · Skill release-risk + traceability-check + human-review</text>
+  <text x="36" y="522" font-size="11" fill="#5b6b7f">行动入口 · 责任 · 时限</text>
+  
+    <rect x="36" y="548" width="168" height="46" rx="10" fill="url(#acc)"/>
+    <text x="50" y="569" font-size="11.5" fill="#04121a" font-weight="750">签署发布</text>
+    <text x="50" y="584" font-size="9" fill="#04121a" opacity="0.75">交付-孙 · 0d</text>
+    <rect x="216" y="548" width="168" height="46" rx="10" fill="url(#acc)"/>
+    <text x="230" y="569" font-size="11.5" fill="#04121a" font-weight="750">风险登记复核</text>
+    <text x="230" y="584" font-size="9" fill="#04121a" opacity="0.75">风控-赵 · 1d</text>
+  <rect x="588" y="510" width="388" height="88" rx="10" fill="#0f1522" stroke="#1e2a3a"/>
+  <foreignObject x="602" y="516" width="360" height="76"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:10.5px;color:#9fb0c3;line-height:1.5">决策动作：用一块门禁看板决定「能不能发布」，把「差不多了」变成一组可自动核对的关卡<br/>风险边界：门禁绿灯是发布的必要条件而非充分条件；高影响项仍需人工签署</div></foreignObject>
+</svg>

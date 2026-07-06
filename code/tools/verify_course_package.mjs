@@ -17,7 +17,7 @@ console.log(`验校 ${defs.projectName} · ${defs.cases.length} 案例\n`);
 // 逐案例
 for (const c of defs.cases) {
   const n = pad(c.num), tag = `[${n} ${c.slug}]`;
-  ok(); if (!has(c.dataset)) bad(`${tag} 数据集缺失 ${c.dataset}`);
+  ok(); if (![48, 49, 50].includes(c.num) && !has(c.dataset)) bad(`${tag} 数据集缺失 ${c.dataset}`); // 48/49/50 为多源 dogfood（tests/verify/语料），无单一数据文件，效应真实性由下方专项守卫核验
   const dp = `code/data/case_${n}.json`;
   ok(); if (!has(dp)) { bad(`${tag} 预计算缺失`); continue; }
   const d = jj(dp);
@@ -41,10 +41,10 @@ const BOOK = 'AI时代研发产品项目一体化知识库';
 const bookFiles = [];
 (function walkBook(d) { for (const e of readdirSync(join(ROOT, d))) { const p = join(d, e); if (statSync(join(ROOT, p)).isDirectory()) walkBook(p); else if (e.endsWith('.md')) bookFiles.push(p); } })(BOOK);
 const tut = bookFiles.map((f) => rd(f)).join('\n');           // 全书拼接，供内容守卫扫描
-for (const m of ['## 1. AI 核心概念底层', '## 2. 理念', '## 3. 系统架构', '## 4. 工程规范', '## 5. 设计系统']) { ok(); if (!tut.includes(m)) bad(`教程缺章节「${m}」`); }
+for (const m of ['## 1. AI 核心概念底层', '## 2. 理念', '## 3. 系统架构', '## 4. 工程规范', '## 5. 设计系统', '## 6. 交付治理']) { ok(); if (!tut.includes(m)) bad(`教程缺章节「${m}」`); }
 // 目录完整性：根无单 md 孤儿 + 章/README/术语/结课/案例齐 + 每文件<800行 + README 链接不断链
 ok(); if (readdirSync(ROOT).filter((f) => f.endsWith('.md') && /教程|手册|知识库/.test(f)).length !== 0) bad('根目录仍有单一教程 md（应已拆为目录）');
-for (const f of ['README.md', '01-AI核心概念底层.md', '02-会Loop的工程.md', '03-系统架构设计.md', '04-工程规范与约束.md', '05-设计系统.md', '术语表.md', '99-结课.md', '案例/README.md']) { ok(); if (!has(`${BOOK}/${f}`)) bad(`教程缺文件 ${BOOK}/${f}`); }
+for (const f of ['README.md', '01-AI核心概念底层.md', '02-会Loop的工程.md', '03-系统架构设计.md', '04-工程规范与约束.md', '05-设计系统.md', '06-交付治理.md', '术语表.md', '99-结课.md', '案例/README.md']) { ok(); if (!has(`${BOOK}/${f}`)) bad(`教程缺文件 ${BOOK}/${f}`); }
 for (const c of defs.cases) { ok(); if (!has(`${BOOK}/案例/${pad(c.num)}-${c.slug}.md`)) bad(`缺案例文件 ${pad(c.num)}-${c.slug}.md`); }
 for (const f of bookFiles) { ok(); if (rd(f).split('\n').length > 800) bad(`${f} > 800 行`); }
 { const rm = rd(`${BOOK}/README.md`); for (const l of [...rm.matchAll(/\]\(([^)#][^)]*\.md)\)/g)].map((m) => m[1]).filter((l) => !l.startsWith('../'))) { ok(); if (!has(`${BOOK}/${l}`)) bad(`README 目录链接断链：${l}`); } }
@@ -274,6 +274,13 @@ for (const c of defs.cases) { ok(); if (!Array.isArray(c.lenses) || c.lenses.len
 for (const role of ['研发', '产品', '项目']) { ok(); if (defs.cases.filter((c) => (c.lenses || []).includes(role)).length < 3) bad(`角色「${role}」覆盖案例不足 3（伪统一）`); }
 ok(); if (!tut.includes('三镜头看同一个案例')) bad('缺角色切换器（三镜头看同一案例）');
 for (const n of [1, 41]) { ok(); if (!defs.cases.find((c) => c.num === n)?.lensViews) bad(`案例${n} 缺 lensViews 三视角`); }
+// Phase 3：3 个 dogfood 真实案例（48 CI 分诊 / 49 RAG 评测 / 50 交付门禁）——screen 接入 + 效应真实
+for (const n of [48, 49, 50]) { const c = defs.cases.find((x) => x.num === n); ok(); if (!c) { bad(`缺 dogfood 案例 ${n}`); continue; } ok(); if (!['triage', 'eval', 'gates'].includes(c.screen)) bad(`案例${n} 缺 dogfood screen`); ok(); if (!/dogfood|本仓库/.test(c.dataset)) bad(`案例${n} dataset 未标 dogfood 真源`); }
+ok(); if (!/DogfoodScreen/.test(rd('code/web/src/screens.tsx')) || !/screen === 'triage'/.test(rd('code/web/src/screens.tsx'))) bad('前端缺 DogfoodScreen 或未接入 triage/eval/gates');
+{ const j48 = jj('code/data/case_48.json'); ok(); if (!((j48.kpis.find((k) => k.name === '契约断言数')?.value > 0) && (j48.kpis.find((k) => k.name === '接口契约数')?.value >= 10))) bad('案例48 断言/接口契约非真实计算'); }
+{ const j49 = jj('code/data/case_49.json'); const hr = j49.kpis.find((k) => k.name === '命中率')?.value; ok(); if (!(hr > 0 && hr <= 100 && j49.kpis.find((k) => k.name === '语料篇数')?.value > 50)) bad('案例49 命中率/语料非真实'); ok(); if (!j49.queue.some((q) => /未命中|低相关/.test(q.state))) bad('案例49 无未命中/错误分析(评测退化)'); }
+{ const j50 = jj('code/data/case_50.json'); ok(); if (!(j50.kpis.find((k) => k.name === '门禁检查项')?.value > 100)) bad('案例50 门禁检查项非真实'); ok(); if (j50.kpis.find((k) => k.name === '覆盖角色数')?.value !== 3) bad('案例50 覆盖角色数≠3'); }
+ok(); if (!(defs.cases.find((c) => c.num === 48)?.lenses.includes('研发') && defs.cases.find((c) => c.num === 50)?.lenses.includes('项目'))) bad('dogfood 三镜头未平衡');
 for (const c of defs.cases) { ok(); if (!c.readingOrder || !c.tryThis) bad(`案例${c.num} 缺去模板字段 readingOrder/tryThis`); }
 // I) 叙事钩子诚信：姚顺雨须标为首席科学家(非 PM)；prompt-sets 归 Aparna 而非吴恩达
 ok(); if (tut.includes('姚顺雨') && !/姚顺雨[^。]{0,60}首席科学家/.test(tut)) bad('姚顺雨须标注为首席科学家(非产品经理)');

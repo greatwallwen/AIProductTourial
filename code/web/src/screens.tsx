@@ -388,7 +388,38 @@ function PlanScreen() {
   );
 }
 
-export function SpecialScreen({ screen }: { screen: string }) {
+// —— dogfood 三案（48 CI 分诊 / 49 RAG 评测 / 50 交付门禁）：直接用已算好的真实 caseData（源=本仓库自身），按镜头换框架 ——
+function DogfoodScreen({ data, kind }: { data: any; kind: string }) {
+  const meta: Record<string, { title: string; src: string; note: string; qh: string }> = {
+    triage: { title: 'CI 失败分诊台', src: 'code/server/tests · verify · routes/api.ts', note: '数据来自本仓库自身——测试断言、接口契约、校验检查项、后端模块。研发/项目镜头的 dogfood：把「红了」变成「哪里红、谁负责」。', qh: '待分诊的接口契约（失败会落到这里）' },
+    eval: { title: 'RAG 回答评测台', src: 'skills/external/pm-skills-deanpeters 语料 + 标注评测集', note: '离线用标注评测集 × 真实语料算「覆盖深度命中率」——产品/研发镜头的 evals（本书称「当前最缺的技能」）。薄覆盖的问题就是要补语料的地方。', qh: '评测问题 · 覆盖篇数 · 是否通过' },
+    gates: { title: '交付门禁看板', src: 'verify_course_package.mjs 检查与守卫 + 案例/角色覆盖', note: '本书自己的发布门禁：每一项检查、每一条守卫都列成可自动核对的关卡——项目/产品镜头，门禁即 evals 即验收。', qh: '发布门禁项 · 状态 · 责任' },
+  };
+  const m = meta[kind] || meta.gates;
+  const kpis = data?.kpis || []; const queue = data?.queue || []; const fields = data?.fields || [];
+  return (
+    <>
+      <section className="card">
+        <div className="card-h"><h2>{m.title} · dogfood</h2><span className="muted">真实来源 {m.src}</span></div>
+        <div className="muted" style={{ margin: '2px 0 12px' }}>{m.note}</div>
+        <div className="kpis">{kpis.map((k: any, i: number) => (
+          <div key={i} className="kpi"><div className="kpi-name">{k.name}</div><div className="kpi-val">{typeof k.value === 'number' ? k.value.toLocaleString('zh-CN') : k.value}<span className="kpi-unit">{k.unit}</span></div></div>
+        ))}</div>
+      </section>
+      <section className="card">
+        <div className="card-h"><h2>{m.qh}</h2><span className="muted">{queue.length} 项 · 全部真实数据行</span></div>
+        <div className="tbl-wrap"><table className="tbl"><thead><tr>{fields.map((f: string) => <th key={f}>{f}</th>)}<th>状态</th><th>责任</th></tr></thead>
+          <tbody>{queue.map((q: any) => (
+            <tr key={q.id}>{fields.map((f: string) => <td key={f}>{String(q.fields?.[f] ?? '—')}</td>)}<td><span className="chip soft">{q.state}</span></td><td>{q.owner || '—'}</td></tr>
+          ))}</tbody>
+        </table></div>
+      </section>
+    </>
+  );
+}
+
+export function SpecialScreen({ screen, data }: { screen: string; data?: any }) {
+  if (screen === 'triage' || screen === 'eval' || screen === 'gates') return <DogfoodScreen data={data} kind={screen} />;
   if (screen === 'rfm') return <RfmScreen />;
   if (screen === 'capacity') return <HospitalScreen />;
   if (screen === 'adfunnel') return <AdFunnelScreen />;

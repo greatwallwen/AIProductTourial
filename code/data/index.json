@@ -165,6 +165,51 @@
    "systemStage": "洞察",
    "difficulty": "进阶",
    "tldr": "经营三维散点：把真实订单数据渲染成可交互三维散点，暴露多维离群"
+  },
+  {
+   "num": 48,
+   "title": "CI 失败分诊 Loop（研发·项目镜头）",
+   "slug": "ci_triage_loop",
+   "uiId": "ui_48_ci_triage",
+   "saasType": "ci_triage",
+   "industry": "研发效能",
+   "phase": "质量验收",
+   "highImpact": false,
+   "rp": null,
+   "systemLayer": "能力智能",
+   "systemStage": "验收",
+   "difficulty": "进阶",
+   "tldr": "让 CI 失败自己分好类、指好责任，人只做确认"
+  },
+  {
+   "num": 49,
+   "title": "RAG 评测台 / eval harness（产品·研发镜头）",
+   "slug": "rag_eval_harness",
+   "uiId": "ui_49_rag_eval",
+   "saasType": "rag_eval",
+   "industry": "AI 产品",
+   "phase": "质量验收",
+   "highImpact": false,
+   "rp": null,
+   "systemLayer": "能力智能",
+   "systemStage": "验收",
+   "difficulty": "进阶",
+   "tldr": "用标注评测集给 RAG 回答打分，把「感觉还行」变成「命中率多少」"
+  },
+  {
+   "num": 50,
+   "title": "交付门禁看板（项目·产品镜头）",
+   "slug": "delivery_gates_board",
+   "uiId": "ui_50_delivery_gates",
+   "saasType": "delivery_gates",
+   "industry": "交付治理",
+   "phase": "质量验收",
+   "highImpact": false,
+   "rp": null,
+   "systemLayer": "底座平台",
+   "systemStage": "验收",
+   "difficulty": "进阶",
+   "tldr": "把「能不能发布」变成一块可自动核对的门禁看板，而不是拍脑袋"
   }
  ]
 }

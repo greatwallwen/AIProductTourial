@@ -246,7 +246,7 @@ function CaseScreen() {
           <div className="comp-row">{(c.components || []).map((x: string) => <span key={x} className="chip soft">{x}</span>)}</div>
         </section>
       ) : c.screen ? (
-        <SpecialScreen screen={c.screen} />
+        <SpecialScreen screen={c.screen} data={c} />
       ) : (
         <>
           <div className="kpis">
