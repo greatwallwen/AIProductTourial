@@ -55,12 +55,12 @@
  "kpis": [
   {
    "name": "门禁检查项",
-   "value": 139,
+   "value": 151,
    "unit": ""
   },
   {
-   "name": "守卫规则数",
-   "value": 139,
+   "name": "门禁类别",
+   "value": 6,
    "unit": ""
   },
   {
@@ -148,11 +148,11 @@
   "data": [
    {
     "label": "数据",
-    "value": 28
+    "value": 30
    },
    {
     "label": "诚信",
-    "value": 21
+    "value": 23
    },
    {
     "label": "镜头",
@@ -160,15 +160,15 @@
    },
    {
     "label": "结构",
-    "value": 21
+    "value": 23
    },
    {
     "label": "前端",
-    "value": 14
+    "value": 15
    }
   ]
  },
- "rowCount": 139,
+ "rowCount": 151,
  "exceptionCount": 0,
  "responsible": [
   "交付-孙",

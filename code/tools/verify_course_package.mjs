@@ -281,6 +281,9 @@ ok(); if (!/DogfoodScreen/.test(rd('code/web/src/screens.tsx')) || !/screen === 
 { const j49 = jj('code/data/case_49.json'); const hr = j49.kpis.find((k) => k.name === '命中率')?.value; ok(); if (!(hr > 0 && hr <= 100 && j49.kpis.find((k) => k.name === '语料篇数')?.value > 50)) bad('案例49 命中率/语料非真实'); ok(); if (!j49.queue.some((q) => /未命中|低相关/.test(q.state))) bad('案例49 无未命中/错误分析(评测退化)'); }
 { const j50 = jj('code/data/case_50.json'); ok(); if (!(j50.kpis.find((k) => k.name === '门禁检查项')?.value > 100)) bad('案例50 门禁检查项非真实'); ok(); if (j50.kpis.find((k) => k.name === '覆盖角色数')?.value !== 3) bad('案例50 覆盖角色数≠3'); }
 ok(); if (!(defs.cases.find((c) => c.num === 48)?.lenses.includes('研发') && defs.cases.find((c) => c.num === 50)?.lenses.includes('项目'))) bad('dogfood 三镜头未平衡');
+// Phase 4：跨角色 capstone 收口 + 「哪个镜头」游戏
+ok(); if (!tut.includes('跨角色收口') || !tut.includes('同一块门禁的三张脸')) bad('结课缺跨角色收口(串 48/49/50/41 三镜头)');
+ok(); if (!/LENS_PAIRS/.test(rd('code/web/src/game.tsx')) || !/哪个镜头/.test(rd('code/web/src/game.tsx'))) bad('游戏缺「哪个镜头」模式');
 for (const c of defs.cases) { ok(); if (!c.readingOrder || !c.tryThis) bad(`案例${c.num} 缺去模板字段 readingOrder/tryThis`); }
 // I) 叙事钩子诚信：姚顺雨须标为首席科学家(非 PM)；prompt-sets 归 Aparna 而非吴恩达
 ok(); if (tut.includes('姚顺雨') && !/姚顺雨[^。]{0,60}首席科学家/.test(tut)) bad('姚顺雨须标注为首席科学家(非产品经理)');

@@ -446,4 +446,4 @@ for (const c of defs.cases) {
   B.push(`> **小结**：本案用「${c.scenario}」演示原理 ${(c.demonstrates || []).join('、')}，落成可运行、可验收的产品判断。运行 \`bash code/run.sh\` 后访问 \`#/case/${pad(c.num)}\`（真后端实时数据）。`, '', `[← 返回案例总览](README.md) · [返回目录](${UP}${BOOK}/README.md)`);
   writeBook(`案例/${pad(c.num)}-${c.slug}.md`, deemoji(J(B)));
 }
-console.log('多文件教程生成完毕：', BOOK, '| 章 5 + 案例', defs.cases.length, '+ README/术语表/结课 | figs 4');
+console.log('多文件教程生成完毕：', BOOK, '| 章', CHAPTERS.length, '+ 案例', defs.cases.length, '+ README/术语表/结课 | figs 4');
