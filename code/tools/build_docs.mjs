@@ -3,6 +3,7 @@
  *  逻辑：先讲理念/原理/规范/设计（第一部分），再用案例演示验证（第二部分）。工具口径用 Trae/CodeBuddy 等泛指。 */
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join, resolve, dirname } from 'node:path';
+import { archFigures } from './arch_figures.mjs';
 
 const ROOT = resolve(import.meta.dirname, '..', '..');
 const defs = JSON.parse(readFileSync(join(ROOT, 'code', 'tools', 'case_definitions.json'), 'utf8'));
@@ -237,8 +238,10 @@ function panoramaSvg() {
 
 // ============ 生成 SVG + 交付物 ============
 writeFileSync(join(CLIB, 'svg', 'fig_system_panorama.svg'), panoramaSvg());
-for (const id of ['fig_ai_foundations', 'fig_ideology_loops', 'fig_arch_flow', 'fig_engineering_rules', 'fig_designs'])
+for (const id of ['fig_ai_foundations', 'fig_ideology_loops', 'fig_engineering_rules', 'fig_designs'])
   writeFileSync(join(CLIB, 'svg', `${id}.svg`), figSvg(id));
+// v12 架构图套件（节点-连线引擎 diagram.mjs）：SDD 流水线 / C4 上下文·容器·组件 / DDD 限界上下文 / 部署 / 时序
+for (const [id, svg] of Object.entries(archFigures(theme('graphite-hud')))) writeFileSync(join(CLIB, 'svg', `${id}.svg`), svg);
 for (const c of defs.cases) {
   const d = vm(c.num);
   writeFileSync(join(CLIB, 'svg', `case_${pad(c.num)}_${c.slug}.svg`), svg(c, d));

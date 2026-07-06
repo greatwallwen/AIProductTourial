@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 520" font-family="PingFang SC,Microsoft YaHei,sans-serif">
+  <defs>
+    <linearGradient id="dbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a0e14"/><stop offset="1" stop-color="#0d1220"/></linearGradient>
+    <linearGradient id="dac" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#38bdf8"/></linearGradient>
+    <pattern id="dgrid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#16202e" stroke-width="1"/></pattern>
+    <filter id="dsh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#000" flood-opacity="0.35"/></filter>
+  </defs>
+  <rect width="980" height="520" fill="url(#dbg)"/><rect width="980" height="520" fill="url(#dgrid)" opacity="0.35"/>
+  <rect x="0" y="0" width="980" height="44" fill="#121826" opacity="0.5"/>
+  <rect x="24" y="13" width="4" height="19" rx="2" fill="url(#dac)"/>
+  <text x="36" y="28" font-size="15" font-weight="750" fill="#e6edf6">DDD · 限界上下文地图：按业务域划边界</text>
+<line x1="280.0" y1="142.0" x2="380.0" y2="142.0" stroke="#38bdf8" stroke-width="1.6" /><path d="M380 142 L373.4 145.6 L373.4 138.4 z" fill="#38bdf8"/><rect x="308.5" y="134" width="43" height="15" rx="4" fill="#0d1220" stroke="#1e2a3a"/><text x="330" y="145" font-size="9" fill="#9fb0c3" text-anchor="middle">上游→下游</text>
+<line x1="600.0" y1="142.0" x2="700.0" y2="142.0" stroke="#38bdf8" stroke-width="1.6" /><path d="M700 142 L693.4 145.6 L693.4 138.4 z" fill="#38bdf8"/><rect x="638.4" y="134" width="23.2" height="15" rx="4" fill="#0d1220" stroke="#1e2a3a"/><text x="650" y="145" font-size="9" fill="#9fb0c3" text-anchor="middle">契约</text>
+<line x1="700.0" y1="142.0" x2="600.0" y2="342.0" stroke="#38bdf8" stroke-width="1.6" /><path d="M600 342 L599.7 334.5 L606.2 337.7 z" fill="#38bdf8"/><rect x="635.1" y="234" width="29.799999999999997" height="15" rx="4" fill="#0d1220" stroke="#1e2a3a"/><text x="650" y="245" font-size="9" fill="#9fb0c3" text-anchor="middle">喂决策</text>
+<line x1="280.0" y1="342.0" x2="380.0" y2="342.0" stroke="#38bdf8" stroke-width="1.6" /><path d="M380 342 L373.4 345.6 L373.4 338.4 z" fill="#38bdf8"/><rect x="318.4" y="334" width="23.2" height="15" rx="4" fill="#0d1220" stroke="#1e2a3a"/><text x="330" y="345" font-size="9" fill="#9fb0c3" text-anchor="middle">证据</text>
+<line x1="600.0" y1="342.0" x2="700.0" y2="342.0" stroke="#38bdf8" stroke-width="1.6" /><path d="M700 342 L693.4 345.6 L693.4 338.4 z" fill="#38bdf8"/><rect x="638.4" y="334" width="23.2" height="15" rx="4" fill="#0d1220" stroke="#1e2a3a"/><text x="650" y="345" font-size="9" fill="#9fb0c3" text-anchor="middle">交付</text>
+<line x1="810.0" y1="300.0" x2="810.0" y2="184.0" stroke="#fbbf24" stroke-width="1.6" stroke-dasharray="5 3"/><path d="M810 184 L813.6 190.6 L806.4 190.6 z" fill="#fbbf24"/><rect x="791.8" y="234" width="36.4" height="15" rx="4" fill="#0d1220" stroke="#1e2a3a"/><text x="810" y="245" font-size="9" fill="#9fb0c3" text-anchor="middle">门禁反馈</text>
+<rect x="60" y="100" width="220" height="84" rx="10" fill="#121826" stroke="#38bdf8" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="60" y="100" width="220" height="3" rx="1.5" fill="#38bdf8"/>
+  <text x="170" y="141" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">采集接入 上下文</text><text x="170" y="156" font-size="9.5" fill="#5b6b7f" text-anchor="middle">CSV / 快照 → 归一化</text>
+<rect x="380" y="100" width="220" height="84" rx="10" fill="#121826" stroke="#38bdf8" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="380" y="100" width="220" height="3" rx="1.5" fill="#38bdf8"/>
+  <text x="490" y="141" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">数据治理 上下文</text><text x="490" y="156" font-size="9.5" fill="#5b6b7f" text-anchor="middle">metricSpec · 异常列 · 真源</text>
+<rect x="700" y="100" width="220" height="84" rx="10" fill="#121826" stroke="#22d3ee" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="700" y="100" width="220" height="3" rx="1.5" fill="#22d3ee"/>
+  <text x="810" y="141" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">指标洞察 上下文</text><text x="810" y="156" font-size="9.5" fill="#5b6b7f" text-anchor="middle">KPI 真算 · 队列 · 图表</text>
+<rect x="60" y="300" width="220" height="84" rx="10" fill="#121826" stroke="#22d3ee" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="60" y="300" width="220" height="3" rx="1.5" fill="#22d3ee"/>
+  <text x="170" y="341" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">检索(RAG) 上下文</text><text x="170" y="356" font-size="9.5" fill="#5b6b7f" text-anchor="middle">向量库 · 召回 · 重排</text>
+<rect x="380" y="300" width="220" height="84" rx="10" fill="#121826" stroke="#34d399" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="380" y="300" width="220" height="3" rx="1.5" fill="#34d399"/>
+  <text x="490" y="341" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">经营决策 上下文</text><text x="490" y="356" font-size="9.5" fill="#5b6b7f" text-anchor="middle">方案 · 责任 · 验收</text>
+<rect x="700" y="300" width="220" height="84" rx="10" fill="#121826" stroke="#fbbf24" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="700" y="300" width="220" height="3" rx="1.5" fill="#fbbf24"/>
+  <text x="810" y="341" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">交付治理 上下文</text><text x="810" y="356" font-size="9.5" fill="#5b6b7f" text-anchor="middle">L0-L3 · 门禁 · 风险登记</text>
+<rect x="731.5999999999999" y="494" width="12" height="12" rx="3" fill="#fbbf24"/><text x="749.5999999999999" y="504" font-size="9.5" fill="#9fb0c3">治理</text><rect x="778.8" y="494" width="12" height="12" rx="3" fill="#34d399"/><text x="796.8" y="504" font-size="9.5" fill="#9fb0c3">决策</text><rect x="826" y="494" width="12" height="12" rx="3" fill="#22d3ee"/><text x="844" y="504" font-size="9.5" fill="#9fb0c3">洞察/检索</text><rect x="893" y="494" width="12" height="12" rx="3" fill="#38bdf8"/><text x="911" y="504" font-size="9.5" fill="#9fb0c3">接入/治理</text><text x="24" y="506" font-size="10.5" fill="#5b6b7f">每个上下文有自己的通用语言与模型；上游→下游用契约对接（§3.4）。来源：领域驱动设计（Eric Evans）。</text>
+</svg>

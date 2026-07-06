@@ -96,7 +96,11 @@ ok(); if (!/PseudoScatter|hasWebGL/.test(rd('code/web/src/screens.tsx'))) bad('3
 // 维度 A/D/E：数字化主线标签 + 术语 + 备注叙事 + tokenize/openapi
 for (const c of defs.cases) { ok(); if (!c.systemLayer || !c.systemStage || !c.theoryOp) bad(`案例${c.num} 缺系统主线标签(systemLayer/systemStage/theoryOp)`); }
 ok(); if ([...new Set(defs.cases.map((c) => c.systemLayer))].length < 3) bad('systemLayer 分层不足 3（底座/能力/应用）');
-ok(); if (/信息化/.test(tut)) bad('教程含「信息化」（应改数字化）');
+// v12 Phase 1：信息化架构方法论 + 节点-连线图形引擎 + 实例化工件（「信息化」为本轮刻意术语，不再禁）
+ok(); if (!has('code/tools/diagram.mjs') || !has('code/tools/arch_figures.mjs')) bad('缺节点-连线图形引擎 diagram.mjs / arch_figures.mjs');
+for (const f of ['fig_sdd_pipeline', 'fig_c4_context', 'fig_c4_container', 'fig_c4_component', 'fig_ddd_context', 'fig_deployment', 'fig_req_sequence']) { ok(); if (!has(`outputs/product_case_library/svg/${f}.svg`)) bad(`缺架构图 ${f}.svg`); }
+for (const m of ['规格驱动开发', '规格即真源', 'SDD 八步', 'C4 模型', '限界上下文', 'ADR-001', '演进触发', '刺激', 'Spec Kit', 'Simon Brown', 'Eric Evans']) { ok(); if (!tut.includes(m)) bad(`§3 缺方法论/工件/署名「${m}」`); }
+ok(); if (!/fig_c4_container\.svg/.test(tut) || !/fig_sdd_pipeline\.svg/.test(tut)) bad('§3 未嵌入 C4 容器图 / SDD 流水线图');
 ok(); if (!has('docs/_source/_ref-annotation-style.md')) bad('缺 issue#4 备注范例存档');
 ok(); if (!/黄仁勋|你有没有想过|你问 ChatGPT/.test(rd('docs/_source/00-ai-foundations.md'))) bad('§1 备注未按 issue#4 富叙事重写');
 ok(); if (!/tokenize/.test(rd('code/server/routes/api.ts')) || !has('code/server/services/tokenize.ts')) bad('缺 /api/tokenize 后端');

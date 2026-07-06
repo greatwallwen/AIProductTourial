@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1274 300" font-family="PingFang SC,Microsoft YaHei,sans-serif">
+  <defs>
+    <linearGradient id="dbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a0e14"/><stop offset="1" stop-color="#0d1220"/></linearGradient>
+    <linearGradient id="dac" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#38bdf8"/></linearGradient>
+    <pattern id="dgrid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#16202e" stroke-width="1"/></pattern>
+    <filter id="dsh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#000" flood-opacity="0.35"/></filter>
+  </defs>
+  <rect width="1274" height="300" fill="url(#dbg)"/><rect width="1274" height="300" fill="url(#dgrid)" opacity="0.35"/>
+  <rect x="0" y="0" width="1274" height="44" fill="#121826" opacity="0.5"/>
+  <rect x="24" y="13" width="4" height="19" rx="2" fill="url(#dac)"/>
+  <text x="36" y="28" font-size="15" font-weight="750" fill="#e6edf6">SDD 规格驱动开发流水线（一次中大型建造的八步）</text>
+<line x1="160.0" y1="143.0" x2="178.0" y2="143.0" stroke="#38bdf8" stroke-width="1.6" /><path d="M178 143 L171.4 146.6 L171.4 139.4 z" fill="#38bdf8"/>
+<line x1="316.0" y1="143.0" x2="334.0" y2="143.0" stroke="#38bdf8" stroke-width="1.6" /><path d="M334 143 L327.4 146.6 L327.4 139.4 z" fill="#38bdf8"/>
+<line x1="472.0" y1="143.0" x2="490.0" y2="143.0" stroke="#38bdf8" stroke-width="1.6" /><path d="M490 143 L483.4 146.6 L483.4 139.4 z" fill="#38bdf8"/>
+<line x1="628.0" y1="143.0" x2="646.0" y2="143.0" stroke="#38bdf8" stroke-width="1.6" /><path d="M646 143 L639.4 146.6 L639.4 139.4 z" fill="#38bdf8"/>
+<line x1="784.0" y1="143.0" x2="802.0" y2="143.0" stroke="#38bdf8" stroke-width="1.6" /><path d="M802 143 L795.4 146.6 L795.4 139.4 z" fill="#38bdf8"/>
+<line x1="940.0" y1="143.0" x2="958.0" y2="143.0" stroke="#38bdf8" stroke-width="1.6" /><path d="M958 143 L951.4 146.6 L951.4 139.4 z" fill="#38bdf8"/>
+<line x1="1096.0" y1="143.0" x2="1114.0" y2="143.0" stroke="#38bdf8" stroke-width="1.6" /><path d="M1114 143 L1107.4 146.6 L1107.4 139.4 z" fill="#38bdf8"/>
+<line x1="1114.0" y1="143.0" x2="316.0" y2="143.0" stroke="#5b6b7f" stroke-width="1.6" stroke-dasharray="5 3"/><path d="M316 143 L322.6 139.4 L322.6 146.6 z" fill="#5b6b7f"/><rect x="683.6" y="135" width="62.8" height="15" rx="4" fill="#0d1220" stroke="#1e2a3a"/><text x="715" y="146" font-size="9" fill="#9fb0c3" text-anchor="middle">生产反馈→改规格</text>
+<rect x="22" y="110" width="138" height="66" rx="10" fill="#121826" stroke="#22d3ee" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="22" y="110" width="138" height="3" rx="1.5" fill="#22d3ee"/>
+  <text x="91" y="142" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">宪法</text><text x="91" y="157" font-size="9.5" fill="#5b6b7f" text-anchor="middle">rules/ 约束</text>
+<rect x="178" y="110" width="138" height="66" rx="10" fill="#121826" stroke="#22d3ee" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="178" y="110" width="138" height="3" rx="1.5" fill="#22d3ee"/>
+  <text x="247" y="142" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">规格</text><text x="247" y="157" font-size="9.5" fill="#5b6b7f" text-anchor="middle">spec.md 真源</text>
+<rect x="334" y="110" width="138" height="66" rx="10" fill="#121826" stroke="#fbbf24" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="334" y="110" width="138" height="3" rx="1.5" fill="#fbbf24"/><rect x="449" y="116" width="17" height="15" rx="7" fill="#fbbf24" opacity="0.18"/><text x="462" y="127" font-size="8.5" fill="#fbbf24" text-anchor="end">人</text>
+  <text x="403" y="142" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">澄清</text><text x="403" y="157" font-size="9.5" fill="#5b6b7f" text-anchor="middle">消歧·人把关</text>
+<rect x="490" y="110" width="138" height="66" rx="10" fill="#121826" stroke="#22d3ee" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="490" y="110" width="138" height="3" rx="1.5" fill="#22d3ee"/>
+  <text x="559" y="142" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">架构设计</text><text x="559" y="157" font-size="9.5" fill="#5b6b7f" text-anchor="middle">C4 / DDD / ADR</text>
+<rect x="646" y="110" width="138" height="66" rx="10" fill="#121826" stroke="#22d3ee" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="646" y="110" width="138" height="3" rx="1.5" fill="#22d3ee"/>
+  <text x="715" y="142" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">任务分解</text><text x="715" y="157" font-size="9.5" fill="#5b6b7f" text-anchor="middle">tasks.md 原子</text>
+<rect x="802" y="110" width="138" height="66" rx="10" fill="#121826" stroke="#22d3ee" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="802" y="110" width="138" height="3" rx="1.5" fill="#22d3ee"/>
+  <text x="871" y="142" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">实现</text><text x="871" y="157" font-size="9.5" fill="#5b6b7f" text-anchor="middle">逐任务 Loop</text>
+<rect x="958" y="110" width="138" height="66" rx="10" fill="#121826" stroke="#34d399" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="958" y="110" width="138" height="3" rx="1.5" fill="#34d399"/><rect x="1066" y="116" width="24" height="15" rx="7" fill="#34d399" opacity="0.18"/><text x="1086" y="127" font-size="8.5" fill="#34d399" text-anchor="end">门禁</text>
+  <text x="1027" y="142" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">门禁</text><text x="1027" y="157" font-size="9.5" fill="#5b6b7f" text-anchor="middle">verify / evals</text>
+<rect x="1114" y="110" width="138" height="66" rx="10" fill="#121826" stroke="#22d3ee" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="1114" y="110" width="138" height="3" rx="1.5" fill="#22d3ee"/>
+  <text x="1183" y="142" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">演进</text><text x="1183" y="157" font-size="9.5" fill="#5b6b7f" text-anchor="middle">触发表·回流</text>
+<rect x="1072.7999999999997" y="274" width="12" height="12" rx="3" fill="#34d399"/><text x="1090.7999999999997" y="284" font-size="9.5" fill="#9fb0c3">自动门禁</text><rect x="1133.1999999999998" y="274" width="12" height="12" rx="3" fill="#fbbf24"/><text x="1151.1999999999998" y="284" font-size="9.5" fill="#9fb0c3">人在关口</text><rect x="1193.6" y="274" width="12" height="12" rx="3" fill="#22d3ee"/><text x="1211.6" y="284" font-size="9.5" fill="#9fb0c3">常规步骤</text><text x="24" y="286" font-size="10.5" fill="#5b6b7f">规格=唯一真源；澄清与门禁是人/机把关；末步生产反馈回流改规格（接 §2 Loop、§6 三绿门禁）。来源：GitHub Spec Kit。</text>
+</svg>
