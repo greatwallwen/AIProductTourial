@@ -4,6 +4,8 @@
 
 > **在数字化系统中的位置**：业务应用层 · 洞察环节｜**理论→实操**：把原理 2.7、3.2 落成可运行操作：判断各科室号源利用率与等待/爽约，形成放号、加号与分时预约的调度动作。（底座依赖 44/45/46/47）
 
+> **角色镜头**：<img src="../../assets/vendor/lucide/built/package.svg" width="14" alt="" style="vertical-align:-2px" /> 产品 · <img src="../../assets/vendor/lucide/built/clipboard-list.svg" width="14" alt="" style="vertical-align:-2px" /> 项目（本案更偏这些角色；主脊 §1-§2 三镜头共读）
+
 > <img src="../../assets/vendor/lucide/built/gauge.svg" width="14" alt="" style="vertical-align:-2px" /> **难度** 入门｜**一句话** 医院急诊及时性：按真实急诊量级看等待与未就诊离开，定位需增容/分流的高负荷急诊｜**前置** 建议先读完第一部分
 >
 > <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：急诊运营的抓手是「量级 × 等待 × 流失」：本案 /api/hospital 按真实急诊量级(EDV)真算中位急诊等待与未就诊离开率——真实单调效应：量级越高越承压（极高≈199 分、低≈124 分）。高负荷医院要增容/分流，而非一刀切。高影响（医疗）：系统只给建议、不自动改号。

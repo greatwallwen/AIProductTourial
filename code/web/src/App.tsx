@@ -222,12 +222,22 @@ function CaseScreen() {
           <h1>{scene}</h1>
           <div className="muted">{mod} · UI 原型 <code>{c.uiId}</code> · 数据 <code>{c.dataset}</code>（{c.rowCount} 行，异常 {c.exceptionCount}）{c.liveComputed && <span className="chip soft" style={{ marginLeft: 8 }}>后端实时</span>}</div>
           {c.demonstrates && <div className="demos">▹ 演示原理 {c.demonstrates.join(' · ')} · 设计 <code>{c.design}</code></div>}
-          {c.difficulty && <div className="demos" style={{ color: 'var(--ink2)' }}><span className="badge neutral" style={{ marginRight: 6 }}>难度 {c.difficulty}</span>🎯 {c.tldr}</div>}
+          {c.difficulty && <div className="demos" style={{ color: 'var(--ink2)' }}><span className="badge neutral" style={{ marginRight: 6 }}>难度 {c.difficulty}</span>{c.tldr}</div>}
+          {Array.isArray(c.lenses) && c.lenses.length > 0 && <div className="demos" style={{ color: 'var(--ink2)' }}>角色镜头：{c.lenses.map((l: string) => <span key={l} className="chip soft" style={{ marginRight: 6 }}>{l}</span>)}</div>}
         </div>
         <div className="skills">{(c.skills || []).map((s: string) => <span key={s} className="chip ghost">{s}</span>)}</div>
       </div>
 
-      {c.highImpact && <div className="banner hi">⚠ 高影响行业统一边界：保留人工复核，不得自动授信/处罚/诊断/拒绝交易。风险边界：{c.riskBoundary}</div>}
+      {c.highImpact && <div className="banner hi">高影响行业统一边界：保留人工复核，不得自动授信/处罚/诊断/拒绝交易。风险边界：{c.riskBoundary}</div>}
+
+      {c.lensViews && (
+        <section className="card">
+          <div className="card-h"><h2>三镜头看同一个案例</h2><span className="muted">同一份真实数据，研发 / 产品 / 项目各看到什么——这就是「一个操作模型、三个镜头」</span></div>
+          {Object.entries(c.lensViews).map(([l, v]: any) => (
+            <div key={l} style={{ margin: '8px 0', paddingLeft: 10, borderLeft: '3px solid var(--accent)' }}><b style={{ color: 'var(--accent)' }}>{l}镜头</b>：<span style={{ color: 'var(--ink2)' }}>{v}</span></div>
+          ))}
+        </section>
+      )}
 
       {c.graphicOnly ? (
         <section className="card">

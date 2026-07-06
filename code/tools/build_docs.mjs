@@ -401,8 +401,8 @@ const idxH = ['# 第二部分 · 案例演示与验证', '', '## 数字化系统
   '- **横向数据价值闭环**：`采集 → 治理 → 洞察 → 决策 → 执行 → 验收 → 增长`，再反馈回采集。',
   '- **怎么读**：先在全景里定位一个案例在「哪一层·哪一环节」，再进它看它把哪条理论落成了什么操作。', '',
   '## 案例总览', '',
-  '| # | 场景 | 行业 | 演示原理 | 设计 | 链接 |', '|---|---|---|---|---|---|'];
-for (const c of defs.cases) idxH.push(`| ${pad(c.num)} | ${c.scenario} | ${c.industry} | ${(c.demonstrates || []).join('/')} | ${c.design} | [打开](${pad(c.num)}-${c.slug}.md) |`);
+  '| # | 场景 | 行业 | 角色镜头 | 演示原理 | 设计 | 链接 |', '|---|---|---|---|---|---|---|'];
+for (const c of defs.cases) idxH.push(`| ${pad(c.num)} | ${c.scenario} | ${c.industry} | ${(c.lenses || []).join('/')} | ${(c.demonstrates || []).join('/')} | ${c.design} | [打开](${pad(c.num)}-${c.slug}.md) |`);
 { const revMap = {};
   for (const c of defs.cases) for (const op of (c.demonstrates || [])) (revMap[op] = revMap[op] || []).push(c.num);
   const rows = Object.entries(revMap).sort((a, b) => a[0].localeCompare(b[0], undefined, { numeric: true }));
@@ -412,19 +412,24 @@ for (const c of defs.cases) idxH.push(`| ${pad(c.num)} | ${c.scenario} | ${c.ind
   for (const [op, nums] of rows) idxH.push(`| §${op} | ${nums.map((n) => `[案例 ${pad(n)}](${pad(n)}-${defs.cases.find((x) => x.num === n).slug}.md)`).join('、')} |`); }
 writeBook('案例/README.md', J(idxH));
 
-// —— 每案一文件（图标 + 相对路径） ——
+// —— 每案一文件（图标 + 相对路径 + 角色镜头） ——
 UP = '../../';
+const LENS_ICON = { 研发: 'wrench', 产品: 'package', 项目: 'clipboard-list' };
+const lensTags = (c) => (c.lenses || []).map((l) => ic(LENS_ICON[l]) + l).join(' · ');
+const lensViewLines = (c) => c.lensViews ? ['### 三镜头看同一个案例', '', '> 同一份真实数据、同一个案例，研发/产品/项目三种角色各看到什么——这就是「一个操作模型、三个镜头」。', '', ...Object.entries(c.lensViews).map(([l, v]) => `- ${ic(LENS_ICON[l])}**${l}镜头**：${v}`), ''] : [];
 for (const c of defs.cases) {
   const d = vm(c.num);
   const B = [`# 实操 ${pad(c.num)}：${c.title}`, '',
     `> **本案例演示/验证**：原理 ${(c.demonstrates || []).join('、')}｜**采用设计** \`${c.design}\`（见 [design/${c.design}.md](${UP}design/${c.design}.md)）`, '',
     `> **在数字化系统中的位置**：${c.systemLayer}层 · ${c.systemStage}环节｜**理论→实操**：${c.theoryOp}`, '',
+    `> **角色镜头**：${lensTags(c)}（本案更偏这些角色；主脊 §1-§2 三镜头共读）`, '',
     `> ${ic('gauge')}**难度** ${c.difficulty}｜**一句话** ${c.tldr}｜**前置** 建议先读完第一部分`,
     '>',
     `> ${ic('lightbulb')}**洞见**：${c.insight}`,
     '>',
     `> ${ic('alert-triangle')}**常见坑**：${c.pitfall}`, '',
     `### 项目场景故事`, '', c.story, '',
+    ...lensViewLines(c),
     `**现状问题**`, '', `- 决策依赖的关键指标：${c.metricChain.join('、')}。`, `- 现场常见异常：${c.exceptionStates.join('、')}。`, `- 只做通用页面无法支撑「${c.decisionAction}」。`, '',
     `**本次任务**`, '', `- 明确岗位、指标链、异常状态与决策动作。`, `- 使用 \`${c.skills[0]}\` 与 \`${c.skills[1]}\` 完成分析，产出 \`${c.deliverable}\`，用 \`${c.skills[2]}\` 验收。`, '',
     `### 任务目标与数据`, '', kv([['行业', c.industry], ['真实业务场景', c.scenario], ['岗位', c.role], ['数据或资料', '`' + c.dataset + '`（' + d.rowCount + ' 行，异常 ' + d.exceptionCount + '）'], ['公开参考', c.publicRef], ['行业字段', c.fields.join('、')], ['指标链（真实值）', d.kpis.map((k) => k.name + ' ' + k.value + (k.unit || '')).join('，')], ['决策动作', c.decisionAction], ['风险边界', c.riskBoundary + (c.highImpact ? '（高影响行业·人工复核）' : '')], ['UI 原型', '`' + c.uiId + '`（' + c.saasType + '）'], ['采用设计', c.design], ['SaaS 组件', c.saasComponents.join('、')]]), '',

@@ -4,6 +4,8 @@
 
 > **在数字化系统中的位置**：业务应用层 · 增长环节｜**理论→实操**：把原理 2.7、3.1、4.1 落成可运行操作：从数据端到端得出零售经营改进方案并落成可验收交付物（底座依赖 44/45/46/47）
 
+> **角色镜头**：<img src="../../assets/vendor/lucide/built/package.svg" width="14" alt="" style="vertical-align:-2px" /> 产品 · <img src="../../assets/vendor/lucide/built/wrench.svg" width="14" alt="" style="vertical-align:-2px" /> 研发 · <img src="../../assets/vendor/lucide/built/clipboard-list.svg" width="14" alt="" style="vertical-align:-2px" /> 项目（本案更偏这些角色；主脊 §1-§2 三镜头共读）
+
 > <img src="../../assets/vendor/lucide/built/gauge.svg" width="14" alt="" style="vertical-align:-2px" /> **难度** 高阶｜**一句话** 零售经营产品方案：从真实订单端到端得出经营改进方案并落成可验收交付物｜**前置** 建议先读完第一部分
 >
 > <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：综合案例的价值在「端到端可验收」：不是给一堆图，而是从真实数据得出「哪个区域是收入支柱、哪个品类退货高发要治理」的具体动作，且每个动作有责任人和验收标准。<img src="../../assets/vendor/lucide/built/alert-triangle.svg" width="14" alt="" style="vertical-align:-2px" /> 「毛利洼地」基于教学合成的毛利率，页面已标注，实操中应换成真实成本数据。
@@ -13,6 +15,14 @@
 ### 项目场景故事
 
 作为综合闭环案例，零售经营负责人要把「早会异常→驾驶舱洞察→改进动作→责任闭环」串成一份可验收的经营方案。本案基于真实 UCI Online Retail II（4500 单真实英国电商订单），把销售额、退货、区域结构端到端形成从数据到方案的完整链路。毛利率为教学合成叠加、已标注。
+
+### 三镜头看同一个案例
+
+> 同一份真实数据、同一个案例，研发/产品/项目三种角色各看到什么——这就是「一个操作模型、三个镜头」。
+
+- <img src="../../assets/vendor/lucide/built/wrench.svg" width="14" alt="" style="vertical-align:-2px" /> **研发镜头**：把经营数据落成可查询的关系库 + 可运行大屏（复用案例 45/47 底座）——关注数据接口、索引与性能。
+- <img src="../../assets/vendor/lucide/built/package.svg" width="14" alt="" style="vertical-align:-2px" /> **产品镜头**：从真实数据得出「提毛利 / 清库存」的具体动作 + 验收标准——关注端到端可验收的经营方案。
+- <img src="../../assets/vendor/lucide/built/clipboard-list.svg" width="14" alt="" style="vertical-align:-2px" /> **项目镜头**：把方案排成带责任人、里程碑、门禁的交付计划——关注落地节奏与风险闭环。
 
 **现状问题**
 

@@ -4,6 +4,8 @@
 
 > **在数字化系统中的位置**：能力智能层 · 洞察环节｜**理论→实操**：把原理 3.2、4.3 落成可运行操作：定位各渠道漏斗断点（曝光/点击/转化），把预算从量大挪到效率高的渠道。（数字化底座本身）
 
+> **角色镜头**：<img src="../../assets/vendor/lucide/built/package.svg" width="14" alt="" style="vertical-align:-2px" /> 产品（本案更偏这些角色；主脊 §1-§2 三镜头共读）
+
 > <img src="../../assets/vendor/lucide/built/gauge.svg" width="14" alt="" style="vertical-align:-2px" /> **难度** 进阶｜**一句话** 广告投放转化复盘：定位各渠道漏斗断点，把预算从量大挪到效率高的渠道｜**前置** 建议先读完第一部分
 >
 > <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：复盘关键是看「每个渠道的漏斗断点」：曝光高转化低是创意问题，点击高转化低是落地页问题。本案按渠道聚合真实曝光/点击/转化，才能把预算从「量大」挪到「效率高」。

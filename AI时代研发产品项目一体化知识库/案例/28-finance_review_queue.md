@@ -4,6 +4,8 @@
 
 > **在数字化系统中的位置**：业务应用层 · 执行环节｜**理论→实操**：把原理 3.3、3.5 落成可运行操作：按风险等级×金额×命中规则排序复核队列，把有限人工投给最该看的高风险交易。（底座依赖 44/45/46/47）
 
+> **角色镜头**：<img src="../../assets/vendor/lucide/built/package.svg" width="14" alt="" style="vertical-align:-2px" /> 产品 · <img src="../../assets/vendor/lucide/built/clipboard-list.svg" width="14" alt="" style="vertical-align:-2px" /> 项目 · <img src="../../assets/vendor/lucide/built/wrench.svg" width="14" alt="" style="vertical-align:-2px" /> 研发（本案更偏这些角色；主脊 §1-§2 三镜头共读）
+
 > <img src="../../assets/vendor/lucide/built/gauge.svg" width="14" alt="" style="vertical-align:-2px" /> **难度** 进阶｜**一句话** 金融复核工作台：真实信用卡违约数据，按风险等级×账单金额排序，低额度违约最高｜**前置** 建议先读完第一部分
 >
 > <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：复核不是把所有高风险都人工看一遍（看不完），而是按「风险等级 × 账单金额」排序。本案 /api/riskreview 按真实额度档真算高风险率——真实反直觉：低额度客户违约率最高，明显高于高额度客户。风险分级与命中规则均由真实逐月还款状态(PAY_*)与违约标记派生，非编造。

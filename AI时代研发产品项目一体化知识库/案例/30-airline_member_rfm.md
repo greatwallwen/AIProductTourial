@@ -4,6 +4,8 @@
 
 > **在数字化系统中的位置**：能力智能层 · 洞察环节｜**理论→实操**：把 §1.3 的数据检索/分层与 §3 的指标闭环，落成「R/F/M 真算 → 分层 → 识别高价值流失 → 定向挽回」的可运行会员运营动作（数据故事见 dataset/design/case_30.md）。
 
+> **角色镜头**：<img src="../../assets/vendor/lucide/built/package.svg" width="14" alt="" style="vertical-align:-2px" /> 产品（本案更偏这些角色；主脊 §1-§2 三镜头共读）
+
 > <img src="../../assets/vendor/lucide/built/gauge.svg" width="14" alt="" style="vertical-align:-2px" /> **难度** 进阶｜**一句话** 航空会员价值运营：按 R/F/M 分层识别高价值流失群，做定向挽回与权益运营｜**前置** 建议先读完第一部分
 >
 > <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：RFM 的价值不在算出分数，而在于把一群「看起来还行、其实正在流失」的高价值会员从平均数里揪出来——本案 RFM demo（/api/rfm）真算出「年消费前列、却久未乘机」的高价值流失群，这才是运营该抢救的人，而不是给所有人发一样的券。

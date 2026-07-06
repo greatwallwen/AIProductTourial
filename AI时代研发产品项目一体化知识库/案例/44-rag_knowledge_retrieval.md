@@ -4,6 +4,8 @@
 
 > **在数字化系统中的位置**：底座平台层 · 治理环节｜**理论→实操**：把原理 1.3、3.3 落成可运行操作：用真实向量检索为问答/推荐提供高相关片段，替代全量塞入（数字化底座本身）
 
+> **角色镜头**：<img src="../../assets/vendor/lucide/built/wrench.svg" width="14" alt="" style="vertical-align:-2px" /> 研发 · <img src="../../assets/vendor/lucide/built/package.svg" width="14" alt="" style="vertical-align:-2px" /> 产品（本案更偏这些角色；主脊 §1-§2 三镜头共读）
+
 > <img src="../../assets/vendor/lucide/built/gauge.svg" width="14" alt="" style="vertical-align:-2px" /> **难度** 高阶｜**一句话** 产品知识库语义检索：用真实向量检索为问答/推荐提供高相关片段，替代全量塞入｜**前置** 建议先读完第一部分
 >
 > <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：RAG 的价值不在「能检索」，而在「只召回最相关的几段」——本案真做了两阶段：cosine 粗召回 top-10 → Cross-Encoder 精排 top-3，把 194 篇语料压到 3 段喂给模型，降本又聚焦。

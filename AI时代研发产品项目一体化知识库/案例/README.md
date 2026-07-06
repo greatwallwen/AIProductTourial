@@ -12,19 +12,19 @@
 
 ## 案例总览
 
-| # | 场景 | 行业 | 演示原理 | 设计 | 链接 |
-|---|---|---|---|---|---|
-| 01 | 电商早会异常订单台 | 电商零售 | 2.1/2.7 | graphite-hud | [打开](01-morning_ops_grid.md) |
-| 14 | 航班准点运营调度 | 航空运输 | 3.4/4.1 | amber-funnel | [打开](14-logistics_change_control.md) |
-| 16 | 医院急诊及时性运营 | 医疗运营 | 2.7/3.2 | graphite-hud | [打开](16-hospital_capacity_scheduler.md) |
-| 28 | 金融复核工作台 | 金融风控 | 3.3/3.5 | cyan-matrix | [打开](28-finance_review_queue.md) |
-| 30 | 航空会员价值运营 | 航空会员 | 3.2/4.3 | amber-funnel | [打开](30-airline_member_rfm.md) |
-| 31 | 广告投放转化复盘 | 广告投放 | 3.2/4.3 | amber-funnel | [打开](31-ad_conversion_funnel.md) |
-| 41 | 零售经营产品方案 | 零售经营 | 2.7/3.1/4.1 | graphite-hud | [打开](41-retail_capstone_board.md) |
-| 44 | 产品知识库语义检索 | AI 应用 | 1.3/3.3 | emerald-flow | [打开](44-rag_knowledge_retrieval.md) |
-| 45 | 经营数据关系库查询 | 数据工程 | 3.3/4.1 | steel-queue | [打开](45-postgres_relational_arch.md) |
-| 46 | 后端子系统分解与契约 | 系统架构 | 3.1/3.3 | cyan-matrix | [打开](46-system_arch_flow.md) |
-| 47 | 经营三维散点可视化 | 数据可视化 | 3.3/5.1 | graphite-hud | [打开](47-three_d_scatter.md) |
+| # | 场景 | 行业 | 角色镜头 | 演示原理 | 设计 | 链接 |
+|---|---|---|---|---|---|---|
+| 01 | 电商早会异常订单台 | 电商零售 | 产品/研发/项目 | 2.1/2.7 | graphite-hud | [打开](01-morning_ops_grid.md) |
+| 14 | 航班准点运营调度 | 航空运输 | 项目/产品 | 3.4/4.1 | amber-funnel | [打开](14-logistics_change_control.md) |
+| 16 | 医院急诊及时性运营 | 医疗运营 | 产品/项目 | 2.7/3.2 | graphite-hud | [打开](16-hospital_capacity_scheduler.md) |
+| 28 | 金融复核工作台 | 金融风控 | 产品/项目/研发 | 3.3/3.5 | cyan-matrix | [打开](28-finance_review_queue.md) |
+| 30 | 航空会员价值运营 | 航空会员 | 产品 | 3.2/4.3 | amber-funnel | [打开](30-airline_member_rfm.md) |
+| 31 | 广告投放转化复盘 | 广告投放 | 产品 | 3.2/4.3 | amber-funnel | [打开](31-ad_conversion_funnel.md) |
+| 41 | 零售经营产品方案 | 零售经营 | 产品/研发/项目 | 2.7/3.1/4.1 | graphite-hud | [打开](41-retail_capstone_board.md) |
+| 44 | 产品知识库语义检索 | AI 应用 | 研发/产品 | 1.3/3.3 | emerald-flow | [打开](44-rag_knowledge_retrieval.md) |
+| 45 | 经营数据关系库查询 | 数据工程 | 研发 | 3.3/4.1 | steel-queue | [打开](45-postgres_relational_arch.md) |
+| 46 | 后端子系统分解与契约 | 系统架构 | 研发/项目 | 3.1/3.3 | cyan-matrix | [打开](46-system_arch_flow.md) |
+| 47 | 经营三维散点可视化 | 数据可视化 | 研发/产品 | 3.3/5.1 | graphite-hud | [打开](47-three_d_scatter.md) |
 
 ## 原理 → 案例 反查（哪个原理，被哪些案例演示）
 

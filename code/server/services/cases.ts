@@ -48,6 +48,8 @@ export function caseData(num: number) {
   vm.graphicOnly = !!c.graphicOnly;
   vm.screen = c.screen || null; // 特殊案例屏：rag/db/arch/3d
   vm.demonstrates = c.demonstrates;
+  vm.lenses = c.lenses || [];          // Phase 2：角色镜头（研发/产品/项目）
+  vm.lensViews = c.lensViews || null;  // 01/41：同一案例的三视角
   return vm;
 }
 

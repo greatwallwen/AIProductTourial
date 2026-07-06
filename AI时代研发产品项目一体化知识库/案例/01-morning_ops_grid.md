@@ -4,6 +4,8 @@
 
 > **在数字化系统中的位置**：业务应用层 · 洞察环节｜**理论→实操**：把原理 2.1、2.7 落成可运行操作：识别未达成区域、定位异常业务线，并生成责任部门行动队列。（底座依赖 44/45/46/47）
 
+> **角色镜头**：<img src="../../assets/vendor/lucide/built/package.svg" width="14" alt="" style="vertical-align:-2px" /> 产品 · <img src="../../assets/vendor/lucide/built/wrench.svg" width="14" alt="" style="vertical-align:-2px" /> 研发 · <img src="../../assets/vendor/lucide/built/clipboard-list.svg" width="14" alt="" style="vertical-align:-2px" /> 项目（本案更偏这些角色；主脊 §1-§2 三镜头共读）
+
 > <img src="../../assets/vendor/lucide/built/gauge.svg" width="14" alt="" style="vertical-align:-2px" /> **难度** 入门｜**一句话** 电商早会经营台：按真实订单看品类营收/区域结构/退货，把异常当场派成行动｜**前置** 建议先读完第一部分
 >
 > <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：早会的价值不在「看数」，而在「把昨天的信号今天就派出去」。本案 /api/retail 按品类真算销售额（真实数据里厨餐、家饰类目营收领先）、区域按真实国家聚合（英国占绝对主力），退货来自真实退货信号——从看板变成行动。<img src="../../assets/vendor/lucide/built/alert-triangle.svg" width="14" alt="" style="vertical-align:-2px" /> 毛利率为教学合成叠加（源无成本），不作真实经营结论。
@@ -13,6 +15,14 @@
 ### 项目场景故事
 
 电商运营团队每天早会第一件事，就是复盘昨天的经营与异常。本案用真实公开数据——UCI Online Retail II（一家英国在线零售商 2009–2010 年真实订单，CC BY 4.0），4500 单里：看哪些品类贡献收入（品类由真实商品描述归类）、哪些地区在增长（按真实国家聚合，英国占主力），并把真实退货单挑出来当场派人跟进。毛利率因原始数据无成本，为教学合成叠加、页面已标注。
+
+### 三镜头看同一个案例
+
+> 同一份真实数据、同一个案例，研发/产品/项目三种角色各看到什么——这就是「一个操作模型、三个镜头」。
+
+- <img src="../../assets/vendor/lucide/built/wrench.svg" width="14" alt="" style="vertical-align:-2px" /> **研发镜头**：把「异常订单」做成一个可跑的分诊 Loop：定时扫 order_data、按规则标记退货/缺货、输出结构化队列——关注数据管道、规则可维护、跑得稳，是内层 build/test loop。
+- <img src="../../assets/vendor/lucide/built/package.svg" width="14" alt="" style="vertical-align:-2px" /> **产品镜头**：早会要回答「今天派谁去处理哪个异常」：定义指标链（销售额/退货率）、异常状态、责任人、验收口径——关注业务判断与可验收的行动，是中层 decision loop。
+- <img src="../../assets/vendor/lucide/built/clipboard-list.svg" width="14" alt="" style="vertical-align:-2px" /> **项目镜头**：把早会变成每日交付节奏：谁负责、几点前闭环、卡住如何升级、异常闭环率如何——关注责任分派、时限门禁、状态可追踪，是 delivery/governance loop。
 
 **现状问题**
 

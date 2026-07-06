@@ -269,6 +269,11 @@ ok(); if (/[\u{1F300}-\u{1FAFF}\u{2B00}-\u{2BFF}\u{2600}-\u{26FF}★☆🟢🔵]
 ok(); if (!/lucide\/built\/.*\.svg/.test(tut)) bad('教程未用 vendored 专业 SVG 图标');
 // 去 AI 味：禁营销套话/AI 填充词（承接 v10，扩词表）
 ok(); if (/赋能|一站式|全方位|深度赋能|值得注意的是|综上所述|众所周知|让我们一起|seamless|delve|elevate|pivotal|tapestry/i.test(tut)) bad('教程含 AI 营销套话/填充词，需去 AI 化');
+// Phase 2：角色镜头（每案≥1 合法镜头；三角色各≥3 案；角色切换器 + 01/41 三视角）
+for (const c of defs.cases) { ok(); if (!Array.isArray(c.lenses) || c.lenses.length < 1 || !c.lenses.every((l) => ['研发', '产品', '项目'].includes(l))) bad(`案例${c.num} 角色镜头 lenses 缺失/非法`); }
+for (const role of ['研发', '产品', '项目']) { ok(); if (defs.cases.filter((c) => (c.lenses || []).includes(role)).length < 3) bad(`角色「${role}」覆盖案例不足 3（伪统一）`); }
+ok(); if (!tut.includes('三镜头看同一个案例')) bad('缺角色切换器（三镜头看同一案例）');
+for (const n of [1, 41]) { ok(); if (!defs.cases.find((c) => c.num === n)?.lensViews) bad(`案例${n} 缺 lensViews 三视角`); }
 for (const c of defs.cases) { ok(); if (!c.readingOrder || !c.tryThis) bad(`案例${c.num} 缺去模板字段 readingOrder/tryThis`); }
 // I) 叙事钩子诚信：姚顺雨须标为首席科学家(非 PM)；prompt-sets 归 Aparna 而非吴恩达
 ok(); if (tut.includes('姚顺雨') && !/姚顺雨[^。]{0,60}首席科学家/.test(tut)) bad('姚顺雨须标注为首席科学家(非产品经理)');
