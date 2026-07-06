@@ -1,5 +1,5 @@
 import { join } from 'node:path';
-import { listCases, caseData, getIndex, points3d, rfm, hospital, adFunnel, riskReview, dispatch, retail, serverSubsystems } from '../services/cases.ts';
+import { listCases, caseData, getIndex, points3d, rfm, hospital, adFunnel, riskReview, dispatch, retail, serverSubsystems, archModel } from '../services/cases.ts';
 import { tokenize } from '../services/tokenize.ts';
 import { openapiSpec } from '../services/openapi.ts';
 import { VectorStore } from '../vector/store.ts';
@@ -13,6 +13,7 @@ function getDb() { if (!db) db = buildOrdersDb(join(ROOT, 'dataset', 'order_data
 
 export async function apiRoutes(app: any) {
   app.get('/api/health', async () => ({ ok: true, service: 'pm-kb-server', subsystems: serverSubsystems(), checker: 'tests' }));
+  app.get('/api/arch', async () => archModel());
   app.get('/api/cases', async () => listCases());
   app.get('/api/index', async () => getIndex());
   app.get('/api/case/:num/data', async (req: any, reply: any) => {

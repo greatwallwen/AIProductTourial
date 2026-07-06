@@ -5,7 +5,7 @@ A hands-on knowledge base for the AI era spanning **engineering, product, and pr
 - Datasets: `dataset/` (+ `MANIFEST.md`, real vs. synthetic explicitly labeled)
 - Runnable workbench: `code/web` (Vite + React + TS, one route per case `#/case/NN`)
 - Manifests / SVGs / deliverables: `outputs/product_case_library/`
-- Structured skills (52): `skills/pm_skills.md`
+- Structured skills (62): `skills/pm_skills.md`
 - Screenshots: `assets/screenshots/`
 - Tutorial (Chinese, multi-file): `AI时代研发产品项目一体化知识库/` (its `README.md` is the index) · Chinese project README: `README-cn.md`
 

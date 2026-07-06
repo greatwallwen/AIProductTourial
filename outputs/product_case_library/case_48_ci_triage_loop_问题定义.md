@@ -15,18 +15,18 @@
 ## 指标链（取自真实数据）
 
 - 契约断言数：22
-- 接口契约数：15
+- 接口契约数：16
 - 校验检查项：166
 - 后端模块数：9
 
 ## 异常状态与责任
 
 - [断言失败] /api/health / 契约 / routes/api.ts→services → 责任 研发-王
-- [回归风险] /api/cases / 数据 / routes/api.ts→services → 责任 测试-赵
-- [待复现] /api/index / 边界 / routes/api.ts→services → 责任 研发-李
-- [断言失败] /api/case/:num/data / 契约 / routes/api.ts→services → 责任 研发-王
-- [回归风险] /api/points3d / 数据 / routes/api.ts→services → 责任 测试-赵
-- [待复现] /api/rfm / 边界 / routes/api.ts→services → 责任 研发-李
+- [回归风险] /api/arch / 数据 / routes/api.ts→services → 责任 测试-赵
+- [待复现] /api/cases / 边界 / routes/api.ts→services → 责任 研发-李
+- [断言失败] /api/index / 契约 / routes/api.ts→services → 责任 研发-王
+- [回归风险] /api/case/:num/data / 数据 / routes/api.ts→services → 责任 测试-赵
+- [待复现] /api/points3d / 边界 / routes/api.ts→services → 责任 研发-李
 
 ## 决策动作
 

@@ -94,7 +94,7 @@ function walkFiles(dir, ext){
 }
 // .md 数据集案例（44 RAG 语料 / 46 后端 dogfood）：指标一律从真实来源真算，绝不用占位顺子
 function buildFromMd(c){
-  let kpis=[], chart={type:'sparkline',data:[]}, queue=[], actions=[], exceptionCount=0, responsible=['—'];
+  let kpis=[], chart={type:'sparkline',data:[]}, queue=[], actions=[], exceptionCount=0, responsible=['—'], deps=[], cycles=0;
   if(c.num===44){ // 真实读 deanpeters 语料目录：篇数/字数/主题
     const dir=join(ROOT,'skills','external','pm-skills-deanpeters');
     const files=walkFiles(dir,'.md');
@@ -113,15 +113,18 @@ function buildFromMd(c){
     const tsFiles=walkFiles(sdir,'.ts');
     const api=readFileSync(join(sdir,'routes','api.ts'),'utf8');
     const routes=new Set(api.match(/'\/api\/[a-z0-9/:]+'/gi)||[]);
-    const testSrc=existsSync(join(sdir,'tests','api.test.ts'))?readFileSync(join(sdir,'tests','api.test.ts'),'utf8'):'';
-    const asserts=(testSrc.match(/\bassert(\.[a-zA-Z]+)?\s*\(/g)||[]).length;
+    // 真实依赖：扫每个子系统 .ts 的 import → 子系统间依赖边 + 循环依赖检测（适应度函数/架构守护）
+    const edgeSet=new Set();
+    for(const sub of mods){ for(const f of walkFiles(join(sdir,sub),'.ts')){ const imps=readFileSync(f,'utf8').match(/from\s+'[^']+'/g)||[]; for(const imp of imps) for(const other of mods) if(other!==sub && new RegExp(`/${other}/|\\.\\./${other}\\b`).test(imp)) edgeSet.add(sub+'>'+other); } }
+    deps=[...edgeSet].map(e=>{const [from,to]=e.split('>');return {from,to};});
+    cycles=deps.filter(e=>edgeSet.has(e.to+'>'+e.from)).length/2;
     kpis=[
       {name:'子系统数',value:mods.length,unit:''},
-      {name:'接口数',value:routes.size,unit:''},
-      {name:'后端模块数',value:tsFiles.length,unit:''},
-      {name:'契约断言数',value:asserts,unit:''},
+      {name:'接口契约数',value:routes.size,unit:''},
+      {name:'依赖边数',value:deps.length,unit:''},
+      {name:'循环依赖',value:cycles,unit:''},
     ];
-    chart={type:'bars',by:'子系统 → 模块文件数',data:mods.map(m=>({label:m,value:walkFiles(join(sdir,m),'.ts').length}))};
+    chart={type:'bars',by:'子系统 → 依赖出度',data:mods.map(m=>({label:m,value:deps.filter(e=>e.from===m).length}))};
   } else if(c.num===48){ // CI 失败分诊：真读本仓库 tests/verify/routes/模块（dogfood·研发/项目）
     const sdir=join(ROOT,'code','server');
     const testSrc=walkFiles(join(sdir,'tests'),'.ts').map(f=>readFileSync(f,'utf8')).join('\n');
@@ -188,7 +191,7 @@ function buildFromMd(c){
   } else { // 其它 .md：按指标链回到真实可得量（不用顺子占位）
     kpis=c.metricChain.map((m)=>({name:m,value:0,unit:/率/.test(m)?'%':''}));
   }
-  return { kpis, queue, chart, rowCount:kpis[0]?.value||0, exceptionCount, responsible, actions };
+  return { kpis, queue, chart, rowCount:kpis[0]?.value||0, exceptionCount, responsible, actions, deps, cycles };
 }
 let ok=0;
 for(const c of defs.cases){

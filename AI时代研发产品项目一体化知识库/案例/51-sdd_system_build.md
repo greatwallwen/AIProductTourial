@@ -35,7 +35,7 @@
 **本次任务**
 
 - 明确岗位、指标链、异常状态与决策动作。
-- 使用 `harness-builder` 与 `traceability-check` 完成分析，产出 `SDD 系统建造走查报告`，用 `checker-report` 验收。
+- 使用 `spec-authoring` 与 `task-decomposition` 完成分析，产出 `SDD 系统建造走查报告`，用 `arch-review` 验收。
 
 ### 任务目标与数据
 
@@ -120,7 +120,7 @@
 - 必含字段：步骤、工件、状态、产出
 - 必含指标链：宪法条款、子系统数、门禁检查项、架构图数
 - 必含异常状态：规格缺失、契约缺失、门禁未过
-- 必含 Skill：harness-builder、traceability-check、checker-report
+- 必含 Skill：spec-authoring、task-decomposition、arch-review
 
 - 合格标准：业务场景具体、指标链完整、异常状态可追踪、行动入口明确、验收条件可执行。
 - 不合格标准：使用泛化产品名称、缺少行业指标、只描述页面不说明业务取舍、越过「每步产出须可追溯（规格/ADR/门禁），不得跳过澄清与门禁两步」。

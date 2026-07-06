@@ -116,5 +116,7 @@
  "responsible": [
   "—"
  ],
- "actions": []
+ "actions": [],
+ "deps": [],
+ "cycles": 0
 }

@@ -27,7 +27,7 @@
 **本次任务**
 
 - 明确岗位、指标链、异常状态与决策动作。
-- 使用 `capstone-product-flow` 与 `evidence-pack` 完成分析，产出 `子系统分解图与接口契约`，用 `traceability-check` 验收。
+- 使用 `c4-modeling` 与 `interface-contract` 完成分析，产出 `子系统分解图与接口契约`，用 `adr-authoring` 验收。
 
 ### 任务目标与数据
 
@@ -37,7 +37,7 @@
 - 数据或资料：`rules/backend.md`（5 行，异常 0）
 - 公开参考：Software Engineering at Google https://abseil.io/resources/swe-book/ ｜ 12factor.net
 - 行业字段：子系统、职责、接口、契约
-- 指标链（真实值）：子系统数 5，接口数 14，后端模块数 9，契约断言数 22
+- 指标链（真实值）：子系统数 5，接口契约数 15，依赖边数 5，循环依赖 0
 - 决策动作：把 §3 架构流程落到本仓库真运行后端：分层/边界/契约在代码里可查
 - 风险边界：架构决策须可追溯（ADR），不得口头拍板
 - UI 原型：`ui_46_arch_contract`（arch_board）
@@ -52,10 +52,10 @@
 请以产品经理身份，用 AI 编程工具（如 Trae、CodeBuddy 等任一 Agent 工具）完成「后端子系统分解与契约」的**产品问题定义**（这一步先把问题想清楚，不写代码）：
 - 岗位与场景：架构型产品经理 面向「后端子系统分解与契约」，把业务判断转成一份可验证的产品问题定义。
 - 数据：读取 `rules/backend.md`，只使用其中真实存在的字段（子系统、职责、接口、契约）。
-- 指标链：子系统数、接口数、后端模块数、契约断言数（当前真实值：子系统数=5，接口数=14，后端模块数=9，契约断言数=22）。
+- 指标链：子系统数、接口数、后端模块数、契约断言数（当前真实值：子系统数=5，接口契约数=15，依赖边数=5，循环依赖=0）。
 - 现场异常：要盯的是 职责越界、契约缺失、循环依赖——说清每类异常谁负责、如何被发现。
 - 决策动作：这份定义最终要支撑的关键决策是——把 §3 架构流程落到本仓库真运行后端：分层/边界/契约在代码里可查
-- 使用 Skill：用 capstone-product-flow、evidence-pack 完成分析（结构化 Skill 见 skills/pm_skills.md）。
+- 使用 Skill：用 c4-modeling、interface-contract 完成分析（结构化 Skill 见 skills/pm_skills.md）。
 - 输出：子系统分解图与接口契约，保存为 `outputs/product_case_library/case_46_system_arch_flow_问题定义.md`。
 - 边界：结论必须回到数据或公开参考（Software Engineering at Google https://abseil.io/resources/swe-book/ ｜ 12factor.net）；不得越过「架构决策须可追溯（ADR），不得口头拍板」。
 ```
@@ -66,9 +66,9 @@
 请以产品经理身份，用 AI 编程工具（如 Trae、CodeBuddy 等任一 Agent 工具）完成「后端子系统分解与契约」的**方案验收**（把上一步的问题定义做成可运行原型，并逐项验收）：
 - 目标：基于问题定义，产出一个可运行的深色大屏原型，让指标链、异常队列、责任、行动都能在页面上看到、点得动。
 - 数据：读取 `rules/backend.md`，只使用其中真实存在的字段（子系统、职责、接口、契约）。
-- 指标链：子系统数、接口数、后端模块数、契约断言数（当前真实值：子系统数=5，接口数=14，后端模块数=9，契约断言数=22）。
+- 指标链：子系统数、接口数、后端模块数、契约断言数（当前真实值：子系统数=5，接口契约数=15，依赖边数=5，循环依赖=0）。
 - 原型（技术契约，遵 rules/ 约束：DRY、单文件<800行、TS 类型、中文注释）：在 `code/web`（Vite+React+TS）路由 `#/case/46`，按 `ui_46_arch_contract`（arch_board）与设计 `cyan-matrix` 渲染；数据经 `build_case_data.mjs` 预计算，不得复用通用表格占位。
-- 使用 Skill：用 traceability-check 做验收（结构化 Skill 见 skills/pm_skills.md）。
+- 使用 Skill：用 adr-authoring 做验收（结构化 Skill 见 skills/pm_skills.md）。
 - 输出：子系统分解图与接口契约，保存为 `outputs/product_case_library/case_46_system_arch_flow_方案验收.md`。
 - 验收条件：指标链回到真实数据、异常可追踪、行动入口明确；不得越过「架构决策须可追溯（ADR），不得口头拍板」；`node code/tools/verify_course_package.mjs` 必须 ALL GREEN。
 ```
@@ -76,6 +76,8 @@
 ### 图形/原型/表单
 
 ![后端子系统分解与契约 · 信息图](../../outputs/product_case_library/svg/case_46_system_arch_flow.svg)
+
+![案例46 · 后端子系统真实依赖（C4 · dogfood）](../../outputs/product_case_library/svg/fig_case46_deps.svg)
 
 ![后端子系统分解与契约 · 可运行大屏原型截图](../../assets/screenshots/premium_case_46_system_arch_flow_desktop.png)
 
@@ -89,7 +91,7 @@
 - 必含字段：子系统、职责、接口、契约
 - 必含指标链：子系统数、接口数、后端模块数、契约断言数
 - 必含异常状态：职责越界、契约缺失、循环依赖
-- 必含 Skill：capstone-product-flow、evidence-pack、traceability-check
+- 必含 Skill：c4-modeling、interface-contract、adr-authoring
 
 - 合格标准：业务场景具体、指标链完整、异常状态可追踪、行动入口明确、验收条件可执行。
 - 不合格标准：使用泛化产品名称、缺少行业指标、只描述页面不说明业务取舍、越过「架构决策须可追溯（ADR），不得口头拍板」。

@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
 import { Icon } from './Icon';
-import { fetchSearch, fetchDbQuery, fetchPoints3d, fetchHealth, fetchRfm, fetchHospital, fetchAdFunnel, fetchRiskReview, fetchDispatch, fetchRetail } from './lib/api';
+import { fetchSearch, fetchDbQuery, fetchPoints3d, fetchHealth, fetchArch, fetchRfm, fetchHospital, fetchAdFunnel, fetchRiskReview, fetchDispatch, fetchRetail } from './lib/api';
 // three.js 独立 chunk，仅在渲染 3D 案例时动态加载（首屏不含 three）
 const Chart3D = lazy(() => import('./chart3d'));
 
@@ -63,21 +63,38 @@ FROM orders GROUP BY region ORDER BY amt DESC;   -- 真 node:sqlite，建表+索
 
 // —— 系统架构：子系统分解 + 真实健康检查(接口契约) ——
 function ArchScreen() {
-  const [h, setH] = useState<any>(null);
-  useEffect(() => { fetchHealth().then(setH); }, []);
-  const subs: Array<{ name: string; desc: string }> = h?.subsystems || [];
+  const [a, setA] = useState<any>(null);
+  useEffect(() => { fetchArch().then(setA); }, []);
+  const subs: Array<{ name: string; desc: string }> = a?.subsystems || [];
+  const edges: Array<{ from: string; to: string }> = a?.edges || [];
   return (
-    <section className="card">
-      <div className="card-h"><h2>子系统分解 · 接口契约</h2><span className="muted">本教程后端自身 · dogfood · /api/health（真实目录扫描）</span></div>
-      <div className="grid-cards" style={{ gridTemplateColumns: 'repeat(auto-fill,minmax(220px,1fr))' }}>
-        {subs.map((s) => (
-          <div key={s.name} className="kpi"><div className="kpi-name mono" style={{ color: 'var(--accent)' }}>code/server/{s.name}</div><div style={{ fontSize: 12, marginTop: 4 }}>{s.desc}</div></div>
-        ))}
-      </div>
-      <div className="banner" style={{ marginTop: 14, color: 'var(--ok)', borderColor: 'var(--ok)' }}>
-        {h ? `${subs.length} 个业务子系统 + 1 个校验器（code/server/${h.checker} = Loop 的 checker）· 接口契约 /api/health 真实调用 200 OK` : '…'}
-      </div>
-    </section>
+    <>
+      <section className="card">
+        <div className="card-h"><h2>子系统分解 · 真实依赖（C4 容器）</h2><span className="muted">dogfood · /api/arch 实时扫 code/server 的真实 import</span></div>
+        <div className="grid-cards" style={{ gridTemplateColumns: 'repeat(auto-fill,minmax(220px,1fr))' }}>
+          {subs.map((s) => (
+            <div key={s.name} className="kpi"><div className="kpi-name mono" style={{ color: 'var(--accent)' }}>code/server/{s.name}</div><div style={{ fontSize: 12, marginTop: 4 }}>{s.desc}</div></div>
+          ))}
+        </div>
+        <div style={{ marginTop: 12, fontSize: 12.5, color: 'var(--ink2)' }}>
+          <b>真实依赖边（{edges.length}）：</b>{edges.map((e, i) => <span key={i} className="chip soft" style={{ marginRight: 6 }}>{e.from} → {e.to}</span>)}
+        </div>
+        <div className="banner" style={{ marginTop: 12, color: a && a.cycles === 0 ? 'var(--ok)' : 'var(--bad)', borderColor: a && a.cycles === 0 ? 'var(--ok)' : 'var(--bad)' }}>
+          {a ? <><Icon name="alert" /> 循环依赖检测：{a.cycles} 处{a.cycles === 0 ? '（架构守护通过：分层单向依赖）' : '（越界！需拆解）'}</> : '…'}
+        </div>
+      </section>
+      {a && (
+        <section className="card">
+          <div className="card-h"><h2>接口契约 + ADR（真实工件）</h2><span className="muted">§3.4 契约即代码 · §3.5 决策留痕</span></div>
+          <div style={{ fontSize: 12.5, lineHeight: 1.9 }}>
+            <div><b>错误信封</b>：<code>{a.contract?.envelope}</code></div>
+            <div><b>幂等</b>：{a.contract?.idempotent}</div>
+            <div><b>契约即代码</b>：{a.contract?.openapi}</div>
+            <div style={{ marginTop: 8, paddingLeft: 10, borderLeft: '3px solid var(--accent)' }}><b>{a.adr?.id} · {a.adr?.title}</b><br /><span style={{ color: 'var(--ink2)' }}>为什么：{a.adr?.why}</span></div>
+          </div>
+        </section>
+      )}
+    </>
   );
 }
 

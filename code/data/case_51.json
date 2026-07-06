@@ -15,9 +15,9 @@
   "C4 图"
  ],
  "skills": [
-  "harness-builder",
-  "traceability-check",
-  "checker-report"
+  "spec-authoring",
+  "task-decomposition",
+  "arch-review"
  ],
  "highImpact": false,
  "riskBoundary": "每步产出须可追溯（规格/ADR/门禁），不得跳过澄清与门禁两步",
@@ -221,5 +221,7 @@
    "owner": "研发-王",
    "due": "0d"
   }
- ]
+ ],
+ "deps": [],
+ "cycles": 0
 }

@@ -13,6 +13,7 @@ export const fetchSearch = (q: string) => getJson<any>(`/api/search?q=${encodeUR
 export const fetchDbQuery = () => getJson<any>('/api/db/query');
 export const fetchPoints3d = () => getJson<any>('/api/points3d');
 export const fetchHealth = () => getJson<any>('/api/health');
+export const fetchArch = () => getJson<any>('/api/arch');
 
 export const fetchTokenize = (text: string) => getJson<any>(`/api/tokenize?text=${encodeURIComponent(text)}`);
 export const fetchOpenapi = () => getJson<any>('/api/openapi.json');

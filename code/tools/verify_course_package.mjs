@@ -108,6 +108,13 @@ ok(); if (!/BuildWalkScreen/.test(rd('code/web/src/screens.tsx')) || !/screen ==
 { const j51 = jj('code/data/case_51.json'); ok(); if (!(j51.kpis.find((k) => k.name === '门禁检查项')?.value > 100)) bad('案例51 门禁项非真实'); ok(); if (j51.queue.length !== 8) bad('案例51 SDD 八步不完整'); ok(); if (!(j51.kpis.find((k) => k.name === '宪法条款')?.value > 0)) bad('案例51 宪法条款非真实'); }
 ok(); if (!has('outputs/product_case_library/svg/fig_midplatform.svg')) bad('缺零售中台 C4 图 fig_midplatform');
 for (const m of ['零售数字化中台', '恰好就是本书的一个案例', 'SDD 系统建造八步（多 prompt 编排）', '方法论落点']) { ok(); if (!tut.includes(m)) bad(`Phase2 缺「${m}」`); }
+// v12 Phase 3：架构方法论 skills + 系统建造编排器 + 案例46 真 C4 依赖
+for (const s of ['spec-authoring', 'requirement-clarify', 'c4-modeling', 'domain-decomposition', 'interface-contract', 'adr-authoring', 'quality-attribute-scenario', 'fitness-function', 'task-decomposition', 'arch-review']) { ok(); if (!skillsMd.includes(`## ${s}`)) bad(`缺架构方法论技能 ${s}`); }
+ok(); if (!has('skills/loop_engineering/system-build.orchestrator.md')) bad('缺系统建造编排器 system-build.orchestrator.md');
+ok(); if (!/archModel/.test(rd('code/server/services/cases.ts')) || !/api\/arch/.test(rd('code/server/routes/api.ts'))) bad('缺 /api/arch 真实依赖模型');
+ok(); if (!/fetchArch/.test(rd('code/web/src/screens.tsx'))) bad('ArchScreen 未接入真实依赖(/api/arch)');
+{ const j46 = jj('code/data/case_46.json'); ok(); if (!(Array.isArray(j46.deps) && j46.deps.length >= 3)) bad('案例46 无真实依赖边(应扫 import)'); ok(); if (typeof j46.cycles !== 'number') bad('案例46 缺循环依赖检测'); }
+ok(); if (!has('outputs/product_case_library/svg/fig_case46_deps.svg') || !/fig_case46_deps\.svg/.test(tut)) bad('缺/未嵌入案例46 真实依赖图');
 ok(); if (!has('docs/_source/_ref-annotation-style.md')) bad('缺 issue#4 备注范例存档');
 ok(); if (!/黄仁勋|你有没有想过|你问 ChatGPT/.test(rd('docs/_source/00-ai-foundations.md'))) bad('§1 备注未按 issue#4 富叙事重写');
 ok(); if (!/tokenize/.test(rd('code/server/routes/api.ts')) || !has('code/server/services/tokenize.ts')) bad('缺 /api/tokenize 后端');
@@ -209,7 +216,7 @@ for (const c of defs.cases) {
 }
 // 44/46 关键真实值下限（防回退占位）
 ok(); if (((jj('code/data/case_44.json').kpis || [])[0]?.value || 0) < 100) bad('案例44 语料篇数应为真实统计(≥100)，疑似占位');
-ok(); if (((jj('code/data/case_46.json').kpis || []).find((k) => k.name === '接口数')?.value || 0) < 5) bad('案例46 接口数应为真实统计(≥5)，疑似占位');
+ok(); if (((jj('code/data/case_46.json').kpis || []).find((k) => k.name === '接口契约数')?.value || 0) < 5) bad('案例46 接口契约数应为真实统计(≥5)，疑似占位');
 // 3) 跨行业词泄漏 + 决策动作去重
 ok(); if (/薪酬|招聘|编制超配/.test(tut)) bad('教程含跨行业错配词(HR 词泄漏到非人力案例)');
 const _das = defs.cases.map((c) => c.decisionAction);

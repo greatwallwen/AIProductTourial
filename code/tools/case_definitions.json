@@ -1495,9 +1495,9 @@
         "3.3"
       ],
       "skills": [
-        "capstone-product-flow",
-        "evidence-pack",
-        "traceability-check"
+        "c4-modeling",
+        "interface-contract",
+        "adr-authoring"
       ],
       "fields": [
         "子系统",
@@ -1959,9 +1959,9 @@
         "门禁未过"
       ],
       "skills": [
-        "harness-builder",
-        "traceability-check",
-        "checker-report"
+        "spec-authoring",
+        "task-decomposition",
+        "arch-review"
       ],
       "saasComponents": [
         "SDD 流水线",

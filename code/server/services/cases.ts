@@ -26,6 +26,31 @@ export function serverSubsystems() {
   return mods.map((name) => ({ name, desc: SUBSYS_DESC[name] || '' }));
 }
 
+/** 案例46 真实架构模型（dogfood）：扫 code/server 各子系统 .ts 的 import → 真实依赖边 + 循环依赖检测 + 一份真 ADR/契约。 */
+function walkTs(dir: string): string[] {
+  const out: string[] = [];
+  try { for (const e of readdirSync(dir)) { const p = join(dir, e); if (statSync(p).isDirectory()) { if (!['node_modules', 'dist'].includes(e)) out.push(...walkTs(p)); } else if (e.endsWith('.ts')) out.push(p); } } catch { /* 目录不存在忽略 */ }
+  return out;
+}
+export function archModel() {
+  const sdir = join(ROOT, 'code', 'server');
+  const subs = serverSubsystems().map((s) => s.name);
+  const edgeSet = new Set<string>();
+  for (const sub of subs) {
+    for (const f of walkTs(join(sdir, sub))) {
+      const imps = readFileSync(f, 'utf8').match(/from\s+'[^']+'/g) || [];
+      for (const imp of imps) for (const other of subs) if (other !== sub && new RegExp(`/${other}/|\\.\\./${other}\\b`).test(imp)) edgeSet.add(sub + '>' + other);
+    }
+  }
+  const edges = [...edgeSet].map((e) => { const [from, to] = e.split('>'); return { from, to }; });
+  const cycles = edges.filter((e) => edgeSet.has(e.to + '>' + e.from)).length / 2;
+  return {
+    subsystems: serverSubsystems(), edges, cycles,
+    adr: { id: 'ADR-001', title: '本地 node:sqlite，生产标注为 PostgreSQL', why: '同时满足约束「一条命令起、零外部依赖、离线可跑」与「教学要讲 PG/pgvector 架构」；重估信号：需真并发或 pgvector 召回则切 PG。' },
+    contract: { envelope: '{ code, message, details } 统一错误信封', idempotent: '写操作幂等：同一「创建」重发不产生两条', openapi: '/api/openapi.json 由路由 schema 自动生成，契约即代码永不漂移' },
+  };
+}
+
 /** 案例完整视图模型：取真实数据派生的 VM，并实时读 CSV 复算行数/异常数（证明后端真算而非纯静态）。 */
 export function caseData(num: number) {
   const c = defs.cases.find((x: any) => x.num === num);

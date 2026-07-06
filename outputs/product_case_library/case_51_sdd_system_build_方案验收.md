@@ -11,7 +11,7 @@ SDD 系统建造走查报告
 - 必含字段：步骤、工件、状态、产出
 - 必含指标链：宪法条款、子系统数、门禁检查项、架构图数
 - 必含异常状态：规格缺失、契约缺失、门禁未过
-- 必含 Skill：harness-builder、traceability-check、checker-report
+- 必含 Skill：spec-authoring、task-decomposition、arch-review
 
 ## 合格标准
 

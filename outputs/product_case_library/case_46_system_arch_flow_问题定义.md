@@ -15,9 +15,9 @@
 ## 指标链（取自真实数据）
 
 - 子系统数：5
-- 接口数：14
-- 后端模块数：9
-- 契约断言数：22
+- 接口契约数：15
+- 依赖边数：5
+- 循环依赖：0
 
 ## 异常状态与责任
 
@@ -33,4 +33,4 @@
 
 ## 使用 Skill
 
-capstone-product-flow、evidence-pack、traceability-check
+c4-modeling、interface-contract、adr-authoring

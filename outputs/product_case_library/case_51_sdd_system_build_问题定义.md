@@ -38,4 +38,4 @@
 
 ## 使用 Skill
 
-harness-builder、traceability-check、checker-report
+spec-authoring、task-decomposition、arch-review

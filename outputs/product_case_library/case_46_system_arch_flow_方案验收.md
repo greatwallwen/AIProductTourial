@@ -11,7 +11,7 @@
 - 必含字段：子系统、职责、接口、契约
 - 必含指标链：子系统数、接口数、后端模块数、契约断言数
 - 必含异常状态：职责越界、契约缺失、循环依赖
-- 必含 Skill：capstone-product-flow、evidence-pack、traceability-check
+- 必含 Skill：c4-modeling、interface-contract、adr-authoring
 
 ## 合格标准
 

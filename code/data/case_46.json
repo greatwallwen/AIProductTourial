@@ -16,9 +16,9 @@
   "ADR 记录"
  ],
  "skills": [
-  "capstone-product-flow",
-  "evidence-pack",
-  "traceability-check"
+  "c4-modeling",
+  "interface-contract",
+  "adr-authoring"
  ],
  "rp": null,
  "highImpact": false,
@@ -61,29 +61,29 @@
    "unit": ""
   },
   {
-   "name": "接口数",
-   "value": 14,
+   "name": "接口契约数",
+   "value": 15,
    "unit": ""
   },
   {
-   "name": "后端模块数",
-   "value": 9,
+   "name": "依赖边数",
+   "value": 5,
    "unit": ""
   },
   {
-   "name": "契约断言数",
-   "value": 22,
+   "name": "循环依赖",
+   "value": 0,
    "unit": ""
   }
  ],
  "queue": [],
  "chart": {
   "type": "bars",
-  "by": "子系统 → 模块文件数",
+  "by": "子系统 → 依赖出度",
   "data": [
    {
     "label": "data",
-    "value": 1
+    "value": 0
    },
    {
     "label": "db",
@@ -91,15 +91,15 @@
    },
    {
     "label": "routes",
-    "value": 1
-   },
-   {
-    "label": "services",
     "value": 3
    },
    {
-    "label": "vector",
+    "label": "services",
     "value": 1
+   },
+   {
+    "label": "vector",
+    "value": 0
    }
   ]
  },
@@ -108,5 +108,28 @@
  "responsible": [
   "—"
  ],
- "actions": []
+ "actions": [],
+ "deps": [
+  {
+   "from": "db",
+   "to": "data"
+  },
+  {
+   "from": "routes",
+   "to": "services"
+  },
+  {
+   "from": "routes",
+   "to": "vector"
+  },
+  {
+   "from": "routes",
+   "to": "db"
+  },
+  {
+   "from": "services",
+   "to": "data"
+  }
+ ],
+ "cycles": 0
 }

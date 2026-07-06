@@ -3,7 +3,7 @@
  *  逻辑：先讲理念/原理/规范/设计（第一部分），再用案例演示验证（第二部分）。工具口径用 Trae/CodeBuddy 等泛指。 */
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join, resolve, dirname } from 'node:path';
-import { archFigures } from './arch_figures.mjs';
+import { archFigures, subsystemDeps } from './arch_figures.mjs';
 
 const ROOT = resolve(import.meta.dirname, '..', '..');
 const defs = JSON.parse(readFileSync(join(ROOT, 'code', 'tools', 'case_definitions.json'), 'utf8'));
@@ -256,6 +256,8 @@ for (const id of ['fig_ai_foundations', 'fig_ideology_loops', 'fig_engineering_r
   writeFileSync(join(CLIB, 'svg', `${id}.svg`), figSvg(id));
 // v12 架构图套件（节点-连线引擎 diagram.mjs）：SDD 流水线 / C4 上下文·容器·组件 / DDD 限界上下文 / 部署 / 时序
 for (const [id, svg] of Object.entries(archFigures(theme('graphite-hud')))) writeFileSync(join(CLIB, 'svg', `${id}.svg`), svg);
+// 案例 46 真实子系统依赖图（数据来自 build_case_data 扫 import）
+{ const d46 = vm(46); if (d46.deps?.length) writeFileSync(join(CLIB, 'svg', 'fig_case46_deps.svg'), subsystemDeps(d46.deps, d46.cycles || 0, theme('cyan-matrix'))); }
 for (const c of defs.cases) {
   const d = vm(c.num);
   writeFileSync(join(CLIB, 'svg', `case_${pad(c.num)}_${c.slug}.svg`), svg(c, d));
@@ -456,7 +458,9 @@ for (const c of defs.cases) {
       ? ['### Prompt 实操 · SDD 系统建造八步（多 prompt 编排）', '', '> 正面回答「几个 prompt 建不成系统」：下面是一条**流水线**——每步一个 prompt、产一份工件、喂给下一步；澄清与门禁是人/机把关。照着走，才建得动一个中大型系统。', '',
         ...buildBuildPipeline().flatMap(([s, p]) => [`**${s}**`, '', '```text', p, '```', ''])]
       : ['### Prompt 实操', '', `**Prompt 1：${c.scenario} - 问题定义**`, '', '```text', buildPrompt(c, d, 'def'), '```', '', `**Prompt 2：${c.scenario} - 方案验收**`, '', '```text', buildPrompt(c, d, 'accept'), '```', '']),
-    `### 图形/原型/表单`, '', `![${c.scenario} · 信息图](${UP}outputs/product_case_library/svg/case_${pad(c.num)}_${c.slug}.svg)`, '', `![${c.scenario} · 可运行大屏原型截图](${UP}assets/screenshots/premium_case_${pad(c.num)}_${c.slug}_desktop.png)`, '',
+    `### 图形/原型/表单`, '', `![${c.scenario} · 信息图](${UP}outputs/product_case_library/svg/case_${pad(c.num)}_${c.slug}.svg)`, '',
+    ...(c.num === 46 && d.deps?.length ? [`![案例46 · 后端子系统真实依赖（C4 · dogfood）](${UP}outputs/product_case_library/svg/fig_case46_deps.svg)`, ''] : []),
+    `![${c.scenario} · 可运行大屏原型截图](${UP}assets/screenshots/premium_case_${pad(c.num)}_${c.slug}_desktop.png)`, '',
     `- 图形类型：${c.slug}（设计 ${c.design}）`, `- 看图顺序：${c.readingOrder || '先看指标链，再看异常队列和责任对象，最后看行动入口与验收边界。'}`, `- UI 差异：本案例采用 \`${c.uiId}\` + 设计 \`${c.design}\`，不得复用通用表格占位；可运行原型见 \`#/case/${pad(c.num)}\`。`, '',
     `### 交付物与验收`, '', kv([['交付物', c.deliverable], ['必含字段', c.fields.join('、')], ['必含指标链', c.metricChain.join('、')], ['必含异常状态', c.exceptionStates.join('、')], ['必含 Skill', c.skills.join('、')]]), '',
     `- 合格标准：业务场景具体、指标链完整、异常状态可追踪、行动入口明确、验收条件可执行。`, `- 不合格标准：使用泛化产品名称、缺少行业指标、只描述页面不说明业务取舍、越过「${c.riskBoundary}」。`, ''];
