@@ -1,7 +1,7 @@
 {
   "counts": {
-    "HIGH": 7,
-    "MED": 16,
+    "HIGH": 6,
+    "MED": 8,
     "LOW": 5
   },
   "findings": [
@@ -48,13 +48,6 @@
       "fix": "加 vitest 组件/纯函数测试"
     },
     {
-      "sev": "HIGH",
-      "cat": "stale-count",
-      "file": "case_definitions.json",
-      "msg": "caseCount=11 与真实案例数 15 不符",
-      "fix": "改为 15 或删该冗余字段"
-    },
-    {
       "sev": "MED",
       "cat": "coverage",
       "file": "code/server/tests/api.test.ts",
@@ -70,66 +63,10 @@
     },
     {
       "sev": "MED",
-      "cat": "cross-link",
-      "file": "AI时代研发产品项目一体化知识库/案例/01-morning_ops_grid.md",
-      "msg": "01-morning_ops_grid.md 仅 4 处交叉引用，前后联系弱",
-      "fix": "织「概念↔案例↔章节」网：加「本章与 §X / 案例 NN 的联系」"
-    },
-    {
-      "sev": "MED",
       "cat": "fun",
       "file": "case_definitions.json",
       "msg": "0 个游戏化/趣味交互案例（仅一个通用小游戏页）",
       "fix": "加交互游戏案例：架构决策模拟器 / 规格找漏洞闯关 / 限界上下文拖拽"
-    },
-    {
-      "sev": "MED",
-      "cat": "richness",
-      "file": "AI时代研发产品项目一体化知识库/02-会Loop的工程.md",
-      "msg": "02-会Loop的工程.md 仅 1 张图，视觉偏薄（§3 已有 8 张可参照）",
-      "fix": "补 1-2 张示意/流程/对比图"
-    },
-    {
-      "sev": "MED",
-      "cat": "richness",
-      "file": "AI时代研发产品项目一体化知识库/04-工程规范与约束.md",
-      "msg": "04-工程规范与约束.md 仅 1 张图，视觉偏薄（§3 已有 8 张可参照）",
-      "fix": "补 1-2 张示意/流程/对比图"
-    },
-    {
-      "sev": "MED",
-      "cat": "richness",
-      "file": "AI时代研发产品项目一体化知识库/05-设计系统.md",
-      "msg": "05-设计系统.md 仅 1 张图，视觉偏薄（§3 已有 8 张可参照）",
-      "fix": "补 1-2 张示意/流程/对比图"
-    },
-    {
-      "sev": "MED",
-      "cat": "richness",
-      "file": "AI时代研发产品项目一体化知识库/06-交付治理.md",
-      "msg": "06-交付治理.md 仅 0 张图，视觉偏薄（§3 已有 8 张可参照）",
-      "fix": "补 1-2 张示意/流程/对比图"
-    },
-    {
-      "sev": "MED",
-      "cat": "richness",
-      "file": "AI时代研发产品项目一体化知识库/06-交付治理.md",
-      "msg": "06-交付治理.md 仅 4 个科普备注块，内容偏薄",
-      "fix": "补 worked example / 故事钩子 / 实例"
-    },
-    {
-      "sev": "MED",
-      "cat": "richness",
-      "file": "AI时代研发产品项目一体化知识库/99-结课.md",
-      "msg": "99-结课.md 仅 0 张图，视觉偏薄（§3 已有 8 张可参照）",
-      "fix": "补 1-2 张示意/流程/对比图"
-    },
-    {
-      "sev": "MED",
-      "cat": "richness",
-      "file": "AI时代研发产品项目一体化知识库/案例/01-morning_ops_grid.md",
-      "msg": "01-morning_ops_grid.md 仅 0 个科普备注块，内容偏薄",
-      "fix": "补 worked example / 故事钩子 / 实例"
     },
     {
       "sev": "MED",

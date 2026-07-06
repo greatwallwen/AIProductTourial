@@ -42,6 +42,8 @@
 这里有个反直觉但极其重要的结论：**Loop 收敛得快不快，几乎全看传感器**。举个例子——如果验证只回你一个「pass / fail」，Agent 拿到 fail 也不知道错哪，只能瞎改，近乎盲猜；可如果验证能告诉它「第 3 个用例挂了、是这个断言、由这次改动引入的」，它就能精准修复。所以有句话叫「**传感器就是设计本身**」：一个「好提示 + 弱验证」的 Loop 会反复失败，而「平庸提示 + 强验证」的 Loop 反而会稳稳收敛。本教程用来守护自己的 `verify` 与测试，就是它自己的传感器。
 ```
 
+![控制论反馈闭环](../outputs/product_case_library/svg/fig_loop_cybernetic.svg)
+
 ### 2.4 Loop 六件套
 > <img src="../assets/vendor/lucide/built/check-circle.svg" width="14" alt="" style="vertical-align:-2px" /> **必读** ｜ 进阶 ｜ 关键词：**触发 · 隔离 · 技能 · 连接 · 子代理 · 记忆**（自转 Loop 的六件基础设施）
 

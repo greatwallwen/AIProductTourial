@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 810 500" font-family="PingFang SC,Microsoft YaHei,sans-serif">
+  <defs>
+    <linearGradient id="dbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a0e14"/><stop offset="1" stop-color="#0d1220"/></linearGradient>
+    <linearGradient id="dac" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#38bdf8"/></linearGradient>
+    <pattern id="dgrid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#16202e" stroke-width="1"/></pattern>
+    <filter id="dsh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#000" flood-opacity="0.35"/></filter>
+  </defs>
+  <rect width="810" height="500" fill="url(#dbg)"/><rect width="810" height="500" fill="url(#dgrid)" opacity="0.35"/>
+  <rect x="0" y="0" width="810" height="44" fill="#121826" opacity="0.5"/>
+  <rect x="24" y="13" width="4" height="19" rx="2" fill="url(#dac)"/>
+  <text x="36" y="28" font-size="15" font-weight="750" fill="#e6edf6">§4 · 装码前的 YAGNI 七段阶梯（反过度工程）</text>
+<line x1="240.0" y1="120.0" x2="240.0" y2="130.0" stroke="#38bdf8" stroke-width="1.6" /><path d="M240 130 L236.4 123.4 L243.6 123.4 z" fill="#38bdf8"/>
+<line x1="240.0" y1="180.0" x2="240.0" y2="190.0" stroke="#38bdf8" stroke-width="1.6" /><path d="M240 190 L236.4 183.4 L243.6 183.4 z" fill="#38bdf8"/>
+<line x1="240.0" y1="240.0" x2="240.0" y2="250.0" stroke="#38bdf8" stroke-width="1.6" /><path d="M240 250 L236.4 243.4 L243.6 243.4 z" fill="#38bdf8"/>
+<line x1="240.0" y1="300.0" x2="240.0" y2="310.0" stroke="#38bdf8" stroke-width="1.6" /><path d="M240 310 L236.4 303.4 L243.6 303.4 z" fill="#38bdf8"/>
+<line x1="240.0" y1="360.0" x2="240.0" y2="370.0" stroke="#38bdf8" stroke-width="1.6" /><path d="M240 370 L236.4 363.4 L243.6 363.4 z" fill="#38bdf8"/>
+<line x1="240.0" y1="420.0" x2="240.0" y2="430.0" stroke="#38bdf8" stroke-width="1.6" /><path d="M240 430 L236.4 423.4 L243.6 423.4 z" fill="#38bdf8"/>
+<rect x="50" y="70" width="380" height="50" rx="10" fill="#121826" stroke="#22d3ee" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="50" y="70" width="380" height="3" rx="1.5" fill="#22d3ee"/>
+  <text x="240" y="94" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">① 真需要存在吗？</text><text x="240" y="109" font-size="9.5" fill="#5b6b7f" text-anchor="middle">不需要→跳过（YAGNI）</text>
+<rect x="50" y="130" width="380" height="50" rx="10" fill="#121826" stroke="#22d3ee" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="50" y="130" width="380" height="3" rx="1.5" fill="#22d3ee"/>
+  <text x="240" y="154" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">② 代码库已有？</text><text x="240" y="169" font-size="9.5" fill="#5b6b7f" text-anchor="middle">有→复用，别重写</text>
+<rect x="50" y="190" width="380" height="50" rx="10" fill="#121826" stroke="#22d3ee" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="50" y="190" width="380" height="3" rx="1.5" fill="#22d3ee"/>
+  <text x="240" y="214" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">③ 标准库能搞定？</text><text x="240" y="229" font-size="9.5" fill="#5b6b7f" text-anchor="middle">优先标准库</text>
+<rect x="50" y="250" width="380" height="50" rx="10" fill="#121826" stroke="#22d3ee" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="50" y="250" width="380" height="3" rx="1.5" fill="#22d3ee"/>
+  <text x="240" y="274" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">④ 平台原生有？</text><text x="240" y="289" font-size="9.5" fill="#5b6b7f" text-anchor="middle">如 &lt;input type="date"&gt; 一行</text>
+<rect x="50" y="310" width="380" height="50" rx="10" fill="#121826" stroke="#22d3ee" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="50" y="310" width="380" height="3" rx="1.5" fill="#22d3ee"/>
+  <text x="240" y="334" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">⑤ 已装依赖里有？</text><text x="240" y="349" font-size="9.5" fill="#5b6b7f" text-anchor="middle">别再引新库</text>
+<rect x="50" y="370" width="380" height="50" rx="10" fill="#121826" stroke="#22d3ee" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="50" y="370" width="380" height="3" rx="1.5" fill="#22d3ee"/>
+  <text x="240" y="394" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">⑥ 一行能写完？</text><text x="240" y="409" font-size="9.5" fill="#5b6b7f" text-anchor="middle">能→就一行</text>
+<rect x="50" y="430" width="380" height="50" rx="10" fill="#121826" stroke="#22d3ee" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="50" y="430" width="380" height="3" rx="1.5" fill="#22d3ee"/>
+  <text x="240" y="454" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">⑦ 才写最小可用</text><text x="240" y="469" font-size="9.5" fill="#5b6b7f" text-anchor="middle">最小实现，不镀金</text>
+<rect x="470" y="210" width="300" height="150" rx="10" fill="#121826" stroke="#f87171" stroke-width="1.4" stroke-dasharray="5 3" filter="url(#dsh)"/>
+  <rect x="470" y="210" width="300" height="3" rx="1.5" fill="#f87171"/><rect x="733" y="216" width="31" height="15" rx="7" fill="#f87171" opacity="0.18"/><text x="760" y="227" font-size="8.5" fill="#f87171" text-anchor="end">硬豁免</text>
+  <text x="620" y="284" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">绝不为简洁砍掉</text><text x="620" y="299" font-size="9.5" fill="#5b6b7f" text-anchor="middle">输入校验 / 错误处理 / 安全 / 无障碍</text>
+<text x="24" y="486" font-size="10.5" fill="#5b6b7f">自上而下问一遍，能省则省——但「懒的是解决方案，不是对问题的理解」；右侧四项绝不许为简洁砍掉。</text>
+</svg>

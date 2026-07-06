@@ -4,6 +4,7 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join, resolve, dirname } from 'node:path';
 import { archFigures, subsystemDeps } from './arch_figures.mjs';
+import { chapterFigures } from './chapter_figures.mjs';
 
 const ROOT = resolve(import.meta.dirname, '..', '..');
 const defs = JSON.parse(readFileSync(join(ROOT, 'code', 'tools', 'case_definitions.json'), 'utf8'));
@@ -256,6 +257,8 @@ for (const id of ['fig_ai_foundations', 'fig_ideology_loops', 'fig_engineering_r
   writeFileSync(join(CLIB, 'svg', `${id}.svg`), figSvg(id));
 // v12 架构图套件（节点-连线引擎 diagram.mjs）：SDD 流水线 / C4 上下文·容器·组件 / DDD 限界上下文 / 部署 / 时序
 for (const [id, svg] of Object.entries(archFigures(theme('graphite-hud')))) writeFileSync(join(CLIB, 'svg', `${id}.svg`), svg);
+// 章节示意图套件（Phase A richness）：§2/§4/§5/§6/§99 补图
+for (const [id, svg] of Object.entries(chapterFigures(theme('graphite-hud')))) writeFileSync(join(CLIB, 'svg', `${id}.svg`), svg);
 // 案例 46 真实子系统依赖图（数据来自 build_case_data 扫 import）
 { const d46 = vm(46); if (d46.deps?.length) writeFileSync(join(CLIB, 'svg', 'fig_case46_deps.svg'), subsystemDeps(d46.deps, d46.cycles || 0, theme('cyan-matrix'))); }
 for (const c of defs.cases) {

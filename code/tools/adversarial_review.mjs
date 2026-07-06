@@ -61,7 +61,7 @@ for (const f of ['code/tools/build_docs.mjs', 'code/tools/verify_course_package.
 // ⑧ 用户维度：章节丰富度 + 前后联系 + 趣味/游戏 + caseCount 元数据漂移 + 未用素材
 {
   if (defs.caseCount && defs.caseCount !== defs.cases.length) add('HIGH', 'stale-count', 'case_definitions.json', `caseCount=${defs.caseCount} 与真实案例数 ${defs.cases.length} 不符`, `改为 ${defs.cases.length} 或删该冗余字段`);
-  for (const f of bookFiles.filter((p) => /\/0[0-9]-|\/99-/.test(p))) {
+  for (const f of bookFiles.filter((p) => /\/0[0-9]-|\/99-/.test(p) && !p.includes('案例'))) {
     const s = rd(f), nm = f.split('/').pop();
     const notes = (s.match(/```备注/g) || []).length, figs = (s.match(/!\[/g) || []).length, xref = (s.match(/§[0-9]|案例 ?[0-9]/g) || []).length;
     if (figs < 2) add('MED', 'richness', f, `${nm} 仅 ${figs} 张图，视觉偏薄（§3 已有 8 张可参照）`, '补 1-2 张示意/流程/对比图');

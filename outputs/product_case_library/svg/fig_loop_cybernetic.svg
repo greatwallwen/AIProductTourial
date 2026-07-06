@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 400" font-family="PingFang SC,Microsoft YaHei,sans-serif">
+  <defs>
+    <linearGradient id="dbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a0e14"/><stop offset="1" stop-color="#0d1220"/></linearGradient>
+    <linearGradient id="dac" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#38bdf8"/></linearGradient>
+    <pattern id="dgrid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#16202e" stroke-width="1"/></pattern>
+    <filter id="dsh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#000" flood-opacity="0.35"/></filter>
+  </defs>
+  <rect width="940" height="400" fill="url(#dbg)"/><rect width="940" height="400" fill="url(#dgrid)" opacity="0.35"/>
+  <rect x="0" y="0" width="940" height="44" fill="#121826" opacity="0.5"/>
+  <rect x="24" y="13" width="4" height="19" rx="2" fill="url(#dac)"/>
+  <text x="36" y="28" font-size="15" font-weight="750" fill="#e6edf6">§2 · Loop = 控制论反馈闭环（传感器就是设计本身）</text>
+<line x1="600.0" y1="111.0" x2="660.0" y2="287.0" stroke="#38bdf8" stroke-width="1.6" /><path d="M660 287 L654.5 281.9 L661.3 279.6 z" fill="#38bdf8"/><rect x="611.8" y="191" width="36.4" height="15" rx="4" fill="#0d1220" stroke="#1e2a3a"/><text x="630" y="202" font-size="9" fill="#9fb0c3" text-anchor="middle">下发指令</text>
+<line x1="660.0" y1="287.0" x2="290.0" y2="287.0" stroke="#38bdf8" stroke-width="1.6" /><path d="M290 287 L296.6 283.4 L296.6 290.6 z" fill="#38bdf8"/><rect x="463.4" y="279" width="23.2" height="15" rx="4" fill="#0d1220" stroke="#1e2a3a"/><text x="475" y="290" font-size="9" fill="#9fb0c3" text-anchor="middle">产物</text>
+<line x1="290.0" y1="287.0" x2="350.0" y2="111.0" stroke="#fbbf24" stroke-width="1.6" /><path d="M350 111 L351.3 118.4 L344.5 116.1 z" fill="#fbbf24"/><rect x="295.2" y="191" width="49.599999999999994" height="15" rx="4" fill="#0d1220" stroke="#1e2a3a"/><text x="320" y="202" font-size="9" fill="#9fb0c3" text-anchor="middle">误差信号回流</text>
+<rect x="350" y="74" width="250" height="74" rx="10" fill="#121826" stroke="#22d3ee" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="350" y="74" width="250" height="3" rx="1.5" fill="#22d3ee"/>
+  <text x="475" y="110" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">控制器 · 开发者判断</text><text x="475" y="125" font-size="9.5" fill="#5b6b7f" text-anchor="middle">定目标 / 改规格 / 把关</text>
+<rect x="660" y="250" width="250" height="74" rx="10" fill="#121826" stroke="#38bdf8" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="660" y="250" width="250" height="3" rx="1.5" fill="#38bdf8"/>
+  <text x="785" y="286" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">执行器 · Agent</text><text x="785" y="301" font-size="9.5" fill="#5b6b7f" text-anchor="middle">按指令生成 / 修复</text>
+<rect x="40" y="250" width="250" height="74" rx="10" fill="#121826" stroke="#fbbf24" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="40" y="250" width="250" height="3" rx="1.5" fill="#fbbf24"/>
+  <text x="165" y="286" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">传感器 · 验证 / evals</text><text x="165" y="301" font-size="9.5" fill="#5b6b7f" text-anchor="middle">产出「差多少」误差信号</text>
+<rect x="778.3999999999999" y="374" width="12" height="12" rx="3" fill="#fbbf24"/><text x="796.3999999999999" y="384" font-size="9.5" fill="#9fb0c3">验证</text><rect x="825.5999999999999" y="374" width="12" height="12" rx="3" fill="#38bdf8"/><text x="843.5999999999999" y="384" font-size="9.5" fill="#9fb0c3">执行</text><rect x="872.8" y="374" width="12" height="12" rx="3" fill="#22d3ee"/><text x="890.8" y="384" font-size="9.5" fill="#9fb0c3">判断</text><text x="24" y="386" font-size="10.5" fill="#5b6b7f">控制器定目标、执行器动手、传感器给「差多少」的误差信号回流——三者成环才叫 Loop。先建传感器(evals/verify)，再谈自动化。</text>
+</svg>
