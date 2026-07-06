@@ -55,7 +55,7 @@
  "kpis": [
   {
    "name": "门禁检查项",
-   "value": 174,
+   "value": 177,
    "unit": ""
   },
   {
@@ -152,7 +152,7 @@
    },
    {
     "label": "诚信",
-    "value": 26
+    "value": 27
    },
    {
     "label": "镜头",
@@ -160,15 +160,15 @@
    },
    {
     "label": "结构",
-    "value": 26
+    "value": 27
    },
    {
     "label": "前端",
-    "value": 17
+    "value": 18
    }
   ]
  },
- "rowCount": 174,
+ "rowCount": 177,
  "exceptionCount": 0,
  "responsible": [
   "交付-孙",

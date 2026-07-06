@@ -58,6 +58,21 @@ for (const f of bookFiles) {
 // ⑦ 巨文件预警：源文件逼近 800 行红线
 for (const f of ['code/tools/build_docs.mjs', 'code/tools/verify_course_package.mjs', 'code/web/src/App.tsx', 'code/web/src/screens.tsx', 'code/server/services/cases.ts']) { const n = rd(f).split('\n').length; if (n > 720) add('MED', 'big-file', f, `${n} 行，逼近 800 红线`, '拆分模块'); }
 
+// ⑧ 用户维度：章节丰富度 + 前后联系 + 趣味/游戏 + caseCount 元数据漂移 + 未用素材
+{
+  if (defs.caseCount && defs.caseCount !== defs.cases.length) add('HIGH', 'stale-count', 'case_definitions.json', `caseCount=${defs.caseCount} 与真实案例数 ${defs.cases.length} 不符`, `改为 ${defs.cases.length} 或删该冗余字段`);
+  for (const f of bookFiles.filter((p) => /\/0[0-9]-|\/99-/.test(p))) {
+    const s = rd(f), nm = f.split('/').pop();
+    const notes = (s.match(/```备注/g) || []).length, figs = (s.match(/!\[/g) || []).length, xref = (s.match(/§[0-9]|案例 ?[0-9]/g) || []).length;
+    if (figs < 2) add('MED', 'richness', f, `${nm} 仅 ${figs} 张图，视觉偏薄（§3 已有 8 张可参照）`, '补 1-2 张示意/流程/对比图');
+    if (notes < 5 && !/99-/.test(f)) add('MED', 'richness', f, `${nm} 仅 ${notes} 个科普备注块，内容偏薄`, '补 worked example / 故事钩子 / 实例');
+    if (xref < 5) add('MED', 'cross-link', f, `${nm} 仅 ${xref} 处交叉引用，前后联系弱`, '织「概念↔案例↔章节」网：加「本章与 §X / 案例 NN 的联系」');
+  }
+  const gameCases = defs.cases.filter((c) => /game|游戏|模拟器|闯关|沙盘/.test((c.saasType || '') + (c.scenario || ''))).length;
+  if (gameCases === 0) add('MED', 'fun', 'case_definitions.json', '0 个游戏化/趣味交互案例（仅一个通用小游戏页）', '加交互游戏案例：架构决策模拟器 / 规格找漏洞闯关 / 限界上下文拖拽');
+  add('LOW', 'unused', 'skills/external/pm-skills-deanpeters', '194 篇真实 PM 语料未转化为案例灵感', '从语料挑主题做真实素材新案例');
+}
+
 // —— 排序 + 输出 ——
 const rank = { HIGH: 0, MED: 1, LOW: 2 };
 F.sort((a, b) => rank[a.sev] - rank[b.sev] || a.cat.localeCompare(b.cat));
