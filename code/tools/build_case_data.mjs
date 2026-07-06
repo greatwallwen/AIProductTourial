@@ -94,7 +94,7 @@ function walkFiles(dir, ext){
 }
 // .md 数据集案例（44 RAG 语料 / 46 后端 dogfood）：指标一律从真实来源真算，绝不用占位顺子
 function buildFromMd(c){
-  let kpis=[], chart={type:'sparkline',data:[]}, queue=[], actions=[], exceptionCount=0, responsible=['—'], deps=[], cycles=0;
+  let kpis=[], chart={type:'sparkline',data:[]}, queue=[], actions=[], exceptionCount=0, responsible=['—'], deps=[], cycles=0, game=null;
   if(c.num===44){ // 真实读 deanpeters 语料目录：篇数/字数/主题
     const dir=join(ROOT,'skills','external','pm-skills-deanpeters');
     const files=walkFiles(dir,'.md');
@@ -188,16 +188,39 @@ function buildFromMd(c){
     exceptionCount=0; responsible=[...new Set(own)];
     chart={type:'bars',by:'SDD 八步 → 工件/文件数',data:steps.map(s=>({label:s[0].replace(/[①-⑧] /,''),value:s[4]}))};
     actions=[{label:'补澄清 / 消歧',owner:'产品-王',due:'1d'},{label:'跑门禁三绿',owner:'研发-王',due:'0d'}];
+  } else if(c.num===52){ // 架构决策模拟器（游戏·教学设计合成）
+    const rounds=[
+      {场景:'日均几百单的企业内部系统，要求 7×24 可用、故障 5 分钟可回滚（小团队、低并发）',opts:[{t:'上一套微服务集群',ok:false},{t:'模块化单体 + 灰度 + 快速回滚',ok:true},{t:'纯 Serverless 按需拉起',ok:false}],why:'约束是「可用性 + 快回滚」不是吞吐——上微服务是没有证据的复杂度（§3.1 奥卡姆）；模块化单体先划清边界、预留切口即可。',prin:'§3.1'},
+      {场景:'教学平台要「一条命令起、离线可跑、零外部依赖」，同时要讲 PG/pgvector',opts:[{t:'装 PostgreSQL 本地跑',ok:false},{t:'node:sqlite 真 SQL + 显式标注「生产为 PG」',ok:true},{t:'纯内存 Map 假装数据库',ok:false}],why:'两约束都要满足 → ADR-001：本地 sqlite 跑真 SQL、文字补讲 PG；纯内存丢了「真 SQL」教学价值。',prin:'§3.5'},
+      {场景:'前端要让用户选一个日期',opts:[{t:'装日期库 + 写包装组件 + 讨论时区',ok:false},{t:'用 <input type="date"> 一行',ok:true},{t:'自己手写一个日历组件',ok:false}],why:'平台原生一行搞定（§4.7 YAGNI 第 4 阶）——装库和手写都是过度工程。',prin:'§4.7'},
+      {场景:'两个子系统要交换数据',opts:[{t:'B 直接连 A 的数据库读表',ok:false},{t:'A 暴露接口契约，B 走接口',ok:true},{t:'共享一个全局变量/文件',ok:false}],why:'只能通过服务接口暴露数据（Bezos API Mandate，§3.4）——直连库/共享全局让系统长不大。',prin:'§3.4'},
+      {场景:'RAG 问答要上线，得先判断「答得准不准」',opts:[{t:'人工抽几个问题看感觉',ok:false},{t:'标注评测集离线算命中率 + 错误分析',ok:true},{t:'先上线看用户投诉',ok:false}],why:'evals 才是可复现的验证（§2 传感器、案例 49）——凭感觉/等投诉都不可复现、代价高。',prin:'§2.6'},
+    ];
+    game={mode:'archsim',rounds};
+    kpis=[{name:'关卡数',value:rounds.length,unit:''},{name:'决策点',value:rounds.reduce((a,r)=>a+r.opts.length,0),unit:''},{name:'涉及原理数',value:new Set(rounds.map(r=>r.prin)).size,unit:''},{name:'通关满分',value:rounds.length*20,unit:''}];
+    chart={type:'bars',by:'每关涉及原理',data:rounds.map((r,i)=>({label:'第'+(i+1)+'关',value:r.opts.length}))};
+  } else if(c.num===53){ // 规格找漏洞闯关（游戏·教学设计合成）
+    const items=[
+      {t:'系统响应要快',flaw:true,why:'无量化——应写成质量属性场景「刺激→环境→响应→度量」（§3.2），如 P95<200ms。'},
+      {t:'峰值 400 单/秒、P95 延迟 < 200ms',flaw:false,why:'可量化、可验收——合格的质量属性场景。'},
+      {t:'支持数据导出',flaw:true,why:'缺边界——什么格式？多大数据量？谁有权导？不问清准返工。'},
+      {t:'所有接口错误统一返回 {code, message, details}',flaw:false,why:'清晰的接口契约（§3.4 错误信封）。'},
+      {t:'系统自动处理退款',flaw:true,why:'高影响动作却没说人工复核边界——SDD 澄清必须补「金额阈值 + 人工审批」。'},
+      {t:'会员 R≥90 天且 F<3 判为流失预警',flaw:false,why:'可判定、可计算——清晰。'},
+    ];
+    game={mode:'specgame',items};
+    kpis=[{name:'规格条目数',value:items.length,unit:''},{name:'埋坑数',value:items.filter(i=>i.flaw).length,unit:''},{name:'涉及原理数',value:2,unit:''},{name:'满分',value:items.length*10,unit:''}];
+    chart={type:'bars',by:'条目：有坑(1)/清晰(0)',data:items.map((it,i)=>({label:'#'+(i+1),value:it.flaw?1:0}))};
   } else { // 其它 .md：按指标链回到真实可得量（不用顺子占位）
     kpis=c.metricChain.map((m)=>({name:m,value:0,unit:/率/.test(m)?'%':''}));
   }
-  return { kpis, queue, chart, rowCount:kpis[0]?.value||0, exceptionCount, responsible, actions, deps, cycles };
+  return { kpis, queue, chart, rowCount:kpis[0]?.value||0, exceptionCount, responsible, actions, deps, cycles, game };
 }
 let ok=0;
 for(const c of defs.cases){
   let vm;
   try{
-    if(c.dataset.endsWith('.md') || [48,49,50,51].includes(c.num)) vm=buildFromMd(c);
+    if(c.dataset.endsWith('.md') || [48,49,50,51,52,53].includes(c.num)) vm=buildFromMd(c);
     else vm=buildFromCsv(c);
   }catch(e){ console.error('FAIL case',c.num,e.message); continue; }
   const out={ num:c.num, title:c.title, industry:c.industry, role:c.role, saasType:c.saasType, uiId:c.uiId, slug:c.slug,

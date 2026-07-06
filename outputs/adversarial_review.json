@@ -1,7 +1,7 @@
 {
   "counts": {
     "HIGH": 6,
-    "MED": 7,
+    "MED": 6,
     "LOW": 5
   },
   "findings": [
@@ -51,15 +51,8 @@
       "sev": "MED",
       "cat": "coverage",
       "file": "code/server/tests/api.test.ts",
-      "msg": "后端断言 24 条，案例 15 个——端点覆盖偏薄",
+      "msg": "后端断言 24 条，案例 17 个——端点覆盖偏薄",
       "fix": "每案至少断言其端点/字段各 1"
-    },
-    {
-      "sev": "MED",
-      "cat": "fun",
-      "file": "case_definitions.json",
-      "msg": "0 个游戏化/趣味交互案例（仅一个通用小游戏页）",
-      "fix": "加交互游戏案例：架构决策模拟器 / 规格找漏洞闯关 / 限界上下文拖拽"
     },
     {
       "sev": "MED",

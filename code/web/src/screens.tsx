@@ -466,8 +466,57 @@ function BuildWalkScreen({ data }: { data: any }) {
   );
 }
 
+// —— 游戏案例 52：架构决策模拟器（给场景选决策，即时对错 + ADR 讲解）——
+function ArchSimScreen({ data }: { data: any }) {
+  const rounds: any[] = data?.game?.rounds || [];
+  const [i, setI] = useState(0); const [picked, setPicked] = useState<number | null>(null); const [score, setScore] = useState(0);
+  const r = rounds[i]; const full = rounds.length * 20;
+  if (i >= rounds.length) return (
+    <section className="card"><div className="card-h"><h2>通关！</h2><span className="muted">架构决策模拟器 · 满分 {full}</span></div>
+      <div style={{ fontSize: 15 }}>你的得分：<b style={{ color: 'var(--ok)' }}>{score}</b> / {full}。架构不是背知识点，是在**约束**下做有证据的判断——你刚把 §3 玩了一遍。</div>
+      <button className="act-btn" style={{ marginTop: 12 }} onClick={() => { setI(0); setScore(0); setPicked(null); }}><Icon name="reset" /> 再来一局</button></section>);
+  const pick = (oi: number) => { if (picked !== null) return; setPicked(oi); if (r.opts[oi].ok) setScore((s) => s + 20); };
+  return (
+    <section className="card">
+      <div className="card-h"><h2>架构决策模拟器</h2><span className="muted">第 {i + 1}/{rounds.length} 关 · 得分 {score}</span></div>
+      <div style={{ fontSize: 14, margin: '4px 0 12px', padding: '10px 12px', background: 'var(--panelSoft)', borderRadius: 10, borderLeft: '3px solid var(--accent)' }}>{r.场景}</div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        {r.opts.map((o: any, oi: number) => { const show = picked !== null; const col = show ? (o.ok ? 'var(--ok)' : (picked === oi ? 'var(--bad)' : 'var(--border)')) : 'var(--border)';
+          return <button key={oi} disabled={show} onClick={() => pick(oi)} style={{ textAlign: 'left', padding: '10px 12px', borderRadius: 10, fontSize: 13.5, cursor: show ? 'default' : 'pointer', fontFamily: 'inherit', background: 'var(--panelSoft)', border: `1px solid ${col}`, color: 'var(--ink)' }}>{o.t}{show && o.ok ? ' ✓' : ''}{show && picked === oi && !o.ok ? ' ✗' : ''}</button>; })}
+      </div>
+      {picked !== null && <div style={{ marginTop: 12, fontSize: 12.5, color: 'var(--ink2)', padding: '10px 12px', borderLeft: '3px solid var(--warn)' }}><b>为什么：</b>{r.why}<div style={{ marginTop: 8 }}><button className="act-btn" onClick={() => { setPicked(null); setI(i + 1); }}>下一关 →</button></div></div>}
+    </section>
+  );
+}
+// —— 游戏案例 53：规格找漏洞闯关（逐条判有坑/清晰，练 SDD 澄清步）——
+function SpecGameScreen({ data }: { data: any }) {
+  const items: any[] = data?.game?.items || [];
+  const [ans, setAns] = useState<Record<number, boolean>>({}); const [reveal, setReveal] = useState(false);
+  const score = items.filter((it, i) => ans[i] === it.flaw).length;
+  return (
+    <section className="card">
+      <div className="card-h"><h2>规格找漏洞闯关</h2><span className="muted">逐条判「有坑 / 清晰」，找出所有埋坑（SDD 澄清步）</span></div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        {items.map((it, i) => { const a = ans[i];
+          return <div key={i} style={{ padding: '10px 12px', borderRadius: 10, background: 'var(--panelSoft)', border: `1px solid ${reveal ? (a === it.flaw ? 'var(--ok)' : 'var(--bad)') : 'var(--border)'}` }}>
+            <div style={{ fontSize: 13.5, color: 'var(--ink)' }}>「{it.t}」</div>
+            <div style={{ marginTop: 6, display: 'flex', gap: 8 }}>
+              <button disabled={reveal} onClick={() => setAns({ ...ans, [i]: true })} style={{ padding: '4px 12px', borderRadius: 8, fontFamily: 'inherit', cursor: reveal ? 'default' : 'pointer', background: a === true ? 'color-mix(in srgb,var(--bad) 22%,transparent)' : 'var(--panel)', border: `1px solid ${a === true ? 'var(--bad)' : 'var(--border)'}`, color: 'var(--ink)' }}>有坑</button>
+              <button disabled={reveal} onClick={() => setAns({ ...ans, [i]: false })} style={{ padding: '4px 12px', borderRadius: 8, fontFamily: 'inherit', cursor: reveal ? 'default' : 'pointer', background: a === false ? 'color-mix(in srgb,var(--ok) 22%,transparent)' : 'var(--panel)', border: `1px solid ${a === false ? 'var(--ok)' : 'var(--border)'}`, color: 'var(--ink)' }}>清晰</button>
+            </div>
+            {reveal && <div style={{ marginTop: 6, fontSize: 12, color: 'var(--ink2)' }}>{it.flaw ? <><Icon name="alert" /> 有坑</> : '✓ 清晰'} · {it.why}</div>}
+          </div>; })}
+      </div>
+      {!reveal ? <button className="act-btn" style={{ marginTop: 12 }} disabled={Object.keys(ans).length < items.length} onClick={() => setReveal(true)}>提交（{Object.keys(ans).length}/{items.length}）</button>
+        : <div style={{ marginTop: 12, fontSize: 14 }}>找对 <b style={{ color: 'var(--ok)' }}>{score}</b>/{items.length}。SDD 的「澄清」步就是这么练——一眼看出哪句话会让 AI 替你猜错。</div>}
+    </section>
+  );
+}
+
 export function SpecialScreen({ screen, data }: { screen: string; data?: any }) {
   if (screen === 'buildwalk') return <BuildWalkScreen data={data} />;
+  if (screen === 'archsim') return <ArchSimScreen data={data} />;
+  if (screen === 'specgame') return <SpecGameScreen data={data} />;
   if (screen === 'triage' || screen === 'eval' || screen === 'gates') return <DogfoodScreen data={data} kind={screen} />;
   if (screen === 'rfm') return <RfmScreen />;
   if (screen === 'capacity') return <HospitalScreen />;

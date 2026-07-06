@@ -225,6 +225,36 @@
    "systemStage": "验收",
    "difficulty": "高阶",
    "tldr": "几个 prompt 建不成系统——照 SDD 八步走，每步一份对得上仓库的工件"
+  },
+  {
+   "num": 52,
+   "title": "架构决策模拟器（研发·项目镜头 · 游戏）",
+   "slug": "arch_decision_sim",
+   "uiId": "ui_52_archsim",
+   "saasType": "arch_sim_game",
+   "industry": "研发效能 / 架构",
+   "phase": "系统架构",
+   "highImpact": false,
+   "rp": null,
+   "systemLayer": "底座平台",
+   "systemStage": "决策",
+   "difficulty": "高阶",
+   "tldr": "给场景选架构决策，即时对错 + ADR 讲解——把 §3 玩一遍"
+  },
+  {
+   "num": 53,
+   "title": "规格找漏洞闯关（产品·研发镜头 · 游戏）",
+   "slug": "spec_flaw_hunt",
+   "uiId": "ui_53_specgame",
+   "saasType": "spec_hunt_game",
+   "industry": "AI 产品 / 需求",
+   "phase": "需求管理",
+   "highImpact": false,
+   "rp": null,
+   "systemLayer": "业务应用",
+   "systemStage": "决策",
+   "difficulty": "进阶",
+   "tldr": "给你一份规格，找出哪几条有坑——玩一遍 SDD 的「澄清」步"
   }
  ]
 }

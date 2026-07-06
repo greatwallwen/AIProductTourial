@@ -1,0 +1,213 @@
+{
+ "num": 52,
+ "title": "架构决策模拟器（研发·项目镜头 · 游戏）",
+ "industry": "研发效能 / 架构",
+ "role": "架构师 / 技术负责人",
+ "saasType": "arch_sim_game",
+ "uiId": "ui_52_archsim",
+ "slug": "arch_decision_sim",
+ "uiStrategy": "dark-ops",
+ "largeScreenRef": "架构决策闯关台",
+ "components": [
+  "场景卡",
+  "选项",
+  "即时判定",
+  "ADR 讲解"
+ ],
+ "skills": [
+  "c4-modeling",
+  "adr-authoring",
+  "arch-review"
+ ],
+ "highImpact": false,
+ "riskBoundary": "决策须可追溯到约束 / ADR，不得无证据上复杂度",
+ "decisionAction": "在约束下选出「有证据的」架构决策，而非拍脑袋上复杂度",
+ "dataset": "教学设计 · 架构决策场景库（合成，已标注）",
+ "metricChainNames": [
+  "关卡数",
+  "决策点",
+  "涉及原理数",
+  "通关满分"
+ ],
+ "exceptionStates": [
+  "过度工程",
+  "无证据复杂度",
+  "越界耦合"
+ ],
+ "fields": [
+  "场景",
+  "你的选择",
+  "是否最优",
+  "为什么"
+ ],
+ "design": "steel-queue",
+ "demonstrates": [
+  "3.1",
+  "3.4",
+  "4.7"
+ ],
+ "systemLayer": "底座平台",
+ "systemStage": "决策",
+ "theoryOp": "把 §3 架构方法论做成闯关：给场景 + 约束选架构决策，即时对错 + ADR 讲解",
+ "difficulty": "高阶",
+ "tldr": "给场景选架构决策，即时对错 + ADR 讲解——把 §3 玩一遍",
+ "insight": "架构不是背知识点，是在**约束**下做判断。本关每道题都藏着 §3 的一条红线（奥卡姆/契约/YAGNI），选错了当场告诉你踩了哪条——比读十遍散文都记得牢。",
+ "pitfall": "最常见的错是「为复杂而复杂」：没有约束逼你，却上了微服务/新库/分布式。记住：没有约束支撑的复杂度就是负债。",
+ "kpis": [
+  {
+   "name": "关卡数",
+   "value": 5,
+   "unit": ""
+  },
+  {
+   "name": "决策点",
+   "value": 15,
+   "unit": ""
+  },
+  {
+   "name": "涉及原理数",
+   "value": 5,
+   "unit": ""
+  },
+  {
+   "name": "通关满分",
+   "value": 100,
+   "unit": ""
+  }
+ ],
+ "queue": [],
+ "chart": {
+  "type": "bars",
+  "by": "每关涉及原理",
+  "data": [
+   {
+    "label": "第1关",
+    "value": 3
+   },
+   {
+    "label": "第2关",
+    "value": 3
+   },
+   {
+    "label": "第3关",
+    "value": 3
+   },
+   {
+    "label": "第4关",
+    "value": 3
+   },
+   {
+    "label": "第5关",
+    "value": 3
+   }
+  ]
+ },
+ "rowCount": 5,
+ "exceptionCount": 0,
+ "responsible": [
+  "—"
+ ],
+ "actions": [],
+ "deps": [],
+ "cycles": 0,
+ "game": {
+  "mode": "archsim",
+  "rounds": [
+   {
+    "场景": "日均几百单的企业内部系统，要求 7×24 可用、故障 5 分钟可回滚（小团队、低并发）",
+    "opts": [
+     {
+      "t": "上一套微服务集群",
+      "ok": false
+     },
+     {
+      "t": "模块化单体 + 灰度 + 快速回滚",
+      "ok": true
+     },
+     {
+      "t": "纯 Serverless 按需拉起",
+      "ok": false
+     }
+    ],
+    "why": "约束是「可用性 + 快回滚」不是吞吐——上微服务是没有证据的复杂度（§3.1 奥卡姆）；模块化单体先划清边界、预留切口即可。",
+    "prin": "§3.1"
+   },
+   {
+    "场景": "教学平台要「一条命令起、离线可跑、零外部依赖」，同时要讲 PG/pgvector",
+    "opts": [
+     {
+      "t": "装 PostgreSQL 本地跑",
+      "ok": false
+     },
+     {
+      "t": "node:sqlite 真 SQL + 显式标注「生产为 PG」",
+      "ok": true
+     },
+     {
+      "t": "纯内存 Map 假装数据库",
+      "ok": false
+     }
+    ],
+    "why": "两约束都要满足 → ADR-001：本地 sqlite 跑真 SQL、文字补讲 PG；纯内存丢了「真 SQL」教学价值。",
+    "prin": "§3.5"
+   },
+   {
+    "场景": "前端要让用户选一个日期",
+    "opts": [
+     {
+      "t": "装日期库 + 写包装组件 + 讨论时区",
+      "ok": false
+     },
+     {
+      "t": "用 <input type=\"date\"> 一行",
+      "ok": true
+     },
+     {
+      "t": "自己手写一个日历组件",
+      "ok": false
+     }
+    ],
+    "why": "平台原生一行搞定（§4.7 YAGNI 第 4 阶）——装库和手写都是过度工程。",
+    "prin": "§4.7"
+   },
+   {
+    "场景": "两个子系统要交换数据",
+    "opts": [
+     {
+      "t": "B 直接连 A 的数据库读表",
+      "ok": false
+     },
+     {
+      "t": "A 暴露接口契约，B 走接口",
+      "ok": true
+     },
+     {
+      "t": "共享一个全局变量/文件",
+      "ok": false
+     }
+    ],
+    "why": "只能通过服务接口暴露数据（Bezos API Mandate，§3.4）——直连库/共享全局让系统长不大。",
+    "prin": "§3.4"
+   },
+   {
+    "场景": "RAG 问答要上线，得先判断「答得准不准」",
+    "opts": [
+     {
+      "t": "人工抽几个问题看感觉",
+      "ok": false
+     },
+     {
+      "t": "标注评测集离线算命中率 + 错误分析",
+      "ok": true
+     },
+     {
+      "t": "先上线看用户投诉",
+      "ok": false
+     }
+    ],
+    "why": "evals 才是可复现的验证（§2 传感器、案例 49）——凭感觉/等投诉都不可复现、代价高。",
+    "prin": "§2.6"
+   }
+  ]
+ }
+}
