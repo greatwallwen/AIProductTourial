@@ -1,52 +1,9 @@
 {
   "counts": {
-    "HIGH": 6,
     "MED": 6,
     "LOW": 4
   },
   "findings": [
-    {
-      "sev": "HIGH",
-      "cat": "coverage",
-      "file": "code/web/src/App.tsx",
-      "msg": "前端组件无单测——回归只能靠人工截图发现",
-      "fix": "加 vitest 组件/纯函数测试"
-    },
-    {
-      "sev": "HIGH",
-      "cat": "coverage",
-      "file": "code/web/src/challenge.tsx",
-      "msg": "前端组件无单测——回归只能靠人工截图发现",
-      "fix": "加 vitest 组件/纯函数测试"
-    },
-    {
-      "sev": "HIGH",
-      "cat": "coverage",
-      "file": "code/web/src/chart3d.tsx",
-      "msg": "前端组件无单测——回归只能靠人工截图发现",
-      "fix": "加 vitest 组件/纯函数测试"
-    },
-    {
-      "sev": "HIGH",
-      "cat": "coverage",
-      "file": "code/web/src/game.tsx",
-      "msg": "前端组件无单测——回归只能靠人工截图发现",
-      "fix": "加 vitest 组件/纯函数测试"
-    },
-    {
-      "sev": "HIGH",
-      "cat": "coverage",
-      "file": "code/web/src/lab.tsx",
-      "msg": "前端组件无单测——回归只能靠人工截图发现",
-      "fix": "加 vitest 组件/纯函数测试"
-    },
-    {
-      "sev": "HIGH",
-      "cat": "coverage",
-      "file": "code/web/src/pages.tsx",
-      "msg": "前端组件无单测——回归只能靠人工截图发现",
-      "fix": "加 vitest 组件/纯函数测试"
-    },
     {
       "sev": "MED",
       "cat": "coverage",
