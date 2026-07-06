@@ -115,6 +115,8 @@ ok(); if (!/archModel/.test(rd('code/server/services/cases.ts')) || !/api\/arch/
 ok(); if (!/fetchArch/.test(rd('code/web/src/screens.tsx'))) bad('ArchScreen 未接入真实依赖(/api/arch)');
 { const j46 = jj('code/data/case_46.json'); ok(); if (!(Array.isArray(j46.deps) && j46.deps.length >= 3)) bad('案例46 无真实依赖边(应扫 import)'); ok(); if (typeof j46.cycles !== 'number') bad('案例46 缺循环依赖检测'); }
 ok(); if (!has('outputs/product_case_library/svg/fig_case46_deps.svg') || !/fig_case46_deps\.svg/.test(tut)) bad('缺/未嵌入案例46 真实依赖图');
+// v12 Phase 4：全书整合收口（结课方法论 + 术语）
+for (const m of ['用方法论建一个系统', 'SDD 规格驱动开发', '规格漂移', 'DDD / 限界上下文']) { ok(); if (!tut.includes(m)) bad(`Phase4 缺整合「${m}」`); }
 ok(); if (!has('docs/_source/_ref-annotation-style.md')) bad('缺 issue#4 备注范例存档');
 ok(); if (!/黄仁勋|你有没有想过|你问 ChatGPT/.test(rd('docs/_source/00-ai-foundations.md'))) bad('§1 备注未按 issue#4 富叙事重写');
 ok(); if (!/tokenize/.test(rd('code/server/routes/api.ts')) || !has('code/server/services/tokenize.ts')) bad('缺 /api/tokenize 后端');

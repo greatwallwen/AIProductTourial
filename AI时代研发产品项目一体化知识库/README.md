@@ -66,7 +66,7 @@
 |---|---|---|---|---|
 | [§1 AI 核心概念底层](01-AI核心概念底层.md) | 无 | 入门 | 20min | **所有人必读**，尤其非技术背景 |
 | [§2 会 Loop 的工程](02-会Loop的工程.md) | §1 | 进阶 | 20min | 想懂 AI 开发模式的所有角色 |
-| [§3 系统架构设计](03-系统架构设计.md) | §2 | 高阶 | 20min | 研发镜头；要和研发对话的产品/项目 |
+| [§3 系统架构设计（SDD 方法论）](03-系统架构设计.md) | §2 | 高阶 | 25min | **想真建中大型系统的人**；含 SDD/C4/DDD |
 | [§4 工程规范与约束](04-工程规范与约束.md) | 无 | 进阶 | 15min | 研发镜头；想判断「代码好坏」的人 |
 | [§5 设计系统](05-设计系统.md) | 无 | 进阶 | 12min | 产品镜头；关注大屏/可视化的人 |
 | [§6 交付治理](06-交付治理.md) | §2 | 进阶 | 15min | 项目镜头；管上线/门禁/风险的人 |
@@ -75,7 +75,7 @@
 ### 三条角色阅读路径（主脊必读，镜头按需）
 
 - <img src="../assets/vendor/lucide/built/check-circle.svg" width="14" alt="" style="vertical-align:-2px" /> **共同主脊（所有人必读）**：§1 → §2。这是三个镜头共享的操作模型，跳过会断链。
-- <img src="../assets/vendor/lucide/built/wrench.svg" width="14" alt="" style="vertical-align:-2px" /> **研发路径**：主脊 → §3 架构 → §4 工程规范 → 案例 45 关系库 / 46 架构契约 / 44 RAG / 47 三维。
+- <img src="../assets/vendor/lucide/built/wrench.svg" width="14" alt="" style="vertical-align:-2px" /> **研发路径**：主脊 → §3 信息化架构方法论（SDD / C4 / DDD） → §4 工程规范 → 旗舰案例 51 系统建造走查 · 46 真实依赖 · 45 关系库 · 44 RAG · 47 三维。
 - <img src="../assets/vendor/lucide/built/package.svg" width="14" alt="" style="vertical-align:-2px" /> **产品路径**：主脊 → §5 设计 → 案例 01 早会 → 16 医院 → 31 广告漏斗 → 30 RFM → 41 经营闭环。
 - <img src="../assets/vendor/lucide/built/clipboard-list.svg" width="14" alt="" style="vertical-align:-2px" /> **项目路径**：主脊（尤其 §2 的 L0→L3 治理）→ §6 交付治理 → 案例 14 变更控制 → 28 规则/复核门禁。
 
