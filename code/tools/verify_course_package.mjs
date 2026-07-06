@@ -36,10 +36,18 @@ for (const c of defs.cases) {
   if (c.highImpact) { ok(); if (!/人工复核|不得自动/.test(c.riskBoundary + rd(`outputs/product_case_library/case_${n}_${c.slug}_问题定义.md`))) bad(`${tag} 高影响行业缺人工复核边界`); }
 }
 
-// 全局：单一教程结构
-const tut = rd('产品经理转型实操知识库.md');
-for (const m of ['# 第一部分', '# 第二部分', '## 1. AI 核心概念底层', '## 2. 理念', '## 3. 系统架构', '## 4. 工程规范', '## 5. 设计系统']) { ok(); if (!tut.includes(m)) bad(`教程缺章节「${m}」`); }
-ok(); if (readdirSync(ROOT).filter((f) => f.endsWith('.md') && /教程|手册|知识库/.test(f)).length !== 1) bad('教程 md 不唯一');
+// 全局：多文件教程结构（v11：单 md 已拆为目录，改用「目录完整性」等强度守卫）
+const BOOK = 'AI时代研发产品项目一体化知识库';
+const bookFiles = [];
+(function walkBook(d) { for (const e of readdirSync(join(ROOT, d))) { const p = join(d, e); if (statSync(join(ROOT, p)).isDirectory()) walkBook(p); else if (e.endsWith('.md')) bookFiles.push(p); } })(BOOK);
+const tut = bookFiles.map((f) => rd(f)).join('\n');           // 全书拼接，供内容守卫扫描
+for (const m of ['## 1. AI 核心概念底层', '## 2. 理念', '## 3. 系统架构', '## 4. 工程规范', '## 5. 设计系统']) { ok(); if (!tut.includes(m)) bad(`教程缺章节「${m}」`); }
+// 目录完整性：根无单 md 孤儿 + 章/README/术语/结课/案例齐 + 每文件<800行 + README 链接不断链
+ok(); if (readdirSync(ROOT).filter((f) => f.endsWith('.md') && /教程|手册|知识库/.test(f)).length !== 0) bad('根目录仍有单一教程 md（应已拆为目录）');
+for (const f of ['README.md', '01-AI核心概念底层.md', '02-会Loop的工程.md', '03-系统架构设计.md', '04-工程规范与约束.md', '05-设计系统.md', '术语表.md', '99-结课.md', '案例/README.md']) { ok(); if (!has(`${BOOK}/${f}`)) bad(`教程缺文件 ${BOOK}/${f}`); }
+for (const c of defs.cases) { ok(); if (!has(`${BOOK}/案例/${pad(c.num)}-${c.slug}.md`)) bad(`缺案例文件 ${pad(c.num)}-${c.slug}.md`); }
+for (const f of bookFiles) { ok(); if (rd(f).split('\n').length > 800) bad(`${f} > 800 行`); }
+{ const rm = rd(`${BOOK}/README.md`); for (const l of [...rm.matchAll(/\]\(([^)#][^)]*\.md)\)/g)].map((m) => m[1]).filter((l) => !l.startsWith('../'))) { ok(); if (!has(`${BOOK}/${l}`)) bad(`README 目录链接断链：${l}`); } }
 
 // 全局：多套设计（≥5 且配色相异）
 const themes = jj('design/themes.json').themes;
@@ -56,8 +64,9 @@ ok(); if (!/只读/.test(rd('skills/loop_engineering/checker.role.md'))) bad('ch
 const walk = (dir) => { const out = []; for (const e of readdirSync(join(ROOT, dir))) { const p = join(dir, e); if (statSync(join(ROOT, p)).isDirectory()) { if (!['node_modules', 'dist', 'data'].includes(e)) out.push(...walk(p)); } else if (['.mjs', '.ts', '.tsx', '.css'].includes(extname(e))) out.push(p); } return out; };
 for (const f of walk('code/tools')) { const ln = rd(f).split('\n').length; ok(); if (ln > 800) bad(`${f} ${ln} 行 > 800`); }
 
-// 全局：无具体编程工具品牌特写（Loop 工具无关）
-for (const f of ['产品经理转型实操知识库.md', 'skills/loop_engineering/README.md', 'skills/loop_engineering/loop.orchestrator.md', 'rules/ai-dev-constraints.md']) {
+// 全局：无具体编程工具品牌特写（Loop 工具无关；教程正文 + skills/rules）
+ok(); if (/Claude Code|\.claude\b|Cursor\b|Everything Claude Code|affaan-m\/ECC/.test(tut)) bad('教程含具体工具品牌特写');
+for (const f of ['skills/loop_engineering/README.md', 'skills/loop_engineering/loop.orchestrator.md', 'rules/ai-dev-constraints.md']) {
   ok(); if (/Claude Code|\.claude\b|Cursor\b/.test(rd(f))) bad(`${f} 含具体工具品牌特写`);
 }
 
@@ -132,7 +141,7 @@ ok(); if (specCases < 6) bad('metricSpec 覆盖案例过少（数据真实化不
 for (const c of defs.cases) { ok(); if (!c.difficulty || !c.tldr || !c.insight || !c.pitfall) bad(`案例${c.num} 缺 difficulty/tldr/insight/pitfall`); }
 ok(); if (!tut.includes('术语表')) bad('教程缺术语表');
 ok(); if (/别只做「/.test(tut)) bad('案例 insight 仍为模板（别只做…），需真内容');
-ok(); if (!tut.includes('🎯 **一句话**')) bad('案例未标一句话/难度');
+ok(); if (!tut.includes('**一句话**')) bad('案例未标一句话/难度');
 ok(); if (!/data-theme|useTheme/.test(rd('code/web/src/App.tsx'))) bad('主题切换缺失');
 // 维度 D：趣味互动（案例内决策题 + 休闲游戏 + 学习进度成就）
 for (const f of ['challenge.tsx', 'game.tsx', 'progress.ts']) { ok(); if (!has('code/web/src/' + f)) bad('缺趣味互动 code/web/src/' + f); }
@@ -202,7 +211,7 @@ for (const f of ['00-ai-foundations', '01-ideology', '02-architecture', '03-engi
   ok(); if (!/### 练习/.test(s)) bad(`${f} 缺「练习」`);
 }
 // 正文须有 导读/路线/排查/预期输出 + lab/game 引导 + 三档标记
-for (const m of ['## 读前须知', '### 学习路线图', '你应看到', '#/lab/tokenizer', '#/game', '🟢 **必读**']) {
+for (const m of ['## 这本书讲什么', '### 学习路线图', '你应看到', '#/lab/tokenizer', '#/game', '**必读**']) {
   ok(); if (!tut.includes(m)) bad(`教程缺教学支架「${m}」`);
 }
 // 精简：目录结构/环境/常见报错排查已从教程迁到 README（去冗余），守卫其未丢失
@@ -247,7 +256,19 @@ const parseCsvV = (p) => { const t = rd(p).trim().split('\n'); const sp = (l) =>
   const rates = Object.values(g).filter(([n]) => n >= 8).map(([n, l]) => l / n * 100); const spread = Math.max(...rates) - Math.min(...rates);
   ok(); if (!(spread >= 15)) bad(`案例14 起飞城市→延误 组间效应过弱(极差 ${spread.toFixed(1)}pct<15，疑似噪声当信号)`); }
 // H) 新增教学内容出现性 + 每案去模板字段
-for (const m of ['AI 产品经理能力地图', '三条转型路线', '推荐学习顺序', '为什么现在学', 'Loop 0', '原理 → 案例 反查', '结课 Capstone', '⭐ 深度']) { ok(); if (!tut.includes(m)) bad(`教程缺新增内容「${m}」`); }
+for (const m of ['角色 × 能力矩阵', '三个角色镜头', '三条角色阅读路径', '为什么现在学', 'Loop 0', '原理 → 案例 反查', '结课 Capstone', '深度']) { ok(); if (!tut.includes(m)) bad(`教程缺新增内容「${m}」`); }
+// v11 重定位 + 新内容出现性守卫
+for (const m of ['统一操作模型', '研发镜头', '产品镜头', '项目镜头', '知识 → 技能 → 智慧', '流利度 ≠ 存储强度', 'L0 草稿', 'L3 无人值守', '意图债务', '认知投降', '归纳问题', '没有免费午餐', 'YAGNI', 'AI slop']) { ok(); if (!tut.includes(m)) bad(`v11 缺内容/重定位「${m}」`); }
+// PM 血脉保留（产品镜头）
+ok(); if (!/产品经理转型|产品镜头/.test(tut)) bad('未保留 PM 转型血脉（应作为产品镜头）');
+// 诚信：编造/误植不得出现
+ok(); if (/\$8M|800 万 token|CI Sweeper.*48/.test(tut)) bad('含编造的 $8M CI Sweeper 案例');
+ok(); if (/休谟[^。]{0,20}(白板|tabula)/.test(tut)) bad('把白板说误植休谟(应为洛克)');
+// 图标专业化：产物零 emoji 图标 + 用 vendored SVG
+ok(); if (/[\u{1F300}-\u{1FAFF}\u{2B00}-\u{2BFF}\u{2600}-\u{26FF}★☆🟢🔵]/u.test(tut)) bad('教程仍含 emoji 图标/难度星（应换专业 SVG）');
+ok(); if (!/lucide\/built\/.*\.svg/.test(tut)) bad('教程未用 vendored 专业 SVG 图标');
+// 去 AI 味：禁营销套话/AI 填充词（承接 v10，扩词表）
+ok(); if (/赋能|一站式|全方位|深度赋能|值得注意的是|综上所述|众所周知|让我们一起|seamless|delve|elevate|pivotal|tapestry/i.test(tut)) bad('教程含 AI 营销套话/填充词，需去 AI 化');
 for (const c of defs.cases) { ok(); if (!c.readingOrder || !c.tryThis) bad(`案例${c.num} 缺去模板字段 readingOrder/tryThis`); }
 // I) 叙事钩子诚信：姚顺雨须标为首席科学家(非 PM)；prompt-sets 归 Aparna 而非吴恩达
 ok(); if (tut.includes('姚顺雨') && !/姚顺雨[^。]{0,60}首席科学家/.test(tut)) bad('姚顺雨须标注为首席科学家(非产品经理)');

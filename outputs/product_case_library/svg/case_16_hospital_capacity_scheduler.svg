@@ -71,7 +71,7 @@
     <rect x="544" y="406" width="70" height="16" rx="5" fill="#fbbf24" opacity="0.2"/><text x="550" y="418" font-size="9.5" fill="#fbbf24" font-weight="700">等待过长</text>
     <text x="624" y="418" font-size="10" fill="#9fb0c3">HOLMES REGIONAL </text>
     <rect x="884" y="406" width="72" height="16" rx="8" fill="#38bdf8" opacity="0.16"/><text x="920" y="418" font-size="9.5" fill="#38bdf8" text-anchor="middle">—</text>
-  <rect x="36" y="460" width="940" height="30" rx="8" fill="#fbbf24" opacity="0.14"/><text x="50" y="479" font-size="11" fill="#fbbf24">⚠ 高影响行业：保留人工复核，不得自动授信/处罚/诊断/拒绝交易</text>
+  <rect x="36" y="460" width="940" height="30" rx="8" fill="#fbbf24" opacity="0.14"/><text x="50" y="479" font-size="11" fill="#fbbf24">高影响行业：保留人工复核，不得自动授信/处罚/诊断/拒绝交易</text>
   <text x="36" y="522" font-size="11" fill="#5b6b7f">行动入口 · 责任 · 时限</text>
   
     <rect x="36" y="548" width="168" height="46" rx="10" fill="url(#acc)"/>

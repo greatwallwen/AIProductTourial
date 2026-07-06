@@ -7,7 +7,7 @@ A hands-on knowledge base that helps engineers and project managers transition i
 - Manifests / SVGs / deliverables: `outputs/product_case_library/`
 - Structured skills (52): `skills/pm_skills.md`
 - Screenshots: `assets/screenshots/`
-- Master handbook (Chinese): `产品经理转型实操知识库.md` · Chinese README: `README-cn.md`
+- Tutorial (Chinese, multi-file): `AI时代研发产品项目一体化知识库/` (its `README.md` is the index) · Chinese project README: `README-cn.md`
 
 ## Quickstart
 

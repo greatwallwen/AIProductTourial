@@ -1,0 +1,112 @@
+# 实操 46：系统架构｜子系统分解与接口契约
+
+> **本案例演示/验证**：原理 3.1、3.3｜**采用设计** `cyan-matrix`（见 [design/cyan-matrix.md](../../design/cyan-matrix.md)）
+
+> **在数字化系统中的位置**：底座平台层 · 治理环节｜**理论→实操**：把原理 3.1、3.3 落成可运行操作：把 §3 架构流程落到本仓库真运行后端：分层/边界/契约在代码里可查（数字化底座本身）
+
+> <img src="../../assets/vendor/lucide/built/gauge.svg" width="14" alt="" style="vertical-align:-2px" /> **难度** 高阶｜**一句话** 后端子系统分解与契约：把 §3 架构流程落到本仓库真运行后端：分层/边界/契约在代码里可查｜**前置** 建议先读完第一部分
+>
+> <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：系统架构的落点是「分层边界 + 接口契约」：本案以后端自身为例——routes 不写业务、services 不碰 HTTP，一次真实 /api/health 契约调用可查。架构决策要留 ADR，可追溯。
+>
+> <img src="../../assets/vendor/lucide/built/alert-triangle.svg" width="14" alt="" style="vertical-align:-2px" /> **常见坑**：常见坑：① 分层名义存在、实则 controller 里塞业务；② 接口无契约（错误信封/幂等）各调各的；③ 架构口头拍板不留 ADR，后人无从追溯。
+
+### 项目场景故事
+
+架构型产品经理以本教程后端自身为例演示系统架构设计：routes/services/data/db/vector 分层与模块边界、一次真实接口契约调用（/api/health、错误信封），把 §3 方法论落到可运行代码（dogfood）。
+
+**现状问题**
+
+- 决策依赖的关键指标：子系统数、接口数、后端模块数、契约断言数。
+- 现场常见异常：职责越界、契约缺失、循环依赖。
+- 只做通用页面无法支撑「把 §3 架构流程落到本仓库真运行后端：分层/边界/契约在代码里可查」。
+
+**本次任务**
+
+- 明确岗位、指标链、异常状态与决策动作。
+- 使用 `capstone-product-flow` 与 `evidence-pack` 完成分析，产出 `子系统分解图与接口契约`，用 `traceability-check` 验收。
+
+### 任务目标与数据
+
+- 行业：系统架构
+- 真实业务场景：后端子系统分解与契约
+- 岗位：架构型产品经理
+- 数据或资料：`rules/backend.md`（5 行，异常 0）
+- 公开参考：Software Engineering at Google https://abseil.io/resources/swe-book/ ｜ 12factor.net
+- 行业字段：子系统、职责、接口、契约
+- 指标链（真实值）：子系统数 5，接口数 14，后端模块数 9，契约断言数 22
+- 决策动作：把 §3 架构流程落到本仓库真运行后端：分层/边界/契约在代码里可查
+- 风险边界：架构决策须可追溯（ADR），不得口头拍板
+- UI 原型：`ui_46_arch_contract`（arch_board）
+- 采用设计：cyan-matrix
+- SaaS 组件：子系统图、分层边界、接口契约、健康检查、ADR 记录
+
+### Prompt 实操
+
+**Prompt 1：后端子系统分解与契约 - 问题定义**
+
+```text
+请以产品经理身份，用 AI 编程工具（如 Trae、CodeBuddy 等任一 Agent 工具）完成「后端子系统分解与契约」的**产品问题定义**（这一步先把问题想清楚，不写代码）：
+- 岗位与场景：架构型产品经理 面向「后端子系统分解与契约」，把业务判断转成一份可验证的产品问题定义。
+- 数据：读取 `rules/backend.md`，只使用其中真实存在的字段（子系统、职责、接口、契约）。
+- 指标链：子系统数、接口数、后端模块数、契约断言数（当前真实值：子系统数=5，接口数=14，后端模块数=9，契约断言数=22）。
+- 现场异常：要盯的是 职责越界、契约缺失、循环依赖——说清每类异常谁负责、如何被发现。
+- 决策动作：这份定义最终要支撑的关键决策是——把 §3 架构流程落到本仓库真运行后端：分层/边界/契约在代码里可查
+- 使用 Skill：用 capstone-product-flow、evidence-pack 完成分析（结构化 Skill 见 skills/pm_skills.md）。
+- 输出：子系统分解图与接口契约，保存为 `outputs/product_case_library/case_46_system_arch_flow_问题定义.md`。
+- 边界：结论必须回到数据或公开参考（Software Engineering at Google https://abseil.io/resources/swe-book/ ｜ 12factor.net）；不得越过「架构决策须可追溯（ADR），不得口头拍板」。
+```
+
+**Prompt 2：后端子系统分解与契约 - 方案验收**
+
+```text
+请以产品经理身份，用 AI 编程工具（如 Trae、CodeBuddy 等任一 Agent 工具）完成「后端子系统分解与契约」的**方案验收**（把上一步的问题定义做成可运行原型，并逐项验收）：
+- 目标：基于问题定义，产出一个可运行的深色大屏原型，让指标链、异常队列、责任、行动都能在页面上看到、点得动。
+- 数据：读取 `rules/backend.md`，只使用其中真实存在的字段（子系统、职责、接口、契约）。
+- 指标链：子系统数、接口数、后端模块数、契约断言数（当前真实值：子系统数=5，接口数=14，后端模块数=9，契约断言数=22）。
+- 原型（技术契约，遵 rules/ 约束：DRY、单文件<800行、TS 类型、中文注释）：在 `code/web`（Vite+React+TS）路由 `#/case/46`，按 `ui_46_arch_contract`（arch_board）与设计 `cyan-matrix` 渲染；数据经 `build_case_data.mjs` 预计算，不得复用通用表格占位。
+- 使用 Skill：用 traceability-check 做验收（结构化 Skill 见 skills/pm_skills.md）。
+- 输出：子系统分解图与接口契约，保存为 `outputs/product_case_library/case_46_system_arch_flow_方案验收.md`。
+- 验收条件：指标链回到真实数据、异常可追踪、行动入口明确；不得越过「架构决策须可追溯（ADR），不得口头拍板」；`node code/tools/verify_course_package.mjs` 必须 ALL GREEN。
+```
+
+### 图形/原型/表单
+
+![后端子系统分解与契约 · 信息图](../../outputs/product_case_library/svg/case_46_system_arch_flow.svg)
+
+![后端子系统分解与契约 · 可运行大屏原型截图](../../assets/screenshots/premium_case_46_system_arch_flow_desktop.png)
+
+- 图形类型：system_arch_flow（设计 cyan-matrix）
+- 看图顺序：先看 5 个真实子系统的分层边界，再看一次真实 /api/health 契约调用，最后想 routes 为何不该写业务。
+- UI 差异：本案例采用 `ui_46_arch_contract` + 设计 `cyan-matrix`，不得复用通用表格占位；可运行原型见 `#/case/46`。
+
+### 交付物与验收
+
+- 交付物：子系统分解图与接口契约
+- 必含字段：子系统、职责、接口、契约
+- 必含指标链：子系统数、接口数、后端模块数、契约断言数
+- 必含异常状态：职责越界、契约缺失、循环依赖
+- 必含 Skill：capstone-product-flow、evidence-pack、traceability-check
+
+- 合格标准：业务场景具体、指标链完整、异常状态可追踪、行动入口明确、验收条件可执行。
+- 不合格标准：使用泛化产品名称、缺少行业指标、只描述页面不说明业务取舍、越过「架构决策须可追溯（ADR），不得口头拍板」。
+
+### 跟着做（动手复现）
+
+1. 起服务：`bash code/run.sh`，浏览器打开 `#/case/46`（本案专属大屏）。
+2. **你应看到**：指标链（子系统数 / 接口数 / 后端模块数 …）、异常队列与责任对象、行动入口，数据全部来自真实后端实时计算。
+3. **动手改一改**：给「新增一个导出报表接口」写一份最小契约(错误信封 + 幂等 + 分页)，说明它该放哪一层。
+
+<details>
+<summary><img src="../../assets/vendor/lucide/built/sparkles.svg" width="14" alt="" style="vertical-align:-2px" /> 深度（专业读者）：权衡 · 失效模式 · 何时别用</summary>
+
+分层不是名义上的目录，而是靠「适应度函数」强制的边界：本教程用 verify 断言 routes 不出现业务关键字、services 不 import HTTP 上下文。契约层还要统一错误信封 `{code,message,data}`、幂等键（防重复提交）、分页规范——各调各的会让联调成本指数级上升。
+</details>
+
+### 练习（做完再进下一个案例）
+
+1. **巩固**：打开 `#/case/46` 看后端分层，说出为什么 routes 层不该写业务逻辑。
+2. **挑战**：给「新增一个导出报表接口」写一份最小接口契约（统一错误信封 + 幂等 + 分页），并说明它该放在哪一层。
+
+> **小结**：本案用「后端子系统分解与契约」演示原理 3.1、3.3，落成可运行、可验收的产品判断。运行 `bash code/run.sh` 后访问 `#/case/46`（真后端实时数据）。
+
+[← 返回案例总览](README.md) · [返回目录](../../AI时代研发产品项目一体化知识库/README.md)
