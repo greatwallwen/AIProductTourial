@@ -1,0 +1,135 @@
+{
+  "counts": {
+    "HIGH": 8,
+    "MED": 6,
+    "LOW": 4
+  },
+  "findings": [
+    {
+      "sev": "HIGH",
+      "cat": "coverage",
+      "file": "code/web/src/App.tsx",
+      "msg": "前端组件无单测——回归只能靠人工截图发现",
+      "fix": "加 vitest 组件/纯函数测试"
+    },
+    {
+      "sev": "HIGH",
+      "cat": "coverage",
+      "file": "code/web/src/Icon.tsx",
+      "msg": "前端组件无单测——回归只能靠人工截图发现",
+      "fix": "加 vitest 组件/纯函数测试"
+    },
+    {
+      "sev": "HIGH",
+      "cat": "coverage",
+      "file": "code/web/src/challenge.tsx",
+      "msg": "前端组件无单测——回归只能靠人工截图发现",
+      "fix": "加 vitest 组件/纯函数测试"
+    },
+    {
+      "sev": "HIGH",
+      "cat": "coverage",
+      "file": "code/web/src/chart3d.tsx",
+      "msg": "前端组件无单测——回归只能靠人工截图发现",
+      "fix": "加 vitest 组件/纯函数测试"
+    },
+    {
+      "sev": "HIGH",
+      "cat": "coverage",
+      "file": "code/web/src/game.tsx",
+      "msg": "前端组件无单测——回归只能靠人工截图发现",
+      "fix": "加 vitest 组件/纯函数测试"
+    },
+    {
+      "sev": "HIGH",
+      "cat": "coverage",
+      "file": "code/web/src/lab.tsx",
+      "msg": "前端组件无单测——回归只能靠人工截图发现",
+      "fix": "加 vitest 组件/纯函数测试"
+    },
+    {
+      "sev": "HIGH",
+      "cat": "coverage",
+      "file": "code/web/src/pages.tsx",
+      "msg": "前端组件无单测——回归只能靠人工截图发现",
+      "fix": "加 vitest 组件/纯函数测试"
+    },
+    {
+      "sev": "HIGH",
+      "cat": "coverage",
+      "file": "code/web/src/screens.tsx",
+      "msg": "前端组件无单测——回归只能靠人工截图发现",
+      "fix": "加 vitest 组件/纯函数测试"
+    },
+    {
+      "sev": "MED",
+      "cat": "coverage",
+      "file": "code/server/tests/api.test.ts",
+      "msg": "后端断言 24 条，案例 15 个——端点覆盖偏薄",
+      "fix": "每案至少断言其端点/字段各 1"
+    },
+    {
+      "sev": "MED",
+      "cat": "thin-case",
+      "file": "case 1",
+      "msg": "案例 1(morning_ops_grid) 无 ⭐深度折叠块",
+      "fix": "补 deepDive：权衡/失效模式/何时别用"
+    },
+    {
+      "sev": "MED",
+      "cat": "thin-case",
+      "file": "case 14",
+      "msg": "案例 14(logistics_change_control) 无 ⭐深度折叠块",
+      "fix": "补 deepDive：权衡/失效模式/何时别用"
+    },
+    {
+      "sev": "MED",
+      "cat": "thin-case",
+      "file": "case 16",
+      "msg": "案例 16(hospital_capacity_scheduler) 无 ⭐深度折叠块",
+      "fix": "补 deepDive：权衡/失效模式/何时别用"
+    },
+    {
+      "sev": "MED",
+      "cat": "thin-case",
+      "file": "case 41",
+      "msg": "案例 41(retail_capstone_board) 无 ⭐深度折叠块",
+      "fix": "补 deepDive：权衡/失效模式/何时别用"
+    },
+    {
+      "sev": "MED",
+      "cat": "thin-case",
+      "file": "case 47",
+      "msg": "案例 47(three_d_scatter) 无 ⭐深度折叠块",
+      "fix": "补 deepDive：权衡/失效模式/何时别用"
+    },
+    {
+      "sev": "LOW",
+      "cat": "claim",
+      "file": "AI时代研发产品项目一体化知识库/01-AI核心概念底层.md",
+      "msg": "绝对化措辞疑无证据：「必然的因果」…」",
+      "fix": "补数据/引用，或改弱化措辞"
+    },
+    {
+      "sev": "LOW",
+      "cat": "claim",
+      "file": "AI时代研发产品项目一体化知识库/03-系统架构设计.md",
+      "msg": "绝对化措辞疑无证据：「唯一真源…」",
+      "fix": "补数据/引用，或改弱化措辞"
+    },
+    {
+      "sev": "LOW",
+      "cat": "claim",
+      "file": "AI时代研发产品项目一体化知识库/03-系统架构设计.md",
+      "msg": "绝对化措辞疑无证据：「永不漂移…」",
+      "fix": "补数据/引用，或改弱化措辞"
+    },
+    {
+      "sev": "LOW",
+      "cat": "claim",
+      "file": "AI时代研发产品项目一体化知识库/04-工程规范与约束.md",
+      "msg": "绝对化措辞疑无证据：「绝不硬编码密钥**（GitHub 上因为…」",
+      "fix": "补数据/引用，或改弱化措辞"
+    }
+  ]
+}

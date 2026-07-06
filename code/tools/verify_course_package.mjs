@@ -117,6 +117,10 @@ ok(); if (!/fetchArch/.test(rd('code/web/src/screens.tsx'))) bad('ArchScreen 未
 ok(); if (!has('outputs/product_case_library/svg/fig_case46_deps.svg') || !/fig_case46_deps\.svg/.test(tut)) bad('缺/未嵌入案例46 真实依赖图');
 // v12 Phase 4：全书整合收口（结课方法论 + 术语）
 for (const m of ['用方法论建一个系统', 'SDD 规格驱动开发', '规格漂移', 'DDD / 限界上下文']) { ok(); if (!tut.includes(m)) bad(`Phase4 缺整合「${m}」`); }
+// 自我进化基础：对抗式红队 critic + 编排器 + 对抗式测试基础（harness dogfood 自己）
+ok(); if (!has('code/tools/adversarial_review.mjs')) bad('缺对抗式红队 critic adversarial_review.mjs');
+ok(); if (!has('skills/loop_engineering/self-evolve.orchestrator.md')) bad('缺自我进化编排器 self-evolve.orchestrator.md');
+ok(); if (!has('code/web/src/Icon.test.ts') || !has('code/web/src/screens.test.ts')) bad('缺对抗式测试基础（Icon/screens 完整性守卫）');
 ok(); if (!has('docs/_source/_ref-annotation-style.md')) bad('缺 issue#4 备注范例存档');
 ok(); if (!/黄仁勋|你有没有想过|你问 ChatGPT/.test(rd('docs/_source/00-ai-foundations.md'))) bad('§1 备注未按 issue#4 富叙事重写');
 ok(); if (!/tokenize/.test(rd('code/server/routes/api.ts')) || !has('code/server/services/tokenize.ts')) bad('缺 /api/tokenize 后端');
