@@ -32,6 +32,14 @@ bash code/run.sh   # 一服务托管 API+前端 http://localhost:5200/#/
 node code/tools/verify_course_package.mjs   # ALL GREEN（含单一md/多设计/skills/文件<800/无工具品牌）
 ```
 
+## 环境与常见报错排查
+
+- **Node ≥ 22**（用到实验性 `node:sqlite`）；`node -v` 确认。首次 `bash code/run.sh` 会装依赖+构建前端（约 1–2 分钟），正常打印监听地址 `http://localhost:5200`。
+- `node:sqlite` 报错 / `SQLite is not defined` → Node 版本过低，升级到 ≥ 22（`nvm install 22 && nvm use 22`）。
+- `EADDRINUSE :5200` → 端口被占用，关掉占用进程或改 `code/run.sh` 端口。
+- 页面空白 / 接口 404 → 前端未构建或服务未起，确认 `bash code/run.sh` 打印了监听地址再刷新。
+- `npm ci` 失败 → 到 `code/web`、`code/server` 分别 `npm install` 后重试。
+
 ## 质量红线
 
 - **教程一个 md**；**DESIGN.md 多套且各不相同**；**理念/原理在前、案例演示验证在后**。

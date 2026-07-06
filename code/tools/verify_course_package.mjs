@@ -202,9 +202,12 @@ for (const f of ['00-ai-foundations', '01-ideology', '02-architecture', '03-engi
   ok(); if (!/### 练习/.test(s)) bad(`${f} 缺「练习」`);
 }
 // 正文须有 导读/路线/排查/预期输出 + lab/game 引导 + 三档标记
-for (const m of ['## 读前须知', '### 学习路线图', '### 常见报错排查', '你应看到', '#/lab/tokenizer', '#/game', '🟢 **必读**']) {
+for (const m of ['## 读前须知', '### 学习路线图', '你应看到', '#/lab/tokenizer', '#/game', '🟢 **必读**']) {
   ok(); if (!tut.includes(m)) bad(`教程缺教学支架「${m}」`);
 }
+// 精简：目录结构/环境/常见报错排查已从教程迁到 README（去冗余），守卫其未丢失
+ok(); if (!/常见报错/.test(rdmCn)) bad('README-cn 缺常见报错排查（已从教程迁入）');
+ok(); if (!/使用入口/.test(tut) || !/README/.test(tut)) bad('教程「使用入口」未指向 README');
 // 每案例须有 跟着做 + 练习(exercises)
 ok(); if ((tut.match(/### 跟着做（动手复现）/g) || []).length < N) bad('部分案例缺「跟着做」动手环节');
 ok(); if ((tut.match(/### 练习/g) || []).length < N + 5) bad(`练习不足(应 ≥ 5 理论章 + ${N} 案例)`);
