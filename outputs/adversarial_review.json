@@ -1,7 +1,7 @@
 {
   "counts": {
     "HIGH": 6,
-    "MED": 8,
+    "MED": 7,
     "LOW": 5
   },
   "findings": [
@@ -53,13 +53,6 @@
       "file": "code/server/tests/api.test.ts",
       "msg": "后端断言 24 条，案例 15 个——端点覆盖偏薄",
       "fix": "每案至少断言其端点/字段各 1"
-    },
-    {
-      "sev": "MED",
-      "cat": "cross-link",
-      "file": "AI时代研发产品项目一体化知识库/01-AI核心概念底层.md",
-      "msg": "01-AI核心概念底层.md 仅 3 处交叉引用，前后联系弱",
-      "fix": "织「概念↔案例↔章节」网：加「本章与 §X / 案例 NN 的联系」"
     },
     {
       "sev": "MED",
