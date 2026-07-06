@@ -1,4 +1,5 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
+import { Icon } from './Icon';
 import { fetchSearch, fetchDbQuery, fetchPoints3d, fetchHealth, fetchRfm, fetchHospital, fetchAdFunnel, fetchRiskReview, fetchDispatch, fetchRetail } from './lib/api';
 // three.js 独立 chunk，仅在渲染 3D 案例时动态加载（首屏不含 three）
 const Chart3D = lazy(() => import('./chart3d'));
@@ -127,7 +128,7 @@ function RfmScreen() {
   const maxR = Math.max(...d.scatter.map((p: any) => p.x), 1), maxF = Math.max(...d.scatter.map((p: any) => p.y), 1);
   return (
     <>
-      <div className="banner" style={{ color: 'var(--bad)', borderColor: 'var(--bad)' }}>⚠ 高价值流失预警：<b>{d.churnRisk}</b> 名会员（{d.churnRate}%）年消费居前列却已久未乘机（R 偏大）——过去高价值、正在流失，最该优先干预。</div>
+      <div className="banner" style={{ color: 'var(--bad)', borderColor: 'var(--bad)' }}><Icon name="alert" /> 高价值流失预警：<b>{d.churnRisk}</b> 名会员（{d.churnRate}%）年消费居前列却已久未乘机（R 偏大）——过去高价值、正在流失，最该优先干预。</div>
       <div className="cols">
         <section className="card">
           <div className="card-h"><h2>RFM 会员分层 · {d.total} 人</h2><span className="muted">按 R/F/M 真算 · 条长=均消费</span></div>
@@ -212,7 +213,7 @@ function AdFunnelScreen() {
                 const tag = x.name === d.best ? 'ok' : x.name === d.worst ? 'bad' : 'neutral';
                 return (
                   <tr key={x.name}>
-                    <td style={{ color: 'var(--ink)' }}>{x.name}{x.name === d.best ? ' ✦' : x.name === d.worst ? ' ⚠' : ''}</td>
+                    <td style={{ color: 'var(--ink)' }}>{x.name}{x.name === d.best ? <Icon name="star" size={12} style={{ marginLeft: 4 }} /> : x.name === d.worst ? <Icon name="alert" size={12} style={{ marginLeft: 4 }} /> : null}</td>
                     <td className="mono">{x.imp.toLocaleString('zh-CN')}</td><td className="mono">{x.clk.toLocaleString('zh-CN')}</td><td className="mono">{x.cvt}</td>
                     <td className="mono">{x.ctr}%</td>
                     <td><div style={{ display: 'flex', alignItems: 'center', gap: 6 }}><div style={{ width: `${(x.cvr / maxCvr) * 90}px`, height: 8, background: `var(--${tag === 'neutral' ? 'accent' : tag})`, borderRadius: 4 }} /><span className="mono">{x.cvr}%</span></div></td>
@@ -379,7 +380,7 @@ function PlanScreen() {
         <div className="card-h"><h2>改进动作（问题 → 动作 → 责任）</h2><span className="muted">可验收</span></div>
         {actions.map((x, i) => (
           <div key={i} className="card" style={{ marginBottom: 8, padding: '10px 12px', borderLeft: '3px solid var(--accent2)' }}>
-            <div style={{ fontSize: 12.5, color: 'var(--ink)' }}>⚠ {x.q}</div>
+            <div style={{ fontSize: 12.5, color: 'var(--ink)' }}><Icon name="alert" /> {x.q}</div>
             <div style={{ fontSize: 12.5, marginTop: 5 }}>→ {x.a} <span className="chip owner" style={{ marginLeft: 8 }}>{x.owner}</span></div>
           </div>
         ))}

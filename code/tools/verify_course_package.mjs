@@ -284,6 +284,10 @@ ok(); if (!(defs.cases.find((c) => c.num === 48)?.lenses.includes('研发') && d
 // Phase 4：跨角色 capstone 收口 + 「哪个镜头」游戏
 ok(); if (!tut.includes('跨角色收口') || !tut.includes('同一块门禁的三张脸')) bad('结课缺跨角色收口(串 48/49/50/41 三镜头)');
 ok(); if (!/LENS_PAIRS/.test(rd('code/web/src/game.tsx')) || !/哪个镜头/.test(rd('code/web/src/game.tsx'))) bad('游戏缺「哪个镜头」模式');
+// 工作台专业图标：Icon 组件存在 + 前端源零 emoji 图标（✓✗●▹ 等文字符号不算 emoji）
+ok(); if (!has('code/web/src/Icon.tsx') || !/currentColor/.test(rd('code/web/src/Icon.tsx'))) bad('前端缺 Icon 专业图标组件(内联 SVG)');
+for (const f of readdirSync(join(ROOT, 'code', 'web', 'src')).filter((x) => /\.tsx?$/.test(x))) { ok(); if (/[\u{1F300}-\u{1FAFF}\u{2600}-\u{26FF}]/u.test(rd('code/web/src/' + f))) bad(`前端 ${f} 仍含 emoji 图标（应用 Icon 组件）`); }
+ok(); if (jj('code/data/index.json').projectName === '产品经理转型实操知识库') bad('工作台品牌未随重定位更新');
 for (const c of defs.cases) { ok(); if (!c.readingOrder || !c.tryThis) bad(`案例${c.num} 缺去模板字段 readingOrder/tryThis`); }
 // I) 叙事钩子诚信：姚顺雨须标为首席科学家(非 PM)；prompt-sets 归 Aparna 而非吴恩达
 ok(); if (tut.includes('姚顺雨') && !/姚顺雨[^。]{0,60}首席科学家/.test(tut)) bad('姚顺雨须标注为首席科学家(非产品经理)');

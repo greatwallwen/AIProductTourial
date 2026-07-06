@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { Icon } from './Icon';
 import { NavLink } from 'react-router-dom';
 import { fetchIndex, fetchOpenapi, type IndexData } from './lib/api';
 import { getProgress } from './progress';
@@ -35,7 +36,7 @@ export function Home() {
           </svg>
           <div>
             <div style={{ fontWeight: 650, color: 'var(--ink)' }}>学习进度：看过 {prog.viewed}/{prog.total} 案例 · 决策题答对 {prog.correct}</div>
-            <div className="ov-top" style={{ marginTop: 6 }}>{prog.badges.length ? prog.badges.map((b) => <span key={b} className="chip soft">{b}</span>) : <span className="muted">浏览案例、玩概念游戏、答对「你来决策」来点亮成就 →</span>}</div>
+            <div className="ov-top" style={{ marginTop: 6 }}>{prog.badges.length ? prog.badges.map((b) => <span key={b.label} className="chip soft"><Icon name={b.icon} size={12} /> {b.label}</span>) : <span className="muted">浏览案例、玩概念游戏、答对「你来决策」来点亮成就 →</span>}</div>
           </div>
         </div>
       )}

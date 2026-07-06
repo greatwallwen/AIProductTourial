@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Icon } from './Icon';
 import { markQuiz } from './progress';
 
 // 案例内「你来决策」——基于本案例真实异常队列的责任分派题（数据真实、非编造）。
@@ -11,7 +12,7 @@ export function Challenge({ data }: { data: any }) {
   const firstField = String(Object.values(q.fields || {})[0] ?? '');
   return (
     <section className="card" style={{ marginTop: 16 }}>
-      <div className="card-h"><h2>🎮 你来决策</h2><span className="muted">基于本案例真实异常队列 · 答对计入学习成就</span></div>
+      <div className="card-h"><h2><Icon name="gamepad" /> 你来决策</h2><span className="muted">基于本案例真实异常队列 · 答对计入学习成就</span></div>
       <p style={{ fontSize: 13, color: 'var(--ink)' }}>
         队列第 1 条异常：状态「<b style={{ color: 'var(--warn)' }}>{q.state}</b>」{firstField && <>（{firstField}）</>}。
         按数字化闭环的「异常→<b>责任</b>→行动」，这条最该派给谁处置？

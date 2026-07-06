@@ -9,10 +9,10 @@ export function getProgress(total: number) {
   const o = load();
   const viewed = Object.keys(o.viewed || {}).length;
   const correct = Object.values(o.quiz || {}).filter(Boolean).length;
-  const badges: string[] = [];
-  if (viewed >= 1) badges.push('🚀 起步');
-  if (viewed >= total / 2) badges.push('🔥 过半');
-  if (viewed >= total) badges.push('🏆 通览');
-  if (correct >= 5) badges.push('🎯 决策达人');
+  const badges: { icon: string; label: string }[] = [];
+  if (viewed >= 1) badges.push({ icon: 'rocket', label: '起步' });
+  if (viewed >= total / 2) badges.push({ icon: 'flame', label: '过半' });
+  if (viewed >= total) badges.push({ icon: 'trophy', label: '通览' });
+  if (correct >= 5) badges.push({ icon: 'target', label: '决策达人' });
   return { viewed, correct, total, pct: total ? Math.round((viewed / total) * 100) : 0, badges };
 }

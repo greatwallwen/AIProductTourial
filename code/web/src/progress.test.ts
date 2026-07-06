@@ -12,8 +12,8 @@ describe('学习进度', () => {
     expect(p.viewed).toBe(2);
     expect(p.correct).toBe(1);
     expect(p.pct).toBe(50);
-    expect(p.badges).toContain('🚀 起步');
-    expect(p.badges).toContain('🔥 过半');
+    expect(p.badges.map((b) => b.label)).toContain('起步');
+    expect(p.badges.map((b) => b.label)).toContain('过半');
   });
   it('空进度不报错', () => { const p = getProgress(25); expect(p.viewed).toBe(0); expect(p.pct).toBe(0); });
 });

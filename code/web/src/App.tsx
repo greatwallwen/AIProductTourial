@@ -1,4 +1,5 @@
 import type { CSSProperties } from 'react';
+import { Icon } from './Icon';
 import { useEffect, useState } from 'react';
 import { Routes, Route, NavLink, useParams, Navigate } from 'react-router-dom';
 import themesData from './themes.json';
@@ -31,8 +32,8 @@ function TopNav() {
         <NavLink to="/api-docs" className={link}>API 文档</NavLink>
       </nav>
       <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-        <NavLink to="/search" className="topnav-link" aria-label="搜索">🔍 搜索</NavLink>
-        <button className="topnav-link" onClick={toggle} aria-label="切换亮暗主题">{theme === 'dark' ? '☀ 亮色' : '☾ 暗色'}</button>
+        <NavLink to="/search" className="topnav-link" aria-label="搜索"><Icon name="search" /> 搜索</NavLink>
+        <button className="topnav-link" onClick={toggle} aria-label="切换亮暗主题">{theme === 'dark' ? <><Icon name="sun" /> 亮色</> : <><Icon name="moon" /> 暗色</>}</button>
       </div>
     </header>
   );
@@ -61,7 +62,7 @@ function Sidebar({ idx }: { idx: IndexData }) {
         <div className="sb-logo">知</div>
         <div>
           <div className="sb-title">{idx.projectName}</div>
-          <div className="sb-sub">{idx.cases.length} 个实操 · 全栈服务</div>
+          <div className="sb-sub">{idx.cases.length} 案例 · 研发·产品·项目</div>
         </div>
       </div>
       <NavLink to="/" end className={({ isActive }) => 'sb-item' + (isActive ? ' on' : '')}>总览</NavLink>
@@ -88,7 +89,7 @@ function Sidebar({ idx }: { idx: IndexData }) {
 function Overview({ idx }: { idx: IndexData }) {
   return (
     <div className="page">
-      <div className="topbar"><h1>案例总览</h1><span className="muted">同一套 PM 工作流 · {idx.cases.length} 个行业实操 · 后端实时数据</span></div>
+      <div className="topbar"><h1>案例总览</h1><span className="muted">同一套操作模型 · 三镜头 · {idx.cases.length} 个行业实操 · 后端实时数据</span></div>
       <div className="grid-cards">
         {idx.cases.map((c) => (
           <NavLink key={c.num} to={`/case/${pad(c.num)}`} className="ov-card">

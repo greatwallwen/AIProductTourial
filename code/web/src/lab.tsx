@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { Icon } from './Icon';
 import { useParams, NavLink } from 'react-router-dom';
 import { fetchTokenize, fetchSearch } from './lib/api';
 
@@ -116,7 +117,7 @@ function AgentGame() {
       </div>
       <div style={{ marginTop: 12 }}>
         {!done ? <button className="act-btn" onClick={() => setI(i + 1)}>下一步（第 {i + 1} 轮 ReAct）</button>
-          : <button className="act-btn" onClick={() => setI(0)}>↺ 重新演示</button>}
+          : <button className="act-btn" onClick={() => setI(0)}><Icon name="reset" /> 重新演示</button>}
         {done && <span className="badge ok" style={{ marginLeft: 10 }}>✓ 循环结束，任务完成</span>}
       </div>
     </div>
