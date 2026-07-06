@@ -1,6 +1,6 @@
 {
   "counts": {
-    "MED": 6,
+    "MED": 1,
     "LOW": 4
   },
   "findings": [
@@ -10,41 +10,6 @@
       "file": "code/server/tests/api.test.ts",
       "msg": "后端断言 24 条，案例 17 个——端点覆盖偏薄",
       "fix": "每案至少断言其端点/字段各 1"
-    },
-    {
-      "sev": "MED",
-      "cat": "thin-case",
-      "file": "case 1",
-      "msg": "案例 1(morning_ops_grid) 无 ⭐深度折叠块",
-      "fix": "补 deepDive：权衡/失效模式/何时别用"
-    },
-    {
-      "sev": "MED",
-      "cat": "thin-case",
-      "file": "case 14",
-      "msg": "案例 14(logistics_change_control) 无 ⭐深度折叠块",
-      "fix": "补 deepDive：权衡/失效模式/何时别用"
-    },
-    {
-      "sev": "MED",
-      "cat": "thin-case",
-      "file": "case 16",
-      "msg": "案例 16(hospital_capacity_scheduler) 无 ⭐深度折叠块",
-      "fix": "补 deepDive：权衡/失效模式/何时别用"
-    },
-    {
-      "sev": "MED",
-      "cat": "thin-case",
-      "file": "case 41",
-      "msg": "案例 41(retail_capstone_board) 无 ⭐深度折叠块",
-      "fix": "补 deepDive：权衡/失效模式/何时别用"
-    },
-    {
-      "sev": "MED",
-      "cat": "thin-case",
-      "file": "case 47",
-      "msg": "案例 47(three_d_scatter) 无 ⭐深度折叠块",
-      "fix": "补 deepDive：权衡/失效模式/何时别用"
     },
     {
       "sev": "LOW",
