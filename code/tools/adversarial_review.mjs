@@ -70,7 +70,8 @@ for (const f of ['code/tools/build_docs.mjs', 'code/tools/verify_course_package.
   }
   const gameCases = defs.cases.filter((c) => /game|游戏|模拟器|闯关|沙盘/.test((c.saasType || '') + (c.scenario || ''))).length;
   if (gameCases === 0) add('MED', 'fun', 'case_definitions.json', '0 个游戏化/趣味交互案例（仅一个通用小游戏页）', '加交互游戏案例：架构决策模拟器 / 规格找漏洞闯关 / 限界上下文拖拽');
-  add('LOW', 'unused', 'skills/external/pm-skills-deanpeters', '194 篇真实 PM 语料未转化为案例灵感', '从语料挑主题做真实素材新案例');
+  const corpusUsed = defs.cases.filter((c) => /deanpeters|pm-skills|语料/.test((c.dataset || '') + (c.publicRef || ''))).length;
+  if (corpusUsed < 2) add('LOW', 'unused', 'skills/external/pm-skills-deanpeters', `仅 ${corpusUsed} 个案例引用 194 篇 PM 语料，可再挖`, '从语料挑主题做真实素材新案例');
 }
 
 // —— 排序 + 输出 ——

@@ -13,7 +13,7 @@ A hands-on knowledge base for the AI era spanning **engineering, product, and pr
 
 ```bash
 node code/tools/fetch-datasets.mjs && node code/tools/build_case_data.mjs
-node code/tools/build-manifests.mjs && node code/tools/build-skills.mjs && node code/tools/build_docs.mjs
+node code/tools/build_docs.mjs   # 生成多文件教程 + 架构图 + 交付物
 bash code/run.sh   # 一服务托管 API+前端 http://localhost:5200/#/
 node code/tools/verify_course_package.mjs   # ALL GREEN
 ```

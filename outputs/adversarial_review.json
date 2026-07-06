@@ -2,7 +2,7 @@
   "counts": {
     "HIGH": 6,
     "MED": 6,
-    "LOW": 5
+    "LOW": 4
   },
   "findings": [
     {
@@ -116,13 +116,6 @@
       "file": "AI时代研发产品项目一体化知识库/04-工程规范与约束.md",
       "msg": "绝对化措辞疑无证据：「绝不硬编码密钥**（GitHub 上因为…」",
       "fix": "补数据/引用，或改弱化措辞"
-    },
-    {
-      "sev": "LOW",
-      "cat": "unused",
-      "file": "skills/external/pm-skills-deanpeters",
-      "msg": "194 篇真实 PM 语料未转化为案例灵感",
-      "fix": "从语料挑主题做真实素材新案例"
     }
   ]
 }

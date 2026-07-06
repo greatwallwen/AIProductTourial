@@ -116,11 +116,6 @@ function figSvg(id) {
     return head + ring(150, t.muted, '外层 · 真实用户与市场（周）') + ring(105, t.accent2, '中层 · 开发者判断（时）') + ring(60, t.accent, '内层 · Agent 执行（分）') +
       `<text x="620" y="120" font-size="13" fill="${t.ink}">三层 Loop</text><text x="620" y="150" font-size="11" fill="${t.ink2}">一层比一层慢，</text><text x="620" y="172" font-size="11" fill="${t.ink2}">也一层比一层重要。</text><text x="620" y="200" font-size="11" fill="${t.muted}">稀缺能力向外层迁移。</text></svg>`;
   }
-  if (id === 'fig_arch_flow') {
-    const steps = ['约束先行', '质量属性', '子系统分解', '接口契约', 'ADR 决策', '部署演进'];
-    return head + steps.map((s, i) => `<rect x="${30 + i * 142}" y="150" width="126" height="70" rx="10" fill="${t.panel}" stroke="${t.border}"/><rect x="${30 + i * 142}" y="150" width="126" height="2" fill="${t.accent}"/><text x="${30 + i * 142 + 63}" y="192" font-size="13" fill="${t.ink}" text-anchor="middle">${s}</text>${i < 5 ? `<text x="${30 + i * 142 + 133}" y="190" font-size="16" fill="${t.accent}">›</text>` : ''}`).join('') +
-      `<text x="30" y="90" font-size="14" fill="${t.ink}">产品视角系统架构设计流程</text><text x="30" y="300" font-size="11" fill="${t.muted}">架构=特定约束下对质量属性做出的一组可追溯决策</text></svg>`;
-  }
   if (id === 'fig_engineering_rules') {
     const rs = ['成熟优先', 'DRY 复用', '目录清晰', '单文件≤800行', '类型安全', '中文注释', '错误处理', '安全红线'];
     return head + rs.map((s, i) => `<rect x="${30 + (i % 4) * 215}" y="${90 + Math.floor(i / 4) * 110}" width="195" height="90" rx="10" fill="${t.panel}" stroke="${t.border}"/><text x="${30 + (i % 4) * 215 + 16}" y="${90 + Math.floor(i / 4) * 110 + 50}" font-size="14" fill="${t.accent}">${s}</text>`).join('') + '</svg>';
