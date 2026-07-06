@@ -6,6 +6,8 @@
 
 > **角色镜头**：<img src="../../assets/vendor/lucide/built/package.svg" width="14" alt="" style="vertical-align:-2px" /> 产品 · <img src="../../assets/vendor/lucide/built/clipboard-list.svg" width="14" alt="" style="vertical-align:-2px" /> 项目（本案更偏这些角色；主脊 §1-§2 三镜头共读）
 
+> **方法论落点**：单个案例 = SDD 流水线（§3.0）上一个可验收的小任务；一个中大型系统 = 许多这样的任务按方法论编排起来（完整走查见旗舰案例 51）。
+
 > <img src="../../assets/vendor/lucide/built/gauge.svg" width="14" alt="" style="vertical-align:-2px" /> **难度** 入门｜**一句话** 医院急诊及时性：按真实急诊量级看等待与未就诊离开，定位需增容/分流的高负荷急诊｜**前置** 建议先读完第一部分
 >
 > <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：急诊运营的抓手是「量级 × 等待 × 流失」：本案 /api/hospital 按真实急诊量级(EDV)真算中位急诊等待与未就诊离开率——真实单调效应：量级越高越承压（极高≈199 分、低≈124 分）。高负荷医院要增容/分流，而非一刀切。高影响（医疗）：系统只给建议、不自动改号。

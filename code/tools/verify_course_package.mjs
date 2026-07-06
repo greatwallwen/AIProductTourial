@@ -17,7 +17,7 @@ console.log(`验校 ${defs.projectName} · ${defs.cases.length} 案例\n`);
 // 逐案例
 for (const c of defs.cases) {
   const n = pad(c.num), tag = `[${n} ${c.slug}]`;
-  ok(); if (![48, 49, 50].includes(c.num) && !has(c.dataset)) bad(`${tag} 数据集缺失 ${c.dataset}`); // 48/49/50 为多源 dogfood（tests/verify/语料），无单一数据文件，效应真实性由下方专项守卫核验
+  ok(); if (![48, 49, 50, 51].includes(c.num) && !has(c.dataset)) bad(`${tag} 数据集缺失 ${c.dataset}`); // 48/49/50/51 为多源 dogfood（tests/verify/语料/rules），无单一数据文件，效应真实性由下方专项守卫核验
   const dp = `code/data/case_${n}.json`;
   ok(); if (!has(dp)) { bad(`${tag} 预计算缺失`); continue; }
   const d = jj(dp);
@@ -101,6 +101,13 @@ ok(); if (!has('code/tools/diagram.mjs') || !has('code/tools/arch_figures.mjs'))
 for (const f of ['fig_sdd_pipeline', 'fig_c4_context', 'fig_c4_container', 'fig_c4_component', 'fig_ddd_context', 'fig_deployment', 'fig_req_sequence']) { ok(); if (!has(`outputs/product_case_library/svg/${f}.svg`)) bad(`缺架构图 ${f}.svg`); }
 for (const m of ['规格驱动开发', '规格即真源', 'SDD 八步', 'C4 模型', '限界上下文', 'ADR-001', '演进触发', '刺激', 'Spec Kit', 'Simon Brown', 'Eric Evans']) { ok(); if (!tut.includes(m)) bad(`§3 缺方法论/工件/署名「${m}」`); }
 ok(); if (!/fig_c4_container\.svg/.test(tut) || !/fig_sdd_pipeline\.svg/.test(tut)) bad('§3 未嵌入 C4 容器图 / SDD 流水线图');
+// v12 Phase 2：多 prompt 编排 + 双旗舰（dogfood 51 + 零售中台）
+ok(); if (!/buildBuildPipeline/.test(rd('code/tools/build_docs.mjs'))) bad('缺 SDD 多步 prompt 管线 buildBuildPipeline');
+ok(); if (!/BuildWalkScreen/.test(rd('code/web/src/screens.tsx')) || !/screen === 'buildwalk'/.test(rd('code/web/src/screens.tsx'))) bad('缺旗舰 51 buildwalk 屏');
+{ const c51 = defs.cases.find((c) => c.num === 51); ok(); if (!c51 || c51.screen !== 'buildwalk') bad('缺旗舰案例 51(screen buildwalk)'); ok(); if (!/dogfood|本仓库/.test(c51?.dataset || '')) bad('案例51 dataset 未标 dogfood'); }
+{ const j51 = jj('code/data/case_51.json'); ok(); if (!(j51.kpis.find((k) => k.name === '门禁检查项')?.value > 100)) bad('案例51 门禁项非真实'); ok(); if (j51.queue.length !== 8) bad('案例51 SDD 八步不完整'); ok(); if (!(j51.kpis.find((k) => k.name === '宪法条款')?.value > 0)) bad('案例51 宪法条款非真实'); }
+ok(); if (!has('outputs/product_case_library/svg/fig_midplatform.svg')) bad('缺零售中台 C4 图 fig_midplatform');
+for (const m of ['零售数字化中台', '恰好就是本书的一个案例', 'SDD 系统建造八步（多 prompt 编排）', '方法论落点']) { ok(); if (!tut.includes(m)) bad(`Phase2 缺「${m}」`); }
 ok(); if (!has('docs/_source/_ref-annotation-style.md')) bad('缺 issue#4 备注范例存档');
 ok(); if (!/黄仁勋|你有没有想过|你问 ChatGPT/.test(rd('docs/_source/00-ai-foundations.md'))) bad('§1 备注未按 issue#4 富叙事重写');
 ok(); if (!/tokenize/.test(rd('code/server/routes/api.ts')) || !has('code/server/services/tokenize.ts')) bad('缺 /api/tokenize 后端');

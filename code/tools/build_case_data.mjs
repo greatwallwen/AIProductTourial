@@ -161,6 +161,30 @@ function buildFromMd(c){
     exceptionCount=0; responsible=[...new Set(own)];
     chart={type:'bars',by:'门禁类别 → 检查项(近似)',data:[{label:'数据',value:Math.max(1,Math.round(checks*0.2))},{label:'诚信',value:Math.max(1,Math.round(checks*0.15))},{label:'镜头',value:20},{label:'结构',value:Math.max(1,Math.round(checks*0.15))},{label:'前端',value:Math.max(1,Math.round(checks*0.1))}]};
     actions=[{label:'签署发布',owner:'交付-孙',due:'0d'},{label:'风险登记复核',owner:'风控-赵',due:'1d'}];
+  } else if(c.num===51){ // SDD 系统建造走查：真读 rules/docs/case_definitions/verify/arch 图（dogfood·研发/项目/产品）
+    const ruleFiles=walkFiles(join(ROOT,'rules'),'.md');
+    const clauses=ruleFiles.reduce((a,f)=>a+(readFileSync(f,'utf8').match(/^\s*(?:[-*·]|\d+[.、)])\s/gm)||[]).length,0);
+    const subs=readdirSync(join(ROOT,'code','server')).filter(e=>{try{return statSync(join(ROOT,'code','server',e)).isDirectory()&&!['tests','node_modules','dist'].includes(e);}catch{return false;}}).length;
+    const checks=(readFileSync(join(ROOT,'code','tools','verify_course_package.mjs'),'utf8').match(/\bok\(\)/g)||[]).length;
+    const archSvgs=walkFiles(join(ROOT,'outputs','product_case_library','svg'),'.svg').filter(f=>/fig_(sdd|c4|ddd|deployment|req)/.test(f)).length;
+    const docFiles=walkFiles(join(ROOT,'docs','_source'),'.md').length;
+    const serverTs=walkFiles(join(ROOT,'code','server'),'.ts').length;
+    kpis=[{name:'宪法条款',value:clauses,unit:''},{name:'子系统数',value:subs,unit:''},{name:'门禁检查项',value:checks,unit:''},{name:'架构图数',value:archSvgs,unit:''}];
+    const steps=[
+      ['① 宪法','rules/ai-dev-constraints.md','已立','DRY / 单文件<800 / 安全红线',ruleFiles.length],
+      ['② 规格','docs/_source/*.md','已写','章节规格 + 案例定义',docFiles],
+      ['③ 澄清','（人在关口）','人工','消除意图债务(§2.9)',1],
+      ['④ 架构设计','arch SVG + §3 ADR','已画','C4 / DDD / ADR-001',archSvgs],
+      ['⑤ 任务分解','case_definitions.json','已分',`${defs.cases.length} 案例/子任务`,defs.cases.length],
+      ['⑥ 实现','code/ 全栈','已建','Fastify + React 真服务',serverTs],
+      ['⑦ 门禁','verify + node:test + vitest','三绿','数百项自动核验',3],
+      ['⑧ 演进','演进触发表','待触发','按信号切 PG / pgvector',3],
+    ];
+    const own=['研发-王','产品-王','项目-孙'];
+    queue=steps.map((s,i)=>({id:i+1,state:s[2],owner:own[i%3],fields:{步骤:s[0],工件:s[1],状态:s[2],产出:s[3]}}));
+    exceptionCount=0; responsible=[...new Set(own)];
+    chart={type:'bars',by:'SDD 八步 → 工件/文件数',data:steps.map(s=>({label:s[0].replace(/[①-⑧] /,''),value:s[4]}))};
+    actions=[{label:'补澄清 / 消歧',owner:'产品-王',due:'1d'},{label:'跑门禁三绿',owner:'研发-王',due:'0d'}];
   } else { // 其它 .md：按指标链回到真实可得量（不用顺子占位）
     kpis=c.metricChain.map((m)=>({name:m,value:0,unit:/率/.test(m)?'%':''}));
   }
@@ -170,7 +194,7 @@ let ok=0;
 for(const c of defs.cases){
   let vm;
   try{
-    if(c.dataset.endsWith('.md') || [48,49,50].includes(c.num)) vm=buildFromMd(c);
+    if(c.dataset.endsWith('.md') || [48,49,50,51].includes(c.num)) vm=buildFromMd(c);
     else vm=buildFromCsv(c);
   }catch(e){ console.error('FAIL case',c.num,e.message); continue; }
   const out={ num:c.num, title:c.title, industry:c.industry, role:c.role, saasType:c.saasType, uiId:c.uiId, slug:c.slug,

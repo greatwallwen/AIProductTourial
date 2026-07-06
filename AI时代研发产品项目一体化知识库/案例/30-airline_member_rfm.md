@@ -6,6 +6,8 @@
 
 > **角色镜头**：<img src="../../assets/vendor/lucide/built/package.svg" width="14" alt="" style="vertical-align:-2px" /> 产品（本案更偏这些角色；主脊 §1-§2 三镜头共读）
 
+> **方法论落点**：单个案例 = SDD 流水线（§3.0）上一个可验收的小任务；一个中大型系统 = 许多这样的任务按方法论编排起来（完整走查见旗舰案例 51）。
+
 > <img src="../../assets/vendor/lucide/built/gauge.svg" width="14" alt="" style="vertical-align:-2px" /> **难度** 进阶｜**一句话** 航空会员价值运营：按 R/F/M 分层识别高价值流失群，做定向挽回与权益运营｜**前置** 建议先读完第一部分
 >
 > <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：RFM 的价值不在算出分数，而在于把一群「看起来还行、其实正在流失」的高价值会员从平均数里揪出来——本案 RFM demo（/api/rfm）真算出「年消费前列、却久未乘机」的高价值流失群，这才是运营该抢救的人，而不是给所有人发一样的券。

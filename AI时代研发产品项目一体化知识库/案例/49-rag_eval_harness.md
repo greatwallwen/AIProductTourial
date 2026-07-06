@@ -6,6 +6,8 @@
 
 > **角色镜头**：<img src="../../assets/vendor/lucide/built/package.svg" width="14" alt="" style="vertical-align:-2px" /> 产品 · <img src="../../assets/vendor/lucide/built/wrench.svg" width="14" alt="" style="vertical-align:-2px" /> 研发（本案更偏这些角色；主脊 §1-§2 三镜头共读）
 
+> **方法论落点**：单个案例 = SDD 流水线（§3.0）上一个可验收的小任务；一个中大型系统 = 许多这样的任务按方法论编排起来（完整走查见旗舰案例 51）。
+
 > <img src="../../assets/vendor/lucide/built/gauge.svg" width="14" alt="" style="vertical-align:-2px" /> **难度** 进阶｜**一句话** 用标注评测集给 RAG 回答打分，把「感觉还行」变成「命中率多少」｜**前置** 建议先读完第一部分
 >
 > <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：OpenAI/吴恩达都说 evals 是 AI 产品的头号新技能，本书前面反复讲、却一直没有一个能跑的评测案例——这一案就是补上它。评测集 × 真实语料，离线算命中，把 vibe 变成数字。

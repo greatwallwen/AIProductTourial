@@ -419,7 +419,38 @@ function DogfoodScreen({ data, kind }: { data: any; kind: string }) {
   );
 }
 
+// —— 旗舰 51：SDD 系统建造走查（把「本平台自己」当被建造系统，走规格驱动八步，工件对到真仓库）——
+function BuildWalkScreen({ data }: { data: any }) {
+  const kpis = data?.kpis || []; const steps = data?.queue || [];
+  return (
+    <>
+      <section className="card">
+        <div className="card-h"><h2>SDD 系统建造走查 · dogfood</h2><span className="muted">把「本平台自己」当被建造的系统，走一遍规格驱动八步 · 工件全对到本仓库</span></div>
+        <div className="muted" style={{ margin: '2px 0 12px' }}>几个 prompt 建不成中大型系统——每一步都要一份可追溯、可验收的真实工件。数据来自 rules/ · docs/_source · case_definitions · verify · 架构图。</div>
+        <div className="kpis">{kpis.map((k: any, i: number) => <div key={i} className="kpi"><div className="kpi-name">{k.name}</div><div className="kpi-val">{typeof k.value === 'number' ? k.value.toLocaleString('zh-CN') : k.value}<span className="kpi-unit">{k.unit}</span></div></div>)}</div>
+      </section>
+      <section className="card">
+        <div className="card-h"><h2>SDD 八步流水线</h2><span className="muted">每步 → 一份真实工件 → 状态</span></div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          {steps.map((s: any) => {
+            const f = s.fields || {}; const human = /人工/.test(s.state); const done = /已|三绿/.test(s.state);
+            const col = human ? 'var(--warn)' : done ? 'var(--ok)' : 'var(--accent)';
+            return (
+              <div key={s.id} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '10px 12px', borderRadius: 10, background: 'var(--panelSoft)', borderLeft: `3px solid ${col}` }}>
+                <div style={{ fontWeight: 750, color: col, minWidth: 72 }}>{f['步骤']}</div>
+                <div style={{ flex: 1 }}><code style={{ fontSize: 12 }}>{f['工件']}</code><div style={{ fontSize: 11.5, color: 'var(--ink2)', marginTop: 2 }}>{f['产出']}</div></div>
+                <span className="chip soft" style={{ color: col }}>{s.state}</span>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+    </>
+  );
+}
+
 export function SpecialScreen({ screen, data }: { screen: string; data?: any }) {
+  if (screen === 'buildwalk') return <BuildWalkScreen data={data} />;
   if (screen === 'triage' || screen === 'eval' || screen === 'gates') return <DogfoodScreen data={data} kind={screen} />;
   if (screen === 'rfm') return <RfmScreen />;
   if (screen === 'capacity') return <HospitalScreen />;

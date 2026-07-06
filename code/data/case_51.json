@@ -1,0 +1,225 @@
+{
+ "num": 51,
+ "title": "SDD 系统建造走查（研发·项目·产品镜头）",
+ "industry": "研发效能 / 架构",
+ "role": "架构师 / 研发负责人",
+ "saasType": "sdd_buildwalk",
+ "uiId": "ui_51_sdd_build",
+ "slug": "sdd_system_build",
+ "uiStrategy": "dark-ops",
+ "largeScreenRef": "SDD 建造走查台",
+ "components": [
+  "SDD 流水线",
+  "工件清单",
+  "门禁状态",
+  "C4 图"
+ ],
+ "skills": [
+  "harness-builder",
+  "traceability-check",
+  "checker-report"
+ ],
+ "highImpact": false,
+ "riskBoundary": "每步产出须可追溯（规格/ADR/门禁），不得跳过澄清与门禁两步",
+ "decisionAction": "用规格驱动八步把一次中大型建造拆成可追溯、可验收的小步（而非几个 prompt 一把梭）",
+ "dataset": "rules/ + docs/_source + case_definitions + verify + 架构图（本仓库自身·dogfood）",
+ "metricChainNames": [
+  "宪法条款",
+  "子系统数",
+  "门禁检查项",
+  "架构图数"
+ ],
+ "exceptionStates": [
+  "规格缺失",
+  "契约缺失",
+  "门禁未过"
+ ],
+ "fields": [
+  "步骤",
+  "工件",
+  "状态",
+  "产出"
+ ],
+ "design": "cyan-matrix",
+ "demonstrates": [
+  "3.0",
+  "2.3",
+  "6.4"
+ ],
+ "systemLayer": "底座平台",
+ "systemStage": "验收",
+ "theoryOp": "把 §3.0 的 SDD 八步落成一次可查的系统建造走查——每一步都对到仓库里一份真实工件",
+ "difficulty": "高阶",
+ "tldr": "几个 prompt 建不成系统——照 SDD 八步走，每步一份对得上仓库的工件",
+ "insight": "本案把「本平台自己」当作被建造的系统，走一遍 SDD 八步：每步都对到仓库里一份真实工件——rules/=宪法、docs/_source=规格、case_definitions=任务、arch SVG=C4 架构、verify=门禁。这就是「几个 prompt 不够、必须要方法论」最实的证据。",
+ "pitfall": "最容易被跳过的是「澄清」和「门禁」两步：跳澄清=把没说清的意图留给 AI 猜（意图债务，§2.9）；跳门禁=对不上既有架构、上线才炸。",
+ "kpis": [
+  {
+   "name": "宪法条款",
+   "value": 18,
+   "unit": ""
+  },
+  {
+   "name": "子系统数",
+   "value": 5,
+   "unit": ""
+  },
+  {
+   "name": "门禁检查项",
+   "value": 166,
+   "unit": ""
+  },
+  {
+   "name": "架构图数",
+   "value": 7,
+   "unit": ""
+  }
+ ],
+ "queue": [
+  {
+   "id": 1,
+   "state": "已立",
+   "owner": "研发-王",
+   "fields": {
+    "步骤": "① 宪法",
+    "工件": "rules/ai-dev-constraints.md",
+    "状态": "已立",
+    "产出": "DRY / 单文件<800 / 安全红线"
+   }
+  },
+  {
+   "id": 2,
+   "state": "已写",
+   "owner": "产品-王",
+   "fields": {
+    "步骤": "② 规格",
+    "工件": "docs/_source/*.md",
+    "状态": "已写",
+    "产出": "章节规格 + 案例定义"
+   }
+  },
+  {
+   "id": 3,
+   "state": "人工",
+   "owner": "项目-孙",
+   "fields": {
+    "步骤": "③ 澄清",
+    "工件": "（人在关口）",
+    "状态": "人工",
+    "产出": "消除意图债务(§2.9)"
+   }
+  },
+  {
+   "id": 4,
+   "state": "已画",
+   "owner": "研发-王",
+   "fields": {
+    "步骤": "④ 架构设计",
+    "工件": "arch SVG + §3 ADR",
+    "状态": "已画",
+    "产出": "C4 / DDD / ADR-001"
+   }
+  },
+  {
+   "id": 5,
+   "state": "已分",
+   "owner": "产品-王",
+   "fields": {
+    "步骤": "⑤ 任务分解",
+    "工件": "case_definitions.json",
+    "状态": "已分",
+    "产出": "15 案例/子任务"
+   }
+  },
+  {
+   "id": 6,
+   "state": "已建",
+   "owner": "项目-孙",
+   "fields": {
+    "步骤": "⑥ 实现",
+    "工件": "code/ 全栈",
+    "状态": "已建",
+    "产出": "Fastify + React 真服务"
+   }
+  },
+  {
+   "id": 7,
+   "state": "三绿",
+   "owner": "研发-王",
+   "fields": {
+    "步骤": "⑦ 门禁",
+    "工件": "verify + node:test + vitest",
+    "状态": "三绿",
+    "产出": "数百项自动核验"
+   }
+  },
+  {
+   "id": 8,
+   "state": "待触发",
+   "owner": "产品-王",
+   "fields": {
+    "步骤": "⑧ 演进",
+    "工件": "演进触发表",
+    "状态": "待触发",
+    "产出": "按信号切 PG / pgvector"
+   }
+  }
+ ],
+ "chart": {
+  "type": "bars",
+  "by": "SDD 八步 → 工件/文件数",
+  "data": [
+   {
+    "label": "宪法",
+    "value": 4
+   },
+   {
+    "label": "规格",
+    "value": 13
+   },
+   {
+    "label": "澄清",
+    "value": 1
+   },
+   {
+    "label": "架构设计",
+    "value": 7
+   },
+   {
+    "label": "任务分解",
+    "value": 15
+   },
+   {
+    "label": "实现",
+    "value": 9
+   },
+   {
+    "label": "门禁",
+    "value": 3
+   },
+   {
+    "label": "演进",
+    "value": 3
+   }
+  ]
+ },
+ "rowCount": 18,
+ "exceptionCount": 0,
+ "responsible": [
+  "研发-王",
+  "产品-王",
+  "项目-孙"
+ ],
+ "actions": [
+  {
+   "label": "补澄清 / 消歧",
+   "owner": "产品-王",
+   "due": "1d"
+  },
+  {
+   "label": "跑门禁三绿",
+   "owner": "研发-王",
+   "due": "0d"
+  }
+ ]
+}

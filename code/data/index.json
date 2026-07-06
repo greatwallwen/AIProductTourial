@@ -210,6 +210,21 @@
    "systemStage": "验收",
    "difficulty": "进阶",
    "tldr": "把「能不能发布」变成一块可自动核对的门禁看板，而不是拍脑袋"
+  },
+  {
+   "num": 51,
+   "title": "SDD 系统建造走查（研发·项目·产品镜头）",
+   "slug": "sdd_system_build",
+   "uiId": "ui_51_sdd_build",
+   "saasType": "sdd_buildwalk",
+   "industry": "研发效能 / 架构",
+   "phase": "质量验收",
+   "highImpact": false,
+   "rp": null,
+   "systemLayer": "底座平台",
+   "systemStage": "验收",
+   "difficulty": "高阶",
+   "tldr": "几个 prompt 建不成系统——照 SDD 八步走，每步一份对得上仓库的工件"
   }
  ]
 }

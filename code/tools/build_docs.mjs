@@ -191,6 +191,20 @@ ${kpiLine}
 - 验收条件：指标链回到真实数据、异常可追踪、行动入口明确；不得越过「${c.riskBoundary}」${c.highImpact ? '；高影响行业保留人工复核' : ''}；\`node code/tools/verify_course_package.mjs\` 必须 ALL GREEN。`;
 }
 
+// SDD 系统建造八步 prompt 管线（旗舰案例 51 用）：不是「几个 prompt」，而是一条流水线——每步一个 prompt、产一份工件、喂下一步。工具无关。
+function buildBuildPipeline() {
+  return [
+    ['① 宪法（constitution）', '请先读 `rules/`（DRY、单文件<800 行、类型安全、安全红线等不可谈判的约束），并声明：本次建造全程不得违反这些原则。它们是本系统的宪法。'],
+    ['② 规格（spec）', '把「要建什么、为什么」写成 `spec.md`：目标、用户与场景、输入输出与数据、边界、前后置条件，以及一张约束表（业务/合规/规模/成本）。只写 what/why，不写实现。'],
+    ['③ 澄清（clarify）', '把 `spec.md` 里所有模糊处标成 `[需澄清]`，逐条列出来问我确认——这一步我（人）必须在场逐条拍板，消除「意图债务」（§2.9），不许你替我猜。'],
+    ['④ 架构设计（plan）', '基于确认后的规格产出 `plan.md`：C4 上下文/容器/组件图、DDD 限界上下文划分、以及关键技术选型的 ADR（背景→决策→后果，含重估信号）。'],
+    ['⑤ 任务分解（tasks）', '把 `plan.md` 拆成 `tasks.md`：原子、可并行、可独立验收的小任务，每个标注依赖、验收条件与所属子系统。'],
+    ['⑥ 实现（implement）', '逐个 task 跑一个 maker/checker Loop（§2）：builder 实现 → checker 跑全部检查 → 全绿才进下一个任务；接口契约即代码（OpenAPI 由 schema 自动生成，§3.4）。'],
+    ['⑦ 门禁（analyze/gate）', '整体门禁：跨工件一致性检查 + evals + `verify` 三绿（§6）。任一红灯，回到对应步骤修复，不放行。这一步机器自动把关。'],
+    ['⑧ 演进（evolve）', '上线后按「演进触发表」（§3.6）观察信号；一旦触发，回去改 `spec.md`（而非直接改代码），让规格始终是唯一真源。'],
+  ];
+}
+
 // 数字化系统全景：纵向三层 × 横向数据价值闭环，全部案例作为节点串成一个系统
 function panoramaSvg() {
   const N = defs.cases.length;
@@ -427,6 +441,7 @@ for (const c of defs.cases) {
     `> **本案例演示/验证**：原理 ${(c.demonstrates || []).join('、')}｜**采用设计** \`${c.design}\`（见 [design/${c.design}.md](${UP}design/${c.design}.md)）`, '',
     `> **在数字化系统中的位置**：${c.systemLayer}层 · ${c.systemStage}环节｜**理论→实操**：${c.theoryOp}`, '',
     `> **角色镜头**：${lensTags(c)}（本案更偏这些角色；主脊 §1-§2 三镜头共读）`, '',
+    `> **方法论落点**：单个案例 = SDD 流水线（§3.0）上一个可验收的小任务；一个中大型系统 = 许多这样的任务按方法论编排起来（完整走查见旗舰案例 51）。`, '',
     `> ${ic('gauge')}**难度** ${c.difficulty}｜**一句话** ${c.tldr}｜**前置** 建议先读完第一部分`,
     '>',
     `> ${ic('lightbulb')}**洞见**：${c.insight}`,
@@ -437,7 +452,10 @@ for (const c of defs.cases) {
     `**现状问题**`, '', `- 决策依赖的关键指标：${c.metricChain.join('、')}。`, `- 现场常见异常：${c.exceptionStates.join('、')}。`, `- 只做通用页面无法支撑「${c.decisionAction}」。`, '',
     `**本次任务**`, '', `- 明确岗位、指标链、异常状态与决策动作。`, `- 使用 \`${c.skills[0]}\` 与 \`${c.skills[1]}\` 完成分析，产出 \`${c.deliverable}\`，用 \`${c.skills[2]}\` 验收。`, '',
     `### 任务目标与数据`, '', kv([['行业', c.industry], ['真实业务场景', c.scenario], ['岗位', c.role], ['数据或资料', '`' + c.dataset + '`（' + d.rowCount + ' 行，异常 ' + d.exceptionCount + '）'], ['公开参考', c.publicRef], ['行业字段', c.fields.join('、')], ['指标链（真实值）', d.kpis.map((k) => k.name + ' ' + k.value + (k.unit || '')).join('，')], ['决策动作', c.decisionAction], ['风险边界', c.riskBoundary + (c.highImpact ? '（高影响行业·人工复核）' : '')], ['UI 原型', '`' + c.uiId + '`（' + c.saasType + '）'], ['采用设计', c.design], ['SaaS 组件', c.saasComponents.join('、')]]), '',
-    `### Prompt 实操`, '', `**Prompt 1：${c.scenario} - 问题定义**`, '', '```text', buildPrompt(c, d, 'def'), '```', '', `**Prompt 2：${c.scenario} - 方案验收**`, '', '```text', buildPrompt(c, d, 'accept'), '```', '',
+    ...(c.screen === 'buildwalk'
+      ? ['### Prompt 实操 · SDD 系统建造八步（多 prompt 编排）', '', '> 正面回答「几个 prompt 建不成系统」：下面是一条**流水线**——每步一个 prompt、产一份工件、喂给下一步；澄清与门禁是人/机把关。照着走，才建得动一个中大型系统。', '',
+        ...buildBuildPipeline().flatMap(([s, p]) => [`**${s}**`, '', '```text', p, '```', ''])]
+      : ['### Prompt 实操', '', `**Prompt 1：${c.scenario} - 问题定义**`, '', '```text', buildPrompt(c, d, 'def'), '```', '', `**Prompt 2：${c.scenario} - 方案验收**`, '', '```text', buildPrompt(c, d, 'accept'), '```', '']),
     `### 图形/原型/表单`, '', `![${c.scenario} · 信息图](${UP}outputs/product_case_library/svg/case_${pad(c.num)}_${c.slug}.svg)`, '', `![${c.scenario} · 可运行大屏原型截图](${UP}assets/screenshots/premium_case_${pad(c.num)}_${c.slug}_desktop.png)`, '',
     `- 图形类型：${c.slug}（设计 ${c.design}）`, `- 看图顺序：${c.readingOrder || '先看指标链，再看异常队列和责任对象，最后看行动入口与验收边界。'}`, `- UI 差异：本案例采用 \`${c.uiId}\` + 设计 \`${c.design}\`，不得复用通用表格占位；可运行原型见 \`#/case/${pad(c.num)}\`。`, '',
     `### 交付物与验收`, '', kv([['交付物', c.deliverable], ['必含字段', c.fields.join('、')], ['必含指标链', c.metricChain.join('、')], ['必含异常状态', c.exceptionStates.join('、')], ['必含 Skill', c.skills.join('、')]]), '',

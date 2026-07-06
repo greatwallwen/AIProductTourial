@@ -163,8 +163,34 @@ function reqSequence(t) {
   }, t);
 }
 
+// ⑧ 领域旗舰：零售数字化中台（中大型信息系统）——C4 容器，每个容器就是本书一个案例子系统
+function midPlatform(t) {
+  return diagram({
+    W: 1040, H: 560, title: '领域走查 · 零售数字化中台（中大型信息系统的 C4 容器）',
+    caption: '每个容器就是本书的一个案例——一个中大型系统 = 许多案例子系统按方法论编排起来。真实数据：UCI Online Retail II。',
+    groups: [{ x: 56, y: 66, w: 928, h: 460, label: '零售数字化中台 · 采集→治理→洞察→决策 数据价值闭环', color: t.accent }],
+    nodes: [
+      { id: 'ingest', x: 88, y: 110, w: 210, h: 66, tag: '容器', color: t.accent2, label: '采集接入', sub: 'Online Retail II 装载' },
+      { id: 'govern', x: 330, y: 110, w: 210, h: 66, tag: '容器', color: t.accent2, label: '数据治理', sub: 'metricSpec · 异常列真源' },
+      { id: 'metrics', x: 572, y: 110, w: 210, h: 66, tag: '容器', label: '指标洞察', sub: '案例 01 / 30 / 41' },
+      { id: 'decide', x: 814, y: 110, w: 200, h: 66, tag: '容器', color: t.ok, label: '经营决策', sub: '案例 41 闭环' },
+      { id: 'rag', x: 330, y: 240, w: 210, h: 66, tag: '容器', label: 'RAG 检索', sub: '案例 44 · 证据召回' },
+      { id: 'gate', x: 572, y: 240, w: 210, h: 66, tag: '门禁', color: t.warn, label: '交付门禁', sub: '案例 50 / verify 三绿' },
+      { id: 'base', x: 88, y: 370, w: 210, h: 66, tag: '底座', label: '关系库底座', sub: '案例 45 · node:sqlite/PG' },
+      { id: 'viz', x: 330, y: 370, w: 210, h: 66, tag: '底座', label: '三维可视', sub: '案例 47 · three.js' },
+    ],
+    edges: [
+      { from: 'ingest', to: 'govern' }, { from: 'govern', to: 'metrics' }, { from: 'metrics', to: 'decide' },
+      { from: 'rag', to: 'decide', label: '证据' }, { from: 'base', to: 'metrics', label: '支撑' },
+      { from: 'viz', to: 'metrics', label: '呈现', dashed: true }, { from: 'gate', to: 'decide', label: '门禁', dashed: true, color: t.warn },
+    ],
+    legend: [{ label: '接入/治理', color: t.accent2 }, { label: '容器', color: t.accent }, { label: '决策', color: t.ok }, { label: '门禁', color: t.warn }],
+  }, t);
+}
+
 export function archFigures(t) {
   return {
+    fig_midplatform: midPlatform(t),
     fig_sdd_pipeline: sddPipeline(t),
     fig_c4_context: c4Context(t),
     fig_c4_container: c4Container(t),

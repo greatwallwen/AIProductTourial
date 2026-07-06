@@ -6,6 +6,8 @@
 
 > **角色镜头**：<img src="../../assets/vendor/lucide/built/package.svg" width="14" alt="" style="vertical-align:-2px" /> 产品 · <img src="../../assets/vendor/lucide/built/wrench.svg" width="14" alt="" style="vertical-align:-2px" /> 研发 · <img src="../../assets/vendor/lucide/built/clipboard-list.svg" width="14" alt="" style="vertical-align:-2px" /> 项目（本案更偏这些角色；主脊 §1-§2 三镜头共读）
 
+> **方法论落点**：单个案例 = SDD 流水线（§3.0）上一个可验收的小任务；一个中大型系统 = 许多这样的任务按方法论编排起来（完整走查见旗舰案例 51）。
+
 > <img src="../../assets/vendor/lucide/built/gauge.svg" width="14" alt="" style="vertical-align:-2px" /> **难度** 入门｜**一句话** 电商早会经营台：按真实订单看品类营收/区域结构/退货，把异常当场派成行动｜**前置** 建议先读完第一部分
 >
 > <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：早会的价值不在「看数」，而在「把昨天的信号今天就派出去」。本案 /api/retail 按品类真算销售额（真实数据里厨餐、家饰类目营收领先）、区域按真实国家聚合（英国占绝对主力），退货来自真实退货信号——从看板变成行动。<img src="../../assets/vendor/lucide/built/alert-triangle.svg" width="14" alt="" style="vertical-align:-2px" /> 毛利率为教学合成叠加（源无成本），不作真实经营结论。

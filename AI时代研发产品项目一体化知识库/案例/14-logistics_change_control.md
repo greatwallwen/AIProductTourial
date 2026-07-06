@@ -6,6 +6,8 @@
 
 > **角色镜头**：<img src="../../assets/vendor/lucide/built/clipboard-list.svg" width="14" alt="" style="vertical-align:-2px" /> 项目 · <img src="../../assets/vendor/lucide/built/package.svg" width="14" alt="" style="vertical-align:-2px" /> 产品（本案更偏这些角色；主脊 §1-§2 三镜头共读）
 
+> **方法论落点**：单个案例 = SDD 流水线（§3.0）上一个可验收的小任务；一个中大型系统 = 许多这样的任务按方法论编排起来（完整走查见旗舰案例 51）。
+
 > <img src="../../assets/vendor/lucide/built/gauge.svg" width="14" alt="" style="vertical-align:-2px" /> **难度** 进阶｜**一句话** 航班准点运营调度：按真实起飞城市延误/取消/原因，定位需增容的高延误枢纽｜**前置** 建议先读完第一部分
 >
 > <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：调度不是看航班量绝对值，而是看「延误率高 + 量大」的城市。本案 /api/dispatch 按真实起飞城市聚合真实延误——真实多城市差异（如 Tampa/Baltimore/Miami 延误率明显高于均值），延误原因(航司/天气/空管/前序航班晚到)也真算，据此定增容优先级。

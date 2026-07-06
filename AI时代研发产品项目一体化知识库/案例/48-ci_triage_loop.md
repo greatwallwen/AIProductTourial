@@ -6,6 +6,8 @@
 
 > **角色镜头**：<img src="../../assets/vendor/lucide/built/wrench.svg" width="14" alt="" style="vertical-align:-2px" /> 研发 · <img src="../../assets/vendor/lucide/built/clipboard-list.svg" width="14" alt="" style="vertical-align:-2px" /> 项目（本案更偏这些角色；主脊 §1-§2 三镜头共读）
 
+> **方法论落点**：单个案例 = SDD 流水线（§3.0）上一个可验收的小任务；一个中大型系统 = 许多这样的任务按方法论编排起来（完整走查见旗舰案例 51）。
+
 > <img src="../../assets/vendor/lucide/built/gauge.svg" width="14" alt="" style="vertical-align:-2px" /> **难度** 进阶｜**一句话** 让 CI 失败自己分好类、指好责任，人只做确认｜**前置** 建议先读完第一部分
 >
 > <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：「先建 Inspector 再建 Loop」在研发镜头的落地：分诊台就是那个 Inspector，它把「红了」变成「哪里红、谁负责、怎么修」。数据全来自本仓库自身的测试与校验，不是编的。
@@ -35,7 +37,7 @@
 - 数据或资料：`code/server/tests + verify + routes（本仓库自身·dogfood）`（22 行，异常 8）
 - 公开参考：本仓库 code/server/tests、verify_course_package.mjs、routes/api.ts
 - 行业字段：失败用例、失败类别、责任模块、首次出现
-- 指标链（真实值）：契约断言数 22，接口契约数 15，校验检查项 151，后端模块数 9
+- 指标链（真实值）：契约断言数 22，接口契约数 15，校验检查项 166，后端模块数 9
 - 决策动作：把一次 CI 失败自动分诊到「哪个模块、哪类问题、谁来修」，人只做确认
 - 风险边界：分诊只做建议，合并/发布仍需人工确认，不自动 force-merge
 - UI 原型：`ui_48_ci_triage`（ci_triage）
@@ -50,7 +52,7 @@
 请以产品经理身份，用 AI 编程工具（如 Trae、CodeBuddy 等任一 Agent 工具）完成「CI 失败分诊台」的**产品问题定义**（这一步先把问题想清楚，不写代码）：
 - 岗位与场景：研发 Tech Lead / 交付负责人 面向「CI 失败分诊台」，把业务判断转成一份可验证的产品问题定义。
 - 数据：读取 `code/server/tests + verify + routes（本仓库自身·dogfood）`，只使用其中真实存在的字段（失败用例、失败类别、责任模块、首次出现）。
-- 指标链：测试用例数、契约断言数、校验检查项、接口数（当前真实值：契约断言数=22，接口契约数=15，校验检查项=151，后端模块数=9）。
+- 指标链：测试用例数、契约断言数、校验检查项、接口数（当前真实值：契约断言数=22，接口契约数=15，校验检查项=166，后端模块数=9）。
 - 现场异常：要盯的是 断言失败、回归风险、待复现——说清每类异常谁负责、如何被发现。
 - 决策动作：这份定义最终要支撑的关键决策是——把一次 CI 失败自动分诊到「哪个模块、哪类问题、谁来修」，人只做确认
 - 使用 Skill：用 harness-builder、checker-report 完成分析（结构化 Skill 见 skills/pm_skills.md）。
@@ -64,7 +66,7 @@
 请以产品经理身份，用 AI 编程工具（如 Trae、CodeBuddy 等任一 Agent 工具）完成「CI 失败分诊台」的**方案验收**（把上一步的问题定义做成可运行原型，并逐项验收）：
 - 目标：基于问题定义，产出一个可运行的深色大屏原型，让指标链、异常队列、责任、行动都能在页面上看到、点得动。
 - 数据：读取 `code/server/tests + verify + routes（本仓库自身·dogfood）`，只使用其中真实存在的字段（失败用例、失败类别、责任模块、首次出现）。
-- 指标链：测试用例数、契约断言数、校验检查项、接口数（当前真实值：契约断言数=22，接口契约数=15，校验检查项=151，后端模块数=9）。
+- 指标链：测试用例数、契约断言数、校验检查项、接口数（当前真实值：契约断言数=22，接口契约数=15，校验检查项=166，后端模块数=9）。
 - 原型（技术契约，遵 rules/ 约束：DRY、单文件<800行、TS 类型、中文注释）：在 `code/web`（Vite+React+TS）路由 `#/case/48`，按 `ui_48_ci_triage`（ci_triage）与设计 `steel-queue` 渲染；数据经 `build_case_data.mjs` 预计算，不得复用通用表格占位。
 - 使用 Skill：用 regression-guard 做验收（结构化 Skill 见 skills/pm_skills.md）。
 - 输出：CI 失败分诊报告，保存为 `outputs/product_case_library/case_48_ci_triage_loop_方案验收.md`。
