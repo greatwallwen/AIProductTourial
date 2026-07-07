@@ -17,7 +17,7 @@
 |---|---|
 | `design/` | ≥5 套**各不相同**的深色大屏设计系统（`themes.json` 单一来源令牌 + `*.md` 人读文档），案例分设计 → 风格各异 |
 | `rules/` | 工程规范（AI 约束 / 前端 Monorepo·微前端 / 后端分层），对齐 Google/OWASP/Conventional Commits 等并注来源 |
-| `skills/` | `pm_skills.md`（65 结构化 Skill）+ `loop_engineering/`（builder/checker/loop/停机规则/记忆区）+ `skill_lint.mjs` 扫描器（§7 skill 治理 dogfood） |
+| `skills/` | `pm_skills.md`（24 结构化 Skill）+ `loop_engineering/`（builder/checker/loop/停机规则/记忆区）+ `skill_lint.mjs` 扫描器（§7 skill 治理 dogfood） |
 | `dataset/` | 各案例数据 + `MANIFEST.md`（真实/教学合成显式标注） |
 | `code/web/` | Vite + React + TS 深色大屏工作台，一案例一路由 `#/case/NN`，按 design 主题化 |
 | `code/tools/*.mjs` | 数据生成/预计算/manifest/设计/skills/文档/校验（单文件均 < 800 行） |

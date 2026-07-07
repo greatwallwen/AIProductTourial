@@ -5,7 +5,7 @@ In one line: **go from doing the work yourself to designing a system that does t
 - Datasets: `dataset/` (+ `MANIFEST.md`, real vs. synthetic explicitly labeled)
 - Runnable workbench: `code/web` (Vite + React + TS, one route per case `#/case/NN`)
 - Manifests / SVGs / deliverables: `outputs/product_case_library/`
-- Structured skills (65): `skills/pm_skills.md` (+ `skill_lint.mjs` scanner)
+- Structured skills (24): `skills/pm_skills.md` (+ `skill_lint.mjs` scanner)
 - Screenshots: `assets/screenshots/`
 - Tutorial (Chinese, multi-file): `AI时代研发产品项目一体化知识库/` (its `README.md` is the index) · Chinese project README: `README-cn.md`
 
