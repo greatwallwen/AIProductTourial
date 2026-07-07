@@ -1,14 +1,28 @@
 {
   "counts": {
-    "LOW": 1
+    "HIGH": 3
   },
   "findings": [
     {
-      "sev": "LOW",
-      "cat": "claim",
-      "file": "AI时代研发产品项目一体化知识库/03-系统架构设计.md",
-      "msg": "绝对化措辞疑无证据：「唯一真源…」",
-      "fix": "补数据/引用，或改弱化措辞"
+      "sev": "HIGH",
+      "cat": "stale-count",
+      "file": "AI时代研发产品项目一体化知识库/README.md",
+      "msg": "声明「7 Skill」与真实值 65 不符",
+      "fix": "改为 65（建议用 defs.cases.length 动态化）"
+    },
+    {
+      "sev": "HIGH",
+      "cat": "stale-count",
+      "file": "AI时代研发产品项目一体化知识库/README.md",
+      "msg": "声明「7 Skill」与真实值 65 不符",
+      "fix": "改为 65（建议用 defs.cases.length 动态化）"
+    },
+    {
+      "sev": "HIGH",
+      "cat": "stale-count",
+      "file": "README-cn.md",
+      "msg": "声明「7 skill」与真实值 65 不符",
+      "fix": "改为 65（建议用 defs.cases.length 动态化）"
     }
   ]
 }

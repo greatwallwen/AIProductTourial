@@ -371,7 +371,7 @@ const readme = J([`# ${TITLE}`, '',
   '- [§1 AI 核心概念底层](01-AI核心概念底层.md) · [§2 会 Loop 的工程](02-会Loop的工程.md)（共享脊柱）',
   '- [§3 系统架构设计](03-系统架构设计.md) · [§4 工程规范与约束](04-工程规范与约束.md)（研发底子）· [§5 设计系统](05-设计系统.md)（产品底子）· [§6 交付治理](06-交付治理.md)（项目底子）· [§7 Skill 工程化与治理](07-Skill工程化与治理.md)（团队底子）',
   '- [术语表](术语表.md)', '',
-  '**第二部分 · 11 真实案例演示与验证**', '',
+  `**第二部分 · ${defs.cases.length} 真实案例演示与验证**`, '',
   '- [案例总览 + 原理→案例反查](案例/README.md)',
   ...defs.cases.map((c) => `- [实操 ${pad(c.num)} · ${c.scenario}](案例/${pad(c.num)}-${c.slug}.md)`),
   '',
@@ -385,8 +385,11 @@ writeBook('README.md', readme);
 // —— 五章正文（源在 docs/_source，图标/内容/去AI化在源里改；此处只按 UP 重定相对路径） ——
 UP = '../';
 const CHAPTERS = [['00-ai-foundations.md', '01-AI核心概念底层.md'], ['01-ideology.md', '02-会Loop的工程.md'], ['02-architecture.md', '03-系统架构设计.md'], ['03-engineering.md', '04-工程规范与约束.md'], ['04-designs.md', '05-设计系统.md'], ['05-delivery.md', '06-交付治理.md'], ['06-skill-governance.md', '07-Skill工程化与治理.md']];
-for (const [s, out] of CHAPTERS) writeBook(out, deemoji(relink(src(s))));
-writeBook('99-结课.md', deemoji(relink(src('99-capstone.md'))));
+// 口径派生化（v16 ②修硬伤）：源文件写 {{CASE_COUNT}}/{{SKILL_COUNT}} 占位符，build 时替换为唯一事实源实值——数字口径不再可能漂移
+const SKILL_N = (readFileSync(join(ROOT, 'skills', 'pm_skills.md'), 'utf8').match(/^## /gm) || []).length;
+const derive = (t) => t.replaceAll('{{CASE_COUNT}}', String(defs.cases.length)).replaceAll('{{SKILL_COUNT}}', String(SKILL_N));
+for (const [s, out] of CHAPTERS) writeBook(out, derive(deemoji(relink(src(s)))));
+writeBook('99-结课.md', derive(deemoji(relink(src('99-capstone.md')))));
 
 // —— 术语表 ——
 UP = '../';
@@ -398,9 +401,6 @@ writeBook('术语表.md', J(['# 术语表（先备着，看案例时随时回查
   '| Embedding / 向量库 | 把文本转成向量 / 存向量+原文、按相似度检索（§1.3、案例44） |',
   '| Agent / ReAct | 自主分步的智能体 / 思考→调用工具→观察→再思考的循环（§1.6） |',
   '| Tool / MCP | 模型可调用的函数 / 一套通用的工具接入标准（§1.5） |',
-  '| 质量属性场景 | 把非功能需求写成「刺激→环境→响应→度量」的可量化场景（SEI 风格，§3.2） |',
-  '| ADR | 架构决策记录：背景→决策→后果，把「为什么这样选」留痕（Nygard，§3.5） |',
-  '| 适应度函数 | 把架构边界写成能自动跑的断言，守住模块边界不被破坏（§3.3） |',
   '| 幂等 | 同一写操作重复执行，结果不变（如重发一次不会多下一单，§3.4） |',
   '| DRY / 单一职责 | 同一知识只表示一次 / 一个模块只有一个改变它的理由（§4.1、§4.2） |',
   '| YAGNI | You Aren’t Gonna Need It：没真需要就先别造（§4，反过度工程） |',

@@ -20,8 +20,8 @@ const add = (sev, cat, file, msg, fix) => F.push({ sev, cat, file, msg, fix });
   const skillN = (rd('skills/pm_skills.md').match(/^## /gm) || []).length;
   for (const f of [...bookFiles, 'README.md', 'README-cn.md']) {
     const s = f.startsWith(BOOK) ? rd(f) : rd(f);
-    for (const m of s.matchAll(/(\d+)\s*(个)?\s*(案例|representative|个 Skill|skills \()/g)) {
-      const n = +m[1]; const kind = /Skill|skills/.test(m[3]) ? skillN : nCase;
+    for (const m of s.matchAll(/(\d+)\s*个?\s*(真实案例|案例|representative|个 [Ss]kill|结构化 [Ss]kill|skills \()/g)) {
+      const n = +m[1]; const kind = /[Ss]kill/.test(m[2]) ? skillN : nCase;
       if (n !== kind && n > 3 && n < 100) add('HIGH', 'stale-count', f, `声明「${m[0].trim()}」与真实值 ${kind} 不符`, `改为 ${kind}（建议用 defs.cases.length 动态化）`);
     }
   }
