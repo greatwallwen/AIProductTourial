@@ -40,7 +40,7 @@ for (const c of defs.cases) {
 }
 // ④ 风格漂移：AI 套话 / emoji 图标混入产物
 {
-  const slop = tut.match(/赋能|一站式|值得注意的是|综上所述|众所周知|seamless|delve|elevate|pivotal/g);
+  const slop = tut.match(/赋能|一站式|值得注意的是|综上所述|众所周知|保驾护航|添砖加瓦|一揽子|强强联合|seamless|delve|elevate|pivotal|leverage|synergy|holistic|robust\b/g);
   if (slop) add('HIGH', 'drift', `${BOOK}/*`, `混入 AI 套话：${[...new Set(slop)].join('、')}`, '去 AI 化改写');
   const emoji = tut.match(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{26FF}★☆]/gu);
   if (emoji) add('HIGH', 'drift', `${BOOK}/*`, `混入 emoji 图标/难度星：${[...new Set(emoji)].slice(0, 6).join(' ')}`, '换专业 SVG 图标 / 文字');

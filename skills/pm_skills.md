@@ -2,7 +2,7 @@
 
 每个 Skill 六槽结构化（触发条件/输入/澄清问题/PRD 片段/验收标准/复用范围），可被 `verify_course_package.mjs` 校验。禁止写成不可验证的长文本。
 
-共 62 个 Skill（含 10 个 v12 信息化架构方法论技能：spec-authoring / requirement-clarify / c4-modeling / domain-decomposition / interface-contract / adr-authoring / quality-attribute-scenario / fitness-function / task-decomposition / arch-review）。
+共 64 个 Skill（含 10 个 v12 架构方法论技能 spec-authoring…arch-review + 2 个 v13 去 AI 味技能 humanizer / de-ai-flavor）。
 
 ## problem-framing
 
@@ -623,3 +623,23 @@
 - PRD 片段：逐项核查架构工件一致性（规格↔架构↔任务↔ADR）、覆盖缺口、约束-复杂度证据链，出评审结论（只读、不改）
 - 验收标准：工件互相一致、无未覆盖需求、每个复杂度都指得出约束当证据
 - 复用范围：51 SDD 系统建造走查
+
+## humanizer
+
+- 类型：验收·守护型
+- 触发条件：当产出一眼像 AI 写的（营销套话 / 三段排比 / 过度破折号）、要去掉 AI 痕迹时
+- 输入：待改写文本 + 目标读者与语气
+- 澄清问题：读者是谁？要口语还是正式？哪些事实/数据必须保留？
+- PRD 片段：去 AI 写作痕迹——删「赋能/闭环/抓手/保驾护航」类套话与「不是 X 而是 Y」三段排比、拆过长破折号句，保留事实不注水（引真实工具生态 humanizer/stop-slop/taste-skill）
+- 验收标准：信息不丢、无 AI 套话词、句式自然、能过「像不像 AI 写的」自检
+- 复用范围：全书去 AI 化 / 导读与结课文案
+
+## de-ai-flavor
+
+- 类型：验收·守护型
+- 触发条件：中文文案有「AI 腔」（书面、堆词、不说人话）要改口语时
+- 输入：中文待改写文本
+- 澄清问题：这句核心想说什么？能不能一句大白话说清？哪些词是凑数的？
+- PRD 片段：中文说人话改写——去「值得注意的是/综上所述/众所周知」、去凑数形容词、一句话一个意思，向科普口吻靠（引 shuorenhua/ai-flavor-remover 榜）
+- 验收标准：无中文 AI 套话、无空话形容词、读起来像人在讲、事实数据不变
+- 复用范围：全书科普备注 / 中文文案去味
