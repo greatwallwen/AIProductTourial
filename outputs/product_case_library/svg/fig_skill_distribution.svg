@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 380" font-family="PingFang SC,Microsoft YaHei,sans-serif">
+  <defs>
+    <linearGradient id="dbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a0e14"/><stop offset="1" stop-color="#0d1220"/></linearGradient>
+    <linearGradient id="dac" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#38bdf8"/></linearGradient>
+    <pattern id="dgrid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#16202e" stroke-width="1"/></pattern>
+    <filter id="dsh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#000" flood-opacity="0.35"/></filter>
+  </defs>
+  <rect width="980" height="380" fill="url(#dbg)"/><rect width="980" height="380" fill="url(#dgrid)" opacity="0.35"/>
+  <rect x="0" y="0" width="980" height="44" fill="#121826" opacity="0.5"/>
+  <rect x="24" y="13" width="4" height="19" rx="2" fill="url(#dac)"/>
+  <text x="36" y="28" font-size="15" font-weight="750" fill="#e6edf6">§7 · Skill 分发：一处治理，多 Agent 共用</text>
+<line x1="220.0" y1="185.0" x2="380.0" y2="185.0" stroke="#38bdf8" stroke-width="1.6" /><path d="M380 185 L373.4 188.6 L373.4 181.4 z" fill="#38bdf8"/><rect x="275.2" y="177" width="49.599999999999994" height="15" rx="4" fill="#0d1220" stroke="#1e2a3a"/><text x="300" y="188" font-size="9" fill="#9fb0c3" text-anchor="middle">upload</text>
+<line x1="490.0" y1="290.0" x2="490.0" y2="240.0" stroke="#f87171" stroke-width="1.6" stroke-dasharray="5 3"/><path d="M490 240 L493.6 246.6 L486.4 246.6 z" fill="#f87171"/><rect x="478.4" y="257" width="23.2" height="15" rx="4" fill="#0d1220" stroke="#1e2a3a"/><text x="490" y="268" font-size="9" fill="#9fb0c3" text-anchor="middle">门禁</text>
+<line x1="600.0" y1="185.0" x2="760.0" y2="88.0" stroke="#38bdf8" stroke-width="1.6" /><path d="M760 88 L756.2 94.5 L752.5 88.3 z" fill="#38bdf8"/><rect x="668.4" y="128.5" width="23.2" height="15" rx="4" fill="#0d1220" stroke="#1e2a3a"/><text x="680" y="139.5" font-size="9" fill="#9fb0c3" text-anchor="middle">分发</text>
+<line x1="600.0" y1="185.0" x2="760.0" y2="180.0" stroke="#38bdf8" stroke-width="1.6" /><path d="M760 180 L753.5 183.8 L753.3 176.6 z" fill="#38bdf8"/>
+<line x1="600.0" y1="185.0" x2="760.0" y2="272.0" stroke="#38bdf8" stroke-width="1.6" /><path d="M760 272 L752.5 272.0 L755.9 265.7 z" fill="#38bdf8"/>
+<rect x="50" y="150" width="170" height="70" rx="10" fill="#121826" stroke="#38bdf8" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="50" y="150" width="170" height="3" rx="1.5" fill="#38bdf8"/><rect x="197" y="156" width="17" height="15" rx="7" fill="#38bdf8" opacity="0.18"/><text x="210" y="167" font-size="8.5" fill="#38bdf8" text-anchor="end">人</text>
+  <text x="135" y="184" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">团队 / 个人</text><text x="135" y="199" font-size="9.5" fill="#5b6b7f" text-anchor="middle">upload 草稿</text>
+<rect x="380" y="130" width="220" height="110" rx="10" fill="#121826" stroke="#22d3ee" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="380" y="130" width="220" height="3" rx="1.5" fill="#22d3ee"/>
+  <text x="490" y="184" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">私有 Skill Registry</text><text x="490" y="199" font-size="9.5" fill="#5b6b7f" text-anchor="middle">版本 · 审核 · RBAC · PUBLIC/PRIVATE</text>
+<rect x="380" y="290" width="220" height="56" rx="10" fill="#121826" stroke="#f87171" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="380" y="290" width="220" height="3" rx="1.5" fill="#f87171"/>
+  <text x="490" y="317" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">skill-scanner</text><text x="490" y="332" font-size="9.5" fill="#5b6b7f" text-anchor="middle">发布前扫描</text>
+<rect x="760" y="60" width="180" height="56" rx="10" fill="#121826" stroke="#34d399" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="760" y="60" width="180" height="3" rx="1.5" fill="#34d399"/>
+  <text x="850" y="87" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">Claude Code</text><text x="850" y="102" font-size="9.5" fill="#5b6b7f" text-anchor="middle">skill-get / sync</text>
+<rect x="760" y="152" width="180" height="56" rx="10" fill="#121826" stroke="#34d399" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="760" y="152" width="180" height="3" rx="1.5" fill="#34d399"/>
+  <text x="850" y="179" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">Codex</text><text x="850" y="194" font-size="9.5" fill="#5b6b7f" text-anchor="middle">skill-get / sync</text>
+<rect x="760" y="244" width="180" height="56" rx="10" fill="#121826" stroke="#34d399" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="760" y="244" width="180" height="3" rx="1.5" fill="#34d399"/>
+  <text x="850" y="271" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">自建 Agent</text><text x="850" y="286" font-size="9.5" fill="#5b6b7f" text-anchor="middle">skill-get / sync</text>
+<rect x="705.2" y="354" width="12" height="12" rx="3" fill="#f87171"/><text x="723.2" y="364" font-size="9.5" fill="#9fb0c3">扫描</text><rect x="752.4000000000001" y="354" width="12" height="12" rx="3" fill="#34d399"/><text x="770.4000000000001" y="364" font-size="9.5" fill="#9fb0c3">Agent</text><rect x="819.4000000000001" y="354" width="12" height="12" rx="3" fill="#22d3ee"/><text x="837.4000000000001" y="364" font-size="9.5" fill="#9fb0c3">Registry</text><rect x="906.2" y="354" width="12" height="12" rx="3" fill="#38bdf8"/><text x="924.2" y="364" font-size="9.5" fill="#9fb0c3">上传者</text><text x="24" y="366" font-size="10.5" fill="#5b6b7f">团队/个人上传 → Registry 版本+审核+权限 → CLI/API 分发到各 Agent；个人多 Agent 也从同一处同步，不再散落各目录。</text>
+</svg>

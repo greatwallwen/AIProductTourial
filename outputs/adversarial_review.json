@@ -1,9 +1,17 @@
 {
   "counts": {
+    "HIGH": 1,
     "MED": 1,
     "LOW": 4
   },
   "findings": [
+    {
+      "sev": "HIGH",
+      "cat": "dangling-ref",
+      "file": "AI时代研发产品项目一体化知识库/*",
+      "msg": "引用不存在的章节：§7",
+      "fix": "改指正确章节"
+    },
     {
       "sev": "MED",
       "cat": "coverage",

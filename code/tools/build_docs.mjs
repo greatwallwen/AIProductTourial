@@ -346,6 +346,7 @@ const readme = J([`# ${TITLE}`, '',
   '| [§4 工程规范与约束](04-工程规范与约束.md) | 无 | 进阶 | 15min | 研发镜头；想判断「代码好坏」的人 |',
   '| [§5 设计系统](05-设计系统.md) | 无 | 进阶 | 12min | 产品镜头；关注大屏/可视化的人 |',
   '| [§6 交付治理](06-交付治理.md) | §2 | 进阶 | 15min | 项目镜头；管上线/门禁/风险的人 |',
+  '| [§7 Skill 工程化与治理](07-Skill工程化与治理.md) | §2·§6 | 进阶 | 18min | 团队镜头；管 Skill 版本/审核/分发的人 |',
   `| [第二部分 · ${defs.cases.length} 案例](案例/README.md) | 第一部分 | 入门→高阶 | 每例 ~15min | 所有人，**边读边跑、动手验证** |`, '',
   '### 三条角色阅读路径（主脊必读，镜头按需）', '',
   `- ${ic('check-circle')}**共同主脊（所有人必读）**：§1 → §2。这是三个镜头共享的操作模型，跳过会断链。`,
@@ -362,7 +363,7 @@ const readme = J([`# ${TITLE}`, '',
   '## 目录', '',
   '**第一部分 · 共享操作模型与专业底子**', '',
   '- [§1 AI 核心概念底层](01-AI核心概念底层.md) · [§2 会 Loop 的工程](02-会Loop的工程.md)（共享脊柱）',
-  '- [§3 系统架构设计](03-系统架构设计.md) · [§4 工程规范与约束](04-工程规范与约束.md)（研发底子）· [§5 设计系统](05-设计系统.md)（产品底子）· [§6 交付治理](06-交付治理.md)（项目底子）',
+  '- [§3 系统架构设计](03-系统架构设计.md) · [§4 工程规范与约束](04-工程规范与约束.md)（研发底子）· [§5 设计系统](05-设计系统.md)（产品底子）· [§6 交付治理](06-交付治理.md)（项目底子）· [§7 Skill 工程化与治理](07-Skill工程化与治理.md)（团队底子）',
   '- [术语表](术语表.md)', '',
   '**第二部分 · 11 真实案例演示与验证**', '',
   '- [案例总览 + 原理→案例反查](案例/README.md)',
@@ -377,7 +378,7 @@ writeBook('README.md', readme);
 
 // —— 五章正文（源在 docs/_source，图标/内容/去AI化在源里改；此处只按 UP 重定相对路径） ——
 UP = '../';
-const CHAPTERS = [['00-ai-foundations.md', '01-AI核心概念底层.md'], ['01-ideology.md', '02-会Loop的工程.md'], ['02-architecture.md', '03-系统架构设计.md'], ['03-engineering.md', '04-工程规范与约束.md'], ['04-designs.md', '05-设计系统.md'], ['05-delivery.md', '06-交付治理.md']];
+const CHAPTERS = [['00-ai-foundations.md', '01-AI核心概念底层.md'], ['01-ideology.md', '02-会Loop的工程.md'], ['02-architecture.md', '03-系统架构设计.md'], ['03-engineering.md', '04-工程规范与约束.md'], ['04-designs.md', '05-设计系统.md'], ['05-delivery.md', '06-交付治理.md'], ['06-skill-governance.md', '07-Skill工程化与治理.md']];
 for (const [s, out] of CHAPTERS) writeBook(out, deemoji(relink(src(s))));
 writeBook('99-结课.md', deemoji(relink(src('99-capstone.md'))));
 
@@ -415,6 +416,10 @@ writeBook('术语表.md', J(['# 术语表（先备着，看案例时随时回查
   '| 质量属性场景 | 把非功能需求写成「刺激→环境→响应→度量」的可量化场景（§3.2，SEI 风格） |',
   '| 规格漂移 | 代码越改越偏离规格意图；SDD 用阶段门禁 + CI 三绿来压住它（§3.0） |',
   '| 适应度函数 | 把架构边界写成能自动跑的断言，扫依赖检测越界/循环依赖（§3.3，案例 46） |',
+  '| Skill Registry | Skill 的私有仓库：版本/审核/安全/分发；draft→review→online→offline（§7，Nacos 阿里巴巴） |',
+  '| skill-scanner | 发布前扫 Skill 的提示注入/数据泄露/恶意代码，「不过则不发布」（§7，本书 skill_lint dogfood） |',
+  '| delta spec | 只记录「这次变更了什么」的增量规格，不重写整篇；brownfield 友好（§7/§3，OpenSpec Fission-AI） |',
+  '| Ralph 循环 | 把 Agent 包在 while 循环里、规格/验证都在 agent 之外，靠持续迭代跑完任务（§2.6，Geoffrey Huntley；本书 self-evolve 即一例） |',
   '', `> **进一步阅读**：各章规范与概念的权威出处汇总在 [rules/references.md](${UP}rules/references.md)；Loop 工程的可复用实操文件见 [skills/loop_engineering/](${UP}skills/loop_engineering)。`]));
 
 // —— 案例/README.md：全景 + 总览 + 原理反查 ——

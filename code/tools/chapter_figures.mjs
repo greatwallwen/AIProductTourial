@@ -97,9 +97,50 @@ function journey(t) {
   }, t);
 }
 
+// §7：Skill Registry 生命周期（draft→reviewing→online→offline + scanner 门禁）
+function skillLifecycle(t) {
+  return diagram({
+    W: 960, H: 360, title: '§7 · Skill Registry 生命周期（发布前扫，上线不可改）',
+    caption: 'draft→reviewing→online→offline；skill-scanner「不过则不发布」；online 内容不可改，改需新建草稿。来源：Nacos Skill Registry（阿里巴巴）。',
+    nodes: [
+      { id: 'draft', x: 40, y: 96, w: 180, h: 70, color: t.muted, tag: '草稿', label: 'draft', sub: '可改·多人别并行' },
+      { id: 'review', x: 275, y: 96, w: 180, h: 70, color: t.warn, tag: '审核', label: 'reviewing', sub: '过 scanner 才放行' },
+      { id: 'online', x: 510, y: 96, w: 180, h: 70, color: t.ok, tag: '上线', label: 'online', sub: '内容不可改' },
+      { id: 'offline', x: 745, y: 96, w: 175, h: 70, color: t.muted, tag: '下线', label: 'offline', sub: '不再使用' },
+      { id: 'scan', x: 275, y: 232, w: 415, h: 66, color: t.bad, label: 'skill-scanner · 不过则不发布', sub: '提示注入 / 数据泄露 / 恶意代码' },
+    ],
+    edges: [
+      { from: 'draft', to: 'review', label: '提交' }, { from: 'review', to: 'online', label: '过审' }, { from: 'online', to: 'offline', label: '退役' },
+      { from: 'scan', to: 'review', label: '门禁', dashed: true, color: t.bad }, { from: 'online', to: 'draft', label: '改需新草稿', dashed: true, color: t.muted },
+    ],
+    legend: [{ label: '草稿/下线', color: t.muted }, { label: '审核', color: t.warn }, { label: '上线', color: t.ok }, { label: '扫描门禁', color: t.bad }],
+  }, t);
+}
+// §7：Skill 分发（Registry → 多 Agent，一次创建团队共用）
+function skillDistribution(t) {
+  return diagram({
+    W: 980, H: 380, title: '§7 · Skill 分发：一处治理，多 Agent 共用',
+    caption: '团队/个人上传 → Registry 版本+审核+权限 → CLI/API 分发到各 Agent；个人多 Agent 也从同一处同步，不再散落各目录。',
+    nodes: [
+      { id: 'up', x: 50, y: 150, w: 170, h: 70, color: t.accent2, tag: '人', label: '团队 / 个人', sub: 'upload 草稿' },
+      { id: 'reg', x: 380, y: 130, w: 220, h: 110, color: t.accent, label: '私有 Skill Registry', sub: '版本 · 审核 · RBAC · PUBLIC/PRIVATE' },
+      { id: 'scan', x: 380, y: 290, w: 220, h: 56, color: t.bad, label: 'skill-scanner', sub: '发布前扫描' },
+      { id: 'cc', x: 760, y: 60, w: 180, h: 56, color: t.ok, label: 'Claude Code', sub: 'skill-get / sync' },
+      { id: 'cx', x: 760, y: 152, w: 180, h: 56, color: t.ok, label: 'Codex', sub: 'skill-get / sync' },
+      { id: 'own', x: 760, y: 244, w: 180, h: 56, color: t.ok, label: '自建 Agent', sub: 'skill-get / sync' },
+    ],
+    edges: [
+      { from: 'up', to: 'reg', label: 'upload' }, { from: 'scan', to: 'reg', label: '门禁', dashed: true, color: t.bad },
+      { from: 'reg', to: 'cc', label: '分发' }, { from: 'reg', to: 'cx' }, { from: 'reg', to: 'own' },
+    ],
+    legend: [{ label: '上传者', color: t.accent2 }, { label: 'Registry', color: t.accent }, { label: 'Agent', color: t.ok }, { label: '扫描', color: t.bad }],
+  }, t);
+}
+
 export function chapterFigures(t) {
   return {
     fig_loop_cybernetic: loopCybernetic(t), fig_yagni_ladder: yagniLadder(t), fig_ai_slop: aiSlop(t),
     fig_l0l3_ladder: l0l3Ladder(t), fig_gate_board: gateBoard(t), fig_journey: journey(t),
+    fig_skill_lifecycle: skillLifecycle(t), fig_skill_distribution: skillDistribution(t),
   };
 }

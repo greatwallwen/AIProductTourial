@@ -41,10 +41,15 @@ const BOOK = 'AI时代研发产品项目一体化知识库';
 const bookFiles = [];
 (function walkBook(d) { for (const e of readdirSync(join(ROOT, d))) { const p = join(d, e); if (statSync(join(ROOT, p)).isDirectory()) walkBook(p); else if (e.endsWith('.md')) bookFiles.push(p); } })(BOOK);
 const tut = bookFiles.map((f) => rd(f)).join('\n');           // 全书拼接，供内容守卫扫描
-for (const m of ['## 1. AI 核心概念底层', '## 2. 理念', '## 3. 系统架构', '## 4. 工程规范', '## 5. 设计系统', '## 6. 交付治理']) { ok(); if (!tut.includes(m)) bad(`教程缺章节「${m}」`); }
+for (const m of ['## 1. AI 核心概念底层', '## 2. 理念', '## 3. 系统架构', '## 4. 工程规范', '## 5. 设计系统', '## 6. 交付治理', '## 7. Skill 工程化与治理']) { ok(); if (!tut.includes(m)) bad(`教程缺章节「${m}」`); }
 // 目录完整性：根无单 md 孤儿 + 章/README/术语/结课/案例齐 + 每文件<800行 + README 链接不断链
 ok(); if (readdirSync(ROOT).filter((f) => f.endsWith('.md') && /教程|手册|知识库/.test(f)).length !== 0) bad('根目录仍有单一教程 md（应已拆为目录）');
-for (const f of ['README.md', '01-AI核心概念底层.md', '02-会Loop的工程.md', '03-系统架构设计.md', '04-工程规范与约束.md', '05-设计系统.md', '06-交付治理.md', '术语表.md', '99-结课.md', '案例/README.md']) { ok(); if (!has(`${BOOK}/${f}`)) bad(`教程缺文件 ${BOOK}/${f}`); }
+for (const f of ['README.md', '01-AI核心概念底层.md', '02-会Loop的工程.md', '03-系统架构设计.md', '04-工程规范与约束.md', '05-设计系统.md', '06-交付治理.md', '07-Skill工程化与治理.md', '术语表.md', '99-结课.md', '案例/README.md']) { ok(); if (!has(`${BOOK}/${f}`)) bad(`教程缺文件 ${BOOK}/${f}`); }
+// v13 Phase 1：§7 Skill 工程化与治理 + skill_lint dogfood 扫描器
+ok(); if (!has('code/tools/skill_lint.mjs')) bad('缺 skill_lint 可运行扫描器');
+for (const f of ['fig_skill_lifecycle', 'fig_skill_distribution']) { ok(); if (!has(`outputs/product_case_library/svg/${f}.svg`) || !tut.includes(`${f}.svg`)) bad(`缺/未嵌入 §7 图 ${f}`); }
+for (const m of ['Skill Registry', 'skill-scanner', 'draft → review → online', '不过则不发布', 'skill_lint', 'git 平替', 'Nacos']) { ok(); if (!tut.includes(m)) bad(`§7 缺治理内容「${m}」`); }
+ok(); if (!/阿里/.test(tut) || !/36\.8%/.test(tut)) bad('§7 未标 Nacos=阿里巴巴 / 36.8% 为阿里云说法（诚信）');
 for (const c of defs.cases) { ok(); if (!has(`${BOOK}/案例/${pad(c.num)}-${c.slug}.md`)) bad(`缺案例文件 ${pad(c.num)}-${c.slug}.md`); }
 for (const f of bookFiles) { ok(); if (rd(f).split('\n').length > 800) bad(`${f} > 800 行`); }
 { const rm = rd(`${BOOK}/README.md`); for (const l of [...rm.matchAll(/\]\(([^)#][^)]*\.md)\)/g)].map((m) => m[1]).filter((l) => !l.startsWith('../'))) { ok(); if (!has(`${BOOK}/${l}`)) bad(`README 目录链接断链：${l}`); } }
@@ -64,11 +69,10 @@ ok(); if (!/只读/.test(rd('skills/loop_engineering/checker.role.md'))) bad('ch
 const walk = (dir) => { const out = []; for (const e of readdirSync(join(ROOT, dir))) { const p = join(dir, e); if (statSync(join(ROOT, p)).isDirectory()) { if (!['node_modules', 'dist', 'data'].includes(e)) out.push(...walk(p)); } else if (['.mjs', '.ts', '.tsx', '.css'].includes(extname(e))) out.push(p); } return out; };
 for (const f of walk('code/tools')) { const ln = rd(f).split('\n').length; ok(); if (ln > 800) bad(`${f} ${ln} 行 > 800`); }
 
-// 全局：无具体编程工具品牌特写（Loop 工具无关；教程正文 + skills/rules）
-ok(); if (/Claude Code|\.claude\b|Cursor\b|Everything Claude Code|affaan-m\/ECC/.test(tut)) bad('教程含具体工具品牌特写');
-for (const f of ['skills/loop_engineering/README.md', 'skills/loop_engineering/loop.orchestrator.md', 'rules/ai-dev-constraints.md']) {
-  ok(); if (/Claude Code|\.claude\b|Cursor\b/.test(rd(f))) bad(`${f} 含具体工具品牌特写`);
-}
+// 全局：工具无关红线已放开（v13）——允许具名生态工具（Claude Code/gstack/OpenSpec/Superpowers/Ralph/Nacos）作真实实操（§7/组合拳/工具节）；
+// 但核心方法论仍应模式优先，故仅软守卫「单一品牌无端堆砌」（防非工具节硬塞）。
+ok(); if ((tut.match(/Claude Code/g) || []).length > 30) bad('Claude Code 品牌堆砌过多（>30，非工具节应克制、模式优先）');
+ok(); if (/affaan-m\/ECC/.test(tut)) bad('含 ECC 等非工具无关的特定生态堆砌');
 
 // 全局：真后端 code/server 存在且各文件 <800 行
 for (const f of ['app.ts', 'routes/api.ts', 'services/cases.ts', 'data/csv.ts', 'db/relational.ts', 'vector/store.ts', 'tests/api.test.ts'].map((x) => 'code/server/' + x)) {
