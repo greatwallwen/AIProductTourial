@@ -1,6 +1,6 @@
 # CI 失败分诊报告（实操 48·方案验收）
 
-> 数据来源：`code/server/tests + verify + routes（本仓库自身·dogfood）`（22 行，异常 8）。字段与指标均回到该数据。演示原理 2.3、2.5、4.3，采用设计 steel-queue。
+> 数据来源：`code/server/tests + verify + routes（本仓库自身·dogfood）`（36 行，异常 8）。字段与指标均回到该数据。演示原理 2.3、2.5、4.3，采用设计 steel-queue。
 
 ## 交付物
 
