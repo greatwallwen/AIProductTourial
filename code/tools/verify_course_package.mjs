@@ -41,10 +41,10 @@ const BOOK = 'AI时代研发产品项目一体化知识库';
 const bookFiles = [];
 (function walkBook(d) { for (const e of readdirSync(join(ROOT, d))) { const p = join(d, e); if (statSync(join(ROOT, p)).isDirectory()) walkBook(p); else if (e.endsWith('.md')) bookFiles.push(p); } })(BOOK);
 const tut = bookFiles.map((f) => rd(f)).join('\n');           // 全书拼接，供内容守卫扫描
-for (const m of ['## 1. AI 核心概念底层', '## 2. 理念', '## 3. 系统架构', '## 4. 工程规范', '## 5. 设计系统', '## 6. 交付治理', '## 7. Skill 工程化与治理']) { ok(); if (!tut.includes(m)) bad(`教程缺章节「${m}」`); }
+for (const m of ['## 1. AI 核心概念底层', '## 2. 理念', '## 3. 系统架构', '## 4. 工程规范', '## 5. 交付治理', '## 6. Skill 工程化与治理', '## 附录A · 设计系统', '## 附录B · 工具生态速查']) { ok(); if (!tut.includes(m)) bad(`教程缺章节「${m}」`); }
 // 目录完整性：根无单 md 孤儿 + 章/README/术语/结课/案例齐 + 每文件<800行 + README 链接不断链
 ok(); if (readdirSync(ROOT).filter((f) => f.endsWith('.md') && /教程|手册|知识库/.test(f)).length !== 0) bad('根目录仍有单一教程 md（应已拆为目录）');
-for (const f of ['README.md', '01-AI核心概念底层.md', '02-会Loop的工程.md', '03-系统架构设计.md', '04-工程规范与约束.md', '05-设计系统.md', '06-交付治理.md', '07-Skill工程化与治理.md', '术语表.md', '99-结课.md', '案例/README.md']) { ok(); if (!has(`${BOOK}/${f}`)) bad(`教程缺文件 ${BOOK}/${f}`); }
+for (const f of ['README.md', '01-AI核心概念底层.md', '02-会Loop的工程.md', '03-系统架构设计.md', '04-工程规范与约束.md', '05-交付治理.md', '06-Skill工程化与治理.md', '90-附录A-设计系统.md', '91-附录B-工具生态速查.md', '术语表.md', '99-结课.md', '案例/README.md']) { ok(); if (!has(`${BOOK}/${f}`)) bad(`教程缺文件 ${BOOK}/${f}`); }
 // v16 拆棘轮：内容存在性 token 已移入 content_snapshot.json（脚本末尾出 diff 报告，不阻断）；
 // 此处只留 基础设施存在 + 条件式诚信守卫（内容出现时才校验其诚信，不强制内容存在）
 ok(); if (!has('code/tools/skill_lint.mjs')) bad('缺 skill_lint 可运行扫描器');

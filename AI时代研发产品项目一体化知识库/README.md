@@ -1,45 +1,18 @@
-# AI 时代 研发·产品·项目 一体化实操知识库
+# 会自检的 AI 工程 · 实操手册
 
 > **一个操作模型，三个角色镜头**——研发 · 产品 · 项目。真数据、可运行深色大屏原型、真截图、Node 自我校验护栏；数据真实/合成显式标注（[MANIFEST](../dataset/MANIFEST.md)）、高影响行业保留人工复核。安装 / 目录 / 运行见 [项目 README](../README.md)。
 
 ## 这本书讲什么
 
-> **一句话**：AI 时代，你不再手动做每件事，而是**设计一个能自动干活、还能自我检查的系统**。它三个零件——**Loop**（让 AI 循环干活的流水线）、**Skills**（把你的判断沉淀成可复用的技能包）、**验证 / evals**（拿一组测试题给 AI 打分，关键处再加人把关）。这套「操作模型」对 研发 / 产品 / 项目 三种角色是同一套；本书用它把三个角色统一起来，再用 8 个真实行业案例演示、验证。
+> **一句话**：AI 时代，你不再手动做每件事，而是**设计一个能自动干活、还能自我检查的系统**。它三个零件——**Loop**（让 AI 循环干活的流水线）、**Skills**（把你的判断沉淀成可复用的技能包）、**验证 / evals**（拿一组测试题给 AI 打分，关键处再加人把关）。**本书只做这一个承诺：教你设计会自检的 Loop 系统**——不教提示词小技巧、不教求职、不按角色切三份；研发/产品/项目背景都能读（科普文风），但主线只有一条。全书用 8 个真实案例演示、验证。
 >
 > **前置**：会用浏览器和命令行即可，无需先懂 AI 或会写代码。
 >
-> **读完你能**：看懂 AI 产品/系统的底层概念，掌握「设计 Loop → 用 Skills → 靠验证把关」这套跨角色操作模型，并能把 8 个真实行业案例跑起来、改起来。
+> **读完你能**：看懂 AI 产品/系统的底层概念，掌握「设计 Loop → 用 Skills → 靠验证把关」这套操作模型，并能把 8 个真实行业案例跑起来、改起来。
 
-### 怎么用这本书（想学 / 想查 / 想做 / 想懂，各取所需）
-
-> 一本书其实混着四类内容（借用 Diátaxis 文档框架）。先看清你此刻的目的，直接去对应入口，别从头啃到尾：
-
-- <img src="../assets/vendor/lucide/built/book-open.svg" width="14" alt="" style="vertical-align:-2px" /> **想学**（第一次上手）：跟着**案例**一步步做——先跑下面的「10 分钟先跑通」，再看案例 01（这类叫 tutorial）。
-- <img src="../assets/vendor/lucide/built/wrench.svg" width="14" alt="" style="vertical-align:-2px" /> **想做某件具体事**：直接抄案例里的 **Prompt 实操** 和 `skills/` 技能卡（how-to）。
-- <img src="../assets/vendor/lucide/built/book-marked.svg" width="14" alt="" style="vertical-align:-2px" /> **想查一个词或规范**：翻 **[术语表](术语表.md)**（一句话一个词，遇生词随时查）、`rules/` 工程规范、`/api/openapi.json` 接口（reference）。
-- <img src="../assets/vendor/lucide/built/sparkles.svg" width="14" alt="" style="vertical-align:-2px" /> **想懂为什么**：读各章的**「备注」科普块**与章末小结（explanation）。
-
-### 统一操作模型（三个角色共享的脊柱）
+### 统一操作模型（全书的脊柱）
 
 这套操作模型就叫 **Loop**：设计 Loop、给它 **Skills**、用 **验证/evals** 产出「差多少」的误差信号、在**高影响处让人把关**。§1 讲底层概念、§2 把这套 Loop 讲透——它对下面三个角色是同一副骨架。
-
-### 三个角色镜头（对号入座）
-
-- <img src="../assets/vendor/lucide/built/wrench.svg" width="14" alt="" style="vertical-align:-2px" /> **研发镜头**：设计 **build / test / refactor** 的内层 Loop（分钟级）——让 Agent 自己写、自己跑测、自己纠错，你把关方向与质量。
-- <img src="../assets/vendor/lucide/built/package.svg" width="14" alt="" style="vertical-align:-2px" /> **产品镜头**：设计 **discovery / eval / decision** 的中外层 Loop——把「值不值得做、做得好不好」量化成 evals，把判断落成可验收的产品动作。（本书原「产品经理转型」内容即这一镜头。）
-- <img src="../assets/vendor/lucide/built/clipboard-list.svg" width="14" alt="" style="vertical-align:-2px" /> **项目镜头**：设计 **delivery / governance** 的 Loop——L0→L3 分级上线、风险登记、责任分派、门禁与急停，把交付管住。
-
-> 注：这是「**一个操作模型、三个镜头**」，不是「角色合并成一个」。业界两种声音都在——Andreessen / 吴恩达 / Atlassian 说角色在趋同（「人人都是 builder」）；a16z 则说 PM 是**补上 evals/技术判断以留在 PM**、专家深度不可全收编。诚实的结论：**操作模型在被标准化，角色仍是它上面各自的镜头**。
-
-### 角色 × 能力矩阵（先对号入座）
-
-| 能力层 | 一句话 | 研发 | 产品 | 项目 |
-|---|---|:--:|:--:|:--:|
-| L0 通用底座（问题定义/指标/用户/优先级/协作） | 三种角色的共同地基 | ● | ● | ● |
-| L1 AI 认知（大模型/Token/上下文/RAG/Agent 边界） | 看懂 AI 能做/不能做/会怎么错 | ● | ● | ○ |
-| L2 AI 产品化硬核（**评测 evals**/数据·提示词即规格/检索质量/成本-延迟权衡） | 把大模型做成可用产品的真功夫（**当前最缺**） | ● | ● | ○ |
-| L3 AI 治理（安全红线/人工复核/合规/高影响边界） | 让 AI 不出事、出事能兜底 | ○ | ● | ● |
-| L4 协作交付（Loop 开发模式/门禁/验收/可追溯） | 把判断落成能跑、能验收的东西 | ● | ○ | ● |
 
 ### 怎么真学会（不是看完就忘）
 
@@ -49,14 +22,6 @@
 - **流利度 ≠ 存储强度**：看完能复述，不代表学会了，那只是短期记忆；不训练很快蒸发。这就是为什么本书逼你**合上书回忆、隔几天再看、几种案例交错练**。
 - 本书的练习不是摆设，是三种**「有效的费劲」**（认知科学 Robert Bjork「desirable difficulties」；开源实践见 Matt Pocock 的 `/teach` 技能，MIT）：**巩固题=检索练习**（合书凭记忆写）、**章节前置链=间隔**、**入门线/底座支线=交错**。
 - **先写你的学习 MISSION**：别写「我想学好 AI」，写「学完后我能做 **Y**、改变 **Z**」（如「三个月内给我们产品的 AI 问答做一套 evals 上线」）。有了它，每章都能自问「这对我的 MISSION 有没有用」。
-
-### 为什么现在学 · AI 时代的真实信号
-
-- <img src="../assets/vendor/lucide/built/trending-up.svg" width="14" alt="" style="vertical-align:-2px" /> **岗位在爆发**：据脉脉高聘《2025 年度人才迁徙报告》（2025-12），**AI 产品经理岗位量同比增长 369.36%、在所有岗位中居首**（[新华网](http://www.news.cn/tech/20251215/db15c57301044b78b55b9d4c30a4e93b/c.html)）。
-- <img src="../assets/vendor/lucide/built/flask-conical.svg" width="14" alt="" style="vertical-align:-2px" /> **技能在换代**：OpenAI 首席产品官 Kevin Weil 称「**写 evals（评测）正成为产品经理的核心技能，可能是最重要的一件事**」（[Lenny’s Newsletter](https://www.lennysnewsletter.com/p/kevin-weil-open-ai)）；吴恩达亦指出「严谨的 evals + 错误分析，是团队做 AI 智能体进展的最大预测因素」（[The Batch, 2025-10](https://www.deeplearning.ai/the-batch/improve-agentic-performance-with-evals-and-error-analysis-part-1)）。
-- <img src="../assets/vendor/lucide/built/compass.svg" width="14" alt="" style="vertical-align:-2px" /> **角色在趋同又分化**：Marily Nika 把 AI PM 分为 AI 体验型 / 构建型 / 增强型（《The AI Product Playbook》）；更宏观地，工程/产品/项目正围绕「设计 Loop + evals」这套操作模型靠拢——但仍是各自的镜头（见上「三个角色镜头」的正反两说）。
-- <img src="../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **研究者也在「像 PM 一样思考」**：智能体研究者姚顺雨（ReAct、Tree of Thoughts 作者）2025 年底加入腾讯任**首席科学家**（注：科学家/研究负责人，非产品经理），提出「AI 从解题转向命题、评测比训练更重要」；微软 CPO Aparna Chennapragada 亦称「**提示词集正在成为新的 PRD**」。
-- <img src="../assets/vendor/lucide/built/gauge.svg" width="14" alt="" style="vertical-align:-2px" /> **信息要核实**：这类开源「神器」常见极高 Star 数（十几万甚至更多）——Star 是**带日期的弱人气信号，不等于质量或权威**，用之前先核实、别被数字带节奏。这正是本书「evals / 验证」精神的日常版。
 
 ### 怎么读这本书（标记体系）
 
@@ -77,17 +42,11 @@
 | [§2 会 Loop 的工程](02-会Loop的工程.md) | §1 | 进阶 | 20min | 想懂 AI 开发模式的所有角色 |
 | [§3 系统架构设计（SDD 方法论）](03-系统架构设计.md) | §2 | 高阶 | 25min | **想真建中大型系统的人**；含 SDD/C4/DDD |
 | [§4 工程规范与约束](04-工程规范与约束.md) | 无 | 进阶 | 15min | 研发镜头；想判断「代码好坏」的人 |
-| [§5 设计系统](05-设计系统.md) | 无 | 进阶 | 12min | 产品镜头；关注大屏/可视化的人 |
-| [§6 交付治理](06-交付治理.md) | §2 | 进阶 | 15min | 项目镜头；管上线/门禁/风险的人 |
-| [§7 Skill 工程化与治理](07-Skill工程化与治理.md) | §2·§6 | 进阶 | 18min | 团队镜头；管 Skill 版本/审核/分发的人 |
+| [§5 交付治理](05-交付治理.md) | §2 | 进阶 | 15min | 管上线/门禁/风险 |
+| [§6 Skill 工程化与治理](06-Skill工程化与治理.md) | §2·§5 | 进阶 | 18min | 管 Skill 版本/审核/分发 |
+| [附录A 设计系统](90-附录A-设计系统.md) | 无 | 选读 | 12min | 关注大屏/可视化再读 |
+| [附录B 工具生态速查](91-附录B-工具生态速查.md) | 无 | 选读 | 8min | 要落地具体工具时查 |
 | [第二部分 · 8 案例](案例/README.md) | 第一部分 | 入门→高阶 | 每例 ~15min | 所有人，**边读边跑、动手验证** |
-
-### 三条角色阅读路径（主脊必读，镜头按需）
-
-- <img src="../assets/vendor/lucide/built/check-circle.svg" width="14" alt="" style="vertical-align:-2px" /> **共同主脊（所有人必读）**：§1 → §2。这是三个镜头共享的操作模型，跳过会断链。
-- <img src="../assets/vendor/lucide/built/wrench.svg" width="14" alt="" style="vertical-align:-2px" /> **研发路径**：主脊 → §3 信息化架构方法论（SDD / C4 / DDD） → §4 工程规范 → 旗舰案例 51 系统建造走查 · 46 真实依赖 · 45 关系库 · 44 RAG · 47 三维。
-- <img src="../assets/vendor/lucide/built/package.svg" width="14" alt="" style="vertical-align:-2px" /> **产品路径**：主脊 → §5 设计 → 案例 01 早会 → 16 医院 → 31 广告漏斗 → 30 RFM → 41 经营闭环。
-- <img src="../assets/vendor/lucide/built/clipboard-list.svg" width="14" alt="" style="vertical-align:-2px" /> **项目路径**：主脊（尤其 §2 的 L0→L3 治理）→ §6 交付治理 → 案例 14 变更控制 → 28 规则/复核门禁。
 
 ### <img src="../assets/vendor/lucide/built/rocket.svg" width="14" alt="" style="vertical-align:-2px" /> 10 分钟先跑通（先见成品，再学原理）
 
@@ -105,7 +64,8 @@
 **第一部分 · 共享操作模型与专业底子**
 
 - [§1 AI 核心概念底层](01-AI核心概念底层.md) · [§2 会 Loop 的工程](02-会Loop的工程.md)（共享脊柱）
-- [§3 系统架构设计](03-系统架构设计.md) · [§4 工程规范与约束](04-工程规范与约束.md)（研发底子）· [§5 设计系统](05-设计系统.md)（产品底子）· [§6 交付治理](06-交付治理.md)（项目底子）· [§7 Skill 工程化与治理](07-Skill工程化与治理.md)（团队底子）
+- [§3 系统架构设计](03-系统架构设计.md) · [§4 工程规范与约束](04-工程规范与约束.md) · [§5 交付治理](05-交付治理.md) · [§6 Skill 工程化与治理](06-Skill工程化与治理.md)
+- 附录（选读）：[附录A 设计系统](90-附录A-设计系统.md) · [附录B 工具生态速查](91-附录B-工具生态速查.md)
 - [术语表](术语表.md)
 
 **第二部分 · 8 真实案例演示与验证**

@@ -196,7 +196,7 @@ function buildBuildPipeline() {
     ['④ 架构设计（plan）', '基于确认后的规格产出 `plan.md`：C4 上下文/容器/组件图、DDD 限界上下文划分、以及关键技术选型的 ADR（背景→决策→后果，含重估信号）。'],
     ['⑤ 任务分解（tasks）', '把 `plan.md` 拆成 `tasks.md`：原子、可并行、可独立验收的小任务，每个标注依赖、验收条件与所属子系统。'],
     ['⑥ 实现（implement）', '逐个 task 跑一个 maker/checker Loop（§2）：builder 实现 → checker 跑全部检查 → 全绿才进下一个任务；接口契约即代码（OpenAPI 由 schema 自动生成，§3.4）。'],
-    ['⑦ 门禁（analyze/gate）', '整体门禁：跨工件一致性检查 + evals + `verify` 三绿（§6）。任一红灯，回到对应步骤修复，不放行。这一步机器自动把关。'],
+    ['⑦ 门禁（analyze/gate）', '整体门禁：跨工件一致性检查 + evals + `verify` 三绿（§5）。任一红灯，回到对应步骤修复，不放行。这一步机器自动把关。'],
     ['⑧ 演进（evolve）', '上线后按「演进触发表」（§3.6）观察信号；一旦触发，回去改 `spec.md`（而非直接改代码），让规格始终是唯一真源。'],
   ];
 }
@@ -252,7 +252,7 @@ for (const id of ['fig_ai_foundations', 'fig_ideology_loops', 'fig_engineering_r
   writeFileSync(join(CLIB, 'svg', `${id}.svg`), figSvg(id));
 // v12 架构图套件（节点-连线引擎 diagram.mjs）：SDD 流水线 / C4 上下文·容器·组件 / DDD 限界上下文 / 部署 / 时序
 for (const [id, svg] of Object.entries(archFigures(theme('graphite-hud')))) writeFileSync(join(CLIB, 'svg', `${id}.svg`), svg);
-// 章节示意图套件（Phase A richness）：§2/§4/§5/§6/§99 补图
+// 章节示意图套件（Phase A richness）：§2/§4/附录A/§5/§99 补图
 for (const [id, svg] of Object.entries(chapterFigures(theme('graphite-hud')))) writeFileSync(join(CLIB, 'svg', `${id}.svg`), svg);
 // 案例 46 真实子系统依赖图（数据来自 build_case_data 扫 import）
 { const d46 = vm(46); if (d46.deps?.length) writeFileSync(join(CLIB, 'svg', 'fig_case46_deps.svg'), subsystemDeps(d46.deps, d46.cycles || 0, theme('cyan-matrix'))); }
@@ -266,7 +266,7 @@ for (const c of defs.cases) {
 // ============ 合成多文件教程（按章拆分，每文件可独立精修；重定位为「一个操作模型·三个角色镜头」）============
 const src = (f) => readFileSync(join(ROOT, 'docs', '_source', f), 'utf8').trim();
 const BOOK = 'AI时代研发产品项目一体化知识库';           // 教程目录名（替代旧单一 md）
-const TITLE = 'AI 时代 研发·产品·项目 一体化实操知识库';   // 总标题（PM 转型 = 其中的产品镜头）
+const TITLE = '会自检的 AI 工程 · 实操手册';   // v16 单一定位：设计会自检的 Loop 系统
 const BOOKDIR = join(ROOT, BOOK);
 mkdirSync(join(BOOKDIR, '案例'), { recursive: true });
 // —— 专业图标（Lucide，ISC）：从 vendored 内层路径重上色（语义/中性色，明暗主题都可见），构建到 assets/vendor/lucide/built/，行内 <img> 引用 ——
@@ -295,33 +295,13 @@ UP = '../';
 const readme = J([`# ${TITLE}`, '',
   `> **一个操作模型，三个角色镜头**——研发 · 产品 · 项目。真数据、可运行深色大屏原型、真截图、Node 自我校验护栏；数据真实/合成显式标注（[MANIFEST](${UP}dataset/MANIFEST.md)）、高影响行业保留人工复核。安装 / 目录 / 运行见 [项目 README](${UP}README.md)。`, '',
   '## 这本书讲什么', '',
-  `> **一句话**：AI 时代，你不再手动做每件事，而是**设计一个能自动干活、还能自我检查的系统**。它三个零件——**Loop**（让 AI 循环干活的流水线）、**Skills**（把你的判断沉淀成可复用的技能包）、**验证 / evals**（拿一组测试题给 AI 打分，关键处再加人把关）。这套「操作模型」对 研发 / 产品 / 项目 三种角色是同一套；本书用它把三个角色统一起来，再用 ${defs.cases.length} 个真实行业案例演示、验证。`,
+  `> **一句话**：AI 时代，你不再手动做每件事，而是**设计一个能自动干活、还能自我检查的系统**。它三个零件——**Loop**（让 AI 循环干活的流水线）、**Skills**（把你的判断沉淀成可复用的技能包）、**验证 / evals**（拿一组测试题给 AI 打分，关键处再加人把关）。**本书只做这一个承诺：教你设计会自检的 Loop 系统**——不教提示词小技巧、不教求职、不按角色切三份；研发/产品/项目背景都能读（科普文风），但主线只有一条。全书用 ${defs.cases.length} 个真实案例演示、验证。`,
   '>',
   '> **前置**：会用浏览器和命令行即可，无需先懂 AI 或会写代码。',
   '>',
-  `> **读完你能**：看懂 AI 产品/系统的底层概念，掌握「设计 Loop → 用 Skills → 靠验证把关」这套跨角色操作模型，并能把 ${defs.cases.length} 个真实行业案例跑起来、改起来。`, '',
-  '### 怎么用这本书（想学 / 想查 / 想做 / 想懂，各取所需）', '',
-  '> 一本书其实混着四类内容（借用 Diátaxis 文档框架）。先看清你此刻的目的，直接去对应入口，别从头啃到尾：', '',
-  `- ${ic('book-open')}**想学**（第一次上手）：跟着**案例**一步步做——先跑下面的「10 分钟先跑通」，再看案例 01（这类叫 tutorial）。`,
-  `- ${ic('wrench')}**想做某件具体事**：直接抄案例里的 **Prompt 实操** 和 \`skills/\` 技能卡（how-to）。`,
-  `- ${ic('book-marked')}**想查一个词或规范**：翻 **[术语表](术语表.md)**（一句话一个词，遇生词随时查）、\`rules/\` 工程规范、\`/api/openapi.json\` 接口（reference）。`,
-  `- ${ic('sparkles')}**想懂为什么**：读各章的**「备注」科普块**与章末小结（explanation）。`, '',
-  '### 统一操作模型（三个角色共享的脊柱）', '',
+  `> **读完你能**：看懂 AI 产品/系统的底层概念，掌握「设计 Loop → 用 Skills → 靠验证把关」这套操作模型，并能把 ${defs.cases.length} 个真实行业案例跑起来、改起来。`, '',
+  '### 统一操作模型（全书的脊柱）', '',
   '这套操作模型就叫 **Loop**：设计 Loop、给它 **Skills**、用 **验证/evals** 产出「差多少」的误差信号、在**高影响处让人把关**。§1 讲底层概念、§2 把这套 Loop 讲透——它对下面三个角色是同一副骨架。', '',
-  '### 三个角色镜头（对号入座）', '',
-  `- ${ic('wrench')}**研发镜头**：设计 **build / test / refactor** 的内层 Loop（分钟级）——让 Agent 自己写、自己跑测、自己纠错，你把关方向与质量。`,
-  `- ${ic('package')}**产品镜头**：设计 **discovery / eval / decision** 的中外层 Loop——把「值不值得做、做得好不好」量化成 evals，把判断落成可验收的产品动作。（本书原「产品经理转型」内容即这一镜头。）`,
-  `- ${ic('clipboard-list')}**项目镜头**：设计 **delivery / governance** 的 Loop——L0→L3 分级上线、风险登记、责任分派、门禁与急停，把交付管住。`,
-  '',
-  '> 注：这是「**一个操作模型、三个镜头**」，不是「角色合并成一个」。业界两种声音都在——Andreessen / 吴恩达 / Atlassian 说角色在趋同（「人人都是 builder」）；a16z 则说 PM 是**补上 evals/技术判断以留在 PM**、专家深度不可全收编。诚实的结论：**操作模型在被标准化，角色仍是它上面各自的镜头**。', '',
-  '### 角色 × 能力矩阵（先对号入座）', '',
-  '| 能力层 | 一句话 | 研发 | 产品 | 项目 |', '|---|---|:--:|:--:|:--:|',
-  '| L0 通用底座（问题定义/指标/用户/优先级/协作） | 三种角色的共同地基 | ● | ● | ● |',
-  '| L1 AI 认知（大模型/Token/上下文/RAG/Agent 边界） | 看懂 AI 能做/不能做/会怎么错 | ● | ● | ○ |',
-  '| L2 AI 产品化硬核（**评测 evals**/数据·提示词即规格/检索质量/成本-延迟权衡） | 把大模型做成可用产品的真功夫（**当前最缺**） | ● | ● | ○ |',
-  '| L3 AI 治理（安全红线/人工复核/合规/高影响边界） | 让 AI 不出事、出事能兜底 | ○ | ● | ● |',
-  '| L4 协作交付（Loop 开发模式/门禁/验收/可追溯） | 把判断落成能跑、能验收的东西 | ● | ○ | ● |',
-  '',
   '### 怎么真学会（不是看完就忘）', '',
   '> 本书用一套经认知科学验证的学习法组织内容——你只要跟着做，就在用它。',
   '',
@@ -329,13 +309,6 @@ const readme = J([`# ${TITLE}`, '',
   '- **流利度 ≠ 存储强度**：看完能复述，不代表学会了，那只是短期记忆；不训练很快蒸发。这就是为什么本书逼你**合上书回忆、隔几天再看、几种案例交错练**。',
   '- 本书的练习不是摆设，是三种**「有效的费劲」**（认知科学 Robert Bjork「desirable difficulties」；开源实践见 Matt Pocock 的 `/teach` 技能，MIT）：**巩固题=检索练习**（合书凭记忆写）、**章节前置链=间隔**、**入门线/底座支线=交错**。',
   '- **先写你的学习 MISSION**：别写「我想学好 AI」，写「学完后我能做 **Y**、改变 **Z**」（如「三个月内给我们产品的 AI 问答做一套 evals 上线」）。有了它，每章都能自问「这对我的 MISSION 有没有用」。', '',
-  '### 为什么现在学 · AI 时代的真实信号', '',
-  `- ${ic('trending-up')}**岗位在爆发**：据脉脉高聘《2025 年度人才迁徙报告》（2025-12），**AI 产品经理岗位量同比增长 369.36%、在所有岗位中居首**（[新华网](http://www.news.cn/tech/20251215/db15c57301044b78b55b9d4c30a4e93b/c.html)）。`,
-  `- ${ic('flask-conical')}**技能在换代**：OpenAI 首席产品官 Kevin Weil 称「**写 evals（评测）正成为产品经理的核心技能，可能是最重要的一件事**」（[Lenny’s Newsletter](https://www.lennysnewsletter.com/p/kevin-weil-open-ai)）；吴恩达亦指出「严谨的 evals + 错误分析，是团队做 AI 智能体进展的最大预测因素」（[The Batch, 2025-10](https://www.deeplearning.ai/the-batch/improve-agentic-performance-with-evals-and-error-analysis-part-1)）。`,
-  `- ${ic('compass')}**角色在趋同又分化**：Marily Nika 把 AI PM 分为 AI 体验型 / 构建型 / 增强型（《The AI Product Playbook》）；更宏观地，工程/产品/项目正围绕「设计 Loop + evals」这套操作模型靠拢——但仍是各自的镜头（见上「三个角色镜头」的正反两说）。`,
-  `- ${ic('lightbulb')}**研究者也在「像 PM 一样思考」**：智能体研究者姚顺雨（ReAct、Tree of Thoughts 作者）2025 年底加入腾讯任**首席科学家**（注：科学家/研究负责人，非产品经理），提出「AI 从解题转向命题、评测比训练更重要」；微软 CPO Aparna Chennapragada 亦称「**提示词集正在成为新的 PRD**」。`,
-  `- ${ic('gauge')}**信息要核实**：这类开源「神器」常见极高 Star 数（十几万甚至更多）——Star 是**带日期的弱人气信号，不等于质量或权威**，用之前先核实、别被数字带节奏。这正是本书「evals / 验证」精神的日常版。`,
-  '',
   '### 怎么读这本书（标记体系）', '',
   '正文用三档标记，**新手只读必读也能走通全书，专业读者可循 选读 / 深度 直取深度**：', '',
   `- ${ic('check-circle')}**必读主线**：无论新手老手都该读，跳过会断链。`,
@@ -350,15 +323,11 @@ const readme = J([`# ${TITLE}`, '',
   '| [§2 会 Loop 的工程](02-会Loop的工程.md) | §1 | 进阶 | 20min | 想懂 AI 开发模式的所有角色 |',
   '| [§3 系统架构设计（SDD 方法论）](03-系统架构设计.md) | §2 | 高阶 | 25min | **想真建中大型系统的人**；含 SDD/C4/DDD |',
   '| [§4 工程规范与约束](04-工程规范与约束.md) | 无 | 进阶 | 15min | 研发镜头；想判断「代码好坏」的人 |',
-  '| [§5 设计系统](05-设计系统.md) | 无 | 进阶 | 12min | 产品镜头；关注大屏/可视化的人 |',
-  '| [§6 交付治理](06-交付治理.md) | §2 | 进阶 | 15min | 项目镜头；管上线/门禁/风险的人 |',
-  '| [§7 Skill 工程化与治理](07-Skill工程化与治理.md) | §2·§6 | 进阶 | 18min | 团队镜头；管 Skill 版本/审核/分发的人 |',
+  '| [§5 交付治理](05-交付治理.md) | §2 | 进阶 | 15min | 管上线/门禁/风险 |',
+  '| [§6 Skill 工程化与治理](06-Skill工程化与治理.md) | §2·§5 | 进阶 | 18min | 管 Skill 版本/审核/分发 |',
+  '| [附录A 设计系统](90-附录A-设计系统.md) | 无 | 选读 | 12min | 关注大屏/可视化再读 |',
+  '| [附录B 工具生态速查](91-附录B-工具生态速查.md) | 无 | 选读 | 8min | 要落地具体工具时查 |',
   `| [第二部分 · ${defs.cases.length} 案例](案例/README.md) | 第一部分 | 入门→高阶 | 每例 ~15min | 所有人，**边读边跑、动手验证** |`, '',
-  '### 三条角色阅读路径（主脊必读，镜头按需）', '',
-  `- ${ic('check-circle')}**共同主脊（所有人必读）**：§1 → §2。这是三个镜头共享的操作模型，跳过会断链。`,
-  `- ${ic('wrench')}**研发路径**：主脊 → §3 信息化架构方法论（SDD / C4 / DDD） → §4 工程规范 → 旗舰案例 51 系统建造走查 · 46 真实依赖 · 45 关系库 · 44 RAG · 47 三维。`,
-  `- ${ic('package')}**产品路径**：主脊 → §5 设计 → 案例 01 早会 → 16 医院 → 31 广告漏斗 → 30 RFM → 41 经营闭环。`,
-  `- ${ic('clipboard-list')}**项目路径**：主脊（尤其 §2 的 L0→L3 治理）→ §6 交付治理 → 案例 14 变更控制 → 28 规则/复核门禁。`, '',
   `### ${ic('rocket')}10 分钟先跑通（先见成品，再学原理）`, '',
   '先花 10 分钟把成品跑起来，有了全局直觉再回来学原理：', '',
   '1. **环境**：Node ≥ 22（要用到实验性的 `node:sqlite`）。检查：`node -v`。',
@@ -369,7 +338,8 @@ const readme = J([`# ${TITLE}`, '',
   '## 目录', '',
   '**第一部分 · 共享操作模型与专业底子**', '',
   '- [§1 AI 核心概念底层](01-AI核心概念底层.md) · [§2 会 Loop 的工程](02-会Loop的工程.md)（共享脊柱）',
-  '- [§3 系统架构设计](03-系统架构设计.md) · [§4 工程规范与约束](04-工程规范与约束.md)（研发底子）· [§5 设计系统](05-设计系统.md)（产品底子）· [§6 交付治理](06-交付治理.md)（项目底子）· [§7 Skill 工程化与治理](07-Skill工程化与治理.md)（团队底子）',
+  '- [§3 系统架构设计](03-系统架构设计.md) · [§4 工程规范与约束](04-工程规范与约束.md) · [§5 交付治理](05-交付治理.md) · [§6 Skill 工程化与治理](06-Skill工程化与治理.md)',
+  '- 附录（选读）：[附录A 设计系统](90-附录A-设计系统.md) · [附录B 工具生态速查](91-附录B-工具生态速查.md)',
   '- [术语表](术语表.md)', '',
   `**第二部分 · ${defs.cases.length} 真实案例演示与验证**`, '',
   '- [案例总览 + 原理→案例反查](案例/README.md)',
@@ -384,7 +354,7 @@ writeBook('README.md', readme);
 
 // —— 五章正文（源在 docs/_source，图标/内容/去AI化在源里改；此处只按 UP 重定相对路径） ——
 UP = '../';
-const CHAPTERS = [['00-ai-foundations.md', '01-AI核心概念底层.md'], ['01-ideology.md', '02-会Loop的工程.md'], ['02-architecture.md', '03-系统架构设计.md'], ['03-engineering.md', '04-工程规范与约束.md'], ['04-designs.md', '05-设计系统.md'], ['05-delivery.md', '06-交付治理.md'], ['06-skill-governance.md', '07-Skill工程化与治理.md']];
+const CHAPTERS = [['00-ai-foundations.md', '01-AI核心概念底层.md'], ['01-ideology.md', '02-会Loop的工程.md'], ['02-architecture.md', '03-系统架构设计.md'], ['03-engineering.md', '04-工程规范与约束.md'], ['05-delivery.md', '05-交付治理.md'], ['06-skill-governance.md', '06-Skill工程化与治理.md'], ['04-designs.md', '90-附录A-设计系统.md'], ['07-tool-ecosystem.md', '91-附录B-工具生态速查.md']];
 // 口径派生化（v16 ②修硬伤）：源文件写 {{CASE_COUNT}}/{{SKILL_COUNT}} 占位符，build 时替换为唯一事实源实值——数字口径不再可能漂移
 const SKILL_N = (readFileSync(join(ROOT, 'skills', 'pm_skills.md'), 'utf8').match(/^## /gm) || []).length;
 const derive = (t) => t.replaceAll('{{CASE_COUNT}}', String(defs.cases.length)).replaceAll('{{SKILL_COUNT}}', String(SKILL_N));
@@ -406,7 +376,7 @@ writeBook('术语表.md', J(['# 术语表（先备着，看案例时随时回查
   '| YAGNI | You Aren’t Gonna Need It：没真需要就先别造（§4，反过度工程） |',
   '| RFM | 用最近消费 R、频次 F、金额 M 给客户分层的经典方法（案例 30） |',
   '| Cross-Encoder / 重排 | RAG 里粗召回后再精排相关片段的第二阶段（§1.3、案例 44） |',
-  '| Design Token | 把颜色/字号/圆角等最小设计决策抽成变量单一来源（§5.5） |',
+  '| Design Token | 把颜色/字号/圆角等最小设计决策抽成变量单一来源（附录A） |',
   '| systemLayer / systemStage | 案例在数字化系统的「层（底座/能力/应用）/ 环节（采集→…→增长）」 |',
   '| metricSpec | 案例指标的真实列计算规格（保证 KPI 真算、可溯源、非编造） |',
   '| eval / 评测 | 用离线测试集 + 打分器量化「AI 回答好不好」，是 AI 产品的验收标尺（§2 传感器） |',
@@ -414,7 +384,7 @@ writeBook('术语表.md', J(['# 术语表（先备着，看案例时随时回查
   '| context rot / 上下文腐烂 | 上下文太长、关键信息在中间时模型「读不到」，长上下文性能衰减（§1.3） |',
   '| harness / 脚手架 | 把模型包成能自动「跑→验→改」的外壳（如本书的 `verify`），是 Loop 的骨架（§2） |',
   '| vibe coding | 只凭感觉让 AI 生成、不看评测与验收；本书反其道而行，强调 evals 与护栏（§2、§4） |',
-  '| AI slop | 一眼看出是 AI 生成的廉价信号（套模板配色、卡片套卡片、套话）；§5 反其道 |',
+  '| AI slop | 一眼看出是 AI 生成的廉价信号（套模板配色、卡片套卡片、套话）；附录A 反其道 |',
   '| SDD 规格驱动开发 | 宪法→规格→澄清→架构→任务→实现→门禁→演进 八步，规格=唯一真源；几个 prompt 建不成大系统的解法（§3.0，GitHub Spec Kit） |',
   '| C4 模型 | 架构四层缩放图：Context→Container→Component→Code（§3.3，Simon Brown） |',
   '| DDD / 限界上下文 | 领域驱动设计：按业务域把系统切成有独立通用语言的限界上下文（§3.3，Eric Evans） |',
@@ -422,9 +392,9 @@ writeBook('术语表.md', J(['# 术语表（先备着，看案例时随时回查
   '| 质量属性场景 | 把非功能需求写成「刺激→环境→响应→度量」的可量化场景（§3.2，SEI 风格） |',
   '| 规格漂移 | 代码越改越偏离规格意图；SDD 用阶段门禁 + CI 三绿来压住它（§3.0） |',
   '| 适应度函数 | 把架构边界写成能自动跑的断言，扫依赖检测越界/循环依赖（§3.3，案例 46） |',
-  '| Skill Registry | Skill 的私有仓库：版本/审核/安全/分发；draft→review→online→offline（§7，Nacos 阿里巴巴） |',
-  '| skill-scanner | 发布前扫 Skill 的提示注入/数据泄露/恶意代码，「不过则不发布」（§7，本书 skill_lint dogfood） |',
-  '| delta spec | 只记录「这次变更了什么」的增量规格，不重写整篇；brownfield 友好（§7/§3，OpenSpec Fission-AI） |',
+  '| Skill Registry | Skill 的私有仓库：版本/审核/安全/分发；draft→review→online→offline（§6，Nacos 阿里巴巴） |',
+  '| skill-scanner | 发布前扫 Skill 的提示注入/数据泄露/恶意代码，「不过则不发布」（§6，本书 skill_lint dogfood） |',
+  '| delta spec | 只记录「这次变更了什么」的增量规格，不重写整篇；brownfield 友好（§6/§3，OpenSpec Fission-AI） |',
   '| Ralph 循环 | 把 Agent 包在 while 循环里、规格/验证都在 agent 之外，靠持续迭代跑完任务（§2.6，Geoffrey Huntley；本书 self-evolve 即一例） |',
   '', `> **进一步阅读**：各章规范与概念的权威出处汇总在 [rules/references.md](${UP}rules/references.md)；Loop 工程的可复用实操文件见 [skills/loop_engineering/](${UP}skills/loop_engineering)。`]));
 
@@ -471,9 +441,9 @@ for (const c of defs.cases) {
     `**本次任务**`, '', `- 明确岗位、指标链、异常状态与决策动作。`, `- 使用 \`${c.skills[0]}\` 与 \`${c.skills[1]}\` 完成分析，产出 \`${c.deliverable}\`，用 \`${c.skills[2]}\` 验收。`, '',
     `### 任务目标与数据`, '', kv([['行业', c.industry], ['真实业务场景', c.scenario], ['岗位', c.role], ['数据或资料', '`' + c.dataset + '`（' + d.rowCount + ' 行，异常 ' + d.exceptionCount + '）'], ['公开参考', c.publicRef], ['行业字段', c.fields.join('、')], ['指标链（真实值）', d.kpis.map((k) => k.name + ' ' + k.value + (k.unit || '')).join('，')], ['决策动作', c.decisionAction], ['风险边界', c.riskBoundary + (c.highImpact ? '（高影响行业·人工复核）' : '')], ['UI 原型', '`' + c.uiId + '`（' + c.saasType + '）'], ['采用设计', c.design], ['SaaS 组件', c.saasComponents.join('、')]]), '',
     ...(c.screen === 'buildwalk'
-      ? ['### Prompt 实操 · SDD 系统建造八步（多 prompt 编排）', '', '> 正面回答「几个 prompt 建不成系统」：下面是一条**流水线**——每步一个 prompt、产一份工件、喂给下一步；澄清与门禁是人/机把关。照着走，才建得动一个中大型系统。', '', '> **怎么用（用 CodeBuddy 跑这套「建系统」走查）**：整条流水线正好对上 CodeBuddy 的模式——宪法/规格/澄清用 **Ask + Plan**（问清楚、让它列任务清单）；架构与任务分解用 **Plan**；逐任务实现用 **Craft**（多文件生成/重构/测试）；门禁三绿用 **Craft** 跑测试 + review；演进则回改规格再进 **Plan**。把每步代码框整段贴进对应模式、拿到工件再喂下一步；海外读者换 Claude Code / Cursor 同理（见 §2.6.1）。', '',
+      ? ['### Prompt 实操 · SDD 系统建造八步（多 prompt 编排）', '', '> 正面回答「几个 prompt 建不成系统」：下面是一条**流水线**——每步一个 prompt、产一份工件、喂给下一步；澄清与门禁是人/机把关。照着走，才建得动一个中大型系统。', '', '> **怎么用（用 CodeBuddy 跑这套「建系统」走查）**：整条流水线正好对上 CodeBuddy 的模式——宪法/规格/澄清用 **Ask + Plan**（问清楚、让它列任务清单）；架构与任务分解用 **Plan**；逐任务实现用 **Craft**（多文件生成/重构/测试）；门禁三绿用 **Craft** 跑测试 + review；演进则回改规格再进 **Plan**。把每步代码框整段贴进对应模式、拿到工件再喂下一步；海外读者换 Claude Code / Cursor 同理（见附录B）。', '',
         ...buildBuildPipeline().flatMap(([s, p]) => [`**${s}**`, '', '```text', p, '```', ''])]
-      : ['### Prompt 实操', '', '> **怎么用**：推荐用 **CodeBuddy 的 Plan 模式**（腾讯，国产·当下可跑）——把下面灰底代码框**整段原样粘进去，它会先列出任务清单、再自主执行**，你不需要看懂里面的技术细节；没装过就先装一个。海外读者用 Claude Code / Cursor / Trae 等任一 Agent 工具同理（见 §2.6.1）。', '', `**Prompt 1：${c.scenario} - 问题定义**`, '', '```text', buildPrompt(c, d, 'def'), '```', '', `**Prompt 2：${c.scenario} - 方案验收**`, '', '```text', buildPrompt(c, d, 'accept'), '```', '']),
+      : ['### Prompt 实操', '', '> **怎么用**：推荐用 **CodeBuddy 的 Plan 模式**（腾讯，国产·当下可跑）——把下面灰底代码框**整段原样粘进去，它会先列出任务清单、再自主执行**，你不需要看懂里面的技术细节；没装过就先装一个。海外读者用 Claude Code / Cursor / Trae 等任一 Agent 工具同理（见附录B）。', '', `**Prompt 1：${c.scenario} - 问题定义**`, '', '```text', buildPrompt(c, d, 'def'), '```', '', `**Prompt 2：${c.scenario} - 方案验收**`, '', '```text', buildPrompt(c, d, 'accept'), '```', '']),
     `### 图形/原型/表单`, '', `![${c.scenario} · 信息图](${UP}outputs/product_case_library/svg/case_${pad(c.num)}_${c.slug}.svg)`, '',
     ...(c.num === 46 && d.deps?.length ? [`![案例46 · 后端子系统真实依赖（C4 · dogfood）](${UP}outputs/product_case_library/svg/fig_case46_deps.svg)`, ''] : []),
     `![${c.scenario} · 可运行大屏原型截图](${UP}assets/screenshots/premium_case_${pad(c.num)}_${c.slug}_desktop.png)`, '',

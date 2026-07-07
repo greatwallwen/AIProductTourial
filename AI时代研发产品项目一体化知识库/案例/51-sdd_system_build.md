@@ -24,7 +24,7 @@
 
 - <img src="../../assets/vendor/lucide/built/wrench.svg" width="14" alt="" style="vertical-align:-2px" /> **研发镜头**：关注每个子系统怎么实现：逐任务跑 maker/checker Loop（§2）、接口契约即代码（OpenAPI 自动生成）、适应度函数守边界。
 - <img src="../../assets/vendor/lucide/built/package.svg" width="14" alt="" style="vertical-align:-2px" /> **产品镜头**：关注规格与验收：spec 写清「要什么为什么」、evals/门禁定义「做得好不好」、澄清消除意图债务。
-- <img src="../../assets/vendor/lucide/built/clipboard-list.svg" width="14" alt="" style="vertical-align:-2px" /> **项目镜头**：关注排程与治理：任务分解成可并行原子、L0-L3 上线分级、门禁与风险登记决定「能不能发」（§6）。
+- <img src="../../assets/vendor/lucide/built/clipboard-list.svg" width="14" alt="" style="vertical-align:-2px" /> **项目镜头**：关注排程与治理：任务分解成可并行原子、L0-L3 上线分级、门禁与风险登记决定「能不能发」（§5）。
 
 **现状问题**
 
@@ -56,7 +56,7 @@
 
 > 正面回答「几个 prompt 建不成系统」：下面是一条**流水线**——每步一个 prompt、产一份工件、喂给下一步；澄清与门禁是人/机把关。照着走，才建得动一个中大型系统。
 
-> **怎么用（用 CodeBuddy 跑这套「建系统」走查）**：整条流水线正好对上 CodeBuddy 的模式——宪法/规格/澄清用 **Ask + Plan**（问清楚、让它列任务清单）；架构与任务分解用 **Plan**；逐任务实现用 **Craft**（多文件生成/重构/测试）；门禁三绿用 **Craft** 跑测试 + review；演进则回改规格再进 **Plan**。把每步代码框整段贴进对应模式、拿到工件再喂下一步；海外读者换 Claude Code / Cursor 同理（见 §2.6.1）。
+> **怎么用（用 CodeBuddy 跑这套「建系统」走查）**：整条流水线正好对上 CodeBuddy 的模式——宪法/规格/澄清用 **Ask + Plan**（问清楚、让它列任务清单）；架构与任务分解用 **Plan**；逐任务实现用 **Craft**（多文件生成/重构/测试）；门禁三绿用 **Craft** 跑测试 + review；演进则回改规格再进 **Plan**。把每步代码框整段贴进对应模式、拿到工件再喂下一步；海外读者换 Claude Code / Cursor 同理（见附录B）。
 
 **① 宪法（constitution）**
 
@@ -97,7 +97,7 @@
 **⑦ 门禁（analyze/gate）**
 
 ```text
-整体门禁：跨工件一致性检查 + evals + `verify` 三绿（§6）。任一红灯，回到对应步骤修复，不放行。这一步机器自动把关。
+整体门禁：跨工件一致性检查 + evals + `verify` 三绿（§5）。任一红灯，回到对应步骤修复，不放行。这一步机器自动把关。
 ```
 
 **⑧ 演进（evolve）**

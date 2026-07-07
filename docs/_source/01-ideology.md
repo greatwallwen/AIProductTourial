@@ -79,43 +79,10 @@
 - **纪律（Superpowers，Jesse Vincent/obra）= 强制方法论**：把 brainstorm→写计划→TDD→code-review→子代理开发定成硬规则而非建议，你越想抄近路它越拦着你（本书正是 dogfood 这一套写出来的——**dogfood** 就是「自己先吃自己的狗粮」，用你教别人的方法来做你自己这件事）。
 - **自动化（Ralph，Geoffrey Huntley）= 自主迭代循环**：名字取自《辛普森一家》里「不聪明但死磕到底」的 Ralph Wiggum——把 Agent 包在一个 while 循环里，读同一份规格、跑同一套验证、每轮开一个干净会话，无人值守跑完任务清单。信条是「**宁可稳定地失败，也别不稳定地成功**」；**规格、计划、验证都在 Agent 之外**——这正是本书 §2.8 的 self-evolve harness（红队→修→三绿→再红队）：一个能跑的 Ralph 实例。
 
-（另有 GSD 管上下文腐化、Trellis 做仓库级记忆。这些工具星数动辄十几万，但仍只是弱人气信号、不等于权威——理由见 §7.7，用前先核实。）你不用全学，但要理解那条主线：**护城河不是会不会写 prompt，而是懂不懂把「判断」沉淀成可复用、可自动化的工程标准。**
+（另有 GSD 管上下文腐化、Trellis 做仓库级记忆。这些工具星数动辄十几万，但仍只是弱人气信号、不等于权威——理由见附录B，用前先核实。）你不用全学，但要理解那条主线：**护城河不是会不会写 prompt，而是懂不懂把「判断」沉淀成可复用、可自动化的工程标准。**
 ```
 
-> 🔵 **上手实操**：这条组合拳的真实命令长这样（模式工具无关，下面是一种真实落地）——
-
-```bash
-# ① 治理：召唤虚拟团队验证需求、拆任务（gstack）
-/office-hours     # 暴力追问需求合理性
-/plan             # 工程经理视角拆任务
-
-# ② 规格：把约定锁进文件，成为唯一真源（OpenSpec）
-/opsx-propose  →  /opsx-apply  →  /opsx-archive   # 提案→实施→归档(delta spec)
-
-# ③ 纪律：装上强制 TDD（Superpowers）——先写失败测试，再写实现
-git clone https://github.com/obra/superpowers ~/.superpowers
-
-# ④ 自动化：无人值守跑任务清单，每步过 verify 才提交（Ralph）
-ralph run --tasks tasks.md --spec specs/x.md --verify "npm test" \
-  --on-success "git add -A && git commit -m '[ralph] {task}'"
-```
-
-![AI 驱动开发组合拳：治理→规格→纪律→自动化](outputs/product_case_library/svg/fig_combo_pipeline.svg)
-
-> **工具信息最后核实：2026-07。** 上面的具体工具名、命令、星数都会变（AI 工具生态迭代极快）——但那条**流水线（治理→规格→纪律→自动化）是模式，不随工具过时**。记模式，工具随时可换；详见 §7.7 的工具生态速查与「过时即风险」。
-
-#### 2.6.1 国产落地：一个当下就能装、能跑的组合拳实例——CodeBuddy
-> 🔵 **选读·进阶** ｜ ★★☆ ｜ 关键词：**CodeBuddy** · **三形态** · **Plan / Craft / Ask**（模式是脊柱，工具是实例）
-
-```备注
-诚实说一句：上面那条组合拳的命令，很多都跑在 Claude Code 上——而 **Claude / Claude Code 目前不支持中国大陆**（见 [Anthropic 支持地区](https://www.anthropic.com/supported-countries)，2025-09 起进一步限制中国控股实体）。本书讲「真可运行」，就不能让中文读者对着一套装不上的工具干瞪眼。
-
-对中文读者，当下能装、能跑的一个落点是 **CodeBuddy（腾讯云代码助手）**：国内首家支持**三形态**（IDE / CLI / 插件），三个模式恰好对上本书的三件事——**Ask**（对话问答）＝提示词工程；**Craft**（智能体：多文件生成 / 重构 / 测试）＝研发镜头的 build/test 内层 Loop；**Plan**（规划：先列任务清单、再自主执行读改查）＝ §3 的 SDD 任务分解 + 组合拳里「自动化」那一环。它还是**国内首个支持 MCP** 的助手（对上 §1 的 MCP、§2 的连接），并能 **design-to-code**（把 UI 设计一键转成前端代码，对上 §5）。据腾讯与媒体口径，其内部使用率与编码提效数字都不低——但那是厂商/媒体说法、非本书实测，别当权威。
-
-要强调的是：**模式才是脊柱，CodeBuddy 只是一个「你现在就能上手」的实例**——海外读者用 Claude Code / Cursor / gstack / Ralph 同样成立。下图把 CodeBuddy 的模式对到本书概念。
-```
-
-![CodeBuddy 模式↔本书概念](outputs/product_case_library/svg/fig_codebuddy_map.svg)
+> 上手实操命令（gstack/OpenSpec/Superpowers/Ralph）与国产落点 CodeBuddy 的模式映射，见[附录B · 工具生态速查](../91-附录B-工具生态速查.md)——工具会过时，模式不随工具过时。
 
 ### 2.7 产品视角总纲
 > 🟢 **必读** ｜ ★★☆ ｜ 关键词：**上下文优势** · **判断力** · **演示验证**（产品经理为何价值不降反升）

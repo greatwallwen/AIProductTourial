@@ -54,8 +54,8 @@ for (const f of bookFiles) {
     if (!/[0-9]|http|§|来源|案例|dogfood|Spec Kit|作者自报|休谟|Pearl|OpenAPI|OpenSpec|自动生成|密钥|GitHub|契约即代码/.test(ctx)) add('LOW', 'claim', f, `绝对化措辞疑无证据：「${m[0].slice(0, 20)}…」`, '补数据/引用，或改弱化措辞');
   }
 }
-// ⑥ 悬空引用：§7+（本书仅 §1-§6）
-{ const bad = [...new Set((tut.match(/§(?:8|9|[1-9]\d+)(?!\.)/g) || []))]; if (bad.length) add('HIGH', 'dangling-ref', `${BOOK}/*`, `引用不存在的章节（本书 §1-§7）：${bad.join('、')}`, '改指正确章节'); }
+// ⑥ 悬空引用：§7+（本书正文 §1-§6 + 附录A/B）
+{ const bad = [...new Set((tut.match(/§(?:7|8|9|[1-9]\d+)(?!\.)/g) || []))]; if (bad.length) add('HIGH', 'dangling-ref', `${BOOK}/*`, `引用不存在的章节（本书 §1-§6+附录）：${bad.join('、')}`, '改指正确章节'); }
 // ⑦ 巨文件预警：源文件逼近 800 行红线
 for (const f of ['code/tools/build_docs.mjs', 'code/tools/verify_course_package.mjs', 'code/web/src/App.tsx', 'code/web/src/screens.tsx', 'code/server/services/cases.ts']) { const n = rd(f).split('\n').length; if (n > 720) add('MED', 'big-file', f, `${n} 行，逼近 800 红线`, '拆分模块'); }
 
