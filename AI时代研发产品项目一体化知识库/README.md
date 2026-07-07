@@ -4,11 +4,20 @@
 
 ## 这本书讲什么
 
-> **一句话**：AI 时代，你不再手动做每件事，而是**设计 Loop（自动运转的系统）、用 Skills、以验证/evals + 人在关口把关**。这套「操作模型」对 研发 / 产品 / 项目 三种角色是同一套；本书用它把三个角色统一起来，再用 17 个真实行业案例（含 3 个 dogfood：书自己测试/评测/门禁自己）演示、验证。
+> **一句话**：AI 时代，你不再手动做每件事，而是**设计一个能自动干活、还能自我检查的系统**。它三个零件——**Loop**（让 AI 循环干活的流水线）、**Skills**（把你的判断沉淀成可复用的技能包）、**验证 / evals**（拿一组测试题给 AI 打分，关键处再加人把关）。这套「操作模型」对 研发 / 产品 / 项目 三种角色是同一套；本书用它把三个角色统一起来，再用 17 个真实行业案例演示、验证。
 >
 > **前置**：会用浏览器和命令行即可，无需先懂 AI 或会写代码。
 >
 > **读完你能**：看懂 AI 产品/系统的底层概念，掌握「设计 Loop → 用 Skills → 靠验证把关」这套跨角色操作模型，并能把 17 个真实行业案例跑起来、改起来。
+
+### 怎么用这本书（想学 / 想查 / 想做 / 想懂，各取所需）
+
+> 一本书其实混着四类内容（借用 Diátaxis 文档框架）。先看清你此刻的目的，直接去对应入口，别从头啃到尾：
+
+- <img src="../assets/vendor/lucide/built/book-open.svg" width="14" alt="" style="vertical-align:-2px" /> **想学**（第一次上手）：跟着**案例**一步步做——先跑下面的「10 分钟先跑通」，再看案例 01（这类叫 tutorial）。
+- <img src="../assets/vendor/lucide/built/wrench.svg" width="14" alt="" style="vertical-align:-2px" /> **想做某件具体事**：直接抄案例里的 **Prompt 实操** 和 `skills/` 技能卡（how-to）。
+- <img src="../assets/vendor/lucide/built/book-marked.svg" width="14" alt="" style="vertical-align:-2px" /> **想查一个词或规范**：翻 **[术语表](术语表.md)**（一句话一个词，遇生词随时查）、`rules/` 工程规范、`/api/openapi.json` 接口（reference）。
+- <img src="../assets/vendor/lucide/built/sparkles.svg" width="14" alt="" style="vertical-align:-2px" /> **想懂为什么**：读各章的**「备注」科普块**与章末小结（explanation）。
 
 ### 统一操作模型（三个角色共享的脊柱）
 

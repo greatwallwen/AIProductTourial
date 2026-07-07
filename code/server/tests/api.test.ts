@@ -37,3 +37,29 @@ test('后端 API 全绿', async () => {
   assert.ok(oa.json().paths['/api/tokenize'] && oa.json().openapi.startsWith('3.'), 'OpenAPI 覆盖 tokenize');
   await app.close();
 });
+
+/** 覆盖补强（P2）：每端点补契约级断言——arch 真实依赖图/ADR/契约、index 索引、points3d 三维真实点、case data 闭环字段。 */
+test('后端 API 覆盖补强（端点契约·dogfood）', async () => {
+  const app = await buildApp();
+  const ar = await app.inject({ url: '/api/arch' });
+  assert.equal(ar.statusCode, 200);
+  assert.ok(ar.json().subsystems.length >= 3, 'arch 子系统 >= 3');
+  assert.ok(Array.isArray(ar.json().edges), 'arch 依赖边为数组');
+  assert.ok(typeof ar.json().cycles === 'number' && ar.json().cycles >= 0, 'arch 循环依赖计数 >= 0');
+  assert.ok(ar.json().adr.id && ar.json().adr.why, 'arch 带 ADR 决策 + 重估信号');
+  assert.ok(ar.json().contract.envelope && ar.json().contract.openapi, 'arch 带接口契约(错误信封 + OpenAPI)');
+  const ix = await app.inject({ url: '/api/index' });
+  assert.equal(ix.statusCode, 200);
+  const idx = ix.json();
+  assert.ok((Array.isArray(idx) ? idx.length : Object.keys(idx).length) >= 1, 'index 案例索引非空');
+  const p3 = await app.inject({ url: '/api/points3d' });
+  assert.equal(p3.statusCode, 200);
+  assert.equal(p3.json().points.length, p3.json().count, 'points3d count 与点数一致');
+  assert.ok(p3.json().count > 0 && p3.json().categories.length >= 1, 'points3d 真实点/品类非空');
+  assert.ok(p3.json().points.every((pt: any) => typeof pt.x === 'number' && typeof pt.z === 'number'), 'points3d 每点数值坐标');
+  const cd = await app.inject({ url: '/api/case/1/data' });
+  assert.ok(Array.isArray(cd.json().actions) && cd.json().responsible !== undefined, 'case data 含行动项 + 责任归属(闭环)');
+  const oa2 = await app.inject({ url: '/api/openapi.json' });
+  assert.ok(oa2.json().paths['/api/cases'] && oa2.json().paths['/api/search'], 'OpenAPI 覆盖核心端点(cases/search)');
+  await app.close();
+});

@@ -50,7 +50,8 @@ for (const f of bookFiles) {
   const s = rd(f);
   for (const m of s.matchAll(/(唯一|所有人都|永不|必然|从不|绝不|最重要的)[^，。！\n]{0,24}/g)) {
     const ctx = s.slice(Math.max(0, m.index - 60), m.index + 60);
-    if (!/[0-9]|http|§|来源|案例|dogfood|Spec Kit|作者自报/.test(ctx)) add('LOW', 'claim', f, `绝对化措辞疑无证据：「${m[0].slice(0, 20)}…」`, '补数据/引用，或改弱化措辞');
+    // 白名单：附近有数据/链接/章节锚/来源，或有具名署名·证据·具名生成物（休谟/Pearl 引文、OpenAPI 自动生成、OpenSpec、GitHub 密钥惨案等真实佐证）
+    if (!/[0-9]|http|§|来源|案例|dogfood|Spec Kit|作者自报|休谟|Pearl|OpenAPI|OpenSpec|自动生成|密钥|GitHub|契约即代码/.test(ctx)) add('LOW', 'claim', f, `绝对化措辞疑无证据：「${m[0].slice(0, 20)}…」`, '补数据/引用，或改弱化措辞');
   }
 }
 // ⑥ 悬空引用：§7+（本书仅 §1-§6）
@@ -72,6 +73,21 @@ for (const f of ['code/tools/build_docs.mjs', 'code/tools/verify_course_package.
   if (gameCases === 0) add('MED', 'fun', 'case_definitions.json', '0 个游戏化/趣味交互案例（仅一个通用小游戏页）', '加交互游戏案例：架构决策模拟器 / 规格找漏洞闯关 / 限界上下文拖拽');
   const corpusUsed = defs.cases.filter((c) => /deanpeters|pm-skills|语料/.test((c.dataset || '') + (c.publicRef || ''))).length;
   if (corpusUsed < 2) add('LOW', 'unused', 'skills/external/pm-skills-deanpeters', `仅 ${corpusUsed} 个案例引用 194 篇 PM 语料，可再挖`, '从语料挑主题做真实素材新案例');
+}
+
+// ⑨ 反思清单维度（v14）：onboarding 新手摩擦 / diataxis 模式分离 / freshness 工具过时 / coverage 后端断言
+{
+  const beAsserts = (rd('code/server/tests/api.test.ts').match(/\bassert/g) || []).length;
+  if (beAsserts < defs.cases.length * 2) add('MED', 'coverage', 'code/server/tests/api.test.ts', `后端断言 ${beAsserts} < 2×案例 ${defs.cases.length}`, '每 /api/* 端点 ≥2 契约断言');
+  for (const f of bookFiles.filter((p) => /\/0[0-9]-/.test(p) && !p.includes('案例'))) {
+    const s = rd(f), nm = f.split('/').pop();
+    if (!/前置/.test(s)) add('MED', 'onboarding', f, `${nm} 无「前置」声明`, '章首加前置');
+    if (!/读完你能|本章学习目标/.test(s)) add('MED', 'onboarding', f, `${nm} 无「读完你能」学习目标`, '章首加学习目标');
+  }
+  if (!existsSync(join(ROOT, 'outputs', 'onboarding_audit.md'))) add('HIGH', 'onboarding', 'outputs/onboarding_audit.md', '未做新手摩擦审计（零基础读者走查）', '跑审计→记录→修复→标已修复');
+  else if (/\[待修\]|未修复 HIGH/.test(rd('outputs/onboarding_audit.md'))) add('HIGH', 'onboarding', 'outputs/onboarding_audit.md', '新手摩擦审计仍有未修复 HIGH', '修完再标');
+  if (!/怎么用这本书|想学.{0,6}想查|四类内容|Diátaxis/.test(tut)) add('MED', 'diataxis', `${BOOK}/README.md`, '无 Diátaxis 四类(学/查/做/懂)导航——模式混用', '加「怎么用这本书」四类导航 + 模式标签');
+  if (/星数|Nacos 3\.2|ralph run|nacos-cli|garrytan|obra\/superpowers/.test(tut) && !/最后核实|核实日期|截至 202/.test(tut)) add('MED', 'freshness', `${BOOK}/*`, '工具/版本/星数内容无「最后核实」日期——易过时', '工具节加「最后核实：YYYY-MM」约定');
 }
 
 // —— 排序 + 输出 ——
