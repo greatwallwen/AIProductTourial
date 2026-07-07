@@ -97,6 +97,26 @@ for (const f of ['code/tools/build_docs.mjs', 'code/tools/verify_course_package.
   else if (!/Claude Code|Cursor|gstack|Ralph/.test(tut)) add('MED', 'codebuddy', `${BOOK}/*`, 'CodeBuddy 落地未留国际工具对照（防变广告）', '保留国际工具对照');
 }
 
+// ⑪ v-精简：冗余重复 + 套路化开头（补 slop 词表没覆盖的「重复」类 AI 味；扫源 docs/_source + build_docs README 字面量，不扫构建产物，否则每章会被误判为其源的重复）
+{
+  const srcDir = 'docs/_source';
+  const units = [];
+  try { for (const f of readdirSync(join(ROOT, srcDir)).filter((f) => f.endsWith('.md') && !f.startsWith('_'))) units.push([srcDir + '/' + f, rd(srcDir + '/' + f)]); } catch { /* skip */ }
+  const bd = rd('code/tools/build_docs.mjs');
+  const lits = (bd.match(/'[^']{40,}'/g) || []).filter((s) => /[一-鿿]/.test(s)).join('\n');
+  units.push(['build_docs.mjs(README 模板)', lits]);
+  // (a) 近重复：30 字归一化 shingle 出现在 ≥2 源单元 = 疑似跨文件重复（先剥图片/链接/代码/URL，只比散文，否则资源路径会误报）
+  const stripMd = (s) => s.replace(/```[\s\S]*?```/g, '').replace(/!?\[[^\]]*\]\([^)]*\)/g, '').replace(/`[^`]*`/g, '').replace(/https?:\/\/\S+/g, '');
+  const norm = (s) => stripMd(s).replace(/[\s\p{P}\p{S}A-Za-z0-9]/gu, '');
+  const shingle = new Map();
+  for (const [name, text] of units) { const n = norm(text); for (let i = 0; i + 24 <= n.length; i += 6) { const sh = n.slice(i, i + 24); if (!shingle.has(sh)) shingle.set(sh, new Set()); shingle.get(sh).add(name); } }
+  const seen = new Set(); let dupN = 0;
+  for (const [sh, set] of shingle) { if (set.size >= 2 && dupN < 10) { const key = sh.slice(0, 14); if (!seen.has(key)) { seen.add(key); dupN++; add('LOW', 'redundancy', [...set].join(' ↔ '), `疑似跨文件重复：「${sh.slice(0, 22)}…」`, '留一处、其余改回指'); } } }
+  // (b) 套路化开头：同一钩子短语 > 2 次
+  const allSrc = units.map((u) => u[1]).join('\n');
+  for (const h of ['你有没有想过', '你有没有发现', '你有没有经历过', '你有没有接手过', '想象一下', '不妨想想']) { const c = (allSrc.match(new RegExp(h, 'g')) || []).length; if (c > 2) add('LOW', 'redundancy', srcDir, `套路化开头「${h}」出现 ${c} 次（>2）`, '留 1-2 处、其余改直陈/换说法'); }
+}
+
 // —— 排序 + 输出 ——
 const rank = { HIGH: 0, MED: 1, LOW: 2 };
 F.sort((a, b) => rank[a.sev] - rank[b.sev] || a.cat.localeCompare(b.cat));
