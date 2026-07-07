@@ -137,10 +137,35 @@ function skillDistribution(t) {
   }, t);
 }
 
+// §2.6：AI 驱动开发组合拳（治理→规格→纪律→自动化）+ 本书 dogfood 对应
+function comboPipeline(t) {
+  const st = [
+    ['① 治理', 'GStack · 虚拟团队', t.accent2, '本书：三镜头 + §6 治理'],
+    ['② 规格', 'OpenSpec · SDD', t.accent, '本书：§3 规格驱动'],
+    ['③ 纪律', 'Superpowers · TDD', t.warn, '本书：§4 工程规范'],
+    ['④ 自动化', 'Ralph · while 循环', t.ok, '本书：self-evolve(Ralph 实例)'],
+  ];
+  const w = 232, gap = 26, x0 = 30, y1 = 96, y2 = 250;
+  const nodes = [], edges = [];
+  st.forEach(([label, sub, col, book], i) => {
+    const x = x0 + i * (w + gap);
+    nodes.push({ id: 't' + i, x, y: y1, w, h: 74, color: col, label, sub });
+    nodes.push({ id: 'b' + i, x, y: y2, w, h: 62, color: t.muted, label: book.split('：')[1], sub: 'dogfood' });
+    edges.push({ from: 't' + i, to: 'b' + i, label: '本书对应', dashed: true, color: t.muted });
+    if (i) edges.push({ from: 't' + (i - 1), to: 't' + i });
+  });
+  return diagram({
+    W: x0 * 2 + 4 * w + 3 * gap, H: 380, title: '§2.6 · AI 驱动开发组合拳：治理 → 规格 → 纪律 → 自动化',
+    caption: '让 AI 像守纪律的工程团队而非情绪化实习生。上排真实工具生态，下排本书 dogfood 对应物；Ralph=Geoffrey Huntley。',
+    nodes, edges,
+    legend: [{ label: '治理', color: t.accent2 }, { label: '规格', color: t.accent }, { label: '纪律', color: t.warn }, { label: '自动化', color: t.ok }],
+  }, t);
+}
+
 export function chapterFigures(t) {
   return {
     fig_loop_cybernetic: loopCybernetic(t), fig_yagni_ladder: yagniLadder(t), fig_ai_slop: aiSlop(t),
     fig_l0l3_ladder: l0l3Ladder(t), fig_gate_board: gateBoard(t), fig_journey: journey(t),
-    fig_skill_lifecycle: skillLifecycle(t), fig_skill_distribution: skillDistribution(t),
+    fig_skill_lifecycle: skillLifecycle(t), fig_skill_distribution: skillDistribution(t), fig_combo_pipeline: comboPipeline(t),
   };
 }

@@ -50,6 +50,10 @@ ok(); if (!has('code/tools/skill_lint.mjs')) bad('缺 skill_lint 可运行扫描
 for (const f of ['fig_skill_lifecycle', 'fig_skill_distribution']) { ok(); if (!has(`outputs/product_case_library/svg/${f}.svg`) || !tut.includes(`${f}.svg`)) bad(`缺/未嵌入 §7 图 ${f}`); }
 for (const m of ['Skill Registry', 'skill-scanner', 'draft → review → online', '不过则不发布', 'skill_lint', 'git 平替', 'Nacos']) { ok(); if (!tut.includes(m)) bad(`§7 缺治理内容「${m}」`); }
 ok(); if (!/阿里/.test(tut) || !/36\.8%/.test(tut)) bad('§7 未标 Nacos=阿里巴巴 / 36.8% 为阿里云说法（诚信）');
+// v13 Phase 2：AI 驱动开发组合拳（§2.6 重构，接真实工具链）
+for (const m of ['组合拳', 'Geoffrey Huntley', 'OpenSpec', 'GStack', 'Superpowers', 'delta spec', '治理 → 规格 → 纪律 → 自动化']) { ok(); if (!tut.includes(m)) bad(`§2.6 组合拳缺「${m}」`); }
+ok(); if (!has('outputs/product_case_library/svg/fig_combo_pipeline.svg') || !tut.includes('fig_combo_pipeline.svg')) bad('缺/未嵌入组合拳流水线图');
+ok(); if (/snarktank.{0,10}发明|Ralph.{0,6}snarktank 发明/.test(tut)) bad('Ralph 误归 snarktank（应归 Geoffrey Huntley）');
 for (const c of defs.cases) { ok(); if (!has(`${BOOK}/案例/${pad(c.num)}-${c.slug}.md`)) bad(`缺案例文件 ${pad(c.num)}-${c.slug}.md`); }
 for (const f of bookFiles) { ok(); if (rd(f).split('\n').length > 800) bad(`${f} > 800 行`); }
 { const rm = rd(`${BOOK}/README.md`); for (const l of [...rm.matchAll(/\]\(([^)#][^)]*\.md)\)/g)].map((m) => m[1]).filter((l) => !l.startsWith('../'))) { ok(); if (!has(`${BOOK}/${l}`)) bad(`README 目录链接断链：${l}`); } }
