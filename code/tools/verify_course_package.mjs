@@ -48,6 +48,11 @@ for (const f of ['README.md', '01-AI核心概念底层.md', '02-会Loop的工程
 // v16 拆棘轮：内容存在性 token 已移入 content_snapshot.json（脚本末尾出 diff 报告，不阻断）；
 // 此处只留 基础设施存在 + 条件式诚信守卫（内容出现时才校验其诚信，不强制内容存在）
 ok(); if (!has('code/tools/skill_lint.mjs')) bad('缺 skill_lint 可运行扫描器');
+// v16 ④ evals 回归门：案例 49 的裁判分不得低于基线（「校验存在」→「校验好坏」）
+if (defs.cases.some((c) => c.num === 49)) {
+  ok(); if (!has('code/tools/eval_harness.mjs') || !has('code/data/eval_baseline.json')) bad('缺 eval_harness/基线（evals 回归门）');
+  else { const base = jj('code/data/eval_baseline.json').score; const hr = has('code/data/case_49.json') ? (jj('code/data/case_49.json').kpis.find((k) => k.name === '命中率')?.value || 0) : 0; ok(); if (hr < base) bad(`案例49 裁判分 ${hr}% 低于基线 ${base}%（评测回归）`); }
+}
 ok(); if (/36\.8%/.test(tut) && !/阿里/.test(tut)) bad('36.8% 出现但未标为阿里云说法（诚信）');
 ok(); if (/snarktank.{0,10}发明|Ralph.{0,6}snarktank 发明/.test(tut)) bad('Ralph 误归 snarktank（应归 Geoffrey Huntley）');
 ok(); if (/CodeBuddy[\s\S]{0,60}(使用率|提效|40%|85%)/.test(tut) && !/说法|口径|媒体|厂商/.test(tut)) bad('CodeBuddy 效能数字未标厂商/媒体说法（诚信）');
