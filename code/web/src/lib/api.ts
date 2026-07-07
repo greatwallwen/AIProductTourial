@@ -11,7 +11,6 @@ export const fetchCaseData = (num: string) => getJson<any>(`/api/case/${num}/dat
 
 export const fetchSearch = (q: string) => getJson<any>(`/api/search?q=${encodeURIComponent(q)}`);
 export const fetchDbQuery = () => getJson<any>('/api/db/query');
-export const fetchPoints3d = () => getJson<any>('/api/points3d');
 export const fetchHealth = () => getJson<any>('/api/health');
 export const fetchArch = () => getJson<any>('/api/arch');
 
@@ -21,12 +20,8 @@ export const fetchCasesList = () => getJson<any[]>('/api/cases');
 
 export const fetchRfm = () => getJson<any>('/api/rfm');
 
-export const fetchHospital = () => getJson<any>('/api/hospital');
 
-export const fetchAdFunnel = () => getJson<any>('/api/adfunnel');
 
-export const fetchRiskReview = () => getJson<any>('/api/riskreview');
 
-export const fetchDispatch = () => getJson<any>('/api/dispatch');
 
 export const fetchRetail = () => getJson<any>('/api/retail');

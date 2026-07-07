@@ -46,41 +46,7 @@ const cn=(c)=>CN_COUNTRY[c]||c;
 
 // 注：原 sku.csv / ex-17-RFM.csv / aicourse_hr_employees / aicourse_ecommerce_orders / aicourse_financial_transactions 已移除——均为无案例引用的孤儿合成集。
 
-// ---- reference_data_analysis/28-credit_default_sample.csv：真实基座 UCI Default of Credit Card Clients（CC BY 4.0，台湾信用卡客户）----
-// 全部由真实字段派生：账单金额(BILL_AMT1)、额度档(按真实 LIMIT_BAL 分档)、最近逾期月数与风险等级(按真实逐月还款状态 PAY_* 与违约标记 Y)、命中规则数。无合成叠加。
-{ const s=readReal('finance_uci_default_credit.csv');
-  const [iId,iLim,iB1,iY]=['ID','LIMIT_BAL','BILL_AMT1','default payment next month'].map(s.col);
-  const payIdx=['PAY_0','PAY_2','PAY_3','PAY_4','PAY_5','PAY_6'].map(s.col);
-  const rows=s.rows.map(row=>{ const lim=Number(row[iLim])||0, bill=Math.abs(Number(row[iB1])||0), def=row[iY]==='1';
-    const pays=payIdx.map(i=>Number(row[i])||0); const delinq=pays.filter(v=>v>=1).length; const maxPay=Math.max(0,...pays);
-    const tier=lim<50000?'低额度':lim<150000?'中额度':'高额度';
-    const level=(def||maxPay>=2)?'高':((delinq>=1||bill>lim)?'中':'低');
-    const sig=def?'确认违约':maxPay>=2?'连续逾期':delinq>=1?'首次逾期':bill>lim?'超额度用信':'正常';
-    const rules=(def?1:0)+(maxPay>=2?1:0)+(delinq>=1?1:0)+(bill>lim?1:0)+(bill>0.8*lim?1:0);
-    const review=(level==='高'||level==='中')?'待复核':'免复核';
-    return ['TX'+row[iId], bill, tier, delinq, sig, level, review, rules]; });
-  results.push({...writeCsv('reference_data_analysis/28-credit_default_sample.csv',['交易号','账单金额','额度档','最近逾期月数','风险信号','风险等级','复核','命中规则数'],rows),label:'真实基座 UCI Default of Credit Card Clients（CC BY 4.0，30000 名台湾信用卡客户真实违约）'}); }
-
-// ---- product_cases/hospital_ed_timely.csv：真实基座 CMS Timely & Effective Care - Hospital（公共领域/美国政府作品，急诊及时性）----
-// 全部真实：医院/州/城市/急诊量级(EDV)/中位急诊时长分(OP_18b)/未就诊离开率(OP_22)/头CT及时率(OP_23)；运营预警由真实等待/流失阈值派生。无合成叠加。
-{ const s=readReal('hospital_cms_ed_timely.csv');
-  const [iF,iS,iC,iV,i18b,i22,i23]=['Facility','State','City','EDV','OP_18b','OP_22','OP_23'].map(s.col);
-  const EDV_CN={'very high':'极高','high':'高','medium':'中','low':'低','very low':'极低'};
-  const rows=s.rows.map(row=>{ const wait=Number(row[i18b])||0; const leave=row[i22]===''?'':Number(row[i22]);
-    const vol=EDV_CN[(row[iV]||'').trim()]||'未标注';
-    const warn = wait>=210?'等待过长' : ((leave!==''&&leave>=4)?'流失偏高' : (wait>=180?'候诊承压':''));
-    return [row[iF], row[iS], row[iC], vol, wait, leave, (row[i23]===''?'':row[i23]), warn]; });
-  results.push({...writeCsv('product_cases/hospital_ed_timely.csv',['医院','州','城市','急诊量级','中位急诊时长分','未就诊离开率','头CT及时率','运营预警'],rows),label:'真实基座 CMS Timely & Effective Care - Hospital（公共领域，美国急诊及时性）'}); }
-
-// ---- product_cases/flights_ontime.csv：真实基座 US DOT On-Time Performance 2024-06（公共领域，美国政府作品）----
-// 全部真实：航班/起飞城市/航司/计划vs实际时长/延误·取消·备降/延误原因。无合成叠加。
-{ const s=readReal('flights_usdot_ontime.csv');
-  const [iCity,iCar,iCRS,iAct,iArr,iCan,iDiv,iCause]=['起飞城市','航司','计划分','实际分','到达延误分','取消','备降','主延误原因'].map(s.col);
-  const rows=s.rows.map((row,i)=>{ const can=row[iCan]==='1', div=row[iDiv]==='1', arr=Number(row[iArr])||0;
-    const anom = can?'取消' : div?'备降' : arr>15?'延误' : '';
-    const plan=(Number(row[iCRS])||0)/60, act=(Number(row[iAct])||0)/60;
-    return ['FL'+String(100000+i), row[iCity], row[iCar], plan.toFixed(1), act.toFixed(1), anom, anom==='延误'?(row[iCause]||'其他'):'' ]; });
-  results.push({...writeCsv('product_cases/flights_ontime.csv',['航班号','城市','航司','计划时效h','实际时效h','异常类型','责任方'],rows),label:'真实基座 US DOT On-Time Performance 2024-06（公共领域，611k 航班抽样，起飞城市延误/取消/原因全真实）'}); }
+// 注（v16 ③减法）：案例 14/16/28/31 已裁撤，其数据生成块（flights/hospital/28-credit/18-ad）与真实基座快照随之移除。
 { const r=rng(302); const rows=[];
   // 分层优先生成：R/F/M 与分层强相关，并埋入「高价值流失」群（历史高 M、近期高 R）——见 dataset/design/case_30.md
   const segs=[
@@ -96,14 +62,6 @@ const cn=(c)=>CN_COUNTRY[c]||c;
     const card=M>100000?'白金':M>60000?'金卡':M>35000?'银卡':'普卡'; const miles=Math.round(F*rf(r,2000,4500));
     rows.push(['A'+ri(r,1e5,9e5),card,R,F,M,seg.name,miles]); }
   results.push({...writeCsv('reference_data_analysis/2-air_data.csv',['会员号','卡等级','最近乘机天数','年飞行次数','年消费','分层','里程余额'],rows),label:'教学合成（航空会员 RFM，分层与 R/F/M 强相关、埋高价值流失群）'}); }
-{ const r=rng(318); const rows=[]; const camps=['品牌曝光','夏促','新品','回流','会员日'];
-  // 数据故事：搜索/会员日 CVR 高（优质）；信息流A 点击高但 CVR 低（落地页问题）——复盘要把预算从量大挪到效率高
-  for(const ch of ['信息流A','信息流B','搜索','社交','联盟','视频']){ for(const cp of camps){
-    const imp=ri(r,20000,300000); const clk=Math.round(imp*rf(r,0.008,0.06));
-    const cvr=(ch==='搜索'||cp==='会员日')?rf(r,0.08,0.18):(ch==='信息流A')?rf(r,0.01,0.035):rf(r,0.02,0.09);
-    const cvt=Math.round(clk*cvr); const cost=Math.round(rf(r,clk*0.8,clk*3.2));
-    rows.push([cp,ch,imp,clk,cvt,cost,cvt?Math.round(cost/cvt):0,Number((clk/imp).toFixed(4)),Number((cvt/Math.max(1,clk)).toFixed(4))]); }}
-  results.push({...writeCsv('reference_data_analysis/18-ad_performance.csv',['活动','渠道','曝光','点击','转化','花费','CPA','CTR','CVR'],rows),label:'教学合成（广告投放漏斗，渠道×活动 30 行，埋落地页/优质渠道差异）'}); }
 
 // 注：原 pm_network_cases/nyc_311 已移除——无案例引用（孤儿），且原实现走 live fetch 破坏构建期可复现。
 // 计分案例一律用仓内固定快照（dataset/real/*）或确定性合成，禁止构建期联网。
@@ -114,10 +72,7 @@ const cn=(c)=>CN_COUNTRY[c]||c;
 // ---- MANIFEST ----
 // 真实基座快照来源/许可（dataset/real/*，采样自公开数据集、构建期零联网）
 const REAL_SOURCES=[
-  ['retail_online_retail_ii.csv','UCI Online Retail II','CC BY 4.0','https://archive.ics.uci.edu/dataset/502/online+retail+ii','案例 01/41/45/47 零售基座；14 跨境目的地/单量基座'],
-  ['finance_uci_default_credit.csv','UCI Default of Credit Card Clients','CC BY 4.0','https://archive.ics.uci.edu/dataset/350/default+of+credit+card+clients','案例 28 金融复核基座（真实违约）'],
-  ['hospital_cms_ed_timely.csv','CMS Timely and Effective Care - Hospital','公共领域（美国政府作品）','https://data.cms.gov/provider-data/dataset/yv7e-xc69','案例 16 医院急诊及时性基座'],
-  ['flights_usdot_ontime.csv','US DOT On-Time Performance 2024-06','公共领域（美国政府作品）','https://www.transtats.bts.gov/','案例 14 航班准点运营基座（起飞城市延误/取消/原因）'],
+  ['retail_online_retail_ii.csv','UCI Online Retail II','CC BY 4.0','https://archive.ics.uci.edu/dataset/502/online+retail+ii','案例 01/41/45 零售基座'],
 ];
 const man=['# 数据集清单（'+JSON.parse(readFileSync(join(ROOT,'code', 'tools','case_definitions.json'),'utf8')).projectName+'）','',
  '为课堂可复现且诚信：多数计分案例已迁移到**真实公开数据基座**（见下「真实基座快照」，来源/许可/sha256 齐全）；确因源缺失的少数列（如零售毛利率、物流配送时效）为**确定性教学合成叠加**并在「性质」列与案例正文显式标注；其余无真实源的案例为**确定性教学合成**（固定种子）。**绝不把合成说成真实。** 生成：`node code/tools/fetch-datasets.mjs`（读 `dataset/real/*` 快照 → 归一化为中文表头，零联网）。','','| 文件 | 行/项 | 性质 | sha256 |','|---|---|---|---|'];

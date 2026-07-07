@@ -1,28 +1,4 @@
 {
-  "counts": {
-    "HIGH": 3
-  },
-  "findings": [
-    {
-      "sev": "HIGH",
-      "cat": "stale-count",
-      "file": "AI时代研发产品项目一体化知识库/README.md",
-      "msg": "声明「7 Skill」与真实值 65 不符",
-      "fix": "改为 65（建议用 defs.cases.length 动态化）"
-    },
-    {
-      "sev": "HIGH",
-      "cat": "stale-count",
-      "file": "AI时代研发产品项目一体化知识库/README.md",
-      "msg": "声明「7 Skill」与真实值 65 不符",
-      "fix": "改为 65（建议用 defs.cases.length 动态化）"
-    },
-    {
-      "sev": "HIGH",
-      "cat": "stale-count",
-      "file": "README-cn.md",
-      "msg": "声明「7 skill」与真实值 65 不符",
-      "fix": "改为 65（建议用 defs.cases.length 动态化）"
-    }
-  ]
+  "counts": {},
+  "findings": []
 }

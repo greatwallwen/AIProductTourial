@@ -1,8 +1,7 @@
-import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Icon } from './Icon';
-import { fetchSearch, fetchDbQuery, fetchPoints3d, fetchHealth, fetchArch, fetchRfm, fetchHospital, fetchAdFunnel, fetchRiskReview, fetchDispatch, fetchRetail } from './lib/api';
+import { fetchSearch, fetchDbQuery, fetchHealth, fetchArch, fetchRfm, fetchRetail } from './lib/api';
 // three.js 独立 chunk，仅在渲染 3D 案例时动态加载（首屏不含 three）
-const Chart3D = lazy(() => import('./chart3d'));
 
 // 架构/向量库/PG/3D 案例的「真实后端」案例屏：全部 live 调后端接口。
 
@@ -98,43 +97,6 @@ function ArchScreen() {
   );
 }
 
-// —— three.js 3D 散点：真三维在独立 chunk（chart3d.tsx，懒加载）；无 WebGL 退化为等距投影伪 3D ——
-// 无 WebGL（如无头环境）时退化为等距投影伪 3D 散点（同一份真实数据点）
-function PseudoScatter({ points }: { points: Array<{ x: number; y: number; z: number; c: number }> }) {
-  const W = 760, H = 420, cx = W / 2, cy = H / 2 + 60;
-  const nrm = (v: number, a: number[]) => { const mn = Math.min(...a), mx = Math.max(...a); return (v - mn) / ((mx - mn) || 1); };
-  const xs = points.map((p) => p.x), ys = points.map((p) => p.y), zs = points.map((p) => p.z);
-  const col = ['var(--ok)', 'var(--warn)', 'var(--accent2)', '#a855f7', 'var(--bad)'];
-  const proj = points.map((p) => {
-    const x = (nrm(p.x, xs) - 0.5) * 2, y = (nrm(p.y, ys) - 0.5) * 2, z = (nrm(p.z, zs) - 0.5) * 2;
-    return { sx: cx + (x - z) * 150, sy: cy - y * 150 + (x + z) * 55, c: p.c };
-  });
-  return (
-    <svg className="chart" viewBox={`0 0 ${W} ${H}`} style={{ maxHeight: 440 }}>
-      <line x1={cx} y1={cy} x2={cx + 170} y2={cy + 62} stroke="var(--border)" />
-      <line x1={cx} y1={cy} x2={cx - 170} y2={cy + 62} stroke="var(--border)" />
-      <line x1={cx} y1={cy} x2={cx} y2={cy - 170} stroke="var(--border)" />
-      {proj.map((p, i) => <circle key={i} cx={p.sx} cy={p.sy} r="4.5" fill={col[p.c % col.length]} opacity="0.8" />)}
-      <text x={cx + 120} y={cy + 66} className="axis">单价</text><text x={cx - 130} y={cy + 66} className="axis">金额</text><text x={cx + 6} y={cy - 160} className="axis">数量</text>
-    </svg>
-  );
-}
-function ThreeScreen() {
-  const [d, setD] = useState<any>(null);
-  useEffect(() => { fetchPoints3d().then(setD); }, []);
-  // WebGL 探测：可用则 R3F 真三维，否则等距投影伪 3D（无头环境稳定出图）
-  const hasWebGL = useMemo(() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl') || c.getContext('experimental-webgl')); } catch { return false; } }, []);
-  return (
-    <section className="card">
-      <div className="card-h"><h2>三维经营散点 · three.js</h2><span className="muted">{d?.count ?? '…'} 点 · 单价×数量×金额，色=品类 · /api/points3d{!hasWebGL && ' · 等距投影(无 WebGL)'}</span></div>
-      <div style={{ height: 440, borderRadius: 10, overflow: 'hidden', background: 'var(--bg2)' }}>
-        {d && hasWebGL && <Suspense fallback={<div className="muted" style={{ padding: 20 }}>加载 three.js…</div>}><Chart3D points={d.points} /></Suspense>}
-        {d && !hasWebGL && <PseudoScatter points={d.points} />}
-      </div>
-    </section>
-  );
-}
-
 // —— 航空会员 RFM 专属 demo（案例30）：真实分层 + 高价值流失预警 + R×F 散点 ——
 const SEG_COLORS: Record<string, string> = { '重要价值': 'var(--ok)', '高价值流失': 'var(--bad)', '重要保持': 'var(--accent)', '重要发展': 'var(--accent2)', '一般维持': 'var(--muted)', '流失预警': 'var(--warn)' };
 function RfmScreen() {
@@ -164,159 +126,6 @@ function RfmScreen() {
             {d.scatter.map((p: any, i: number) => <circle key={i} cx={42 + (p.x / maxR) * 508} cy={268 - (p.y / maxF) * 246} r="3.2" fill={SEG_COLORS[p.seg] || 'var(--muted)'} opacity="0.72" />)}
           </svg>
           <div className="ov-top" style={{ marginTop: 8 }}>{Object.entries(SEG_COLORS).map(([n, c]) => <span key={n} className="chip" style={{ borderColor: c }}><span style={{ color: c }}>●</span> {n}</span>)}</div>
-        </section>
-      </div>
-    </>
-  );
-}
-
-// —— 医院急诊及时性专属 demo（案例16，高影响）：按真实急诊量级(EDV)算中位等待/未就诊离开率 + 州分布（真实 CMS 数据）——
-function HospitalScreen() {
-  const [d, setD] = useState<any>(null);
-  useEffect(() => { fetchHospital().then(setD); }, []);
-  if (!d) return <section className="card"><div className="muted">加载急诊及时性…</div></section>;
-  const maxWait = Math.max(...d.depts.map((x: any) => x.avgWait), 1);
-  const maxState = Math.max(...d.slots.map((x: any) => x.count), 1);
-  const wc = (r: number) => r >= 210 ? 'var(--bad)' : r >= 180 ? 'var(--warn)' : 'var(--ok)';
-  return (
-    <>
-      <div className="banner" style={{ color: 'var(--warn)', borderColor: 'var(--warn)' }}>{d.total} 家医院 · 全国中位急诊等待 <b>{d.avgWaitAll} 分</b> · 高负荷预警 {d.warnRate}%——真实数据显示：急诊量级越高，等待越长、未就诊离开越多。增容/分流要按量级差异施策。高影响：系统只建议、不自动改号。</div>
-      <div className="cols">
-        <section className="card">
-          <div className="card-h"><h2>急诊量级 × 等待/流失（真实 CMS）</h2><span className="muted">条长=中位等待 · 量级越高越承压</span></div>
-          <div className="tbl-wrap">
-            <table className="tbl">
-              <thead><tr><th>急诊量级</th><th>医院数</th><th>中位等待(分)</th><th>未就诊离开率</th></tr></thead>
-              <tbody>
-                {d.depts.map((x: any) => (
-                  <tr key={x.name}>
-                    <td style={{ color: 'var(--ink)' }}>{x.name}</td><td className="mono">{x.count}</td>
-                    <td><div style={{ display: 'flex', alignItems: 'center', gap: 6 }}><div style={{ width: `${(x.avgWait / maxWait) * 70}px`, height: 8, background: wc(x.avgWait), borderRadius: 4 }} /><span className="mono">{x.avgWait}</span></div></td>
-                    <td className="mono">{x.leaveRate}%</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
-        <section className="card">
-          <div className="card-h"><h2>医院分布（州 Top8）</h2><span className="muted">真实地理分布</span></div>
-          <svg className="chart" viewBox="0 0 480 240">
-            <line x1="40" y1="210" x2="470" y2="210" stroke="var(--border)" />
-            {d.slots.map((s: any, i: number) => { const bw = 420 / d.slots.length, h = (s.count / maxState) * 170; return (<g key={i}><rect x={44 + i * bw} y={210 - h} width={bw - 14} height={h} rx="4" fill="var(--accent2)" /><text x={44 + i * bw + (bw - 14) / 2} y={226} className="axis">{s.name}</text><text x={44 + i * bw + (bw - 14) / 2} y={210 - h - 4} className="val">{s.count}</text></g>); })}
-          </svg>
-        </section>
-      </div>
-    </>
-  );
-}
-
-// —— 广告投放漏斗专属 demo（案例31）：按渠道 CTR/CVR/CPA 对比 + 漏斗断点，把预算从量大挪到效率高 ——
-function AdFunnelScreen() {
-  const [d, setD] = useState<any>(null);
-  useEffect(() => { fetchAdFunnel().then(setD); }, []);
-  if (!d) return <section className="card"><div className="muted">加载投放漏斗…</div></section>;
-  const maxCvr = Math.max(...d.channels.map((x: any) => x.cvr), 1);
-  return (
-    <>
-      <div className="banner" style={{ color: 'var(--ok)', borderColor: 'var(--ok)' }}>复盘结论：<b>{d.best}</b> 转化效率最高（优质渠道，该加预算）；<b>{d.worst}</b> 点击不低但转化垫底（落地页/人群问题，该查断点）。别只看曝光/点击，按 CVR/CPA 重分配预算。</div>
-      <section className="card">
-        <div className="card-h"><h2>渠道漏斗对比（按 CVR 排序）</h2><span className="muted">曝光→点击→转化 · CTR/CVR/CPA 真算</span></div>
-        <div className="tbl-wrap">
-          <table className="tbl">
-            <thead><tr><th>渠道</th><th>曝光</th><th>点击</th><th>转化</th><th>CTR</th><th>CVR（条）</th><th>CPA</th></tr></thead>
-            <tbody>
-              {d.channels.map((x: any) => {
-                const tag = x.name === d.best ? 'ok' : x.name === d.worst ? 'bad' : 'neutral';
-                return (
-                  <tr key={x.name}>
-                    <td style={{ color: 'var(--ink)' }}>{x.name}{x.name === d.best ? <Icon name="star" size={12} style={{ marginLeft: 4 }} /> : x.name === d.worst ? <Icon name="alert" size={12} style={{ marginLeft: 4 }} /> : null}</td>
-                    <td className="mono">{x.imp.toLocaleString('zh-CN')}</td><td className="mono">{x.clk.toLocaleString('zh-CN')}</td><td className="mono">{x.cvt}</td>
-                    <td className="mono">{x.ctr}%</td>
-                    <td><div style={{ display: 'flex', alignItems: 'center', gap: 6 }}><div style={{ width: `${(x.cvr / maxCvr) * 90}px`, height: 8, background: `var(--${tag === 'neutral' ? 'accent' : tag})`, borderRadius: 4 }} /><span className="mono">{x.cvr}%</span></div></td>
-                    <td><span className={'badge ' + tag}>{x.cpa}</span></td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-      </section>
-    </>
-  );
-}
-
-// —— 金融风控复核专属 demo（案例28，高影响）：风险分布 + 高优先复核队列（高风险×大金额），保留人工复核 ——
-function RiskScreen() {
-  const [d, setD] = useState<any>(null);
-  useEffect(() => { fetchRiskReview().then(setD); }, []);
-  if (!d) return <section className="card"><div className="muted">加载风控队列…</div></section>;
-  return (
-    <>
-      <div className="banner" style={{ color: 'var(--bad)', borderColor: 'var(--bad)' }}>{d.total.toLocaleString('zh-CN')} 名客户 · 高风险 <b>{d.highRate}%</b> · 待复核 {d.reviewRate}%。真实反直觉：<b>低额度客户违约率反而最高</b>。人工复核有限，按「风险等级 × 账单金额」优先——高影响行业：<b>保留人工复核，模型不得自动拒付</b>。</div>
-      <div className="cols">
-        <section className="card">
-          <div className="card-h"><h2>额度档 × 高风险率（真实反直觉）</h2><span className="muted">条长=高风险率 · 低额度反而最高</span></div>
-          {d.tiers.map((x: any) => (
-            <div key={x.name} style={{ margin: '10px 0' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12 }}><span style={{ color: 'var(--ink)' }}>● {x.name}</span><span className="mono">{x.count} 人 · 高风险 {x.highRate}%</span></div>
-              <div style={{ height: 8, background: 'var(--panelSoft)', borderRadius: 4, marginTop: 3 }}><div style={{ width: `${x.highRate}%`, height: '100%', background: 'var(--bad)', borderRadius: 4 }} /></div>
-            </div>
-          ))}
-        </section>
-        <section className="card">
-          <div className="card-h"><h2>高优先复核队列</h2><span className="muted">高风险 × 大账单金额 Top8</span></div>
-          <div className="tbl-wrap">
-            <table className="tbl">
-              <thead><tr><th>账户</th><th>账单金额</th><th>额度档</th><th>风险信号</th><th>命中规则</th></tr></thead>
-              <tbody>
-                {d.priority.map((p: any, i: number) => (
-                  <tr key={i}><td className="mono cell">{p.txn}</td><td className="mono">{p.amt.toLocaleString('zh-CN')}</td><td>{p.tier}</td><td><span className="badge bad">{p.sig}</span></td><td className="mono">{p.rules}</td></tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
-      </div>
-    </>
-  );
-}
-
-// —— 物流派单调度专属 demo（案例14）：按城市超时率/延误/扩城率 + 异常类型分布，定位扩城候选 ——
-function DispatchScreen() {
-  const [d, setD] = useState<any>(null);
-  useEffect(() => { fetchDispatch().then(setD); }, []);
-  if (!d) return <section className="card"><div className="muted">加载派单调度…</div></section>;
-  const maxAnom = Math.max(...d.anomalies.map((x: any) => x.count), 1);
-  return (
-    <>
-      <div className="banner" style={{ color: 'var(--warn)', borderColor: 'var(--warn)' }}>{d.total} 班航班（真实 US DOT 2024-06）· 总延误率 <b>{d.lateRate}%</b>。增容/调度要看「延误率高 + 航班量大」的枢纽城市——下表按真实起飞城市延误率排序，顶部即高延误枢纽。全部为真实数据。</div>
-      <div className="cols">
-        <section className="card">
-          <div className="card-h"><h2>起飞城市准点（按延误率排序）</h2><span className="muted">延误率高+量大 = 增容候选</span></div>
-          <div className="tbl-wrap">
-            <table className="tbl">
-              <thead><tr><th>起飞城市</th><th>航班数</th><th>延误率</th><th>均延误(分)</th><th>取消率</th></tr></thead>
-              <tbody>
-                {d.cities.slice(0, 8).map((x: any) => (
-                  <tr key={x.name}>
-                    <td style={{ color: 'var(--ink)' }}>{x.name}</td><td className="mono">{x.count}</td>
-                    <td><span className="badge" style={{ background: 'color-mix(in srgb,var(--bad) ' + Math.round(x.lateRate / 100 * 25) + '%,transparent)', color: 'var(--bad)' }}>{x.lateRate}%</span></td>
-                    <td className="mono">{x.avgDelay}</td><td className="mono">{x.expandRate}%</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
-        <section className="card">
-          <div className="card-h"><h2>延误原因分布（真实）</h2><span className="muted">航司可控 vs 天气/空管不可控</span></div>
-          {d.anomalies.map((x: any) => (
-            <div key={x.name} style={{ margin: '9px 0' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12 }}><span style={{ color: 'var(--ink)' }}>{x.name}</span><span className="mono">{x.count}</span></div>
-              <div style={{ height: 8, background: 'var(--panelSoft)', borderRadius: 4, marginTop: 3 }}><div style={{ width: `${(x.count / maxAnom) * 100}%`, height: '100%', background: x.name === '正常' ? 'var(--ok)' : 'var(--warn)', borderRadius: 4 }} /></div>
-            </div>
-          ))}
         </section>
       </div>
     </>
@@ -466,68 +275,14 @@ function BuildWalkScreen({ data }: { data: any }) {
   );
 }
 
-// —— 游戏案例 52：架构决策模拟器（给场景选决策，即时对错 + ADR 讲解）——
-function ArchSimScreen({ data }: { data: any }) {
-  const rounds: any[] = data?.game?.rounds || [];
-  const [i, setI] = useState(0); const [picked, setPicked] = useState<number | null>(null); const [score, setScore] = useState(0);
-  const r = rounds[i]; const full = rounds.length * 20;
-  if (i >= rounds.length) return (
-    <section className="card"><div className="card-h"><h2>通关！</h2><span className="muted">架构决策模拟器 · 满分 {full}</span></div>
-      <div style={{ fontSize: 15 }}>你的得分：<b style={{ color: 'var(--ok)' }}>{score}</b> / {full}。架构不是背知识点，是在**约束**下做有证据的判断——你刚把 §3 玩了一遍。</div>
-      <button className="act-btn" style={{ marginTop: 12 }} onClick={() => { setI(0); setScore(0); setPicked(null); }}><Icon name="reset" /> 再来一局</button></section>);
-  const pick = (oi: number) => { if (picked !== null) return; setPicked(oi); if (r.opts[oi].ok) setScore((s) => s + 20); };
-  return (
-    <section className="card">
-      <div className="card-h"><h2>架构决策模拟器</h2><span className="muted">第 {i + 1}/{rounds.length} 关 · 得分 {score}</span></div>
-      <div style={{ fontSize: 14, margin: '4px 0 12px', padding: '10px 12px', background: 'var(--panelSoft)', borderRadius: 10, borderLeft: '3px solid var(--accent)' }}>{r.场景}</div>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-        {r.opts.map((o: any, oi: number) => { const show = picked !== null; const col = show ? (o.ok ? 'var(--ok)' : (picked === oi ? 'var(--bad)' : 'var(--border)')) : 'var(--border)';
-          return <button key={oi} disabled={show} onClick={() => pick(oi)} style={{ textAlign: 'left', padding: '10px 12px', borderRadius: 10, fontSize: 13.5, cursor: show ? 'default' : 'pointer', fontFamily: 'inherit', background: 'var(--panelSoft)', border: `1px solid ${col}`, color: 'var(--ink)' }}>{o.t}{show && o.ok ? ' ✓' : ''}{show && picked === oi && !o.ok ? ' ✗' : ''}</button>; })}
-      </div>
-      {picked !== null && <div style={{ marginTop: 12, fontSize: 12.5, color: 'var(--ink2)', padding: '10px 12px', borderLeft: '3px solid var(--warn)' }}><b>为什么：</b>{r.why}<div style={{ marginTop: 8 }}><button className="act-btn" onClick={() => { setPicked(null); setI(i + 1); }}>下一关 →</button></div></div>}
-    </section>
-  );
-}
-// —— 游戏案例 53：规格找漏洞闯关（逐条判有坑/清晰，练 SDD 澄清步）——
-function SpecGameScreen({ data }: { data: any }) {
-  const items: any[] = data?.game?.items || [];
-  const [ans, setAns] = useState<Record<number, boolean>>({}); const [reveal, setReveal] = useState(false);
-  const score = items.filter((it, i) => ans[i] === it.flaw).length;
-  return (
-    <section className="card">
-      <div className="card-h"><h2>规格找漏洞闯关</h2><span className="muted">逐条判「有坑 / 清晰」，找出所有埋坑（SDD 澄清步）</span></div>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-        {items.map((it, i) => { const a = ans[i];
-          return <div key={i} style={{ padding: '10px 12px', borderRadius: 10, background: 'var(--panelSoft)', border: `1px solid ${reveal ? (a === it.flaw ? 'var(--ok)' : 'var(--bad)') : 'var(--border)'}` }}>
-            <div style={{ fontSize: 13.5, color: 'var(--ink)' }}>「{it.t}」</div>
-            <div style={{ marginTop: 6, display: 'flex', gap: 8 }}>
-              <button disabled={reveal} onClick={() => setAns({ ...ans, [i]: true })} style={{ padding: '4px 12px', borderRadius: 8, fontFamily: 'inherit', cursor: reveal ? 'default' : 'pointer', background: a === true ? 'color-mix(in srgb,var(--bad) 22%,transparent)' : 'var(--panel)', border: `1px solid ${a === true ? 'var(--bad)' : 'var(--border)'}`, color: 'var(--ink)' }}>有坑</button>
-              <button disabled={reveal} onClick={() => setAns({ ...ans, [i]: false })} style={{ padding: '4px 12px', borderRadius: 8, fontFamily: 'inherit', cursor: reveal ? 'default' : 'pointer', background: a === false ? 'color-mix(in srgb,var(--ok) 22%,transparent)' : 'var(--panel)', border: `1px solid ${a === false ? 'var(--ok)' : 'var(--border)'}`, color: 'var(--ink)' }}>清晰</button>
-            </div>
-            {reveal && <div style={{ marginTop: 6, fontSize: 12, color: 'var(--ink2)' }}>{it.flaw ? <><Icon name="alert" /> 有坑</> : '✓ 清晰'} · {it.why}</div>}
-          </div>; })}
-      </div>
-      {!reveal ? <button className="act-btn" style={{ marginTop: 12 }} disabled={Object.keys(ans).length < items.length} onClick={() => setReveal(true)}>提交（{Object.keys(ans).length}/{items.length}）</button>
-        : <div style={{ marginTop: 12, fontSize: 14 }}>找对 <b style={{ color: 'var(--ok)' }}>{score}</b>/{items.length}。SDD 的「澄清」步就是这么练——一眼看出哪句话会让 AI 替你猜错。</div>}
-    </section>
-  );
-}
-
 export function SpecialScreen({ screen, data }: { screen: string; data?: any }) {
   if (screen === 'buildwalk') return <BuildWalkScreen data={data} />;
-  if (screen === 'archsim') return <ArchSimScreen data={data} />;
-  if (screen === 'specgame') return <SpecGameScreen data={data} />;
-  if (screen === 'triage' || screen === 'eval' || screen === 'gates') return <DogfoodScreen data={data} kind={screen} />;
+  if (screen === 'eval') return <DogfoodScreen data={data} kind={screen} />;
   if (screen === 'rfm') return <RfmScreen />;
-  if (screen === 'capacity') return <HospitalScreen />;
-  if (screen === 'adfunnel') return <AdFunnelScreen />;
-  if (screen === 'riskreview') return <RiskScreen />;
-  if (screen === 'dispatch') return <DispatchScreen />;
   if (screen === 'retail') return <RetailScreen />;
   if (screen === 'plan') return <PlanScreen />;
   if (screen === 'rag') return <RagScreen />;
   if (screen === 'db') return <DbScreen />;
   if (screen === 'arch') return <ArchScreen />;
-  if (screen === '3d') return <ThreeScreen />;
   return null;
 }

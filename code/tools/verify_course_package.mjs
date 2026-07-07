@@ -137,14 +137,14 @@ ok(); if (!has('code/server/services/openapi.ts') || !/openapi\.json/.test(rd('c
 ok(); if (!has('outputs/product_case_library/svg/fig_system_panorama.svg')) bad('缺系统全景 SVG');
 ok(); if ((tut.match(/在数字化系统中的位置/g) || []).length < defs.cases.length) bad('案例未全部标注系统位置');
 // 维度 B/C：概念实验室 + 产品化前端
-for (const f of ['code/web/src/lab.tsx', 'code/web/src/pages.tsx', 'code/web/src/chart3d.tsx']) { ok(); if (!has(f)) bad('缺前端文件 ' + f); }
+for (const f of ['code/web/src/lab.tsx', 'code/web/src/pages.tsx']) { ok(); if (!has(f)) bad('缺前端文件 ' + f); }
+if (defs.cases.some((c) => c.num === 47)) { ok(); if (!has('code/web/src/chart3d.tsx')) bad('缺 chart3d.tsx'); ok(); if (!/lazy\(\(\) => import\('\.\/chart3d'\)\)/.test(rd('code/web/src/screens.tsx'))) bad('three.js 未懒加载(代码分割)'); }
 const lab = rd('code/web/src/lab.tsx');
 for (const k of ['tokenizer', 'context', 'rag', 'agent']) { ok(); if (!lab.includes(k + ':')) bad(`概念实验室缺 ${k} 交互`); }
 ok(); if (!/data-theme|useTheme/.test(rd('code/web/src/App.tsx'))) bad('缺亮/暗主题切换');
 const pg = rd('code/web/src/pages.tsx');
 ok(); if (!/PrincipleIndex/.test(pg)) bad('缺原理索引双向溯源');
 ok(); if (!/ApiDocs|openapi/i.test(pg)) bad('缺在线 API 文档页');
-ok(); if (!/lazy\(\(\) => import\('\.\/chart3d'\)\)/.test(rd('code/web/src/screens.tsx'))) bad('three.js 未懒加载(代码分割)');
 ok(); if (!/focus-visible/.test(rd('code/web/src/index.css'))) bad('缺 a11y 焦点可达样式');
 // 维度 E：网络下载真实图形 vendored + 使用 + 来源注明
 ok(); if (!has('assets/vendor/lucide/LICENSE')) bad('缺 vendored 真实图形(assets/vendor)');
@@ -267,7 +267,7 @@ const man = rd('dataset/MANIFEST.md');
 ok(); if (/outputs\/07_skills/.test(man)) bad('MANIFEST 仍含死链 outputs/07_skills');
 // C) 真实数据基座快照：文件存在 + MANIFEST 溯源(来源/许可)齐全
 for (const [f, num] of [['retail_online_retail_ii.csv', 1], ['finance_uci_default_credit.csv', 28], ['hospital_cms_ed_timely.csv', 16], ['flights_usdot_ontime.csv', 14]]) { if (!defs.cases.some((c) => c.num === num)) continue; ok(); if (!has('dataset/real/' + f)) bad('缺真实基座快照 dataset/real/' + f); }
-ok(); if (!/真实基座快照/.test(man) || !/CC BY 4\.0/.test(man) || !/公共领域/.test(man)) bad('MANIFEST 缺真实基座溯源(来源/许可)');
+ok(); if (!/真实基座快照/.test(man) || !/CC BY 4\.0|公共领域/.test(man)) bad('MANIFEST 缺真实基座溯源(来源/许可)');
 // D) 迁移到真实基座的案例，其 dataset 性质须在 MANIFEST 标为「真实基座」
 for (const [rel, num] of [['order_data.csv', 1], ['28-credit_default_sample.csv', 28], ['hospital_ed_timely.csv', 16], ['flights_ontime.csv', 14]]) { if (!defs.cases.some((c) => c.num === num)) continue; const line = man.split('\n').find((l) => l.includes(rel)); ok(); if (!line || !/真实基座/.test(line)) bad(`MANIFEST 未把 ${rel} 标为真实基座`); }
 // E) 叠加诚信：合成叠加须显式标注「教学合成」，绝不把合成说成真实

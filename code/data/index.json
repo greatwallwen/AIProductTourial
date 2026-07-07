@@ -17,51 +17,6 @@
    "tldr": "电商早会经营台：按真实订单看品类营收/区域结构/退货，把异常当场派成行动"
   },
   {
-   "num": 14,
-   "title": "需求变更控制｜航班准点运营调度",
-   "slug": "logistics_change_control",
-   "uiId": "ui_14_logistics_change_control",
-   "saasType": "sales_funnel_screen",
-   "industry": "航空运输",
-   "phase": "需求管理",
-   "highImpact": false,
-   "rp": "RP03",
-   "systemLayer": "业务应用",
-   "systemStage": "决策",
-   "difficulty": "进阶",
-   "tldr": "航班准点运营调度：按真实起飞城市延误/取消/原因，定位需增容的高延误枢纽"
-  },
-  {
-   "num": 16,
-   "title": "目标用户与场景｜医院急诊及时性运营",
-   "slug": "hospital_capacity_scheduler",
-   "uiId": "ui_16_hospital_capacity_scheduler",
-   "saasType": "hr_efficiency_screen",
-   "industry": "医疗运营",
-   "phase": "用户洞察",
-   "highImpact": true,
-   "rp": "RP04",
-   "systemLayer": "业务应用",
-   "systemStage": "洞察",
-   "difficulty": "入门",
-   "tldr": "医院急诊及时性：按真实急诊量级看等待与未就诊离开，定位需增容/分流的高负荷急诊"
-  },
-  {
-   "num": 28,
-   "title": "权限与风控规则｜金融复核工作台",
-   "slug": "finance_review_queue",
-   "uiId": "ui_28_finance_review_queue",
-   "saasType": "finance_cashflow_screen",
-   "industry": "金融风控",
-   "phase": "详细设计",
-   "highImpact": true,
-   "rp": null,
-   "systemLayer": "业务应用",
-   "systemStage": "执行",
-   "difficulty": "进阶",
-   "tldr": "金融复核工作台：真实信用卡违约数据，按风险等级×账单金额排序，低额度违约最高"
-  },
-  {
    "num": 30,
    "title": "RFM 客户分层｜航空会员价值运营",
    "slug": "airline_member_rfm",
@@ -75,21 +30,6 @@
    "systemStage": "洞察",
    "difficulty": "进阶",
    "tldr": "航空会员价值运营：按 R/F/M 分层识别高价值流失群，做定向挽回与权益运营"
-  },
-  {
-   "num": 31,
-   "title": "漏斗分析｜广告投放转化复盘",
-   "slug": "ad_conversion_funnel",
-   "uiId": "ui_31_ad_conversion_funnel",
-   "saasType": "sales_funnel_screen",
-   "industry": "广告投放",
-   "phase": "数据指标",
-   "highImpact": false,
-   "rp": null,
-   "systemLayer": "能力智能",
-   "systemStage": "洞察",
-   "difficulty": "进阶",
-   "tldr": "广告投放转化复盘：定位各渠道漏斗断点，把预算从量大挪到效率高的渠道"
   },
   {
    "num": 41,
@@ -152,36 +92,6 @@
    "tldr": "后端子系统分解与契约：把 §3 架构流程落到本仓库真运行后端：分层/边界/契约在代码里可查"
   },
   {
-   "num": 47,
-   "title": "数据指标｜三维经营散点(three.js)",
-   "slug": "three_d_scatter",
-   "uiId": "ui_47_three_scatter",
-   "saasType": "scene_3d",
-   "industry": "数据可视化",
-   "phase": "数据指标",
-   "highImpact": false,
-   "rp": null,
-   "systemLayer": "底座平台",
-   "systemStage": "洞察",
-   "difficulty": "进阶",
-   "tldr": "经营三维散点：把真实订单数据渲染成可交互三维散点，暴露多维离群"
-  },
-  {
-   "num": 48,
-   "title": "CI 失败分诊 Loop（研发·项目镜头）",
-   "slug": "ci_triage_loop",
-   "uiId": "ui_48_ci_triage",
-   "saasType": "ci_triage",
-   "industry": "研发效能",
-   "phase": "质量验收",
-   "highImpact": false,
-   "rp": null,
-   "systemLayer": "能力智能",
-   "systemStage": "验收",
-   "difficulty": "进阶",
-   "tldr": "让 CI 失败自己分好类、指好责任，人只做确认"
-  },
-  {
    "num": 49,
    "title": "RAG 评测台 / eval harness（产品·研发镜头）",
    "slug": "rag_eval_harness",
@@ -197,21 +107,6 @@
    "tldr": "用标注评测集给 RAG 回答打分，把「感觉还行」变成「命中率多少」"
   },
   {
-   "num": 50,
-   "title": "交付门禁看板（项目·产品镜头）",
-   "slug": "delivery_gates_board",
-   "uiId": "ui_50_delivery_gates",
-   "saasType": "delivery_gates",
-   "industry": "交付治理",
-   "phase": "质量验收",
-   "highImpact": false,
-   "rp": null,
-   "systemLayer": "底座平台",
-   "systemStage": "验收",
-   "difficulty": "进阶",
-   "tldr": "把「能不能发布」变成一块可自动核对的门禁看板，而不是拍脑袋"
-  },
-  {
    "num": 51,
    "title": "SDD 系统建造走查（研发·项目·产品镜头）",
    "slug": "sdd_system_build",
@@ -225,36 +120,6 @@
    "systemStage": "验收",
    "difficulty": "高阶",
    "tldr": "几个 prompt 建不成系统——照 SDD 八步走，每步一份对得上仓库的工件"
-  },
-  {
-   "num": 52,
-   "title": "架构决策模拟器（研发·项目镜头 · 游戏）",
-   "slug": "arch_decision_sim",
-   "uiId": "ui_52_archsim",
-   "saasType": "arch_sim_game",
-   "industry": "研发效能 / 架构",
-   "phase": "系统架构",
-   "highImpact": false,
-   "rp": null,
-   "systemLayer": "底座平台",
-   "systemStage": "决策",
-   "difficulty": "高阶",
-   "tldr": "给场景选架构决策，即时对错 + ADR 讲解——把 §3 玩一遍"
-  },
-  {
-   "num": 53,
-   "title": "规格找漏洞闯关（产品·研发镜头 · 游戏）",
-   "slug": "spec_flaw_hunt",
-   "uiId": "ui_53_specgame",
-   "saasType": "spec_hunt_game",
-   "industry": "AI 产品 / 需求",
-   "phase": "需求管理",
-   "highImpact": false,
-   "rp": null,
-   "systemLayer": "业务应用",
-   "systemStage": "决策",
-   "difficulty": "进阶",
-   "tldr": "给你一份规格，找出哪几条有坑——玩一遍 SDD 的「澄清」步"
   }
  ]
 }

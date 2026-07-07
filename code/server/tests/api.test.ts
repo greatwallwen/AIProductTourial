@@ -8,17 +8,9 @@ test('后端 API 全绿', async () => {
   assert.equal(h.statusCode, 200); assert.equal(h.json().ok, true);
   assert.ok(h.json().subsystems.length >= 4 && h.json().checker, '后端子系统清单(dogfood)');
   const cs = await app.inject({ url: '/api/cases' });
-  assert.ok(Array.isArray(cs.json()) && cs.json().length >= 10, '案例列表 >= 10（精品集）');
+  assert.ok(Array.isArray(cs.json()) && cs.json().length >= 5, '案例列表非空（精品集，具体数以 defs 为准）');
   const rt = await app.inject({ url: '/api/retail' });
   assert.ok(rt.json().cats.length >= 3 && rt.json().triage.length >= 1, '零售经营');
-  const ds = await app.inject({ url: '/api/dispatch' });
-  assert.ok(ds.json().cities.length >= 2 && ds.json().anomalies.length >= 1, '物流派单调度');
-  const rk = await app.inject({ url: '/api/riskreview' });
-  assert.ok(rk.json().levels.length >= 2 && rk.json().priority.length >= 1, '风控复核队列');
-  const af = await app.inject({ url: '/api/adfunnel' });
-  assert.ok(af.json().channels.length >= 2 && af.json().best, '广告渠道漏斗');
-  const hp = await app.inject({ url: '/api/hospital' });
-  assert.ok(hp.json().depts.length >= 2 && hp.json().warnRate >= 0 && hp.json().avgWaitAll > 0, '医院急诊及时性(真实CMS)');
   const rf = await app.inject({ url: '/api/rfm' });
   assert.ok(rf.json().total > 0 && rf.json().segments.length >= 2, 'RFM 分层');
   assert.ok(rf.json().churnRate >= 0 && rf.json().churnRate <= 100, '高价值流失率∈[0,100]');
@@ -38,7 +30,7 @@ test('后端 API 全绿', async () => {
   await app.close();
 });
 
-/** 覆盖补强（P2）：每端点补契约级断言——arch 真实依赖图/ADR/契约、index 索引、points3d 三维真实点、case data 闭环字段。 */
+/** 覆盖补强：每端点补契约级断言——arch 真实依赖图/ADR/契约、index 索引、case data 闭环字段。 */
 test('后端 API 覆盖补强（端点契约·dogfood）', async () => {
   const app = await buildApp();
   const ar = await app.inject({ url: '/api/arch' });
@@ -52,11 +44,6 @@ test('后端 API 覆盖补强（端点契约·dogfood）', async () => {
   assert.equal(ix.statusCode, 200);
   const idx = ix.json();
   assert.ok((Array.isArray(idx) ? idx.length : Object.keys(idx).length) >= 1, 'index 案例索引非空');
-  const p3 = await app.inject({ url: '/api/points3d' });
-  assert.equal(p3.statusCode, 200);
-  assert.equal(p3.json().points.length, p3.json().count, 'points3d count 与点数一致');
-  assert.ok(p3.json().count > 0 && p3.json().categories.length >= 1, 'points3d 真实点/品类非空');
-  assert.ok(p3.json().points.every((pt: any) => typeof pt.x === 'number' && typeof pt.z === 'number'), 'points3d 每点数值坐标');
   const cd = await app.inject({ url: '/api/case/1/data' });
   assert.ok(Array.isArray(cd.json().actions) && cd.json().responsible !== undefined, 'case data 含行动项 + 责任归属(闭环)');
   const oa2 = await app.inject({ url: '/api/openapi.json' });

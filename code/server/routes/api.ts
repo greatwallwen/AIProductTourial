@@ -1,5 +1,5 @@
 import { join } from 'node:path';
-import { listCases, caseData, getIndex, points3d, rfm, hospital, adFunnel, riskReview, dispatch, retail, serverSubsystems, archModel } from '../services/cases.ts';
+import { listCases, caseData, getIndex, rfm, retail, serverSubsystems, archModel } from '../services/cases.ts';
 import { tokenize } from '../services/tokenize.ts';
 import { openapiSpec } from '../services/openapi.ts';
 import { VectorStore } from '../vector/store.ts';
@@ -21,12 +21,7 @@ export async function apiRoutes(app: any) {
     if (!d) return reply.code(404).send({ error: { code: 'CASE_NOT_FOUND', message: '案例不存在' } });
     return d;
   });
-  app.get('/api/points3d', async () => points3d());
   app.get('/api/rfm', async () => rfm());
-  app.get('/api/hospital', async () => hospital());
-  app.get('/api/adfunnel', async () => adFunnel());
-  app.get('/api/riskreview', async () => riskReview());
-  app.get('/api/dispatch', async () => dispatch());
   app.get('/api/retail', async () => retail());
   app.get('/api/tokenize', async (req: any) => tokenize(String(req.query.text ?? '你好，今天天气怎么样？Hello AI Agent 2026')));
   app.get('/api/openapi.json', async () => openapiSpec());

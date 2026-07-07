@@ -45,7 +45,7 @@
 - 数据或资料：`rules/ + docs/_source + case_definitions + verify + 架构图（本仓库自身·dogfood）`（18 行，异常 0）
 - 公开参考：本仓库 rules/、docs/_source、code/tools、arch SVG、verify_course_package.mjs
 - 行业字段：步骤、工件、状态、产出
-- 指标链（真实值）：宪法条款 18，子系统数 5，门禁检查项 198，架构图数 7
+- 指标链（真实值）：宪法条款 18，子系统数 5，门禁检查项 168，架构图数 7
 - 决策动作：用规格驱动八步把一次中大型建造拆成可追溯、可验收的小步（而非几个 prompt 一把梭）
 - 风险边界：每步产出须可追溯（规格/ADR/门禁），不得跳过澄清与门禁两步
 - UI 原型：`ui_51_sdd_build`（sdd_buildwalk）

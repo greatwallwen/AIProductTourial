@@ -125,20 +125,6 @@ function buildFromMd(c){
       {name:'循环依赖',value:cycles,unit:''},
     ];
     chart={type:'bars',by:'子系统 → 依赖出度',data:mods.map(m=>({label:m,value:deps.filter(e=>e.from===m).length}))};
-  } else if(c.num===48){ // CI 失败分诊：真读本仓库 tests/verify/routes/模块（dogfood·研发/项目）
-    const sdir=join(ROOT,'code','server');
-    const testSrc=walkFiles(join(sdir,'tests'),'.ts').map(f=>readFileSync(f,'utf8')).join('\n');
-    const asserts=(testSrc.match(/\bassert(\.[a-zA-Z]+)?\s*\(/g)||[]).length;
-    const tsFiles=walkFiles(sdir,'.ts').length;
-    const routeList=[...new Set((readFileSync(join(sdir,'routes','api.ts'),'utf8').match(/\/api\/[a-z0-9/:._-]+/gi)||[]))];
-    const checks=(readFileSync(join(ROOT,'code','tools','verify_course_package.mjs'),'utf8').match(/\bok\(\)/g)||[]).length;
-    kpis=[{name:'契约断言数',value:asserts,unit:''},{name:'接口契约数',value:routeList.length,unit:''},{name:'校验检查项',value:checks,unit:''},{name:'后端模块数',value:tsFiles,unit:''}];
-    const cat=['断言失败','回归风险','待复现'], own=['研发-王','测试-赵','研发-李'];
-    queue=routeList.slice(0,8).map((r,i)=>({id:i+1,state:cat[i%3],owner:own[i%3],fields:{失败用例:r,失败类别:['契约','数据','边界'][i%3],责任模块:'routes/api.ts→services',首次出现:'#'+(i+1)}}));
-    exceptionCount=queue.length; responsible=[...new Set(own)];
-    const seg={}; for(const r of routeList){ const s=r.split('/')[2]||'root'; seg[s]=(seg[s]||0)+1; }
-    chart={type:'bars',by:'接口前缀 → 契约数',data:Object.entries(seg).sort((a,b)=>b[1]-a[1]).slice(0,7).map(([label,value])=>({label,value}))};
-    actions=[{label:'处置：断言失败',owner:'研发-王',due:'1d'},{label:'处置：回归风险',owner:'测试-赵',due:'2d'}];
   } else if(c.num===49){ // RAG 评测：真读 deanpeters 语料 + 标注评测集（dogfood·产品/研发）
     const dir=join(ROOT,'skills','external','pm-skills-deanpeters');
     const files=walkFiles(dir,'.md');
@@ -153,17 +139,6 @@ function buildFromMd(c){
     exceptionCount=hits.filter(h=>!h.hit).length; responsible=['产品-王','数据-周'];
     chart={type:'bars',by:'评测问题 → 覆盖篇数',data:hits.map(h=>({label:h.q.slice(0,4),value:h.cov}))};
     actions=[{label:'处置：未命中问题',owner:'产品-王',due:'3d'},{label:'补语料/标注',owner:'数据-周',due:'5d'}];
-  } else if(c.num===50){ // 交付门禁：真读 verify 检查项/守卫 + 案例/角色覆盖（dogfood·项目/产品）
-    const vsrc=readFileSync(join(ROOT,'code','tools','verify_course_package.mjs'),'utf8');
-    const checks=(vsrc.match(/\bok\(\)/g)||[]).length;
-    const roles=new Set(defs.cases.flatMap(x=>x.lenses||[])).size;
-    const gates=[['数据真实性','数据'],['单文件<800行','结构'],['诚信标注','诚信'],['角色镜头齐全','镜头'],['高影响人工复核','安全'],['无工具品牌','中立']];
-    kpis=[{name:'门禁检查项',value:checks,unit:''},{name:'门禁类别',value:gates.length,unit:''},{name:'案例数',value:defs.cases.length,unit:''},{name:'覆盖角色数',value:roles,unit:''}];
-    const own=['交付-孙','研发-王','数据-周'];
-    queue=gates.map((g,i)=>({id:i+1,state:'已通过',owner:own[i%3],fields:{门禁项:g[0],类别:g[1],状态:'GREEN',责任:own[i%3]}}));
-    exceptionCount=0; responsible=[...new Set(own)];
-    chart={type:'bars',by:'门禁类别 → 检查项(近似)',data:[{label:'数据',value:Math.max(1,Math.round(checks*0.2))},{label:'诚信',value:Math.max(1,Math.round(checks*0.15))},{label:'镜头',value:20},{label:'结构',value:Math.max(1,Math.round(checks*0.15))},{label:'前端',value:Math.max(1,Math.round(checks*0.1))}]};
-    actions=[{label:'签署发布',owner:'交付-孙',due:'0d'},{label:'风险登记复核',owner:'风控-赵',due:'1d'}];
   } else if(c.num===51){ // SDD 系统建造走查：真读 rules/docs/case_definitions/verify/arch 图（dogfood·研发/项目/产品）
     const ruleFiles=walkFiles(join(ROOT,'rules'),'.md');
     const clauses=ruleFiles.reduce((a,f)=>a+(readFileSync(f,'utf8').match(/^\s*(?:[-*·]|\d+[.、)])\s/gm)||[]).length,0);
@@ -188,29 +163,6 @@ function buildFromMd(c){
     exceptionCount=0; responsible=[...new Set(own)];
     chart={type:'bars',by:'SDD 八步 → 工件/文件数',data:steps.map(s=>({label:s[0].replace(/[①-⑧] /,''),value:s[4]}))};
     actions=[{label:'补澄清 / 消歧',owner:'产品-王',due:'1d'},{label:'跑门禁三绿',owner:'研发-王',due:'0d'}];
-  } else if(c.num===52){ // 架构决策模拟器（游戏·教学设计合成）
-    const rounds=[
-      {场景:'日均几百单的企业内部系统，要求 7×24 可用、故障 5 分钟可回滚（小团队、低并发）',opts:[{t:'上一套微服务集群',ok:false},{t:'模块化单体 + 灰度 + 快速回滚',ok:true},{t:'纯 Serverless 按需拉起',ok:false}],why:'约束是「可用性 + 快回滚」不是吞吐——上微服务是没有证据的复杂度（§3.1 奥卡姆）；模块化单体先划清边界、预留切口即可。',prin:'§3.1'},
-      {场景:'教学平台要「一条命令起、离线可跑、零外部依赖」，同时要讲 PG/pgvector',opts:[{t:'装 PostgreSQL 本地跑',ok:false},{t:'node:sqlite 真 SQL + 显式标注「生产为 PG」',ok:true},{t:'纯内存 Map 假装数据库',ok:false}],why:'两约束都要满足 → ADR-001：本地 sqlite 跑真 SQL、文字补讲 PG；纯内存丢了「真 SQL」教学价值。',prin:'§3.5'},
-      {场景:'前端要让用户选一个日期',opts:[{t:'装日期库 + 写包装组件 + 讨论时区',ok:false},{t:'用 <input type="date"> 一行',ok:true},{t:'自己手写一个日历组件',ok:false}],why:'平台原生一行搞定（§4.7 YAGNI 第 4 阶）——装库和手写都是过度工程。',prin:'§4.7'},
-      {场景:'两个子系统要交换数据',opts:[{t:'B 直接连 A 的数据库读表',ok:false},{t:'A 暴露接口契约，B 走接口',ok:true},{t:'共享一个全局变量/文件',ok:false}],why:'只能通过服务接口暴露数据（Bezos API Mandate，§3.4）——直连库/共享全局让系统长不大。',prin:'§3.4'},
-      {场景:'RAG 问答要上线，得先判断「答得准不准」',opts:[{t:'人工抽几个问题看感觉',ok:false},{t:'标注评测集离线算命中率 + 错误分析',ok:true},{t:'先上线看用户投诉',ok:false}],why:'evals 才是可复现的验证（§2 传感器、案例 49）——凭感觉/等投诉都不可复现、代价高。',prin:'§2.6'},
-    ];
-    game={mode:'archsim',rounds};
-    kpis=[{name:'关卡数',value:rounds.length,unit:''},{name:'决策点',value:rounds.reduce((a,r)=>a+r.opts.length,0),unit:''},{name:'涉及原理数',value:new Set(rounds.map(r=>r.prin)).size,unit:''},{name:'通关满分',value:rounds.length*20,unit:''}];
-    chart={type:'bars',by:'每关涉及原理',data:rounds.map((r,i)=>({label:'第'+(i+1)+'关',value:r.opts.length}))};
-  } else if(c.num===53){ // 规格找漏洞闯关（游戏·教学设计合成）
-    const items=[
-      {t:'系统响应要快',flaw:true,why:'无量化——应写成质量属性场景「刺激→环境→响应→度量」（§3.2），如 P95<200ms。'},
-      {t:'峰值 400 单/秒、P95 延迟 < 200ms',flaw:false,why:'可量化、可验收——合格的质量属性场景。'},
-      {t:'支持数据导出',flaw:true,why:'缺边界——什么格式？多大数据量？谁有权导？不问清准返工。'},
-      {t:'所有接口错误统一返回 {code, message, details}',flaw:false,why:'清晰的接口契约（§3.4 错误信封）。'},
-      {t:'系统自动处理退款',flaw:true,why:'高影响动作却没说人工复核边界——SDD 澄清必须补「金额阈值 + 人工审批」。'},
-      {t:'会员 R≥90 天且 F<3 判为流失预警',flaw:false,why:'可判定、可计算——清晰。'},
-    ];
-    game={mode:'specgame',items};
-    kpis=[{name:'规格条目数',value:items.length,unit:''},{name:'埋坑数',value:items.filter(i=>i.flaw).length,unit:''},{name:'涉及原理数',value:2,unit:''},{name:'满分',value:items.length*10,unit:''}];
-    chart={type:'bars',by:'条目：有坑(1)/清晰(0)',data:items.map((it,i)=>({label:'#'+(i+1),value:it.flaw?1:0}))};
   } else { // 其它 .md：按指标链回到真实可得量（不用顺子占位）
     kpis=c.metricChain.map((m)=>({name:m,value:0,unit:/率/.test(m)?'%':''}));
   }
@@ -220,7 +172,7 @@ let ok=0;
 for(const c of defs.cases){
   let vm;
   try{
-    if(c.dataset.endsWith('.md') || [48,49,50,51,52,53].includes(c.num)) vm=buildFromMd(c);
+    if(c.dataset.endsWith('.md') || [49,51].includes(c.num)) vm=buildFromMd(c);
     else vm=buildFromCsv(c);
   }catch(e){ console.error('FAIL case',c.num,e.message); continue; }
   const out={ num:c.num, title:c.title, industry:c.industry, role:c.role, saasType:c.saasType, uiId:c.uiId, slug:c.slug,
