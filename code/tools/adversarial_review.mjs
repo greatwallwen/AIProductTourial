@@ -62,17 +62,14 @@ for (const f of ['code/tools/build_docs.mjs', 'code/tools/verify_course_package.
 // ⑧ 用户维度：章节丰富度 + 前后联系 + 趣味/游戏 + caseCount 元数据漂移 + 未用素材
 {
   if (defs.caseCount && defs.caseCount !== defs.cases.length) add('HIGH', 'stale-count', 'case_definitions.json', `caseCount=${defs.caseCount} 与真实案例数 ${defs.cases.length} 不符`, `改为 ${defs.cases.length} 或删该冗余字段`);
+  // v16 拆棘轮：地板改「最低可用」（不再向最厚章看齐、不再逼加码）；fun/unused 等催加码探针已删
   for (const f of bookFiles.filter((p) => /\/0[0-9]-|\/99-/.test(p) && !p.includes('案例'))) {
     const s = rd(f), nm = f.split('/').pop();
     const notes = (s.match(/```备注/g) || []).length, figs = (s.match(/!\[/g) || []).length, xref = (s.match(/§[0-9]|案例 ?[0-9]/g) || []).length;
-    if (figs < 2) add('MED', 'richness', f, `${nm} 仅 ${figs} 张图，视觉偏薄（§3 已有 8 张可参照）`, '补 1-2 张示意/流程/对比图');
-    if (notes < 5 && !/99-/.test(f)) add('MED', 'richness', f, `${nm} 仅 ${notes} 个科普备注块，内容偏薄`, '补 worked example / 故事钩子 / 实例');
-    if (xref < 5) add('MED', 'cross-link', f, `${nm} 仅 ${xref} 处交叉引用，前后联系弱`, '织「概念↔案例↔章节」网：加「本章与 §X / 案例 NN 的联系」');
+    if (figs < 1) add('LOW', 'richness', f, `${nm} 全章无图`, '若确有助理解可补 1 张，否则忽略');
+    if (notes < 2 && !/99-/.test(f)) add('LOW', 'richness', f, `${nm} 科普备注 < 2`, '仅当章节确实难懂时补');
+    if (xref < 2) add('LOW', 'cross-link', f, `${nm} 交叉引用 < 2`, '仅补真正相关的引用');
   }
-  const gameCases = defs.cases.filter((c) => /game|游戏|模拟器|闯关|沙盘/.test((c.saasType || '') + (c.scenario || ''))).length;
-  if (gameCases === 0) add('MED', 'fun', 'case_definitions.json', '0 个游戏化/趣味交互案例（仅一个通用小游戏页）', '加交互游戏案例：架构决策模拟器 / 规格找漏洞闯关 / 限界上下文拖拽');
-  const corpusUsed = defs.cases.filter((c) => /deanpeters|pm-skills|语料/.test((c.dataset || '') + (c.publicRef || ''))).length;
-  if (corpusUsed < 2) add('LOW', 'unused', 'skills/external/pm-skills-deanpeters', `仅 ${corpusUsed} 个案例引用 194 篇 PM 语料，可再挖`, '从语料挑主题做真实素材新案例');
 }
 
 // ⑨ 反思清单维度（v14）：onboarding 新手摩擦 / diataxis 模式分离 / freshness 工具过时 / coverage 后端断言
@@ -86,16 +83,10 @@ for (const f of ['code/tools/build_docs.mjs', 'code/tools/verify_course_package.
   }
   if (!existsSync(join(ROOT, 'outputs', 'onboarding_audit.md'))) add('HIGH', 'onboarding', 'outputs/onboarding_audit.md', '未做新手摩擦审计（零基础读者走查）', '跑审计→记录→修复→标已修复');
   else if (/\[待修\]|未修复 HIGH/.test(rd('outputs/onboarding_audit.md'))) add('HIGH', 'onboarding', 'outputs/onboarding_audit.md', '新手摩擦审计仍有未修复 HIGH', '修完再标');
-  if (!/怎么用这本书|想学.{0,6}想查|四类内容|Diátaxis/.test(tut)) add('MED', 'diataxis', `${BOOK}/README.md`, '无 Diátaxis 四类(学/查/做/懂)导航——模式混用', '加「怎么用这本书」四类导航 + 模式标签');
   if (/星数|Nacos 3\.2|ralph run|nacos-cli|garrytan|obra\/superpowers/.test(tut) && !/最后核实|核实日期|截至 202/.test(tut)) add('MED', 'freshness', `${BOOK}/*`, '工具/版本/星数内容无「最后核实」日期——易过时', '工具节加「最后核实：YYYY-MM」约定');
 }
 
-// ⑩ v15：CodeBuddy 国产落地维（模式映射 + 归属 + 反广告平衡）
-{
-  if (!/CodeBuddy/.test(tut) || !/fig_codebuddy_map/.test(tut)) add('MED', 'codebuddy', `${BOOK}/*`, '缺 CodeBuddy 国产落地或模式映射图', '§2.6.1 补 CodeBuddy 模式↔本书概念 + 图');
-  else if (!/Plan/.test(tut) || !/Craft/.test(tut) || !/腾讯/.test(tut)) add('MED', 'codebuddy', `${BOOK}/*`, 'CodeBuddy 模式(Plan/Craft)或腾讯归属不全', '补全');
-  else if (!/Claude Code|Cursor|gstack|Ralph/.test(tut)) add('MED', 'codebuddy', `${BOOK}/*`, 'CodeBuddy 落地未留国际工具对照（防变广告）', '保留国际工具对照');
-}
+// （原 ⑩ codebuddy 维为「内容必须存在」型钉死，v16 拆棘轮已删——内容取舍交给 verify 的内容快照 diff）
 
 // ⑪ v-精简：冗余重复 + 套路化开头（补 slop 词表没覆盖的「重复」类 AI 味；扫源 docs/_source + build_docs README 字面量，不扫构建产物，否则每章会被误判为其源的重复）
 {
@@ -111,10 +102,10 @@ for (const f of ['code/tools/build_docs.mjs', 'code/tools/verify_course_package.
   const shingle = new Map();
   for (const [name, text] of units) { const n = norm(text); for (let i = 0; i + 24 <= n.length; i += 6) { const sh = n.slice(i, i + 24); if (!shingle.has(sh)) shingle.set(sh, new Set()); shingle.get(sh).add(name); } }
   const seen = new Set(); let dupN = 0;
-  for (const [sh, set] of shingle) { if (set.size >= 2 && dupN < 10) { const key = sh.slice(0, 14); if (!seen.has(key)) { seen.add(key); dupN++; add('LOW', 'redundancy', [...set].join(' ↔ '), `疑似跨文件重复：「${sh.slice(0, 22)}…」`, '留一处、其余改回指'); } } }
+  for (const [sh, set] of shingle) { if (set.size >= 2 && dupN < 10) { const key = sh.slice(0, 14); if (!seen.has(key)) { seen.add(key); dupN++; add('MED', 'redundancy', [...set].join(' ↔ '), `疑似跨文件重复：「${sh.slice(0, 22)}…」`, '留一处、其余改回指'); } } }
   // (b) 套路化开头：同一钩子短语 > 2 次
   const allSrc = units.map((u) => u[1]).join('\n');
-  for (const h of ['你有没有想过', '你有没有发现', '你有没有经历过', '你有没有接手过', '想象一下', '不妨想想']) { const c = (allSrc.match(new RegExp(h, 'g')) || []).length; if (c > 2) add('LOW', 'redundancy', srcDir, `套路化开头「${h}」出现 ${c} 次（>2）`, '留 1-2 处、其余改直陈/换说法'); }
+  for (const h of ['你有没有想过', '你有没有发现', '你有没有经历过', '你有没有接手过', '想象一下', '不妨想想']) { const c = (allSrc.match(new RegExp(h, 'g')) || []).length; if (c > 2) add('MED', 'redundancy', srcDir, `套路化开头「${h}」出现 ${c} 次（>2）`, '留 1-2 处、其余改直陈/换说法'); }
 }
 
 // —— 排序 + 输出 ——
