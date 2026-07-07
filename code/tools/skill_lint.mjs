@@ -35,7 +35,7 @@ for (const f of skillFiles) scanFile(f, rd(f));
     const name = b.split('\n')[0].trim();
     const missing = SLOTS.filter((s) => !new RegExp('- ' + s + '：').test(b) && !new RegExp('- ' + s.replace(' ', '') + '：').test(b));
     if (missing.length) add('MED', 'slots', `pm_skills.md#${name}`, `六槽缺失：${missing.join('、')}`);
-    if (!/类型：(构建型|验收·守护型|构建型 \/ 验收·守护型)/.test(b)) add('LOW', 'meta', `pm_skills.md#${name}`, '缺「类型」元数据');
+    if (!/^\s*-\s*类型：\s*\S/m.test(b)) add('LOW', 'meta', `pm_skills.md#${name}`, '缺「类型」元数据');
   }
 }
 
