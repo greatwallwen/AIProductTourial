@@ -162,10 +162,36 @@ function comboPipeline(t) {
   }, t);
 }
 
+// §2.6：CodeBuddy 模式 ↔ 本书概念（国产·当下可跑的组合拳落点；模式是脊柱、工具是实例）
+function codebuddyMap(t) {
+  const st = [
+    ['Ask 对话', '技术问答 / 提示词', t.muted, '§2 提示词工程'],
+    ['Craft 智能体', '多文件生成·重构·测试', t.accent2, '研发镜头 build/test Loop'],
+    ['Plan 规划', '先列任务清单·再自主执行', t.accent, '§3 SDD 分解 + 组合拳自动化'],
+    ['design-to-code', 'UI 设计一键转码', t.warn, '§5 设计系统'],
+    ['MCP 连接', '国内首家支持 MCP', t.ok, '§1 MCP / §2 连接'],
+  ];
+  const w = 196, gap = 20, x0 = 28, y1 = 100, y2 = 256;
+  const nodes = [], edges = [];
+  st.forEach(([label, sub, col, book], i) => {
+    const x = x0 + i * (w + gap);
+    nodes.push({ id: 'm' + i, x, y: y1, w, h: 76, color: col, label, sub });
+    nodes.push({ id: 'c' + i, x, y: y2, w, h: 64, color: t.muted, label: book, sub: '本书概念' });
+    edges.push({ from: 'm' + i, to: 'c' + i, label: '对应', dashed: true, color: t.muted });
+  });
+  return diagram({
+    W: x0 * 2 + 5 * w + 4 * gap, H: 392, title: 'CodeBuddy 模式 ↔ 本书概念（国产·当下可跑的落点）',
+    caption: '腾讯云代码助手，三形态 IDE/CLI/插件。模式是脊柱，CodeBuddy 是中文读者当下能装能跑的实例（来源：腾讯/媒体）。',
+    nodes, edges,
+    legend: [{ label: '上排 · CodeBuddy 模式', color: t.accent }, { label: '下排 · 本书概念', color: t.muted }],
+  }, t);
+}
+
 export function chapterFigures(t) {
   return {
     fig_loop_cybernetic: loopCybernetic(t), fig_yagni_ladder: yagniLadder(t), fig_ai_slop: aiSlop(t),
     fig_l0l3_ladder: l0l3Ladder(t), fig_gate_board: gateBoard(t), fig_journey: journey(t),
     fig_skill_lifecycle: skillLifecycle(t), fig_skill_distribution: skillDistribution(t), fig_combo_pipeline: comboPipeline(t),
+    fig_codebuddy_map: codebuddyMap(t),
   };
 }

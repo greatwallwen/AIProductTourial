@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /** 生成：每案例深色大屏风 SVG + 两份交付物 md + §1-§4 理念图 + 合成单一教程 md。
- *  逻辑：先讲理念/原理/规范/设计（第一部分），再用案例演示验证（第二部分）。工具口径用 Trae/CodeBuddy 等泛指。 */
+ *  逻辑：先讲理念/原理/规范/设计（第一部分），再用案例演示验证（第二部分）。工具口径以 CodeBuddy(国产可跑)为主、任一 Agent 工具通用。 */
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join, resolve, dirname } from 'node:path';
 import { archFigures, subsystemDeps } from './arch_figures.mjs';
@@ -158,7 +158,7 @@ function deliverableMd(c, d, type) {
   return head + `\n## 交付物\n\n${c.deliverable}\n\n## 验收清单\n\n${kv([['必含字段', c.fields.join('、')], ['必含指标链', c.metricChain.join('、')], ['必含异常状态', c.exceptionStates.join('、')], ['必含 Skill', c.skills.join('、')]])}\n\n## 合格标准\n\n业务场景具体、指标链完整、异常状态可追踪、行动入口明确、验收条件可执行。\n\n## 不合格标准\n\n使用泛化产品名称、缺少行业指标、只描述页面不说明业务取舍、越过「${c.riskBoundary}」。\n\n## 验收结论\n\n${acceptance(c, d)}\n`;
 }
 
-// 构建契约式 Prompt（工具无关，用 Trae/CodeBuddy 等泛指）
+// 构建契约式 Prompt（工具无关，以 CodeBuddy 为主的任一 Agent 工具）
 // Prompt 1（问题定义）与 Prompt 2（方案验收）职责不同、内容差异化，不再是同一段换两个字。
 function buildPrompt(c, d, stage) {
   const head = '请以产品经理身份，用 AI 编程工具（如 Trae、CodeBuddy 等任一 Agent 工具）';
@@ -456,6 +456,7 @@ const lensViewLines = (c) => c.lensViews ? ['### 三镜头看同一个案例', '
 for (const c of defs.cases) {
   const d = vm(c.num);
   const B = [`# 实操 ${pad(c.num)}：${c.title}`, '',
+    `### 项目场景故事`, '', c.story, '',
     `> **本案例演示/验证**：原理 ${(c.demonstrates || []).join('、')}｜**采用设计** \`${c.design}\`（见 [design/${c.design}.md](${UP}design/${c.design}.md)）`, '',
     `> **在数字化系统中的位置**：${c.systemLayer}层 · ${c.systemStage}环节｜**理论→实操**：${c.theoryOp}`, '',
     `> **角色镜头**：${lensTags(c)}（本案更偏这些角色；主脊 §1-§2 三镜头共读）`, '',
@@ -465,15 +466,14 @@ for (const c of defs.cases) {
     `> ${ic('lightbulb')}**洞见**：${c.insight}`,
     '>',
     `> ${ic('alert-triangle')}**常见坑**：${c.pitfall}`, '',
-    `### 项目场景故事`, '', c.story, '',
     ...lensViewLines(c),
     `**现状问题**`, '', `- 决策依赖的关键指标：${c.metricChain.join('、')}。`, `- 现场常见异常：${c.exceptionStates.join('、')}。`, `- 只做通用页面无法支撑「${c.decisionAction}」。`, '',
     `**本次任务**`, '', `- 明确岗位、指标链、异常状态与决策动作。`, `- 使用 \`${c.skills[0]}\` 与 \`${c.skills[1]}\` 完成分析，产出 \`${c.deliverable}\`，用 \`${c.skills[2]}\` 验收。`, '',
     `### 任务目标与数据`, '', kv([['行业', c.industry], ['真实业务场景', c.scenario], ['岗位', c.role], ['数据或资料', '`' + c.dataset + '`（' + d.rowCount + ' 行，异常 ' + d.exceptionCount + '）'], ['公开参考', c.publicRef], ['行业字段', c.fields.join('、')], ['指标链（真实值）', d.kpis.map((k) => k.name + ' ' + k.value + (k.unit || '')).join('，')], ['决策动作', c.decisionAction], ['风险边界', c.riskBoundary + (c.highImpact ? '（高影响行业·人工复核）' : '')], ['UI 原型', '`' + c.uiId + '`（' + c.saasType + '）'], ['采用设计', c.design], ['SaaS 组件', c.saasComponents.join('、')]]), '',
     ...(c.screen === 'buildwalk'
-      ? ['### Prompt 实操 · SDD 系统建造八步（多 prompt 编排）', '', '> 正面回答「几个 prompt 建不成系统」：下面是一条**流水线**——每步一个 prompt、产一份工件、喂给下一步；澄清与门禁是人/机把关。照着走，才建得动一个中大型系统。', '', '> **怎么用**：把每一步的代码框整段复制进你的 AI 编程工具，拿到工件后再喂给下一步；不必看懂每行技术细节。', '',
+      ? ['### Prompt 实操 · SDD 系统建造八步（多 prompt 编排）', '', '> 正面回答「几个 prompt 建不成系统」：下面是一条**流水线**——每步一个 prompt、产一份工件、喂给下一步；澄清与门禁是人/机把关。照着走，才建得动一个中大型系统。', '', '> **怎么用（用 CodeBuddy 跑这套「建系统」走查）**：整条流水线正好对上 CodeBuddy 的模式——宪法/规格/澄清用 **Ask + Plan**（问清楚、让它列任务清单）；架构与任务分解用 **Plan**；逐任务实现用 **Craft**（多文件生成/重构/测试）；门禁三绿用 **Craft** 跑测试 + review；演进则回改规格再进 **Plan**。把每步代码框整段贴进对应模式、拿到工件再喂下一步；海外读者换 Claude Code / Cursor 同理（见 §2.6.1）。', '',
         ...buildBuildPipeline().flatMap(([s, p]) => [`**${s}**`, '', '```text', p, '```', ''])]
-      : ['### Prompt 实操', '', '> **怎么用**：打开你的 AI 编程工具（没有就先装一个，如 Trae、CodeBuddy 等任一 Agent 工具），把下面灰底代码框**整段原样复制、粘贴进对话框发送**——你不需要看懂里面的技术细节，AI 会照着做。', '', `**Prompt 1：${c.scenario} - 问题定义**`, '', '```text', buildPrompt(c, d, 'def'), '```', '', `**Prompt 2：${c.scenario} - 方案验收**`, '', '```text', buildPrompt(c, d, 'accept'), '```', '']),
+      : ['### Prompt 实操', '', '> **怎么用**：推荐用 **CodeBuddy 的 Plan 模式**（腾讯，国产·当下可跑）——把下面灰底代码框**整段原样粘进去，它会先列出任务清单、再自主执行**，你不需要看懂里面的技术细节；没装过就先装一个。海外读者用 Claude Code / Cursor / Trae 等任一 Agent 工具同理（见 §2.6.1）。', '', `**Prompt 1：${c.scenario} - 问题定义**`, '', '```text', buildPrompt(c, d, 'def'), '```', '', `**Prompt 2：${c.scenario} - 方案验收**`, '', '```text', buildPrompt(c, d, 'accept'), '```', '']),
     `### 图形/原型/表单`, '', `![${c.scenario} · 信息图](${UP}outputs/product_case_library/svg/case_${pad(c.num)}_${c.slug}.svg)`, '',
     ...(c.num === 46 && d.deps?.length ? [`![案例46 · 后端子系统真实依赖（C4 · dogfood）](${UP}outputs/product_case_library/svg/fig_case46_deps.svg)`, ''] : []),
     `![${c.scenario} · 可运行大屏原型截图](${UP}assets/screenshots/premium_case_${pad(c.num)}_${c.slug}_desktop.png)`, '',

@@ -57,6 +57,12 @@ ok(); if (/snarktank.{0,10}发明|Ralph.{0,6}snarktank 发明/.test(tut)) bad('R
 // v13 Phase 3：去 AI 味强化（去味技能 + §5 呼应）
 for (const s of ['humanizer', 'de-ai-flavor']) { ok(); if (!skillsMd.includes(`## ${s}`)) bad(`缺去 AI 味技能 ${s}`); }
 ok(); if (!tut.includes('去味') && !tut.includes('去 AI 味')) bad('§5 未呼应去 AI 味工具生态');
+// v15：CodeBuddy 国产落地 + 诚信 + 反广告平衡
+for (const m of ['CodeBuddy', 'Plan', 'Craft', 'Ask', '腾讯', '三形态', 'design-to-code']) { ok(); if (!tut.includes(m)) bad(`CodeBuddy 落地缺「${m}」`); }
+ok(); if (!has('outputs/product_case_library/svg/fig_codebuddy_map.svg') || !tut.includes('fig_codebuddy_map.svg')) bad('缺/未嵌入 CodeBuddy 模式映射图');
+ok(); if (/CodeBuddy[\s\S]{0,60}(使用率|提效|40%|85%)/.test(tut) && !/说法|口径|媒体|厂商/.test(tut)) bad('CodeBuddy 效能数字未标厂商/媒体说法（诚信）');
+ok(); if (tut.includes('CodeBuddy') && !/Claude Code|Cursor|gstack|Ralph/.test(tut)) bad('CodeBuddy 落地未保留国际工具对照（避免变广告）');
+ok(); if (tut.includes('CodeBuddy') && !/Anthropic|不支持中国|supported-countries/.test(tut)) bad('CodeBuddy 动机(Claude 不支持中国)未给客观依据');
 for (const c of defs.cases) { ok(); if (!has(`${BOOK}/案例/${pad(c.num)}-${c.slug}.md`)) bad(`缺案例文件 ${pad(c.num)}-${c.slug}.md`); }
 for (const f of bookFiles) { ok(); if (rd(f).split('\n').length > 800) bad(`${f} > 800 行`); }
 { const rm = rd(`${BOOK}/README.md`); for (const l of [...rm.matchAll(/\]\(([^)#][^)]*\.md)\)/g)].map((m) => m[1]).filter((l) => !l.startsWith('../'))) { ok(); if (!has(`${BOOK}/${l}`)) bad(`README 目录链接断链：${l}`); } }

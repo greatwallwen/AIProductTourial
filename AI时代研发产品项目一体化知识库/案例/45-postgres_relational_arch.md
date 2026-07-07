@@ -1,5 +1,9 @@
 # 实操 45：系统架构｜关系库查询(PostgreSQL)
 
+### 项目场景故事
+
+数据产品经理要把真实经营 CSV（UCI Online Retail II，4500 单真实英国电商订单）落成可查询的关系库：真实 CREATE TABLE + 索引 + 参数化聚合（前端调 /api/db/query），并讲清 PostgreSQL/pgvector 的生产架构与本地 SQLite 演示的差异。
+
 > **本案例演示/验证**：原理 3.3、4.1｜**采用设计** `steel-queue`（见 [design/steel-queue.md](../../design/steel-queue.md)）
 
 > **在数字化系统中的位置**：底座平台层 · 治理环节｜**理论→实操**：把原理 3.3、4.1 落成可运行操作：用真实 SQL（建表/索引/参数化聚合）支撑经营分析，讲清 PostgreSQL 架构（数字化底座本身）
@@ -13,10 +17,6 @@
 > <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：关系库不是「存下来」就行，而是建表+索引+参数化查询让经营分析可秒查。本案用 node:sqlite 真建 orders 表、真按区域(真实国家)聚合真实销售额；生产换 PostgreSQL 架构一致。
 >
 > <img src="../../assets/vendor/lucide/built/alert-triangle.svg" width="14" alt="" style="vertical-align:-2px" /> **常见坑**：常见坑：① 无索引全表扫描，数据一大就慢；② 拼字符串 SQL 有注入风险（本案参数化）；③ 把本地 SQLite 演示当生产 PG，忽略连接池/分区/备份。
-
-### 项目场景故事
-
-数据产品经理要把真实经营 CSV（UCI Online Retail II，4500 单真实英国电商订单）落成可查询的关系库：真实 CREATE TABLE + 索引 + 参数化聚合（前端调 /api/db/query），并讲清 PostgreSQL/pgvector 的生产架构与本地 SQLite 演示的差异。
 
 **现状问题**
 
@@ -46,7 +46,7 @@
 
 ### Prompt 实操
 
-> **怎么用**：打开你的 AI 编程工具（没有就先装一个，如 Trae、CodeBuddy 等任一 Agent 工具），把下面灰底代码框**整段原样复制、粘贴进对话框发送**——你不需要看懂里面的技术细节，AI 会照着做。
+> **怎么用**：推荐用 **CodeBuddy 的 Plan 模式**（腾讯，国产·当下可跑）——把下面灰底代码框**整段原样粘进去，它会先列出任务清单、再自主执行**，你不需要看懂里面的技术细节；没装过就先装一个。海外读者用 Claude Code / Cursor / Trae 等任一 Agent 工具同理（见 §2.6.1）。
 
 **Prompt 1：经营数据关系库查询 - 问题定义**
 

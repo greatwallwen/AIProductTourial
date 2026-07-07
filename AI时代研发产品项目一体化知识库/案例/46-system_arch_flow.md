@@ -1,5 +1,9 @@
 # 实操 46：系统架构｜子系统分解与接口契约
 
+### 项目场景故事
+
+架构型产品经理以本教程后端自身为例演示系统架构设计：routes/services/data/db/vector 分层与模块边界、一次真实接口契约调用（/api/health、错误信封），把 §3 方法论落到可运行代码（dogfood）。
+
 > **本案例演示/验证**：原理 3.1、3.3｜**采用设计** `cyan-matrix`（见 [design/cyan-matrix.md](../../design/cyan-matrix.md)）
 
 > **在数字化系统中的位置**：底座平台层 · 治理环节｜**理论→实操**：把原理 3.1、3.3 落成可运行操作：把 §3 架构流程落到本仓库真运行后端：分层/边界/契约在代码里可查（数字化底座本身）
@@ -13,10 +17,6 @@
 > <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：系统架构的落点是「分层边界 + 接口契约」：本案以后端自身为例——routes 不写业务、services 不碰 HTTP，一次真实 /api/health 契约调用可查。架构决策要留 ADR，可追溯。
 >
 > <img src="../../assets/vendor/lucide/built/alert-triangle.svg" width="14" alt="" style="vertical-align:-2px" /> **常见坑**：常见坑：① 分层名义存在、实则 controller 里塞业务；② 接口无契约（错误信封/幂等）各调各的；③ 架构口头拍板不留 ADR，后人无从追溯。
-
-### 项目场景故事
-
-架构型产品经理以本教程后端自身为例演示系统架构设计：routes/services/data/db/vector 分层与模块边界、一次真实接口契约调用（/api/health、错误信封），把 §3 方法论落到可运行代码（dogfood）。
 
 **现状问题**
 
@@ -46,7 +46,7 @@
 
 ### Prompt 实操
 
-> **怎么用**：打开你的 AI 编程工具（没有就先装一个，如 Trae、CodeBuddy 等任一 Agent 工具），把下面灰底代码框**整段原样复制、粘贴进对话框发送**——你不需要看懂里面的技术细节，AI 会照着做。
+> **怎么用**：推荐用 **CodeBuddy 的 Plan 模式**（腾讯，国产·当下可跑）——把下面灰底代码框**整段原样粘进去，它会先列出任务清单、再自主执行**，你不需要看懂里面的技术细节；没装过就先装一个。海外读者用 Claude Code / Cursor / Trae 等任一 Agent 工具同理（见 §2.6.1）。
 
 **Prompt 1：后端子系统分解与契约 - 问题定义**
 

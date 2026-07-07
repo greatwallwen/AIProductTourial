@@ -1,8 +1,12 @@
 # 实操 41：综合闭环｜零售经营产品方案
 
+### 项目场景故事
+
+作为综合闭环案例，零售经营负责人要把「早会异常→驾驶舱洞察→改进动作→责任闭环」串成一份可验收的经营方案。本案基于真实 UCI Online Retail II（4500 单真实英国电商订单），把销售额、退货、区域结构端到端形成从数据到方案的完整链路。毛利率为教学合成叠加、已标注。
+
 > **本案例演示/验证**：原理 2.7、3.1、4.1｜**采用设计** `graphite-hud`（见 [design/graphite-hud.md](../../design/graphite-hud.md)）
 
-> **在数字化系统中的位置**：业务应用层 · 增长环节｜**理论→实操**：把原理 2.7、3.1、4.1 落成可运行操作：从数据端到端得出零售经营改进方案并落成可验收交付物（底座依赖 44/45/46/47）
+> **在数字化系统中的位置**：业务应用层 · 增长环节｜**理论→实操**：把原理 2.7、3.1、4.1 落成可运行操作：从数据端到端得出零售经营改进方案并落成可验收交付物（依赖案例 44–47 的数据底座，本案可先不管）
 
 > **角色镜头**：<img src="../../assets/vendor/lucide/built/package.svg" width="14" alt="" style="vertical-align:-2px" /> 产品 · <img src="../../assets/vendor/lucide/built/wrench.svg" width="14" alt="" style="vertical-align:-2px" /> 研发 · <img src="../../assets/vendor/lucide/built/clipboard-list.svg" width="14" alt="" style="vertical-align:-2px" /> 项目（本案更偏这些角色；主脊 §1-§2 三镜头共读）
 
@@ -13,10 +17,6 @@
 > <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：综合案例的价值在「端到端可验收」：不是给一堆图，而是从真实数据得出「哪个区域是收入支柱、哪个品类退货高发要治理」的具体动作，且每个动作有责任人和验收标准。<img src="../../assets/vendor/lucide/built/alert-triangle.svg" width="14" alt="" style="vertical-align:-2px" /> 「毛利洼地」基于教学合成的毛利率，页面已标注，实操中应换成真实成本数据。
 >
 > <img src="../../assets/vendor/lucide/built/alert-triangle.svg" width="14" alt="" style="vertical-align:-2px" /> **常见坑**：常见坑：① 方案停在「分析」不落到「动作+责任+验收」；② 脱离数据编经营结论——本案收入/区域/退货结论都回到 order_data 真实聚合；③ 把教学合成的毛利当真实成本决策依据。
-
-### 项目场景故事
-
-作为综合闭环案例，零售经营负责人要把「早会异常→驾驶舱洞察→改进动作→责任闭环」串成一份可验收的经营方案。本案基于真实 UCI Online Retail II（4500 单真实英国电商订单），把销售额、退货、区域结构端到端形成从数据到方案的完整链路。毛利率为教学合成叠加、已标注。
 
 ### 三镜头看同一个案例
 
@@ -54,7 +54,7 @@
 
 ### Prompt 实操
 
-> **怎么用**：打开你的 AI 编程工具（没有就先装一个，如 Trae、CodeBuddy 等任一 Agent 工具），把下面灰底代码框**整段原样复制、粘贴进对话框发送**——你不需要看懂里面的技术细节，AI 会照着做。
+> **怎么用**：推荐用 **CodeBuddy 的 Plan 模式**（腾讯，国产·当下可跑）——把下面灰底代码框**整段原样粘进去，它会先列出任务清单、再自主执行**，你不需要看懂里面的技术细节；没装过就先装一个。海外读者用 Claude Code / Cursor / Trae 等任一 Agent 工具同理（见 §2.6.1）。
 
 **Prompt 1：零售经营产品方案 - 问题定义**
 

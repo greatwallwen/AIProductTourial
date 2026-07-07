@@ -1,5 +1,9 @@
 # 实操 47：数据指标｜三维经营散点(three.js)
 
+### 项目场景故事
+
+可视化产品经理用 react-three-fiber 把真实经营数据（UCI Online Retail II 的单价×数量×金额，色=品类）渲染成真实三维散点（后端 /api/points3d 供点），在大屏上交互探索多维离群（含真实退货带来的负数量点）。
+
 > **本案例演示/验证**：原理 3.3、5.1｜**采用设计** `graphite-hud`（见 [design/graphite-hud.md](../../design/graphite-hud.md)）
 
 > **在数字化系统中的位置**：底座平台层 · 洞察环节｜**理论→实操**：把原理 3.3、5.1 落成可运行操作：用 three.js/R3F 把经营数据渲染成可交互三维散点，暴露多维离群（数字化底座本身）
@@ -13,10 +17,6 @@
 > <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：三维散点的价值是「一眼看出多维离群」：本案把真实订单的单价×数量×金额三维铺开，孤立的高价低量点、以及真实退货的负数量点在二维图里会被掩盖，三维一转就现形。
 >
 > <img src="../../assets/vendor/lucide/built/alert-triangle.svg" width="14" alt="" style="vertical-align:-2px" /> **常见坑**：常见坑：① 为炫技上三维，二维能说清就别用；② 三维当统计结论（它是探索工具）；③ 无 WebGL 环境不做退化，页面空白（本案退化等距投影）。
-
-### 项目场景故事
-
-可视化产品经理用 react-three-fiber 把真实经营数据（UCI Online Retail II 的单价×数量×金额，色=品类）渲染成真实三维散点（后端 /api/points3d 供点），在大屏上交互探索多维离群（含真实退货带来的负数量点）。
 
 **现状问题**
 
@@ -46,7 +46,7 @@
 
 ### Prompt 实操
 
-> **怎么用**：打开你的 AI 编程工具（没有就先装一个，如 Trae、CodeBuddy 等任一 Agent 工具），把下面灰底代码框**整段原样复制、粘贴进对话框发送**——你不需要看懂里面的技术细节，AI 会照着做。
+> **怎么用**：推荐用 **CodeBuddy 的 Plan 模式**（腾讯，国产·当下可跑）——把下面灰底代码框**整段原样粘进去，它会先列出任务清单、再自主执行**，你不需要看懂里面的技术细节；没装过就先装一个。海外读者用 Claude Code / Cursor / Trae 等任一 Agent 工具同理（见 §2.6.1）。
 
 **Prompt 1：经营三维散点可视化 - 问题定义**
 

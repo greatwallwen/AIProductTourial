@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1116 392" font-family="PingFang SC,Microsoft YaHei,sans-serif">
+  <defs>
+    <linearGradient id="dbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a0e14"/><stop offset="1" stop-color="#0d1220"/></linearGradient>
+    <linearGradient id="dac" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#38bdf8"/></linearGradient>
+    <pattern id="dgrid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#16202e" stroke-width="1"/></pattern>
+    <filter id="dsh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#000" flood-opacity="0.35"/></filter>
+  </defs>
+  <rect width="1116" height="392" fill="url(#dbg)"/><rect width="1116" height="392" fill="url(#dgrid)" opacity="0.35"/>
+  <rect x="0" y="0" width="1116" height="44" fill="#121826" opacity="0.5"/>
+  <rect x="24" y="13" width="4" height="19" rx="2" fill="url(#dac)"/>
+  <text x="36" y="28" font-size="15" font-weight="750" fill="#e6edf6">CodeBuddy 模式 ↔ 本书概念（国产·当下可跑的落点）</text>
+<line x1="126.0" y1="176.0" x2="126.0" y2="256.0" stroke="#5b6b7f" stroke-width="1.6" stroke-dasharray="5 3"/><path d="M126 256 L122.4 249.4 L129.6 249.4 z" fill="#5b6b7f"/><rect x="114.4" y="208" width="23.2" height="15" rx="4" fill="#0d1220" stroke="#1e2a3a"/><text x="126" y="219" font-size="9" fill="#9fb0c3" text-anchor="middle">对应</text>
+<line x1="342.0" y1="176.0" x2="342.0" y2="256.0" stroke="#5b6b7f" stroke-width="1.6" stroke-dasharray="5 3"/><path d="M342 256 L338.4 249.4 L345.6 249.4 z" fill="#5b6b7f"/><rect x="330.4" y="208" width="23.2" height="15" rx="4" fill="#0d1220" stroke="#1e2a3a"/><text x="342" y="219" font-size="9" fill="#9fb0c3" text-anchor="middle">对应</text>
+<line x1="558.0" y1="176.0" x2="558.0" y2="256.0" stroke="#5b6b7f" stroke-width="1.6" stroke-dasharray="5 3"/><path d="M558 256 L554.4 249.4 L561.6 249.4 z" fill="#5b6b7f"/><rect x="546.4" y="208" width="23.2" height="15" rx="4" fill="#0d1220" stroke="#1e2a3a"/><text x="558" y="219" font-size="9" fill="#9fb0c3" text-anchor="middle">对应</text>
+<line x1="774.0" y1="176.0" x2="774.0" y2="256.0" stroke="#5b6b7f" stroke-width="1.6" stroke-dasharray="5 3"/><path d="M774 256 L770.4 249.4 L777.6 249.4 z" fill="#5b6b7f"/><rect x="762.4" y="208" width="23.2" height="15" rx="4" fill="#0d1220" stroke="#1e2a3a"/><text x="774" y="219" font-size="9" fill="#9fb0c3" text-anchor="middle">对应</text>
+<line x1="990.0" y1="176.0" x2="990.0" y2="256.0" stroke="#5b6b7f" stroke-width="1.6" stroke-dasharray="5 3"/><path d="M990 256 L986.4 249.4 L993.6 249.4 z" fill="#5b6b7f"/><rect x="978.4" y="208" width="23.2" height="15" rx="4" fill="#0d1220" stroke="#1e2a3a"/><text x="990" y="219" font-size="9" fill="#9fb0c3" text-anchor="middle">对应</text>
+<rect x="28" y="100" width="196" height="76" rx="10" fill="#121826" stroke="#5b6b7f" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="28" y="100" width="196" height="3" rx="1.5" fill="#5b6b7f"/>
+  <text x="126" y="137" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">Ask 对话</text><text x="126" y="152" font-size="9.5" fill="#5b6b7f" text-anchor="middle">技术问答 / 提示词</text>
+<rect x="28" y="256" width="196" height="64" rx="10" fill="#121826" stroke="#5b6b7f" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="28" y="256" width="196" height="3" rx="1.5" fill="#5b6b7f"/>
+  <text x="126" y="287" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">§2 提示词工程</text><text x="126" y="302" font-size="9.5" fill="#5b6b7f" text-anchor="middle">本书概念</text>
+<rect x="244" y="100" width="196" height="76" rx="10" fill="#121826" stroke="#38bdf8" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="244" y="100" width="196" height="3" rx="1.5" fill="#38bdf8"/>
+  <text x="342" y="137" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">Craft 智能体</text><text x="342" y="152" font-size="9.5" fill="#5b6b7f" text-anchor="middle">多文件生成·重构·测试</text>
+<rect x="244" y="256" width="196" height="64" rx="10" fill="#121826" stroke="#5b6b7f" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="244" y="256" width="196" height="3" rx="1.5" fill="#5b6b7f"/>
+  <text x="342" y="287" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">研发镜头 build/test Loop</text><text x="342" y="302" font-size="9.5" fill="#5b6b7f" text-anchor="middle">本书概念</text>
+<rect x="460" y="100" width="196" height="76" rx="10" fill="#121826" stroke="#22d3ee" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="460" y="100" width="196" height="3" rx="1.5" fill="#22d3ee"/>
+  <text x="558" y="137" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">Plan 规划</text><text x="558" y="152" font-size="9.5" fill="#5b6b7f" text-anchor="middle">先列任务清单·再自主执行</text>
+<rect x="460" y="256" width="196" height="64" rx="10" fill="#121826" stroke="#5b6b7f" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="460" y="256" width="196" height="3" rx="1.5" fill="#5b6b7f"/>
+  <text x="558" y="287" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">§3 SDD 分解 + 组合拳自动化</text><text x="558" y="302" font-size="9.5" fill="#5b6b7f" text-anchor="middle">本书概念</text>
+<rect x="676" y="100" width="196" height="76" rx="10" fill="#121826" stroke="#fbbf24" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="676" y="100" width="196" height="3" rx="1.5" fill="#fbbf24"/>
+  <text x="774" y="137" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">design-to-code</text><text x="774" y="152" font-size="9.5" fill="#5b6b7f" text-anchor="middle">UI 设计一键转码</text>
+<rect x="676" y="256" width="196" height="64" rx="10" fill="#121826" stroke="#5b6b7f" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="676" y="256" width="196" height="3" rx="1.5" fill="#5b6b7f"/>
+  <text x="774" y="287" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">§5 设计系统</text><text x="774" y="302" font-size="9.5" fill="#5b6b7f" text-anchor="middle">本书概念</text>
+<rect x="892" y="100" width="196" height="76" rx="10" fill="#121826" stroke="#34d399" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="892" y="100" width="196" height="3" rx="1.5" fill="#34d399"/>
+  <text x="990" y="137" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">MCP 连接</text><text x="990" y="152" font-size="9.5" fill="#5b6b7f" text-anchor="middle">国内首家支持 MCP</text>
+<rect x="892" y="256" width="196" height="64" rx="10" fill="#121826" stroke="#5b6b7f" stroke-width="1.4"  filter="url(#dsh)"/>
+  <rect x="892" y="256" width="196" height="3" rx="1.5" fill="#5b6b7f"/>
+  <text x="990" y="287" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">§1 MCP / §2 连接</text><text x="990" y="302" font-size="9.5" fill="#5b6b7f" text-anchor="middle">本书概念</text>
+<rect x="856.4" y="366" width="12" height="12" rx="3" fill="#5b6b7f"/><text x="874.4" y="376" font-size="9.5" fill="#9fb0c3">下排 · 本书概念</text><rect x="949.8" y="366" width="12" height="12" rx="3" fill="#22d3ee"/><text x="967.8" y="376" font-size="9.5" fill="#9fb0c3">上排 · CodeBuddy 模式</text><text x="24" y="378" font-size="10.5" fill="#5b6b7f">腾讯云代码助手，三形态 IDE/CLI/插件。模式是脊柱，CodeBuddy 是中文读者当下能装能跑的实例（来源：腾讯/媒体）。</text>
+</svg>

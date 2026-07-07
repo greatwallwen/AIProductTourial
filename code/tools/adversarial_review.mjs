@@ -90,6 +90,13 @@ for (const f of ['code/tools/build_docs.mjs', 'code/tools/verify_course_package.
   if (/星数|Nacos 3\.2|ralph run|nacos-cli|garrytan|obra\/superpowers/.test(tut) && !/最后核实|核实日期|截至 202/.test(tut)) add('MED', 'freshness', `${BOOK}/*`, '工具/版本/星数内容无「最后核实」日期——易过时', '工具节加「最后核实：YYYY-MM」约定');
 }
 
+// ⑩ v15：CodeBuddy 国产落地维（模式映射 + 归属 + 反广告平衡）
+{
+  if (!/CodeBuddy/.test(tut) || !/fig_codebuddy_map/.test(tut)) add('MED', 'codebuddy', `${BOOK}/*`, '缺 CodeBuddy 国产落地或模式映射图', '§2.6.1 补 CodeBuddy 模式↔本书概念 + 图');
+  else if (!/Plan/.test(tut) || !/Craft/.test(tut) || !/腾讯/.test(tut)) add('MED', 'codebuddy', `${BOOK}/*`, 'CodeBuddy 模式(Plan/Craft)或腾讯归属不全', '补全');
+  else if (!/Claude Code|Cursor|gstack|Ralph/.test(tut)) add('MED', 'codebuddy', `${BOOK}/*`, 'CodeBuddy 落地未留国际工具对照（防变广告）', '保留国际工具对照');
+}
+
 // —— 排序 + 输出 ——
 const rank = { HIGH: 0, MED: 1, LOW: 2 };
 F.sort((a, b) => rank[a.sev] - rank[b.sev] || a.cat.localeCompare(b.cat));

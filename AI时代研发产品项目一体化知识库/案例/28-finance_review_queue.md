@@ -1,8 +1,12 @@
 # 实操 28：权限与风控规则｜金融复核工作台
 
+### 项目场景故事
+
+风控 PM 面对信用卡客户的违约复核。本案用真实公开数据——UCI《Default of Credit Card Clients》（3 万名台湾信用卡客户 2005 年真实违约与逐月还款记录，CC BY 4.0），抽样 3000 名客户。真实数据揭示一个反直觉现象：低额度客户违约率反而最高。人工复核有限，要按风险等级×账单金额优先。
+
 > **本案例演示/验证**：原理 3.3、3.5｜**采用设计** `cyan-matrix`（见 [design/cyan-matrix.md](../../design/cyan-matrix.md)）
 
-> **在数字化系统中的位置**：业务应用层 · 执行环节｜**理论→实操**：把原理 3.3、3.5 落成可运行操作：按风险等级×金额×命中规则排序复核队列，把有限人工投给最该看的高风险交易。（底座依赖 44/45/46/47）
+> **在数字化系统中的位置**：业务应用层 · 执行环节｜**理论→实操**：把原理 3.3、3.5 落成可运行操作：按风险等级×金额×命中规则排序复核队列，把有限人工投给最该看的高风险交易。（依赖案例 44–47 的数据底座，本案可先不管）
 
 > **角色镜头**：<img src="../../assets/vendor/lucide/built/package.svg" width="14" alt="" style="vertical-align:-2px" /> 产品 · <img src="../../assets/vendor/lucide/built/clipboard-list.svg" width="14" alt="" style="vertical-align:-2px" /> 项目 · <img src="../../assets/vendor/lucide/built/wrench.svg" width="14" alt="" style="vertical-align:-2px" /> 研发（本案更偏这些角色；主脊 §1-§2 三镜头共读）
 
@@ -13,10 +17,6 @@
 > <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：复核不是把所有高风险都人工看一遍（看不完），而是按「风险等级 × 账单金额」排序。本案 /api/riskreview 按真实额度档真算高风险率——真实反直觉：低额度客户违约率最高，明显高于高额度客户。风险分级与命中规则均由真实逐月还款状态(PAY_*)与违约标记派生，非编造。
 >
 > <img src="../../assets/vendor/lucide/built/alert-triangle.svg" width="14" alt="" style="vertical-align:-2px" /> **常见坑**：常见坑：① 规则命中就自动拦，误伤率高；② 全靠人工，复核不过来；③ 高影响（金融）却让模型自动拒绝交易/授信，未保留人工复核与申诉；④ 想当然「高额度=高风险」，忽略真实数据里低额度反而违约最高。
-
-### 项目场景故事
-
-风控 PM 面对信用卡客户的违约复核。本案用真实公开数据——UCI《Default of Credit Card Clients》（3 万名台湾信用卡客户 2005 年真实违约与逐月还款记录，CC BY 4.0），抽样 3000 名客户。真实数据揭示一个反直觉现象：低额度客户违约率反而最高。人工复核有限，要按风险等级×账单金额优先。
 
 **现状问题**
 
@@ -46,7 +46,7 @@
 
 ### Prompt 实操
 
-> **怎么用**：打开你的 AI 编程工具（没有就先装一个，如 Trae、CodeBuddy 等任一 Agent 工具），把下面灰底代码框**整段原样复制、粘贴进对话框发送**——你不需要看懂里面的技术细节，AI 会照着做。
+> **怎么用**：推荐用 **CodeBuddy 的 Plan 模式**（腾讯，国产·当下可跑）——把下面灰底代码框**整段原样粘进去，它会先列出任务清单、再自主执行**，你不需要看懂里面的技术细节；没装过就先装一个。海外读者用 Claude Code / Cursor / Trae 等任一 Agent 工具同理（见 §2.6.1）。
 
 **Prompt 1：金融复核工作台 - 问题定义**
 
