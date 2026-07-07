@@ -22,7 +22,7 @@
 
 > 快照由一次性采样脚本生成（等距抽样、无随机、无联网）；生成器读快照后归一化。真实列直接用真实效应；缺失列为确定性教学合成叠加、已标注，绝不把叠加说成真实。
 
-结构化 Skill 库：skills/pm_skills.md（由 build-skills.mjs 生成）。
+结构化 Skill 库：skills/pm_skills.md（手工维护，发布前经 skill_lint.mjs 扫描）。
 
 ## vendored 真实素材（非合成，注明来源/许可）
 - `assets/vendor/lucide/`：Lucide 图标（github.com/lucide-icons/lucide，ISC 许可），内联进 §1 概念图。
