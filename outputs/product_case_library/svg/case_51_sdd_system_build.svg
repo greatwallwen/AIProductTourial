@@ -26,7 +26,7 @@
     <rect x="416" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
     <circle cx="436" cy="139" r="7" fill="none" stroke="#06b6d4" stroke-width="1.5"/><circle cx="436" cy="139" r="2.5" fill="#06b6d4"/>
     <text x="450" y="143" font-size="10.5" fill="#566484">门禁检查项</text>
-    <text x="430" y="176" font-size="24" font-weight="750" fill="#e8eefb">193<tspan font-size="12" fill="#566484"></tspan></text>
+    <text x="430" y="176" font-size="24" font-weight="750" fill="#e8eefb">198<tspan font-size="12" fill="#566484"></tspan></text>
     <rect x="606" y="116" width="176" height="82" rx="11" fill="#0c1626" stroke="#1c2c46"/>
     <rect x="606" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
     <circle cx="626" cy="139" r="7" fill="none" stroke="#06b6d4" stroke-width="1.5"/><circle cx="626" cy="139" r="2.5" fill="#06b6d4"/>
