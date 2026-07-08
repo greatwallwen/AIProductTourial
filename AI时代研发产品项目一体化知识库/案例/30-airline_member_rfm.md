@@ -79,6 +79,8 @@
 
 ![航空会员价值运营 · 信息图](../../outputs/product_case_library/svg/case_30_airline_member_rfm.svg)
 
+![案例30 · 真实客户 vs 教学合成 R×F 双散点](../../outputs/product_case_library/svg/fig_rfm_dual.svg)
+
 ![航空会员价值运营 · 可运行大屏原型截图](../../assets/screenshots/premium_case_30_airline_member_rfm_desktop.png)
 
 - 图形类型：airline_member_rfm（设计 amber-funnel）
