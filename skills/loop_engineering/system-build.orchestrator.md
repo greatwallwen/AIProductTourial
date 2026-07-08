@@ -4,6 +4,8 @@
 
 ## 步骤
 
+前置（可选）：spec 尚不存在时先跑 skill `requirement-grill`（一次一问逼出目标/边界/反例），产出再进 0。
+
 0. **对齐宪法与规格**：先读 `rules/`（宪法，不可谈判的约束）；把「要什么/为什么」写成 `spec.md`（用 skill `spec-authoring`）。规格是唯一真源。
 1. **澄清**：把 `spec.md` 里所有模糊处标 `[需澄清]`，**逐条问人确认**（skill `requirement-clarify`）——人在关口，消除意图债务，不许替人猜。
 2. **架构设计**：产出 `plan.md`——C4 四层图（skill `c4-modeling`）、DDD 限界上下文（skill `domain-decomposition`）、关键选型的 ADR（skill `adr-authoring`）、质量属性场景（skill `quality-attribute-scenario`）。

@@ -313,7 +313,7 @@ const readme = J([`# ${TITLE}`, '',
   '',
   '- **知识 → 技能 → 智慧**：读章节 = 你「知道」；跟做案例 = 你「做到」；把方法用到自己真实项目 = 你「知道何时该做」。多数人停在「知道」，从没到「做到」——所以本书每章都配可运行的案例与练习。',
   '- **流利度 ≠ 存储强度**：看完能复述，不代表学会了，那只是短期记忆；不训练很快蒸发。这就是为什么本书逼你**合上书回忆、隔几天再看、几种案例交错练**。',
-  '- 本书的练习不是摆设，是三种**「有效的费劲」**（认知科学 Robert Bjork「desirable difficulties」；开源实践见 Matt Pocock 的 `/teach` 技能，MIT）：**巩固题=检索练习**（合书凭记忆写）、**章节前置链=间隔**、**入门线/底座支线=交错**。',
+  '- 本书的练习不是摆设，是三种**「有效的费劲」**（认知科学 Robert Bjork「desirable difficulties」；开源实践见 Matt Pocock 的 `/teach` 技能，MIT；其检索自测已落为本书可用技能卡 self-quiz）：**巩固题=检索练习**（合书凭记忆写）、**章节前置链=间隔**、**入门线/底座支线=交错**。',
   '- **先写你的学习 MISSION**：别写「我想学好 AI」，写「学完后我能做 **Y**、改变 **Z**」（如「三个月内给我们产品的 AI 问答做一套 evals 上线」）。有了它，每章都能自问「这对我的 MISSION 有没有用」。', '',
   '### 怎么读这本书（标记体系）', '',
   '正文用三档标记，**新手只读必读也能走通全书，专业读者可循 选读 / 深度 直取深度**：', '',
@@ -410,6 +410,7 @@ writeBook('术语表.md', J(['# 术语表（先备着，看案例时随时回查
   '| Skill Registry | Skill 的私有仓库：版本/审核/安全/分发；draft→review→online→offline（§6，Nacos 阿里巴巴） |',
   '| skill-scanner | 发布前扫 Skill 的提示注入/数据泄露/恶意代码，「不过则不发布」（§6，本书 skill_lint dogfood） |',
   '| delta spec | 只记录「这次变更了什么」的增量规格，不重写整篇；brownfield 友好（§6/§3，OpenSpec Fission-AI） |',
+  '| 教员式/保姆式技能 | 技能生态第二根轴：教员式拷问你与教基本功（grill/tdd），保姆式接管流程（GSD/Spec Kit）；本书立场=流程可保姆、判断必教员（§2.6） |',
   '| Ralph 循环 | 把 Agent 包在 while 循环里、规格/验证都在 agent 之外，靠持续迭代跑完任务（§2.6，Geoffrey Huntley；本书 self-evolve 即一例） |',
   '', `> **进一步阅读**：各章规范与概念的权威出处汇总在 [rules/references.md](${UP}rules/references.md)；Loop 工程的可复用实操文件见 [skills/loop_engineering/](${UP}skills/loop_engineering)。`]));
 

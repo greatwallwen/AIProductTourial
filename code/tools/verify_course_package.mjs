@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /** 全量校验护栏：逐案例 数据/预计算/SVG/交付物/截图/Skill/高影响 + 全局 单一教程/多设计/rules/skills/文件<800行/无工具品牌/design·demonstrates。ALL GREEN 才通过。 */
 import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
+import { spawnSync } from 'node:child_process';
 import { join, resolve, extname } from 'node:path';
 const ROOT = resolve(import.meta.dirname, '..', '..');
 const pad = (n) => String(n).padStart(2, '0');
@@ -52,6 +53,9 @@ for (const f of ['README.md', '01-AI核心概念底层.md', '02-会Loop的工程
 // v16 拆棘轮：内容存在性 token 已移入 content_snapshot.json（脚本末尾出 diff 报告，不阻断）；
 // 此处只留 基础设施存在 + 条件式诚信守卫（内容出现时才校验其诚信，不强制内容存在）
 ok(); if (!has('code/tools/skill_lint.mjs')) bad('缺 skill_lint 可运行扫描器');
+// v19：图引擎测试真跑（只查文件存在=验证剧场）
+{ const r = spawnSync('node', ['--test', 'code/tools/diagram.test.mjs'], { cwd: ROOT, encoding: 'utf8', timeout: 30000 }); ok(); if (r.status !== 0) bad('diagram.test.mjs 未通过（真跑）'); }
+ok(); if (!tut.includes('diagram.test')) bad('§4 未叙述 test-first 活标本 diagram.test');
 // v16 ④ evals 回归门：案例 49 的裁判分不得低于基线（「校验存在」→「校验好坏」）
 if (defs.cases.some((c) => c.num === 49)) {
   ok(); if (!has('code/tools/eval_harness.mjs') || !has('code/data/eval_baseline.json')) bad('缺 eval_harness/基线（evals 回归门）');

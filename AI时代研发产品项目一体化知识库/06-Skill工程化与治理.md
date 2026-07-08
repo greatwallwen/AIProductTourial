@@ -7,7 +7,7 @@
 > <img src="../assets/vendor/lucide/built/target.svg" width="14" alt="" style="vertical-align:-2px" /> **本章学习目标**（读完你能——）
 > - 说清为什么 Skill 是「团队 AI 工程的基础单元」，以及它和 Maven/npm 依赖治理的类比；
 > - 用 Registry 生命周期（draft → review → online → offline）+ 安全扫描 + 版本，把 Skill 管起来；
-> - 跑通一个**可运行的 skill 扫描器**（本书 dogfood 24 个 skill），并知道团队/个人/平替三种落地方式。
+> - 跑通一个**可运行的 skill 扫描器**（本书 dogfood 28 个 skill），并知道团队/个人/平替三种落地方式。
 >
 > <img src="../assets/vendor/lucide/built/gauge.svg" width="14" alt="" style="vertical-align:-2px" /> **难度** 进阶 ｜ **前置** §2（Skill 是什么）、§5（治理与门禁）｜ **预计** 18 分钟。
 
@@ -17,7 +17,7 @@
 ```备注
 一个成熟的 Skill 往往不是一次写好的。它可能经历很多次迭代：第一次只是「帮我检查代码」；后来加上团队目录结构；再后来加上接口规范、异常处理、日志规范；再后来加上「遇到数据库迁移必须检查回滚脚本」。最后它变成一个非常贴合团队研发习惯的专业工作流。**这类 Skill 其实就是团队知识资产**——它沉淀的不是某个人的 prompt 小技巧，而是团队对某类工作的标准做法。
 
-这和代码依赖管理一模一样。没有 Maven、npm、PyPI 之前，大家也复制 jar 包、复制源码、复制脚本。但团队协作规模一大，依赖就必须有**仓库、有版本、有权限、有发布流程**。Skill 也一样：当它从个人 prompt 变成团队基础设施，它就需要一个 **Registry**。本书自己的 `skills/`（24 个结构化 skill + `loop_engineering/` 编排文件）就是这样一份团队资产——下面用它做 dogfood。
+这和代码依赖管理一模一样。没有 Maven、npm、PyPI 之前，大家也复制 jar 包、复制源码、复制脚本。但团队协作规模一大，依赖就必须有**仓库、有版本、有权限、有发布流程**。Skill 也一样：当它从个人 prompt 变成团队基础设施，它就需要一个 **Registry**。本书自己的 `skills/`（28 个结构化 skill + `loop_engineering/` 编排文件）就是这样一份团队资产——下面用它做 dogfood。
 ```
 
 ### 6.2 Registry 生命周期：draft → review → online → offline
@@ -56,13 +56,13 @@ Skill 治理的价值不是「把文件放服务器上」，而是**让团队形
 个人重度用 Agent 也值得管：不同电脑、不同 Agent、不同项目从**同一处**下载同步，你的 AI 使用经验就不散落在各目录里，而是一套能持续积累、随时迁移的个人能力库。团队用 Registry 是为**共享与治理**，个人用是为**沉淀、复用、迁移**。
 ```
 
-### 6.6 dogfood：给本书自己的 24 个 skill 上一道扫描门禁
+### 6.6 dogfood：给本书自己的 28 个 skill 上一道扫描门禁
 > <img src="../assets/vendor/lucide/built/check-circle.svg" width="14" alt="" style="vertical-align:-2px" /> **必读** ｜ 进阶 ｜ 关键词：**skill_lint** · **纳入三绿** · **可运行**
 
 ```备注
 说了这么多治理，本书当然自己先做到。`code/tools/skill_lint.mjs` 就是一个**可运行的 skill-scanner 本地实例**（Nacos skill-scanner 的极简版）：它扫 `skills/` 的每个 skill——查**提示注入**（「忽略以上指令」「exfiltrate 密钥」）、**危险指令**（`rm -rf ~`、`curl | bash`、读 `.env`/`id_rsa`）、**六槽结构完整性**（触发条件/输入/澄清问题/PRD 片段/验收标准/复用范围）与元数据。发现 HIGH/MED 就 `exit 1`——「不过则不发布」，纳入本书的三绿门禁。
 
-跑一下 `node code/tools/skill_lint.mjs`，你会看到本书 24 个 skill：**0 注入、0 危险指令、六槽齐全**（可发布），外加若干「缺类型元数据」的 LOW 告警。这就是把 §6 的治理，从纸面变成一条真能拦住投毒 Skill 的门禁。
+跑一下 `node code/tools/skill_lint.mjs`，你会看到本书 28 个 skill：**0 注入、0 危险指令、六槽齐全**（可发布），外加若干「缺类型元数据」的 LOW 告警。这就是把 §6 的治理，从纸面变成一条真能拦住投毒 Skill 的门禁。
 ```
 
 ![Skill 分发：Registry → 多 Agent](../outputs/product_case_library/svg/fig_skill_distribution.svg)
