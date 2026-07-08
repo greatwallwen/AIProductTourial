@@ -1,6 +1,6 @@
 {
-  "score": 91.7,
+  "score": 25,
+  "judge": "hit@3(search reranked)",
   "gold": 12,
-  "judge": "coverage>=3",
-  "updated": "手动确认"
+  "coverage": 11
 }

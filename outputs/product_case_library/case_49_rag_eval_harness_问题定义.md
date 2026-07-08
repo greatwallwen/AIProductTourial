@@ -1,6 +1,6 @@
 # RAG 评测报告（命中率/错误分析）（实操 49·问题定义）
 
-> 数据来源：`skills/external/pm-skills-deanpeters 语料 + 标注 Q/A（dogfood）`（12 行，异常 1）。字段与指标均回到该数据。演示原理 2.6、1.3，采用设计 cyan-matrix。
+> 数据来源：`skills/external/pm-skills-deanpeters 语料 + 标注 Q/A（dogfood）`（12 行，异常 9）。字段与指标均回到该数据。演示原理 2.6、1.3，采用设计 cyan-matrix。
 
 ## 产品问题
 
@@ -15,18 +15,18 @@
 ## 指标链（真实数据）
 
 - 评测问题数：12
-- 命中率：91.7%
+- 命中率：25%
+- 覆盖达标数：11
 - 语料篇数：194
-- 语料覆盖(万字)：191
 
 ## 异常状态与责任
 
-- [命中] 需求优先级怎么排 / priorit / 113 篇 → 责任 产品-王（演示角色）
-- [命中] RICE 打分模型 / rice / 32 篇 → 责任 产品-王（演示角色）
-- [命中] 用户访谈方法 / interview / 65 篇 → 责任 产品-王（演示角色）
-- [命中] 产品路线图 / roadmap / 87 篇 → 责任 产品-王（演示角色）
-- [命中] A/B 实验 / experiment / 54 篇 → 责任 产品-王（演示角色）
-- [命中] 北极星指标 / metric / 70 篇 → 责任 产品-王（演示角色）
+- [命中@3] how to prioritize requirements / commands/write-prd.md | commands/prioritize.md | catalog/commands.md / 113 → 责任 产品-王（演示角色）
+- [未命中（覆盖足、检索未召回）] RICE scoring model / docs/Add-a-Skill Utility | research/Context Enginee | announcements/2026-02-27 / 32 → 责任 待标注
+- [未命中（覆盖足、检索未召回）] user interview techniques / commands/discover.md | catalog/skills-by-type.m | catalog/commands.md / 65 → 责任 待标注
+- [命中@3] product roadmap planning / commands/plan-roadmap.md | commands/strategy.md | catalog/commands.md / 87 → 责任 产品-王（演示角色）
+- [未命中（覆盖足、检索未召回）] A/B experiment design / commands/discover.md | docs/Using PM Skills wit | pm-skills-deanpeters/CLA / 54 → 责任 待标注
+- [命中@3] north star metric / finance/Finance_Metrics_ | finance/Finance_QuickRef | business-health-diagnost / 70 → 责任 产品-王（演示角色）
 
 ## 决策动作
 

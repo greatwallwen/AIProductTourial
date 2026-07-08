@@ -50,7 +50,7 @@
  "theoryOp": "把「evals 是当前最缺的技能」落成一个可跑的评测台：离线用标注集量化 RAG 回答好不好",
  "difficulty": "进阶",
  "tldr": "用标注评测集给 RAG 回答打分，把「感觉还行」变成「命中率多少」",
- "insight": "OpenAI/吴恩达都说 evals 是 AI 产品的头号新技能，本书前面反复讲、却一直没有一个能跑的评测案例——这一案就是补上它。评测集 × 真实语料，离线算命中，把 vibe 变成数字。",
+ "insight": "评测的裁判必须真调被测系统：v1 裁判只量语料静态覆盖（91.7%），把 search() 改坏门照样绿；v2 裁判真跑检索数 hit@3（25%）——覆盖与命中的差距才是真正的改进空间。",
  "pitfall": "把命中率当成唯一真理。评测集覆盖不全时，高分可能只是「考了会的」；所以要配错误分析 + 人工抽检，别让分数剧场化（§2 的「验证剧场」）。",
  "kpis": [
   {
@@ -60,151 +60,151 @@
   },
   {
    "name": "命中率",
-   "value": 91.7,
+   "value": 25,
    "unit": "%"
+  },
+  {
+   "name": "覆盖达标数",
+   "value": 11,
+   "unit": ""
   },
   {
    "name": "语料篇数",
    "value": 194,
-   "unit": ""
-  },
-  {
-   "name": "语料覆盖(万字)",
-   "value": 191,
    "unit": ""
   }
  ],
  "queue": [
   {
    "id": 1,
-   "state": "命中",
+   "state": "命中@3",
    "owner": "产品-王（演示角色）",
    "fields": {
-    "问题": "需求优先级怎么排",
-    "期望命中": "priorit",
-    "实际命中": "113 篇",
+    "问题": "how to prioritize requirements",
+    "top3": "commands/write-prd.md | commands/prioritize.md | catalog/commands.md",
+    "覆盖篇数": 113,
     "是否通过": "通过"
    }
   },
   {
    "id": 2,
-   "state": "命中",
-   "owner": "产品-王（演示角色）",
+   "state": "未命中（覆盖足、检索未召回）",
+   "owner": "待标注",
    "fields": {
-    "问题": "RICE 打分模型",
-    "期望命中": "rice",
-    "实际命中": "32 篇",
-    "是否通过": "通过"
+    "问题": "RICE scoring model",
+    "top3": "docs/Add-a-Skill Utility | research/Context Enginee | announcements/2026-02-27",
+    "覆盖篇数": 32,
+    "是否通过": "未过"
    }
   },
   {
    "id": 3,
-   "state": "命中",
-   "owner": "产品-王（演示角色）",
+   "state": "未命中（覆盖足、检索未召回）",
+   "owner": "待标注",
    "fields": {
-    "问题": "用户访谈方法",
-    "期望命中": "interview",
-    "实际命中": "65 篇",
-    "是否通过": "通过"
+    "问题": "user interview techniques",
+    "top3": "commands/discover.md | catalog/skills-by-type.m | catalog/commands.md",
+    "覆盖篇数": 65,
+    "是否通过": "未过"
    }
   },
   {
    "id": 4,
-   "state": "命中",
+   "state": "命中@3",
    "owner": "产品-王（演示角色）",
    "fields": {
-    "问题": "产品路线图",
-    "期望命中": "roadmap",
-    "实际命中": "87 篇",
+    "问题": "product roadmap planning",
+    "top3": "commands/plan-roadmap.md | commands/strategy.md | catalog/commands.md",
+    "覆盖篇数": 87,
     "是否通过": "通过"
    }
   },
   {
    "id": 5,
-   "state": "命中",
-   "owner": "产品-王（演示角色）",
+   "state": "未命中（覆盖足、检索未召回）",
+   "owner": "待标注",
    "fields": {
-    "问题": "A/B 实验",
-    "期望命中": "experiment",
-    "实际命中": "54 篇",
-    "是否通过": "通过"
+    "问题": "A/B experiment design",
+    "top3": "commands/discover.md | docs/Using PM Skills wit | pm-skills-deanpeters/CLA",
+    "覆盖篇数": 54,
+    "是否通过": "未过"
    }
   },
   {
    "id": 6,
-   "state": "命中",
+   "state": "命中@3",
    "owner": "产品-王（演示角色）",
    "fields": {
-    "问题": "北极星指标",
-    "期望命中": "metric",
-    "实际命中": "70 篇",
+    "问题": "north star metric",
+    "top3": "finance/Finance_Metrics_ | finance/Finance_QuickRef | business-health-diagnost",
+    "覆盖篇数": 70,
     "是否通过": "通过"
    }
   },
   {
    "id": 7,
-   "state": "命中",
-   "owner": "产品-王（演示角色）",
+   "state": "未命中（覆盖足、检索未召回）",
+   "owner": "待标注",
    "fields": {
-    "问题": "竞品分析",
-    "期望命中": "compet",
-    "实际命中": "63 篇",
-    "是否通过": "通过"
+    "问题": "competitive analysis",
+    "top3": "catalog/skills-by-type.m | docs/Add-a-Skill Utility | pm-skills-deanpeters/26A",
+    "覆盖篇数": 63,
+    "是否通过": "未过"
    }
   },
   {
    "id": 8,
-   "state": "命中",
-   "owner": "产品-王（演示角色）",
+   "state": "未命中（覆盖足、检索未召回）",
+   "owner": "待标注",
    "fields": {
-    "问题": "MVP 最小可行",
-    "期望命中": "mvp",
-    "实际命中": "18 篇",
-    "是否通过": "通过"
+    "问题": "minimum viable product",
+    "top3": "docs/INSTALL-CLAUDE-DESK | docs/Building PM Skills. | finance/Finance_For_PMs.",
+    "覆盖篇数": 18,
+    "是否通过": "未过"
    }
   },
   {
    "id": 9,
-   "state": "命中",
-   "owner": "产品-王（演示角色）",
+   "state": "未命中（覆盖足、检索未召回）",
+   "owner": "待标注",
    "fields": {
-    "问题": "留存 cohort 分析",
-    "期望命中": "cohort",
-    "实际命中": "22 篇",
-    "是否通过": "通过"
+    "问题": "cohort retention analysis",
+    "top3": "docs/Finance Suite Summa | catalog/skills-by-type.m | acquisition-channel-advi",
+    "覆盖篇数": 22,
+    "是否通过": "未过"
    }
   },
   {
    "id": 10,
-   "state": "命中",
-   "owner": "产品-王（演示角色）",
+   "state": "未命中（覆盖足、检索未召回）",
+   "owner": "待标注",
    "fields": {
-    "问题": "服务蓝图",
-    "期望命中": "blueprint",
-    "实际命中": "7 篇",
-    "是否通过": "通过"
+    "问题": "service blueprint",
+    "top3": "pm-skills-deanpeters/15M | pm-skills-deanpeters/26A | pm-skills-deanpeters/AGE",
+    "覆盖篇数": 7,
+    "是否通过": "未过"
    }
   },
   {
    "id": 11,
-   "state": "低相关",
+   "state": "未命中",
    "owner": "待标注",
    "fields": {
-    "问题": "定价 van westendorp",
-    "期望命中": "westendorp",
-    "实际命中": "1 篇",
+    "问题": "van westendorp pricing",
+    "top3": "commands/prioritize.md | docs/Finance Suite Summa | docs/Using PM Skills wit",
+    "覆盖篇数": 1,
     "是否通过": "未过"
    }
   },
   {
    "id": 12,
-   "state": "命中",
-   "owner": "产品-王（演示角色）",
+   "state": "未命中（覆盖足、检索未召回）",
+   "owner": "待标注",
    "fields": {
-    "问题": "技术债量化",
-    "期望命中": "tech debt",
-    "实际命中": "3 篇",
-    "是否通过": "通过"
+    "问题": "technical debt quantification",
+    "top3": "docs/PM Skills Rule-of-T | pm-skills-deanpeters/CON | docs/Marketplace Submiss",
+    "覆盖篇数": 3,
+    "是否通过": "未过"
    }
   }
  ],
@@ -213,70 +213,70 @@
   "by": "评测问题 → 覆盖篇数",
   "data": [
    {
-    "label": "需求优先",
+    "label": "how to pri",
     "value": 113
    },
    {
-    "label": "RICE",
+    "label": "RICE scori",
     "value": 32
    },
    {
-    "label": "用户访谈",
+    "label": "user inter",
     "value": 65
    },
    {
-    "label": "产品路线",
+    "label": "product ro",
     "value": 87
    },
    {
-    "label": "A/B ",
+    "label": "A/B experi",
     "value": 54
    },
    {
-    "label": "北极星指",
+    "label": "north star",
     "value": 70
    },
    {
-    "label": "竞品分析",
+    "label": "competitiv",
     "value": 63
    },
    {
-    "label": "MVP ",
+    "label": "minimum vi",
     "value": 18
    },
    {
-    "label": "留存 c",
+    "label": "cohort ret",
     "value": 22
    },
    {
-    "label": "服务蓝图",
+    "label": "service bl",
     "value": 7
    },
    {
-    "label": "定价 v",
+    "label": "van westen",
     "value": 1
    },
    {
-    "label": "技术债量",
+    "label": "technical ",
     "value": 3
    }
   ]
  },
  "rowCount": 12,
- "exceptionCount": 1,
+ "exceptionCount": 9,
  "responsible": [
   "产品-王（演示角色）",
   "数据-周（演示角色）"
  ],
  "actions": [
   {
-   "label": "处置：未命中问题",
-   "owner": "产品-王",
+   "label": "处置：检索未召回问题（调权重/切词）",
+   "owner": "研发-王（演示角色）",
    "due": "3d"
   },
   {
    "label": "补语料/标注",
-   "owner": "数据-周",
+   "owner": "数据-周（演示角色）",
    "due": "5d"
   }
  ],

@@ -2,6 +2,7 @@
 /** 读 case_definitions.json + 各案例真实数据集 → 每案例视图模型 case_NN.json（指标链/异常队列/责任/行动/图表）。
  *  React 工作台只渲染这些预计算结果 → 离线确定、截图可复现。 */
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, statSync } from 'node:fs';
+import { execSync } from 'node:child_process';
 import { join, resolve } from 'node:path';
 const ROOT = resolve(import.meta.dirname, '..', '..');
 const OUTDIR = join(ROOT, 'code', 'data');
@@ -125,20 +126,14 @@ function buildFromMd(c){
       {name:'循环依赖',value:cycles,unit:''},
     ];
     chart={type:'bars',by:'子系统 → 依赖出度',data:mods.map(m=>({label:m,value:deps.filter(e=>e.from===m).length}))};
-  } else if(c.num===49){ // RAG 评测：真读 deanpeters 语料 + 标注评测集（dogfood·产品/研发）
-    const dir=join(ROOT,'skills','external','pm-skills-deanpeters');
-    const files=walkFiles(dir,'.md');
-    const corpus=files.map(f=>readFileSync(f,'utf8').toLowerCase());
-    const chars=corpus.reduce((a,t)=>a+t.length,0);
-    const evalSet=[{q:'需求优先级怎么排',kw:'priorit'},{q:'RICE 打分模型',kw:'rice'},{q:'用户访谈方法',kw:'interview'},{q:'产品路线图',kw:'roadmap'},{q:'A/B 实验',kw:'experiment'},{q:'北极星指标',kw:'metric'},{q:'竞品分析',kw:'compet'},{q:'MVP 最小可行',kw:'mvp'},{q:'留存 cohort 分析',kw:'cohort'},{q:'服务蓝图',kw:'blueprint'},{q:'定价 van westendorp',kw:'westendorp'},{q:'技术债量化',kw:'tech debt'}];
-    // 命中=语料对该问题的覆盖深度达标（≥3 篇含关键词），衡量「答得准」而非「碰得到」；薄覆盖=未命中，需补语料
-    const TH=3; const hits=evalSet.map(e=>{ const cov=corpus.filter(t=>t.includes(e.kw)).length; return {...e,cov,hit:cov>=TH}; });
-    const hitN=hits.filter(h=>h.hit).length;
-    kpis=[{name:'评测问题数',value:evalSet.length,unit:''},{name:'命中率',value:Math.round(hitN/evalSet.length*1000)/10,unit:'%'},{name:'语料篇数',value:files.length,unit:''},{name:'语料覆盖(万字)',value:Math.round(chars/10000),unit:''}];
-    queue=hits.map((h,i)=>({id:i+1,state:h.hit?'命中':(h.cov>0?'低相关':'未命中'),owner:h.hit?'产品-王（演示角色）':'待标注',fields:{问题:h.q,期望命中:h.kw,实际命中:h.cov+' 篇',是否通过:h.hit?'通过':'未过'}}));
-    exceptionCount=hits.filter(h=>!h.hit).length; responsible=['产品-王（演示角色）','数据-周（演示角色）'];
-    chart={type:'bars',by:'评测问题 → 覆盖篇数',data:hits.map(h=>({label:h.q.slice(0,4),value:h.cov}))};
-    actions=[{label:'处置：未命中问题',owner:'产品-王',due:'3d'},{label:'补语料/标注',owner:'数据-周',due:'5d'}];
+  } else if(c.num===49){ // RAG 评测（v17-A）：金标单源 eval_gold.json，裁判真调 store.ts search()（hit@3）——经 eval_harness --json
+    const ev=JSON.parse(execSync('node code/tools/eval_harness.mjs --json',{cwd:ROOT,encoding:'utf8'}));
+    const files=walkFiles(join(ROOT,'skills','external','pm-skills-deanpeters'),'.md');
+    kpis=[{name:'评测问题数',value:ev.results.length,unit:''},{name:'命中率',value:ev.score,unit:'%'},{name:'覆盖达标数',value:ev.results.filter(r=>r.cov>=3).length,unit:''},{name:'语料篇数',value:files.length,unit:''}];
+    queue=ev.results.map((r,i)=>({id:i+1,state:r.hit?'命中@3':(r.cov>=3?'未命中（覆盖足、检索未召回）':'未命中'),owner:r.hit?'产品-王（演示角色）':'待标注',fields:{问题:r.q,'top3':r.top3.map(t=>t.slice(0,24)).join(' | ')||'—',覆盖篇数:r.cov,是否通过:r.hit?'通过':'未过'}}));
+    exceptionCount=ev.results.filter(r=>!r.hit).length; responsible=['产品-王（演示角色）','数据-周（演示角色）'];
+    chart={type:'bars',by:'评测问题 → 覆盖篇数',data:ev.results.map(r=>({label:r.q.slice(0,10),value:r.cov}))};
+    actions=[{label:'处置：检索未召回问题（调权重/切词）',owner:'研发-王（演示角色）',due:'3d'},{label:'补语料/标注',owner:'数据-周（演示角色）',due:'5d'}];
   } else if(c.num===51){ // SDD 系统建造走查：真读 rules/docs/case_definitions/verify/arch 图（dogfood·研发/项目/产品）
     const ruleFiles=walkFiles(join(ROOT,'rules'),'.md');
     const clauses=ruleFiles.reduce((a,f)=>a+(readFileSync(f,'utf8').match(/^\s*(?:[-*·]|\d+[.、)])\s/gm)||[]).length,0);

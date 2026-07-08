@@ -1,0 +1,18 @@
+{
+  "_comment": "评测金标单一真源（v17-A）：eval_harness 与 build_case_data 共读。q=查询, kw=覆盖关键词(次指标), docPattern=期望命中文档名正则(主指标 hit@3, 裁判真调 store.ts search())。改题后须跑 eval_harness --update 立新基线。",
+  "judge": "hit@3: docPattern 命中 search(q,3,10).reranked 前3 篇文件名；次指标 coverage>=3",
+  "gold": [
+    { "q": "how to prioritize requirements", "kw": "priorit", "docPattern": "priorit|backlog" },
+    { "q": "RICE scoring model", "kw": "rice", "docPattern": "rice|priorit" },
+    { "q": "user interview techniques", "kw": "interview", "docPattern": "interview|discovery" },
+    { "q": "product roadmap planning", "kw": "roadmap", "docPattern": "roadmap" },
+    { "q": "A/B experiment design", "kw": "experiment", "docPattern": "experiment|test" },
+    { "q": "north star metric", "kw": "metric", "docPattern": "metric|north" },
+    { "q": "competitive analysis", "kw": "compet", "docPattern": "compet" },
+    { "q": "minimum viable product", "kw": "mvp", "docPattern": "mvp|lean" },
+    { "q": "cohort retention analysis", "kw": "cohort", "docPattern": "cohort|retention" },
+    { "q": "service blueprint", "kw": "blueprint", "docPattern": "blueprint|service" },
+    { "q": "van westendorp pricing", "kw": "westendorp", "docPattern": "pric|westendorp" },
+    { "q": "technical debt quantification", "kw": "tech debt", "docPattern": "debt|tech" }
+  ]
+}
