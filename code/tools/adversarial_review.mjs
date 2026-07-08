@@ -54,8 +54,8 @@ for (const f of bookFiles) {
     if (!/[0-9]|http|§|来源|案例|dogfood|Spec Kit|作者自报|休谟|Pearl|OpenAPI|OpenSpec|自动生成|密钥|GitHub|契约即代码/.test(ctx)) add('LOW', 'claim', f, `绝对化措辞疑无证据：「${m[0].slice(0, 20)}…」`, '补数据/引用，或改弱化措辞');
   }
 }
-// ⑥ 悬空引用：§7+（本书正文 §1-§6 + 附录A/B）
-{ const bad = [...new Set((tut.match(/§(?:7|8|9|[1-9]\d+)(?!\.)/g) || []))]; if (bad.length) add('HIGH', 'dangling-ref', `${BOOK}/*`, `引用不存在的章节（本书 §1-§6+附录）：${bad.join('、')}`, '改指正确章节'); }
+// ⑥ 悬空引用：§7+（本书正文 §1-§10 + 附录A/B）
+{ const bad = [...new Set((tut.match(/§(?:1[1-9]|[2-9]\d)(?!\.)/g) || []))]; if (bad.length) add('HIGH', 'dangling-ref', `${BOOK}/*`, `引用不存在的章节（本书 §1-§10+附录）：${bad.join('、')}`, '改指正确章节'); }
 // ⑦ 巨文件预警：源文件逼近 800 行红线
 for (const f of ['code/tools/build_docs.mjs', 'code/tools/verify_course_package.mjs', 'code/web/src/App.tsx', 'code/web/src/screens.tsx', 'code/server/services/cases.ts']) { const n = rd(f).split('\n').length; if (n > 720) add('MED', 'big-file', f, `${n} 行，逼近 800 红线`, '拆分模块'); }
 
@@ -63,7 +63,7 @@ for (const f of ['code/tools/build_docs.mjs', 'code/tools/verify_course_package.
 {
   if (defs.caseCount && defs.caseCount !== defs.cases.length) add('HIGH', 'stale-count', 'case_definitions.json', `caseCount=${defs.caseCount} 与真实案例数 ${defs.cases.length} 不符`, `改为 ${defs.cases.length} 或删该冗余字段`);
   // v16 拆棘轮：地板改「最低可用」（不再向最厚章看齐、不再逼加码）；fun/unused 等催加码探针已删
-  for (const f of bookFiles.filter((p) => /\/0[0-9]-|\/99-/.test(p) && !p.includes('案例'))) {
+  for (const f of bookFiles.filter((p) => /\/(0[0-9]|10)-|\/99-/.test(p) && !p.includes('案例'))) {
     const s = rd(f), nm = f.split('/').pop();
     const notes = (s.match(/```备注/g) || []).length, figs = (s.match(/!\[/g) || []).length, xref = (s.match(/§[0-9]|案例 ?[0-9]/g) || []).length;
     if (figs < 1) add('LOW', 'richness', f, `${nm} 全章无图`, '若确有助理解可补 1 张，否则忽略');
@@ -76,7 +76,7 @@ for (const f of ['code/tools/build_docs.mjs', 'code/tools/verify_course_package.
 {
   const beAsserts = (rd('code/server/tests/api.test.ts').match(/\bassert/g) || []).length;
   if (beAsserts < defs.cases.length * 2) add('MED', 'coverage', 'code/server/tests/api.test.ts', `后端断言 ${beAsserts} < 2×案例 ${defs.cases.length}`, '每 /api/* 端点 ≥2 契约断言');
-  for (const f of bookFiles.filter((p) => /\/0[0-9]-/.test(p) && !p.includes('案例'))) {
+  for (const f of bookFiles.filter((p) => /\/(0[0-9]|10)-/.test(p) && !p.includes('案例'))) {
     const s = rd(f), nm = f.split('/').pop();
     if (!/前置/.test(s)) add('MED', 'onboarding', f, `${nm} 无「前置」声明`, '章首加前置');
     if (!/读完你能|本章学习目标/.test(s)) add('MED', 'onboarding', f, `${nm} 无「读完你能」学习目标`, '章首加学习目标');

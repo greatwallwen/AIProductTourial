@@ -331,6 +331,10 @@ const readme = J([`# ${TITLE}`, '',
   '| [§4 工程规范与约束](04-工程规范与约束.md) | 无 | 进阶 | 15min | 研发镜头；想判断「代码好坏」的人 |',
   '| [§5 交付治理](05-交付治理.md) | §2 | 进阶 | 15min | 管上线/门禁/风险 |',
   '| [§6 Skill 工程化与治理](06-Skill工程化与治理.md) | §2·§5 | 进阶 | 18min | 管 Skill 版本/审核/分发 |',
+  '| [§7 架构风格与模式](07-架构风格与模式.md) | §3 | 进阶 | 15min | 想把老架构词接上 AI 实例 |',
+  '| [§8 DDD 深化](08-DDD深化.md) | §3 | 高阶 | 18min | 想在真代码里认 DDD 战术件 |',
+  '| [§9 分布式与 AI 实现技术](09-分布式与AI实现技术.md) | §3·§7 | 高阶 | 16min | 多 Agent/缓存/注入安全 |',
+  '| [§10 架构师与 AI 协作](10-架构师与AI协作.md) | §2 | 进阶 | 12min | 带团队用 AI 的人 |',
   '| [附录A 设计系统](90-附录A-设计系统.md) | 无 | 选读 | 12min | 关注大屏/可视化再读 |',
   '| [附录B 工具生态速查](91-附录B-工具生态速查.md) | 无 | 选读 | 8min | 要落地具体工具时查 |',
   `| [第二部分 · ${defs.cases.length} 案例](案例/README.md) | 第一部分 | 入门→高阶 | 每例 ~15min | 所有人，**边读边跑、动手验证** |`, '',
@@ -342,9 +346,14 @@ const readme = J([`# ${TITLE}`, '',
   '4. **先玩这三个**：`#/lab/tokenizer`（亲手把一句话分词）、`#/case/01`（电商早会经营台，最平缓的入门案例）、`#/game`（AI 概念配对小游戏）。', '',
   `> 跑不起来？环境要求（Node ≥ 22）与常见报错排查见 [项目 README](${UP}README.md)。`, '',
   '## 目录', '',
-  '**第一部分 · 共享操作模型与专业底子**', '',
-  '- [§1 AI 核心概念底层](01-AI核心概念底层.md) · [§2 会 Loop 的工程](02-会Loop的工程.md)（共享脊柱）',
-  '- [§3 系统架构设计](03-系统架构设计.md) · [§4 工程规范与约束](04-工程规范与约束.md) · [§5 交付治理](05-交付治理.md) · [§6 Skill 工程化与治理](06-Skill工程化与治理.md)',
+  '**篇一 · 转型与操作模型**', '',
+  '- [§1 AI 核心概念底层](01-AI核心概念底层.md) · [§2 会 Loop 的工程](02-会Loop的工程.md)（全书脊柱：从写代码的人 → 设计会自检系统的人）',
+  '', '**篇二 · 架构设计知识体系**（传统架构知识的 AI 时代重读）', '',
+  '- [§3 系统架构设计·SDD 方法论](03-系统架构设计.md) · [§7 架构风格与模式](07-架构风格与模式.md) · [§8 DDD 深化](08-DDD深化.md) · [§9 分布式与 AI 实现技术](09-分布式与AI实现技术.md)',
+  '', '**篇三 · 工程与交付**', '',
+  '- [§4 工程规范与约束](04-工程规范与约束.md) · [§5 交付治理](05-交付治理.md) · [§6 Skill 工程化与治理](06-Skill工程化与治理.md)',
+  '', '**篇四 · 架构师与 AI 协作**', '',
+  '- [§10 架构师与 AI 协作：软技能重读](10-架构师与AI协作.md)',
   '- 附录（选读）：[附录A 设计系统](90-附录A-设计系统.md) · [附录B 工具生态速查](91-附录B-工具生态速查.md)',
   '- [术语表](术语表.md)', '',
   `**第二部分 · ${defs.cases.length} 真实案例演示与验证**`, '',
@@ -360,7 +369,7 @@ writeBook('README.md', readme);
 
 // —— 五章正文（源在 docs/_source，图标/内容/去AI化在源里改；此处只按 UP 重定相对路径） ——
 UP = '../';
-const CHAPTERS = [['00-ai-foundations.md', '01-AI核心概念底层.md'], ['01-ideology.md', '02-会Loop的工程.md'], ['02-architecture.md', '03-系统架构设计.md'], ['03-engineering.md', '04-工程规范与约束.md'], ['05-delivery.md', '05-交付治理.md'], ['06-skill-governance.md', '06-Skill工程化与治理.md'], ['04-designs.md', '90-附录A-设计系统.md'], ['07-tool-ecosystem.md', '91-附录B-工具生态速查.md']];
+const CHAPTERS = [['00-ai-foundations.md', '01-AI核心概念底层.md'], ['01-ideology.md', '02-会Loop的工程.md'], ['02-architecture.md', '03-系统架构设计.md'], ['03-engineering.md', '04-工程规范与约束.md'], ['05-delivery.md', '05-交付治理.md'], ['06-skill-governance.md', '06-Skill工程化与治理.md'], ['08-arch-styles.md', '07-架构风格与模式.md'], ['09-ddd-deep.md', '08-DDD深化.md'], ['10-distributed-ai.md', '09-分布式与AI实现技术.md'], ['11-softskills.md', '10-架构师与AI协作.md'], ['04-designs.md', '90-附录A-设计系统.md'], ['07-tool-ecosystem.md', '91-附录B-工具生态速查.md']];
 // 口径派生化（v16 ②修硬伤）：源文件写 {{CASE_COUNT}}/{{SKILL_COUNT}} 占位符，build 时替换为唯一事实源实值——数字口径不再可能漂移
 const SKILL_N = (readFileSync(join(ROOT, 'skills', 'pm_skills.md'), 'utf8').match(/^## /gm) || []).length;
 const derive = (t) => t.replaceAll('{{CASE_COUNT}}', String(defs.cases.length)).replaceAll('{{SKILL_COUNT}}', String(SKILL_N));
