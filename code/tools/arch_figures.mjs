@@ -175,14 +175,14 @@ function midPlatform(t) {
       { id: 'metrics', x: 572, y: 110, w: 210, h: 66, tag: '容器', label: '指标洞察', sub: '案例 01 / 30 / 41' },
       { id: 'decide', x: 814, y: 110, w: 200, h: 66, tag: '容器', color: t.ok, label: '经营决策', sub: '案例 41 闭环' },
       { id: 'rag', x: 330, y: 240, w: 210, h: 66, tag: '容器', label: 'RAG 检索', sub: '案例 44 · 证据召回' },
-      { id: 'gate', x: 572, y: 240, w: 210, h: 66, tag: '门禁', color: t.warn, label: '交付门禁', sub: '案例 50 / verify 三绿' },
+      { id: 'gate', x: 572, y: 240, w: 210, h: 66, tag: '门禁', color: t.warn, label: '交付门禁', sub: '案例 51 / verify 三绿' },
       { id: 'base', x: 88, y: 370, w: 210, h: 66, tag: '底座', label: '关系库底座', sub: '案例 45 · node:sqlite/PG' },
-      { id: 'viz', x: 330, y: 370, w: 210, h: 66, tag: '底座', label: '三维可视', sub: '案例 47 · three.js' },
+      { id: 'viz', x: 330, y: 370, w: 210, h: 66, tag: '底座', label: '事件总线底座', sub: '案例 54 · 事件流重放' },
     ],
     edges: [
       { from: 'ingest', to: 'govern' }, { from: 'govern', to: 'metrics' }, { from: 'metrics', to: 'decide' },
       { from: 'rag', to: 'decide', label: '证据' }, { from: 'base', to: 'metrics', label: '支撑' },
-      { from: 'viz', to: 'metrics', label: '呈现', dashed: true }, { from: 'gate', to: 'decide', label: '门禁', dashed: true, color: t.warn },
+      { from: 'viz', to: 'metrics', label: '事件流', dashed: true }, { from: 'gate', to: 'decide', label: '门禁', dashed: true, color: t.warn },
     ],
     legend: [{ label: '接入/治理', color: t.accent2 }, { label: '容器', color: t.accent }, { label: '决策', color: t.ok }, { label: '门禁', color: t.warn }],
   }, t);

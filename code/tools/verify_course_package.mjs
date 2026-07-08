@@ -167,12 +167,41 @@ ok(); if (!/getProgress/.test(rd('code/web/src/pages.tsx')) || !/markViewed/.tes
 ok(); if (!has('code/web/src/progress.test.ts')) bad('缺前端 vitest 测试');
 ok(); if (!/vitest/.test(rd('code/web/package.json'))) bad('未装 vitest');
 // P0 诚信守卫（v7）：无 undefined / 无硬编码 PASS / 队列 owner 不伪造 / Challenge 不引用伪造 owner
-ok(); if (/（undefined）/.test(tut)) bad('教程含（undefined）占位');
+// v19 扩：字面 undefined 全书拦截（生成器字段缺失/变量泄漏，如案例54 曾缺 deliverable）。
+// 模式取「中文标点/强调/行内码相邻」的 undefined，避免误伤未来代码块里合法的 JS undefined。
+ok(); if (/：[*`]*undefined|undefined[*`]*）|\*\*undefined\*\*|`undefined`|undefined，/.test(tut)) bad('教程含字面 undefined（生成器字段缺失/变量泄漏）');
 for (const c of defs.cases) {
   const dp = `outputs/product_case_library/case_${pad(c.num)}_${c.slug}_问题定义.md`;
   const mp = `outputs/product_case_library/case_${pad(c.num)}_${c.slug}_方案验收.md`;
-  ok(); if (has(dp) && /（undefined）/.test(rd(dp))) bad(`案例${c.num} 问题定义含（undefined）`);
+  ok(); if (has(dp) && /\bundefined\b/.test(rd(dp))) bad(`案例${c.num} 问题定义含字面 undefined`);
+  ok(); if (has(mp) && /\bundefined\b/.test(rd(mp))) bad(`案例${c.num} 方案验收含字面 undefined`);
   ok(); if (has(mp) && /PASS — 指标链 \d+ 项、异常队列/.test(rd(mp))) bad(`案例${c.num} 方案验收硬编码 PASS`);
+}
+// v19 新护栏①：「案例 N」引用的 N 必须在册（防幽灵案例：曾有 14/16/28/31/47/48/50 残留指向不存在案例）
+{ const validNums = new Set(defs.cases.map((c) => c.num));
+  const svgDir = 'outputs/product_case_library/svg';
+  const svgText = readdirSync(join(ROOT, svgDir)).filter((f) => f.endsWith('.svg')).map((f) => rd(`${svgDir}/${f}`)).join('\n');
+  const seen = new Set();
+  for (const m of (tut + '\n' + svgText).matchAll(/案例 ?(\d{1,2})\b/g)) {
+    const n = Number(m[1]); if (seen.has(n)) continue; seen.add(n);
+    ok(); if (!validNums.has(n)) bad(`引用不存在的案例 ${m[1]}（在册案例号：${[...validNums].join('/')}）`);
+  }
+}
+// v19 新护栏②：正文引用的 §x.y 小节必须实存（防旧版章号悬空引用）
+{ const secSet = new Set([...tut.matchAll(/^#{2,4} (\d{1,2})\.(\d{1,2})\b/gm)].map((m) => m[1] + '.' + m[2]));
+  const seen = new Set();
+  for (const m of tut.matchAll(/§ ?(\d{1,2})\.(\d{1,2})\b/g)) {
+    const key = m[1] + '.' + m[2]; if (seen.has(key)) continue; seen.add(key);
+    ok(); if (!secSet.has(key)) bad(`引用不存在的小节 §${key}`);
+  }
+}
+// v19 新护栏③：全书相对 .md 链接不得断链（曾有同目录文件误写 ../ 前缀）
+for (const f of bookFiles) {
+  const dir = f.split('/').slice(0, -1).join('/');
+  for (const m of rd(f).matchAll(/\]\(([^)#\s]+\.md)\)/g)) {
+    if (/^https?:/.test(m[1])) continue;
+    ok(); if (!has(join(dir, decodeURI(m[1])))) bad(`${f} 断链：${m[1]}`);
+  }
 }
 ok(); if (/owner:\s*rec\[.*pickOwner|const owner\b[^\n]*pickOwner/.test(rd('code/tools/build_case_data.mjs'))) bad('队列 owner 仍哈希伪造（应取真实责任列）');
 // P2 深度标杆：案例30 航空 RFM 专属 demo + 设计过的数据集（带 design.md）

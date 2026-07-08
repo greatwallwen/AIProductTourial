@@ -22,4 +22,4 @@
       <rect x="892" y="486" width="3" height="27" rx="1.5" fill="#38bdf8"/>
       <text x="902" y="504" font-size="9.5" fill="#9fb0c3"><tspan fill="#38bdf8" font-weight="700">51</tspan> 规格驱动系统</text><rect x="78" y="486" width="147" height="27" rx="6" fill="#0f1522" stroke="#38bdf8" stroke-opacity="0.5"/>
       <rect x="78" y="486" width="3" height="27" rx="1.5" fill="#38bdf8"/>
-      <text x="88" y="504" font-size="9.5" fill="#9fb0c3"><tspan fill="#38bdf8" font-weight="700">54</tspan> 仓库事件总线</text><text x="50" y="702" font-size="10.5" fill="#5b6b7f">底座平台（44 向量库 / 45 关系库 / 46 架构契约 / 46 架构）支撑上层；业务应用按闭环各就各位——同一套数字化系统，9 案例是它不同环节的实操演示。</text></svg>
+      <text x="88" y="504" font-size="9.5" fill="#9fb0c3"><tspan fill="#38bdf8" font-weight="700">54</tspan> 仓库事件总线</text><text x="50" y="702" font-size="10.5" fill="#5b6b7f">底座平台（44 向量库 / 45 关系库 / 46 架构契约 / 51 SDD 建造 / 54 事件总线）支撑上层；业务应用按闭环各就各位——同一套数字化系统，9 案例是它不同环节的实操演示。</text></svg>

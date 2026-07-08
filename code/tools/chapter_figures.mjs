@@ -88,15 +88,16 @@ function gateBoard(t) {
   }, t);
 }
 
-// §99：结课回顾路径（一条主线串全书）
+// §99：结课回顾路径（四篇 + 案例数取自 defs 唯一真源，不写死）
 function journey(t) {
+  const N = jj('code/tools/case_definitions.json').cases.length;
   const ms = [
-    ['§1 认知', 'AI 底层'], ['§2 Loop', '操作模型脊柱'], ['§3 架构方法论', 'SDD/C4/DDD'], ['§4-5 规范·设计', '研发/产品底子'], ['§6 治理', '项目门禁'], ['15 案例', '真数据·可运行'], ['你的项目', '把方法用起来'],
+    ['篇一 §1-§2', '转型与操作模型'], ['篇二 §3·§7-9', '架构设计知识体系'], ['篇三 §4-§6', '工程与交付'], ['篇四 §10', '架构师与AI协作'], [`${N} 案例`, '真数据·可运行'], ['你的项目', '把方法用起来'],
   ];
-  const nodes = ms.map(([label, sub], i) => ({ id: 'm' + i, x: 30 + i * 168, y: 130, w: 150, h: 74, color: i === ms.length - 1 ? t.ok : t.accent, label, sub }));
+  const nodes = ms.map(([label, sub], i) => ({ id: 'm' + i, x: 30 + i * 178, y: 130, w: 160, h: 74, color: i === ms.length - 1 ? t.ok : t.accent, label, sub }));
   return diagram({
-    W: 1210, H: 300, title: '§99 · 结课回顾：一条主线串起全书（一个操作模型·三个镜头）',
-    caption: '认知→Loop→架构方法论→规范/设计→治理→案例→你的项目；主脊 §1-§2 三镜头共读，其余按角色深读。',
+    W: 30 * 2 + ms.length * 178 - 18, H: 300, title: '§99 · 结课回顾：一条主线串起全书（一个操作模型·三个镜头）',
+    caption: '四篇（转型与操作模型→架构→工程与交付→协作）→ 案例演示验证 → 你的项目；篇是主题分组，阅读按章号 §1→§10。',
     nodes, edges: ms.slice(1).map((_, i) => ({ from: 'm' + i, to: 'm' + (i + 1) })),
   }, t);
 }

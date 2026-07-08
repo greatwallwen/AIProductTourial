@@ -1,6 +1,6 @@
 # RFM 分层运营策略（实操 30·方案验收）
 
-> 数据来源：`dataset/reference_data_analysis/2-air_data.csv`（800 行，异常 800）。字段与指标均回到该数据。演示原理 1.3、3.0，采用设计 amber-funnel。
+> 数据来源：`dataset/reference_data_analysis/2-air_data.csv`（800 行，异常 800）。字段与指标均回到该数据。演示原理 2.7、8.3，采用设计 amber-funnel。
 
 ## 交付物
 
