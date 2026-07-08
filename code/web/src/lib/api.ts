@@ -12,6 +12,7 @@ export const fetchCaseData = (num: string) => getJson<any>(`/api/case/${num}/dat
 export const fetchSearch = (q: string) => getJson<any>(`/api/search?q=${encodeURIComponent(q)}`);
 export const fetchDbQuery = () => getJson<any>('/api/db/query');
 export const fetchHealth = () => getJson<any>('/api/health');
+export const fetchGates = () => getJson<any>('/api/gates');
 export const fetchArch = () => getJson<any>('/api/arch');
 
 export const fetchTokenize = (text: string) => getJson<any>(`/api/tokenize?text=${encodeURIComponent(text)}`);

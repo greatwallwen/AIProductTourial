@@ -150,7 +150,7 @@ function buildFromMd(c){
       ['④ 架构设计','arch SVG + §3 ADR','已画','C4 / DDD / ADR-001',archSvgs],
       ['⑤ 任务分解','case_definitions.json','已分',`${defs.cases.length} 案例/子任务`,defs.cases.length],
       ['⑥ 实现','code/ 全栈','已建','Fastify + React 真服务',serverTs],
-      ['⑦ 门禁','verify + node:test + vitest','三绿','数百项自动核验',3],
+      ['⑦ 门禁','verify + eval_harness + 双测','实时（见页内活体门禁）','运行时真跑，红绿由 /api/gates 报告',3],
       ['⑧ 演进','演进触发表','待触发','按信号切 PG / pgvector',3],
     ];
     const own=['研发-王（演示角色）','产品-王（演示角色）','项目-孙（演示角色）']; // v17 P1-11

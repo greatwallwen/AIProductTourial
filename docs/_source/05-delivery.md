@@ -57,6 +57,13 @@
 
 ---
 
+### 5.X 这套护栏，业界刚给了名字：Harness Engineering
+> 🔵 **选读** ｜ 关键词：**挽具工程**（2026-03/04 命名）
+
+```备注
+本书从头到尾在做的事——给 AI 工作流装上传感器、门禁、停机规则、回归基线——2026 年被业界正式命名为 **Harness Engineering（挽具工程）**，与 Spec Engineering 并列为 AI 原生开发的两大支柱（参见 awesome-harness-engineering 资源库与 Divya Mahajan《Spec Engineering and Harness Engineering》，2026-03；最后核实 2026-07）。名字是新的，内容你已经会了：§2 的传感器、本章的三绿门禁、案例 49 的评测回归门、案例 51 页内那块「活体门禁」——就是一套完整的 harness。
+```
+
 ### 本章小结
 
 - **交付治理 = 上线分级 + 停止/升级 + 责任分派 + 门禁风险登记**：四件套把一个会自转的 Loop 管成能安全交付的东西。
