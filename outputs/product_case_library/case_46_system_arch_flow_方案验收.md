@@ -23,4 +23,6 @@
 
 ## 验收结论
 
+**决策动作**：把 §3 架构流程落到本仓库真运行后端：分层/边界/契约在代码里可查
+
 **PASS** — 指标链 4 项均为回到 `rules/backend.md` 的实际计算值（真实数据）；字段/异常/Skill 齐备；可运行原型见 `#/case/46`（设计 cyan-matrix），截图 `assets/screenshots/premium_case_46_system_arch_flow_desktop.png`。

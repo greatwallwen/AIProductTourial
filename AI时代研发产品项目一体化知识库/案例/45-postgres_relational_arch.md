@@ -85,7 +85,7 @@
 
 ### 交付物与验收
 
-交付物：**关系库查询与 PG 架构说明**。必含要素（字段/指标链/异常状态/Skill）与合格线由自测器逐项核对：`node code/tools/check_my_work.mjs 45 你的方案.md`；红线：不越过「本地 SQLite 演示、生产为 PostgreSQL；不得把演示数据当真账」。
+交付物：**关系库查询与 PG 架构说明**。必含要素（字段/指标链/异常状态/Skill/决策动作/高影响复核）与合格线由自测器六项核对：`node code/tools/check_my_work.mjs 45 你的方案.md`；红线：不越过「本地 SQLite 演示、生产为 PostgreSQL；不得把演示数据当真账」。
 
 ### 跟着做（动手复现）
 

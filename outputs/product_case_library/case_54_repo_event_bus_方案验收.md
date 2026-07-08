@@ -23,4 +23,6 @@
 
 ## 验收结论
 
+**决策动作**：从事件流重放系统状态：任一时刻的门禁规模与迭代节奏一目了然，回退/异常提交进入复盘队列
+
 **PASS** — 指标链 4 项均为回到 `git log + 门禁记录（本仓库自身·dogfood 真实事件流）` 的实际计算值（真实数据）；字段/异常/Skill 齐备；可运行原型见 `#/case/54`（设计 emerald-flow），截图 `assets/screenshots/premium_case_54_repo_event_bus_desktop.png`。

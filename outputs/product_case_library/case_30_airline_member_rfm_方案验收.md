@@ -23,4 +23,6 @@ RFM 分层运营策略
 
 ## 验收结论
 
+**决策动作**：按 R/F/M 分层识别高价值流失群，对不同层给定向挽回/升舱/权益动作。
+
 **PASS** — 指标链 5 项均为回到 `dataset/reference_data_analysis/2-air_data.csv` 的实际计算值（教学合成数据（固定种子，非真实业务））；字段/异常/Skill 齐备；可运行原型见 `#/case/30`（设计 amber-funnel），截图 `assets/screenshots/premium_case_30_airline_member_rfm_desktop.png`。

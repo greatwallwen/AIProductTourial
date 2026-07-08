@@ -23,4 +23,6 @@ RAG 检索方案与验收
 
 ## 验收结论
 
+**决策动作**：用真实向量检索为问答/推荐提供高相关片段，替代全量塞入
+
 **PASS** — 指标链 4 项均为回到 `skills/external/pm-skills-deanpeters` 的实际计算值（真实数据）；字段/异常/Skill 齐备；可运行原型见 `#/case/44`（设计 emerald-flow），截图 `assets/screenshots/premium_case_44_rag_knowledge_retrieval_desktop.png`。

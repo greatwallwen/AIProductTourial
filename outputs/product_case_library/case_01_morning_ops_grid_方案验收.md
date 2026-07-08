@@ -23,4 +23,6 @@
 
 ## 验收结论
 
+**决策动作**：识别未达成区域、定位异常业务线，并生成责任部门行动队列。
+
 **PASS** — 指标链 5 项均为回到 `dataset/order_data.csv` 的实际计算值（真实基座 + 已标注教学合成叠加列）；字段/异常/Skill 齐备；可运行原型见 `#/case/01`（设计 graphite-hud），截图 `assets/screenshots/premium_case_01_morning_ops_grid_desktop.png`。

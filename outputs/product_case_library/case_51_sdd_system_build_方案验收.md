@@ -23,4 +23,6 @@ SDD 系统建造走查报告
 
 ## 验收结论
 
+**决策动作**：用规格驱动八步把一次中大型建造拆成可追溯、可验收的小步（而非几个 prompt 一把梭）
+
 **PASS** — 指标链 4 项均为回到 `rules/ + docs/_source + case_definitions + verify + 架构图（本仓库自身·dogfood）` 的实际计算值（真实数据）；字段/异常/Skill 齐备；可运行原型见 `#/case/51`（设计 cyan-matrix），截图 `assets/screenshots/premium_case_51_sdd_system_build_desktop.png`。

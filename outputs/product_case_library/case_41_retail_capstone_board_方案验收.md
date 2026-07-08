@@ -23,4 +23,6 @@
 
 ## 验收结论
 
+**决策动作**：从数据端到端得出零售经营改进方案并落成可验收交付物
+
 **PASS** — 指标链 5 项均为回到 `dataset/order_data.csv` 的实际计算值（真实基座 + 已标注教学合成叠加列）；字段/异常/Skill 齐备；可运行原型见 `#/case/41`（设计 graphite-hud），截图 `assets/screenshots/premium_case_41_retail_capstone_board_desktop.png`。
