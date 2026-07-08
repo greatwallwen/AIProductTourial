@@ -8,7 +8,7 @@
 
 ## 验收清单
 
-- 必含字段：商品、门店、销量、毛利、库存、复购、责任人
+- 必含字段：SKU、品类、区域、金额、毛利率、库存天数、责任人
 - 必含指标链：营收(元)、毛利率均值、品类数、异常订单率、平均处理时限(h)
 - 必含异常状态：目标未达成、滞销、毛利异常、责任未闭环
 - 必含 Skill：capstone-product-flow、evidence-pack、traceability-check
@@ -23,4 +23,4 @@
 
 ## 验收结论
 
-**PASS** — 指标链 5 项均为回到 `dataset/order_data.csv` 的真实计算值；字段/异常/Skill 齐备；可运行原型见 `#/case/41`（设计 graphite-hud），截图 `assets/screenshots/premium_case_41_retail_capstone_board_desktop.png`。
+**PASS** — 指标链 5 项均为回到 `dataset/order_data.csv` 的实际计算值（真实基座 + 已标注教学合成叠加列）；字段/异常/Skill 齐备；可运行原型见 `#/case/41`（设计 graphite-hud），截图 `assets/screenshots/premium_case_41_retail_capstone_board_desktop.png`。

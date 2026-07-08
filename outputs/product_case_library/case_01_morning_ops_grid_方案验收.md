@@ -8,7 +8,7 @@
 
 ## 验收清单
 
-- 必含字段：订单号、SKU、库存天数、毛利率、异常原因、责任人、处理时限
+- 必含字段：订单号、SKU、库存天数、毛利率、异常原因、责任人、处理时限h
 - 必含指标链：订单数、销售额(元)、毛利率均值、异常订单率、区域数
 - 必含异常状态：目标未达成、区域下滑、异常订单、责任未闭环
 - 必含 Skill：problem-framing、metric-definition、acceptance-criteria
@@ -23,4 +23,4 @@
 
 ## 验收结论
 
-**PASS** — 指标链 5 项均为回到 `dataset/order_data.csv` 的真实计算值；字段/异常/Skill 齐备；可运行原型见 `#/case/01`（设计 graphite-hud），截图 `assets/screenshots/premium_case_01_morning_ops_grid_desktop.png`。
+**PASS** — 指标链 5 项均为回到 `dataset/order_data.csv` 的实际计算值（真实基座 + 已标注教学合成叠加列）；字段/异常/Skill 齐备；可运行原型见 `#/case/01`（设计 graphite-hud），截图 `assets/screenshots/premium_case_01_morning_ops_grid_desktop.png`。

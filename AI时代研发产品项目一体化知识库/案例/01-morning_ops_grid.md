@@ -6,7 +6,7 @@
 
 > **本案例演示/验证**：原理 2.1、2.7｜**采用设计** `graphite-hud`（见 [design/graphite-hud.md](../../design/graphite-hud.md)）
 
-> **在数字化系统中的位置**：业务应用层 · 洞察环节｜**理论→实操**：把原理 2.1、2.7 落成可运行操作：识别未达成区域、定位异常业务线，并生成责任部门行动队列。（依赖案例 44–47 的数据底座，本案可先不管）
+> **在数字化系统中的位置**：业务应用层 · 洞察环节｜**理论→实操**：把原理 2.1、2.7 落成可运行操作：识别未达成区域、定位异常业务线，并生成责任部门行动队列。（依赖案例 44–46 的数据底座，本案可先不管）
 
 > **角色镜头**：<img src="../../assets/vendor/lucide/built/package.svg" width="14" alt="" style="vertical-align:-2px" /> 产品 · <img src="../../assets/vendor/lucide/built/wrench.svg" width="14" alt="" style="vertical-align:-2px" /> 研发 · <img src="../../assets/vendor/lucide/built/clipboard-list.svg" width="14" alt="" style="vertical-align:-2px" /> 项目（本案更偏这些角色；主脊 §1-§2 三镜头共读）
 
@@ -14,9 +14,9 @@
 
 > <img src="../../assets/vendor/lucide/built/gauge.svg" width="14" alt="" style="vertical-align:-2px" /> **难度** 入门｜**一句话** 电商早会经营台：按真实订单看品类营收/区域结构/退货，把异常当场派成行动｜**前置** 建议先读完第一部分
 >
-> <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：早会的价值不在「看数」，而在「把昨天的信号今天就派出去」。本案 /api/retail 按品类真算销售额（真实数据里厨餐、家饰类目营收领先）、区域按真实国家聚合（英国占绝对主力），退货来自真实退货信号——从看板变成行动。<img src="../../assets/vendor/lucide/built/alert-triangle.svg" width="14" alt="" style="vertical-align:-2px" /> 毛利率为教学合成叠加（源无成本），不作真实经营结论。
+> <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：早会的价值不在「看数」，而在「把昨天的信号今天就派出去」。本案 /api/retail 按品类真算销售额（真实数据里厨餐、家饰类目营收领先）、区域按真实国家聚合（英国占绝对主力），退货来自真实退货信号（教学过采样约 ×5，见 MANIFEST）——从看板变成行动。<img src="../../assets/vendor/lucide/built/alert-triangle.svg" width="14" alt="" style="vertical-align:-2px" /> 毛利率为教学合成叠加（源无成本），不作真实经营结论。
 >
-> <img src="../../assets/vendor/lucide/built/alert-triangle.svg" width="14" alt="" style="vertical-align:-2px" /> **常见坑**：常见坑：① 驾驶舱做成只读大屏，异常没责任人没时限，开完早会还是没人跟进；② 只看总数不按品类/区域下钻，真实的收入结构与退货高发点被平均掩盖；③ 把教学合成的毛利率当真实结论——本案已显式标注哪些列真实、哪些是叠加。
+> <img src="../../assets/vendor/lucide/built/alert-triangle.svg" width="14" alt="" style="vertical-align:-2px" /> **常见坑**：① 驾驶舱做成只读大屏，异常没责任人没时限，开完早会还是没人跟进；② 只看总数不按品类/区域下钻，真实的收入结构与退货高发点被平均掩盖；③ 把教学合成的毛利率当真实结论——本案已显式标注哪些列真实、哪些是叠加。
 
 ### 三镜头看同一个案例
 
@@ -44,8 +44,8 @@
 - 岗位：运营主管
 - 数据或资料：`dataset/order_data.csv`（4500 行，异常 500）
 - 公开参考：https://archive.ics.uci.edu/dataset/502/online+retail+ii（真实英国电商订单，CC BY 4.0）
-- 行业字段：订单号、SKU、库存天数、毛利率、异常原因、责任人、处理时限
-- 指标链（真实值）：订单数 4500，销售额(元) 55373，毛利率均值 43.76%，异常订单率 11.1%，区域数 34
+- 行业字段：订单号、SKU、库存天数、毛利率、异常原因、责任人、处理时限h
+- 指标链（真实基座 + 已标注教学合成叠加列）：订单数 4500，销售额(元) 55373，毛利率均值 43.76%，异常订单率 11.1%，区域数 34
 - 决策动作：识别未达成区域、定位异常业务线，并生成责任部门行动队列。
 - 风险边界：不得把查询慢等同于产品问题
 - UI 原型：`ui_01_morning_ops_grid`（executive_dashboard）
@@ -61,7 +61,7 @@
 ```text
 请以产品经理身份，用 AI 编程工具（如 Trae、CodeBuddy 等任一 Agent 工具）完成「电商早会异常订单台」的**产品问题定义**（这一步先把问题想清楚，不写代码）：
 - 岗位与场景：运营主管 面向「电商早会异常订单台」，把业务判断转成一份可验证的产品问题定义。
-- 数据：读取 `dataset/order_data.csv`，只使用其中真实存在的字段（订单号、SKU、库存天数、毛利率、异常原因、责任人、处理时限）。
+- 数据：读取 `dataset/order_data.csv`，只使用其中实际存在的字段（订单号、SKU、库存天数、毛利率、异常原因、责任人、处理时限h）。
 - 指标链：订单数、销售额(元)、毛利率均值、异常订单率、区域数（当前真实值：订单数=4500，销售额(元)=55373，毛利率均值=43.76%，异常订单率=11.1%，区域数=34）。
 - 现场异常：要盯的是 目标未达成、区域下滑、异常订单、责任未闭环——说清每类异常谁负责、如何被发现。
 - 决策动作：这份定义最终要支撑的关键决策是——识别未达成区域、定位异常业务线，并生成责任部门行动队列。
@@ -75,7 +75,7 @@
 ```text
 请以产品经理身份，用 AI 编程工具（如 Trae、CodeBuddy 等任一 Agent 工具）完成「电商早会异常订单台」的**方案验收**（把上一步的问题定义做成可运行原型，并逐项验收）：
 - 目标：基于问题定义，产出一个可运行的深色大屏原型，让指标链、异常队列、责任、行动都能在页面上看到、点得动。
-- 数据：读取 `dataset/order_data.csv`，只使用其中真实存在的字段（订单号、SKU、库存天数、毛利率、异常原因、责任人、处理时限）。
+- 数据：读取 `dataset/order_data.csv`，只使用其中实际存在的字段（订单号、SKU、库存天数、毛利率、异常原因、责任人、处理时限h）。
 - 指标链：订单数、销售额(元)、毛利率均值、异常订单率、区域数（当前真实值：订单数=4500，销售额(元)=55373，毛利率均值=43.76%，异常订单率=11.1%，区域数=34）。
 - 原型（技术契约，遵 rules/ 约束：DRY、单文件<800行、TS 类型、中文注释）：在 `code/web`（Vite+React+TS）路由 `#/case/01`，按 `ui_01_morning_ops_grid`（executive_dashboard）与设计 `graphite-hud` 渲染；数据经 `build_case_data.mjs` 预计算，不得复用通用表格占位。
 - 使用 Skill：用 acceptance-criteria 做验收（结构化 Skill 见 skills/pm_skills.md）。
@@ -96,7 +96,7 @@
 ### 交付物与验收
 
 - 交付物：产品问题定义卡
-- 必含字段：订单号、SKU、库存天数、毛利率、异常原因、责任人、处理时限
+- 必含字段：订单号、SKU、库存天数、毛利率、异常原因、责任人、处理时限h
 - 必含指标链：订单数、销售额(元)、毛利率均值、异常订单率、区域数
 - 必含异常状态：目标未达成、区域下滑、异常订单、责任未闭环
 - 必含 Skill：problem-framing、metric-definition、acceptance-criteria

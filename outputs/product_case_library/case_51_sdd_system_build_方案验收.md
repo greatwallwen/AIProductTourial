@@ -1,6 +1,6 @@
 # SDD 系统建造走查报告（实操 51·方案验收）
 
-> 数据来源：`rules/ + docs/_source + case_definitions + verify + 架构图（本仓库自身·dogfood）`（18 行，异常 0）。字段与指标均回到该数据。演示原理 3.0、2.3、6.4，采用设计 cyan-matrix。
+> 数据来源：`rules/ + docs/_source + case_definitions + verify + 架构图（本仓库自身·dogfood）`（18 行，异常 0）。字段与指标均回到该数据。演示原理 3.0、2.3，采用设计 cyan-matrix。
 
 ## 交付物
 
@@ -23,4 +23,4 @@ SDD 系统建造走查报告
 
 ## 验收结论
 
-**PASS** — 指标链 4 项均为回到 `rules/ + docs/_source + case_definitions + verify + 架构图（本仓库自身·dogfood）` 的真实计算值；字段/异常/Skill 齐备；可运行原型见 `#/case/51`（设计 cyan-matrix），截图 `assets/screenshots/premium_case_51_sdd_system_build_desktop.png`。
+**PASS** — 指标链 4 项均为回到 `rules/ + docs/_source + case_definitions + verify + 架构图（本仓库自身·dogfood）` 的实际计算值（真实数据）；字段/异常/Skill 齐备；可运行原型见 `#/case/51`（设计 cyan-matrix），截图 `assets/screenshots/premium_case_51_sdd_system_build_desktop.png`。

@@ -100,14 +100,17 @@ function ArchScreen() {
 // —— 航空会员 RFM 专属 demo（案例30）：真实分层 + 高价值流失预警 + R×F 散点 ——
 const SEG_COLORS: Record<string, string> = { '重要价值': 'var(--ok)', '高价值流失': 'var(--bad)', '重要保持': 'var(--accent)', '重要发展': 'var(--accent2)', '一般维持': 'var(--muted)', '流失预警': 'var(--warn)' };
 function RfmScreen() {
+  // v17 P0-1：本案数据为教学合成（固定种子），页面须明示
   const [d, setD] = useState<any>(null);
   useEffect(() => { fetchRfm().then(setD); }, []);
   if (!d) return <section className="card"><div className="muted">加载 RFM…</div></section>;
   const maxSpend = Math.max(...d.segments.map((s: any) => s.avgSpend));
   const maxR = Math.max(...d.scatter.map((p: any) => p.x), 1), maxF = Math.max(...d.scatter.map((p: any) => p.y), 1);
+  const synthBanner = <div style={{background:"#7c2d12",color:"#fde68a",padding:"6px 12px",borderRadius:8,marginBottom:10,fontSize:13}}>教学合成数据（固定种子）——分层与效应为教学而设，非真实航司业务。设计说明：dataset/design/case_30.md</div>;
   return (
     <>
-      <div className="banner" style={{ color: 'var(--bad)', borderColor: 'var(--bad)' }}><Icon name="alert" /> 高价值流失预警：<b>{d.churnRisk}</b> 名会员（{d.churnRate}%）年消费居前列却已久未乘机（R 偏大）——过去高价值、正在流失，最该优先干预。</div>
+      <div className="banner" style={{ color: 'var(--bad)', borderColor: 'var(--bad)' }}>
+      {synthBanner}<Icon name="alert" /> 高价值流失预警：<b>{d.churnRisk}</b> 名会员（{d.churnRate}%）年消费居前列却已久未乘机（R 偏大）——过去高价值、正在流失，最该优先干预。</div>
       <div className="cols">
         <section className="card">
           <div className="card-h"><h2>RFM 会员分层 · {d.total} 人</h2><span className="muted">按 R/F/M 真算 · 条长=均消费</span></div>
@@ -143,7 +146,7 @@ function RetailScreen() {
       <div className="banner" style={{ color: 'var(--accent)', borderColor: 'var(--accent)' }}>{d.total} 单 · 异常 <b>{d.anomCount}</b> 单。早会看什么？先看品类经营（谁贡献收入、谁毛利偏低、谁异常高发），再把大额异常当场派人跟进——看板要变行动。</div>
       <div className="cols">
         <section className="card">
-          <div className="card-h"><h2>品类经营（按销售额）</h2><span className="muted">收入(真实) · 均毛利(教学合成) · 异常率(真实退货)</span></div>
+          <div className="card-h"><h2>品类经营（按销售额）</h2><span className="muted">收入(真实) · 均毛利(教学合成) · 异常率(真实退货信号·教学过采样)</span></div>
           <div className="tbl-wrap">
             <table className="tbl">
               <thead><tr><th>品类</th><th>销售额（条）</th><th>均毛利</th><th>异常率</th></tr></thead>

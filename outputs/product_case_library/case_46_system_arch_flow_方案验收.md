@@ -9,7 +9,7 @@
 ## 验收清单
 
 - 必含字段：子系统、职责、接口、契约
-- 必含指标链：子系统数、接口数、后端模块数、契约断言数
+- 必含指标链：子系统数、接口契约数、依赖边数、循环依赖
 - 必含异常状态：职责越界、契约缺失、循环依赖
 - 必含 Skill：c4-modeling、interface-contract、adr-authoring
 
@@ -23,4 +23,4 @@
 
 ## 验收结论
 
-**PASS** — 指标链 4 项均为回到 `rules/backend.md` 的真实计算值；字段/异常/Skill 齐备；可运行原型见 `#/case/46`（设计 cyan-matrix），截图 `assets/screenshots/premium_case_46_system_arch_flow_desktop.png`。
+**PASS** — 指标链 4 项均为回到 `rules/backend.md` 的实际计算值（真实数据）；字段/异常/Skill 齐备；可运行原型见 `#/case/46`（设计 cyan-matrix），截图 `assets/screenshots/premium_case_46_system_arch_flow_desktop.png`。

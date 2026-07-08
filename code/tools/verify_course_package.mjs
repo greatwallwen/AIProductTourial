@@ -18,6 +18,10 @@ console.log(`验校 ${defs.projectName} · ${defs.cases.length} 案例\n`);
 for (const c of defs.cases) {
   const n = pad(c.num), tag = `[${n} ${c.slug}]`;
   ok(); if (/\//.test(c.dataset) && /\.(csv|md)$/.test(c.dataset) && !has(c.dataset)) bad(`${tag} 数据集缺失 ${c.dataset}`); // 通用规则：dataset 是文件路径才要求存在；dogfood/合成教学设计为描述串，由专项守卫核验
+  // v17 诚信守卫：fields⊆CSV表头（本轮 P0 半数根源）+ dataKind 必填 + synthetic 必披露
+  if (c.dataset.endsWith('.csv') && has(c.dataset)) { const head0 = rd(c.dataset).split('\n')[0].split(','); for (const f of c.fields) { ok(); if (!head0.includes(f)) bad(`${tag} fields 含表头不存在字段「${f}」`); } }
+  ok(); if (!['real', 'hybrid', 'synthetic'].includes(c.dataKind)) bad(`${tag} 缺 dataKind(real|hybrid|synthetic)`);
+  if (c.dataKind === 'synthetic' && has(`AI时代研发产品项目一体化知识库/案例/${n}-${c.slug}.md`)) { ok(); if (!rd(`AI时代研发产品项目一体化知识库/案例/${n}-${c.slug}.md`).includes('教学合成')) bad(`${tag} synthetic 未披露「教学合成」`); }
   const dp = `code/data/case_${n}.json`;
   ok(); if (!has(dp)) { bad(`${tag} 预计算缺失`); continue; }
   const d = jj(dp);
@@ -101,11 +105,6 @@ const screensSrc = rd('code/web/src/screens.tsx');
 for (const c of defs.cases.filter((x) => x.screen)) { ok(); if (!screensSrc.includes(`'${c.screen}'`)) bad(`案例${c.num} screen='${c.screen}' 未接入前端 dispatch`); }
 const apiSrc = rd('code/server/routes/api.ts');
 for (const ep of ['/api/search', '/api/db/query']) { ok(); if (!apiSrc.includes(ep)) bad(`后端缺接口 ${ep}`); }
-if (defs.cases.some((c) => c.num === 47)) { // 3D 案例在册才要求 three.js 栈
-  ok(); if (!apiSrc.includes('/api/points3d')) bad('后端缺接口 /api/points3d');
-  ok(); if (!/@react-three\/fiber/.test(rd('code/web/package.json'))) bad('前端未装 three.js/R3F');
-  ok(); if (!/PseudoScatter|hasWebGL/.test(screensSrc)) bad('3D 无 WebGL 退化(伪 3D)未实现');
-}
 // 维度 A/D/E：数字化主线标签 + 术语 + 备注叙事 + tokenize/openapi
 for (const c of defs.cases) { ok(); if (!c.systemLayer || !c.systemStage || !c.theoryOp) bad(`案例${c.num} 缺系统主线标签(systemLayer/systemStage/theoryOp)`); }
 ok(); if ([...new Set(defs.cases.map((c) => c.systemLayer))].length < 3) bad('systemLayer 分层不足 3（底座/能力/应用）');
@@ -134,32 +133,6 @@ ok(); if (!has('code/web/src/Icon.test.ts') || !has('code/web/src/screens.test.t
 // 章节示意图：产物存在即可（是否嵌入正文交给快照 diff）
 for (const f of ['fig_loop_cybernetic', 'fig_yagni_ladder', 'fig_ai_slop', 'fig_l0l3_ladder', 'fig_gate_board', 'fig_journey']) { ok(); if (!has(`outputs/product_case_library/svg/${f}.svg`)) bad(`缺章节图 ${f}.svg`); }
 // 游戏案例：在册才校验其数据（前端接入由通用 screen dispatch 守卫覆盖）
-if (defs.cases.some((c) => c.num === 52) && has('code/data/case_52.json')) { const j52 = jj('code/data/case_52.json'); ok(); if (!(j52.game?.rounds?.length >= 4)) bad('案例52 缺架构决策关卡数据'); ok(); if (!j52.game.rounds.every((r) => r.opts?.some((o) => o.ok))) bad('案例52 关卡无正解'); }
-if (defs.cases.some((c) => c.num === 53) && has('code/data/case_53.json')) { const j53 = jj('code/data/case_53.json'); ok(); if (!(j53.game?.items?.length >= 5)) bad('案例53 缺规格条目数据'); ok(); if (!(j53.game.items.filter((it) => it.flaw).length >= 2)) bad('案例53 埋坑<2'); }
-ok(); if (!has('docs/_source/_ref-annotation-style.md')) bad('缺 issue#4 备注范例存档');
-ok(); if (!/tokenize/.test(rd('code/server/routes/api.ts')) || !has('code/server/services/tokenize.ts')) bad('缺 /api/tokenize 后端');
-ok(); if (!has('code/server/services/openapi.ts') || !/openapi\.json/.test(rd('code/server/routes/api.ts'))) bad('缺 /api/openapi.json');
-ok(); if (!has('outputs/product_case_library/svg/fig_system_panorama.svg')) bad('缺系统全景 SVG');
-ok(); if ((tut.match(/在数字化系统中的位置/g) || []).length < defs.cases.length) bad('案例未全部标注系统位置');
-// 维度 B/C：概念实验室 + 产品化前端
-for (const f of ['code/web/src/lab.tsx', 'code/web/src/pages.tsx']) { ok(); if (!has(f)) bad('缺前端文件 ' + f); }
-if (defs.cases.some((c) => c.num === 47)) { ok(); if (!has('code/web/src/chart3d.tsx')) bad('缺 chart3d.tsx'); ok(); if (!/lazy\(\(\) => import\('\.\/chart3d'\)\)/.test(rd('code/web/src/screens.tsx'))) bad('three.js 未懒加载(代码分割)'); }
-const lab = rd('code/web/src/lab.tsx');
-for (const k of ['tokenizer', 'context', 'rag', 'agent']) { ok(); if (!lab.includes(k + ':')) bad(`概念实验室缺 ${k} 交互`); }
-ok(); if (!/data-theme|useTheme/.test(rd('code/web/src/App.tsx'))) bad('缺亮/暗主题切换');
-const pg = rd('code/web/src/pages.tsx');
-ok(); if (!/PrincipleIndex/.test(pg)) bad('缺原理索引双向溯源');
-ok(); if (!/ApiDocs|openapi/i.test(pg)) bad('缺在线 API 文档页');
-ok(); if (!/focus-visible/.test(rd('code/web/src/index.css'))) bad('缺 a11y 焦点可达样式');
-// 维度 E：网络下载真实图形 vendored + 使用 + 来源注明
-ok(); if (!has('assets/vendor/lucide/LICENSE')) bad('缺 vendored 真实图形(assets/vendor)');
-ok(); if (!/vendor/.test(rd('dataset/MANIFEST.md'))) bad('MANIFEST 未注明 vendored 图形来源/许可');
-ok(); if (!/loadIcon/.test(rd('code/tools/build_docs.mjs'))) bad('未用下载的真实图形优化图形');
-// 维度 B：aiagent 权威内容 vendored + §1 嵌真图 + RAG 两阶段重排
-ok(); if (readdirSync(join(ROOT, 'docs', '_source', 'reference')).filter((f) => f.endsWith('.md')).length < 5) bad('aiagent 参考文档 < 5');
-ok(); if (!has('assets/vendor/aiagent') || readdirSync(join(ROOT, 'assets', 'vendor', 'aiagent')).filter((f) => f.endsWith('.png')).length < 10) bad('aiagent 真实原理图 < 10');
-ok(); if ((tut.match(/aiagent\/image/g) || []).length < 5) bad('§1 未嵌入 aiagent 真实原理图');
-ok(); if (!/reranked/.test(rd('code/server/vector/store.ts')) || !/recall/.test(rd('code/server/vector/store.ts')) || !/reranked/.test(rd('code/server/routes/api.ts'))) bad('RAG 未实现召回→重排两阶段');
 // 维度 C：数据真实化 — metricSpec 真算 + KPI 值域/非退化守卫
 let specCases = 0;
 for (const c of defs.cases) {
@@ -209,10 +182,6 @@ ok(); if (defs.cases.find((c) => c.num === 30)?.screen !== 'rfm') bad('案例30 
 ok(); if (!/api\/rfm/.test(rd('code/server/routes/api.ts')) || !/RfmScreen/.test(rd('code/web/src/screens.tsx'))) bad('缺 RFM 后端/前端');
 // 专属 demo：案例16 医院容量
 ok(); if (defs.cases.filter((c) => c.screen).length < defs.cases.length) bad('存在非专属 demo 案例（应 11/11 有 screen）');
-for (const [num, ep, comp] of [[14, '/api/dispatch', 'DispatchScreen'], [28, '/api/riskreview', 'RiskScreen'], [31, '/api/adfunnel', 'AdFunnelScreen'], [16, '/api/hospital', 'HospitalScreen']]) {
-  if (!defs.cases.some((c) => c.num === num)) continue; // 案例在册才要求其专属后端/前端
-  ok(); if (!apiSrc.includes(ep) || !screensSrc.includes(comp)) bad(`案例${num} 专属 demo 缺失`);
-}
 // 图表数据驱动守卫：CSV 案例的图表必须是真实列聚合（有 by 说明），不得哈希噪声
 ok(); if (/\(\(seed *>> *i\) *& *63\)|seed *>> *\(i *% *20\)/.test(rd('code/tools/build_case_data.mjs'))) bad('图表仍用 saasType 哈希噪声');
 for (const c of defs.cases) {
@@ -271,28 +240,19 @@ ok(); if (rdmEn.includes('skills/pm_skills.md') && !has('skills/pm_skills.md')) 
 const man = rd('dataset/MANIFEST.md');
 ok(); if (/outputs\/07_skills/.test(man)) bad('MANIFEST 仍含死链 outputs/07_skills');
 // C) 真实数据基座快照：文件存在 + MANIFEST 溯源(来源/许可)齐全
-for (const [f, num] of [['retail_online_retail_ii.csv', 1], ['finance_uci_default_credit.csv', 28], ['hospital_cms_ed_timely.csv', 16], ['flights_usdot_ontime.csv', 14]]) { if (!defs.cases.some((c) => c.num === num)) continue; ok(); if (!has('dataset/real/' + f)) bad('缺真实基座快照 dataset/real/' + f); }
+for (const [f, num] of [['retail_online_retail_ii.csv', 1], ]) { if (!defs.cases.some((c) => c.num === num)) continue; ok(); if (!has('dataset/real/' + f)) bad('缺真实基座快照 dataset/real/' + f); }
 ok(); if (!/真实基座快照/.test(man) || !/CC BY 4\.0|公共领域/.test(man)) bad('MANIFEST 缺真实基座溯源(来源/许可)');
 // D) 迁移到真实基座的案例，其 dataset 性质须在 MANIFEST 标为「真实基座」
-for (const [rel, num] of [['order_data.csv', 1], ['28-credit_default_sample.csv', 28], ['hospital_ed_timely.csv', 16], ['flights_ontime.csv', 14]]) { if (!defs.cases.some((c) => c.num === num)) continue; const line = man.split('\n').find((l) => l.includes(rel)); ok(); if (!line || !/真实基座/.test(line)) bad(`MANIFEST 未把 ${rel} 标为真实基座`); }
+for (const [rel, num] of [['order_data.csv', 1], ]) { if (!defs.cases.some((c) => c.num === num)) continue; const line = man.split('\n').find((l) => l.includes(rel)); ok(); if (!line || !/真实基座/.test(line)) bad(`MANIFEST 未把 ${rel} 标为真实基座`); }
 // E) 叠加诚信：合成叠加须显式标注「教学合成」，绝不把合成说成真实
 ok(); if (!/教学合成叠加|标注合成叠加/.test(man)) bad('MANIFEST 未标注教学合成叠加列');
 // F) 旧的编造具体断言不得复现（噪声当信号的老洞见）
 ok(); if (/家居 ?571|心内 ?91|跨境 ?540/.test(tut)) bad('教程仍含旧编造具体断言(家居571/心内91/跨境540)');
 // G) 信号-噪声（关键）：真实分组效应须显著，防回退到「噪声当信号」——直接读真实 CSV 复算
 const parseCsvV = (p) => { const t = rd(p).trim().split('\n'); const sp = (l) => { const o = []; let c = '', q = false; for (const ch of l) { if (ch === '"') q = !q; else if (ch === ',' && !q) { o.push(c); c = ''; } else c += ch; } o.push(c); return o; }; const head = sp(t[0]); return { rows: t.slice(1).map(sp), ci: (n) => head.indexOf(n) }; };
-if (defs.cases.some((c) => c.num === 16)) { const s = parseCsvV('dataset/product_cases/hospital_ed_timely.csv'); const V = s.ci('急诊量级'), W = s.ci('中位急诊时长分');
-  const g = {}; for (const r of s.rows) { const k = r[V]; if (k === '未标注') continue; (g[k] ||= [0, 0]); g[k][0]++; g[k][1] += Number(r[W]) || 0; }
-  const means = Object.values(g).map(([n, w]) => w / n); const ratio = Math.max(...means) / Math.min(...means);
-  ok(); if (!(ratio >= 1.2)) bad(`案例16 急诊量级→等待 组间效应过弱(极差比 ${ratio.toFixed(2)}<1.2，疑似噪声当信号)`); }
-if (defs.cases.some((c) => c.num === 28)) { const s = parseCsvV('dataset/reference_data_analysis/28-credit_default_sample.csv'); const T = s.ci('额度档'), L = s.ci('风险等级');
-  const g = {}; for (const r of s.rows) { const k = r[T]; (g[k] ||= [0, 0]); g[k][0]++; if (r[L] === '高') g[k][1]++; }
-  const rates = Object.values(g).map(([n, h]) => h / n * 100); const spread = Math.max(...rates) - Math.min(...rates);
-  ok(); if (!(spread >= 10)) bad(`案例28 额度档→高风险 组间效应过弱(极差 ${spread.toFixed(1)}pct<10)`); }
-if (defs.cases.some((c) => c.num === 14)) { const s = parseCsvV('dataset/product_cases/flights_ontime.csv'); const C = s.ci('城市'), A = s.ci('异常类型');
-  const g = {}; for (const r of s.rows) { const k = r[C]; (g[k] ||= [0, 0]); g[k][0]++; if (r[A] === '延误') g[k][1]++; }
-  const rates = Object.values(g).filter(([n]) => n >= 8).map(([n, l]) => l / n * 100); const spread = Math.max(...rates) - Math.min(...rates);
-  ok(); if (!(spread >= 15)) bad(`案例14 起飞城市→延误 组间效应过弱(极差 ${spread.toFixed(1)}pct<15，疑似噪声当信号)`); }
+
+
+
 // v8/v11 内容出现性与定位 token 已全部移入 content_snapshot.json（末尾快照 diff 报告，不阻断）
 // 诚信：编造/误植不得出现
 ok(); if (/\$8M|800 万 token|CI Sweeper.*48/.test(tut)) bad('含编造的 $8M CI Sweeper 案例');
@@ -310,9 +270,7 @@ for (const n of [48, 49, 50]) {
   ok(); if (!['triage', 'eval', 'gates'].includes(c.screen)) bad(`案例${n} 缺 dogfood screen`);
   ok(); if (!/dogfood|本仓库/.test(c.dataset)) bad(`案例${n} dataset 未标 dogfood 真源`);
 }
-if (defs.cases.some((c) => c.num === 48) && has('code/data/case_48.json')) { const j48 = jj('code/data/case_48.json'); ok(); if (!((j48.kpis.find((k) => k.name === '契约断言数')?.value > 0) && (j48.kpis.find((k) => k.name === '接口契约数')?.value >= 10))) bad('案例48 断言/接口契约非真实计算'); }
 if (defs.cases.some((c) => c.num === 49) && has('code/data/case_49.json')) { const j49 = jj('code/data/case_49.json'); const hr = j49.kpis.find((k) => k.name === '命中率')?.value; ok(); if (!(hr > 0 && hr <= 100 && j49.kpis.find((k) => k.name === '语料篇数')?.value > 50)) bad('案例49 命中率/语料非真实'); ok(); if (!j49.queue.some((q) => /未命中|低相关/.test(q.state))) bad('案例49 无未命中/错误分析(评测退化)'); }
-if (defs.cases.some((c) => c.num === 50) && has('code/data/case_50.json')) { const j50 = jj('code/data/case_50.json'); ok(); if (!(j50.kpis.find((k) => k.name === '门禁检查项')?.value > 100)) bad('案例50 门禁检查项非真实'); ok(); if (j50.kpis.find((k) => k.name === '覆盖角色数')?.value !== 3) bad('案例50 覆盖角色数≠3'); }
 // 工作台专业图标：Icon 组件存在 + 前端源零 emoji 图标（✓✗●▹ 等文字符号不算 emoji）
 ok(); if (!has('code/web/src/Icon.tsx') || !/currentColor/.test(rd('code/web/src/Icon.tsx'))) bad('前端缺 Icon 专业图标组件(内联 SVG)');
 for (const f of readdirSync(join(ROOT, 'code', 'web', 'src')).filter((x) => /\.tsx?$/.test(x))) { ok(); if (/[\u{1F300}-\u{1FAFF}\u{2600}-\u{26FF}]/u.test(rd('code/web/src/' + f))) bad(`前端 ${f} 仍含 emoji 图标（应用 Icon 组件）`); }

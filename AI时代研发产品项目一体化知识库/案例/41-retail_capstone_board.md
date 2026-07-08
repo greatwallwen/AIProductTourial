@@ -6,7 +6,7 @@
 
 > **本案例演示/验证**：原理 2.7、3.1、4.1｜**采用设计** `graphite-hud`（见 [design/graphite-hud.md](../../design/graphite-hud.md)）
 
-> **在数字化系统中的位置**：业务应用层 · 增长环节｜**理论→实操**：把原理 2.7、3.1、4.1 落成可运行操作：从数据端到端得出零售经营改进方案并落成可验收交付物（依赖案例 44–47 的数据底座，本案可先不管）
+> **在数字化系统中的位置**：业务应用层 · 增长环节｜**理论→实操**：把原理 2.7、3.1、4.1 落成可运行操作：从数据端到端得出零售经营改进方案并落成可验收交付物（依赖案例 44–46 的数据底座，本案可先不管）
 
 > **角色镜头**：<img src="../../assets/vendor/lucide/built/package.svg" width="14" alt="" style="vertical-align:-2px" /> 产品 · <img src="../../assets/vendor/lucide/built/wrench.svg" width="14" alt="" style="vertical-align:-2px" /> 研发 · <img src="../../assets/vendor/lucide/built/clipboard-list.svg" width="14" alt="" style="vertical-align:-2px" /> 项目（本案更偏这些角色；主脊 §1-§2 三镜头共读）
 
@@ -16,7 +16,7 @@
 >
 > <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：综合案例的价值在「端到端可验收」：不是给一堆图，而是从真实数据得出「哪个区域是收入支柱、哪个品类退货高发要治理」的具体动作，且每个动作有责任人和验收标准。<img src="../../assets/vendor/lucide/built/alert-triangle.svg" width="14" alt="" style="vertical-align:-2px" /> 「毛利洼地」基于教学合成的毛利率，页面已标注，实操中应换成真实成本数据。
 >
-> <img src="../../assets/vendor/lucide/built/alert-triangle.svg" width="14" alt="" style="vertical-align:-2px" /> **常见坑**：常见坑：① 方案停在「分析」不落到「动作+责任+验收」；② 脱离数据编经营结论——本案收入/区域/退货结论都回到 order_data 真实聚合；③ 把教学合成的毛利当真实成本决策依据。
+> <img src="../../assets/vendor/lucide/built/alert-triangle.svg" width="14" alt="" style="vertical-align:-2px" /> **常见坑**：① 方案停在「分析」不落到「动作+责任+验收」；② 脱离数据编经营结论——本案收入/区域/退货结论都回到 order_data 真实聚合；③ 把教学合成的毛利当真实成本决策依据。
 
 ### 三镜头看同一个案例
 
@@ -44,8 +44,8 @@
 - 岗位：经营负责人
 - 数据或资料：`dataset/order_data.csv`（4500 行，异常 500）
 - 公开参考：https://archive.ics.uci.edu/dataset/502/online+retail+ii（真实英国电商订单，CC BY 4.0）
-- 行业字段：商品、门店、销量、毛利、库存、复购、责任人
-- 指标链（真实值）：营收(元) 55373，毛利率均值 43.76%，品类数 10，异常订单率 11.1%，平均处理时限(h) 4.46
+- 行业字段：SKU、品类、区域、金额、毛利率、库存天数、责任人
+- 指标链（真实基座 + 已标注教学合成叠加列）：营收(元) 55373，毛利率均值 43.76%，品类数 10，异常订单率 11.1%，平均处理时限(h) 40.17
 - 决策动作：从数据端到端得出零售经营改进方案并落成可验收交付物
 - 风险边界：不得脱离数据编造结论
 - UI 原型：`ui_41_retail_capstone_board`（executive_dashboard）
@@ -61,8 +61,8 @@
 ```text
 请以产品经理身份，用 AI 编程工具（如 Trae、CodeBuddy 等任一 Agent 工具）完成「零售经营产品方案」的**产品问题定义**（这一步先把问题想清楚，不写代码）：
 - 岗位与场景：经营负责人 面向「零售经营产品方案」，把业务判断转成一份可验证的产品问题定义。
-- 数据：读取 `dataset/order_data.csv`，只使用其中真实存在的字段（商品、门店、销量、毛利、库存、复购、责任人）。
-- 指标链：营收(元)、毛利率均值、品类数、异常订单率、平均处理时限(h)（当前真实值：营收(元)=55373，毛利率均值=43.76%，品类数=10，异常订单率=11.1%，平均处理时限(h)=4.46）。
+- 数据：读取 `dataset/order_data.csv`，只使用其中实际存在的字段（SKU、品类、区域、金额、毛利率、库存天数、责任人）。
+- 指标链：营收(元)、毛利率均值、品类数、异常订单率、平均处理时限(h)（当前真实值：营收(元)=55373，毛利率均值=43.76%，品类数=10，异常订单率=11.1%，平均处理时限(h)=40.17）。
 - 现场异常：要盯的是 目标未达成、滞销、毛利异常、责任未闭环——说清每类异常谁负责、如何被发现。
 - 决策动作：这份定义最终要支撑的关键决策是——从数据端到端得出零售经营改进方案并落成可验收交付物
 - 使用 Skill：用 capstone-product-flow、evidence-pack 完成分析（结构化 Skill 见 skills/pm_skills.md）。
@@ -75,8 +75,8 @@
 ```text
 请以产品经理身份，用 AI 编程工具（如 Trae、CodeBuddy 等任一 Agent 工具）完成「零售经营产品方案」的**方案验收**（把上一步的问题定义做成可运行原型，并逐项验收）：
 - 目标：基于问题定义，产出一个可运行的深色大屏原型，让指标链、异常队列、责任、行动都能在页面上看到、点得动。
-- 数据：读取 `dataset/order_data.csv`，只使用其中真实存在的字段（商品、门店、销量、毛利、库存、复购、责任人）。
-- 指标链：营收(元)、毛利率均值、品类数、异常订单率、平均处理时限(h)（当前真实值：营收(元)=55373，毛利率均值=43.76%，品类数=10，异常订单率=11.1%，平均处理时限(h)=4.46）。
+- 数据：读取 `dataset/order_data.csv`，只使用其中实际存在的字段（SKU、品类、区域、金额、毛利率、库存天数、责任人）。
+- 指标链：营收(元)、毛利率均值、品类数、异常订单率、平均处理时限(h)（当前真实值：营收(元)=55373，毛利率均值=43.76%，品类数=10，异常订单率=11.1%，平均处理时限(h)=40.17）。
 - 原型（技术契约，遵 rules/ 约束：DRY、单文件<800行、TS 类型、中文注释）：在 `code/web`（Vite+React+TS）路由 `#/case/41`，按 `ui_41_retail_capstone_board`（executive_dashboard）与设计 `graphite-hud` 渲染；数据经 `build_case_data.mjs` 预计算，不得复用通用表格占位。
 - 使用 Skill：用 traceability-check 做验收（结构化 Skill 见 skills/pm_skills.md）。
 - 输出：零售经营产品方案，保存为 `outputs/product_case_library/case_41_retail_capstone_board_方案验收.md`。
@@ -96,7 +96,7 @@
 ### 交付物与验收
 
 - 交付物：零售经营产品方案
-- 必含字段：商品、门店、销量、毛利、库存、复购、责任人
+- 必含字段：SKU、品类、区域、金额、毛利率、库存天数、责任人
 - 必含指标链：营收(元)、毛利率均值、品类数、异常订单率、平均处理时限(h)
 - 必含异常状态：目标未达成、滞销、毛利异常、责任未闭环
 - 必含 Skill：capstone-product-flow、evidence-pack、traceability-check

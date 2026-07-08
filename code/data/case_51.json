@@ -43,8 +43,7 @@
  "design": "cyan-matrix",
  "demonstrates": [
   "3.0",
-  "2.3",
-  "6.4"
+  "2.3"
  ],
  "systemLayer": "底座平台",
  "systemStage": "验收",
@@ -66,7 +65,7 @@
   },
   {
    "name": "门禁检查项",
-   "value": 170,
+   "value": 139,
    "unit": ""
   },
   {

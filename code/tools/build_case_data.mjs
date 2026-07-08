@@ -22,7 +22,7 @@ function computeMetrics(head, rows) {
     else if (m.agg === 'distinct') value = new Set(vals.filter(v => v !== '' && v != null)).size;
     else if (m.agg === 'sum') value = Math.round(vals.reduce((a, v) => a + num(v), 0));
     else if (m.agg === 'max') value = Math.round(Math.max(0, ...vals.map(num)));
-    else if (m.agg === 'avg') { const arr = vals.map(num); let v = arr.length ? arr.reduce((a, b) => a + b, 0) / arr.length : 0; if (/率|占比|利率/.test(m.name) && v <= 1) { v *= 100; unit = '%'; } value = Math.round(v * 100) / 100; }
+    else if (m.agg === 'avg') { const arr = vals.filter((v) => v !== '' && v != null).map(num).filter(Number.isFinite); /* v17 P0-5：空值不计入均值（曾把空串当 0 → 4.46h 假象，真值≈40h） */ let v = arr.length ? arr.reduce((a, b) => a + b, 0) / arr.length : 0; if (/率|占比|利率/.test(m.name) && v <= 1) { v *= 100; unit = '%'; } value = Math.round(v * 100) / 100; }
     else if (m.agg === 'rate') { const re = m.arg ? new RegExp(m.arg) : null; const hit = vals.filter(v => { const s = (v == null ? '' : v).toString().trim(); return re ? re.test(s) : (s !== ''); }).length; value = Math.round(hit / Math.max(1, rows.length) * 1000) / 10; unit = '%'; }
     else if (m.agg === 'rateGte') { const hit = vals.filter(v => num(v) >= m.arg).length; value = Math.round(hit / Math.max(1, rows.length) * 1000) / 10; unit = '%'; }
     else if (m.agg === 'rateLte') { const hit = vals.filter(v => num(v) <= m.arg).length; value = Math.round(hit / Math.max(1, rows.length) * 1000) / 10; unit = '%'; }
@@ -172,7 +172,7 @@ let ok=0;
 for(const c of defs.cases){
   let vm;
   try{
-    if(c.dataset.endsWith('.md') || [49,51].includes(c.num)) vm=buildFromMd(c);
+    if(!c.dataset.endsWith('.csv') || [49,51].includes(c.num)) vm=buildFromMd(c); // 非 CSV（目录/描述串）一律走 md/dogfood 路径
     else vm=buildFromCsv(c);
   }catch(e){ console.error('FAIL case',c.num,e.message); continue; }
   const out={ num:c.num, title:c.title, industry:c.industry, role:c.role, saasType:c.saasType, uiId:c.uiId, slug:c.slug,

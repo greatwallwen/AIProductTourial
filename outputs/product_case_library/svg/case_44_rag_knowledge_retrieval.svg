@@ -9,7 +9,7 @@
   <rect x="0" y="0" width="1000" height="92" fill="#0c1a14" opacity="0.45"/>
   <rect x="36" y="28" width="4" height="36" rx="2" fill="url(#acc)"/>
   <text x="50" y="46" font-size="22" font-weight="750" fill="#e7f5ee">产品知识库语义检索</text>
-  <text x="50" y="70" font-size="11.5" fill="#9ac4b2">AI 应用 · rag_search · 数据 skills/external/pm-skills-deanpeters/README.md（194 行 · 异常 0）</text>
+  <text x="50" y="70" font-size="11.5" fill="#9ac4b2">AI 应用 · rag_search · 数据 skills/external/pm-skills-deanpeters（194 行 · 异常 0）</text>
   <rect x="742" y="26" width="222" height="22" rx="11" fill="#0a1712" stroke="#17342a"/><text x="853" y="41" font-size="10" fill="#10b981" text-anchor="middle">设计 emerald-flow · 底座平台·治理</text>
   <text x="964" y="70" font-size="9.5" fill="#4f7a68" text-anchor="end">读图：指标链 → 异常队列/责任 → 行动/验收</text>
   <rect x="36" y="116" width="176" height="82" rx="11" fill="#0c1a14" stroke="#17342a"/>

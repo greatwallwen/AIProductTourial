@@ -23,4 +23,4 @@ RAG 评测报告（命中率/错误分析）
 
 ## 验收结论
 
-**PASS** — 指标链 4 项均为回到 `skills/external/pm-skills-deanpeters 语料 + 标注 Q/A（dogfood）` 的真实计算值；字段/异常/Skill 齐备；可运行原型见 `#/case/49`（设计 cyan-matrix），截图 `assets/screenshots/premium_case_49_rag_eval_harness_desktop.png`。
+**PASS** — 指标链 4 项均为回到 `skills/external/pm-skills-deanpeters 语料 + 标注 Q/A（dogfood）` 的实际计算值（真实数据）；字段/异常/Skill 齐备；可运行原型见 `#/case/49`（设计 cyan-matrix），截图 `assets/screenshots/premium_case_49_rag_eval_harness_desktop.png`。

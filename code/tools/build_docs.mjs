@@ -7,6 +7,10 @@ import { archFigures, subsystemDeps } from './arch_figures.mjs';
 import { chapterFigures } from './chapter_figures.mjs';
 
 const ROOT = resolve(import.meta.dirname, '..', '..');
+// v17 P0-1：数据性质措辞单一真源——synthetic 绝不称「真实」
+const dkLabel = (c) => c.dataKind === 'synthetic' ? '教学合成数据（固定种子，非真实业务）' : c.dataKind === 'hybrid' ? '真实基座 + 已标注教学合成叠加列' : '真实数据';
+const dkNote = (c) => c.dataKind === 'synthetic' ? `> **数据性质：教学合成**（固定种子生成，设计说明见 dataset/design/case_${pad(c.num)}.md）——分层与效应为教学而设，不代表真实业务分布。\n\n` : '';
+
 const defs = JSON.parse(readFileSync(join(ROOT, 'code', 'tools', 'case_definitions.json'), 'utf8'));
 const THEMES = {};
 for (const th of JSON.parse(readFileSync(join(ROOT, 'design', 'themes.json'), 'utf8')).themes) THEMES[th.id] = th.t;
@@ -148,13 +152,14 @@ function acceptance(c, d) {
   ];
   const gaps = checks.filter((x) => !x[1]).map((x) => x[0]);
   return gaps.length === 0
-    ? `**PASS** — 指标链 ${d.kpis.length} 项均为回到 \`${c.dataset}\` 的真实计算值；字段/异常/Skill 齐备；可运行原型见 \`#/case/${pad(c.num)}\`（设计 ${c.design}），截图 \`assets/screenshots/premium_case_${pad(c.num)}_${c.slug}_desktop.png\`。`
+    ? `**PASS** — 指标链 ${d.kpis.length} 项均为回到 \`${c.dataset}\` 的实际计算值（${dkLabel(c)}）；字段/异常/Skill 齐备；可运行原型见 \`#/case/${pad(c.num)}\`（设计 ${c.design}），截图 \`assets/screenshots/premium_case_${pad(c.num)}_${c.slug}_desktop.png\`。`
     : `**待补** — 未满足：${gaps.join('、')}。补齐后重验，不通过不发布。`;
 }
 function deliverableMd(c, d, type) {
   const head = `# ${c.deliverable}（实操 ${pad(c.num)}·${type}）\n\n> 数据来源：\`${c.dataset}\`（${d.rowCount} 行，异常 ${d.exceptionCount}）。字段与指标均回到该数据。演示原理 ${(c.demonstrates || []).join('、')}，采用设计 ${c.design}。\n`;
   if (type === '问题定义')
-    return head + `\n## 产品问题\n\n${c.story}\n\n## 岗位与业务对象\n\n${kv([['岗位', c.role], ['业务对象', c.scenario], ['行业', c.industry]])}\n\n## 指标链（取自真实数据）\n\n${d.kpis.map((k) => `- ${k.name}：${k.value}${k.unit || ''}`).join('\n')}\n\n## 异常状态与责任\n\n${d.queue.slice(0, 6).map((q) => `- [${q.state}] ${Object.values(q.fields).slice(0, 3).join(' / ')} → 责任 ${q.owner}`).join('\n')}\n\n## 决策动作\n\n${c.decisionAction}\n\n## 风险边界\n\n${c.riskBoundary}${c.highImpact ? '（高影响行业：保留人工复核，不得自动决策）' : ''}\n\n## 使用 Skill\n\n${c.skills.join('、')}\n`;
+    return head + `
+## 产品问题\n\n${c.story}\n\n## 岗位与业务对象\n\n${kv([['岗位', c.role], ['业务对象', c.scenario], ['行业', c.industry]])}\n\n## 指标链（${dkLabel(c)}）\n\n${d.kpis.map((k) => `- ${k.name}：${k.value}${k.unit || ''}`).join('\n')}\n\n## 异常状态与责任\n\n${d.queue.slice(0, 6).map((q) => `- [${q.state}] ${Object.values(q.fields).slice(0, 3).join(' / ')} → 责任 ${q.owner}`).join('\n')}\n\n## 决策动作\n\n${c.decisionAction}\n\n## 风险边界\n\n${c.riskBoundary}${c.highImpact ? '（高影响行业：保留人工复核，不得自动决策）' : ''}\n\n## 使用 Skill\n\n${c.skills.join('、')}\n`;
   return head + `\n## 交付物\n\n${c.deliverable}\n\n## 验收清单\n\n${kv([['必含字段', c.fields.join('、')], ['必含指标链', c.metricChain.join('、')], ['必含异常状态', c.exceptionStates.join('、')], ['必含 Skill', c.skills.join('、')]])}\n\n## 合格标准\n\n业务场景具体、指标链完整、异常状态可追踪、行动入口明确、验收条件可执行。\n\n## 不合格标准\n\n使用泛化产品名称、缺少行业指标、只描述页面不说明业务取舍、越过「${c.riskBoundary}」。\n\n## 验收结论\n\n${acceptance(c, d)}\n`;
 }
 
@@ -162,7 +167,8 @@ function deliverableMd(c, d, type) {
 // Prompt 1（问题定义）与 Prompt 2（方案验收）职责不同、内容差异化，不再是同一段换两个字。
 function buildPrompt(c, d, stage) {
   const head = '请以产品经理身份，用 AI 编程工具（如 Trae、CodeBuddy 等任一 Agent 工具）';
-  const dataLine = `- 数据：读取 \`${c.dataset}\`，只使用其中真实存在的字段（${c.fields.join('、')}）。`;
+  
+const dataLine = `- 数据：读取 \`${c.dataset}\`，只使用其中实际存在的字段（${c.fields.join('、')}）。`;
   const kpiLine = `- 指标链：${c.metricChain.join('、')}（当前真实值：${d.kpis.map((k) => k.name + '=' + k.value + (k.unit || '')).join('，')}）。`;
   if (stage === 'def') {
     // 第一步：想清楚问题，不写代码——聚焦岗位/指标/异常/决策动作/边界。
@@ -242,7 +248,7 @@ function panoramaSvg() {
     });
     if (cells[key].length > 4) s += `<text x="${(x0 + si * colW + 12).toFixed(0)}" y="${(y0 + li * rowH + 34 + 4 * 32 + 14)}" font-size="9" fill="${t.muted}">+${cells[key].length - 4} 更多</text>`;
   }
-  s += `<text x="50" y="${H - 18}" font-size="10.5" fill="${t.muted}">底座平台（44 向量库 / 45 关系库 / 46 架构契约 / 47 三维）支撑上层；业务应用按闭环各就各位——同一套数字化系统，${N} 案例是它不同环节的实操演示。</text></svg>`;
+  s += `<text x="50" y="${H - 18}" font-size="10.5" fill="${t.muted}">底座平台（44 向量库 / 45 关系库 / 46 架构契约 / 46 架构）支撑上层；业务应用按闭环各就各位——同一套数字化系统，${N} 案例是它不同环节的实操演示。</text></svg>`;
   return s;
 }
 
@@ -403,7 +409,7 @@ UP = '../../';
 const idxH = ['# 第二部分 · 案例演示与验证', '', '## 数字化系统全景（先看这张图）', '',
   `第一部分讲的理念、原理、规范、设计，不是散点——它们共同构成**一套数字化系统**。下面 ${defs.cases.length} 个代表性案例，正是这套系统在不同环节、不同层的**实操演示**（每案标注它更偏哪个角色镜头）：`, '',
   `![数字化系统全景](${UP}outputs/product_case_library/svg/fig_system_panorama.svg)`, '',
-  '- **纵向三层**：`底座平台`（44 向量库·45 关系库·46 架构契约·47 三维）→ `能力智能`（指标/检索/AI）→ `业务应用`（业务场景）。',
+  '- **纵向三层**：`底座平台`（44 向量库·45 关系库·46 架构契约·46 架构）→ `能力智能`（指标/检索/AI）→ `业务应用`（业务场景）。',
   '- **横向数据价值闭环**：`采集 → 治理 → 洞察 → 决策 → 执行 → 验收 → 增长`，再反馈回采集。',
   '- **怎么读**：先在全景里定位一个案例在「哪一层·哪一环节」，再进它看它把哪条理论落成了什么操作。', '',
   '## 案例总览', '',
@@ -426,7 +432,7 @@ const lensViewLines = (c) => c.lensViews ? ['### 三镜头看同一个案例', '
 for (const c of defs.cases) {
   const d = vm(c.num);
   const B = [`# 实操 ${pad(c.num)}：${c.title}`, '',
-    `### 项目场景故事`, '', c.story, '',
+    `### 项目场景故事`, '', dkNote(c) + c.story, '',
     `> **本案例演示/验证**：原理 ${(c.demonstrates || []).join('、')}｜**采用设计** \`${c.design}\`（见 [design/${c.design}.md](${UP}design/${c.design}.md)）`, '',
     `> **在数字化系统中的位置**：${c.systemLayer}层 · ${c.systemStage}环节｜**理论→实操**：${c.theoryOp}`, '',
     `> **角色镜头**：${lensTags(c)}（本案更偏这些角色；主脊 §1-§2 三镜头共读）`, '',
@@ -439,7 +445,7 @@ for (const c of defs.cases) {
     ...lensViewLines(c),
     `**现状问题**`, '', `- 决策依赖的关键指标：${c.metricChain.join('、')}。`, `- 现场常见异常：${c.exceptionStates.join('、')}。`, `- 只做通用页面无法支撑「${c.decisionAction}」。`, '',
     `**本次任务**`, '', `- 明确岗位、指标链、异常状态与决策动作。`, `- 使用 \`${c.skills[0]}\` 与 \`${c.skills[1]}\` 完成分析，产出 \`${c.deliverable}\`，用 \`${c.skills[2]}\` 验收。`, '',
-    `### 任务目标与数据`, '', kv([['行业', c.industry], ['真实业务场景', c.scenario], ['岗位', c.role], ['数据或资料', '`' + c.dataset + '`（' + d.rowCount + ' 行，异常 ' + d.exceptionCount + '）'], ['公开参考', c.publicRef], ['行业字段', c.fields.join('、')], ['指标链（真实值）', d.kpis.map((k) => k.name + ' ' + k.value + (k.unit || '')).join('，')], ['决策动作', c.decisionAction], ['风险边界', c.riskBoundary + (c.highImpact ? '（高影响行业·人工复核）' : '')], ['UI 原型', '`' + c.uiId + '`（' + c.saasType + '）'], ['采用设计', c.design], ['SaaS 组件', c.saasComponents.join('、')]]), '',
+    `### 任务目标与数据`, '', kv([['行业', c.industry], ['真实业务场景', c.scenario], ['岗位', c.role], ['数据或资料', '`' + c.dataset + '`（' + d.rowCount + ' 行，异常 ' + d.exceptionCount + '）'], ['公开参考', c.publicRef], ['行业字段', c.fields.join('、')], ['指标链（' + dkLabel(c) + '）', d.kpis.map((k) => k.name + ' ' + k.value + (k.unit || '')).join('，')], ['决策动作', c.decisionAction], ['风险边界', c.riskBoundary + (c.highImpact ? '（高影响行业·人工复核）' : '')], ['UI 原型', '`' + c.uiId + '`（' + c.saasType + '）'], ['采用设计', c.design], ['SaaS 组件', c.saasComponents.join('、')]]), '',
     ...(c.screen === 'buildwalk'
       ? ['### Prompt 实操 · SDD 系统建造八步（多 prompt 编排）', '', '> 正面回答「几个 prompt 建不成系统」：下面是一条**流水线**——每步一个 prompt、产一份工件、喂给下一步；澄清与门禁是人/机把关。照着走，才建得动一个中大型系统。', '', '> **怎么用（用 CodeBuddy 跑这套「建系统」走查）**：整条流水线正好对上 CodeBuddy 的模式——宪法/规格/澄清用 **Ask + Plan**（问清楚、让它列任务清单）；架构与任务分解用 **Plan**；逐任务实现用 **Craft**（多文件生成/重构/测试）；门禁三绿用 **Craft** 跑测试 + review；演进则回改规格再进 **Plan**。把每步代码框整段贴进对应模式、拿到工件再喂下一步；海外读者换 Claude Code / Cursor 同理（见附录B）。', '',
         ...buildBuildPipeline().flatMap(([s, p]) => [`**${s}**`, '', '```text', p, '```', ''])]
