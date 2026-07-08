@@ -1,0 +1,28 @@
+{
+ "num": 51,
+ "slug": "sdd_system_build",
+ "url": "http://localhost:5200/#/case/51",
+ "shotAt": "2026-07-08T06:38:17.570Z",
+ "brand": "会自检的 AI 工程 · 实操手册",
+ "caseCount": 9,
+ "h1": "规格驱动系统建造台",
+ "kpis": [
+  {
+   "name": "宪法条款",
+   "value": "18"
+  },
+  {
+   "name": "子系统数",
+   "value": "5"
+  },
+  {
+   "name": "门禁检查项",
+   "value": "154"
+  },
+  {
+   "name": "架构图数",
+   "value": "7"
+  }
+ ],
+ "pngBytes": 969396
+}

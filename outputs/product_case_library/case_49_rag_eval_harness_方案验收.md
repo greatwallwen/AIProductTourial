@@ -1,6 +1,6 @@
 # RAG 评测报告（命中率/错误分析）（实操 49·方案验收）
 
-> 数据来源：`skills/external/pm-skills-deanpeters 语料 + 标注 Q/A（dogfood）`（12 行，异常 9）。字段与指标均回到该数据。演示原理 2.3、1.3，采用设计 cyan-matrix。
+> 数据来源：`skills/external/pm-skills-deanpeters 语料 + 标注 Q/A（dogfood）`（12 行，异常 7）。字段与指标均回到该数据。演示原理 2.3、1.3，采用设计 cyan-matrix。
 
 ## 交付物
 

@@ -5,6 +5,7 @@ import { fetchIndex, fetchOpenapi, type IndexData } from './lib/api';
 import { getProgress } from './progress';
 
 const pad = (n: number) => String(n).padStart(2, '0');
+const sceneOf = (title: string) => title.split('｜')[1] || title; // 无 ｜ 标题兜底，防节点名空白
 const STAGES = ['采集', '治理', '洞察', '决策', '执行', '验收', '增长'];
 const LAYERS = ['业务应用', '能力智能', '底座平台'];
 
@@ -59,7 +60,7 @@ export function Home() {
                   {STAGES.map((S) => (
                     <td key={S} style={{ padding: 4, border: '1px solid var(--border)', verticalAlign: 'top', minWidth: 90 }}>
                       {(cells[`${L}|${S}`] || []).map((c) => (
-                        <NavLink key={c.num} to={`/case/${pad(c.num)}`} className="chip" style={{ display: 'block', margin: '3px 0', fontSize: 10.5, textDecoration: 'none' }}>{pad(c.num)} {c.title.split('｜')[1]?.slice(0, 6)}</NavLink>
+                        <NavLink key={c.num} to={`/case/${pad(c.num)}`} className="chip" style={{ display: 'block', margin: '3px 0', fontSize: 10.5, textDecoration: 'none' }}>{pad(c.num)} {sceneOf(c.title).slice(0, 6)}</NavLink>
                       ))}
                     </td>
                   ))}
@@ -93,7 +94,7 @@ export function Search() {
         {cases.map((c) => (
           <NavLink key={c.num} to={`/case/${pad(c.num)}`} className="ov-card">
             <div className="ov-top"><span className="chip">{pad(c.num)}</span><span className="chip ghost">{c.industry}</span></div>
-            <div className="ov-title">{c.title.split('｜')[1]}</div><div className="ov-meta">{c.systemLayer} · {c.systemStage}</div>
+            <div className="ov-title">{sceneOf(c.title)}</div><div className="ov-meta">{c.systemLayer} · {c.systemStage}</div>
           </NavLink>
         ))}
       </div>
@@ -118,7 +119,7 @@ export function PrincipleIndex() {
       {codes.map((code) => (
         <section key={code} className="card" style={{ marginBottom: 10 }}>
           <div className="card-h"><h2><span style={{ color: 'var(--accent)' }}>§{code}</span> · {SECTIONS[code[0]] || ''}</h2><span className="muted">{map[code].length} 个案例演示</span></div>
-          <div className="ov-top">{map[code].map((c) => <NavLink key={c.num} to={`/case/${pad(c.num)}`} className="chip soft" style={{ textDecoration: 'none' }}>{pad(c.num)} {c.title.split('｜')[1]?.slice(0, 8)}</NavLink>)}</div>
+          <div className="ov-top">{map[code].map((c) => <NavLink key={c.num} to={`/case/${pad(c.num)}`} className="chip soft" style={{ textDecoration: 'none' }}>{pad(c.num)} {sceneOf(c.title).slice(0, 8)}</NavLink>)}</div>
         </section>
       ))}
     </div>

@@ -1,0 +1,28 @@
+{
+ "num": 54,
+ "slug": "repo_event_bus",
+ "url": "http://localhost:5200/#/case/54",
+ "shotAt": "2026-07-08T06:38:20.494Z",
+ "brand": "会自检的 AI 工程 · 实操手册",
+ "caseCount": 9,
+ "h1": "仓库事件总线（事件驱动·dogfood）",
+ "kpis": [
+  {
+   "name": "事件总数",
+   "value": "91"
+  },
+  {
+   "name": "时间跨度天",
+   "value": "5"
+  },
+  {
+   "name": "迭代版本数",
+   "value": "13"
+  },
+  {
+   "name": "门禁检查项",
+   "value": "154"
+  }
+ ],
+ "pngBytes": 785379
+}

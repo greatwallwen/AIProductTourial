@@ -1,6 +1,6 @@
 {
  "num": 49,
- "title": "RAG 评测台 / eval harness（产品·研发镜头）",
+ "title": "质量验收｜RAG 评测台（eval harness）",
  "industry": "AI 产品",
  "role": "AI 产品经理 / 应用研发",
  "saasType": "rag_eval",
@@ -50,7 +50,7 @@
  "theoryOp": "把「evals 是当前最缺的技能」落成一个可跑的评测台：离线用标注集量化 RAG 回答好不好",
  "difficulty": "进阶",
  "tldr": "用标注评测集给 RAG 回答打分，把「感觉还行」变成「命中率多少」",
- "insight": "评测的裁判必须真调被测系统：v1 裁判只量语料静态覆盖（91.7%），把 search() 改坏门照样绿；v2 裁判真跑检索数 hit@3（25%）——覆盖与命中的差距才是真正的改进空间。",
+ "insight": "评测门连演三幕：v1 裁判只量语料静态覆盖（91.7%，假绿——search() 改坏照样绿）；v2 真调被测系统数 hit@3 才现形（25%）；追查又抓出装载截断——向量库默认只装 80/194 篇，修复后实测 41.7%。余下未命中属金标缺陷（5/12 题期望文档在语料文件名中不存在），封顶 58.3%——裁判要真调被测系统，还得连装载一起验。",
  "pitfall": "把命中率当成唯一真理。评测集覆盖不全时，高分可能只是「考了会的」；所以要配错误分析 + 人工抽检，别让分数剧场化（§2 的「验证剧场」）。",
  "kpis": [
   {
@@ -60,7 +60,7 @@
   },
   {
    "name": "命中率",
-   "value": 25,
+   "value": 41.7,
    "unit": "%"
   },
   {
@@ -81,31 +81,31 @@
    "owner": "产品-王（演示角色）",
    "fields": {
     "问题": "how to prioritize requirements",
-    "top3": "commands/write-prd.md | commands/prioritize.md | catalog/commands.md",
+    "top3": "commands/write-prd.md | prd-development/SKILL.md | commands/prioritize.md",
     "覆盖篇数": 113,
     "是否通过": "通过"
    }
   },
   {
    "id": 2,
-   "state": "未命中（覆盖足、检索未召回）",
-   "owner": "待标注",
+   "state": "命中@3",
+   "owner": "产品-王（演示角色）",
    "fields": {
     "问题": "RICE scoring model",
-    "top3": "docs/Add-a-Skill Utility | research/Context Enginee | announcements/2026-02-27",
+    "top3": "prioritization-advisor/S | docs/Add-a-Skill Utility | research/Context Enginee",
     "覆盖篇数": 32,
-    "是否通过": "未过"
+    "是否通过": "通过"
    }
   },
   {
    "id": 3,
-   "state": "未命中（覆盖足、检索未召回）",
-   "owner": "待标注",
+   "state": "命中@3",
+   "owner": "产品-王（演示角色）",
    "fields": {
     "问题": "user interview techniques",
-    "top3": "commands/discover.md | catalog/skills-by-type.m | catalog/commands.md",
+    "top3": "discovery-interview-prep | commands/discover.md | product-sense-interview-",
     "覆盖篇数": 65,
-    "是否通过": "未过"
+    "是否通过": "通过"
    }
   },
   {
@@ -114,7 +114,7 @@
    "owner": "产品-王（演示角色）",
    "fields": {
     "问题": "product roadmap planning",
-    "top3": "commands/plan-roadmap.md | commands/strategy.md | catalog/commands.md",
+    "top3": "roadmap-planning/SKILL.m | commands/plan-roadmap.md | product-strategy-session",
     "覆盖篇数": 87,
     "是否通过": "通过"
    }
@@ -125,20 +125,20 @@
    "owner": "待标注",
    "fields": {
     "问题": "A/B experiment design",
-    "top3": "commands/discover.md | docs/Using PM Skills wit | pm-skills-deanpeters/CLA",
+    "top3": "epic-hypothesis/template | opportunity-solution-tre | examples/sample.md",
     "覆盖篇数": 54,
     "是否通过": "未过"
    }
   },
   {
    "id": 6,
-   "state": "命中@3",
-   "owner": "产品-王（演示角色）",
+   "state": "未命中（覆盖足、检索未召回）",
+   "owner": "待标注",
    "fields": {
     "问题": "north star metric",
-    "top3": "finance/Finance_Metrics_ | finance/Finance_QuickRef | business-health-diagnost",
+    "top3": "roadmap-planning/templat | examples/sample.md | recommendation-canvas/te",
     "覆盖篇数": 70,
-    "是否通过": "通过"
+    "是否通过": "未过"
    }
   },
   {
@@ -147,7 +147,7 @@
    "owner": "待标注",
    "fields": {
     "问题": "competitive analysis",
-    "top3": "catalog/skills-by-type.m | docs/Add-a-Skill Utility | pm-skills-deanpeters/26A",
+    "top3": "company-research/SKILL.m | pestel-analysis/SKILL.md | catalog/skills-by-type.m",
     "覆盖篇数": 63,
     "是否通过": "未过"
    }
@@ -158,7 +158,7 @@
    "owner": "待标注",
    "fields": {
     "问题": "minimum viable product",
-    "top3": "docs/INSTALL-CLAUDE-DESK | docs/Building PM Skills. | finance/Finance_For_PMs.",
+    "top3": "saas-economics-efficienc | organic-growth-advisor/S | derisk-measurement-advis",
     "覆盖篇数": 18,
     "是否通过": "未过"
    }
@@ -169,7 +169,7 @@
    "owner": "待标注",
    "fields": {
     "问题": "cohort retention analysis",
-    "top3": "docs/Finance Suite Summa | catalog/skills-by-type.m | acquisition-channel-advi",
+    "top3": "saas-revenue-growth-metr | examples/warning-signs.m | examples/healthy-saas.md",
     "覆盖篇数": 22,
     "是否通过": "未过"
    }
@@ -180,20 +180,20 @@
    "owner": "待标注",
    "fields": {
     "问题": "service blueprint",
-    "top3": "pm-skills-deanpeters/15M | pm-skills-deanpeters/26A | pm-skills-deanpeters/AGE",
+    "top3": "positioning-statement/te | customer-journey-map/SKI | customer-journey-mapping",
     "覆盖篇数": 7,
     "是否通过": "未过"
    }
   },
   {
    "id": 11,
-   "state": "未命中",
-   "owner": "待标注",
+   "state": "命中@3",
+   "owner": "产品-王（演示角色）",
    "fields": {
     "问题": "van westendorp pricing",
-    "top3": "commands/prioritize.md | docs/Finance Suite Summa | docs/Using PM Skills wit",
+    "top3": "finance-based-pricing-ad | commands/prioritize.md | docs/Finance Suite Summa",
     "覆盖篇数": 1,
-    "是否通过": "未过"
+    "是否通过": "通过"
    }
   },
   {
@@ -202,7 +202,7 @@
    "owner": "待标注",
    "fields": {
     "问题": "technical debt quantification",
-    "top3": "docs/PM Skills Rule-of-T | pm-skills-deanpeters/CON | docs/Marketplace Submiss",
+    "top3": "user-story/SKILL.md | discovery-process/SKILL. | examples/sample.md",
     "覆盖篇数": 3,
     "是否通过": "未过"
    }
@@ -263,7 +263,7 @@
   ]
  },
  "rowCount": 12,
- "exceptionCount": 9,
+ "exceptionCount": 7,
  "responsible": [
   "产品-王（演示角色）",
   "数据-周（演示角色）"

@@ -54,6 +54,8 @@ function themeVars(designId: string): CSSProperties {
 
 const PHASES = ['角色转型', '用户洞察', '需求管理', '详细设计', '系统架构', '数据指标', 'AI协作', '质量验收', '综合闭环'];
 const pad = (n: number) => String(n).padStart(2, '0');
+// 标题「模块｜场景」取场景段；无 ｜ 的标题整段兜底（曾致侧栏 49/51 名字空白、案 54 头部 H1 空）
+const sceneOf = (title: string) => title.split('｜')[1] || title;
 
 function Sidebar({ idx }: { idx: IndexData }) {
   return (
@@ -66,8 +68,9 @@ function Sidebar({ idx }: { idx: IndexData }) {
         </div>
       </div>
       <NavLink to="/" end className={({ isActive }) => 'sb-item' + (isActive ? ' on' : '')}>总览</NavLink>
-      {PHASES.map((ph) => {
-        const list = idx.cases.filter((c) => c.phase === ph);
+      {/* 未知/缺失 phase 归入「其他」兜底组——案例绝不允许在侧栏静默消失（案 54 曾因缺 phase 缺席） */}
+      {[...PHASES, '其他'].map((ph) => {
+        const list = idx.cases.filter((c) => (ph === '其他' ? !PHASES.includes(c.phase) : c.phase === ph));
         if (!list.length) return null;
         return (
           <div key={ph} className="sb-group">
@@ -75,7 +78,7 @@ function Sidebar({ idx }: { idx: IndexData }) {
             {list.map((c) => (
               <NavLink key={c.num} to={`/case/${pad(c.num)}`} className={({ isActive }) => 'sb-item' + (isActive ? ' on' : '')}>
                 <span className="sb-num">{pad(c.num)}</span>
-                <span className="sb-name">{c.title.split('｜')[1]}</span>
+                <span className="sb-name">{sceneOf(c.title)}</span>
                 {c.highImpact && <span className="dot-hi" title="高影响行业·人工复核" />}
               </NavLink>
             ))}
@@ -94,7 +97,7 @@ function Overview({ idx }: { idx: IndexData }) {
         {idx.cases.map((c) => (
           <NavLink key={c.num} to={`/case/${pad(c.num)}`} className="ov-card">
             <div className="ov-top"><span className="chip">{pad(c.num)}</span><span className="chip ghost">{c.industry}</span>{c.highImpact && <span className="chip hi">人工复核</span>}</div>
-            <div className="ov-title">{c.title.split('｜')[1]}</div>
+            <div className="ov-title">{sceneOf(c.title)}</div>
             <div className="ov-meta">{c.title.split('｜')[0]} · {c.saasType}</div>
             <div className="ov-ph">{c.phase}{c.rp ? ` · ${c.rp}` : ''}</div>
           </NavLink>
@@ -210,7 +213,7 @@ function CaseScreen() {
   useEffect(() => { setC(null); setErr(false); fetchCaseData(num || '').then((d) => { setC(d); markViewed(d.num); }).catch(() => setErr(true)); }, [num]);
   if (err) return <Navigate to="/" />;
   if (!c) return <div className="page"><div className="muted">加载中…</div></div>;
-  const [mod, scene] = c.title.split('｜');
+  const mod = c.title.split('｜')[0], scene = sceneOf(c.title);
   // 案例02 派生矩阵点（业务价值×研发工期），只出图形
   const matrixPoints = (c.queue || []).slice(0, 12).map((q: any, i: number) => ({
     x: 20 + ((i * 37) % 80), y: 15 + ((i * 53) % 70), r: (i % 3) / 3, risk: i % 3, label: String(Object.values(q.fields || {})[0] ?? i + 1).slice(0, 6),

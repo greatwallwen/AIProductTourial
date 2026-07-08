@@ -1,4 +1,4 @@
-# 实操 49：RAG 评测台 / eval harness（产品·研发镜头）
+# 实操 49：质量验收｜RAG 评测台（eval harness）
 
 ### 项目场景故事
 
@@ -12,7 +12,7 @@
 
 > <img src="../../assets/vendor/lucide/built/gauge.svg" width="14" alt="" style="vertical-align:-2px" /> **难度** 进阶｜**一句话** 用标注评测集给 RAG 回答打分，把「感觉还行」变成「命中率多少」｜**前置** 建议先读完第一部分
 >
-> <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：评测的裁判必须真调被测系统：v1 裁判只量语料静态覆盖（91.7%），把 search() 改坏门照样绿；v2 裁判真跑检索数 hit@3（25%）——覆盖与命中的差距才是真正的改进空间。
+> <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：评测门连演三幕：v1 裁判只量语料静态覆盖（91.7%，假绿——search() 改坏照样绿）；v2 真调被测系统数 hit@3 才现形（25%）；追查又抓出装载截断——向量库默认只装 80/194 篇，修复后实测 41.7%。余下未命中属金标缺陷（5/12 题期望文档在语料文件名中不存在），封顶 58.3%——裁判要真调被测系统，还得连装载一起验。
 >
 > <img src="../../assets/vendor/lucide/built/alert-triangle.svg" width="14" alt="" style="vertical-align:-2px" /> **常见坑**：把命中率当成唯一真理。评测集覆盖不全时，高分可能只是「考了会的」；所以要配错误分析 + 人工抽检，别让分数剧场化（§2 的「验证剧场」）。
 
@@ -32,10 +32,10 @@
 - 行业：AI 产品
 - 真实业务场景：RAG 回答评测台
 - 岗位：AI 产品经理 / 应用研发
-- 数据或资料：`skills/external/pm-skills-deanpeters 语料 + 标注 Q/A（dogfood）`（12 行，异常 9）
+- 数据或资料：`skills/external/pm-skills-deanpeters 语料 + 标注 Q/A（dogfood）`（12 行，异常 7）
 - 公开参考：deanpeters PM-Skills 语料 + 本书标注评测集
 - 行业字段：问题、期望命中、实际命中、是否通过
-- 指标链（真实数据）：评测问题数 12，命中率 25%，覆盖达标数 11，语料篇数 194
+- 指标链（真实数据）：评测问题数 12，命中率 41.7%，覆盖达标数 11，语料篇数 194
 - 决策动作：用离线评测集量化「RAG 回答好不好」，据此决定能不能上线、还差哪些语料
 - 风险边界：评测分数是发布参考，不替代人工抽检；分数高不等于零幻觉
 - UI 原型：`ui_49_rag_eval`（rag_eval）
@@ -52,7 +52,7 @@
 请以产品经理身份，用 AI 编程工具（如 Trae、CodeBuddy 等任一 Agent 工具）完成「RAG 回答评测台」的**产品问题定义**（这一步先把问题想清楚，不写代码）：
 - 岗位与场景：AI 产品经理 / 应用研发 面向「RAG 回答评测台」，把业务判断转成一份可验证的产品问题定义。
 - 数据：读取 `skills/external/pm-skills-deanpeters 语料 + 标注 Q/A（dogfood）`，只使用其中实际存在的字段（问题、期望命中、实际命中、是否通过）。
-- 指标链：评测问题数、命中率、语料篇数、语料覆盖(万字)（当前真实值：评测问题数=12，命中率=25%，覆盖达标数=11，语料篇数=194）。
+- 指标链：评测问题数、命中率、语料篇数、语料覆盖(万字)（当前真实值：评测问题数=12，命中率=41.7%，覆盖达标数=11，语料篇数=194）。
 - 现场异常：要盯的是 未命中、低相关、待标注——说清每类异常谁负责、如何被发现。
 - 决策动作：这份定义最终要支撑的关键决策是——用离线评测集量化「RAG 回答好不好」，据此决定能不能上线、还差哪些语料
 - 使用 Skill：用 eval-design、harness-builder 完成分析（结构化 Skill 见 skills/pm_skills.md）。
@@ -66,7 +66,7 @@
 请以产品经理身份，用 AI 编程工具（如 Trae、CodeBuddy 等任一 Agent 工具）完成「RAG 回答评测台」的**方案验收**（把上一步的问题定义做成可运行原型，并逐项验收）：
 - 目标：基于问题定义，产出一个可运行的深色大屏原型，让指标链、异常队列、责任、行动都能在页面上看到、点得动。
 - 数据：读取 `skills/external/pm-skills-deanpeters 语料 + 标注 Q/A（dogfood）`，只使用其中实际存在的字段（问题、期望命中、实际命中、是否通过）。
-- 指标链：评测问题数、命中率、语料篇数、语料覆盖(万字)（当前真实值：评测问题数=12，命中率=25%，覆盖达标数=11，语料篇数=194）。
+- 指标链：评测问题数、命中率、语料篇数、语料覆盖(万字)（当前真实值：评测问题数=12，命中率=41.7%，覆盖达标数=11，语料篇数=194）。
 - 原型（技术契约，遵 rules/ 约束：DRY、单文件<800行、TS 类型、中文注释）：在 `code/web`（Vite+React+TS）路由 `#/case/49`，按 `ui_49_rag_eval`（rag_eval）与设计 `cyan-matrix` 渲染；数据经 `build_case_data.mjs` 预计算，不得复用通用表格占位。
 - 使用 Skill：用 acceptance-criteria 做验收（结构化 Skill 见 skills/pm_skills.md）。
 - 输出：RAG 评测报告（命中率/错误分析），保存为 `outputs/product_case_library/case_49_rag_eval_harness_方案验收.md`。

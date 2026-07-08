@@ -302,8 +302,9 @@ function EventBusScreen({ data }: { data: any }) {
   return (
     <section className="card">
       <div className="card-h"><h2>仓库事件总线 · git 真实事件流</h2><span className="muted">不可变日志 · 状态可重放（§7.2 / §9.4）</span></div>
-      <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', marginBottom: 10 }}>
-        {(data?.kpis || []).map((k: any) => (<div key={k.name} style={{ border: '1px solid var(--border)', borderRadius: 8, padding: '6px 14px' }}><div className="muted" style={{ fontSize: 11 }}>{k.name}</div><b style={{ fontSize: 18 }}>{k.value}{k.unit}</b></div>))}
+      {/* v20：统一用标准 KPI 组件类名（.kpis/.kpi-name/.kpi-val），截图边车传感器按此抽取名值对 */}
+      <div className="kpis" style={{ marginBottom: 10 }}>
+        {(data?.kpis || []).map((k: any) => (<div key={k.name} className="kpi"><div className="kpi-name">{k.name}</div><div className="kpi-val">{typeof k.value === 'number' ? k.value.toLocaleString('zh-CN') : k.value}<span className="kpi-unit">{k.unit}</span></div></div>))}
       </div>
       <div style={{ marginBottom: 10 }}>
         <b style={{ fontSize: 12 }}>{data?.chart?.by}</b>
@@ -316,7 +317,7 @@ function EventBusScreen({ data }: { data: any }) {
       </div>
       <div className="tbl-wrap"><table className="tbl">
         <thead><tr><th>#</th><th>类型</th><th>哈希</th><th>时间</th><th>事件（提交标题）</th></tr></thead>
-        <tbody>{(data?.queue || []).map((q: any) => (<tr key={q.id}><td>{q.id}</td><td>{q.state}</td><td className="mono">{q.fields.哈希}</td><td className="mono">{q.fields.时间}</td><td>{q.fields.标题}</td></tr>))}</tbody>
+        <tbody>{(data?.queue || []).map((q: any) => (<tr key={q.id}><td>{q.id}</td><td>{q.state}</td><td className="mono">{q.fields?.哈希 ?? '—'}</td><td className="mono">{q.fields?.时间 ?? '—'}</td><td>{q.fields?.标题 ?? '—'}</td></tr>))}</tbody>
       </table></div>
       <div className="muted" style={{ fontSize: 11, marginTop: 8 }}>数据=本仓库 git log 真实事件（构建期读取，不可变）；「门禁检查项」为当前 verify 源码断言点计数。</div>
     </section>

@@ -16,8 +16,8 @@ export class VectorStore {
     for (const t of tokenize(text)) tf.set(t, (tf.get(t) || 0) + 1);
     this.docs.push({ id, text, tf });
   }
-  /** 从目录加载语料（前 limit 篇 md 作 RAG 语料） */
-  loadDir(dir: string, limit = 80): number {
+  /** 从目录加载语料（默认全量 md；limit 仅供测试截断。v20 修复：曾默认 80 篇，宣称 194 实际只装载 80——见 §2.3 三幕） */
+  loadDir(dir: string, limit = Infinity): number {
     const walk = (d: string): string[] => readdirSync(d).flatMap((e) => {
       const p = join(d, e); return statSync(p).isDirectory() ? walk(p) : (e.endsWith('.md') ? [p] : []);
     });
