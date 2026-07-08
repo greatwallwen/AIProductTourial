@@ -1,8 +1,16 @@
 {
   "counts": {
+    "HIGH": 1,
     "LOW": 5
   },
   "findings": [
+    {
+      "sev": "HIGH",
+      "cat": "stale-count",
+      "file": "case_definitions.json",
+      "msg": "caseCount=8 与真实案例数 9 不符",
+      "fix": "改为 9 或删该冗余字段"
+    },
     {
       "sev": "LOW",
       "cat": "claim",

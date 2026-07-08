@@ -2,7 +2,7 @@
 
 ## 数字化系统全景（先看这张图）
 
-第一部分讲的理念、原理、规范、设计，不是散点——它们共同构成**一套数字化系统**。下面 8 个代表性案例，正是这套系统在不同环节、不同层的**实操演示**（每案标注它更偏哪个角色镜头）：
+第一部分讲的理念、原理、规范、设计，不是散点——它们共同构成**一套数字化系统**。下面 9 个代表性案例，正是这套系统在不同环节、不同层的**实操演示**（每案标注它更偏哪个角色镜头）：
 
 ![数字化系统全景](../../outputs/product_case_library/svg/fig_system_panorama.svg)
 
@@ -22,6 +22,7 @@
 | 46 | 后端子系统分解与契约 | 系统架构 | 研发/项目 | 3.1/3.3 | cyan-matrix | [打开](46-system_arch_flow.md) |
 | 49 | RAG 回答评测台 | AI 产品 | 产品/研发 | 2.6/1.3 | cyan-matrix | [打开](49-rag_eval_harness.md) |
 | 51 | 规格驱动系统建造台 | 研发效能 / 架构 | 研发/项目/产品 | 3.0/2.3 | cyan-matrix | [打开](51-sdd_system_build.md) |
+| 54 | 仓库事件总线 | 软件工程 | 研发/项目 | 7.2/9.4/2.3 | emerald-flow | [打开](54-repo_event_bus.md) |
 
 ## 原理 → 案例 反查（哪个原理，被哪些案例演示）
 
@@ -31,10 +32,12 @@
 |---|---|
 | §1.3 | [案例 30](30-airline_member_rfm.md)、[案例 44](44-rag_knowledge_retrieval.md)、[案例 49](49-rag_eval_harness.md) |
 | §2.1 | [案例 01](01-morning_ops_grid.md) |
-| §2.3 | [案例 51](51-sdd_system_build.md) |
+| §2.3 | [案例 51](51-sdd_system_build.md)、[案例 54](54-repo_event_bus.md) |
 | §2.6 | [案例 49](49-rag_eval_harness.md) |
 | §2.7 | [案例 01](01-morning_ops_grid.md)、[案例 41](41-retail_capstone_board.md) |
 | §3.0 | [案例 30](30-airline_member_rfm.md)、[案例 51](51-sdd_system_build.md) |
 | §3.1 | [案例 41](41-retail_capstone_board.md)、[案例 46](46-system_arch_flow.md) |
 | §3.3 | [案例 44](44-rag_knowledge_retrieval.md)、[案例 45](45-postgres_relational_arch.md)、[案例 46](46-system_arch_flow.md) |
 | §4.1 | [案例 41](41-retail_capstone_board.md)、[案例 45](45-postgres_relational_arch.md) |
+| §7.2 | [案例 54](54-repo_event_bus.md) |
+| §9.4 | [案例 54](54-repo_event_bus.md) |

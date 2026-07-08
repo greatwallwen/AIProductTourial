@@ -295,9 +295,38 @@ function BuildWalkScreen({ data }: { data: any }) {
   );
 }
 
+
+// v18-P3 案54：仓库事件总线——真实 git 事件流时间线 + 版本聚合（事件溯源最小标本）
+function EventBusScreen({ data }: { data: any }) {
+  const mx = Math.max(1, ...(data?.chart?.data || []).map((d: any) => d.value));
+  return (
+    <section className="card">
+      <div className="card-h"><h2>仓库事件总线 · git 真实事件流</h2><span className="muted">不可变日志 · 状态可重放（§7.2 / §9.4）</span></div>
+      <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', marginBottom: 10 }}>
+        {(data?.kpis || []).map((k: any) => (<div key={k.name} style={{ border: '1px solid var(--border)', borderRadius: 8, padding: '6px 14px' }}><div className="muted" style={{ fontSize: 11 }}>{k.name}</div><b style={{ fontSize: 18 }}>{k.value}{k.unit}</b></div>))}
+      </div>
+      <div style={{ marginBottom: 10 }}>
+        <b style={{ fontSize: 12 }}>{data?.chart?.by}</b>
+        {(data?.chart?.data || []).map((d: any) => (
+          <div key={d.label} style={{ display: 'flex', alignItems: 'center', gap: 8, margin: '3px 0' }}>
+            <span className="mono" style={{ width: 52, fontSize: 11 }}>{d.label}</span>
+            <div style={{ height: 10, width: `${Math.round(d.value / mx * 70)}%`, background: 'var(--accent)', borderRadius: 5, opacity: 0.85 }} />
+            <span className="mono" style={{ fontSize: 11 }}>{d.value}</span>
+          </div>))}
+      </div>
+      <div className="tbl-wrap"><table className="tbl">
+        <thead><tr><th>#</th><th>类型</th><th>哈希</th><th>时间</th><th>事件（提交标题）</th></tr></thead>
+        <tbody>{(data?.queue || []).map((q: any) => (<tr key={q.id}><td>{q.id}</td><td>{q.state}</td><td className="mono">{q.fields.哈希}</td><td className="mono">{q.fields.时间}</td><td>{q.fields.标题}</td></tr>))}</tbody>
+      </table></div>
+      <div className="muted" style={{ fontSize: 11, marginTop: 8 }}>数据=本仓库 git log 真实事件（构建期读取，不可变）；「门禁检查项」为当前 verify 源码断言点计数。</div>
+    </section>
+  );
+}
+
 export function SpecialScreen({ screen, data }: { screen: string; data?: any }) {
   if (screen === 'buildwalk') return <BuildWalkScreen data={data} />;
   if (screen === 'eval') return <DogfoodScreen data={data} kind={screen} />;
+  if (screen === 'eventbus') return <EventBusScreen data={data} />;
   if (screen === 'rfm') return <RfmScreen />;
   if (screen === 'retail') return <RetailScreen />;
   if (screen === 'plan') return <PlanScreen />;

@@ -1,6 +1,6 @@
 {
   "generatedFrom": "ref-handbook.md (draft) + refinements",
-  "caseCount": 8,
+  "caseCount": 9,
   "archetypes": {
     "executive_dashboard": [
       "驾驶舱高密度",
@@ -1136,6 +1136,75 @@
         }
       ],
       "dataKind": "real"
+    },
+    {
+      "num": 54,
+      "slug": "repo_event_bus",
+      "title": "事件驱动 · 仓库事件总线（dogfood）",
+      "industry": "软件工程",
+      "scenario": "仓库事件总线",
+      "role": "平台工程师",
+      "dataset": "git log + 门禁记录（本仓库自身·dogfood 真实事件流）",
+      "dataKind": "real",
+      "publicRef": "本仓库 git 历史（真实、不可变、可复算）",
+      "fields": [
+        "提交哈希",
+        "提交时间",
+        "提交标题",
+        "迭代版本",
+        "门禁检查项"
+      ],
+      "metricChain": [
+        "事件总数",
+        "时间跨度天",
+        "迭代版本数",
+        "门禁检查项"
+      ],
+      "exceptionStates": [
+        "回退提交",
+        "门禁未过版本"
+      ],
+      "decisionAction": "从事件流重放系统状态：任一时刻的门禁规模与迭代节奏一目了然，回退/异常提交进入复盘队列",
+      "riskBoundary": "事件流只读；不得据单条提交评价个人绩效",
+      "skills": [
+        "harness-builder",
+        "traceability-check",
+        "adr-authoring"
+      ],
+      "design": "emerald-flow",
+      "uiId": "ui-eventbus",
+      "saasType": "workflow_pipeline",
+      "saasComponents": [
+        "事件时间线",
+        "版本聚合柱",
+        "事件明细队列"
+      ],
+      "demonstrates": [
+        "7.2",
+        "9.4",
+        "2.3"
+      ],
+      "systemLayer": "底座平台",
+      "systemStage": "采集",
+      "theoryOp": "把 §7.2 事件驱动与 §9.4 事件溯源落成可运行操作：git 提交=不可变事件，按版本聚合重放迭代史，门禁红绿挂在时间线上。",
+      "lenses": [
+        "研发",
+        "项目"
+      ],
+      "highImpact": false,
+      "difficulty": "进阶",
+      "tldr": "git log 就是你系统最诚实的事件总线——本案把本仓库自己的提交流重放成时间线。",
+      "insight": "事件溯源的最小教学标本不需要 Kafka：任何 git 仓库都自带一条不可变事件日志，状态（如「现在门禁有多少检查项」）可以从事件流重放推导。",
+      "pitfall": "把事件流当考核器——按提交数评价人会立刻教会所有人刷提交；事件流用于重放与复盘，不用于绩效。",
+      "story": "新同事问：这仓库怎么长成这样的？没人说得全。平台工程师打开 git log：从 v13 到 v18，每次迭代、每次收敛、每次回退都在——事件流比任何人的记忆都诚实。本案把这条流变成一屏时间线。",
+      "readingOrder": "先看版本聚合柱（迭代节奏）→ 再看时间线明细 → 最后想：你的系统哪条日志能这样重放？",
+      "tryThis": "本地跑 git log --oneline | head -20 对照页面时间线；再想想 §9.4：如果要把「门禁红绿」也持久化为事件，该记哪几个字段？",
+      "exercises": [
+        "用事件溯源术语说明：为什么「当前案例数」能从这条事件流重放出来？",
+        "给「门禁通过」设计一条事件记录（字段+时态命名，参照 §8.3）。"
+      ],
+      "deepDive": "权衡：事件流重放（本案）vs 快照读取（其余案例直读当前态）——重放可审计但贵，快照快但丢历史；生产系统常「快照+增量事件」混合。失效模式：事件被改写（git rebase 公共分支）即总线失信——不可变性是事件总线的命根。何时别用：低频小系统直接读状态更省。",
+      "screen": "eventbus"
     }
   ],
   "projectName": "会自检的 AI 工程 · 实操手册",

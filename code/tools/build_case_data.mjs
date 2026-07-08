@@ -158,6 +158,18 @@ function buildFromMd(c){
     exceptionCount=0; responsible=[...new Set(own)];
     chart={type:'bars',by:'SDD 八步 → 工件/文件数',data:steps.map(s=>({label:s[0].replace(/[①-⑧] /,''),value:s[4]}))};
     actions=[{label:'补澄清 / 消歧',owner:'产品-王',due:'1d'},{label:'跑门禁三绿',owner:'研发-王',due:'0d'}];
+  } else if(c.num===54){ // 事件总线（v18-P3 dogfood）：真实 git 提交流 + 当前门禁规模——事件溯源最小标本
+    const log=execSync("git log --pretty=format:'%h|%ct|%s' -n 400",{cwd:ROOT,encoding:'utf8'}).split('\n').map(l=>l.replace(/^'|'$/g,'')).filter(Boolean).map(l=>{const [h,t,...m]=l.split('|');return {h,t:Number(t)*1000,msg:m.join('|')};});
+    const checks=(readFileSync(join(ROOT,'code','tools','verify_course_package.mjs'),'utf8').match(/\bok\(\)/g)||[]).length;
+    const days=Math.max(1,Math.round((log[0].t-log[log.length-1].t)/86400000));
+    const ver=(m)=>{const x=m.match(/^(v\d+)/i);return x?x[1].toLowerCase():(/(phase|收尾|清理)/i.test(m)?'phase':'其他');};
+    const byVer={}; for(const e of log){const v=ver(e.msg); byVer[v]=(byVer[v]||0)+1;}
+    const vers=Object.entries(byVer).sort((a,b)=>b[1]-a[1]);
+    kpis=[{name:'事件总数',value:log.length,unit:''},{name:'时间跨度天',value:days,unit:''},{name:'迭代版本数',value:vers.filter(([k])=>/^v\d/.test(k)).length,unit:''},{name:'门禁检查项',value:checks,unit:''}];
+    queue=log.slice(0,8).map((e,i)=>({id:i+1,state:ver(e.msg).startsWith('v')?'迭代事件':'工程事件',owner:'git（真实）',fields:{哈希:e.h,时间:new Date(e.t).toISOString().slice(0,16).replace('T',' '),标题:e.msg.slice(0,42)}}));
+    exceptionCount=log.filter(e=>/revert|回退|回滚/i.test(e.msg)).length; responsible=['git（真实事件源）'];
+    chart={type:'bars',by:'迭代版本 → 提交事件数（真实聚合）',data:vers.slice(0,8).map(([label,value])=>({label,value}))};
+    actions=[{label:'复盘：回退/异常提交',owner:'平台工程（演示角色）',due:'2d'}];
   } else { // 其它 .md：按指标链回到真实可得量（不用顺子占位）
     kpis=c.metricChain.map((m)=>({name:m,value:0,unit:/率/.test(m)?'%':''}));
   }
@@ -167,7 +179,7 @@ let ok=0;
 for(const c of defs.cases){
   let vm;
   try{
-    if(!c.dataset.endsWith('.csv') || [49,51].includes(c.num)) vm=buildFromMd(c); // 非 CSV（目录/描述串）一律走 md/dogfood 路径
+    if(!c.dataset.endsWith('.csv') || [49,51,54].includes(c.num)) vm=buildFromMd(c); // 非 CSV（目录/描述串）一律走 md/dogfood 路径
     else vm=buildFromCsv(c);
   }catch(e){ console.error('FAIL case',c.num,e.message); continue; }
   const out={ num:c.num, title:c.title, industry:c.industry, role:c.role, saasType:c.saasType, uiId:c.uiId, slug:c.slug,

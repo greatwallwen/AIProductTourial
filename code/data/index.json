@@ -120,6 +120,20 @@
    "systemStage": "验收",
    "difficulty": "高阶",
    "tldr": "几个 prompt 建不成系统——照 SDD 八步走，每步一份对得上仓库的工件"
+  },
+  {
+   "num": 54,
+   "title": "事件驱动 · 仓库事件总线（dogfood）",
+   "slug": "repo_event_bus",
+   "uiId": "ui-eventbus",
+   "saasType": "workflow_pipeline",
+   "industry": "软件工程",
+   "highImpact": false,
+   "rp": null,
+   "systemLayer": "底座平台",
+   "systemStage": "采集",
+   "difficulty": "进阶",
+   "tldr": "git log 就是你系统最诚实的事件总线——本案把本仓库自己的提交流重放成时间线。"
   }
  ]
 }
