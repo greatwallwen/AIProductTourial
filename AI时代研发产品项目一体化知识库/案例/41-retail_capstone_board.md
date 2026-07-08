@@ -10,8 +10,6 @@
 
 > **角色镜头**：<img src="../../assets/vendor/lucide/built/package.svg" width="14" alt="" style="vertical-align:-2px" /> 产品 · <img src="../../assets/vendor/lucide/built/wrench.svg" width="14" alt="" style="vertical-align:-2px" /> 研发 · <img src="../../assets/vendor/lucide/built/clipboard-list.svg" width="14" alt="" style="vertical-align:-2px" /> 项目（本案更偏这些角色；主脊 §1-§2 三镜头共读）
 
-> **方法论落点**：单个案例 = SDD 流水线（§3.0）上一个可验收的小任务；一个中大型系统 = 许多这样的任务按方法论编排起来（完整走查见旗舰案例 51）。
-
 > <img src="../../assets/vendor/lucide/built/gauge.svg" width="14" alt="" style="vertical-align:-2px" /> **难度** 高阶｜**一句话** 零售经营产品方案：从真实订单端到端得出经营改进方案并落成可验收交付物｜**前置** 建议先读完第一部分
 >
 > <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：综合案例的价值在「端到端可验收」：不是给一堆图，而是从真实数据得出「哪个区域是收入支柱、哪个品类退货高发要治理」的具体动作，且每个动作有责任人和验收标准。<img src="../../assets/vendor/lucide/built/alert-triangle.svg" width="14" alt="" style="vertical-align:-2px" /> 「毛利洼地」基于教学合成的毛利率，页面已标注，实操中应换成真实成本数据。
@@ -95,20 +93,14 @@
 
 ### 交付物与验收
 
-- 交付物：零售经营产品方案
-- 必含字段：SKU、品类、区域、金额、毛利率、库存天数、责任人
-- 必含指标链：营收(元)、毛利率均值、品类数、异常订单率、平均处理时限(h)
-- 必含异常状态：目标未达成、滞销、毛利异常、责任未闭环
-- 必含 Skill：capstone-product-flow、evidence-pack、traceability-check
-
-- 合格标准：业务场景具体、指标链完整、异常状态可追踪、行动入口明确、验收条件可执行。
-- 不合格标准：使用泛化产品名称、缺少行业指标、只描述页面不说明业务取舍、越过「不得脱离数据编造结论」。
+交付物：**零售经营产品方案**。必含要素（字段/指标链/异常状态/Skill）与合格线由自测器逐项核对：`node code/tools/check_my_work.mjs 41 你的方案.md`；红线：不越过「不得脱离数据编造结论」。
 
 ### 跟着做（动手复现）
 
 1. 起服务：`bash code/run.sh`，浏览器打开 `#/case/41`（本案专属大屏）。
 2. **你应看到**：指标链（营收(元) / 毛利率均值 …）、异常队列与行动入口，数据来自后端实时接口（性质见章首标注）。
 3. **动手改一改**：从真实数据各挑一个「保供」与「治退货」对象，写成带责任人 + 验收标准的 3 条方案。
+4. **自测产出**：`node code/tools/check_my_work.mjs 41 你的方案.md`——红项指明缺什么、回哪章补。
 
 <details>
 <summary><img src="../../assets/vendor/lucide/built/sparkles.svg" width="14" alt="" style="vertical-align:-2px" /> 深度（专业读者）：权衡 · 失效模式 · 何时别用</summary>

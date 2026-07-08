@@ -12,8 +12,6 @@
 
 > **角色镜头**：<img src="../../assets/vendor/lucide/built/package.svg" width="14" alt="" style="vertical-align:-2px" /> 产品（本案更偏这些角色；主脊 §1-§2 三镜头共读）
 
-> **方法论落点**：单个案例 = SDD 流水线（§3.0）上一个可验收的小任务；一个中大型系统 = 许多这样的任务按方法论编排起来（完整走查见旗舰案例 51）。
-
 > <img src="../../assets/vendor/lucide/built/gauge.svg" width="14" alt="" style="vertical-align:-2px" /> **难度** 进阶｜**一句话** 航空会员价值运营：按 R/F/M 分层识别高价值流失群，做定向挽回与权益运营｜**前置** 建议先读完第一部分
 >
 > <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：RFM 的价值不在算出分数，而在于把一群「看起来还行、其实正在流失」的高价值会员从平均数里揪出来——本案 RFM demo（/api/rfm）真算出「年消费前列、却久未乘机」的高价值流失群，这才是运营该抢救的人，而不是给所有人发一样的券。
@@ -89,14 +87,7 @@
 
 ### 交付物与验收
 
-- 交付物：RFM 分层运营策略
-- 必含字段：会员号、卡等级、最近乘机天数、年飞行次数、年消费、分层、里程余额
-- 必含指标链：会员数、年飞行次数均值、年消费总额(元)、高价值分层占比、里程余额均值
-- 必含异常状态：高价值流失、里程临期、久未乘机、权益未用
-- 必含 Skill：rfm-segmentation、lifecycle-action、privacy-boundary
-
-- 合格标准：业务场景具体、指标链完整、异常状态可追踪、行动入口明确、验收条件可执行。
-- 不合格标准：使用泛化产品名称、缺少行业指标、只描述页面不说明业务取舍、越过「不得输出歧视性或不可解释规则」。
+交付物：**RFM 分层运营策略**。必含要素（字段/指标链/异常状态/Skill）与合格线由自测器逐项核对：`node code/tools/check_my_work.mjs 30 你的方案.md`；红线：不越过「不得输出歧视性或不可解释规则」。
 
 **指定实操融合**
 
@@ -109,6 +100,7 @@
 1. 起服务：`bash code/run.sh`，浏览器打开 `#/case/30`（本案专属大屏）。
 2. **你应看到**：教学合成横幅、分层散点与分层队列，数据来自后端实时接口（性质见章首标注）。
 3. **动手改一改**：在 R×F 散点里找「久未乘机的高消费」点，为他们设计一次定向挽回，而非全员发券。
+4. **自测产出**：`node code/tools/check_my_work.mjs 30 你的方案.md`——红项指明缺什么、回哪章补。
 
 <details>
 <summary><img src="../../assets/vendor/lucide/built/sparkles.svg" width="14" alt="" style="vertical-align:-2px" /> 深度（专业读者）：权衡 · 失效模式 · 何时别用</summary>

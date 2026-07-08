@@ -436,7 +436,7 @@ for (const c of defs.cases) {
     `> **本案例演示/验证**：原理 ${(c.demonstrates || []).join('、')}｜**采用设计** \`${c.design}\`（见 [design/${c.design}.md](${UP}design/${c.design}.md)）`, '',
     `> **在数字化系统中的位置**：${c.systemLayer}层 · ${c.systemStage}环节｜**理论→实操**：${c.theoryOp}`, '',
     `> **角色镜头**：${lensTags(c)}（本案更偏这些角色；主脊 §1-§2 三镜头共读）`, '',
-    `> **方法论落点**：单个案例 = SDD 流水线（§3.0）上一个可验收的小任务；一个中大型系统 = 许多这样的任务按方法论编排起来（完整走查见旗舰案例 51）。`, '',
+    ...(c.num === 51 ? [`> **方法论落点**：单个案例 = SDD 流水线（§3.0）上一个可验收的小任务；一个中大型系统 = 许多这样的任务按方法论编排起来。`, ''] : []),
     `> ${ic('gauge')}**难度** ${c.difficulty}｜**一句话** ${c.tldr}｜**前置** 建议先读完第一部分`,
     '>',
     `> ${ic('lightbulb')}**洞见**：${c.insight}`,
@@ -454,10 +454,9 @@ for (const c of defs.cases) {
     ...(c.num === 46 && d.deps?.length ? [`![案例46 · 后端子系统真实依赖（C4 · dogfood）](${UP}outputs/product_case_library/svg/fig_case46_deps.svg)`, ''] : []),
     `![${c.scenario} · 可运行大屏原型截图](${UP}assets/screenshots/premium_case_${pad(c.num)}_${c.slug}_desktop.png)`, '',
     `- 图形类型：${c.slug}（设计 ${c.design}）`, `- 看图顺序：${c.readingOrder || '先看指标链，再看异常队列和责任对象，最后看行动入口与验收边界。'}`, `- UI 差异：本案例采用 \`${c.uiId}\` + 设计 \`${c.design}\`，不得复用通用表格占位；可运行原型见 \`#/case/${pad(c.num)}\`。`, '',
-    `### 交付物与验收`, '', kv([['交付物', c.deliverable], ['必含字段', c.fields.join('、')], ['必含指标链', c.metricChain.join('、')], ['必含异常状态', c.exceptionStates.join('、')], ['必含 Skill', c.skills.join('、')]]), '',
-    `- 合格标准：业务场景具体、指标链完整、异常状态可追踪、行动入口明确、验收条件可执行。`, `- 不合格标准：使用泛化产品名称、缺少行业指标、只描述页面不说明业务取舍、越过「${c.riskBoundary}」。`, ''];
+    `### 交付物与验收`, '', `交付物：**${c.deliverable}**。必含要素（字段/指标链/异常状态/Skill）与合格线由自测器逐项核对：\`node code/tools/check_my_work.mjs ${c.num} 你的方案.md\`；红线：不越过「${c.riskBoundary}」。`, ''];
   if (c.rp) B.push(`**指定实操融合**`, '', `- ${c.rp.id}：${c.rp.title}`, `  - 产出：${c.rp.produce}`, `  - 验收：${c.rp.accept}`, '');
-  B.push(`### 跟着做（动手复现）`, '', `1. 起服务：\`bash code/run.sh\`，浏览器打开 \`#/case/${pad(c.num)}\`（本案专属大屏）。`, `2. **你应看到**：${({rag:'检索框+召回/重排两列结果与相似度',db:'SQL 语句、执行结果表与索引说明',arch:'后端子系统依赖图（真扫 import）与 ADR/契约卡',eval:'金标题目命中/未命中队列与覆盖图',buildwalk:'SDD 八步走查队列与门禁状态',rfm:'教学合成横幅、分层散点与分层队列'})[c.screen] || `指标链（${c.metricChain.slice(0, 2).join(' / ')} …）、异常队列与行动入口`}，数据来自后端实时接口（性质见章首标注）。`, `3. **动手改一改**：${c.tryThis || '换一个维度或筛选，观察指标怎么变；再点页面里的「决策题挑战」做一次判断。'}`, '');
+  B.push(`### 跟着做（动手复现）`, '', `1. 起服务：\`bash code/run.sh\`，浏览器打开 \`#/case/${pad(c.num)}\`（本案专属大屏）。`, `2. **你应看到**：${({rag:'检索框+召回/重排两列结果与相似度',db:'SQL 语句、执行结果表与索引说明',arch:'后端子系统依赖图（真扫 import）与 ADR/契约卡',eval:'金标题目命中/未命中队列与覆盖图',buildwalk:'SDD 八步走查队列与门禁状态',rfm:'教学合成横幅、分层散点与分层队列'})[c.screen] || `指标链（${c.metricChain.slice(0, 2).join(' / ')} …）、异常队列与行动入口`}，数据来自后端实时接口（性质见章首标注）。`, `3. **动手改一改**：${c.tryThis || '换一个维度或筛选，观察指标怎么变；再点页面里的「决策题挑战」做一次判断。'}`, `4. **自测产出**：\`node code/tools/check_my_work.mjs ${c.num} 你的方案.md\`——红项指明缺什么、回哪章补。`, '');
   if (c.deepDive) B.push('<details>', `<summary>${ic('sparkles')}深度（专业读者）：权衡 · 失效模式 · 何时别用</summary>`, '', c.deepDive, '</details>', '');
   if (c.exercises && c.exercises.length) B.push(`### 练习（做完再进下一个案例）`, '', c.exercises.map((e, i) => `${i + 1}. **${e.type}**：${e.q}`).join('\n'), '');
   B.push(`> **小结**：本案用「${c.scenario}」演示原理 ${(c.demonstrates || []).join('、')}，落成可运行、可验收的产品判断。运行 \`bash code/run.sh\` 后访问 \`#/case/${pad(c.num)}\`（真后端实时数据）。`, '', `[← 返回案例总览](README.md) · [返回目录](${UP}${BOOK}/README.md)`);

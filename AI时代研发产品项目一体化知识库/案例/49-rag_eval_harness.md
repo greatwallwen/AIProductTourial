@@ -10,8 +10,6 @@
 
 > **角色镜头**：<img src="../../assets/vendor/lucide/built/package.svg" width="14" alt="" style="vertical-align:-2px" /> 产品 · <img src="../../assets/vendor/lucide/built/wrench.svg" width="14" alt="" style="vertical-align:-2px" /> 研发（本案更偏这些角色；主脊 §1-§2 三镜头共读）
 
-> **方法论落点**：单个案例 = SDD 流水线（§3.0）上一个可验收的小任务；一个中大型系统 = 许多这样的任务按方法论编排起来（完整走查见旗舰案例 51）。
-
 > <img src="../../assets/vendor/lucide/built/gauge.svg" width="14" alt="" style="vertical-align:-2px" /> **难度** 进阶｜**一句话** 用标注评测集给 RAG 回答打分，把「感觉还行」变成「命中率多少」｜**前置** 建议先读完第一部分
 >
 > <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：评测的裁判必须真调被测系统：v1 裁判只量语料静态覆盖（91.7%），把 search() 改坏门照样绿；v2 裁判真跑检索数 hit@3（25%）——覆盖与命中的差距才是真正的改进空间。
@@ -87,20 +85,14 @@
 
 ### 交付物与验收
 
-- 交付物：RAG 评测报告（命中率/错误分析）
-- 必含字段：问题、期望命中、实际命中、是否通过
-- 必含指标链：评测问题数、命中率、语料篇数、语料覆盖(万字)
-- 必含异常状态：未命中、低相关、待标注
-- 必含 Skill：eval-design、harness-builder、acceptance-criteria
-
-- 合格标准：业务场景具体、指标链完整、异常状态可追踪、行动入口明确、验收条件可执行。
-- 不合格标准：使用泛化产品名称、缺少行业指标、只描述页面不说明业务取舍、越过「评测分数是发布参考，不替代人工抽检；分数高不等于零幻觉」。
+交付物：**RAG 评测报告（命中率/错误分析）**。必含要素（字段/指标链/异常状态/Skill）与合格线由自测器逐项核对：`node code/tools/check_my_work.mjs 49 你的方案.md`；红线：不越过「评测分数是发布参考，不替代人工抽检；分数高不等于零幻觉」。
 
 ### 跟着做（动手复现）
 
 1. 起服务：`bash code/run.sh`，浏览器打开 `#/case/49`（本案专属大屏）。
 2. **你应看到**：金标题目命中/未命中队列与覆盖图，数据来自后端实时接口（性质见章首标注）。
 3. **动手改一改**：往评测集里加两道你关心的问题、指定期望命中关键词，重跑 build_case_data，看命中率怎么变。
+4. **自测产出**：`node code/tools/check_my_work.mjs 49 你的方案.md`——红项指明缺什么、回哪章补。
 
 <details>
 <summary><img src="../../assets/vendor/lucide/built/sparkles.svg" width="14" alt="" style="vertical-align:-2px" /> 深度（专业读者）：权衡 · 失效模式 · 何时别用</summary>

@@ -10,8 +10,6 @@
 
 > **角色镜头**：<img src="../../assets/vendor/lucide/built/wrench.svg" width="14" alt="" style="vertical-align:-2px" /> 研发（本案更偏这些角色；主脊 §1-§2 三镜头共读）
 
-> **方法论落点**：单个案例 = SDD 流水线（§3.0）上一个可验收的小任务；一个中大型系统 = 许多这样的任务按方法论编排起来（完整走查见旗舰案例 51）。
-
 > <img src="../../assets/vendor/lucide/built/gauge.svg" width="14" alt="" style="vertical-align:-2px" /> **难度** 高阶｜**一句话** 经营数据关系库查询：把真实订单用真实 SQL（建表/索引/参数化聚合）支撑经营分析｜**前置** 建议先读完第一部分
 >
 > <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：关系库不是「存下来」就行，而是建表+索引+参数化查询让经营分析可秒查。本案用 node:sqlite 真建 orders 表、真按区域(真实国家)聚合真实销售额；生产换 PostgreSQL 架构一致。
@@ -87,20 +85,14 @@
 
 ### 交付物与验收
 
-- 交付物：关系库查询与 PG 架构说明
-- 必含字段：SKU、品类、区域、金额、毛利率
-- 必含指标链：表行数、区域数、品类数、总销售额(元)
-- 必含异常状态：慢查询、全表扫描、空结果
-- 必含 Skill：capstone-product-flow、evidence-pack、traceability-check
-
-- 合格标准：业务场景具体、指标链完整、异常状态可追踪、行动入口明确、验收条件可执行。
-- 不合格标准：使用泛化产品名称、缺少行业指标、只描述页面不说明业务取舍、越过「本地 SQLite 演示、生产为 PostgreSQL；不得把演示数据当真账」。
+交付物：**关系库查询与 PG 架构说明**。必含要素（字段/指标链/异常状态/Skill）与合格线由自测器逐项核对：`node code/tools/check_my_work.mjs 45 你的方案.md`；红线：不越过「本地 SQLite 演示、生产为 PostgreSQL；不得把演示数据当真账」。
 
 ### 跟着做（动手复现）
 
 1. 起服务：`bash code/run.sh`，浏览器打开 `#/case/45`（本案专属大屏）。
 2. **你应看到**：SQL 语句、执行结果表与索引说明，数据来自后端实时接口（性质见章首标注）。
 3. **动手改一改**：把聚合维度从区域换成品类，观察结果变化；再想本地 SQLite 与生产 PostgreSQL 的差异在哪。
+4. **自测产出**：`node code/tools/check_my_work.mjs 45 你的方案.md`——红项指明缺什么、回哪章补。
 
 <details>
 <summary><img src="../../assets/vendor/lucide/built/sparkles.svg" width="14" alt="" style="vertical-align:-2px" /> 深度（专业读者）：权衡 · 失效模式 · 何时别用</summary>

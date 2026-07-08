@@ -10,8 +10,6 @@
 
 > **角色镜头**：<img src="../../assets/vendor/lucide/built/package.svg" width="14" alt="" style="vertical-align:-2px" /> 产品 · <img src="../../assets/vendor/lucide/built/wrench.svg" width="14" alt="" style="vertical-align:-2px" /> 研发 · <img src="../../assets/vendor/lucide/built/clipboard-list.svg" width="14" alt="" style="vertical-align:-2px" /> 项目（本案更偏这些角色；主脊 §1-§2 三镜头共读）
 
-> **方法论落点**：单个案例 = SDD 流水线（§3.0）上一个可验收的小任务；一个中大型系统 = 许多这样的任务按方法论编排起来（完整走查见旗舰案例 51）。
-
 > <img src="../../assets/vendor/lucide/built/gauge.svg" width="14" alt="" style="vertical-align:-2px" /> **难度** 入门｜**一句话** 电商早会经营台：按真实订单看品类营收/区域结构/退货，把异常当场派成行动｜**前置** 建议先读完第一部分
 >
 > <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：早会的价值不在「看数」，而在「把昨天的信号今天就派出去」。本案 /api/retail 按品类真算销售额（真实数据里厨餐、家饰类目营收领先）、区域按真实国家聚合（英国占绝对主力），退货来自真实退货信号（教学过采样约 ×5，见 MANIFEST）——从看板变成行动。<img src="../../assets/vendor/lucide/built/alert-triangle.svg" width="14" alt="" style="vertical-align:-2px" /> 毛利率为教学合成叠加（源无成本），不作真实经营结论。
@@ -95,14 +93,7 @@
 
 ### 交付物与验收
 
-- 交付物：产品问题定义卡
-- 必含字段：订单号、SKU、库存天数、毛利率、异常原因、责任人、处理时限h
-- 必含指标链：订单数、销售额(元)、毛利率均值、异常订单率、区域数
-- 必含异常状态：目标未达成、区域下滑、异常订单、责任未闭环
-- 必含 Skill：problem-framing、metric-definition、acceptance-criteria
-
-- 合格标准：业务场景具体、指标链完整、异常状态可追踪、行动入口明确、验收条件可执行。
-- 不合格标准：使用泛化产品名称、缺少行业指标、只描述页面不说明业务取舍、越过「不得把查询慢等同于产品问题」。
+交付物：**产品问题定义卡**。必含要素（字段/指标链/异常状态/Skill）与合格线由自测器逐项核对：`node code/tools/check_my_work.mjs 1 你的方案.md`；红线：不越过「不得把查询慢等同于产品问题」。
 
 **指定实操融合**
 
@@ -115,6 +106,7 @@
 1. 起服务：`bash code/run.sh`，浏览器打开 `#/case/01`（本案专属大屏）。
 2. **你应看到**：指标链（订单数 / 销售额(元) …）、异常队列与行动入口，数据来自后端实时接口（性质见章首标注）。
 3. **动手改一改**：换一个区域筛选，看品类营收怎么变；再点一单大额退货，想清楚该派给谁、几小时内闭环。
+4. **自测产出**：`node code/tools/check_my_work.mjs 1 你的方案.md`——红项指明缺什么、回哪章补。
 
 <details>
 <summary><img src="../../assets/vendor/lucide/built/sparkles.svg" width="14" alt="" style="vertical-align:-2px" /> 深度（专业读者）：权衡 · 失效模式 · 何时别用</summary>
