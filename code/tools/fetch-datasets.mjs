@@ -69,17 +69,35 @@ const cn=(c)=>CN_COUNTRY[c]||c;
 // 注：原 outputs/05_harness、10_knowledge_gamification、11_loop_engineering 三份 JSON 产物已移除——
 // 对应的方法论案例(36/37/43)在 v7 已精简掉，无案例引用（buildFromJson 分支亦随之弃用）。
 
+
+// ---- reference_data_analysis/2b-real_rfm.csv（v18-P1）：从真实基座 CustomerID/InvoiceDate/Quantity/Price 真算客户级 RFM ----
+// R=距快照内最后日期的天数、F=去重发票数、M=Σ数量×单价——全真实；「分层」为分位规则派生（非事实标签，已标注）。案 30 的真实对照。
+{ const s=readReal('retail_online_retail_ii.csv');
+  const [iInv,iQ,iD,iP,iC]=['Invoice','Quantity','InvoiceDate','Price','CustomerID'].map(s.col);
+  const cust=new Map(); let maxD=0;
+  for(const r of s.rows){ const c=r[iC]; if(!c) continue; const d=Date.parse(r[iD]); if(!Number.isFinite(d)) continue; maxD=Math.max(maxD,d);
+    const o=cust.get(c)||{last:0,inv:new Set(),m:0}; o.last=Math.max(o.last,d); o.inv.add(r[iInv]); o.m+=(Number(r[iQ])||0)*(Number(r[iP])||0); cust.set(c,o); }
+  const rows=[...cust.entries()].filter(([,o])=>o.m>0).map(([c,o])=>[c, Math.round((maxD-o.last)/86400000), o.inv.size, Math.round(o.m)]);
+  rows.sort((a,b)=>b[3]-a[3]);
+  const mSorted=rows.map(r=>r[3]).slice().sort((a,b)=>a-b); const q=(p)=>mSorted[Math.floor(p*(mSorted.length-1))];
+  const m50=q(0.5), m85=q(0.85);
+  for(const r of rows){ const seg = r[3]>=m85 ? (r[1]>60?'高价值流失(规则)':'重要价值(规则)') : r[3]>=m50 ? '一般保持(规则)' : (r[1]>90?'流失预警(规则)':'普通(规则)'); r.push(seg); }
+  results.push({...writeCsv('reference_data_analysis/2b-real_rfm.csv',['客户号','最近购买天数','购买次数','总消费','分层(规则派生)'],rows),label:'真实基座派生（UCI 零售快照 CustomerID 级 RFM 真算；分层为分位规则派生、非事实标签）'}); }
+
+// 历史可获取真实源（v18：已裁案例的基座不回补为案，此处仅记录可用性）
 // ---- MANIFEST ----
 // 真实基座快照来源/许可（dataset/real/*，采样自公开数据集、构建期零联网）
 const REAL_SOURCES=[
   ['retail_online_retail_ii.csv','UCI Online Retail II','CC BY 4.0','https://archive.ics.uci.edu/dataset/502/online+retail+ii','案例 01/41/45 零售基座'],
 ];
+const UNWIRED=[['CMS Timely & Effective Care (医院急诊)','https://data.cms.gov/provider-data/dataset/yv7e-xc69'],['US DOT On-Time (航班准点)','https://www.transtats.bts.gov/'],['UCI Default of Credit Card Clients','https://archive.ics.uci.edu/dataset/350/default+of+credit+card+clients']];
 const man=['# 数据集清单（'+JSON.parse(readFileSync(join(ROOT,'code', 'tools','case_definitions.json'),'utf8')).projectName+'）','',
  '为课堂可复现且诚信：多数计分案例已迁移到**真实公开数据基座**（见下「真实基座快照」，来源/许可/sha256 齐全）；确因源缺失的少数列（如零售毛利率、物流配送时效）为**确定性教学合成叠加**并在「性质」列与案例正文显式标注；其余无真实源的案例为**确定性教学合成**（固定种子）。**绝不把合成说成真实。** 生成：`node code/tools/fetch-datasets.mjs`（读 `dataset/real/*` 快照 → 归一化为中文表头，零联网）。','','| 文件 | 行/项 | 性质 | sha256 |','|---|---|---|---|'];
 for(const x of results){ const buf=readFileSync(x.p); const h=createHash('sha256').update(buf).digest('hex').slice(0,16); man.push(`| ${x.rel} | ${x.n??'-'} | ${x.label} | ${h}… |`); }
 man.push('','## 真实基座快照（dataset/real/*，采样自公开数据集，构建期零联网）','','| 快照 | 来源 | 许可 | 用于 | sha256 |','|---|---|---|---|---|');
 for(const [f,src,lic,url,use] of REAL_SOURCES){ const h=createHash('sha256').update(readFileSync(join(REAL,f))).digest('hex').slice(0,16); man.push(`| dataset/real/${f} | [${src}](${url}) | ${lic} | ${use} | ${h}… |`); }
 man.push('','> 快照由一次性采样脚本生成（分层过采样：退货约 ×5 以便教学展示，异常率 11.1% 不代表真实业务水平——UCI 原始约 2%；无随机、无联网）；生成器读快照后归一化。真实列直接用真实效应；缺失列为确定性教学合成叠加、已标注，绝不把叠加说成真实。');
+man.push('','## 可用但刻意未接线的真实源（v17 瘦身裁撤，回补须先有案例与教学理由）','',...UNWIRED.map(([n,u])=>`- ${n}：${u}`));
 man.push('','结构化 Skill 库：skills/pm_skills.md（手工维护，发布前经 skill_lint.mjs 扫描）。');
 man.push('',
   '## vendored 真实素材（非合成，注明来源/许可）',

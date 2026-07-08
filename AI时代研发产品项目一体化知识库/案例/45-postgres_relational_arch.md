@@ -91,7 +91,7 @@
 
 1. 起服务：`bash code/run.sh`，浏览器打开 `#/case/45`（本案专属大屏）。
 2. **你应看到**：SQL 语句、执行结果表与索引说明，数据来自后端实时接口（性质见章首标注）。
-3. **动手改一改**：把聚合维度从区域换成品类，观察结果变化；再想本地 SQLite 与生产 PostgreSQL 的差异在哪。
+3. **动手改一改**：页面切「品类」聚合（服务端白名单换维，真 SQL 回显）；再看 EXPLAIN QUERY PLAN 面板——哪个查询 SCAN、哪个 SEARCH USING INDEX？给 category 建索引会怎样？
 4. **自测产出**：`node code/tools/check_my_work.mjs 45 你的方案.md`——红项指明缺什么、回哪章补。
 
 <details>

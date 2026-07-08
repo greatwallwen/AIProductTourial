@@ -92,7 +92,15 @@ export function rfm() {
   const mHi = q(members.map((x) => x.m), 0.6), rHi = q(members.map((x) => x.r), 0.6);
   const churn = members.filter((x) => x.m >= mHi && x.r >= rHi);
   const scatter = members.filter((_, i) => i % 4 === 0).slice(0, 140).map((x) => ({ x: x.r, y: x.f, m: x.m, seg: x.seg }));
-  return { total: members.length, segments, churnRisk: churn.length, churnRate: Math.round(churn.length / members.length * 1000) / 10, mHi, rHi, scatter };
+  // v18-P1 真实对照：UCI 快照 CustomerID 级真算 RFM（2b-real_rfm.csv，全真实；分层为规则派生）
+  const rt = parseCsv(join(ROOT, 'dataset', 'reference_data_analysis', '2b-real_rfm.csv'));
+  const rci = (n: string) => rt.head.indexOf(n);
+  const [rr, rf, rm, rseg] = ['最近购买天数', '购买次数', '总消费', '分层(规则派生)'].map(rci);
+  const real = rt.rows.map((r) => ({ r: Number(r[rr]) || 0, f: Number(r[rf]) || 0, m: Number(r[rm]) || 0, seg: r[rseg] || '' }));
+  const realScatter = real.filter((_, i) => i % 8 === 0).slice(0, 140).map((x) => ({ x: x.r, y: x.f, m: x.m, seg: x.seg }));
+  const realSegs: Record<string, number> = {}; for (const x of real) realSegs[x.seg] = (realSegs[x.seg] || 0) + 1;
+  return { total: members.length, segments, churnRisk: churn.length, churnRate: Math.round(churn.length / members.length * 1000) / 10, mHi, rHi, scatter,
+    realRef: { total: real.length, scatter: realScatter, segments: Object.entries(realSegs).map(([name, count]) => ({ name, count })), note: '真实对照：UCI 零售快照客户级 RFM 真算（R/F/M 全真实，分层为分位规则派生）' } };
 }
 
 /** 零售经营真实分析（案例01 专属 demo）：品类销售额/毛利率/异常率 + 异常订单 triage（按金额）。 */

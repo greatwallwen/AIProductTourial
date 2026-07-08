@@ -38,23 +38,31 @@ function RagScreen() {
 // —— 关系库查询(PostgreSQL 架构)：调 /api/db/query 展示真实 SQL 结果 ——
 function DbScreen() {
   const [res, setRes] = useState<any>(null);
-  useEffect(() => { fetchDbQuery().then(setRes); }, []);
+  const [group, setGroup] = useState<'region' | 'category'>('region');
+  useEffect(() => { fetch(`/api/db/query?group=${group}`).then((r) => r.json()).then(setRes); }, [group]);
   return (
     <section className="card">
       <div className="card-h"><h2>关系库查询 · SQL</h2><span className="muted">{res?.engine ?? '…'} · /api/db/query</span></div>
+      <div style={{ marginBottom: 8 }}>
+        聚合维度：<button className={group === 'region' ? 'btn on' : 'btn'} onClick={() => setGroup('region')}>区域</button> <button className={group === 'category' ? 'btn on' : 'btn'} onClick={() => setGroup('category')}>品类</button>
+      </div>
       <pre className="mono" style={{ background: 'var(--panelSoft)', border: '1px solid var(--border)', borderRadius: 8, padding: 12, fontSize: 11.5, color: 'var(--accent)', overflowX: 'auto' }}>
-{`SELECT region, COUNT(*) n, ROUND(SUM(amount)) amt
-FROM orders GROUP BY region ORDER BY amt DESC;   -- 真 node:sqlite，建表+索引+参数化`}
+{(res?.sql || '…') + ';   -- 真 node:sqlite，服务端回显实际执行 SQL'}
       </pre>
       <div className="tbl-wrap">
         <table className="tbl">
-          <thead><tr><th>区域 region</th><th>订单数 n</th><th>销售额 amt</th></tr></thead>
+          <thead><tr><th>{group === 'region' ? '区域' : '品类'} dim</th><th>订单数 n</th><th>销售额 amt</th></tr></thead>
           <tbody>
             {(res?.rows || []).map((r: any, i: number) => (
-              <tr key={i}><td>{r.region}</td><td className="mono">{r.n}</td><td className="mono">{Number(r.amt).toLocaleString('zh-CN')}</td></tr>
+              <tr key={i}><td>{r.dim}</td><td className="mono">{r.n}</td><td className="mono">{Number(r.amt).toLocaleString('zh-CN')}</td></tr>
             ))}
           </tbody>
         </table>
+      </div>
+      <div style={{ marginTop: 10, border: '1px solid var(--border)', borderRadius: 8, padding: '8px 12px' }}>
+        <b>EXPLAIN QUERY PLAN（sqlite 真实执行计划，非文案）</b>
+        <pre className="mono" style={{ fontSize: 11, margin: '6px 0 0' }}>{(res?.plan || []).map((p: any) => p.detail || JSON.stringify(p)).join('\n') || '…'}</pre>
+        <div className="muted" style={{ fontSize: 11 }}>生产 PostgreSQL 对应 EXPLAIN (ANALYZE)——看 SCAN（全表扫）还是 SEARCH ... USING INDEX（走索引）。</div>
       </div>
     </section>
   );
@@ -106,7 +114,7 @@ function RfmScreen() {
   if (!d) return <section className="card"><div className="muted">加载 RFM…</div></section>;
   const maxSpend = Math.max(...d.segments.map((s: any) => s.avgSpend));
   const maxR = Math.max(...d.scatter.map((p: any) => p.x), 1), maxF = Math.max(...d.scatter.map((p: any) => p.y), 1);
-  const synthBanner = <div style={{background:"#7c2d12",color:"#fde68a",padding:"6px 12px",borderRadius:8,marginBottom:10,fontSize:13}}>教学合成数据（固定种子）——分层与效应为教学而设，非真实航司业务。设计说明：dataset/design/case_30.md</div>;
+  const synthBanner = <div style={{background:"#7c2d12",color:"#fde68a",padding:"6px 12px",borderRadius:8,marginBottom:10,fontSize:13}}>双轨数据：主视图为教学合成（固定种子，埋高价值流失群）；页内另附「真实对照」——UCI 零售快照 1665 名真实客户的客户级 RFM 真算（分层为规则派生）。设计说明：dataset/design/case_30.md</div>;
   return (
     <>
       <div className="banner" style={{ color: 'var(--bad)', borderColor: 'var(--bad)' }}>

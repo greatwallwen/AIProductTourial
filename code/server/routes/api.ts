@@ -34,10 +34,15 @@ export async function apiRoutes(app: any) {
   });
   app.get('/api/db/query', async (req: any) => {
     const region = req.query.region ? String(req.query.region) : null;
+    const GROUPS: Record<string, string> = { region: 'region', category: 'category' }; // v17 P0-9：换维聚合白名单（案45「换品类聚合」动手项成真）
+    const g = GROUPS[String(req.query.group || 'region')] || 'region';
     const d = getDb();
-    const rows = region
-      ? query(d, 'SELECT sku,category,region,amount,gross FROM orders WHERE region=? ORDER BY amount DESC LIMIT 8', [region])
-      : query(d, 'SELECT region, COUNT(*) n, ROUND(SUM(amount)) amt FROM orders GROUP BY region ORDER BY amt DESC', []);
-    return { engine: 'node:sqlite（本地演示，生产为 PostgreSQL / pgvector）', rows };
+    const sql = region
+      ? 'SELECT sku,category,region,amount,gross FROM orders WHERE region=? ORDER BY amount DESC LIMIT 8'
+      : `SELECT ${g} AS dim, COUNT(*) n, ROUND(SUM(amount)) amt FROM orders GROUP BY ${g} ORDER BY amt DESC`;
+    const rows = region ? query(d, sql, [region]) : query(d, sql, []);
+    // v18-P1：真实执行计划上屏——EXPLAIN QUERY PLAN 是 sqlite 真实输出，不是文案
+    const plan = query(d, 'EXPLAIN QUERY PLAN ' + sql, region ? [region] : []);
+    return { engine: 'node:sqlite（本地演示，生产为 PostgreSQL / pgvector）', sql, rows, plan };
   });
 }
