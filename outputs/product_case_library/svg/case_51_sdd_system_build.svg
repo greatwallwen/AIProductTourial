@@ -45,27 +45,27 @@
     <rect x="532" y="271" width="4" height="14" rx="2" fill="#a855f7"/>
     <rect x="544" y="270" width="70" height="16" rx="5" fill="#a855f7" opacity="0.2"/><text x="550" y="282" font-size="9.5" fill="#a855f7" font-weight="700">已立</text>
     <text x="624" y="282" font-size="10" fill="#9fb2d4">① 宪法</text>
-    <rect x="884" y="270" width="72" height="16" rx="8" fill="#a855f7" opacity="0.16"/><text x="920" y="282" font-size="9.5" fill="#a855f7" text-anchor="middle">研发-王</text>
+    <rect x="884" y="270" width="72" height="16" rx="8" fill="#a855f7" opacity="0.16"/><text x="920" y="282" font-size="9.5" fill="#a855f7" text-anchor="middle">研发-王（演</text>
     <rect x="524" y="298" width="440" height="28" rx="7" fill="#0a1220" stroke="#1c2c46"/>
     <rect x="532" y="305" width="4" height="14" rx="2" fill="#a855f7"/>
     <rect x="544" y="304" width="70" height="16" rx="5" fill="#a855f7" opacity="0.2"/><text x="550" y="316" font-size="9.5" fill="#a855f7" font-weight="700">已写</text>
     <text x="624" y="316" font-size="10" fill="#9fb2d4">② 规格</text>
-    <rect x="884" y="304" width="72" height="16" rx="8" fill="#a855f7" opacity="0.16"/><text x="920" y="316" font-size="9.5" fill="#a855f7" text-anchor="middle">产品-王</text>
+    <rect x="884" y="304" width="72" height="16" rx="8" fill="#a855f7" opacity="0.16"/><text x="920" y="316" font-size="9.5" fill="#a855f7" text-anchor="middle">产品-王（演</text>
     <rect x="524" y="332" width="440" height="28" rx="7" fill="#0a1220" stroke="#1c2c46"/>
     <rect x="532" y="339" width="4" height="14" rx="2" fill="#a855f7"/>
     <rect x="544" y="338" width="70" height="16" rx="5" fill="#a855f7" opacity="0.2"/><text x="550" y="350" font-size="9.5" fill="#a855f7" font-weight="700">人工</text>
     <text x="624" y="350" font-size="10" fill="#9fb2d4">③ 澄清</text>
-    <rect x="884" y="338" width="72" height="16" rx="8" fill="#a855f7" opacity="0.16"/><text x="920" y="350" font-size="9.5" fill="#a855f7" text-anchor="middle">项目-孙</text>
+    <rect x="884" y="338" width="72" height="16" rx="8" fill="#a855f7" opacity="0.16"/><text x="920" y="350" font-size="9.5" fill="#a855f7" text-anchor="middle">项目-孙（演</text>
     <rect x="524" y="366" width="440" height="28" rx="7" fill="#0a1220" stroke="#1c2c46"/>
     <rect x="532" y="373" width="4" height="14" rx="2" fill="#a855f7"/>
     <rect x="544" y="372" width="70" height="16" rx="5" fill="#a855f7" opacity="0.2"/><text x="550" y="384" font-size="9.5" fill="#a855f7" font-weight="700">已画</text>
     <text x="624" y="384" font-size="10" fill="#9fb2d4">④ 架构设计</text>
-    <rect x="884" y="372" width="72" height="16" rx="8" fill="#a855f7" opacity="0.16"/><text x="920" y="384" font-size="9.5" fill="#a855f7" text-anchor="middle">研发-王</text>
+    <rect x="884" y="372" width="72" height="16" rx="8" fill="#a855f7" opacity="0.16"/><text x="920" y="384" font-size="9.5" fill="#a855f7" text-anchor="middle">研发-王（演</text>
     <rect x="524" y="400" width="440" height="28" rx="7" fill="#0a1220" stroke="#1c2c46"/>
     <rect x="532" y="407" width="4" height="14" rx="2" fill="#a855f7"/>
     <rect x="544" y="406" width="70" height="16" rx="5" fill="#a855f7" opacity="0.2"/><text x="550" y="418" font-size="9.5" fill="#a855f7" font-weight="700">已分</text>
     <text x="624" y="418" font-size="10" fill="#9fb2d4">⑤ 任务分解</text>
-    <rect x="884" y="406" width="72" height="16" rx="8" fill="#a855f7" opacity="0.16"/><text x="920" y="418" font-size="9.5" fill="#a855f7" text-anchor="middle">产品-王</text>
+    <rect x="884" y="406" width="72" height="16" rx="8" fill="#a855f7" opacity="0.16"/><text x="920" y="418" font-size="9.5" fill="#a855f7" text-anchor="middle">产品-王（演</text>
   <text x="36" y="479" font-size="10.5" fill="#566484">演示原理 3.0 · 2.3 · UI ui_51_sdd_build · Skill spec-authoring + task-decomposition + arch-review</text>
   <text x="36" y="522" font-size="11" fill="#566484">行动入口 · 责任 · 时限</text>
   

@@ -449,7 +449,7 @@ for (const c of defs.cases) {
     ...(c.screen === 'buildwalk'
       ? ['### Prompt 实操 · SDD 系统建造八步（多 prompt 编排）', '', '> 正面回答「几个 prompt 建不成系统」：下面是一条**流水线**——每步一个 prompt、产一份工件、喂给下一步；澄清与门禁是人/机把关。照着走，才建得动一个中大型系统。', '', '> **怎么用（用 CodeBuddy 跑这套「建系统」走查）**：整条流水线正好对上 CodeBuddy 的模式——宪法/规格/澄清用 **Ask + Plan**（问清楚、让它列任务清单）；架构与任务分解用 **Plan**；逐任务实现用 **Craft**（多文件生成/重构/测试）；门禁三绿用 **Craft** 跑测试 + review；演进则回改规格再进 **Plan**。把每步代码框整段贴进对应模式、拿到工件再喂下一步；海外读者换 Claude Code / Cursor 同理（见附录B）。', '',
         ...buildBuildPipeline().flatMap(([s, p]) => [`**${s}**`, '', '```text', p, '```', ''])]
-      : ['### Prompt 实操', '', '> **怎么用**：推荐用 **CodeBuddy 的 Plan 模式**（腾讯，国产·当下可跑）——把下面灰底代码框**整段原样粘进去，它会先列出任务清单、再自主执行**，你不需要看懂里面的技术细节；没装过就先装一个。海外读者用 Claude Code / Cursor / Trae 等任一 Agent 工具同理（见附录B）。', '', `**Prompt 1：${c.scenario} - 问题定义**`, '', '```text', buildPrompt(c, d, 'def'), '```', '', `**Prompt 2：${c.scenario} - 方案验收**`, '', '```text', buildPrompt(c, d, 'accept'), '```', '']),
+      : ['### Prompt 实操', '', '> **怎么用**：推荐用 **CodeBuddy 的 Plan 模式**（腾讯，国产·当下可跑）——把下面灰底代码框**整段原样粘进去，它会先列出任务清单、再自主执行**，你不需要看懂里面的技术细节；没装过就先装一个。海外读者用 Claude Code / Cursor / Trae 等任一 Agent 工具同理（见附录B）。', '', `**Prompt 1：${c.scenario} - 问题定义**`, '', '```text', buildPrompt(c, d, 'def'), '```', '', `**Prompt 2：${c.scenario} - 方案验收**（注意：outputs/ 交付物由 build_docs 重建覆盖，建议在新分支/对照目录运行）`, '', '```text', buildPrompt(c, d, 'accept'), '```', '']),
     `### 图形/原型/表单`, '', `![${c.scenario} · 信息图](${UP}outputs/product_case_library/svg/case_${pad(c.num)}_${c.slug}.svg)`, '',
     ...(c.num === 46 && d.deps?.length ? [`![案例46 · 后端子系统真实依赖（C4 · dogfood）](${UP}outputs/product_case_library/svg/fig_case46_deps.svg)`, ''] : []),
     `![${c.scenario} · 可运行大屏原型截图](${UP}assets/screenshots/premium_case_${pad(c.num)}_${c.slug}_desktop.png)`, '',
@@ -457,7 +457,7 @@ for (const c of defs.cases) {
     `### 交付物与验收`, '', kv([['交付物', c.deliverable], ['必含字段', c.fields.join('、')], ['必含指标链', c.metricChain.join('、')], ['必含异常状态', c.exceptionStates.join('、')], ['必含 Skill', c.skills.join('、')]]), '',
     `- 合格标准：业务场景具体、指标链完整、异常状态可追踪、行动入口明确、验收条件可执行。`, `- 不合格标准：使用泛化产品名称、缺少行业指标、只描述页面不说明业务取舍、越过「${c.riskBoundary}」。`, ''];
   if (c.rp) B.push(`**指定实操融合**`, '', `- ${c.rp.id}：${c.rp.title}`, `  - 产出：${c.rp.produce}`, `  - 验收：${c.rp.accept}`, '');
-  B.push(`### 跟着做（动手复现）`, '', `1. 起服务：\`bash code/run.sh\`，浏览器打开 \`#/case/${pad(c.num)}\`（本案专属大屏）。`, `2. **你应看到**：指标链（${c.metricChain.slice(0, 3).join(' / ')} …）、异常队列与责任对象、行动入口，数据全部来自真实后端实时计算。`, `3. **动手改一改**：${c.tryThis || '换一个维度或筛选，观察指标怎么变；再点页面里的「决策题挑战」做一次判断。'}`, '');
+  B.push(`### 跟着做（动手复现）`, '', `1. 起服务：\`bash code/run.sh\`，浏览器打开 \`#/case/${pad(c.num)}\`（本案专属大屏）。`, `2. **你应看到**：${({rag:'检索框+召回/重排两列结果与相似度',db:'SQL 语句、执行结果表与索引说明',arch:'后端子系统依赖图（真扫 import）与 ADR/契约卡',eval:'金标题目命中/未命中队列与覆盖图',buildwalk:'SDD 八步走查队列与门禁状态',rfm:'教学合成横幅、分层散点与分层队列'})[c.screen] || `指标链（${c.metricChain.slice(0, 2).join(' / ')} …）、异常队列与行动入口`}，数据来自后端实时接口（性质见章首标注）。`, `3. **动手改一改**：${c.tryThis || '换一个维度或筛选，观察指标怎么变；再点页面里的「决策题挑战」做一次判断。'}`, '');
   if (c.deepDive) B.push('<details>', `<summary>${ic('sparkles')}深度（专业读者）：权衡 · 失效模式 · 何时别用</summary>`, '', c.deepDive, '</details>', '');
   if (c.exercises && c.exercises.length) B.push(`### 练习（做完再进下一个案例）`, '', c.exercises.map((e, i) => `${i + 1}. **${e.type}**：${e.q}`).join('\n'), '');
   B.push(`> **小结**：本案用「${c.scenario}」演示原理 ${(c.demonstrates || []).join('、')}，落成可运行、可验收的产品判断。运行 \`bash code/run.sh\` 后访问 \`#/case/${pad(c.num)}\`（真后端实时数据）。`, '', `[← 返回案例总览](README.md) · [返回目录](${UP}${BOOK}/README.md)`);

@@ -59,7 +59,7 @@ function buildFromCsv(c){
     responsible: [...new Set(queue.map(q=>q.owner).filter(Boolean))].slice(0,5),
     actions: c.exceptionStates.slice(0,4).map((s,i)=>({ label:`处置：${s}`, owner: pickOwner(seed+i), due:`${1+i*2}d` })) };
 }
-function pickOwner(s){ const o=['运营-李','产品-王','风控-赵','客服-陈','供应链-孙','数据-周']; return o[s%o.length]; }
+function pickOwner(s){ const o=['运营-李','产品-王','风控-赵','客服-陈','供应链-孙','数据-周']; return o[s%o.length]+'（演示角色）'; } // v17 P1-11：无真实责任源时明示虚构
 // 数据驱动图表（替代 saasType 哈希噪声）：按真实分类列聚合真实数值列，图表反映本案例真实数据故事
 function buildChart(c, head, rows){
   const idxOf=(re)=>head.findIndex(h=>re.test(h));
@@ -135,8 +135,8 @@ function buildFromMd(c){
     const TH=3; const hits=evalSet.map(e=>{ const cov=corpus.filter(t=>t.includes(e.kw)).length; return {...e,cov,hit:cov>=TH}; });
     const hitN=hits.filter(h=>h.hit).length;
     kpis=[{name:'评测问题数',value:evalSet.length,unit:''},{name:'命中率',value:Math.round(hitN/evalSet.length*1000)/10,unit:'%'},{name:'语料篇数',value:files.length,unit:''},{name:'语料覆盖(万字)',value:Math.round(chars/10000),unit:''}];
-    queue=hits.map((h,i)=>({id:i+1,state:h.hit?'命中':(h.cov>0?'低相关':'未命中'),owner:h.hit?'产品-王':'待标注',fields:{问题:h.q,期望命中:h.kw,实际命中:h.cov+' 篇',是否通过:h.hit?'通过':'未过'}}));
-    exceptionCount=hits.filter(h=>!h.hit).length; responsible=['产品-王','数据-周'];
+    queue=hits.map((h,i)=>({id:i+1,state:h.hit?'命中':(h.cov>0?'低相关':'未命中'),owner:h.hit?'产品-王（演示角色）':'待标注',fields:{问题:h.q,期望命中:h.kw,实际命中:h.cov+' 篇',是否通过:h.hit?'通过':'未过'}}));
+    exceptionCount=hits.filter(h=>!h.hit).length; responsible=['产品-王（演示角色）','数据-周（演示角色）'];
     chart={type:'bars',by:'评测问题 → 覆盖篇数',data:hits.map(h=>({label:h.q.slice(0,4),value:h.cov}))};
     actions=[{label:'处置：未命中问题',owner:'产品-王',due:'3d'},{label:'补语料/标注',owner:'数据-周',due:'5d'}];
   } else if(c.num===51){ // SDD 系统建造走查：真读 rules/docs/case_definitions/verify/arch 图（dogfood·研发/项目/产品）
@@ -158,7 +158,7 @@ function buildFromMd(c){
       ['⑦ 门禁','verify + node:test + vitest','三绿','数百项自动核验',3],
       ['⑧ 演进','演进触发表','待触发','按信号切 PG / pgvector',3],
     ];
-    const own=['研发-王','产品-王','项目-孙'];
+    const own=['研发-王（演示角色）','产品-王（演示角色）','项目-孙（演示角色）']; // v17 P1-11
     queue=steps.map((s,i)=>({id:i+1,state:s[2],owner:own[i%3],fields:{步骤:s[0],工件:s[1],状态:s[2],产出:s[3]}}));
     exceptionCount=0; responsible=[...new Set(own)];
     chart={type:'bars',by:'SDD 八步 → 工件/文件数',data:steps.map(s=>({label:s[0].replace(/[①-⑧] /,''),value:s[4]}))};

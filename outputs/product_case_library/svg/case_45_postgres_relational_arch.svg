@@ -71,13 +71,13 @@
   
     <rect x="36" y="548" width="168" height="46" rx="10" fill="url(#acc)"/>
     <text x="50" y="569" font-size="11.5" fill="#04121a" font-weight="750">处置：慢查询</text>
-    <text x="50" y="584" font-size="9" fill="#04121a" opacity="0.75">产品-王 · 1d</text>
+    <text x="50" y="584" font-size="9" fill="#04121a" opacity="0.75">产品-王（演示角色） · 1d</text>
     <rect x="216" y="548" width="168" height="46" rx="10" fill="url(#acc)"/>
     <text x="230" y="569" font-size="11.5" fill="#04121a" font-weight="750">处置：全表扫描</text>
-    <text x="230" y="584" font-size="9" fill="#04121a" opacity="0.75">风控-赵 · 3d</text>
+    <text x="230" y="584" font-size="9" fill="#04121a" opacity="0.75">风控-赵（演示角色） · 3d</text>
     <rect x="396" y="548" width="168" height="46" rx="10" fill="url(#acc)"/>
     <text x="410" y="569" font-size="11.5" fill="#04121a" font-weight="750">处置：空结果</text>
-    <text x="410" y="584" font-size="9" fill="#04121a" opacity="0.75">客服-陈 · 5d</text>
+    <text x="410" y="584" font-size="9" fill="#04121a" opacity="0.75">客服-陈（演示角色） · 5d</text>
   <rect x="588" y="510" width="388" height="88" rx="10" fill="#12151b" stroke="#28303c"/>
   <foreignObject x="602" y="516" width="360" height="76"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:10.5px;color:#a2adbb;line-height:1.5">决策动作：用真实 SQL（建表/索引/参数化聚合）支撑经营分析，讲清 PostgreSQL 架构<br/>风险边界：本地 SQLite 演示、生产为 PostgreSQL；不得把演示数据当真账</div></foreignObject>
 </svg>
