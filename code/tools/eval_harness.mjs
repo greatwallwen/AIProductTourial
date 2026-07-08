@@ -2,7 +2,7 @@
 /** 评测回归门 v2（v17-A · 裁判真调被测系统）：金标单源 code/data/eval_gold.json；
  *  主指标 hit@3——期望文档模式必须出现在 store.ts 真实 search() 的重排前 3；次指标 coverage（语料覆盖≥3 篇）。
  *  低于基线 exit 1。用法：node code/tools/eval_harness.mjs [--update|--json]
- *  说明：v1 裁判只量语料静态覆盖——把 search() 改坏门照样绿（此缺陷已写进案例 49 当教学素材）。v2 起裁判必须调被测系统。 */
+ *  说明：v1 裁判只量语料静态覆盖——把 search() 改坏门照样绿（此缺陷已写进案例 07 当教学素材）。v2 起裁判必须调被测系统。 */
 import { readFileSync, writeFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 const ROOT = resolve(import.meta.dirname, '..', '..');

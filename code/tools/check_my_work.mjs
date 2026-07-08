@@ -6,7 +6,7 @@ import { readFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 const ROOT = resolve(import.meta.dirname, '..', '..');
 const [num, file] = process.argv.slice(2);
-if (!num || !file) { console.log('用法：node code/tools/check_my_work.mjs <案例号> <你的方案.md>\n示例：node code/tools/check_my_work.mjs 30 我的RFM方案.md'); process.exit(0); }
+if (!num || !file) { console.log('用法：node code/tools/check_my_work.mjs <案例号> <你的方案.md>\n示例：node code/tools/check_my_work.mjs 02 我的RFM方案.md'); process.exit(0); }
 const defs = JSON.parse(readFileSync(join(ROOT, 'code', 'tools', 'case_definitions.json'), 'utf8'));
 const c = defs.cases.find((x) => x.num === Number(num));
 if (!c) { console.error(`✗ 案例 ${num} 不存在（现有：${defs.cases.map((x) => x.num).join('/')}）`); process.exit(1); }

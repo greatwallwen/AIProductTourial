@@ -261,7 +261,7 @@
       ],
       "systemLayer": "业务应用",
       "systemStage": "洞察",
-      "theoryOp": "把原理 2.1、2.7 落成可运行操作：识别未达成区域、定位异常业务线，并生成责任部门行动队列。（依赖案例 44–46 的数据底座，本案可先不管）",
+      "theoryOp": "把原理 2.1、2.7 落成可运行操作：识别未达成区域、定位异常业务线，并生成责任部门行动队列。（依赖案例 04–06 的数据底座，本案可先不管）",
       "metricSpec": [
         {
           "name": "订单数",
@@ -326,7 +326,7 @@
       "dataKind": "hybrid"
     },
     {
-      "num": 30,
+      "num": 2,
       "uiId": "ui_30_airline_member_rfm",
       "slug": "airline_member_rfm",
       "saasType": "sales_funnel_screen",
@@ -337,7 +337,7 @@
       "industry": "航空会员",
       "role": "会员产品经理",
       "dataset": "dataset/reference_data_analysis/2-air_data.csv",
-      "publicRef": "RFM 会员价值方法论（Arthur Hughes《Strategic Database Marketing》）；本案数据设计见 dataset/design/case_30.md",
+      "publicRef": "RFM 会员价值方法论（Arthur Hughes《Strategic Database Marketing》）；本案数据设计见 dataset/design/case_02.md",
       "skills": [
         "rfm-segmentation",
         "lifecycle-action",
@@ -419,7 +419,7 @@
       ],
       "systemLayer": "能力智能",
       "systemStage": "洞察",
-      "theoryOp": "把 §2.7 的产品判断力与 §8.3 的领域服务（`rfm()` 无状态分层真算），落成「R/F/M 真算 → 分层 → 识别高价值流失 → 定向挽回」的可运行会员运营动作（数据故事见 dataset/design/case_30.md）。",
+      "theoryOp": "把 §2.7 的产品判断力与 §8.3 的领域服务（`rfm()` 无状态分层真算），落成「R/F/M 真算 → 分层 → 识别高价值流失 → 定向挽回」的可运行会员运营动作（数据故事见 dataset/design/case_02.md）。",
       "metricSpec": [
         {
           "name": "会员数",
@@ -460,7 +460,7 @@
       "exercises": [
         {
           "type": "巩固",
-          "q": "打开 `#/case/30`，找出「高价值流失群」——年消费前列、却最近久未乘机的会员，你会给他们发什么权益？"
+          "q": "打开 `#/case/02`，找出「高价值流失群」——年消费前列、却最近久未乘机的会员，你会给他们发什么权益？"
         },
         {
           "type": "挑战",
@@ -469,7 +469,7 @@
       ],
       "deepDive": "RFM 的分位切点（如 R<30 天=5 分）不是天经地义，要按业务周期定：航空看「年」、快消看「周」。它只看历史交易、看不到未来价值，进阶用 CLV（客户生命周期价值）或 cohort 留存补足。最大的坑是把「分层」当标签发一遍券——真正的动作是对「高价值流失群」做可归因的定向干预。 v18 起本案双轨：主视图=教学合成（可控埋点利于教学），对照=UCI 快照 CustomerID 级真算 RFM（R/F/M 全真实、分层为分位规则派生）——真实分布长尾且噪，正好演示「教学合成为什么存在、又为什么必须显式标注」。",
       "readingOrder": "先看 RFM 分层与均消费，再看「高价值流失」预警群，最后想给这群人发什么定向权益。",
-      "tryThis": "对照页内「真实对照」：真实 1665 客户的 R×F 与合成 800 会员的埋点差在哪？再动手改：合成数据的「高价值流失」群占比定义在 `code/tools/fetch-datasets.mjs`（案 30 生成块的 segs，p:0.12），把它改成 0.10 后依次跑 `node code/tools/fetch-datasets.mjs && node code/tools/build_case_data.mjs`，重启 `bash code/run.sh` 刷新 `#/case/30`，看分层怎么变（设计说明见 dataset/design/case_30.md，它只是文档、改它不生效）。",
+      "tryThis": "对照页内「真实对照」：真实 1665 客户的 R×F 与合成 800 会员的埋点差在哪？再动手改：合成数据的「高价值流失」群占比定义在 `code/tools/fetch-datasets.mjs`（案 02 生成块的 segs，p:0.12），把它改成 0.10 后依次跑 `node code/tools/fetch-datasets.mjs && node code/tools/build_case_data.mjs`，重启 `bash code/run.sh` 刷新 `#/case/02`，看分层怎么变（设计说明见 dataset/design/case_02.md，它只是文档、改它不生效）。",
       "lenses": [
         "产品"
       ],
@@ -481,7 +481,7 @@
       "rp": null,
       "uiStrategy": "dashboard_plus_saas",
       "largeScreenRef": "经营｜企业经营驾驶舱大屏",
-      "num": 41,
+      "num": 3,
       "uiId": "ui_41_retail_capstone_board",
       "slug": "retail_capstone_board",
       "saasType": "executive_dashboard",
@@ -567,7 +567,7 @@
       ],
       "systemLayer": "业务应用",
       "systemStage": "增长",
-      "theoryOp": "把原理 2.7、3.1、4.1 落成可运行操作：从数据端到端得出零售经营改进方案并落成可验收交付物（依赖案例 44–46 的数据底座，本案可先不管）",
+      "theoryOp": "把原理 2.7、3.1、4.1 落成可运行操作：从数据端到端得出零售经营改进方案并落成可验收交付物（依赖案例 04–06 的数据底座，本案可先不管）",
       "metricSpec": [
         {
           "name": "营收(元)",
@@ -608,7 +608,7 @@
       "exercises": [
         {
           "type": "巩固",
-          "q": "打开 `#/case/41`，从真实的「区域收入」和「品类退货率」各挑一个「要保供」和「要治理退货」的对象。"
+          "q": "打开 `#/case/03`，从真实的「区域收入」和「品类退货率」各挑一个「要保供」和「要治理退货」的对象。"
         },
         {
           "type": "挑战",
@@ -624,7 +624,7 @@
         "项目"
       ],
       "lensViews": {
-        "研发": "把经营数据落成可查询的关系库 + 可运行大屏（复用案例 45/47 底座）——关注数据接口、索引与性能。",
+        "研发": "把经营数据落成可查询的关系库 + 可运行大屏（复用案例 05 的关系库底座）——关注数据接口、索引与性能。",
         "产品": "从真实数据得出「提毛利 / 清库存」的具体动作 + 验收标准——关注端到端可验收的经营方案。",
         "项目": "把方案排成带责任人、里程碑、门禁的交付计划——关注落地节奏与风险闭环。"
       },
@@ -659,7 +659,7 @@
         "traceability-check"
       ],
       "graphicOnly": false,
-      "num": 44,
+      "num": 4,
       "uiId": "ui_44_rag_retrieval",
       "slug": "rag_knowledge_retrieval",
       "saasType": "rag_search",
@@ -765,7 +765,7 @@
         "traceability-check"
       ],
       "graphicOnly": false,
-      "num": 45,
+      "num": 5,
       "uiId": "ui_45_pg_relational",
       "slug": "postgres_relational_arch",
       "saasType": "db_console",
@@ -853,7 +853,7 @@
       "exercises": [
         {
           "type": "巩固",
-          "q": "在 `#/case/45` 里按区域聚合销售额，说出金额最高的区域。"
+          "q": "在 `#/case/05` 里按区域聚合销售额，说出金额最高的区域。"
         },
         {
           "type": "挑战",
@@ -896,7 +896,7 @@
         "traceability-check"
       ],
       "graphicOnly": false,
-      "num": 46,
+      "num": 6,
       "uiId": "ui_46_arch_contract",
       "slug": "system_arch_flow",
       "saasType": "arch_board",
@@ -957,7 +957,7 @@
       "exercises": [
         {
           "type": "巩固",
-          "q": "打开 `#/case/46` 看后端分层，说出为什么 routes 层不该写业务逻辑。"
+          "q": "打开 `#/case/06` 看后端分层，说出为什么 routes 层不该写业务逻辑。"
         },
         {
           "type": "挑战",
@@ -974,7 +974,7 @@
       "dataKind": "real"
     },
     {
-      "num": 49,
+      "num": 7,
       "slug": "rag_eval_harness",
       "uiId": "ui_49_rag_eval",
       "screen": "eval",
@@ -1053,7 +1053,7 @@
       "dataKind": "real"
     },
     {
-      "num": 51,
+      "num": 8,
       "slug": "sdd_system_build",
       "uiId": "ui_51_sdd_build",
       "screen": "buildwalk",
@@ -1138,7 +1138,7 @@
       "dataKind": "real"
     },
     {
-      "num": 54,
+      "num": 9,
       "slug": "repo_event_bus",
       "title": "系统架构｜仓库事件总线（事件驱动·dogfood）",
       "phase": "系统架构",

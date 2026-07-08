@@ -88,15 +88,16 @@
 **第二部分 · 9 真实案例演示与验证**
 
 - [案例总览 + 原理→案例反查](案例/README.md)
+- 编号说明：案例已于 v21 重编号为 01–09（旧号 30/41/44/45/46/49/51/54 依次对应 02–09）；旧↔新完整对照见 [README-cn](../README-cn.md)。
 - [实操 01 · 电商早会异常订单台](案例/01-morning_ops_grid.md)
-- [实操 30 · 航空会员价值运营](案例/30-airline_member_rfm.md)
-- [实操 41 · 零售经营产品方案](案例/41-retail_capstone_board.md)
-- [实操 44 · 产品知识库语义检索](案例/44-rag_knowledge_retrieval.md)
-- [实操 45 · 经营数据关系库查询](案例/45-postgres_relational_arch.md)
-- [实操 46 · 后端子系统分解与契约](案例/46-system_arch_flow.md)
-- [实操 49 · RAG 回答评测台](案例/49-rag_eval_harness.md)
-- [实操 51 · 规格驱动系统建造台](案例/51-sdd_system_build.md)
-- [实操 54 · 仓库事件总线](案例/54-repo_event_bus.md)
+- [实操 02 · 航空会员价值运营](案例/02-airline_member_rfm.md)
+- [实操 03 · 零售经营产品方案](案例/03-retail_capstone_board.md)
+- [实操 04 · 产品知识库语义检索](案例/04-rag_knowledge_retrieval.md)
+- [实操 05 · 经营数据关系库查询](案例/05-postgres_relational_arch.md)
+- [实操 06 · 后端子系统分解与契约](案例/06-system_arch_flow.md)
+- [实操 07 · RAG 回答评测台](案例/07-rag_eval_harness.md)
+- [实操 08 · 规格驱动系统建造台](案例/08-sdd_system_build.md)
+- [实操 09 · 仓库事件总线](案例/09-repo_event_bus.md)
 
 **收尾**
 

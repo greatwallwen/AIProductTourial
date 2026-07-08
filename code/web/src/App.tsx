@@ -54,7 +54,7 @@ function themeVars(designId: string): CSSProperties {
 
 const PHASES = ['角色转型', '用户洞察', '需求管理', '详细设计', '系统架构', '数据指标', 'AI协作', '质量验收', '综合闭环'];
 const pad = (n: number) => String(n).padStart(2, '0');
-// 标题「模块｜场景」取场景段；无 ｜ 的标题整段兜底（曾致侧栏 49/51 名字空白、案 54 头部 H1 空）
+// 标题「模块｜场景」取场景段；无 ｜ 的标题整段兜底（曾致侧栏 07/08 名字空白、案 09 头部 H1 空）
 const sceneOf = (title: string) => title.split('｜')[1] || title;
 
 function Sidebar({ idx }: { idx: IndexData }) {
@@ -68,7 +68,7 @@ function Sidebar({ idx }: { idx: IndexData }) {
         </div>
       </div>
       <NavLink to="/" end className={({ isActive }) => 'sb-item' + (isActive ? ' on' : '')}>总览</NavLink>
-      {/* 未知/缺失 phase 归入「其他」兜底组——案例绝不允许在侧栏静默消失（案 54 曾因缺 phase 缺席） */}
+      {/* 未知/缺失 phase 归入「其他」兜底组——案例绝不允许在侧栏静默消失（案 09 曾因缺 phase 缺席） */}
       {[...PHASES, '其他'].map((ph) => {
         const list = idx.cases.filter((c) => (ph === '其他' ? !PHASES.includes(c.phase) : c.phase === ph));
         if (!list.length) return null;
@@ -176,7 +176,7 @@ function Chart({ chart }: { chart: any }) {
   );
 }
 
-// 二维矩阵/散点纯图形（案例02：业务价值 × 研发工期，气泡=需求项，色=风险）——只出图形不出字段
+// 二维矩阵/散点纯图形（graphicOnly 案例兜底：业务价值 × 研发工期，气泡=需求项，色=风险）——只出图形不出字段；当前 9 案均有专属 screen，随 defs 开关生效
 function MatrixChart({ points }: { points: Array<{ x: number; y: number; r: number; risk: number; label: string }> }) {
   const W = 720, H = 380, P = 46;
   const mx = Math.max(...points.map((p) => p.x), 1), my = Math.max(...points.map((p) => p.y), 1);
@@ -214,7 +214,7 @@ function CaseScreen() {
   if (err) return <Navigate to="/" />;
   if (!c) return <div className="page"><div className="muted">加载中…</div></div>;
   const mod = c.title.split('｜')[0], scene = sceneOf(c.title);
-  // 案例02 派生矩阵点（业务价值×研发工期），只出图形
+  // graphicOnly 案例的派生矩阵点（业务价值×研发工期），只出图形——当前无案例启用
   const matrixPoints = (c.queue || []).slice(0, 12).map((q: any, i: number) => ({
     x: 20 + ((i * 37) % 80), y: 15 + ((i * 53) % 70), r: (i % 3) / 3, risk: i % 3, label: String(Object.values(q.fields || {})[0] ?? i + 1).slice(0, 6),
   }));

@@ -93,10 +93,10 @@ function walkFiles(dir, ext){
   }
   return out;
 }
-// .md 数据集案例（44 RAG 语料 / 46 后端 dogfood）：指标一律从真实来源真算，绝不用占位顺子
+// .md 数据集案例（04 RAG 语料 / 06 后端 dogfood）：指标一律从真实来源真算，绝不用占位顺子
 function buildFromMd(c){
   let kpis=[], chart={type:'sparkline',data:[]}, queue=[], actions=[], exceptionCount=0, responsible=['—'], deps=[], cycles=0, game=null;
-  if(c.num===44){ // 真实读 deanpeters 语料目录：篇数/字数/主题
+  if(c.num===4){ // 真实读 deanpeters 语料目录：篇数/字数/主题
     const dir=join(ROOT,'skills','external','pm-skills-deanpeters');
     const files=walkFiles(dir,'.md');
     const chars=files.reduce((a,f)=>a+readFileSync(f,'utf8').length,0);
@@ -108,7 +108,7 @@ function buildFromMd(c){
       {name:'覆盖主题数',value:Object.keys(byTop).length,unit:''},
     ];
     chart={type:'bars',by:'主题目录 → 语料篇数',data:Object.entries(byTop).sort((a,b)=>b[1]-a[1]).slice(0,7).map(([label,value])=>({label,value}))};
-  } else if(c.num===46){ // 真实统计本仓库运行后端：子系统/接口/模块/测试
+  } else if(c.num===6){ // 真实统计本仓库运行后端：子系统/接口/模块/测试
     const sdir=join(ROOT,'code','server');
     const mods=readdirSync(sdir).filter(e=>{ try{return statSync(join(sdir,e)).isDirectory()&&!['tests','node_modules','dist'].includes(e);}catch{return false;} });
     const tsFiles=walkFiles(sdir,'.ts');
@@ -126,7 +126,7 @@ function buildFromMd(c){
       {name:'循环依赖',value:cycles,unit:''},
     ];
     chart={type:'bars',by:'子系统 → 依赖出度',data:mods.map(m=>({label:m,value:deps.filter(e=>e.from===m).length}))};
-  } else if(c.num===49){ // RAG 评测（v17-A）：金标单源 eval_gold.json，裁判真调 store.ts search()（hit@3）——经 eval_harness --json
+  } else if(c.num===7){ // RAG 评测（v17-A）：金标单源 eval_gold.json，裁判真调 store.ts search()（hit@3）——经 eval_harness --json
     const ev=JSON.parse(execSync('node code/tools/eval_harness.mjs --json',{cwd:ROOT,encoding:'utf8'}));
     const files=walkFiles(join(ROOT,'skills','external','pm-skills-deanpeters'),'.md');
     kpis=[{name:'评测问题数',value:ev.results.length,unit:''},{name:'命中率',value:ev.score,unit:'%'},{name:'覆盖达标数',value:ev.results.filter(r=>r.cov>=3).length,unit:''},{name:'语料篇数',value:files.length,unit:''}];
@@ -134,7 +134,7 @@ function buildFromMd(c){
     exceptionCount=ev.results.filter(r=>!r.hit).length; responsible=['产品-王（演示角色）','数据-周（演示角色）'];
     chart={type:'bars',by:'评测问题 → 覆盖篇数',data:ev.results.map(r=>({label:r.q.slice(0,10),value:r.cov}))};
     actions=[{label:'处置：检索未召回问题（调权重/切词）',owner:'研发-王（演示角色）',due:'3d'},{label:'补语料/标注',owner:'数据-周（演示角色）',due:'5d'}];
-  } else if(c.num===51){ // SDD 系统建造走查：真读 rules/docs/case_definitions/verify/arch 图（dogfood·研发/项目/产品）
+  } else if(c.num===8){ // SDD 系统建造走查：真读 rules/docs/case_definitions/verify/arch 图（dogfood·研发/项目/产品）
     const ruleFiles=walkFiles(join(ROOT,'rules'),'.md');
     const clauses=ruleFiles.reduce((a,f)=>a+(readFileSync(f,'utf8').match(/^\s*(?:[-*·]|\d+[.、)])\s/gm)||[]).length,0);
     const subs=readdirSync(join(ROOT,'code','server')).filter(e=>{try{return statSync(join(ROOT,'code','server',e)).isDirectory()&&!['tests','node_modules','dist'].includes(e);}catch{return false;}}).length;
@@ -158,7 +158,7 @@ function buildFromMd(c){
     exceptionCount=0; responsible=[...new Set(own)];
     chart={type:'bars',by:'SDD 八步 → 工件/文件数',data:steps.map(s=>({label:s[0].replace(/[①-⑧] /,''),value:s[4]}))};
     actions=[{label:'补澄清 / 消歧',owner:'产品-王',due:'1d'},{label:'跑门禁三绿',owner:'研发-王',due:'0d'}];
-  } else if(c.num===54){ // 事件总线（v18-P3 dogfood）：真实 git 提交流 + 当前门禁规模——事件溯源最小标本
+  } else if(c.num===9){ // 事件总线（v18-P3 dogfood）：真实 git 提交流 + 当前门禁规模——事件溯源最小标本
     const log=execSync("git log --pretty=format:'%h|%ct|%s' -n 400",{cwd:ROOT,encoding:'utf8'}).split('\n').map(l=>l.replace(/^'|'$/g,'')).filter(Boolean).map(l=>{const [h,t,...m]=l.split('|');return {h,t:Number(t)*1000,msg:m.join('|')};});
     const checks=(readFileSync(join(ROOT,'code','tools','verify_course_package.mjs'),'utf8').match(/\bok\(\)/g)||[]).length;
     const days=Math.max(1,Math.round((log[0].t-log[log.length-1].t)/86400000));
@@ -179,7 +179,7 @@ let ok=0;
 for(const c of defs.cases){
   let vm;
   try{
-    if(!c.dataset.endsWith('.csv') || [49,51,54].includes(c.num)) vm=buildFromMd(c); // 非 CSV（目录/描述串）一律走 md/dogfood 路径
+    if(!c.dataset.endsWith('.csv') || [7,8,9].includes(c.num)) vm=buildFromMd(c); // 非 CSV（目录/描述串）一律走 md/dogfood 路径
     else vm=buildFromCsv(c);
   }catch(e){ console.error('FAIL case',c.num,e.message); continue; }
   const out={ num:c.num, title:c.title, industry:c.industry, role:c.role, saasType:c.saasType, uiId:c.uiId, slug:c.slug,

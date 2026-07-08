@@ -105,7 +105,7 @@ function ArchScreen() {
   );
 }
 
-// —— 航空会员 RFM 专属 demo（案例30）：真实分层 + 高价值流失预警 + R×F 散点 ——
+// —— 航空会员 RFM 专属 demo（案例02）：真实分层 + 高价值流失预警 + R×F 散点 ——
 const SEG_COLORS: Record<string, string> = { '重要价值': 'var(--ok)', '高价值流失': 'var(--bad)', '重要保持': 'var(--accent)', '重要发展': 'var(--accent2)', '一般维持': 'var(--muted)', '流失预警': 'var(--warn)' };
 function RfmScreen() {
   // v17 P0-1：本案数据为教学合成（固定种子），页面须明示
@@ -114,7 +114,7 @@ function RfmScreen() {
   if (!d) return <section className="card"><div className="muted">加载 RFM…</div></section>;
   const maxSpend = Math.max(...d.segments.map((s: any) => s.avgSpend));
   const maxR = Math.max(...d.scatter.map((p: any) => p.x), 1), maxF = Math.max(...d.scatter.map((p: any) => p.y), 1);
-  const synthBanner = <div style={{background:"#7c2d12",color:"#fde68a",padding:"6px 12px",borderRadius:8,marginBottom:10,fontSize:13}}>双轨数据：主视图为教学合成（固定种子，埋高价值流失群）；页内另附「真实对照」——UCI 零售快照 1665 名真实客户的客户级 RFM 真算（分层为规则派生）。设计说明：dataset/design/case_30.md</div>;
+  const synthBanner = <div style={{background:"#7c2d12",color:"#fde68a",padding:"6px 12px",borderRadius:8,marginBottom:10,fontSize:13}}>双轨数据：主视图为教学合成（固定种子，埋高价值流失群）；页内另附「真实对照」——UCI 零售快照 1665 名真实客户的客户级 RFM 真算（分层为规则派生）。设计说明：dataset/design/case_02.md</div>;
   return (
     <>
       <div className="banner" style={{ color: 'var(--bad)', borderColor: 'var(--bad)' }}>
@@ -189,7 +189,7 @@ function RetailScreen() {
   );
 }
 
-// —— 零售经营方案专属 demo（案例41 综合闭环）：从真实数据合成「现状→问题→动作→责任」的可交付方案 ——
+// —— 零售经营方案专属 demo（案例03 综合闭环）：从真实数据合成「现状→问题→动作→责任」的可交付方案 ——
 function PlanScreen() {
   const [d, setD] = useState<any>(null);
   useEffect(() => { fetchRetail().then(setD); }, []);

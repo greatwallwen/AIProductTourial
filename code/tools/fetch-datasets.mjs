@@ -48,7 +48,7 @@ const cn=(c)=>CN_COUNTRY[c]||c;
 
 // 注（v16 ③减法）：案例 14/16/28/31 已裁撤，其数据生成块（flights/hospital/28-credit/18-ad）与真实基座快照随之移除。
 { const r=rng(302); const rows=[];
-  // 分层优先生成：R/F/M 与分层强相关，并埋入「高价值流失」群（历史高 M、近期高 R）——见 dataset/design/case_30.md
+  // 分层优先生成：R/F/M 与分层强相关，并埋入「高价值流失」群（历史高 M、近期高 R）——见 dataset/design/case_02.md
   const segs=[
     {name:'重要价值',p:0.08,R:[1,40],F:[30,60],M:[80000,150000]},
     {name:'重要保持',p:0.15,R:[20,90],F:[20,40],M:[50000,100000]},
@@ -71,7 +71,7 @@ const cn=(c)=>CN_COUNTRY[c]||c;
 
 
 // ---- reference_data_analysis/2b-real_rfm.csv（v18-P1）：从真实基座 CustomerID/InvoiceDate/Quantity/Price 真算客户级 RFM ----
-// R=距快照内最后日期的天数、F=去重发票数、M=Σ数量×单价——全真实；「分层」为分位规则派生（非事实标签，已标注）。案 30 的真实对照。
+// R=距快照内最后日期的天数、F=去重发票数、M=Σ数量×单价——全真实；「分层」为分位规则派生（非事实标签，已标注）。案 02 的真实对照。
 { const s=readReal('retail_online_retail_ii.csv');
   const [iInv,iQ,iD,iP,iC]=['Invoice','Quantity','InvoiceDate','Price','CustomerID'].map(s.col);
   const cust=new Map(); let maxD=0;
@@ -88,7 +88,7 @@ const cn=(c)=>CN_COUNTRY[c]||c;
 // ---- MANIFEST ----
 // 真实基座快照来源/许可（dataset/real/*，采样自公开数据集、构建期零联网）
 const REAL_SOURCES=[
-  ['retail_online_retail_ii.csv','UCI Online Retail II','CC BY 4.0','https://archive.ics.uci.edu/dataset/502/online+retail+ii','案例 01/41/45 零售基座'],
+  ['retail_online_retail_ii.csv','UCI Online Retail II','CC BY 4.0','https://archive.ics.uci.edu/dataset/502/online+retail+ii','案例 01/03/05 零售基座'],
 ];
 const UNWIRED=[['CMS Timely & Effective Care (医院急诊)','https://data.cms.gov/provider-data/dataset/yv7e-xc69'],['US DOT On-Time (航班准点)','https://www.transtats.bts.gov/'],['UCI Default of Credit Card Clients','https://archive.ics.uci.edu/dataset/350/default+of+credit+card+clients']];
 const man=['# 数据集清单（'+JSON.parse(readFileSync(join(ROOT,'code', 'tools','case_definitions.json'),'utf8')).projectName+'）','',
@@ -103,10 +103,10 @@ man.push('',
   '## vendored 真实素材（非合成，注明来源/许可）',
   '- `assets/vendor/lucide/`：Lucide 图标（github.com/lucide-icons/lucide，ISC 许可），内联进 §1 概念图。',
   '- `assets/vendor/aiagent/`：55 张真实 AI 原理图 + `docs/_source/reference/` 5 份权威文档（源用户提供的 `AI agent/` 参考包），深化 §1。**许可待确认**：图包未附 LICENSE/README 等授权说明，商业发售前须取得书面授权或替换（§1 引用图清单与替换预案见 `outputs/aiagent_license_todo.md`）。',
-  '- `skills/external/pm-skills-deanpeters/`：deanpeters/Product-Manager-Skills（MIT），案例44 RAG 语料。',
+  '- `skills/external/pm-skills-deanpeters/`：deanpeters/Product-Manager-Skills（MIT），案例04 RAG 语料。',
   '',
   '## 逐案数据集设计说明',
-  '- 精品案例的数据集设计意图/字段义/数据故事见 `dataset/design/case_NN.md`（如 case_30 航空 RFM）。');
+  '- 精品案例的数据集设计意图/字段义/数据故事见 `dataset/design/case_NN.md`（如 case_02 航空 RFM）。');
 writeFileSync(join(DS,'MANIFEST.md'),man.join('\n')+'\n');
 console.log('生成数据集', results.length, '个');
 console.log(results.map(x=>x.rel+(x.n?`(${x.n})`:'')).join('  '));

@@ -7,7 +7,7 @@
 | 文件（assets/vendor/aiagent/） | 用途（正文 alt 文本） | 位置 | 替换预案 |
 |---|---|---|---|
 | image-20260704090742433.png | Tokenizer 编码：文字→Token→Token ID | docs/_source/00-ai-foundations.md L41 | 自绘：diagram.mjs 三段流水线图；或改指 `#/lab/tokenizer` 活演示截图（自有） |
-| image-20260704151540085.png | RAG 回答流程：Embedding→向量库→召回 10→重排→3 片段→大模型 | docs/_source/00-ai-foundations.md L61 | 自绘：与 fig_sdd_pipeline 同引擎的节点-连线图；语义与案例 44 一致 |
+| image-20260704151540085.png | RAG 回答流程：Embedding→向量库→召回 10→重排→3 片段→大模型 | docs/_source/00-ai-foundations.md L61 | 自绘：与 fig_sdd_pipeline 同引擎的节点-连线图；语义与案例 04 一致 |
 | image-20260704093622372.png | System Prompt 定规矩 · User Prompt 定任务 | docs/_source/00-ai-foundations.md L77 | 自绘：双栏对照卡（诸章已有同风格 SVG） |
 | image-20260704102308686.png | Tool 工具调用：用户/平台/大模型/工具 四方协作 | docs/_source/00-ai-foundations.md L93 | 自绘：四方时序图（diagram.mjs 已支持 fig_req_sequence 同款） |
 | image-20260704154121684.png | Agent 的 ReAct 完整闭环：思考→调用工具→观察→再思考 | docs/_source/00-ai-foundations.md L106 | 自绘：环形闭环图（fig_loop_cybernetic 同引擎） |

@@ -15,14 +15,14 @@
 | # | 场景 | 行业 | 角色镜头 | 演示原理 | 设计 | 链接 |
 |---|---|---|---|---|---|---|
 | 01 | 电商早会异常订单台 | 电商零售 | 产品/研发/项目 | 2.1/2.7 | graphite-hud | [打开](01-morning_ops_grid.md) |
-| 30 | 航空会员价值运营 | 航空会员 | 产品 | 2.7/8.3 | amber-funnel | [打开](30-airline_member_rfm.md) |
-| 41 | 零售经营产品方案 | 零售经营 | 产品/研发/项目 | 2.7/3.1/4.1 | graphite-hud | [打开](41-retail_capstone_board.md) |
-| 44 | 产品知识库语义检索 | AI 应用 | 研发/产品 | 1.3/3.3 | emerald-flow | [打开](44-rag_knowledge_retrieval.md) |
-| 45 | 经营数据关系库查询 | 数据工程 | 研发 | 3.3/4.1 | steel-queue | [打开](45-postgres_relational_arch.md) |
-| 46 | 后端子系统分解与契约 | 系统架构 | 研发/项目 | 3.1/3.3 | cyan-matrix | [打开](46-system_arch_flow.md) |
-| 49 | RAG 回答评测台 | AI 产品 | 产品/研发 | 2.3/1.3 | cyan-matrix | [打开](49-rag_eval_harness.md) |
-| 51 | 规格驱动系统建造台 | 研发效能 / 架构 | 研发/项目/产品 | 3.0/2.3 | cyan-matrix | [打开](51-sdd_system_build.md) |
-| 54 | 仓库事件总线 | 软件工程 | 研发/项目 | 7.2/9.4/2.3 | emerald-flow | [打开](54-repo_event_bus.md) |
+| 02 | 航空会员价值运营 | 航空会员 | 产品 | 2.7/8.3 | amber-funnel | [打开](02-airline_member_rfm.md) |
+| 03 | 零售经营产品方案 | 零售经营 | 产品/研发/项目 | 2.7/3.1/4.1 | graphite-hud | [打开](03-retail_capstone_board.md) |
+| 04 | 产品知识库语义检索 | AI 应用 | 研发/产品 | 1.3/3.3 | emerald-flow | [打开](04-rag_knowledge_retrieval.md) |
+| 05 | 经营数据关系库查询 | 数据工程 | 研发 | 3.3/4.1 | steel-queue | [打开](05-postgres_relational_arch.md) |
+| 06 | 后端子系统分解与契约 | 系统架构 | 研发/项目 | 3.1/3.3 | cyan-matrix | [打开](06-system_arch_flow.md) |
+| 07 | RAG 回答评测台 | AI 产品 | 产品/研发 | 2.3/1.3 | cyan-matrix | [打开](07-rag_eval_harness.md) |
+| 08 | 规格驱动系统建造台 | 研发效能 / 架构 | 研发/项目/产品 | 3.0/2.3 | cyan-matrix | [打开](08-sdd_system_build.md) |
+| 09 | 仓库事件总线 | 软件工程 | 研发/项目 | 7.2/9.4/2.3 | emerald-flow | [打开](09-repo_event_bus.md) |
 
 ## 原理 → 案例 反查（哪个原理，被哪些案例演示）
 
@@ -30,14 +30,14 @@
 
 | 原理 | 演示它的案例 |
 |---|---|
-| §1.3 | [案例 44](44-rag_knowledge_retrieval.md)、[案例 49](49-rag_eval_harness.md) |
+| §1.3 | [案例 04](04-rag_knowledge_retrieval.md)、[案例 07](07-rag_eval_harness.md) |
 | §2.1 | [案例 01](01-morning_ops_grid.md) |
-| §2.3 | [案例 49](49-rag_eval_harness.md)、[案例 51](51-sdd_system_build.md)、[案例 54](54-repo_event_bus.md) |
-| §2.7 | [案例 01](01-morning_ops_grid.md)、[案例 30](30-airline_member_rfm.md)、[案例 41](41-retail_capstone_board.md) |
-| §3.0 | [案例 51](51-sdd_system_build.md) |
-| §3.1 | [案例 41](41-retail_capstone_board.md)、[案例 46](46-system_arch_flow.md) |
-| §3.3 | [案例 44](44-rag_knowledge_retrieval.md)、[案例 45](45-postgres_relational_arch.md)、[案例 46](46-system_arch_flow.md) |
-| §4.1 | [案例 41](41-retail_capstone_board.md)、[案例 45](45-postgres_relational_arch.md) |
-| §7.2 | [案例 54](54-repo_event_bus.md) |
-| §8.3 | [案例 30](30-airline_member_rfm.md) |
-| §9.4 | [案例 54](54-repo_event_bus.md) |
+| §2.3 | [案例 07](07-rag_eval_harness.md)、[案例 08](08-sdd_system_build.md)、[案例 09](09-repo_event_bus.md) |
+| §2.7 | [案例 01](01-morning_ops_grid.md)、[案例 02](02-airline_member_rfm.md)、[案例 03](03-retail_capstone_board.md) |
+| §3.0 | [案例 08](08-sdd_system_build.md) |
+| §3.1 | [案例 03](03-retail_capstone_board.md)、[案例 06](06-system_arch_flow.md) |
+| §3.3 | [案例 04](04-rag_knowledge_retrieval.md)、[案例 05](05-postgres_relational_arch.md)、[案例 06](06-system_arch_flow.md) |
+| §4.1 | [案例 03](03-retail_capstone_board.md)、[案例 05](05-postgres_relational_arch.md) |
+| §7.2 | [案例 09](09-repo_event_bus.md) |
+| §8.3 | [案例 02](02-airline_member_rfm.md) |
+| §9.4 | [案例 09](09-repo_event_bus.md) |

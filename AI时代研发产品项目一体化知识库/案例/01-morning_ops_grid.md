@@ -6,7 +6,7 @@
 
 > **本案例演示/验证**：原理 2.1、2.7｜**采用设计** `graphite-hud`（见 [design/graphite-hud.md](../../design/graphite-hud.md)）
 
-> **在数字化系统中的位置**：业务应用层 · 洞察环节｜**理论→实操**：把原理 2.1、2.7 落成可运行操作：识别未达成区域、定位异常业务线，并生成责任部门行动队列。（依赖案例 44–46 的数据底座，本案可先不管）
+> **在数字化系统中的位置**：业务应用层 · 洞察环节｜**理论→实操**：把原理 2.1、2.7 落成可运行操作：识别未达成区域、定位异常业务线，并生成责任部门行动队列。（依赖案例 04–06 的数据底座，本案可先不管）
 
 > **角色镜头**：<img src="../../assets/vendor/lucide/built/package.svg" width="14" alt="" style="vertical-align:-2px" /> 产品 · <img src="../../assets/vendor/lucide/built/wrench.svg" width="14" alt="" style="vertical-align:-2px" /> 研发 · <img src="../../assets/vendor/lucide/built/clipboard-list.svg" width="14" alt="" style="vertical-align:-2px" /> 项目（本案更偏这些角色；主脊 §1-§2 三镜头共读）
 

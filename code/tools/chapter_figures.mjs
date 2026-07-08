@@ -195,14 +195,14 @@ function codebuddyMap(t) {
 
 // —— v18-P4 数据驱动真值图（从 code/data 与仓库真值画，非示意） ——
 
-// §2：评测鸿沟——语料覆盖 vs 检索命中（案例 49 真实值）
+// §2：评测鸿沟——语料覆盖 vs 检索命中（案例 07 真实值）
 function evalGap(t) {
-  const j = jj('code/data/case_49.json'); const base = jj('code/data/eval_baseline.json');
+  const j = jj('code/data/case_07.json'); const base = jj('code/data/eval_baseline.json');
   const cov = j.kpis.find((k) => k.name === '覆盖达标数').value, n = j.kpis.find((k) => k.name === '评测问题数').value;
   const covPct = Math.round(cov / n * 1000) / 10, hit = base.score;
   const W = 640, H = 340, bw = 150;
   const bar = (x, v, col, lab) => `<rect x="${x}" y="${(280 - v * 2.2).toFixed(1)}" width="${bw}" height="${(v * 2.2).toFixed(1)}" rx="8" fill="${col}" opacity="0.85"/><text x="${x + bw / 2}" y="${(270 - v * 2.2).toFixed(1)}" font-size="20" font-weight="750" fill="${col}" text-anchor="middle">${v}%</text><text x="${x + bw / 2}" y="300" font-size="12" fill="${t.ink2}" text-anchor="middle">${lab}</text>`;
-  return diagram({ W, H, title: '§2 · 评测鸿沟：语料「有」≠ 检索「中」（案例 49 实测）', caption: `金标 ${n} 题：覆盖达标 ${covPct}% vs hit@3 ${hit}%——差距=可驱动 Loop 的误差信号。数据实时取自 eval_baseline.json/case_49.json。`, nodes: [], edges: [] }, t).replace('</svg>', bar(120, covPct, t.ok, `语料覆盖达标 ${cov}/${n} 题`) + bar(370, hit, t.bad, '检索命中 hit@3') + '</svg>');
+  return diagram({ W, H, title: '§2 · 评测鸿沟：语料「有」≠ 检索「中」（案例 07 实测）', caption: `金标 ${n} 题：覆盖达标 ${covPct}% vs hit@3 ${hit}%——差距=可驱动 Loop 的误差信号。数据实时取自 eval_baseline.json/case_07.json。`, nodes: [], edges: [] }, t).replace('</svg>', bar(120, covPct, t.ok, `语料覆盖达标 ${cov}/${n} 题`) + bar(370, hit, t.bad, '检索命中 hit@3') + '</svg>');
 }
 
 // §4：单文件 <800 行红线的真实证据（扫源码实数）
@@ -217,12 +217,12 @@ function locEvidence(t) {
   return diagram({ W, H, title: '§4 · 「单文件 <800 行」不是口号：全仓 Top9 真实行数', caption: '构建期实扫 code/（黄=逼近 720 预警线，critic big-file 探针盯守）——规范自己先过自己的门禁。', nodes: [], edges: [] }, t).replace('</svg>', g + '</svg>');
 }
 
-// 案例30：真实客户 vs 教学合成 R×F 双散点（双轨诚实的可视化）
+// 案例02：真实客户 vs 教学合成 R×F 双散点（双轨诚实的可视化）
 function rfmDual(t) {
   const pick = (path, rc, fc, mod) => { const lines = readFileSync(join(ROOT, path), 'utf8').trim().split('\n'); const head = lines[0].split(','); const ri = head.indexOf(rc), fi = head.indexOf(fc); return lines.slice(1).filter((_, i) => i % mod === 0).slice(0, 120).map((l) => { const c = l.split(','); return { x: Number(c[ri]) || 0, y: Number(c[fi]) || 0 }; }); };
   const real = pick('dataset/reference_data_analysis/2b-real_rfm.csv', '最近购买天数', '购买次数', 13);
   const synth = pick('dataset/reference_data_analysis/2-air_data.csv', '最近乘机天数', '年飞行次数', 6);
-  return scatter({ W: 720, H: 420, title: '案例 30 · 真实客户 vs 教学合成：R×F 双散点', caption: '绿=UCI 快照真实客户（长尾、噪）；黄=教学合成（分层清晰、埋点可控）——这就是「教学合成为何存在、为何必须标注」。', xLabel: 'R · 最近一次距今(天)', yLabel: 'F · 频次', series: [{ label: '真实(UCI 1665 客户抽样)', color: t.ok, points: real }, { label: '教学合成(800 会员抽样)', color: t.warn, points: synth }] }, t);
+  return scatter({ W: 720, H: 420, title: '案例 02 · 真实客户 vs 教学合成：R×F 双散点', caption: '绿=UCI 快照真实客户（长尾、噪）；黄=教学合成（分层清晰、埋点可控）——这就是「教学合成为何存在、为何必须标注」。', xLabel: 'R · 最近一次距今(天)', yLabel: 'F · 频次', series: [{ label: '真实(UCI 1665 客户抽样)', color: t.ok, points: real }, { label: '教学合成(800 会员抽样)', color: t.warn, points: synth }] }, t);
 }
 
 // §9：分布式四件套 → 多 Agent 同构（双排映射）
@@ -239,7 +239,7 @@ function distIso(t) {
 // §8：聚合根=一致性边界（defs 案例聚合的真实结构）
 function aggregateRoot(t) {
   const defs = jj('code/tools/case_definitions.json');
-  const c = defs.cases.find((x) => x.num === 30);
+  const c = defs.cases.find((x) => x.num === 2);
   const nodes = [
     { id: 'root', x: 320, y: 70, w: 300, h: 64, color: t.accent, label: `聚合根 · 案例 ${c.num}`, sub: 'case_definitions.json（唯一入口）' },
     { id: 'f', x: 40, y: 210, w: 200, h: 56, color: t.muted, label: `fields ×${c.fields.length}`, sub: '守卫: fields⊆表头' },
@@ -248,7 +248,7 @@ function aggregateRoot(t) {
     { id: 's', x: 700, y: 210, w: 200, h: 56, color: t.muted, label: `skills ×${c.skills.length}`, sub: '守卫: 已注册' },
   ];
   const edges = ['f', 'm', 'e', 's'].map((id) => ({ from: 'root', to: id }));
-  return diagram({ W: 940, H: 330, title: '§8 · 聚合根=一致性边界：案例聚合的真实结构', caption: '子对象只能经根修改（改 defs→重建）；verify 守卫=聚合不变量的机器化。数字为案例 30 实时读数。', nodes, edges }, t);
+  return diagram({ W: 940, H: 330, title: '§8 · 聚合根=一致性边界：案例聚合的真实结构', caption: '子对象只能经根修改（改 defs→重建）；verify 守卫=聚合不变量的机器化。数字为案例 02 实时读数。', nodes, edges }, t);
 }
 
 export function chapterFigures(t) {

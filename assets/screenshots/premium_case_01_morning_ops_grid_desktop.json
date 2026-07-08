@@ -2,10 +2,10 @@
  "num": 1,
  "slug": "morning_ops_grid",
  "url": "http://localhost:5200/#/case/01",
- "shotAt": "2026-07-08T06:37:56.936Z",
+ "shotAt": "2026-07-08T23:47:50.737Z",
  "brand": "会自检的 AI 工程 · 实操手册",
  "caseCount": 9,
  "h1": "电商早会异常订单台",
  "kpis": [],
- "pngBytes": 875184
+ "pngBytes": 877013
 }

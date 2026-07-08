@@ -20,7 +20,7 @@ DDD 第一原则不是画图，是**说同一种话**：业务叫「案例」，
 > <img src="../assets/vendor/lucide/built/check-circle.svg" width="14" alt="" style="vertical-align:-2px" /> **必读** ｜ 高阶 ｜ 关键词：**身份 vs 值** · **聚合根=一致性边界**
 
 ```备注
-三个词一句话分清：**实体**有身份（案例 30 改了标题还是案例 30——身份是 `num`）；**值对象**只有值（KPI `{name:'命中率',value:25,unit:'%'}` 换个值就是另一个对象，没人在乎「它是哪一个」）；**聚合**是一组必须一起保持一致的对象，**聚合根**是唯一入口。本仓库的标本：`case_definitions.json` 里的一条案例定义就是聚合根——fields/metricChain/exceptionStates/skills 都挂在它下面，verify 的「fields⊆表头」「KPI 数=metricSpec 数」守卫就是**聚合不变量**（invariant）的机器化。改任何子对象必须经过根（改 defs 再重建），绕过根直接改产物 md，下一次 build 就会把你冲掉——这就是「聚合根是唯一入口」的物理执行。
+三个词一句话分清：**实体**有身份（案例 02 改了标题还是案例 02——身份是 `num`）；**值对象**只有值（KPI `{name:'命中率',value:25,unit:'%'}` 换个值就是另一个对象，没人在乎「它是哪一个」）；**聚合**是一组必须一起保持一致的对象，**聚合根**是唯一入口。本仓库的标本：`case_definitions.json` 里的一条案例定义就是聚合根——fields/metricChain/exceptionStates/skills 都挂在它下面，verify 的「fields⊆表头」「KPI 数=metricSpec 数」守卫就是**聚合不变量**（invariant）的机器化。改任何子对象必须经过根（改 defs 再重建），绕过根直接改产物 md，下一次 build 就会把你冲掉——这就是「聚合根是唯一入口」的物理执行。
 ```
 
 ![聚合根=一致性边界（案例聚合真实结构）](../outputs/product_case_library/svg/fig_aggregate_root.svg)

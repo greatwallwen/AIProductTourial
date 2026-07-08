@@ -172,12 +172,12 @@ function midPlatform(t) {
     nodes: [
       { id: 'ingest', x: 88, y: 110, w: 210, h: 66, tag: '容器', color: t.accent2, label: '采集接入', sub: 'Online Retail II 装载' },
       { id: 'govern', x: 330, y: 110, w: 210, h: 66, tag: '容器', color: t.accent2, label: '数据治理', sub: 'metricSpec · 异常列真源' },
-      { id: 'metrics', x: 572, y: 110, w: 210, h: 66, tag: '容器', label: '指标洞察', sub: '案例 01 / 30 / 41' },
-      { id: 'decide', x: 814, y: 110, w: 200, h: 66, tag: '容器', color: t.ok, label: '经营决策', sub: '案例 41 闭环' },
-      { id: 'rag', x: 330, y: 240, w: 210, h: 66, tag: '容器', label: 'RAG 检索', sub: '案例 44 · 证据召回' },
-      { id: 'gate', x: 572, y: 240, w: 210, h: 66, tag: '门禁', color: t.warn, label: '交付门禁', sub: '案例 51 / verify 三绿' },
-      { id: 'base', x: 88, y: 370, w: 210, h: 66, tag: '底座', label: '关系库底座', sub: '案例 45 · node:sqlite/PG' },
-      { id: 'viz', x: 330, y: 370, w: 210, h: 66, tag: '底座', label: '事件总线底座', sub: '案例 54 · 事件流重放' },
+      { id: 'metrics', x: 572, y: 110, w: 210, h: 66, tag: '容器', label: '指标洞察', sub: '案例 01 / 02 / 03' },
+      { id: 'decide', x: 814, y: 110, w: 200, h: 66, tag: '容器', color: t.ok, label: '经营决策', sub: '案例 03 闭环' },
+      { id: 'rag', x: 330, y: 240, w: 210, h: 66, tag: '容器', label: 'RAG 检索', sub: '案例 04 · 证据召回' },
+      { id: 'gate', x: 572, y: 240, w: 210, h: 66, tag: '门禁', color: t.warn, label: '交付门禁', sub: '案例 08 / verify 三绿' },
+      { id: 'base', x: 88, y: 370, w: 210, h: 66, tag: '底座', label: '关系库底座', sub: '案例 05 · node:sqlite/PG' },
+      { id: 'viz', x: 330, y: 370, w: 210, h: 66, tag: '底座', label: '事件总线底座', sub: '案例 09 · 事件流重放' },
     ],
     edges: [
       { from: 'ingest', to: 'govern' }, { from: 'govern', to: 'metrics' }, { from: 'metrics', to: 'decide' },
@@ -188,7 +188,7 @@ function midPlatform(t) {
   }, t);
 }
 
-// 案例 46 真实子系统依赖图（数据来自 build_case_data 扫 import 得到的真实 deps）——分层单向，标注循环依赖
+// 案例 06 真实子系统依赖图（数据来自 build_case_data 扫 import 得到的真实 deps）——分层单向，标注循环依赖
 export function subsystemDeps(edges, cycles, t) {
   const DESC = { routes: 'HTTP 层·不写业务', services: '业务层·真算', data: 'CSV 解析', db: 'node:sqlite', vector: '向量库·RAG' };
   const layer = { routes: 0, services: 1, data: 2, db: 2, vector: 2 };
@@ -197,7 +197,7 @@ export function subsystemDeps(edges, cycles, t) {
   const W = 900, rowY = [86, 214, 342], nw = 196, nh = 62, nodes = [];
   rows.forEach((row, ri) => { const n = row.length || 1; const gap = (W - 60 - row.length * nw) / (row.length + 1); row.forEach((s, i) => nodes.push({ id: s, x: 30 + gap + i * (nw + gap), y: rowY[ri], w: nw, h: nh, tag: ['接口', '业务', '存储/数据'][ri], color: [t.accent2, t.accent, t.ok][ri], label: 'code/server/' + s, sub: DESC[s] || '' })); });
   return diagram({
-    W, H: 450, title: '案例 46 · 后端子系统真实依赖（C4 容器 · dogfood）',
+    W, H: 450, title: '案例 06 · 后端子系统真实依赖（C4 容器 · dogfood）',
     caption: `扫 code/server 真实 import 得 ${edges.length} 条依赖边；循环依赖 ${cycles} 处（适应度函数守护：分层单向依赖）。`,
     nodes, edges: edges.map((e) => ({ from: e.from, to: e.to })),
     legend: [{ label: '接口', color: t.accent2 }, { label: '业务', color: t.accent }, { label: '存储/数据', color: t.ok }],

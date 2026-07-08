@@ -193,7 +193,7 @@ ${kpiLine}
 - 验收条件：指标链回到真实数据、异常可追踪、行动入口明确；不得越过「${c.riskBoundary}」${c.highImpact ? '；高影响行业保留人工复核' : ''}；\`node code/tools/verify_course_package.mjs\` 必须 ALL GREEN。`;
 }
 
-// SDD 系统建造八步 prompt 管线（旗舰案例 51 用）：不是「几个 prompt」，而是一条流水线——每步一个 prompt、产一份工件、喂下一步。工具无关。
+// SDD 系统建造八步 prompt 管线（旗舰案例 08 用）：不是「几个 prompt」，而是一条流水线——每步一个 prompt、产一份工件、喂下一步。工具无关。
 function buildBuildPipeline() {
   return [
     ['① 宪法（constitution）', '请先读 `rules/`（DRY、单文件<800 行、类型安全、安全红线等不可谈判的约束），并声明：本次建造全程不得违反这些原则。它们是本系统的宪法。'],
@@ -260,8 +260,8 @@ for (const id of ['fig_ai_foundations', 'fig_ideology_loops', 'fig_engineering_r
 for (const [id, svg] of Object.entries(archFigures(theme('graphite-hud')))) writeFileSync(join(CLIB, 'svg', `${id}.svg`), svg);
 // 章节示意图套件（Phase A richness）：§2/§4/附录A/§5/§99 补图
 for (const [id, svg] of Object.entries(chapterFigures(theme('graphite-hud')))) writeFileSync(join(CLIB, 'svg', `${id}.svg`), svg);
-// 案例 46 真实子系统依赖图（数据来自 build_case_data 扫 import）
-{ const d46 = vm(46); if (d46.deps?.length) writeFileSync(join(CLIB, 'svg', 'fig_case46_deps.svg'), subsystemDeps(d46.deps, d46.cycles || 0, theme('cyan-matrix'))); }
+// 案例 06 真实子系统依赖图（数据来自 build_case_data 扫 import）
+{ const d6 = vm(6); if (d6.deps?.length) writeFileSync(join(CLIB, 'svg', 'fig_case06_deps.svg'), subsystemDeps(d6.deps, d6.cycles || 0, theme('cyan-matrix'))); }
 for (const c of defs.cases) {
   const d = vm(c.num);
   writeFileSync(join(CLIB, 'svg', `case_${pad(c.num)}_${c.slug}.svg`), svg(c, d));
@@ -359,6 +359,7 @@ const readme = J([`# ${TITLE}`, '',
   '- [术语表](术语表.md)', '',
   `**第二部分 · ${defs.cases.length} 真实案例演示与验证**`, '',
   '- [案例总览 + 原理→案例反查](案例/README.md)',
+  `- 编号说明：案例已于 v21 重编号为 01–${pad(defs.cases.length)}（旧号 30/41/44/45/46/49/51/54 依次对应 02–09）；旧↔新完整对照见 [README-cn](${UP}README-cn.md)。`,
   ...defs.cases.map((c) => `- [实操 ${pad(c.num)} · ${c.scenario}](案例/${pad(c.num)}-${c.slug}.md)`),
   '',
   '**收尾**', '', '- [结课 · 自查 · 下一步](99-结课.md)', '',
@@ -384,19 +385,19 @@ writeBook('术语表.md', J(['# 术语表（先备着，看案例时随时回查
   '| Token | 大模型处理文本的最小计量单位；1 Token≈1.5~2 汉字（§1.2） |',
   '| Context / 上下文窗口 | 单次运算的全部输入 / 其最大 Token 容量（§1.3） |',
   '| RAG | 检索增强生成：分片→索引→召回→重排→生成，只喂高相关片段（§1.3） |',
-  '| Embedding / 向量库 | 把文本转成向量 / 存向量+原文、按相似度检索（§1.3、案例44） |',
+  '| Embedding / 向量库 | 把文本转成向量 / 存向量+原文、按相似度检索（§1.3、案例04） |',
   '| Agent / ReAct | 自主分步的智能体 / 思考→调用工具→观察→再思考的循环（§1.6） |',
   '| Tool / MCP | 模型可调用的函数 / 一套通用的工具接入标准（§1.5） |',
   '| 幂等 | 同一写操作重复执行，结果不变（如重发一次不会多下一单，§3.4） |',
   '| DRY / 单一职责 | 同一知识只表示一次 / 一个模块只有一个改变它的理由（§4.1、§4.2） |',
   '| YAGNI | You Aren’t Gonna Need It：没真需要就先别造（§4，反过度工程） |',
-  '| RFM | 用最近消费 R、频次 F、金额 M 给客户分层的经典方法（案例 30） |',
-  '| Cross-Encoder / 重排 | RAG 里粗召回后再精排相关片段的第二阶段（§1.3、案例 44） |',
+  '| RFM | 用最近消费 R、频次 F、金额 M 给客户分层的经典方法（案例 02） |',
+  '| Cross-Encoder / 重排 | RAG 里粗召回后再精排相关片段的第二阶段（§1.3、案例 04） |',
   '| Design Token | 把颜色/字号/圆角等最小设计决策抽成变量单一来源（附录A） |',
   '| systemLayer / systemStage | 案例在数字化系统的「层（底座/能力/应用）/ 环节（采集→…→增长）」 |',
   '| metricSpec | 案例指标的真实列计算规格（保证 KPI 真算、可溯源、非编造） |',
   '| eval / 评测 | 用离线测试集 + 打分器量化「AI 回答好不好」，是 AI 产品的验收标尺（§2 传感器） |',
-  '| 幻觉 / hallucination | 模型一本正经地编造不实内容；RAG、评测、人工复核都是为压住它（§1.3、案例 44） |',
+  '| 幻觉 / hallucination | 模型一本正经地编造不实内容；RAG、评测、人工复核都是为压住它（§1.3、案例 04） |',
   '| context rot / 上下文腐烂 | 上下文太长、关键信息在中间时模型「读不到」，长上下文性能衰减（§1.3） |',
   '| harness / 脚手架 | 把模型包成能自动「跑→验→改」的外壳（如本书的 `verify`），是 Loop 的骨架；业界 2026 年命名的 Harness Engineering 即其体系化（§2.2、§5） |',
   '| 控制论闭环 | 目标→执行→测偏差→反馈修正的循环；一个能自转的 Loop 就是一台控制系统（§2.3） |',
@@ -409,7 +410,7 @@ writeBook('术语表.md', J(['# 术语表（先备着，看案例时随时回查
   '| ADR | 架构决策记录：背景→决策→后果，把「为什么这样选」留痕（§3.5，Michael Nygard） |',
   '| 质量属性场景 | 把非功能需求写成「刺激→环境→响应→度量」的可量化场景（§3.2，SEI 风格） |',
   '| 规格漂移 | 代码越改越偏离规格意图；SDD 用阶段门禁 + CI 三绿来压住它（§3.0） |',
-  '| 适应度函数 | 把架构边界写成能自动跑的断言，扫依赖检测越界/循环依赖（§3.3，案例 46） |',
+  '| 适应度函数 | 把架构边界写成能自动跑的断言，扫依赖检测越界/循环依赖（§3.3，案例 06） |',
   '| Skill Registry | Skill 的私有仓库：版本/审核/安全/分发；draft→review→online→offline（§6，Nacos 阿里巴巴） |',
   '| skill-scanner | 发布前扫 Skill 的提示注入/数据泄露/恶意代码，「不过则不发布」（§6，本书 skill_lint dogfood） |',
   '| delta spec | 只记录「这次变更了什么」的增量规格，不重写整篇；brownfield 友好（§6/§3，OpenSpec Fission-AI） |',
@@ -417,8 +418,8 @@ writeBook('术语表.md', J(['# 术语表（先备着，看案例时随时回查
   '| Ralph 循环 | 把 Agent 包在 while 循环里、规格/验证都在 agent 之外，靠持续迭代跑完任务（§2.6，Geoffrey Huntley；本书 self-evolve 即一例） |',
   '| 通用语言 / Ubiquitous Language | 业务、代码、文档说同一套话；词链断裂处就是 Agent 猜错处（§8.1，DDD） |',
   '| 聚合根 | 一组必须一起保持一致的对象的唯一入口，改子对象必须经根；不变量由守卫机器化（§8.2） |',
-  '| 领域事件 / 事件驱动 | 事件=已发生的事实（过去时命名）；发布者宣布「发生了什么」、不关心谁在听（§7.2、§8.3，案例 54） |',
-  '| 事件溯源 / Event Sourcing | 状态不直接存，从不可变事件流重放推导出来（§9.4，案例 54） |',
+  '| 领域事件 / 事件驱动 | 事件=已发生的事实（过去时命名）；发布者宣布「发生了什么」、不关心谁在听（§7.2、§8.3，案例 09） |',
+  '| 事件溯源 / Event Sourcing | 状态不直接存，从不可变事件流重放推导出来（§9.4，案例 09） |',
   '| 防腐层 / ACL | 上下文边界上的翻译官：外部模型先翻译成本域通用语言再进门（§7.3、§8.4） |',
   '| 提示注入 / prompt injection | 把指令藏进数据让 Agent 误当命令执行——AI 时代的 SQL 注入（§6.3、§9.3） |',
   '', `> **进一步阅读**：各章规范与概念的权威出处汇总在 [rules/references.md](${UP}rules/references.md)；Loop 工程的可复用实操文件见 [skills/loop_engineering/](${UP}skills/loop_engineering)。`]));
@@ -455,7 +456,7 @@ for (const c of defs.cases) {
     `> **本案例演示/验证**：原理 ${(c.demonstrates || []).join('、')}｜**采用设计** \`${c.design}\`（见 [design/${c.design}.md](${UP}design/${c.design}.md)）`, '',
     `> **在数字化系统中的位置**：${c.systemLayer}层 · ${c.systemStage}环节｜**理论→实操**：${c.theoryOp}`, '',
     `> **角色镜头**：${lensTags(c)}（本案更偏这些角色；主脊 §1-§2 三镜头共读）`, '',
-    ...(c.num === 51 ? [`> **方法论落点**：单个案例 = SDD 流水线（§3.0）上一个可验收的小任务；一个中大型系统 = 许多这样的任务按方法论编排起来。`, ''] : []),
+    ...(c.num === 8 ? [`> **方法论落点**：单个案例 = SDD 流水线（§3.0）上一个可验收的小任务；一个中大型系统 = 许多这样的任务按方法论编排起来。`, ''] : []),
     `> ${ic('gauge')}**难度** ${c.difficulty}｜**一句话** ${c.tldr}｜**前置** 建议先读完第一部分`,
     '>',
     `> ${ic('lightbulb')}**洞见**：${c.insight}`,
@@ -470,8 +471,8 @@ for (const c of defs.cases) {
         ...buildBuildPipeline().flatMap(([s, p]) => [`**${s}**`, '', '```text', p, '```', ''])]
       : ['### Prompt 实操', '', '> **怎么用**：推荐用 **CodeBuddy 的 Plan 模式**（腾讯，国产·当下可跑）——把下面灰底代码框**整段原样粘进去，它会先列出任务清单、再自主执行**，你不需要看懂里面的技术细节；没装过就先装一个。海外读者用 Claude Code / Cursor / Trae 等任一 Agent 工具同理（见附录B）。', '', `**Prompt 1：${c.scenario} - 问题定义**`, '', '```text', buildPrompt(c, d, 'def'), '```', '', `**Prompt 2：${c.scenario} - 方案验收**（注意：outputs/ 交付物由 build_docs 重建覆盖，建议在新分支/对照目录运行）`, '', '```text', buildPrompt(c, d, 'accept'), '```', '']),
     `### 图形/原型/表单`, '', `![${c.scenario} · 信息图](${UP}outputs/product_case_library/svg/case_${pad(c.num)}_${c.slug}.svg)`, '',
-    ...(c.num === 46 && d.deps?.length ? [`![案例46 · 后端子系统真实依赖（C4 · dogfood）](${UP}outputs/product_case_library/svg/fig_case46_deps.svg)`, ''] : []),
-    ...(c.num === 30 ? [`![案例30 · 真实客户 vs 教学合成 R×F 双散点](${UP}outputs/product_case_library/svg/fig_rfm_dual.svg)`, ''] : []),
+    ...(c.num === 6 && d.deps?.length ? [`![案例06 · 后端子系统真实依赖（C4 · dogfood）](${UP}outputs/product_case_library/svg/fig_case06_deps.svg)`, ''] : []),
+    ...(c.num === 2 ? [`![案例02 · 真实客户 vs 教学合成 R×F 双散点](${UP}outputs/product_case_library/svg/fig_rfm_dual.svg)`, ''] : []),
     `![${c.scenario} · 可运行大屏原型截图](${UP}assets/screenshots/premium_case_${pad(c.num)}_${c.slug}_desktop.png)`, '',
     `- 图形类型：${c.slug}（设计 ${c.design}）`, `- 看图顺序：${c.readingOrder || '先看指标链，再看异常队列和责任对象，最后看行动入口与验收边界。'}`, `- UI 差异：本案例采用 \`${c.uiId}\` + 设计 \`${c.design}\`，不得复用通用表格占位；可运行原型见 \`#/case/${pad(c.num)}\`。`, '',
     `### 交付物与验收`, '', `交付物：**${c.deliverable}**。必含要素（字段/指标链/异常状态/Skill/决策动作/高影响复核）与合格线由自测器六项核对：\`node code/tools/check_my_work.mjs ${c.num} 你的方案.md\`；红线：不越过「${c.riskBoundary}」。`, ''];

@@ -15,7 +15,7 @@
 <line x1="620.0" y1="102.0" x2="700.0" y2="238.0" stroke="#38bdf8" stroke-width="1.6" /><path d="M700 238 L693.6 234.1 L699.8 230.5 z" fill="#38bdf8"/>
 <rect x="320" y="70" width="300" height="64" rx="10" fill="#121826" stroke="#22d3ee" stroke-width="1.4"  filter="url(#dsh)"/>
   <rect x="320" y="70" width="300" height="3" rx="1.5" fill="#22d3ee"/>
-  <text x="470" y="101" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">聚合根 · 案例 30</text><text x="470" y="116" font-size="9.5" fill="#5b6b7f" text-anchor="middle">case_definitions.json（唯一入口）</text>
+  <text x="470" y="101" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">聚合根 · 案例 2</text><text x="470" y="116" font-size="9.5" fill="#5b6b7f" text-anchor="middle">case_definitions.json（唯一入口）</text>
 <rect x="40" y="210" width="200" height="56" rx="10" fill="#121826" stroke="#5b6b7f" stroke-width="1.4"  filter="url(#dsh)"/>
   <rect x="40" y="210" width="200" height="3" rx="1.5" fill="#5b6b7f"/>
   <text x="140" y="237" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">fields ×7</text><text x="140" y="252" font-size="9.5" fill="#5b6b7f" text-anchor="middle">守卫: fields⊆表头</text>
@@ -28,5 +28,5 @@
 <rect x="700" y="210" width="200" height="56" rx="10" fill="#121826" stroke="#5b6b7f" stroke-width="1.4"  filter="url(#dsh)"/>
   <rect x="700" y="210" width="200" height="3" rx="1.5" fill="#5b6b7f"/>
   <text x="800" y="237" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">skills ×3</text><text x="800" y="252" font-size="9.5" fill="#5b6b7f" text-anchor="middle">守卫: 已注册</text>
-<text x="24" y="316" font-size="10.5" fill="#5b6b7f">子对象只能经根修改（改 defs→重建）；verify 守卫=聚合不变量的机器化。数字为案例 30 实时读数。</text>
+<text x="24" y="316" font-size="10.5" fill="#5b6b7f">子对象只能经根修改（改 defs→重建）；verify 守卫=聚合不变量的机器化。数字为案例 02 实时读数。</text>
 </svg>

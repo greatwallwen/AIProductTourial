@@ -14,7 +14,7 @@ export function getIndex() {
   return JSON.parse(readFileSync(join(ROOT, 'code', 'data', 'index.json'), 'utf8'));
 }
 
-/** 后端真实子系统清单（dogfood，案例46/ArchScreen 用）：与 build_case_data 同一目录扫描口径——
+/** 后端真实子系统清单（dogfood，案例06/ArchScreen 用）：与 build_case_data 同一目录扫描口径——
  *  code/server 下的业务子系统目录，排除 tests(是 Loop 的 checker，非子系统)/node_modules/dist。真值单一来源，前端不再硬编码。 */
 const SUBSYS_DESC: Record<string, string> = {
   routes: 'HTTP 层：只做输入输出，不写业务', services: '业务层：实时读 CSV 计算，不碰 HTTP',
@@ -26,7 +26,7 @@ export function serverSubsystems() {
   return mods.map((name) => ({ name, desc: SUBSYS_DESC[name] || '' }));
 }
 
-/** 案例46 真实架构模型（dogfood）：扫 code/server 各子系统 .ts 的 import → 真实依赖边 + 循环依赖检测 + 一份真 ADR/契约。 */
+/** 案例06 真实架构模型（dogfood）：扫 code/server 各子系统 .ts 的 import → 真实依赖边 + 循环依赖检测 + 一份真 ADR/契约。 */
 function walkTs(dir: string): string[] {
   const out: string[] = [];
   try { for (const e of readdirSync(dir)) { const p = join(dir, e); if (statSync(p).isDirectory()) { if (!['node_modules', 'dist'].includes(e)) out.push(...walkTs(p)); } else if (e.endsWith('.ts')) out.push(p); } } catch { /* 目录不存在忽略 */ }
@@ -78,7 +78,7 @@ export function caseData(num: number) {
   return vm;
 }
 
-/** 航空会员 RFM 真实分析（案例30 专属 demo 驱动）：从真实列真算分层、高价值流失、R×F 散点。 */
+/** 航空会员 RFM 真实分析（案例02 专属 demo 驱动）：从真实列真算分层、高价值流失、R×F 散点。 */
 export function rfm() {
   const t = parseCsv(join(ROOT, 'dataset', 'reference_data_analysis', '2-air_data.csv'));
   const ci = (n: string) => t.head.indexOf(n);
