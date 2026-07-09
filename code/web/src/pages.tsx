@@ -21,7 +21,7 @@ export function Home() {
   const prog = idx ? getProgress(idx.cases.length) : null;
   const paths = [
     { name: '新手路径', desc: '从早会异常台入门，走一遍洞察→决策→执行', to: '/case/01', color: 'var(--accent)' },
-    { name: '架构路径', desc: '数字化底座：向量库 / 关系库 / 子系统契约 / 3D', to: '/case/46', color: 'var(--accent2)' },
+    { name: '架构路径', desc: '数字化底座：向量库 / 关系库 / 子系统契约 / 事件总线', to: '/case/06', color: 'var(--accent2)' },
     { name: 'AI 路径', desc: '先玩概念实验室，再看 RAG / 知识治理案例', to: '/lab/tokenizer', color: 'var(--ok)' },
   ];
   return (

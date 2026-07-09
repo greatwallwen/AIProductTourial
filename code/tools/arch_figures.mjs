@@ -154,8 +154,8 @@ function reqSequence(t) {
       { id: 'db', x: 860, w: 120, label: 'sqlite', color: t.ok },
     ],
     messages: [
-      { from: 'br', to: 'api', label: 'GET /api/case/30/data', y: 130 },
-      { from: 'api', to: 'svc', label: 'caseData(30)', y: 165 },
+      { from: 'br', to: 'api', label: 'GET /api/case/02/data', y: 130 },
+      { from: 'api', to: 'svc', label: 'caseData(2)', y: 165 },
       { from: 'svc', to: 'db', label: '真 SQL 聚合', y: 200 },
       { from: 'db', to: 'svc', label: '分层结果', y: 235, ret: true },
       { from: 'svc', to: 'api', label: 'KPI/队列/图表', y: 270, ret: true },
