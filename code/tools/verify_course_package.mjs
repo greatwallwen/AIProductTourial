@@ -338,6 +338,21 @@ for (const c of defs.cases) {
   }
 }
 
+// ============ v21-P3：动手硬约束守卫（§5-§10 每章须含可跑命令块 + 结课接自测器） ============
+// 结构性守卫（不钉死字面命令，保留未来收缩空间，防棘轮，承 v16 教训）：
+// ① §5-§10 对应书页各须含 ≥1 个引用 code/tools/ 或 code/server/ 的可跑命令（围栏代码块或行内 node 命令）——
+//    把「动手章不许退回全纸面」锁成硬约束，防扩容成果被后续编辑悄悄抽走。
+const HANDS_ON_PAGES = ['05-交付治理', '06-Skill工程化与治理', '07-架构风格与模式', '08-DDD深化', '09-分布式与AI实现技术', '10-架构师与AI协作'];
+for (const f of HANDS_ON_PAGES) {
+  const s = rd(`${BOOK}/${f}.md`);
+  const fenced = s.split('```').filter((_, i) => i % 2 === 1);              // 只取围栏内代码块
+  const blockCmd = fenced.some((b) => /\bcode\/(tools|server)\//.test(b) && /\b(node|grep|bash|curl|ls|PORT=)\b/.test(b));
+  const inlineCmd = /`[^`\n]*\bnode\s+(--[\w-]+\s+)?code\/(tools|server)\/[^`\n]*`/.test(s);
+  ok(); if (!(blockCmd || inlineCmd)) bad(`${f} 正文缺可跑命令块（须含 code/tools/ 或 code/server/ 路径，§5-§10 动手硬约束）`);
+}
+// ② 结课页须引用 check_my_work 自测——Capstone 验收接确定性传感器，工具为此而生却曾零引用。
+ok(); if (!/check_my_work/.test(rd(`${BOOK}/99-结课.md`))) bad('99-结课 缺 check_my_work 自测引用（Capstone 验收须接确定性传感器）');
+
 // 📸 内容快照 diff（拆棘轮核心）：曾被逐字钉死的内容 token——缺失只报告、不阻断；确认删除 = 同一 commit 从 content_snapshot.json 移除对应项
 { const snap = jj('code/tools/content_snapshot.json'); const hay = tut + '\n' + skillsMd;
   const removed = snap.tokens.filter((t) => !hay.includes(t));
