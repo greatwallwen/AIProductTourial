@@ -11,9 +11,9 @@ function loopCybernetic(t) {
     W: 940, H: 400, title: '§2 · Loop = 控制论反馈闭环（传感器就是设计本身）',
     caption: '控制器定目标、执行器动手、传感器给「差多少」的误差信号回流——三者成环才叫 Loop。先建传感器(evals/verify)，再谈自动化。',
     nodes: [
-      { id: 'ctrl', x: 350, y: 74, w: 250, h: 74, color: t.accent, label: '控制器 · 开发者判断', sub: '定目标 / 改规格 / 把关' },
-      { id: 'act', x: 660, y: 250, w: 250, h: 74, color: t.accent2, label: '执行器 · Agent', sub: '按指令生成 / 修复' },
-      { id: 'sensor', x: 40, y: 250, w: 250, h: 74, color: t.warn, label: '传感器 · 验证 / evals', sub: '产出「差多少」误差信号' },
+      { id: 'ctrl', x: 350, y: 74, w: 250, h: 74, icon: 'brain', color: t.accent, label: '控制器 · 开发者判断', sub: '定目标 / 改规格 / 把关' },
+      { id: 'act', x: 660, y: 250, w: 250, h: 74, icon: 'cpu', color: t.accent2, label: '执行器 · Agent', sub: '按指令生成 / 修复' },
+      { id: 'sensor', x: 40, y: 250, w: 250, h: 74, icon: 'gauge', color: t.warn, label: '传感器 · 验证 / evals', sub: '产出「差多少」误差信号' },
     ],
     edges: [
       { from: 'ctrl', to: 'act', label: '下发指令' },
@@ -60,7 +60,8 @@ function l0l3Ladder(t) {
     ['L0 草稿', '退出：确认它到底该干什么', t.muted], ['L1 只报告', '退出：误报可接受、判断与我一致（≥1 周）', t.accent2],
     ['L2 辅助', '退出：连续 N 次对、我敢闭眼点同意', t.accent], ['L3 无人值守', '护栏：白名单+成本上限+急停+独立验收+日志', t.ok],
   ];
-  const nodes = rungs.map(([label, sub, col], i) => ({ id: 'l' + i, x: 90 + i * 20, y: 320 - i * 74, w: 560, h: 62, color: col, label, sub }));
+  const L3ICONS = ['book-open', 'gauge', 'wrench', 'rocket'];
+  const nodes = rungs.map(([label, sub, col], i) => ({ id: 'l' + i, x: 90 + i * 20, y: 320 - i * 74, w: 560, h: 62, icon: L3ICONS[i], color: col, label, sub }));
   return diagram({
     W: 760, H: 440, title: '§6 · Loop 上线分级 L0→L3（把 Loop 当交付管）',
     caption: '像自动驾驶分级放权，每级有明确「毕业考」才升级——拒绝跳级，跳级上线是事故温床。',
@@ -74,12 +75,12 @@ function gateBoard(t) {
     W: 940, H: 420, title: '§6 · 交付门禁看板（能不能发，靠可核对的关卡）',
     caption: '把「差不多了」变成一组可自动核对的关卡：三绿全通过是发布必要条件，高影响项仍需人工签署。',
     nodes: [
-      { id: 'v', x: 50, y: 90, w: 230, h: 60, color: t.ok, label: 'verify（数百项）', sub: '真数据/诚信/镜头/结构' },
-      { id: 'be', x: 50, y: 175, w: 230, h: 60, color: t.ok, label: '后端 node:test', sub: '端点契约断言' },
-      { id: 'fe', x: 50, y: 260, w: 230, h: 60, color: t.ok, label: '前端 vitest', sub: '组件/纯逻辑' },
-      { id: 'gate', x: 400, y: 175, w: 200, h: 70, color: t.accent, label: '发布门禁', sub: '三绿=必要条件' },
-      { id: 'risk', x: 400, y: 300, w: 200, h: 60, color: t.warn, label: '风险登记', sub: '已知风险→自动检测' },
-      { id: 'sign', x: 720, y: 175, w: 170, h: 70, color: t.accent2, tag: '人', label: '人工签署', sub: '高影响项' },
+      { id: 'v', x: 50, y: 90, w: 230, h: 60, icon: 'check-circle', color: t.ok, label: 'verify（数百项）', sub: '真数据/诚信/镜头/结构' },
+      { id: 'be', x: 50, y: 175, w: 230, h: 60, icon: 'flask-conical', color: t.ok, label: '后端 node:test', sub: '端点契约断言' },
+      { id: 'fe', x: 50, y: 260, w: 230, h: 60, icon: 'flask-conical', color: t.ok, label: '前端 vitest', sub: '组件/纯逻辑' },
+      { id: 'gate', x: 400, y: 175, w: 200, h: 70, icon: 'target', color: t.accent, label: '发布门禁', sub: '三绿=必要条件' },
+      { id: 'risk', x: 400, y: 300, w: 200, h: 60, icon: 'alert-triangle', color: t.warn, label: '风险登记', sub: '已知风险→自动检测' },
+      { id: 'sign', x: 720, y: 175, w: 170, h: 70, icon: 'clipboard-list', color: t.accent2, tag: '人', label: '人工签署', sub: '高影响项' },
     ],
     edges: [
       { from: 'v', to: 'gate' }, { from: 'be', to: 'gate' }, { from: 'fe', to: 'gate' },
@@ -94,7 +95,8 @@ function journey(t) {
   const ms = [
     ['篇一 §1-§2', '转型与操作模型'], ['篇二 §3·§7-9', '架构设计知识体系'], ['篇三 §4-§6', '工程与交付'], ['篇四 §10', '架构师与AI协作'], [`${N} 案例`, '真数据·可运行'], ['你的项目', '把方法用起来'],
   ];
-  const nodes = ms.map(([label, sub], i) => ({ id: 'm' + i, x: 30 + i * 178, y: 130, w: 160, h: 74, color: i === ms.length - 1 ? t.ok : t.accent, label, sub }));
+  const JICONS = ['route', 'route', 'route', 'route', 'star', 'rocket'];
+  const nodes = ms.map(([label, sub], i) => ({ id: 'm' + i, x: 30 + i * 178, y: 130, w: 160, h: 74, icon: JICONS[i], color: i === ms.length - 1 ? t.ok : t.accent, label, sub }));
   return diagram({
     W: 30 * 2 + ms.length * 178 - 18, H: 300, title: '§99 · 结课回顾：一条主线串起全书（一个操作模型·三个镜头）',
     caption: '四篇（转型与操作模型→架构→工程与交付→协作）→ 案例演示验证 → 你的项目；篇是主题分组，阅读按章号 §1→§10。',
@@ -108,11 +110,11 @@ function skillLifecycle(t) {
     W: 960, H: 360, title: '§7 · Skill Registry 生命周期（发布前扫，上线不可改）',
     caption: 'draft→reviewing→online→offline；skill-scanner「不过则不发布」；online 内容不可改，改需新建草稿。来源：Nacos Skill Registry（阿里巴巴）。',
     nodes: [
-      { id: 'draft', x: 40, y: 96, w: 180, h: 70, color: t.muted, tag: '草稿', label: 'draft', sub: '可改·多人别并行' },
-      { id: 'review', x: 275, y: 96, w: 180, h: 70, color: t.warn, tag: '审核', label: 'reviewing', sub: '过 scanner 才放行' },
-      { id: 'online', x: 510, y: 96, w: 180, h: 70, color: t.ok, tag: '上线', label: 'online', sub: '内容不可改' },
-      { id: 'offline', x: 745, y: 96, w: 175, h: 70, color: t.muted, tag: '下线', label: 'offline', sub: '不再使用' },
-      { id: 'scan', x: 275, y: 232, w: 415, h: 66, color: t.bad, label: 'skill-scanner · 不过则不发布', sub: '提示注入 / 数据泄露 / 恶意代码' },
+      { id: 'draft', x: 40, y: 96, w: 180, h: 70, icon: 'book-open', color: t.muted, tag: '草稿', label: 'draft', sub: '可改·多人别并行' },
+      { id: 'review', x: 275, y: 96, w: 180, h: 70, icon: 'search', color: t.warn, tag: '审核', label: 'reviewing', sub: '过 scanner 才放行' },
+      { id: 'online', x: 510, y: 96, w: 180, h: 70, icon: 'check-circle', color: t.ok, tag: '上线', label: 'online', sub: '内容不可改' },
+      { id: 'offline', x: 745, y: 96, w: 175, h: 70, icon: 'moon', color: t.muted, tag: '下线', label: 'offline', sub: '不再使用' },
+      { id: 'scan', x: 275, y: 232, w: 415, h: 66, icon: 'shield-check', color: t.bad, label: 'skill-scanner · 不过则不发布', sub: '提示注入 / 数据泄露 / 恶意代码' },
     ],
     edges: [
       { from: 'draft', to: 'review', label: '提交' }, { from: 'review', to: 'online', label: '过审' }, { from: 'online', to: 'offline', label: '退役' },
@@ -127,12 +129,12 @@ function skillDistribution(t) {
     W: 980, H: 380, title: '§7 · Skill 分发：一处治理，多 Agent 共用',
     caption: '团队/个人上传 → Registry 版本+审核+权限 → CLI/API 分发到各 Agent；个人多 Agent 也从同一处同步，不再散落各目录。',
     nodes: [
-      { id: 'up', x: 50, y: 150, w: 170, h: 70, color: t.accent2, tag: '人', label: '团队 / 个人', sub: 'upload 草稿' },
-      { id: 'reg', x: 380, y: 130, w: 220, h: 110, color: t.accent, label: '私有 Skill Registry', sub: '版本 · 审核 · RBAC · PUBLIC/PRIVATE' },
-      { id: 'scan', x: 380, y: 290, w: 220, h: 56, color: t.bad, label: 'skill-scanner', sub: '发布前扫描' },
-      { id: 'cc', x: 760, y: 60, w: 180, h: 56, color: t.ok, label: 'Claude Code', sub: 'skill-get / sync' },
-      { id: 'cx', x: 760, y: 152, w: 180, h: 56, color: t.ok, label: 'Codex', sub: 'skill-get / sync' },
-      { id: 'own', x: 760, y: 244, w: 180, h: 56, color: t.ok, label: '自建 Agent', sub: 'skill-get / sync' },
+      { id: 'up', x: 50, y: 150, w: 170, h: 70, icon: 'users', color: t.accent2, tag: '人', label: '团队 / 个人', sub: 'upload 草稿' },
+      { id: 'reg', x: 380, y: 130, w: 220, h: 110, icon: 'boxes', color: t.accent, label: '私有 Skill Registry', sub: '版本 · 审核 · RBAC · PUBLIC/PRIVATE' },
+      { id: 'scan', x: 380, y: 290, w: 220, h: 56, icon: 'shield-check', color: t.bad, label: 'skill-scanner', sub: '发布前扫描' },
+      { id: 'cc', x: 760, y: 60, w: 180, h: 56, icon: 'cpu', color: t.ok, label: 'Claude Code', sub: 'skill-get / sync' },
+      { id: 'cx', x: 760, y: 152, w: 180, h: 56, icon: 'cpu', color: t.ok, label: 'Codex', sub: 'skill-get / sync' },
+      { id: 'own', x: 760, y: 244, w: 180, h: 56, icon: 'cpu', color: t.ok, label: '自建 Agent', sub: 'skill-get / sync' },
     ],
     edges: [
       { from: 'up', to: 'reg', label: 'upload' }, { from: 'scan', to: 'reg', label: '门禁', dashed: true, color: t.bad },
@@ -151,10 +153,11 @@ function comboPipeline(t) {
     ['④ 自动化', 'Ralph · while 循环', t.ok, '本书：self-evolve(Ralph 实例)'],
   ];
   const w = 232, gap = 26, x0 = 30, y1 = 96, y2 = 250;
+  const CBICONS = ['clipboard-list', 'book-open', 'list-checks', 'rotate-ccw'];
   const nodes = [], edges = [];
   st.forEach(([label, sub, col, book], i) => {
     const x = x0 + i * (w + gap);
-    nodes.push({ id: 't' + i, x, y: y1, w, h: 74, color: col, label, sub });
+    nodes.push({ id: 't' + i, x, y: y1, w, h: 74, icon: CBICONS[i], color: col, label, sub });
     nodes.push({ id: 'b' + i, x, y: y2, w, h: 62, color: t.muted, label: book.split('：')[1], sub: 'dogfood' });
     edges.push({ from: 't' + i, to: 'b' + i, label: '本书对应', dashed: true, color: t.muted });
     if (i) edges.push({ from: 't' + (i - 1), to: 't' + i });
@@ -177,10 +180,11 @@ function codebuddyMap(t) {
     ['MCP 连接', '国内首家支持 MCP', t.ok, '§1 MCP / §2 连接'],
   ];
   const w = 196, gap = 20, x0 = 28, y1 = 100, y2 = 256;
+  const CDICONS = ['message-square', 'wrench', 'list-checks', 'layers', 'network'];
   const nodes = [], edges = [];
   st.forEach(([label, sub, col, book], i) => {
     const x = x0 + i * (w + gap);
-    nodes.push({ id: 'm' + i, x, y: y1, w, h: 76, color: col, label, sub });
+    nodes.push({ id: 'm' + i, x, y: y1, w, h: 76, icon: CDICONS[i], color: col, label, sub });
     nodes.push({ id: 'c' + i, x, y: y2, w, h: 64, color: t.muted, label: book, sub: '本书概念' });
     edges.push({ from: 'm' + i, to: 'c' + i, label: '对应', dashed: true, color: t.muted });
   });
@@ -229,9 +233,10 @@ function rfmDual(t) {
 function distIso(t) {
   const st = [["远程调用", "RPC/gRPC", "工具调用 + MCP", t.accent], ["注册发现", "注册中心", "Skill Registry", t.accent2], ["容错", "熔断/重试", "停机规则+独立会话", t.warn], ["监控治理", "APM", "活体门禁+回归门", t.ok]];
   const w = 200, gap = 22, x0 = 30, nodes = [], edges = [];
+  const DIICONS = ['network', 'boxes', 'alert-triangle', 'gauge'];
   st.forEach(([prob, old, ai, col], i) => { const x = x0 + i * (w + gap);
-    nodes.push({ id: 'o' + i, x, y: 90, w, h: 62, color: t.muted, label: old, sub: prob });
-    nodes.push({ id: 'a' + i, x, y: 230, w, h: 62, color: col, label: ai, sub: '多 Agent 同构' });
+    nodes.push({ id: 'o' + i, x, y: 90, w, h: 62, icon: DIICONS[i], color: t.muted, label: old, sub: prob });
+    nodes.push({ id: 'a' + i, x, y: 230, w, h: 62, icon: DIICONS[i], color: col, label: ai, sub: '多 Agent 同构' });
     edges.push({ from: 'o' + i, to: 'a' + i, label: '同构', dashed: true, color: t.muted }); });
   return diagram({ W: x0 * 2 + 4 * w + 3 * gap, H: 350, title: '§9 · 分布式四件套的 AI 同构：老问题换宿主', caption: '上排=经典答案，下排=多 Agent 形态；每项在本书都有真实锚点（§1/§6/stop-rules//api/gates）。', nodes, edges }, t);
 }
@@ -241,11 +246,11 @@ function aggregateRoot(t) {
   const defs = jj('code/tools/case_definitions.json');
   const c = defs.cases.find((x) => x.num === 2);
   const nodes = [
-    { id: 'root', x: 320, y: 70, w: 300, h: 64, color: t.accent, label: `聚合根 · 案例 ${c.num}`, sub: 'case_definitions.json（唯一入口）' },
-    { id: 'f', x: 40, y: 210, w: 200, h: 56, color: t.muted, label: `fields ×${c.fields.length}`, sub: '守卫: fields⊆表头' },
-    { id: 'm', x: 260, y: 210, w: 200, h: 56, color: t.muted, label: `metricChain ×${c.metricChain.length}`, sub: '守卫: KPI 数一致' },
-    { id: 'e', x: 480, y: 210, w: 200, h: 56, color: t.muted, label: `exceptionStates ×${c.exceptionStates.length}`, sub: '守卫: 异常可追踪' },
-    { id: 's', x: 700, y: 210, w: 200, h: 56, color: t.muted, label: `skills ×${c.skills.length}`, sub: '守卫: 已注册' },
+    { id: 'root', x: 320, y: 70, w: 300, h: 64, icon: 'box', color: t.accent, label: `聚合根 · 案例 ${c.num}`, sub: 'case_definitions.json（唯一入口）' },
+    { id: 'f', x: 40, y: 210, w: 200, h: 56, icon: 'list-checks', color: t.muted, label: `fields ×${c.fields.length}`, sub: '守卫: fields⊆表头' },
+    { id: 'm', x: 260, y: 210, w: 200, h: 56, icon: 'trending-up', color: t.muted, label: `metricChain ×${c.metricChain.length}`, sub: '守卫: KPI 数一致' },
+    { id: 'e', x: 480, y: 210, w: 200, h: 56, icon: 'alert-triangle', color: t.muted, label: `exceptionStates ×${c.exceptionStates.length}`, sub: '守卫: 异常可追踪' },
+    { id: 's', x: 700, y: 210, w: 200, h: 56, icon: 'boxes', color: t.muted, label: `skills ×${c.skills.length}`, sub: '守卫: 已注册' },
   ];
   const edges = ['f', 'm', 'e', 's'].map((id) => ({ from: 'root', to: id }));
   return diagram({ W: 940, H: 330, title: '§8 · 聚合根=一致性边界：案例聚合的真实结构', caption: '子对象只能经根修改（改 defs→重建）；verify 守卫=聚合不变量的机器化。数字为案例 02 实时读数。', nodes, edges }, t);

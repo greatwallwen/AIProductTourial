@@ -14,19 +14,39 @@
 <line x1="470.0" y1="134.0" x2="580.0" y2="210.0" stroke="#38bdf8" stroke-width="1.6" /><path d="M580 210 L572.5 209.2 L576.6 203.3 z" fill="#38bdf8"/>
 <line x1="620.0" y1="102.0" x2="700.0" y2="238.0" stroke="#38bdf8" stroke-width="1.6" /><path d="M700 238 L693.6 234.1 L699.8 230.5 z" fill="#38bdf8"/>
 <rect x="320" y="70" width="300" height="64" rx="10" fill="#121826" stroke="#22d3ee" stroke-width="1.4"  filter="url(#dsh)"/>
-  <rect x="320" y="70" width="300" height="3" rx="1.5" fill="#22d3ee"/>
+  <rect x="320" y="70" width="300" height="3" rx="1.5" fill="#22d3ee"/><g transform="translate(329,79) scale(0.62)" fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
+  <path d="m3.3 7 8.7 5 8.7-5" />
+  <path d="M12 22V12" /></g>
   <text x="470" y="101" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">聚合根 · 案例 2</text><text x="470" y="116" font-size="9.5" fill="#5b6b7f" text-anchor="middle">case_definitions.json（唯一入口）</text>
 <rect x="40" y="210" width="200" height="56" rx="10" fill="#121826" stroke="#5b6b7f" stroke-width="1.4"  filter="url(#dsh)"/>
-  <rect x="40" y="210" width="200" height="3" rx="1.5" fill="#5b6b7f"/>
+  <rect x="40" y="210" width="200" height="3" rx="1.5" fill="#5b6b7f"/><g transform="translate(49,219) scale(0.62)" fill="none" stroke="#5b6b7f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"><path d="M13 5h8" />
+  <path d="M13 12h8" />
+  <path d="M13 19h8" />
+  <path d="m3 17 2 2 4-4" />
+  <path d="m3 7 2 2 4-4" /></g>
   <text x="140" y="237" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">fields ×7</text><text x="140" y="252" font-size="9.5" fill="#5b6b7f" text-anchor="middle">守卫: fields⊆表头</text>
 <rect x="260" y="210" width="200" height="56" rx="10" fill="#121826" stroke="#5b6b7f" stroke-width="1.4"  filter="url(#dsh)"/>
-  <rect x="260" y="210" width="200" height="3" rx="1.5" fill="#5b6b7f"/>
+  <rect x="260" y="210" width="200" height="3" rx="1.5" fill="#5b6b7f"/><g transform="translate(269,219) scale(0.62)" fill="none" stroke="#5b6b7f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"><path d="M16 7h6v6" />
+  <path d="m22 7-8.5 8.5-5-5L2 17" /></g>
   <text x="360" y="237" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">metricChain ×5</text><text x="360" y="252" font-size="9.5" fill="#5b6b7f" text-anchor="middle">守卫: KPI 数一致</text>
 <rect x="480" y="210" width="200" height="56" rx="10" fill="#121826" stroke="#5b6b7f" stroke-width="1.4"  filter="url(#dsh)"/>
-  <rect x="480" y="210" width="200" height="3" rx="1.5" fill="#5b6b7f"/>
+  <rect x="480" y="210" width="200" height="3" rx="1.5" fill="#5b6b7f"/><g transform="translate(489,219) scale(0.62)" fill="none" stroke="#5b6b7f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+  <path d="M12 9v4" />
+  <path d="M12 17h.01" /></g>
   <text x="580" y="237" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">exceptionStates ×4</text><text x="580" y="252" font-size="9.5" fill="#5b6b7f" text-anchor="middle">守卫: 异常可追踪</text>
 <rect x="700" y="210" width="200" height="56" rx="10" fill="#121826" stroke="#5b6b7f" stroke-width="1.4"  filter="url(#dsh)"/>
-  <rect x="700" y="210" width="200" height="3" rx="1.5" fill="#5b6b7f"/>
+  <rect x="700" y="210" width="200" height="3" rx="1.5" fill="#5b6b7f"/><g transform="translate(709,219) scale(0.62)" fill="none" stroke="#5b6b7f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"><path d="M2.97 12.92A2 2 0 0 0 2 14.63v3.24a2 2 0 0 0 .97 1.71l3 1.8a2 2 0 0 0 2.06 0L12 19v-5.5l-5-3-4.03 2.42Z" />
+  <path d="m7 16.5-4.74-2.85" />
+  <path d="m7 16.5 5-3" />
+  <path d="M7 16.5v5.17" />
+  <path d="M12 13.5V19l3.97 2.38a2 2 0 0 0 2.06 0l3-1.8a2 2 0 0 0 .97-1.71v-3.24a2 2 0 0 0-.97-1.71L17 10.5l-5 3Z" />
+  <path d="m17 16.5-5-3" />
+  <path d="m17 16.5 4.74-2.85" />
+  <path d="M17 16.5v5.17" />
+  <path d="M7.97 4.42A2 2 0 0 0 7 6.13v4.37l5 3 5-3V6.13a2 2 0 0 0-.97-1.71l-3-1.8a2 2 0 0 0-2.06 0l-3 1.8Z" />
+  <path d="M12 8 7.26 5.15" />
+  <path d="m12 8 4.74-2.85" />
+  <path d="M12 13.5V8" /></g>
   <text x="800" y="237" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">skills ×3</text><text x="800" y="252" font-size="9.5" fill="#5b6b7f" text-anchor="middle">守卫: 已注册</text>
 <text x="24" y="316" font-size="10.5" fill="#5b6b7f">子对象只能经根修改（改 defs→重建）；verify 守卫=聚合不变量的机器化。数字为案例 02 实时读数。</text>
 </svg>

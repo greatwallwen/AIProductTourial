@@ -1,7 +1,17 @@
 /** 节点-连线架构图渲染器（深色大屏风）：C4 / 限界上下文 / 部署 / 数据流 / SDD 流水线 / 时序。
  *  坐标显式给定 → 确定性、截图稳定。t = 主题对象（bg/bg2/panel/panelSoft/border/grid/ink/ink2/muted/accent/accent2/ok/warn/bad）。
  *  build_docs 已接近 800 行，故图形引擎独立成模块（对齐 rules 单文件<800）。*/
+import { readFileSync } from 'node:fs';
+import { join, resolve } from 'node:path';
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+// 节点 icon：读 lucide 源 svg 抽内层。图为独立 .svg 经 <img> 引用 → stroke 必须烙死节点色，禁 currentColor。
+const ICONDIR = resolve(import.meta.dirname, '..', '..', 'assets', 'vendor', 'lucide');
+const _icons = {};
+export function iconInner(name) {
+  if (!(name in _icons)) { try { const m = readFileSync(join(ICONDIR, name + '.svg'), 'utf8').match(/<svg[^>]*>([\s\S]*)<\/svg>/); _icons[name] = m ? m[1].trim() : ''; } catch { _icons[name] = ''; } }
+  return _icons[name];
+}
 
 function frame(W, H, t, title, caption) {
   const head = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" font-family="PingFang SC,Microsoft YaHei,sans-serif">
@@ -25,8 +35,10 @@ function nodeSvg(n, t) {
   const tag = n.tag ? `<rect x="${n.x + n.w - esc(n.tag).length * 7 - 16}" y="${n.y + 6}" width="${esc(n.tag).length * 7 + 10}" height="15" rx="7" fill="${col}" opacity="0.18"/><text x="${n.x + n.w - 10}" y="${n.y + 17}" font-size="8.5" fill="${col}" text-anchor="end">${esc(n.tag)}</text>` : '';
   const sub = n.sub ? `<text x="${cx}" y="${n.y + n.h / 2 + 14}" font-size="9.5" fill="${t.muted}" text-anchor="middle">${esc(n.sub)}</text>` : '';
   const ly = n.sub ? n.y + n.h / 2 - 1 : n.y + n.h / 2 + 4;
+  const inner = n.icon ? iconInner(n.icon) : '';
+  const icn = inner ? `<g transform="translate(${n.x + 9},${n.y + 9}) scale(0.62)" fill="none" stroke="${col}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9">${inner}</g>` : '';
   return `<rect x="${n.x}" y="${n.y}" width="${n.w}" height="${n.h}" rx="10" fill="${t.panel}" stroke="${col}" stroke-width="1.4" ${n.dashed ? 'stroke-dasharray="5 3"' : ''} filter="url(#dsh)"/>
-  <rect x="${n.x}" y="${n.y}" width="${n.w}" height="3" rx="1.5" fill="${col}"/>${tag}
+  <rect x="${n.x}" y="${n.y}" width="${n.w}" height="3" rx="1.5" fill="${col}"/>${tag}${icn}
   <text x="${cx}" y="${ly}" font-size="12" font-weight="700" fill="${t.ink}" text-anchor="middle">${esc(n.label)}</text>${sub}`;
 }
 

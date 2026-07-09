@@ -1,7 +1,7 @@
 /** P0 TDD：scatter()/matrix() 两个数据驱动 mark（只加真正用到的，不做通用图库）。node --test 运行。 */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { scatter, matrix } from './diagram.mjs';
+import { scatter, matrix, diagram, iconInner } from './diagram.mjs';
 
 const t = { bg: '#0a0f16', bg2: '#0d1420', panel: '#111a28', panelSoft: '#0f1725', border: '#223', grid: '#1a2536', ink: '#e8eef7', ink2: '#b9c6d8', muted: '#7e8ba0', accent: '#22d3ee', accent2: '#a78bfa', ok: '#34d399', warn: '#fbbf24', bad: '#f87171' };
 
@@ -16,6 +16,18 @@ test('scatter：按序列渲染数据点+坐标轴+图例，确定性输出', ()
   assert.ok(svg.includes('R(天)') && svg.includes('F(次)'), '含轴标签');
   assert.ok(svg.includes('真实') && svg.includes('合成'), '含序列图例');
   assert.equal(svg, scatter(spec, t), '同输入同输出（截图稳定）');
+});
+
+test('节点 icon：注入 lucide 内层形状 + 烙死节点色（禁 currentColor·反验证剧场）', () => {
+  const spec = { W: 400, H: 200, title: 'icon', nodes: [{ id: 'n', x: 40, y: 40, w: 180, h: 70, color: t.ok, label: '传感器', icon: 'target' }], edges: [] };
+  const svg = diagram(spec, t);
+  const inner = iconInner('target');
+  assert.ok(inner.includes('<circle'), 'target 源图含 circle（前提）');
+  assert.ok((svg.match(/<circle /g) || []).length >= 3, '节点渲染出 icon 的 3 个 circle');
+  assert.ok(svg.includes(`stroke="${t.ok}"`), 'icon stroke 烙死为节点色，不是 currentColor');
+  assert.ok(!/currentColor/.test(svg), '整图不含 currentColor');
+  const spec0 = { W: 400, H: 200, title: 'icon', nodes: [{ id: 'n', x: 40, y: 40, w: 180, h: 70, color: t.ok, label: '无图标' }], edges: [] };
+  assert.ok((diagram(spec0, t).match(/<circle /g) || []).length === 0, '无 icon 字段则不注入形状');
 });
 
 test('matrix：行×列热力格 + 数值 + 转义', () => {

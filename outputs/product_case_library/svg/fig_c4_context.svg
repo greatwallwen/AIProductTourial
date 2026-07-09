@@ -14,19 +14,37 @@
 <line x1="560.0" y1="205.0" x2="660.0" y2="228.0" stroke="#38bdf8" stroke-width="1.6" stroke-dasharray="5 3"/><path d="M660 228 L652.8 230.0 L654.4 223.0 z" fill="#38bdf8"/><rect x="588.5" y="208.5" width="43" height="15" rx="4" fill="#0d1220" stroke="#1e2a3a"/><text x="610" y="219.5" font-size="9" fill="#9fb0c3" text-anchor="middle">按规格驱动</text>
 <line x1="560.0" y1="205.0" x2="660.0" y2="332.0" stroke="#38bdf8" stroke-width="1.6" /><path d="M660 332 L653.1 329.1 L658.8 324.6 z" fill="#38bdf8"/><rect x="581.9" y="260.5" width="56.199999999999996" height="15" rx="4" fill="#0d1220" stroke="#1e2a3a"/><text x="610" y="271.5" font-size="9" fill="#9fb0c3" text-anchor="middle">HTTP 托管</text>
 <rect x="60" y="170" width="180" height="76" rx="10" fill="#121826" stroke="#38bdf8" stroke-width="1.4"  filter="url(#dsh)"/>
-  <rect x="60" y="170" width="180" height="3" rx="1.5" fill="#38bdf8"/><rect x="217" y="176" width="17" height="15" rx="7" fill="#38bdf8" opacity="0.18"/><text x="230" y="187" font-size="8.5" fill="#38bdf8" text-anchor="end">人</text>
+  <rect x="60" y="170" width="180" height="3" rx="1.5" fill="#38bdf8"/><rect x="217" y="176" width="17" height="15" rx="7" fill="#38bdf8" opacity="0.18"/><text x="230" y="187" font-size="8.5" fill="#38bdf8" text-anchor="end">人</text><g transform="translate(69,179) scale(0.62)" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></g>
   <text x="150" y="207" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">学习者</text><text x="150" y="222" font-size="9.5" fill="#5b6b7f" text-anchor="middle">研发 / 产品 / 项目</text>
 <rect x="340" y="150" width="220" height="110" rx="10" fill="#121826" stroke="#22d3ee" stroke-width="1.4"  filter="url(#dsh)"/>
-  <rect x="340" y="150" width="220" height="3" rx="1.5" fill="#22d3ee"/>
+  <rect x="340" y="150" width="220" height="3" rx="1.5" fill="#22d3ee"/><g transform="translate(349,159) scale(0.62)" fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
+  <path d="m3.3 7 8.7 5 8.7-5" />
+  <path d="M12 22V12" /></g>
   <text x="450" y="204" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">AI 一体化知识库平台</text><text x="450" y="219" font-size="9.5" fill="#5b6b7f" text-anchor="middle">真数据·可运行·自校验</text>
 <rect x="660" y="70" width="190" height="76" rx="10" fill="#121826" stroke="#9fb0c3" stroke-width="1.4" stroke-dasharray="5 3" filter="url(#dsh)"/>
-  <rect x="660" y="70" width="190" height="3" rx="1.5" fill="#9fb0c3"/><rect x="820" y="76" width="24" height="15" rx="7" fill="#9fb0c3" opacity="0.18"/><text x="840" y="87" font-size="8.5" fill="#9fb0c3" text-anchor="end">外部</text>
+  <rect x="660" y="70" width="190" height="3" rx="1.5" fill="#9fb0c3"/><rect x="820" y="76" width="24" height="15" rx="7" fill="#9fb0c3" opacity="0.18"/><text x="840" y="87" font-size="8.5" fill="#9fb0c3" text-anchor="end">外部</text><g transform="translate(669,79) scale(0.62)" fill="none" stroke="#9fb0c3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z" />
+  <path d="M12 22V12" />
+  <polyline points="3.29 7 12 12 20.71 7" />
+  <path d="m7.5 4.27 9 5.15" /></g>
   <text x="755" y="107" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">公开数据集</text><text x="755" y="122" font-size="9.5" fill="#5b6b7f" text-anchor="middle">UCI / CMS / US DOT</text>
 <rect x="660" y="190" width="190" height="76" rx="10" fill="#121826" stroke="#9fb0c3" stroke-width="1.4" stroke-dasharray="5 3" filter="url(#dsh)"/>
-  <rect x="660" y="190" width="190" height="3" rx="1.5" fill="#9fb0c3"/><rect x="820" y="196" width="24" height="15" rx="7" fill="#9fb0c3" opacity="0.18"/><text x="840" y="207" font-size="8.5" fill="#9fb0c3" text-anchor="end">外部</text>
+  <rect x="660" y="190" width="190" height="3" rx="1.5" fill="#9fb0c3"/><rect x="820" y="196" width="24" height="15" rx="7" fill="#9fb0c3" opacity="0.18"/><text x="840" y="207" font-size="8.5" fill="#9fb0c3" text-anchor="end">外部</text><g transform="translate(669,199) scale(0.62)" fill="none" stroke="#9fb0c3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"><path d="M12 20v2" />
+  <path d="M12 2v2" />
+  <path d="M17 20v2" />
+  <path d="M17 2v2" />
+  <path d="M2 12h2" />
+  <path d="M2 17h2" />
+  <path d="M2 7h2" />
+  <path d="M20 12h2" />
+  <path d="M20 17h2" />
+  <path d="M20 7h2" />
+  <path d="M7 20v2" />
+  <path d="M7 2v2" />
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <rect x="8" y="8" width="8" height="8" rx="1" /></g>
   <text x="755" y="227" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">AI 编程工具</text><text x="755" y="242" font-size="9.5" fill="#5b6b7f" text-anchor="middle">任一 Agent 工具</text>
 <rect x="660" y="300" width="190" height="64" rx="10" fill="#121826" stroke="#9fb0c3" stroke-width="1.4" stroke-dasharray="5 3" filter="url(#dsh)"/>
-  <rect x="660" y="300" width="190" height="3" rx="1.5" fill="#9fb0c3"/><rect x="820" y="306" width="24" height="15" rx="7" fill="#9fb0c3" opacity="0.18"/><text x="840" y="317" font-size="8.5" fill="#9fb0c3" text-anchor="end">外部</text>
+  <rect x="660" y="300" width="190" height="3" rx="1.5" fill="#9fb0c3"/><rect x="820" y="306" width="24" height="15" rx="7" fill="#9fb0c3" opacity="0.18"/><text x="840" y="317" font-size="8.5" fill="#9fb0c3" text-anchor="end">外部</text><g transform="translate(669,309) scale(0.62)" fill="none" stroke="#9fb0c3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></g>
   <text x="755" y="331" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">浏览器</text><text x="755" y="346" font-size="9.5" fill="#5b6b7f" text-anchor="middle">大屏 / 实验室</text>
 <text x="24" y="406" font-size="10.5" fill="#5b6b7f">最外层：系统 + 使用者 + 外部依赖。先看清边界，再往里拆。来源：C4 模型（Simon Brown）。</text>
 </svg>

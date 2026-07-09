@@ -14,28 +14,64 @@
 <line x1="574.0" y1="152.0" x2="574.0" y2="230.0" stroke="#5b6b7f" stroke-width="1.6" stroke-dasharray="5 3"/><path d="M574 230 L570.4 223.4 L577.6 223.4 z" fill="#5b6b7f"/><rect x="562.4" y="183" width="23.2" height="15" rx="4" fill="#0d1220" stroke="#1e2a3a"/><text x="574" y="194" font-size="9" fill="#9fb0c3" text-anchor="middle">同构</text>
 <line x1="796.0" y1="152.0" x2="796.0" y2="230.0" stroke="#5b6b7f" stroke-width="1.6" stroke-dasharray="5 3"/><path d="M796 230 L792.4 223.4 L799.6 223.4 z" fill="#5b6b7f"/><rect x="784.4" y="183" width="23.2" height="15" rx="4" fill="#0d1220" stroke="#1e2a3a"/><text x="796" y="194" font-size="9" fill="#9fb0c3" text-anchor="middle">同构</text>
 <rect x="30" y="90" width="200" height="62" rx="10" fill="#121826" stroke="#5b6b7f" stroke-width="1.4"  filter="url(#dsh)"/>
-  <rect x="30" y="90" width="200" height="3" rx="1.5" fill="#5b6b7f"/>
+  <rect x="30" y="90" width="200" height="3" rx="1.5" fill="#5b6b7f"/><g transform="translate(39,99) scale(0.62)" fill="none" stroke="#5b6b7f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"><rect x="16" y="16" width="6" height="6" rx="1" />
+  <rect x="2" y="16" width="6" height="6" rx="1" />
+  <rect x="9" y="2" width="6" height="6" rx="1" />
+  <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3" />
+  <path d="M12 12V8" /></g>
   <text x="130" y="120" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">RPC/gRPC</text><text x="130" y="135" font-size="9.5" fill="#5b6b7f" text-anchor="middle">远程调用</text>
 <rect x="30" y="230" width="200" height="62" rx="10" fill="#121826" stroke="#22d3ee" stroke-width="1.4"  filter="url(#dsh)"/>
-  <rect x="30" y="230" width="200" height="3" rx="1.5" fill="#22d3ee"/>
+  <rect x="30" y="230" width="200" height="3" rx="1.5" fill="#22d3ee"/><g transform="translate(39,239) scale(0.62)" fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"><rect x="16" y="16" width="6" height="6" rx="1" />
+  <rect x="2" y="16" width="6" height="6" rx="1" />
+  <rect x="9" y="2" width="6" height="6" rx="1" />
+  <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3" />
+  <path d="M12 12V8" /></g>
   <text x="130" y="260" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">工具调用 + MCP</text><text x="130" y="275" font-size="9.5" fill="#5b6b7f" text-anchor="middle">多 Agent 同构</text>
 <rect x="252" y="90" width="200" height="62" rx="10" fill="#121826" stroke="#5b6b7f" stroke-width="1.4"  filter="url(#dsh)"/>
-  <rect x="252" y="90" width="200" height="3" rx="1.5" fill="#5b6b7f"/>
+  <rect x="252" y="90" width="200" height="3" rx="1.5" fill="#5b6b7f"/><g transform="translate(261,99) scale(0.62)" fill="none" stroke="#5b6b7f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"><path d="M2.97 12.92A2 2 0 0 0 2 14.63v3.24a2 2 0 0 0 .97 1.71l3 1.8a2 2 0 0 0 2.06 0L12 19v-5.5l-5-3-4.03 2.42Z" />
+  <path d="m7 16.5-4.74-2.85" />
+  <path d="m7 16.5 5-3" />
+  <path d="M7 16.5v5.17" />
+  <path d="M12 13.5V19l3.97 2.38a2 2 0 0 0 2.06 0l3-1.8a2 2 0 0 0 .97-1.71v-3.24a2 2 0 0 0-.97-1.71L17 10.5l-5 3Z" />
+  <path d="m17 16.5-5-3" />
+  <path d="m17 16.5 4.74-2.85" />
+  <path d="M17 16.5v5.17" />
+  <path d="M7.97 4.42A2 2 0 0 0 7 6.13v4.37l5 3 5-3V6.13a2 2 0 0 0-.97-1.71l-3-1.8a2 2 0 0 0-2.06 0l-3 1.8Z" />
+  <path d="M12 8 7.26 5.15" />
+  <path d="m12 8 4.74-2.85" />
+  <path d="M12 13.5V8" /></g>
   <text x="352" y="120" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">注册中心</text><text x="352" y="135" font-size="9.5" fill="#5b6b7f" text-anchor="middle">注册发现</text>
 <rect x="252" y="230" width="200" height="62" rx="10" fill="#121826" stroke="#38bdf8" stroke-width="1.4"  filter="url(#dsh)"/>
-  <rect x="252" y="230" width="200" height="3" rx="1.5" fill="#38bdf8"/>
+  <rect x="252" y="230" width="200" height="3" rx="1.5" fill="#38bdf8"/><g transform="translate(261,239) scale(0.62)" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"><path d="M2.97 12.92A2 2 0 0 0 2 14.63v3.24a2 2 0 0 0 .97 1.71l3 1.8a2 2 0 0 0 2.06 0L12 19v-5.5l-5-3-4.03 2.42Z" />
+  <path d="m7 16.5-4.74-2.85" />
+  <path d="m7 16.5 5-3" />
+  <path d="M7 16.5v5.17" />
+  <path d="M12 13.5V19l3.97 2.38a2 2 0 0 0 2.06 0l3-1.8a2 2 0 0 0 .97-1.71v-3.24a2 2 0 0 0-.97-1.71L17 10.5l-5 3Z" />
+  <path d="m17 16.5-5-3" />
+  <path d="m17 16.5 4.74-2.85" />
+  <path d="M17 16.5v5.17" />
+  <path d="M7.97 4.42A2 2 0 0 0 7 6.13v4.37l5 3 5-3V6.13a2 2 0 0 0-.97-1.71l-3-1.8a2 2 0 0 0-2.06 0l-3 1.8Z" />
+  <path d="M12 8 7.26 5.15" />
+  <path d="m12 8 4.74-2.85" />
+  <path d="M12 13.5V8" /></g>
   <text x="352" y="260" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">Skill Registry</text><text x="352" y="275" font-size="9.5" fill="#5b6b7f" text-anchor="middle">多 Agent 同构</text>
 <rect x="474" y="90" width="200" height="62" rx="10" fill="#121826" stroke="#5b6b7f" stroke-width="1.4"  filter="url(#dsh)"/>
-  <rect x="474" y="90" width="200" height="3" rx="1.5" fill="#5b6b7f"/>
+  <rect x="474" y="90" width="200" height="3" rx="1.5" fill="#5b6b7f"/><g transform="translate(483,99) scale(0.62)" fill="none" stroke="#5b6b7f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+  <path d="M12 9v4" />
+  <path d="M12 17h.01" /></g>
   <text x="574" y="120" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">熔断/重试</text><text x="574" y="135" font-size="9.5" fill="#5b6b7f" text-anchor="middle">容错</text>
 <rect x="474" y="230" width="200" height="62" rx="10" fill="#121826" stroke="#fbbf24" stroke-width="1.4"  filter="url(#dsh)"/>
-  <rect x="474" y="230" width="200" height="3" rx="1.5" fill="#fbbf24"/>
+  <rect x="474" y="230" width="200" height="3" rx="1.5" fill="#fbbf24"/><g transform="translate(483,239) scale(0.62)" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+  <path d="M12 9v4" />
+  <path d="M12 17h.01" /></g>
   <text x="574" y="260" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">停机规则+独立会话</text><text x="574" y="275" font-size="9.5" fill="#5b6b7f" text-anchor="middle">多 Agent 同构</text>
 <rect x="696" y="90" width="200" height="62" rx="10" fill="#121826" stroke="#5b6b7f" stroke-width="1.4"  filter="url(#dsh)"/>
-  <rect x="696" y="90" width="200" height="3" rx="1.5" fill="#5b6b7f"/>
+  <rect x="696" y="90" width="200" height="3" rx="1.5" fill="#5b6b7f"/><g transform="translate(705,99) scale(0.62)" fill="none" stroke="#5b6b7f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"><path d="m12 14 4-4" />
+  <path d="M3.34 19a10 10 0 1 1 17.32 0" /></g>
   <text x="796" y="120" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">APM</text><text x="796" y="135" font-size="9.5" fill="#5b6b7f" text-anchor="middle">监控治理</text>
 <rect x="696" y="230" width="200" height="62" rx="10" fill="#121826" stroke="#34d399" stroke-width="1.4"  filter="url(#dsh)"/>
-  <rect x="696" y="230" width="200" height="3" rx="1.5" fill="#34d399"/>
+  <rect x="696" y="230" width="200" height="3" rx="1.5" fill="#34d399"/><g transform="translate(705,239) scale(0.62)" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"><path d="m12 14 4-4" />
+  <path d="M3.34 19a10 10 0 1 1 17.32 0" /></g>
   <text x="796" y="260" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">活体门禁+回归门</text><text x="796" y="275" font-size="9.5" fill="#5b6b7f" text-anchor="middle">多 Agent 同构</text>
 <text x="24" y="336" font-size="10.5" fill="#5b6b7f">上排=经典答案，下排=多 Agent 形态；每项在本书都有真实锚点（§1/§6/stop-rules//api/gates）。</text>
 </svg>

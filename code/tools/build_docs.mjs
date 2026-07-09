@@ -5,6 +5,7 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join, resolve, dirname } from 'node:path';
 import { archFigures, subsystemDeps } from './arch_figures.mjs';
 import { chapterFigures } from './chapter_figures.mjs';
+import { iconInner } from './diagram.mjs';
 
 const ROOT = resolve(import.meta.dirname, '..', '..');
 // v17 P0-1：数据性质措辞单一真源——synthetic 绝不称「真实」
@@ -21,9 +22,7 @@ const vm = (n) => JSON.parse(readFileSync(join(ROOT, 'code', 'data', `case_${pad
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const theme = (id) => THEMES[id] || THEMES['graphite-hud'];
 // 加载 vendored 的真实图标（Lucide，ISC 许可，assets/vendor/lucide）→ 取内层路径内联
-function loadIcon(name) {
-  try { const s = readFileSync(join(ROOT, 'assets', 'vendor', 'lucide', name + '.svg'), 'utf8'); const m = s.match(/<svg[^>]*>([\s\S]*)<\/svg>/); return m ? m[1].trim() : ''; } catch { return ''; }
-}
+const loadIcon = iconInner; // 复用 diagram.mjs 的同款加载器（消一处重复）
 
 // 状态严重度 → 主题色
 function sevColor(t, s) {

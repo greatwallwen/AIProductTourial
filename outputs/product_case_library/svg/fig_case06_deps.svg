@@ -15,19 +15,30 @@
 <line x1="352.0" y1="117.0" x2="289.0" y2="373.0" stroke="#a855f7" stroke-width="1.6" /><path d="M289 373 L287.1 365.7 L294.1 367.5 z" fill="#a855f7"/>
 <line x1="450.0" y1="276.0" x2="450.0" y2="342.0" stroke="#a855f7" stroke-width="1.6" /><path d="M450 342 L446.4 335.4 L453.6 335.4 z" fill="#a855f7"/>
 <rect x="352" y="86" width="196" height="62" rx="10" fill="#0c1626" stroke="#a855f7" stroke-width="1.4"  filter="url(#dsh)"/>
-  <rect x="352" y="86" width="196" height="3" rx="1.5" fill="#a855f7"/><rect x="518" y="92" width="24" height="15" rx="7" fill="#a855f7" opacity="0.18"/><text x="538" y="103" font-size="8.5" fill="#a855f7" text-anchor="end">接口</text>
+  <rect x="352" y="86" width="196" height="3" rx="1.5" fill="#a855f7"/><rect x="518" y="92" width="24" height="15" rx="7" fill="#a855f7" opacity="0.18"/><text x="538" y="103" font-size="8.5" fill="#a855f7" text-anchor="end">接口</text><g transform="translate(361,95) scale(0.62)" fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"><rect x="16" y="16" width="6" height="6" rx="1" />
+  <rect x="2" y="16" width="6" height="6" rx="1" />
+  <rect x="9" y="2" width="6" height="6" rx="1" />
+  <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3" />
+  <path d="M12 12V8" /></g>
   <text x="450" y="116" font-size="12" font-weight="700" fill="#e8eefb" text-anchor="middle">code/server/routes</text><text x="450" y="131" font-size="9.5" fill="#566484" text-anchor="middle">HTTP 层·不写业务</text>
 <rect x="352" y="214" width="196" height="62" rx="10" fill="#0c1626" stroke="#06b6d4" stroke-width="1.4"  filter="url(#dsh)"/>
-  <rect x="352" y="214" width="196" height="3" rx="1.5" fill="#06b6d4"/><rect x="518" y="220" width="24" height="15" rx="7" fill="#06b6d4" opacity="0.18"/><text x="538" y="231" font-size="8.5" fill="#06b6d4" text-anchor="end">业务</text>
+  <rect x="352" y="214" width="196" height="3" rx="1.5" fill="#06b6d4"/><rect x="518" y="220" width="24" height="15" rx="7" fill="#06b6d4" opacity="0.18"/><text x="538" y="231" font-size="8.5" fill="#06b6d4" text-anchor="end">业务</text><g transform="translate(361,223) scale(0.62)" fill="none" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"><rect width="8" height="8" x="3" y="3" rx="2" />
+  <path d="M7 11v4a2 2 0 0 0 2 2h4" />
+  <rect width="8" height="8" x="13" y="13" rx="2" /></g>
   <text x="450" y="244" font-size="12" font-weight="700" fill="#e8eefb" text-anchor="middle">code/server/services</text><text x="450" y="259" font-size="9.5" fill="#566484" text-anchor="middle">业务层·真算</text>
 <rect x="93" y="342" width="196" height="62" rx="10" fill="#0c1626" stroke="#34d399" stroke-width="1.4"  filter="url(#dsh)"/>
-  <rect x="93" y="342" width="196" height="3" rx="1.5" fill="#34d399"/><rect x="238" y="348" width="45" height="15" rx="7" fill="#34d399" opacity="0.18"/><text x="279" y="359" font-size="8.5" fill="#34d399" text-anchor="end">存储/数据</text>
+  <rect x="93" y="342" width="196" height="3" rx="1.5" fill="#34d399"/><rect x="238" y="348" width="45" height="15" rx="7" fill="#34d399" opacity="0.18"/><text x="279" y="359" font-size="8.5" fill="#34d399" text-anchor="end">存储/数据</text><g transform="translate(102,351) scale(0.62)" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"><ellipse cx="12" cy="5" rx="9" ry="3" />
+  <path d="M3 5V19A9 3 0 0 0 21 19V5" />
+  <path d="M3 12A9 3 0 0 0 21 12" /></g>
   <text x="191" y="372" font-size="12" font-weight="700" fill="#e8eefb" text-anchor="middle">code/server/db</text><text x="191" y="387" font-size="9.5" fill="#566484" text-anchor="middle">node:sqlite</text>
 <rect x="352" y="342" width="196" height="62" rx="10" fill="#0c1626" stroke="#34d399" stroke-width="1.4"  filter="url(#dsh)"/>
-  <rect x="352" y="342" width="196" height="3" rx="1.5" fill="#34d399"/><rect x="497" y="348" width="45" height="15" rx="7" fill="#34d399" opacity="0.18"/><text x="538" y="359" font-size="8.5" fill="#34d399" text-anchor="end">存储/数据</text>
+  <rect x="352" y="342" width="196" height="3" rx="1.5" fill="#34d399"/><rect x="497" y="348" width="45" height="15" rx="7" fill="#34d399" opacity="0.18"/><text x="538" y="359" font-size="8.5" fill="#34d399" text-anchor="end">存储/数据</text><g transform="translate(361,351) scale(0.62)" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"><ellipse cx="12" cy="5" rx="9" ry="3" />
+  <path d="M3 5V19A9 3 0 0 0 21 19V5" />
+  <path d="M3 12A9 3 0 0 0 21 12" /></g>
   <text x="450" y="372" font-size="12" font-weight="700" fill="#e8eefb" text-anchor="middle">code/server/data</text><text x="450" y="387" font-size="9.5" fill="#566484" text-anchor="middle">CSV 解析</text>
 <rect x="611" y="342" width="196" height="62" rx="10" fill="#0c1626" stroke="#34d399" stroke-width="1.4"  filter="url(#dsh)"/>
-  <rect x="611" y="342" width="196" height="3" rx="1.5" fill="#34d399"/><rect x="756" y="348" width="45" height="15" rx="7" fill="#34d399" opacity="0.18"/><text x="797" y="359" font-size="8.5" fill="#34d399" text-anchor="end">存储/数据</text>
+  <rect x="611" y="342" width="196" height="3" rx="1.5" fill="#34d399"/><rect x="756" y="348" width="45" height="15" rx="7" fill="#34d399" opacity="0.18"/><text x="797" y="359" font-size="8.5" fill="#34d399" text-anchor="end">存储/数据</text><g transform="translate(620,351) scale(0.62)" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"><path d="m21 21-4.34-4.34" />
+  <circle cx="11" cy="11" r="8" /></g>
   <text x="709" y="372" font-size="12" font-weight="700" fill="#e8eefb" text-anchor="middle">code/server/vector</text><text x="709" y="387" font-size="9.5" fill="#566484" text-anchor="middle">向量库·RAG</text>
 <rect x="718.5999999999999" y="424" width="12" height="12" rx="3" fill="#34d399"/><text x="736.5999999999999" y="434" font-size="9.5" fill="#9fb2d4">存储/数据</text><rect x="785.5999999999999" y="424" width="12" height="12" rx="3" fill="#06b6d4"/><text x="803.5999999999999" y="434" font-size="9.5" fill="#9fb2d4">业务</text><rect x="832.8" y="424" width="12" height="12" rx="3" fill="#a855f7"/><text x="850.8" y="434" font-size="9.5" fill="#9fb2d4">接口</text><text x="24" y="436" font-size="10.5" fill="#566484">扫 code/server 真实 import 得 5 条依赖边；循环依赖 0 处（适应度函数守护：分层单向依赖）。</text>
 </svg>

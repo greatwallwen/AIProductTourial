@@ -15,22 +15,72 @@
 <line x1="600.0" y1="185.0" x2="760.0" y2="180.0" stroke="#38bdf8" stroke-width="1.6" /><path d="M760 180 L753.5 183.8 L753.3 176.6 z" fill="#38bdf8"/>
 <line x1="600.0" y1="185.0" x2="760.0" y2="272.0" stroke="#38bdf8" stroke-width="1.6" /><path d="M760 272 L752.5 272.0 L755.9 265.7 z" fill="#38bdf8"/>
 <rect x="50" y="150" width="170" height="70" rx="10" fill="#121826" stroke="#38bdf8" stroke-width="1.4"  filter="url(#dsh)"/>
-  <rect x="50" y="150" width="170" height="3" rx="1.5" fill="#38bdf8"/><rect x="197" y="156" width="17" height="15" rx="7" fill="#38bdf8" opacity="0.18"/><text x="210" y="167" font-size="8.5" fill="#38bdf8" text-anchor="end">人</text>
+  <rect x="50" y="150" width="170" height="3" rx="1.5" fill="#38bdf8"/><rect x="197" y="156" width="17" height="15" rx="7" fill="#38bdf8" opacity="0.18"/><text x="210" y="167" font-size="8.5" fill="#38bdf8" text-anchor="end">人</text><g transform="translate(59,159) scale(0.62)" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></g>
   <text x="135" y="184" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">团队 / 个人</text><text x="135" y="199" font-size="9.5" fill="#5b6b7f" text-anchor="middle">upload 草稿</text>
 <rect x="380" y="130" width="220" height="110" rx="10" fill="#121826" stroke="#22d3ee" stroke-width="1.4"  filter="url(#dsh)"/>
-  <rect x="380" y="130" width="220" height="3" rx="1.5" fill="#22d3ee"/>
+  <rect x="380" y="130" width="220" height="3" rx="1.5" fill="#22d3ee"/><g transform="translate(389,139) scale(0.62)" fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"><path d="M2.97 12.92A2 2 0 0 0 2 14.63v3.24a2 2 0 0 0 .97 1.71l3 1.8a2 2 0 0 0 2.06 0L12 19v-5.5l-5-3-4.03 2.42Z" />
+  <path d="m7 16.5-4.74-2.85" />
+  <path d="m7 16.5 5-3" />
+  <path d="M7 16.5v5.17" />
+  <path d="M12 13.5V19l3.97 2.38a2 2 0 0 0 2.06 0l3-1.8a2 2 0 0 0 .97-1.71v-3.24a2 2 0 0 0-.97-1.71L17 10.5l-5 3Z" />
+  <path d="m17 16.5-5-3" />
+  <path d="m17 16.5 4.74-2.85" />
+  <path d="M17 16.5v5.17" />
+  <path d="M7.97 4.42A2 2 0 0 0 7 6.13v4.37l5 3 5-3V6.13a2 2 0 0 0-.97-1.71l-3-1.8a2 2 0 0 0-2.06 0l-3 1.8Z" />
+  <path d="M12 8 7.26 5.15" />
+  <path d="m12 8 4.74-2.85" />
+  <path d="M12 13.5V8" /></g>
   <text x="490" y="184" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">私有 Skill Registry</text><text x="490" y="199" font-size="9.5" fill="#5b6b7f" text-anchor="middle">版本 · 审核 · RBAC · PUBLIC/PRIVATE</text>
 <rect x="380" y="290" width="220" height="56" rx="10" fill="#121826" stroke="#f87171" stroke-width="1.4"  filter="url(#dsh)"/>
-  <rect x="380" y="290" width="220" height="3" rx="1.5" fill="#f87171"/>
+  <rect x="380" y="290" width="220" height="3" rx="1.5" fill="#f87171"/><g transform="translate(389,299) scale(0.62)" fill="none" stroke="#f87171" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></g>
   <text x="490" y="317" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">skill-scanner</text><text x="490" y="332" font-size="9.5" fill="#5b6b7f" text-anchor="middle">发布前扫描</text>
 <rect x="760" y="60" width="180" height="56" rx="10" fill="#121826" stroke="#34d399" stroke-width="1.4"  filter="url(#dsh)"/>
-  <rect x="760" y="60" width="180" height="3" rx="1.5" fill="#34d399"/>
+  <rect x="760" y="60" width="180" height="3" rx="1.5" fill="#34d399"/><g transform="translate(769,69) scale(0.62)" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"><path d="M12 20v2" />
+  <path d="M12 2v2" />
+  <path d="M17 20v2" />
+  <path d="M17 2v2" />
+  <path d="M2 12h2" />
+  <path d="M2 17h2" />
+  <path d="M2 7h2" />
+  <path d="M20 12h2" />
+  <path d="M20 17h2" />
+  <path d="M20 7h2" />
+  <path d="M7 20v2" />
+  <path d="M7 2v2" />
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <rect x="8" y="8" width="8" height="8" rx="1" /></g>
   <text x="850" y="87" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">Claude Code</text><text x="850" y="102" font-size="9.5" fill="#5b6b7f" text-anchor="middle">skill-get / sync</text>
 <rect x="760" y="152" width="180" height="56" rx="10" fill="#121826" stroke="#34d399" stroke-width="1.4"  filter="url(#dsh)"/>
-  <rect x="760" y="152" width="180" height="3" rx="1.5" fill="#34d399"/>
+  <rect x="760" y="152" width="180" height="3" rx="1.5" fill="#34d399"/><g transform="translate(769,161) scale(0.62)" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"><path d="M12 20v2" />
+  <path d="M12 2v2" />
+  <path d="M17 20v2" />
+  <path d="M17 2v2" />
+  <path d="M2 12h2" />
+  <path d="M2 17h2" />
+  <path d="M2 7h2" />
+  <path d="M20 12h2" />
+  <path d="M20 17h2" />
+  <path d="M20 7h2" />
+  <path d="M7 20v2" />
+  <path d="M7 2v2" />
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <rect x="8" y="8" width="8" height="8" rx="1" /></g>
   <text x="850" y="179" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">Codex</text><text x="850" y="194" font-size="9.5" fill="#5b6b7f" text-anchor="middle">skill-get / sync</text>
 <rect x="760" y="244" width="180" height="56" rx="10" fill="#121826" stroke="#34d399" stroke-width="1.4"  filter="url(#dsh)"/>
-  <rect x="760" y="244" width="180" height="3" rx="1.5" fill="#34d399"/>
+  <rect x="760" y="244" width="180" height="3" rx="1.5" fill="#34d399"/><g transform="translate(769,253) scale(0.62)" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"><path d="M12 20v2" />
+  <path d="M12 2v2" />
+  <path d="M17 20v2" />
+  <path d="M17 2v2" />
+  <path d="M2 12h2" />
+  <path d="M2 17h2" />
+  <path d="M2 7h2" />
+  <path d="M20 12h2" />
+  <path d="M20 17h2" />
+  <path d="M20 7h2" />
+  <path d="M7 20v2" />
+  <path d="M7 2v2" />
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <rect x="8" y="8" width="8" height="8" rx="1" /></g>
   <text x="850" y="271" font-size="12" font-weight="700" fill="#e6edf6" text-anchor="middle">自建 Agent</text><text x="850" y="286" font-size="9.5" fill="#5b6b7f" text-anchor="middle">skill-get / sync</text>
 <rect x="705.2" y="354" width="12" height="12" rx="3" fill="#f87171"/><text x="723.2" y="364" font-size="9.5" fill="#9fb0c3">扫描</text><rect x="752.4000000000001" y="354" width="12" height="12" rx="3" fill="#34d399"/><text x="770.4000000000001" y="364" font-size="9.5" fill="#9fb0c3">Agent</text><rect x="819.4000000000001" y="354" width="12" height="12" rx="3" fill="#22d3ee"/><text x="837.4000000000001" y="364" font-size="9.5" fill="#9fb0c3">Registry</text><rect x="906.2" y="354" width="12" height="12" rx="3" fill="#38bdf8"/><text x="924.2" y="364" font-size="9.5" fill="#9fb0c3">上传者</text><text x="24" y="366" font-size="10.5" fill="#5b6b7f">团队/个人上传 → Registry 版本+审核+权限 → CLI/API 分发到各 Agent；个人多 Agent 也从同一处同步，不再散落各目录。</text>
 </svg>
