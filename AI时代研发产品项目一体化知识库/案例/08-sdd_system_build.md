@@ -108,7 +108,7 @@
 
 ### 图形/原型/表单
 
-![规格驱动系统建造台 · 信息图](../../outputs/product_case_library/svg/case_08_sdd_system_build.svg)
+![规格驱动系统建造台 · 信息图](../../assets/course/image2/diagrams/case_08_sdd_system_build.png)
 
 ![规格驱动系统建造台 · 可运行大屏原型截图](../../assets/screenshots/premium_case_08_sdd_system_build_desktop.png)
 
@@ -120,12 +120,11 @@
 
 交付物：**SDD 系统建造走查报告**。必含要素（字段/指标链/异常状态/Skill/决策动作/高影响复核）与合格线由自测器六项核对：`node code/tools/check_my_work.mjs 8 你的方案.md`；红线：不越过「每步产出须可追溯（规格/ADR/门禁），不得跳过澄清与门禁两步」。
 
-### 跟着做（动手复现）
+### 课程实操入口
 
-1. 起服务：`bash code/run.sh`，浏览器打开 `#/case/08`（本案专属大屏）。
-2. **你应看到**：SDD 八步走查队列与门禁状态，数据来自后端实时接口（性质见章首标注）。
-3. **动手改一改**：打开 rules/ 与 docs/_source，找出本案「宪法」与「规格」两步各对应哪些真实文件；再在 verify 里种一个错，看「门禁」步会不会红。
-4. **自测产出**：`node code/tools/check_my_work.mjs 8 你的方案.md`——红项指明缺什么、回哪章补。
+本案是「从规格、任务和契约走到可追溯系统事件」纵向链的主入口，不再复制九套相同的跟做步骤。完成 [SDD 结业主实验](../../course/labs/05-sdd-capstone.md) 的 活动 11/12：先运行受控命令，再提交结构化证据与三角色评分。
+
+页面观察入口仍为 `bash code/run.sh` → `#/case/08`；观察不是完成证据，活动契约以 `course/activities.json` 为准。
 
 <details>
 <summary><img src="../../assets/vendor/lucide/built/sparkles.svg" width="14" alt="" style="vertical-align:-2px" /> 深度（专业读者）：权衡 · 失效模式 · 何时别用</summary>

@@ -1,11 +1,11 @@
 {
  "num": 5,
  "slug": "postgres_relational_arch",
- "url": "http://localhost:5200/#/case/05",
- "shotAt": "2026-07-08T23:48:02.284Z",
+ "url": "http://127.0.0.1:5210/#/case/05",
+ "shotAt": "2026-07-10T09:45:36.205Z",
  "brand": "会自检的 AI 工程 · 实操手册",
  "caseCount": 9,
  "h1": "关系库查询(PostgreSQL)",
  "kpis": [],
- "pngBytes": 544285
+ "pngBytes": 526790
 }

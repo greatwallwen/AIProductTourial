@@ -1,0 +1,87 @@
+{
+  "schema": "multi-role-course-audit/v1",
+  "coursePackage": "course-package-ai-product-loop",
+  "roles": [
+    {
+      "role": "engineering",
+      "checks": [
+        {
+          "id": "typed-job-bijection",
+          "ok": true
+        },
+        {
+          "id": "slide-activity-trace",
+          "ok": true
+        },
+        {
+          "id": "visual-assets-resolve",
+          "ok": true
+        },
+        {
+          "id": "bounded-loop-types",
+          "ok": true
+        }
+      ],
+      "findings": [],
+      "ok": true
+    },
+    {
+      "role": "product",
+      "checks": [
+        {
+          "id": "outcome-per-module",
+          "ok": true
+        },
+        {
+          "id": "practice-majority",
+          "ok": true
+        },
+        {
+          "id": "structured-submission",
+          "ok": true
+        },
+        {
+          "id": "legacy-case-dedup",
+          "ok": true
+        }
+      ],
+      "findings": [],
+      "ok": true
+    },
+    {
+      "role": "assurance",
+      "checks": [
+        {
+          "id": "three-role-coverage",
+          "ok": true
+        },
+        {
+          "id": "human-capstone-gate",
+          "ok": true
+        },
+        {
+          "id": "raw-data-boundary",
+          "ok": true
+        },
+        {
+          "id": "visual-receipt",
+          "ok": true
+        },
+        {
+          "id": "red-team-high-zero",
+          "ok": true
+        }
+      ],
+      "findings": [],
+      "ok": true
+    }
+  ],
+  "crossChecks": {
+    "activityIdsUnique": true,
+    "runtimeJobIdsUnique": true,
+    "unresolvedVisuals": [],
+    "contradictions": []
+  },
+  "ok": true,
+  "hash": "sha256:9b9b9cfd85464738264bc006f9ea58d25d80efeaf2a20fe774765730040816df"
+}

@@ -1,0 +1,3 @@
+code/web/dist/*.html text eol=lf
+code/web/dist/assets/*.css text eol=lf
+code/web/dist/assets/*.js text eol=lf

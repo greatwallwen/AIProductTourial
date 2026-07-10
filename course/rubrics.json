@@ -1,0 +1,60 @@
+{
+  "schema": "assessment-rubric-catalog/v1",
+  "courseId": "ai-product-loop-engineering",
+  "rubrics": [
+    {
+      "id": "rubric-evidence-loop",
+      "passScore": 80,
+      "criteria": [
+        {"id": "eng-behavior", "role": "engineering", "weight": 35, "rule": "传感器调用真实被测行为，并能定位失败。"},
+        {"id": "product-decision", "role": "product", "weight": 25, "rule": "信号能改变一个明确决策，而非只展示状态。"},
+        {"id": "assurance-mutant", "role": "assurance", "weight": 40, "rule": "至少一个会骗过旧检查的变异体被新检查拦住。"}
+      ]
+    },
+    {
+      "id": "rubric-bounded-loop",
+      "passScore": 80,
+      "criteria": [
+        {"id": "eng-trace", "role": "engineering", "weight": 35, "rule": "每轮保留输入、动作、结果、耗时和失败指纹。"},
+        {"id": "product-goal", "role": "product", "weight": 25, "rule": "目标、成功条件和升级对象明确。"},
+        {"id": "assurance-stop", "role": "assurance", "weight": 40, "rule": "最大轮次、重复失败、回归和预算任一触发均能停机。"}
+      ]
+    },
+    {
+      "id": "rubric-skill",
+      "passScore": 80,
+      "criteria": [
+        {"id": "eng-package", "role": "engineering", "weight": 35, "rule": "SKILL.md 元数据可发现，正文短，资源按需加载且链接不超过一层。"},
+        {"id": "product-trigger", "role": "product", "weight": 25, "rule": "触发条件能区分该用和不该用的任务。"},
+        {"id": "assurance-scan", "role": "assurance", "weight": 40, "rule": "注入、泄露和危险命令扫描能阻断发布。"}
+      ]
+    },
+    {
+      "id": "rubric-mcp",
+      "passScore": 80,
+      "criteria": [
+        {"id": "eng-protocol", "role": "engineering", "weight": 35, "rule": "初始化先于操作，且只调用协商成功的能力。"},
+        {"id": "product-primitive", "role": "product", "weight": 25, "rule": "工具、资源、提示词各自承担合适职责。"},
+        {"id": "assurance-boundary", "role": "assurance", "weight": 40, "rule": "用户批准、最小权限、Origin 与敏感数据边界可审计。"}
+      ]
+    },
+    {
+      "id": "rubric-evals-data",
+      "passScore": 80,
+      "criteria": [
+        {"id": "eng-reproduce", "role": "engineering", "weight": 35, "rule": "查询或评测可重跑，输入版本和结果哈希齐全。"},
+        {"id": "product-action", "role": "product", "weight": 35, "rule": "结果落到负责人、截止时间和可撤销动作。"},
+        {"id": "assurance-limit", "role": "assurance", "weight": 30, "rule": "说明样本、许可、隐私、异常值和结论外推限制。"}
+      ]
+    },
+    {
+      "id": "rubric-sdd-capstone",
+      "passScore": 80,
+      "criteria": [
+        {"id": "eng-traceability", "role": "engineering", "weight": 35, "rule": "需求、任务、测试和证据可双向追溯，无悬空项。"},
+        {"id": "product-outcome", "role": "product", "weight": 30, "rule": "问题、指标、用户与成功边界保持一致。"},
+        {"id": "assurance-review", "role": "assurance", "weight": 35, "rule": "独立审计记录反例、残余风险和人工签署。"}
+      ]
+    }
+  ]
+}

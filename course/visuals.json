@@ -1,0 +1,96 @@
+{
+  "schema": "course-visual-manifest/v1",
+  "courseId": "ai-product-loop-engineering",
+  "policy": {
+    "diagramPipeline": "image2-base-plus-deterministic-labels",
+    "screenshotPipeline": "playwright-live-page",
+    "iconPipeline": "lucide-native-svg",
+    "rules": [
+      "image2 负责课程自有图的视觉底图或重绘，关键文字和连线必须由确定性图层校验。",
+      "真实界面截图只能从可运行页面重拍，不用生成图伪造产品状态。",
+      "Lucide 属于界面图标系统，不转成位图。"
+    ]
+  },
+  "ownedDiagrams": [
+    "outputs/product_case_library/svg/case_01_morning_ops_grid.svg",
+    "outputs/product_case_library/svg/case_02_airline_member_rfm.svg",
+    "outputs/product_case_library/svg/case_03_retail_capstone_board.svg",
+    "outputs/product_case_library/svg/case_04_rag_knowledge_retrieval.svg",
+    "outputs/product_case_library/svg/case_05_postgres_relational_arch.svg",
+    "outputs/product_case_library/svg/case_06_system_arch_flow.svg",
+    "outputs/product_case_library/svg/case_07_rag_eval_harness.svg",
+    "outputs/product_case_library/svg/case_08_sdd_system_build.svg",
+    "outputs/product_case_library/svg/case_09_repo_event_bus.svg",
+    "outputs/product_case_library/svg/fig_aggregate_root.svg",
+    "outputs/product_case_library/svg/fig_ai_foundations.svg",
+    "outputs/product_case_library/svg/fig_ai_slop.svg",
+    "outputs/product_case_library/svg/fig_c4_component.svg",
+    "outputs/product_case_library/svg/fig_c4_container.svg",
+    "outputs/product_case_library/svg/fig_c4_context.svg",
+    "outputs/product_case_library/svg/fig_case06_deps.svg",
+    "outputs/product_case_library/svg/fig_codebuddy_map.svg",
+    "outputs/product_case_library/svg/fig_combo_pipeline.svg",
+    "outputs/product_case_library/svg/fig_ddd_context.svg",
+    "outputs/product_case_library/svg/fig_deployment.svg",
+    "outputs/product_case_library/svg/fig_designs.svg",
+    "outputs/product_case_library/svg/fig_dist_iso.svg",
+    "outputs/product_case_library/svg/fig_engineering_rules.svg",
+    "outputs/product_case_library/svg/fig_eval_gap.svg",
+    "outputs/product_case_library/svg/fig_gate_board.svg",
+    "outputs/product_case_library/svg/fig_ideology_loops.svg",
+    "outputs/product_case_library/svg/fig_journey.svg",
+    "outputs/product_case_library/svg/fig_l0l3_ladder.svg",
+    "outputs/product_case_library/svg/fig_loc_evidence.svg",
+    "outputs/product_case_library/svg/fig_loop_cybernetic.svg",
+    "outputs/product_case_library/svg/fig_midplatform.svg",
+    "outputs/product_case_library/svg/fig_req_sequence.svg",
+    "outputs/product_case_library/svg/fig_rfm_dual.svg",
+    "outputs/product_case_library/svg/fig_sdd_pipeline.svg",
+    "outputs/product_case_library/svg/fig_skill_distribution.svg",
+    "outputs/product_case_library/svg/fig_skill_lifecycle.svg",
+    "outputs/product_case_library/svg/fig_system_panorama.svg",
+    "outputs/product_case_library/svg/fig_yagni_ladder.svg"
+  ],
+  "image2Replacements": [
+    {
+      "source": "assets/vendor/aiagent/image-20260704090742433.png",
+      "target": "assets/course/image2/ai-tokenizer-flow.png",
+      "caption": "Tokenizer 编码流程"
+    },
+    {
+      "source": "assets/vendor/aiagent/image-20260704151540085.png",
+      "target": "assets/course/image2/rag-retrieval-flow.png",
+      "caption": "RAG 检索、重排与生成流程"
+    },
+    {
+      "source": "assets/vendor/aiagent/image-20260704093622372.png",
+      "target": "assets/course/image2/system-user-prompt.png",
+      "caption": "System Prompt 与 User Prompt 的职责"
+    },
+    {
+      "source": "assets/vendor/aiagent/image-20260704102308686.png",
+      "target": "assets/course/image2/tool-call-contract.png",
+      "caption": "工具调用的四方契约"
+    },
+    {
+      "source": "assets/vendor/aiagent/image-20260704154121684.png",
+      "target": "assets/course/image2/react-loop.png",
+      "caption": "ReAct 闭环"
+    }
+  ],
+  "runtimeScreenshots": [
+    "assets/screenshots/premium_case_01_morning_ops_grid_desktop.png",
+    "assets/screenshots/premium_case_02_airline_member_rfm_desktop.png",
+    "assets/screenshots/premium_case_03_retail_capstone_board_desktop.png",
+    "assets/screenshots/premium_case_04_rag_knowledge_retrieval_desktop.png",
+    "assets/screenshots/premium_case_05_postgres_relational_arch_desktop.png",
+    "assets/screenshots/premium_case_06_system_arch_flow_desktop.png",
+    "assets/screenshots/premium_case_07_rag_eval_harness_desktop.png",
+    "assets/screenshots/premium_case_08_sdd_system_build_desktop.png",
+    "assets/screenshots/premium_case_09_repo_event_bus_desktop.png"
+  ],
+  "excludedFromImage2": [
+    "assets/vendor/lucide/built/*.svg",
+    "docs/_source/reference/**"
+  ]
+}

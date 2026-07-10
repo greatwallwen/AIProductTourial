@@ -18,7 +18,11 @@ const pad = (n) => String(n).padStart(2, '0');
 
 async function loadChromium() {
   for (const cand of [process.env.PLAYWRIGHT_CORE, 'playwright-core'].filter(Boolean)) {
-    try { return (await import(cand)).chromium; } catch { /* 尝试下一候选 */ }
+    try {
+      const loaded = await import(cand);
+      const chromium = loaded.chromium ?? loaded.default?.chromium;
+      if (chromium) return chromium;
+    } catch { /* 尝试下一候选 */ }
   }
   console.error('✗ 找不到 playwright-core：npm i -D playwright-core，或设 PLAYWRIGHT_CORE=/abs/path/to/playwright-core/index.mjs');
   process.exit(1);

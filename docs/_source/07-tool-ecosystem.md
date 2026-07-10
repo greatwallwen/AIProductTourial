@@ -2,6 +2,19 @@
 
 > 本附录集中收纳全书点名的真实工具：命令、目录、对照。**模式是脊柱（正文讲），工具是实例（本页查）**——星数、命令、归属都会随时间变，本页整体**最后核实：2026-07**，落地前以各项目官方仓库为准。
 
+### B.0 MCP：先跑协议，再选服务器
+
+截至 2026-07，本教程以 **2025-11-25 稳定规范**为教学基线，不把 draft 特性当稳定能力。MCP 连接要经过初始化、版本和能力协商，再进入操作阶段；服务器可暴露 `tools`、`resources`、`prompts`，客户端可声明 `roots`、`sampling`、`elicitation`。远程 Streamable HTTP 还必须单独处理授权、Origin、令牌和敏感参数，协议接通不等于信任建立。
+
+```bash
+node code/labs/mcp/client.mjs
+node code/labs/mcp/client.mjs --probe-denied
+```
+
+第一条真实留下 `initialize → notifications/initialized → */list → tools/call` JSON-RPC 轨迹；第二条调用未发现的 `admin_delete`，合格结果是结构化拒绝。实验对应课程活动 07/08，手册在 `course/labs/03-mcp.md`。
+
+官方依据：[架构概览](https://modelcontextprotocol.io/docs/learn/architecture)、[生命周期与能力协商](https://modelcontextprotocol.io/specification/2025-11-25/basic/lifecycle)、[安全最佳实践](https://modelcontextprotocol.io/docs/tutorials/security/security_best_practices)。2025-11-25 的 Tasks 仍标为 experimental，课程只作延伸阅读，不纳入必做实验。
+
 ### B.1 AI 驱动开发组合拳 · 上手实操
 
 > **前置**：下面的斜杠命令（`/office-hours`、`/opsx-*`）运行在 **Claude Code** 等支持斜杠命令的 Agent CLI 里，且需先按各项目官方仓库装好对应工具包（gstack / OpenSpec）；`git clone` 与 `ralph` 在系统终端运行（Ralph 为独立 CLI）。中国大陆读者装不上 Claude Code 时，用 B.1a 的 CodeBuddy 模式映射替代。

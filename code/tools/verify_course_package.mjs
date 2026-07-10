@@ -2,7 +2,7 @@
 /** 全量校验护栏：逐案例 数据/预计算/SVG/交付物/截图/Skill/高影响 + 全局 单一教程/多设计/rules/skills/文件<800行/无工具品牌/design·demonstrates。ALL GREEN 才通过。 */
 import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
-import { join, resolve, extname } from 'node:path';
+import { dirname, join, resolve, extname } from 'node:path';
 const ROOT = resolve(import.meta.dirname, '..', '..');
 const pad = (n) => String(n).padStart(2, '0');
 const rd = (p) => readFileSync(join(ROOT, p), 'utf8');
@@ -20,7 +20,7 @@ for (const c of defs.cases) {
   const n = pad(c.num), tag = `[${n} ${c.slug}]`;
   ok(); if (/\//.test(c.dataset) && /\.(csv|md)$/.test(c.dataset) && !has(c.dataset)) bad(`${tag} 数据集缺失 ${c.dataset}`); // 通用规则：dataset 是文件路径才要求存在；dogfood/合成教学设计为描述串，由专项守卫核验
   // v17 诚信守卫：fields⊆CSV表头（本轮 P0 半数根源）+ dataKind 必填 + synthetic 必披露
-  if (c.dataset.endsWith('.csv') && has(c.dataset)) { const head0 = rd(c.dataset).split('\n')[0].split(','); for (const f of c.fields) { ok(); if (!head0.includes(f)) bad(`${tag} fields 含表头不存在字段「${f}」`); } }
+  if (c.dataset.endsWith('.csv') && has(c.dataset)) { const head0 = rd(c.dataset).split(/\r?\n/, 1)[0].split(',').map((field) => field.trim()); for (const f of c.fields) { ok(); if (!head0.includes(f)) bad(`${tag} fields 含表头不存在字段「${f}」`); } }
   ok(); if (!['real', 'hybrid', 'synthetic'].includes(c.dataKind)) bad(`${tag} 缺 dataKind(real|hybrid|synthetic)`);
   if (c.dataKind === 'synthetic' && has(`AI时代研发产品项目一体化知识库/案例/${n}-${c.slug}.md`)) { ok(); if (!rd(`AI时代研发产品项目一体化知识库/案例/${n}-${c.slug}.md`).includes('教学合成')) bad(`${tag} synthetic 未披露「教学合成」`); }
   const dp = `code/data/case_${n}.json`;
@@ -128,7 +128,7 @@ if (defs.cases.some((c) => c.num === 6)) {
   ok(); if (!/archModel/.test(rd('code/server/services/cases.ts')) || !/api\/arch/.test(apiSrc)) bad('缺 /api/arch 真实依赖模型');
   ok(); if (!/fetchArch/.test(screensSrc)) bad('ArchScreen 未接入真实依赖(/api/arch)');
   if (has('code/data/case_06.json')) { const j6 = jj('code/data/case_06.json'); ok(); if (!(Array.isArray(j6.deps) && j6.deps.length >= 3)) bad('案例06 无真实依赖边(应扫 import)'); ok(); if (typeof j6.cycles !== 'number') bad('案例06 缺循环依赖检测'); }
-  ok(); if (!has('outputs/product_case_library/svg/fig_case06_deps.svg') || !/fig_case06_deps\.svg/.test(tut)) bad('缺/未嵌入案例06 真实依赖图');
+  ok(); if (!has('outputs/product_case_library/svg/fig_case06_deps.svg') || !has('assets/course/image2/diagrams/fig_case06_deps.png') || !/assets\/course\/image2\/diagrams\/fig_case06_deps\.png/.test(tut)) bad('案例06 依赖图缺源 SVG、image2 产物或发布引用');
 }
 // 自我进化基础：对抗式红队 critic + 编排器 + 对抗式测试基础（harness dogfood 自己）
 ok(); if (!has('code/tools/adversarial_review.mjs')) bad('缺对抗式红队 critic adversarial_review.mjs');
@@ -197,10 +197,10 @@ for (const c of defs.cases) {
 }
 // v19 新护栏③：全书相对 .md 链接不得断链（曾有同目录文件误写 ../ 前缀）
 for (const f of bookFiles) {
-  const dir = f.split('/').slice(0, -1).join('/');
   for (const m of rd(f).matchAll(/\]\(([^)#\s]+\.md)\)/g)) {
     if (/^https?:/.test(m[1])) continue;
-    ok(); if (!has(join(dir, decodeURI(m[1])))) bad(`${f} 断链：${m[1]}`);
+    const target = resolve(ROOT, dirname(f), decodeURI(m[1]));
+    ok(); if (!existsSync(target)) bad(`${f} 断链：${m[1]}`);
   }
 }
 ok(); if (/owner:\s*rec\[.*pickOwner|const owner\b[^\n]*pickOwner/.test(rd('code/tools/build_case_data.mjs'))) bad('队列 owner 仍哈希伪造（应取真实责任列）');
@@ -257,8 +257,8 @@ for (const m of ['## 这本书讲什么', '### 学习路线图', '你应看到',
 // 精简：目录结构/环境/常见报错排查已从教程迁到 README（去冗余），守卫其未丢失
 ok(); if (!/常见报错/.test(rdmCn)) bad('README-cn 缺常见报错排查（已从教程迁入）');
 ok(); if (!/使用入口/.test(tut) || !/README/.test(tut)) bad('教程「使用入口」未指向 README');
-// 每案例须有 跟着做 + 练习(exercises)
-ok(); if ((tut.match(/### 跟着做（动手复现）/g) || []).length < N) bad('部分案例缺「跟着做」动手环节');
+// 每案例须有课程实操入口、选修验证或参考验证，并保留结构化练习(exercises)
+ok(); if ((tut.match(/### (课程实操入口|选修验证|参考验证)/g) || []).length < N) bad('部分案例缺结构化实操或验证入口');
 ok(); if ((tut.match(/### 练习/g) || []).length < N + 5) bad(`练习不足(应 ≥ 5 理论章 + ${N} 案例)`);
 for (const c of defs.cases) { ok(); if (!Array.isArray(c.exercises) || c.exercises.length < 2) bad(`案例${c.num} 缺练习(exercises<2)`); }
 // 5) README 死链：旧死链不得复现，关键引用须存在
@@ -346,9 +346,9 @@ const HANDS_ON_PAGES = ['05-交付治理', '06-Skill工程化与治理', '07-架
 for (const f of HANDS_ON_PAGES) {
   const s = rd(`${BOOK}/${f}.md`);
   const fenced = s.split('```').filter((_, i) => i % 2 === 1);              // 只取围栏内代码块
-  const blockCmd = fenced.some((b) => /\bcode\/(tools|server)\//.test(b) && /\b(node|grep|bash|curl|ls|PORT=)\b/.test(b));
-  const inlineCmd = /`[^`\n]*\bnode\s+(--[\w-]+\s+)?code\/(tools|server)\/[^`\n]*`/.test(s);
-  ok(); if (!(blockCmd || inlineCmd)) bad(`${f} 正文缺可跑命令块（须含 code/tools/ 或 code/server/ 路径，§5-§10 动手硬约束）`);
+  const blockCmd = fenced.some((b) => /\bcode\/(tools|server|labs)\//.test(b) && /\b(node|grep|bash|curl|ls|PORT=)\b/.test(b));
+  const inlineCmd = /`[^`\n]*\bnode\s+(--[\w-]+\s+)?code\/(tools|server|labs)\/[^`\n]*`/.test(s);
+  ok(); if (!(blockCmd || inlineCmd)) bad(`${f} 正文缺可跑命令块（须含 code/tools/、code/server/ 或 code/labs/ 路径，§5-§10 动手硬约束）`);
 }
 // ② 结课页须引用 check_my_work 自测——Capstone 验收接确定性传感器，工具为此而生却曾零引用。
 ok(); if (!/check_my_work/.test(rd(`${BOOK}/99-结课.md`))) bad('99-结课 缺 check_my_work 自测引用（Capstone 验收须接确定性传感器）');

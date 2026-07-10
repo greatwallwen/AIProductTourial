@@ -1,10 +1,17 @@
 # 会自检的 AI 工程 · 实操手册
 
-一句话：**教你从「亲自干活」升级到「设计一个能自动干活、还能自我检查的系统」**。这套系统有三个零件——**Loop**（让 AI 循环干活的流水线）、**Skills**（把你的判断沉淀成可复用的技能包）、**验证 / evals**（拿一组测试题给 AI 打分，再加人在关键处把关）。**本书只做这一个承诺——教你设计会自检的 Loop 系统**：不教提示词小技巧、不教求职、不按角色切三份；研发/产品/项目背景都能读，但主线只有一条。**整体逻辑：先讲 AI 底层与系统设计的理念、原理、工程规范与多套设计，再用真实案例演示、验证**。教程为按章多文件目录 [`AI时代研发产品项目一体化知识库/`](AI时代研发产品项目一体化知识库/README.md)（README 为总目录导读，每章可独立精修）。
+一句话：**教你从「亲自干活」升级到「设计一个能自动干活、还能自我检查的系统」**。课程围绕有边界的 **Loop**、可发现的 **Skills**、可授权的 **MCP**、真实 **evals** 与人工关口展开，不教提示词小技巧，也不把产品、研发、项目拆成三套重复内容。教程正文位于 [`AI时代研发产品项目一体化知识库/`](AI时代研发产品项目一体化知识库/README.md)，平台课程的单一事实源位于 [`course/`](course/README.md)。
+
+## HTML-PPT 课程契约
+
+- **6 个模块、12 项必做活动、720 分钟总学时，其中 495 分钟为实操（68.8%）**。
+- 旧 9 案例重组为「数据到决策」「检索到评测」「规格到系统」三条纵向任务链；案例 02 保留为选修对照，不再复制九遍相同操作。
+- 每项活动声明输入、typed runtime job、提交结构、证据对象和评分量规；结业要求不低于 80 分，并通过工程、产品、验证三角色复核。
+- `outputs/html-ppt/ai-product-loop-course-package.json` 是 HTML-PPT 平台可导入包；学习过程状态与尝试记录由平台保存，不写回教程正文。
 
 ## 教程结构（多文件，按章）
 
-- **第一部分 · 理念与原理**：`1.` **AI 核心概念底层**（LLM/Token/Context/Prompt/Tool/MCP/Agent/Skill，备注按科普叙事写，易懂）；`2.` 会 Loop 的产品工程（三层 Loop / 控制论 / 四框架 Superpowers·GSD·GStack·Trellis——**这些英文名是第 2 章才展开的方法，这里先扫一眼、不必懂**）；`3.` 系统架构设计（产品视角）；`4.` 工程规范（`rules/`）；`5.` 多套设计系统（`design/`）。每节配 `备注` 与专业级 SVG。
+- **第一部分 · 理念与原理**：`1.` AI 核心概念底层；`2.` 有边界、可停机的 Loop；`3.` 系统架构；`4.` 工程约束；`5.` 交付治理；`6.` 符合 Agent Skills 规范的 Skill 工程；`7.` MCP 生命周期、能力协商与安全边界。每节配讲师备注与 image2 优化图形。
 - **第二部分 · 数字化系统全景 + 案例**：先一张**全景图把 9 案例串成一个数字化系统**（纵向三层 底座/能力/应用 × 横向数据价值闭环 采集→治理→洞察→决策→执行→验收→增长；04/05/06=底座），每案例标注 演示原理 + 采用设计 + **在系统中的位置 + 它是哪条理论的实操**；做到 真数据 → 真后端 → 可运行原型 → 真截图 → 交付物 → 可校验。
 
 ## 产品级 workbench（`code/`，一服务串起全部）
@@ -18,10 +25,12 @@
 | `design/` | ≥5 套**各不相同**的深色大屏设计系统（`themes.json` 单一来源令牌 + `*.md` 人读文档），案例分设计 → 风格各异 |
 | `rules/` | 工程规范（AI 约束 / 前端 Monorepo·微前端 / 后端分层），对齐 Google/OWASP/Conventional Commits 等并注来源 |
 | `skills/` | `pm_skills.md`（28 结构化 Skill）+ `loop_engineering/`（builder/checker/loop/停机规则/记忆区）+ `skill_lint.mjs` 扫描器（§6 skill 治理 dogfood） |
+| `course/` | 课程清单、12 项活动、三角色量规、数据边界、5 份纵向实验手册与可控 fixtures |
 | `dataset/` | 各案例数据 + `MANIFEST.md`（真实/教学合成显式标注） |
 | `code/web/` | Vite + React + TS 深色大屏工作台，一案例一路由 `#/case/NN`，按 design 主题化 |
-| `code/tools/*.mjs` | 数据生成/预计算/manifest/设计/skills/文档/校验（单文件均 < 800 行） |
-| `outputs/product_case_library/` | manifest + 9 案例 SVG + 18 交付物 md | `assets/screenshots/` | 9 张深色大屏截图 |
+| `code/labs/`、`code/tools/*.mjs` | Loop / Skill / MCP / 数据实验，以及课程生成、审计和校验工具 |
+| `outputs/product_case_library/` | 可追溯 SVG 源图、9 案例定义与交付物 |
+| `assets/course/image2/`、`assets/screenshots/` | 38 张 image2 图形、5 张概念图与 9 张真实界面截图 |
 
 ## 快速开始
 
@@ -30,9 +39,12 @@
 ```bash
 # ① 生成数据 + 文档（第一次只需跑这一整行）
 node code/tools/fetch-datasets.mjs && node code/tools/build_case_data.mjs && node code/tools/build_docs.mjs
-# ② 起服务：终端会打印 http://localhost:5200 —— 浏览器打开这个地址就是首页
+# ② 生成并审计 HTML-PPT 课程包
+node code/tools/audit_learning_course.mjs && node code/tools/build_html_ppt_course.mjs
+node --test code/tools/course_contract.test.mjs code/tools/check_my_work.test.mjs
+# ③ 起服务：终端会打印 http://localhost:5200 —— 浏览器打开这个地址就是首页
 bash code/run.sh
-# ③ 校验（可选）：全绿代表交付完整
+# ④ 校验：全绿代表素材、课程契约与平台导入包一致
 node code/tools/verify_course_package.mjs
 ```
 

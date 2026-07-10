@@ -1,0 +1,3582 @@
+{
+  "schema": "course-package/v1",
+  "id": "course-package-ai-product-loop",
+  "generatedAt": "2026-07-10T00:00:00.000Z",
+  "sourceMaterial": {
+    "schema": "course-material/v1",
+    "id": "ai-product-loop-engineering",
+    "version": "1.0.0",
+    "contractHash": "sha256:44bf6ff0056fc7631379159cfa70d51fc4fec79b4349bfab20b99882ee5ed18d"
+  },
+  "chain": [
+    "requirement",
+    "recall",
+    "outline",
+    "gapTriage",
+    "slideAst",
+    "visualCatalog",
+    "runtime",
+    "learningPlan",
+    "assessment",
+    "publishGate"
+  ],
+  "requirement": {
+    "schema": "course-requirement/v1",
+    "id": "requirement-ai-product-loop",
+    "title": "会自检的 AI 产品工程实战",
+    "audience": "需要把 AI 原型变成可验收系统的产品、研发和项目负责人；已经会使用 Agent 工具，但缺少系统化验证与治理方法的人",
+    "duration": "2 days",
+    "goals": [
+      "区分存在性检查、行为检查和学习证据，并能识别验证剧场。",
+      "运行有最大轮次、失败指纹、预算和升级协议的闭环。",
+      "写出渐进披露、可扫描、可版本化且不过度加载上下文的 Skill 包。",
+      "跑通初始化、能力协商和三个服务端原语，并画出授权与信任边界。",
+      "用真实调用的评测与受控数据查询，形成可反驳的改进结论。",
+      "把需求、任务、运行证据和三角色审计串成一份结业凭证。"
+    ],
+    "constraints": [
+      "实操占比不低于 60%",
+      "浏览器只提交受控任务",
+      "结业项目需要人工复核"
+    ],
+    "source": "AIProductTourial",
+    "status": "parsed"
+  },
+  "intent": {
+    "courseMode": "two-day-workshop",
+    "requiredCoverage": [
+      "Loop",
+      "Skills",
+      "MCP",
+      "evals",
+      "dataset",
+      "SDD"
+    ],
+    "runtimeEvidenceRequired": true,
+    "learningEvidenceRequired": true
+  },
+  "recall": {
+    "queryCardCount": 6,
+    "cards": [
+      {
+        "id": "card-m01-evidence-first",
+        "title": "先建传感器",
+        "summary": "区分存在性检查、行为检查和学习证据，并能识别验证剧场。",
+        "status": "approved",
+        "sourceRefs": [
+          {
+            "sourceId": "source-ai-product-tutorial",
+            "locator": "01-AI核心概念底层.md"
+          },
+          {
+            "sourceId": "source-ai-product-tutorial",
+            "locator": "02-会Loop的工程.md#2.3"
+          },
+          {
+            "sourceId": "source-ai-product-tutorial",
+            "locator": "04-工程规范与约束.md"
+          }
+        ],
+        "governance": {
+          "status": "approved",
+          "actionLabel": "已审核",
+          "hasRevision": false,
+          "approved": true,
+          "needsTeacherReview": false,
+          "needsRuntimeProof": false
+        }
+      },
+      {
+        "id": "card-m02-bounded-loop",
+        "title": "让 Loop 收敛且会停",
+        "summary": "运行有最大轮次、失败指纹、预算和升级协议的闭环。",
+        "status": "approved",
+        "sourceRefs": [
+          {
+            "sourceId": "source-ai-product-tutorial",
+            "locator": "02-会Loop的工程.md#2.8"
+          },
+          {
+            "sourceId": "source-ai-product-tutorial",
+            "locator": "02-会Loop的工程.md#2.9"
+          }
+        ],
+        "governance": {
+          "status": "approved",
+          "actionLabel": "已审核",
+          "hasRevision": false,
+          "approved": true,
+          "needsTeacherReview": false,
+          "needsRuntimeProof": false
+        }
+      },
+      {
+        "id": "card-m03-skill-engineering",
+        "title": "把判断做成可发现的 Skill",
+        "summary": "写出渐进披露、可扫描、可版本化且不过度加载上下文的 Skill 包。",
+        "status": "approved",
+        "sourceRefs": [
+          {
+            "sourceId": "source-ai-product-tutorial",
+            "locator": "06-Skill工程化与治理.md"
+          }
+        ],
+        "governance": {
+          "status": "approved",
+          "actionLabel": "已审核",
+          "hasRevision": false,
+          "approved": true,
+          "needsTeacherReview": false,
+          "needsRuntimeProof": false
+        }
+      },
+      {
+        "id": "card-m04-mcp-contract",
+        "title": "把 MCP 当协议，不当魔法插座",
+        "summary": "跑通初始化、能力协商和三个服务端原语，并画出授权与信任边界。",
+        "status": "approved",
+        "sourceRefs": [
+          {
+            "sourceId": "source-ai-product-tutorial",
+            "locator": "01-AI核心概念底层.md#1.5"
+          },
+          {
+            "sourceId": "source-ai-product-tutorial",
+            "locator": "91-附录B-工具生态速查.md"
+          }
+        ],
+        "governance": {
+          "status": "approved",
+          "actionLabel": "已审核",
+          "hasRevision": false,
+          "approved": true,
+          "needsTeacherReview": false,
+          "needsRuntimeProof": false
+        }
+      },
+      {
+        "id": "card-m05-evals-data",
+        "title": "让数据和评测驱动决策",
+        "summary": "用真实调用的评测与受控数据查询，形成可反驳的改进结论。",
+        "status": "approved",
+        "sourceRefs": [
+          {
+            "sourceId": "source-ai-product-tutorial",
+            "locator": "案例/04-rag_knowledge_retrieval.md"
+          },
+          {
+            "sourceId": "source-ai-product-tutorial",
+            "locator": "案例/07-rag_eval_harness.md"
+          },
+          {
+            "sourceId": "source-ai-product-tutorial",
+            "locator": "案例/01-morning_ops_grid.md"
+          }
+        ],
+        "governance": {
+          "status": "approved",
+          "actionLabel": "已审核",
+          "hasRevision": false,
+          "approved": true,
+          "needsTeacherReview": false,
+          "needsRuntimeProof": false
+        }
+      },
+      {
+        "id": "card-m06-sdd-capstone",
+        "title": "从规格走到可审计系统",
+        "summary": "把需求、任务、运行证据和三角色审计串成一份结业凭证。",
+        "status": "approved",
+        "sourceRefs": [
+          {
+            "sourceId": "source-ai-product-tutorial",
+            "locator": "03-系统架构设计.md"
+          },
+          {
+            "sourceId": "source-ai-product-tutorial",
+            "locator": "案例/08-sdd_system_build.md"
+          },
+          {
+            "sourceId": "source-ai-product-tutorial",
+            "locator": "99-结课.md"
+          }
+        ],
+        "governance": {
+          "status": "approved",
+          "actionLabel": "已审核",
+          "hasRevision": false,
+          "approved": true,
+          "needsTeacherReview": false,
+          "needsRuntimeProof": false
+        }
+      }
+    ]
+  },
+  "governance": {
+    "schema": "course-card-governance/v1",
+    "cards": 6,
+    "approved": 6,
+    "needsTeacherReview": 0,
+    "needsRuntimeProof": 0,
+    "revised": 0,
+    "matchedReviews": 6,
+    "matchedRevisions": 0,
+    "statusCounts": {
+      "approved": 6
+    },
+    "readyForPublish": true,
+    "releaseBlockers": []
+  },
+  "outline": {
+    "id": "outline-ai-product-loop",
+    "title": "会自检的 AI 产品工程实战",
+    "durationMinutes": 720,
+    "sections": [
+      {
+        "id": "outline-01",
+        "title": "会自检的 AI 产品工程实战",
+        "goals": [
+          "完成一条有边界、有证据、能停机的 AI 工程闭环，并能解释 Skills 与 MCP 在闭环中的真实职责。"
+        ],
+        "sourceCards": [],
+        "runtimeFeasible": false,
+        "runtimeJobs": [],
+        "durationMinutes": 8
+      },
+      {
+        "id": "outline-02",
+        "title": "两天只走一条闭环",
+        "goals": [
+          "先建传感器",
+          "让 Loop 收敛且会停",
+          "把判断做成可发现的 Skill",
+          "把 MCP 当协议，不当魔法插座",
+          "让数据和评测驱动决策",
+          "从规格走到可审计系统"
+        ],
+        "sourceCards": [],
+        "runtimeFeasible": false,
+        "runtimeJobs": [],
+        "durationMinutes": 8
+      },
+      {
+        "id": "outline-03",
+        "title": "先建传感器",
+        "goals": [
+          "区分存在性检查、行为检查和学习证据，并能识别验证剧场。"
+        ],
+        "sourceCards": [
+          "card-m01-evidence-first"
+        ],
+        "runtimeFeasible": false,
+        "runtimeJobs": [],
+        "durationMinutes": 8
+      },
+      {
+        "id": "outline-04",
+        "title": "拆解一个传感器契约",
+        "goals": [
+          "完成一条有边界、有证据、能停机的 AI 工程闭环，并能解释 Skills 与 MCP 在闭环中的真实职责。"
+        ],
+        "sourceCards": [
+          "card-m01-evidence-first"
+        ],
+        "runtimeFeasible": true,
+        "runtimeJobs": [
+          "job-sensor-contract"
+        ],
+        "durationMinutes": 20
+      },
+      {
+        "id": "outline-05",
+        "title": "杀死一个关键词投机变异体",
+        "goals": [
+          "完成一条有边界、有证据、能停机的 AI 工程闭环，并能解释 Skills 与 MCP 在闭环中的真实职责。"
+        ],
+        "sourceCards": [
+          "card-m01-evidence-first"
+        ],
+        "runtimeFeasible": true,
+        "runtimeJobs": [
+          "job-mutant-kill"
+        ],
+        "durationMinutes": 20
+      },
+      {
+        "id": "outline-06",
+        "title": "先建传感器 · 复盘",
+        "goals": [
+          "哪个信号真正改变了决策？",
+          "哪个反例会让当前结论失效？",
+          "下一次运行如何重放？"
+        ],
+        "sourceCards": [
+          "card-m01-evidence-first"
+        ],
+        "runtimeFeasible": false,
+        "runtimeJobs": [],
+        "durationMinutes": 8
+      },
+      {
+        "id": "outline-07",
+        "title": "让 Loop 收敛且会停",
+        "goals": [
+          "运行有最大轮次、失败指纹、预算和升级协议的闭环。"
+        ],
+        "sourceCards": [
+          "card-m02-bounded-loop"
+        ],
+        "runtimeFeasible": false,
+        "runtimeJobs": [],
+        "durationMinutes": 8
+      },
+      {
+        "id": "outline-08",
+        "title": "跑通一个两轮收敛的 Loop",
+        "goals": [
+          "完成一条有边界、有证据、能停机的 AI 工程闭环，并能解释 Skills 与 MCP 在闭环中的真实职责。"
+        ],
+        "sourceCards": [
+          "card-m02-bounded-loop"
+        ],
+        "runtimeFeasible": true,
+        "runtimeJobs": [
+          "job-loop-success"
+        ],
+        "durationMinutes": 20
+      },
+      {
+        "id": "outline-09",
+        "title": "证明 Loop 会在重复失败时停机",
+        "goals": [
+          "完成一条有边界、有证据、能停机的 AI 工程闭环，并能解释 Skills 与 MCP 在闭环中的真实职责。"
+        ],
+        "sourceCards": [
+          "card-m02-bounded-loop"
+        ],
+        "runtimeFeasible": true,
+        "runtimeJobs": [
+          "job-loop-stop"
+        ],
+        "durationMinutes": 20
+      },
+      {
+        "id": "outline-10",
+        "title": "让 Loop 收敛且会停 · 复盘",
+        "goals": [
+          "哪个信号真正改变了决策？",
+          "哪个反例会让当前结论失效？",
+          "下一次运行如何重放？"
+        ],
+        "sourceCards": [
+          "card-m02-bounded-loop"
+        ],
+        "runtimeFeasible": false,
+        "runtimeJobs": [],
+        "durationMinutes": 8
+      },
+      {
+        "id": "outline-11",
+        "title": "把判断做成可发现的 Skill",
+        "goals": [
+          "写出渐进披露、可扫描、可版本化且不过度加载上下文的 Skill 包。"
+        ],
+        "sourceCards": [
+          "card-m03-skill-engineering"
+        ],
+        "runtimeFeasible": false,
+        "runtimeJobs": [],
+        "durationMinutes": 8
+      },
+      {
+        "id": "outline-12",
+        "title": "写一个渐进披露 Skill 包",
+        "goals": [
+          "完成一条有边界、有证据、能停机的 AI 工程闭环，并能解释 Skills 与 MCP 在闭环中的真实职责。"
+        ],
+        "sourceCards": [
+          "card-m03-skill-engineering"
+        ],
+        "runtimeFeasible": true,
+        "runtimeJobs": [
+          "job-skill-package"
+        ],
+        "durationMinutes": 20
+      },
+      {
+        "id": "outline-13",
+        "title": "让扫描器拦住投毒 Skill",
+        "goals": [
+          "完成一条有边界、有证据、能停机的 AI 工程闭环，并能解释 Skills 与 MCP 在闭环中的真实职责。"
+        ],
+        "sourceCards": [
+          "card-m03-skill-engineering"
+        ],
+        "runtimeFeasible": true,
+        "runtimeJobs": [
+          "job-skill-red-team"
+        ],
+        "durationMinutes": 20
+      },
+      {
+        "id": "outline-14",
+        "title": "把判断做成可发现的 Skill · 复盘",
+        "goals": [
+          "哪个信号真正改变了决策？",
+          "哪个反例会让当前结论失效？",
+          "下一次运行如何重放？"
+        ],
+        "sourceCards": [
+          "card-m03-skill-engineering"
+        ],
+        "runtimeFeasible": false,
+        "runtimeJobs": [],
+        "durationMinutes": 8
+      },
+      {
+        "id": "outline-15",
+        "title": "把 MCP 当协议，不当魔法插座",
+        "goals": [
+          "跑通初始化、能力协商和三个服务端原语，并画出授权与信任边界。"
+        ],
+        "sourceCards": [
+          "card-m04-mcp-contract"
+        ],
+        "runtimeFeasible": false,
+        "runtimeJobs": [],
+        "durationMinutes": 8
+      },
+      {
+        "id": "outline-16",
+        "title": "跑通 MCP 初始化与原语发现",
+        "goals": [
+          "完成一条有边界、有证据、能停机的 AI 工程闭环，并能解释 Skills 与 MCP 在闭环中的真实职责。"
+        ],
+        "sourceCards": [
+          "card-m04-mcp-contract"
+        ],
+        "runtimeFeasible": true,
+        "runtimeJobs": [
+          "job-mcp-handshake"
+        ],
+        "durationMinutes": 20
+      },
+      {
+        "id": "outline-17",
+        "title": "画出 MCP 信任与授权边界",
+        "goals": [
+          "完成一条有边界、有证据、能停机的 AI 工程闭环，并能解释 Skills 与 MCP 在闭环中的真实职责。"
+        ],
+        "sourceCards": [
+          "card-m04-mcp-contract"
+        ],
+        "runtimeFeasible": true,
+        "runtimeJobs": [
+          "job-mcp-threat"
+        ],
+        "durationMinutes": 20
+      },
+      {
+        "id": "outline-18",
+        "title": "把 MCP 当协议，不当魔法插座 · 复盘",
+        "goals": [
+          "哪个信号真正改变了决策？",
+          "哪个反例会让当前结论失效？",
+          "下一次运行如何重放？"
+        ],
+        "sourceCards": [
+          "card-m04-mcp-contract"
+        ],
+        "runtimeFeasible": false,
+        "runtimeJobs": [],
+        "durationMinutes": 8
+      },
+      {
+        "id": "outline-19",
+        "title": "让数据和评测驱动决策",
+        "goals": [
+          "用真实调用的评测与受控数据查询，形成可反驳的改进结论。"
+        ],
+        "sourceCards": [
+          "card-m05-evals-data"
+        ],
+        "runtimeFeasible": false,
+        "runtimeJobs": [],
+        "durationMinutes": 8
+      },
+      {
+        "id": "outline-20",
+        "title": "用真实调用的 eval 驱动一次改进",
+        "goals": [
+          "完成一条有边界、有证据、能停机的 AI 工程闭环，并能解释 Skills 与 MCP 在闭环中的真实职责。"
+        ],
+        "sourceCards": [
+          "card-m05-evals-data"
+        ],
+        "runtimeFeasible": true,
+        "runtimeJobs": [
+          "job-rag-improvement"
+        ],
+        "durationMinutes": 20
+      },
+      {
+        "id": "outline-21",
+        "title": "从数据查询走到可追责决策",
+        "goals": [
+          "完成一条有边界、有证据、能停机的 AI 工程闭环，并能解释 Skills 与 MCP 在闭环中的真实职责。"
+        ],
+        "sourceCards": [
+          "card-m05-evals-data"
+        ],
+        "runtimeFeasible": true,
+        "runtimeJobs": [
+          "job-dataset-decision"
+        ],
+        "durationMinutes": 20
+      },
+      {
+        "id": "outline-22",
+        "title": "让数据和评测驱动决策 · 复盘",
+        "goals": [
+          "哪个信号真正改变了决策？",
+          "哪个反例会让当前结论失效？",
+          "下一次运行如何重放？"
+        ],
+        "sourceCards": [
+          "card-m05-evals-data"
+        ],
+        "runtimeFeasible": false,
+        "runtimeJobs": [],
+        "durationMinutes": 8
+      },
+      {
+        "id": "outline-23",
+        "title": "从规格走到可审计系统",
+        "goals": [
+          "把需求、任务、运行证据和三角色审计串成一份结业凭证。"
+        ],
+        "sourceCards": [
+          "card-m06-sdd-capstone"
+        ],
+        "runtimeFeasible": false,
+        "runtimeJobs": [],
+        "durationMinutes": 8
+      },
+      {
+        "id": "outline-24",
+        "title": "建立需求到测试的双向追溯",
+        "goals": [
+          "完成一条有边界、有证据、能停机的 AI 工程闭环，并能解释 Skills 与 MCP 在闭环中的真实职责。"
+        ],
+        "sourceCards": [
+          "card-m06-sdd-capstone"
+        ],
+        "runtimeFeasible": true,
+        "runtimeJobs": [
+          "job-sdd-trace"
+        ],
+        "durationMinutes": 20
+      },
+      {
+        "id": "outline-25",
+        "title": "提交三角色审计的结业项目",
+        "goals": [
+          "完成一条有边界、有证据、能停机的 AI 工程闭环，并能解释 Skills 与 MCP 在闭环中的真实职责。"
+        ],
+        "sourceCards": [
+          "card-m06-sdd-capstone"
+        ],
+        "runtimeFeasible": true,
+        "runtimeJobs": [
+          "job-capstone-review"
+        ],
+        "durationMinutes": 20
+      },
+      {
+        "id": "outline-26",
+        "title": "从规格走到可审计系统 · 复盘",
+        "goals": [
+          "哪个信号真正改变了决策？",
+          "哪个反例会让当前结论失效？",
+          "下一次运行如何重放？"
+        ],
+        "sourceCards": [
+          "card-m06-sdd-capstone"
+        ],
+        "runtimeFeasible": false,
+        "runtimeJobs": [],
+        "durationMinutes": 8
+      },
+      {
+        "id": "outline-27",
+        "title": "结业门槛",
+        "goals": [
+          "完成一条有边界、有证据、能停机的 AI 工程闭环，并能解释 Skills 与 MCP 在闭环中的真实职责。"
+        ],
+        "sourceCards": [],
+        "runtimeFeasible": false,
+        "runtimeJobs": [],
+        "durationMinutes": 8
+      }
+    ],
+    "gaps": []
+  },
+  "gapTriage": {
+    "schema": "course-gap-triage/v1",
+    "coursePackage": "course-package-ai-product-loop",
+    "policy": "all required activities are explicit",
+    "items": [],
+    "summary": {
+      "total": 0,
+      "covered": 0,
+      "blocking": 0,
+      "statusCounts": {}
+    }
+  },
+  "slideAst": [
+    {
+      "id": "slide-01",
+      "kind": "cover",
+      "content": {
+        "title": "会自检的 AI 产品工程实战",
+        "subtitle": "完成一条有边界、有证据、能停机的 AI 工程闭环，并能解释 Skills 与 MCP 在闭环中的真实职责。",
+        "notes": "先交代课程承诺、结业证据和人工复核边界。",
+        "sourceCards": []
+      },
+      "presenter": {
+        "notes": "先交代课程承诺、结业证据和人工复核边界。",
+        "layout": {
+          "fontFamily": "system",
+          "fontScale": 1,
+          "notesBox": {
+            "x": 0.04,
+            "y": 0.66,
+            "w": 0.92,
+            "h": 0.28
+          },
+          "railMode": "normal",
+          "theme": "light"
+        }
+      },
+      "runtimeJobs": [],
+      "activityRefs": [],
+      "visualBinding": {
+        "template": "evidence-brief",
+        "atomRefs": [],
+        "assetIds": [],
+        "motion": "subtle",
+        "status": "ready",
+        "densityMode": "speaker-led"
+      },
+      "evidenceRefs": []
+    },
+    {
+      "id": "slide-02",
+      "kind": "agenda",
+      "content": {
+        "title": "两天只走一条闭环",
+        "bullets": [
+          "先建传感器",
+          "让 Loop 收敛且会停",
+          "把判断做成可发现的 Skill",
+          "把 MCP 当协议，不当魔法插座",
+          "让数据和评测驱动决策",
+          "从规格走到可审计系统"
+        ],
+        "notes": "九个旧案例重组为三条纵向链，不逐案重复跟做。",
+        "sourceCards": []
+      },
+      "presenter": {
+        "notes": "九个旧案例重组为三条纵向链，不逐案重复跟做。",
+        "layout": {
+          "fontFamily": "system",
+          "fontScale": 1,
+          "notesBox": {
+            "x": 0.04,
+            "y": 0.66,
+            "w": 0.92,
+            "h": 0.28
+          },
+          "railMode": "normal",
+          "theme": "light"
+        }
+      },
+      "runtimeJobs": [],
+      "activityRefs": [],
+      "visualBinding": {
+        "template": "evidence-brief",
+        "atomRefs": [],
+        "assetIds": [],
+        "motion": "subtle",
+        "status": "ready",
+        "densityMode": "speaker-led"
+      },
+      "evidenceRefs": []
+    },
+    {
+      "id": "slide-03",
+      "kind": "problem-solution",
+      "content": {
+        "title": "先建传感器",
+        "outcome": "区分存在性检查、行为检查和学习证据，并能识别验证剧场。",
+        "durationMinutes": 90,
+        "practiceMinutes": 60,
+        "notes": "本模块完成后：区分存在性检查、行为检查和学习证据，并能识别验证剧场。",
+        "sourceCards": [
+          "card-m01-evidence-first"
+        ]
+      },
+      "presenter": {
+        "notes": "本模块完成后：区分存在性检查、行为检查和学习证据，并能识别验证剧场。",
+        "layout": {
+          "fontFamily": "system",
+          "fontScale": 1,
+          "notesBox": {
+            "x": 0.04,
+            "y": 0.66,
+            "w": 0.92,
+            "h": 0.28
+          },
+          "railMode": "normal",
+          "theme": "light"
+        }
+      },
+      "runtimeJobs": [],
+      "activityRefs": [],
+      "visualBinding": {
+        "template": "evidence-brief",
+        "atomRefs": [
+          "atom-m01-evidence-first"
+        ],
+        "assetIds": [
+          "fig_eval_gap"
+        ],
+        "motion": "subtle",
+        "status": "ready",
+        "densityMode": "speaker-led"
+      },
+      "evidenceRefs": []
+    },
+    {
+      "id": "slide-04",
+      "kind": "demo-step",
+      "content": {
+        "title": "拆解一个传感器契约",
+        "activityId": "act-01-sensor-contract",
+        "command": "node code/tools/verify_course_package.mjs",
+        "submission": {
+          "format": "json",
+          "requiredFields": [
+            "goal",
+            "signals",
+            "failureLocation",
+            "stopCondition"
+          ]
+        },
+        "evidence": {
+          "required": true,
+          "types": [
+            "stdout",
+            "exit-code",
+            "sensor-list"
+          ],
+          "verification": "deterministic"
+        },
+        "rubricId": "rubric-evidence-loop",
+        "notes": "先运行，再提交结构化证据。自动检查只负责确定性下限。",
+        "sourceCards": [
+          "card-m01-evidence-first"
+        ]
+      },
+      "presenter": {
+        "notes": "先运行，再提交结构化证据。自动检查只负责确定性下限。",
+        "layout": {
+          "fontFamily": "system",
+          "fontScale": 1,
+          "notesBox": {
+            "x": 0.04,
+            "y": 0.66,
+            "w": 0.92,
+            "h": 0.28
+          },
+          "railMode": "normal",
+          "theme": "light"
+        }
+      },
+      "runtimeJobs": [
+        "job-sensor-contract"
+      ],
+      "activityRefs": [
+        "act-01-sensor-contract"
+      ],
+      "visualBinding": {
+        "template": "workshop-proof",
+        "atomRefs": [
+          "atom-m01-evidence-first"
+        ],
+        "assetIds": [
+          "fig_eval_gap"
+        ],
+        "motion": "guided",
+        "status": "ready",
+        "densityMode": "evidence-first"
+      },
+      "evidenceRefs": [
+        "learning-evidence://act-01-sensor-contract/stdout",
+        "learning-evidence://act-01-sensor-contract/exit-code",
+        "learning-evidence://act-01-sensor-contract/sensor-list"
+      ]
+    },
+    {
+      "id": "slide-05",
+      "kind": "demo-step",
+      "content": {
+        "title": "杀死一个关键词投机变异体",
+        "activityId": "act-02-mutant-kill",
+        "command": "node --test code/tools/course_contract.test.mjs",
+        "submission": {
+          "format": "json",
+          "requiredFields": [
+            "mutant",
+            "oldSensorResult",
+            "newSensorResult",
+            "why"
+          ]
+        },
+        "evidence": {
+          "required": true,
+          "types": [
+            "test-report",
+            "mutant-diff"
+          ],
+          "verification": "deterministic"
+        },
+        "rubricId": "rubric-evidence-loop",
+        "notes": "先运行，再提交结构化证据。自动检查只负责确定性下限。",
+        "sourceCards": [
+          "card-m01-evidence-first"
+        ]
+      },
+      "presenter": {
+        "notes": "先运行，再提交结构化证据。自动检查只负责确定性下限。",
+        "layout": {
+          "fontFamily": "system",
+          "fontScale": 1,
+          "notesBox": {
+            "x": 0.04,
+            "y": 0.66,
+            "w": 0.92,
+            "h": 0.28
+          },
+          "railMode": "normal",
+          "theme": "light"
+        }
+      },
+      "runtimeJobs": [
+        "job-mutant-kill"
+      ],
+      "activityRefs": [
+        "act-02-mutant-kill"
+      ],
+      "visualBinding": {
+        "template": "workshop-proof",
+        "atomRefs": [
+          "atom-m01-evidence-first"
+        ],
+        "assetIds": [
+          "fig_eval_gap"
+        ],
+        "motion": "guided",
+        "status": "ready",
+        "densityMode": "evidence-first"
+      },
+      "evidenceRefs": [
+        "learning-evidence://act-02-mutant-kill/test-report",
+        "learning-evidence://act-02-mutant-kill/mutant-diff"
+      ]
+    },
+    {
+      "id": "slide-06",
+      "kind": "review",
+      "content": {
+        "title": "先建传感器 · 复盘",
+        "prompts": [
+          "哪个信号真正改变了决策？",
+          "哪个反例会让当前结论失效？",
+          "下一次运行如何重放？"
+        ],
+        "notes": "工程、产品、验证三视角分别回答，不共用同一结论。",
+        "sourceCards": [
+          "card-m01-evidence-first"
+        ]
+      },
+      "presenter": {
+        "notes": "工程、产品、验证三视角分别回答，不共用同一结论。",
+        "layout": {
+          "fontFamily": "system",
+          "fontScale": 1,
+          "notesBox": {
+            "x": 0.04,
+            "y": 0.66,
+            "w": 0.92,
+            "h": 0.28
+          },
+          "railMode": "normal",
+          "theme": "light"
+        }
+      },
+      "runtimeJobs": [],
+      "activityRefs": [],
+      "visualBinding": {
+        "template": "review-grid",
+        "atomRefs": [
+          "atom-m01-evidence-first"
+        ],
+        "assetIds": [
+          "fig_eval_gap"
+        ],
+        "motion": "subtle",
+        "status": "ready",
+        "densityMode": "speaker-led"
+      },
+      "evidenceRefs": []
+    },
+    {
+      "id": "slide-07",
+      "kind": "problem-solution",
+      "content": {
+        "title": "让 Loop 收敛且会停",
+        "outcome": "运行有最大轮次、失败指纹、预算和升级协议的闭环。",
+        "durationMinutes": 120,
+        "practiceMinutes": 85,
+        "notes": "本模块完成后：运行有最大轮次、失败指纹、预算和升级协议的闭环。",
+        "sourceCards": [
+          "card-m02-bounded-loop"
+        ]
+      },
+      "presenter": {
+        "notes": "本模块完成后：运行有最大轮次、失败指纹、预算和升级协议的闭环。",
+        "layout": {
+          "fontFamily": "system",
+          "fontScale": 1,
+          "notesBox": {
+            "x": 0.04,
+            "y": 0.66,
+            "w": 0.92,
+            "h": 0.28
+          },
+          "railMode": "normal",
+          "theme": "light"
+        }
+      },
+      "runtimeJobs": [],
+      "activityRefs": [],
+      "visualBinding": {
+        "template": "evidence-brief",
+        "atomRefs": [
+          "atom-m02-bounded-loop"
+        ],
+        "assetIds": [
+          "fig_ideology_loops"
+        ],
+        "motion": "subtle",
+        "status": "ready",
+        "densityMode": "speaker-led"
+      },
+      "evidenceRefs": []
+    },
+    {
+      "id": "slide-08",
+      "kind": "demo-step",
+      "content": {
+        "title": "跑通一个两轮收敛的 Loop",
+        "activityId": "act-03-loop-success",
+        "command": "node code/labs/loop/run.mjs --scenario converge",
+        "submission": {
+          "format": "json",
+          "requiredFields": [
+            "goal",
+            "maxTurns",
+            "cycles",
+            "stopReason",
+            "traceHash"
+          ]
+        },
+        "evidence": {
+          "required": true,
+          "types": [
+            "loop-trace",
+            "stop-reason",
+            "hash"
+          ],
+          "verification": "deterministic"
+        },
+        "rubricId": "rubric-bounded-loop",
+        "notes": "先运行，再提交结构化证据。自动检查只负责确定性下限。",
+        "sourceCards": [
+          "card-m02-bounded-loop"
+        ]
+      },
+      "presenter": {
+        "notes": "先运行，再提交结构化证据。自动检查只负责确定性下限。",
+        "layout": {
+          "fontFamily": "system",
+          "fontScale": 1,
+          "notesBox": {
+            "x": 0.04,
+            "y": 0.66,
+            "w": 0.92,
+            "h": 0.28
+          },
+          "railMode": "normal",
+          "theme": "light"
+        }
+      },
+      "runtimeJobs": [
+        "job-loop-success"
+      ],
+      "activityRefs": [
+        "act-03-loop-success"
+      ],
+      "visualBinding": {
+        "template": "workshop-proof",
+        "atomRefs": [
+          "atom-m02-bounded-loop"
+        ],
+        "assetIds": [
+          "fig_ideology_loops"
+        ],
+        "motion": "guided",
+        "status": "ready",
+        "densityMode": "evidence-first"
+      },
+      "evidenceRefs": [
+        "learning-evidence://act-03-loop-success/loop-trace",
+        "learning-evidence://act-03-loop-success/stop-reason",
+        "learning-evidence://act-03-loop-success/hash"
+      ]
+    },
+    {
+      "id": "slide-09",
+      "kind": "demo-step",
+      "content": {
+        "title": "证明 Loop 会在重复失败时停机",
+        "activityId": "act-04-loop-stop",
+        "command": "node code/labs/loop/run.mjs --scenario repeated-failure",
+        "submission": {
+          "format": "json",
+          "requiredFields": [
+            "failureFingerprint",
+            "attempts",
+            "stopReason",
+            "escalationPacket"
+          ]
+        },
+        "evidence": {
+          "required": true,
+          "types": [
+            "loop-trace",
+            "failure-fingerprint",
+            "escalation-packet"
+          ],
+          "verification": "deterministic"
+        },
+        "rubricId": "rubric-bounded-loop",
+        "notes": "先运行，再提交结构化证据。自动检查只负责确定性下限。",
+        "sourceCards": [
+          "card-m02-bounded-loop"
+        ]
+      },
+      "presenter": {
+        "notes": "先运行，再提交结构化证据。自动检查只负责确定性下限。",
+        "layout": {
+          "fontFamily": "system",
+          "fontScale": 1,
+          "notesBox": {
+            "x": 0.04,
+            "y": 0.66,
+            "w": 0.92,
+            "h": 0.28
+          },
+          "railMode": "normal",
+          "theme": "light"
+        }
+      },
+      "runtimeJobs": [
+        "job-loop-stop"
+      ],
+      "activityRefs": [
+        "act-04-loop-stop"
+      ],
+      "visualBinding": {
+        "template": "workshop-proof",
+        "atomRefs": [
+          "atom-m02-bounded-loop"
+        ],
+        "assetIds": [
+          "fig_ideology_loops"
+        ],
+        "motion": "guided",
+        "status": "ready",
+        "densityMode": "evidence-first"
+      },
+      "evidenceRefs": [
+        "learning-evidence://act-04-loop-stop/loop-trace",
+        "learning-evidence://act-04-loop-stop/failure-fingerprint",
+        "learning-evidence://act-04-loop-stop/escalation-packet"
+      ]
+    },
+    {
+      "id": "slide-10",
+      "kind": "review",
+      "content": {
+        "title": "让 Loop 收敛且会停 · 复盘",
+        "prompts": [
+          "哪个信号真正改变了决策？",
+          "哪个反例会让当前结论失效？",
+          "下一次运行如何重放？"
+        ],
+        "notes": "工程、产品、验证三视角分别回答，不共用同一结论。",
+        "sourceCards": [
+          "card-m02-bounded-loop"
+        ]
+      },
+      "presenter": {
+        "notes": "工程、产品、验证三视角分别回答，不共用同一结论。",
+        "layout": {
+          "fontFamily": "system",
+          "fontScale": 1,
+          "notesBox": {
+            "x": 0.04,
+            "y": 0.66,
+            "w": 0.92,
+            "h": 0.28
+          },
+          "railMode": "normal",
+          "theme": "light"
+        }
+      },
+      "runtimeJobs": [],
+      "activityRefs": [],
+      "visualBinding": {
+        "template": "review-grid",
+        "atomRefs": [
+          "atom-m02-bounded-loop"
+        ],
+        "assetIds": [
+          "fig_ideology_loops"
+        ],
+        "motion": "subtle",
+        "status": "ready",
+        "densityMode": "speaker-led"
+      },
+      "evidenceRefs": []
+    },
+    {
+      "id": "slide-11",
+      "kind": "problem-solution",
+      "content": {
+        "title": "把判断做成可发现的 Skill",
+        "outcome": "写出渐进披露、可扫描、可版本化且不过度加载上下文的 Skill 包。",
+        "durationMinutes": 105,
+        "practiceMinutes": 70,
+        "notes": "本模块完成后：写出渐进披露、可扫描、可版本化且不过度加载上下文的 Skill 包。",
+        "sourceCards": [
+          "card-m03-skill-engineering"
+        ]
+      },
+      "presenter": {
+        "notes": "本模块完成后：写出渐进披露、可扫描、可版本化且不过度加载上下文的 Skill 包。",
+        "layout": {
+          "fontFamily": "system",
+          "fontScale": 1,
+          "notesBox": {
+            "x": 0.04,
+            "y": 0.66,
+            "w": 0.92,
+            "h": 0.28
+          },
+          "railMode": "normal",
+          "theme": "light"
+        }
+      },
+      "runtimeJobs": [],
+      "activityRefs": [],
+      "visualBinding": {
+        "template": "evidence-brief",
+        "atomRefs": [
+          "atom-m03-skill-engineering"
+        ],
+        "assetIds": [
+          "fig_skill_lifecycle"
+        ],
+        "motion": "subtle",
+        "status": "ready",
+        "densityMode": "speaker-led"
+      },
+      "evidenceRefs": []
+    },
+    {
+      "id": "slide-12",
+      "kind": "demo-step",
+      "content": {
+        "title": "写一个渐进披露 Skill 包",
+        "activityId": "act-05-skill-package",
+        "command": "node code/labs/skills/validate.mjs course/fixtures/skills/good/SKILL.md",
+        "submission": {
+          "format": "markdown",
+          "requiredFields": [
+            "frontmatter",
+            "trigger",
+            "workflow",
+            "verification",
+            "references"
+          ]
+        },
+        "evidence": {
+          "required": true,
+          "types": [
+            "validation-report",
+            "loaded-resources"
+          ],
+          "verification": "deterministic"
+        },
+        "rubricId": "rubric-skill",
+        "notes": "先运行，再提交结构化证据。自动检查只负责确定性下限。",
+        "sourceCards": [
+          "card-m03-skill-engineering"
+        ]
+      },
+      "presenter": {
+        "notes": "先运行，再提交结构化证据。自动检查只负责确定性下限。",
+        "layout": {
+          "fontFamily": "system",
+          "fontScale": 1,
+          "notesBox": {
+            "x": 0.04,
+            "y": 0.66,
+            "w": 0.92,
+            "h": 0.28
+          },
+          "railMode": "normal",
+          "theme": "light"
+        }
+      },
+      "runtimeJobs": [
+        "job-skill-package"
+      ],
+      "activityRefs": [
+        "act-05-skill-package"
+      ],
+      "visualBinding": {
+        "template": "workshop-proof",
+        "atomRefs": [
+          "atom-m03-skill-engineering"
+        ],
+        "assetIds": [
+          "fig_skill_lifecycle"
+        ],
+        "motion": "guided",
+        "status": "ready",
+        "densityMode": "evidence-first"
+      },
+      "evidenceRefs": [
+        "learning-evidence://act-05-skill-package/validation-report",
+        "learning-evidence://act-05-skill-package/loaded-resources"
+      ]
+    },
+    {
+      "id": "slide-13",
+      "kind": "demo-step",
+      "content": {
+        "title": "让扫描器拦住投毒 Skill",
+        "activityId": "act-06-skill-red-team",
+        "command": "node code/labs/skills/validate.mjs course/fixtures/skills/poisoned/SKILL.md --expect-blocked",
+        "submission": {
+          "format": "json",
+          "requiredFields": [
+            "finding",
+            "severity",
+            "blocked",
+            "remediation"
+          ]
+        },
+        "evidence": {
+          "required": true,
+          "types": [
+            "security-findings",
+            "exit-code"
+          ],
+          "verification": "deterministic"
+        },
+        "rubricId": "rubric-skill",
+        "notes": "先运行，再提交结构化证据。自动检查只负责确定性下限。",
+        "sourceCards": [
+          "card-m03-skill-engineering"
+        ]
+      },
+      "presenter": {
+        "notes": "先运行，再提交结构化证据。自动检查只负责确定性下限。",
+        "layout": {
+          "fontFamily": "system",
+          "fontScale": 1,
+          "notesBox": {
+            "x": 0.04,
+            "y": 0.66,
+            "w": 0.92,
+            "h": 0.28
+          },
+          "railMode": "normal",
+          "theme": "light"
+        }
+      },
+      "runtimeJobs": [
+        "job-skill-red-team"
+      ],
+      "activityRefs": [
+        "act-06-skill-red-team"
+      ],
+      "visualBinding": {
+        "template": "workshop-proof",
+        "atomRefs": [
+          "atom-m03-skill-engineering"
+        ],
+        "assetIds": [
+          "fig_skill_lifecycle"
+        ],
+        "motion": "guided",
+        "status": "ready",
+        "densityMode": "evidence-first"
+      },
+      "evidenceRefs": [
+        "learning-evidence://act-06-skill-red-team/security-findings",
+        "learning-evidence://act-06-skill-red-team/exit-code"
+      ]
+    },
+    {
+      "id": "slide-14",
+      "kind": "review",
+      "content": {
+        "title": "把判断做成可发现的 Skill · 复盘",
+        "prompts": [
+          "哪个信号真正改变了决策？",
+          "哪个反例会让当前结论失效？",
+          "下一次运行如何重放？"
+        ],
+        "notes": "工程、产品、验证三视角分别回答，不共用同一结论。",
+        "sourceCards": [
+          "card-m03-skill-engineering"
+        ]
+      },
+      "presenter": {
+        "notes": "工程、产品、验证三视角分别回答，不共用同一结论。",
+        "layout": {
+          "fontFamily": "system",
+          "fontScale": 1,
+          "notesBox": {
+            "x": 0.04,
+            "y": 0.66,
+            "w": 0.92,
+            "h": 0.28
+          },
+          "railMode": "normal",
+          "theme": "light"
+        }
+      },
+      "runtimeJobs": [],
+      "activityRefs": [],
+      "visualBinding": {
+        "template": "review-grid",
+        "atomRefs": [
+          "atom-m03-skill-engineering"
+        ],
+        "assetIds": [
+          "fig_skill_lifecycle"
+        ],
+        "motion": "subtle",
+        "status": "ready",
+        "densityMode": "speaker-led"
+      },
+      "evidenceRefs": []
+    },
+    {
+      "id": "slide-15",
+      "kind": "problem-solution",
+      "content": {
+        "title": "把 MCP 当协议，不当魔法插座",
+        "outcome": "跑通初始化、能力协商和三个服务端原语，并画出授权与信任边界。",
+        "durationMinutes": 105,
+        "practiceMinutes": 70,
+        "notes": "本模块完成后：跑通初始化、能力协商和三个服务端原语，并画出授权与信任边界。",
+        "sourceCards": [
+          "card-m04-mcp-contract"
+        ]
+      },
+      "presenter": {
+        "notes": "本模块完成后：跑通初始化、能力协商和三个服务端原语，并画出授权与信任边界。",
+        "layout": {
+          "fontFamily": "system",
+          "fontScale": 1,
+          "notesBox": {
+            "x": 0.04,
+            "y": 0.66,
+            "w": 0.92,
+            "h": 0.28
+          },
+          "railMode": "normal",
+          "theme": "light"
+        }
+      },
+      "runtimeJobs": [],
+      "activityRefs": [],
+      "visualBinding": {
+        "template": "evidence-brief",
+        "atomRefs": [
+          "atom-m04-mcp-contract"
+        ],
+        "assetIds": [
+          "fig_ai_foundations"
+        ],
+        "motion": "subtle",
+        "status": "ready",
+        "densityMode": "speaker-led"
+      },
+      "evidenceRefs": []
+    },
+    {
+      "id": "slide-16",
+      "kind": "demo-step",
+      "content": {
+        "title": "跑通 MCP 初始化与原语发现",
+        "activityId": "act-07-mcp-handshake",
+        "command": "node code/labs/mcp/client.mjs",
+        "submission": {
+          "format": "json",
+          "requiredFields": [
+            "protocolVersion",
+            "clientCapabilities",
+            "serverCapabilities",
+            "discoveredPrimitives"
+          ]
+        },
+        "evidence": {
+          "required": true,
+          "types": [
+            "json-rpc-trace",
+            "capability-matrix"
+          ],
+          "verification": "deterministic"
+        },
+        "rubricId": "rubric-mcp",
+        "notes": "先运行，再提交结构化证据。自动检查只负责确定性下限。",
+        "sourceCards": [
+          "card-m04-mcp-contract"
+        ]
+      },
+      "presenter": {
+        "notes": "先运行，再提交结构化证据。自动检查只负责确定性下限。",
+        "layout": {
+          "fontFamily": "system",
+          "fontScale": 1,
+          "notesBox": {
+            "x": 0.04,
+            "y": 0.66,
+            "w": 0.92,
+            "h": 0.28
+          },
+          "railMode": "normal",
+          "theme": "light"
+        }
+      },
+      "runtimeJobs": [
+        "job-mcp-handshake"
+      ],
+      "activityRefs": [
+        "act-07-mcp-handshake"
+      ],
+      "visualBinding": {
+        "template": "workshop-proof",
+        "atomRefs": [
+          "atom-m04-mcp-contract"
+        ],
+        "assetIds": [
+          "fig_ai_foundations"
+        ],
+        "motion": "guided",
+        "status": "ready",
+        "densityMode": "evidence-first"
+      },
+      "evidenceRefs": [
+        "learning-evidence://act-07-mcp-handshake/json-rpc-trace",
+        "learning-evidence://act-07-mcp-handshake/capability-matrix"
+      ]
+    },
+    {
+      "id": "slide-17",
+      "kind": "demo-step",
+      "content": {
+        "title": "画出 MCP 信任与授权边界",
+        "activityId": "act-08-mcp-threat-model",
+        "command": "node code/labs/mcp/client.mjs --probe-denied",
+        "submission": {
+          "format": "json",
+          "requiredFields": [
+            "assets",
+            "trustBoundaries",
+            "abuseCases",
+            "mitigations"
+          ]
+        },
+        "evidence": {
+          "required": true,
+          "types": [
+            "denied-call",
+            "threat-model"
+          ],
+          "verification": "mixed"
+        },
+        "rubricId": "rubric-mcp",
+        "notes": "先运行，再提交结构化证据。最终结论需要人工复核。",
+        "sourceCards": [
+          "card-m04-mcp-contract"
+        ]
+      },
+      "presenter": {
+        "notes": "先运行，再提交结构化证据。最终结论需要人工复核。",
+        "layout": {
+          "fontFamily": "system",
+          "fontScale": 1,
+          "notesBox": {
+            "x": 0.04,
+            "y": 0.66,
+            "w": 0.92,
+            "h": 0.28
+          },
+          "railMode": "normal",
+          "theme": "light"
+        }
+      },
+      "runtimeJobs": [
+        "job-mcp-threat"
+      ],
+      "activityRefs": [
+        "act-08-mcp-threat-model"
+      ],
+      "visualBinding": {
+        "template": "workshop-proof",
+        "atomRefs": [
+          "atom-m04-mcp-contract"
+        ],
+        "assetIds": [
+          "fig_ai_foundations"
+        ],
+        "motion": "guided",
+        "status": "ready",
+        "densityMode": "evidence-first"
+      },
+      "evidenceRefs": [
+        "learning-evidence://act-08-mcp-threat-model/denied-call",
+        "learning-evidence://act-08-mcp-threat-model/threat-model"
+      ]
+    },
+    {
+      "id": "slide-18",
+      "kind": "review",
+      "content": {
+        "title": "把 MCP 当协议，不当魔法插座 · 复盘",
+        "prompts": [
+          "哪个信号真正改变了决策？",
+          "哪个反例会让当前结论失效？",
+          "下一次运行如何重放？"
+        ],
+        "notes": "工程、产品、验证三视角分别回答，不共用同一结论。",
+        "sourceCards": [
+          "card-m04-mcp-contract"
+        ]
+      },
+      "presenter": {
+        "notes": "工程、产品、验证三视角分别回答，不共用同一结论。",
+        "layout": {
+          "fontFamily": "system",
+          "fontScale": 1,
+          "notesBox": {
+            "x": 0.04,
+            "y": 0.66,
+            "w": 0.92,
+            "h": 0.28
+          },
+          "railMode": "normal",
+          "theme": "light"
+        }
+      },
+      "runtimeJobs": [],
+      "activityRefs": [],
+      "visualBinding": {
+        "template": "review-grid",
+        "atomRefs": [
+          "atom-m04-mcp-contract"
+        ],
+        "assetIds": [
+          "fig_ai_foundations"
+        ],
+        "motion": "subtle",
+        "status": "ready",
+        "densityMode": "speaker-led"
+      },
+      "evidenceRefs": []
+    },
+    {
+      "id": "slide-19",
+      "kind": "problem-solution",
+      "content": {
+        "title": "让数据和评测驱动决策",
+        "outcome": "用真实调用的评测与受控数据查询，形成可反驳的改进结论。",
+        "durationMinutes": 150,
+        "practiceMinutes": 105,
+        "notes": "本模块完成后：用真实调用的评测与受控数据查询，形成可反驳的改进结论。",
+        "sourceCards": [
+          "card-m05-evals-data"
+        ]
+      },
+      "presenter": {
+        "notes": "本模块完成后：用真实调用的评测与受控数据查询，形成可反驳的改进结论。",
+        "layout": {
+          "fontFamily": "system",
+          "fontScale": 1,
+          "notesBox": {
+            "x": 0.04,
+            "y": 0.66,
+            "w": 0.92,
+            "h": 0.28
+          },
+          "railMode": "normal",
+          "theme": "light"
+        }
+      },
+      "runtimeJobs": [],
+      "activityRefs": [],
+      "visualBinding": {
+        "template": "evidence-brief",
+        "atomRefs": [
+          "atom-m05-evals-data"
+        ],
+        "assetIds": [
+          "case_04_rag_knowledge_retrieval"
+        ],
+        "motion": "subtle",
+        "status": "ready",
+        "densityMode": "speaker-led"
+      },
+      "evidenceRefs": []
+    },
+    {
+      "id": "slide-20",
+      "kind": "demo-step",
+      "content": {
+        "title": "用真实调用的 eval 驱动一次改进",
+        "activityId": "act-09-rag-improvement",
+        "command": "node code/tools/eval_harness.mjs --json",
+        "submission": {
+          "format": "json",
+          "requiredFields": [
+            "baseline",
+            "change",
+            "after",
+            "regressions",
+            "decision"
+          ]
+        },
+        "evidence": {
+          "required": true,
+          "types": [
+            "eval-report",
+            "retrieval-trace",
+            "before-after"
+          ],
+          "verification": "deterministic"
+        },
+        "rubricId": "rubric-evals-data",
+        "notes": "先运行，再提交结构化证据。自动检查只负责确定性下限。",
+        "sourceCards": [
+          "card-m05-evals-data"
+        ]
+      },
+      "presenter": {
+        "notes": "先运行，再提交结构化证据。自动检查只负责确定性下限。",
+        "layout": {
+          "fontFamily": "system",
+          "fontScale": 1,
+          "notesBox": {
+            "x": 0.04,
+            "y": 0.66,
+            "w": 0.92,
+            "h": 0.28
+          },
+          "railMode": "normal",
+          "theme": "light"
+        }
+      },
+      "runtimeJobs": [
+        "job-rag-improvement"
+      ],
+      "activityRefs": [
+        "act-09-rag-improvement"
+      ],
+      "visualBinding": {
+        "template": "workshop-proof",
+        "atomRefs": [
+          "atom-m05-evals-data"
+        ],
+        "assetIds": [
+          "case_04_rag_knowledge_retrieval"
+        ],
+        "motion": "guided",
+        "status": "ready",
+        "densityMode": "evidence-first"
+      },
+      "evidenceRefs": [
+        "learning-evidence://act-09-rag-improvement/eval-report",
+        "learning-evidence://act-09-rag-improvement/retrieval-trace",
+        "learning-evidence://act-09-rag-improvement/before-after"
+      ]
+    },
+    {
+      "id": "slide-21",
+      "kind": "demo-step",
+      "content": {
+        "title": "从数据查询走到可追责决策",
+        "activityId": "act-10-dataset-decision",
+        "command": "node code/labs/data/query.mjs --fixture defi-risk",
+        "submission": {
+          "format": "json",
+          "requiredFields": [
+            "queryId",
+            "resultHash",
+            "anomaly",
+            "decision",
+            "owner",
+            "reviewBy"
+          ]
+        },
+        "evidence": {
+          "required": true,
+          "types": [
+            "dataset-profile",
+            "query-result",
+            "decision-record"
+          ],
+          "verification": "mixed"
+        },
+        "rubricId": "rubric-evals-data",
+        "notes": "先运行，再提交结构化证据。最终结论需要人工复核。",
+        "sourceCards": [
+          "card-m05-evals-data"
+        ]
+      },
+      "presenter": {
+        "notes": "先运行，再提交结构化证据。最终结论需要人工复核。",
+        "layout": {
+          "fontFamily": "system",
+          "fontScale": 1,
+          "notesBox": {
+            "x": 0.04,
+            "y": 0.66,
+            "w": 0.92,
+            "h": 0.28
+          },
+          "railMode": "normal",
+          "theme": "light"
+        }
+      },
+      "runtimeJobs": [
+        "job-dataset-decision"
+      ],
+      "activityRefs": [
+        "act-10-dataset-decision"
+      ],
+      "visualBinding": {
+        "template": "workshop-proof",
+        "atomRefs": [
+          "atom-m05-evals-data"
+        ],
+        "assetIds": [
+          "case_04_rag_knowledge_retrieval"
+        ],
+        "motion": "guided",
+        "status": "ready",
+        "densityMode": "evidence-first"
+      },
+      "evidenceRefs": [
+        "learning-evidence://act-10-dataset-decision/dataset-profile",
+        "learning-evidence://act-10-dataset-decision/query-result",
+        "learning-evidence://act-10-dataset-decision/decision-record"
+      ]
+    },
+    {
+      "id": "slide-22",
+      "kind": "review",
+      "content": {
+        "title": "让数据和评测驱动决策 · 复盘",
+        "prompts": [
+          "哪个信号真正改变了决策？",
+          "哪个反例会让当前结论失效？",
+          "下一次运行如何重放？"
+        ],
+        "notes": "工程、产品、验证三视角分别回答，不共用同一结论。",
+        "sourceCards": [
+          "card-m05-evals-data"
+        ]
+      },
+      "presenter": {
+        "notes": "工程、产品、验证三视角分别回答，不共用同一结论。",
+        "layout": {
+          "fontFamily": "system",
+          "fontScale": 1,
+          "notesBox": {
+            "x": 0.04,
+            "y": 0.66,
+            "w": 0.92,
+            "h": 0.28
+          },
+          "railMode": "normal",
+          "theme": "light"
+        }
+      },
+      "runtimeJobs": [],
+      "activityRefs": [],
+      "visualBinding": {
+        "template": "review-grid",
+        "atomRefs": [
+          "atom-m05-evals-data"
+        ],
+        "assetIds": [
+          "case_04_rag_knowledge_retrieval"
+        ],
+        "motion": "subtle",
+        "status": "ready",
+        "densityMode": "speaker-led"
+      },
+      "evidenceRefs": []
+    },
+    {
+      "id": "slide-23",
+      "kind": "problem-solution",
+      "content": {
+        "title": "从规格走到可审计系统",
+        "outcome": "把需求、任务、运行证据和三角色审计串成一份结业凭证。",
+        "durationMinutes": 150,
+        "practiceMinutes": 105,
+        "notes": "本模块完成后：把需求、任务、运行证据和三角色审计串成一份结业凭证。",
+        "sourceCards": [
+          "card-m06-sdd-capstone"
+        ]
+      },
+      "presenter": {
+        "notes": "本模块完成后：把需求、任务、运行证据和三角色审计串成一份结业凭证。",
+        "layout": {
+          "fontFamily": "system",
+          "fontScale": 1,
+          "notesBox": {
+            "x": 0.04,
+            "y": 0.66,
+            "w": 0.92,
+            "h": 0.28
+          },
+          "railMode": "normal",
+          "theme": "light"
+        }
+      },
+      "runtimeJobs": [],
+      "activityRefs": [],
+      "visualBinding": {
+        "template": "evidence-brief",
+        "atomRefs": [
+          "atom-m06-sdd-capstone"
+        ],
+        "assetIds": [
+          "fig_sdd_pipeline"
+        ],
+        "motion": "subtle",
+        "status": "ready",
+        "densityMode": "speaker-led"
+      },
+      "evidenceRefs": []
+    },
+    {
+      "id": "slide-24",
+      "kind": "demo-step",
+      "content": {
+        "title": "建立需求到测试的双向追溯",
+        "activityId": "act-11-sdd-trace",
+        "command": "node code/tools/build_html_ppt_course.mjs",
+        "submission": {
+          "format": "json",
+          "requiredFields": [
+            "requirements",
+            "tasks",
+            "tests",
+            "evidenceRefs",
+            "uncovered"
+          ]
+        },
+        "evidence": {
+          "required": true,
+          "types": [
+            "traceability-matrix",
+            "coverage-summary"
+          ],
+          "verification": "deterministic"
+        },
+        "rubricId": "rubric-sdd-capstone",
+        "notes": "先运行，再提交结构化证据。自动检查只负责确定性下限。",
+        "sourceCards": [
+          "card-m06-sdd-capstone"
+        ]
+      },
+      "presenter": {
+        "notes": "先运行，再提交结构化证据。自动检查只负责确定性下限。",
+        "layout": {
+          "fontFamily": "system",
+          "fontScale": 1,
+          "notesBox": {
+            "x": 0.04,
+            "y": 0.66,
+            "w": 0.92,
+            "h": 0.28
+          },
+          "railMode": "normal",
+          "theme": "light"
+        }
+      },
+      "runtimeJobs": [
+        "job-sdd-trace"
+      ],
+      "activityRefs": [
+        "act-11-sdd-trace"
+      ],
+      "visualBinding": {
+        "template": "workshop-proof",
+        "atomRefs": [
+          "atom-m06-sdd-capstone"
+        ],
+        "assetIds": [
+          "fig_sdd_pipeline"
+        ],
+        "motion": "guided",
+        "status": "ready",
+        "densityMode": "evidence-first"
+      },
+      "evidenceRefs": [
+        "learning-evidence://act-11-sdd-trace/traceability-matrix",
+        "learning-evidence://act-11-sdd-trace/coverage-summary"
+      ]
+    },
+    {
+      "id": "slide-25",
+      "kind": "demo-step",
+      "content": {
+        "title": "提交三角色审计的结业项目",
+        "activityId": "act-12-capstone-review",
+        "command": "node code/tools/audit_learning_course.mjs",
+        "submission": {
+          "format": "json",
+          "requiredFields": [
+            "problem",
+            "metric",
+            "spec",
+            "sensor",
+            "loopBoundary",
+            "evidenceRefs",
+            "residualRisks"
+          ]
+        },
+        "evidence": {
+          "required": true,
+          "types": [
+            "capstone-bundle",
+            "role-reviews",
+            "human-signoff"
+          ],
+          "verification": "mixed"
+        },
+        "rubricId": "rubric-sdd-capstone",
+        "notes": "先运行，再提交结构化证据。最终结论需要人工复核。",
+        "sourceCards": [
+          "card-m06-sdd-capstone"
+        ]
+      },
+      "presenter": {
+        "notes": "先运行，再提交结构化证据。最终结论需要人工复核。",
+        "layout": {
+          "fontFamily": "system",
+          "fontScale": 1,
+          "notesBox": {
+            "x": 0.04,
+            "y": 0.66,
+            "w": 0.92,
+            "h": 0.28
+          },
+          "railMode": "normal",
+          "theme": "light"
+        }
+      },
+      "runtimeJobs": [
+        "job-capstone-review"
+      ],
+      "activityRefs": [
+        "act-12-capstone-review"
+      ],
+      "visualBinding": {
+        "template": "workshop-proof",
+        "atomRefs": [
+          "atom-m06-sdd-capstone"
+        ],
+        "assetIds": [
+          "fig_sdd_pipeline"
+        ],
+        "motion": "guided",
+        "status": "ready",
+        "densityMode": "evidence-first"
+      },
+      "evidenceRefs": [
+        "learning-evidence://act-12-capstone-review/capstone-bundle",
+        "learning-evidence://act-12-capstone-review/role-reviews",
+        "learning-evidence://act-12-capstone-review/human-signoff"
+      ]
+    },
+    {
+      "id": "slide-26",
+      "kind": "review",
+      "content": {
+        "title": "从规格走到可审计系统 · 复盘",
+        "prompts": [
+          "哪个信号真正改变了决策？",
+          "哪个反例会让当前结论失效？",
+          "下一次运行如何重放？"
+        ],
+        "notes": "工程、产品、验证三视角分别回答，不共用同一结论。",
+        "sourceCards": [
+          "card-m06-sdd-capstone"
+        ]
+      },
+      "presenter": {
+        "notes": "工程、产品、验证三视角分别回答，不共用同一结论。",
+        "layout": {
+          "fontFamily": "system",
+          "fontScale": 1,
+          "notesBox": {
+            "x": 0.04,
+            "y": 0.66,
+            "w": 0.92,
+            "h": 0.28
+          },
+          "railMode": "normal",
+          "theme": "light"
+        }
+      },
+      "runtimeJobs": [],
+      "activityRefs": [],
+      "visualBinding": {
+        "template": "review-grid",
+        "atomRefs": [
+          "atom-m06-sdd-capstone"
+        ],
+        "assetIds": [
+          "fig_sdd_pipeline"
+        ],
+        "motion": "subtle",
+        "status": "ready",
+        "densityMode": "speaker-led"
+      },
+      "evidenceRefs": []
+    },
+    {
+      "id": "slide-27",
+      "kind": "review",
+      "content": {
+        "title": "结业门槛",
+        "completionPolicy": {
+          "requiredActivities": 12,
+          "minimumScore": 80,
+          "requiredRoleReviews": [
+            "engineering",
+            "product",
+            "assurance"
+          ],
+          "capstoneNeedsHumanReview": true,
+          "runtimeEvidenceMaxAgeHours": 72
+        },
+        "notes": "12 个活动全部达标，三角色评审齐全，结业项目经人工签署后才能生成完成凭证。",
+        "sourceCards": []
+      },
+      "presenter": {
+        "notes": "12 个活动全部达标，三角色评审齐全，结业项目经人工签署后才能生成完成凭证。",
+        "layout": {
+          "fontFamily": "system",
+          "fontScale": 1,
+          "notesBox": {
+            "x": 0.04,
+            "y": 0.66,
+            "w": 0.92,
+            "h": 0.28
+          },
+          "railMode": "normal",
+          "theme": "light"
+        }
+      },
+      "runtimeJobs": [],
+      "activityRefs": [],
+      "visualBinding": {
+        "template": "review-grid",
+        "atomRefs": [],
+        "assetIds": [],
+        "motion": "subtle",
+        "status": "ready",
+        "densityMode": "speaker-led"
+      },
+      "evidenceRefs": []
+    }
+  ],
+  "visualCatalog": {
+    "schema": "course-visual-catalog/v1",
+    "coursePackage": "course-package-ai-product-loop",
+    "policy": {
+      "diagramPipeline": "image2-base-plus-deterministic-labels",
+      "screenshotPipeline": "playwright-live-page",
+      "iconPipeline": "lucide-native-svg",
+      "rules": [
+        "image2 负责课程自有图的视觉底图或重绘，关键文字和连线必须由确定性图层校验。",
+        "真实界面截图只能从可运行页面重拍，不用生成图伪造产品状态。",
+        "Lucide 属于界面图标系统，不转成位图。"
+      ]
+    },
+    "assets": [
+      {
+        "id": "case_01_morning_ops_grid",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/case_01_morning_ops_grid.png",
+        "hash": "sha256:952f6f8948e41a4ad2e7a0192f8c326417188379fb05eede74dc1b7901499907",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "case_02_airline_member_rfm",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/case_02_airline_member_rfm.png",
+        "hash": "sha256:09f4e8a47919e84c939f26dfc990287522011eca6e1ccae679ff6ffc0e1da500",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "case_03_retail_capstone_board",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/case_03_retail_capstone_board.png",
+        "hash": "sha256:49673d5a99474a81014f706ca62bfd4943216db66cdf38f874c07b0c69ab4110",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "case_04_rag_knowledge_retrieval",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/case_04_rag_knowledge_retrieval.png",
+        "hash": "sha256:626f3ca006746a36ab9a878de6d8df2a1645d6123c90ceeba6e877be9715feef",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "case_05_postgres_relational_arch",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/case_05_postgres_relational_arch.png",
+        "hash": "sha256:e14e03c3027c784f7d7ab36741eb108259ab0e23881168abb40f4732af4d67df",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "case_06_system_arch_flow",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/case_06_system_arch_flow.png",
+        "hash": "sha256:e7199365f35ebc1323352e8ec925ca13d5575ab2145cb5d1d677a178a8df0df7",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "case_07_rag_eval_harness",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/case_07_rag_eval_harness.png",
+        "hash": "sha256:08a0c72c06f2358ae4b55239494b6a62b92713fb6437f05a0af390134fc66ba6",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "case_08_sdd_system_build",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/case_08_sdd_system_build.png",
+        "hash": "sha256:0c8ced01a8268acd05b593a0939a32fe03254b4b1a8a4d8f118cf7a3855970ec",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "case_09_repo_event_bus",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/case_09_repo_event_bus.png",
+        "hash": "sha256:5af2e5eb53b9b64cbfd9c4a7fc81871c383a1a6739db33543f06339d40473727",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "fig_aggregate_root",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/fig_aggregate_root.png",
+        "hash": "sha256:4ab2498bba966228bd02f00e373a96df792f7437228fe7d011a7037e00e483fd",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "fig_ai_foundations",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/fig_ai_foundations.png",
+        "hash": "sha256:488d7941cc78493bec2095b645869c4c7c8e7e951e7d7396d379658fd43da8d0",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "fig_ai_slop",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/fig_ai_slop.png",
+        "hash": "sha256:6c2d5a5dc1fd8f39ba2e155457c9d02a6d8945ab4145ab2c9532bc808cb0d10c",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "fig_c4_component",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/fig_c4_component.png",
+        "hash": "sha256:c67cc99a3ebc82fa6c1c54dd62b977c3c64c84b905bf5094ef4f1d56db7dc2f5",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "fig_c4_container",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/fig_c4_container.png",
+        "hash": "sha256:f018f41baf3e9ceae7f4ae8fb35b12aa5668b60be80ef24e8a9c2c922f6060ee",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "fig_c4_context",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/fig_c4_context.png",
+        "hash": "sha256:35923fb96ddf22989ba21409fb93bfa7a503194d30cbf72b4eb7ba2c6a16abc3",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "fig_case06_deps",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/fig_case06_deps.png",
+        "hash": "sha256:a925d8a60711eb98a265961a4e707273905561ca01b7b69d060f06b79e1d283d",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "fig_codebuddy_map",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/fig_codebuddy_map.png",
+        "hash": "sha256:28a3354afe2d7462ac6aa516f42f2a5d33f89ae907e1215e218eeaf2262a2051",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "fig_combo_pipeline",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/fig_combo_pipeline.png",
+        "hash": "sha256:f75e6fe6f3f7fd430c9f2dcf003df31b7288dbfc424d63184a812f6d3ec1f273",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "fig_ddd_context",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/fig_ddd_context.png",
+        "hash": "sha256:50a2de537d21abfacbe67a7181bddc4f6fb7a4ec72d1dfd1f07f2a88dd31c6e3",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "fig_deployment",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/fig_deployment.png",
+        "hash": "sha256:eedfcdf40f1921546b27eaa7b141e770955541ab284fe035aae1f0af906ff20a",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "fig_designs",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/fig_designs.png",
+        "hash": "sha256:05903056a6dd9222fa88a7c4a0ad5ebd30fdaebff791759bd2bd1e138174c6d7",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "fig_dist_iso",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/fig_dist_iso.png",
+        "hash": "sha256:936e59929f2c126766595077e9fccbbed4cc7d9340a014571f84ef99f1456856",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "fig_engineering_rules",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/fig_engineering_rules.png",
+        "hash": "sha256:14b2706477a1414fbad6f3027d2b46abb099d94228edf869e57152d2d68b22fa",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "fig_eval_gap",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/fig_eval_gap.png",
+        "hash": "sha256:fbbaa27622e5a6f7a328d05b3d5303d1a988affb1eb674c8344dedd5e2f08896",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "fig_gate_board",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/fig_gate_board.png",
+        "hash": "sha256:10e92a0c751b7c8da183761faf09efabdc79b84edbcbfc4344b78ed50de8780a",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "fig_ideology_loops",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/fig_ideology_loops.png",
+        "hash": "sha256:19661660acdb7e6bd54b6553010a54892bead2f2eff1a6a37011b5e2064a2337",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "fig_journey",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/fig_journey.png",
+        "hash": "sha256:332a085c5e103ab22b5c224c4ab616c7b48ba8695ed31bf0c340e1a38a3dc5a2",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "fig_l0l3_ladder",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/fig_l0l3_ladder.png",
+        "hash": "sha256:0c237f0b5b7145111f43e14f72d216ac8afb65c5ed2255dd7498de72ca10772a",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "fig_loc_evidence",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/fig_loc_evidence.png",
+        "hash": "sha256:6a71748665abdeb0acf9cccaba70f7012e236bba095f0253f3d27ac7a43e950f",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "fig_loop_cybernetic",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/fig_loop_cybernetic.png",
+        "hash": "sha256:ed7d7098f5c06d424d86deea1ce91477b5b25ad01a9fc6fb7f65686c1d102202",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "fig_midplatform",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/fig_midplatform.png",
+        "hash": "sha256:b3712b3ce47f1fe74daf91b65def664e3cca4a0c2803607d4f1a0ed8ac6c120b",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "fig_req_sequence",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/fig_req_sequence.png",
+        "hash": "sha256:6ce1350dbdf67c2f48823f7afec544952925101da61dfae126900a7abe96a4f0",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "fig_rfm_dual",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/fig_rfm_dual.png",
+        "hash": "sha256:b0ed3a8a9f082c8e144eda387ffa0406b89e8628a7780a031a02c0b200befa95",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "fig_sdd_pipeline",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/fig_sdd_pipeline.png",
+        "hash": "sha256:30e17cb496ca358c93a561df5bc38cb4cf986f5cd8d35d72f6e5d32d618ad363",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "fig_skill_distribution",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/fig_skill_distribution.png",
+        "hash": "sha256:5b5764ce2166a51ce9ef9403b91be6c03c09057748fbcb1dae83d486e546d3c1",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "fig_skill_lifecycle",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/fig_skill_lifecycle.png",
+        "hash": "sha256:0b5d2951266716381fbab12cf228ea00842460a5b52ef8c53b39271685427bbc",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "fig_system_panorama",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/fig_system_panorama.png",
+        "hash": "sha256:5ac3177a154df48a86a883f1b7d9a5599da3ce0b7e3e0369f88c428979bf8e50",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "fig_yagni_ladder",
+        "kind": "diagram",
+        "path": "assets/course/image2/diagrams/fig_yagni_ladder.png",
+        "hash": "sha256:fa6176d840c3388e2ea83ff7ea5dc2a22f02032e4cb0d8de7ef68a68dbd381f8",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "ai-tokenizer-flow",
+        "kind": "concept-illustration",
+        "path": "assets/course/image2/ai-tokenizer-flow.png",
+        "hash": "sha256:042c07228b8c1a5825e2dc21a08a83aaa1feccfd2c7c53ba8babcb20a4a7c242",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "rag-retrieval-flow",
+        "kind": "concept-illustration",
+        "path": "assets/course/image2/rag-retrieval-flow.png",
+        "hash": "sha256:3119c747b8d9a56ff0b37c48441be6a9cc12d176f81bb89e75d7930aff81e5d4",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "system-user-prompt",
+        "kind": "concept-illustration",
+        "path": "assets/course/image2/system-user-prompt.png",
+        "hash": "sha256:3ab359e4a281ca8e07fd819d2b41348be5a74c3816c3879efbe308b965a5460d",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "tool-call-contract",
+        "kind": "concept-illustration",
+        "path": "assets/course/image2/tool-call-contract.png",
+        "hash": "sha256:8dd11a6c9321570b3b281aee31afb71b776a6294f69f604bade3c21b0f2ec072",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "react-loop",
+        "kind": "concept-illustration",
+        "path": "assets/course/image2/react-loop.png",
+        "hash": "sha256:56a8b19e803ae96755adc7ca2411b66f88e24a2cac0b6b05c61d6b700d5c3c6b",
+        "width": 1672,
+        "height": 941,
+        "generatedBy": "gpt-image-2"
+      },
+      {
+        "id": "premium_case_01_morning_ops_grid_desktop",
+        "kind": "runtime-screenshot",
+        "path": "assets/screenshots/premium_case_01_morning_ops_grid_desktop.png",
+        "hash": "sha256:1f95d8890e2a6ea94a5227073647cc1ad3bfe262943fe4de1eb112108e2e4418",
+        "width": 2880,
+        "height": 1800,
+        "generatedBy": "playwright-live-page"
+      },
+      {
+        "id": "premium_case_02_airline_member_rfm_desktop",
+        "kind": "runtime-screenshot",
+        "path": "assets/screenshots/premium_case_02_airline_member_rfm_desktop.png",
+        "hash": "sha256:99e9bf60d88d69c638db3b4a798323384bfdc5e7de9bb7fb11c09764a3ac0c12",
+        "width": 2880,
+        "height": 1800,
+        "generatedBy": "playwright-live-page"
+      },
+      {
+        "id": "premium_case_03_retail_capstone_board_desktop",
+        "kind": "runtime-screenshot",
+        "path": "assets/screenshots/premium_case_03_retail_capstone_board_desktop.png",
+        "hash": "sha256:32dc4d6d7847582eba5967e7af3424b161a898a5e34db394b8da17173ae3fc60",
+        "width": 2880,
+        "height": 1800,
+        "generatedBy": "playwright-live-page"
+      },
+      {
+        "id": "premium_case_04_rag_knowledge_retrieval_desktop",
+        "kind": "runtime-screenshot",
+        "path": "assets/screenshots/premium_case_04_rag_knowledge_retrieval_desktop.png",
+        "hash": "sha256:3dc2144d8c54272df71a0e5de44f8471e53c0aae060278240389f70d14314c60",
+        "width": 2880,
+        "height": 1800,
+        "generatedBy": "playwright-live-page"
+      },
+      {
+        "id": "premium_case_05_postgres_relational_arch_desktop",
+        "kind": "runtime-screenshot",
+        "path": "assets/screenshots/premium_case_05_postgres_relational_arch_desktop.png",
+        "hash": "sha256:d6b16959ba3104aeef652c093dda6f8ba3c8ffe2b148cde930210f262cf158f0",
+        "width": 2880,
+        "height": 1800,
+        "generatedBy": "playwright-live-page"
+      },
+      {
+        "id": "premium_case_06_system_arch_flow_desktop",
+        "kind": "runtime-screenshot",
+        "path": "assets/screenshots/premium_case_06_system_arch_flow_desktop.png",
+        "hash": "sha256:2944c3738fb04c7c7e8a837cdddf324c8e8148d23f1c99d3366a430a55f83ab3",
+        "width": 2880,
+        "height": 1800,
+        "generatedBy": "playwright-live-page"
+      },
+      {
+        "id": "premium_case_07_rag_eval_harness_desktop",
+        "kind": "runtime-screenshot",
+        "path": "assets/screenshots/premium_case_07_rag_eval_harness_desktop.png",
+        "hash": "sha256:832bcddeb2eea2dca0e5cc53b2b8ac28b131d0302b2cfc02eb201ba3b42c5a79",
+        "width": 2880,
+        "height": 1800,
+        "generatedBy": "playwright-live-page"
+      },
+      {
+        "id": "premium_case_08_sdd_system_build_desktop",
+        "kind": "runtime-screenshot",
+        "path": "assets/screenshots/premium_case_08_sdd_system_build_desktop.png",
+        "hash": "sha256:c975d6a03c9185feb680f24deb588ccff350b1c34c8bb4b035f790bcdab7010f",
+        "width": 2880,
+        "height": 1800,
+        "generatedBy": "playwright-live-page"
+      },
+      {
+        "id": "premium_case_09_repo_event_bus_desktop",
+        "kind": "runtime-screenshot",
+        "path": "assets/screenshots/premium_case_09_repo_event_bus_desktop.png",
+        "hash": "sha256:39928dfa45ff62aef8dac934afb848ca2eebc87a6c498e7cd1d0317061cd93d2",
+        "width": 2880,
+        "height": 1800,
+        "generatedBy": "playwright-live-page"
+      }
+    ]
+  },
+  "runtimeManifest": {
+    "id": "runtime-ai-product-loop",
+    "jobs": [
+      {
+        "id": "job-sensor-contract",
+        "type": "loop_run",
+        "title": "传感器契约基线",
+        "allowlistRef": "course-sensor-baseline",
+        "activityId": "act-01-sensor-contract",
+        "validator": "sensor-contract/v1"
+      },
+      {
+        "id": "job-mutant-kill",
+        "type": "loop_run",
+        "title": "反作弊变异测试",
+        "allowlistRef": "learning-mutant-kill",
+        "activityId": "act-02-mutant-kill",
+        "validator": "mutant-kill/v1"
+      },
+      {
+        "id": "job-loop-success",
+        "type": "loop_run",
+        "title": "两轮收敛 Loop",
+        "allowlistRef": "bounded-loop-converge",
+        "activityId": "act-03-loop-success",
+        "validator": "bounded-loop-success/v1"
+      },
+      {
+        "id": "job-loop-stop",
+        "type": "loop_run",
+        "title": "重复失败停机演练",
+        "allowlistRef": "bounded-loop-repeated-failure",
+        "activityId": "act-04-loop-stop",
+        "validator": "bounded-loop-stop/v1"
+      },
+      {
+        "id": "job-skill-package",
+        "type": "skill_validate",
+        "title": "Skill 包验证",
+        "allowlistRef": "agent-skill-package",
+        "activityId": "act-05-skill-package",
+        "validator": "skill-package/v1"
+      },
+      {
+        "id": "job-skill-red-team",
+        "type": "skill_validate",
+        "title": "Skill 投毒演练",
+        "allowlistRef": "agent-skill-red-team",
+        "activityId": "act-06-skill-red-team",
+        "validator": "skill-red-team/v1"
+      },
+      {
+        "id": "job-mcp-handshake",
+        "type": "mcp_probe",
+        "title": "MCP 能力协商",
+        "allowlistRef": "mcp-capability-handshake",
+        "activityId": "act-07-mcp-handshake",
+        "validator": "mcp-handshake/v1"
+      },
+      {
+        "id": "job-mcp-threat",
+        "type": "mcp_probe",
+        "title": "MCP 越权探针",
+        "allowlistRef": "mcp-denied-capability",
+        "activityId": "act-08-mcp-threat-model",
+        "validator": "mcp-threat-model/v1"
+      },
+      {
+        "id": "job-rag-improvement",
+        "type": "rag_query",
+        "title": "RAG 基线与改进",
+        "allowlistRef": "tutorial-rag-eval",
+        "activityId": "act-09-rag-improvement",
+        "validator": "rag-improvement/v1"
+      },
+      {
+        "id": "job-dataset-decision",
+        "type": "dataset_sql",
+        "title": "DeFi 风险分层查询",
+        "allowlistRef": "defi-risk-sql",
+        "activityId": "act-10-dataset-decision",
+        "validator": "dataset-decision/v1"
+      },
+      {
+        "id": "job-sdd-trace",
+        "type": "doc_export",
+        "title": "课程追溯矩阵",
+        "allowlistRef": "learning-trace-export",
+        "activityId": "act-11-sdd-trace",
+        "validator": "sdd-trace/v1"
+      },
+      {
+        "id": "job-capstone-review",
+        "type": "doc_export",
+        "title": "结业证据包",
+        "allowlistRef": "learning-capstone-export",
+        "activityId": "act-12-capstone-review",
+        "validator": "capstone-review/v1"
+      }
+    ],
+    "evidencePolicy": {
+      "required": true,
+      "acceptedReplayStatus": [
+        "verified"
+      ],
+      "runtimeJobRefs": [
+        "job-sensor-contract",
+        "job-mutant-kill",
+        "job-loop-success",
+        "job-loop-stop",
+        "job-skill-package",
+        "job-skill-red-team",
+        "job-mcp-handshake",
+        "job-mcp-threat",
+        "job-rag-improvement",
+        "job-dataset-decision",
+        "job-sdd-trace",
+        "job-capstone-review"
+      ]
+    }
+  },
+  "learningPlan": {
+    "schema": "learning-plan/v1",
+    "coursePackage": "course-package-ai-product-loop",
+    "durationMinutes": 720,
+    "practiceMinutes": 495,
+    "modules": [
+      {
+        "id": "m01-evidence-first",
+        "title": "先建传感器",
+        "outcome": "区分存在性检查、行为检查和学习证据，并能识别验证剧场。",
+        "durationMinutes": 90,
+        "practiceMinutes": 60,
+        "chapterRefs": [
+          "01-AI核心概念底层.md",
+          "02-会Loop的工程.md#2.3",
+          "04-工程规范与约束.md"
+        ],
+        "activityRefs": [
+          "act-01-sensor-contract",
+          "act-02-mutant-kill"
+        ],
+        "labRef": "course/labs/01-evidence-loop.md",
+        "figureRefs": [
+          "fig_eval_gap",
+          "fig_loop_cybernetic"
+        ]
+      },
+      {
+        "id": "m02-bounded-loop",
+        "title": "让 Loop 收敛且会停",
+        "outcome": "运行有最大轮次、失败指纹、预算和升级协议的闭环。",
+        "durationMinutes": 120,
+        "practiceMinutes": 85,
+        "chapterRefs": [
+          "02-会Loop的工程.md#2.8",
+          "02-会Loop的工程.md#2.9"
+        ],
+        "activityRefs": [
+          "act-03-loop-success",
+          "act-04-loop-stop"
+        ],
+        "labRef": "course/labs/01-evidence-loop.md",
+        "figureRefs": [
+          "fig_ideology_loops",
+          "fig_l0l3_ladder"
+        ]
+      },
+      {
+        "id": "m03-skill-engineering",
+        "title": "把判断做成可发现的 Skill",
+        "outcome": "写出渐进披露、可扫描、可版本化且不过度加载上下文的 Skill 包。",
+        "durationMinutes": 105,
+        "practiceMinutes": 70,
+        "chapterRefs": [
+          "06-Skill工程化与治理.md"
+        ],
+        "activityRefs": [
+          "act-05-skill-package",
+          "act-06-skill-red-team"
+        ],
+        "labRef": "course/labs/02-skills.md",
+        "figureRefs": [
+          "fig_skill_lifecycle",
+          "fig_skill_distribution"
+        ]
+      },
+      {
+        "id": "m04-mcp-contract",
+        "title": "把 MCP 当协议，不当魔法插座",
+        "outcome": "跑通初始化、能力协商和三个服务端原语，并画出授权与信任边界。",
+        "durationMinutes": 105,
+        "practiceMinutes": 70,
+        "chapterRefs": [
+          "01-AI核心概念底层.md#1.5",
+          "91-附录B-工具生态速查.md"
+        ],
+        "activityRefs": [
+          "act-07-mcp-handshake",
+          "act-08-mcp-threat-model"
+        ],
+        "labRef": "course/labs/03-mcp.md",
+        "figureRefs": [
+          "fig_ai_foundations",
+          "fig_req_sequence"
+        ]
+      },
+      {
+        "id": "m05-evals-data",
+        "title": "让数据和评测驱动决策",
+        "outcome": "用真实调用的评测与受控数据查询，形成可反驳的改进结论。",
+        "durationMinutes": 150,
+        "practiceMinutes": 105,
+        "chapterRefs": [
+          "案例/04-rag_knowledge_retrieval.md",
+          "案例/07-rag_eval_harness.md",
+          "案例/01-morning_ops_grid.md"
+        ],
+        "activityRefs": [
+          "act-09-rag-improvement",
+          "act-10-dataset-decision"
+        ],
+        "labRef": "course/labs/04-evals-data.md",
+        "figureRefs": [
+          "case_04_rag_knowledge_retrieval",
+          "case_07_rag_eval_harness"
+        ]
+      },
+      {
+        "id": "m06-sdd-capstone",
+        "title": "从规格走到可审计系统",
+        "outcome": "把需求、任务、运行证据和三角色审计串成一份结业凭证。",
+        "durationMinutes": 150,
+        "practiceMinutes": 105,
+        "chapterRefs": [
+          "03-系统架构设计.md",
+          "案例/08-sdd_system_build.md",
+          "99-结课.md"
+        ],
+        "activityRefs": [
+          "act-11-sdd-trace",
+          "act-12-capstone-review"
+        ],
+        "labRef": "course/labs/05-sdd-capstone.md",
+        "figureRefs": [
+          "fig_sdd_pipeline",
+          "fig_system_panorama"
+        ]
+      }
+    ],
+    "activities": [
+      {
+        "id": "act-01-sensor-contract",
+        "moduleId": "m01-evidence-first",
+        "title": "拆解一个传感器契约",
+        "kind": "inspect",
+        "required": true,
+        "durationMinutes": 25,
+        "validator": "sensor-contract/v1",
+        "command": "node code/tools/verify_course_package.mjs",
+        "runtimeJob": {
+          "id": "job-sensor-contract",
+          "type": "loop_run",
+          "title": "传感器契约基线",
+          "allowlistRef": "course-sensor-baseline"
+        },
+        "submission": {
+          "format": "json",
+          "requiredFields": [
+            "goal",
+            "signals",
+            "failureLocation",
+            "stopCondition"
+          ]
+        },
+        "evidence": {
+          "required": true,
+          "types": [
+            "stdout",
+            "exit-code",
+            "sensor-list"
+          ],
+          "verification": "deterministic"
+        },
+        "rubricId": "rubric-evidence-loop",
+        "roleCoverage": [
+          "engineering",
+          "product",
+          "assurance"
+        ]
+      },
+      {
+        "id": "act-02-mutant-kill",
+        "moduleId": "m01-evidence-first",
+        "title": "杀死一个关键词投机变异体",
+        "kind": "red-team",
+        "required": true,
+        "durationMinutes": 35,
+        "validator": "mutant-kill/v1",
+        "command": "node --test code/tools/course_contract.test.mjs",
+        "runtimeJob": {
+          "id": "job-mutant-kill",
+          "type": "loop_run",
+          "title": "反作弊变异测试",
+          "allowlistRef": "learning-mutant-kill"
+        },
+        "submission": {
+          "format": "json",
+          "requiredFields": [
+            "mutant",
+            "oldSensorResult",
+            "newSensorResult",
+            "why"
+          ]
+        },
+        "evidence": {
+          "required": true,
+          "types": [
+            "test-report",
+            "mutant-diff"
+          ],
+          "verification": "deterministic"
+        },
+        "rubricId": "rubric-evidence-loop",
+        "roleCoverage": [
+          "engineering",
+          "product",
+          "assurance"
+        ]
+      },
+      {
+        "id": "act-03-loop-success",
+        "moduleId": "m02-bounded-loop",
+        "title": "跑通一个两轮收敛的 Loop",
+        "kind": "execute",
+        "required": true,
+        "durationMinutes": 35,
+        "validator": "bounded-loop-success/v1",
+        "command": "node code/labs/loop/run.mjs --scenario converge",
+        "runtimeJob": {
+          "id": "job-loop-success",
+          "type": "loop_run",
+          "title": "两轮收敛 Loop",
+          "allowlistRef": "bounded-loop-converge"
+        },
+        "submission": {
+          "format": "json",
+          "requiredFields": [
+            "goal",
+            "maxTurns",
+            "cycles",
+            "stopReason",
+            "traceHash"
+          ]
+        },
+        "evidence": {
+          "required": true,
+          "types": [
+            "loop-trace",
+            "stop-reason",
+            "hash"
+          ],
+          "verification": "deterministic"
+        },
+        "rubricId": "rubric-bounded-loop",
+        "roleCoverage": [
+          "engineering",
+          "product",
+          "assurance"
+        ]
+      },
+      {
+        "id": "act-04-loop-stop",
+        "moduleId": "m02-bounded-loop",
+        "title": "证明 Loop 会在重复失败时停机",
+        "kind": "failure-drill",
+        "required": true,
+        "durationMinutes": 50,
+        "validator": "bounded-loop-stop/v1",
+        "command": "node code/labs/loop/run.mjs --scenario repeated-failure",
+        "runtimeJob": {
+          "id": "job-loop-stop",
+          "type": "loop_run",
+          "title": "重复失败停机演练",
+          "allowlistRef": "bounded-loop-repeated-failure"
+        },
+        "submission": {
+          "format": "json",
+          "requiredFields": [
+            "failureFingerprint",
+            "attempts",
+            "stopReason",
+            "escalationPacket"
+          ]
+        },
+        "evidence": {
+          "required": true,
+          "types": [
+            "loop-trace",
+            "failure-fingerprint",
+            "escalation-packet"
+          ],
+          "verification": "deterministic"
+        },
+        "rubricId": "rubric-bounded-loop",
+        "roleCoverage": [
+          "engineering",
+          "product",
+          "assurance"
+        ]
+      },
+      {
+        "id": "act-05-skill-package",
+        "moduleId": "m03-skill-engineering",
+        "title": "写一个渐进披露 Skill 包",
+        "kind": "author",
+        "required": true,
+        "durationMinutes": 30,
+        "validator": "skill-package/v1",
+        "command": "node code/labs/skills/validate.mjs course/fixtures/skills/good/SKILL.md",
+        "runtimeJob": {
+          "id": "job-skill-package",
+          "type": "skill_validate",
+          "title": "Skill 包验证",
+          "allowlistRef": "agent-skill-package"
+        },
+        "submission": {
+          "format": "markdown",
+          "requiredFields": [
+            "frontmatter",
+            "trigger",
+            "workflow",
+            "verification",
+            "references"
+          ]
+        },
+        "evidence": {
+          "required": true,
+          "types": [
+            "validation-report",
+            "loaded-resources"
+          ],
+          "verification": "deterministic"
+        },
+        "rubricId": "rubric-skill",
+        "roleCoverage": [
+          "engineering",
+          "product",
+          "assurance"
+        ]
+      },
+      {
+        "id": "act-06-skill-red-team",
+        "moduleId": "m03-skill-engineering",
+        "title": "让扫描器拦住投毒 Skill",
+        "kind": "red-team",
+        "required": true,
+        "durationMinutes": 40,
+        "validator": "skill-red-team/v1",
+        "command": "node code/labs/skills/validate.mjs course/fixtures/skills/poisoned/SKILL.md --expect-blocked",
+        "runtimeJob": {
+          "id": "job-skill-red-team",
+          "type": "skill_validate",
+          "title": "Skill 投毒演练",
+          "allowlistRef": "agent-skill-red-team"
+        },
+        "submission": {
+          "format": "json",
+          "requiredFields": [
+            "finding",
+            "severity",
+            "blocked",
+            "remediation"
+          ]
+        },
+        "evidence": {
+          "required": true,
+          "types": [
+            "security-findings",
+            "exit-code"
+          ],
+          "verification": "deterministic"
+        },
+        "rubricId": "rubric-skill",
+        "roleCoverage": [
+          "engineering",
+          "product",
+          "assurance"
+        ]
+      },
+      {
+        "id": "act-07-mcp-handshake",
+        "moduleId": "m04-mcp-contract",
+        "title": "跑通 MCP 初始化与原语发现",
+        "kind": "protocol-probe",
+        "required": true,
+        "durationMinutes": 35,
+        "validator": "mcp-handshake/v1",
+        "command": "node code/labs/mcp/client.mjs",
+        "runtimeJob": {
+          "id": "job-mcp-handshake",
+          "type": "mcp_probe",
+          "title": "MCP 能力协商",
+          "allowlistRef": "mcp-capability-handshake"
+        },
+        "submission": {
+          "format": "json",
+          "requiredFields": [
+            "protocolVersion",
+            "clientCapabilities",
+            "serverCapabilities",
+            "discoveredPrimitives"
+          ]
+        },
+        "evidence": {
+          "required": true,
+          "types": [
+            "json-rpc-trace",
+            "capability-matrix"
+          ],
+          "verification": "deterministic"
+        },
+        "rubricId": "rubric-mcp",
+        "roleCoverage": [
+          "engineering",
+          "product",
+          "assurance"
+        ]
+      },
+      {
+        "id": "act-08-mcp-threat-model",
+        "moduleId": "m04-mcp-contract",
+        "title": "画出 MCP 信任与授权边界",
+        "kind": "threat-model",
+        "required": true,
+        "durationMinutes": 35,
+        "validator": "mcp-threat-model/v1",
+        "command": "node code/labs/mcp/client.mjs --probe-denied",
+        "runtimeJob": {
+          "id": "job-mcp-threat",
+          "type": "mcp_probe",
+          "title": "MCP 越权探针",
+          "allowlistRef": "mcp-denied-capability"
+        },
+        "submission": {
+          "format": "json",
+          "requiredFields": [
+            "assets",
+            "trustBoundaries",
+            "abuseCases",
+            "mitigations"
+          ]
+        },
+        "evidence": {
+          "required": true,
+          "types": [
+            "denied-call",
+            "threat-model"
+          ],
+          "verification": "mixed"
+        },
+        "rubricId": "rubric-mcp",
+        "roleCoverage": [
+          "engineering",
+          "product",
+          "assurance"
+        ]
+      },
+      {
+        "id": "act-09-rag-improvement",
+        "moduleId": "m05-evals-data",
+        "title": "用真实调用的 eval 驱动一次改进",
+        "kind": "evaluation",
+        "required": true,
+        "durationMinutes": 50,
+        "validator": "rag-improvement/v1",
+        "command": "node code/tools/eval_harness.mjs --json",
+        "runtimeJob": {
+          "id": "job-rag-improvement",
+          "type": "rag_query",
+          "title": "RAG 基线与改进",
+          "allowlistRef": "tutorial-rag-eval"
+        },
+        "submission": {
+          "format": "json",
+          "requiredFields": [
+            "baseline",
+            "change",
+            "after",
+            "regressions",
+            "decision"
+          ]
+        },
+        "evidence": {
+          "required": true,
+          "types": [
+            "eval-report",
+            "retrieval-trace",
+            "before-after"
+          ],
+          "verification": "deterministic"
+        },
+        "rubricId": "rubric-evals-data",
+        "roleCoverage": [
+          "engineering",
+          "product",
+          "assurance"
+        ]
+      },
+      {
+        "id": "act-10-dataset-decision",
+        "moduleId": "m05-evals-data",
+        "title": "从数据查询走到可追责决策",
+        "kind": "dataset-query",
+        "required": true,
+        "durationMinutes": 55,
+        "validator": "dataset-decision/v1",
+        "command": "node code/labs/data/query.mjs --fixture defi-risk",
+        "runtimeJob": {
+          "id": "job-dataset-decision",
+          "type": "dataset_sql",
+          "title": "DeFi 风险分层查询",
+          "allowlistRef": "defi-risk-sql"
+        },
+        "submission": {
+          "format": "json",
+          "requiredFields": [
+            "queryId",
+            "resultHash",
+            "anomaly",
+            "decision",
+            "owner",
+            "reviewBy"
+          ]
+        },
+        "evidence": {
+          "required": true,
+          "types": [
+            "dataset-profile",
+            "query-result",
+            "decision-record"
+          ],
+          "verification": "mixed"
+        },
+        "rubricId": "rubric-evals-data",
+        "roleCoverage": [
+          "engineering",
+          "product",
+          "assurance"
+        ]
+      },
+      {
+        "id": "act-11-sdd-trace",
+        "moduleId": "m06-sdd-capstone",
+        "title": "建立需求到测试的双向追溯",
+        "kind": "traceability",
+        "required": true,
+        "durationMinutes": 40,
+        "validator": "sdd-trace/v1",
+        "command": "node code/tools/build_html_ppt_course.mjs",
+        "runtimeJob": {
+          "id": "job-sdd-trace",
+          "type": "doc_export",
+          "title": "课程追溯矩阵",
+          "allowlistRef": "learning-trace-export"
+        },
+        "submission": {
+          "format": "json",
+          "requiredFields": [
+            "requirements",
+            "tasks",
+            "tests",
+            "evidenceRefs",
+            "uncovered"
+          ]
+        },
+        "evidence": {
+          "required": true,
+          "types": [
+            "traceability-matrix",
+            "coverage-summary"
+          ],
+          "verification": "deterministic"
+        },
+        "rubricId": "rubric-sdd-capstone",
+        "roleCoverage": [
+          "engineering",
+          "product",
+          "assurance"
+        ]
+      },
+      {
+        "id": "act-12-capstone-review",
+        "moduleId": "m06-sdd-capstone",
+        "title": "提交三角色审计的结业项目",
+        "kind": "capstone",
+        "required": true,
+        "durationMinutes": 65,
+        "validator": "capstone-review/v1",
+        "command": "node code/tools/audit_learning_course.mjs",
+        "runtimeJob": {
+          "id": "job-capstone-review",
+          "type": "doc_export",
+          "title": "结业证据包",
+          "allowlistRef": "learning-capstone-export"
+        },
+        "submission": {
+          "format": "json",
+          "requiredFields": [
+            "problem",
+            "metric",
+            "spec",
+            "sensor",
+            "loopBoundary",
+            "evidenceRefs",
+            "residualRisks"
+          ]
+        },
+        "evidence": {
+          "required": true,
+          "types": [
+            "capstone-bundle",
+            "role-reviews",
+            "human-signoff"
+          ],
+          "verification": "mixed"
+        },
+        "rubricId": "rubric-sdd-capstone",
+        "roleCoverage": [
+          "engineering",
+          "product",
+          "assurance"
+        ]
+      }
+    ],
+    "rubrics": [
+      {
+        "id": "rubric-evidence-loop",
+        "passScore": 80,
+        "criteria": [
+          {
+            "id": "eng-behavior",
+            "role": "engineering",
+            "weight": 35,
+            "rule": "传感器调用真实被测行为，并能定位失败。"
+          },
+          {
+            "id": "product-decision",
+            "role": "product",
+            "weight": 25,
+            "rule": "信号能改变一个明确决策，而非只展示状态。"
+          },
+          {
+            "id": "assurance-mutant",
+            "role": "assurance",
+            "weight": 40,
+            "rule": "至少一个会骗过旧检查的变异体被新检查拦住。"
+          }
+        ]
+      },
+      {
+        "id": "rubric-bounded-loop",
+        "passScore": 80,
+        "criteria": [
+          {
+            "id": "eng-trace",
+            "role": "engineering",
+            "weight": 35,
+            "rule": "每轮保留输入、动作、结果、耗时和失败指纹。"
+          },
+          {
+            "id": "product-goal",
+            "role": "product",
+            "weight": 25,
+            "rule": "目标、成功条件和升级对象明确。"
+          },
+          {
+            "id": "assurance-stop",
+            "role": "assurance",
+            "weight": 40,
+            "rule": "最大轮次、重复失败、回归和预算任一触发均能停机。"
+          }
+        ]
+      },
+      {
+        "id": "rubric-skill",
+        "passScore": 80,
+        "criteria": [
+          {
+            "id": "eng-package",
+            "role": "engineering",
+            "weight": 35,
+            "rule": "SKILL.md 元数据可发现，正文短，资源按需加载且链接不超过一层。"
+          },
+          {
+            "id": "product-trigger",
+            "role": "product",
+            "weight": 25,
+            "rule": "触发条件能区分该用和不该用的任务。"
+          },
+          {
+            "id": "assurance-scan",
+            "role": "assurance",
+            "weight": 40,
+            "rule": "注入、泄露和危险命令扫描能阻断发布。"
+          }
+        ]
+      },
+      {
+        "id": "rubric-mcp",
+        "passScore": 80,
+        "criteria": [
+          {
+            "id": "eng-protocol",
+            "role": "engineering",
+            "weight": 35,
+            "rule": "初始化先于操作，且只调用协商成功的能力。"
+          },
+          {
+            "id": "product-primitive",
+            "role": "product",
+            "weight": 25,
+            "rule": "工具、资源、提示词各自承担合适职责。"
+          },
+          {
+            "id": "assurance-boundary",
+            "role": "assurance",
+            "weight": 40,
+            "rule": "用户批准、最小权限、Origin 与敏感数据边界可审计。"
+          }
+        ]
+      },
+      {
+        "id": "rubric-evals-data",
+        "passScore": 80,
+        "criteria": [
+          {
+            "id": "eng-reproduce",
+            "role": "engineering",
+            "weight": 35,
+            "rule": "查询或评测可重跑，输入版本和结果哈希齐全。"
+          },
+          {
+            "id": "product-action",
+            "role": "product",
+            "weight": 35,
+            "rule": "结果落到负责人、截止时间和可撤销动作。"
+          },
+          {
+            "id": "assurance-limit",
+            "role": "assurance",
+            "weight": 30,
+            "rule": "说明样本、许可、隐私、异常值和结论外推限制。"
+          }
+        ]
+      },
+      {
+        "id": "rubric-sdd-capstone",
+        "passScore": 80,
+        "criteria": [
+          {
+            "id": "eng-traceability",
+            "role": "engineering",
+            "weight": 35,
+            "rule": "需求、任务、测试和证据可双向追溯，无悬空项。"
+          },
+          {
+            "id": "product-outcome",
+            "role": "product",
+            "weight": 30,
+            "rule": "问题、指标、用户与成功边界保持一致。"
+          },
+          {
+            "id": "assurance-review",
+            "role": "assurance",
+            "weight": 35,
+            "rule": "独立审计记录反例、残余风险和人工签署。"
+          }
+        ]
+      }
+    ],
+    "completionPolicy": {
+      "requiredActivities": 12,
+      "minimumScore": 80,
+      "requiredRoleReviews": [
+        "engineering",
+        "product",
+        "assurance"
+      ],
+      "capstoneNeedsHumanReview": true,
+      "runtimeEvidenceMaxAgeHours": 72
+    },
+    "datasetCatalog": {
+      "schema": "course-dataset-catalog/v1",
+      "courseId": "ai-product-loop-engineering",
+      "policy": {
+        "rawDataInGit": false,
+        "publishOnly": [
+          "licensed-public",
+          "deterministic-synthetic",
+          "privacy-safe-aggregate"
+        ],
+        "restrictedDataNeedsLocalRecipe": true,
+        "requiredEvidence": [
+          "schema",
+          "rowCount",
+          "timeRange",
+          "nullProfile",
+          "outlierProfile",
+          "license",
+          "privacy"
+        ]
+      },
+      "datasets": [
+        {
+          "id": "defi-risk",
+          "title": "DeFi 风险分层教学夹具",
+          "kind": "deterministic-synthetic",
+          "fixturePath": "course/fixtures/data/defi-risk.csv",
+          "sourceHint": "本地 dataset 中 DeFi 市场与交易表只用于校准分布；发布夹具不复制原始行。",
+          "license": "CC0-1.0 for generated fixture",
+          "privacy": "public",
+          "activityRefs": [
+            "act-10-dataset-decision"
+          ]
+        },
+        {
+          "id": "epc-efficiency",
+          "title": "建筑能效改进可选扩展",
+          "kind": "local-recipe",
+          "recipePath": "course/fixtures/data/README.md",
+          "sourceHint": "本地 EPC 大表；必须去除地址、邮编、UPRN 等位置标识后才能生成聚合夹具。",
+          "license": "review-required",
+          "privacy": "restricted",
+          "activityRefs": []
+        },
+        {
+          "id": "transaction-graph",
+          "title": "交易图异常可选扩展",
+          "kind": "local-recipe",
+          "recipePath": "course/fixtures/data/README.md",
+          "sourceHint": "本地一阶、二阶交易关系；发布前仅保留确定性合成图或匿名聚合。",
+          "license": "review-required",
+          "privacy": "internal",
+          "activityRefs": []
+        }
+      ]
+    }
+  },
+  "publishGate": {
+    "schemaValid": true,
+    "teacherApproved": false,
+    "visualApproved": true,
+    "runtimeEvidenceFresh": false,
+    "learningReady": true,
+    "releaseReady": false
+  },
+  "hash": "sha256:7d35d8ae9cb225b8cc7417cc4a312d626504bbdca52dd8d2b92707d6d6395776"
+}

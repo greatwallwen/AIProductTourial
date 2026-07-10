@@ -1,0 +1,21 @@
+{
+  "schema": "learning-course-audit/v1",
+  "courseId": "ai-product-loop-engineering",
+  "version": "1.0.0",
+  "summary": {
+    "modules": 6,
+    "requiredActivities": 12,
+    "durationMinutes": 720,
+    "practiceMinutes": 495,
+    "practiceRatio": 0.688,
+    "activityKinds": 11,
+    "ownedDiagrams": 38,
+    "image2Replacements": 5,
+    "runtimeScreenshots": 9,
+    "findings": 0,
+    "counts": {}
+  },
+  "findings": [],
+  "contractHash": "sha256:44bf6ff0056fc7631379159cfa70d51fc4fec79b4349bfab20b99882ee5ed18d",
+  "ok": true
+}

@@ -77,9 +77,9 @@
 
 ### 图形/原型/表单
 
-![航空会员价值运营 · 信息图](../../outputs/product_case_library/svg/case_02_airline_member_rfm.svg)
+![航空会员价值运营 · 信息图](../../assets/course/image2/diagrams/case_02_airline_member_rfm.png)
 
-![案例02 · 真实客户 vs 教学合成 R×F 双散点](../../outputs/product_case_library/svg/fig_rfm_dual.svg)
+![案例02 · 真实客户 vs 教学合成 R×F 双散点](../../assets/course/image2/diagrams/fig_rfm_dual.png)
 
 ![航空会员价值运营 · 可运行大屏原型截图](../../assets/screenshots/premium_case_02_airline_member_rfm_desktop.png)
 
@@ -97,12 +97,9 @@
   - 产出：指标分析表, 产品改进建议
   - 验收：RFM、趋势或异常检测结果必须转化为明确产品判断，不能停留在图表描述。
 
-### 跟着做（动手复现）
+### 选修验证
 
-1. 起服务：`bash code/run.sh`，浏览器打开 `#/case/02`（本案专属大屏）。
-2. **你应看到**：教学合成横幅、分层散点与分层队列，数据来自后端实时接口（性质见章首标注）。
-3. **动手改一改**：对照页内「真实对照」：真实 1665 客户的 R×F 与合成 800 会员的埋点差在哪？再动手改：合成数据的「高价值流失」群占比定义在 `code/tools/fetch-datasets.mjs`（案 02 生成块的 segs，p:0.12），把它改成 0.10 后依次跑 `node code/tools/fetch-datasets.mjs && node code/tools/build_case_data.mjs`，重启 `bash code/run.sh` 刷新 `#/case/02`，看分层怎么变（设计说明见 dataset/design/case_02.md，它只是文档、改它不生效）。
-4. **自测产出**：`node code/tools/check_my_work.mjs 2 你的方案.md`——红项指明缺什么、回哪章补。
+本案保留 RFM 专属页面与数据改动，适合完成核心数据决策实验后迁移练习：`bash code/run.sh` → `#/case/02`。交付物仍可用旧自测器检查，但不计入 12 个必做活动。
 
 <details>
 <summary><img src="../../assets/vendor/lucide/built/sparkles.svg" width="14" alt="" style="vertical-align:-2px" /> 深度（专业读者）：权衡 · 失效模式 · 何时别用</summary>

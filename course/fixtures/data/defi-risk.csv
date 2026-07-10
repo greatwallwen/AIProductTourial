@@ -1,0 +1,7 @@
+window,transactions,active_users,volume_index,error_rate,concentration
+baseline-a,1280,440,100,0.012,0.31
+baseline-b,1360,462,106,0.014,0.32
+watch-a,1190,398,95,0.037,0.48
+watch-b,1085,351,88,0.052,0.57
+critical-a,930,280,81,0.091,0.72
+critical-b,870,244,74,0.118,0.79

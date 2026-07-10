@@ -13,6 +13,7 @@ const dkLabel = (c) => c.dataKind === 'synthetic' ? '教学合成数据（固定
 const dkNote = (c) => c.dataKind === 'synthetic' ? `> **数据性质：教学合成**（固定种子生成，设计说明见 dataset/design/case_${pad(c.num)}.md）——分层与效应为教学而设，不代表真实业务分布。\n\n` : '';
 
 const defs = JSON.parse(readFileSync(join(ROOT, 'code', 'tools', 'case_definitions.json'), 'utf8'));
+const courseManifest = JSON.parse(readFileSync(join(ROOT, 'course', 'manifest.json'), 'utf8'));
 const THEMES = {};
 for (const th of JSON.parse(readFileSync(join(ROOT, 'design', 'themes.json'), 'utf8')).themes) THEMES[th.id] = th.t;
 const CLIB = join(ROOT, 'outputs', 'product_case_library');
@@ -281,7 +282,8 @@ mkdirSync(ICONBUILT, { recursive: true });
 for (const [name, col] of Object.entries(ICON_COLOR)) { const inner = loadIcon(name); if (!inner) { console.error('缺 Lucide 图标', name); continue; } writeFileSync(join(ICONBUILT, name + '.svg'), `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="${col}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${inner}</svg>`); }
 let UP = '../';                                          // 教程文件到仓库根的相对前缀（章节/README/术语/结课=../；案例=../../）
 const ic = (name) => `<img src="${UP}assets/vendor/lucide/built/${name}.svg" width="14" alt="" style="vertical-align:-2px" /> `;
-const relink = (s) => s.replace(/\]\((outputs\/|assets\/|rules\/|skills\/|design\/|dataset\/|docs\/|README)/g, `](${UP}$1`).replace(/src="(outputs\/|assets\/)/g, `src="${UP}$1`);
+const publishImage2Figures = (s) => s.replace(/outputs\/product_case_library\/svg\/([a-zA-Z0-9_-]+)\.svg/g, 'assets/course/image2/diagrams/$1.png');
+const relink = (s) => s.replace(/\]\((outputs\/|assets\/|rules\/|skills\/|design\/|dataset\/|docs\/|README|course\/)/g, `](${UP}$1`).replace(/src="(outputs\/|assets\/)/g, `src="${UP}$1`);
 // 源里的 emoji 标记/难度星 → 专业图标 + 文字（构建期统一替换，源保留 emoji 作语义 token，产物零 emoji）
 const deemoji = (s) => s
   .replace(/★★★ (?=高阶)/g, '').replace(/★★☆ (?=进阶)/g, '').replace(/★☆☆ (?=入门)/g, '')
@@ -374,8 +376,8 @@ const CHAPTERS = [['00-ai-foundations.md', '01-AI核心概念底层.md'], ['01-i
 // 口径派生化（v16 ②修硬伤）：源文件写 {{CASE_COUNT}}/{{SKILL_COUNT}} 占位符，build 时替换为唯一事实源实值——数字口径不再可能漂移
 const SKILL_N = (readFileSync(join(ROOT, 'skills', 'pm_skills.md'), 'utf8').match(/^## /gm) || []).length;
 const derive = (t) => t.replaceAll('{{CASE_COUNT}}', String(defs.cases.length)).replaceAll('{{SKILL_COUNT}}', String(SKILL_N));
-for (const [s, out] of CHAPTERS) writeBook(out, derive(deemoji(relink(src(s)))));
-writeBook('99-结课.md', derive(deemoji(relink(src('99-capstone.md')))));
+for (const [s, out] of CHAPTERS) writeBook(out, derive(deemoji(relink(publishImage2Figures(src(s))))));
+writeBook('99-结课.md', derive(deemoji(relink(publishImage2Figures(src('99-capstone.md'))))));
 
 // —— 术语表 ——
 UP = '../';
@@ -416,7 +418,7 @@ writeBook('术语表.md', J(['# 术语表（先备着，看案例时随时回查
   '| 教员式/保姆式技能 | 技能生态第二根轴：教员式拷问你与教基本功（grill/tdd），保姆式接管流程（GSD/Spec Kit）；本书立场=流程可保姆、判断必教员（§2.6） |',
   '| Ralph 循环 | 把 Agent 包在 while 循环里、规格/验证都在 agent 之外，靠持续迭代跑完任务（§2.6，Geoffrey Huntley；本书 self-evolve 即一例） |',
   '| 通用语言 / Ubiquitous Language | 业务、代码、文档说同一套话；词链断裂处就是 Agent 猜错处（§8.1，DDD） |',
-  '| 聚合根 | 一组必须一起保持一致的对象的唯一入口，改子对象必须经根；不变量由守卫机器化（§8.2） |',
+  '| 聚合根 | 一组必须一起保持一致的对象的受控入口，改子对象必须经根；不变量由守卫机器化（§8.2） |',
   '| 领域事件 / 事件驱动 | 事件=已发生的事实（过去时命名）；发布者宣布「发生了什么」、不关心谁在听（§7.2、§8.3，案例 09） |',
   '| 事件溯源 / Event Sourcing | 状态不直接存，从不可变事件流重放推导出来（§9.4，案例 09） |',
   '| 防腐层 / ACL | 上下文边界上的翻译官：外部模型先翻译成本域通用语言再进门（§7.3、§8.4） |',
@@ -427,7 +429,7 @@ writeBook('术语表.md', J(['# 术语表（先备着，看案例时随时回查
 UP = '../../';
 const idxH = ['# 第二部分 · 案例演示与验证', '', '## 数字化系统全景（先看这张图）', '',
   `第一部分讲的理念、原理、规范、设计，不是散点——它们共同构成**一套数字化系统**。下面 ${defs.cases.length} 个代表性案例，正是这套系统在不同环节、不同层的**实操演示**（每案标注它更偏哪个角色镜头）：`, '',
-  `![数字化系统全景](${UP}outputs/product_case_library/svg/fig_system_panorama.svg)`, '',
+  `![数字化系统全景](${UP}assets/course/image2/diagrams/fig_system_panorama.png)`, '',
   '- **纵向三层**：`底座平台`（44 向量库·45 关系库·46 架构契约·51 SDD 建造·54 事件总线）→ `能力智能`（指标/检索/AI）→ `业务应用`（业务场景）。',
   '- **横向数据价值闭环**：`采集 → 治理 → 洞察 → 决策 → 执行 → 验收 → 增长`，再反馈回采集。',
   '- **怎么读**：先在全景里定位一个案例在「哪一层·哪一环节」，再进它看它把哪条理论落成了什么操作。', '',
@@ -448,6 +450,12 @@ UP = '../../';
 const LENS_ICON = { 研发: 'wrench', 产品: 'package', 项目: 'clipboard-list' };
 const lensTags = (c) => (c.lenses || []).map((l) => ic(LENS_ICON[l]) + l).join(' · ');
 const lensViewLines = (c) => c.lensViews ? ['### 三镜头看同一个案例', '', '> 同一份真实数据、同一个案例，研发/产品/项目三种角色各看到什么——这就是「一个操作模型、三个镜头」。', '', ...Object.entries(c.lensViews).map(([l, v]) => `- ${ic(LENS_ICON[l])}**${l}镜头**：${v}`), ''] : [];
+const verticalByCase = new Map(courseManifest.legacyCasePolicy.coreVerticals.flatMap((vertical) => vertical.caseRefs.map((ref) => [Number(ref), vertical])));
+const primaryPractice = {
+  1: { title: '数据决策主实验', lab: 'course/labs/04-evals-data.md', activities: '活动 10' },
+  4: { title: 'RAG 评测主实验', lab: 'course/labs/04-evals-data.md', activities: '活动 09' },
+  8: { title: 'SDD 结业主实验', lab: 'course/labs/05-sdd-capstone.md', activities: '活动 11/12' }
+};
 for (const c of defs.cases) {
   const d = vm(c.num);
   const B = [`# 实操 ${pad(c.num)}：${c.title}`, '',
@@ -469,14 +477,22 @@ for (const c of defs.cases) {
       ? ['### Prompt 实操 · SDD 系统建造八步（多 prompt 编排）', '', '> 正面回答「几个 prompt 建不成系统」：下面是一条**流水线**——每步一个 prompt、产一份工件、喂给下一步；澄清与门禁是人/机把关。照着走，才建得动一个中大型系统。', '', '> **怎么用（用 CodeBuddy 跑这套「建系统」走查）**：整条流水线正好对上 CodeBuddy 的模式——宪法/规格/澄清用 **Ask + Plan**（问清楚、让它列任务清单）；架构与任务分解用 **Plan**；逐任务实现用 **Craft**（多文件生成/重构/测试）；门禁三绿用 **Craft** 跑测试 + review；演进则回改规格再进 **Plan**。把每步代码框整段贴进对应模式、拿到工件再喂下一步；海外读者换 Claude Code / Cursor 同理（见附录B）。', '',
         ...buildBuildPipeline().flatMap(([s, p]) => [`**${s}**`, '', '```text', p, '```', ''])]
       : ['### Prompt 实操', '', '> **怎么用**：推荐用 **CodeBuddy 的 Plan 模式**（腾讯，国产·当下可跑）——把下面灰底代码框**整段原样粘进去，它会先列出任务清单、再自主执行**，你不需要看懂里面的技术细节；没装过就先装一个。海外读者用 Claude Code / Cursor / Trae 等任一 Agent 工具同理（见附录B）。', '', `**Prompt 1：${c.scenario} - 问题定义**`, '', '```text', buildPrompt(c, d, 'def'), '```', '', `**Prompt 2：${c.scenario} - 方案验收**（注意：outputs/ 交付物由 build_docs 重建覆盖，建议在新分支/对照目录运行）`, '', '```text', buildPrompt(c, d, 'accept'), '```', '']),
-    `### 图形/原型/表单`, '', `![${c.scenario} · 信息图](${UP}outputs/product_case_library/svg/case_${pad(c.num)}_${c.slug}.svg)`, '',
-    ...(c.num === 6 && d.deps?.length ? [`![案例06 · 后端子系统真实依赖（C4 · dogfood）](${UP}outputs/product_case_library/svg/fig_case06_deps.svg)`, ''] : []),
-    ...(c.num === 2 ? [`![案例02 · 真实客户 vs 教学合成 R×F 双散点](${UP}outputs/product_case_library/svg/fig_rfm_dual.svg)`, ''] : []),
+    `### 图形/原型/表单`, '', `![${c.scenario} · 信息图](${UP}assets/course/image2/diagrams/case_${pad(c.num)}_${c.slug}.png)`, '',
+    ...(c.num === 6 && d.deps?.length ? [`![案例06 · 后端子系统真实依赖（C4 · dogfood）](${UP}assets/course/image2/diagrams/fig_case06_deps.png)`, ''] : []),
+    ...(c.num === 2 ? [`![案例02 · 真实客户 vs 教学合成 R×F 双散点](${UP}assets/course/image2/diagrams/fig_rfm_dual.png)`, ''] : []),
     `![${c.scenario} · 可运行大屏原型截图](${UP}assets/screenshots/premium_case_${pad(c.num)}_${c.slug}_desktop.png)`, '',
     `- 图形类型：${c.slug}（设计 ${c.design}）`, `- 看图顺序：${c.readingOrder || '先看指标链，再看异常队列和责任对象，最后看行动入口与验收边界。'}`, `- UI 差异：本案例采用 \`${c.uiId}\` + 设计 \`${c.design}\`，不得复用通用表格占位；可运行原型见 \`#/case/${pad(c.num)}\`。`, '',
     `### 交付物与验收`, '', `交付物：**${c.deliverable}**。必含要素（字段/指标链/异常状态/Skill/决策动作/高影响复核）与合格线由自测器六项核对：\`node code/tools/check_my_work.mjs ${c.num} 你的方案.md\`；红线：不越过「${c.riskBoundary}」。`, ''];
   if (c.rp) B.push(`**指定实操融合**`, '', `- ${c.rp.id}：${c.rp.title}`, `  - 产出：${c.rp.produce}`, `  - 验收：${c.rp.accept}`, '');
-  B.push(`### 跟着做（动手复现）`, '', `1. 起服务：\`bash code/run.sh\`，浏览器打开 \`#/case/${pad(c.num)}\`（本案专属大屏）。`, `2. **你应看到**：${({rag:'检索框+召回/重排两列结果与相似度',db:'SQL 语句、执行结果表与索引说明',arch:'后端子系统依赖图（真扫 import）与 ADR/契约卡',eval:'金标题目命中/未命中队列与覆盖图',buildwalk:'SDD 八步走查队列与门禁状态',rfm:'教学合成横幅、分层散点与分层队列'})[c.screen] || `指标链（${c.metricChain.slice(0, 2).join(' / ')} …）、异常队列与行动入口`}，数据来自后端实时接口（性质见章首标注）。`, `3. **动手改一改**：${c.tryThis || '换一个维度或筛选，观察指标怎么变；再点页面里的「决策题挑战」做一次判断。'}`, `4. **自测产出**：\`node code/tools/check_my_work.mjs ${c.num} 你的方案.md\`——红项指明缺什么、回哪章补。`, '');
+  const practice = primaryPractice[c.num];
+  const vertical = verticalByCase.get(c.num);
+  if (practice) {
+    B.push('### 课程实操入口', '', `本案是「${vertical.outcome}」纵向链的主入口，不再复制九套相同的跟做步骤。完成 [${practice.title}](${UP}${practice.lab}) 的 ${practice.activities}：先运行受控命令，再提交结构化证据与三角色评分。`, '', `页面观察入口仍为 \`bash code/run.sh\` → \`#/case/${pad(c.num)}\`；观察不是完成证据，活动契约以 \`course/activities.json\` 为准。`, '');
+  } else if (c.num === 2) {
+    B.push('### 选修验证', '', `本案保留 RFM 专属页面与数据改动，适合完成核心数据决策实验后迁移练习：\`bash code/run.sh\` → \`#/case/02\`。交付物仍可用旧自测器检查，但不计入 12 个必做活动。`, '');
+  } else {
+    B.push('### 参考验证', '', `本案属于「${vertical?.outcome || '跨案例对照'}」链的支持素材。打开 \`#/case/${pad(c.num)}\` 核对专属页面与真实接口；核心动手、评分和完成证据集中在该链的主实验，避免重复做同一套运行/观察/改动/自测。`, '');
+  }
   if (c.deepDive) B.push('<details>', `<summary>${ic('sparkles')}深度（专业读者）：权衡 · 失效模式 · 何时别用</summary>`, '', c.deepDive, '</details>', '');
   if (c.exercises && c.exercises.length) {
     B.push(`### 练习（做完再进下一个案例）`, '', c.exercises.map((e, i) => `${i + 1}. **${e.type}**：${e.q}`).join('\n'), '');

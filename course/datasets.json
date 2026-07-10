@@ -1,0 +1,42 @@
+{
+  "schema": "course-dataset-catalog/v1",
+  "courseId": "ai-product-loop-engineering",
+  "policy": {
+    "rawDataInGit": false,
+    "publishOnly": ["licensed-public", "deterministic-synthetic", "privacy-safe-aggregate"],
+    "restrictedDataNeedsLocalRecipe": true,
+    "requiredEvidence": ["schema", "rowCount", "timeRange", "nullProfile", "outlierProfile", "license", "privacy"]
+  },
+  "datasets": [
+    {
+      "id": "defi-risk",
+      "title": "DeFi 风险分层教学夹具",
+      "kind": "deterministic-synthetic",
+      "fixturePath": "course/fixtures/data/defi-risk.csv",
+      "sourceHint": "本地 dataset 中 DeFi 市场与交易表只用于校准分布；发布夹具不复制原始行。",
+      "license": "CC0-1.0 for generated fixture",
+      "privacy": "public",
+      "activityRefs": ["act-10-dataset-decision"]
+    },
+    {
+      "id": "epc-efficiency",
+      "title": "建筑能效改进可选扩展",
+      "kind": "local-recipe",
+      "recipePath": "course/fixtures/data/README.md",
+      "sourceHint": "本地 EPC 大表；必须去除地址、邮编、UPRN 等位置标识后才能生成聚合夹具。",
+      "license": "review-required",
+      "privacy": "restricted",
+      "activityRefs": []
+    },
+    {
+      "id": "transaction-graph",
+      "title": "交易图异常可选扩展",
+      "kind": "local-recipe",
+      "recipePath": "course/fixtures/data/README.md",
+      "sourceHint": "本地一阶、二阶交易关系；发布前仅保留确定性合成图或匿名聚合。",
+      "license": "review-required",
+      "privacy": "internal",
+      "activityRefs": []
+    }
+  ]
+}

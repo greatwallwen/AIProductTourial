@@ -75,7 +75,7 @@
 
 ### 图形/原型/表单
 
-![经营数据关系库查询 · 信息图](../../outputs/product_case_library/svg/case_05_postgres_relational_arch.svg)
+![经营数据关系库查询 · 信息图](../../assets/course/image2/diagrams/case_05_postgres_relational_arch.png)
 
 ![经营数据关系库查询 · 可运行大屏原型截图](../../assets/screenshots/premium_case_05_postgres_relational_arch_desktop.png)
 
@@ -87,12 +87,9 @@
 
 交付物：**关系库查询与 PG 架构说明**。必含要素（字段/指标链/异常状态/Skill/决策动作/高影响复核）与合格线由自测器六项核对：`node code/tools/check_my_work.mjs 5 你的方案.md`；红线：不越过「本地 SQLite 演示、生产为 PostgreSQL；不得把演示数据当真账」。
 
-### 跟着做（动手复现）
+### 参考验证
 
-1. 起服务：`bash code/run.sh`，浏览器打开 `#/case/05`（本案专属大屏）。
-2. **你应看到**：SQL 语句、执行结果表与索引说明，数据来自后端实时接口（性质见章首标注）。
-3. **动手改一改**：页面切「品类」聚合（服务端白名单换维，真 SQL 回显）；再看 EXPLAIN QUERY PLAN 面板——哪个查询 SCAN、哪个 SEARCH USING INDEX？给 category 建索引会怎样？
-4. **自测产出**：`node code/tools/check_my_work.mjs 5 你的方案.md`——红项指明缺什么、回哪章补。
+本案属于「从真实字段和查询证据走到一个可追责决策」链的支持素材。打开 `#/case/05` 核对专属页面与真实接口；核心动手、评分和完成证据集中在该链的主实验，避免重复做同一套运行/观察/改动/自测。
 
 <details>
 <summary><img src="../../assets/vendor/lucide/built/sparkles.svg" width="14" alt="" style="vertical-align:-2px" /> 深度（专业读者）：权衡 · 失效模式 · 何时别用</summary>

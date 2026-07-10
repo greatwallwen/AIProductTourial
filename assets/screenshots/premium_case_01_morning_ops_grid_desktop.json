@@ -1,11 +1,11 @@
 {
  "num": 1,
  "slug": "morning_ops_grid",
- "url": "http://localhost:5200/#/case/01",
- "shotAt": "2026-07-08T23:47:50.737Z",
+ "url": "http://127.0.0.1:5210/#/case/01",
+ "shotAt": "2026-07-10T09:45:24.438Z",
  "brand": "会自检的 AI 工程 · 实操手册",
  "caseCount": 9,
  "h1": "电商早会异常订单台",
  "kpis": [],
- "pngBytes": 877013
+ "pngBytes": 880195
 }

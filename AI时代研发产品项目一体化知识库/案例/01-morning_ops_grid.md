@@ -83,7 +83,7 @@
 
 ### 图形/原型/表单
 
-![电商早会异常订单台 · 信息图](../../outputs/product_case_library/svg/case_01_morning_ops_grid.svg)
+![电商早会异常订单台 · 信息图](../../assets/course/image2/diagrams/case_01_morning_ops_grid.png)
 
 ![电商早会异常订单台 · 可运行大屏原型截图](../../assets/screenshots/premium_case_01_morning_ops_grid_desktop.png)
 
@@ -101,12 +101,11 @@
   - 产出：角色差异卡, 产品问题清单
   - 验收：同一需求必须分别呈现研发视角、项目经理视角和产品经理视角，并能指出产品问题。
 
-### 跟着做（动手复现）
+### 课程实操入口
 
-1. 起服务：`bash code/run.sh`，浏览器打开 `#/case/01`（本案专属大屏）。
-2. **你应看到**：指标链（订单数 / 销售额(元) …）、异常队列与行动入口，数据来自后端实时接口（性质见章首标注）。
-3. **动手改一改**：换一个区域筛选，看品类营收怎么变；再点一单大额退货，想清楚该派给谁、几小时内闭环。
-4. **自测产出**：`node code/tools/check_my_work.mjs 1 你的方案.md`——红项指明缺什么、回哪章补。
+本案是「从真实字段和查询证据走到一个可追责决策」纵向链的主入口，不再复制九套相同的跟做步骤。完成 [数据决策主实验](../../course/labs/04-evals-data.md) 的 活动 10：先运行受控命令，再提交结构化证据与三角色评分。
+
+页面观察入口仍为 `bash code/run.sh` → `#/case/01`；观察不是完成证据，活动契约以 `course/activities.json` 为准。
 
 <details>
 <summary><img src="../../assets/vendor/lucide/built/sparkles.svg" width="14" alt="" style="vertical-align:-2px" /> 深度（专业读者）：权衡 · 失效模式 · 何时别用</summary>

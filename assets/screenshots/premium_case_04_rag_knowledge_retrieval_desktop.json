@@ -1,11 +1,11 @@
 {
  "num": 4,
  "slug": "rag_knowledge_retrieval",
- "url": "http://localhost:5200/#/case/04",
- "shotAt": "2026-07-08T23:47:59.422Z",
+ "url": "http://127.0.0.1:5210/#/case/04",
+ "shotAt": "2026-07-10T09:45:33.267Z",
  "brand": "会自检的 AI 工程 · 实操手册",
  "caseCount": 9,
  "h1": "知识库语义检索(RAG)",
  "kpis": [],
- "pngBytes": 589809
+ "pngBytes": 580693
 }

@@ -1,0 +1,121 @@
+{
+  "schema": "course-material/v1",
+  "id": "ai-product-loop-engineering",
+  "version": "1.0.0",
+  "title": "会自检的 AI 产品工程实战",
+  "promise": "完成一条有边界、有证据、能停机的 AI 工程闭环，并能解释 Skills 与 MCP 在闭环中的真实职责。",
+  "audience": [
+    "需要把 AI 原型变成可验收系统的产品、研发和项目负责人",
+    "已经会使用 Agent 工具，但缺少系统化验证与治理方法的人"
+  ],
+  "prerequisites": [
+    "Node.js 22.18 或更高版本",
+    "能在终端运行 npm 与 node 命令",
+    "能阅读 JSON、Markdown 和测试输出"
+  ],
+  "durationMinutes": 720,
+  "practiceMinutes": 495,
+  "requiredActivityCount": 12,
+  "completionPolicy": {
+    "requiredActivities": 12,
+    "minimumScore": 80,
+    "requiredRoleReviews": ["engineering", "product", "assurance"],
+    "capstoneNeedsHumanReview": true,
+    "runtimeEvidenceMaxAgeHours": 72
+  },
+  "sourceFiles": {
+    "activities": "course/activities.json",
+    "rubrics": "course/rubrics.json",
+    "visuals": "course/visuals.json",
+    "datasets": "course/datasets.json"
+  },
+  "legacyCasePolicy": {
+    "coreVerticals": [
+      {
+        "id": "decision-with-data",
+        "caseRefs": ["01", "03", "05"],
+        "outcome": "从真实字段和查询证据走到一个可追责决策"
+      },
+      {
+        "id": "retrieval-with-evals",
+        "caseRefs": ["04", "07"],
+        "outcome": "让评测真实调用被测检索系统并驱动一次改进"
+      },
+      {
+        "id": "spec-to-system",
+        "caseRefs": ["06", "08", "09"],
+        "outcome": "从规格、任务和契约走到可追溯系统事件"
+      }
+    ],
+    "electiveCaseRefs": ["02"],
+    "rule": "旧案例保留为素材与对照，不再各自复制运行、观察、改动、复核四步。"
+  },
+  "modules": [
+    {
+      "id": "m01-evidence-first",
+      "title": "先建传感器",
+      "outcome": "区分存在性检查、行为检查和学习证据，并能识别验证剧场。",
+      "durationMinutes": 90,
+      "practiceMinutes": 60,
+      "chapterRefs": ["01-AI核心概念底层.md", "02-会Loop的工程.md#2.3", "04-工程规范与约束.md"],
+      "activityRefs": ["act-01-sensor-contract", "act-02-mutant-kill"],
+      "labRef": "course/labs/01-evidence-loop.md",
+      "figureRefs": ["fig_eval_gap", "fig_loop_cybernetic"]
+    },
+    {
+      "id": "m02-bounded-loop",
+      "title": "让 Loop 收敛且会停",
+      "outcome": "运行有最大轮次、失败指纹、预算和升级协议的闭环。",
+      "durationMinutes": 120,
+      "practiceMinutes": 85,
+      "chapterRefs": ["02-会Loop的工程.md#2.8", "02-会Loop的工程.md#2.9"],
+      "activityRefs": ["act-03-loop-success", "act-04-loop-stop"],
+      "labRef": "course/labs/01-evidence-loop.md",
+      "figureRefs": ["fig_ideology_loops", "fig_l0l3_ladder"]
+    },
+    {
+      "id": "m03-skill-engineering",
+      "title": "把判断做成可发现的 Skill",
+      "outcome": "写出渐进披露、可扫描、可版本化且不过度加载上下文的 Skill 包。",
+      "durationMinutes": 105,
+      "practiceMinutes": 70,
+      "chapterRefs": ["06-Skill工程化与治理.md"],
+      "activityRefs": ["act-05-skill-package", "act-06-skill-red-team"],
+      "labRef": "course/labs/02-skills.md",
+      "figureRefs": ["fig_skill_lifecycle", "fig_skill_distribution"]
+    },
+    {
+      "id": "m04-mcp-contract",
+      "title": "把 MCP 当协议，不当魔法插座",
+      "outcome": "跑通初始化、能力协商和三个服务端原语，并画出授权与信任边界。",
+      "durationMinutes": 105,
+      "practiceMinutes": 70,
+      "chapterRefs": ["01-AI核心概念底层.md#1.5", "91-附录B-工具生态速查.md"],
+      "activityRefs": ["act-07-mcp-handshake", "act-08-mcp-threat-model"],
+      "labRef": "course/labs/03-mcp.md",
+      "figureRefs": ["fig_ai_foundations", "fig_req_sequence"]
+    },
+    {
+      "id": "m05-evals-data",
+      "title": "让数据和评测驱动决策",
+      "outcome": "用真实调用的评测与受控数据查询，形成可反驳的改进结论。",
+      "durationMinutes": 150,
+      "practiceMinutes": 105,
+      "chapterRefs": ["案例/04-rag_knowledge_retrieval.md", "案例/07-rag_eval_harness.md", "案例/01-morning_ops_grid.md"],
+      "activityRefs": ["act-09-rag-improvement", "act-10-dataset-decision"],
+      "labRef": "course/labs/04-evals-data.md",
+      "figureRefs": ["case_04_rag_knowledge_retrieval", "case_07_rag_eval_harness"]
+    },
+    {
+      "id": "m06-sdd-capstone",
+      "title": "从规格走到可审计系统",
+      "outcome": "把需求、任务、运行证据和三角色审计串成一份结业凭证。",
+      "durationMinutes": 150,
+      "practiceMinutes": 105,
+      "chapterRefs": ["03-系统架构设计.md", "案例/08-sdd_system_build.md", "99-结课.md"],
+      "activityRefs": ["act-11-sdd-trace", "act-12-capstone-review"],
+      "labRef": "course/labs/05-sdd-capstone.md",
+      "figureRefs": ["fig_sdd_pipeline", "fig_system_panorama"]
+    }
+  ]
+}

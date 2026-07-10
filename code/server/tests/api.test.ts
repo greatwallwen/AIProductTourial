@@ -1,6 +1,14 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildApp } from '../app.ts';
+import { resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
+import { buildApp, isDirectRun } from '../app.ts';
+
+test('主模块判断兼容 Windows 与标准 file URL', () => {
+  const entry = resolve('code/server/app.ts');
+  assert.equal(isDirectRun(pathToFileURL(entry).href, entry), true);
+  assert.equal(isDirectRun(pathToFileURL(entry).href, resolve('code/server/other.ts')), false);
+});
 /** 后端 checker：真实 API 冒烟（health/cases/case data/vector search/sqlite query）全绿。 */
 test('后端 API 全绿', async () => {
   const app = await buildApp();

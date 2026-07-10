@@ -75,7 +75,7 @@
 
 ### 图形/原型/表单
 
-![RAG 回答评测台 · 信息图](../../outputs/product_case_library/svg/case_07_rag_eval_harness.svg)
+![RAG 回答评测台 · 信息图](../../assets/course/image2/diagrams/case_07_rag_eval_harness.png)
 
 ![RAG 回答评测台 · 可运行大屏原型截图](../../assets/screenshots/premium_case_07_rag_eval_harness_desktop.png)
 
@@ -87,12 +87,9 @@
 
 交付物：**RAG 评测报告（命中率/错误分析）**。必含要素（字段/指标链/异常状态/Skill/决策动作/高影响复核）与合格线由自测器六项核对：`node code/tools/check_my_work.mjs 7 你的方案.md`；红线：不越过「评测分数是发布参考，不替代人工抽检；分数高不等于零幻觉」。
 
-### 跟着做（动手复现）
+### 参考验证
 
-1. 起服务：`bash code/run.sh`，浏览器打开 `#/case/07`（本案专属大屏）。
-2. **你应看到**：金标题目命中/未命中队列与覆盖图，数据来自后端实时接口（性质见章首标注）。
-3. **动手改一改**：往评测集 `code/data/eval_gold.json` 里加两道你关心的问题、指定期望命中关键词，跑 `node code/tools/eval_harness.mjs`——注意改了金标必须加 `--update` 立新基线（否则回归门按旧基线报红），再跑 `node code/tools/build_case_data.mjs` 重建页面数据，看命中率怎么变。
-4. **自测产出**：`node code/tools/check_my_work.mjs 7 你的方案.md`——红项指明缺什么、回哪章补。
+本案属于「让评测真实调用被测检索系统并驱动一次改进」链的支持素材。打开 `#/case/07` 核对专属页面与真实接口；核心动手、评分和完成证据集中在该链的主实验，避免重复做同一套运行/观察/改动/自测。
 
 <details>
 <summary><img src="../../assets/vendor/lucide/built/sparkles.svg" width="14" alt="" style="vertical-align:-2px" /> 深度（专业读者）：权衡 · 失效模式 · 何时别用</summary>

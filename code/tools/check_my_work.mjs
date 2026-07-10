@@ -1,31 +1,77 @@
 #!/usr/bin/env node
-/** 读者自测器（v17-C）：把作者护栏转让给读者——核对你照案例做出的方案文档。
- *  用法：node code/tools/check_my_work.mjs <案例号> <你的方案.md>
- *  离线、确定性：查 必含字段 / 指标链 / 异常状态 / Skill 六项引用；红项映射回该重读的章节。 */
+/** 读者自测器：解析方案的固定结构，不再用全文关键词存在性冒充学习证据。
+ *  用法：node code/tools/check_my_work.mjs <案例号> <你的方案.md> [--json] */
 import { readFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
+
 const ROOT = resolve(import.meta.dirname, '..', '..');
-const [num, file] = process.argv.slice(2);
-if (!num || !file) { console.log('用法：node code/tools/check_my_work.mjs <案例号> <你的方案.md>\n示例：node code/tools/check_my_work.mjs 02 我的RFM方案.md'); process.exit(0); }
-const defs = JSON.parse(readFileSync(join(ROOT, 'code', 'tools', 'case_definitions.json'), 'utf8'));
-const c = defs.cases.find((x) => x.num === Number(num));
-if (!c) { console.error(`✗ 案例 ${num} 不存在（现有：${defs.cases.map((x) => x.num).join('/')}）`); process.exit(1); }
-let doc; try { doc = readFileSync(file, 'utf8'); } catch { console.error(`✗ 读不到 ${file}`); process.exit(1); }
-// 章节映射：红了该回哪读
-const CH = { 字段: '案例页「任务目标与数据」+ §1', 指标链: '§1 指标链 + 案例页 KPI', 异常状态: '案例页「异常状态与责任」', Skill: 'skills/pm_skills.md 六槽', 决策动作: '案例页「决策动作」', 风险边界: '§5 交付治理（高影响须人工复核）' };
-const checks = [
-  ['字段', c.fields.filter((f) => !doc.includes(f)), `方案应引用真实字段（缺：%s）`],
-  ['指标链', c.metricChain.filter((m) => !doc.includes(m)), `指标链应逐项出现（缺：%s）`],
-  ['异常状态', (c.exceptionStates || []).filter((e) => !doc.includes(e)), `异常状态应有处置（缺：%s）`],
-  ['Skill', c.skills.filter((s) => !doc.includes(s)), `应标注所用 Skill（缺：%s）`],
-  ['决策动作', doc.includes(c.decisionAction) ? [] : [c.decisionAction], `应落到决策动作「%s」`],
-  ['风险边界', c.highImpact && !/人工复核|不得自动/.test(doc) ? ['人工复核声明'] : [], `高影响案例须声明「%s」`],
-];
-let fail = 0;
-console.log(`自测 · 案例 ${num} ${c.slug} · ${file}\n`);
-for (const [name, missing, tpl] of checks) {
-  if (missing.length) { fail++; console.log(`  ✗ ${name}：${tpl.replace('%s', missing.slice(0, 4).join('、'))}\n     ↳ 回读：${CH[name]}`); }
-  else console.log(`  ✔ ${name}`);
+const [num, file] = process.argv.slice(2).filter((arg) => arg !== '--json');
+const jsonMode = process.argv.includes('--json');
+if (!num || !file) {
+  console.log('用法：node code/tools/check_my_work.mjs <案例号> <你的方案.md> [--json]\n示例：node code/tools/check_my_work.mjs 02 我的RFM方案.md');
+  process.exit(0);
 }
-console.log(fail ? `\n${fail} 项未过——按「回读」指引补齐后再跑一次。` : '\n✅ 全过：你的方案覆盖了本案的可核对要素（内容好坏仍需人判断——这只是确定性下限）。');
-process.exit(fail ? 1 : 0);
+const defs = JSON.parse(readFileSync(join(ROOT, 'code', 'tools', 'case_definitions.json'), 'utf8'));
+const courseCase = defs.cases.find((item) => item.num === Number(num));
+if (!courseCase) {
+  console.error(`✗ 案例 ${num} 不存在（现有：${defs.cases.map((item) => item.num).join('/')}）`);
+  process.exit(1);
+}
+let doc;
+try { doc = readFileSync(file, 'utf8'); } catch { console.error(`✗ 读不到 ${file}`); process.exit(1); }
+
+const escapeRe = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+function section(title) {
+  const match = doc.match(new RegExp(`^##\\s+${escapeRe(title)}\\s*$([\\s\\S]*?)(?=^##\\s+|$(?![\\s\\S]))`, 'm'));
+  return match?.[1]?.trim() ?? '';
+}
+function listValue(body, label) {
+  const line = body.split(/\r?\n/).find((item) => item.trim().startsWith(`- ${label}：`));
+  return line ? line.slice(line.indexOf('：') + 1).split('、').map((item) => item.trim()).filter(Boolean) : [];
+}
+function missingExact(expected, actual) {
+  const values = new Set(actual);
+  return expected.filter((item) => !values.has(item));
+}
+
+const source = doc.match(/^> 数据来源：`([^`]+)`/m)?.[1] ?? '';
+const checklist = section('验收清单');
+const conclusion = section('验收结论');
+const rejected = section('不合格标准');
+const decision = conclusion.match(/^\*\*决策动作\*\*：(.+)$/m)?.[1]?.trim() ?? '';
+const actual = {
+  fields: listValue(checklist, '必含字段'),
+  metrics: listValue(checklist, '必含指标链'),
+  exceptions: listValue(checklist, '必含异常状态'),
+  skills: listValue(checklist, '必含 Skill')
+};
+const checks = [
+  { name: '结构', missing: ['验收清单', '验收结论', '不合格标准'].filter((title) => !section(title)), reread: '案例页「交付物与验收」', message: '方案必须按固定章节提交' },
+  { name: '数据来源', missing: source === courseCase.dataset ? [] : [courseCase.dataset], reread: '案例页「任务目标与数据」', message: '数据来源必须是精确路径' },
+  { name: '字段', missing: missingExact(courseCase.fields, actual.fields), reread: '案例页「任务目标与数据」+ §1', message: '验收清单缺真实字段' },
+  { name: '指标链', missing: missingExact(courseCase.metricChain, actual.metrics), reread: '§1 指标链 + 案例页 KPI', message: '验收清单缺指标链' },
+  { name: '异常状态', missing: missingExact(courseCase.exceptionStates ?? [], actual.exceptions), reread: '案例页「异常状态与责任」', message: '验收清单缺异常状态' },
+  { name: 'Skill', missing: missingExact(courseCase.skills, actual.skills), reread: 'skills/pm_skills.md 六槽', message: '验收清单缺所用 Skill' },
+  { name: '决策动作', missing: decision === courseCase.decisionAction ? [] : [courseCase.decisionAction], reread: '案例页「决策动作」', message: '验收结论必须给出精确决策动作' },
+  { name: '风险边界', missing: rejected.includes(courseCase.riskBoundary) && (!courseCase.highImpact || /人工复核|不得自动/.test(`${rejected}\n${conclusion}`)) ? [] : [courseCase.riskBoundary], reread: '§5 交付治理', message: '不合格标准缺风险边界或人工复核' }
+];
+const failures = checks.filter((check) => check.missing.length);
+const report = {
+  schema: 'case-work-check/v2',
+  caseId: String(courseCase.num).padStart(2, '0'),
+  slug: courseCase.slug,
+  file,
+  parsed: { source, sections: ['验收清单', '验收结论', '不合格标准'].filter((title) => section(title)), counts: { fields: actual.fields.length, metrics: actual.metrics.length, exceptions: actual.exceptions.length, skills: actual.skills.length } },
+  checks: checks.map((check) => ({ name: check.name, ok: check.missing.length === 0, missing: check.missing, reread: check.reread })),
+  ok: failures.length === 0
+};
+if (jsonMode) console.log(JSON.stringify(report, null, 2));
+else {
+  console.log(`自测 · 案例 ${num} ${courseCase.slug} · ${file}\n`);
+  for (const check of checks) {
+    if (check.missing.length) console.log(`  ✗ ${check.name}：${check.message}（缺：${check.missing.slice(0, 4).join('、')}）\n     ↳ 回读：${check.reread}`);
+    else console.log(`  ✔ ${check.name}`);
+  }
+  console.log(report.ok ? '\n✅ 全过：结构化要素齐全；内容质量仍需独立评审。' : `\n${failures.length} 项未过——关键词堆在正文里不会计入验收清单。`);
+}
+process.exit(report.ok ? 0 : 1);

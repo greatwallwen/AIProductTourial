@@ -75,9 +75,9 @@
 
 ### 图形/原型/表单
 
-![后端子系统分解与契约 · 信息图](../../outputs/product_case_library/svg/case_06_system_arch_flow.svg)
+![后端子系统分解与契约 · 信息图](../../assets/course/image2/diagrams/case_06_system_arch_flow.png)
 
-![案例06 · 后端子系统真实依赖（C4 · dogfood）](../../outputs/product_case_library/svg/fig_case06_deps.svg)
+![案例06 · 后端子系统真实依赖（C4 · dogfood）](../../assets/course/image2/diagrams/fig_case06_deps.png)
 
 ![后端子系统分解与契约 · 可运行大屏原型截图](../../assets/screenshots/premium_case_06_system_arch_flow_desktop.png)
 
@@ -89,12 +89,9 @@
 
 交付物：**子系统分解图与接口契约**。必含要素（字段/指标链/异常状态/Skill/决策动作/高影响复核）与合格线由自测器六项核对：`node code/tools/check_my_work.mjs 6 你的方案.md`；红线：不越过「架构决策须可追溯（ADR），不得口头拍板」。
 
-### 跟着做（动手复现）
+### 参考验证
 
-1. 起服务：`bash code/run.sh`，浏览器打开 `#/case/06`（本案专属大屏）。
-2. **你应看到**：后端子系统依赖图（真扫 import）与 ADR/契约卡，数据来自后端实时接口（性质见章首标注）。
-3. **动手改一改**：给「新增一个导出报表接口」写一份最小契约(错误信封 + 幂等 + 分页)，说明它该放哪一层。
-4. **自测产出**：`node code/tools/check_my_work.mjs 6 你的方案.md`——红项指明缺什么、回哪章补。
+本案属于「从规格、任务和契约走到可追溯系统事件」链的支持素材。打开 `#/case/06` 核对专属页面与真实接口；核心动手、评分和完成证据集中在该链的主实验，避免重复做同一套运行/观察/改动/自测。
 
 <details>
 <summary><img src="../../assets/vendor/lucide/built/sparkles.svg" width="14" alt="" style="vertical-align:-2px" /> 深度（专业读者）：权衡 · 失效模式 · 何时别用</summary>
