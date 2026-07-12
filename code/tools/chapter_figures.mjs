@@ -217,7 +217,7 @@ function locEvidence(t) {
   const top = files.sort((a, b) => b[1] - a[1]).slice(0, 9);
   const W = 720, H = 380, x0 = 210, bw = (v) => v / 800 * (W - x0 - 60);
   let g = `<line x1="${x0 + bw(800)}" y1="70" x2="${x0 + bw(800)}" y2="${H - 60}" stroke="${t.bad}" stroke-dasharray="5 3"/><text x="${x0 + bw(800)}" y="62" font-size="10" fill="${t.bad}" text-anchor="middle">800 行红线</text>`;
-  top.forEach(([f, n], i) => { const y = 80 + i * 30; g += `<text x="${x0 - 8}" y="${y + 11}" font-size="9.5" fill="${t.ink2}" text-anchor="end">${f.replace(/^code\//, '')}</text><rect x="${x0}" y="${y}" width="${bw(n).toFixed(1)}" height="16" rx="5" fill="${n > 720 ? t.warn : t.accent}" opacity="0.85"/><text x="${(x0 + bw(n) + 6).toFixed(1)}" y="${y + 12}" font-size="10" fill="${t.ink}">${n}</text>`; });
+  top.forEach(([f, n], i) => { const y = 80 + i * 30; const displayPath = f.replaceAll('\\', '/').replace(/^code\//, ''); g += `<text x="${x0 - 8}" y="${y + 11}" font-size="9.5" fill="${t.ink2}" text-anchor="end">${displayPath}</text><rect x="${x0}" y="${y}" width="${bw(n).toFixed(1)}" height="16" rx="5" fill="${n > 720 ? t.warn : t.accent}" opacity="0.85"/><text x="${(x0 + bw(n) + 6).toFixed(1)}" y="${y + 12}" font-size="10" fill="${t.ink}">${n}</text>`; });
   return diagram({ W, H, title: '§4 · 「单文件 <800 行」不是口号：全仓 Top9 真实行数', caption: '构建期实扫 code/（黄=逼近 720 预警线，critic big-file 探针盯守）——规范自己先过自己的门禁。', nodes: [], edges: [] }, t).replace('</svg>', g + '</svg>');
 }
 

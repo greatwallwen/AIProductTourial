@@ -1,0 +1,22 @@
+{
+  "schema": "image2-course-asset-manifest/v1",
+  "generatedBy": "gpt-image-2",
+  "evidenceClaim": "none",
+  "liveStatusPolicy": "never-from-image",
+  "rightsStatus": "pending-human-review",
+  "humanReviewStatus": "pending",
+  "assets": [
+    {"id":"case-55-before-call-decision","file":"case-55-before-call-decision-image2.png","bytes":1391989,"width":1672,"height":941,"sha256":"sha256:02aa2383020b3c6651003109b1f9f5596994dc3704539ffa3d7964bdfca41e89","role":"product-prototype"},
+    {"id":"case-56-fraud-review-monitor","file":"case-56-fraud-review-monitor-image2.png","bytes":1143711,"width":1672,"height":941,"sha256":"sha256:5a7b428f604aa13ce196902fc15f8c955b0fc315ae24ef81a34625115bc60925","role":"product-prototype"},
+    {"id":"case-57-air-quality-governance","file":"case-57-air-quality-governance-image2.png","bytes":1249832,"width":1672,"height":941,"sha256":"sha256:722ebe0d3e75860bd60b5637face84002dc5cb6b9607f5338b7e2c111489000e","role":"product-prototype"},
+    {"id":"case-a01-bounded-chain-review","file":"case-a01-bounded-chain-review-image2.png","bytes":1230266,"width":1672,"height":941,"sha256":"sha256:bc5cd5cc7bf8149960d2193b3b3da3ab516aa62b135331435605192c165a6f5e","role":"product-prototype"},
+    {"id":"case-a02-contract-radar","file":"case-a02-contract-radar-image2.png","bytes":1348329,"width":1672,"height":941,"sha256":"sha256:1aa92ef4cee7cc3464b4cf0f33a8f076cacf94feb44cca12dd8fc2971a5c673c","role":"product-prototype"},
+    {"id":"case-a03-epc-evidence-console","file":"case-a03-epc-evidence-console-image2.png","bytes":1218034,"width":1672,"height":941,"sha256":"sha256:69bb13ef637706929c249e8de954bfe2488532e395d504c1e915d1c417ef123e","role":"product-prototype"},
+    {"id":"eval-gap","file":"eval-gap-image2.png","bytes":1055533,"width":1672,"height":941,"sha256":"sha256:fbbaa27622e5a6f7a328d05b3d5303d1a988affb1eb674c8344dedd5e2f08896","role":"concept-figure"},
+    {"id":"foundation-ai-stack","file":"foundation-ai-stack-image2.png","bytes":937869,"width":1672,"height":941,"sha256":"sha256:488d7941cc78493bec2095b645869c4c7c8e7e951e7d7396d379658fd43da8d0","role":"concept-figure"},
+    {"id":"loop-three-layers","file":"loop-three-layers-image2.png","bytes":978995,"width":1672,"height":941,"sha256":"sha256:19661660acdb7e6bd54b6553010a54892bead2f2eff1a6a37011b5e2064a2337","role":"concept-figure"},
+    {"id":"rag-knowledge-console","file":"rag-knowledge-console-image2.png","bytes":972474,"width":1672,"height":941,"sha256":"sha256:626f3ca006746a36ab9a878de6d8df2a1645d6123c90ceeba6e877be9715feef","role":"product-prototype"},
+    {"id":"sdd-pipeline","file":"sdd-pipeline-image2.png","bytes":842640,"width":1672,"height":941,"sha256":"sha256:30e17cb496ca358c93a561df5bc38cb4cf986f5cd8d35d72f6e5d32d618ad363","role":"concept-figure"},
+    {"id":"skill-lifecycle","file":"skill-lifecycle-image2.png","bytes":995070,"width":1672,"height":941,"sha256":"sha256:0b5d2951266716381fbab12cf228ea00842460a5b52ef8c53b39271685427bbc","role":"concept-figure"}
+  ]
+}

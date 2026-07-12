@@ -2,6 +2,7 @@
 /** 全量校验护栏：逐案例 数据/预计算/SVG/交付物/截图/Skill/高影响 + 全局 单一教程/多设计/rules/skills/文件<800行/无工具品牌/design·demonstrates。ALL GREEN 才通过。 */
 import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { dirname, join, resolve, extname } from 'node:path';
 const ROOT = resolve(import.meta.dirname, '..', '..');
 const pad = (n) => String(n).padStart(2, '0');
@@ -97,7 +98,13 @@ for (const f of ['app.ts', 'routes/api.ts', 'services/cases.ts', 'data/csv.ts', 
 }
 ok(); if (!/fastify/.test(rd('code/server/package.json'))) bad('后端未依赖 fastify');
 // deanpeters 本地化（RAG 语料，案例 04）
-ok(); if (!has('skills/external/pm-skills-deanpeters/README.md')) bad('deanpeters 未本地化到 skills/external');
+ok(); if (
+  !has('skills/external/pm-skills-deanpeters/README.md')
+  || !has('skills/external/pm-skills-deanpeters/LICENSE')
+  || !/CC BY-NC-SA 4\.0/.test(rd('skills/external/pm-skills-deanpeters/README.md'))
+  || !/Attribution-NonCommercial-ShareAlike 4\.0 International/.test(rd('skills/external/pm-skills-deanpeters/LICENSE'))
+  || !/pm-skills-deanpeters\/[\s\S]*CC BY-NC-SA 4\.0/.test(rd('dataset/MANIFEST.md'))
+) bad('deanpeters 本地化语料缺失或许可证未按 CC BY-NC-SA 4.0 如实声明');
 // 全局：前端 live fetch + 一服务集成
 for (const f of ['code/web/src/App.tsx', 'code/web/src/lib/api.ts', 'code/run.sh']) { ok(); if (!has(f)) bad('缺前端/集成文件 ' + f); }
 ok(); if (!/fetchIndex|\/api\//.test(rd('code/web/src/lib/api.ts'))) bad('前端未走后端 API（live fetch）');
@@ -352,6 +359,23 @@ for (const f of HANDS_ON_PAGES) {
 }
 // ② 结课页须引用 check_my_work 自测——Capstone 验收接确定性传感器，工具为此而生却曾零引用。
 ok(); if (!/check_my_work/.test(rd(`${BOOK}/99-结课.md`))) bad('99-结课 缺 check_my_work 自测引用（Capstone 验收须接确定性传感器）');
+
+// image2 只承担概念/产品原型；身份必须可复核，且发布主线不得继续引用无授权 vendor 图。
+ok(); if (!has('assets/image2/manifest.json')) bad('缺 image2 资产清单');
+else {
+  const image2 = jj('assets/image2/manifest.json');
+  ok(); if (image2.generatedBy !== 'gpt-image-2' || image2.evidenceClaim !== 'none' || image2.liveStatusPolicy !== 'never-from-image') bad('image2 资产边界不完整');
+  ok(); if (image2.assets?.length !== 12) bad(`image2 资产应为 12 个，实际 ${image2.assets?.length || 0}`);
+  for (const asset of image2.assets || []) {
+    const assetPath = `assets/image2/${asset.file}`;
+    ok(); if (!has(assetPath)) { bad(`image2 文件缺失 ${asset.file}`); continue; }
+    const bytes = readFileSync(join(ROOT, assetPath));
+    const hash = 'sha256:' + createHash('sha256').update(bytes).digest('hex');
+    ok(); if (bytes.length !== asset.bytes || hash !== asset.sha256 || asset.width !== 1672 || asset.height !== 941) bad(`image2 身份不匹配 ${asset.file}`);
+  }
+}
+ok(); if (/assets\/vendor\/aiagent/.test(rd(`${BOOK}/01-AI核心概念底层.md`))) bad('发布主线仍引用无授权 aiagent PNG');
+ok(); if (!has('docs/HTML_INSTRUCTOR_COURSE.md') || !/preflight → run → evidence → failure → fallback → reset/.test(rd('docs/HTML_INSTRUCTOR_COURSE.md'))) bad('缺 HTML 讲师长课六步演示协议');
 
 // 📸 内容快照 diff（拆棘轮核心）：曾被逐字钉死的内容 token——缺失只报告、不阻断；确认删除 = 同一 commit 从 content_snapshot.json 移除对应项
 { const snap = jj('code/tools/content_snapshot.json'); const hay = tut + '\n' + skillsMd;

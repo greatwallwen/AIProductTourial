@@ -87,6 +87,7 @@
 - **纪律（Superpowers，Jesse Vincent/obra）= 强制方法论**：把 brainstorm→写计划→TDD→code-review→子代理开发定成硬规则而非建议，你越想抄近路它越拦着你（本书正是 dogfood 这一套写出来的——**dogfood** 就是「自己先吃自己的狗粮」，用你教别人的方法来做你自己这件事）。
 - **自动化（Ralph，Geoffrey Huntley）= 自主迭代循环**：名字取自《辛普森一家》里「不聪明但死磕到底」的 Ralph Wiggum——把 Agent 包在一个 while 循环里，读同一份规格、跑同一套验证、每轮开一个干净会话，无人值守跑完任务清单。信条是「**宁可稳定地失败，也别不稳定地成功**」；**规格、计划、验证都在 Agent 之外**——本书的 self-evolve harness 就是一个能跑的 Ralph 实例：红队 `adversarial_review` 产出 findings → 用 review-triage 卡分诊出本轮修什么（卡在 `skills/pm_skills.md`，整卡粘给 Agent 按执行协议走）→ 修到三绿（verify + 后端测试 + 前端测试全绿，§5.4）→ 再红队，编排文件见 `skills/loop_engineering/self-evolve.orchestrator.md`。
 
+
 除了「流程怎么管」这根轴，2026 年的技能生态还长出了**第二根轴：这工具让谁变聪明**。一端是**保姆式**——接管流程替你走完（GSD/BMAD/Spec Kit 属之）；另一端是**教员式**——不接管，而是拷问你、教会 Agent 工程基本功（代表：Total TypeScript 创始人 Matt Pocock 开源的 mattpocock/skills，MIT——其 README 直言对方阵营在「owning the process… take away your control」，注意这是卖自家技能库的利益相关方立场，核实 2026-07）。教员式的招牌动作是 grill（反向面试）：动手前 Agent 先对你几十问，把目标/边界/反例逼清楚。这根轴是光谱不是二分：Superpowers 名义上可组合、实际配强制循环（Jesse Vincent，2025-10-09）——本书 dogfood 的正是它。两侧各有翻车样式：保姆式易瀑布复辟+仪式税（Scott Logic 实测 2,577 行流程 markdown 换 689 行代码，2025-11-26）；教员式易小任务过度拷问（HN 讨论，2025-10）。本书立场：**流程可以保姆，判断必须教员**（§10.4「判断不能外包」的工具化形态；requirement-grill/self-quiz 两张卡在 `skills/pm_skills.md`，用法都是整卡粘给 Agent、按卡上的执行协议走）。
 
 （另有 GSD 管上下文腐化、Trellis 做仓库级记忆。这些工具星数动辄十几万，但仍只是弱人气信号、不等于权威——理由见附录B，用前先核实。）你不用全学，但要理解那条主线：**护城河不是会不会写 prompt，而是懂不懂把「判断」沉淀成可复用、可自动化的工程标准。**
