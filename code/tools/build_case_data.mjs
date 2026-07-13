@@ -96,18 +96,20 @@ function walkFiles(dir, ext){
 // .md 数据集案例（04 RAG 语料 / 06 后端 dogfood）：指标一律从真实来源真算，绝不用占位顺子
 function buildFromMd(c){
   let kpis=[], chart={type:'sparkline',data:[]}, queue=[], actions=[], exceptionCount=0, responsible=['—'], deps=[], cycles=0, game=null;
-  if(c.num===4){ // 真实读 deanpeters 语料目录：篇数/字数/主题
-    const dir=join(ROOT,'skills','external','pm-skills-deanpeters');
+  if(c.num===4){ // 真实读 CMRC2018 中文语料目录（v22）：篇数/字数/篇幅分布 + 金标问答数
+    const dir=join(ROOT,'dataset','rag','corpus');
     const files=walkFiles(dir,'.md');
-    const chars=files.reduce((a,f)=>a+readFileSync(f,'utf8').length,0);
-    const byTop={}; for(const f of files){ const rel=f.slice(dir.length+1).split(/[\\/]/); const t=rel.length>1?rel[0]:'(根)'; byTop[t]=(byTop[t]||0)+1; }
+    const lens=files.map(f=>readFileSync(f,'utf8').length);
+    const chars=lens.reduce((a,x)=>a+x,0);
+    const goldN=JSON.parse(readFileSync(join(ROOT,'dataset','rag','gold.json'),'utf8')).length;
+    const buckets={}; for(const L of lens){ const b=Math.min(8,Math.floor(L/150)); const key=`${b*150}+字`; buckets[key]=(buckets[key]||0)+1; }
     kpis=[
       {name:'语料篇数',value:files.length,unit:''},
       {name:'语料总字(万)',value:Math.round(chars/10000),unit:''},
       {name:'平均篇幅(字)',value:Math.round(chars/Math.max(1,files.length)),unit:''},
-      {name:'覆盖主题数',value:Object.keys(byTop).length,unit:''},
+      {name:'金标问答数',value:goldN,unit:''},
     ];
-    chart={type:'bars',by:'主题目录 → 语料篇数',data:Object.entries(byTop).sort((a,b)=>b[1]-a[1]).slice(0,7).map(([label,value])=>({label,value}))};
+    chart={type:'bars',by:'语料篇幅(字)分布 → 篇数',data:Object.entries(buckets).sort((a,b)=>parseInt(a[0])-parseInt(b[0])).map(([label,value])=>({label,value}))};
   } else if(c.num===6){ // 真实统计本仓库运行后端：子系统/接口/模块/测试
     const sdir=join(ROOT,'code','server');
     const mods=readdirSync(sdir).filter(e=>{ try{return statSync(join(sdir,e)).isDirectory()&&!['tests','node_modules','dist'].includes(e);}catch{return false;} });
@@ -128,9 +130,9 @@ function buildFromMd(c){
     chart={type:'bars',by:'子系统 → 依赖出度',data:mods.map(m=>({label:m,value:deps.filter(e=>e.from===m).length}))};
   } else if(c.num===7){ // RAG 评测（v17-A）：金标单源 eval_gold.json，裁判真调 store.ts search()（hit@3）——经 eval_harness --json
     const ev=JSON.parse(execSync('node code/tools/eval_harness.mjs --json',{cwd:ROOT,encoding:'utf8'}));
-    const files=walkFiles(join(ROOT,'skills','external','pm-skills-deanpeters'),'.md');
+    const files=walkFiles(join(ROOT,'dataset','rag','corpus'),'.md');
     kpis=[{name:'评测问题数',value:ev.results.length,unit:''},{name:'命中率',value:ev.score,unit:'%'},{name:'覆盖达标数',value:ev.results.filter(r=>r.cov>=3).length,unit:''},{name:'语料篇数',value:files.length,unit:''}];
-    queue=ev.results.map((r,i)=>({id:i+1,state:r.hit?'命中@3':(r.cov>=3?'未命中（覆盖足、检索未召回）':'未命中'),owner:r.hit?'产品-王（演示角色）':'待标注',fields:{问题:r.q,'top3':r.top3.map(t=>t.slice(0,24)).join(' | ')||'—',覆盖篇数:r.cov,是否通过:r.hit?'通过':'未过'}}));
+    queue=ev.results.map((r,i)=>({id:i+1,state:r.hit?'命中@1':(r.cov>=3?'未命中（覆盖足、检索未召回）':'未命中'),owner:r.hit?'产品-王（演示角色）':'待标注',fields:{问题:r.q,'重排第1':r.top3[0]?r.top3[0].slice(0,24):'—',覆盖篇数:r.cov,是否通过:r.hit?'通过':'未过'}}));
     exceptionCount=ev.results.filter(r=>!r.hit).length; responsible=['产品-王（演示角色）','数据-周（演示角色）'];
     chart={type:'bars',by:'评测问题 → 覆盖篇数',data:ev.results.map(r=>({label:r.q.slice(0,10),value:r.cov}))};
     actions=[{label:'处置：检索未召回问题（调权重/切词）',owner:'研发-王（演示角色）',due:'3d'},{label:'补语料/标注',owner:'数据-周（演示角色）',due:'5d'}];

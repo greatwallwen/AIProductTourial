@@ -11,12 +11,13 @@ test('后端 API 全绿', async () => {
   assert.ok(Array.isArray(cs.json()) && cs.json().length >= 5, '案例列表非空（精品集，具体数以 defs 为准）');
   const rt = await app.inject({ url: '/api/retail' });
   assert.ok(rt.json().cats.length >= 3 && rt.json().triage.length >= 1, '零售经营');
-  const rf = await app.inject({ url: '/api/rfm' });
-  assert.ok(rf.json().total > 0 && rf.json().segments.length >= 2, 'RFM 分层');
-  assert.ok(rf.json().churnRate >= 0 && rf.json().churnRate <= 100, '高价值流失率∈[0,100]');
+  const cr = await app.inject({ url: '/api/credit' });
+  assert.ok(cr.json().total > 0 && cr.json().segments.length >= 2, '信用画像分层');
+  assert.ok(cr.json().riskRate >= 0 && cr.json().riskRate <= 100, '风险队列占比∈[0,100]');
+  assert.ok(cr.json().fundRate >= 0 && cr.json().fundRate <= 100, '放款成功率∈[0,100]');
   const d = await app.inject({ url: '/api/case/1/data' });
   assert.equal(d.statusCode, 200); assert.ok(d.json().kpis.length >= 3); assert.ok(d.json().rowCount > 0, '实时读 CSV 行数 > 0');
-  const s = await app.inject({ url: '/api/search?q=product roadmap' });
+  const s = await app.inject({ url: '/api/search?q=' + encodeURIComponent('铁路全长多少公里') });
   assert.ok(s.json().corpus > 0, '向量语料 > 0'); assert.ok(s.json().hits.length > 0, '检索命中 > 0');
   assert.ok(s.json().recall.length >= s.json().reranked.length, '两阶段：召回 >= 重排');
   assert.equal(s.json().recallN, 10, '粗召回 top-10');

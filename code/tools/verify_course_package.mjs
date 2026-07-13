@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /** 全量校验护栏：逐案例 数据/预计算/SVG/交付物/截图/Skill/高影响 + 全局 单一教程/多设计/rules/skills/文件<800行/无工具品牌/design·demonstrates。ALL GREEN 才通过。 */
 import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
 import { join, resolve, extname } from 'node:path';
 const ROOT = resolve(import.meta.dirname, '..', '..');
@@ -204,15 +205,35 @@ for (const f of bookFiles) {
   }
 }
 ok(); if (/owner:\s*rec\[.*pickOwner|const owner\b[^\n]*pickOwner/.test(rd('code/tools/build_case_data.mjs'))) bad('队列 owner 仍哈希伪造（应取真实责任列）');
-// P2 深度标杆：案例02 航空 RFM 专属 demo + 设计过的数据集（带 design.md）
+// P2 深度标杆：案例02 大陆 P2P 信贷·信用画像分层专属 demo + 设计过的数据集（带 design.md）
 ok(); if (!has('dataset/design/case_02.md')) bad('案例02 缺数据集设计说明 dataset/design/case_02.md');
 // 逐案数据集设计说明（CSV 业务案例须有 dataset/design/case_NN.md）
 for (const c of defs.cases) {
   if (!c.dataset.endsWith('.csv') || (c.screen && c.num !== 2)) continue;
   ok(); if (!has(`dataset/design/case_${pad(c.num)}.md`)) bad(`案例${c.num} 缺数据集设计说明 dataset/design/case_${pad(c.num)}.md`);
 }
-ok(); if (defs.cases.find((c) => c.num === 2)?.screen !== 'rfm') bad('案例02 未接专属 RFM demo（screen≠rfm）');
-ok(); if (!/api\/rfm/.test(rd('code/server/routes/api.ts')) || !/RfmScreen/.test(rd('code/web/src/screens.tsx'))) bad('缺 RFM 后端/前端');
+ok(); if (defs.cases.find((c) => c.num === 2)?.screen !== 'credit') bad('案例02 未接专属信用分层 demo（screen≠credit）');
+ok(); if (!/api\/credit/.test(rd('code/server/routes/api.ts')) || !/CreditScreen/.test(rd('code/web/src/screens.tsx'))) bad('缺信贷信用分层后端/前端');
+// —— v22 数据红线守卫 ① dataset/real 快照须在 MANIFEST 登记且 sha256 一致（防偷换真集/漂移）——
+{ const man = rd('dataset/MANIFEST.md');
+  for (const f of readdirSync(join(ROOT, 'dataset', 'real'))) {
+    const h = createHash('sha256').update(readFileSync(join(ROOT, 'dataset', 'real', f))).digest('hex').slice(0, 16);
+    ok(); if (!man.includes(`dataset/real/${f}`)) bad(`真集快照 dataset/real/${f} 未登记 MANIFEST`);
+    ok(); if (!man.includes(h)) bad(`真集快照 dataset/real/${f} 的 sha256(${h}…) 与 MANIFEST 不符（疑被偷换/漂移）`);
+  } }
+// —— v22 守卫 ② A 档案例(02/04/07) grill-me 追问结构完整（≥2 步、options[correct] 合法、onWrong/onRight 非空、锚真实数据非编造）——
+for (const n of [2, 4, 7]) { const c = defs.cases.find((x) => x.num === n); const g = c?.grill || [];
+  ok(); if (g.length < 2) bad(`案例${n} 缺 grill-me 追问（应≥2 步苏格拉底追问）`);
+  for (const [i, s] of g.entries()) { ok(); if (!(Array.isArray(s.options) && s.options[s.correct] !== undefined && (s.onWrong || '').trim() && (s.onRight || '').trim())) bad(`案例${n} grill 第${i + 1}步结构不全（options/correct/onWrong/onRight）`); }
+}
+// —— v22 守卫 ③ 真实/合成红线：大陆真集派生物在 MANIFEST 标注正确、绝不把派生/合成说成真实 ——
+{ const man = rd('dataset/MANIFEST.md');
+  ok(); if (!/人人贷.*CC0|renrendai_p2p\.csv/.test(man)) bad('MANIFEST 缺人人贷 CC0 真集来源');
+  ok(); if (!/CMRC2018.*CC BY-SA|cmrc2018_dev\.json/.test(man)) bad('MANIFEST 缺 CMRC2018 真集来源');
+  ok(); if (!/信用画像.*规则派生|规则派生分层、非事实标签/.test(man)) bad('MANIFEST 未标注信用画像为规则派生（红线：派生不得说成真实）');
+  ok(); if (!/本地化改写实体标签|本地化改写/.test(man)) bad('MANIFEST 未标注电商本地化实体改写（红线：改写不得说成原始事实）');
+  ok(); if (defs.cases.find((c) => c.num === 2)?.dataKind === 'real') bad('案例02 dataKind 不应标 real（含规则派生分层，应为 hybrid）');
+}
 // 专属 demo：案例16 医院容量
 ok(); if (defs.cases.filter((c) => c.screen).length < defs.cases.length) bad('存在非专属 demo 案例（应 11/11 有 screen）');
 // 图表数据驱动守卫：CSV 案例的图表必须是真实列聚合（有 by 说明），不得哈希噪声

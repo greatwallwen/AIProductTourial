@@ -80,7 +80,7 @@ const provOf=(country)=>_provMap[country]||'其他地区';
   for(const art of cmrc){ for(const p of art.paragraphs){
     const base=`cmrc_${String(ci).padStart(3,'0')}_${slug(art.title)}`; ci++;
     writeFileSync(join(corpusDir,base+'.md'), `# ${art.title}\n\n${p.context}\n`);
-    if(gold.length<60 && p.qas && p.qas[0]){ const qa=p.qas[0];
+    if(gold.length<60 && p.qas && p.qas[0]){ const qa=p.qas[p.qas.length-1]; // 取每段末问（较首问更迂回，hit@1 下露出真实未命中）
       const ans=((qa.answers&&qa.answers[0]&&qa.answers[0].text)||'').replace(/\s/g,'');
       gold.push({ q:qa.question, kw:(ans.slice(0,4)||slug(art.title).slice(0,3)), docPattern:base }); }
   } }

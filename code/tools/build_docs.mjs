@@ -471,12 +471,12 @@ for (const c of defs.cases) {
       : ['### Prompt 实操', '', '> **怎么用**：推荐用 **CodeBuddy 的 Plan 模式**（腾讯，国产·当下可跑）——把下面灰底代码框**整段原样粘进去，它会先列出任务清单、再自主执行**，你不需要看懂里面的技术细节；没装过就先装一个。海外读者用 Claude Code / Cursor / Trae 等任一 Agent 工具同理（见附录B）。', '', `**Prompt 1：${c.scenario} - 问题定义**`, '', '```text', buildPrompt(c, d, 'def'), '```', '', `**Prompt 2：${c.scenario} - 方案验收**（注意：outputs/ 交付物由 build_docs 重建覆盖，建议在新分支/对照目录运行）`, '', '```text', buildPrompt(c, d, 'accept'), '```', '']),
     `### 图形/原型/表单`, '', `![${c.scenario} · 信息图](${UP}outputs/product_case_library/svg/case_${pad(c.num)}_${c.slug}.svg)`, '',
     ...(c.num === 6 && d.deps?.length ? [`![案例06 · 后端子系统真实依赖（C4 · dogfood）](${UP}outputs/product_case_library/svg/fig_case06_deps.svg)`, ''] : []),
-    ...(c.num === 2 ? [`![案例02 · 真实客户 vs 教学合成 R×F 双散点](${UP}outputs/product_case_library/svg/fig_rfm_dual.svg)`, ''] : []),
+    ...(c.num === 2 ? [`![案例02 · P2P 信贷 授信额度×历史成功次数 散点（色分放款结果）](${UP}outputs/product_case_library/svg/fig_credit_scatter.svg)`, ''] : []),
     `![${c.scenario} · 可运行大屏原型截图](${UP}assets/screenshots/premium_case_${pad(c.num)}_${c.slug}_desktop.png)`, '',
     `- 图形类型：${c.slug}（设计 ${c.design}）`, `- 看图顺序：${c.readingOrder || '先看指标链，再看异常队列和责任对象，最后看行动入口与验收边界。'}`, `- UI 差异：本案例采用 \`${c.uiId}\` + 设计 \`${c.design}\`，不得复用通用表格占位；可运行原型见 \`#/case/${pad(c.num)}\`。`, '',
     `### 交付物与验收`, '', `交付物：**${c.deliverable}**。必含要素（字段/指标链/异常状态/Skill/决策动作/高影响复核）与合格线由自测器六项核对：\`node code/tools/check_my_work.mjs ${c.num} 你的方案.md\`；红线：不越过「${c.riskBoundary}」。`, ''];
   if (c.rp) B.push(`**指定实操融合**`, '', `- ${c.rp.id}：${c.rp.title}`, `  - 产出：${c.rp.produce}`, `  - 验收：${c.rp.accept}`, '');
-  B.push(`### 跟着做（动手复现）`, '', `1. 起服务：\`bash code/run.sh\`，浏览器打开 \`#/case/${pad(c.num)}\`（本案专属大屏）。`, `2. **你应看到**：${({rag:'检索框+召回/重排两列结果与相似度',db:'SQL 语句、执行结果表与索引说明',arch:'后端子系统依赖图（真扫 import）与 ADR/契约卡',eval:'金标题目命中/未命中队列与覆盖图',buildwalk:'SDD 八步走查队列与门禁状态',rfm:'教学合成横幅、分层散点与分层队列'})[c.screen] || `指标链（${c.metricChain.slice(0, 2).join(' / ')} …）、异常队列与行动入口`}，数据来自后端实时接口（性质见章首标注）。`, `3. **动手改一改**：${c.tryThis || '换一个维度或筛选，观察指标怎么变；再点页面里的「决策题挑战」做一次判断。'}`, `4. **自测产出**：\`node code/tools/check_my_work.mjs ${c.num} 你的方案.md\`——红项指明缺什么、回哪章补。`, '');
+  B.push(`### 跟着做（动手复现）`, '', `1. 起服务：\`bash code/run.sh\`，浏览器打开 \`#/case/${pad(c.num)}\`（本案专属大屏）。`, `2. **你应看到**：${({rag:'检索框+召回/重排两列结果与相似度',db:'SQL 语句、执行结果表与索引说明',arch:'后端子系统依赖图（真扫 import）与 ADR/契约卡',eval:'金标题目命中/未命中队列与覆盖图',buildwalk:'SDD 八步走查队列与门禁状态',credit:'真实数据横幅、信用画像分层、授信×历史成功散点与薄档风险队列'})[c.screen] || `指标链（${c.metricChain.slice(0, 2).join(' / ')} …）、异常队列与行动入口`}，数据来自后端实时接口（性质见章首标注）。`, `3. **动手改一改**：${c.tryThis || '换一个维度或筛选，观察指标怎么变；再点页面里的「决策题挑战」做一次判断。'}`, `4. **自测产出**：\`node code/tools/check_my_work.mjs ${c.num} 你的方案.md\`——红项指明缺什么、回哪章补。`, '');
   if (c.deepDive) B.push('<details>', `<summary>${ic('sparkles')}深度（专业读者）：权衡 · 失效模式 · 何时别用</summary>`, '', c.deepDive, '</details>', '');
   if (c.exercises && c.exercises.length) {
     B.push(`### 练习（做完再进下一个案例）`, '', c.exercises.map((e, i) => `${i + 1}. **${e.type}**：${e.q}`).join('\n'), '');
@@ -485,6 +485,15 @@ for (const c of defs.cases) {
       `- 这两题没有唯一标准答案，检验的是你能否把本案方法用自己的话讲出来：先按「跟着做」第 3 步真改一次、看指标怎么动，再对照${c.deepDive ? '上方「深度」折叠块的权衡与失效模式' : '本案「洞见」与「常见坑」'}自评你的答案有没有踩坑。`,
       `- 答不顺就回读本案演示的原理小节 ${(c.demonstrates || []).map((x) => `§${x}`).join('、')}；写成方案后跑 \`node code/tools/check_my_work.mjs ${c.num} 你的方案.md\`，红项会指明缺什么、回哪章补。`,
       '</details>', '');
+  }
+  // 被追问（grill-me）：苏格拉底式追问——问 → 常见错答为什么错 → 真解（给读文档者同款 grill-me；页内 #/case 有交互版）
+  if (c.grill && c.grill.length) {
+    B.push(`### 被追问（grill-me · 先自己答，再展开）`, '', `> 教员式追问：不给你标准答案，先逼你选、再点破误区。页内 \`#/case/${pad(c.num)}\` 有可交互版（答错即追问）。`, '');
+    c.grill.forEach((g, i) => {
+      B.push(`**追问 ${i + 1}**：${g.q}`, '', g.options.map((o, j) => `- ${String.fromCharCode(65 + j)}. ${o}`).join('\n'), '',
+        '<details>', '<summary>点破（先选再展开）</summary>', '',
+        `- 若答错：${g.onWrong}`, `- 答对后再想一层：${g.onRight}`, '</details>', '');
+    });
   }
   B.push(`> **小结**：本案用「${c.scenario}」演示原理 ${(c.demonstrates || []).join('、')}，落成可运行、可验收的产品判断。运行 \`bash code/run.sh\` 后访问 \`#/case/${pad(c.num)}\`（真后端实时数据）。`, '', `[← 返回案例总览](README.md) · [返回目录](${UP}${BOOK}/README.md)`);
   writeBook(`案例/${pad(c.num)}-${c.slug}.md`, deemoji(J(B)));

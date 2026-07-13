@@ -1,6 +1,6 @@
 import { join } from 'node:path';
 import { gates } from '../services/gates.ts';
-import { listCases, caseData, getIndex, rfm, retail, serverSubsystems, archModel } from '../services/cases.ts';
+import { listCases, caseData, getIndex, creditSegment, retail, serverSubsystems, archModel } from '../services/cases.ts';
 import { tokenize } from '../services/tokenize.ts';
 import { openapiSpec } from '../services/openapi.ts';
 import { VectorStore } from '../vector/store.ts';
@@ -9,7 +9,7 @@ import { buildOrdersDb, query } from '../db/relational.ts';
 const ROOT = join(import.meta.dirname, '..', '..', '..');
 let vs: VectorStore | null = null;
 let db: any = null;
-function getVs() { if (!vs) { vs = new VectorStore(); vs.loadDir(join(ROOT, 'skills', 'external', 'pm-skills-deanpeters')); } return vs; }
+function getVs() { if (!vs) { vs = new VectorStore(); vs.loadDir(join(ROOT, 'dataset', 'rag', 'corpus')); } return vs; } // v22：中文语料 CMRC2018（store.ts 二元组分词）
 function getDb() { if (!db) db = buildOrdersDb(join(ROOT, 'dataset', 'order_data.csv')); return db; }
 
 export async function apiRoutes(app: any) {
@@ -23,12 +23,12 @@ export async function apiRoutes(app: any) {
     if (!d) return reply.code(404).send({ error: { code: 'CASE_NOT_FOUND', message: '案例不存在' } });
     return d;
   });
-  app.get('/api/rfm', async () => rfm());
+  app.get('/api/credit', async () => creditSegment());
   app.get('/api/retail', async () => retail());
   app.get('/api/tokenize', async (req: any) => tokenize(String(req.query.text ?? '你好，今天天气怎么样？Hello AI Agent 2026')));
   app.get('/api/openapi.json', async () => openapiSpec());
   app.get('/api/search', async (req: any) => {
-    const q = String(req.query.q || 'product roadmap');
+    const q = String(req.query.q || '铁路全长多少公里');
     const r = getVs().search(q, 3, 10); // 召回 top-10 → 重排 top-3
     return { ...r, hits: r.reranked.map((x: any) => ({ id: x.id, score: x.rerank, snippet: x.snippet })) };
   });

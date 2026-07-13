@@ -4,7 +4,7 @@
 const KEY = 'pmkb-progress-v2';
 const LEGACY_KEY = 'pmkb-progress';
 const LEGACY_MAP: Record<string, string> = { '1': '1', '30': '2', '41': '3', '44': '4', '45': '5', '46': '6', '49': '7', '51': '8', '54': '9' };
-type P = { viewed?: Record<string, 1>; quiz?: Record<string, boolean> };
+type P = { viewed?: Record<string, 1>; quiz?: Record<string, boolean>; grill?: Record<string, boolean> };
 function migrateLegacy() {
   try {
     if (localStorage.getItem(KEY) !== null || localStorage.getItem(LEGACY_KEY) === null) return;
@@ -17,6 +17,7 @@ function load(): P { try { migrateLegacy(); return JSON.parse(localStorage.getIt
 function save(o: P) { try { localStorage.setItem(KEY, JSON.stringify(o)); } catch { /* 隐私模式忽略 */ } }
 export function markViewed(num: number | string) { const o = load(); o.viewed = o.viewed || {}; o.viewed[String(num)] = 1; save(o); }
 export function markQuiz(num: number | string, correct: boolean) { const o = load(); o.quiz = o.quiz || {}; o.quiz[String(num)] = correct; save(o); }
+export function markGrill(num: number | string, done: boolean) { const o = load(); o.grill = o.grill || {}; o.grill[String(num)] = done; save(o); } // v22：grill-me 追问通关
 export function getProgress(total: number) {
   const o = load();
   const viewed = Object.keys(o.viewed || {}).length;
