@@ -1,22 +1,4 @@
 {
-  "counts": {
-    "HIGH": 1,
-    "LOW": 1
-  },
-  "findings": [
-    {
-      "sev": "HIGH",
-      "cat": "stale-count",
-      "file": "README-cn.md",
-      "msg": "声明「24 结构化 Skill」与真实值 28 不符",
-      "fix": "改为 28（建议用 defs.cases.length 动态化）"
-    },
-    {
-      "sev": "LOW",
-      "cat": "claim",
-      "file": "AI时代研发产品项目一体化知识库/08-DDD深化.md",
-      "msg": "绝对化措辞疑无证据：「唯一入口**：verify 的不变量守卫…」",
-      "fix": "补数据/引用，或改弱化措辞"
-    }
-  ]
+  "counts": {},
+  "findings": []
 }

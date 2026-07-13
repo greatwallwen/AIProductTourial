@@ -3,7 +3,7 @@
 import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
-import { join, resolve, extname } from 'node:path';
+import { dirname, join, resolve, extname } from 'node:path';
 const ROOT = resolve(import.meta.dirname, '..', '..');
 const pad = (n) => String(n).padStart(2, '0');
 const rd = (p) => readFileSync(join(ROOT, p), 'utf8');
@@ -21,7 +21,7 @@ for (const c of defs.cases) {
   const n = pad(c.num), tag = `[${n} ${c.slug}]`;
   ok(); if (/\//.test(c.dataset) && /\.(csv|md)$/.test(c.dataset) && !has(c.dataset)) bad(`${tag} 数据集缺失 ${c.dataset}`); // 通用规则：dataset 是文件路径才要求存在；dogfood/合成教学设计为描述串，由专项守卫核验
   // v17 诚信守卫：fields⊆CSV表头（本轮 P0 半数根源）+ dataKind 必填 + synthetic 必披露
-  if (c.dataset.endsWith('.csv') && has(c.dataset)) { const head0 = rd(c.dataset).split('\n')[0].split(','); for (const f of c.fields) { ok(); if (!head0.includes(f)) bad(`${tag} fields 含表头不存在字段「${f}」`); } }
+  if (c.dataset.endsWith('.csv') && has(c.dataset)) { const head0 = rd(c.dataset).split(/\r?\n/, 1)[0].replace(/^\uFEFF/, '').split(','); for (const f of c.fields) { ok(); if (!head0.includes(f)) bad(`${tag} fields 含表头不存在字段「${f}」`); } }
   ok(); if (!['real', 'hybrid', 'synthetic'].includes(c.dataKind)) bad(`${tag} 缺 dataKind(real|hybrid|synthetic)`);
   if (c.dataKind === 'synthetic' && has(`AI时代研发产品项目一体化知识库/案例/${n}-${c.slug}.md`)) { ok(); if (!rd(`AI时代研发产品项目一体化知识库/案例/${n}-${c.slug}.md`).includes('教学合成')) bad(`${tag} synthetic 未披露「教学合成」`); }
   const dp = `code/data/case_${n}.json`;
@@ -198,7 +198,7 @@ for (const c of defs.cases) {
 }
 // v19 新护栏③：全书相对 .md 链接不得断链（曾有同目录文件误写 ../ 前缀）
 for (const f of bookFiles) {
-  const dir = f.split('/').slice(0, -1).join('/');
+  const dir = dirname(f);
   for (const m of rd(f).matchAll(/\]\(([^)#\s]+\.md)\)/g)) {
     if (/^https?:/.test(m[1])) continue;
     ok(); if (!has(join(dir, decodeURI(m[1])))) bad(`${f} 断链：${m[1]}`);
