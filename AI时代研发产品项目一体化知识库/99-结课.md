@@ -39,10 +39,10 @@
 node code/tools/check_my_work.mjs 02 我的方案.md
 ```
 
-它逐项核对你有没有把该案的字段、指标链、异常状态、所用 Skill、决策动作都落到位（红项会直接告诉你回哪一章补）。拿本书自带的范例交付物 `outputs/product_case_library/case_02_airline_member_rfm_方案验收.md` 当「我的方案」试跑一次，六项全绿：
+它逐项核对你有没有把该案的字段、指标链、异常状态、所用 Skill、决策动作都落到位（红项会直接告诉你回哪一章补）。拿本书自带的范例交付物 `outputs/product_case_library/case_02_p2p_credit_方案验收.md` 当「我的方案」试跑一次，六项全绿：
 
 ```
-自测 · 案例 02 airline_member_rfm · outputs/product_case_library/case_02_airline_member_rfm_方案验收.md
+自测 · 案例 02 p2p_credit · outputs/product_case_library/case_02_p2p_credit_方案验收.md
 
   ✔ 字段
   ✔ 指标链

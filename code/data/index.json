@@ -18,18 +18,18 @@
   },
   {
    "num": 2,
-   "title": "RFM 客户分层｜航空会员价值运营",
-   "slug": "airline_member_rfm",
-   "uiId": "ui_30_airline_member_rfm",
-   "saasType": "sales_funnel_screen",
-   "industry": "航空会员",
+   "title": "信用画像分层｜大陆 P2P 信贷放款",
+   "slug": "p2p_credit",
+   "uiId": "ui_02_p2p_credit",
+   "saasType": "credit_seg_screen",
+   "industry": "P2P信贷",
    "phase": "数据指标",
-   "highImpact": false,
+   "highImpact": true,
    "rp": "RP11",
    "systemLayer": "能力智能",
    "systemStage": "洞察",
    "difficulty": "进阶",
-   "tldr": "航空会员价值运营：按 R/F/M 分层识别高价值流失群，做定向挽回与权益运营"
+   "tldr": "大陆 P2P 信贷：按信用画像分层做差异化放款与人工复核，标的=放款成功（非违约）"
   },
   {
    "num": 3,
@@ -48,18 +48,18 @@
   },
   {
    "num": 4,
-   "title": "AI协作｜知识库语义检索(RAG)",
+   "title": "AI协作｜中文知识库语义检索(RAG)",
    "slug": "rag_knowledge_retrieval",
    "uiId": "ui_44_rag_retrieval",
    "saasType": "rag_search",
-   "industry": "AI 应用",
+   "industry": "中文知识库",
    "phase": "AI协作",
    "highImpact": false,
    "rp": null,
    "systemLayer": "底座平台",
    "systemStage": "治理",
    "difficulty": "高阶",
-   "tldr": "产品知识库语义检索：用真实向量检索为问答/推荐提供高相关片段，替代全量塞入"
+   "tldr": "中文知识库 RAG：848 篇中文百科语料两阶段检索，中文靠字符二元组分词才召回得动"
   },
   {
    "num": 5,
@@ -104,7 +104,7 @@
    "systemLayer": "能力智能",
    "systemStage": "验收",
    "difficulty": "进阶",
-   "tldr": "用标注评测集给 RAG 回答打分，把「感觉还行」变成「命中率多少」"
+   "tldr": "中文 RAG 评测：金标单源、裁判真调 search()，hit@3 近乎全过、收紧到 hit@1 才有区分度"
   },
   {
    "num": 8,

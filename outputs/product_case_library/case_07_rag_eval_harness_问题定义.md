@@ -1,6 +1,6 @@
 # RAG 评测报告（命中率/错误分析）（实操 07·问题定义）
 
-> 数据来源：`skills/external/pm-skills-deanpeters 语料 + 标注 Q/A（dogfood）`（12 行，异常 7）。字段与指标均回到该数据。演示原理 2.3、1.3，采用设计 cyan-matrix。
+> 数据来源：`dataset/rag/corpus 中文语料 + CMRC2018 标注 Q/A（dogfood）`（60 行，异常 2）。字段与指标均回到该数据。演示原理 2.3、1.3，采用设计 cyan-matrix。
 
 ## 产品问题
 
@@ -14,19 +14,19 @@
 
 ## 指标链（真实数据）
 
-- 评测问题数：12
-- 命中率：41.7%
-- 覆盖达标数：11
-- 语料篇数：194
+- 评测问题数：60
+- 命中率：96.7%
+- 覆盖达标数：15
+- 语料篇数：848
 
 ## 异常状态与责任
 
-- [命中@3] how to prioritize requirements / commands/write-prd.md | prd-development/SKILL.md | commands/prioritize.md / 113 → 责任 产品-王（演示角色）
-- [命中@3] RICE scoring model / prioritization-advisor/S | docs/Add-a-Skill Utility | research/Context Enginee / 32 → 责任 产品-王（演示角色）
-- [命中@3] user interview techniques / discovery-interview-prep | commands/discover.md | product-sense-interview- / 65 → 责任 产品-王（演示角色）
-- [命中@3] product roadmap planning / roadmap-planning/SKILL.m | commands/plan-roadmap.md | product-strategy-session / 87 → 责任 产品-王（演示角色）
-- [未命中（覆盖足、检索未召回）] A/B experiment design / epic-hypothesis/template | opportunity-solution-tre | examples/sample.md / 54 → 责任 待标注
-- [未命中（覆盖足、检索未召回）] north star metric / roadmap-planning/templat | examples/sample.md | recommendation-canvas/te / 70 → 责任 待标注
+- [命中@1] 战国史模式主打哪两个模式？ / corpus/cmrc_000_战国无双3.md / 1 → 责任 产品-王（演示角色）
+- [命中@1] 戏曲锣鼓所运用的敲击乐器主要有什么类型？ / corpus/cmrc_001_锣鼓经.md / 1 → 责任 产品-王（演示角色）
+- [命中@1] 广三铁路在哪年建成？ / corpus/cmrc_002_广茂铁路.md / 6 → 责任 产品-王（演示角色）
+- [命中@1] 铁路沿线设有哪些站点？ / corpus/cmrc_003_大莱龙铁路.md / 2 → 责任 产品-王（演示角色）
+- [命中@1] 莱昂德罗·内托曾效力过哪些球队？ / corpus/cmrc_004_莱昂德罗内托.m / 1 → 责任 产品-王（演示角色）
+- [命中@1] 赵鹏在哪年入选国家队？ / corpus/cmrc_005_赵鹏.md / 89 → 责任 产品-王（演示角色）
 
 ## 决策动作
 

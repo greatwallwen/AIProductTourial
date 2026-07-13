@@ -1,6 +1,6 @@
 {
-  "score": 41.7,
-  "judge": "hit@3(search reranked)",
-  "gold": 12,
-  "coverage": 11
+  "score": 96.7,
+  "judge": "hit@1(rerank top-1)",
+  "gold": 60,
+  "coverage": 15
 }

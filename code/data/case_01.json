@@ -88,7 +88,7 @@
   },
   {
    "name": "区域数",
-   "value": 34,
+   "value": 29,
    "unit": ""
   }
  ],
@@ -211,31 +211,31 @@
   "by": "品类 → Σ金额",
   "data": [
    {
-    "label": "厨餐",
+    "label": "厨具餐厨",
     "value": 11159
    },
    {
-    "label": "家饰",
+    "label": "家居饰品",
     "value": 11057
    },
    {
-    "label": "其他",
+    "label": "百货其他",
     "value": 9701
    },
    {
-    "label": "箱包",
+    "label": "箱包配饰",
     "value": 7001
    },
    {
-    "label": "灯饰",
+    "label": "居家灯饰",
     "value": 6840
    },
    {
-    "label": "节庆",
+    "label": "节庆礼品",
     "value": 2500
    },
    {
-    "label": "织品",
+    "label": "家纺织品",
     "value": 2387
    }
   ]

@@ -6,7 +6,7 @@
 |---|---|---|---|
 | order_data.csv | 4500 | 真实基座 UCI Online Retail II（CC BY 4.0）·真实数值 + 本地化改写实体标签(品类→中国电商类目/区域→中国省份/£→¥单位·非原始地理) + 标注合成叠加(毛利率/库存天数/责任人/处理时限) | 2c074ccbdc6f2015… |
 | reference_data_analysis/p2p_credit.csv | 20349 | 真实基座派生（人人贷 P2P，CC0；放款成功/金额/额度/征信/文案特征为真实列直取或 log 还原；信用画像/风险信号为规则派生分层、非事实标签；标的=放款成功非违约） | 56e4560c937c5394… |
-| rag/gold.json | 60 | 真实基座派生（CMRC2018 dev 抽样 60 题中文 QA 金标；docPattern 匹配 dataset/rag/corpus/*.md 文件名） | 0054c6f2cd12fcfc… |
+| rag/gold.json | 60 | 真实基座派生（CMRC2018 dev 抽样 60 题中文 QA 金标；docPattern 匹配 dataset/rag/corpus/*.md 文件名） | 93c0baf67c2fcbff… |
 | reference_data_analysis/2b-real_rfm.csv | 1665 | 真实基座派生（UCI 零售快照 CustomerID 级 RFM 真算；分层为分位规则派生、非事实标签） | 8592e365467c57f1… |
 
 ## 真实基座快照（dataset/real/*，采样自公开数据集，构建期零联网）

@@ -1,6 +1,6 @@
 # RAG 评测报告（命中率/错误分析）（实操 07·方案验收）
 
-> 数据来源：`skills/external/pm-skills-deanpeters 语料 + 标注 Q/A（dogfood）`（12 行，异常 7）。字段与指标均回到该数据。演示原理 2.3、1.3，采用设计 cyan-matrix。
+> 数据来源：`dataset/rag/corpus 中文语料 + CMRC2018 标注 Q/A（dogfood）`（60 行，异常 2）。字段与指标均回到该数据。演示原理 2.3、1.3，采用设计 cyan-matrix。
 
 ## 交付物
 
@@ -25,4 +25,4 @@ RAG 评测报告（命中率/错误分析）
 
 **决策动作**：用离线评测集量化「RAG 回答好不好」，据此决定能不能上线、还差哪些语料
 
-**PASS** — 指标链 4 项均为回到 `skills/external/pm-skills-deanpeters 语料 + 标注 Q/A（dogfood）` 的实际计算值（真实数据）；字段/异常/Skill 齐备；可运行原型见 `#/case/07`（设计 cyan-matrix），截图 `assets/screenshots/premium_case_07_rag_eval_harness_desktop.png`。
+**PASS** — 指标链 4 项均为回到 `dataset/rag/corpus 中文语料 + CMRC2018 标注 Q/A（dogfood）` 的实际计算值（真实数据）；字段/异常/Skill 齐备；可运行原型见 `#/case/07`（设计 cyan-matrix），截图 `assets/screenshots/premium_case_07_rag_eval_harness_desktop.png`。
