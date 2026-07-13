@@ -9,6 +9,7 @@ import { LabPage } from './lab';
 import { Home, Search, PrincipleIndex, ApiDocs } from './pages';
 import { GamePage } from './game';
 import { Challenge } from './challenge';
+import { Grill } from './grill';
 import { markViewed } from './progress';
 
 // 亮/暗主题：切换 <html data-theme> 并持久化
@@ -300,6 +301,7 @@ function CaseScreen() {
         </>
       )}
       <Challenge data={c} />
+      <Grill data={c} />
     </div>
   );
 }

@@ -4,17 +4,20 @@
 
 | 文件 | 行/项 | 性质 | sha256 |
 |---|---|---|---|
-| order_data.csv | 4500 | 真实基座 UCI Online Retail II（CC BY 4.0）+ 标注合成叠加(毛利率/库存天数/责任人/处理时限) | eaa853c1e499fe93… |
-| reference_data_analysis/2-air_data.csv | 800 | 教学合成（航空会员 RFM，分层与 R/F/M 强相关、埋高价值流失群） | 304b2a8588d0a70f… |
+| order_data.csv | 4500 | 真实基座 UCI Online Retail II（CC BY 4.0）·真实数值 + 本地化改写实体标签(品类→中国电商类目/区域→中国省份/£→¥单位·非原始地理) + 标注合成叠加(毛利率/库存天数/责任人/处理时限) | 2c074ccbdc6f2015… |
+| reference_data_analysis/p2p_credit.csv | 20349 | 真实基座派生（人人贷 P2P，CC0；放款成功/金额/额度/征信/文案特征为真实列直取或 log 还原；信用画像/风险信号为规则派生分层、非事实标签；标的=放款成功非违约） | 56e4560c937c5394… |
+| rag/gold.json | 60 | 真实基座派生（CMRC2018 dev 抽样 60 题中文 QA 金标；docPattern 匹配 dataset/rag/corpus/*.md 文件名） | 93c0baf67c2fcbff… |
 | reference_data_analysis/2b-real_rfm.csv | 1665 | 真实基座派生（UCI 零售快照 CustomerID 级 RFM 真算；分层为分位规则派生、非事实标签） | 8592e365467c57f1… |
 
 ## 真实基座快照（dataset/real/*，采样自公开数据集，构建期零联网）
 
 | 快照 | 来源 | 许可 | 用于 | sha256 |
 |---|---|---|---|---|
-| dataset/real/retail_online_retail_ii.csv | [UCI Online Retail II](https://archive.ics.uci.edu/dataset/502/online+retail+ii) | CC BY 4.0 | 案例 01/03/05 零售基座 | d10bc242cb89faf4… |
+| dataset/real/retail_online_retail_ii.csv | [UCI Online Retail II](https://archive.ics.uci.edu/dataset/502/online+retail+ii) | CC BY 4.0 | 案例 01/03/05 零售基座（数值真实，实体本地化改写为中国类目/省份） | d10bc242cb89faf4… |
+| dataset/real/cmrc2018_dev.json | [CMRC2018 dev（哈工大讯飞 HFL·中国大陆）](https://github.com/ymcui/cmrc2018) | CC BY-SA-4.0 | 案例 04/07 中文 RAG 语料 + 金标 | e9ff74231f05c230… |
+| dataset/real/renrendai_p2p.csv | [人人贷 P2P 借贷记录（Harvard Dataverse doi:10.7910/DVN/C4RUDY·中国大陆）](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/C4RUDY) | CC0-1.0 | 案例 02 大陆 P2P 信贷·信用画像分层 | a2d1b494bf45b06b… |
 
-> 快照由一次性采样脚本生成（分层过采样：退货约 ×5 以便教学展示，异常率 11.1% 不代表真实业务水平——UCI 原始约 2%；无随机、无联网）；生成器读快照后归一化。真实列直接用真实效应；缺失列为确定性教学合成叠加、已标注，绝不把叠加说成真实。
+> **零售快照**由一次性采样脚本生成（分层过采样：退货约 ×5 以便教学展示，异常率 11.1% 不代表真实业务水平——UCI 原始约 2%；无随机、无联网），生成器读快照后归一化，真实数值列直接用真实效应、实体标签本地化改写（已标注）。**CMRC2018 / 人人贷** 为公开集**完整/直接快照**（未过采样、未改数值），仅归一化中文表头与 log 还原、规则派生分层均已标注为「派生·非事实标签」。缺失列的确定性教学合成叠加已标注，绝不把叠加/派生说成真实。
 
 ## 可用但刻意未接线的真实源（v17 瘦身裁撤，回补须先有案例与教学理由）
 
@@ -27,7 +30,8 @@
 ## vendored 真实素材（非合成，注明来源/许可）
 - `assets/vendor/lucide/`：Lucide 图标（github.com/lucide-icons/lucide，ISC 许可），内联进 §1 概念图。
 - `assets/vendor/aiagent/`：55 张真实 AI 原理图 + `docs/_source/reference/` 5 份权威文档（源用户提供的 `AI agent/` 参考包），深化 §1。**许可待确认**：图包未附 LICENSE/README 等授权说明，商业发售前须取得书面授权或替换（§1 引用图清单与替换预案见 `outputs/aiagent_license_todo.md`）。
-- `skills/external/pm-skills-deanpeters/`：deanpeters/Product-Manager-Skills（MIT），案例04 RAG 语料。
+- `skills/external/pm-skills-deanpeters/`：deanpeters/Product-Manager-Skills（MIT），早期英文 RAG 语料（已由 CMRC2018 中文语料取代为案例 04/07 主语料，保留作英文对照）。
+- `dataset/rag/corpus/`：CMRC2018 dev 派生中文语料（每 context 一 .md，供 store.ts 检索）；`dataset/rag/gold.json`：60 题中文金标。**CC BY-SA-4.0（署名 + 相同方式共享）**，仅教学引用、不商业再分发衍生。
 
 ## 逐案数据集设计说明
-- 精品案例的数据集设计意图/字段义/数据故事见 `dataset/design/case_NN.md`（如 case_02 航空 RFM）。
+- 精品案例的数据集设计意图/字段义/数据故事见 `dataset/design/case_NN.md`。

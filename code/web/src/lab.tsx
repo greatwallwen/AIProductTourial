@@ -64,14 +64,14 @@ function ContextWindow() {
 
 // —— RAG Playground（§1.3）——
 function RagPlayground() {
-  const [q, setQ] = useState('product roadmap prioritization');
+  const [q, setQ] = useState('铁路全长多少公里');
   const [res, setRes] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const run = () => { setLoading(true); fetchSearch(q).then(setRes).catch(() => {}).finally(() => setLoading(false)); };
   useEffect(() => { run(); }, []);
   return (
     <div>
-      <p className="muted">不把整本手册塞进模型，而是用向量库<b>只召回最相关的几段</b>（真实检索 deanpeters 语料）。这就是 §1.3 的 RAG——降本、聚焦、更准。</p>
+      <p className="muted">不把整本手册塞进模型，而是用向量库<b>只召回最相关的几段</b>（真实检索 CMRC2018 中文百科语料，848 篇）。这就是 §1.3 的 RAG——降本、聚焦、更准；中文靠字符二元组分词才召回得动。</p>
       <div style={{ display: 'flex', gap: 8, margin: '4px 0 12px' }}>
         <input value={q} onChange={(e) => setQ(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && run()} aria-label="检索词"
           style={{ flex: 1, background: 'var(--panelSoft)', border: '1px solid var(--border)', borderRadius: 8, color: 'var(--ink)', padding: '8px 12px' }} />

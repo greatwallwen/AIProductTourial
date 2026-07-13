@@ -71,36 +71,37 @@ export function caseData(num: number) {
     vm.liveComputed = true;
   }
   vm.graphicOnly = !!c.graphicOnly;
-  vm.screen = c.screen || null; // 特殊案例屏：rag/db/arch/3d
+  vm.screen = c.screen || null; // 特殊案例屏：rag/db/arch/credit
+  vm.grill = c.grill || null;   // v22：grill-me 苏格拉底追问（锚真实数据，见 grill.tsx）
   vm.demonstrates = c.demonstrates;
   vm.lenses = c.lenses || [];          // Phase 2：角色镜头（研发/产品/项目）
   vm.lensViews = c.lensViews || null;  // 01/41：同一案例的三视角
   return vm;
 }
 
-/** 航空会员 RFM 真实分析（案例02 专属 demo 驱动）：从真实列真算分层、高价值流失、R×F 散点。 */
-export function rfm() {
-  const t = parseCsv(join(ROOT, 'dataset', 'reference_data_analysis', '2-air_data.csv'));
+/** 大陆 P2P 信贷·信用画像分层真实分析（案例02 专属 demo）：从人人贷(CC0)真实列真算分层/放款转化/风险队列/文案信号。
+ *  标的 = 放款成功（是否融到款），**非违约**——不可据此推断还款能力（详见案例正文 pitfall）。 */
+export function creditSegment() {
+  const t = parseCsv(join(ROOT, 'dataset', 'reference_data_analysis', 'p2p_credit.csv'));
   const ci = (n: string) => t.head.indexOf(n);
-  const [rC, fC, mC, segC] = ['最近乘机天数', '年飞行次数', '年消费', '分层'].map(ci);
-  const members = t.rows.map((r) => ({ r: Number(r[rC]) || 0, f: Number(r[fC]) || 0, m: Number(r[mC]) || 0, seg: (r[segC] || '未分层').trim() }));
-  const segMap: Record<string, { count: number; spend: number }> = {};
-  for (const mem of members) { (segMap[mem.seg] ||= { count: 0, spend: 0 }); segMap[mem.seg].count++; segMap[mem.seg].spend += mem.m; }
-  const segments = Object.entries(segMap).map(([name, v]) => ({ name, count: v.count, avgSpend: Math.round(v.spend / v.count) })).sort((a, b) => b.avgSpend - a.avgSpend);
-  // 高价值流失：M 前 40% 且 R 后 40%（久未乘机）
-  const q = (arr: number[], p: number) => { const s = [...arr].sort((a, b) => a - b); return s[Math.floor(s.length * p)]; };
-  const mHi = q(members.map((x) => x.m), 0.6), rHi = q(members.map((x) => x.r), 0.6);
-  const churn = members.filter((x) => x.m >= mHi && x.r >= rHi);
-  const scatter = members.filter((_, i) => i % 4 === 0).slice(0, 140).map((x) => ({ x: x.r, y: x.f, m: x.m, seg: x.seg }));
-  // v18-P1 真实对照：UCI 快照 CustomerID 级真算 RFM（2b-real_rfm.csv，全真实；分层为规则派生）
-  const rt = parseCsv(join(ROOT, 'dataset', 'reference_data_analysis', '2b-real_rfm.csv'));
-  const rci = (n: string) => rt.head.indexOf(n);
-  const [rr, rf, rm, rseg] = ['最近购买天数', '购买次数', '总消费', '分层(规则派生)'].map(rci);
-  const real = rt.rows.map((r) => ({ r: Number(r[rr]) || 0, f: Number(r[rf]) || 0, m: Number(r[rm]) || 0, seg: r[rseg] || '' }));
-  const realScatter = real.filter((_, i) => i % 8 === 0).slice(0, 140).map((x) => ({ x: x.r, y: x.f, m: x.m, seg: x.seg }));
-  const realSegs: Record<string, number> = {}; for (const x of real) realSegs[x.seg] = (realSegs[x.seg] || 0) + 1;
-  return { total: members.length, segments, churnRisk: churn.length, churnRate: Math.round(churn.length / members.length * 1000) / 10, mHi, rHi, scatter,
-    realRef: { total: real.length, scatter: realScatter, segments: Object.entries(realSegs).map(([name, count]) => ({ name, count })), note: '真实对照：UCI 零售快照客户级 RFM 真算（R/F/M 全真实，分层为分位规则派生）' } };
+  const [okC, amtC, hcC, limC, repC, lenC, portC, riskC] = ['放款成功', '借款金额', '历史成功次数', '授信额度', '有征信报告', '描述字数', '信用画像', '风险信号'].map(ci);
+  const rows = t.rows.map((r) => ({ ok: Number(r[okC]) || 0, amt: Number(r[amtC]) || 0, hc: Number(r[hcC]) || 0, lim: Number(r[limC]) || 0, rep: (r[repC] || '').trim(), len: Number(r[lenC]) || 0, port: (r[portC] || '未分层').trim(), risk: (r[riskC] || '').trim() }));
+  const total = rows.length;
+  const fundRate = Math.round(rows.filter((x) => x.ok).length / total * 1000) / 10;
+  // 信用画像分层 → 放款成功率 + 平均借款金额（差异化处置的抓手）
+  const order = ['优质', '成长', '待观察', '薄档'];
+  const segMap: Record<string, { count: number; ok: number; amt: number }> = {};
+  for (const x of rows) { (segMap[x.port] ||= { count: 0, ok: 0, amt: 0 }); const s = segMap[x.port]; s.count++; s.ok += x.ok; s.amt += x.amt; }
+  const segments = order.filter((n) => segMap[n]).map((name) => ({ name, count: segMap[name].count, fundRate: Math.round(segMap[name].ok / segMap[name].count * 1000) / 10, avgAmount: Math.round(segMap[name].amt / segMap[name].count) }));
+  // 风险队列：薄档/待观察（风险信号非空）→ 走人工复核
+  const risk = rows.filter((x) => x.risk);
+  // 授信额度 × 历史成功次数 散点，色分信用画像（抽样展示）
+  const scatter = rows.filter((_, i) => i % 20 === 0).slice(0, 140).map((x) => ({ x: x.lim, y: x.hc, seg: x.port, ok: x.ok }));
+  // 反直觉真实信号：借款描述文案长度分桶 → 放款成功率（文案即转化，但相关≠因果）
+  const buckets: [number, number, string][] = [[0, 80, '很短(<80字)'], [80, 160, '偏短(80-160)'], [160, 240, '适中(160-240)'], [240, 1e9, '较长(>240)']];
+  const textSignal = buckets.map(([lo, hi, label]) => { const g = rows.filter((x) => x.len >= lo && x.len < hi); return { label, count: g.length, fundRate: g.length ? Math.round(g.filter((x) => x.ok).length / g.length * 1000) / 10 : 0 }; });
+  return { total, fundRate, segments, riskCount: risk.length, riskRate: Math.round(risk.length / total * 1000) / 10, scatter, textSignal,
+    note: '真实基座：人人贷 P2P（Harvard Dataverse, CC0, 中国大陆）；放款成功/金额/额度/征信/文案为真实列，信用画像为规则派生分层。标的=放款成功，非违约——不可据此推断还款能力。' };
 }
 
 /** 零售经营真实分析（案例01 专属 demo）：品类销售额/毛利率/异常率 + 异常订单 triage（按金额）。 */

@@ -1,6 +1,6 @@
 # RAG 检索方案与验收（实操 04·方案验收）
 
-> 数据来源：`skills/external/pm-skills-deanpeters`（194 行，异常 0）。字段与指标均回到该数据。演示原理 1.3、3.3，采用设计 emerald-flow。
+> 数据来源：`dataset/rag/corpus`（848 行，异常 0）。字段与指标均回到该数据。演示原理 1.3、3.3，采用设计 emerald-flow。
 
 ## 交付物
 
@@ -25,4 +25,4 @@ RAG 检索方案与验收
 
 **决策动作**：用真实向量检索为问答/推荐提供高相关片段，替代全量塞入
 
-**PASS** — 指标链 4 项均为回到 `skills/external/pm-skills-deanpeters` 的实际计算值（真实数据）；字段/异常/Skill 齐备；可运行原型见 `#/case/04`（设计 emerald-flow），截图 `assets/screenshots/premium_case_04_rag_knowledge_retrieval_desktop.png`。
+**PASS** — 指标链 4 项均为回到 `dataset/rag/corpus` 的实际计算值（真实数据）；字段/异常/Skill 齐备；可运行原型见 `#/case/04`（设计 emerald-flow），截图 `assets/screenshots/premium_case_04_rag_knowledge_retrieval_desktop.png`。

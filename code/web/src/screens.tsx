@@ -1,13 +1,13 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Icon } from './Icon';
-import { fetchSearch, fetchDbQuery, fetchHealth, fetchArch, fetchRfm, fetchRetail, fetchGates } from './lib/api';
+import { fetchSearch, fetchDbQuery, fetchHealth, fetchArch, fetchCredit, fetchRetail, fetchGates } from './lib/api';
 // three.js 独立 chunk，仅在渲染 3D 案例时动态加载（首屏不含 three）
 
 // 架构/向量库/PG/3D 案例的「真实后端」案例屏：全部 live 调后端接口。
 
 // —— 向量库检索(RAG)：调 /api/search 展示命中片段与相似度 ——
 function RagScreen() {
-  const [q, setQ] = useState('product roadmap prioritization');
+  const [q, setQ] = useState('铁路全长多少公里');
   const [res, setRes] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const run = (query: string) => { setLoading(true); fetchSearch(query).then(setRes).finally(() => setLoading(false)); };
@@ -105,38 +105,42 @@ function ArchScreen() {
   );
 }
 
-// —— 航空会员 RFM 专属 demo（案例02）：真实分层 + 高价值流失预警 + R×F 散点 ——
-const SEG_COLORS: Record<string, string> = { '重要价值': 'var(--ok)', '高价值流失': 'var(--bad)', '重要保持': 'var(--accent)', '重要发展': 'var(--accent2)', '一般维持': 'var(--muted)', '流失预警': 'var(--warn)' };
-function RfmScreen() {
-  // v17 P0-1：本案数据为教学合成（固定种子），页面须明示
+// —— 大陆 P2P 信贷·信用画像分层专属 demo（案例02）：真实分层 + 放款转化 + 风险队列 + 文案信号（人人贷 CC0）——
+const CREDIT_COLORS: Record<string, string> = { '优质': 'var(--ok)', '成长': 'var(--accent)', '待观察': 'var(--warn)', '薄档': 'var(--bad)' };
+function CreditScreen() {
   const [d, setD] = useState<any>(null);
-  useEffect(() => { fetchRfm().then(setD); }, []);
-  if (!d) return <section className="card"><div className="muted">加载 RFM…</div></section>;
-  const maxSpend = Math.max(...d.segments.map((s: any) => s.avgSpend));
-  const maxR = Math.max(...d.scatter.map((p: any) => p.x), 1), maxF = Math.max(...d.scatter.map((p: any) => p.y), 1);
-  const synthBanner = <div style={{background:"#7c2d12",color:"#fde68a",padding:"6px 12px",borderRadius:8,marginBottom:10,fontSize:13}}>双轨数据：主视图为教学合成（固定种子，埋高价值流失群）；页内另附「真实对照」——UCI 零售快照 1665 名真实客户的客户级 RFM 真算（分层为规则派生）。设计说明：dataset/design/case_02.md</div>;
+  useEffect(() => { fetchCredit().then(setD); }, []);
+  if (!d) return <section className="card"><div className="muted">加载信用分层…</div></section>;
+  const maxFund = Math.max(...d.segments.map((s: any) => s.fundRate), 1);
+  const maxLim = Math.max(...d.scatter.map((p: any) => p.x), 1), maxHc = Math.max(...d.scatter.map((p: any) => p.y), 1);
+  const realBanner = <div style={{background:"#064e3b",color:"#a7f3d0",padding:"6px 12px",borderRadius:8,marginBottom:10,fontSize:13}}>真实数据：人人贷 P2P 借贷记录（Harvard Dataverse · CC0 · 中国大陆）——放款成功/金额/额度/征信/文案为真实列，信用画像为规则派生分层。<b>标的=放款成功，非违约</b>，不可据此推断还款能力。</div>;
   return (
     <>
       <div className="banner" style={{ color: 'var(--bad)', borderColor: 'var(--bad)' }}>
-      {synthBanner}<Icon name="alert" /> 高价值流失预警：<b>{d.churnRisk}</b> 名会员（{d.churnRate}%）年消费居前列却已久未乘机（R 偏大）——过去高价值、正在流失，最该优先干预。</div>
+      {realBanner}<Icon name="alert" /> 风险队列：<b>{d.riskCount.toLocaleString('zh-CN')}</b> 笔（{d.riskRate}%）为薄档/待观察（无征信或历史零成功）——高影响金融不自动放款，转人工复核。整体放款成功率 {d.fundRate}%。</div>
       <div className="cols">
         <section className="card">
-          <div className="card-h"><h2>RFM 会员分层 · {d.total} 人</h2><span className="muted">按 R/F/M 真算 · 条长=均消费</span></div>
+          <div className="card-h"><h2>信用画像分层 · {d.total.toLocaleString('zh-CN')} 笔</h2><span className="muted">条长=该层放款成功率 · 反直觉：薄档反而最高</span></div>
+          <div className="muted" style={{ fontSize: 11.5, margin: '2px 0 8px', color: 'var(--warn)' }}><Icon name="alert" size={12} /> 放款率沿画像层是「反」的（薄档最高、优质最低）——放款成功主要由借款规模驱动（小额易融），<b>不是信用/还款能力的度量</b>。画像分层用于风险处置（薄档→人工复核），不是用放款率给借款人排好坏。</div>
           {d.segments.map((s: any) => (
             <div key={s.name} style={{ margin: '9px 0' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12 }}><span style={{ color: 'var(--ink)' }}><span style={{ color: SEG_COLORS[s.name] }}>●</span> {s.name}</span><span className="mono" style={{ color: 'var(--ink2)' }}>{s.count} 人 · 均消费 {s.avgSpend.toLocaleString('zh-CN')}</span></div>
-              <div style={{ height: 8, background: 'var(--panelSoft)', borderRadius: 4, marginTop: 3 }}><div style={{ width: `${(s.avgSpend / maxSpend) * 100}%`, height: '100%', background: SEG_COLORS[s.name] || 'var(--accent)', borderRadius: 4 }} /></div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12 }}><span style={{ color: 'var(--ink)' }}><span style={{ color: CREDIT_COLORS[s.name] }}>●</span> {s.name}</span><span className="mono" style={{ color: 'var(--ink2)' }}>{s.count.toLocaleString('zh-CN')} 笔 · 放款率 {s.fundRate}% · 均额 {s.avgAmount.toLocaleString('zh-CN')}</span></div>
+              <div style={{ height: 8, background: 'var(--panelSoft)', borderRadius: 4, marginTop: 3 }}><div style={{ width: `${(s.fundRate / maxFund) * 100}%`, height: '100%', background: CREDIT_COLORS[s.name] || 'var(--accent)', borderRadius: 4 }} /></div>
             </div>
+          ))}
+          <div className="card-h" style={{ marginTop: 12 }}><h2 style={{ fontSize: 13 }}>文案长度 → 放款成功率</h2><span className="muted">短文案放款率反而高——多为小额（混淆·相关≠因果）</span></div>
+          {d.textSignal.map((t: any) => (
+            <div key={t.label} style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12, margin: '4px 0', color: 'var(--ink2)' }}><span>{t.label}</span><span className="mono">{t.count.toLocaleString('zh-CN')} 笔 · {t.fundRate}%</span></div>
           ))}
         </section>
         <section className="card">
-          <div className="card-h"><h2>R × F 散点（色=分层）</h2><span className="muted">右下=久未乘机+低频 → 流失区</span></div>
+          <div className="card-h"><h2>授信额度 × 历史成功次数（色=信用画像）</h2><span className="muted">左下=低额+零历史 → 薄档区</span></div>
           <svg className="chart" viewBox="0 0 560 300">
             <line x1="42" y1="268" x2="552" y2="268" stroke="var(--border)" /><line x1="42" y1="18" x2="42" y2="268" stroke="var(--border)" />
-            <text x="300" y="290" className="axis">最近乘机天数 R →（越大越久未飞）</text><text x="16" y="150" className="axis" transform="rotate(-90 16 150)">年飞行次数 F →</text>
-            {d.scatter.map((p: any, i: number) => <circle key={i} cx={42 + (p.x / maxR) * 508} cy={268 - (p.y / maxF) * 246} r="3.2" fill={SEG_COLORS[p.seg] || 'var(--muted)'} opacity="0.72" />)}
+            <text x="300" y="290" className="axis">授信额度 →</text><text x="16" y="150" className="axis" transform="rotate(-90 16 150)">历史成功次数 →</text>
+            {d.scatter.map((p: any, i: number) => <circle key={i} cx={42 + (p.x / maxLim) * 508} cy={268 - (p.y / maxHc) * 246} r="3.2" fill={CREDIT_COLORS[p.seg] || 'var(--muted)'} opacity="0.72" />)}
           </svg>
-          <div className="ov-top" style={{ marginTop: 8 }}>{Object.entries(SEG_COLORS).map(([n, c]) => <span key={n} className="chip" style={{ borderColor: c }}><span style={{ color: c }}>●</span> {n}</span>)}</div>
+          <div className="ov-top" style={{ marginTop: 8 }}>{Object.entries(CREDIT_COLORS).map(([n, c]) => <span key={n} className="chip" style={{ borderColor: c }}><span style={{ color: c }}>●</span> {n}</span>)}</div>
         </section>
       </div>
     </>
@@ -328,7 +332,7 @@ export function SpecialScreen({ screen, data }: { screen: string; data?: any }) 
   if (screen === 'buildwalk') return <BuildWalkScreen data={data} />;
   if (screen === 'eval') return <DogfoodScreen data={data} kind={screen} />;
   if (screen === 'eventbus') return <EventBusScreen data={data} />;
-  if (screen === 'rfm') return <RfmScreen />;
+  if (screen === 'credit') return <CreditScreen />;
   if (screen === 'retail') return <RetailScreen />;
   if (screen === 'plan') return <PlanScreen />;
   if (screen === 'rag') return <RagScreen />;
