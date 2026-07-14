@@ -58,5 +58,18 @@
 - **D 技能体现范围**（shadcn/ui + UI/UX Pro 等：作为技能卡/章节内容 + 真在 Next.js 前端用 shadcn 落地？哪些技能？哪些需检索补充？）。
 - **E Next.js 迁移与三绿/截图管线**（Vite→Next 后 verify/screenshot_cases/run.sh 全要改）。
 
+## 执行进度（branch `v24-datasets-nextjs-skills`，未推送）
+- ✅ **P0** 撤先猜再揭晓（`2e40841`）。
+- ✅ **P1 工具链** Next.js14+Tailwind+shadcn 安装（`88d991d`，Vite 仍为主）。
+- ✅ **P2 真集抓取 5/6**（各已 vendored+MANIFEST+sha256+verify 绿）：
+  - `94acca8` 06 若依 RuoYi-Cloud arch（22 模块/28 边/0 环/3 Feign，MIT）
+  - `cdcbd38` 09 nacos 事件流（600 事件/298 天/父指针，Apache）
+  - `446c5ba` 04/07 webMedQA（120 组 1正4负 医疗金标，Apache）
+  - `989a286` 05 北京空气质量（140256 行/12 站，CC BY 4.0）
+  - `c3f9c33` 08 海豚调度 devops（CI 89.1%/PR 51%，Apache）
+- ⏳ **P2 剩 1/6**：**案例10 运营商工信部数据**——WebFetch 对 .gov.cn/镜像全部 socket 关闭（地域封锁），仅有 2 个已核实季度（2021Q3=36199件·57.7/24.8/17.5%；2020Q2=37543件）。需专门转录多份通告的研究通道；不足则以少量真值+合成明细（标红线）建案。
+- **顺序调整**：用户定 P2/P3 内容先于 P1 迁移（先在 Vite 上落地内容，迁移只做一次）。
+- ⏳ **待做**：案例10 数据 → P3 全案接线（6 真集接进 case + 运营商新案 + 01/03 真基座收紧 + 02 首贷vs复贷深挖 + 03 复购）→ P1 Next.js+shadcn 迁移 → P4 技能体现 → P5 收口双推。
+
 ## 纪律（延续 v23）
 真实/本地化改写/合成三类显式区分；绝不把合成/派生说成真实，**也绝不把真实说成合成**；vendored 零联网确定性；TDD + 三绿 + 分批提交；不弱化守卫。
