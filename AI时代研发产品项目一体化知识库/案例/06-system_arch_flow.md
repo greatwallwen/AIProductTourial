@@ -12,7 +12,7 @@
 
 > <img src="../../assets/vendor/lucide/built/gauge.svg" width="14" alt="" style="vertical-align:-2px" /> **难度** 高阶｜**一句话** 后端子系统分解与契约：把 §3 架构流程落到本仓库真运行后端：分层/边界/契约在代码里可查｜**前置** 建议先读完第一部分
 >
-> <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：系统架构的落点是「分层边界 + 接口契约」。本案两条腿：①以后端自身为例（routes 不写业务、services 不碰 HTTP，/api/health 契约实时可查）；②对照一个真实国产开源微服务——**若依 RuoYi-Cloud（MIT）：22 模块、28 依赖边、循环依赖=0、3 个 @FeignClient 显式接口契约**。量级差一档，但守边界的手段同构：依赖方向单向 + 0 环 + 显式契约。架构决策留 ADR、可追溯。
+> <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：系统架构的落点是「分层边界 + 接口契约」。本案两条腿：①以后端自身为例（routes 不写业务、services 不碰 HTTP，/api/health 契约实时可查）；②对照一个真实国产开源微服务——**若依 RuoYi-Cloud（MIT）：22 模块、18 依赖边、循环依赖=0、3 个 @FeignClient 显式接口契约**。量级差一档，但守边界的手段同构：依赖方向单向 + 0 环 + 显式契约。架构决策留 ADR、可追溯。
 >
 > <img src="../../assets/vendor/lucide/built/alert-triangle.svg" width="14" alt="" style="vertical-align:-2px" /> **常见坑**：① 分层名义存在、实则 controller 里塞业务；② 接口无契约（错误信封/幂等）各调各的；③ 架构口头拍板不留 ADR，后人无从追溯。
 

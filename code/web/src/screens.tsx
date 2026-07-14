@@ -1,9 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Icon } from './Icon';
 import { fetchSearch, fetchDbQuery, fetchHealth, fetchArch, fetchCredit, fetchRetail, fetchRfm, fetchGates } from './lib/api';
-// three.js 独立 chunk，仅在渲染 3D 案例时动态加载（首屏不含 three）
 
-// 架构/向量库/PG/3D 案例的「真实后端」案例屏：全部 live 调后端接口。
+// 架构/向量库/PG 等案例的「真实后端」案例屏：全部 live 调后端接口。
 
 // —— 向量库检索(RAG)：调 /api/search 展示命中片段与相似度 ——
 function RagScreen() {

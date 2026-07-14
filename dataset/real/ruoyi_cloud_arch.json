@@ -27,48 +27,8 @@
     "ruoyi-visual",
     "ruoyi-visual-monitor"
   ],
-  "edgeCount": 28,
+  "edgeCount": 18,
   "edges": [
-    {
-      "from": "ruoyi",
-      "to": "ruoyi-common-core"
-    },
-    {
-      "from": "ruoyi",
-      "to": "ruoyi-common-swagger"
-    },
-    {
-      "from": "ruoyi",
-      "to": "ruoyi-common-security"
-    },
-    {
-      "from": "ruoyi",
-      "to": "ruoyi-common-sensitive"
-    },
-    {
-      "from": "ruoyi",
-      "to": "ruoyi-common-datascope"
-    },
-    {
-      "from": "ruoyi",
-      "to": "ruoyi-common-datasource"
-    },
-    {
-      "from": "ruoyi",
-      "to": "ruoyi-common-seata"
-    },
-    {
-      "from": "ruoyi",
-      "to": "ruoyi-common-log"
-    },
-    {
-      "from": "ruoyi",
-      "to": "ruoyi-common-redis"
-    },
-    {
-      "from": "ruoyi",
-      "to": "ruoyi-api-system"
-    },
     {
       "from": "ruoyi-api-system",
       "to": "ruoyi-common-core"
