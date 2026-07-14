@@ -22,7 +22,7 @@
  "highImpact": false,
  "riskBoundary": "评测分数是发布参考，不替代人工抽检；分数高不等于零幻觉",
  "decisionAction": "用离线评测集量化「RAG 回答好不好」，据此决定能不能上线、还差哪些语料",
- "dataset": "dataset/rag/corpus 中文语料 + CMRC2018 标注 Q/A（dogfood）",
+ "dataset": "dataset/rag/corpus 中文医疗语料 + webMedQA 医疗 Q/A（dogfood）",
  "metricChainNames": [
   "评测问题数",
   "命中率",
