@@ -107,6 +107,22 @@ function ArchScreen() {
           {a ? <><Icon name="alert" /> 循环依赖检测：{a.cycles} 处{a.cycles === 0 ? '（架构守护通过：分层单向依赖）' : '（越界！需拆解）'}</> : '…'}
         </div>
       </section>
+      {a?.ruoyi && (
+        <section className="card">
+          <div className="card-h"><h2>真实项目对照 · 若依 RuoYi-Cloud（国产开源微服务）</h2><span className="muted">MIT · pom + @FeignClient 确定性解析</span></div>
+          <div className="banner" style={{ color: 'var(--accent2)', borderColor: 'var(--accent2)', marginBottom: 10 }}>
+            本仓库 {subs.length} 个子系统是「小 dogfood」；若依有 <b>{a.ruoyi.moduleCount} 个真实模块</b>、{a.ruoyi.edgeCount} 条依赖边——量级差一档，但守边界的手段一样：<b>依赖单向 + 循环依赖 {a.ruoyi.cycles}</b>（真实项目分层同样干净）+ 显式接口契约。
+          </div>
+          <div style={{ fontSize: 12, color: 'var(--ink2)', marginBottom: 8 }}>
+            <b>分层（common 基座 → 业务模块 → 网关）</b> · 部分真实依赖边：{a.ruoyi.edges.slice(0, 10).map((e: any, i: number) => <span key={i} className="chip soft" style={{ marginRight: 6 }}>{e.from}→{e.to}</span>)}
+          </div>
+          <div style={{ fontSize: 12.5 }}>
+            <b>服务接口契约（@FeignClient，共 {a.ruoyi.feign.length}）：</b>
+            {a.ruoyi.feign.map((f: any) => <div key={f.file} style={{ paddingLeft: 10, borderLeft: '3px solid var(--accent)', margin: '4px 0' }}><code>{f.file}</code> → 服务 <code>{f.service}</code>：{(f.methods || []).join(' / ') || '（契约方法）'}</div>)}
+          </div>
+          <div className="muted" style={{ fontSize: 11, marginTop: 8 }}><Icon name="alert" size={12} /> 目录名骗不了门禁：真实项目靠「依赖方向单向 + 循环依赖=0 + Feign 显式契约」守分层，不是靠 routes/services 目录名。</div>
+        </section>
+      )}
       {a && (
         <section className="card">
           <div className="card-h"><h2>接口契约 + ADR（真实工件）</h2><span className="muted">§3.4 契约即代码 · §3.5 决策留痕</span></div>

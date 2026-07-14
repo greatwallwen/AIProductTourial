@@ -44,8 +44,10 @@ export function archModel() {
   }
   const edges = [...edgeSet].map((e) => { const [from, to] = e.split('>'); return { from, to }; });
   const cycles = edges.filter((e) => edgeSet.has(e.to + '>' + e.from)).length / 2;
+  // v24：真实国产开源项目对照——若依 RuoYi-Cloud（22 模块/28 依赖边/0 循环/3 Feign 接口契约，pom+@FeignClient 确定性解析）
+  const ruoyi = JSON.parse(readFileSync(join(ROOT, 'dataset', 'real', 'ruoyi_cloud_arch.json'), 'utf8'));
   return {
-    subsystems: serverSubsystems(), edges, cycles,
+    subsystems: serverSubsystems(), edges, cycles, ruoyi,
     adr: { id: 'ADR-001', title: '本地 node:sqlite，生产标注为 PostgreSQL', why: '同时满足约束「一条命令起、零外部依赖、离线可跑」与「教学要讲 PG/pgvector 架构」；重估信号：需真并发或 pgvector 召回则切 PG。' },
     contract: { envelope: '{ code, message, details } 统一错误信封', idempotent: '写操作幂等：同一「创建」重发不产生两条', openapi: '/api/openapi.json 由路由 schema 自动生成，契约即代码永不漂移' },
   };

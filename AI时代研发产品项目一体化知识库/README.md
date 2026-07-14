@@ -94,7 +94,7 @@
 - [实操 03 · 零售经营产品方案](案例/03-retail_capstone_board.md)
 - [实操 04 · 产品知识库语义检索](案例/04-rag_knowledge_retrieval.md)
 - [实操 05 · 经营数据关系库查询](案例/05-postgres_relational_arch.md)
-- [实操 06 · 后端子系统分解与契约](案例/06-system_arch_flow.md)
+- [实操 06 · 后端子系统分解与接口契约（对照真实国产开源微服务·若依）](案例/06-system_arch_flow.md)
 - [实操 07 · RAG 回答评测台](案例/07-rag_eval_harness.md)
 - [实操 08 · 规格驱动系统建造台](案例/08-sdd_system_build.md)
 - [实操 09 · 仓库事件总线](案例/09-repo_event_bus.md)

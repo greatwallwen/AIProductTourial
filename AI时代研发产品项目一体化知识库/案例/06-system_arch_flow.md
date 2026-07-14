@@ -12,7 +12,7 @@
 
 > <img src="../../assets/vendor/lucide/built/gauge.svg" width="14" alt="" style="vertical-align:-2px" /> **难度** 高阶｜**一句话** 后端子系统分解与契约：把 §3 架构流程落到本仓库真运行后端：分层/边界/契约在代码里可查｜**前置** 建议先读完第一部分
 >
-> <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：系统架构的落点是「分层边界 + 接口契约」：本案以后端自身为例——routes 不写业务、services 不碰 HTTP，一次真实 /api/health 契约调用可查。架构决策要留 ADR，可追溯。
+> <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：系统架构的落点是「分层边界 + 接口契约」。本案两条腿：①以后端自身为例（routes 不写业务、services 不碰 HTTP，/api/health 契约实时可查）；②对照一个真实国产开源微服务——**若依 RuoYi-Cloud（MIT）：22 模块、28 依赖边、循环依赖=0、3 个 @FeignClient 显式接口契约**。量级差一档，但守边界的手段同构：依赖方向单向 + 0 环 + 显式契约。架构决策留 ADR、可追溯。
 >
 > <img src="../../assets/vendor/lucide/built/alert-triangle.svg" width="14" alt="" style="vertical-align:-2px" /> **常见坑**：① 分层名义存在、实则 controller 里塞业务；② 接口无契约（错误信封/幂等）各调各的；③ 架构口头拍板不留 ADR，后人无从追溯。
 
@@ -30,7 +30,7 @@
 ### 任务目标与数据
 
 - 行业：系统架构
-- 真实业务场景：后端子系统分解与契约
+- 真实业务场景：后端子系统分解与接口契约（对照真实国产开源微服务·若依）
 - 岗位：架构型产品经理
 - 数据或资料：`rules/backend.md`（5 行，异常 0）
 - 公开参考：Software Engineering at Google https://abseil.io/resources/swe-book/ ｜ 12factor.net
@@ -46,11 +46,11 @@
 
 > **怎么用**：推荐用 **CodeBuddy 的 Plan 模式**（腾讯，国产·当下可跑）——把下面灰底代码框**整段原样粘进去，它会先列出任务清单、再自主执行**，你不需要看懂里面的技术细节；没装过就先装一个。海外读者用 Claude Code / Cursor / Trae 等任一 Agent 工具同理（见附录B）。
 
-**Prompt 1：后端子系统分解与契约 - 问题定义**
+**Prompt 1：后端子系统分解与接口契约（对照真实国产开源微服务·若依） - 问题定义**
 
 ```text
-请以产品经理身份，用 AI 编程工具（如 Trae、CodeBuddy 等任一 Agent 工具）完成「后端子系统分解与契约」的**产品问题定义**（这一步先把问题想清楚，不写代码）：
-- 岗位与场景：架构型产品经理 面向「后端子系统分解与契约」，把业务判断转成一份可验证的产品问题定义。
+请以产品经理身份，用 AI 编程工具（如 Trae、CodeBuddy 等任一 Agent 工具）完成「后端子系统分解与接口契约（对照真实国产开源微服务·若依）」的**产品问题定义**（这一步先把问题想清楚，不写代码）：
+- 岗位与场景：架构型产品经理 面向「后端子系统分解与接口契约（对照真实国产开源微服务·若依）」，把业务判断转成一份可验证的产品问题定义。
 - 数据：读取 `rules/backend.md`，只使用其中实际存在的字段（子系统、职责、接口、契约）。
 - 指标链：子系统数、接口契约数、依赖边数、循环依赖（当前真实值：子系统数=5，接口契约数=12，依赖边数=5，循环依赖=0）。
 - 现场异常：要盯的是 职责越界、契约缺失、循环依赖——说清每类异常谁负责、如何被发现。
@@ -60,10 +60,10 @@
 - 边界：结论必须回到数据或公开参考（Software Engineering at Google https://abseil.io/resources/swe-book/ ｜ 12factor.net）；不得越过「架构决策须可追溯（ADR），不得口头拍板」。
 ```
 
-**Prompt 2：后端子系统分解与契约 - 方案验收**（注意：outputs/ 交付物由 build_docs 重建覆盖，建议在新分支/对照目录运行）
+**Prompt 2：后端子系统分解与接口契约（对照真实国产开源微服务·若依） - 方案验收**（注意：outputs/ 交付物由 build_docs 重建覆盖，建议在新分支/对照目录运行）
 
 ```text
-请以产品经理身份，用 AI 编程工具（如 Trae、CodeBuddy 等任一 Agent 工具）完成「后端子系统分解与契约」的**方案验收**（把上一步的问题定义做成可运行原型，并逐项验收）：
+请以产品经理身份，用 AI 编程工具（如 Trae、CodeBuddy 等任一 Agent 工具）完成「后端子系统分解与接口契约（对照真实国产开源微服务·若依）」的**方案验收**（把上一步的问题定义做成可运行原型，并逐项验收）：
 - 目标：基于问题定义，产出一个可运行的深色大屏原型，让指标链、异常队列、责任、行动都能在页面上看到、点得动。
 - 数据：读取 `rules/backend.md`，只使用其中实际存在的字段（子系统、职责、接口、契约）。
 - 指标链：子系统数、接口契约数、依赖边数、循环依赖（当前真实值：子系统数=5，接口契约数=12，依赖边数=5，循环依赖=0）。
@@ -75,11 +75,11 @@
 
 ### 图形/原型/表单
 
-![后端子系统分解与契约 · 信息图](../../outputs/product_case_library/svg/case_06_system_arch_flow.svg)
+![后端子系统分解与接口契约（对照真实国产开源微服务·若依） · 信息图](../../outputs/product_case_library/svg/case_06_system_arch_flow.svg)
 
 ![案例06 · 后端子系统真实依赖（C4 · dogfood）](../../outputs/product_case_library/svg/fig_case06_deps.svg)
 
-![后端子系统分解与契约 · 可运行大屏原型截图](../../assets/screenshots/premium_case_06_system_arch_flow_desktop.png)
+![后端子系统分解与接口契约（对照真实国产开源微服务·若依） · 可运行大屏原型截图](../../assets/screenshots/premium_case_06_system_arch_flow_desktop.png)
 
 - 图形类型：system_arch_flow（设计 cyan-matrix）
 - 看图顺序：先看 5 个真实子系统的分层边界，再看一次真实 /api/health 契约调用，最后想 routes 为何不该写业务。
@@ -99,7 +99,7 @@
 <details>
 <summary><img src="../../assets/vendor/lucide/built/sparkles.svg" width="14" alt="" style="vertical-align:-2px" /> 深度（专业读者）：权衡 · 失效模式 · 何时别用</summary>
 
-分层不是名义上的目录，而是靠「适应度函数」强制的边界：本教程用 verify 断言 routes 不出现业务关键字、services 不 import HTTP 上下文。契约层还要统一错误信封 `{code,message,data}`、幂等键（防重复提交）、分页规范——各调各的会让联调成本指数级上升。
+分层不是名义目录，而是靠「适应度函数」强制的边界：本教程用 verify 断言 routes 不出现业务关键字、services 不 import HTTP 上下文。真实项目同理——若依用 pom 依赖（common 基座→业务模块→网关 单向）+ RemoteXxxService 的 @FeignClient 把服务间调用做成**显式契约**（RemoteUserService/LogService/FileService），而不是让各服务乱调。契约层还要统一错误信封 {code,message,data}、幂等键、分页规范；各调各的会让联调成本指数级上升。细分抓手：新增一个子域时，先问「它能依赖谁、谁能依赖它」，再把跨服务调用固化成 Feign 接口，别让依赖成环。
 </details>
 
 ### 练习（做完再进下一个案例）
@@ -146,6 +146,6 @@
 
 > **所以真正的一课**：名义目录≠真边界；架构分层靠适应度函数（扫 import、禁业务关键字入 routes、循环依赖=0）强制——目录名骗不了门禁。
 
-> **小结**：本案用「后端子系统分解与契约」演示原理 3.1、3.3，落成可运行、可验收的产品判断。运行 `bash code/run.sh` 后访问 `#/case/06`（真后端实时数据）。
+> **小结**：本案用「后端子系统分解与接口契约（对照真实国产开源微服务·若依）」演示原理 3.1、3.3，落成可运行、可验收的产品判断。运行 `bash code/run.sh` 后访问 `#/case/06`（真后端实时数据）。
 
 [← 返回案例总览](README.md) · [返回目录](../../AI时代研发产品项目一体化知识库/README.md)

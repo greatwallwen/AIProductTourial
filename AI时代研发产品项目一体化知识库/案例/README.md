@@ -19,7 +19,7 @@
 | 03 | 零售经营产品方案 | 零售经营 | 产品/研发/项目 | 2.7/3.1/4.1 | graphite-hud | [打开](03-retail_capstone_board.md) |
 | 04 | 产品知识库语义检索 | 中文知识库 | 研发/产品 | 1.3/3.3 | emerald-flow | [打开](04-rag_knowledge_retrieval.md) |
 | 05 | 经营数据关系库查询 | 数据工程 | 研发 | 3.3/4.1 | steel-queue | [打开](05-postgres_relational_arch.md) |
-| 06 | 后端子系统分解与契约 | 系统架构 | 研发/项目 | 3.1/3.3 | cyan-matrix | [打开](06-system_arch_flow.md) |
+| 06 | 后端子系统分解与接口契约（对照真实国产开源微服务·若依） | 系统架构 | 研发/项目 | 3.1/3.3 | cyan-matrix | [打开](06-system_arch_flow.md) |
 | 07 | RAG 回答评测台 | AI 产品 | 产品/研发 | 2.3/1.3 | cyan-matrix | [打开](07-rag_eval_harness.md) |
 | 08 | 规格驱动系统建造台 | 研发效能 / 架构 | 研发/项目/产品 | 3.0/2.3 | cyan-matrix | [打开](08-sdd_system_build.md) |
 | 09 | 仓库事件总线 | 软件工程 | 研发/项目 | 7.2/9.4/2.3 | emerald-flow | [打开](09-repo_event_bus.md) |

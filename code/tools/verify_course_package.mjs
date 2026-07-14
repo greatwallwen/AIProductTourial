@@ -265,6 +265,13 @@ for (const f of ['dataset/design/case_01.md', 'dataset/design/case_03.md']) { co
   ok(); if (!/indexDemo/.test(api) || !/CREATE INDEX ix_demo_cat/.test(api)) bad('案例05 缺加索引前/后 EXPLAIN 对照（/api/db/query indexDemo）');
   ok(); if (!/indexDemo/.test(scr)) bad('DbScreen 未渲染 indexDemo 前/后执行计划');
 }
+// —— v24 守卫 ⑧ P3 真集接线：接线案例真读 vendored 真集 + 屏渲染 + MANIFEST 消费标注（随各案接线扩展）——
+{ const svc = rd('code/server/services/cases.ts'), scr = rd('code/web/src/screens.tsx'), man = rd('dataset/MANIFEST.md');
+  // 案例06：真实若依架构对照
+  ok(); if (!/ruoyi_cloud_arch\.json/.test(svc)) bad('案例06 archModel 未读真实若依 ruoyi_cloud_arch.json');
+  ok(); if (!/a\?\.ruoyi|a\.ruoyi/.test(scr)) bad('ArchScreen 未渲染若依真实架构对照');
+  ok(); if (!/ruoyi_cloud_arch\.json[\s\S]*案例\s*06/.test(man)) bad('MANIFEST 未标注若依真集被案例06 消费');
+}
 // 专属 demo：案例16 医院容量
 ok(); if (defs.cases.filter((c) => c.screen).length < defs.cases.length) bad('存在非专属 demo 案例（应 11/11 有 screen）');
 // 图表数据驱动守卫：CSV 案例的图表必须是真实列聚合（有 by 说明），不得哈希噪声
