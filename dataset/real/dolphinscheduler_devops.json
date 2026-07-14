@@ -1,0 +1,725 @@
+{
+  "source": "apache/dolphinscheduler（Apache 顶级·国产开源调度，海豚调度）",
+  "license": "Apache-2.0（代码）；PR/CI 元数据为公开事实",
+  "extracted": "GitHub REST API 近 100 workflow runs 结论 + 近 100 PR 元数据（作者 handle 已 hash 脱敏，一次性抓取 vendored·构建零联网）",
+  "ci": {
+    "success": 57,
+    "failure": 7,
+    "action_required": 36,
+    "other": 0,
+    "passRate": 89.1,
+    "note": "action_required=待人工审批的门禁（非失败）"
+  },
+  "prMergeRate": 51,
+  "prByType": {
+    "fix": 33,
+    "improvement": 41,
+    "other": 8,
+    "feat": 2,
+    "test": 1,
+    "chore": 10,
+    "doc": 5
+  },
+  "prs": [
+    {
+      "num": 18415,
+      "merged": false,
+      "type": "fix",
+      "author": "dev-bfbf07d3",
+      "title": "[Fix-18406] Fix task instance failed but workflow instance r"
+    },
+    {
+      "num": 18414,
+      "merged": false,
+      "type": "fix",
+      "author": "dev-bfbf07d3",
+      "title": "[Fix-18338] Check task if it's waiting for TaskGroup slot wh"
+    },
+    {
+      "num": 18411,
+      "merged": true,
+      "type": "improvement",
+      "author": "dev-8e7030be",
+      "title": "[Improvement-18412][api] Fix missing validation for resource"
+    },
+    {
+      "num": 18410,
+      "merged": false,
+      "type": "fix",
+      "author": "dev-f248143c",
+      "title": "[Fix-18409][Common] Fix DAG.addEdge accepting an edge that c"
+    },
+    {
+      "num": 18407,
+      "merged": false,
+      "type": "improvement",
+      "author": "dev-958739a3",
+      "title": "[Improvement-18388][TASK]Killed shell tasks may be displayed"
+    },
+    {
+      "num": 18404,
+      "merged": true,
+      "type": "improvement",
+      "author": "dev-575dfe78",
+      "title": "[Improvement-18403][API&Security] Avoid raw password exposur"
+    },
+    {
+      "num": 18399,
+      "merged": false,
+      "type": "fix",
+      "author": "dev-55a717c3",
+      "title": "Fix DST timezone issue causing incorrect day offset with $[y"
+    },
+    {
+      "num": 18398,
+      "merged": false,
+      "type": "other",
+      "author": "dev-bb531bbb",
+      "title": "[DSIP-89][SqlTask] Avoid using PrepareStatement in SqlTask"
+    },
+    {
+      "num": 18397,
+      "merged": false,
+      "type": "feat",
+      "author": "dev-bb531bbb",
+      "title": "[Feature-17398][Task] Avoid leaking sensitive Dinky task log"
+    },
+    {
+      "num": 18396,
+      "merged": false,
+      "type": "other",
+      "author": "dev-bb531bbb",
+      "title": "[DSIP-89][Task] Render SQL parameters before statement execu"
+    },
+    {
+      "num": 18395,
+      "merged": false,
+      "type": "feat",
+      "author": "dev-bb531bbb",
+      "title": "[Feature-17398][Task] Avoid leaking sensitive Dinky task log"
+    },
+    {
+      "num": 18393,
+      "merged": false,
+      "type": "other",
+      "author": "dev-782a8542",
+      "title": "解决dolphin spark on k8s 任务失败显示成功,以及任务成功但是获取任务状态失败导致显示任务失败问题"
+    },
+    {
+      "num": 18392,
+      "merged": true,
+      "type": "fix",
+      "author": "dev-575dfe78",
+      "title": "[Fix-18391] [Alert] Remove redundant plugin definition table"
+    },
+    {
+      "num": 18387,
+      "merged": false,
+      "type": "fix",
+      "author": "dev-575dfe78",
+      "title": "[Fix-17813][ApiServer] Correct the password processing logic"
+    },
+    {
+      "num": 18386,
+      "merged": false,
+      "type": "fix",
+      "author": "dev-575dfe78",
+      "title": "[Fix-17813][ApiServer] Correct the password processing logic"
+    },
+    {
+      "num": 18385,
+      "merged": false,
+      "type": "improvement",
+      "author": "dev-ecb00170",
+      "title": "[Improvement-17057][Master] Check if the WorkflowGraph is a "
+    },
+    {
+      "num": 18384,
+      "merged": false,
+      "type": "improvement",
+      "author": "dev-575dfe78",
+      "title": "[Improvement-18383][API] Disable create user, reset password"
+    },
+    {
+      "num": 18382,
+      "merged": false,
+      "type": "improvement",
+      "author": "dev-ecb00170",
+      "title": "[Improvement-17057][Master] Check if the WorkflowGraph is a "
+    },
+    {
+      "num": 18381,
+      "merged": true,
+      "type": "fix",
+      "author": "dev-bfbf07d3",
+      "title": "[Fix-18378] Fix list resources returned only 1000 records in"
+    },
+    {
+      "num": 18376,
+      "merged": false,
+      "type": "test",
+      "author": "dev-bfbf07d3",
+      "title": "test"
+    },
+    {
+      "num": 18375,
+      "merged": true,
+      "type": "chore",
+      "author": "dev-bfbf07d3",
+      "title": "[Chore] Fix auto labeler error"
+    },
+    {
+      "num": 18374,
+      "merged": true,
+      "type": "chore",
+      "author": "dev-bfbf07d3",
+      "title": "[Chore] Remove sonar check"
+    },
+    {
+      "num": 18373,
+      "merged": false,
+      "type": "improvement",
+      "author": "dev-575dfe78",
+      "title": "[Improvement-18372][API&UI]Consistent workerGroup switching "
+    },
+    {
+      "num": 18371,
+      "merged": false,
+      "type": "fix",
+      "author": "dev-575dfe78",
+      "title": "[Fix-18370] [API&UI] Allow environments without bound worker"
+    },
+    {
+      "num": 18369,
+      "merged": false,
+      "type": "chore",
+      "author": "dev-bfbf07d3",
+      "title": "[Chore] Restore sonar check"
+    },
+    {
+      "num": 18368,
+      "merged": true,
+      "type": "improvement",
+      "author": "dev-bb531bbb",
+      "title": "[Improvement-17933][api] Restrict audit logs to current user"
+    },
+    {
+      "num": 18367,
+      "merged": false,
+      "type": "improvement",
+      "author": "dev-bb531bbb",
+      "title": "[Improvement-18311][Task] Support killing shell task process"
+    },
+    {
+      "num": 18366,
+      "merged": false,
+      "type": "fix",
+      "author": "dev-4bf5388e",
+      "title": "[Fix-18311][Worker] Avoid false kill success on alive check "
+    },
+    {
+      "num": 18365,
+      "merged": false,
+      "type": "fix",
+      "author": "dev-4bf5388e",
+      "title": "[Fix-18217][DataX] Escape single quotes in custom parameters"
+    },
+    {
+      "num": 18364,
+      "merged": false,
+      "type": "improvement",
+      "author": "dev-ff5eb2fe",
+      "title": "[Improvement-18364][Master] Limit switch condition evaluatio"
+    },
+    {
+      "num": 18363,
+      "merged": true,
+      "type": "chore",
+      "author": "dev-bfbf07d3",
+      "title": "[Chore] Fix sonar token leak"
+    },
+    {
+      "num": 18362,
+      "merged": false,
+      "type": "chore",
+      "author": "dev-ff5eb2fe",
+      "title": "[Chore][CI] Read SonarCloud token from secrets"
+    },
+    {
+      "num": 18360,
+      "merged": true,
+      "type": "improvement",
+      "author": "dev-575dfe78",
+      "title": "[Improvement-18359][UI] Change the description field to opti"
+    },
+    {
+      "num": 18358,
+      "merged": false,
+      "type": "improvement",
+      "author": "dev-a02217e5",
+      "title": "[Improvement-17330][K8s] Replace job watcher with informer"
+    },
+    {
+      "num": 18355,
+      "merged": true,
+      "type": "improvement",
+      "author": "dev-575dfe78",
+      "title": "[Improvement-18354][UI] Change the description field to opti"
+    },
+    {
+      "num": 18353,
+      "merged": true,
+      "type": "improvement",
+      "author": "dev-bfbf07d3",
+      "title": "[Improvement-17705] Add kill-application-when-task-failover "
+    },
+    {
+      "num": 18352,
+      "merged": true,
+      "type": "fix",
+      "author": "dev-bfbf07d3",
+      "title": "[Fix-17794] Fix rerun workflow instance should follow the sp"
+    },
+    {
+      "num": 18351,
+      "merged": true,
+      "type": "fix",
+      "author": "dev-bfbf07d3",
+      "title": "[Fix-18247] Fix when forceTaskSuccess is performed on the la"
+    },
+    {
+      "num": 18349,
+      "merged": false,
+      "type": "improvement",
+      "author": "dev-bb531bbb",
+      "title": "[Improvement-17928][API] Add worker group id to environment "
+    },
+    {
+      "num": 18347,
+      "merged": true,
+      "type": "fix",
+      "author": "dev-90d620f4",
+      "title": "[Fix-18346] countTaskInstanceStateByProjectCodes uses submit"
+    },
+    {
+      "num": 18344,
+      "merged": false,
+      "type": "fix",
+      "author": "dev-90d620f4",
+      "title": "[Fix-18338] check task if it's waiting for TaskGroup slot wh"
+    },
+    {
+      "num": 18341,
+      "merged": true,
+      "type": "fix",
+      "author": "dev-c0236c2c",
+      "title": "[Fix-18340][Helm] Fix duplicate app.kubernetes.io/name label"
+    },
+    {
+      "num": 18337,
+      "merged": false,
+      "type": "improvement",
+      "author": "dev-bb531bbb",
+      "title": "[Improvement-16479][Master] Add condition workflow integrati"
+    },
+    {
+      "num": 18336,
+      "merged": true,
+      "type": "improvement",
+      "author": "dev-bb531bbb",
+      "title": "[Improvement-17563][Helm] Update mysql helm chart version"
+    },
+    {
+      "num": 18333,
+      "merged": true,
+      "type": "improvement",
+      "author": "dev-575dfe78",
+      "title": "[Improvement-18332][Worker] Remove plaintext passwords from "
+    },
+    {
+      "num": 18331,
+      "merged": true,
+      "type": "fix",
+      "author": "dev-90d620f4",
+      "title": "[Fix-18330] Replace HashMap with ConcurrentHashMap in UserGr"
+    },
+    {
+      "num": 18329,
+      "merged": false,
+      "type": "other",
+      "author": "dev-a02217e5",
+      "title": "[DSIP-105][Api-server] Sensitive Variable Support — Masking "
+    },
+    {
+      "num": 18327,
+      "merged": true,
+      "type": "doc",
+      "author": "dev-575dfe78",
+      "title": "[Doc-18326][Parameter] Fix and Enrich the documentation for "
+    },
+    {
+      "num": 18325,
+      "merged": false,
+      "type": "doc",
+      "author": "dev-575dfe78",
+      "title": "[Doc-18322][Parameter] Fix and Enrich the documentation for "
+    },
+    {
+      "num": 18323,
+      "merged": true,
+      "type": "doc",
+      "author": "dev-575dfe78",
+      "title": "[Doc-18322][Parameter] Add a note to the parameter priority "
+    },
+    {
+      "num": 18321,
+      "merged": true,
+      "type": "improvement",
+      "author": "dev-575dfe78",
+      "title": "[Improvement-18040] [Doc] Update the parameter priority expl"
+    },
+    {
+      "num": 18319,
+      "merged": true,
+      "type": "chore",
+      "author": "dev-bfbf07d3",
+      "title": "[Chore] Hotfix 3.4.2 doc error"
+    },
+    {
+      "num": 18317,
+      "merged": true,
+      "type": "chore",
+      "author": "dev-3a3ff7de",
+      "title": "[Chore] Release 3.4.2"
+    },
+    {
+      "num": 18316,
+      "merged": true,
+      "type": "improvement",
+      "author": "dev-a02217e5",
+      "title": "[Improvement-18304][API] Remove dead code after t_ds_relatio"
+    },
+    {
+      "num": 18315,
+      "merged": false,
+      "type": "fix",
+      "author": "dev-afbf8b20",
+      "title": "[Fix-16617][Seatunnel] Use master option for engine deploy m"
+    },
+    {
+      "num": 18314,
+      "merged": false,
+      "type": "improvement",
+      "author": "dev-d7d26cd9",
+      "title": "[Improvement-18313] extract pom version"
+    },
+    {
+      "num": 18312,
+      "merged": false,
+      "type": "fix",
+      "author": "dev-db868e0d",
+      "title": "[Fix-18311][TaskPlugin] Fix task process kill status check"
+    },
+    {
+      "num": 18310,
+      "merged": true,
+      "type": "improvement",
+      "author": "dev-32e60170",
+      "title": "[Improvement] Add AGENTS.md + SECURITY.md to make the securi"
+    },
+    {
+      "num": 18309,
+      "merged": false,
+      "type": "fix",
+      "author": "dev-db868e0d",
+      "title": "[Fix-5199][TaskPlugin] Fix task process kill status check"
+    },
+    {
+      "num": 18308,
+      "merged": true,
+      "type": "fix",
+      "author": "dev-575dfe78",
+      "title": "[Fix-18307][API] The frontend is correctly using the preferr"
+    },
+    {
+      "num": 18306,
+      "merged": false,
+      "type": "fix",
+      "author": "dev-55a717c3",
+      "title": "[Fix-16716] Add workflow instance link to alert content"
+    },
+    {
+      "num": 18305,
+      "merged": false,
+      "type": "fix",
+      "author": "dev-55a717c3",
+      "title": "[Fix-16617] Replace deprecated SeaTunnel CLI params -e/--dep"
+    },
+    {
+      "num": 18303,
+      "merged": false,
+      "type": "other",
+      "author": "dev-575dfe78",
+      "title": "[DSIP-109][API&Alert] Optimize the alert strategy options fo"
+    },
+    {
+      "num": 18300,
+      "merged": true,
+      "type": "fix",
+      "author": "dev-3a3ff7de",
+      "title": "[Fix-18299][API] Enforce access token owner checks"
+    },
+    {
+      "num": 18296,
+      "merged": true,
+      "type": "fix",
+      "author": "dev-3a3ff7de",
+      "title": "[Fix-18292][Registry] Carry deleted node value in JDBC regis"
+    },
+    {
+      "num": 18293,
+      "merged": false,
+      "type": "improvement",
+      "author": "dev-575dfe78",
+      "title": "[Improvement-18286][ApiServer] Remove the default workerGrou"
+    },
+    {
+      "num": 18291,
+      "merged": false,
+      "type": "fix",
+      "author": "dev-55a717c3",
+      "title": "[Fix-18238] Add TIMEOUT warning type to WarningType enum"
+    },
+    {
+      "num": 18290,
+      "merged": false,
+      "type": "other",
+      "author": "dev-55a717c3",
+      "title": "[DSIP-64] Add more workflow graph integration test cases"
+    },
+    {
+      "num": 18289,
+      "merged": false,
+      "type": "fix",
+      "author": "dev-55a717c3",
+      "title": "[Fix-16789] Fix flink job stop error when process has alread"
+    },
+    {
+      "num": 18287,
+      "merged": false,
+      "type": "fix",
+      "author": "dev-55a717c3",
+      "title": "[Fix-18286] Use real existing workerGroups more accurately i"
+    },
+    {
+      "num": 18285,
+      "merged": false,
+      "type": "other",
+      "author": "dev-55a717c3",
+      "title": "[Helm] Update PostgreSQL chart to 18.6.7 and MinIO chart to "
+    },
+    {
+      "num": 18284,
+      "merged": true,
+      "type": "fix",
+      "author": "dev-3a3ff7de",
+      "title": "[Fix-18283][API] Add project permission check on workflow li"
+    },
+    {
+      "num": 18282,
+      "merged": false,
+      "type": "other",
+      "author": "dev-55a717c3",
+      "title": "[ISSUE-17563] Update MySQL Helm Chart version from 9.4.1 to "
+    },
+    {
+      "num": 18281,
+      "merged": false,
+      "type": "improvement",
+      "author": "dev-e61a00cb",
+      "title": "[Improvement-17563][Helm] Update mysql helm chart version"
+    },
+    {
+      "num": 18280,
+      "merged": false,
+      "type": "improvement",
+      "author": "dev-e61a00cb",
+      "title": "[Improvement-17563][Helm] Update mysql helm chart version"
+    },
+    {
+      "num": 18279,
+      "merged": true,
+      "type": "fix",
+      "author": "dev-3a3ff7de",
+      "title": "[Fix-18276][API] Fix alert plugin instance permission check"
+    },
+    {
+      "num": 18278,
+      "merged": false,
+      "type": "doc",
+      "author": "dev-f90e9f89",
+      "title": "[Doc-18277] Clarify tenant boundary for external data permis"
+    },
+    {
+      "num": 18275,
+      "merged": false,
+      "type": "fix",
+      "author": "dev-bc5ce9aa",
+      "title": "[Fix-18274] Fix client heartbeat not updated after database "
+    },
+    {
+      "num": 18273,
+      "merged": false,
+      "type": "fix",
+      "author": "dev-d973cd9e",
+      "title": "[Fix-18166] Restore file parameter transfer feature"
+    },
+    {
+      "num": 18271,
+      "merged": true,
+      "type": "chore",
+      "author": "dev-3a3ff7de",
+      "title": "[Chore][Docs] Add AGENT.md"
+    },
+    {
+      "num": 18270,
+      "merged": true,
+      "type": "fix",
+      "author": "dev-3a3ff7de",
+      "title": "[Fix-18269][Master] Move LogicFakeTask to test scope"
+    },
+    {
+      "num": 18268,
+      "merged": true,
+      "type": "improvement",
+      "author": "dev-7424ac60",
+      "title": "[Improvement-18267][Remote Logging] Allow custom S3 region w"
+    },
+    {
+      "num": 18263,
+      "merged": true,
+      "type": "improvement",
+      "author": "dev-3a3ff7de",
+      "title": "[Improvement-18249][DAO] Route QueueMapper access through Qu"
+    },
+    {
+      "num": 18262,
+      "merged": true,
+      "type": "improvement",
+      "author": "dev-3a3ff7de",
+      "title": "[Improvement-18249][DAO] Route ProjectUserMapper access thro"
+    },
+    {
+      "num": 18261,
+      "merged": true,
+      "type": "improvement",
+      "author": "dev-3a3ff7de",
+      "title": "[Improvement-18249][DAO] Route AlertGroupMapper and AccessTo"
+    },
+    {
+      "num": 18260,
+      "merged": true,
+      "type": "improvement",
+      "author": "dev-3a3ff7de",
+      "title": "[Improvement-18249][DAO] Route WorkflowTaskRelationMapper ac"
+    },
+    {
+      "num": 18259,
+      "merged": true,
+      "type": "improvement",
+      "author": "dev-3a3ff7de",
+      "title": "[Improvement-18249][DAO] Route DataSourceMapper and DataSour"
+    },
+    {
+      "num": 18258,
+      "merged": true,
+      "type": "improvement",
+      "author": "dev-3a3ff7de",
+      "title": "[Improvement-18249][DAO] Route TenantMapper access through T"
+    },
+    {
+      "num": 18257,
+      "merged": true,
+      "type": "improvement",
+      "author": "dev-3a3ff7de",
+      "title": "[Improvement-18249][DAO] Route ClusterMapper and K8sNamespac"
+    },
+    {
+      "num": 18256,
+      "merged": true,
+      "type": "improvement",
+      "author": "dev-3a3ff7de",
+      "title": "[Improvement-18249][DAO] Route WorkflowInstanceMapper access"
+    },
+    {
+      "num": 18254,
+      "merged": true,
+      "type": "improvement",
+      "author": "dev-3a3ff7de",
+      "title": "[Improvement-18249][DAO] Route TaskDefinitionMapper access t"
+    },
+    {
+      "num": 18253,
+      "merged": true,
+      "type": "improvement",
+      "author": "dev-3a3ff7de",
+      "title": "[Improvement-18249][DAO] Route UserMapper access through Use"
+    },
+    {
+      "num": 18252,
+      "merged": true,
+      "type": "improvement",
+      "author": "dev-3a3ff7de",
+      "title": "[Improvement-18249][DAO] Route TaskInstanceMapper access thr"
+    },
+    {
+      "num": 18251,
+      "merged": true,
+      "type": "improvement",
+      "author": "dev-3a3ff7de",
+      "title": "[Improvement-18249][DAO] Route ScheduleMapper access through"
+    },
+    {
+      "num": 18250,
+      "merged": true,
+      "type": "improvement",
+      "author": "dev-3a3ff7de",
+      "title": "[Improvement-18249][DAO] Route ProjectMapper and WorkflowDef"
+    },
+    {
+      "num": 18245,
+      "merged": true,
+      "type": "improvement",
+      "author": "dev-3a3ff7de",
+      "title": "[Improvement-18224][API] Migrate ProjectService Map<String,O"
+    },
+    {
+      "num": 18242,
+      "merged": true,
+      "type": "chore",
+      "author": "dev-3a3ff7de",
+      "title": "[Chore][Docs] Refresh commit message convention to match cur"
+    },
+    {
+      "num": 18241,
+      "merged": true,
+      "type": "doc",
+      "author": "dev-abe579fb",
+      "title": "[Doc-18239] Fix outdated Spark documentation links"
+    },
+    {
+      "num": 18240,
+      "merged": true,
+      "type": "chore",
+      "author": "dev-3a3ff7de",
+      "title": "[Chore][Master] Quietly exit WorkerGroupDispatcher loop on i"
+    },
+    {
+      "num": 18236,
+      "merged": true,
+      "type": "improvement",
+      "author": "dev-3a3ff7de",
+      "title": "[Improvement-18224][API] Migrate WorkflowDefinitionService M"
+    }
+  ]
+}
