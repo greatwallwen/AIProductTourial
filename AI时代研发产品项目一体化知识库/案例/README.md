@@ -22,7 +22,7 @@
 | 06 | 后端子系统分解与接口契约（对照真实国产开源微服务·若依） | 系统架构 | 研发/项目 | 3.1/3.3 | cyan-matrix | [打开](06-system_arch_flow.md) |
 | 07 | RAG 回答评测台 | AI 产品 | 产品/研发 | 2.3/1.3 | cyan-matrix | [打开](07-rag_eval_harness.md) |
 | 08 | 规格驱动系统建造台 | 研发效能 / 架构 | 研发/项目/产品 | 3.0/2.3 | cyan-matrix | [打开](08-sdd_system_build.md) |
-| 09 | 仓库事件总线 | 软件工程 | 研发/项目 | 7.2/9.4/2.3 | emerald-flow | [打开](09-repo_event_bus.md) |
+| 09 | 仓库事件总线·事件溯源（本仓库 dogfood + 大型国产开源项目 nacos 对照） | 软件工程 | 研发/项目 | 7.2/9.4/2.3 | emerald-flow | [打开](09-repo_event_bus.md) |
 
 ## 原理 → 案例 反查（哪个原理，被哪些案例演示）
 

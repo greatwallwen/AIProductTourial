@@ -378,6 +378,20 @@ function EventBusScreen({ data }: { data: any }) {
         <tbody>{(data?.queue || []).map((q: any) => (<tr key={q.id}><td>{q.id}</td><td>{q.state}</td><td className="mono">{q.fields?.哈希 ?? '—'}</td><td className="mono">{q.fields?.时间 ?? '—'}</td><td>{q.fields?.标题 ?? '—'}</td></tr>))}</tbody>
       </table></div>
       <div className="muted" style={{ fontSize: 11, marginTop: 8 }}>数据=本仓库 git log 真实事件（构建期读取，不可变）；「门禁检查项」为当前 verify 源码断言点计数。</div>
+      {data?.nacos && (
+        <div style={{ marginTop: 12, border: '1px solid var(--border)', borderRadius: 8, padding: '8px 12px' }}>
+          <b>大型项目对照 · {data.nacos.source}（{data.nacos.license}）</b>
+          <div className="banner" style={{ color: 'var(--accent2)', borderColor: 'var(--accent2)', margin: '8px 0' }}>
+            本仓库是「小事件流」（{data.nacos.selfEventCount} 提交）；nacos 近 <b>{data.nacos.eventCount} 个真实提交事件</b>、跨 {data.nacos.spanDays} 天、{data.nacos.mergeCount} 次合并——量级差几档，但事件溯源的铁律一样：<b>只读 + 不可变 + 可重放</b>，改公共历史=总线失信。
+          </div>
+          <div style={{ fontSize: 12, color: 'var(--ink2)', marginBottom: 6 }}>类型分布：{Object.entries(data.nacos.byType).sort((a: any, b: any) => b[1] - a[1]).slice(0, 6).map(([k, v]: any) => <span key={k} className="chip soft" style={{ marginRight: 6 }}>{k} {v}</span>)}</div>
+          <div className="tbl-wrap"><table className="tbl">
+            <thead><tr><th>哈希</th><th>父提交数</th><th>事件（提交标题）</th></tr></thead>
+            <tbody>{data.nacos.sample.map((e: any) => <tr key={e.h}><td className="mono">{e.h}</td><td className="mono">{e.parents}{e.parents > 1 ? '（合并）' : ''}</td><td>{e.subject}</td></tr>)}</tbody>
+          </table></div>
+          <div className="muted" style={{ fontSize: 11, marginTop: 6 }}>父提交数=事件 DAG 的入边；≥2 即合并事件。同一套「重放到任意版本」在大项目上同样成立。</div>
+        </div>
+      )}
     </section>
   );
 }

@@ -97,7 +97,7 @@
 - [实操 06 · 后端子系统分解与接口契约（对照真实国产开源微服务·若依）](案例/06-system_arch_flow.md)
 - [实操 07 · RAG 回答评测台](案例/07-rag_eval_harness.md)
 - [实操 08 · 规格驱动系统建造台](案例/08-sdd_system_build.md)
-- [实操 09 · 仓库事件总线](案例/09-repo_event_bus.md)
+- [实操 09 · 仓库事件总线·事件溯源（本仓库 dogfood + 大型国产开源项目 nacos 对照）](案例/09-repo_event_bus.md)
 
 **收尾**
 

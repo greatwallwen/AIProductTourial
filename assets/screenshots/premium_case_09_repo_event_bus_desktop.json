@@ -2,14 +2,14 @@
  "num": 9,
  "slug": "repo_event_bus",
  "url": "http://localhost:5200/#/case/09",
- "shotAt": "2026-07-14T02:17:17.310Z",
+ "shotAt": "2026-07-14T07:32:09.573Z",
  "brand": "会自检的 AI 工程 · 实操手册",
  "caseCount": 9,
  "h1": "仓库事件总线（事件驱动·dogfood）",
  "kpis": [
   {
    "name": "事件总数",
-   "value": "111"
+   "value": "123"
   },
   {
    "name": "时间跨度天",
@@ -21,8 +21,8 @@
   },
   {
    "name": "门禁检查项",
-   "value": "181"
+   "value": "187"
   }
  ],
- "pngBytes": 925558
+ "pngBytes": 878790
 }

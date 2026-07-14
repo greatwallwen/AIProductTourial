@@ -95,7 +95,7 @@ function walkFiles(dir, ext){
 }
 // .md 数据集案例（04 RAG 语料 / 06 后端 dogfood）：指标一律从真实来源真算，绝不用占位顺子
 function buildFromMd(c){
-  let kpis=[], chart={type:'sparkline',data:[]}, queue=[], actions=[], exceptionCount=0, responsible=['—'], deps=[], cycles=0, game=null;
+  let kpis=[], chart={type:'sparkline',data:[]}, queue=[], actions=[], exceptionCount=0, responsible=['—'], deps=[], cycles=0, game=null, nacos=null;
   if(c.num===4){ // 真实读 CMRC2018 中文语料目录（v22）：篇数/字数/篇幅分布 + 金标问答数
     const dir=join(ROOT,'dataset','rag','corpus');
     const files=walkFiles(dir,'.md');
@@ -172,10 +172,14 @@ function buildFromMd(c){
     exceptionCount=log.filter(e=>/revert|回退|回滚/i.test(e.msg)).length; responsible=['git（真实事件源）'];
     chart={type:'bars',by:'迭代版本 → 提交事件数（真实聚合）',data:vers.slice(0,8).map(([label,value])=>({label,value}))};
     actions=[{label:'复盘：回退/异常提交',owner:'平台工程（演示角色）',due:'2d'}];
+    // v24：大型国产开源项目对照（alibaba/nacos 真实事件流），与本仓库 dogfood 小事件流并置=事件溯源大小对照
+    { const nx=JSON.parse(readFileSync(join(ROOT,'dataset','real','nacos_git_events.json'),'utf8'));
+      nacos={ source:nx.source, license:nx.license, eventCount:nx.eventCount, spanDays:nx.spanDays, mergeCount:nx.mergeCount, byType:nx.byType,
+        selfEventCount:log.length, sample:nx.events.slice(0,6).map(e=>({h:e.h,subject:e.subject.slice(0,44),parents:e.parents.length})) }; }
   } else { // 其它 .md：按指标链回到真实可得量（不用顺子占位）
     kpis=c.metricChain.map((m)=>({name:m,value:0,unit:/率/.test(m)?'%':''}));
   }
-  return { kpis, queue, chart, rowCount:kpis[0]?.value||0, exceptionCount, responsible, actions, deps, cycles, game };
+  return { kpis, queue, chart, rowCount:kpis[0]?.value||0, exceptionCount, responsible, actions, deps, cycles, game, nacos };
 }
 let ok=0;
 for(const c of defs.cases){

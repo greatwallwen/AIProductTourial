@@ -48,12 +48,12 @@
  "theoryOp": "把 §7.2 事件驱动与 §9.4 事件溯源落成可运行操作：git 提交=不可变事件，按版本聚合重放迭代史，门禁红绿挂在时间线上。",
  "difficulty": "进阶",
  "tldr": "git log 就是你系统最诚实的事件总线——本案把本仓库自己的提交流重放成时间线。",
- "insight": "事件溯源的最小教学标本不需要 Kafka：任何 git 仓库都自带一条不可变事件日志，状态（如「现在门禁有多少检查项」）可以从事件流重放推导。",
+ "insight": "事件溯源的最小教学标本不需要 Kafka：任何 git 仓库都自带一条不可变事件日志，状态（如「现在门禁有多少检查项」）可以从事件流重放推导。 更对照一个大型国产开源项目：alibaba/nacos 近 600 个真实提交事件、跨约 300 天、含合并 DAG——量级差几档，但事件溯源铁律一样：只读、不可变、可重放，改公共历史=总线失信。细分抓手：拿事件流做「重放到任意历史版本」，而非拿提交数当绩效 KPI（古德哈特）。",
  "pitfall": "把事件流当考核器——按提交数评价人会立刻教会所有人刷提交；事件流用于重放与复盘，不用于绩效。",
  "kpis": [
   {
    "name": "事件总数",
-   "value": 111,
+   "value": 123,
    "unit": ""
   },
   {
@@ -68,7 +68,7 @@
   },
   {
    "name": "门禁检查项",
-   "value": 181,
+   "value": 187,
    "unit": ""
   }
  ],
@@ -78,9 +78,9 @@
    "state": "工程事件",
    "owner": "git（真实）",
    "fields": {
-    "哈希": "61ff768",
-    "时间": "2026-07-14 02:16",
-    "标题": "fix(T3-2): 抑制责任对象全为「演示角色」时的空心「你来决策」"
+    "哈希": "803661f",
+    "时间": "2026-07-14 07:28",
+    "标题": "fix(reflect): 修 v23 遗留的活体门禁 hit@3→hit@1 回归"
    }
   },
   {
@@ -88,9 +88,9 @@
    "state": "工程事件",
    "owner": "git（真实）",
    "fields": {
-    "哈希": "fa659fe",
-    "时间": "2026-07-14 02:14",
-    "标题": "feat(T3-4/T4-2): 案例02 先猜再揭晓 + 案例05 加索引前后真实"
+    "哈希": "70193c0",
+    "时间": "2026-07-14 07:23",
+    "标题": "fix(reflect): 修若依依赖边解析 bug（误把 dependencyMa"
    }
   },
   {
@@ -98,9 +98,9 @@
    "state": "工程事件",
    "owner": "git（真实）",
    "fields": {
-    "哈希": "487fbd2",
-    "时间": "2026-07-14 02:08",
-    "标题": "feat(T4/T3): 深度 base-rate beat + 设计文档反向红线修"
+    "哈希": "efdd60e",
+    "时间": "2026-07-14 07:16",
+    "标题": "feat(P3·06): 案例06 接入真实若依架构对照（小 dogfood vs "
    }
   },
   {
@@ -108,9 +108,9 @@
    "state": "工程事件",
    "owner": "git（真实）",
    "fields": {
-    "哈希": "206a596",
-    "时间": "2026-07-14 02:04",
-    "标题": "feat(T4-1): 接入真实 RFM 锚点——修 Capstone 断裂 + 去"
+    "哈希": "7f36859",
+    "时间": "2026-07-14 05:08",
+    "标题": "docs(P2): 记录 v24 执行进度（P0/P1工具链/P2 5-6真集 do"
    }
   },
   {
@@ -118,9 +118,9 @@
    "state": "工程事件",
    "owner": "git（真实）",
    "fields": {
-    "哈希": "724fc90",
-    "时间": "2026-07-14 01:56",
-    "标题": "refactor(T5): 清理单一真源死配置 + 命名/范围陈旧"
+    "哈希": "c3f9c33",
+    "时间": "2026-07-14 05:06",
+    "标题": "feat(P2·08): vendored 海豚调度研发效能真数据（Apache·门"
    }
   },
   {
@@ -128,9 +128,9 @@
    "state": "工程事件",
    "owner": "git（真实）",
    "fields": {
-    "哈希": "687bd94",
-    "时间": "2026-07-14 01:52",
-    "标题": "feat(T2): 最新 grill-me——升级机制 + 扩面 3→9 全案覆盖"
+    "哈希": "989a286",
+    "时间": "2026-07-14 05:04",
+    "标题": "feat(P2·05): vendored UCI 北京空气质量真集（CC BY 4"
    }
   },
   {
@@ -138,9 +138,9 @@
    "state": "工程事件",
    "owner": "git（真实）",
    "fields": {
-    "哈希": "8338816",
-    "时间": "2026-07-14 01:44",
-    "标题": "fix(T1): 修复诚信性陈旧——评测/版本数字回退成陈旧「假绿」"
+    "哈希": "446c5ba",
+    "时间": "2026-07-14 05:02",
+    "标题": "feat(P2·04/07): vendored webMedQA 中文医疗问答真集"
    }
   },
   {
@@ -148,9 +148,9 @@
    "state": "工程事件",
    "owner": "git（真实）",
    "fields": {
-    "哈希": "cf5a1e9",
-    "时间": "2026-07-13 11:58",
-    "标题": "docs: 把 GitHub 端「聚合根措辞软化」下沉到 09-ddd-deep 源"
+    "哈希": "cdcbd38",
+    "时间": "2026-07-14 05:00",
+    "标题": "feat(P2·09): vendored alibaba/nacos 真实提交事件"
    }
   }
  ],
@@ -160,7 +160,7 @@
   "data": [
    {
     "label": "其他",
-    "value": 26
+    "value": 38
    },
    {
     "label": "v7",
@@ -192,7 +192,7 @@
    }
   ]
  },
- "rowCount": 111,
+ "rowCount": 123,
  "exceptionCount": 2,
  "responsible": [
   "git（真实事件源）"
@@ -206,5 +206,60 @@
  ],
  "deps": [],
  "cycles": 0,
- "game": null
+ "game": null,
+ "nacos": {
+  "source": "alibaba/nacos（阿里·国产开源注册中心/配置中心）",
+  "license": "Apache-2.0",
+  "eventCount": 600,
+  "spanDays": 298,
+  "mergeCount": 19,
+  "byType": {
+   "other": 497,
+   "fix": 24,
+   "release": 30,
+   "chore": 2,
+   "test": 3,
+   "docs": 4,
+   "merge": 23,
+   "feat": 8,
+   "refactor": 3,
+   "bugfix": 1,
+   "ci": 2,
+   "build": 2,
+   "optimize": 1
+  },
+  "selfEventCount": 123,
+  "sample": [
+   {
+    "h": "798cbcbbfc",
+    "subject": "[ISSUE #14932] Refactor MemoryMcpCacheIndex ",
+    "parents": 1
+   },
+   {
+    "h": "6402432ea6",
+    "subject": "[ISSUE #15494] Restore complete MCP tool adv",
+    "parents": 1
+   },
+   {
+    "h": "7df19f0437",
+    "subject": "Add AI module unit coverage (#15483)",
+    "parents": 1
+   },
+   {
+    "h": "b9333258be",
+    "subject": "[ISSUE #15475] Complete plugin management fo",
+    "parents": 1
+   },
+   {
+    "h": "007fe68cb2",
+    "subject": "Fix config namespace isolation for ID-based ",
+    "parents": 1
+   },
+   {
+    "h": "d1a0a2b745",
+    "subject": "[ISSUE #15475] Improve plugin config unit te",
+    "parents": 1
+   }
+  ]
+ }
 }
