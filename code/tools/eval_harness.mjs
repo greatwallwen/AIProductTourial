@@ -29,6 +29,6 @@ if (process.argv.includes('--update')) { writeFileSync(bp, JSON.stringify({ scor
 const base = existsSync(bp) ? JSON.parse(readFileSync(bp, 'utf8')).score : 0;
 console.log(`eval_harness v2 · 裁判=hit@1(真调 search·重排第1) · 金标 ${gold.length} 题 · 覆盖达标 ${covOk}/${gold.length}`);
 for (const r of results) console.log(`  ${r.hit ? '✔' : '✗'} ${r.q}${r.hit ? '' : `（top3: ${r.top3.map((t) => t.slice(0, 28)).join(' | ')}）`}`);
-console.log(`\nhit@3 = ${score}% ｜ 基线 ${base}%`);
+console.log(`\nhit@1 = ${score}% ｜ 基线 ${base}%`);
 if (score < base) { console.error(`✗ 检索质量回归：低于基线 ${base}%——search()/语料被改坏；修复后再提交，或人工确认 --update`); process.exit(1); }
 console.log('✅ 通过回归门');

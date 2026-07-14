@@ -234,6 +234,13 @@ for (const n of [2, 4, 7]) { const c = defs.cases.find((x) => x.num === n); cons
   ok(); if (!/本地化改写实体标签|本地化改写/.test(man)) bad('MANIFEST 未标注电商本地化实体改写（红线：改写不得说成原始事实）');
   ok(); if (defs.cases.find((c) => c.num === 2)?.dataKind === 'real') bad('案例02 dataKind 不应标 real（含规则派生分层，应为 hybrid）');
 }
+// —— v23 守卫 ④ 诚信性：叙事真值=生成器真值（防评测/版本数字回退成陈旧「假绿」；见 spec 2026-07-14）——
+{ const base = JSON.parse(rd('code/data/eval_baseline.json'));
+  const allBook = bookFiles.map(rd).join('\n');
+  for (const s of ['基线 41.7', 'hit@3 = ', '语料实有 194', 'v13 到 v18']) { ok(); if (allBook.includes(s)) bad(`成书含陈旧评测/版本表述「${s}」（v22 迁移后须为线上真值）`); }
+  ok(); if (/\d+\s*条提交事件[、，]/.test(allBook)) bad('成书把 git 提交数硬编码进正文（应版本无关·由页面现算，防陈旧）');
+  ok(); if (!allBook.includes(`hit@1 = ${base.score}%`)) bad(`成书未出现与 eval_baseline 一致的命中率 hit@1 = ${base.score}%（评测叙事第四幕须与真值同步）`);
+}
 // 专属 demo：案例16 医院容量
 ok(); if (defs.cases.filter((c) => c.screen).length < defs.cases.length) bad('存在非专属 demo 案例（应 11/11 有 screen）');
 // 图表数据驱动守卫：CSV 案例的图表必须是真实列聚合（有 by 说明），不得哈希噪声
