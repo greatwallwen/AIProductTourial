@@ -112,6 +112,40 @@
 - 答不顺就回读本案演示的原理小节 §3.3、§4.1；写成方案后跑 `node code/tools/check_my_work.mjs 5 你的方案.md`，红项会指明缺什么、回哪章补。
 </details>
 
+### 被追问（grill-me · 先自己答，再展开）
+
+> 教员式追问：不给你标准答案，先逼你选、再点破误区。页内 `#/case/05` 有可交互版（答错即追问）。
+
+**追问 1**：本地 SQLite 演示按区域聚合秒出，生产那张千万行 orders 表性能也不用担心吧？
+
+- A. 不用，架构一样
+- B. 要担心，缺复合索引会全表扫描
+- C. 换更强的机器就行
+
+<details>
+<summary>点破（先选再展开）</summary>
+
+- 若选「不用，架构一样」：架构一致不代表查得动——缺 (区域,日期) 复合索引，千万行就全表扫描（EXPLAIN 面板里 SCAN vs SEARCH USING INDEX 一眼可见）。
+- 若选「换更强的机器就行」：加机器治标；根因是没走索引，且 SQLite≠生产 PG（连接池/分区/备份）。先看 EXPLAIN 有没有 SEARCH USING INDEX。
+- 答对后再想一层：对。第二问：EXPLAIN 里看到 SCAN 全表，第一步该做什么？
+</details>
+
+**追问 2**：EXPLAIN QUERY PLAN 显示 SCAN orders（全表扫描），最该先做的是？
+
+- A. 加机器
+- B. 加合适的复合索引，再看是否变 SEARCH USING INDEX
+- C. 把表拆小
+
+<details>
+<summary>点破（先选再展开）</summary>
+
+- 若选「加机器」：加机器不解决全表扫描——CPU 再强也得逐行扫。先让查询走索引。
+- 若选「把表拆小」：拆表是重活且未必需要；先加复合索引看 EXPLAIN 是否转 SEARCH USING INDEX。
+- 答对后再想一层：对。「存下来」不等于「查得动」，索引才是关键。
+</details>
+
+> **所以真正的一课**：演示数据量小掩盖了性能问题；生产靠 EXPLAIN 读执行计划、用复合索引把 SCAN 变 SEARCH USING INDEX——存得下≠查得动，且 SQLite≠生产 PG。
+
 > **小结**：本案用「经营数据关系库查询」演示原理 3.3、4.1，落成可运行、可验收的产品判断。运行 `bash code/run.sh` 后访问 `#/case/05`（真后端实时数据）。
 
 [← 返回案例总览](README.md) · [返回目录](../../AI时代研发产品项目一体化知识库/README.md)

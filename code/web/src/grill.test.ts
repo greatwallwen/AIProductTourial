@@ -40,6 +40,20 @@ describe('grill 苏格拉底追问 reducer（纯函数·可测分支）', () => 
     expect(grillNext(steps, grillInit).stage).toBe(0);
     expect(nx.stage).toBe(1);
   });
+  // v23 grill-me 升级：记录「是否被追问过」以区分一次通关 vs 被追问后才对
+  it('erred 记录被追问：答错→erred=true，之后重选答对仍保留 erred', () => {
+    const wrong = grillPick(steps, grillInit, 0);
+    expect(wrong.erred).toBe(true);
+    const right = grillPick(steps, wrong, 1);
+    expect(right.erred).toBe(true);
+  });
+  it('一次答对：erred 保持 false', () => {
+    expect(grillPick(steps, grillInit, 1).erred).toBe(false);
+  });
+  it('grillNext 跨步保留 erred', () => {
+    const wrongThenRight = grillPick(steps, grillPick(steps, grillInit, 0), 1);
+    expect(grillNext(steps, wrongThenRight).erred).toBe(true);
+  });
 });
 
 describe('grill 组件接线', () => {
@@ -47,4 +61,5 @@ describe('grill 组件接线', () => {
   it('从案例真实 grill 字段取题（data.grill）', () => expect(src).toContain('data.grill'));
   it('答错渲染 onWrong 追问、答对渲染 onRight 深化', () => { expect(src).toContain('onWrong'); expect(src).toContain('onRight'); });
   it('通关计入成就 markGrill', () => expect(src).toContain('markGrill'));
+  it('分支追问 onWrongBy（按错项点破）与「真正的一课」grillLesson 已接线', () => { expect(src).toContain('onWrongBy'); expect(src).toContain('grillLesson'); });
 });

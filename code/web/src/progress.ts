@@ -22,10 +22,13 @@ export function getProgress(total: number) {
   const o = load();
   const viewed = Object.keys(o.viewed || {}).length;
   const correct = Object.values(o.quiz || {}).filter(Boolean).length;
+  const grilled = Object.values(o.grill || {}).filter(Boolean).length; // v23：grill-me 追问通关数（此前 markGrill 写入却无人读——死徽章）
   const badges: { icon: string; label: string }[] = [];
   if (viewed >= 1) badges.push({ icon: 'rocket', label: '起步' });
   if (viewed >= total / 2) badges.push({ icon: 'flame', label: '过半' });
   if (viewed >= total) badges.push({ icon: 'trophy', label: '通览' });
   if (correct >= 5) badges.push({ icon: 'target', label: '决策达人' });
-  return { viewed, correct, total, pct: total ? Math.round((viewed / total) * 100) : 0, badges };
+  if (grilled >= 3) badges.push({ icon: 'gamepad', label: '爱追问' });
+  if (grilled >= total) badges.push({ icon: 'star', label: '苏格拉底' });
+  return { viewed, correct, grilled, total, pct: total ? Math.round((viewed / total) * 100) : 0, badges };
 }

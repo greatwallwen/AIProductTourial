@@ -73,6 +73,7 @@ export function caseData(num: number) {
   vm.graphicOnly = !!c.graphicOnly;
   vm.screen = c.screen || null; // 特殊案例屏：rag/db/arch/credit
   vm.grill = c.grill || null;   // v22：grill-me 苏格拉底追问（锚真实数据，见 grill.tsx）
+  vm.grillLesson = c.grillLesson || null; // v23：追问通关后的「所以真正的一课」收口
   vm.demonstrates = c.demonstrates;
   vm.lenses = c.lenses || [];          // Phase 2：角色镜头（研发/产品/项目）
   vm.lensViews = c.lensViews || null;  // 01/41：同一案例的三视角

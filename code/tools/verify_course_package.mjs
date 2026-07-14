@@ -221,10 +221,14 @@ ok(); if (!/api\/credit/.test(rd('code/server/routes/api.ts')) || !/CreditScreen
     ok(); if (!man.includes(`dataset/real/${f}`)) bad(`真集快照 dataset/real/${f} 未登记 MANIFEST`);
     ok(); if (!man.includes(h)) bad(`真集快照 dataset/real/${f} 的 sha256(${h}…) 与 MANIFEST 不符（疑被偷换/漂移）`);
   } }
-// —— v22 守卫 ② A 档案例(02/04/07) grill-me 追问结构完整（≥2 步、options[correct] 合法、onWrong/onRight 非空、锚真实数据非编造）——
-for (const n of [2, 4, 7]) { const c = defs.cases.find((x) => x.num === n); const g = c?.grill || [];
+// —— v22/v23 守卫 ② 全部 9 案 grill-me 追问结构完整（≥2 步、options[correct] 合法、onWrong/onRight 非空、每案有「真正的一课」收口；锚真实数据非编造）——
+for (const c of defs.cases) { const n = c.num; const g = c?.grill || [];
   ok(); if (g.length < 2) bad(`案例${n} 缺 grill-me 追问（应≥2 步苏格拉底追问）`);
-  for (const [i, s] of g.entries()) { ok(); if (!(Array.isArray(s.options) && s.options[s.correct] !== undefined && (s.onWrong || '').trim() && (s.onRight || '').trim())) bad(`案例${n} grill 第${i + 1}步结构不全（options/correct/onWrong/onRight）`); }
+  for (const [i, s] of g.entries()) {
+    ok(); if (!(Array.isArray(s.options) && s.options[s.correct] !== undefined && (s.onWrong || '').trim() && (s.onRight || '').trim())) bad(`案例${n} grill 第${i + 1}步结构不全（options/correct/onWrong/onRight）`);
+    if (s.onWrongBy) { ok(); if (Object.entries(s.onWrongBy).some(([k, v]) => Number(k) === s.correct || !String(v).trim())) bad(`案例${n} grill 第${i + 1}步 onWrongBy 非法（键指向正解或点破为空）`); }
+  }
+  ok(); if (!(c.grillLesson || '').trim()) bad(`案例${n} 缺 grillLesson「所以真正的一课」收口`);
 }
 // —— v22 守卫 ③ 真实/合成红线：大陆真集派生物在 MANIFEST 标注正确、绝不把派生/合成说成真实 ——
 { const man = rd('dataset/MANIFEST.md');

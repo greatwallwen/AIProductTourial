@@ -3,21 +3,27 @@ import { Icon } from './Icon';
 import { markGrill } from './progress';
 
 // grill-me 苏格拉底追问的一步：题干 + 选项 + 正解下标 + 针对错答的追问(onWrong) + 对答后的深化(onRight)。
-export type GrillStep = { q: string; options: string[]; correct: number; onWrong: string; onRight: string };
-export type GrillState = { stage: number; picked: number | null; result: 'right' | 'wrong' | null; done: boolean };
-export const grillInit: GrillState = { stage: 0, picked: null, result: null, done: false };
+// v23：onWrongBy 可按「选了哪个错项」给不同点破（不同错法≠同一句话）；不配则回退到通用 onWrong。
+export type GrillStep = { q: string; options: string[]; correct: number; onWrong: string; onWrongBy?: Record<number, string>; onRight: string };
+export type GrillState = { stage: number; picked: number | null; result: 'right' | 'wrong' | null; done: boolean; erred: boolean };
+export const grillInit: GrillState = { stage: 0, picked: null, result: null, done: false, erred: false };
 
-// 纯 reducer：选择 → 判定（错→停留本步、result=wrong、可重选；对→result=right；末步对→done）。
+// 按错项分支取点破文案：优先 onWrongBy[选中项]，回退通用 onWrong。
+export function grillProbe(step: GrillStep, picked: number | null): string {
+  if (step.onWrongBy && picked != null && step.onWrongBy[picked]) return step.onWrongBy[picked];
+  return step.onWrong;
+}
+// 纯 reducer：选择 → 判定（错→停留本步、result=wrong、可重选、erred 置真；对→result=right；末步对→done）。
 export function grillPick(steps: GrillStep[], s: GrillState, pick: number): GrillState {
   if (s.done || !steps[s.stage]) return s;
   const right = pick === steps[s.stage].correct;
-  return { ...s, picked: pick, result: right ? 'right' : 'wrong', done: right && s.stage >= steps.length - 1 };
+  return { ...s, picked: pick, result: right ? 'right' : 'wrong', erred: s.erred || !right, done: right && s.stage >= steps.length - 1 };
 }
-// 进阶：仅当上一步答对且未通关时推进到下一问并重置本步态。
+// 进阶：仅当上一步答对且未通关时推进到下一问并重置本步态（erred 跨步保留）。
 export function grillNext(steps: GrillStep[], s: GrillState): GrillState {
   if (s.result !== 'right' || s.done) return s;
   if (s.stage >= steps.length - 1) return { ...s, done: true };
-  return { stage: s.stage + 1, picked: null, result: null, done: false };
+  return { stage: s.stage + 1, picked: null, result: null, done: false, erred: s.erred };
 }
 
 // 案例内「被追问」——grill-me 苏格拉底式层层追问（题锚本案真实数据/决策；答错即点破误区再让重答，答对深化再进阶）。
@@ -44,13 +50,18 @@ export function Grill({ data }: { data: any }) {
         ))}
       </div>
       {s.result === 'wrong' && (
-        <div className="banner" style={{ marginTop: 12, color: 'var(--bad)', borderColor: 'var(--bad)' }}>✗ 再想想：{step.onWrong}</div>
+        <div className="banner" style={{ marginTop: 12, color: 'var(--bad)', borderColor: 'var(--bad)' }}>✗ 再想想：{grillProbe(step, s.picked)}</div>
       )}
       {s.result === 'right' && (
         <div className="banner" style={{ marginTop: 12, color: 'var(--ok)', borderColor: 'var(--ok)' }}>
           ✓ 对。{step.onRight}
           {!s.done && <button className="act-btn" style={{ marginLeft: 10 }} onClick={next}>继续追问 →</button>}
-          {s.done && <b style={{ marginLeft: 10 }}>—— 追问通关，你已想透这条。</b>}
+          {s.done && <b style={{ marginLeft: 10 }}>—— 追问通关{s.erred ? '（被追问后你想透了）' : '（一次答对，漂亮）'}。</b>}
+        </div>
+      )}
+      {s.done && data.grillLesson && (
+        <div className="banner" style={{ marginTop: 8, borderColor: 'var(--accent)' }}>
+          <b>所以真正的一课：</b>{data.grillLesson}
         </div>
       )}
     </section>

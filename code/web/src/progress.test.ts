@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 // mock localStorage（node 环境）
 const store: Record<string, string> = {};
 (globalThis as any).localStorage = { getItem: (k: string) => store[k] ?? null, setItem: (k: string, v: string) => { store[k] = v; }, removeItem: (k: string) => { delete store[k]; } };
-import { markViewed, markQuiz, getProgress } from './progress';
+import { markViewed, markQuiz, markGrill, getProgress } from './progress';
 
 describe('学习进度', () => {
   beforeEach(() => { for (const k of Object.keys(store)) delete store[k]; });
@@ -16,6 +16,14 @@ describe('学习进度', () => {
     expect(p.badges.map((b) => b.label)).toContain('过半');
   });
   it('空进度不报错', () => { const p = getProgress(25); expect(p.viewed).toBe(0); expect(p.pct).toBe(0); });
+  // v23：grill-me 追问通关计入成就（之前 markGrill 写入却无人读——死徽章）
+  it('grill 追问通关计入徽章：≥3 爱追问、全通关 苏格拉底', () => {
+    markGrill(1, true); markGrill(2, true); markGrill(3, true);
+    const p = getProgress(3);
+    expect(p.grilled).toBe(3);
+    expect(p.badges.map((b) => b.label)).toContain('爱追问');
+    expect(p.badges.map((b) => b.label)).toContain('苏格拉底');
+  });
   // v21 重编号迁移：旧 key 的 30/49 等旧号按固定映射搬进 v2 key，计数前后一致
   it('旧进度按固定映射迁移到 v2（计数一致）', () => {
     store['pmkb-progress'] = JSON.stringify({ viewed: { '1': 1, '30': 1, '49': 1 }, quiz: { '41': true, '54': false } });

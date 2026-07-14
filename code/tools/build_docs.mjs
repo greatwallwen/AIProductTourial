@@ -490,10 +490,14 @@ for (const c of defs.cases) {
   if (c.grill && c.grill.length) {
     B.push(`### 被追问（grill-me · 先自己答，再展开）`, '', `> 教员式追问：不给你标准答案，先逼你选、再点破误区。页内 \`#/case/${pad(c.num)}\` 有可交互版（答错即追问）。`, '');
     c.grill.forEach((g, i) => {
+      const wrongLines = g.onWrongBy
+        ? g.options.map((o, j) => (j === g.correct ? null : `- 若选「${o}」：${g.onWrongBy[j] || g.onWrong}`)).filter(Boolean)
+        : [`- 若答错：${g.onWrong}`];
       B.push(`**追问 ${i + 1}**：${g.q}`, '', g.options.map((o, j) => `- ${String.fromCharCode(65 + j)}. ${o}`).join('\n'), '',
         '<details>', '<summary>点破（先选再展开）</summary>', '',
-        `- 若答错：${g.onWrong}`, `- 答对后再想一层：${g.onRight}`, '</details>', '');
+        ...wrongLines, `- 答对后再想一层：${g.onRight}`, '</details>', '');
     });
+    if (c.grillLesson) B.push(`> **所以真正的一课**：${c.grillLesson}`, '');
   }
   B.push(`> **小结**：本案用「${c.scenario}」演示原理 ${(c.demonstrates || []).join('、')}，落成可运行、可验收的产品判断。运行 \`bash code/run.sh\` 后访问 \`#/case/${pad(c.num)}\`（真后端实时数据）。`, '', `[← 返回案例总览](README.md) · [返回目录](${UP}${BOOK}/README.md)`);
   writeBook(`案例/${pad(c.num)}-${c.slug}.md`, deemoji(J(B)));
