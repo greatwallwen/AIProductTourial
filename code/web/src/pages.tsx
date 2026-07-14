@@ -3,6 +3,8 @@ import { Icon } from './Icon';
 import { NavLink } from 'react-router-dom';
 import { fetchIndex, fetchOpenapi, type IndexData } from './lib/api';
 import { getProgress } from './progress';
+import { Card, CardTitle } from './components/ui/card';
+import { Button } from './components/ui/button';
 
 const pad = (n: number) => String(n).padStart(2, '0');
 const sceneOf = (title: string) => title.split('｜')[1] || title; // 无 ｜ 标题兜底，防节点名空白
@@ -41,6 +43,13 @@ export function Home() {
           </div>
         </div>
       )}
+      <Card className="mb-4 p-4 flex items-center justify-between flex-wrap gap-3">
+        <div>
+          <CardTitle>本工作台用 Next.js 14 + shadcn/ui 构建</CardTitle>
+          <div className="text-sm text-muted-foreground mt-1">dogfood：讲什么用什么——前端框架与「组件拥有式 / 设计令牌 / a11y / 响应式」等技能都在本页真用；这块卡片与右侧按钮就是 shadcn 组件（src/components/ui）。</div>
+        </div>
+        <Button variant="outline" size="sm" onClick={() => { location.hash = '#/cases'; }}>看全部案例 →</Button>
+      </Card>
       <div className="grid-cards" style={{ marginBottom: 20 }}>
         {paths.map((p) => (
           <NavLink key={p.name} to={p.to} className="ov-card" style={{ borderTop: `2px solid ${p.color}` }}>
