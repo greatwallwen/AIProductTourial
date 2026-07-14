@@ -1,0 +1,173 @@
+{
+  "source": "RuoYi-Cloud (yangzongzhuan/RuoYi-Cloud, MIT) — 国产开源微服务脚手架",
+  "license": "MIT",
+  "extracted": "pom.xml <modules>/<dependency>(groupId=com.ruoyi) → 模块依赖边；Remote*Service.java @FeignClient → 服务接口契约（确定性解析、零代码执行）",
+  "moduleCount": 22,
+  "modules": [
+    "ruoyi",
+    "ruoyi-api",
+    "ruoyi-api-system",
+    "ruoyi-auth",
+    "ruoyi-common",
+    "ruoyi-common-core",
+    "ruoyi-common-datascope",
+    "ruoyi-common-datasource",
+    "ruoyi-common-log",
+    "ruoyi-common-redis",
+    "ruoyi-common-seata",
+    "ruoyi-common-security",
+    "ruoyi-common-sensitive",
+    "ruoyi-common-swagger",
+    "ruoyi-gateway",
+    "ruoyi-modules",
+    "ruoyi-modules-file",
+    "ruoyi-modules-gen",
+    "ruoyi-modules-job",
+    "ruoyi-modules-system",
+    "ruoyi-visual",
+    "ruoyi-visual-monitor"
+  ],
+  "edgeCount": 28,
+  "edges": [
+    {
+      "from": "ruoyi",
+      "to": "ruoyi-common-core"
+    },
+    {
+      "from": "ruoyi",
+      "to": "ruoyi-common-swagger"
+    },
+    {
+      "from": "ruoyi",
+      "to": "ruoyi-common-security"
+    },
+    {
+      "from": "ruoyi",
+      "to": "ruoyi-common-sensitive"
+    },
+    {
+      "from": "ruoyi",
+      "to": "ruoyi-common-datascope"
+    },
+    {
+      "from": "ruoyi",
+      "to": "ruoyi-common-datasource"
+    },
+    {
+      "from": "ruoyi",
+      "to": "ruoyi-common-seata"
+    },
+    {
+      "from": "ruoyi",
+      "to": "ruoyi-common-log"
+    },
+    {
+      "from": "ruoyi",
+      "to": "ruoyi-common-redis"
+    },
+    {
+      "from": "ruoyi",
+      "to": "ruoyi-api-system"
+    },
+    {
+      "from": "ruoyi-api-system",
+      "to": "ruoyi-common-core"
+    },
+    {
+      "from": "ruoyi-auth",
+      "to": "ruoyi-common-security"
+    },
+    {
+      "from": "ruoyi-common-datascope",
+      "to": "ruoyi-common-security"
+    },
+    {
+      "from": "ruoyi-common-log",
+      "to": "ruoyi-common-security"
+    },
+    {
+      "from": "ruoyi-common-redis",
+      "to": "ruoyi-common-core"
+    },
+    {
+      "from": "ruoyi-common-security",
+      "to": "ruoyi-api-system"
+    },
+    {
+      "from": "ruoyi-common-security",
+      "to": "ruoyi-common-redis"
+    },
+    {
+      "from": "ruoyi-common-sensitive",
+      "to": "ruoyi-common-core"
+    },
+    {
+      "from": "ruoyi-gateway",
+      "to": "ruoyi-common-redis"
+    },
+    {
+      "from": "ruoyi-modules-file",
+      "to": "ruoyi-api-system"
+    },
+    {
+      "from": "ruoyi-modules-gen",
+      "to": "ruoyi-common-log"
+    },
+    {
+      "from": "ruoyi-modules-gen",
+      "to": "ruoyi-common-swagger"
+    },
+    {
+      "from": "ruoyi-modules-job",
+      "to": "ruoyi-common-log"
+    },
+    {
+      "from": "ruoyi-modules-job",
+      "to": "ruoyi-common-swagger"
+    },
+    {
+      "from": "ruoyi-modules-system",
+      "to": "ruoyi-common-datasource"
+    },
+    {
+      "from": "ruoyi-modules-system",
+      "to": "ruoyi-common-datascope"
+    },
+    {
+      "from": "ruoyi-modules-system",
+      "to": "ruoyi-common-log"
+    },
+    {
+      "from": "ruoyi-modules-system",
+      "to": "ruoyi-common-swagger"
+    }
+  ],
+  "cycles": 0,
+  "feign": [
+    {
+      "file": "RemoteFileService",
+      "service": "FILE_SERVICE",
+      "methods": [
+        "upload",
+        "delete"
+      ]
+    },
+    {
+      "file": "RemoteLogService",
+      "service": "SYSTEM_SERVICE",
+      "methods": [
+        "saveLog",
+        "saveLogininfor"
+      ]
+    },
+    {
+      "file": "RemoteUserService",
+      "service": "SYSTEM_SERVICE",
+      "methods": [
+        "getUserInfo",
+        "registerUserInfo",
+        "recordUserLogin"
+      ]
+    }
+  ]
+}
