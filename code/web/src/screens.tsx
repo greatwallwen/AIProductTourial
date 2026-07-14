@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Icon } from './Icon';
-import { fetchSearch, fetchDbQuery, fetchHealth, fetchArch, fetchCredit, fetchRetail, fetchGates } from './lib/api';
+import { fetchSearch, fetchDbQuery, fetchHealth, fetchArch, fetchCredit, fetchRetail, fetchRfm, fetchGates } from './lib/api';
 // three.js 独立 chunk，仅在渲染 3D 案例时动态加载（首屏不含 three）
 
 // 架构/向量库/PG/3D 案例的「真实后端」案例屏：全部 live 调后端接口。
@@ -194,9 +194,11 @@ function RetailScreen() {
 }
 
 // —— 零售经营方案专属 demo（案例03 综合闭环）：从真实数据合成「现状→问题→动作→责任」的可交付方案 ——
+const RFM_COLORS: Record<string, string> = { '重要价值': 'var(--ok)', '高价值流失': 'var(--bad)', '一般保持': 'var(--accent)', '流失预警': 'var(--warn)', '普通': 'var(--muted)' };
 function PlanScreen() {
   const [d, setD] = useState<any>(null);
-  useEffect(() => { fetchRetail().then(setD); }, []);
+  const [rf, setRf] = useState<any>(null);
+  useEffect(() => { fetchRetail().then(setD); fetchRfm().then(setRf).catch(() => {}); }, []);
   if (!d) return <section className="card"><div className="muted">合成经营方案…</div></section>;
   const byRev = [...d.cats].sort((a: any, b: any) => b.revenue - a.revenue);
   const byMargin = [...d.cats].sort((a: any, b: any) => a.avgMargin - b.avgMargin);
@@ -217,6 +219,26 @@ function PlanScreen() {
           ))}
         </div>
       </section>
+      {rf && rf.segments?.length && (
+        <section className="card" style={{ marginTop: 14 }}>
+          <div className="card-h"><h2>真实 RFM 客户分层（{rf.total} 位客户 · UCI 真算）</h2><span className="muted">R 最近购买天数 / F 购买次数 / M 总消费</span></div>
+          <div className="banner" style={{ color: 'var(--bad)', borderColor: 'var(--bad)', marginBottom: 10 }}>
+            <Icon name="alert" size={12} /> 会员经营的抓手是「<b>高价值流失</b>」：{rf.churnCount} 位（{rf.churnRate}%）——消费高（M 大）却久未回购（R 大），最该抢救；别把「一般保持/普通」的大盘当重点。
+          </div>
+          {(() => { const max = Math.max(...rf.segments.map((x: any) => x.count)); return rf.segments.map((s: any) => (
+            <div key={s.name} style={{ margin: '6px 0' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12.5 }}>
+                <span style={{ color: RFM_COLORS[s.name] || 'var(--ink)' }}>{s.name} · {s.count} 人</span>
+                <span className="mono muted">R{s.avgR}天 · F{s.avgF}次 · M¥{s.avgM.toLocaleString('zh-CN')}</span>
+              </div>
+              <div style={{ height: 8, background: 'var(--panelSoft)', borderRadius: 5, overflow: 'hidden', marginTop: 3 }}>
+                <div style={{ width: `${(s.count / max) * 100}%`, height: '100%', background: RFM_COLORS[s.name] || 'var(--accent)' }} />
+              </div>
+            </div>
+          )); })()}
+          <div className="muted" style={{ fontSize: 11, marginTop: 8 }}>{rf.note}</div>
+        </section>
+      )}
       <section className="card" style={{ marginTop: 14 }}>
         <div className="card-h"><h2>改进动作（问题 → 动作 → 责任）</h2><span className="muted">可验收</span></div>
         {actions.map((x, i) => (

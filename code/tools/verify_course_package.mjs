@@ -245,6 +245,16 @@ for (const c of defs.cases) { const n = c.num; const g = c?.grill || [];
   ok(); if (/\d+\s*条提交事件[、，]/.test(allBook)) bad('成书把 git 提交数硬编码进正文（应版本无关·由页面现算，防陈旧）');
   ok(); if (!allBook.includes(`hit@1 = ${base.score}%`)) bad(`成书未出现与 eval_baseline 一致的命中率 hit@1 = ${base.score}%（评测叙事第四幕须与真值同步）`);
 }
+// —— v23 守卫 ⑤ 真实 RFM 锚点接线（案例03 消费 2b-real_rfm.csv；修 Capstone 断裂 + 去孤儿）——
+{ const api = rd('code/server/routes/api.ts'), svc = rd('code/server/services/cases.ts'), scr = rd('code/web/src/screens.tsx'), man = rd('dataset/MANIFEST.md');
+  ok(); if (!api.includes("'/api/rfm'")) bad('缺 /api/rfm 路由（案例03 真实 RFM 未接线）');
+  ok(); if (!/retailRfm[\s\S]*2b-real_rfm\.csv/.test(svc)) bad('retailRfm 未读真实 2b-real_rfm.csv');
+  ok(); if (!scr.includes('fetchRfm')) bad('PlanScreen 未渲染真实 RFM（fetchRfm 缺失）');
+  ok(); if (!/2b-real_rfm\.csv[\s\S]*案例03/.test(man)) bad('MANIFEST 未标注 2b-real_rfm.csv 被案例03 消费（去孤儿）');
+  const cap = rd(`${BOOK}/99-结课.md`);
+  ok(); if (cap.includes('久未乘机')) bad('Capstone 仍含航空「久未乘机」（案例02 已是 P2P 信贷，分层锚点须为案例03 真实 RFM）');
+  ok(); if (!/分层（案例\s*03）/.test(cap)) bad('Capstone 分层步未锚到案例03 真实 RFM');
+}
 // 专属 demo：案例16 医院容量
 ok(); if (defs.cases.filter((c) => c.screen).length < defs.cases.length) bad('存在非专属 demo 案例（应 11/11 有 screen）');
 // 图表数据驱动守卫：CSV 案例的图表必须是真实列聚合（有 by 说明），不得哈希噪声

@@ -26,3 +26,4 @@ export const fetchCredit = () => getJson<any>('/api/credit');
 
 
 export const fetchRetail = () => getJson<any>('/api/retail');
+export const fetchRfm = () => getJson<any>('/api/rfm');

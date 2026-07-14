@@ -2,17 +2,17 @@
 
 ### 项目场景故事
 
-作为综合闭环案例，零售经营负责人要把「早会异常→驾驶舱洞察→改进动作→责任闭环」串成一份可验收的经营方案。本案基于真实 UCI Online Retail II（4500 单真实英国电商订单），把销售额、退货、区域结构端到端形成从数据到方案的完整链路。毛利率为教学合成叠加、已标注。
+作为综合闭环案例，零售经营负责人要把「早会异常→驾驶舱洞察→RFM 会员分层→改进动作→责任闭环」串成一份可验收的经营方案。本案基于真实 UCI Online Retail II（4500 单真实英国电商订单 + 1665 位客户级 RFM 真算），把销售额、退货、区域结构与客户分层端到端形成从数据到方案的完整链路，独有产出是「高价值流失」群的抢救动作。毛利率为教学合成叠加、已标注。
 
 > **本案例演示/验证**：原理 2.7、3.1、4.1｜**采用设计** `graphite-hud`（见 [design/graphite-hud.md](../../design/graphite-hud.md)）
 
-> **在数字化系统中的位置**：业务应用层 · 增长环节｜**理论→实操**：把原理 2.7、3.1、4.1 落成可运行操作：从数据端到端得出零售经营改进方案并落成可验收交付物（依赖案例 04–06 的数据底座，本案可先不管）
+> **在数字化系统中的位置**：业务应用层 · 增长环节｜**理论→实操**：把原理 2.7、3.1、4.1 落成可运行操作：从真实数据端到端得出零售经营改进方案并落成可验收交付物——本案的独有真实底座是「客户级 RFM 分层」（UCI 真算），据此锁定「高价值流失」群作为会员经营的抓手（数据底座另见案例 05–06）。
 
 > **角色镜头**：<img src="../../assets/vendor/lucide/built/package.svg" width="14" alt="" style="vertical-align:-2px" /> 产品 · <img src="../../assets/vendor/lucide/built/wrench.svg" width="14" alt="" style="vertical-align:-2px" /> 研发 · <img src="../../assets/vendor/lucide/built/clipboard-list.svg" width="14" alt="" style="vertical-align:-2px" /> 项目（本案更偏这些角色；主脊 §1-§2 三镜头共读）
 
 > <img src="../../assets/vendor/lucide/built/gauge.svg" width="14" alt="" style="vertical-align:-2px" /> **难度** 高阶｜**一句话** 零售经营产品方案：从真实订单端到端得出经营改进方案并落成可验收交付物｜**前置** 建议先读完第一部分
 >
-> <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：综合案例的价值在「端到端可验收」：不是给一堆图，而是从真实数据得出「哪个区域是收入支柱、哪个品类退货高发要治理」的具体动作，且每个动作有责任人和验收标准。<img src="../../assets/vendor/lucide/built/alert-triangle.svg" width="14" alt="" style="vertical-align:-2px" /> 「毛利洼地」基于教学合成的毛利率，页面已标注，实操中应换成真实成本数据。
+> <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：综合案例的价值在「端到端可验收」+「独有真实洞见」：本案不与案例01 重复看品类，而是接入真实 RFM 客户分层（UCI 客户级真算），把「消费高却久未回购」的**高价值流失**群单拎出来当会员经营抓手——每个动作有责任人和验收标准。<img src="../../assets/vendor/lucide/built/alert-triangle.svg" width="14" alt="" style="vertical-align:-2px" /> 「毛利洼地」基于教学合成毛利率、页面已标注，实操应换真实成本。
 >
 > <img src="../../assets/vendor/lucide/built/alert-triangle.svg" width="14" alt="" style="vertical-align:-2px" /> **常见坑**：① 方案停在「分析」不落到「动作+责任+验收」；② 脱离数据编经营结论——本案收入/区域/退货结论都回到 order_data 真实聚合；③ 把教学合成的毛利当真实成本决策依据。
 
@@ -99,13 +99,13 @@
 
 1. 起服务：`bash code/run.sh`，浏览器打开 `#/case/03`（本案专属大屏）。
 2. **你应看到**：指标链（营收(元) / 毛利率均值 …）、异常队列与行动入口，数据来自后端实时接口（性质见章首标注）。
-3. **动手改一改**：从真实数据各挑一个「保供」与「治退货」对象，写成带责任人 + 验收标准的 3 条方案。
+3. **动手改一改**：打开页面看真实 RFM：找出「高价值流失」群（消费高但久未回购），为它写一条带责任人 + 可验收标准（如「30 天内触达率≥60%、复购率 +3pct」）的抢救动作；另各挑一个「保供」「治退货」对象凑齐 3 条方案。
 4. **自测产出**：`node code/tools/check_my_work.mjs 3 你的方案.md`——红项指明缺什么、回哪章补。
 
 <details>
 <summary><img src="../../assets/vendor/lucide/built/sparkles.svg" width="14" alt="" style="vertical-align:-2px" /> 深度（专业读者）：权衡 · 失效模式 · 何时别用</summary>
 
-为什么把指标→检索→决策串成闭环，而非孤立看指标？孤立指标不产生行动。失效模式：闭环里任一环用了合成数据却当真。何时别用：业务尚未定型时，先手工跑几轮再自动化（§2「先建传感器再谈自动化」）。
+为什么把「指标→分层→检索→决策」串成闭环，而非孤立看指标？孤立指标不产生行动，而 RFM 把 1665 位客户按 R(最近购买)×F(次数)×M(消费) 压成可行动的层级——「高价值流失」(M 高、R 大) 才是会员经营真正该抢救的群，占比虽小却价值最高，别被「一般保持/普通」的大盘带偏（又一处 base-rate 陷阱）。失效模式：闭环里任一环用了合成数据却当真（如拿合成毛利下成本结论）。何时别用：业务尚未定型时先手工跑几轮再自动化（§2「先建传感器再谈自动化」）。
 </details>
 
 ### 练习（做完再进下一个案例）

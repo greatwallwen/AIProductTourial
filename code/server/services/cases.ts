@@ -117,3 +117,21 @@ export function retail() {
   const triage = rows.filter((r) => (r[anom] || '').trim()).map((r) => ({ sku: r[sku], cat: r[cat], region: r[region], amt: Number(r[amt]) || 0, reason: r[anom], resp: r[resp] })).sort((a, b) => Math.abs(b.amt) - Math.abs(a.amt)).slice(0, 8);
   return { total: rows.length, anomCount: rows.filter((r) => (r[anom] || '').trim()).length, cats, triage };
 }
+
+/** 真实 RFM 客户分层（案例03 综合闭环专属·v23）：读 2b-real_rfm.csv（UCI 客户级真算）
+ *  → 各分层客户数 + 平均 R/F/M；「高价值流失」=会员经营要抢救的群（M高但R大/久未回购）。
+ *  这是案例03 区别于案例01 的独有真实底座，也让此前孤立的 2b-real_rfm.csv 真正被消费。 */
+export function retailRfm() {
+  const t = parseCsv(join(ROOT, 'dataset', 'reference_data_analysis', '2b-real_rfm.csv'));
+  const ci = (n: string) => t.head.indexOf(n);
+  const [rC, fC, mC, sC] = ['最近购买天数', '购买次数', '总消费', '分层(规则派生)'].map(ci);
+  const rows = t.rows.map((r) => ({ r: Number(r[rC]) || 0, f: Number(r[fC]) || 0, m: Number(r[mC]) || 0, seg: (r[sC] || '').replace(/[（(]规则[)）]/g, '').trim() }));
+  const total = rows.length;
+  const order = ['重要价值', '高价值流失', '一般保持', '流失预警', '普通'];
+  const segMap: Record<string, { count: number; r: number; f: number; m: number }> = {};
+  for (const x of rows) { (segMap[x.seg] ||= { count: 0, r: 0, f: 0, m: 0 }); const s = segMap[x.seg]; s.count++; s.r += x.r; s.f += x.f; s.m += x.m; }
+  const segments = order.filter((n) => segMap[n]).map((name) => ({ name, count: segMap[name].count, avgR: Math.round(segMap[name].r / segMap[name].count), avgF: Math.round(segMap[name].f / segMap[name].count), avgM: Math.round(segMap[name].m / segMap[name].count) }));
+  const churn = segMap['高价值流失'] || { count: 0 };
+  return { total, segments, churnCount: churn.count, churnRate: Math.round((churn.count / total) * 1000) / 10,
+    note: '真实基座：UCI Online Retail II 客户级 RFM 真算（R=最近购买天数/F=购买次数/M=总消费）；分层为分位规则派生、非事实标签。「高价值流失」= 消费高但久未回购——正是会员经营要抢救的群。' };
+}
