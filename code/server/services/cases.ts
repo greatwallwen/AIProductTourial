@@ -103,7 +103,11 @@ export function creditSegment() {
   // 反直觉真实信号：借款描述文案长度分桶 → 放款成功率（文案即转化，但相关≠因果）
   const buckets: [number, number, string][] = [[0, 80, '很短(<80字)'], [80, 160, '偏短(80-160)'], [160, 240, '适中(160-240)'], [240, 1e9, '较长(>240)']];
   const textSignal = buckets.map(([lo, hi, label]) => { const g = rows.filter((x) => x.len >= lo && x.len < hi); return { label, count: g.length, fundRate: g.length ? Math.round(g.filter((x) => x.ok).length / g.length * 1000) / 10 : 0 }; });
-  return { total, fundRate, segments, riskCount: risk.length, riskRate: Math.round(risk.length / total * 1000) / 10, scatter, textSignal,
+  // v24 细分需求：新客（历史成功次数=1，本真集下限）vs 复借（≥2）差异化放款——同一 CC0 真集现成字段；
+  // 实测该列 min=1/max=32（无 0），故按数据真实分位切「新客 vs 复借」，不臆造「首贷=0」。
+  const frStat = (arr: typeof rows) => ({ count: arr.length, fundRate: arr.length ? Math.round(arr.filter((x) => x.ok).length / arr.length * 1000) / 10 : 0, avgAmount: arr.length ? Math.round(arr.reduce((a, x) => a + x.amt, 0) / arr.length) : 0, repRate: arr.length ? Math.round(arr.filter((x) => x.rep === '有').length / arr.length * 1000) / 10 : 0 });
+  const firstVsRepeat = { first: frStat(rows.filter((x) => x.hc <= 1)), repeat: frStat(rows.filter((x) => x.hc >= 2)) };
+  return { total, fundRate, segments, riskCount: risk.length, riskRate: Math.round(risk.length / total * 1000) / 10, scatter, textSignal, firstVsRepeat,
     note: '真实基座：人人贷 P2P（Harvard Dataverse, CC0, 中国大陆）；放款成功/金额/额度/征信/文案为真实列，信用画像为规则派生分层。标的=放款成功，非违约——不可据此推断还款能力。' };
 }
 

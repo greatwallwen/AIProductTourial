@@ -282,6 +282,9 @@ for (const f of ['dataset/design/case_01.md', 'dataset/design/case_03.md']) { co
   ok(); if (!/dolphinscheduler_devops\.json/.test(bcd)) bad('案例08 build_case_data 未读真实 dolphinscheduler_devops.json');
   ok(); if (!/data\?\.ds|data\.ds/.test(scr)) bad('BuildWalkScreen 未渲染海豚调度真实研发效能对照');
   ok(); if (!/dolphinscheduler_devops\.json[\s\S]*案例\s*08/.test(man)) bad('MANIFEST 未标注海豚调度真集被案例08 消费');
+  // 案例02：首贷vs复贷细分（深挖现有 CC0 真集，零新增下载）
+  ok(); if (!/firstVsRepeat/.test(svc)) bad('案例02 creditSegment 未计算首贷vs复贷细分');
+  ok(); if (!/firstVsRepeat/.test(scr)) bad('CreditScreen 未渲染首贷vs复贷细分');
 }
 // —— v24 守卫 ⑨ 活体门禁 eval 解析标签须与 eval_harness 打印标签一致（防标签漂移致 evalGate.score=null 静默回归，v23 就中过）——
 { const harness = rd('code/tools/eval_harness.mjs'), gates = rd('code/server/services/gates.ts');

@@ -90,7 +90,7 @@
 - [案例总览 + 原理→案例反查](案例/README.md)
 - 编号说明：案例已于 v21 重编号为 01–09（旧号 30/41/44/45/46/49/51/54 依次对应 02–09）；旧↔新完整对照见 [README-cn](../README-cn.md)。
 - [实操 01 · 电商早会异常订单台](案例/01-morning_ops_grid.md)
-- [实操 02 · 大陆 P2P 信贷放款与信用画像运营](案例/02-p2p_credit.md)
+- [实操 02 · 大陆 P2P 信贷·新客 vs 复借 差异化放款与信用画像分层](案例/02-p2p_credit.md)
 - [实操 03 · 零售经营产品方案](案例/03-retail_capstone_board.md)
 - [实操 04 · 产品知识库语义检索](案例/04-rag_knowledge_retrieval.md)
 - [实操 05 · 北京空气质量大表·查询优化与复合索引](案例/05-postgres_relational_arch.md)

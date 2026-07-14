@@ -153,6 +153,21 @@ function CreditScreen() {
     <>
       <div className="banner" style={{ color: 'var(--bad)', borderColor: 'var(--bad)' }}>
       {realBanner}<Icon name="alert" /> 风险队列：<b>{d.riskCount.toLocaleString('zh-CN')}</b> 笔（{d.riskRate}%）为薄档/待观察（无征信或历史零成功）——高影响金融不自动放款，转人工复核。整体放款成功率 {d.fundRate}%。</div>
+      {d.firstVsRepeat && (<>
+        <div className="cols" style={{ marginBottom: 4 }}>
+          {[['新客（历史成功=1）', d.firstVsRepeat.first, 'var(--warn)'], ['复借（历史成功≥2）', d.firstVsRepeat.repeat, 'var(--ok)']].map(([label, s, col]: any) => (
+            <section key={label} className="card">
+              <div className="card-h"><h2 style={{ fontSize: 14 }}>{label}</h2><span className="muted">{s.count.toLocaleString('zh-CN')} 笔</span></div>
+              <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', fontSize: 13 }}>
+                <div><span className="muted">放款率</span><br /><b style={{ color: col, fontSize: 18 }}>{s.fundRate}%</b></div>
+                <div><span className="muted">征信完整率</span><br /><b style={{ fontSize: 18 }}>{s.repRate}%</b></div>
+                <div><span className="muted">平均借款额</span><br /><b style={{ fontSize: 18 }}>{s.avgAmount.toLocaleString('zh-CN')}</b></div>
+              </div>
+            </section>
+          ))}
+        </div>
+        <div className="muted" style={{ fontSize: 11, margin: '2px 0 10px', color: 'var(--warn)' }}><Icon name="alert" size={12} /> 新客 vs 复借是 P2P 风控最基本的细分（本真集历史成功次数 min=1，按数据真实切分，非臆造「首贷=0」）：驱动放款的因子不同——复借有历史行为可依，新客只能靠征信/额度/文案。差异化风控，别用一套规则套所有人。</div>
+      </>)}
       <div className="cols">
         <section className="card">
           <div className="card-h"><h2>信用画像分层 · {d.total.toLocaleString('zh-CN')} 笔</h2><span className="muted">条长=该层放款成功率 · 反直觉：薄档反而最高</span></div>

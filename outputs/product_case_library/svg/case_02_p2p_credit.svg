@@ -8,7 +8,7 @@
   <rect width="1000" height="620" fill="url(#bg)"/><rect width="1000" height="620" fill="url(#grid)" opacity="0.4"/>
   <rect x="0" y="0" width="1000" height="92" fill="#17130b" opacity="0.45"/>
   <rect x="36" y="28" width="4" height="36" rx="2" fill="url(#acc)"/>
-  <text x="50" y="46" font-size="22" font-weight="750" fill="#f6efe2">大陆 P2P 信贷放款与信用画像运营</text>
+  <text x="50" y="46" font-size="22" font-weight="750" fill="#f6efe2">大陆 P2P 信贷·新客 vs 复借 差异化放款与信用画像分层</text>
   <text x="50" y="70" font-size="11.5" fill="#c9b48f">P2P信贷 · credit_seg_screen · 数据 dataset/reference_data_analysis/p2p_credit.csv（20349 行 · 异常 5704）</text>
   <rect x="742" y="26" width="222" height="22" rx="11" fill="#141009" stroke="#3a2c14"/><text x="853" y="41" font-size="10" fill="#f59e0b" text-anchor="middle">设计 amber-funnel · 能力智能·洞察</text>
   <text x="964" y="70" font-size="9.5" fill="#7a6640" text-anchor="end">读图：指标链 → 异常队列/责任 → 行动/验收</text>
