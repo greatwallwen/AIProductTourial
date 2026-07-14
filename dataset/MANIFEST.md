@@ -17,6 +17,7 @@
 | dataset/real/cmrc2018_dev.json | [CMRC2018 dev（哈工大讯飞 HFL·中国大陆）](https://github.com/ymcui/cmrc2018) | CC BY-SA-4.0 | 案例 04/07 中文 RAG 语料 + 金标 | e9ff74231f05c230… |
 | dataset/real/renrendai_p2p.csv | [人人贷 P2P 借贷记录（Harvard Dataverse doi:10.7910/DVN/C4RUDY·中国大陆）](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/C4RUDY) | CC0-1.0 | 案例 02 大陆 P2P 信贷·信用画像分层 | a2d1b494bf45b06b… |
 | dataset/real/ruoyi_cloud_arch.json | [RuoYi-Cloud（若依·国产开源微服务脚手架）](https://github.com/yangzongzhuan/RuoYi-Cloud) | MIT | 案例 06 系统架构（22 模块依赖边 + 3 Feign 接口契约，从 pom.xml/@FeignClient 确定性解析·零代码执行） | 166912a706b67132… |
+| dataset/real/nacos_git_events.json | [alibaba/nacos（阿里·国产开源注册/配置中心）](https://github.com/alibaba/nacos) | Apache-2.0 | 案例 09 事件溯源（近 600 提交事件流 + 父指针 DAG，与本仓库 dogfood 小事件流大小对照；作者邮箱已 hash 脱敏） | 7a27e180ede8a267… |
 
 > **零售快照**由一次性采样脚本生成（分层过采样：退货约 ×5 以便教学展示，异常率 11.1% 不代表真实业务水平——UCI 原始约 2%；无随机、无联网），生成器读快照后归一化，真实数值列直接用真实效应、实体标签本地化改写（已标注）。**CMRC2018 / 人人贷** 为公开集**完整/直接快照**（未过采样、未改数值），仅归一化中文表头与 log 还原、规则派生分层均已标注为「派生·非事实标签」。缺失列的确定性教学合成叠加已标注，绝不把叠加/派生说成真实。
 

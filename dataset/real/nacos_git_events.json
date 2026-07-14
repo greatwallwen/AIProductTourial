@@ -1,0 +1,5444 @@
+{
+  "source": "alibaba/nacos（阿里·国产开源注册中心/配置中心）",
+  "license": "Apache-2.0",
+  "extracted": "git log --filter=blob:none 近 600 提交事件流（%H/%P 父指针=事件 DAG，作者邮箱已 hash 脱敏·低PII·零代码执行）",
+  "eventCount": 600,
+  "spanDays": 298,
+  "mergeCount": 19,
+  "byType": {
+    "other": 497,
+    "fix": 24,
+    "release": 30,
+    "chore": 2,
+    "test": 3,
+    "docs": 4,
+    "merge": 23,
+    "feat": 8,
+    "refactor": 3,
+    "bugfix": 1,
+    "ci": 2,
+    "build": 2,
+    "optimize": 1
+  },
+  "events": [
+    {
+      "h": "798cbcbbfc",
+      "parents": [
+        "6402432ea6"
+      ],
+      "t": 1784002088000,
+      "author": "dev-df47b5fa",
+      "subject": "[ISSUE #14932] Refactor MemoryMcpCacheIndex to remove read-path LRU contention ("
+    },
+    {
+      "h": "6402432ea6",
+      "parents": [
+        "7df19f0437"
+      ],
+      "t": 1784001926000,
+      "author": "dev-434499a2",
+      "subject": "[ISSUE #15494] Restore complete MCP tool advanced template support (#15502)"
+    },
+    {
+      "h": "7df19f0437",
+      "parents": [
+        "b9333258be"
+      ],
+      "t": 1783997875000,
+      "author": "dev-26daf6f1",
+      "subject": "Add AI module unit coverage (#15483)"
+    },
+    {
+      "h": "b9333258be",
+      "parents": [
+        "007fe68cb2"
+      ],
+      "t": 1783935238000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #15475] Complete plugin management foundation (#15500)"
+    },
+    {
+      "h": "007fe68cb2",
+      "parents": [
+        "d1a0a2b745"
+      ],
+      "t": 1783927860000,
+      "author": "dev-632a948c",
+      "subject": "Fix config namespace isolation for ID-based operations (#15498)"
+    },
+    {
+      "h": "d1a0a2b745",
+      "parents": [
+        "35c518f950"
+      ],
+      "t": 1783922047000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #15475] Improve plugin config unit test coverage (#15499)"
+    },
+    {
+      "h": "35c518f950",
+      "parents": [
+        "e79d2e4dc6"
+      ],
+      "t": 1783912629000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #15475] Add runtime plugin config update flow (#15496)"
+    },
+    {
+      "h": "e79d2e4dc6",
+      "parents": [
+        "aa0da8c9fa"
+      ],
+      "t": 1783665112000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #15475] Add effective plugin config detail resolution (#15485)"
+    },
+    {
+      "h": "aa0da8c9fa",
+      "parents": [
+        "9effbd626a"
+      ],
+      "t": 1783654896000,
+      "author": "dev-fb2f555d",
+      "subject": "fix:Skill-scanner pipeline report shows mojibake for Chinese text on Windows (#1"
+    },
+    {
+      "h": "9effbd626a",
+      "parents": [
+        "b1cd18225b"
+      ],
+      "t": 1783578633000,
+      "author": "dev-26daf6f1",
+      "subject": "[ISSUE #15471] feat(ai): support SkillSpector publish pipeline (#15474)"
+    },
+    {
+      "h": "b1cd18225b",
+      "parents": [
+        "70cb7290aa"
+      ],
+      "t": 1783576574000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #15475] Add plugin config metadata model (#15479)"
+    },
+    {
+      "h": "70cb7290aa",
+      "parents": [
+        "b7a3595be3"
+      ],
+      "t": 1783574955000,
+      "author": "dev-632a948c",
+      "subject": "Use Nacos self-hosted runners for CI workflows. (#15480)"
+    },
+    {
+      "h": "b7a3595be3",
+      "parents": [
+        "e86b1fcc73"
+      ],
+      "t": 1783565507000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14981] Fix config duplicate key handling (#15465)"
+    },
+    {
+      "h": "e86b1fcc73",
+      "parents": [
+        "e9e5aaa4c2"
+      ],
+      "t": 1783475002000,
+      "author": "dev-26daf6f1",
+      "subject": "[ISSUE #15466] Correct skill API @Since annotations (#15467)"
+    },
+    {
+      "h": "e9e5aaa4c2",
+      "parents": [
+        "77827af238"
+      ],
+      "t": 1783304068000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #15354] Adjust sidebar menu elements (#15455)"
+    },
+    {
+      "h": "77827af238",
+      "parents": [
+        "acd679caa8"
+      ],
+      "t": 1783062645000,
+      "author": "dev-d137b96d",
+      "subject": "Fix off-by-one page count in PageUtil for divisible totals (#15446)"
+    },
+    {
+      "h": "acd679caa8",
+      "parents": [
+        "7ec791b394"
+      ],
+      "t": 1783062567000,
+      "author": "dev-691df7fc",
+      "subject": "[#ISSUE 15430] Preserve transportProtocol in auto-built mcp endpoint spec (#1544"
+    },
+    {
+      "h": "7ec791b394",
+      "parents": [
+        "b886636f32"
+      ],
+      "t": 1782884114000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #15305] Reject blank instance IP in naming registration (#15454)"
+    },
+    {
+      "h": "b886636f32",
+      "parents": [
+        "021dc7c480"
+      ],
+      "t": 1782883992000,
+      "author": "dev-4fdc7eb6",
+      "subject": "[ISSUE #12585] Fix pagination parameter binding (#15407)"
+    },
+    {
+      "h": "021dc7c480",
+      "parents": [
+        "eac1925383"
+      ],
+      "t": 1782883892000,
+      "author": "dev-d137b96d",
+      "subject": "Guard BatchTaskCounter.batchSuccess against out-of-range batch index (#15425)"
+    },
+    {
+      "h": "eac1925383",
+      "parents": [
+        "c42ec16614"
+      ],
+      "t": 1782791713000,
+      "author": "dev-517ea6ec",
+      "subject": "docs(locale): fix typos and improve English translations (#15448)"
+    },
+    {
+      "h": "c42ec16614",
+      "parents": [
+        "ee86970962"
+      ],
+      "t": 1782791662000,
+      "author": "dev-4fdc7eb6",
+      "subject": "[ISSUE #12867] Add raft group metrics (#15408)"
+    },
+    {
+      "h": "ee86970962",
+      "parents": [
+        "a8d22aa12d"
+      ],
+      "t": 1782791616000,
+      "author": "dev-4fdc7eb6",
+      "subject": "[ISSUE #15359] Fix AI registry version deletion (#15406)"
+    },
+    {
+      "h": "a8d22aa12d",
+      "parents": [
+        "5db14e3733"
+      ],
+      "t": 1782791560000,
+      "author": "dev-4fdc7eb6",
+      "subject": "[ISSUE #14036] Support TLS prefix for HTTP login (#15405)"
+    },
+    {
+      "h": "5db14e3733",
+      "parents": [
+        "f8bcfabfe2"
+      ],
+      "t": 1782723457000,
+      "author": "dev-26daf6f1",
+      "subject": "[ISSUE #15435] Improve next console AI resource version diff (#15436)"
+    },
+    {
+      "h": "f8bcfabfe2",
+      "parents": [
+        "4c79e2cc4b"
+      ],
+      "t": 1782704971000,
+      "author": "dev-d137b96d",
+      "subject": "Avoid ArrayIndexOutOfBoundsException in getServiceName for trailing separator (#"
+    },
+    {
+      "h": "4c79e2cc4b",
+      "parents": [
+        "8847043c71"
+      ],
+      "t": 1782456405000,
+      "author": "dev-632a948c",
+      "subject": "chore: roll up console-ui-next dependency fixes (#15442)"
+    },
+    {
+      "h": "8847043c71",
+      "parents": [
+        "78229d6878"
+      ],
+      "t": 1782455569000,
+      "author": "dev-632a948c",
+      "subject": "Polish unused code follow-up (#15441)"
+    },
+    {
+      "h": "78229d6878",
+      "parents": [
+        "9f5ab9a43c"
+      ],
+      "t": 1782451954000,
+      "author": "dev-632a948c",
+      "subject": "Remove reviewed unused Java code (#15440)"
+    },
+    {
+      "h": "9f5ab9a43c",
+      "parents": [
+        "5f56cbbc7e"
+      ],
+      "t": 1782440335000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14466] Clarify selected JSON adapter log (#15438)"
+    },
+    {
+      "h": "5f56cbbc7e",
+      "parents": [
+        "c583506e23"
+      ],
+      "t": 1782438082000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14466] Add JSON adapter selection diagnostics (#15434)"
+    },
+    {
+      "h": "c583506e23",
+      "parents": [
+        "162e53c6d7"
+      ],
+      "t": 1782392765000,
+      "author": "dev-26daf6f1",
+      "subject": "[ISSUE #15420] fix(ai): support lenient skill upload versions (#15421)"
+    },
+    {
+      "h": "162e53c6d7",
+      "parents": [
+        "cc508a80be"
+      ],
+      "t": 1782388692000,
+      "author": "dev-632a948c",
+      "subject": "Remove confirmed unused Java code follow-ups (#15432)"
+    },
+    {
+      "h": "cc508a80be",
+      "parents": [
+        "97d830bcae"
+      ],
+      "t": 1782385590000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14466] Add Jackson 3 SDK IT profiles (#15427)"
+    },
+    {
+      "h": "97d830bcae",
+      "parents": [
+        "38fa739598"
+      ],
+      "t": 1782373578000,
+      "author": "dev-26daf6f1",
+      "subject": "[ISSUE #15428] Fix MCP endpoint URL query preservation (#15429)"
+    },
+    {
+      "h": "38fa739598",
+      "parents": [
+        "feaab43ccd"
+      ],
+      "t": 1782365699000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14466] Finalize Jackson adapter dependency checks (#15426)"
+    },
+    {
+      "h": "feaab43ccd",
+      "parents": [
+        "aa27c40a52"
+      ],
+      "t": 1782360066000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14466] Add typed pipeline maintainer APIs (#15424)"
+    },
+    {
+      "h": "aa27c40a52",
+      "parents": [
+        "74ed8fb92a"
+      ],
+      "t": 1782353013000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14466] Move pipeline execution DTOs to api (#15422)"
+    },
+    {
+      "h": "74ed8fb92a",
+      "parents": [
+        "771981c15a"
+      ],
+      "t": 1782352596000,
+      "author": "dev-d137b96d",
+      "subject": "Fix trailing separator in StringUtils.join when collection has null elements (#1"
+    },
+    {
+      "h": "771981c15a",
+      "parents": [
+        "d33d8f5ce8"
+      ],
+      "t": 1782352460000,
+      "author": "dev-d137b96d",
+      "subject": "Skip malformed config-plugin property names without a dot (#15415)"
+    },
+    {
+      "h": "d33d8f5ce8",
+      "parents": [
+        "3e34a6e8c4"
+      ],
+      "t": 1782293392000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14466] Clean up client JSON runtime paths (#15418)"
+    },
+    {
+      "h": "3e34a6e8c4",
+      "parents": [
+        "e1dd56b639"
+      ],
+      "t": 1782289331000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14466] Migrate maintainer client JSON parsing (#15373)"
+    },
+    {
+      "h": "e1dd56b639",
+      "parents": [
+        "486a8d114a"
+      ],
+      "t": 1782277531000,
+      "author": "dev-4fdc7eb6",
+      "subject": "[ISSUE #15355] Restore editable clone targets (#15411)"
+    },
+    {
+      "h": "486a8d114a",
+      "parents": [
+        "d54689a775"
+      ],
+      "t": 1782277490000,
+      "author": "dev-4fdc7eb6",
+      "subject": "[ISSUE #14693] Fix MCP service selector pagination (#15413)"
+    },
+    {
+      "h": "d54689a775",
+      "parents": [
+        "d931a109a8"
+      ],
+      "t": 1781748387000,
+      "author": "dev-691df7fc",
+      "subject": "fix: empty history compare content in next console (#15372)"
+    },
+    {
+      "h": "d931a109a8",
+      "parents": [
+        "0028ad6c58"
+      ],
+      "t": 1781674192000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14466] Migrate client HTTP JSON parsing (#15371)"
+    },
+    {
+      "h": "0028ad6c58",
+      "parents": [
+        "2f8d884c9c"
+      ],
+      "t": 1781667044000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14466] Remove Jackson JavaType from rest template (#15369)"
+    },
+    {
+      "h": "2f8d884c9c",
+      "parents": [
+        "75b7a9ddf5"
+      ],
+      "t": 1781666568000,
+      "author": "dev-26daf6f1",
+      "subject": "[ISSUE #15315] Optimize Skill upload precheck and conflict handling (#15316)"
+    },
+    {
+      "h": "75b7a9ddf5",
+      "parents": [
+        "3823101a94"
+      ],
+      "t": 1781660255000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14466] Remove Jackson byte buffer stream from GrpcUtils (#15368)"
+    },
+    {
+      "h": "3823101a94",
+      "parents": [
+        "e82c834b9e"
+      ],
+      "t": 1781608241000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14466] Clean api Jackson databind usage (#15364)"
+    },
+    {
+      "h": "e82c834b9e",
+      "parents": [
+        "2a95081f59"
+      ],
+      "t": 1781591147000,
+      "author": "dev-691df7fc",
+      "subject": "[ISSUE #15321] Feat:Update the disk cache by refreshing asynchronously (#15336)"
+    },
+    {
+      "h": "2a95081f59",
+      "parents": [
+        "714ccff2ed"
+      ],
+      "t": 1781591064000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14466] Add Jackson 3 JSON adapter (#15363)"
+    },
+    {
+      "h": "714ccff2ed",
+      "parents": [
+        "99acf6ba9f"
+      ],
+      "t": 1781583417000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14466] Add Jackson 2 JSON adapter (#15362)"
+    },
+    {
+      "h": "99acf6ba9f",
+      "parents": [
+        "1f9f6ccc8e"
+      ],
+      "t": 1781577050000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14466] Add neutral JSON adapter API (#15361)"
+    },
+    {
+      "h": "1f9f6ccc8e",
+      "parents": [
+        "d6ddd47ee1"
+      ],
+      "t": 1781539943000,
+      "author": "dev-632a948c",
+      "subject": "Remove confirmed unused Java code (#15358)"
+    },
+    {
+      "h": "d6ddd47ee1",
+      "parents": [
+        "ab1ee0ad92"
+      ],
+      "t": 1781522865000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14466] Add Java SDK JSON adapter spec (#15360)"
+    },
+    {
+      "h": "ab1ee0ad92",
+      "parents": [
+        "532b848048"
+      ],
+      "t": 1781505947000,
+      "author": "dev-1392b407",
+      "subject": "[ISSUE #15296] Fix instance status not updating after toggle in service detail ("
+    },
+    {
+      "h": "532b848048",
+      "parents": [
+        "dfe3af37b6"
+      ],
+      "t": 1781495260000,
+      "author": "dev-c0c0be19",
+      "subject": "[ISSUE #15332] Add concurrency to GitHub Actions workflows to prevent duplicate "
+    },
+    {
+      "h": "dfe3af37b6",
+      "parents": [
+        "491420904b"
+      ],
+      "t": 1781166823000,
+      "author": "dev-ee1aa542",
+      "subject": "[ISSUE #15351] Update log print in FuzzyWatchSyncNotifyCallback.java (#15352)"
+    },
+    {
+      "h": "491420904b",
+      "parents": [
+        "4bec8b06c5"
+      ],
+      "t": 1781166591000,
+      "author": "dev-26daf6f1",
+      "subject": "[ISSUE #15346] Manage AI resource latest label on server (#15347)"
+    },
+    {
+      "h": "4bec8b06c5",
+      "parents": [
+        "39db5392a3"
+      ],
+      "t": 1781057328000,
+      "author": "dev-c0c0be19",
+      "subject": "chore(deps): spring-boot upgrade from 3.5.14 to 4.0.6 (#14945)"
+    },
+    {
+      "h": "39db5392a3",
+      "parents": [
+        "5947d76961"
+      ],
+      "t": 1780996807000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14879] Remove legacy console Nacos starter (#15340)"
+    },
+    {
+      "h": "5947d76961",
+      "parents": [
+        "9a086e9cdf"
+      ],
+      "t": 1780986991000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #15322] Update config migration IT scenario docs (#15335)"
+    },
+    {
+      "h": "9a086e9cdf",
+      "parents": [
+        "b3fd6634cc"
+      ],
+      "t": 1780983659000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14879] Remove legacy Spring integration tests (#15337)"
+    },
+    {
+      "h": "b3fd6634cc",
+      "parents": [
+        "3632255ec8"
+      ],
+      "t": 1780971173000,
+      "author": "dev-3f19050b",
+      "subject": "[ISSUE #15279]feat(lock): implement distributed reentrant/non-reentrant lock (#1"
+    },
+    {
+      "h": "3632255ec8",
+      "parents": [
+        "386f98f740"
+      ],
+      "t": 1780970044000,
+      "author": "dev-632a948c",
+      "subject": "Add core residual maintainer SDK integration tests (#15328)"
+    },
+    {
+      "h": "386f98f740",
+      "parents": [
+        "fa4f39e0c0"
+      ],
+      "t": 1780969346000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #15322] Remove config migration persistence layer (#15329)"
+    },
+    {
+      "h": "fa4f39e0c0",
+      "parents": [
+        "17cec09b27"
+      ],
+      "t": 1780908957000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #15322] Sync logback adapter packagingData configuration (#15327)"
+    },
+    {
+      "h": "17cec09b27",
+      "parents": [
+        "053a7ffb20"
+      ],
+      "t": 1780905024000,
+      "author": "dev-632a948c",
+      "subject": "Add AI ZIP maintainer SDK integration tests (#15326)"
+    },
+    {
+      "h": "053a7ffb20",
+      "parents": [
+        "5492ee1816"
+      ],
+      "t": 1780903808000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #15322] Remove config migration server code (#15325)"
+    },
+    {
+      "h": "5492ee1816",
+      "parents": [
+        "f4b4a73785"
+      ],
+      "t": 1780901079000,
+      "author": "dev-632a948c",
+      "subject": "Add config clone maintainer SDK integration tests (#15324)"
+    },
+    {
+      "h": "f4b4a73785",
+      "parents": [
+        "d46813d6af"
+      ],
+      "t": 1780896787000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #15322] Update specs for config migration removal (#15323)"
+    },
+    {
+      "h": "d46813d6af",
+      "parents": [
+        "ea17ef89f3"
+      ],
+      "t": 1780896654000,
+      "author": "dev-632a948c",
+      "subject": "Add AI maintainer SDK integration tests (#15320)"
+    },
+    {
+      "h": "ea17ef89f3",
+      "parents": [
+        "e3a1b6f525"
+      ],
+      "t": 1780887931000,
+      "author": "dev-691df7fc",
+      "subject": "fix: normalize null agentName in a2a (#15318)"
+    },
+    {
+      "h": "e3a1b6f525",
+      "parents": [
+        "b1ba4ab54f"
+      ],
+      "t": 1780886350000,
+      "author": "dev-632a948c",
+      "subject": "Add naming maintainer residual IT coverage (#15319)"
+    },
+    {
+      "h": "b1ba4ab54f",
+      "parents": [
+        "fd5114fdae"
+      ],
+      "t": 1780882712000,
+      "author": "dev-632a948c",
+      "subject": "Cover naming maintainer SDK integration scenarios (#15312)"
+    },
+    {
+      "h": "fd5114fdae",
+      "parents": [
+        "ab26787a53"
+      ],
+      "t": 1780639260000,
+      "author": "dev-f3db8743",
+      "subject": "[ISSUE #15032] Fix TCP health-check channel leak and member IP prefix match (#15"
+    },
+    {
+      "h": "ab26787a53",
+      "parents": [
+        "b127f69a5f"
+      ],
+      "t": 1780637460000,
+      "author": "dev-632a948c",
+      "subject": "Cover config maintainer SDK integration scenarios (#15311)"
+    },
+    {
+      "h": "b127f69a5f",
+      "parents": [
+        "fc27203421"
+      ],
+      "t": 1780630928000,
+      "author": "dev-632a948c",
+      "subject": "Cover core maintainer SDK integration scenarios (#15310)"
+    },
+    {
+      "h": "fc27203421",
+      "parents": [
+        "269186b709"
+      ],
+      "t": 1780626613000,
+      "author": "dev-632a948c",
+      "subject": "Add maintainer SDK integration test skeleton (#15308)"
+    },
+    {
+      "h": "269186b709",
+      "parents": [
+        "3f9192f3e0"
+      ],
+      "t": 1780576416000,
+      "author": "dev-632a948c",
+      "subject": "Standardize OpenAPI IT coverage reporting (#15307)"
+    },
+    {
+      "h": "3f9192f3e0",
+      "parents": [
+        "76641c3220"
+      ],
+      "t": 1780575923000,
+      "author": "dev-838a4289",
+      "subject": "fix(15265): AI skill list rejects skillName used as a query condition when it st"
+    },
+    {
+      "h": "76641c3220",
+      "parents": [
+        "cd38d26b0a"
+      ],
+      "t": 1780571598000,
+      "author": "dev-632a948c",
+      "subject": "Add residual Java SDK fuzzy watch IT (#15306)"
+    },
+    {
+      "h": "cd38d26b0a",
+      "parents": [
+        "36367b5072"
+      ],
+      "t": 1780562573000,
+      "author": "dev-632a948c",
+      "subject": "Add Java SDK residual IT scenarios (#15304)"
+    },
+    {
+      "h": "36367b5072",
+      "parents": [
+        "02c9e73d7b"
+      ],
+      "t": 1780558388000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #15305] Fix legacy Admin API compatibility spec (#15303)"
+    },
+    {
+      "h": "02c9e73d7b",
+      "parents": [
+        "1409c2c918"
+      ],
+      "t": 1780558364000,
+      "author": "dev-632a948c",
+      "subject": "Add Java SDK AI IT scenarios (#15302)"
+    },
+    {
+      "h": "1409c2c918",
+      "parents": [
+        "093721bfe6"
+      ],
+      "t": 1780551240000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14879] Expand Java SDK IT phase 2 coverage (#15301)"
+    },
+    {
+      "h": "093721bfe6",
+      "parents": [
+        "ed91db5227"
+      ],
+      "t": 1780541332000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14879] Expand Java SDK IT phase 1 coverage (#15300)"
+    },
+    {
+      "h": "ed91db5227",
+      "parents": [
+        "e3e28cd8e7"
+      ],
+      "t": 1780471850000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14879] Refine test module IT layout (#15298)"
+    },
+    {
+      "h": "e3e28cd8e7",
+      "parents": [
+        "1ef18a94a8"
+      ],
+      "t": 1780453255000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14879] Add Java SDK integration test module (#15295)"
+    },
+    {
+      "h": "1ef18a94a8",
+      "parents": [
+        "d8f36c028c"
+      ],
+      "t": 1780397479000,
+      "author": "dev-632a948c",
+      "subject": "Add AI registry unit coverage (#15294)"
+    },
+    {
+      "h": "d8f36c028c",
+      "parents": [
+        "6d9b0ea66e"
+      ],
+      "t": 1780385216000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14879] Add API integration test spec (#15293)"
+    },
+    {
+      "h": "6d9b0ea66e",
+      "parents": [
+        "97b122034b"
+      ],
+      "t": 1780383519000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14879] Add console OpenAPI IT coverage (#15290)"
+    },
+    {
+      "h": "97b122034b",
+      "parents": [
+        "6eb7f03f7c"
+      ],
+      "t": 1780368399000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14879] Complete remaining admin OpenAPI IT gaps (#15287)"
+    },
+    {
+      "h": "6eb7f03f7c",
+      "parents": [
+        "60f8797493"
+      ],
+      "t": 1780367933000,
+      "author": "dev-c0c0be19",
+      "subject": "chore(ci): upgrade mvnd to 1.0.6 and fetch checksums from GitHub API (#15284)"
+    },
+    {
+      "h": "60f8797493",
+      "parents": [
+        "e3ff809d92"
+      ],
+      "t": 1780367872000,
+      "author": "dev-b5b05bf1",
+      "subject": "[ISSUE #15275] Copy pg-upgrade-null-tenant-id.sql to distribution/conf (#15286)"
+    },
+    {
+      "h": "e3ff809d92",
+      "parents": [
+        "c71762c14d"
+      ],
+      "t": 1780364659000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14879] Add admin OpenAPI integration tests (#15282)"
+    },
+    {
+      "h": "c71762c14d",
+      "parents": [
+        "92ab494d81"
+      ],
+      "t": 1780307011000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14879] Add client OpenAPI integration tests (#15281)"
+    },
+    {
+      "h": "92ab494d81",
+      "parents": [
+        "cdf4e1b6aa"
+      ],
+      "t": 1780049042000,
+      "author": "dev-632a948c",
+      "subject": "chore(build): bump project revision from 3.2.2 to 3.3.0-SNAPSHOT. (#15274)"
+    },
+    {
+      "h": "cdf4e1b6aa",
+      "parents": [
+        "fe962a65ca"
+      ],
+      "t": 1780035987000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14122] Skip unsupported skills.sh sources (#15271)"
+    },
+    {
+      "h": "fe962a65ca",
+      "parents": [
+        "9299084cbf"
+      ],
+      "t": 1780020320000,
+      "author": "dev-632a948c",
+      "subject": "Stabilize auth and agent spec cache tests (#15270)"
+    },
+    {
+      "h": "9299084cbf",
+      "parents": [
+        "4ac3b7dcbc"
+      ],
+      "t": 1779971553000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #15087] Upgrade safe dependencies and enable default AI importers (#15268"
+    },
+    {
+      "h": "4ac3b7dcbc",
+      "parents": [
+        "2f290dbc50"
+      ],
+      "t": 1779961410000,
+      "author": "dev-632a948c",
+      "subject": "Add since annotations for skill subscription APIs (#15267)"
+    },
+    {
+      "h": "2f290dbc50",
+      "parents": [
+        "0a69ba2430"
+      ],
+      "t": 1779961090000,
+      "author": "dev-26daf6f1",
+      "subject": "[ISSUE #15258] Enable reviewed status by default (#15259)"
+    },
+    {
+      "h": "0a69ba2430",
+      "parents": [
+        "9136e9864f"
+      ],
+      "t": 1779954027000,
+      "author": "dev-e90f7505",
+      "subject": "[ISSUE #15263] Refactor AgentSpec subscription to HTTP polling with 304, and add"
+    },
+    {
+      "h": "9136e9864f",
+      "parents": [
+        "27a14fb47a"
+      ],
+      "t": 1779954004000,
+      "author": "dev-632a948c",
+      "subject": "Add @Since annotations for public APIs (#15266)"
+    },
+    {
+      "h": "27a14fb47a",
+      "parents": [
+        "5932ad2811"
+      ],
+      "t": 1779933188000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14992] Add v3 naming APIs to DistroFilter (#15262)"
+    },
+    {
+      "h": "5932ad2811",
+      "parents": [
+        "6c996d167a"
+      ],
+      "t": 1779869507000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #15138] Add config publish diff confirmation (#15261)"
+    },
+    {
+      "h": "6c996d167a",
+      "parents": [
+        "f2ec3defd9"
+      ],
+      "t": 1779850531000,
+      "author": "dev-f3db8743",
+      "subject": "fix(logging): bind Logger to the declaring class in four places (#15257)"
+    },
+    {
+      "h": "f2ec3defd9",
+      "parents": [
+        "0488f1070f"
+      ],
+      "t": 1779849135000,
+      "author": "dev-29f4b7e7",
+      "subject": "feat(config): support tagv2 gray rules (#15255)"
+    },
+    {
+      "h": "0488f1070f",
+      "parents": [
+        "8f62267f95"
+      ],
+      "t": 1779848009000,
+      "author": "dev-26daf6f1",
+      "subject": "[ISSUE #15152] Fix console namespace switching (#15256)"
+    },
+    {
+      "h": "8f62267f95",
+      "parents": [
+        "7dad51de9f"
+      ],
+      "t": 1779847008000,
+      "author": "dev-632a948c",
+      "subject": "Improve low-cost naming module unit test coverage (#15254)"
+    },
+    {
+      "h": "7dad51de9f",
+      "parents": [
+        "72266fc649"
+      ],
+      "t": 1779782584000,
+      "author": "dev-26daf6f1",
+      "subject": "[ISSUE #15252] Fix console AI resource namespace navigation (#15253)"
+    },
+    {
+      "h": "72266fc649",
+      "parents": [
+        "c326892bf8"
+      ],
+      "t": 1779779459000,
+      "author": "dev-632a948c",
+      "subject": "Improve naming module unit test coverage (#15251)"
+    },
+    {
+      "h": "c326892bf8",
+      "parents": [
+        "ad3bb53623"
+      ],
+      "t": 1779777560000,
+      "author": "dev-632a948c",
+      "subject": "fix(console-ui-next): audit frontend dependencies (#15250)"
+    },
+    {
+      "h": "ad3bb53623",
+      "parents": [
+        "d1810603e3"
+      ],
+      "t": 1779712731000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #15247] Support Skill well-known v0.2 adapter (#15249)"
+    },
+    {
+      "h": "d1810603e3",
+      "parents": [
+        "ce03128829"
+      ],
+      "t": 1779707820000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #15183] Clean up AI import planning docs (#15244)"
+    },
+    {
+      "h": "ce03128829",
+      "parents": [
+        "afda007499"
+      ],
+      "t": 1779707772000,
+      "author": "dev-26daf6f1",
+      "subject": "[ISSUE #15234] Support commit message for skill upload (#15235)"
+    },
+    {
+      "h": "afda007499",
+      "parents": [
+        "1a5386fc69"
+      ],
+      "t": 1779703252000,
+      "author": "dev-df47b5fa",
+      "subject": "[ISSUE #15225] Fix regression of #9461: NPE in ConfigRpcTransportClient.checkLis"
+    },
+    {
+      "h": "1a5386fc69",
+      "parents": [
+        "d8d1992613"
+      ],
+      "t": 1779703249000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #15183] Document AI resource import operations (#15242)"
+    },
+    {
+      "h": "d8d1992613",
+      "parents": [
+        "cec3fa9ebc"
+      ],
+      "t": 1779697671000,
+      "author": "dev-f3db8743",
+      "subject": "fix(client): guard fuzzy-watch future against lost and spurious wakeups (#15228)"
+    },
+    {
+      "h": "cec3fa9ebc",
+      "parents": [
+        "d586daee7d"
+      ],
+      "t": 1779695123000,
+      "author": "dev-63bccbb4",
+      "subject": "For #15240, Fix skill download filename overflow (#15241)"
+    },
+    {
+      "h": "d586daee7d",
+      "parents": [
+        "67c4ca93fb"
+      ],
+      "t": 1779694961000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #15183] Polish AI resource import policies (#15239)"
+    },
+    {
+      "h": "67c4ca93fb",
+      "parents": [
+        "3c523016f5"
+      ],
+      "t": 1779689012000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #15183] Add secure HTTP client for AI importers (#15237)"
+    },
+    {
+      "h": "3c523016f5",
+      "parents": [
+        "b8fe1c2039"
+      ],
+      "t": 1779680755000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #15183] Harden AI importer source endpoints (#15223)"
+    },
+    {
+      "h": "b8fe1c2039",
+      "parents": [
+        "cbf7ad32bd"
+      ],
+      "t": 1779673661000,
+      "author": "dev-26daf6f1",
+      "subject": "[ISSUE #15221] Route AI resource trace logs through trace events (#15222)"
+    },
+    {
+      "h": "cbf7ad32bd",
+      "parents": [
+        "0b932e8367"
+      ],
+      "t": 1779441905000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #15183] Add built-in AI importer presets (#15218)"
+    },
+    {
+      "h": "0b932e8367",
+      "parents": [
+        "eac920cd53"
+      ],
+      "t": 1779429461000,
+      "author": "dev-632a948c",
+      "subject": "Improve plugin module unit test coverage (#15219)"
+    },
+    {
+      "h": "eac920cd53",
+      "parents": [
+        "5b9ccbd806"
+      ],
+      "t": 1779422698000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #15183] Move default AI importers to plugin-default-impl (#15217)"
+    },
+    {
+      "h": "5b9ccbd806",
+      "parents": [
+        "3c1fdb9acf"
+      ],
+      "t": 1779421046000,
+      "author": "dev-26daf6f1",
+      "subject": "docs(skill): update nacos skill registry guidance (#15216)"
+    },
+    {
+      "h": "3c1fdb9acf",
+      "parents": [
+        "2ab05d2096"
+      ],
+      "t": 1779420997000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #15207] Fix MCP console editor regressions (#15214)"
+    },
+    {
+      "h": "2ab05d2096",
+      "parents": [
+        "f7d86cb901"
+      ],
+      "t": 1779367186000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #15183] Support Skill well-known discovery import (#15211)"
+    },
+    {
+      "h": "f7d86cb901",
+      "parents": [
+        "b0aa56047d"
+      ],
+      "t": 1779367166000,
+      "author": "dev-632a948c",
+      "subject": "test: improve plugin module unit test coverage (#15209)"
+    },
+    {
+      "h": "b0aa56047d",
+      "parents": [
+        "b4f1594ae4"
+      ],
+      "t": 1779363957000,
+      "author": "dev-63bccbb4",
+      "subject": "Fix skill meta description sync on upload (#15204)"
+    },
+    {
+      "h": "b4f1594ae4",
+      "parents": [
+        "8da8b89ffb"
+      ],
+      "t": 1779354610000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #15183] Add Skill well-known resource import (#15208)"
+    },
+    {
+      "h": "8da8b89ffb",
+      "parents": [
+        "874533ef7a"
+      ],
+      "t": 1779347355000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #15183] Use source based MCP import UI (#15205)"
+    },
+    {
+      "h": "874533ef7a",
+      "parents": [
+        "01620a0d96"
+      ],
+      "t": 1779347341000,
+      "author": "dev-632a948c",
+      "subject": "Plugin default impl unit coverage (#15203)"
+    },
+    {
+      "h": "01620a0d96",
+      "parents": [
+        "b4b2d07951"
+      ],
+      "t": 1779342036000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #15183] Add MCP registry resource import (#15200)"
+    },
+    {
+      "h": "b4b2d07951",
+      "parents": [
+        "6279bc38fa"
+      ],
+      "t": 1779339390000,
+      "author": "dev-26daf6f1",
+      "subject": "[ISSUE #15145] fix(ai): restrict forcePublish to valid states and add reedit wit"
+    },
+    {
+      "h": "6279bc38fa",
+      "parents": [
+        "1028381bf9"
+      ],
+      "t": 1779280230000,
+      "author": "dev-55e96606",
+      "subject": "[ISSUE #14911] build(plugin): verify LDAP packaging behavior (#15199)"
+    },
+    {
+      "h": "1028381bf9",
+      "parents": [
+        "3c0e4afd06"
+      ],
+      "t": 1779275508000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #15183] Add AI resource import manager APIs (#15193)"
+    },
+    {
+      "h": "3c0e4afd06",
+      "parents": [
+        "6cf8253662"
+      ],
+      "t": 1779272025000,
+      "author": "dev-9998b1fa",
+      "subject": "Prevent PostgreSQL tenant nulls from turning config sync into row explosion (#15"
+    },
+    {
+      "h": "6cf8253662",
+      "parents": [
+        "b5692f87dd"
+      ],
+      "t": 1779271981000,
+      "author": "dev-f3db8743",
+      "subject": "Replace printStackTrace() with proper logging in 3 silent-failure paths (#15194)"
+    },
+    {
+      "h": "b5692f87dd",
+      "parents": [
+        "f57d43b3f3"
+      ],
+      "t": 1779257573000,
+      "author": "dev-55e96606",
+      "subject": "[ISSUE #14911] refactor(plugin/auth): split LDAP into optional plugin and packag"
+    },
+    {
+      "h": "f57d43b3f3",
+      "parents": [
+        "d13b2b40fa"
+      ],
+      "t": 1779256674000,
+      "author": "dev-ede632f3",
+      "subject": "[ISSUE #15160] Fix config change pointcut routing for missing srcType (#15161)"
+    },
+    {
+      "h": "d13b2b40fa",
+      "parents": [
+        "9682c26fae"
+      ],
+      "t": 1779255358000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #15183] Add AI resource import SPI models (#15190)"
+    },
+    {
+      "h": "9682c26fae",
+      "parents": [
+        "fe25525102"
+      ],
+      "t": 1779255283000,
+      "author": "dev-632a948c",
+      "subject": "Fix flaky prompt cache, task manager, and fuzzy watch tests (#15187)"
+    },
+    {
+      "h": "fe25525102",
+      "parents": [
+        "209376bf18"
+      ],
+      "t": 1779255229000,
+      "author": "dev-e90f7505",
+      "subject": "fix(ai): reject submit for non-draft versions (#15191)"
+    },
+    {
+      "h": "209376bf18",
+      "parents": [
+        "f35cf01f9d"
+      ],
+      "t": 1779248800000,
+      "author": "dev-fb4dd77b",
+      "subject": "fix: remove startup bash re-exec logic (#15188)"
+    },
+    {
+      "h": "f35cf01f9d",
+      "parents": [
+        "e88b83ae31"
+      ],
+      "t": 1779246780000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #15183] Add AI resource import plugin spec (#15189)"
+    },
+    {
+      "h": "e88b83ae31",
+      "parents": [
+        "31f8d7240f"
+      ],
+      "t": 1779245395000,
+      "author": "dev-312b0764",
+      "subject": "[ISSUE #15166] fix(core/ai): resolve controller mapping with request context pat"
+    },
+    {
+      "h": "31f8d7240f",
+      "parents": [
+        "e0e0a3ce10"
+      ],
+      "t": 1779194838000,
+      "author": "dev-fb4dd77b",
+      "subject": "fix: make startup script sh compatible (#15178)"
+    },
+    {
+      "h": "e0e0a3ce10",
+      "parents": [
+        "41b7994bf9"
+      ],
+      "t": 1779194767000,
+      "author": "dev-632a948c",
+      "subject": "test: improve config module unit test coverage (#15184)"
+    },
+    {
+      "h": "41b7994bf9",
+      "parents": [
+        "045ffb7dc0"
+      ],
+      "t": 1779193047000,
+      "author": "dev-f3db8743",
+      "subject": "Replace printStackTrace() with proper logging in 2 silent-failure paths (#15179)"
+    },
+    {
+      "h": "045ffb7dc0",
+      "parents": [
+        "025de86d9f"
+      ],
+      "t": 1779192157000,
+      "author": "dev-f3db8743",
+      "subject": "Apply the #14751 check-then-act fix to remaining naming index readers (#15182)"
+    },
+    {
+      "h": "025de86d9f",
+      "parents": [
+        "6e087f4ebd"
+      ],
+      "t": 1779162022000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14816] Add follow-up Nacos SDD specs (#15181)"
+    },
+    {
+      "h": "6e087f4ebd",
+      "parents": [
+        "4ef6eced16"
+      ],
+      "t": 1779159441000,
+      "author": "dev-f3db8743",
+      "subject": "[ISSUE #15171] Re-exec startup scripts under bash when invoked via sh (#15177)"
+    },
+    {
+      "h": "4ef6eced16",
+      "parents": [
+        "682b877d9d"
+      ],
+      "t": 1779158000000,
+      "author": "dev-632a948c",
+      "subject": "test(config): Add unit test coverage to 90% (#15176)"
+    },
+    {
+      "h": "682b877d9d",
+      "parents": [
+        "c177abf3de"
+      ],
+      "t": 1779156110000,
+      "author": "dev-f3db8743",
+      "subject": "[ISSUE #15164] Make skill ZIP entry and size limits configurable (#15169)"
+    },
+    {
+      "h": "c177abf3de",
+      "parents": [
+        "0ed2046c5c"
+      ],
+      "t": 1779104022000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14816] Add additional Nacos specs (#15174)"
+    },
+    {
+      "h": "0ed2046c5c",
+      "parents": [
+        "b57b8e829c"
+      ],
+      "t": 1779102302000,
+      "author": "dev-f3db8743",
+      "subject": "[ISSUE #15141] Send namespaceId / namespaceName on namespace update (#15170)"
+    },
+    {
+      "h": "b57b8e829c",
+      "parents": [
+        "6dff472b3d"
+      ],
+      "t": 1779076400000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14816] Add foundation capability specs (#15168)"
+    },
+    {
+      "h": "6dff472b3d",
+      "parents": [
+        "899d6da22c"
+      ],
+      "t": 1779071883000,
+      "author": "dev-f3db8743",
+      "subject": "[ISSUE #15136] Fix change password menu item not opening dialog in new console ("
+    },
+    {
+      "h": "899d6da22c",
+      "parents": [
+        "b6b0fd29be"
+      ],
+      "t": 1779071782000,
+      "author": "dev-e90f7505",
+      "subject": "fix(ai): default unlisted resources to base64 to avoid utf-8 corruption (#15162)"
+    },
+    {
+      "h": "b6b0fd29be",
+      "parents": [
+        "2077f97fdc"
+      ],
+      "t": 1779069666000,
+      "author": "dev-e90f7505",
+      "subject": "feat(ai): parallelize AgentSpec storage writes aligned with Skill (#15165)"
+    },
+    {
+      "h": "2077f97fdc",
+      "parents": [
+        "91269793ab"
+      ],
+      "t": 1779068546000,
+      "author": "dev-c0c0be19",
+      "subject": "feat(console-ui-next): add .npmrc with min-release-age for supply chain security"
+    },
+    {
+      "h": "91269793ab",
+      "parents": [
+        "e483ec0ca7"
+      ],
+      "t": 1778826997000,
+      "author": "dev-26daf6f1",
+      "subject": "[ISSUE #15142] feat(ai): support drag-and-drop zip upload and batch skill upload"
+    },
+    {
+      "h": "e483ec0ca7",
+      "parents": [
+        "153a6179b7"
+      ],
+      "t": 1778757242000,
+      "author": "dev-26daf6f1",
+      "subject": "[ISSUE #14997] fix(skill): keep SKILL.md indent and validate version (#15155)"
+    },
+    {
+      "h": "153a6179b7",
+      "parents": [
+        "29c2e312ca"
+      ],
+      "t": 1778757197000,
+      "author": "dev-632a948c",
+      "subject": "test(console): raise console module line coverage to 95.19% (#15156)"
+    },
+    {
+      "h": "29c2e312ca",
+      "parents": [
+        "5747abd142"
+      ],
+      "t": 1778736574000,
+      "author": "dev-632a948c",
+      "subject": "test(client): raise client module line coverage to 95.93% (#15153)"
+    },
+    {
+      "h": "5747abd142",
+      "parents": [
+        "ff5be2006f"
+      ],
+      "t": 1778673924000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14816] Add client-side plugin and auth specs (#15149)"
+    },
+    {
+      "h": "ff5be2006f",
+      "parents": [
+        "f781491874"
+      ],
+      "t": 1778663366000,
+      "author": "dev-c0c0be19",
+      "subject": "[ISSUE #15131] Use mvnd (Maven Daemon) in integration-test workflow (#15132)"
+    },
+    {
+      "h": "f781491874",
+      "parents": [
+        "b21d8a215b"
+      ],
+      "t": 1778582064000,
+      "author": "dev-f3db8743",
+      "subject": "[ISSUE #15038] docs(auth): clarify SDK and admin auth scopes (#15134)"
+    },
+    {
+      "h": "b21d8a215b",
+      "parents": [
+        "5b72c15cf7"
+      ],
+      "t": 1778578993000,
+      "author": "dev-632a948c",
+      "subject": "test(client-basic): raise client-basic line coverage to 99.45% (#15139)"
+    },
+    {
+      "h": "5b72c15cf7",
+      "parents": [
+        "5840700b47"
+      ],
+      "t": 1778575440000,
+      "author": "dev-f3db8743",
+      "subject": "fix(config): make ClientIpWhiteList.isOpen volatile and null-safe (#14780)"
+    },
+    {
+      "h": "5840700b47",
+      "parents": [
+        "b60014b5bd"
+      ],
+      "t": 1778574905000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #14816] Add Nacos specification documents (#15140)"
+    },
+    {
+      "h": "b60014b5bd",
+      "parents": [
+        "be6c0378fa"
+      ],
+      "t": 1778572425000,
+      "author": "dev-f3db8743",
+      "subject": "fix(common): use ConcurrentHashMap for fileMd5Map in TlsFileWatcher (#14779)"
+    },
+    {
+      "h": "be6c0378fa",
+      "parents": [
+        "aef35734f8"
+      ],
+      "t": 1778567976000,
+      "author": "dev-632a948c",
+      "subject": "test(sys): raise sys module line coverage to 99.59% (#15137)"
+    },
+    {
+      "h": "aef35734f8",
+      "parents": [
+        "49f645b28a"
+      ],
+      "t": 1778489522000,
+      "author": "dev-c0c0be19",
+      "subject": "ci(workflow): Add frontend (console-ui, console-ui-next) build, lint, and test c"
+    },
+    {
+      "h": "49f645b28a",
+      "parents": [
+        "6271307120"
+      ],
+      "t": 1778466137000,
+      "author": "dev-9762d1d3",
+      "subject": "[ISSUE #14815] build(style): align Checkstyle with Spotless and enable spotless:"
+    },
+    {
+      "h": "6271307120",
+      "parents": [
+        "f085e06392"
+      ],
+      "t": 1778320986000,
+      "author": "dev-f8e7cde6",
+      "subject": "Add RGB fallbacks for console theme colors (#15110)"
+    },
+    {
+      "h": "f085e06392",
+      "parents": [
+        "a8a258c6c0"
+      ],
+      "t": 1778320932000,
+      "author": "dev-9762d1d3",
+      "subject": "[ISSUE #14815] build(style): apply Spotless formatting to small modules (#15111)"
+    },
+    {
+      "h": "a8a258c6c0",
+      "parents": [
+        "980b4a7ba7"
+      ],
+      "t": 1778320931000,
+      "author": "dev-9762d1d3",
+      "subject": "[ISSUE #14815] build(style): apply Spotless formatting to consistency module (#1"
+    },
+    {
+      "h": "980b4a7ba7",
+      "parents": [
+        "ae8e96d7c7"
+      ],
+      "t": 1778320924000,
+      "author": "dev-9762d1d3",
+      "subject": "[ISSUE #14815] build(style): apply Spotless formatting to lock module (#15113)"
+    },
+    {
+      "h": "ae8e96d7c7",
+      "parents": [
+        "0a1cae0ffe"
+      ],
+      "t": 1778320922000,
+      "author": "dev-9762d1d3",
+      "subject": "[ISSUE #14815] build(style): apply Spotless formatting to ai-registry-adaptor mo"
+    },
+    {
+      "h": "0a1cae0ffe",
+      "parents": [
+        "7dee0e036e"
+      ],
+      "t": 1778320892000,
+      "author": "dev-9762d1d3",
+      "subject": "[ISSUE #14815] build(style): apply Spotless formatting to persistence and auth m"
+    },
+    {
+      "h": "7dee0e036e",
+      "parents": [
+        "21935c5e0e"
+      ],
+      "t": 1778320876000,
+      "author": "dev-9762d1d3",
+      "subject": "[ISSUE #14815] build(style): apply Spotless formatting to copilot and sys module"
+    },
+    {
+      "h": "21935c5e0e",
+      "parents": [
+        "2f4b549d33"
+      ],
+      "t": 1778317545000,
+      "author": "dev-9762d1d3",
+      "subject": "[ISSUE #14815] build(style): apply Spotless formatting to ai module (#15109)"
+    },
+    {
+      "h": "2f4b549d33",
+      "parents": [
+        "1bf6e2e1cf"
+      ],
+      "t": 1778317523000,
+      "author": "dev-9762d1d3",
+      "subject": "[ISSUE #14815] build(style): apply Spotless formatting to maintainer-client modu"
+    },
+    {
+      "h": "1bf6e2e1cf",
+      "parents": [
+        "f8237f314f"
+      ],
+      "t": 1778317509000,
+      "author": "dev-9762d1d3",
+      "subject": "[ISSUE #14815] build(style): apply Spotless formatting to console module (#15107"
+    },
+    {
+      "h": "f8237f314f",
+      "parents": [
+        "cd935c943b"
+      ],
+      "t": 1778317495000,
+      "author": "dev-9762d1d3",
+      "subject": "[ISSUE #14815] build(style): apply Spotless formatting to plugin module (#15106)"
+    },
+    {
+      "h": "cd935c943b",
+      "parents": [
+        "9ae296ba65"
+      ],
+      "t": 1778317482000,
+      "author": "dev-9762d1d3",
+      "subject": "[ISSUE #14815] build(style): apply Spotless formatting to plugin-default-impl mo"
+    },
+    {
+      "h": "9ae296ba65",
+      "parents": [
+        "df256a0ab2"
+      ],
+      "t": 1778317449000,
+      "author": "dev-9762d1d3",
+      "subject": "[ISSUE #14815] build(style): apply Spotless formatting to common module (#15103)"
+    },
+    {
+      "h": "df256a0ab2",
+      "parents": [
+        "fdae083219"
+      ],
+      "t": 1778311610000,
+      "author": "dev-ebefeba2",
+      "subject": "[ISSUE #14848] Add download Prompt version as Markdown feature (#15057)"
+    },
+    {
+      "h": "fdae083219",
+      "parents": [
+        "c57def9078"
+      ],
+      "t": 1778310037000,
+      "author": "dev-9762d1d3",
+      "subject": "docs: remove ineffective -DskipITs flag from pre-submission commands (#15098)"
+    },
+    {
+      "h": "c57def9078",
+      "parents": [
+        "c86bb4199c"
+      ],
+      "t": 1778310001000,
+      "author": "dev-9762d1d3",
+      "subject": "[ISSUE #14815] build(style): apply Spotless formatting to core module (#15096)"
+    },
+    {
+      "h": "c86bb4199c",
+      "parents": [
+        "76a53ffcf2"
+      ],
+      "t": 1778306946000,
+      "author": "dev-9762d1d3",
+      "subject": "[ISSUE #14815] build(style): apply Spotless formatting to naming module (#15099)"
+    },
+    {
+      "h": "76a53ffcf2",
+      "parents": [
+        "0882f2abaf"
+      ],
+      "t": 1778306943000,
+      "author": "dev-9762d1d3",
+      "subject": "[ISSUE #14815] build(style): apply Spotless formatting to config module (#15100)"
+    },
+    {
+      "h": "0882f2abaf",
+      "parents": [
+        "260e450350"
+      ],
+      "t": 1778292129000,
+      "author": "dev-9762d1d3",
+      "subject": "[ISSUE #14815] fix(style): change continuation_indentation from 2 to 1 (#15092)"
+    },
+    {
+      "h": "260e450350",
+      "parents": [
+        "9e800b32a4"
+      ],
+      "t": 1778239661000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE #15037] Fix history namespace parameter (#15088)"
+    },
+    {
+      "h": "9e800b32a4",
+      "parents": [
+        "ff428757b7"
+      ],
+      "t": 1778239353000,
+      "author": "dev-f3db8743",
+      "subject": "fix(plugin/control): preserve multi-byte UTF-8 chars across DiskUtils chunk boun"
+    },
+    {
+      "h": "ff428757b7",
+      "parents": [
+        "a5da38f6d5"
+      ],
+      "t": 1778238937000,
+      "author": "dev-c789bfc2",
+      "subject": "[AI] Fix missing writeLock in MemoryMcpCacheIndex#removeIndex (data race) (#1506"
+    },
+    {
+      "h": "a5da38f6d5",
+      "parents": [
+        "5dd475b15e"
+      ],
+      "t": 1778238560000,
+      "author": "dev-632a948c",
+      "subject": "Merge pull request #15079 from KomachiSion/coverage/api-100"
+    },
+    {
+      "h": "5dd475b15e",
+      "parents": [
+        "ccbd6167f5",
+        "7458f8aeb1"
+      ],
+      "t": 1778238445000,
+      "author": "dev-632a948c",
+      "subject": "Merge pull request #15030 from xuxiaowei-com-cn/xuxiaowei/function_mode"
+    },
+    {
+      "h": "ccbd6167f5",
+      "parents": [
+        "e54e460164"
+      ],
+      "t": 1778238101000,
+      "author": "dev-f3db8743",
+      "subject": "fix(sys): make DiskUtils.readFile correct for multi-byte UTF-8 (#15068)"
+    },
+    {
+      "h": "e54e460164",
+      "parents": [
+        "f8f079d6ff"
+      ],
+      "t": 1778234231000,
+      "author": "dev-9762d1d3",
+      "subject": "build(style): apply Spotless formatting to client module (#15083)"
+    },
+    {
+      "h": "f8f079d6ff",
+      "parents": [
+        "41928991b7"
+      ],
+      "t": 1778234215000,
+      "author": "dev-9762d1d3",
+      "subject": "build(style): apply Spotless formatting to k8s-sync and istio modules (#15085)"
+    },
+    {
+      "h": "41928991b7",
+      "parents": [
+        "e0f3509d6b"
+      ],
+      "t": 1778233751000,
+      "author": "dev-9762d1d3",
+      "subject": "build(style): apply Spotless formatting to client-basic module (#15082)"
+    },
+    {
+      "h": "e0f3509d6b",
+      "parents": [
+        "b538216e43"
+      ],
+      "t": 1778230189000,
+      "author": "dev-c789bfc2",
+      "subject": "[AI] SkillZipParser: throw NacosRuntimeException for security-limit violations ("
+    },
+    {
+      "h": "b538216e43",
+      "parents": [
+        "7340b15614"
+      ],
+      "t": 1778228738000,
+      "author": "dev-c789bfc2",
+      "subject": "[AI] Harden AgentSpecZipParser against Zip Slip / Zip Bomb / entry-count DoS (#1"
+    },
+    {
+      "h": "7340b15614",
+      "parents": [
+        "a95d447095"
+      ],
+      "t": 1778226036000,
+      "author": "dev-9762d1d3",
+      "subject": "ci(workflow): simplify issue-assign workflow (#15074)"
+    },
+    {
+      "h": "a95d447095",
+      "parents": [
+        "3853ee8d4e"
+      ],
+      "t": 1778205598000,
+      "author": "dev-3d14e710",
+      "subject": "fix(deps): bump micrometer.version from 1.12.8 to 1.15.10 (#15060)"
+    },
+    {
+      "h": "7458f8aeb1",
+      "parents": [
+        "36920ecf7e",
+        "281129ab42"
+      ],
+      "t": 1778174236000,
+      "author": "dev-c0c0be19",
+      "subject": "Merge PR #14989 (console-ai-registry-switch) into xuxiaowei/function_mode"
+    },
+    {
+      "h": "36920ecf7e",
+      "parents": [
+        "68d0aa5c36"
+      ],
+      "t": 1778157824000,
+      "author": "dev-c0c0be19",
+      "subject": "feat(ui): build"
+    },
+    {
+      "h": "68d0aa5c36",
+      "parents": [
+        "4baa7eb6e5",
+        "3853ee8d4e"
+      ],
+      "t": 1778156172000,
+      "author": "dev-c0c0be19",
+      "subject": "Merge remote-tracking branch 'alibaba/develop' into xuxiaowei/function_mode"
+    },
+    {
+      "h": "3853ee8d4e",
+      "parents": [
+        "83a89ece70"
+      ],
+      "t": 1778153108000,
+      "author": "dev-f3db8743",
+      "subject": "fix(datasource): add missing ? placeholder for group_id LIKE in BaseConfigInfoMa"
+    },
+    {
+      "h": "83a89ece70",
+      "parents": [
+        "ab8b49c54b"
+      ],
+      "t": 1778153076000,
+      "author": "dev-f3db8743",
+      "subject": "[ISSUE #14774] fix(plugin/oidc): shade Caffeine into plugin jar to avoid NoClass"
+    },
+    {
+      "h": "ab8b49c54b",
+      "parents": [
+        "052df6cb23"
+      ],
+      "t": 1778153033000,
+      "author": "dev-f3db8743",
+      "subject": "fix(auth): make NacosServerAuthConfig plugin map volatile and read once (#15002)"
+    },
+    {
+      "h": "052df6cb23",
+      "parents": [
+        "7e1a9e8a88"
+      ],
+      "t": 1778152945000,
+      "author": "dev-f3db8743",
+      "subject": "fix(auth): make AuthConfigs plugin map volatile and read once (#15003)"
+    },
+    {
+      "h": "7e1a9e8a88",
+      "parents": [
+        "0410362841"
+      ],
+      "t": 1778152902000,
+      "author": "dev-c0c0be19",
+      "subject": "fix(config): replace deprecated AccessControlException with SecurityException (#"
+    },
+    {
+      "h": "0410362841",
+      "parents": [
+        "840ad82da8"
+      ],
+      "t": 1778152626000,
+      "author": "dev-26daf6f1",
+      "subject": "[ISSUE #15059]add 'reviewed' status to skill version lifecycle after pipeline ap"
+    },
+    {
+      "h": "840ad82da8",
+      "parents": [
+        "7da68f92f2"
+      ],
+      "t": 1778152142000,
+      "author": "dev-f3db8743",
+      "subject": "fix(plugin/control): allocate CharsetDecoder per call in DiskUtils.readFile (#15"
+    },
+    {
+      "h": "7da68f92f2",
+      "parents": [
+        "ae97ce2eeb"
+      ],
+      "t": 1778152133000,
+      "author": "dev-9762d1d3",
+      "subject": "build(style): integrate Spotless Maven Plugin with Eclipse JDT Formatter (#15061"
+    },
+    {
+      "h": "4baa7eb6e5",
+      "parents": [
+        "d0c1b6946a"
+      ],
+      "t": 1778146157000,
+      "author": "dev-c0c0be19",
+      "subject": "feat: add AI function mode support across all modules"
+    },
+    {
+      "h": "d0c1b6946a",
+      "parents": [
+        "f6f670d8ca"
+      ],
+      "t": 1778145871000,
+      "author": "dev-c0c0be19",
+      "subject": "feat(console): add microservice function mode support in NacosConsoleStartUp"
+    },
+    {
+      "h": "f6f670d8ca",
+      "parents": [
+        "6cc73aecda"
+      ],
+      "t": 1778141543000,
+      "author": "dev-c0c0be19",
+      "subject": "feat(console-ui-next): add dynamic default redirect based on function mode"
+    },
+    {
+      "h": "6cc73aecda",
+      "parents": [
+        "2bcdf7bd38"
+      ],
+      "t": 1778140247000,
+      "author": "dev-c0c0be19",
+      "subject": "feat(distribution): add microservice function mode support in startup.cmd"
+    },
+    {
+      "h": "2bcdf7bd38",
+      "parents": [
+        "bb3f3df225"
+      ],
+      "t": 1778137855000,
+      "author": "dev-c0c0be19",
+      "subject": "refactor(core): rename function mode from simple to microservice"
+    },
+    {
+      "h": "ae97ce2eeb",
+      "parents": [
+        "c77e6c2758"
+      ],
+      "t": 1778125555000,
+      "author": "dev-bd5a8d6c",
+      "subject": "chore(deps): bump org.postgresql:postgresql from 42.7.2 to 42.7.11 (#15039)"
+    },
+    {
+      "h": "c77e6c2758",
+      "parents": [
+        "afba480b61"
+      ],
+      "t": 1778125098000,
+      "author": "dev-3f65f6c9",
+      "subject": "feat(console):Add persistent instance deregistration support in Console v3 (#149"
+    },
+    {
+      "h": "afba480b61",
+      "parents": [
+        "76efd5a06f"
+      ],
+      "t": 1778123974000,
+      "author": "dev-c789bfc2",
+      "subject": "[ISSUE#14907] feat(ai): support targetVersion parameter for skill upload API  (#"
+    },
+    {
+      "h": "76efd5a06f",
+      "parents": [
+        "54558c652e"
+      ],
+      "t": 1778123318000,
+      "author": "dev-f3db8743",
+      "subject": "[ISSUE#11122] fix(naming): accept healthCheckEnabled as switch entry alias (#149"
+    },
+    {
+      "h": "54558c652e",
+      "parents": [
+        "e21cb343ee"
+      ],
+      "t": 1778123265000,
+      "author": "dev-f3db8743",
+      "subject": "fix(auth): make AbstractCachedUserService userMap volatile (#14996)"
+    },
+    {
+      "h": "e21cb343ee",
+      "parents": [
+        "83541b2add"
+      ],
+      "t": 1778123196000,
+      "author": "dev-f3db8743",
+      "subject": "fix(auth): read cached map once in remote auth services to avoid TOCTOU (#14998)"
+    },
+    {
+      "h": "83541b2add",
+      "parents": [
+        "67885da801"
+      ],
+      "t": 1778122681000,
+      "author": "dev-29f4b7e7",
+      "subject": "Add optional skill auto publish after review (#15022)"
+    },
+    {
+      "h": "bb3f3df225",
+      "parents": [
+        "67885da801"
+      ],
+      "t": 1778000951000,
+      "author": "dev-c0c0be19",
+      "subject": "feat(core): add simple function mode and Makefile for development"
+    },
+    {
+      "h": "281129ab42",
+      "parents": [
+        "d91b339cc2"
+      ],
+      "t": 1777475651000,
+      "author": "dev-2f2171fc",
+      "subject": "refactor(console): 在EnabledAiHandler注解上统一添加@Conditional(ConditionAiEnabled.class"
+    },
+    {
+      "h": "67885da801",
+      "parents": [
+        "5b3d39ac8a"
+      ],
+      "t": 1777427928000,
+      "author": "dev-f3db8743",
+      "subject": "fix(config): assign switches once after parsing in SwitchService.load (#14987)"
+    },
+    {
+      "h": "5b3d39ac8a",
+      "parents": [
+        "c6af9bd9e4"
+      ],
+      "t": 1777427014000,
+      "author": "dev-f3db8743",
+      "subject": "fix(config): make ConfigChangeConfigs plugin map volatile and read once (#14988)"
+    },
+    {
+      "h": "c6af9bd9e4",
+      "parents": [
+        "7a66f89b80"
+      ],
+      "t": 1777357712000,
+      "author": "dev-632a948c",
+      "subject": "test(sys): add unit tests to improve coverage for missing lines (#14991)"
+    },
+    {
+      "h": "d91b339cc2",
+      "parents": [
+        "7a66f89b80"
+      ],
+      "t": 1777277504000,
+      "author": "dev-2f2171fc",
+      "subject": "feat(console): support disabling AI registry"
+    },
+    {
+      "h": "7a66f89b80",
+      "parents": [
+        "b859225f2e"
+      ],
+      "t": 1777019997000,
+      "author": "dev-632a948c",
+      "subject": "fix(skill): enforce markdown body presence excluding frontmatter in skill valida"
+    },
+    {
+      "h": "b859225f2e",
+      "parents": [
+        "b6135c439e"
+      ],
+      "t": 1777018925000,
+      "author": "dev-c789bfc2",
+      "subject": "[ISSUE#14952] fix(console-ui-next): fix incorrect protocol value when restToMcp "
+    },
+    {
+      "h": "b6135c439e",
+      "parents": [
+        "0513df6ad3"
+      ],
+      "t": 1777018847000,
+      "author": "dev-f3db8743",
+      "subject": "fix(common): compare VersionUtils version parts numerically (#14978)"
+    },
+    {
+      "h": "0513df6ad3",
+      "parents": [
+        "7e632739fe"
+      ],
+      "t": 1777018822000,
+      "author": "dev-f3db8743",
+      "subject": "fix(core): use ConcurrentHashMap for ExtractorManager caches (#14977)"
+    },
+    {
+      "h": "7e632739fe",
+      "parents": [
+        "1749136f56"
+      ],
+      "t": 1777018802000,
+      "author": "dev-f3db8743",
+      "subject": "fix(naming): apply enableStandalone switch only when value is non-empty (#14976)"
+    },
+    {
+      "h": "1749136f56",
+      "parents": [
+        "fa05d6e62e"
+      ],
+      "t": 1776995462000,
+      "author": "dev-3f65f6c9",
+      "subject": "fix(common):fix mcpName length validation error message (#14971)"
+    },
+    {
+      "h": "fa05d6e62e",
+      "parents": [
+        "9e868facee"
+      ],
+      "t": 1776946034000,
+      "author": "dev-632a948c",
+      "subject": "chore(build): remove SNAPSHOT from project revision. (#14975)"
+    },
+    {
+      "h": "9e868facee",
+      "parents": [
+        "b89e83c92f"
+      ],
+      "t": 1776946022000,
+      "author": "dev-e90f7505",
+      "subject": "fix(ai): return variables field in prompt http client api (#14974)"
+    },
+    {
+      "h": "b89e83c92f",
+      "parents": [
+        "3409650e47"
+      ],
+      "t": 1776835947000,
+      "author": "dev-e90f7505",
+      "subject": "Add agentspec version meta API to skip resource content IO (#14967)"
+    },
+    {
+      "h": "3409650e47",
+      "parents": [
+        "7e2fbc9316"
+      ],
+      "t": 1776835911000,
+      "author": "dev-c789bfc2",
+      "subject": "[BUG] Fix cross-thread visibility and race conditions for ManagerListenerWrap in"
+    },
+    {
+      "h": "7e2fbc9316",
+      "parents": [
+        "85780c779c"
+      ],
+      "t": 1776835796000,
+      "author": "dev-e90f7505",
+      "subject": "[ISSUE #14949] Normalize SKILL.md frontmatter on create and edit (#14966)"
+    },
+    {
+      "h": "85780c779c",
+      "parents": [
+        "18c8e0a181"
+      ],
+      "t": 1776762507000,
+      "author": "dev-c789bfc2",
+      "subject": "Fix equals and hashCode contract violation in ManagerListenerWrap (#14959)"
+    },
+    {
+      "h": "18c8e0a181",
+      "parents": [
+        "3410b6114a"
+      ],
+      "t": 1776680265000,
+      "author": "dev-e90f7505",
+      "subject": "feat(ai): Switch AgentSpec versioning to semver and support user-specified targe"
+    },
+    {
+      "h": "3410b6114a",
+      "parents": [
+        "a922686804"
+      ],
+      "t": 1776675939000,
+      "author": "dev-26daf6f1",
+      "subject": "feat(ai,console): skill version commitMsg lifecycle, owner in metadata, and bund"
+    },
+    {
+      "h": "a922686804",
+      "parents": [
+        "e7c2b7bc5d"
+      ],
+      "t": 1776668127000,
+      "author": "dev-e90f7505",
+      "subject": "feat(ai): Support multi-namespace prompt migration and legacy data cleanup (#149"
+    },
+    {
+      "h": "e7c2b7bc5d",
+      "parents": [
+        "3cf4aa3502"
+      ],
+      "t": 1776654429000,
+      "author": "dev-c0c0be19",
+      "subject": "chore(deps): spring-boot upgrade from 3.4.10 to 3.5.13 (#14955)"
+    },
+    {
+      "h": "3cf4aa3502",
+      "parents": [
+        "3e64689da5"
+      ],
+      "t": 1776654139000,
+      "author": "dev-632a948c",
+      "subject": "Develop bump UI depend (#14957)"
+    },
+    {
+      "h": "3e64689da5",
+      "parents": [
+        "f7029bd4ab"
+      ],
+      "t": 1776652507000,
+      "author": "dev-c789bfc2",
+      "subject": "[Bug] Fix TOCTOU race condition and unsafe lazy init in CacheItem.initConfigGray"
+    },
+    {
+      "h": "f7029bd4ab",
+      "parents": [
+        "d0408fe418"
+      ],
+      "t": 1776652200000,
+      "author": "dev-4e7e3372",
+      "subject": "fix(skill): Align Next console Create Skill name validation with backend param c"
+    },
+    {
+      "h": "d0408fe418",
+      "parents": [
+        "7a172cce8b"
+      ],
+      "t": 1776652139000,
+      "author": "dev-ab4bea84",
+      "subject": "Add code coverage badge to README (#14948)"
+    },
+    {
+      "h": "7a172cce8b",
+      "parents": [
+        "b0b84af580"
+      ],
+      "t": 1776308455000,
+      "author": "dev-632a948c",
+      "subject": "[coverage] Add unit tests for maintainer-client AI module interface default meth"
+    },
+    {
+      "h": "b0b84af580",
+      "parents": [
+        "c67aef3e6a"
+      ],
+      "t": 1776305445000,
+      "author": "dev-054de6f9",
+      "subject": "feat: 添加 MCP 服务器资源规范支持 (#14796)"
+    },
+    {
+      "h": "c67aef3e6a",
+      "parents": [
+        "106c5b6551"
+      ],
+      "t": 1776247211000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE#14621] feat(a2a): unify and normalize supported interfaces in agent card "
+    },
+    {
+      "h": "106c5b6551",
+      "parents": [
+        "9b575a2c9e"
+      ],
+      "t": 1776235001000,
+      "author": "dev-c789bfc2",
+      "subject": "[Bug] Fix TOCTOU race condition and thread leak in ClientWorker.ensureSyncExecut"
+    },
+    {
+      "h": "9b575a2c9e",
+      "parents": [
+        "aee00f1ac9"
+      ],
+      "t": 1776233012000,
+      "author": "dev-c789bfc2",
+      "subject": "Merge pull request #14928 from LiyunZhang10/fix-remove-subscriber-indexes-race"
+    },
+    {
+      "h": "aee00f1ac9",
+      "parents": [
+        "0321d8344f",
+        "156c30f4a2"
+      ],
+      "t": 1776231030000,
+      "author": "dev-632a948c",
+      "subject": "Merge pull request #14930 from alibaba/develop-new-it"
+    },
+    {
+      "h": "156c30f4a2",
+      "parents": [
+        "c9727671c8"
+      ],
+      "t": 1776231003000,
+      "author": "dev-632a948c",
+      "subject": "Potential fix for pull request finding 'CodeQL / Workflow does not contain permi"
+    },
+    {
+      "h": "c9727671c8",
+      "parents": [
+        "69b7bfa766"
+      ],
+      "t": 1776223582000,
+      "author": "dev-632a948c",
+      "subject": "ci(workflow): disable authentication for server start in integration test."
+    },
+    {
+      "h": "69b7bfa766",
+      "parents": [
+        "46e9ab4fc7"
+      ],
+      "t": 1776222985000,
+      "author": "dev-632a948c",
+      "subject": "test(ai): improve A2A admin API integration tests and fix config open API retrie"
+    },
+    {
+      "h": "46e9ab4fc7",
+      "parents": [
+        "1e1b1387e1",
+        "0321d8344f"
+      ],
+      "t": 1776219551000,
+      "author": "dev-632a948c",
+      "subject": "Sync develop to new it branch (#14929)"
+    },
+    {
+      "h": "0321d8344f",
+      "parents": [
+        "4a40e4e8b6"
+      ],
+      "t": 1776144758000,
+      "author": "dev-f3db8743",
+      "subject": "fix(config): add null check for optional ids parameter in exportConfigV2 (#14918"
+    },
+    {
+      "h": "4a40e4e8b6",
+      "parents": [
+        "4be961b4c4"
+      ],
+      "t": 1776144703000,
+      "author": "dev-f3db8743",
+      "subject": "fix(auth): reject login with LDAP-prefixed usernames to prevent auth bypass (#14"
+    },
+    {
+      "h": "4be961b4c4",
+      "parents": [
+        "e304bc5770"
+      ],
+      "t": 1776144684000,
+      "author": "dev-f3db8743",
+      "subject": "fix(auth): fix race conditions in CachedJwtTokenManager (#14916)"
+    },
+    {
+      "h": "e304bc5770",
+      "parents": [
+        "5c22d0c95c"
+      ],
+      "t": 1776144651000,
+      "author": "dev-f3db8743",
+      "subject": "fix(config): add null check for metaDataItem in config import (#14917)"
+    },
+    {
+      "h": "5c22d0c95c",
+      "parents": [
+        "bb39b401fc"
+      ],
+      "t": 1776144628000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE#14621] refactor(ai): enhance agent card change detection and improve grpc"
+    },
+    {
+      "h": "bb39b401fc",
+      "parents": [
+        "007bb1136e"
+      ],
+      "t": 1776081843000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE#14621] feat(a2a): support protocolVersion and tenant in agent endpoints f"
+    },
+    {
+      "h": "007bb1136e",
+      "parents": [
+        "fd75ff7398"
+      ],
+      "t": 1776078068000,
+      "author": "dev-632a948c",
+      "subject": "feat(ai): For#14621 normalize and validate AgentCard with supported interfaces. "
+    },
+    {
+      "h": "fd75ff7398",
+      "parents": [
+        "967f6a50ab"
+      ],
+      "t": 1776071817000,
+      "author": "dev-632a948c",
+      "subject": "feat(ai): For#14621 add support for A2A AgentCard v1 protocol and extended agent"
+    },
+    {
+      "h": "967f6a50ab",
+      "parents": [
+        "efd609f644"
+      ],
+      "t": 1776061539000,
+      "author": "dev-632a948c",
+      "subject": "Fix prompt get default scope problem (#14919)"
+    },
+    {
+      "h": "efd609f644",
+      "parents": [
+        "d4c85c2951"
+      ],
+      "t": 1776051370000,
+      "author": "dev-26daf6f1",
+      "subject": "feat(ai): support filtering skills by bizTag in list API and console UIFeat/bizt"
+    },
+    {
+      "h": "d4c85c2951",
+      "parents": [
+        "1d8f6dd804"
+      ],
+      "t": 1776051161000,
+      "author": "dev-632a948c",
+      "subject": "test(common): add tests to improve line coverage to 96.47% (#14914)"
+    },
+    {
+      "h": "1d8f6dd804",
+      "parents": [
+        "b1a79918c6"
+      ],
+      "t": 1776049165000,
+      "author": "dev-f3db8743",
+      "subject": "fix(naming): do not force clusterName to DEFAULT in v3 HTTP API (#14778)"
+    },
+    {
+      "h": "b1a79918c6",
+      "parents": [
+        "ec6276399b"
+      ],
+      "t": 1776048064000,
+      "author": "dev-929c98a6",
+      "subject": "[ISSUE #14908] fix(ai): SkillRemoteHandler#createDraft passes skillCard as targe"
+    },
+    {
+      "h": "ec6276399b",
+      "parents": [
+        "21f3c8dea0"
+      ],
+      "t": 1776047103000,
+      "author": "dev-c0c0be19",
+      "subject": "feat(checkstyle): fix maven-checkstyle-plugin inputEncoding (#14906)"
+    },
+    {
+      "h": "21f3c8dea0",
+      "parents": [
+        "9a557a751d"
+      ],
+      "t": 1776047073000,
+      "author": "dev-bd5a8d6c",
+      "subject": "chore(deps): bump org.apache.logging.log4j:log4j-core (#14910)"
+    },
+    {
+      "h": "9a557a751d",
+      "parents": [
+        "3fec3ce284"
+      ],
+      "t": 1776047009000,
+      "author": "dev-3e7ff642",
+      "subject": "feat(console): add OIDC/OAuth2 SSO login support for both legacy and next consol"
+    },
+    {
+      "h": "3fec3ce284",
+      "parents": [
+        "31d5f1dffd"
+      ],
+      "t": 1775787786000,
+      "author": "dev-632a948c",
+      "subject": "Add unit tests to improve coverage for common utilities (#14902)"
+    },
+    {
+      "h": "31d5f1dffd",
+      "parents": [
+        "72edcb65d7"
+      ],
+      "t": 1775785765000,
+      "author": "dev-9762d1d3",
+      "subject": "[ISSUE #14898] Add issue auto-assign workflow with /assign command and stale det"
+    },
+    {
+      "h": "72edcb65d7",
+      "parents": [
+        "c0d740263e"
+      ],
+      "t": 1775715785000,
+      "author": "dev-9762d1d3",
+      "subject": "docs: add issue assignment guidelines to CONTRIBUTING.md (#14899)"
+    },
+    {
+      "h": "c0d740263e",
+      "parents": [
+        "a4c0f2d23b"
+      ],
+      "t": 1775715663000,
+      "author": "dev-9762d1d3",
+      "subject": "fix(maintainer-client): use original property string in error messages of ParamU"
+    },
+    {
+      "h": "a4c0f2d23b",
+      "parents": [
+        "ec0f4ca97c"
+      ],
+      "t": 1775713253000,
+      "author": "dev-9762d1d3",
+      "subject": "feat(ci): add PR validation workflow to check commit author emails (#14896)"
+    },
+    {
+      "h": "ec0f4ca97c",
+      "parents": [
+        "20189ef467"
+      ],
+      "t": 1775713197000,
+      "author": "dev-632a948c",
+      "subject": "Add unit tests to increase maintainer-client coverage to 90% (#14888)"
+    },
+    {
+      "h": "20189ef467",
+      "parents": [
+        "162f69bdee"
+      ],
+      "t": 1775712828000,
+      "author": "dev-26daf6f1",
+      "subject": "feat(console): add copilot feature toggle and redesign plugin management layout "
+    },
+    {
+      "h": "162f69bdee",
+      "parents": [
+        "5cf4a86377"
+      ],
+      "t": 1775704151000,
+      "author": "dev-9762d1d3",
+      "subject": "fix(console-ui-next): replace internal npm registry URLs with public registry (#"
+    },
+    {
+      "h": "5cf4a86377",
+      "parents": [
+        "9c60d18f47"
+      ],
+      "t": 1775651901000,
+      "author": "dev-26daf6f1",
+      "subject": "Fix legacy console UI bugs and improve robustnessFix console UI (#14886)"
+    },
+    {
+      "h": "9c60d18f47",
+      "parents": [
+        "9f2e763870"
+      ],
+      "t": 1775642875000,
+      "author": "dev-26daf6f1",
+      "subject": "[ISSUE #14817] feat(ai): standardize pipeline API, fix legacy console UI bugs an"
+    },
+    {
+      "h": "9f2e763870",
+      "parents": [
+        "47e4148458"
+      ],
+      "t": 1775634200000,
+      "author": "dev-632a948c",
+      "subject": "feat(visibility): add default scope resolution for new resource creation. (#1488"
+    },
+    {
+      "h": "47e4148458",
+      "parents": [
+        "dd11fb6e56"
+      ],
+      "t": 1775631706000,
+      "author": "dev-26daf6f1",
+      "subject": "fix(ai): restore prompt bizTags to List<String> for backward compatibility (#148"
+    },
+    {
+      "h": "1e1b1387e1",
+      "parents": [
+        "dd11fb6e56"
+      ],
+      "t": 1775626589000,
+      "author": "dev-632a948c",
+      "subject": "Develop new it (#14877)"
+    },
+    {
+      "h": "dd11fb6e56",
+      "parents": [
+        "dff1617660"
+      ],
+      "t": 1775614303000,
+      "author": "dev-2eae02f9",
+      "subject": "test(api): complete valid clusterName TODO in NamingUtilsTest（#14865） (#14866)"
+    },
+    {
+      "h": "dff1617660",
+      "parents": [
+        "1154aed7db"
+      ],
+      "t": 1775566496000,
+      "author": "dev-632a948c",
+      "subject": "Add config option to enable or disable visibility plugin (#14873)"
+    },
+    {
+      "h": "1154aed7db",
+      "parents": [
+        "3f9d890465"
+      ],
+      "t": 1775528095000,
+      "author": "dev-e90f7505",
+      "subject": "fix(console): redirect to login page on token invalid/expired responses (#14856)"
+    },
+    {
+      "h": "3f9d890465",
+      "parents": [
+        "3ad21fab33"
+      ],
+      "t": 1775209104000,
+      "author": "dev-632a948c",
+      "subject": "chore(config): remove default property files and enable servlet encoding. (#1485"
+    },
+    {
+      "h": "3ad21fab33",
+      "parents": [
+        "e52214ff53"
+      ],
+      "t": 1775208765000,
+      "author": "dev-e90f7505",
+      "subject": "fix(console-ui-next): fix login page loop and header when auth disabled (#14853)"
+    },
+    {
+      "h": "e52214ff53",
+      "parents": [
+        "53427d17b5"
+      ],
+      "t": 1775204914000,
+      "author": "dev-26daf6f1",
+      "subject": "[ISSUE #14833] Add AI resource trace logging and fix prompt bizTags handling in "
+    },
+    {
+      "h": "53427d17b5",
+      "parents": [
+        "94dcef9815"
+      ],
+      "t": 1775198297000,
+      "author": "dev-26daf6f1",
+      "subject": "docs: update CONTRIBUTING.md with detailed contribution guidelines (#14850)"
+    },
+    {
+      "h": "94dcef9815",
+      "parents": [
+        "9591f52fe1"
+      ],
+      "t": 1775197760000,
+      "author": "dev-e90f7505",
+      "subject": "feat(auth,ai) support auth ai resource subtype parse (#14847)"
+    },
+    {
+      "h": "9591f52fe1",
+      "parents": [
+        "5e0ab608db"
+      ],
+      "t": 1775196182000,
+      "author": "dev-46f12b1c",
+      "subject": "fix(naming): change ActionTypes.WRITE to ActionTypes.READ for getting (#14849)"
+    },
+    {
+      "h": "5e0ab608db",
+      "parents": [
+        "326870007e"
+      ],
+      "t": 1775182066000,
+      "author": "dev-26daf6f1",
+      "subject": "fix: PostgreSQL compatibility fixes for AI resource and capacity modules (#14841"
+    },
+    {
+      "h": "326870007e",
+      "parents": [
+        "cb7c775c9a"
+      ],
+      "t": 1775182033000,
+      "author": "dev-e90f7505",
+      "subject": "[Feature] Add Prompt lifecycle management UI for both legacy and next consoles ("
+    },
+    {
+      "h": "cb7c775c9a",
+      "parents": [
+        "9561453de1"
+      ],
+      "t": 1775129438000,
+      "author": "dev-e90f7505",
+      "subject": "feat(ai,plugin): add pipeline support for Prompt resource type (#14840)"
+    },
+    {
+      "h": "9561453de1",
+      "parents": [
+        "9f2db21907"
+      ],
+      "t": 1775111019000,
+      "author": "dev-e90f7505",
+      "subject": "fix(ai): enforce type isolation for ai_resource_version queries (#14837)"
+    },
+    {
+      "h": "9f2db21907",
+      "parents": [
+        "dd364478e6"
+      ],
+      "t": 1775107971000,
+      "author": "dev-26daf6f1",
+      "subject": "refactor(ai,common): extract duplicated logic from SkillOperationServiceImpl and"
+    },
+    {
+      "h": "dd364478e6",
+      "parents": [
+        "6b45c593d6"
+      ],
+      "t": 1775102191000,
+      "author": "dev-632a948c",
+      "subject": "Upstream develop upgrade UI dependencies (#14834)"
+    },
+    {
+      "h": "6b45c593d6",
+      "parents": [
+        "771ab2a4d1"
+      ],
+      "t": 1775099490000,
+      "author": "dev-9762d1d3",
+      "subject": "[ISSUE #14829] Add AGENTS.md for AI coding agent guidance (#14830)"
+    },
+    {
+      "h": "771ab2a4d1",
+      "parents": [
+        "b655f74109"
+      ],
+      "t": 1775099376000,
+      "author": "dev-e90f7505",
+      "subject": "fix(ai): clean legacy nacos-ai-prompt mirror on prompt deletion (#14828)"
+    },
+    {
+      "h": "b655f74109",
+      "parents": [
+        "e8b5ffdc47"
+      ],
+      "t": 1775096049000,
+      "author": "dev-f3db8743",
+      "subject": "fix(naming): fix check-then-act race conditions on ConcurrentHashMap in naming m"
+    },
+    {
+      "h": "e8b5ffdc47",
+      "parents": [
+        "55d8d310cf"
+      ],
+      "t": 1775095959000,
+      "author": "dev-194d94c9",
+      "subject": "[ISSUE #14806] Improve cluster metrics aggregation completeness signal in v3 API"
+    },
+    {
+      "h": "55d8d310cf",
+      "parents": [
+        "927baa6070"
+      ],
+      "t": 1775042597000,
+      "author": "dev-e90f7505",
+      "subject": "feat(ai): add prompt data migration framework with SPI extensibility (#14821)"
+    },
+    {
+      "h": "927baa6070",
+      "parents": [
+        "98086a09e3"
+      ],
+      "t": 1775035669000,
+      "author": "dev-e90f7505",
+      "subject": "feat(ai): add PromptOperationService lifecycle governance and switch all layers "
+    },
+    {
+      "h": "98086a09e3",
+      "parents": [
+        "118f8ca5e2"
+      ],
+      "t": 1775035516000,
+      "author": "dev-f3db8743",
+      "subject": "fix(client): fix check-then-act race condition in FailoverReactor.isFailoverSwit"
+    },
+    {
+      "h": "118f8ca5e2",
+      "parents": [
+        "476d4faebc"
+      ],
+      "t": 1775027016000,
+      "author": "dev-e90f7505",
+      "subject": "[Feature #14807] Extend prompt API models with lifecycle governance fields (#148"
+    },
+    {
+      "h": "476d4faebc",
+      "parents": [
+        "639bf3fa4d"
+      ],
+      "t": 1775026983000,
+      "author": "dev-632a948c",
+      "subject": "fix(schema): set default timestamps to current time in Oracle and PostgreSQL sch"
+    },
+    {
+      "h": "639bf3fa4d",
+      "parents": [
+        "d6cfc47a3c"
+      ],
+      "t": 1775012765000,
+      "author": "dev-632a948c",
+      "subject": "Enhance AI resource list APIs with filters and ordering. (#14809)"
+    },
+    {
+      "h": "d6cfc47a3c",
+      "parents": [
+        "0d4d282e7a"
+      ],
+      "t": 1774938132000,
+      "author": "dev-632a948c",
+      "subject": "Increase cache expiration and update pagination SQL test assertions (#14803)"
+    },
+    {
+      "h": "0d4d282e7a",
+      "parents": [
+        "c83121b22f"
+      ],
+      "t": 1774923152000,
+      "author": "dev-632a948c",
+      "subject": "test(ai): add force publish feature and related tests. (#14802)"
+    },
+    {
+      "h": "c83121b22f",
+      "parents": [
+        "ebc72f256c"
+      ],
+      "t": 1774922905000,
+      "author": "dev-f3db8743",
+      "subject": "fix(core): close CallableStatement in DerbySnapshotOperation.doDerbyBackup (#147"
+    },
+    {
+      "h": "ebc72f256c",
+      "parents": [
+        "277a964273"
+      ],
+      "t": 1774922875000,
+      "author": "dev-f3db8743",
+      "subject": "fix(config): add missing ORDER BY to Derby pagination queries (#14748)"
+    },
+    {
+      "h": "277a964273",
+      "parents": [
+        "338e46f00f"
+      ],
+      "t": 1774922850000,
+      "author": "dev-f3db8743",
+      "subject": "fix(config): add missing ORDER BY to Oracle pagination queries (#14747)"
+    },
+    {
+      "h": "338e46f00f",
+      "parents": [
+        "f66606205b"
+      ],
+      "t": 1774922824000,
+      "author": "dev-f3db8743",
+      "subject": "fix(config): add missing ORDER BY to remaining MySQL pagination queries (#14746)"
+    },
+    {
+      "h": "f66606205b",
+      "parents": [
+        "0210b434c8"
+      ],
+      "t": 1774922777000,
+      "author": "dev-f3db8743",
+      "subject": "fix(config): add ORDER BY to findConfigInfo4PageFetchRows to fix non-determinist"
+    },
+    {
+      "h": "0210b434c8",
+      "parents": [
+        "fd9012ced7"
+      ],
+      "t": 1774922742000,
+      "author": "dev-f3db8743",
+      "subject": "fix(config): add ORDER BY to findConfigInfoLike4PageFetchRows to fix non-determi"
+    },
+    {
+      "h": "fd9012ced7",
+      "parents": [
+        "9d2273e8a7"
+      ],
+      "t": 1774922267000,
+      "author": "dev-26daf6f1",
+      "subject": "Rename mcp-registry module to ai-registry and separate enable switches (#14797)"
+    },
+    {
+      "h": "9d2273e8a7",
+      "parents": [
+        "fce9f224b7"
+      ],
+      "t": 1774922000000,
+      "author": "dev-f3db8743",
+      "subject": "fix: fix InputStream leak in OIDC client HTTP operations (#14728)"
+    },
+    {
+      "h": "fce9f224b7",
+      "parents": [
+        "2a213deb7f"
+      ],
+      "t": 1774921495000,
+      "author": "dev-0e6c9901",
+      "subject": "[AI] Support force-publish agentspecs for admin user (#14798)"
+    },
+    {
+      "h": "2a213deb7f",
+      "parents": [
+        "a0200d5700"
+      ],
+      "t": 1774871239000,
+      "author": "dev-632a948c",
+      "subject": "Support force-publish skills for admin user. (#14794)"
+    },
+    {
+      "h": "a0200d5700",
+      "parents": [
+        "920551e009"
+      ],
+      "t": 1774867997000,
+      "author": "dev-26daf6f1",
+      "subject": "fix(common): add ByteArrayResponseHandler to fix byte[] deserialization in Nacos"
+    },
+    {
+      "h": "920551e009",
+      "parents": [
+        "40e1e484e3"
+      ],
+      "t": 1774860452000,
+      "author": "dev-632a948c",
+      "subject": "develop fix ut (#14788)"
+    },
+    {
+      "h": "40e1e484e3",
+      "parents": [
+        "2989450cdf"
+      ],
+      "t": 1774857465000,
+      "author": "dev-c0c0be19",
+      "subject": ":heavy_minus_sign: remove duplicate dependency (#14769)"
+    },
+    {
+      "h": "2989450cdf",
+      "parents": [
+        "c9161d1a0f"
+      ],
+      "t": 1774857009000,
+      "author": "dev-26daf6f1",
+      "subject": "[AI] Remove downloadSkillZip from AiClientProxy interface, Skill always uses HTT"
+    },
+    {
+      "h": "c9161d1a0f",
+      "parents": [
+        "3856ec76a0"
+      ],
+      "t": 1774856846000,
+      "author": "dev-e90f7505",
+      "subject": "fix(ai): eliminate race condition in publish pipeline by pre-generating executio"
+    },
+    {
+      "h": "3856ec76a0",
+      "parents": [
+        "3dfee74017"
+      ],
+      "t": 1774842780000,
+      "author": "dev-632a948c",
+      "subject": "Fix UT. (#14781)"
+    },
+    {
+      "h": "3dfee74017",
+      "parents": [
+        "4bccb68539"
+      ],
+      "t": 1774841888000,
+      "author": "dev-632a948c",
+      "subject": "feat(core): validate input parameters in ops controller forms. (#14784)"
+    },
+    {
+      "h": "4bccb68539",
+      "parents": [
+        "c0d127730b"
+      ],
+      "t": 1774838591000,
+      "author": "dev-e90f7505",
+      "subject": "fix(build): upgrade MCP SDK to 0.17.0 to resolve json-schema-validator conflict "
+    },
+    {
+      "h": "c0d127730b",
+      "parents": [
+        "21ef3d38c2"
+      ],
+      "t": 1774838212000,
+      "author": "dev-e90f7505",
+      "subject": "fix(console): fix console UI api and error handling (#14773)"
+    },
+    {
+      "h": "21ef3d38c2",
+      "parents": [
+        "3b51df67eb"
+      ],
+      "t": 1774834807000,
+      "author": "dev-56025de6",
+      "subject": "fix #14775 The application.properties file is missing OIDC-related configuration"
+    },
+    {
+      "h": "3b51df67eb",
+      "parents": [
+        "411f0b0be3"
+      ],
+      "t": 1774603003000,
+      "author": "dev-632a948c",
+      "subject": "Merge pull request #14766 from KomachiSion/upstream-develop-fix-deploy-problem"
+    },
+    {
+      "h": "411f0b0be3",
+      "parents": [
+        "652232b828",
+        "1f97ac5014"
+      ],
+      "t": 1774588585000,
+      "author": "dev-632a948c",
+      "subject": "Sync some fix into develop branch. (#14762)"
+    },
+    {
+      "h": "1f97ac5014",
+      "parents": [
+        "d4d3a707fa",
+        "652232b828"
+      ],
+      "t": 1774581130000,
+      "author": "dev-632a948c",
+      "subject": "Merge remote-tracking branch 'refs/remotes/upstream/develop' into develop-skill-"
+    },
+    {
+      "h": "d4d3a707fa",
+      "parents": [
+        "93703e66b0"
+      ],
+      "t": 1774581015000,
+      "author": "dev-632a948c",
+      "subject": "fix(test): Fix unit test async test failed."
+    },
+    {
+      "h": "93703e66b0",
+      "parents": [
+        "610cf51fcb"
+      ],
+      "t": 1774579047000,
+      "author": "dev-632a948c",
+      "subject": "fix(test): Fix ai module unit test."
+    },
+    {
+      "h": "610cf51fcb",
+      "parents": [
+        "a01fdb3b2c"
+      ],
+      "t": 1774580505000,
+      "author": "dev-e90f7505",
+      "subject": "fix(console-ui-next): fix scroll lock on route change and increase panel height "
+    },
+    {
+      "h": "a01fdb3b2c",
+      "parents": [
+        "2a2bb43462"
+      ],
+      "t": 1774575545000,
+      "author": "dev-1dafd73d",
+      "subject": "Merge pull request #14760 from luoxiner/support-import-data-from"
+    },
+    {
+      "h": "2a2bb43462",
+      "parents": [
+        "35198beaa3"
+      ],
+      "t": 1774533597000,
+      "author": "dev-632a948c",
+      "subject": "feat(ai-resource): add 'from' field to AI resource metadata."
+    },
+    {
+      "h": "35198beaa3",
+      "parents": [
+        "84e031bf3e"
+      ],
+      "t": 1774531642000,
+      "author": "dev-632a948c",
+      "subject": "chore(build): finalize release version from beta."
+    },
+    {
+      "h": "84e031bf3e",
+      "parents": [
+        "0e8b48ebf8"
+      ],
+      "t": 1774531472000,
+      "author": "dev-632a948c",
+      "subject": "fix(skill): update default author value to \"-\" ."
+    },
+    {
+      "h": "652232b828",
+      "parents": [
+        "35528dfbbb",
+        "0e8b48ebf8"
+      ],
+      "t": 1774531424000,
+      "author": "dev-632a948c",
+      "subject": "Merge pull request #14756 from alibaba/develop-skill-pipeline"
+    },
+    {
+      "h": "0e8b48ebf8",
+      "parents": [
+        "d788cbd2b8"
+      ],
+      "t": 1774531310000,
+      "author": "dev-632a948c",
+      "subject": "test(ai): disable flaky tests and fix skill markdown assertion."
+    },
+    {
+      "h": "d788cbd2b8",
+      "parents": [
+        "4e5688d65e"
+      ],
+      "t": 1774530449000,
+      "author": "dev-632a948c",
+      "subject": "fix(auth): Fix unit test and change mysql charset to utf8mb4."
+    },
+    {
+      "h": "4e5688d65e",
+      "parents": [
+        "b40ab18879"
+      ],
+      "t": 1774530347000,
+      "author": "dev-e90f7505",
+      "subject": "feat(console-ui-next): redesign install card with download and CLI sections (#14"
+    },
+    {
+      "h": "b40ab18879",
+      "parents": [
+        "e2d698dcb7"
+      ],
+      "t": 1774527154000,
+      "author": "dev-e90f7505",
+      "subject": "fix(console-ui-next): login guide styling, combo-input flicker, scroll lock and "
+    },
+    {
+      "h": "e2d698dcb7",
+      "parents": [
+        "e3ba663ff1"
+      ],
+      "t": 1774520019000,
+      "author": "dev-632a948c",
+      "subject": "feat(skill): add targetVersion support for creating skill drafts. (#14753)"
+    },
+    {
+      "h": "e3ba663ff1",
+      "parents": [
+        "20eaa14801"
+      ],
+      "t": 1774514548000,
+      "author": "dev-36d5d86e",
+      "subject": "Optimize the passed output format of skill-scanner (#14745)"
+    },
+    {
+      "h": "20eaa14801",
+      "parents": [
+        "455a9dce5c"
+      ],
+      "t": 1774513271000,
+      "author": "dev-632a948c",
+      "subject": "refactor(config): unify ai-pipeline config keys and improve parsing logic. (#147"
+    },
+    {
+      "h": "455a9dce5c",
+      "parents": [
+        "aff834cad8"
+      ],
+      "t": 1774511614000,
+      "author": "dev-632a948c",
+      "subject": "Fix skill name check (#14740)"
+    },
+    {
+      "h": "aff834cad8",
+      "parents": [
+        "b77d7a9916"
+      ],
+      "t": 1774509982000,
+      "author": "dev-e90f7505",
+      "subject": "feat(console-ui-next): enhance auth management UI (#14738)"
+    },
+    {
+      "h": "35528dfbbb",
+      "parents": [
+        "a3cd9db0bf"
+      ],
+      "t": 1774509471000,
+      "author": "dev-f3db8743",
+      "subject": "fix(test): fix flaky MemoryMcpCacheIndexTest by eliminating scheduler races (#14"
+    },
+    {
+      "h": "a3cd9db0bf",
+      "parents": [
+        "3a0c82a121"
+      ],
+      "t": 1774508196000,
+      "author": "dev-f3db8743",
+      "subject": "fix: fix HttpURLConnection leak on exception in JdkHttpClientRequest (#14727)"
+    },
+    {
+      "h": "b77d7a9916",
+      "parents": [
+        "7c2a1d2be9",
+        "7900d9a63b"
+      ],
+      "t": 1774506030000,
+      "author": "dev-632a948c",
+      "subject": "Merge pull request #14737 from KomachiSion/develop-skill-pipeline-sync-develop"
+    },
+    {
+      "h": "3a0c82a121",
+      "parents": [
+        "17e48d4294"
+      ],
+      "t": 1774505933000,
+      "author": "dev-f3db8743",
+      "subject": "fix: fix ArrayIndexOutOfBoundsException in SwitchManager (#14730)"
+    },
+    {
+      "h": "7900d9a63b",
+      "parents": [
+        "e77f987774"
+      ],
+      "t": 1774505885000,
+      "author": "dev-632a948c",
+      "subject": "Fix compile problem."
+    },
+    {
+      "h": "e77f987774",
+      "parents": [
+        "7c2a1d2be9",
+        "17e48d4294"
+      ],
+      "t": 1774505184000,
+      "author": "dev-632a948c",
+      "subject": "Merge remote-tracking branch 'refs/remotes/upstream/develop' into develop-skill-"
+    },
+    {
+      "h": "7c2a1d2be9",
+      "parents": [
+        "d610c2329a"
+      ],
+      "t": 1774496963000,
+      "author": "dev-e90f7505",
+      "subject": "feat(console-ui-next): optimize build chunks with manualChunks and stable filena"
+    },
+    {
+      "h": "d610c2329a",
+      "parents": [
+        "3ffb874ebe"
+      ],
+      "t": 1774495196000,
+      "author": "dev-e90f7505",
+      "subject": "feat(console-ui-next): add console disabled guard, strip SKILL.md frontmatter, i"
+    },
+    {
+      "h": "3ffb874ebe",
+      "parents": [
+        "bc7f6b2ec2"
+      ],
+      "t": 1774489004000,
+      "author": "dev-1dafd73d",
+      "subject": "feat(pipeline): update plugin-based pipeline configuration format (#14731)"
+    },
+    {
+      "h": "17e48d4294",
+      "parents": [
+        "1fae1beb79"
+      ],
+      "t": 1774488726000,
+      "author": "dev-29f4b7e7",
+      "subject": "update grpc version to 1.78.0 (#14714)"
+    },
+    {
+      "h": "bc7f6b2ec2",
+      "parents": [
+        "75a116fdb3"
+      ],
+      "t": 1774434833000,
+      "author": "dev-632a948c",
+      "subject": "feat(plugin-default-impl): add nacos-default-ai-pipeline-plugin module and impro"
+    },
+    {
+      "h": "75a116fdb3",
+      "parents": [
+        "d25ca5bcd1"
+      ],
+      "t": 1774434154000,
+      "author": "dev-29f4b7e7",
+      "subject": "feat(skill): unify skillMd flow and metadata versioning (#14724)"
+    },
+    {
+      "h": "d25ca5bcd1",
+      "parents": [
+        "15cc49cbca"
+      ],
+      "t": 1774432640000,
+      "author": "dev-1dafd73d",
+      "subject": "feat: Enhance AgentSpec controllers and service to support anonymous … (#14722)"
+    },
+    {
+      "h": "15cc49cbca",
+      "parents": [
+        "5ae2a0eca4"
+      ],
+      "t": 1774426187000,
+      "author": "dev-e90f7505",
+      "subject": "feat(console): Upgrate UI and fix some ui bugs (#14721)"
+    },
+    {
+      "h": "5ae2a0eca4",
+      "parents": [
+        "bac0a7946c"
+      ],
+      "t": 1774426074000,
+      "author": "dev-632a948c",
+      "subject": "refactor(plugin): Refactor and replace data-filter with visibility plugin (#1472"
+    },
+    {
+      "h": "bac0a7946c",
+      "parents": [
+        "1739c4675b"
+      ],
+      "t": 1774417868000,
+      "author": "dev-1dafd73d",
+      "subject": "feat: Implement Skills CLI Registry Adaptor (#14720)"
+    },
+    {
+      "h": "1739c4675b",
+      "parents": [
+        "21e492e553"
+      ],
+      "t": 1774407190000,
+      "author": "dev-29f4b7e7",
+      "subject": "concurrent skill resource (#14716)"
+    },
+    {
+      "h": "21e492e553",
+      "parents": [
+        "e191acfd21"
+      ],
+      "t": 1774353016000,
+      "author": "dev-e90f7505",
+      "subject": "feat(console-ui-next): pipeline UI enhancements - Fix tooltip auto-show on pipel"
+    },
+    {
+      "h": "e191acfd21",
+      "parents": [
+        "def0140dc0"
+      ],
+      "t": 1774350323000,
+      "author": "dev-1dafd73d",
+      "subject": "Refactor NacosConfigAiResourceStorage to use NacosAiConfigKeyCodec for encoding "
+    },
+    {
+      "h": "def0140dc0",
+      "parents": [
+        "0cfc2db654"
+      ],
+      "t": 1774338421000,
+      "author": "dev-36d5d86e",
+      "subject": "Optimize the output format of skill-scanner. (#14710)"
+    },
+    {
+      "h": "0cfc2db654",
+      "parents": [
+        "28fbba7f5b"
+      ],
+      "t": 1774337172000,
+      "author": "dev-1dafd73d",
+      "subject": "feat: Add support for updating business tags in AgentSpec and Skill (#14709)"
+    },
+    {
+      "h": "28fbba7f5b",
+      "parents": [
+        "e9fde36df7"
+      ],
+      "t": 1774325043000,
+      "author": "dev-632a948c",
+      "subject": "feat(skills): support creating skill drafts with content or by forking existing "
+    },
+    {
+      "h": "e9fde36df7",
+      "parents": [
+        "af88d6e7c9"
+      ],
+      "t": 1774322588000,
+      "author": "dev-e90f7505",
+      "subject": "feat(console): skill UI improvements and bug fixes (#14707)"
+    },
+    {
+      "h": "af88d6e7c9",
+      "parents": [
+        "d666759af2"
+      ],
+      "t": 1774315547000,
+      "author": "dev-36d5d86e",
+      "subject": "Improve skill-scanner publish readability with Markdown output (#14705)"
+    },
+    {
+      "h": "1fae1beb79",
+      "parents": [
+        "c87f888fc6"
+      ],
+      "t": 1774315471000,
+      "author": "dev-eebf8136",
+      "subject": "docs: replace defunct Travis CI badge with GitHub Actions CI badge (#14706)"
+    },
+    {
+      "h": "d666759af2",
+      "parents": [
+        "14fbcb1f9f"
+      ],
+      "t": 1774269361000,
+      "author": "dev-1dafd73d",
+      "subject": "feat: add agentspec visibility scope update functionality (#14704)"
+    },
+    {
+      "h": "14fbcb1f9f",
+      "parents": [
+        "0dee509150"
+      ],
+      "t": 1774267137000,
+      "author": "dev-632a948c",
+      "subject": "chore(license): add Apache License 2.0 header to PluginProvider file. (#14703)"
+    },
+    {
+      "h": "0dee509150",
+      "parents": [
+        "420a06330a"
+      ],
+      "t": 1774265836000,
+      "author": "dev-e90f7505",
+      "subject": "feat(console-ui): enhance UI with scope toggle, label management, and various im"
+    },
+    {
+      "h": "420a06330a",
+      "parents": [
+        "46f4f4e963"
+      ],
+      "t": 1774265686000,
+      "author": "dev-632a948c",
+      "subject": "feat(plugin): add AI pipeline and storage plugin support. (#14702)"
+    },
+    {
+      "h": "c87f888fc6",
+      "parents": [
+        "cddf7d1111"
+      ],
+      "t": 1774265282000,
+      "author": "dev-3e7ff642",
+      "subject": "feat(client): add OIDC client-side authentication support via Client Credentials"
+    },
+    {
+      "h": "46f4f4e963",
+      "parents": [
+        "98b1a22968"
+      ],
+      "t": 1774264251000,
+      "author": "dev-1dafd73d",
+      "subject": "Fix agentspec api (#14700)"
+    },
+    {
+      "h": "98b1a22968",
+      "parents": [
+        "17c68e431a"
+      ],
+      "t": 1774257102000,
+      "author": "dev-632a948c",
+      "subject": "Improve error handling and add scope property in authentication. (#14698)"
+    },
+    {
+      "h": "17c68e431a",
+      "parents": [
+        "8b4e1c68dc"
+      ],
+      "t": 1774252677000,
+      "author": "dev-632a948c",
+      "subject": "Add skill updateScope console api and do some refactor for skill api and ai auth"
+    },
+    {
+      "h": "8b4e1c68dc",
+      "parents": [
+        "98caa31abc"
+      ],
+      "t": 1774246895000,
+      "author": "dev-1dafd73d",
+      "subject": "feat: add overwrite option for agent spec and skill uploads (#14694)"
+    },
+    {
+      "h": "98caa31abc",
+      "parents": [
+        "0a6a49b0ed"
+      ],
+      "t": 1774237358000,
+      "author": "dev-1dafd73d",
+      "subject": "Support AgentSpec publish pipeline context and improve skill scanner integration"
+    },
+    {
+      "h": "cddf7d1111",
+      "parents": [
+        "75bd57ccaf"
+      ],
+      "t": 1774233173000,
+      "author": "dev-929c98a6",
+      "subject": "fix: validate skill name per agentskills.io specification (#14651)"
+    },
+    {
+      "h": "0a6a49b0ed",
+      "parents": [
+        "a370700171"
+      ],
+      "t": 1774231211000,
+      "author": "dev-e90f7505",
+      "subject": "feat(console): Add skill console UI (#14689)"
+    },
+    {
+      "h": "a370700171",
+      "parents": [
+        "0ffc3bad60"
+      ],
+      "t": 1774229859000,
+      "author": "dev-36d5d86e",
+      "subject": "Add optional LLM semantic scan to skill-scanner pipeline (#14687)"
+    },
+    {
+      "h": "0ffc3bad60",
+      "parents": [
+        "1b61ebbc7e"
+      ],
+      "t": 1774229828000,
+      "author": "dev-26daf6f1",
+      "subject": "refactor(ai): introduce SkillBase model hierarchy and add unit tests (#14688)"
+    },
+    {
+      "h": "1b61ebbc7e",
+      "parents": [
+        "e60ac6c43d"
+      ],
+      "t": 1774145455000,
+      "author": "dev-e90f7505",
+      "subject": "feat(ai): add skill download count tracking (#14684)"
+    },
+    {
+      "h": "e60ac6c43d",
+      "parents": [
+        "7b86068e49"
+      ],
+      "t": 1774062164000,
+      "author": "dev-26daf6f1",
+      "subject": "Add Skill ZIP download security hardening and decouple download tracking from vi"
+    },
+    {
+      "h": "7b86068e49",
+      "parents": [
+        "7ff9cf1381"
+      ],
+      "t": 1774002643000,
+      "author": "dev-632a948c",
+      "subject": "For checkstyle. (#14680)"
+    },
+    {
+      "h": "7ff9cf1381",
+      "parents": [
+        "f47b4ca592"
+      ],
+      "t": 1774002142000,
+      "author": "dev-632a948c",
+      "subject": "Skill support data level access and visibility Phase 4. (#14679)"
+    },
+    {
+      "h": "f47b4ca592",
+      "parents": [
+        "6ecd4d56f4"
+      ],
+      "t": 1774000679000,
+      "author": "dev-1dafd73d",
+      "subject": "feat(ai): Implement AgentSpec event handling and maintenance (#14678)"
+    },
+    {
+      "h": "6ecd4d56f4",
+      "parents": [
+        "ce859811ea"
+      ],
+      "t": 1773999680000,
+      "author": "dev-632a948c",
+      "subject": "Skill support data level access and visibility Phase 3. (#14677)"
+    },
+    {
+      "h": "ce859811ea",
+      "parents": [
+        "283ef5c312"
+      ],
+      "t": 1773997699000,
+      "author": "dev-26daf6f1",
+      "subject": "Refactor AI skill loading to server-side query and increase c_desc column size ("
+    },
+    {
+      "h": "75bd57ccaf",
+      "parents": [
+        "5ac5c39971"
+      ],
+      "t": 1773997621000,
+      "author": "dev-29f4b7e7",
+      "subject": "remove aggr (#14675)"
+    },
+    {
+      "h": "283ef5c312",
+      "parents": [
+        "fd8bd96a5a"
+      ],
+      "t": 1773994030000,
+      "author": "dev-632a948c",
+      "subject": "Skill support data level access and visibility Phase 2. (#14672)"
+    },
+    {
+      "h": "fd8bd96a5a",
+      "parents": [
+        "b14f3f7b97"
+      ],
+      "t": 1773991627000,
+      "author": "dev-1dafd73d",
+      "subject": "test(ai): add comprehensive pipeline and agent spec tests with backward compatib"
+    },
+    {
+      "h": "b14f3f7b97",
+      "parents": [
+        "2bc3eaff73"
+      ],
+      "t": 1773989905000,
+      "author": "dev-632a948c",
+      "subject": "Skill support data level access and visibility Phase 1. (#14670)"
+    },
+    {
+      "h": "2bc3eaff73",
+      "parents": [
+        "fe03d4895e"
+      ],
+      "t": 1773989081000,
+      "author": "dev-e90f7505",
+      "subject": "feat(prompt): unify version resolution priority to version > label > latest (#14"
+    },
+    {
+      "h": "fe03d4895e",
+      "parents": [
+        "eef84d452a"
+      ],
+      "t": 1773986592000,
+      "author": "dev-1dafd73d",
+      "subject": "Support worker template (#14666)"
+    },
+    {
+      "h": "eef84d452a",
+      "parents": [
+        "defdbfc877"
+      ],
+      "t": 1773986548000,
+      "author": "dev-26daf6f1",
+      "subject": "Refactor AI module storage and skill index management (#14649)"
+    },
+    {
+      "h": "defdbfc877",
+      "parents": [
+        "c35538f21a"
+      ],
+      "t": 1773984912000,
+      "author": "dev-e90f7505",
+      "subject": "[ISSUE #14652] Bundle Monaco editor locally and improve dual console UI switch e"
+    },
+    {
+      "h": "5ac5c39971",
+      "parents": [
+        "dd381f5443"
+      ],
+      "t": 1773978524000,
+      "author": "dev-0e6c9901",
+      "subject": "fix(ai): strip UTF-8 BOM from SKILL.md content in SkillZipParser (#14654)"
+    },
+    {
+      "h": "c35538f21a",
+      "parents": [
+        "9f07b523b6"
+      ],
+      "t": 1773970362000,
+      "author": "dev-e90f7505",
+      "subject": "[ISSUE #14652] Support dual UI switching between new and legacy console with con"
+    },
+    {
+      "h": "9f07b523b6",
+      "parents": [
+        "0262737fc0"
+      ],
+      "t": 1773919418000,
+      "author": "dev-26daf6f1",
+      "subject": "fix(ai): move skill submit status to reviewing before pipeline execution and sta"
+    },
+    {
+      "h": "0262737fc0",
+      "parents": [
+        "c44b60f5e7"
+      ],
+      "t": 1773912783000,
+      "author": "dev-26daf6f1",
+      "subject": "Merge pull request #14646 from saynoword/develop-skill-pipeline-controller"
+    },
+    {
+      "h": "c44b60f5e7",
+      "parents": [
+        "1a12722e6f",
+        "7920acc669"
+      ],
+      "t": 1773912599000,
+      "author": "dev-632a948c",
+      "subject": "Sync develop branch into skill pipeline branch (#14645)"
+    },
+    {
+      "h": "7920acc669",
+      "parents": [
+        "f8dc5338d9",
+        "1a12722e6f"
+      ],
+      "t": 1773911779000,
+      "author": "dev-632a948c",
+      "subject": "Merge remote-tracking branch 'refs/remotes/origin/develop-skill-pipeline' into d"
+    },
+    {
+      "h": "1a12722e6f",
+      "parents": [
+        "374a5de921"
+      ],
+      "t": 1773911711000,
+      "author": "dev-26daf6f1",
+      "subject": "feature(ai): modify resource sql (#14643)"
+    },
+    {
+      "h": "f8dc5338d9",
+      "parents": [
+        "f5bf4a2c35"
+      ],
+      "t": 1773911603000,
+      "author": "dev-632a948c",
+      "subject": "chore(db): remove derby and mysql schemas, add AI resource mappers."
+    },
+    {
+      "h": "f5bf4a2c35",
+      "parents": [
+        "374a5de921",
+        "dd381f5443"
+      ],
+      "t": 1773910100000,
+      "author": "dev-632a948c",
+      "subject": "Merge remote-tracking branch 'refs/remotes/origin/develop' into develop-skill-pi"
+    },
+    {
+      "h": "374a5de921",
+      "parents": [
+        "083b36baf9"
+      ],
+      "t": 1773909675000,
+      "author": "dev-e90f7505",
+      "subject": "feat(console): update nacos ui (#14641)"
+    },
+    {
+      "h": "dd381f5443",
+      "parents": [
+        "35c58e65c1"
+      ],
+      "t": 1773908363000,
+      "author": "dev-632a948c",
+      "subject": "Refactor database plugins and update CI report paths (#14640)"
+    },
+    {
+      "h": "083b36baf9",
+      "parents": [
+        "dca49e25e3"
+      ],
+      "t": 1773903681000,
+      "author": "dev-26daf6f1",
+      "subject": "Refactor skill storage model and accelerate skill loading via nacos-config cache"
+    },
+    {
+      "h": "35c58e65c1",
+      "parents": [
+        "374c256987"
+      ],
+      "t": 1773903634000,
+      "author": "dev-632a948c",
+      "subject": "fix(health): update health status method to handle persistent instances correctl"
+    },
+    {
+      "h": "dca49e25e3",
+      "parents": [
+        "ede5620360"
+      ],
+      "t": 1773837201000,
+      "author": "dev-2a59b8eb",
+      "subject": "refactor(ai): role-based skill API response, fix delete ordering and remove lega"
+    },
+    {
+      "h": "374c256987",
+      "parents": [
+        "d904108c03"
+      ],
+      "t": 1773833554000,
+      "author": "dev-632a948c",
+      "subject": "test(consistency): add unit tests for serializers, processors and utils. (#14628"
+    },
+    {
+      "h": "d904108c03",
+      "parents": [
+        "a606f28156"
+      ],
+      "t": 1773821697000,
+      "author": "dev-e90f7505",
+      "subject": "[ISSUE #14622] fix: exclude json-schema-validator 3.0.0 from agentscope-core to "
+    },
+    {
+      "h": "ede5620360",
+      "parents": [
+        "6f819585c3"
+      ],
+      "t": 1773819013000,
+      "author": "dev-2a59b8eb",
+      "subject": "feat(ai): add AI plugin SPIs, resource persistence, and skill lifecycle admin/op"
+    },
+    {
+      "h": "6f819585c3",
+      "parents": [
+        "4df0b8a6c2"
+      ],
+      "t": 1773812872000,
+      "author": "dev-36d5d86e",
+      "subject": "Add skill-scanner integration for AI Skill security scanning (#14623)"
+    },
+    {
+      "h": "4df0b8a6c2",
+      "parents": [
+        "fa1dd86b87"
+      ],
+      "t": 1773805805000,
+      "author": "dev-1dafd73d",
+      "subject": "feat(ai): add pipeline query and admin APIs with console handlers (#14624)"
+    },
+    {
+      "h": "a606f28156",
+      "parents": [
+        "4042231c65"
+      ],
+      "t": 1773803798000,
+      "author": "dev-632a948c",
+      "subject": "test(auth): add and improve unit tests for auth module. (#14619)"
+    },
+    {
+      "h": "4042231c65",
+      "parents": [
+        "b715a70a90"
+      ],
+      "t": 1773799856000,
+      "author": "dev-054de6f9",
+      "subject": "fix(naming): 添加分页参数验证 (#14616)"
+    },
+    {
+      "h": "b715a70a90",
+      "parents": [
+        "26ec64dcc7"
+      ],
+      "t": 1773799664000,
+      "author": "dev-632a948c",
+      "subject": "add core unit test coverage (#14618)"
+    },
+    {
+      "h": "fa1dd86b87",
+      "parents": [
+        "2cdb1648e0"
+      ],
+      "t": 1773750429000,
+      "author": "dev-1dafd73d",
+      "subject": "feat(ai): implement publish pipeline execution framework (#14615)"
+    },
+    {
+      "h": "2cdb1648e0",
+      "parents": [
+        "99e738e2e4"
+      ],
+      "t": 1773734360000,
+      "author": "dev-2a59b8eb",
+      "subject": "Add AI plugin SPIs for publish review pipeline and resource storage (#14610)"
+    },
+    {
+      "h": "26ec64dcc7",
+      "parents": [
+        "99e738e2e4"
+      ],
+      "t": 1773732001000,
+      "author": "dev-632a948c",
+      "subject": "Add core coverage (#14608)"
+    },
+    {
+      "h": "99e738e2e4",
+      "parents": [
+        "ff2767e6ba"
+      ],
+      "t": 1773647226000,
+      "author": "dev-3e7ff642",
+      "subject": "fix: align Console API and maintainer-client with Admin API parameter changes (#"
+    },
+    {
+      "h": "ff2767e6ba",
+      "parents": [
+        "a1ab77c29e"
+      ],
+      "t": 1773646359000,
+      "author": "dev-632a948c",
+      "subject": "fix(api): mark deprecated methods and update javadoc after 3.3.0. (#14604)"
+    },
+    {
+      "h": "a1ab77c29e",
+      "parents": [
+        "854e600abd"
+      ],
+      "t": 1773392885000,
+      "author": "dev-0e6c9901",
+      "subject": "fix: add --add-opens JVM options for JDK 17+ in startup-native.sh (#14602)"
+    },
+    {
+      "h": "854e600abd",
+      "parents": [
+        "1ffcff66e2"
+      ],
+      "t": 1773367795000,
+      "author": "dev-e90f7505",
+      "subject": "feat(ai): support default values for prompt template variables (#14601)"
+    },
+    {
+      "h": "1ffcff66e2",
+      "parents": [
+        "fdf781c527"
+      ],
+      "t": 1773193859000,
+      "author": "dev-3e7ff642",
+      "subject": "refactor: change admin API input from JSON body to form params (#14585)"
+    },
+    {
+      "h": "fdf781c527",
+      "parents": [
+        "f0a8c3b720"
+      ],
+      "t": 1773127526000,
+      "author": "dev-e90f7505",
+      "subject": "fix(skill): fix maintainer client skill upload and namespace normalization (#145"
+    },
+    {
+      "h": "f0a8c3b720",
+      "parents": [
+        "0003a1882a"
+      ],
+      "t": 1773043771000,
+      "author": "dev-9762d1d3",
+      "subject": "[ISSUE #14578] Upgrade codecov-action to v5 and merge coverage workflow into CI "
+    },
+    {
+      "h": "0003a1882a",
+      "parents": [
+        "fd7e132008"
+      ],
+      "t": 1773038994000,
+      "author": "dev-6173bda4",
+      "subject": "Fix some bugs in 3.2.0-SNAPSHOT for BETA (#14581)"
+    },
+    {
+      "h": "fd7e132008",
+      "parents": [
+        "11240e8d94"
+      ],
+      "t": 1773034376000,
+      "author": "dev-2a59b8eb",
+      "subject": "docs(skill): enforce --config flag rule in nacos-skill-registry SKILL.md (#14580"
+    },
+    {
+      "h": "11240e8d94",
+      "parents": [
+        "4f95dd4f93"
+      ],
+      "t": 1773022289000,
+      "author": "dev-2a59b8eb",
+      "subject": "fix Authorization header format and enhance skill registry (#14577)"
+    },
+    {
+      "h": "4f95dd4f93",
+      "parents": [
+        "d105a4fd32"
+      ],
+      "t": 1773021542000,
+      "author": "dev-6173bda4",
+      "subject": "Merge pull request #14575 from KomachiSion/upstream-develop-add-core-unit-test-c"
+    },
+    {
+      "h": "d105a4fd32",
+      "parents": [
+        "9e031f1562",
+        "d2fd6e22c7"
+      ],
+      "t": 1772779325000,
+      "author": "dev-6173bda4",
+      "subject": "Develop skill registry with copolit (#14531)"
+    },
+    {
+      "h": "d2fd6e22c7",
+      "parents": [
+        "2f89bb210b"
+      ],
+      "t": 1772778282000,
+      "author": "dev-2a59b8eb",
+      "subject": "test(ai): add mock for publishConfig in SkillOperationServiceImplTest (#14573)"
+    },
+    {
+      "h": "2f89bb210b",
+      "parents": [
+        "729c92e549"
+      ],
+      "t": 1772768940000,
+      "author": "dev-2a59b8eb",
+      "subject": "refactor(client): replace Random with ThreadLocalRandom (#14572)"
+    },
+    {
+      "h": "9e031f1562",
+      "parents": [
+        "d04b91c69f"
+      ],
+      "t": 1772766404000,
+      "author": "dev-9762d1d3",
+      "subject": "fix(common): add final to static fields and replace global MS_SHOULD_BE_FINAL ex"
+    },
+    {
+      "h": "d04b91c69f",
+      "parents": [
+        "50670df764"
+      ],
+      "t": 1772762934000,
+      "author": "dev-e28e827e",
+      "subject": "[ISSUE #14551] Optimize NacosApiExceptionHandlerTest and enhance edge case cover"
+    },
+    {
+      "h": "50670df764",
+      "parents": [
+        "0fced0f16f"
+      ],
+      "t": 1772762504000,
+      "author": "dev-9762d1d3",
+      "subject": "fix(core,naming): use computeIfAbsent instead of putIfAbsent to handle return va"
+    },
+    {
+      "h": "0fced0f16f",
+      "parents": [
+        "5eb3109423"
+      ],
+      "t": 1772761908000,
+      "author": "dev-632a948c",
+      "subject": "test(core): add extensive unit tests for distributed package. (#14570)"
+    },
+    {
+      "h": "5eb3109423",
+      "parents": [
+        "0f5edfe0bd"
+      ],
+      "t": 1772714847000,
+      "author": "dev-9762d1d3",
+      "subject": "fix(config): add missing hashCode() to Config model classes (#14558)"
+    },
+    {
+      "h": "729c92e549",
+      "parents": [
+        "4530c86c28"
+      ],
+      "t": 1772714819000,
+      "author": "dev-2a59b8eb",
+      "subject": "Fix console-ui TypeError & Improve copilot module loading (#14567)"
+    },
+    {
+      "h": "0f5edfe0bd",
+      "parents": [
+        "4c3ef72554"
+      ],
+      "t": 1772709382000,
+      "author": "dev-9762d1d3",
+      "subject": "fix(common): add null check for grpc response in async callback (#14556)"
+    },
+    {
+      "h": "4530c86c28",
+      "parents": [
+        "b5aa078906"
+      ],
+      "t": 1772700319000,
+      "author": "dev-29f4b7e7",
+      "subject": "fix testcase (#14566)"
+    },
+    {
+      "h": "b5aa078906",
+      "parents": [
+        "9de029c989"
+      ],
+      "t": 1772699853000,
+      "author": "dev-2a59b8eb",
+      "subject": "Add uploadSkill API to admin controller and extract common RemoteServerConnector"
+    },
+    {
+      "h": "4c3ef72554",
+      "parents": [
+        "497280bba6"
+      ],
+      "t": 1772697860000,
+      "author": "dev-632a948c",
+      "subject": "add core unit test coverage (#14549)"
+    },
+    {
+      "h": "497280bba6",
+      "parents": [
+        "b0e43ebe2e"
+      ],
+      "t": 1772695040000,
+      "author": "dev-3e7ff642",
+      "subject": "[ISSUE #14054] Add OIDC/OAuth2 Authentication Plugin (#14527)"
+    },
+    {
+      "h": "b0e43ebe2e",
+      "parents": [
+        "bd7bce9c60"
+      ],
+      "t": 1772694997000,
+      "author": "dev-9762d1d3",
+      "subject": "refactor(common): replace new Random() with ThreadLocalRandom (#14538) (#14539)"
+    },
+    {
+      "h": "bd7bce9c60",
+      "parents": [
+        "8a5fb76dc9"
+      ],
+      "t": 1772694981000,
+      "author": "dev-9762d1d3",
+      "subject": "refactor(ci): reduce redundant compilation in CI workflow (#14521) (#14541)"
+    },
+    {
+      "h": "9de029c989",
+      "parents": [
+        "6ceb0eb724"
+      ],
+      "t": 1772694738000,
+      "author": "dev-29f4b7e7",
+      "subject": "fix codeql (#14555)"
+    },
+    {
+      "h": "6ceb0eb724",
+      "parents": [
+        "c708f55ee3"
+      ],
+      "t": 1772693754000,
+      "author": "dev-29f4b7e7",
+      "subject": "test case fix& sync develop (#14554)"
+    },
+    {
+      "h": "c708f55ee3",
+      "parents": [
+        "69997eef7b"
+      ],
+      "t": 1772691584000,
+      "author": "dev-29f4b7e7",
+      "subject": "Develop skill registry with copolit (#14552)"
+    },
+    {
+      "h": "8a5fb76dc9",
+      "parents": [
+        "80be977862"
+      ],
+      "t": 1772690585000,
+      "author": "dev-9762d1d3",
+      "subject": "refactor(common): remove unused cache package (#14546)"
+    },
+    {
+      "h": "69997eef7b",
+      "parents": [
+        "3088e44704",
+        "80be977862"
+      ],
+      "t": 1772626802000,
+      "author": "dev-29f4b7e7",
+      "subject": "Merge branch 'develop' into develop-skill-registry-with-copolit"
+    },
+    {
+      "h": "80be977862",
+      "parents": [
+        "8edc805a64"
+      ],
+      "t": 1772624854000,
+      "author": "dev-de0c1054",
+      "subject": "refactor(config-ConfigForm): simplify clone() implementation using super.clone()"
+    },
+    {
+      "h": "8edc805a64",
+      "parents": [
+        "e46f4f5b27"
+      ],
+      "t": 1772622007000,
+      "author": "dev-9762d1d3",
+      "subject": "refactor(build): use targeted SpotBugs exclusions instead of @SuppressFBWarnings"
+    },
+    {
+      "h": "3088e44704",
+      "parents": [
+        "0e8ec61d65"
+      ],
+      "t": 1772619486000,
+      "author": "dev-29f4b7e7",
+      "subject": "fix test (#14543)"
+    },
+    {
+      "h": "e46f4f5b27",
+      "parents": [
+        "c29ddfd936"
+      ],
+      "t": 1772614368000,
+      "author": "dev-9762d1d3",
+      "subject": "fix(common): add explicit charset to avoid platform-dependent encoding (#14533) "
+    },
+    {
+      "h": "c29ddfd936",
+      "parents": [
+        "a93521e557"
+      ],
+      "t": 1772614301000,
+      "author": "dev-de0c1054",
+      "subject": "fix(nacos-core/NacosServerLoaderService): correct logical operator in server rel"
+    },
+    {
+      "h": "0e8ec61d65",
+      "parents": [
+        "60529033fc"
+      ],
+      "t": 1772610722000,
+      "author": "dev-e90f7505",
+      "subject": "chore(pom.xml): 添加多个目录到排除列表 (#14542)"
+    },
+    {
+      "h": "60529033fc",
+      "parents": [
+        "1dd513e609"
+      ],
+      "t": 1772603049000,
+      "author": "dev-2a59b8eb",
+      "subject": "Add find-skill-from-nacos skill & fix skill upload authenticationDevelop skill r"
+    },
+    {
+      "h": "1dd513e609",
+      "parents": [
+        "19034987a3"
+      ],
+      "t": 1772602984000,
+      "author": "dev-e90f7505",
+      "subject": "fix(skill): normalize escaped yaml parsing and stabilize related tests (#14537)"
+    },
+    {
+      "h": "a93521e557",
+      "parents": [
+        "51ac953756"
+      ],
+      "t": 1772602174000,
+      "author": "dev-632a948c",
+      "subject": "add core unit test coverage in distributed.raft package.  (#14530)"
+    },
+    {
+      "h": "19034987a3",
+      "parents": [
+        "ffaeca11be"
+      ],
+      "t": 1772526183000,
+      "author": "dev-e90f7505",
+      "subject": "feat(ai): 添加 AI 客户端代理接口支持 HTTP 和 gRPC 传输 (#14525)"
+    },
+    {
+      "h": "ffaeca11be",
+      "parents": [
+        "d40267cfc7"
+      ],
+      "t": 1772444070000,
+      "author": "dev-e90f7505",
+      "subject": "feat(prompt): Refactor prompt registry to support multi version management suppo"
+    },
+    {
+      "h": "51ac953756",
+      "parents": [
+        "c1bede492c"
+      ],
+      "t": 1772441319000,
+      "author": "dev-9762d1d3",
+      "subject": "refactor(plugin): remove unnecessary equals() override in enum classes (#14515)"
+    },
+    {
+      "h": "c1bede492c",
+      "parents": [
+        "368e9f8921"
+      ],
+      "t": 1772441281000,
+      "author": "dev-de0c1054",
+      "subject": "[ISSUE #14489] Align PostgreSQL trusted function enum and enrich tag queries (#1"
+    },
+    {
+      "h": "368e9f8921",
+      "parents": [
+        "26e5961f8e"
+      ],
+      "t": 1772440083000,
+      "author": "dev-9762d1d3",
+      "subject": "refactor(build): remove DM_BOXED_PRIMITIVE_FOR_PARSING SpotBugs exclusion (#1450"
+    },
+    {
+      "h": "26e5961f8e",
+      "parents": [
+        "200e1f9694"
+      ],
+      "t": 1772439868000,
+      "author": "dev-9762d1d3",
+      "subject": "docs(contributing): add license header, pre-submission checks and Chinese versio"
+    },
+    {
+      "h": "200e1f9694",
+      "parents": [
+        "076d978621"
+      ],
+      "t": 1772425247000,
+      "author": "dev-9762d1d3",
+      "subject": "refactor(build): enable SpotBugs check enforcement in CI (#14470)"
+    },
+    {
+      "h": "076d978621",
+      "parents": [
+        "cd85768e6e"
+      ],
+      "t": 1772422589000,
+      "author": "dev-c40acedd",
+      "subject": "fix: resolve NPE risk and audit log inconsistencies in gray config #14482 (#1449"
+    },
+    {
+      "h": "cd85768e6e",
+      "parents": [
+        "8cc5b124d7"
+      ],
+      "t": 1772422527000,
+      "author": "dev-e90f7505",
+      "subject": "fix: prevent gray-delete migrate NPE and correct lookup args (#14507)"
+    },
+    {
+      "h": "8cc5b124d7",
+      "parents": [
+        "548585aff8"
+      ],
+      "t": 1772419285000,
+      "author": "dev-c40acedd",
+      "subject": "[ISSUE #14482] fix: assign missing MD5 parameter for CAS updates in gray config "
+    },
+    {
+      "h": "548585aff8",
+      "parents": [
+        "9870cfbd5a"
+      ],
+      "t": 1772419216000,
+      "author": "dev-0f6d7478",
+      "subject": "[ISSUE #14111]Implement Oracle database supports (#14476)"
+    },
+    {
+      "h": "9870cfbd5a",
+      "parents": [
+        "da6dc341bc"
+      ],
+      "t": 1772265368000,
+      "author": "dev-632a948c",
+      "subject": "Fix and add unit test for code (#14500)"
+    },
+    {
+      "h": "da6dc341bc",
+      "parents": [
+        "a2b3bde3e7"
+      ],
+      "t": 1772011356000,
+      "author": "dev-de0c1054",
+      "subject": "fix: add missing 'type' and 'md5' fields to mapper (#14485)"
+    },
+    {
+      "h": "a2b3bde3e7",
+      "parents": [
+        "dc9160c4ac"
+      ],
+      "t": 1772002970000,
+      "author": "dev-614511d7",
+      "subject": "fix: improve health check processors code quality (#14480)"
+    },
+    {
+      "h": "dc9160c4ac",
+      "parents": [
+        "cabddd3438"
+      ],
+      "t": 1771987989000,
+      "author": "dev-d46fbf1b",
+      "subject": "fix: replace Long.valueOf(s) with Long.parseLong(s) to avoid redundant unboxing."
+    },
+    {
+      "h": "cabddd3438",
+      "parents": [
+        "666c5cbd73"
+      ],
+      "t": 1771985910000,
+      "author": "dev-632a948c",
+      "subject": "refactor(server): unify component scanning with custom package exclude filters. "
+    },
+    {
+      "h": "666c5cbd73",
+      "parents": [
+        "0b49892744"
+      ],
+      "t": 1771985739000,
+      "author": "dev-2d360425",
+      "subject": "Fix spelling errors in comments (#14477)"
+    },
+    {
+      "h": "d40267cfc7",
+      "parents": [
+        "0d5c08cc74"
+      ],
+      "t": 1770876068000,
+      "author": "dev-36d5d86e",
+      "subject": "Modify skill functions and display (#14465)"
+    },
+    {
+      "h": "0b49892744",
+      "parents": [
+        "d7d4e31c04"
+      ],
+      "t": 1770788093000,
+      "author": "dev-0b421854",
+      "subject": "Refactor: Remove obsolete p3c-pmd plugin and cleanup annotations (#14455) (#1446"
+    },
+    {
+      "h": "d7d4e31c04",
+      "parents": [
+        "4297152b37"
+      ],
+      "t": 1770777261000,
+      "author": "dev-632a948c",
+      "subject": "refactor(api-legacy-adapter): Remove api-legacy-adapter module (moved to nacos-g"
+    },
+    {
+      "h": "4297152b37",
+      "parents": [
+        "ef1cf275b2"
+      ],
+      "t": 1770705130000,
+      "author": "dev-632a948c",
+      "subject": "feat(naming): add minimal v1 compatibility for operator metrics endpoint. (#1446"
+    },
+    {
+      "h": "ef1cf275b2",
+      "parents": [
+        "0c7ea0eafd"
+      ],
+      "t": 1770693933000,
+      "author": "dev-632a948c",
+      "subject": "[ISSUE#14050] Extract and Refactor /v1 and /v2 HTTP APIs to Submodules (#14463)"
+    },
+    {
+      "h": "0c7ea0eafd",
+      "parents": [
+        "aa23043993"
+      ],
+      "t": 1770608643000,
+      "author": "dev-b43e5662",
+      "subject": "fix: No exception is thrown when form parameters are too large.  (#14454)"
+    },
+    {
+      "h": "aa23043993",
+      "parents": [
+        "bb0079e5df"
+      ],
+      "t": 1770370712000,
+      "author": "dev-054de6f9",
+      "subject": "[ISSUE #14090] Fix console remote server context-path for maintainer-client (#14"
+    },
+    {
+      "h": "bb0079e5df",
+      "parents": [
+        "e970395936"
+      ],
+      "t": 1770363084000,
+      "author": "dev-054de6f9",
+      "subject": "refactor(common): remove ineffective ThreadLocal in MD5Utils (#14449)"
+    },
+    {
+      "h": "e970395936",
+      "parents": [
+        "e06a2aa46c"
+      ],
+      "t": 1770362034000,
+      "author": "dev-3e7ff642",
+      "subject": "[ISSUE #14122] Activate dev profile by default for plugin dependencies (#14125)"
+    },
+    {
+      "h": "e06a2aa46c",
+      "parents": [
+        "e340450b20"
+      ],
+      "t": 1770361693000,
+      "author": "dev-4732e668",
+      "subject": "fix: The ConfigRowMapperInjector returned an incorrect created field (#14401)"
+    },
+    {
+      "h": "0d5c08cc74",
+      "parents": [
+        "2218d5aa80"
+      ],
+      "t": 1770360558000,
+      "author": "dev-e90f7505",
+      "subject": "feat(ai): 支持配置管理中的标签功能 (#14453)"
+    },
+    {
+      "h": "e340450b20",
+      "parents": [
+        "d8654928e4"
+      ],
+      "t": 1770358220000,
+      "author": "dev-bc9a3a88",
+      "subject": "fix(#14402) fix derby and mysql like with escape (#14442)"
+    },
+    {
+      "h": "2218d5aa80",
+      "parents": [
+        "363adf8b81"
+      ],
+      "t": 1770091478000,
+      "author": "dev-e90f7505",
+      "subject": "refactor(ai): 重构版本比较和JSON字段处理逻辑 (#14441)"
+    },
+    {
+      "h": "363adf8b81",
+      "parents": [
+        "a7895bc4f4"
+      ],
+      "t": 1770088729000,
+      "author": "dev-e90f7505",
+      "subject": "feat(prompt): Add Prompt Registry (#14440)"
+    },
+    {
+      "h": "a7895bc4f4",
+      "parents": [
+        "ee65472a53"
+      ],
+      "t": 1769600651000,
+      "author": "dev-29f4b7e7",
+      "subject": "* optimize skill"
+    },
+    {
+      "h": "d8654928e4",
+      "parents": [
+        "90ff255a31"
+      ],
+      "t": 1769565917000,
+      "author": "dev-e28e827e",
+      "subject": "test(auth): improve readability of LDAP auth integration test (#14357)"
+    },
+    {
+      "h": "ee65472a53",
+      "parents": [
+        "3f614c8ef8"
+      ],
+      "t": 1769509131000,
+      "author": "dev-29f4b7e7",
+      "subject": "test case (#14395)"
+    },
+    {
+      "h": "3f614c8ef8",
+      "parents": [
+        "a7bf9bada0"
+      ],
+      "t": 1769502670000,
+      "author": "dev-29f4b7e7",
+      "subject": "skill registry with copolit (#14388)"
+    },
+    {
+      "h": "90ff255a31",
+      "parents": [
+        "ceba0fd3c3"
+      ],
+      "t": 1769420427000,
+      "author": "dev-9762d1d3",
+      "subject": "fix(github): improve anti-spam detection accuracy (#14356)"
+    },
+    {
+      "h": "ceba0fd3c3",
+      "parents": [
+        "98336c266d"
+      ],
+      "t": 1769415949000,
+      "author": "dev-a88d9908",
+      "subject": "chore: fix some typos in comments (#14263)"
+    },
+    {
+      "h": "98336c266d",
+      "parents": [
+        "bbdad748f5"
+      ],
+      "t": 1769413708000,
+      "author": "dev-9762d1d3",
+      "subject": "feat(github): add anti-spam protection for GitHub Issues (#14333)"
+    },
+    {
+      "h": "bbdad748f5",
+      "parents": [
+        "021149eca4"
+      ],
+      "t": 1769412645000,
+      "author": "dev-9762d1d3",
+      "subject": "fix(startup): add JVM --add-opens options for JDK 17+ compatibility (#14307)"
+    },
+    {
+      "h": "021149eca4",
+      "parents": [
+        "f39ce37f56"
+      ],
+      "t": 1769391863000,
+      "author": "dev-aed7897f",
+      "subject": "Enhance MainLayout: Add language change handling to fetch notices on update (#14"
+    },
+    {
+      "h": "a7bf9bada0",
+      "parents": [
+        "f39ce37f56"
+      ],
+      "t": 1769147047000,
+      "author": "dev-29f4b7e7",
+      "subject": "skills registry and nacos copolit (#14245)"
+    },
+    {
+      "h": "f39ce37f56",
+      "parents": [
+        "090e34216e"
+      ],
+      "t": 1768878158000,
+      "author": "dev-3e7ff642",
+      "subject": "[ISSUE #14079] Add plugin management console UI and API (#14117)"
+    },
+    {
+      "h": "090e34216e",
+      "parents": [
+        "8e402aef1a"
+      ],
+      "t": 1768878144000,
+      "author": "dev-e90f7505",
+      "subject": "feat(ai): Maintainer Sdk Get Agent Card 方法支持版本参数 (#14120)"
+    },
+    {
+      "h": "8e402aef1a",
+      "parents": [
+        "b39accbd7f"
+      ],
+      "t": 1768875005000,
+      "author": "dev-9762d1d3",
+      "subject": "fix(console-ui): reset currentPage to 1 instead of 0 on API error (#14115) (#141"
+    },
+    {
+      "h": "b39accbd7f",
+      "parents": [
+        "1d01735654"
+      ],
+      "t": 1768794702000,
+      "author": "dev-c40acedd",
+      "subject": "Fix: correct gray rule comparison logic in ConfigMigrateService (#14114)"
+    },
+    {
+      "h": "1d01735654",
+      "parents": [
+        "ce3a6c8785"
+      ],
+      "t": 1768389220000,
+      "author": "dev-bc9a3a88",
+      "subject": "fix(#13770) fix part ai relevant api context path error (#14104)"
+    },
+    {
+      "h": "ce3a6c8785",
+      "parents": [
+        "bab5e77834"
+      ],
+      "t": 1768389154000,
+      "author": "dev-5122f454",
+      "subject": "fix(naming): validate serviceName and groupName before getGroupedName to return "
+    },
+    {
+      "h": "bab5e77834",
+      "parents": [
+        "c91255fae6"
+      ],
+      "t": 1768377025000,
+      "author": "dev-3e7ff642",
+      "subject": "[ISSUE #14078] Implement cluster-wide state synchronization (#14101)"
+    },
+    {
+      "h": "c91255fae6",
+      "parents": [
+        "bb26607ffb"
+      ],
+      "t": 1768376388000,
+      "author": "dev-7df65660",
+      "subject": "fix(#11180): update jraft-core version to 1.4.0 (#14100)"
+    },
+    {
+      "h": "bb26607ffb",
+      "parents": [
+        "12c5244a77"
+      ],
+      "t": 1767926468000,
+      "author": "dev-3e7ff642",
+      "subject": "[ISSUE #14077] Implement SPI-based plugin discovery and management API (#14082)"
+    },
+    {
+      "h": "12c5244a77",
+      "parents": [
+        "a83344e8ee"
+      ],
+      "t": 1767926424000,
+      "author": "dev-bd5a8d6c",
+      "subject": "build(deps): bump org.apache.logging.log4j:log4j-core (#14055)"
+    },
+    {
+      "h": "a83344e8ee",
+      "parents": [
+        "8ffa5691b2"
+      ],
+      "t": 1767584673000,
+      "author": "dev-1dafd73d",
+      "subject": "Support MCP Tool _meta and annotations fields (#14085)"
+    },
+    {
+      "h": "8ffa5691b2",
+      "parents": [
+        "f2506f1394"
+      ],
+      "t": 1767577078000,
+      "author": "dev-9762d1d3",
+      "subject": "fix(workflow): remove duplicate close-issue-label in stale workflow (#14087)"
+    },
+    {
+      "h": "f2506f1394",
+      "parents": [
+        "d0e67f95b2"
+      ],
+      "t": 1766995514000,
+      "author": "dev-ce2db41a",
+      "subject": "bugfix: fix control plugin bug (#14063)"
+    },
+    {
+      "h": "d0e67f95b2",
+      "parents": [
+        "7d48d1605b"
+      ],
+      "t": 1766992402000,
+      "author": "dev-9762d1d3",
+      "subject": "refactor: remove UDP PUSH support for naming module (#14052) (#14074)"
+    },
+    {
+      "h": "7d48d1605b",
+      "parents": [
+        "b72415a868"
+      ],
+      "t": 1766977974000,
+      "author": "dev-3e7ff642",
+      "subject": "[ISSUE #14048] Refactor datasource plugins structure and enhance PostgreSQL capa"
+    },
+    {
+      "h": "b72415a868",
+      "parents": [
+        "8c6560ce5c"
+      ],
+      "t": 1766628902000,
+      "author": "dev-1dafd73d",
+      "subject": "Support output scheme and refactor the CreateTool (#14057)"
+    },
+    {
+      "h": "8c6560ce5c",
+      "parents": [
+        "0e30f412a2"
+      ],
+      "t": 1766627554000,
+      "author": "dev-ce2db41a",
+      "subject": "bugfix：修复 client 中 ServiceInfoHolder 中数据可能被修改的风险 (#14062)"
+    },
+    {
+      "h": "0e30f412a2",
+      "parents": [
+        "e275d6a40a",
+        "5bf23dae5f"
+      ],
+      "t": 1766131653000,
+      "author": "dev-632a948c",
+      "subject": "Merge pull request #14041 from WangzJi/feature/unified-datasource-dialect"
+    },
+    {
+      "h": "5bf23dae5f",
+      "parents": [
+        "baa76a2137"
+      ],
+      "t": 1766115352000,
+      "author": "dev-3e7ff642",
+      "subject": "test: fix UT failed"
+    },
+    {
+      "h": "baa76a2137",
+      "parents": [
+        "c1fda1ef12"
+      ],
+      "t": 1766058126000,
+      "author": "dev-3e7ff642",
+      "subject": "style(datasource): checkstyle"
+    },
+    {
+      "h": "c1fda1ef12",
+      "parents": [
+        "bec655dad8"
+      ],
+      "t": 1766026970000,
+      "author": "dev-3e7ff642",
+      "subject": "Restore ConfigInfoAggrMapper and ConfigInfoAggrMapperByMySql"
+    },
+    {
+      "h": "bec655dad8",
+      "parents": [
+        "9c2058a9f1"
+      ],
+      "t": 1765983104000,
+      "author": "dev-3e7ff642",
+      "subject": "feature(datasource): Implement unified DatabaseDialect architecture and complete"
+    },
+    {
+      "h": "9c2058a9f1",
+      "parents": [
+        "618469bf06",
+        "ca8db1502d"
+      ],
+      "t": 1765982782000,
+      "author": "dev-3e7ff642",
+      "subject": "Merge remote-tracking branch 'plugin-spi-temp/develop' into feature/unified-data"
+    },
+    {
+      "h": "618469bf06",
+      "parents": [
+        "bcb741d122",
+        "2245bcf2ae"
+      ],
+      "t": 1765980951000,
+      "author": "dev-3e7ff642",
+      "subject": "feat(datasource): merge plugin base implementation with history"
+    },
+    {
+      "h": "bcb741d122",
+      "parents": [
+        "e275d6a40a",
+        "e3f4a78d06"
+      ],
+      "t": 1765980584000,
+      "author": "dev-3e7ff642",
+      "subject": "feat(datasource): merge PostgreSQL dialect from nacos-plugin with history"
+    },
+    {
+      "h": "e275d6a40a",
+      "parents": [
+        "ff95939934"
+      ],
+      "t": 1765849308000,
+      "author": "dev-9762d1d3",
+      "subject": "fix(stale-workflow): update stale operations-per-run (#14032)"
+    },
+    {
+      "h": "ff95939934",
+      "parents": [
+        "fbce299a02"
+      ],
+      "t": 1765787508000,
+      "author": "dev-fe6dd4f3",
+      "subject": "[ISSUE #14016]: when import or export, chose healthy node to do (#14028)"
+    },
+    {
+      "h": "e3f4a78d06",
+      "parents": [
+        "fb500d7e4e"
+      ],
+      "t": 1765780338000,
+      "author": "dev-9a1ad3b8",
+      "subject": "feat: add yashan datasource plugin implementation (#88)"
+    },
+    {
+      "h": "fbce299a02",
+      "parents": [
+        "3007d6f8aa"
+      ],
+      "t": 1765452274000,
+      "author": "dev-1dafd73d",
+      "subject": "Fix inconsistent mcp cache. (#14024)"
+    },
+    {
+      "h": "3007d6f8aa",
+      "parents": [
+        "fc8e0ca29b"
+      ],
+      "t": 1765447391000,
+      "author": "dev-76163b6c",
+      "subject": "fix sql error (no effect due to no use)"
+    },
+    {
+      "h": "fc8e0ca29b",
+      "parents": [
+        "7f7d414719"
+      ],
+      "t": 1765177155000,
+      "author": "dev-9762d1d3",
+      "subject": "fix(stale-workflow): update stale issue day (#14012)"
+    },
+    {
+      "h": "7f7d414719",
+      "parents": [
+        "8cd00afa93"
+      ],
+      "t": 1765163561000,
+      "author": "dev-d46fbf1b",
+      "subject": "fix(CVE-2025-55752):upgrade springboot version to 3.4.10.(#13998) (#14006)"
+    },
+    {
+      "h": "8cd00afa93",
+      "parents": [
+        "90747d4e77"
+      ],
+      "t": 1765162524000,
+      "author": "dev-c40acedd",
+      "subject": "fix(client): Fix UUID passing issue in configuration fuzzy listening events (#14"
+    },
+    {
+      "h": "90747d4e77",
+      "parents": [
+        "dee91809a0"
+      ],
+      "t": 1765161771000,
+      "author": "dev-30325bc3",
+      "subject": "Eliminate ClassUnload during config reload using Configuration.initialize() (#14"
+    },
+    {
+      "h": "dee91809a0",
+      "parents": [
+        "b1ab8fb8f4"
+      ],
+      "t": 1764819789000,
+      "author": "dev-e90f7505",
+      "subject": "feat(config): 发布配置元数据时增加日志记录和通知 (#13999)"
+    },
+    {
+      "h": "b1ab8fb8f4",
+      "parents": [
+        "7ee1e3430e"
+      ],
+      "t": 1764638916000,
+      "author": "dev-632a948c",
+      "subject": "Add event for agent and mcp endpoint operation (#13996)"
+    },
+    {
+      "h": "7ee1e3430e",
+      "parents": [
+        "e364230d46"
+      ],
+      "t": 1764561617000,
+      "author": "dev-9762d1d3",
+      "subject": "fix(stale-workflow): correct exempt label format and update schedule time (#1398"
+    },
+    {
+      "h": "e364230d46",
+      "parents": [
+        "383c91d6ea"
+      ],
+      "t": 1764308178000,
+      "author": "dev-9762d1d3",
+      "subject": "ci: update stale workflow path (#13985)"
+    },
+    {
+      "h": "383c91d6ea",
+      "parents": [
+        "4f470e0f3b"
+      ],
+      "t": 1764228959000,
+      "author": "dev-9762d1d3",
+      "subject": "ci: update stale workflow (#13974)"
+    },
+    {
+      "h": "4f470e0f3b",
+      "parents": [
+        "7bfadeaf34"
+      ],
+      "t": 1764145871000,
+      "author": "dev-632a948c",
+      "subject": "build: Upgrade to 3.2.0 snapshot. (#13972)"
+    },
+    {
+      "h": "7bfadeaf34",
+      "parents": [
+        "3e3beb063f"
+      ],
+      "t": 1764140842000,
+      "author": "dev-632a948c",
+      "subject": "build: Upgrade version to 3.1.1. (#13971)"
+    },
+    {
+      "h": "3e3beb063f",
+      "parents": [
+        "19b24f5ef5"
+      ],
+      "t": 1764122200000,
+      "author": "dev-0ec890b5",
+      "subject": "[ISSUE #13964] Fix when nacos.extension.ai.enabled is false, nacos start fa… (#1"
+    },
+    {
+      "h": "19b24f5ef5",
+      "parents": [
+        "ce3b2aceb2"
+      ],
+      "t": 1764120635000,
+      "author": "dev-354ef0fe",
+      "subject": "[ISSUE #13951] Add configurable CORS filter for console module (#13966)"
+    },
+    {
+      "h": "ce3b2aceb2",
+      "parents": [
+        "90946e11be"
+      ],
+      "t": 1764061254000,
+      "author": "dev-e90f7505",
+      "subject": "feat(config):List config api support return configTags and desc (#13963)"
+    },
+    {
+      "h": "90946e11be",
+      "parents": [
+        "a5ff5b983e"
+      ],
+      "t": 1763983006000,
+      "author": "dev-632a948c",
+      "subject": "fix(auth): Fix Password update fails when deployed with independent console/serv"
+    },
+    {
+      "h": "a5ff5b983e",
+      "parents": [
+        "69e04d8488"
+      ],
+      "t": 1763962273000,
+      "author": "dev-632a948c",
+      "subject": "Support batch register agent endpoint (#13957)"
+    },
+    {
+      "h": "69e04d8488",
+      "parents": [
+        "f9b17e1f29"
+      ],
+      "t": 1763948643000,
+      "author": "dev-1dafd73d",
+      "subject": "添加默认安全配置支持，包括下行和上行安全方案的选择与配置 (#13953)"
+    },
+    {
+      "h": "f9b17e1f29",
+      "parents": [
+        "699a72027f"
+      ],
+      "t": 1763636651000,
+      "author": "dev-632a948c",
+      "subject": "fix(ai): Fix update agent card failed by console. (#13948)"
+    },
+    {
+      "h": "699a72027f",
+      "parents": [
+        "c2d4365997"
+      ],
+      "t": 1763628321000,
+      "author": "dev-632a948c",
+      "subject": "feat(a2a): Refactor AgentEndpoint and add new fields (#13946)"
+    },
+    {
+      "h": "c2d4365997",
+      "parents": [
+        "65f19905d4"
+      ],
+      "t": 1763604199000,
+      "author": "dev-1dafd73d",
+      "subject": "Support merge versions when import mcp (#13945)"
+    },
+    {
+      "h": "65f19905d4",
+      "parents": [
+        "f400dbff92"
+      ],
+      "t": 1763345938000,
+      "author": "dev-fe6dd4f3",
+      "subject": "[ISSUE #13922]: add thread poll allow core thread timeout config (#13937)"
+    },
+    {
+      "h": "f400dbff92",
+      "parents": [
+        "7d9871c2e8"
+      ],
+      "t": 1763098441000,
+      "author": "dev-1dafd73d",
+      "subject": "Adapt to new mcp registry api and opt the mcp transform service (#13933)"
+    },
+    {
+      "h": "7d9871c2e8",
+      "parents": [
+        "7e7da4efbd"
+      ],
+      "t": 1762307642000,
+      "author": "dev-e3c643db",
+      "subject": "Fix deprecated Log4j2 package scanning warnings (#13902)"
+    },
+    {
+      "h": "7e7da4efbd",
+      "parents": [
+        "24cc2166a0"
+      ],
+      "t": 1762307604000,
+      "author": "dev-929c98a6",
+      "subject": "importToolsFromMcp api support streamable protocol server (#13911)"
+    },
+    {
+      "h": "24cc2166a0",
+      "parents": [
+        "39a5548291"
+      ],
+      "t": 1762234747000,
+      "author": "dev-3e7ff642",
+      "subject": "optimize: update checkStyle version (#13914)"
+    },
+    {
+      "h": "39a5548291",
+      "parents": [
+        "ef652b95f9"
+      ],
+      "t": 1760410795000,
+      "author": "dev-fe6dd4f3",
+      "subject": "[ISSUE #13822]: separation of responsibilities of client executor and login sche"
+    },
+    {
+      "h": "ef652b95f9",
+      "parents": [
+        "d964cd7870"
+      ],
+      "t": 1760327337000,
+      "author": "dev-5a243c7d",
+      "subject": "feat：add overrideExisting endpoint when update mcpserver (#13874)"
+    },
+    {
+      "h": "d964cd7870",
+      "parents": [
+        "de331370cb"
+      ],
+      "t": 1760324043000,
+      "author": "dev-715316af",
+      "subject": "Fix: Correct synchronization lock and add volatile for tpsControlManager in Grpc"
+    },
+    {
+      "h": "de331370cb",
+      "parents": [
+        "31869e2587"
+      ],
+      "t": 1760176898000,
+      "author": "dev-632a948c",
+      "subject": "Develop add ut api (#13881)"
+    },
+    {
+      "h": "31869e2587",
+      "parents": [
+        "37068cf44d"
+      ],
+      "t": 1760064481000,
+      "author": "dev-632a948c",
+      "subject": "Add ut for ai (#13879)"
+    },
+    {
+      "h": "37068cf44d",
+      "parents": [
+        "48104438cb"
+      ],
+      "t": 1760060784000,
+      "author": "dev-929c98a6",
+      "subject": "fix McpRemoteHandler namespaceId issue (#13877)"
+    },
+    {
+      "h": "48104438cb",
+      "parents": [
+        "03e98934d4"
+      ],
+      "t": 1759225923000,
+      "author": "dev-56025de6",
+      "subject": "[ISSUE #13869] fix Error creating bean with name 'consoleHealthController' (#138"
+    },
+    {
+      "h": "03e98934d4",
+      "parents": [
+        "08da133e55"
+      ],
+      "t": 1759222803000,
+      "author": "dev-632a948c",
+      "subject": "Add some unit test for ai module. (#13873)"
+    },
+    {
+      "h": "08da133e55",
+      "parents": [
+        "e80c6baf6f"
+      ],
+      "t": 1759136938000,
+      "author": "dev-509c9950",
+      "subject": "fix: service NullPointerException when getSpec() (#13868)"
+    },
+    {
+      "h": "e80c6baf6f",
+      "parents": [
+        "fcf61998d6"
+      ],
+      "t": 1759110870000,
+      "author": "dev-616b8dff",
+      "subject": "fix null point exception (#13861)"
+    },
+    {
+      "h": "fcf61998d6",
+      "parents": [
+        "17338d5aeb"
+      ],
+      "t": 1759110376000,
+      "author": "dev-2e0e3ce9",
+      "subject": "For #13863, make multiple pids into a single line in shutdown.sh (#13864)"
+    },
+    {
+      "h": "17338d5aeb",
+      "parents": [
+        "a8e9f19de8"
+      ],
+      "t": 1758866669000,
+      "author": "dev-3d48fcca",
+      "subject": "[ISSUE #13857] Flaky test in EmbeddedConfigInfoPersistServiceImplTest due to JSO"
+    },
+    {
+      "h": "a8e9f19de8",
+      "parents": [
+        "2b9bfd4c07"
+      ],
+      "t": 1758612993000,
+      "author": "dev-1dafd73d",
+      "subject": "adapt to new registry api (#13849)"
+    },
+    {
+      "h": "2b9bfd4c07",
+      "parents": [
+        "2cbe8ae611"
+      ],
+      "t": 1758592368000,
+      "author": "dev-9762d1d3",
+      "subject": "fix: update startup.cmd (https://github.com/alibaba/nacos/issues/13790) (#13844)"
+    },
+    {
+      "h": "2cbe8ae611",
+      "parents": [
+        "804fac3c6e"
+      ],
+      "t": 1758509794000,
+      "author": "dev-632a948c",
+      "subject": "Upgrade version to 3.1.0. (#13839)"
+    },
+    {
+      "h": "804fac3c6e",
+      "parents": [
+        "f71257e390"
+      ],
+      "t": 1758505913000,
+      "author": "dev-d2f42da3",
+      "subject": "[ISSUE#13322] Add unit test for agent registration. (#13836)"
+    },
+    {
+      "h": "f71257e390",
+      "parents": [
+        "032d655b93"
+      ],
+      "t": 1758248351000,
+      "author": "dev-9762d1d3",
+      "subject": "fix: Upgrade jraft to 1.3.15.bugfix (#13831)"
+    }
+  ]
+}
