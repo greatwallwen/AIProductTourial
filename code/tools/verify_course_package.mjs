@@ -255,6 +255,11 @@ for (const c of defs.cases) { const n = c.num; const g = c?.grill || [];
   ok(); if (cap.includes('久未乘机')) bad('Capstone 仍含航空「久未乘机」（案例02 已是 P2P 信贷，分层锚点须为案例03 真实 RFM）');
   ok(); if (!/分层（案例\s*03）/.test(cap)) bad('Capstone 分层步未锚到案例03 真实 RFM');
 }
+// —— v23 守卫 ⑥ 反向红线：case01/03 数据集设计文档不得把真实基座 order_data 说成「确定性合成」 ——
+for (const f of ['dataset/design/case_01.md', 'dataset/design/case_03.md']) { const t = rd(f);
+  ok(); if (/确定性合成/.test(t) && /order_data/.test(t) && !/真实基座/.test(t)) bad(`${f} 把真实基座 order_data 误标「确定性合成」（反向红线：真实不得说成合成）`);
+  ok(); if (!/真实基座/.test(t)) bad(`${f} 未标注 order_data 为真实基座 UCI（反向红线）`);
+}
 // 专属 demo：案例16 医院容量
 ok(); if (defs.cases.filter((c) => c.screen).length < defs.cases.length) bad('存在非专属 demo 案例（应 11/11 有 screen）');
 // 图表数据驱动守卫：CSV 案例的图表必须是真实列聚合（有 by 说明），不得哈希噪声

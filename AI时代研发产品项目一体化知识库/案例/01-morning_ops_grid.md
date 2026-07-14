@@ -14,7 +14,7 @@
 >
 > <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：早会的价值不在「看数」，而在「把昨天的信号今天就派出去」。本案 /api/retail 按品类真算销售额（真实数据里厨餐、家饰类目营收领先）、区域按真实国家聚合（英国占绝对主力），退货来自真实退货信号（教学过采样约 ×5，见 MANIFEST）——从看板变成行动。<img src="../../assets/vendor/lucide/built/alert-triangle.svg" width="14" alt="" style="vertical-align:-2px" /> 毛利率为教学合成叠加（源无成本），不作真实经营结论。
 >
-> <img src="../../assets/vendor/lucide/built/alert-triangle.svg" width="14" alt="" style="vertical-align:-2px" /> **常见坑**：① 驾驶舱做成只读大屏，异常没责任人没时限，开完早会还是没人跟进；② 只看总数不按品类/区域下钻，真实的收入结构与退货高发点被平均掩盖；③ 把教学合成的毛利率当真实结论——本案已显式标注哪些列真实、哪些是叠加。
+> <img src="../../assets/vendor/lucide/built/alert-triangle.svg" width="14" alt="" style="vertical-align:-2px" /> **常见坑**：① 方案停在「分析」不落到「动作+责任+验收」；② 只看总数不按品类/区域下钻，真实的收入结构与退货高发点被平均掩盖；③ 把教学合成的毛利率当真实成本决策依据；④ 把「英国营收最高」当增长/经营强度信号——那只是**样本主场体量**（数据本就来自英国零售商，base-rate 假象，与案例02 放款率被规模混淆同型），异常率也是 ×5 教学过采样、非真实经营水平（真实约 2%）。
 
 ### 三镜头看同一个案例
 
