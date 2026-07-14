@@ -2,10 +2,10 @@
  "num": 6,
  "slug": "system_arch_flow",
  "url": "http://localhost:5200/#/case/06",
- "shotAt": "2026-07-14T08:39:19.499Z",
+ "shotAt": "2026-07-14T09:11:13.184Z",
  "brand": "会自检的 AI 工程 · 实操手册",
  "caseCount": 10,
  "h1": "子系统分解与接口契约",
  "kpis": [],
- "pngBytes": 831208
+ "pngBytes": 814821
 }

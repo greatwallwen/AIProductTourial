@@ -2,7 +2,7 @@
  "num": 8,
  "slug": "sdd_system_build",
  "url": "http://localhost:5200/#/case/08",
- "shotAt": "2026-07-14T08:41:13.196Z",
+ "shotAt": "2026-07-14T09:11:19.141Z",
  "brand": "会自检的 AI 工程 · 实操手册",
  "caseCount": 10,
  "h1": "规格驱动系统建造台",
@@ -24,5 +24,5 @@
    "value": "7"
   }
  ],
- "pngBytes": 960001
+ "pngBytes": 938931
 }

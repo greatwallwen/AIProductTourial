@@ -7,7 +7,7 @@ import { apiRoutes } from './routes/api.ts';
 export async function buildApp() {
   const app = Fastify({ logger: false });
   await app.register(apiRoutes);
-  const webDist = join(import.meta.dirname, '..', 'web', 'dist');
+  const webDist = join(import.meta.dirname, '..', 'web', 'out'); // v24：Next.js 静态导出 out/（原 Vite dist/）
   if (existsSync(webDist)) await app.register(fastifyStatic, { root: webDist, prefix: '/' });
   return app;
 }

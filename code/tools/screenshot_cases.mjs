@@ -3,7 +3,7 @@
  *  从活页面 DOM 导出边车 JSON（品牌/案例数/页头 H1/该案 KPI 名值对）+ png 字节粗检防纯色空白。
  *  verify_course_package.mjs 逐案核对边车 vs code/data/case_NN.json——「图」与「数」对不上即红，
  *  终结「verify 只查截图文件存在」的验证剧场（§2.8b）。
- *  前置：服务已起（PORT=5200 node --experimental-sqlite code/server/app.ts，托管 code/web/dist）。
+ *  前置：服务已起（PORT=5200 node --experimental-sqlite code/server/app.ts，托管 code/web/out）。
  *  用法：node code/tools/screenshot_cases.mjs [num...]   （不带参数=全量）
  *  依赖：playwright-core（不随仓库装；npm i -D playwright-core，或设 PLAYWRIGHT_CORE=/abs/path/to/playwright-core/index.mjs）
  *        浏览器用系统 chromium（CHROMIUM_BIN 可覆盖，默认 /usr/bin/chromium）。 */
@@ -58,7 +58,8 @@ for (const c of cases) {
   const url = `${BASE}/#/case/${pad(c.num)}`;
   try {
     await page.goto(url, { waitUntil: 'networkidle', timeout: 30000 });
-    await page.waitForSelector('.main .topbar h1', { timeout: 10000 }).catch(() => {});
+    // Next.js 静态导出 + 客户端 hydrate（dynamic ssr:false）：等 H1 真有文字（应用已挂载渲染），比「选择器存在」更稳（防冷启动空白）。
+    await page.waitForFunction(() => { const h = document.querySelector('.main .topbar h1'); return !!(h && h.textContent && h.textContent.trim()); }, { timeout: 15000 }).catch(() => {});
     await page.waitForTimeout(2500); // 专属屏 live fetch（/api/search、/api/gates…）落定
     const buf = await page.screenshot({ path: join(OUT, `${stem}.png`) });
     const dom = await page.evaluate(extractSidecar);
