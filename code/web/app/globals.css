@@ -1,0 +1,19 @@
+/* 全局样式：保留原有主题令牌与暗色大屏观感（src/index.css），叠加 Tailwind + shadcn/ui 令牌。 */
+@import "../src/index.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* shadcn/ui 设计令牌（HSL）——与原 --accent/--panel 等主题共存；shadcn 组件用这套。 */
+:root {
+  --background: 222 20% 7%;
+  --foreground: 210 20% 92%;
+  --card: 222 18% 10%;
+  --card-foreground: 210 20% 92%;
+  --primary: 199 89% 55%;
+  --primary-foreground: 222 20% 7%;
+  --muted: 222 12% 20%;
+  --muted-foreground: 215 15% 62%;
+  --border: 222 12% 24%;
+  --radius: 0.6rem;
+}
