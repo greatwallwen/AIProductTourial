@@ -8,6 +8,8 @@ export function Challenge({ data }: { data: any }) {
   const owners = [...new Set((data.queue || []).map((x: any) => x.owner).filter(Boolean))] as string[];
   const [picked, setPicked] = useState<string | null>(null);
   if (!q || !q.owner || owners.length < 2) return null; // 无队列/无责任对象的案例跳过
+  // v23：责任对象全为「演示角色」（dogfood/元案例无真实分派对象）→ 不伪造决策互动，交由 grill 承担，守「不把编造当真实」
+  if (owners.every((o) => /演示角色/.test(o))) return null;
   const correct = q.owner;
   const firstField = String(Object.values(q.fields || {})[0] ?? '');
   return (
