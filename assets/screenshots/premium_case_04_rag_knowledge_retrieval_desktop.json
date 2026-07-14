@@ -2,10 +2,10 @@
  "num": 4,
  "slug": "rag_knowledge_retrieval",
  "url": "http://localhost:5200/#/case/04",
- "shotAt": "2026-07-14T02:16:59.528Z",
+ "shotAt": "2026-07-14T08:27:51.250Z",
  "brand": "会自检的 AI 工程 · 实操手册",
  "caseCount": 9,
- "h1": "中文知识库语义检索(RAG)",
+ "h1": "中文医疗知识库语义检索(RAG)",
  "kpis": [],
- "pngBytes": 689090
+ "pngBytes": 687459
 }

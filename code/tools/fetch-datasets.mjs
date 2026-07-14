@@ -70,24 +70,23 @@ const provOf=(country)=>_provMap[country]||'其他地区';
     return [row[0],success,amount,edu,succRec,limit,hasReport,len,validRatio,cplx,...th,portrait,risk]; });
   results.push({...writeCsv('reference_data_analysis/p2p_credit.csv',['借款号','放款成功','借款金额','学历等级','历史成功次数','授信额度','有征信报告','描述字数','有效字符率','复杂词比例','主题1','主题2','主题3','主题4','信用画像','风险信号'],rows),label:'真实基座派生（人人贷 P2P，CC0；放款成功/金额/额度/征信/文案特征为真实列直取或 log 还原；信用画像/风险信号为规则派生分层、非事实标签；标的=放款成功非违约）'}); }
 
-// ---- dataset/rag/corpus/*.md + dataset/rag/gold.json：真实基座 CMRC2018 dev（大陆 HFL 哈工大讯飞，CC BY-SA-4.0）----
-// 每 context → 一 .md（store.ts loadDir 装载做中文检索，其分词已含 [一-龥] 二元组）；金标=确定性抽样 60 题真实中文 QA，docPattern 匹配语料文件基名。
-{ const cmrc=JSON.parse(readFileSync(join(REAL,'cmrc2018_dev.json'),'utf8')).data;
-  const slug=(t)=>String(t||'').replace(/[^一-龥A-Za-z0-9]/g,'').slice(0,12)||'doc';
+// ---- dataset/rag/corpus/*.md + dataset/rag/gold.json：真实基座 webMedQA（中文医疗健康问答，Apache-2.0）----
+// 垂直企业 KB：每条答案（正确+干扰）→ 一 .md 作检索语料（store.ts 二元组中文分词）；金标=每题正确答案篇，docPattern 匹配文件基名（answer-selection 原生金标，天然 hit@k 区分度）。
+{ const wm=JSON.parse(readFileSync(join(REAL,'webmedqa_slice.json'),'utf8')).groups;
   const corpusDir=join(DS,'rag','corpus'); mkdirSync(corpusDir,{recursive:true});
-  for(const f of (existsSync(corpusDir)?readdirSync(corpusDir):[])) if(f.endsWith('.md')) rmSync(join(corpusDir,f)); // 确定性重建
+  for(const f of (existsSync(corpusDir)?readdirSync(corpusDir):[])) if(f.endsWith('.md')) rmSync(join(corpusDir,f)); // 确定性重建（清 CMRC 旧语料）
   const gold=[]; let ci=0;
-  for(const art of cmrc){ for(const p of art.paragraphs){
-    const base=`cmrc_${String(ci).padStart(3,'0')}_${slug(art.title)}`; ci++;
-    writeFileSync(join(corpusDir,base+'.md'), `# ${art.title}\n\n${p.context}\n`);
-    if(gold.length<60 && p.qas && p.qas[0]){ const qa=p.qas[p.qas.length-1]; // 取每段末问（较首问更迂回，hit@1 下露出真实未命中）
-      const ans=((qa.answers&&qa.answers[0]&&qa.answers[0].text)||'').replace(/\s/g,'');
-      gold.push({ q:qa.question, kw:(ans.slice(0,4)||slug(art.title).slice(0,3)), docPattern:base }); }
-  } }
+  wm.forEach((g,gi)=>{ const pad=String(gi).padStart(3,'0');
+    const cbase=`med_c${pad}`;
+    writeFileSync(join(corpusDir,cbase+'.md'), `# ${g.dept}·问答\n\n问：${g.question}\n\n答：${g.correct}\n`); ci++;
+    g.distractors.forEach((d,di)=>{ writeFileSync(join(corpusDir,`med_d${pad}_${di}.md`), `# ${g.dept}·答\n\n${d}\n`); ci++; });
+    if(gold.length<60){ const ans=(g.correct||'').replace(/\s/g,''); gold.push({ q:g.question, kw:(ans.slice(0,6)||g.dept), docPattern:cbase }); }
+  });
   mkdirSync(join(DS,'rag'),{recursive:true});
   writeFileSync(join(DS,'rag','gold.json'), JSON.stringify(gold,null,2)+'\n');
-  results.push({ rel:'rag/gold.json', n:gold.length, p:join(DS,'rag','gold.json'), label:'真实基座派生（CMRC2018 dev 抽样 60 题中文 QA 金标；docPattern 匹配 dataset/rag/corpus/*.md 文件名）' });
-  console.log('RAG 语料', ci, '篇 → 金标', gold.length, '题'); }
+  writeFileSync(join(DS,'..','code','data','eval_gold.json'), JSON.stringify({gold},null,2)+'\n'); // 同步 eval 金标（eval_harness 读此）
+  results.push({ rel:'rag/gold.json', n:gold.length, p:join(DS,'rag','gold.json'), label:'真实基座派生（webMedQA 中文医疗问答 60 题金标；docPattern 匹配正确答案篇 dataset/rag/corpus/med_c*.md；answer-selection 原生金标）' });
+  console.log('RAG 医疗语料', ci, '篇 → 金标', gold.length, '题'); }
 
 // 注：原 pm_network_cases/nyc_311 已移除——无案例引用（孤儿），且原实现走 live fetch 破坏构建期可复现。
 // 计分案例一律用仓内固定快照（dataset/real/*）或确定性合成，禁止构建期联网。
@@ -108,15 +107,19 @@ const provOf=(country)=>_provMap[country]||'其他地区';
   const mSorted=rows.map(r=>r[3]).slice().sort((a,b)=>a-b); const q=(p)=>mSorted[Math.floor(p*(mSorted.length-1))];
   const m50=q(0.5), m85=q(0.85);
   for(const r of rows){ const seg = r[3]>=m85 ? (r[1]>60?'高价值流失(规则)':'重要价值(规则)') : r[3]>=m50 ? '一般保持(规则)' : (r[1]>90?'流失预警(规则)':'普通(规则)'); r.push(seg); }
-  results.push({...writeCsv('reference_data_analysis/2b-real_rfm.csv',['客户号','最近购买天数','购买次数','总消费','分层(规则派生)'],rows),label:'真实基座派生（UCI 零售快照 CustomerID 级 RFM 真算；分层为分位规则派生、非事实标签）'}); }
+  results.push({...writeCsv('reference_data_analysis/2b-real_rfm.csv',['客户号','最近购买天数','购买次数','总消费','分层(规则派生)'],rows),label:'真实基座派生（UCI 零售快照 CustomerID 级 RFM 真算；分层为分位规则派生、非事实标签）·**案例03 综合闭环经 /api/rfm 真实消费**（「高价值流失」群=会员经营抓手）'}); }
 
 // 历史可获取真实源（v18：已裁案例的基座不回补为案，此处仅记录可用性）
 // ---- MANIFEST ----
 // 真实基座快照来源/许可（dataset/real/*，采样自公开数据集、构建期零联网）
 const REAL_SOURCES=[
   ['retail_online_retail_ii.csv','UCI Online Retail II','CC BY 4.0','https://archive.ics.uci.edu/dataset/502/online+retail+ii','案例 01/03/05 零售基座（数值真实，实体本地化改写为中国类目/省份）'],
-  ['cmrc2018_dev.json','CMRC2018 dev（哈工大讯飞 HFL·中国大陆）','CC BY-SA-4.0','https://github.com/ymcui/cmrc2018','案例 04/07 中文 RAG 语料 + 金标'],
-  ['renrendai_p2p.csv','人人贷 P2P 借贷记录（Harvard Dataverse doi:10.7910/DVN/C4RUDY·中国大陆）','CC0-1.0','https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/C4RUDY','案例 02 大陆 P2P 信贷·信用画像分层'],
+  ['webmedqa_slice.json','webMedQA（中文医疗健康问答）','Apache-2.0','https://github.com/hejunqing/webMedQA','案例 04/07 中文医疗知识库 RAG + 评测（120 组 1正4负·原生 P@1/hit@k 金标；公开健康咨询、无 PII、仅 dev 小切片）'],
+  ['renrendai_p2p.csv','人人贷 P2P 借贷记录（Harvard Dataverse doi:10.7910/DVN/C4RUDY·中国大陆）','CC0-1.0','https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/C4RUDY','案例 02 大陆 P2P 信贷·新客vs复借·信用画像分层'],
+  ['ruoyi_cloud_arch.json','RuoYi-Cloud（若依·国产开源微服务脚手架）','MIT','https://github.com/yangzongzhuan/RuoYi-Cloud','案例 06 系统架构（22 模块 + 18 真实依赖边 + 0 循环 + 3 Feign 接口契约，pom/@FeignClient 确定性解析，已排除 dependencyManagement）'],
+  ['nacos_git_events.json','alibaba/nacos（阿里·国产开源注册/配置中心）','Apache-2.0','https://github.com/alibaba/nacos','案例 09 事件溯源（近 600 提交事件流 + 父指针 DAG，与本仓库 dogfood 小事件流大小对照；作者邮箱已 hash 脱敏）'],
+  ['beijing_air_quality.csv','UCI 北京多站点空气质量','CC BY 4.0','https://archive.ics.uci.edu/dataset/501/beijing+multi+site+air+quality+data','案例 05 数据工程·大表查询优化（12 国控站真实逐时·每3小时=140256 行·真实数值/NA 不改；CROSS JOIN 扩规模）'],
+  ['dolphinscheduler_devops.json','apache/dolphinscheduler（海豚调度·国产 Apache 顶级项目）','Apache-2.0（元数据为公开事实）','https://github.com/apache/dolphinscheduler','案例 08 研发效能·门禁/返工（近 100 CI=通过率89.1% + 近 100 PR 元数据；作者 handle hash 脱敏）'],
 ];
 const UNWIRED=[['CMS Timely & Effective Care (医院急诊)','https://data.cms.gov/provider-data/dataset/yv7e-xc69'],['US DOT On-Time (航班准点)','https://www.transtats.bts.gov/'],['UCI Default of Credit Card Clients','https://archive.ics.uci.edu/dataset/350/default+of+credit+card+clients']];
 const man=['# 数据集清单（'+JSON.parse(readFileSync(join(ROOT,'code', 'tools','case_definitions.json'),'utf8')).projectName+'）','',
@@ -124,7 +127,7 @@ const man=['# 数据集清单（'+JSON.parse(readFileSync(join(ROOT,'code', 'too
 for(const x of results){ const buf=readFileSync(x.p); const h=createHash('sha256').update(buf).digest('hex').slice(0,16); man.push(`| ${x.rel} | ${x.n??'-'} | ${x.label} | ${h}… |`); }
 man.push('','## 真实基座快照（dataset/real/*，采样自公开数据集，构建期零联网）','','| 快照 | 来源 | 许可 | 用于 | sha256 |','|---|---|---|---|---|');
 for(const [f,src,lic,url,use] of REAL_SOURCES){ const h=createHash('sha256').update(readFileSync(join(REAL,f))).digest('hex').slice(0,16); man.push(`| dataset/real/${f} | [${src}](${url}) | ${lic} | ${use} | ${h}… |`); }
-man.push('','> **零售快照**由一次性采样脚本生成（分层过采样：退货约 ×5 以便教学展示，异常率 11.1% 不代表真实业务水平——UCI 原始约 2%；无随机、无联网），生成器读快照后归一化，真实数值列直接用真实效应、实体标签本地化改写（已标注）。**CMRC2018 / 人人贷** 为公开集**完整/直接快照**（未过采样、未改数值），仅归一化中文表头与 log 还原、规则派生分层均已标注为「派生·非事实标签」。缺失列的确定性教学合成叠加已标注，绝不把叠加/派生说成真实。');
+man.push('','> **零售快照**由一次性采样脚本生成（分层过采样：退货约 ×5 以便教学展示，异常率 11.1% 不代表真实业务水平——UCI 原始约 2%；无随机、无联网），生成器读快照后归一化，真实数值列直接用真实效应、实体标签本地化改写（已标注）。**人人贷** 为公开集**直接快照**（未过采样、未改数值），仅归一化中文表头与 log 还原、规则派生分层均已标注为「派生·非事实标签」；**webMedQA** 取 dev 小切片（120 组 1正4负、公开健康咨询、无 PII）；国产开源真集（若依/nacos/海豚调度）为确定性解析/脱敏快照（pom·git·REST 元数据，邮箱/handle 已 hash）。缺失列的确定性教学合成叠加已标注，绝不把叠加/派生说成真实。');
 man.push('','## 可用但刻意未接线的真实源（v17 瘦身裁撤，回补须先有案例与教学理由）','',...UNWIRED.map(([n,u])=>`- ${n}：${u}`));
 man.push('','结构化 Skill 库：skills/pm_skills.md（手工维护，发布前经 skill_lint.mjs 扫描）。');
 man.push('',

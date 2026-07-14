@@ -48,18 +48,18 @@
   },
   {
    "num": 4,
-   "title": "AI协作｜中文知识库语义检索(RAG)",
+   "title": "AI协作｜中文医疗知识库语义检索(RAG)",
    "slug": "rag_knowledge_retrieval",
    "uiId": "ui_44_rag_retrieval",
    "saasType": "rag_search",
-   "industry": "中文知识库",
+   "industry": "中文医疗知识库",
    "phase": "AI协作",
    "highImpact": false,
    "rp": null,
    "systemLayer": "底座平台",
    "systemStage": "治理",
    "difficulty": "高阶",
-   "tldr": "中文知识库 RAG：848 篇中文百科语料两阶段检索，中文靠字符二元组分词才召回得动"
+   "tldr": "中文医疗知识库 RAG：600 篇 webMedQA 医疗问答两阶段检索，中文靠字符二元组分词才召回得动"
   },
   {
    "num": 5,
@@ -97,14 +97,14 @@
    "slug": "rag_eval_harness",
    "uiId": "ui_49_rag_eval",
    "saasType": "rag_eval",
-   "industry": "AI 产品",
+   "industry": "AI 产品·中文医疗 RAG",
    "phase": "质量验收",
    "highImpact": false,
    "rp": null,
    "systemLayer": "能力智能",
    "systemStage": "验收",
    "difficulty": "进阶",
-   "tldr": "中文 RAG 评测：金标单源、裁判真调 search()，hit@3 近乎全过、收紧到 hit@1 才有区分度"
+   "tldr": "中文医疗 RAG 评测：金标单源(webMedQA 1正4干扰)、裁判真调 search()，hit@1 98.3%、评测太松也是假绿"
   },
   {
    "num": 8,

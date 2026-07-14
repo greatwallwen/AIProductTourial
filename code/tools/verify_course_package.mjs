@@ -233,7 +233,7 @@ for (const c of defs.cases) { const n = c.num; const g = c?.grill || [];
 // —— v22 守卫 ③ 真实/合成红线：大陆真集派生物在 MANIFEST 标注正确、绝不把派生/合成说成真实 ——
 { const man = rd('dataset/MANIFEST.md');
   ok(); if (!/人人贷.*CC0|renrendai_p2p\.csv/.test(man)) bad('MANIFEST 缺人人贷 CC0 真集来源');
-  ok(); if (!/CMRC2018.*CC BY-SA|cmrc2018_dev\.json/.test(man)) bad('MANIFEST 缺 CMRC2018 真集来源');
+  ok(); if (!/webMedQA.*Apache|webmedqa_slice\.json/.test(man)) bad("MANIFEST 缺 webMedQA 真集来源");
   ok(); if (!/信用画像.*规则派生|规则派生分层、非事实标签/.test(man)) bad('MANIFEST 未标注信用画像为规则派生（红线：派生不得说成真实）');
   ok(); if (!/本地化改写实体标签|本地化改写/.test(man)) bad('MANIFEST 未标注电商本地化实体改写（红线：改写不得说成原始事实）');
   ok(); if (defs.cases.find((c) => c.num === 2)?.dataKind === 'real') bad('案例02 dataKind 不应标 real（含规则派生分层，应为 hybrid）');

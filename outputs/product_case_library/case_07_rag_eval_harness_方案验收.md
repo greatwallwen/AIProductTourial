@@ -1,6 +1,6 @@
 # RAG 评测报告（命中率/错误分析）（实操 07·方案验收）
 
-> 数据来源：`dataset/rag/corpus 中文语料 + CMRC2018 标注 Q/A（dogfood）`（60 行，异常 2）。字段与指标均回到该数据。演示原理 2.3、1.3，采用设计 cyan-matrix。
+> 数据来源：`dataset/rag/corpus 中文语料 + CMRC2018 标注 Q/A（dogfood）`（60 行，异常 1）。字段与指标均回到该数据。演示原理 2.3、1.3，采用设计 cyan-matrix。
 
 ## 交付物
 

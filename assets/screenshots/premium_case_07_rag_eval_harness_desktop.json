@@ -2,7 +2,7 @@
  "num": 7,
  "slug": "rag_eval_harness",
  "url": "http://localhost:5200/#/case/07",
- "shotAt": "2026-07-14T02:17:08.299Z",
+ "shotAt": "2026-07-14T08:27:54.231Z",
  "brand": "会自检的 AI 工程 · 实操手册",
  "caseCount": 9,
  "h1": "RAG 评测台（eval harness）",
@@ -13,16 +13,16 @@
   },
   {
    "name": "命中率",
-   "value": "96.7"
+   "value": "98.3"
   },
   {
    "name": "覆盖达标数",
-   "value": "15"
+   "value": "25"
   },
   {
    "name": "语料篇数",
-   "value": "848"
+   "value": "600"
   }
  ],
- "pngBytes": 752961
+ "pngBytes": 781162
 }

@@ -96,7 +96,7 @@ function walkFiles(dir, ext){
 // .md 数据集案例（04 RAG 语料 / 06 后端 dogfood）：指标一律从真实来源真算，绝不用占位顺子
 function buildFromMd(c){
   let kpis=[], chart={type:'sparkline',data:[]}, queue=[], actions=[], exceptionCount=0, responsible=['—'], deps=[], cycles=0, game=null, nacos=null, ds=null;
-  if(c.num===4){ // 真实读 CMRC2018 中文语料目录（v22）：篇数/字数/篇幅分布 + 金标问答数
+  if(c.num===4){ // 真实读 webMedQA 中文医疗语料目录（v24）：篇数/字数/篇幅分布 + 金标问答数
     const dir=join(ROOT,'dataset','rag','corpus');
     const files=walkFiles(dir,'.md');
     const lens=files.map(f=>readFileSync(f,'utf8').length);

@@ -92,7 +92,7 @@
 - [实操 01 · 电商早会异常订单台](案例/01-morning_ops_grid.md)
 - [实操 02 · 大陆 P2P 信贷·新客 vs 复借 差异化放款与信用画像分层](案例/02-p2p_credit.md)
 - [实操 03 · 零售经营产品方案](案例/03-retail_capstone_board.md)
-- [实操 04 · 产品知识库语义检索](案例/04-rag_knowledge_retrieval.md)
+- [实操 04 · 医疗健康知识库语义检索](案例/04-rag_knowledge_retrieval.md)
 - [实操 05 · 北京空气质量大表·查询优化与复合索引](案例/05-postgres_relational_arch.md)
 - [实操 06 · 后端子系统分解与接口契约（对照真实国产开源微服务·若依）](案例/06-system_arch_flow.md)
 - [实操 07 · RAG 回答评测台](案例/07-rag_eval_harness.md)

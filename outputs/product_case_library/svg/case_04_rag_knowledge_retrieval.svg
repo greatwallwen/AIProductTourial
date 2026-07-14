@@ -8,25 +8,25 @@
   <rect width="1000" height="620" fill="url(#bg)"/><rect width="1000" height="620" fill="url(#grid)" opacity="0.4"/>
   <rect x="0" y="0" width="1000" height="92" fill="#0c1a14" opacity="0.45"/>
   <rect x="36" y="28" width="4" height="36" rx="2" fill="url(#acc)"/>
-  <text x="50" y="46" font-size="22" font-weight="750" fill="#e7f5ee">产品知识库语义检索</text>
-  <text x="50" y="70" font-size="11.5" fill="#9ac4b2">中文知识库 · rag_search · 数据 dataset/rag/corpus（848 行 · 异常 0）</text>
+  <text x="50" y="46" font-size="22" font-weight="750" fill="#e7f5ee">医疗健康知识库语义检索</text>
+  <text x="50" y="70" font-size="11.5" fill="#9ac4b2">中文医疗知识库 · rag_search · 数据 dataset/rag/corpus（600 行 · 异常 0）</text>
   <rect x="742" y="26" width="222" height="22" rx="11" fill="#0a1712" stroke="#17342a"/><text x="853" y="41" font-size="10" fill="#10b981" text-anchor="middle">设计 emerald-flow · 底座平台·治理</text>
   <text x="964" y="70" font-size="9.5" fill="#4f7a68" text-anchor="end">读图：指标链 → 异常队列/责任 → 行动/验收</text>
   <rect x="36" y="116" width="176" height="82" rx="11" fill="#0c1a14" stroke="#17342a"/>
     <rect x="36" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
     <circle cx="56" cy="139" r="7" fill="none" stroke="#10b981" stroke-width="1.5"/><circle cx="56" cy="139" r="2.5" fill="#10b981"/>
     <text x="70" y="143" font-size="10.5" fill="#4f7a68">语料篇数</text>
-    <text x="50" y="176" font-size="24" font-weight="750" fill="#e7f5ee">848<tspan font-size="12" fill="#4f7a68"></tspan></text>
+    <text x="50" y="176" font-size="24" font-weight="750" fill="#e7f5ee">600<tspan font-size="12" fill="#4f7a68"></tspan></text>
     <rect x="226" y="116" width="176" height="82" rx="11" fill="#0c1a14" stroke="#17342a"/>
     <rect x="226" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
     <circle cx="246" cy="139" r="7" fill="none" stroke="#10b981" stroke-width="1.5"/><circle cx="246" cy="139" r="2.5" fill="#10b981"/>
     <text x="260" y="143" font-size="10.5" fill="#4f7a68">语料总字(万)</text>
-    <text x="240" y="176" font-size="24" font-weight="750" fill="#e7f5ee">44<tspan font-size="12" fill="#4f7a68"></tspan></text>
+    <text x="240" y="176" font-size="24" font-weight="750" fill="#e7f5ee">10<tspan font-size="12" fill="#4f7a68"></tspan></text>
     <rect x="416" y="116" width="176" height="82" rx="11" fill="#0c1a14" stroke="#17342a"/>
     <rect x="416" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
     <circle cx="436" cy="139" r="7" fill="none" stroke="#10b981" stroke-width="1.5"/><circle cx="436" cy="139" r="2.5" fill="#10b981"/>
     <text x="450" y="143" font-size="10.5" fill="#4f7a68">平均篇幅(字)</text>
-    <text x="430" y="176" font-size="24" font-weight="750" fill="#e7f5ee">520<tspan font-size="12" fill="#4f7a68"></tspan></text>
+    <text x="430" y="176" font-size="24" font-weight="750" fill="#e7f5ee">171<tspan font-size="12" fill="#4f7a68"></tspan></text>
     <rect x="606" y="116" width="176" height="82" rx="11" fill="#0c1a14" stroke="#17342a"/>
     <rect x="606" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
     <circle cx="626" cy="139" r="7" fill="none" stroke="#10b981" stroke-width="1.5"/><circle cx="626" cy="139" r="2.5" fill="#10b981"/>
@@ -36,7 +36,7 @@
   <rect x="24" y="216" width="476" height="230" rx="12" fill="#0c1a14" stroke="#17342a"/>
   <text x="40" y="240" font-size="12.5" font-weight="650" fill="#e7f5ee">指标趋势 / 结构</text><rect x="40" y="246" width="28" height="2" fill="#10b981"/>
   <text x="484" y="240" font-size="9.5" fill="#4f7a68" text-anchor="end">AI｜语义检索命中大屏</text>
-  <line x1="44" y1="373.0" x2="476" y2="373.0" stroke="#123026" stroke-dasharray="2 3"/><line x1="44" y1="336.0" x2="476" y2="336.0" stroke="#123026" stroke-dasharray="2 3"/><line x1="44" y1="299.0" x2="476" y2="299.0" stroke="#123026" stroke-dasharray="2 3"/><line x1="44" y1="262.0" x2="476" y2="262.0" stroke="#123026" stroke-dasharray="2 3"/><line x1="44" y1="410" x2="476" y2="410" stroke="#17342a"/><line x1="44" y1="262" x2="44" y2="410" stroke="#17342a"/><rect x="50.0" y="399.1" width="60.0" height="10.9" rx="3" fill="#10b981" opacity="0.9"/><text x="80.0" y="395.1" font-size="8.5" fill="#9ac4b2" text-anchor="middle">27</text><text x="80.0" y="423" font-size="8" fill="#4f7a68" text-anchor="middle">150+字</text><rect x="120.0" y="262.0" width="60.0" height="148.0" rx="3" fill="#10b981" opacity="0.9"/><text x="150.0" y="258.0" font-size="8.5" fill="#9ac4b2" text-anchor="middle">368</text><text x="150.0" y="423" font-size="8" fill="#4f7a68" text-anchor="middle">300+字</text><rect x="190.0" y="327.2" width="60.0" height="82.8" rx="3" fill="#10b981" opacity="0.9"/><text x="220.0" y="323.2" font-size="8.5" fill="#9ac4b2" text-anchor="middle">206</text><text x="220.0" y="423" font-size="8" fill="#4f7a68" text-anchor="middle">450+字</text><rect x="260.0" y="364.2" width="60.0" height="45.8" rx="3" fill="#10b981" opacity="0.9"/><text x="290.0" y="360.2" font-size="8.5" fill="#9ac4b2" text-anchor="middle">114</text><text x="290.0" y="423" font-size="8" fill="#4f7a68" text-anchor="middle">600+字</text><rect x="330.0" y="373.8" width="60.0" height="36.2" rx="3" fill="#10b981" opacity="0.9"/><text x="360.0" y="369.8" font-size="8.5" fill="#9ac4b2" text-anchor="middle">90</text><text x="360.0" y="423" font-size="8" fill="#4f7a68" text-anchor="middle">750+字</text><rect x="400.0" y="392.7" width="60.0" height="17.3" rx="3" fill="#10b981" opacity="0.9"/><text x="430.0" y="388.7" font-size="8.5" fill="#9ac4b2" text-anchor="middle">43</text><text x="430.0" y="423" font-size="8" fill="#4f7a68" text-anchor="middle">900+字</text>
+  <line x1="44" y1="373.0" x2="476" y2="373.0" stroke="#123026" stroke-dasharray="2 3"/><line x1="44" y1="336.0" x2="476" y2="336.0" stroke="#123026" stroke-dasharray="2 3"/><line x1="44" y1="299.0" x2="476" y2="299.0" stroke="#123026" stroke-dasharray="2 3"/><line x1="44" y1="262.0" x2="476" y2="262.0" stroke="#123026" stroke-dasharray="2 3"/><line x1="44" y1="410" x2="476" y2="410" stroke="#17342a"/><line x1="44" y1="262" x2="44" y2="410" stroke="#17342a"/><rect x="50.0" y="287.5" width="130.0" height="122.5" rx="3" fill="#10b981" opacity="0.9"/><text x="115.0" y="283.5" font-size="8.5" fill="#9ac4b2" text-anchor="middle">260</text><text x="115.0" y="423" font-size="8" fill="#4f7a68" text-anchor="middle">0+字</text><rect x="190.0" y="262.0" width="130.0" height="148.0" rx="3" fill="#10b981" opacity="0.9"/><text x="255.0" y="258.0" font-size="8.5" fill="#9ac4b2" text-anchor="middle">314</text><text x="255.0" y="423" font-size="8" fill="#4f7a68" text-anchor="middle">150+字</text><rect x="330.0" y="397.7" width="130.0" height="12.3" rx="3" fill="#10b981" opacity="0.9"/><text x="395.0" y="393.7" font-size="8.5" fill="#9ac4b2" text-anchor="middle">26</text><text x="395.0" y="423" font-size="8" fill="#4f7a68" text-anchor="middle">300+字</text>
   <rect x="512" y="216" width="464" height="230" rx="12" fill="#0c1a14" stroke="#17342a"/>
   <text x="528" y="240" font-size="12.5" font-weight="650" fill="#e7f5ee">异常队列 · 责任对象</text><rect x="528" y="246" width="28" height="2" fill="#fbbf24"/>
   <text x="960" y="240" font-size="9.5" fill="#4f7a68" text-anchor="end">0 项 · 取前 0</text>

@@ -6,7 +6,7 @@ import { fetchSearch, fetchDbQuery, fetchHealth, fetchArch, fetchCredit, fetchRe
 
 // —— 向量库检索(RAG)：调 /api/search 展示命中片段与相似度 ——
 function RagScreen() {
-  const [q, setQ] = useState('铁路全长多少公里');
+  const [q, setQ] = useState('如何斜视矫正');
   const [res, setRes] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const run = (query: string) => { setLoading(true); fetchSearch(query).then(setRes).finally(() => setLoading(false)); };

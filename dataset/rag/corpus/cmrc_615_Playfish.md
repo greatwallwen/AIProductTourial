@@ -1,3 +1,0 @@
-# Playfish
-
-Playfish是一个社交游戏公司，于2009年11月9日被EA以2.5亿美元及2500股并购。Playfish的游戏集中发布于社交网站如Facebook、MySpace、Bebo以及 iPhone。公司的总部在英国伦敦，另外有分公司在中国北京、美国三藩市和挪威特罗姆瑟。Playfish通常会先在Facebook发布游戏，之后才发布到其他平台。现在所有游戏都已结束营运。Playfish于2007年由Kristian Segerstrale、Sebastien de Halleux、Sami Lababidi 和 Shukri Shammas成立。在2008年10月，Playfish成功获得170万美元的融资。2009年11月9日，美国知名电玩软体大厂艺电（Electronic Arts Inc.）宣布将以2.75亿美金收购Playfish。Playfish曾经在Facebook爆红，与 另外一间游戏公司Zynga 争夺Facebook游戏鳌头，最多曾有17款游戏同时在线。例如俗称「餐城」的《Restaurant City》于2009年推出，当红时每日可达520万活跃使用者。但是现在声势已大不如前，光是2011年就有11款游戏结束营运。在2012年5月Inside Social Games 热门游戏榜单上，前5名内就有4个名次被Zynga抱走，但Playfish最高名次却只有当时大力推介，排第13名的《The Sims Social》，此后20名内也不见第二款Playfish作品出现。结果，现在近乎所有游戏（包括以前爆红的游戏）都因为经营困难及因应公司未来发展而结束营运。

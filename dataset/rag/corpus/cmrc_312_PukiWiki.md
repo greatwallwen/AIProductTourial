@@ -1,3 +1,0 @@
-# PukiWiki
-
-PukiWiki是一套Wiki软体，以PHP写成，为日文的Wiki网站所普遍使用。此软体是从日本人结城浩所写的YukiWiki所分支发展的，从1.4版起由PukiWiki Developers Team接续开发维护工作。由于PukiWiki原自于日本，因此对于双位元字（DBCS）的支援较许多由英语系所开发的Wiki软体为佳。另外日本国内使用手机上网十分普遍，因此PukiWiki也支援了手机网页功能。PukiWiki支援PHP 4或5。与MediaWiki一样支援跨Wiki连结（interwiki）与扩充套件。PukiWiki 基于PHP+TXT的方式实现，不需要任何数据库程序支援，原生程序也未支援任何数据库系统，但是可以借助名为PukiWiki+DB的修改补丁来得到对MySQL、SQLite、ORACLE Oci8、PostgreSQL的支援。

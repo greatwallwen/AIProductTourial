@@ -9,7 +9,7 @@ import { buildOrdersDb, query } from '../db/relational.ts';
 const ROOT = join(import.meta.dirname, '..', '..', '..');
 let vs: VectorStore | null = null;
 let db: any = null;
-function getVs() { if (!vs) { vs = new VectorStore(); vs.loadDir(join(ROOT, 'dataset', 'rag', 'corpus')); } return vs; } // v22：中文语料 CMRC2018（store.ts 二元组分词）
+function getVs() { if (!vs) { vs = new VectorStore(); vs.loadDir(join(ROOT, 'dataset', 'rag', 'corpus')); } return vs; } // v24：中文医疗语料 webMedQA（store.ts 二元组分词）
 function getDb() { if (!db) db = buildOrdersDb(join(ROOT, 'dataset', 'order_data.csv'), join(ROOT, 'dataset', 'real', 'beijing_air_quality.csv')); return db; }
 
 export async function apiRoutes(app: any) {
@@ -29,7 +29,7 @@ export async function apiRoutes(app: any) {
   app.get('/api/tokenize', async (req: any) => tokenize(String(req.query.text ?? '你好，今天天气怎么样？Hello AI Agent 2026')));
   app.get('/api/openapi.json', async () => openapiSpec());
   app.get('/api/search', async (req: any) => {
-    const q = String(req.query.q || '铁路全长多少公里');
+    const q = String(req.query.q || '如何斜视矫正');
     const r = getVs().search(q, 3, 10); // 召回 top-10 → 重排 top-3
     return { ...r, hits: r.reranked.map((x: any) => ({ id: x.id, score: x.rerank, snippet: x.snippet })) };
   });
