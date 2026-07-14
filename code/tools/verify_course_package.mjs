@@ -260,6 +260,12 @@ for (const f of ['dataset/design/case_01.md', 'dataset/design/case_03.md']) { co
   ok(); if (/确定性合成/.test(t) && /order_data/.test(t) && !/真实基座/.test(t)) bad(`${f} 把真实基座 order_data 误标「确定性合成」（反向红线：真实不得说成合成）`);
   ok(); if (!/真实基座/.test(t)) bad(`${f} 未标注 order_data 为真实基座 UCI（反向红线）`);
 }
+// —— v23 守卫 ⑦ 案例05「规模」可观测证据 + 案例02 先猜再揭晓（把最锐洞见变互动）——
+{ const api = rd('code/server/routes/api.ts'), scr = rd('code/web/src/screens.tsx');
+  ok(); if (!/indexDemo/.test(api) || !/CREATE INDEX ix_demo_cat/.test(api)) bad('案例05 缺加索引前/后 EXPLAIN 对照（/api/db/query indexDemo）');
+  ok(); if (!/indexDemo/.test(scr)) bad('DbScreen 未渲染 indexDemo 前/后执行计划');
+  ok(); if (!/先猜再揭晓/.test(scr)) bad('CreditScreen 缺「先猜再揭晓」互动（案例02 反直觉洞见未变互动）');
+}
 // 专属 demo：案例16 医院容量
 ok(); if (defs.cases.filter((c) => c.screen).length < defs.cases.length) bad('存在非专属 demo 案例（应 11/11 有 screen）');
 // 图表数据驱动守卫：CSV 案例的图表必须是真实列聚合（有 by 说明），不得哈希噪声

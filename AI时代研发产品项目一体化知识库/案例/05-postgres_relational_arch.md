@@ -91,13 +91,13 @@
 
 1. 起服务：`bash code/run.sh`，浏览器打开 `#/case/05`（本案专属大屏）。
 2. **你应看到**：SQL 语句、执行结果表与索引说明，数据来自后端实时接口（性质见章首标注）。
-3. **动手改一改**：页面切「品类」聚合（服务端白名单换维，真 SQL 回显）；再看 EXPLAIN QUERY PLAN 面板——哪个查询 SCAN、哪个 SEARCH USING INDEX？给 category 建索引会怎样？
+3. **动手改一改**：打开页面看「加索引前/后」面板：同一条查询，读出 SCAN（全表扫）如何变成 SEARCH ... USING INDEX（走索引）；再想：若换成 WHERE region=? AND dt BETWEEN ...，该建哪个复合索引、列序怎么排。
 4. **自测产出**：`node code/tools/check_my_work.mjs 5 你的方案.md`——红项指明缺什么、回哪章补。
 
 <details>
 <summary><img src="../../assets/vendor/lucide/built/sparkles.svg" width="14" alt="" style="vertical-align:-2px" /> 深度（专业读者）：权衡 · 失效模式 · 何时别用</summary>
 
-本地 SQLite 与生产 PostgreSQL 架构一致，但生产要额外考虑：连接池（防连接风暴）、索引选择（B-tree vs GIN；pgvector 用 HNSW/IVFFlat）、执行计划（EXPLAIN ANALYZE 看是否走索引）、分区与备份。一张千万级 orders 表缺了 (区域,日期) 复合索引就会全表扫描。
+为什么「存下来」不等于「查得动」？页面「加索引前/后」面板给的是真实证据：同一条 WHERE category=? 查询，无索引时 EXPLAIN 是 SCAN orders（全表扫），建索引后变 SEARCH orders USING INDEX——4500 行小表尚且分明，生产千万行缺 (区域,日期) 复合索引就是灾难。深挖：连接池（别每查一次连一次）、EXPLAIN ANALYZE 看真实行数与代价、复合索引列序（等值列在前、范围列在后）、覆盖索引避免回表。失效模式：拿本地 SQLite 小表的「秒出」推断生产 PG 性能——量级与引擎都不同。
 </details>
 
 ### 练习（做完再进下一个案例）

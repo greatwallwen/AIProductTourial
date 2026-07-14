@@ -64,6 +64,23 @@ function DbScreen() {
         <pre className="mono" style={{ fontSize: 11, margin: '6px 0 0' }}>{(res?.plan || []).map((p: any) => p.detail || JSON.stringify(p)).join('\n') || '…'}</pre>
         <div className="muted" style={{ fontSize: 11 }}>生产 PostgreSQL 对应 EXPLAIN (ANALYZE)——看 SCAN（全表扫）还是 SEARCH ... USING INDEX（走索引）。</div>
       </div>
+      {res?.indexDemo && (
+        <div style={{ marginTop: 10, border: '1px solid var(--border)', borderRadius: 8, padding: '8px 12px' }}>
+          <b>加索引前 / 后 · 同一条查询的真实执行计划（category=「{res.indexDemo.key}」）</b>
+          <div className="muted" style={{ fontSize: 11, margin: '2px 0 6px' }}>{res.indexDemo.sql}</div>
+          <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+            <div style={{ flex: 1, minWidth: 220 }}>
+              <span className="mono" style={{ color: 'var(--bad)', fontSize: 11 }}>● 无索引 → 全表扫描</span>
+              <pre className="mono" style={{ fontSize: 10.5, margin: '4px 0 0', color: 'var(--bad)', whiteSpace: 'pre-wrap' }}>{(res.indexDemo.before || []).map((p: any) => p.detail).join('\n')}</pre>
+            </div>
+            <div style={{ flex: 1, minWidth: 220 }}>
+              <span className="mono" style={{ color: 'var(--ok)', fontSize: 11 }}>● 建索引后 → 走索引</span>
+              <pre className="mono" style={{ fontSize: 10.5, margin: '4px 0 0', color: 'var(--ok)', whiteSpace: 'pre-wrap' }}>{(res.indexDemo.after || []).map((p: any) => p.detail).join('\n')}</pre>
+            </div>
+          </div>
+          <div className="muted" style={{ fontSize: 11, marginTop: 6 }}><Icon name="alert" size={12} /> 真实 4500 行表尚且 SCAN↔SEARCH 分明；生产千万行缺复合索引就是全表扫描——这是「规模」的可观测证据，不是口号。「存下来」≠「查得动」。</div>
+        </div>
+      )}
     </section>
   );
 }
@@ -109,8 +126,10 @@ function ArchScreen() {
 const CREDIT_COLORS: Record<string, string> = { '优质': 'var(--ok)', '成长': 'var(--accent)', '待观察': 'var(--warn)', '薄档': 'var(--bad)' };
 function CreditScreen() {
   const [d, setD] = useState<any>(null);
+  const [guess, setGuess] = useState<string | null>(null);
   useEffect(() => { fetchCredit().then(setD); }, []);
   if (!d) return <section className="card"><div className="muted">加载信用分层…</div></section>;
+  const topSeg = d.segments.reduce((a: any, b: any) => (b.fundRate > a.fundRate ? b : a), d.segments[0]);
   const maxFund = Math.max(...d.segments.map((s: any) => s.fundRate), 1);
   const maxLim = Math.max(...d.scatter.map((p: any) => p.x), 1), maxHc = Math.max(...d.scatter.map((p: any) => p.y), 1);
   const realBanner = <div style={{background:"#064e3b",color:"#a7f3d0",padding:"6px 12px",borderRadius:8,marginBottom:10,fontSize:13}}>真实数据：人人贷 P2P 借贷记录（Harvard Dataverse · CC0 · 中国大陆）——放款成功/金额/额度/征信/文案为真实列，信用画像为规则派生分层。<b>标的=放款成功，非违约</b>，不可据此推断还款能力。</div>;
@@ -120,18 +139,36 @@ function CreditScreen() {
       {realBanner}<Icon name="alert" /> 风险队列：<b>{d.riskCount.toLocaleString('zh-CN')}</b> 笔（{d.riskRate}%）为薄档/待观察（无征信或历史零成功）——高影响金融不自动放款，转人工复核。整体放款成功率 {d.fundRate}%。</div>
       <div className="cols">
         <section className="card">
-          <div className="card-h"><h2>信用画像分层 · {d.total.toLocaleString('zh-CN')} 笔</h2><span className="muted">条长=该层放款成功率 · 反直觉：薄档反而最高</span></div>
-          <div className="muted" style={{ fontSize: 11.5, margin: '2px 0 8px', color: 'var(--warn)' }}><Icon name="alert" size={12} /> 放款率沿画像层是「反」的（薄档最高、优质最低）——放款成功主要由借款规模驱动（小额易融），<b>不是信用/还款能力的度量</b>。画像分层用于风险处置（薄档→人工复核），不是用放款率给借款人排好坏。</div>
-          {d.segments.map((s: any) => (
-            <div key={s.name} style={{ margin: '9px 0' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12 }}><span style={{ color: 'var(--ink)' }}><span style={{ color: CREDIT_COLORS[s.name] }}>●</span> {s.name}</span><span className="mono" style={{ color: 'var(--ink2)' }}>{s.count.toLocaleString('zh-CN')} 笔 · 放款率 {s.fundRate}% · 均额 {s.avgAmount.toLocaleString('zh-CN')}</span></div>
-              <div style={{ height: 8, background: 'var(--panelSoft)', borderRadius: 4, marginTop: 3 }}><div style={{ width: `${(s.fundRate / maxFund) * 100}%`, height: '100%', background: CREDIT_COLORS[s.name] || 'var(--accent)', borderRadius: 4 }} /></div>
+          <div className="card-h"><h2>信用画像分层 · {d.total.toLocaleString('zh-CN')} 笔</h2><span className="muted">条长=该层放款成功率</span></div>
+          {!guess ? (
+            <div className="banner" style={{ borderColor: 'var(--accent)' }}>
+              <b>先猜再揭晓：</b>凭直觉选一个——哪一层借款人的<b>放款成功率最高</b>？
+              <div className="ov-top" style={{ marginTop: 8 }}>
+                {d.segments.map((s: any) => (
+                  <button key={s.name} className="chip" style={{ cursor: 'pointer', borderColor: CREDIT_COLORS[s.name], padding: '6px 12px' }} onClick={() => setGuess(s.name)}>
+                    <span style={{ color: CREDIT_COLORS[s.name] }}>●</span> {s.name}
+                  </button>
+                ))}
+              </div>
             </div>
-          ))}
-          <div className="card-h" style={{ marginTop: 12 }}><h2 style={{ fontSize: 13 }}>文案长度 → 放款成功率</h2><span className="muted">短文案放款率反而高——多为小额（混淆·相关≠因果）</span></div>
-          {d.textSignal.map((t: any) => (
-            <div key={t.label} style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12, margin: '4px 0', color: 'var(--ink2)' }}><span>{t.label}</span><span className="mono">{t.count.toLocaleString('zh-CN')} 笔 · {t.fundRate}%</span></div>
-          ))}
+          ) : (
+            <div className="banner" style={{ marginBottom: 8, borderColor: guess === topSeg.name ? 'var(--ok)' : 'var(--bad)', color: guess === topSeg.name ? 'var(--ok)' : 'var(--bad)' }}>
+              你猜「{guess}」。真相：<b>{topSeg.name}</b> 放款率最高（{topSeg.fundRate}%）{guess === topSeg.name ? '——你猜中了这个反直觉结果。' : '。多数人会猜「优质」，恰恰相反。'} 放款主要由<b>借款规模</b>驱动（小额易融），不是信用/还款能力的度量。
+            </div>
+          )}
+          {guess && (<>
+            <div className="muted" style={{ fontSize: 11.5, margin: '2px 0 8px', color: 'var(--warn)' }}><Icon name="alert" size={12} /> 放款率沿画像层是「反」的（薄档最高、优质最低）——画像分层用于风险处置（薄档→人工复核），不是用放款率给借款人排好坏。</div>
+            {d.segments.map((s: any) => (
+              <div key={s.name} style={{ margin: '9px 0' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12 }}><span style={{ color: 'var(--ink)' }}><span style={{ color: CREDIT_COLORS[s.name] }}>●</span> {s.name}{s.name === topSeg.name ? ' ◀最高' : ''}</span><span className="mono" style={{ color: 'var(--ink2)' }}>{s.count.toLocaleString('zh-CN')} 笔 · 放款率 {s.fundRate}% · 均额 {s.avgAmount.toLocaleString('zh-CN')}</span></div>
+                <div style={{ height: 8, background: 'var(--panelSoft)', borderRadius: 4, marginTop: 3 }}><div style={{ width: `${(s.fundRate / maxFund) * 100}%`, height: '100%', background: CREDIT_COLORS[s.name] || 'var(--accent)', borderRadius: 4 }} /></div>
+              </div>
+            ))}
+            <div className="card-h" style={{ marginTop: 12 }}><h2 style={{ fontSize: 13 }}>文案长度 → 放款成功率</h2><span className="muted">短文案放款率反而高——多为小额（混淆·相关≠因果）</span></div>
+            {d.textSignal.map((t: any) => (
+              <div key={t.label} style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12, margin: '4px 0', color: 'var(--ink2)' }}><span>{t.label}</span><span className="mono">{t.count.toLocaleString('zh-CN')} 笔 · {t.fundRate}%</span></div>
+            ))}
+          </>)}
         </section>
         <section className="card">
           <div className="card-h"><h2>授信额度 × 历史成功次数（色=信用画像）</h2><span className="muted">左下=低额+零历史 → 薄档区</span></div>

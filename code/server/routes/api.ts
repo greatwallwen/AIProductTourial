@@ -44,6 +44,15 @@ export async function apiRoutes(app: any) {
     const rows = region ? query(d, sql, [region]) : query(d, sql, []);
     // v18-P1：真实执行计划上屏——EXPLAIN QUERY PLAN 是 sqlite 真实输出，不是文案
     const plan = query(d, 'EXPLAIN QUERY PLAN ' + sql, region ? [region] : []);
-    return { engine: 'node:sqlite（本地演示，生产为 PostgreSQL / pgvector）', sql, rows, plan };
+    // v23 T4-2：真实「加索引前/后」执行计划对照——把「规模」从口号变成可观测证据。
+    // 用 category（无常驻索引）做同一条查询：无索引=SCAN 全表扫，建索引后=SEARCH USING INDEX；用完即删，不污染库。
+    const demoSql = 'SELECT sku,region,amount FROM orders WHERE category=? ORDER BY amount DESC LIMIT 8';
+    const anyCat = (query(d, "SELECT category FROM orders WHERE category!='' LIMIT 1", []) as any[])[0]?.category || '';
+    const idxBefore = query(d, 'EXPLAIN QUERY PLAN ' + demoSql, [anyCat]);
+    try { d.exec('CREATE INDEX ix_demo_cat ON orders(category)'); } catch { /* 已存在则忽略 */ }
+    const idxAfter = query(d, 'EXPLAIN QUERY PLAN ' + demoSql, [anyCat]);
+    try { d.exec('DROP INDEX ix_demo_cat'); } catch { /* 幂等清理 */ }
+    const indexDemo = { sql: demoSql, key: anyCat, before: idxBefore, after: idxAfter };
+    return { engine: 'node:sqlite（本地演示，生产为 PostgreSQL / pgvector）', sql, rows, plan, indexDemo };
   });
 }
