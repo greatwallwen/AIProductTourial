@@ -352,6 +352,16 @@ function BuildWalkScreen({ data }: { data: any }) {
           })}
         </div>
       </section>
+      {data?.ds && (
+        <section className="card">
+          <div className="card-h"><h2>真实研发效能对照 · {data.ds.source}</h2><span className="muted">{data.ds.license}</span></div>
+          <div className="banner" style={{ color: 'var(--accent2)', borderColor: 'var(--accent2)', marginBottom: 10 }}>
+            本案「SDD 八步」是把本仓库自己当被建系统的 dogfood；对照一个真实大项目——海豚调度近 100 次 CI 的<b>门禁通过率 {data.ds.ci.passRate}%</b>（{data.ds.ci.success} 成功 / {data.ds.ci.failure} 失败 / {data.ds.ci.action_required} 待人工审批）、PR 合并率 {data.ds.prMergeRate}%。第⑦步那条「门禁」腿，在真实项目里就是这样的红绿曲线。
+          </div>
+          <div style={{ fontSize: 12, color: 'var(--ink2)' }}>近 {data.ds.prTotal} 个 PR 类型分布：{Object.entries(data.ds.prByType).sort((a: any, b: any) => b[1] - a[1]).map(([k, v]: any) => <span key={k} className="chip soft" style={{ marginRight: 6 }}>{k} {v}</span>)}</div>
+          <div className="muted" style={{ fontSize: 11, marginTop: 8 }}>门禁失败/待审批=真实的「返工/把关」信号；规格→实现→门禁的节奏，大项目也靠这条守住，不是靠 prompt 一把过。</div>
+        </section>
+      )}
     </>
   );
 }

@@ -14,7 +14,7 @@
 
 > <img src="../../assets/vendor/lucide/built/gauge.svg" width="14" alt="" style="vertical-align:-2px" /> **难度** 高阶｜**一句话** 几个 prompt 建不成系统——照 SDD 八步走，每步一份对得上仓库的工件｜**前置** 建议先读完第一部分
 >
-> <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：本案把「本平台自己」当作被建造的系统，走一遍 SDD 八步：每步都对到仓库里一份真实工件——rules/=宪法、docs/_source=规格、case_definitions=任务、arch SVG=C4 架构、verify=门禁。这就是「几个 prompt 不够、必须要方法论」最实的证据。
+> <img src="../../assets/vendor/lucide/built/lightbulb.svg" width="14" alt="" style="vertical-align:-2px" /> **洞见**：本案把「本平台自己」当作被建造的系统，走一遍 SDD 八步：每步都对到仓库里一份真实工件——rules/=宪法、docs/_source=规格、case_definitions=任务、arch SVG=C4 架构、verify=门禁。这就是「几个 prompt 不够、必须要方法论」最实的证据。 更对照一个真实大项目：apache/dolphinscheduler（海豚调度）近 100 次 CI 的门禁通过率 89.1%（含待人工审批）、PR 合并率 51%——SDD 的「门禁」那条腿在真实大项目里就是这条真实红绿曲线；返工/把关是常态，不是靠 prompt 一把过。
 >
 > <img src="../../assets/vendor/lucide/built/alert-triangle.svg" width="14" alt="" style="vertical-align:-2px" /> **常见坑**：最容易被跳过的是「澄清」和「门禁」两步：跳澄清=把没说清的意图留给 AI 猜（意图债务，§2.9）；跳门禁=对不上既有架构、上线才炸。
 
@@ -45,7 +45,7 @@
 - 数据或资料：`rules/ + docs/_source + case_definitions + verify + 架构图（本仓库自身·dogfood）`（18 行，异常 0）
 - 公开参考：本仓库 rules/、docs/_source、code/tools、arch SVG、verify_course_package.mjs
 - 行业字段：步骤、工件、状态、产出
-- 指标链（真实数据）：宪法条款 18，子系统数 5，门禁检查项 181，架构图数 7
+- 指标链（真实数据）：宪法条款 18，子系统数 5，门禁检查项 192，架构图数 7
 - 决策动作：用规格驱动八步把一次中大型建造拆成可追溯、可验收的小步（而非几个 prompt 一把梭）
 - 风险边界：每步产出须可追溯（规格/ADR/门禁），不得跳过澄清与门禁两步
 - UI 原型：`ui_51_sdd_build`（sdd_buildwalk）

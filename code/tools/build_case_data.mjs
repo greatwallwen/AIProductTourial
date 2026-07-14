@@ -95,7 +95,7 @@ function walkFiles(dir, ext){
 }
 // .md 数据集案例（04 RAG 语料 / 06 后端 dogfood）：指标一律从真实来源真算，绝不用占位顺子
 function buildFromMd(c){
-  let kpis=[], chart={type:'sparkline',data:[]}, queue=[], actions=[], exceptionCount=0, responsible=['—'], deps=[], cycles=0, game=null, nacos=null;
+  let kpis=[], chart={type:'sparkline',data:[]}, queue=[], actions=[], exceptionCount=0, responsible=['—'], deps=[], cycles=0, game=null, nacos=null, ds=null;
   if(c.num===4){ // 真实读 CMRC2018 中文语料目录（v22）：篇数/字数/篇幅分布 + 金标问答数
     const dir=join(ROOT,'dataset','rag','corpus');
     const files=walkFiles(dir,'.md');
@@ -160,6 +160,9 @@ function buildFromMd(c){
     exceptionCount=0; responsible=[...new Set(own)];
     chart={type:'bars',by:'SDD 八步 → 工件/文件数',data:steps.map(s=>({label:s[0].replace(/[①-⑧] /,''),value:s[4]}))};
     actions=[{label:'补澄清 / 消歧',owner:'产品-王',due:'1d'},{label:'跑门禁三绿',owner:'研发-王',due:'0d'}];
+    // v24：真实研发效能对照（apache/dolphinscheduler 近 100 CI/PR），把「门禁/返工」从 dogfood 自身扩到一个真实大项目
+    { const dv=JSON.parse(readFileSync(join(ROOT,'dataset','real','dolphinscheduler_devops.json'),'utf8'));
+      ds={ source:dv.source, license:dv.license, ci:dv.ci, prMergeRate:dv.prMergeRate, prByType:dv.prByType, prTotal:dv.prs.length }; }
   } else if(c.num===9){ // 事件总线（v18-P3 dogfood）：真实 git 提交流 + 当前门禁规模——事件溯源最小标本
     const log=execSync("git log --pretty=format:'%h|%ct|%s' -n 400",{cwd:ROOT,encoding:'utf8'}).split('\n').map(l=>l.replace(/^'|'$/g,'')).filter(Boolean).map(l=>{const [h,t,...m]=l.split('|');return {h,t:Number(t)*1000,msg:m.join('|')};});
     const checks=(readFileSync(join(ROOT,'code','tools','verify_course_package.mjs'),'utf8').match(/\bok\(\)/g)||[]).length;
@@ -179,7 +182,7 @@ function buildFromMd(c){
   } else { // 其它 .md：按指标链回到真实可得量（不用顺子占位）
     kpis=c.metricChain.map((m)=>({name:m,value:0,unit:/率/.test(m)?'%':''}));
   }
-  return { kpis, queue, chart, rowCount:kpis[0]?.value||0, exceptionCount, responsible, actions, deps, cycles, game, nacos };
+  return { kpis, queue, chart, rowCount:kpis[0]?.value||0, exceptionCount, responsible, actions, deps, cycles, game, nacos, ds };
 }
 let ok=0;
 for(const c of defs.cases){

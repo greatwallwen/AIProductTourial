@@ -2,7 +2,7 @@
  "num": 8,
  "slug": "sdd_system_build",
  "url": "http://localhost:5200/#/case/08",
- "shotAt": "2026-07-14T02:17:11.416Z",
+ "shotAt": "2026-07-14T08:03:20.135Z",
  "brand": "会自检的 AI 工程 · 实操手册",
  "caseCount": 9,
  "h1": "规格驱动系统建造台",
@@ -17,12 +17,12 @@
   },
   {
    "name": "门禁检查项",
-   "value": "181"
+   "value": "192"
   },
   {
    "name": "架构图数",
    "value": "7"
   }
  ],
- "pngBytes": 938384
+ "pngBytes": 889836
 }

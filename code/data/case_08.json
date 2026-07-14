@@ -50,7 +50,7 @@
  "theoryOp": "把 §3.0 的 SDD 八步落成一次可查的系统建造走查——每一步都对到仓库里一份真实工件",
  "difficulty": "高阶",
  "tldr": "几个 prompt 建不成系统——照 SDD 八步走，每步一份对得上仓库的工件",
- "insight": "本案把「本平台自己」当作被建造的系统，走一遍 SDD 八步：每步都对到仓库里一份真实工件——rules/=宪法、docs/_source=规格、case_definitions=任务、arch SVG=C4 架构、verify=门禁。这就是「几个 prompt 不够、必须要方法论」最实的证据。",
+ "insight": "本案把「本平台自己」当作被建造的系统，走一遍 SDD 八步：每步都对到仓库里一份真实工件——rules/=宪法、docs/_source=规格、case_definitions=任务、arch SVG=C4 架构、verify=门禁。这就是「几个 prompt 不够、必须要方法论」最实的证据。 更对照一个真实大项目：apache/dolphinscheduler（海豚调度）近 100 次 CI 的门禁通过率 89.1%（含待人工审批）、PR 合并率 51%——SDD 的「门禁」那条腿在真实大项目里就是这条真实红绿曲线；返工/把关是常态，不是靠 prompt 一把过。",
  "pitfall": "最容易被跳过的是「澄清」和「门禁」两步：跳澄清=把没说清的意图留给 AI 猜（意图债务，§2.9）；跳门禁=对不上既有架构、上线才炸。",
  "kpis": [
   {
@@ -65,7 +65,7 @@
   },
   {
    "name": "门禁检查项",
-   "value": 181,
+   "value": 192,
    "unit": ""
   },
   {
@@ -223,5 +223,29 @@
  ],
  "deps": [],
  "cycles": 0,
- "game": null
+ "game": null,
+ "nacos": null,
+ "ds": {
+  "source": "apache/dolphinscheduler（Apache 顶级·国产开源调度，海豚调度）",
+  "license": "Apache-2.0（代码）；PR/CI 元数据为公开事实",
+  "ci": {
+   "success": 57,
+   "failure": 7,
+   "action_required": 36,
+   "other": 0,
+   "passRate": 89.1,
+   "note": "action_required=待人工审批的门禁（非失败）"
+  },
+  "prMergeRate": 51,
+  "prByType": {
+   "fix": 33,
+   "improvement": 41,
+   "other": 8,
+   "feat": 2,
+   "test": 1,
+   "chore": 10,
+   "doc": 5
+  },
+  "prTotal": 100
+ }
 }
