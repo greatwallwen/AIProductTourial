@@ -14,9 +14,9 @@
 
 | # | 场景 | 行业 | 角色镜头 | 演示原理 | 设计 | 链接 |
 |---|---|---|---|---|---|---|
-| 01 | 电商早会异常订单台 | 电商零售 | 产品/研发/项目 | 2.1/2.7 | graphite-hud | [打开](01-morning_ops_grid.md) |
+| 01 | 电商早会·退货异常预警（细分：把退货当滞后质量信号，早会即派单） | 电商零售 | 产品/研发/项目 | 2.1/2.7 | graphite-hud | [打开](01-morning_ops_grid.md) |
 | 02 | 大陆 P2P 信贷·新客 vs 复借 差异化放款与信用画像分层 | P2P信贷 | 产品 | 2.7/8.3 | amber-funnel | [打开](02-p2p_credit.md) |
-| 03 | 零售经营产品方案 | 零售经营 | 产品/研发/项目 | 2.7/3.1/4.1 | graphite-hud | [打开](03-retail_capstone_board.md) |
+| 03 | 零售综合闭环·高价值流失会员挽回（细分：真实 RFM 锁定 M高R大 群） | 零售经营 | 产品/研发/项目 | 2.7/3.1/4.1 | graphite-hud | [打开](03-retail_capstone_board.md) |
 | 04 | 医疗健康知识库语义检索 | 中文医疗知识库 | 研发/产品 | 1.3/3.3 | emerald-flow | [打开](04-rag_knowledge_retrieval.md) |
 | 05 | 北京空气质量大表·查询优化与复合索引 | 数据工程 | 研发 | 3.3/4.1 | steel-queue | [打开](05-postgres_relational_arch.md) |
 | 06 | 后端子系统分解与接口契约（对照真实国产开源微服务·若依） | 系统架构 | 研发/项目 | 3.1/3.3 | cyan-matrix | [打开](06-system_arch_flow.md) |

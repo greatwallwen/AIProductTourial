@@ -8,7 +8,7 @@
   <rect width="1000" height="620" fill="url(#bg)"/><rect width="1000" height="620" fill="url(#grid)" opacity="0.4"/>
   <rect x="0" y="0" width="1000" height="92" fill="#121826" opacity="0.45"/>
   <rect x="36" y="28" width="4" height="36" rx="2" fill="url(#acc)"/>
-  <text x="50" y="46" font-size="22" font-weight="750" fill="#e6edf6">零售经营产品方案</text>
+  <text x="50" y="46" font-size="22" font-weight="750" fill="#e6edf6">零售综合闭环·高价值流失会员挽回（细分：真实 RFM 锁定 M高R大 群）</text>
   <text x="50" y="70" font-size="11.5" fill="#9fb0c3">零售经营 · executive_dashboard · 数据 dataset/order_data.csv（4500 行 · 异常 500）</text>
   <rect x="742" y="26" width="222" height="22" rx="11" fill="#0f1522" stroke="#1e2a3a"/><text x="853" y="41" font-size="10" fill="#22d3ee" text-anchor="middle">设计 graphite-hud · 业务应用·增长</text>
   <text x="964" y="70" font-size="9.5" fill="#5b6b7f" text-anchor="end">读图：指标链 → 异常队列/责任 → 行动/验收</text>
