@@ -272,6 +272,11 @@ for (const f of ['dataset/design/case_01.md', 'dataset/design/case_03.md']) { co
   ok(); if (!/a\?\.ruoyi|a\.ruoyi/.test(scr)) bad('ArchScreen 未渲染若依真实架构对照');
   ok(); if (!/ruoyi_cloud_arch\.json[\s\S]*案例\s*06/.test(man)) bad('MANIFEST 未标注若依真集被案例06 消费');
 }
+// —— v24 守卫 ⑨ 活体门禁 eval 解析标签须与 eval_harness 打印标签一致（防标签漂移致 evalGate.score=null 静默回归，v23 就中过）——
+{ const harness = rd('code/tools/eval_harness.mjs'), gates = rd('code/server/services/gates.ts');
+  const hm = harness.match(/(hit@\d) = \$\{score\}/); const label = hm ? hm[1] : null;
+  ok(); if (label && !gates.includes(`${label} = ([`)) bad(`gates.ts eval 解析标签≠eval_harness 打印(${label})——/api/gates evalGate.score 会=null`);
+}
 // 专属 demo：案例16 医院容量
 ok(); if (defs.cases.filter((c) => c.screen).length < defs.cases.length) bad('存在非专属 demo 案例（应 11/11 有 screen）');
 // 图表数据驱动守卫：CSV 案例的图表必须是真实列聚合（有 by 说明），不得哈希噪声

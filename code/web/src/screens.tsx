@@ -321,7 +321,7 @@ function BuildWalkScreen({ data }: { data: any }) {
   useEffect(() => { fetchGates().then(setG).catch(() => setG({ error: true })); }, []);
   const gatePanel = g && !g.error ? (
     <div style={{border:'1px solid #334155',borderRadius:10,padding:'10px 14px',margin:'10px 0',background:g.green?'#052e16':'#450a0a'}}>
-      <b>第⑦步·活体门禁（此刻真跑）</b>：verify {g.verify.fail===0?'全绿':`失败 ${g.verify.fail} 项`}（断言点 {g.verify.badPoints} / 运行检查 {g.verify.checks}——两个口径都真）；eval hit@3 {g.evalGate.score}%（基线 {g.evalGate.baseline}%，{g.evalGate.pass?'过':'未过'}）
+      <b>第⑦步·活体门禁（此刻真跑）</b>：verify {g.verify.fail===0?'全绿':`失败 ${g.verify.fail} 项`}（断言点 {g.verify.badPoints} / 运行检查 {g.verify.checks}——两个口径都真）；eval hit@1 {g.evalGate.score}%（基线 {g.evalGate.baseline}%，{g.evalGate.pass?'过':'未过'}）
       {g.verify.fails?.length ? <div style={{marginTop:6,fontSize:12}}>红在哪：{g.verify.fails.slice(0,3).join('；')}</div> : null}
       <div style={{fontSize:12,opacity:.8,marginTop:4}}>试试「种一个错」（如把某案例 fields 改成不存在的列，跑 build 后刷新本页）——门禁会当场变红并指出位置；改回即恢复全绿。</div>
     </div>) : null;

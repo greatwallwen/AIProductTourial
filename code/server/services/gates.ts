@@ -20,11 +20,11 @@ export function gates() {
   const badPoints = (readFileSync(join(ROOT, 'code', 'tools', 'verify_course_package.mjs'), 'utf8').match(/bad\(/g) || []).length;
   const fails = [...v.out.matchAll(/^ {2}✗ (.+)$/gm)].map((x) => x[1]).slice(0, 20); // 种错时读者在此看到红在哪
   const ev = runTool('code/tools/eval_harness.mjs');
-  const em = ev.out.match(/hit@3 = ([\d.]+)% ｜ 基线 ([\d.]+)%/);
+  const em = ev.out.match(/hit@1 = ([\d.]+)% ｜ 基线 ([\d.]+)%/);
   const data = {
     green: v.code === 0 && ev.code === 0,
     verify: { checks, fail: failN, badPoints, fails, note: '断言点=源码 bad( 计数；运行检查项=循环展开后的实际执行数——两个口径都真' },
-    evalGate: { score: em ? Number(em[1]) : null, baseline: em ? Number(em[2]) : null, pass: ev.code === 0, judge: 'hit@3（裁判真调 search()）' },
+    evalGate: { score: em ? Number(em[1]) : null, baseline: em ? Number(em[2]) : null, pass: ev.code === 0, judge: 'hit@1（裁判真调 search()·重排第1）' },
     ranAt: new Date().toISOString(),
   };
   cache = { at: Date.now(), data };

@@ -48,7 +48,8 @@ test('后端 API 覆盖补强（端点契约·dogfood）', async () => {
   const gt = await app.inject({ url: '/api/gates' });
   assert.equal(gt.statusCode, 200);
   assert.ok(typeof gt.json().green === 'boolean' && gt.json().verify.checks > 100, 'gates 活体门禁：真跑 verify 出检查数');
-  assert.ok(gt.json().evalGate.judge.includes('hit@3'), 'gates 含 eval 回归门口径');
+  assert.ok(gt.json().evalGate.judge.includes('hit@1'), 'gates 含 eval 回归门口径');
+  assert.ok(typeof gt.json().evalGate.score === 'number', 'gates eval 分数须解析成功（防 harness 标签变更导致 null 回归）');
   const cd = await app.inject({ url: '/api/case/1/data' });
   assert.ok(Array.isArray(cd.json().actions) && cd.json().responsible !== undefined, 'case data 含行动项 + 责任归属(闭环)');
   const oa2 = await app.inject({ url: '/api/openapi.json' });
