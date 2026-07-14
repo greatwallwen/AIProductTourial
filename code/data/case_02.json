@@ -6,7 +6,7 @@
  "saasType": "credit_seg_screen",
  "uiId": "ui_02_p2p_credit",
  "slug": "p2p_credit",
- "uiStrategy": "dashboard_plus_saas｜sales_funnel_screen｜驾驶舱高密度",
+ "uiStrategy": "dashboard_plus_saas｜credit_seg_screen｜驾驶舱高密度",
  "largeScreenRef": "信贷｜信用画像分层与放款转化大屏",
  "components": [
   "信用分层",

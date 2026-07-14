@@ -1,171 +1,6 @@
 {
   "generatedFrom": "ref-handbook.md (draft) + refinements",
   "caseCount": 9,
-  "archetypes": {
-    "executive_dashboard": [
-      "驾驶舱高密度",
-      [
-        "目标达成",
-        "收入趋势",
-        "业务结构",
-        "区域排行",
-        "异常告警",
-        "行动队列"
-      ]
-    ],
-    "sales_funnel_screen": [
-      "驾驶舱高密度",
-      [
-        "销售漏斗",
-        "目标进度",
-        "客户跟进",
-        "回款风险",
-        "区域作战",
-        "销售排行"
-      ]
-    ],
-    "finance_cashflow_screen": [
-      "驾驶舱高密度",
-      [
-        "收入利润",
-        "成本费用",
-        "现金流",
-        "应收账款",
-        "预算执行",
-        "经营质量"
-      ]
-    ],
-    "hr_efficiency_screen": [
-      "驾驶舱高密度",
-      [
-        "人效产出",
-        "招聘进度",
-        "组织编制",
-        "薪酬成本",
-        "流失预警",
-        "岗位效率"
-      ]
-    ],
-    "production_oee_screen": [
-      "驾驶舱高密度",
-      [
-        "OEE",
-        "设备稼动率",
-        "质量缺陷",
-        "订单交付",
-        "停机预警",
-        "车间异常"
-      ]
-    ],
-    "matrix_decision": [
-      "高密度业务表格",
-      [
-        "二维矩阵",
-        "字段轴",
-        "优先级标签",
-        "决策说明",
-        "评分栏",
-        "复核入口"
-      ]
-    ],
-    "review_queue": [
-      "高密度业务表格",
-      [
-        "复核队列",
-        "证据摘要",
-        "风险标签",
-        "人工处理",
-        "留痕记录",
-        "升级入口"
-      ]
-    ],
-    "list_review": [
-      "中密度工作台",
-      [
-        "筛选栏",
-        "指标卡",
-        "状态表格",
-        "补充抽屉",
-        "批量操作",
-        "验收面板"
-      ]
-    ],
-    "record_detail": [
-      "中密度工作台",
-      [
-        "记录详情",
-        "字段分组",
-        "证据列表",
-        "协作纪要",
-        "审计记录",
-        "操作栏"
-      ]
-    ],
-    "knowledge_workspace": [
-      "中密度工作台",
-      [
-        "知识目录",
-        "任务地图",
-        "问答记录",
-        "命中材料",
-        "错题复盘",
-        "能力画像"
-      ]
-    ],
-    "workflow_pipeline": [
-      "中密度工作台",
-      [
-        "阶段泳道",
-        "任务卡片",
-        "流转状态",
-        "阻塞项",
-        "版本记录",
-        "验收点"
-      ]
-    ],
-    "configuration": [
-      "中密度工作台",
-      [
-        "规则表单",
-        "参数分组",
-        "预览区",
-        "成本/风险提示",
-        "发布记录",
-        "回滚入口"
-      ]
-    ],
-    "experiment_harness": [
-      "中密度工作台",
-      [
-        "检查清单",
-        "测试数据",
-        "失败原因",
-        "修复优先级",
-        "报告导出",
-        "回归记录"
-      ]
-    ],
-    "rag_search": [
-      "语义检索命中面板",
-      "相似度排序",
-      "片段召回"
-    ],
-    "db_console": [
-      "关系库查询台",
-      "表结构与索引",
-      "聚合结果"
-    ],
-    "arch_board": [
-      "子系统分解图",
-      "分层边界与接口契约",
-      "数据流"
-    ],
-    "scene_3d": [
-      "三维散点场景",
-      "轨道交互",
-      "多维离群"
-    ]
-  },
   "cases": [
     {
       "num": 1,
@@ -227,32 +62,6 @@
         "行动队列"
       ],
       "deliverable": "产品问题定义卡",
-      "mustFields": [
-        "订单号",
-        "SKU",
-        "库存天数",
-        "毛利率",
-        "异常原因",
-        "责任人"
-      ],
-      "mustMetrics": [
-        "订单数",
-        "销售额(元)",
-        "毛利率均值",
-        "异常订单率",
-        "区域数"
-      ],
-      "mustExceptions": [
-        "目标未达成",
-        "区域下滑",
-        "异常订单",
-        "责任未闭环"
-      ],
-      "mustSkills": [
-        "problem-framing",
-        "metric-definition",
-        "acceptance-criteria"
-      ],
       "story": "电商运营团队每天早会第一件事，就是复盘昨天的经营与异常。本案用真实公开数据——UCI Online Retail II（一家英国在线零售商 2009–2010 年真实订单，CC BY 4.0），4500 单里：看哪些品类贡献收入（品类由真实商品描述归类）、哪些地区在增长（按真实国家聚合，英国占主力），并把真实退货单挑出来当场派人跟进。毛利率因原始数据无成本，为教学合成叠加、页面已标注。",
       "design": "graphite-hud",
       "demonstrates": [
@@ -261,7 +70,7 @@
       ],
       "systemLayer": "业务应用",
       "systemStage": "洞察",
-      "theoryOp": "把原理 2.1、2.7 落成可运行操作：识别未达成区域、定位异常业务线，并生成责任部门行动队列。（依赖案例 04–06 的数据底座，本案可先不管）",
+      "theoryOp": "把原理 2.1、2.7 落成可运行操作：识别未达成区域、定位异常业务线，并生成责任部门行动队列。（依赖案例 05–06 的数据底座，本案可先不管）",
       "metricSpec": [
         {
           "name": "订单数",
@@ -402,7 +211,7 @@
       ],
       "decisionAction": "按信用画像分层给差异化放款/额度策略；薄档与待观察走人工复核，不自动放款。",
       "riskBoundary": "高影响金融·保留人工复核；禁按性别/学历做歧视性拒贷；放款成功≠还款能力，不得据此推断违约",
-      "uiStrategy": "dashboard_plus_saas｜sales_funnel_screen｜驾驶舱高密度",
+      "uiStrategy": "dashboard_plus_saas｜credit_seg_screen｜驾驶舱高密度",
       "largeScreenRef": "信贷｜信用画像分层与放款转化大屏",
       "saasComponents": [
         "信用分层",
@@ -413,32 +222,6 @@
         "人工复核"
       ],
       "deliverable": "信用画像分层放款策略",
-      "mustFields": [
-        "借款号",
-        "放款结果",
-        "授信额度",
-        "征信",
-        "信用画像",
-        "风险处置"
-      ],
-      "mustMetrics": [
-        "借款数",
-        "放款成功率",
-        "征信完整率",
-        "优质画像占比",
-        "借款金额均值"
-      ],
-      "mustExceptions": [
-        "高风险薄档",
-        "需人工复核",
-        "无征信",
-        "文案偏短"
-      ],
-      "mustSkills": [
-        "rfm-segmentation",
-        "lifecycle-action",
-        "privacy-boundary"
-      ],
       "story": "P2P 信贷风控 PM 天天面对同一道题：两万笔借款申请里，哪些该放款、哪些要收紧、哪些必须人工复核。凭「额度高就靠谱」拍脑袋会翻车。真正的抓手是把借款人按「有无征信 × 历史成功次数 × 授信额度」做信用画像分层，把「薄档 / 待观察」拎出来走人工复核。但这份真实数据藏着一个反直觉真相：薄档、无征信、小额的借款反而更容易融到款（放款率薄档 52% > 优质 6%）——因为放款成功主要由借款规模驱动（小额易融、大额难融），与信用强弱负相关。这恰恰是本案最锋利的一课：放款成功率不是信用/还款能力的度量。",
       "design": "amber-funnel",
       "demonstrates": [
@@ -585,33 +368,6 @@
         "异常告警",
         "行动队列"
       ],
-      "mustFields": [
-        "商品",
-        "门店",
-        "销量",
-        "毛利",
-        "库存",
-        "复购",
-        "责任人"
-      ],
-      "mustMetrics": [
-        "营收(元)",
-        "毛利率均值",
-        "品类数",
-        "异常订单率",
-        "平均处理时限(h)"
-      ],
-      "mustExceptions": [
-        "目标未达成",
-        "滞销",
-        "毛利异常",
-        "责任未闭环"
-      ],
-      "mustSkills": [
-        "capstone-product-flow",
-        "evidence-pack",
-        "traceability-check"
-      ],
       "design": "graphite-hud",
       "demonstrates": [
         "2.7",
@@ -717,28 +473,6 @@
       "rp": null,
       "uiStrategy": "dashboard_plus_saas",
       "module": "AI协作",
-      "mustFields": [
-        "查询",
-        "命中文档",
-        "相似度",
-        "片段"
-      ],
-      "mustMetrics": [
-        "语料篇数",
-        "语料总字(万)",
-        "平均篇幅(字)",
-        "覆盖主题数"
-      ],
-      "mustExceptions": [
-        "低相似",
-        "无命中",
-        "越权语料"
-      ],
-      "mustSkills": [
-        "capstone-product-flow",
-        "evidence-pack",
-        "traceability-check"
-      ],
       "graphicOnly": false,
       "num": 4,
       "uiId": "ui_44_rag_retrieval",
@@ -847,29 +581,6 @@
       "rp": null,
       "uiStrategy": "dashboard_plus_saas",
       "module": "系统架构",
-      "mustFields": [
-        "SKU",
-        "品类",
-        "区域",
-        "金额",
-        "毛利率"
-      ],
-      "mustMetrics": [
-        "表行数",
-        "区域数",
-        "品类数",
-        "总销售额(元)"
-      ],
-      "mustExceptions": [
-        "慢查询",
-        "全表扫描",
-        "空结果"
-      ],
-      "mustSkills": [
-        "capstone-product-flow",
-        "evidence-pack",
-        "traceability-check"
-      ],
       "graphicOnly": false,
       "num": 5,
       "uiId": "ui_45_pg_relational",
@@ -1012,28 +723,6 @@
       "rp": null,
       "uiStrategy": "dashboard_plus_saas",
       "module": "系统架构",
-      "mustFields": [
-        "子系统",
-        "职责",
-        "接口",
-        "契约"
-      ],
-      "mustMetrics": [
-        "子系统数",
-        "接口数",
-        "后端模块数",
-        "契约断言数"
-      ],
-      "mustExceptions": [
-        "职责越界",
-        "契约缺失",
-        "循环依赖"
-      ],
-      "mustSkills": [
-        "capstone-product-flow",
-        "evidence-pack",
-        "traceability-check"
-      ],
       "graphicOnly": false,
       "num": 6,
       "uiId": "ui_46_arch_contract",
@@ -1469,5 +1158,5 @@
     }
   ],
   "projectName": "会自检的 AI 工程 · 实操手册",
-  "projectNameEn": "PM Transformation Hands-on Knowledge Base"
+  "projectNameEn": "Self-Verifying AI Engineering Handbook"
 }
