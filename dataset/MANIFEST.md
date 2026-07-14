@@ -19,7 +19,7 @@
 | dataset/real/ruoyi_cloud_arch.json | [RuoYi-Cloud（若依·国产开源微服务脚手架）](https://github.com/yangzongzhuan/RuoYi-Cloud) | MIT | 案例 06 系统架构（22 模块 + 18 真实依赖边 + 0 循环 + 3 Feign 接口契约，从 pom.xml `<dependency>` 与 @FeignClient 确定性解析，已排除 dependencyManagement 版本声明·零代码执行） | 1f0f0968fc75f179… |
 | dataset/real/nacos_git_events.json | [alibaba/nacos（阿里·国产开源注册/配置中心）](https://github.com/alibaba/nacos) | Apache-2.0 | 案例 09 事件溯源（近 600 提交事件流 + 父指针 DAG，与本仓库 dogfood 小事件流大小对照；作者邮箱已 hash 脱敏） | 7a27e180ede8a267… |
 | dataset/real/webmedqa_slice.json | [webMedQA（中文医疗健康问答）](https://github.com/hejunqing/webMedQA) | Apache-2.0 | 案例 04/07 中文医疗知识库 RAG + 评测（120 组 1正4负·原生 P@1/hit@k 金标；公开健康咨询、无 PII、仅 dev 小切片） | 533fb405a14ec39b… |
-| dataset/real/beijing_air_quality.csv | [UCI 北京多站点空气质量](https://archive.ics.uci.edu/dataset/501/beijing+multi+site+air+quality+data) | CC BY 4.0 | 案例 05 数据工程·大表查询优化（12 国控站真实逐时监测，本快照取每 3 小时一条=140256 行控体积、真实数值/NA 缺口不改；生产规模用 CROSS JOIN 自扩展） | bb918cb17320d2ac… |
+| dataset/real/beijing_air_quality.csv | [UCI 北京多站点空气质量](https://archive.ics.uci.edu/dataset/501/beijing+multi+site+air+quality+data) | CC BY 4.0 | 案例 05 数据工程·大表查询优化（12 国控站真实逐时监测，本快照取每 3 小时一条=140256 行控体积、真实数值/NA 缺口不改；生产规模用 CROSS JOIN 自扩展） | 6ac20a2a78d46e18… |
 | dataset/real/dolphinscheduler_devops.json | [apache/dolphinscheduler（海豚调度·国产 Apache 顶级项目）](https://github.com/apache/dolphinscheduler) | Apache-2.0（元数据为公开事实） | 案例 08 研发效能·门禁/返工（近 100 CI 结论=通过率 89.1% + 近 100 PR 元数据·类型分布；作者 handle hash 脱敏） | 0935e7b46a80f0ed… |
 
 > **零售快照**由一次性采样脚本生成（分层过采样：退货约 ×5 以便教学展示，异常率 11.1% 不代表真实业务水平——UCI 原始约 2%；无随机、无联网），生成器读快照后归一化，真实数值列直接用真实效应、实体标签本地化改写（已标注）。**CMRC2018 / 人人贷** 为公开集**完整/直接快照**（未过采样、未改数值），仅归一化中文表头与 log 还原、规则派生分层均已标注为「派生·非事实标签」。缺失列的确定性教学合成叠加已标注，绝不把叠加/派生说成真实。

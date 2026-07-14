@@ -10,7 +10,7 @@ const ROOT = join(import.meta.dirname, '..', '..', '..');
 let vs: VectorStore | null = null;
 let db: any = null;
 function getVs() { if (!vs) { vs = new VectorStore(); vs.loadDir(join(ROOT, 'dataset', 'rag', 'corpus')); } return vs; } // v22：中文语料 CMRC2018（store.ts 二元组分词）
-function getDb() { if (!db) db = buildOrdersDb(join(ROOT, 'dataset', 'order_data.csv')); return db; }
+function getDb() { if (!db) db = buildOrdersDb(join(ROOT, 'dataset', 'order_data.csv'), join(ROOT, 'dataset', 'real', 'beijing_air_quality.csv')); return db; }
 
 export async function apiRoutes(app: any) {
   app.get('/api/health', async () => ({ ok: true, service: 'pm-kb-server', subsystems: serverSubsystems(), checker: 'tests' }));
@@ -34,25 +34,22 @@ export async function apiRoutes(app: any) {
     return { ...r, hits: r.reranked.map((x: any) => ({ id: x.id, score: x.rerank, snippet: x.snippet })) };
   });
   app.get('/api/db/query', async (req: any) => {
-    const region = req.query.region ? String(req.query.region) : null;
-    const GROUPS: Record<string, string> = { region: 'region', category: 'category' }; // v17 P0-9：换维聚合白名单（案45「换品类聚合」动手项成真）
-    const g = GROUPS[String(req.query.group || 'region')] || 'region';
+    // v24：案例05 改查北京空气质量真表（14 万行/12 站）——「大表查询优化/复合索引/EXPLAIN」在真大表上才有说服力。
+    const GROUPS: Record<string, string> = { station: 'station', month: 'month' }; // 换维聚合白名单
+    const g = GROUPS[String(req.query.group || 'station')] || 'station';
     const d = getDb();
-    const sql = region
-      ? 'SELECT sku,category,region,amount,gross FROM orders WHERE region=? ORDER BY amount DESC LIMIT 8'
-      : `SELECT ${g} AS dim, COUNT(*) n, ROUND(SUM(amount)) amt FROM orders GROUP BY ${g} ORDER BY amt DESC`;
-    const rows = region ? query(d, sql, [region]) : query(d, sql, []);
-    // v18-P1：真实执行计划上屏——EXPLAIN QUERY PLAN 是 sqlite 真实输出，不是文案
-    const plan = query(d, 'EXPLAIN QUERY PLAN ' + sql, region ? [region] : []);
-    // v23 T4-2：真实「加索引前/后」执行计划对照——把「规模」从口号变成可观测证据。
-    // 用 category（无常驻索引）做同一条查询：无索引=SCAN 全表扫，建索引后=SEARCH USING INDEX；用完即删，不污染库。
-    const demoSql = 'SELECT sku,region,amount FROM orders WHERE category=? ORDER BY amount DESC LIMIT 8';
-    const anyCat = (query(d, "SELECT category FROM orders WHERE category!='' LIMIT 1", []) as any[])[0]?.category || '';
-    const idxBefore = query(d, 'EXPLAIN QUERY PLAN ' + demoSql, [anyCat]);
-    try { d.exec('CREATE INDEX ix_demo_cat ON orders(category)'); } catch { /* 已存在则忽略 */ }
-    const idxAfter = query(d, 'EXPLAIN QUERY PLAN ' + demoSql, [anyCat]);
-    try { d.exec('DROP INDEX ix_demo_cat'); } catch { /* 幂等清理 */ }
-    const indexDemo = { sql: demoSql, key: anyCat, before: idxBefore, after: idxAfter };
-    return { engine: 'node:sqlite（本地演示，生产为 PostgreSQL / pgvector）', sql, rows, plan, indexDemo };
+    const total = (query(d, 'SELECT COUNT(*) c FROM air_quality', []) as any[])[0].c;
+    const sql = `SELECT ${g} AS dim, COUNT(*) n, ROUND(AVG(pm25),1) amt FROM air_quality WHERE pm25 IS NOT NULL GROUP BY ${g} ORDER BY amt DESC`;
+    const rows = query(d, sql, []);
+    const plan = query(d, 'EXPLAIN QUERY PLAN ' + sql, []);
+    // 加索引前/后：同一条 WHERE station=? ORDER BY ts。air_quality 无常驻索引 → 14 万行 SCAN；建 (station,ts) 复合索引后 SEARCH USING INDEX。用完即删。
+    const demoSql = 'SELECT station,ts,pm25 FROM air_quality WHERE station=? ORDER BY ts DESC LIMIT 8';
+    const anySt = (query(d, "SELECT station FROM air_quality LIMIT 1", []) as any[])[0]?.station || '';
+    const idxBefore = query(d, 'EXPLAIN QUERY PLAN ' + demoSql, [anySt]);
+    try { d.exec('CREATE INDEX ix_air_demo ON air_quality(station, ts)'); } catch { /* 已存在则忽略 */ }
+    const idxAfter = query(d, 'EXPLAIN QUERY PLAN ' + demoSql, [anySt]);
+    try { d.exec('DROP INDEX ix_air_demo'); } catch { /* 幂等清理 */ }
+    const indexDemo = { sql: demoSql, key: anySt, before: idxBefore, after: idxAfter };
+    return { engine: 'node:sqlite（本地演示，生产为 PostgreSQL）', table: 'air_quality', rowCount: total, sql, rows, plan, indexDemo };
   });
 }

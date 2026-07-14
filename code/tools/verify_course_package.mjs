@@ -262,8 +262,10 @@ for (const f of ['dataset/design/case_01.md', 'dataset/design/case_03.md']) { co
 }
 // —— v23 守卫 ⑦ 案例05「规模」可观测证据：加索引前/后真实 EXPLAIN 对照已接线 ——
 { const api = rd('code/server/routes/api.ts'), scr = rd('code/web/src/screens.tsx');
-  ok(); if (!/indexDemo/.test(api) || !/CREATE INDEX ix_demo_cat/.test(api)) bad('案例05 缺加索引前/后 EXPLAIN 对照（/api/db/query indexDemo）');
+  ok(); if (!/indexDemo/.test(api) || !/CREATE INDEX ix_air_demo/.test(api)) bad('案例05 缺加索引前/后 EXPLAIN 对照（/api/db/query indexDemo·air_quality）');
   ok(); if (!/indexDemo/.test(scr)) bad('DbScreen 未渲染 indexDemo 前/后执行计划');
+  ok(); if (!/beijing_air_quality\.csv/.test(rd('code/server/routes/api.ts')) || !/CREATE TABLE air_quality/.test(rd('code/server/db/relational.ts'))) bad('案例05 未加载真实 air_quality 大表（api.ts getDb 传路径 + relational.ts 建表）');
+  ok(); if (!/beijing_air_quality\.csv[\s\S]*案例\s*05|案例\s*05[\s\S]*beijing_air_quality/.test(rd('dataset/MANIFEST.md'))) bad('MANIFEST 未标注 air_quality 真集被案例05 消费');
 }
 // —— v24 守卫 ⑧ P3 真集接线：接线案例真读 vendored 真集 + 屏渲染 + MANIFEST 消费标注（随各案接线扩展）——
 { const svc = rd('code/server/services/cases.ts'), scr = rd('code/web/src/screens.tsx'), man = rd('dataset/MANIFEST.md');

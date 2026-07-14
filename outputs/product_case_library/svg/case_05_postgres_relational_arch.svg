@@ -8,76 +8,67 @@
   <rect width="1000" height="620" fill="url(#bg)"/><rect width="1000" height="620" fill="url(#grid)" opacity="0.4"/>
   <rect x="0" y="0" width="1000" height="92" fill="#161a20" opacity="0.45"/>
   <rect x="36" y="28" width="4" height="36" rx="2" fill="url(#acc)"/>
-  <text x="50" y="46" font-size="22" font-weight="750" fill="#e8ecf1">经营数据关系库查询</text>
-  <text x="50" y="70" font-size="11.5" fill="#a2adbb">数据工程 · db_console · 数据 dataset/order_data.csv（4500 行 · 异常 500）</text>
+  <text x="50" y="46" font-size="22" font-weight="750" fill="#e8ecf1">北京空气质量大表·查询优化与复合索引</text>
+  <text x="50" y="70" font-size="11.5" fill="#a2adbb">数据工程 · db_console · 数据 dataset/real/beijing_air_quality.csv（140256 行 · 异常 10）</text>
   <rect x="742" y="26" width="222" height="22" rx="11" fill="#12151b" stroke="#28303c"/><text x="853" y="41" font-size="10" fill="#60a5fa" text-anchor="middle">设计 steel-queue · 底座平台·治理</text>
   <text x="964" y="70" font-size="9.5" fill="#606b7a" text-anchor="end">读图：指标链 → 异常队列/责任 → 行动/验收</text>
   <rect x="36" y="116" width="176" height="82" rx="11" fill="#161a20" stroke="#28303c"/>
     <rect x="36" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
     <circle cx="56" cy="139" r="7" fill="none" stroke="#60a5fa" stroke-width="1.5"/><circle cx="56" cy="139" r="2.5" fill="#60a5fa"/>
     <text x="70" y="143" font-size="10.5" fill="#606b7a">表行数</text>
-    <text x="50" y="176" font-size="24" font-weight="750" fill="#e8ecf1">4500<tspan font-size="12" fill="#606b7a"></tspan></text>
+    <text x="50" y="176" font-size="24" font-weight="750" fill="#e8ecf1">140256<tspan font-size="12" fill="#606b7a"></tspan></text>
     <rect x="226" y="116" width="176" height="82" rx="11" fill="#161a20" stroke="#28303c"/>
     <rect x="226" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
     <circle cx="246" cy="139" r="7" fill="none" stroke="#60a5fa" stroke-width="1.5"/><circle cx="246" cy="139" r="2.5" fill="#60a5fa"/>
-    <text x="260" y="143" font-size="10.5" fill="#606b7a">区域数</text>
-    <text x="240" y="176" font-size="24" font-weight="750" fill="#e8ecf1">29<tspan font-size="12" fill="#606b7a"></tspan></text>
+    <text x="260" y="143" font-size="10.5" fill="#606b7a">站点数</text>
+    <text x="240" y="176" font-size="24" font-weight="750" fill="#e8ecf1">12<tspan font-size="12" fill="#606b7a"></tspan></text>
     <rect x="416" y="116" width="176" height="82" rx="11" fill="#161a20" stroke="#28303c"/>
     <rect x="416" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
     <circle cx="436" cy="139" r="7" fill="none" stroke="#60a5fa" stroke-width="1.5"/><circle cx="436" cy="139" r="2.5" fill="#60a5fa"/>
-    <text x="450" y="143" font-size="10.5" fill="#606b7a">品类数</text>
-    <text x="430" y="176" font-size="24" font-weight="750" fill="#e8ecf1">10<tspan font-size="12" fill="#606b7a"></tspan></text>
+    <text x="450" y="143" font-size="10.5" fill="#606b7a">平均PM2.5</text>
+    <text x="430" y="176" font-size="24" font-weight="750" fill="#e8ecf1">78.11<tspan font-size="12" fill="#606b7a"></tspan></text>
     <rect x="606" y="116" width="176" height="82" rx="11" fill="#161a20" stroke="#28303c"/>
     <rect x="606" y="116" width="176" height="3" rx="1.5" fill="url(#acc)"/>
     <circle cx="626" cy="139" r="7" fill="none" stroke="#60a5fa" stroke-width="1.5"/><circle cx="626" cy="139" r="2.5" fill="#60a5fa"/>
-    <text x="640" y="143" font-size="10.5" fill="#606b7a">总销售额(元)</text>
-    <text x="620" y="176" font-size="24" font-weight="750" fill="#e8ecf1">55373<tspan font-size="12" fill="#606b7a"></tspan></text>
+    <text x="640" y="143" font-size="10.5" fill="#606b7a">平均气温</text>
+    <text x="620" y="176" font-size="24" font-weight="750" fill="#e8ecf1">13.52<tspan font-size="12" fill="#606b7a"></tspan></text>
     
   <rect x="24" y="216" width="476" height="230" rx="12" fill="#161a20" stroke="#28303c"/>
   <text x="40" y="240" font-size="12.5" font-weight="650" fill="#e8ecf1">指标趋势 / 结构</text><rect x="40" y="246" width="28" height="2" fill="#60a5fa"/>
   <text x="484" y="240" font-size="9.5" fill="#606b7a" text-anchor="end">数据｜关系库查询大屏</text>
-  <line x1="44" y1="373.0" x2="476" y2="373.0" stroke="#1c222b" stroke-dasharray="2 3"/><line x1="44" y1="336.0" x2="476" y2="336.0" stroke="#1c222b" stroke-dasharray="2 3"/><line x1="44" y1="299.0" x2="476" y2="299.0" stroke="#1c222b" stroke-dasharray="2 3"/><line x1="44" y1="262.0" x2="476" y2="262.0" stroke="#1c222b" stroke-dasharray="2 3"/><line x1="44" y1="410" x2="476" y2="410" stroke="#28303c"/><line x1="44" y1="262" x2="44" y2="410" stroke="#28303c"/><rect x="50.0" y="262.0" width="50.0" height="148.0" rx="3" fill="#60a5fa" opacity="0.9"/><text x="75.0" y="258.0" font-size="8.5" fill="#a2adbb" text-anchor="middle">11159</text><text x="75.0" y="423" font-size="8" fill="#606b7a" text-anchor="middle">厨具餐厨</text><rect x="110.0" y="263.4" width="50.0" height="146.6" rx="3" fill="#60a5fa" opacity="0.9"/><text x="135.0" y="259.4" font-size="8.5" fill="#a2adbb" text-anchor="middle">11057</text><text x="135.0" y="423" font-size="8" fill="#606b7a" text-anchor="middle">家居饰品</text><rect x="170.0" y="281.3" width="50.0" height="128.7" rx="3" fill="#60a5fa" opacity="0.9"/><text x="195.0" y="277.3" font-size="8.5" fill="#a2adbb" text-anchor="middle">9701</text><text x="195.0" y="423" font-size="8" fill="#606b7a" text-anchor="middle">百货其他</text><rect x="230.0" y="317.1" width="50.0" height="92.9" rx="3" fill="#60a5fa" opacity="0.9"/><text x="255.0" y="313.1" font-size="8.5" fill="#a2adbb" text-anchor="middle">7001</text><text x="255.0" y="423" font-size="8" fill="#606b7a" text-anchor="middle">箱包配饰</text><rect x="290.0" y="319.3" width="50.0" height="90.7" rx="3" fill="#60a5fa" opacity="0.9"/><text x="315.0" y="315.3" font-size="8.5" fill="#a2adbb" text-anchor="middle">6840</text><text x="315.0" y="423" font-size="8" fill="#606b7a" text-anchor="middle">居家灯饰</text><rect x="350.0" y="376.8" width="50.0" height="33.2" rx="3" fill="#60a5fa" opacity="0.9"/><text x="375.0" y="372.8" font-size="8.5" fill="#a2adbb" text-anchor="middle">2500</text><text x="375.0" y="423" font-size="8" fill="#606b7a" text-anchor="middle">节庆礼品</text><rect x="410.0" y="378.3" width="50.0" height="31.7" rx="3" fill="#60a5fa" opacity="0.9"/><text x="435.0" y="374.3" font-size="8.5" fill="#a2adbb" text-anchor="middle">2387</text><text x="435.0" y="423" font-size="8" fill="#606b7a" text-anchor="middle">家纺织品</text>
+  <line x1="44" y1="373.0" x2="476" y2="373.0" stroke="#1c222b" stroke-dasharray="2 3"/><line x1="44" y1="336.0" x2="476" y2="336.0" stroke="#1c222b" stroke-dasharray="2 3"/><line x1="44" y1="299.0" x2="476" y2="299.0" stroke="#1c222b" stroke-dasharray="2 3"/><line x1="44" y1="262.0" x2="476" y2="262.0" stroke="#1c222b" stroke-dasharray="2 3"/><line x1="44" y1="410" x2="476" y2="410" stroke="#28303c"/><line x1="44" y1="262" x2="44" y2="410" stroke="#28303c"/><rect x="50.0" y="262.0" width="410.0" height="148.0" rx="3" fill="#60a5fa" opacity="0.9"/><text x="255.0" y="258.0" font-size="8.5" fill="#a2adbb" text-anchor="middle">140256</text><text x="255.0" y="423" font-size="8" fill="#606b7a" text-anchor="middle">总量</text>
   <rect x="512" y="216" width="464" height="230" rx="12" fill="#161a20" stroke="#28303c"/>
   <text x="528" y="240" font-size="12.5" font-weight="650" fill="#e8ecf1">异常队列 · 责任对象</text><rect x="528" y="246" width="28" height="2" fill="#fbbf24"/>
-  <text x="960" y="240" font-size="9.5" fill="#606b7a" text-anchor="end">500 项 · 取前 5</text>
+  <text x="960" y="240" font-size="9.5" fill="#606b7a" text-anchor="end">10 项 · 取前 5</text>
   
     <rect x="524" y="264" width="440" height="28" rx="7" fill="#12151b" stroke="#28303c"/>
-    <rect x="532" y="271" width="4" height="14" rx="2" fill="#94a3b8"/>
-    <rect x="544" y="270" width="70" height="16" rx="5" fill="#94a3b8" opacity="0.2"/><text x="550" y="282" font-size="9.5" fill="#94a3b8" font-weight="700">退货</text>
-    <text x="624" y="282" font-size="10" fill="#a2adbb">22087</text>
-    <rect x="884" y="270" width="72" height="16" rx="8" fill="#94a3b8" opacity="0.16"/><text x="920" y="282" font-size="9.5" fill="#94a3b8" text-anchor="middle">客服-陈</text>
+    <rect x="532" y="271" width="4" height="14" rx="2" fill="#fbbf24"/>
+    <rect x="544" y="270" width="70" height="16" rx="5" fill="#fbbf24" opacity="0.2"/><text x="550" y="282" font-size="9.5" fill="#fbbf24" font-weight="700">待处理</text>
+    <text x="624" y="282" font-size="10" fill="#a2adbb">Aotizhongxin</text>
+    <rect x="884" y="270" width="72" height="16" rx="8" fill="#94a3b8" opacity="0.16"/><text x="920" y="282" font-size="9.5" fill="#94a3b8" text-anchor="middle">—</text>
     <rect x="524" y="298" width="440" height="28" rx="7" fill="#12151b" stroke="#28303c"/>
-    <rect x="532" y="305" width="4" height="14" rx="2" fill="#94a3b8"/>
-    <rect x="544" y="304" width="70" height="16" rx="5" fill="#94a3b8" opacity="0.2"/><text x="550" y="316" font-size="9.5" fill="#94a3b8" font-weight="700">退货</text>
-    <text x="624" y="316" font-size="10" fill="#a2adbb">90209A</text>
-    <rect x="884" y="304" width="72" height="16" rx="8" fill="#94a3b8" opacity="0.16"/><text x="920" y="316" font-size="9.5" fill="#94a3b8" text-anchor="middle">采购-赵</text>
+    <rect x="532" y="305" width="4" height="14" rx="2" fill="#fbbf24"/>
+    <rect x="544" y="304" width="70" height="16" rx="5" fill="#fbbf24" opacity="0.2"/><text x="550" y="316" font-size="9.5" fill="#fbbf24" font-weight="700">待处理</text>
+    <text x="624" y="316" font-size="10" fill="#a2adbb">Aotizhongxin</text>
+    <rect x="884" y="304" width="72" height="16" rx="8" fill="#94a3b8" opacity="0.16"/><text x="920" y="316" font-size="9.5" fill="#94a3b8" text-anchor="middle">—</text>
     <rect x="524" y="332" width="440" height="28" rx="7" fill="#12151b" stroke="#28303c"/>
-    <rect x="532" y="339" width="4" height="14" rx="2" fill="#94a3b8"/>
-    <rect x="544" y="338" width="70" height="16" rx="5" fill="#94a3b8" opacity="0.2"/><text x="550" y="350" font-size="9.5" fill="#94a3b8" font-weight="700">退货</text>
-    <text x="624" y="350" font-size="10" fill="#a2adbb">21254</text>
-    <rect x="884" y="338" width="72" height="16" rx="8" fill="#94a3b8" opacity="0.16"/><text x="920" y="350" font-size="9.5" fill="#94a3b8" text-anchor="middle">运营-李</text>
+    <rect x="532" y="339" width="4" height="14" rx="2" fill="#fbbf24"/>
+    <rect x="544" y="338" width="70" height="16" rx="5" fill="#fbbf24" opacity="0.2"/><text x="550" y="350" font-size="9.5" fill="#fbbf24" font-weight="700">待处理</text>
+    <text x="624" y="350" font-size="10" fill="#a2adbb">Aotizhongxin</text>
+    <rect x="884" y="338" width="72" height="16" rx="8" fill="#94a3b8" opacity="0.16"/><text x="920" y="350" font-size="9.5" fill="#94a3b8" text-anchor="middle">—</text>
     <rect x="524" y="366" width="440" height="28" rx="7" fill="#12151b" stroke="#28303c"/>
-    <rect x="532" y="373" width="4" height="14" rx="2" fill="#94a3b8"/>
-    <rect x="544" y="372" width="70" height="16" rx="5" fill="#94a3b8" opacity="0.2"/><text x="550" y="384" font-size="9.5" fill="#94a3b8" font-weight="700">退货</text>
-    <text x="624" y="384" font-size="10" fill="#a2adbb">82483</text>
-    <rect x="884" y="372" width="72" height="16" rx="8" fill="#94a3b8" opacity="0.16"/><text x="920" y="384" font-size="9.5" fill="#94a3b8" text-anchor="middle">采购-赵</text>
+    <rect x="532" y="373" width="4" height="14" rx="2" fill="#fbbf24"/>
+    <rect x="544" y="372" width="70" height="16" rx="5" fill="#fbbf24" opacity="0.2"/><text x="550" y="384" font-size="9.5" fill="#fbbf24" font-weight="700">待处理</text>
+    <text x="624" y="384" font-size="10" fill="#a2adbb">Aotizhongxin</text>
+    <rect x="884" y="372" width="72" height="16" rx="8" fill="#94a3b8" opacity="0.16"/><text x="920" y="384" font-size="9.5" fill="#94a3b8" text-anchor="middle">—</text>
     <rect x="524" y="400" width="440" height="28" rx="7" fill="#12151b" stroke="#28303c"/>
-    <rect x="532" y="407" width="4" height="14" rx="2" fill="#94a3b8"/>
-    <rect x="544" y="406" width="70" height="16" rx="5" fill="#94a3b8" opacity="0.2"/><text x="550" y="418" font-size="9.5" fill="#94a3b8" font-weight="700">退货</text>
-    <text x="624" y="418" font-size="10" fill="#a2adbb">22073</text>
-    <rect x="884" y="406" width="72" height="16" rx="8" fill="#94a3b8" opacity="0.16"/><text x="920" y="418" font-size="9.5" fill="#94a3b8" text-anchor="middle">运营-李</text>
+    <rect x="532" y="407" width="4" height="14" rx="2" fill="#fbbf24"/>
+    <rect x="544" y="406" width="70" height="16" rx="5" fill="#fbbf24" opacity="0.2"/><text x="550" y="418" font-size="9.5" fill="#fbbf24" font-weight="700">待处理</text>
+    <text x="624" y="418" font-size="10" fill="#a2adbb">Aotizhongxin</text>
+    <rect x="884" y="406" width="72" height="16" rx="8" fill="#94a3b8" opacity="0.16"/><text x="920" y="418" font-size="9.5" fill="#94a3b8" text-anchor="middle">—</text>
   <text x="36" y="479" font-size="10.5" fill="#606b7a">演示原理 3.3 · 4.1 · UI ui_45_pg_relational · Skill capstone-product-flow + evidence-pack + traceability-check</text>
   <text x="36" y="522" font-size="11" fill="#606b7a">行动入口 · 责任 · 时限</text>
   
-    <rect x="36" y="548" width="168" height="46" rx="10" fill="url(#acc)"/>
-    <text x="50" y="569" font-size="11.5" fill="#04121a" font-weight="750">处置：慢查询</text>
-    <text x="50" y="584" font-size="9" fill="#04121a" opacity="0.75">产品-王（演示角色） · 1d</text>
-    <rect x="216" y="548" width="168" height="46" rx="10" fill="url(#acc)"/>
-    <text x="230" y="569" font-size="11.5" fill="#04121a" font-weight="750">处置：全表扫描</text>
-    <text x="230" y="584" font-size="9" fill="#04121a" opacity="0.75">风控-赵（演示角色） · 3d</text>
-    <rect x="396" y="548" width="168" height="46" rx="10" fill="url(#acc)"/>
-    <text x="410" y="569" font-size="11.5" fill="#04121a" font-weight="750">处置：空结果</text>
-    <text x="410" y="584" font-size="9" fill="#04121a" opacity="0.75">客服-陈（演示角色） · 5d</text>
   <rect x="588" y="510" width="388" height="88" rx="10" fill="#12151b" stroke="#28303c"/>
   <foreignObject x="602" y="516" width="360" height="76"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:10.5px;color:#a2adbb;line-height:1.5">决策动作：用真实 SQL（建表/索引/参数化聚合）支撑经营分析，讲清 PostgreSQL 架构<br/>风险边界：本地 SQLite 演示、生产为 PostgreSQL；不得把演示数据当真账</div></foreignObject>
 </svg>

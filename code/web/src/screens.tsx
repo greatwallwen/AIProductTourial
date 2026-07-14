@@ -37,20 +37,23 @@ function RagScreen() {
 // —— 关系库查询(PostgreSQL 架构)：调 /api/db/query 展示真实 SQL 结果 ——
 function DbScreen() {
   const [res, setRes] = useState<any>(null);
-  const [group, setGroup] = useState<'region' | 'category'>('region');
+  const [group, setGroup] = useState<'station' | 'month'>('station');
   useEffect(() => { fetch(`/api/db/query?group=${group}`).then((r) => r.json()).then(setRes); }, [group]);
   return (
     <section className="card">
       <div className="card-h"><h2>关系库查询 · SQL</h2><span className="muted">{res?.engine ?? '…'} · /api/db/query</span></div>
+      <div className="banner" style={{ color: 'var(--accent2)', borderColor: 'var(--accent2)', marginBottom: 8 }}>
+        真表 <b>air_quality · {res?.rowCount ? Number(res.rowCount).toLocaleString('zh-CN') : '…'} 行</b>（UCI 北京 12 国控站真实逐时监测，CC BY 4.0）——「规模/复合索引/EXPLAIN」在真大表上才有说服力。
+      </div>
       <div style={{ marginBottom: 8 }}>
-        聚合维度：<button className={group === 'region' ? 'btn on' : 'btn'} onClick={() => setGroup('region')}>区域</button> <button className={group === 'category' ? 'btn on' : 'btn'} onClick={() => setGroup('category')}>品类</button>
+        聚合维度：<button className={group === 'station' ? 'btn on' : 'btn'} onClick={() => setGroup('station')}>站点</button> <button className={group === 'month' ? 'btn on' : 'btn'} onClick={() => setGroup('month')}>月份</button>
       </div>
       <pre className="mono" style={{ background: 'var(--panelSoft)', border: '1px solid var(--border)', borderRadius: 8, padding: 12, fontSize: 11.5, color: 'var(--accent)', overflowX: 'auto' }}>
 {(res?.sql || '…') + ';   -- 真 node:sqlite，服务端回显实际执行 SQL'}
       </pre>
       <div className="tbl-wrap">
         <table className="tbl">
-          <thead><tr><th>{group === 'region' ? '区域' : '品类'} dim</th><th>订单数 n</th><th>销售额 amt</th></tr></thead>
+          <thead><tr><th>{group === 'station' ? '站点' : '月份'} dim</th><th>条数 n</th><th>平均PM2.5</th></tr></thead>
           <tbody>
             {(res?.rows || []).map((r: any, i: number) => (
               <tr key={i}><td>{r.dim}</td><td className="mono">{r.n}</td><td className="mono">{Number(r.amt).toLocaleString('zh-CN')}</td></tr>
@@ -65,7 +68,7 @@ function DbScreen() {
       </div>
       {res?.indexDemo && (
         <div style={{ marginTop: 10, border: '1px solid var(--border)', borderRadius: 8, padding: '8px 12px' }}>
-          <b>加索引前 / 后 · 同一条查询的真实执行计划（category=「{res.indexDemo.key}」）</b>
+          <b>加索引前 / 后 · 同一条查询的真实执行计划（station=「{res.indexDemo.key}」）</b>
           <div className="muted" style={{ fontSize: 11, margin: '2px 0 6px' }}>{res.indexDemo.sql}</div>
           <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
             <div style={{ flex: 1, minWidth: 220 }}>
@@ -77,7 +80,7 @@ function DbScreen() {
               <pre className="mono" style={{ fontSize: 10.5, margin: '4px 0 0', color: 'var(--ok)', whiteSpace: 'pre-wrap' }}>{(res.indexDemo.after || []).map((p: any) => p.detail).join('\n')}</pre>
             </div>
           </div>
-          <div className="muted" style={{ fontSize: 11, marginTop: 6 }}><Icon name="alert" size={12} /> 真实 4500 行表尚且 SCAN↔SEARCH 分明；生产千万行缺复合索引就是全表扫描——这是「规模」的可观测证据，不是口号。「存下来」≠「查得动」。</div>
+          <div className="muted" style={{ fontSize: 11, marginTop: 6 }}><Icon name="alert" size={12} /> 真实 14 万行大表上 SCAN↔SEARCH 对比更悬殊；生产千万行缺 (站点,时间) 复合索引就是全表扫描——这是「规模」的可观测证据，不是口号。「存下来」≠「查得动」。CROSS JOIN 可再演到千万级。</div>
         </div>
       )}
     </section>
