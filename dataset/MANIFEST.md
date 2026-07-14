@@ -19,6 +19,7 @@
 | dataset/real/ruoyi_cloud_arch.json | [RuoYi-Cloud（若依·国产开源微服务脚手架）](https://github.com/yangzongzhuan/RuoYi-Cloud) | MIT | 案例 06 系统架构（22 模块 + 18 真实依赖边 + 0 循环 + 3 Feign 接口契约，pom/@FeignClient 确定性解析，已排除 dependencyManagement） | 1f0f0968fc75f179… |
 | dataset/real/nacos_git_events.json | [alibaba/nacos（阿里·国产开源注册/配置中心）](https://github.com/alibaba/nacos) | Apache-2.0 | 案例 09 事件溯源（近 600 提交事件流 + 父指针 DAG，与本仓库 dogfood 小事件流大小对照；作者邮箱已 hash 脱敏） | 7a27e180ede8a267… |
 | dataset/real/beijing_air_quality.csv | [UCI 北京多站点空气质量](https://archive.ics.uci.edu/dataset/501/beijing+multi+site+air+quality+data) | CC BY 4.0 | 案例 05 数据工程·大表查询优化（12 国控站真实逐时·每3小时=140256 行·真实数值/NA 不改；CROSS JOIN 扩规模） | 6ac20a2a78d46e18… |
+| dataset/real/miit_telecom_appeals.csv | [工信部《电信服务质量通告》（政府公开信息）](https://www.miit.gov.cn/) | 政府公开数据（可引用/再分发） | 案例 10 运营商投诉升级·真实聚合锚（申诉总数/类别占比；投诉工单明细为教学合成、页面标红线） | 74167eda72f0f8e8… |
 | dataset/real/dolphinscheduler_devops.json | [apache/dolphinscheduler（海豚调度·国产 Apache 顶级项目）](https://github.com/apache/dolphinscheduler) | Apache-2.0（元数据为公开事实） | 案例 08 研发效能·门禁/返工（近 100 CI=通过率89.1% + 近 100 PR 元数据；作者 handle hash 脱敏） | 0935e7b46a80f0ed… |
 
 > **零售快照**由一次性采样脚本生成（分层过采样：退货约 ×5 以便教学展示，异常率 11.1% 不代表真实业务水平——UCI 原始约 2%；无随机、无联网），生成器读快照后归一化，真实数值列直接用真实效应、实体标签本地化改写（已标注）。**人人贷** 为公开集**直接快照**（未过采样、未改数值），仅归一化中文表头与 log 还原、规则派生分层均已标注为「派生·非事实标签」；**webMedQA** 取 dev 小切片（120 组 1正4负、公开健康咨询、无 PII）；国产开源真集（若依/nacos/海豚调度）为确定性解析/脱敏快照（pom·git·REST 元数据，邮箱/handle 已 hash）。缺失列的确定性教学合成叠加已标注，绝不把叠加/派生说成真实。

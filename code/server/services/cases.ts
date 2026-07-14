@@ -141,3 +141,24 @@ export function retailRfm() {
   return { total, segments, churnCount: churn.count, churnRate: Math.round((churn.count / total) * 1000) / 10,
     note: '真实基座：UCI Online Retail II 客户级 RFM 真算（R=最近购买天数/F=购买次数/M=总消费）；分层为分位规则派生、非事实标签。「高价值流失」= 消费高但久未回购——正是会员经营要抢救的群。' };
 }
+
+/** 运营商客户投诉升级（案例10 专属·v24）：真实锚=工信部《电信服务质量通告》公开聚合（申诉总数/类别占比）；
+ *  投诉工单明细为**教学合成**（升级/SLA/优先级按真实类别分布确定性生成，非真实工单）——干净可再分发的大陆运营商明细真集不存在，绝不把合成说成真实。 */
+export function telecomComplaints() {
+  const t = parseCsv(join(ROOT, 'dataset', 'real', 'miit_telecom_appeals.csv'));
+  const ci = (n: string) => t.head.indexOf(n);
+  const rows = t.rows.map((r) => ({ quarter: r[ci('季度')], total: Number(r[ci('申诉总件数')]) || 0, svc: Number(r[ci('用户服务类占比')]) || 0, fee: Number(r[ci('收费争议类占比')]) || 0, net: Number(r[ci('网络质量类占比')]) || 0 }));
+  const latest = rows.filter((r) => r.svc > 0).slice(-1)[0] || rows[rows.length - 1]; // 取有类别占比的季度（2021Q3）
+  const cats = [{ name: '用户服务类', share: latest.svc }, { name: '收费争议类', share: latest.fee }, { name: '网络质量类', share: latest.net }];
+  // 合成明细工单（确定性·按真实类别分布分配·标红线）：升级率/SLA 为教学合成，非真实工单
+  const N = 200; const escRate: Record<string, number> = { '用户服务类': 18, '收费争议类': 34, '网络质量类': 26 }; // 合成升级率（收费争议最易升级为申诉）
+  let acc = 0; const bounds = cats.map((c) => { acc += c.share; return { name: c.name, upto: acc }; });
+  const detail = Array.from({ length: N }, (_, i) => { const pos = (i + 0.5) / N * 100; const cat = bounds.find((b) => pos <= b.upto)?.name || cats[0].name;
+    const esc = ((i * 37) % 100) < escRate[cat]; const slaH = 8 + ((i * 13) % 40); // 确定性伪随机·无 Math.random
+    return { id: i + 1, cat, escalated: esc, slaHours: slaH, priority: esc ? '高' : (slaH > 36 ? '中' : '低') }; });
+  const escByCategory = cats.map((c) => { const g = detail.filter((d) => d.cat === c.name); return { name: c.name, share: c.share, count: g.length, escRate: g.length ? Math.round(g.filter((d) => d.escalated).length / g.length * 1000) / 10 : 0 }; });
+  const escalatedQueue = detail.filter((d) => d.escalated).sort((a, b) => (a.priority === '高' ? -1 : 1) - (b.priority === '高' ? -1 : 1) || a.slaHours - b.slaHours).slice(0, 8);
+  return { real: { quarter: latest.quarter, total: latest.total, cats, trend: rows.map((r) => ({ q: r.quarter, total: r.total })), extortion: 82783, spam: 30742 },
+    synthN: N, escByCategory, escalatedCount: detail.filter((d) => d.escalated).length, escalatedQueue,
+    note: '真实锚：工信部《电信服务质量通告》公开聚合（申诉总数/类别占比·政府公开信息，2021Q3 全项 + 2020Q2 总数）；**投诉工单明细为教学合成**——升级率/SLA/优先级按真实类别分布确定性生成，非真实工单。干净可再分发的大陆运营商明细真集不存在（JDDC/黑猫/天池 全禁再分发或含 PII），绝不把合成说成真实。' };
+}

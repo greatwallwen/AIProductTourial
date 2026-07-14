@@ -2,7 +2,7 @@
 
 ## 数字化系统全景（先看这张图）
 
-第一部分讲的理念、原理、规范、设计，不是散点——它们共同构成**一套数字化系统**。下面 9 个代表性案例，正是这套系统在不同环节、不同层的**实操演示**（每案标注它更偏哪个角色镜头）：
+第一部分讲的理念、原理、规范、设计，不是散点——它们共同构成**一套数字化系统**。下面 10 个代表性案例，正是这套系统在不同环节、不同层的**实操演示**（每案标注它更偏哪个角色镜头）：
 
 ![数字化系统全景](../../outputs/product_case_library/svg/fig_system_panorama.svg)
 
@@ -23,6 +23,7 @@
 | 07 | RAG 回答评测台 | AI 产品·中文医疗 RAG | 产品/研发 | 2.3/1.3 | cyan-matrix | [打开](07-rag_eval_harness.md) |
 | 08 | 规格驱动系统建造台 | 研发效能 / 架构 | 研发/项目/产品 | 3.0/2.3 | cyan-matrix | [打开](08-sdd_system_build.md) |
 | 09 | 仓库事件总线·事件溯源（本仓库 dogfood + 大型国产开源项目 nacos 对照） | 软件工程 | 研发/项目 | 7.2/9.4/2.3 | emerald-flow | [打开](09-repo_event_bus.md) |
+| 10 | 运营商·客户投诉升级分诊与 SLA 违约预警 | 电信运营商 | 产品 | 2.7/8.3 | steel-queue | [打开](10-telecom_complaint_escalation.md) |
 
 ## 原理 → 案例 反查（哪个原理，被哪些案例演示）
 
@@ -33,11 +34,11 @@
 | §1.3 | [案例 04](04-rag_knowledge_retrieval.md)、[案例 07](07-rag_eval_harness.md) |
 | §2.1 | [案例 01](01-morning_ops_grid.md) |
 | §2.3 | [案例 07](07-rag_eval_harness.md)、[案例 08](08-sdd_system_build.md)、[案例 09](09-repo_event_bus.md) |
-| §2.7 | [案例 01](01-morning_ops_grid.md)、[案例 02](02-p2p_credit.md)、[案例 03](03-retail_capstone_board.md) |
+| §2.7 | [案例 01](01-morning_ops_grid.md)、[案例 02](02-p2p_credit.md)、[案例 03](03-retail_capstone_board.md)、[案例 10](10-telecom_complaint_escalation.md) |
 | §3.0 | [案例 08](08-sdd_system_build.md) |
 | §3.1 | [案例 03](03-retail_capstone_board.md)、[案例 06](06-system_arch_flow.md) |
 | §3.3 | [案例 04](04-rag_knowledge_retrieval.md)、[案例 05](05-postgres_relational_arch.md)、[案例 06](06-system_arch_flow.md) |
 | §4.1 | [案例 03](03-retail_capstone_board.md)、[案例 05](05-postgres_relational_arch.md) |
 | §7.2 | [案例 09](09-repo_event_bus.md) |
-| §8.3 | [案例 02](02-p2p_credit.md) |
+| §8.3 | [案例 02](02-p2p_credit.md)、[案例 10](10-telecom_complaint_escalation.md) |
 | §9.4 | [案例 09](09-repo_event_bus.md) |

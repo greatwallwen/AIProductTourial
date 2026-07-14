@@ -135,6 +135,21 @@
    "systemStage": "采集",
    "difficulty": "进阶",
    "tldr": "git log 就是你系统最诚实的事件总线——本案把本仓库自己的提交流重放成时间线。"
+  },
+  {
+   "num": 10,
+   "title": "客户投诉升级｜大陆运营商投诉分诊与 SLA",
+   "slug": "telecom_complaint_escalation",
+   "uiId": "ui_10_telecom",
+   "saasType": "telecom_escalation_screen",
+   "industry": "电信运营商",
+   "phase": "数据指标",
+   "highImpact": true,
+   "rp": "RP11",
+   "systemLayer": "能力智能",
+   "systemStage": "洞察",
+   "difficulty": "进阶",
+   "tldr": "运营商投诉升级：真实锚工信部公开申诉聚合（收费争议+用户服务占八成），合成工单明细分诊/SLA（标红线）"
   }
  ]
 }

@@ -119,6 +119,7 @@ const REAL_SOURCES=[
   ['ruoyi_cloud_arch.json','RuoYi-Cloud（若依·国产开源微服务脚手架）','MIT','https://github.com/yangzongzhuan/RuoYi-Cloud','案例 06 系统架构（22 模块 + 18 真实依赖边 + 0 循环 + 3 Feign 接口契约，pom/@FeignClient 确定性解析，已排除 dependencyManagement）'],
   ['nacos_git_events.json','alibaba/nacos（阿里·国产开源注册/配置中心）','Apache-2.0','https://github.com/alibaba/nacos','案例 09 事件溯源（近 600 提交事件流 + 父指针 DAG，与本仓库 dogfood 小事件流大小对照；作者邮箱已 hash 脱敏）'],
   ['beijing_air_quality.csv','UCI 北京多站点空气质量','CC BY 4.0','https://archive.ics.uci.edu/dataset/501/beijing+multi+site+air+quality+data','案例 05 数据工程·大表查询优化（12 国控站真实逐时·每3小时=140256 行·真实数值/NA 不改；CROSS JOIN 扩规模）'],
+  ['miit_telecom_appeals.csv','工信部《电信服务质量通告》（政府公开信息）','政府公开数据（可引用/再分发）','https://www.miit.gov.cn/','案例 10 运营商投诉升级·真实聚合锚（申诉总数/类别占比；投诉工单明细为教学合成、页面标红线）'],
   ['dolphinscheduler_devops.json','apache/dolphinscheduler（海豚调度·国产 Apache 顶级项目）','Apache-2.0（元数据为公开事实）','https://github.com/apache/dolphinscheduler','案例 08 研发效能·门禁/返工（近 100 CI=通过率89.1% + 近 100 PR 元数据；作者 handle hash 脱敏）'],
 ];
 const UNWIRED=[['CMS Timely & Effective Care (医院急诊)','https://data.cms.gov/provider-data/dataset/yv7e-xc69'],['US DOT On-Time (航班准点)','https://www.transtats.bts.gov/'],['UCI Default of Credit Card Clients','https://archive.ics.uci.edu/dataset/350/default+of+credit+card+clients']];

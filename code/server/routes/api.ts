@@ -1,6 +1,6 @@
 import { join } from 'node:path';
 import { gates } from '../services/gates.ts';
-import { listCases, caseData, getIndex, creditSegment, retail, retailRfm, serverSubsystems, archModel } from '../services/cases.ts';
+import { listCases, caseData, getIndex, creditSegment, retail, retailRfm, telecomComplaints, serverSubsystems, archModel } from '../services/cases.ts';
 import { tokenize } from '../services/tokenize.ts';
 import { openapiSpec } from '../services/openapi.ts';
 import { VectorStore } from '../vector/store.ts';
@@ -26,6 +26,7 @@ export async function apiRoutes(app: any) {
   app.get('/api/credit', async () => creditSegment());
   app.get('/api/retail', async () => retail());
   app.get('/api/rfm', async () => retailRfm());
+  app.get('/api/telecom', async () => telecomComplaints());
   app.get('/api/tokenize', async (req: any) => tokenize(String(req.query.text ?? '你好，今天天气怎么样？Hello AI Agent 2026')));
   app.get('/api/openapi.json', async () => openapiSpec());
   app.get('/api/search', async (req: any) => {

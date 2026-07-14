@@ -1,0 +1,123 @@
+{
+ "num": 10,
+ "title": "客户投诉升级｜大陆运营商投诉分诊与 SLA",
+ "industry": "电信运营商",
+ "role": "运营商体验/风控 PM",
+ "saasType": "telecom_escalation_screen",
+ "uiId": "ui_10_telecom",
+ "slug": "telecom_complaint_escalation",
+ "uiStrategy": "dashboard_plus_saas｜telecom_escalation｜投诉分诊",
+ "largeScreenRef": "运营商投诉升级大屏",
+ "components": [
+  "信用分层",
+  "放款转化",
+  "征信完整度",
+  "文案质量",
+  "风险队列",
+  "人工复核"
+ ],
+ "skills": [
+  "rfm-segmentation",
+  "lifecycle-action",
+  "privacy-boundary"
+ ],
+ "rp": {
+  "id": "RP11",
+  "title": "AI-Excel 数据分析转产品判断",
+  "produce": "指标分析表, 产品改进建议",
+  "accept": "RFM、趋势或异常检测结果必须转化为明确产品判断，不能停留在图表描述。"
+ },
+ "highImpact": true,
+ "riskBoundary": "高影响监管场景：投诉工单明细为教学合成，不得当真实工单；升级判定/处罚须人工复核，不得据合成明细自动处置",
+ "decisionAction": "按真实申诉类别分布分诊投诉、对高升级风险类别优先处置、SLA 违约预警",
+ "dataset": "dataset/real/miit_telecom_appeals.csv",
+ "metricChainNames": [
+  "申诉总件数",
+  "用户服务类占比",
+  "收费争议类占比",
+  "网络质量类占比"
+ ],
+ "exceptionStates": [],
+ "fields": [
+  "季度",
+  "申诉总件数",
+  "用户服务类占比",
+  "收费争议类占比",
+  "网络质量类占比"
+ ],
+ "design": "steel-queue",
+ "demonstrates": [
+  "2.7",
+  "8.3"
+ ],
+ "systemLayer": "能力智能",
+ "systemStage": "洞察",
+ "theoryOp": "把投诉分诊/升级预警落成可运行操作：按工信部真实类别分布排分诊优先级，对高升级类别预警，SLA 违约兜底。",
+ "difficulty": "进阶",
+ "tldr": "运营商投诉升级：真实锚工信部公开申诉聚合（收费争议+用户服务占八成），合成工单明细分诊/SLA（标红线）",
+ "insight": "客户投诉升级的抓手是「按真实分布分诊」：工信部公开数据显示收费争议+用户服务类占申诉约八成——分诊优先级先盯这两类，别被网络质量类等小类占用人力。申诉=用户在运营商侧未解决后升级到监管的投诉。⚠ 投诉工单明细为教学合成（升级/SLA 按真实类别分布确定性生成），绝不当真实工单。",
+ "pitfall": "① 按投诉「量」而非「升级风险」排优先级；② 把合成工单明细当真实工单做处罚决策；③ 忽视「申诉=升级层」的语义。",
+ "kpis": [
+  {
+   "name": "申诉总件数",
+   "value": 37543,
+   "unit": ""
+  },
+  {
+   "name": "用户服务类占比",
+   "value": 58,
+   "unit": "%"
+  },
+  {
+   "name": "收费争议类占比",
+   "value": 25,
+   "unit": "%"
+  },
+  {
+   "name": "网络质量类占比",
+   "value": 18,
+   "unit": "%"
+  }
+ ],
+ "queue": [
+  {
+   "id": 1,
+   "state": "待处理",
+   "owner": "",
+   "fields": {
+    "季度": "2020Q2",
+    "申诉总件数": "37543",
+    "用户服务类占比": "",
+    "收费争议类占比": "",
+    "网络质量类占比": ""
+   }
+  },
+  {
+   "id": 2,
+   "state": "待处理",
+   "owner": "",
+   "fields": {
+    "季度": "2021Q3",
+    "申诉总件数": "36199",
+    "用户服务类占比": "57.7",
+    "收费争议类占比": "24.8",
+    "网络质量类占比": "17.5"
+   }
+  }
+ ],
+ "chart": {
+  "type": "bars",
+  "by": "记录数",
+  "data": [
+   {
+    "label": "总量",
+    "value": 2
+   }
+  ]
+ },
+ "rowCount": 2,
+ "exceptionCount": 2,
+ "abColumn": null,
+ "responsible": [],
+ "actions": []
+}

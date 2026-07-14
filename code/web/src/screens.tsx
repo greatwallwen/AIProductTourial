@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Icon } from './Icon';
-import { fetchSearch, fetchDbQuery, fetchHealth, fetchArch, fetchCredit, fetchRetail, fetchRfm, fetchGates } from './lib/api';
+import { fetchSearch, fetchDbQuery, fetchHealth, fetchArch, fetchCredit, fetchRetail, fetchRfm, fetchTelecom, fetchGates } from './lib/api';
 
 // 架构/向量库/PG 等案例的「真实后端」案例屏：全部 live 调后端接口。
 
@@ -424,7 +424,43 @@ function EventBusScreen({ data }: { data: any }) {
   );
 }
 
+const TEL_COLORS: Record<string, string> = { '收费争议类': 'var(--bad)', '用户服务类': 'var(--warn)', '网络质量类': 'var(--accent)' };
+function TelecomScreen() {
+  const [d, setD] = useState<any>(null);
+  useEffect(() => { fetchTelecom().then(setD).catch(() => {}); }, []);
+  if (!d) return <section className="card"><div className="muted">加载运营商投诉…</div></section>;
+  return (
+    <>
+      <div className="banner" style={{ color: 'var(--warn)', borderColor: 'var(--warn)' }}>
+        <Icon name="alert" /> <b>真实锚（工信部公开聚合）</b>：{d.real.quarter} 全国电信用户申诉 <b>{d.real.total.toLocaleString('zh-CN')}</b> 件；申诉=用户在运营商侧未解决后**升级到监管**的投诉。骚扰电话举报 {d.real.extortion.toLocaleString('zh-CN')}、垃圾短信 {d.real.spam.toLocaleString('zh-CN')} 件。
+      </div>
+      <div className="cols">
+        <section className="card">
+          <div className="card-h"><h2>真实申诉类别分布（工信部公开）</h2><span className="muted">{d.real.quarter}</span></div>
+          {d.escByCategory.map((c: any) => (
+            <div key={c.name} style={{ margin: '9px 0' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12.5 }}><span style={{ color: TEL_COLORS[c.name] }}>● {c.name}</span><span className="mono">占申诉 {c.share}% · 合成工单升级率 {c.escRate}%</span></div>
+              <div style={{ height: 8, background: 'var(--panelSoft)', borderRadius: 4, marginTop: 3 }}><div style={{ width: `${c.share}%`, height: '100%', background: TEL_COLORS[c.name], borderRadius: 4 }} /></div>
+            </div>
+          ))}
+          <div className="muted" style={{ fontSize: 11, marginTop: 8, color: 'var(--warn)' }}><Icon name="alert" size={12} /> 收费争议+用户服务≈{Math.round(d.escByCategory[0].share + d.escByCategory[1].share)}% 的申诉——分诊优先级先盯这两类（真实分布），别被小类占用人力。</div>
+        </section>
+        <section className="card">
+          <div className="card-h"><h2>投诉升级队列（合成明细·标红线）</h2><span className="muted">{d.escalatedCount}/{d.synthN} 升级</span></div>
+          <div className="banner" style={{ color: 'var(--bad)', borderColor: 'var(--bad)', fontSize: 11.5, marginBottom: 8 }}>下方工单为<b>教学合成</b>（升级/SLA/优先级按真实类别分布确定性生成，非真实工单）——干净可再分发的大陆运营商明细真集不存在，绝不把合成说成真实。</div>
+          <div className="tbl-wrap"><table className="tbl">
+            <thead><tr><th>工单</th><th>类别</th><th>优先级</th><th>SLA(时)</th></tr></thead>
+            <tbody>{d.escalatedQueue.map((q: any) => <tr key={q.id}><td className="mono">#{q.id}</td><td><span style={{ color: TEL_COLORS[q.cat] }}>{q.cat}</span></td><td><span className="chip soft">{q.priority}</span></td><td className="mono">{q.slaHours}</td></tr>)}</tbody>
+          </table></div>
+        </section>
+      </div>
+      <div className="muted" style={{ fontSize: 11, marginTop: 8 }}>{d.note}</div>
+    </>
+  );
+}
+
 export function SpecialScreen({ screen, data }: { screen: string; data?: any }) {
+  if (screen === 'telecom') return <TelecomScreen />;
   if (screen === 'buildwalk') return <BuildWalkScreen data={data} />;
   if (screen === 'eval') return <DogfoodScreen data={data} kind={screen} />;
   if (screen === 'eventbus') return <EventBusScreen data={data} />;

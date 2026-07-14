@@ -2,9 +2,9 @@
  "num": 7,
  "slug": "rag_eval_harness",
  "url": "http://localhost:5200/#/case/07",
- "shotAt": "2026-07-14T08:27:54.231Z",
+ "shotAt": "2026-07-14T08:39:22.445Z",
  "brand": "会自检的 AI 工程 · 实操手册",
- "caseCount": 9,
+ "caseCount": 10,
  "h1": "RAG 评测台（eval harness）",
  "kpis": [
   {
@@ -24,5 +24,5 @@
    "value": "600"
   }
  ],
- "pngBytes": 781162
+ "pngBytes": 793580
 }

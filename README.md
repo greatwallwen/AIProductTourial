@@ -1,6 +1,6 @@
 # Self-Verifying AI Engineering Handbook（会自检的 AI 工程 · 实操手册）
 
-In one line: **go from doing the work yourself to designing a system that does the work and checks itself.** One promise only: **learn to design self-verifying Loop systems** (Loops · Skills · verification/evals + humans at the gate). No prompt tricks, no job-hunting content, one storyline for any technical-minded reader. One shared workflow runs across **9 representative industry scenarios** (including dogfood cases where the book evals / builds itself), each delivered as: **real data → runnable React prototype → real screenshot → two deliverables → handbook chapter → machine-verified**.
+In one line: **go from doing the work yourself to designing a system that does the work and checks itself.** One promise only: **learn to design self-verifying Loop systems** (Loops · Skills · verification/evals + humans at the gate). No prompt tricks, no job-hunting content, one storyline for any technical-minded reader. One shared workflow runs across **10 representative industry scenarios** (including dogfood cases where the book evals / builds itself), each delivered as: **real data → runnable React prototype → real screenshot → two deliverables → handbook chapter → machine-verified**.
 
 - Datasets: `dataset/` (+ `MANIFEST.md`, real vs. synthetic explicitly labeled)
 - Runnable workbench: `code/web` (Vite + React + TS, one route per case `#/case/NN`)

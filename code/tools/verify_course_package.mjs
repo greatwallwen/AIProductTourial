@@ -285,6 +285,10 @@ for (const f of ['dataset/design/case_01.md', 'dataset/design/case_03.md']) { co
   // 案例02：首贷vs复贷细分（深挖现有 CC0 真集，零新增下载）
   ok(); if (!/firstVsRepeat/.test(svc)) bad('案例02 creditSegment 未计算首贷vs复贷细分');
   ok(); if (!/firstVsRepeat/.test(scr)) bad('CreditScreen 未渲染首贷vs复贷细分');
+  // 案例10 运营商：真实工信部聚合锚 + 合成明细标红线
+  ok(); if (!/telecomComplaints/.test(svc) || !/miit_telecom_appeals\.csv/.test(svc)) bad('案例10 telecomComplaints 未读真实工信部聚合');
+  ok(); if (!/fetchTelecom/.test(scr)) bad('案例10 TelecomScreen 未接线');
+  ok(); if (!/明细为教学合成/.test(svc)) bad('案例10 未标注投诉工单明细为教学合成（红线）');
 }
 // —— v24 守卫 ⑨ 活体门禁 eval 解析标签须与 eval_harness 打印标签一致（防标签漂移致 evalGate.score=null 静默回归，v23 就中过）——
 { const harness = rd('code/tools/eval_harness.mjs'), gates = rd('code/server/services/gates.ts');
