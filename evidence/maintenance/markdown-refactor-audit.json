@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "1.0",
+  "auditedAt": "2026-07-30T13:20:00+08:00",
+  "repository": "greatwallwen/AIProductTourial",
+  "branch": "codex/course-deep-cases-v2",
+  "head": "65d65f5a08f53d93bdfc0fc9b97d671e558d7594",
+  "findings": [
+    {
+      "id": "generated-monolith-duplication",
+      "severity": "high",
+      "evidence": "md/Course_AIProduct.md is a deterministic composition of 32 tracked chapter and case files",
+      "impact": "The same 190460-byte teaching body is versioned twice and appears in two GitHub reading paths"
+    },
+    {
+      "id": "parallel-deep-topic-spine",
+      "severity": "high",
+      "evidence": "md/80 through md/88 repeat Loop, Skill, system architecture, engineering and delivery topics outside the main composition",
+      "impact": "Readers must choose between two overlapping knowledge sequences with incompatible numbering and tone"
+    },
+    {
+      "id": "empty-deep-topic-bridge",
+      "severity": "medium",
+      "evidence": "md/79-深入专题.md contains only four lines",
+      "impact": "It adds a navigation layer without carrying teaching content"
+    },
+    {
+      "id": "catalog-count-drift",
+      "severity": "medium",
+      "evidence": "README.md describes a 20-case mainline while the current catalog and course contain B001 through B024",
+      "impact": "The public entry page contradicts the repository contract"
+    },
+    {
+      "id": "validator-monolith-coupling",
+      "severity": "high",
+      "evidence": "Several validators read md/Course_AIProduct.md directly",
+      "impact": "The generated duplicate has become an accidental source of truth"
+    },
+    {
+      "id": "stale-supergrill-checkpoint",
+      "severity": "medium",
+      "evidence": "The previous B018 phase is still in_progress and lacks a checkpoint-frozen browser journey spec",
+      "impact": "It cannot be honestly completed under the current phase-contract 2.1 browser gate"
+    }
+  ],
+  "protected": [
+    "24 case narratives",
+    "dataset source and license boundaries",
+    "runtime screenshots and verification evidence",
+    "current Git history and user-authored changes"
+  ]
+}

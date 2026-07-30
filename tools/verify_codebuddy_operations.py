@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-CHAPTER = ROOT / "md" / "07-课程项目.md"
+CHAPTER = ROOT / "md" / "08-课程项目.md"
 RECEIPT = ROOT / "evidence" / "runtime" / "codebuddy" / "receipt.json"
 SOURCE_CARD = ROOT / "sources" / "cards" / "codebuddy-official-operations-2026-07.md"
 
@@ -22,7 +22,7 @@ def main() -> int:
         "用户此刻要完成什么决定",
         "运行该案例的聚焦测试和类型检查",
         "最后只给出：改动文件、测试结果、页面达到的最终状态、仍未验证的事项",
-        "### CLI 只做窄任务",
+        "## CLI 只做边界清楚的任务",
         "--permission-mode plan",
         '--tools "Read,Glob,Grep"',
         "进入默认权限模式",

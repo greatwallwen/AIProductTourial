@@ -6,9 +6,10 @@ import sys
 from pathlib import Path
 from urllib.parse import unquote
 
+from compose_course import compose, load_manifest, output_path
+
 
 ROOT = Path(__file__).resolve().parents[1]
-MARKDOWN = ROOT / "md" / "Course_AIProduct.md"
 S_CONTENT_HEADINGS = {
     "S001": ("### 五张任务卡的分诊结果", "### 这五个决定说明什么", "### 为什么“停下”也是正确结果"),
     "S002": ("### 数据体检记录", "### 六项缺失率", "### 为什么计算交给 Skill"),
@@ -32,7 +33,9 @@ def sections(text: str, pattern: str) -> dict[str, str]:
 
 def main() -> int:
     errors: list[str] = []
-    text = MARKDOWN.read_text(encoding="utf-8")
+    course_structure = load_manifest()
+    text = compose(course_structure)
+    markdown_base = output_path(course_structure).parent
     manifest = json.loads((ROOT / "course-manifest.json").read_text(encoding="utf-8"))
 
     capability_sections = sections(text, r"^## ([PSL]\d{3})\b")
@@ -127,7 +130,7 @@ def main() -> int:
     for target in re.findall(r"!\[[^\]]*\]\(([^)]+)\)", text):
         if re.match(r"^[a-z]+://", target):
             continue
-        resolved = (MARKDOWN.parent / target).resolve()
+        resolved = (markdown_base / target).resolve()
         if ROOT.resolve() not in resolved.parents and resolved != ROOT.resolve():
             errors.append(f"image escapes course root: {target}")
         elif not resolved.exists():
@@ -137,7 +140,7 @@ def main() -> int:
         if re.match(r"^[a-z]+://", target) or target.startswith("#"):
             continue
         path_part = unquote(target.split("#", 1)[0].strip("<>"))
-        resolved = (MARKDOWN.parent / path_part).resolve()
+        resolved = (markdown_base / path_part).resolve()
         if ROOT.resolve() not in resolved.parents and resolved != ROOT.resolve():
             errors.append(f"link escapes course root: {target}")
         elif not resolved.exists():

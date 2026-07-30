@@ -6,9 +6,10 @@ import sys
 from collections import Counter
 from pathlib import Path
 
+from compose_course import compose, load_manifest
+
 
 ROOT = Path(__file__).resolve().parents[1]
-CHAPTER = ROOT / "md" / "Course_AIProduct.md"
 
 
 def fail(errors: list[str]) -> int:
@@ -19,7 +20,7 @@ def fail(errors: list[str]) -> int:
 
 
 def main() -> int:
-    text = CHAPTER.read_text(encoding="utf-8")
+    text = compose(load_manifest())
     errors: list[str] = []
 
     units = re.findall(r"^## (P\d{3})\s", text, flags=re.MULTILINE)

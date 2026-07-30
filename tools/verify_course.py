@@ -4,9 +4,10 @@ import json
 import re
 from pathlib import Path
 
+from compose_course import compose, load_manifest
+
 
 ROOT = Path(__file__).resolve().parents[1]
-MARKDOWN = ROOT / "md" / "Course_AIProduct.md"
 EXPECTED_RUNTIME_PROMPTS = [f"P{index:03d}" for index in range(1, 9)]
 EXPECTED_UNITS = ["P001", "P002", "P003", "P005", "P006", "P008"]
 EXPECTED_SKILLS = [f"S{index:03d}" for index in range(1, 9)]
@@ -120,9 +121,33 @@ def section_map(text: str, pattern: str) -> dict[str, str]:
 
 def main() -> int:
     errors: list[str] = []
-    text = MARKDOWN.read_text(encoding="utf-8")
+    course_structure = load_manifest()
+    text = compose(course_structure)
     manifest = load_json(ROOT / "course-manifest.json")
     datasets = load_json(ROOT / "dataset" / "manifest.json")
+
+    expected_top_level = [
+        "md/00-课程地图.md",
+        "md/01-逻辑证据与AI基础.md",
+        "md/02-Prompt工程.md",
+        "md/03-Agent与Skill工程.md",
+        "md/04-Grill-Harness-Loop.md",
+        "md/05-产品与系统架构.md",
+        "md/06-工程与交付.md",
+        "md/07-案例地图.md",
+        "md/08-课程项目.md",
+    ]
+    actual_top_level = [
+        item["file"] for item in course_structure["sections"] if item.get("kind") == "chapter"
+    ]
+    if actual_top_level != expected_top_level:
+        errors.append(f"canonical chapter sequence mismatch: {actual_top_level}")
+    legacy_sources = [ROOT / "md" / "Course_AIProduct.md", *sorted((ROOT / "md").glob("[789][0-9]-*.md"))]
+    for legacy in legacy_sources:
+        if legacy.exists():
+            errors.append(f"legacy duplicate Markdown remains: {legacy.relative_to(ROOT)}")
+    if course_structure.get("output") != "output/Course_AIProduct.md":
+        errors.append("single-file export must stay outside canonical md sources")
 
     if "```mermaid" in text.lower():
         errors.append("Markdown contains Mermaid; use scene-specific images or screenshots")
@@ -199,7 +224,7 @@ def main() -> int:
 
     expected_dataset_ids = runtime_ids + EXPECTED_LABS
     if dataset_case_ids(datasets) != expected_dataset_ids:
-        errors.append("dataset manifest does not cover 01-20 plus P/S/L in order")
+        errors.append("dataset manifest does not cover B001-B024 plus P/S/L in order")
 
     verify_screenshot_links(text, errors, expected_count=24)
 

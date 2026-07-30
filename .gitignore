@@ -3,6 +3,7 @@ node_modules/
 .vite/
 dist/
 coverage/
+output/
 *.log
 *.tsbuildinfo
 .DS_Store

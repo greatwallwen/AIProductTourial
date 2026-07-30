@@ -5,10 +5,10 @@ import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
+from compose_course import compose, load_manifest, output_path
+
 
 ROOT = Path(__file__).resolve().parents[1]
-CHAPTER = ROOT / "md" / "Course_AIProduct.md"
-COMPOSED_MD_DIR = ROOT / "md"
 
 REQUIRED_HEADINGS = (
     "需求",
@@ -32,12 +32,14 @@ FORBIDDEN = (
 )
 
 
-def local_target(relative: str) -> Path:
-    return (COMPOSED_MD_DIR / relative).resolve()
+def local_target(relative: str, composed_dir: Path) -> Path:
+    return (composed_dir / relative).resolve()
 
 
 def main() -> int:
-    text = CHAPTER.read_text(encoding="utf-8")
+    course_structure = load_manifest()
+    text = compose(course_structure)
+    composed_dir = output_path(course_structure).parent
     errors: list[str] = []
     starts = list(re.finditer(r"(?m)^# 综合案例 (B\d{3})\s+(.+)$", text))
     expected_ids = [f"B{number:03d}" for number in range(1, 25)]
@@ -75,7 +77,7 @@ def main() -> int:
 
         links = re.findall(r"\]\((\.\./(?:assets|evidence|code)/[^)]+)\)", block)
         for link in links:
-            target = local_target(link.rstrip("/"))
+            target = local_target(link.rstrip("/"), composed_dir)
             if not target.exists():
                 errors.append(f"{case_id} broken local link: {link}")
 

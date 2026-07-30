@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "1.0",
+  "objective": "Remove versioned Markdown duplication, merge the parallel theory spine, and publish one coherent instructor-course reading path without losing case or evidence content",
+  "decisionMode": {
+    "mode": "timed-default",
+    "timeoutSeconds": 300,
+    "explicitAnswerPrecedence": true,
+    "defaultPolicy": "use the stated recommendation after the full window elapses",
+    "eligibleOnlyWhen": [
+      "the choice is reversible",
+      "the action stays inside the authorized project boundary",
+      "the recommendation does not expose credentials, private data or regulated decisions",
+      "the action has no unapproved external publication or irreversible side effect"
+    ],
+    "alwaysRequireExplicitApproval": [
+      "credentials or authentication",
+      "personal or confidential data",
+      "irreversible deletion without versioned recovery",
+      "security, legal, medical or financial responsibility",
+      "external messages, releases, merges or destructive production actions"
+    ]
+  },
+  "confirmedDecisions": [
+    {
+      "id": "markdown-source-model",
+      "answer": "module-source-export-only",
+      "resolvedBy": "timed-default-after-300-seconds",
+      "rationale": "Version only canonical modules; generate the full single-file handbook locally or for release"
+    },
+    {
+      "id": "development-methodology",
+      "answer": "agile",
+      "resolvedBy": "timed-default-after-300-seconds",
+      "rationale": "Three independently verifiable non-web increments need iteration feedback but no formal stage gate"
+    }
+  ],
+  "targetStructure": {
+    "entry": "md/README.md",
+    "canonicalChapters": 7,
+    "caseDirectory": "md/cases",
+    "businessCases": 24,
+    "generatedSingleFile": "output/Course_AIProduct.md",
+    "generatedSingleFileTracked": false
+  },
+  "contentRules": [
+    "Follow the progression logic and evidence, Prompt, Agent plus Skills, Grill Harness Loop, product and architecture, engineering delivery, integrated cases and course project",
+    "Merge useful content from md/80 through md/88 into the nearest prerequisite chapter",
+    "Remove empty bridges, old parallel numbering, repeated definitions and artificial instructor-workshop phrasing",
+    "Keep each concept authoritative in one chapter and link instead of repeating it",
+    "Keep every B001 through B024 case in one canonical case file",
+    "Keep evidence and source cards separate from the teaching narrative"
+  ],
+  "acceptance": [
+    "No tracked full-course file duplicates all canonical chapter and case bodies",
+    "The public entry path exposes one ordered curriculum and one case catalog",
+    "All valuable md/80 through md/88 topics are either migrated with a recorded destination or explicitly removed as duplicate",
+    "All 24 cases remain reachable and all local Markdown links pass",
+    "The export command deterministically produces output/Course_AIProduct.md from canonical modules",
+    "Course and dataset semantic validators pass against the modular source model",
+    "README case counts, chapter order and commands match the current repository",
+    "A phase reflection, cleanup receipt and preservation audit are written before completion"
+  ],
+  "nonGoals": [
+    "PowerPoint generation",
+    "case UI redesign",
+    "dataset replacement",
+    "C drive cleanup",
+    "direct modification of the GitHub main branch"
+  ]
+}

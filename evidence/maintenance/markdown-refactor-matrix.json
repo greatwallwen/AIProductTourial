@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "1.0",
+  "decision": "Keep one public teaching spine; merge unique material and remove the parallel 79-88 sequence.",
+  "migrations": [
+    {
+      "source": "md/79-深入专题.md",
+      "disposition": "remove",
+      "reason": "Four-line navigation stub with no teaching content."
+    },
+    {
+      "source": "md/80-控制论与三层Loop.md",
+      "disposition": "merge_and_deduplicate",
+      "destinations": ["md/04-Grill-Harness-Loop.md", "md/06-工程与交付.md"],
+      "retainedTopics": ["three loop speeds", "controller and feedback analogy", "loop budget and stop conditions", "delivery levels"],
+      "removedOverlap": ["Prompt-to-Loop recap", "duplicate Harness definition", "book-internal examples"]
+    },
+    {
+      "source": "md/81-系统架构设计.md",
+      "disposition": "merge_and_deduplicate",
+      "destinations": ["md/05-产品与系统架构.md"],
+      "retainedTopics": ["specification-driven constraints", "quality scenarios", "C4 and DDD", "architecture decision records", "continuous architecture checks"],
+      "removedOverlap": ["second SDD chapter sequence", "duplicate retail walkthrough"]
+    },
+    {
+      "source": "md/82-工程规范与约束.md",
+      "disposition": "merge_and_deduplicate",
+      "destinations": ["md/06-工程与交付.md"],
+      "retainedTopics": ["dependency direction", "frontend and backend boundaries", "YAGNI decision ladder", "focused verification"],
+      "removedOverlap": ["generic style checklist", "framework-neutral boilerplate"]
+    },
+    {
+      "source": "md/83-交付治理.md",
+      "disposition": "merge_and_deduplicate",
+      "destinations": ["md/04-Grill-Harness-Loop.md", "md/06-工程与交付.md"],
+      "retainedTopics": ["delivery levels", "retry and escalation", "responsibility", "short delivery record"],
+      "removedOverlap": ["book-specific dashboard", "duplicate Harness narrative"]
+    },
+    {
+      "source": "md/84-Skill工程化与治理.md",
+      "disposition": "merge_and_deduplicate",
+      "destinations": ["md/03-Agent与Skill工程.md", "md/06-工程与交付.md"],
+      "retainedTopics": ["Skill lifecycle", "registry discovery versus authorization", "external Skill review", "versioned regression samples"],
+      "removedOverlap": ["repository-specific dogfood counts", "Nacos setup detour"]
+    },
+    {
+      "source": "md/85-架构风格与模式.md",
+      "disposition": "merge_and_correct",
+      "destinations": ["md/05-产品与系统架构.md"],
+      "retainedTopics": ["event-driven triggers", "idempotency", "architecture tradeoffs"],
+      "correctedClaims": ["MCP is described as an AI application integration protocol, not as a universal message bus"]
+    },
+    {
+      "source": "md/86-DDD深化.md",
+      "disposition": "merge_and_deduplicate",
+      "destinations": ["md/05-产品与系统架构.md"],
+      "retainedTopics": ["ubiquitous language", "aggregate invariants", "domain events", "anti-corruption layer"],
+      "removedOverlap": ["second DDD glossary", "book-specific deliberate defect"]
+    },
+    {
+      "source": "md/87-分布式与AI实现技术.md",
+      "disposition": "merge_and_deduplicate",
+      "destinations": ["md/05-产品与系统架构.md", "md/06-工程与交付.md"],
+      "retainedTopics": ["cache as a replaceable copy", "prompt injection boundary", "duplicate and out-of-order events", "bad-weather tests"],
+      "removedOverlap": ["technology analogy table", "duplicate regression commands"]
+    },
+    {
+      "source": "md/88-架构师与AI协作.md",
+      "disposition": "merge_and_deduplicate",
+      "destinations": ["md/06-工程与交付.md"],
+      "retainedTopics": ["human responsibility", "three-view review", "knowledge captured as reusable methods"],
+      "removedOverlap": ["anthropomorphic management language", "book-specific interview exercise"]
+    }
+  ],
+  "publicOrder": [
+    "md/00-课程地图.md",
+    "md/01-逻辑证据与AI基础.md",
+    "md/02-Prompt工程.md",
+    "md/03-Agent与Skill工程.md",
+    "md/04-Grill-Harness-Loop.md",
+    "md/05-产品与系统架构.md",
+    "md/06-工程与交付.md",
+    "md/07-案例地图.md",
+    "md/cases/B001-B024",
+    "md/08-课程项目.md"
+  ]
+}

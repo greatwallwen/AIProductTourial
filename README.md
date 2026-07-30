@@ -4,10 +4,9 @@
 
 课程主线是：
 
-`逻辑与证据 → Prompt → Agent + Skills → Grill / Harness / Loop → 产品与系统架构 → 20 个业务案例`
+`逻辑与证据 → Prompt → Agent + Skills → Grill / Harness / Loop → 产品与系统架构 → 工程与交付 → 24 个业务案例`
 
-- [完整教程](md/Course_AIProduct.md)
-- [分章目录](md/README.md)
+- [教程目录](md/README.md)
 - [24 个案例](md/cases/README.md)
 - [案例数据](dataset/manifest.json)
 - [运行代码](code/README.md)
@@ -42,8 +41,8 @@ macOS 或 Linux：
 
 ```text
 AIProductTourial/
-├─ md/                              # 主教程、分章教程与案例
-├─ md/Course_AIProduct.md           # 确定性合成的完整教程
+├─ md/                              # 规范章节与案例正文
+├─ output/Course_AIProduct.md       # 按需生成，不提交
 ├─ code/                            # React 19 + Next.js 16 驾驶舱与实验
 ├─ dataset/                         # 课堂数据、来源与许可边界
 ├─ assets/                          # 理论图、需求图、架构图与场景素材
@@ -63,6 +62,7 @@ AIProductTourial/
 ## 校验
 
 ```powershell
+python tools\compose_course.py build
 python tools\compose_course.py check
 python tools\validate_datasets.py --all
 python tools\verify_course.py

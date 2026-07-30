@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "1.0",
+  "executedAt": "2026-07-30T16:19:00+08:00",
+  "status": "passed",
+  "result": {
+    "canonicalChapterFiles": 9,
+    "canonicalCaseNarratives": 24,
+    "generatedSections": 33,
+    "generatedLines": 3603,
+    "generatedBytes": 202153,
+    "generatedSha256": "9fd3ab91ca22b8e2707a7a1c535222ca9aa6488d6d96f2d7bda8cd4d631e5f82",
+    "trackedMonolithExists": false,
+    "legacyParallelFilesRemaining": 0,
+    "retiredClassroomWordingMatches": 0
+  },
+  "checks": [
+    "5 tool unit tests passed",
+    "deterministic build and check passed for 33 sections and 24 cases",
+    "6 Prompt units and 18 experiments passed",
+    "8 Agent plus Skill units, 4 Loop patterns and 24 business cases passed the curriculum spine",
+    "24 case contracts, 24 screenshots and 48 Chinese diagrams passed",
+    "CodeBuddy operations, content completeness and semantic catalog passed",
+    "27 datasets, 43 teaching ids and 100612 records passed current validation",
+    "existing Agent, Loop and advanced Agent runtime receipts remained valid"
+  ],
+  "scope": {
+    "changed": ["Markdown source model", "chapter order", "deep-topic consolidation", "single-file exporter", "Markdown validators", "navigation"],
+    "unchanged": ["datasets", "case applications", "screenshots", "PowerPoint", "provider receipts"]
+  }
+}
