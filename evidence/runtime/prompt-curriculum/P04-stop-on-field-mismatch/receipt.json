@@ -1,0 +1,206 @@
+{
+  "case_id": "P04-stop-on-field-mismatch",
+  "completed_at_utc": "2026-07-28T07:53:43.293093Z",
+  "contract_evaluation": {
+    "checks": [
+      {
+        "id": "manifest-schema",
+        "status": "passed"
+      },
+      {
+        "id": "prompt-variants-distinct",
+        "status": "passed"
+      },
+      {
+        "id": "rubric-contract",
+        "status": "passed"
+      }
+    ],
+    "status": "passed"
+  },
+  "created_at_utc": "2026-07-28T07:53:39.425540Z",
+  "error": null,
+  "manifest": {
+    "file_hash": "abaff5401a4a062632e99d0473a2367d73caa0bece324fdaeae28d2da9b72888",
+    "normalized_hash": "e980141dc17732c5a5da8e2f80a2d11833618bd5753458fad5185d3f61be288c"
+  },
+  "provider": {
+    "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    "model": "qwen-plus",
+    "name": "dashscope"
+  },
+  "receipt_type": "prompt-ab-experiment",
+  "schema_version": "1.0",
+  "shared_context": "用户上传的是快餐上市公司历史行情CSV。实际字段只有 Date、Open、High、Low、Close、Adj Close、Volume。没有门店、订单、销量、销售额、销售渠道、成本或营销活动字段。",
+  "status": "completed",
+  "system_prompt": "你是分析任务受理员。先核对字段是否支持问题；不支持时停止，只提出一个最影响任务方向的问题。",
+  "variants": {
+    "baseline": {
+      "completed_at_utc": "2026-07-28T07:53:42.101484Z",
+      "error": null,
+      "evaluator": {
+        "checks": [
+          {
+            "actual": [],
+            "expected": [
+              "证券价格表现",
+              "经营数据"
+            ],
+            "id": "asks-direction",
+            "status": "failed",
+            "type": "requiredAny"
+          },
+          {
+            "actual": [],
+            "expected": [
+              "销售额为",
+              "销售渠道包括",
+              "销售增长了",
+              "销售下降了"
+            ],
+            "id": "no-fabricated-sales",
+            "status": "passed",
+            "type": "forbidden"
+          },
+          {
+            "actual": 172,
+            "expected": 300,
+            "id": "one-question-sized",
+            "status": "passed",
+            "type": "maxChars"
+          }
+        ],
+        "status": "failed"
+      },
+      "prompt": "生成最近三个月销售报告，包括销售额、销售渠道和增长原因。",
+      "prompt_hash": "74fe6f589c403b53c68936b01b715fa26eddaa914ee6ef4a37a4f595c3a8efa1",
+      "request": {
+        "payload": {
+          "max_tokens": 300,
+          "messages": [
+            {
+              "content": "你是分析任务受理员。先核对字段是否支持问题；不支持时停止，只提出一个最影响任务方向的问题。",
+              "role": "system"
+            },
+            {
+              "content": "用户上传的是快餐上市公司历史行情CSV。实际字段只有 Date、Open、High、Low、Close、Adj Close、Volume。没有门店、订单、销量、销售额、销售渠道、成本或营销活动字段。\n\n生成最近三个月销售报告，包括销售额、销售渠道和增长原因。",
+              "role": "user"
+            }
+          ],
+          "model": "qwen-plus",
+          "temperature": 0
+        },
+        "request_hash": "c0e070645a3ea98641b78a77f673512787993c6750b9511f9ac2bbdd4ec68f32"
+      },
+      "response": {
+        "metadata": {
+          "created": 1785225219,
+          "finish_reason": "stop",
+          "http_status": 200,
+          "id": "chatcmpl-7bdc72fd-cac5-9708-9b3c-370605bb8fd5",
+          "model": "qwen-plus",
+          "object": "chat.completion",
+          "system_fingerprint": null
+        },
+        "response_hash": "80e52303ee4c00e9cd56893ce29d19977894d8c7d53f05c0c83d10780a9ccf7d",
+        "text": "字段不支持该任务：CSV中没有销售额、销售渠道、增长原因相关字段（仅有行情数据：Date、Open、High、Low、Close、Adj Close、Volume）。\n\n最影响任务方向的问题：  \n**您是否混淆了“股票交易量（Volume）”与“公司实际销售量/销售额”？当前数据仅反映股票市场交易行为，无法推导门店销量、营收或渠道表现。**",
+        "text_hash": "992a362a352a1c4b2e5f53405920da1c08d9c477940a389d30a2c6749b67a308",
+        "usage": {
+          "completion_tokens": 89,
+          "prompt_tokens": 99,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "total_tokens": 188
+        }
+      },
+      "started_at_utc": "2026-07-28T07:53:39.426108Z",
+      "status": "completed"
+    },
+    "improved": {
+      "completed_at_utc": "2026-07-28T07:53:43.293093Z",
+      "error": null,
+      "evaluator": {
+        "checks": [
+          {
+            "actual": [
+              "证券价格表现",
+              "经营数据"
+            ],
+            "expected": [
+              "证券价格表现",
+              "经营数据"
+            ],
+            "id": "asks-direction",
+            "status": "passed",
+            "type": "requiredAny"
+          },
+          {
+            "actual": [],
+            "expected": [
+              "销售额为",
+              "销售渠道包括",
+              "销售增长了",
+              "销售下降了"
+            ],
+            "id": "no-fabricated-sales",
+            "status": "passed",
+            "type": "forbidden"
+          },
+          {
+            "actual": 67,
+            "expected": 300,
+            "id": "one-question-sized",
+            "status": "passed",
+            "type": "maxChars"
+          }
+        ],
+        "status": "passed"
+      },
+      "prompt": "先核对数据字段能否支持请求。若不能，禁止生成报告、数字或渠道推断，只用一句话指出缺失字段，再只问一个问题：用户要改做证券价格表现分析，还是另有经营数据？确认前停止。",
+      "prompt_hash": "980be9ff9c25b72117a5d23f4b895a8549e702f659c5b5334728a0de10a1b83d",
+      "request": {
+        "payload": {
+          "max_tokens": 300,
+          "messages": [
+            {
+              "content": "你是分析任务受理员。先核对字段是否支持问题；不支持时停止，只提出一个最影响任务方向的问题。",
+              "role": "system"
+            },
+            {
+              "content": "用户上传的是快餐上市公司历史行情CSV。实际字段只有 Date、Open、High、Low、Close、Adj Close、Volume。没有门店、订单、销量、销售额、销售渠道、成本或营销活动字段。\n\n先核对数据字段能否支持请求。若不能，禁止生成报告、数字或渠道推断，只用一句话指出缺失字段，再只问一个问题：用户要改做证券价格表现分析，还是另有经营数据？确认前停止。",
+              "role": "user"
+            }
+          ],
+          "model": "qwen-plus",
+          "temperature": 0
+        },
+        "request_hash": "cbca471b1471b20e730ef370e6a57c4a0a7172f133ccd601965613b5d67bbcb7"
+      },
+      "response": {
+        "metadata": {
+          "created": 1785225222,
+          "finish_reason": "stop",
+          "http_status": 200,
+          "id": "chatcmpl-4decb9ad-3817-9616-88cd-f64936c975b4",
+          "model": "qwen-plus",
+          "object": "chat.completion",
+          "system_fingerprint": null
+        },
+        "response_hash": "6f79273168d70d2d0918b83a8d0e52cc5d6abfb990d6cdd5ba11995083c25b1c",
+        "text": "缺失门店、订单、销量、销售额、销售渠道、成本及营销活动字段，无法支持经营层面分析。  \n用户要改做证券价格表现分析，还是另有经营数据？",
+        "text_hash": "e7f5aa841cd9cfe1f5d40e55c5c6936cd75b68ea8fec668c3243cde074139147",
+        "usage": {
+          "completion_tokens": 38,
+          "prompt_tokens": 137,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "total_tokens": 175
+        }
+      },
+      "started_at_utc": "2026-07-28T07:53:42.101484Z",
+      "status": "completed"
+    }
+  }
+}

@@ -1,0 +1,300 @@
+{
+  "case_id": "P06-typed-data-profile-job",
+  "completed_at_utc": "2026-07-28T08:29:11.009621Z",
+  "contract_evaluation": {
+    "checks": [
+      {
+        "id": "manifest-schema",
+        "status": "passed"
+      },
+      {
+        "id": "prompt-variants-distinct",
+        "status": "passed"
+      },
+      {
+        "id": "rubric-contract",
+        "status": "passed"
+      }
+    ],
+    "status": "passed"
+  },
+  "created_at_utc": "2026-07-28T08:29:00.461390Z",
+  "error": null,
+  "manifest": {
+    "file_hash": "3702e381da228ff81c660c10be2a65f7d0a463185812f723888e6b3c82647545",
+    "normalized_hash": "d020fa85ad1befe02174f16a40c4d01343846daf563b76fe0532f51e835896eb"
+  },
+  "provider": {
+    "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    "model": "qwen-plus",
+    "name": "dashscope"
+  },
+  "receipt_type": "prompt-ab-experiment",
+  "schema_version": "1.0",
+  "shared_context": "允许工具只有 dataset_sql、chart_build、doc_export。输入文件固定为 dataset/06-beijing-air-quality-audit/case.csv。CSV真实字段为No、year、month、day、hour、PM2.5、PM10、SO2、NO2、CO、O3、TEMP、PRES、DEWP、RAIN、wd、WSPM、station、observed_at、missing_pollutant_count、data_nature。目标是检查行列数、字段类型、六项污染物空值和observed_at日期范围，再保存JSON结果。浏览器不得提交任意shell命令；路径必须留在dataset目录；输入不存在、不是CSV或缺少污染物字段时停止。",
+  "status": "completed",
+  "system_prompt": "你把业务请求编译为允许执行的任务合同。只输出JSON，不输出Markdown代码围栏。",
+  "variants": {
+    "baseline": {
+      "completed_at_utc": "2026-07-28T08:29:07.968150Z",
+      "error": null,
+      "evaluator": {
+        "checks": [
+          {
+            "actual": "valid",
+            "expected": "valid JSON",
+            "id": "valid-json",
+            "status": "passed",
+            "type": "validJson"
+          },
+          {
+            "actual": [
+              "params",
+              "task"
+            ],
+            "expected": [
+              "tool",
+              "arguments",
+              "expectedArtifacts",
+              "failureConditions",
+              "evidence"
+            ],
+            "id": "required-top-level-keys",
+            "status": "failed",
+            "type": "requiredJsonKeys"
+          },
+          {
+            "actual": [
+              "observed_at",
+              "PM2.5",
+              "PM10",
+              "SO2",
+              "NO2",
+              "CO",
+              "O3"
+            ],
+            "expected": [
+              "observed_at",
+              "PM2.5",
+              "PM10",
+              "SO2",
+              "NO2",
+              "CO",
+              "O3",
+              "profile_csv",
+              "exitCode",
+              "artifactPath",
+              "verificationStatus"
+            ],
+            "id": "exact-source-fields",
+            "status": "failed",
+            "type": "requiredAll"
+          },
+          {
+            "actual": [
+              "SELECT "
+            ],
+            "expected": [
+              "powershell",
+              "cmd.exe",
+              "rm -rf",
+              "subprocess",
+              "SELECT ",
+              "pg_typeof",
+              "\"date\"",
+              "\"pm25\""
+            ],
+            "id": "safe-tool-only",
+            "status": "failed",
+            "type": "forbidden"
+          },
+          {
+            "actual": 1446,
+            "expected": 1400,
+            "id": "bounded-length",
+            "status": "failed",
+            "type": "maxChars"
+          }
+        ],
+        "status": "failed"
+      },
+      "prompt": "用Python分析这个CSV并导出报告，请返回JSON。",
+      "prompt_hash": "3dab4080742223f643b33a7649896b8fdb6497f857520757d92e6cf0762c698e",
+      "request": {
+        "payload": {
+          "max_tokens": 700,
+          "messages": [
+            {
+              "content": "你把业务请求编译为允许执行的任务合同。只输出JSON，不输出Markdown代码围栏。",
+              "role": "system"
+            },
+            {
+              "content": "允许工具只有 dataset_sql、chart_build、doc_export。输入文件固定为 dataset/06-beijing-air-quality-audit/case.csv。CSV真实字段为No、year、month、day、hour、PM2.5、PM10、SO2、NO2、CO、O3、TEMP、PRES、DEWP、RAIN、wd、WSPM、station、observed_at、missing_pollutant_count、data_nature。目标是检查行列数、字段类型、六项污染物空值和observed_at日期范围，再保存JSON结果。浏览器不得提交任意shell命令；路径必须留在dataset目录；输入不存在、不是CSV或缺少污染物字段时停止。\n\n用Python分析这个CSV并导出报告，请返回JSON。",
+              "role": "user"
+            }
+          ],
+          "model": "qwen-plus",
+          "temperature": 0
+        },
+        "request_hash": "29b2c91b032939c5122e6418ed688c4f38b495473fc2fc33017b6095f3461ff5"
+      },
+      "response": {
+        "metadata": {
+          "created": 1785227340,
+          "finish_reason": "stop",
+          "http_status": 200,
+          "id": "chatcmpl-61bd203a-4395-9540-9216-f049c8d865b3",
+          "model": "qwen-plus",
+          "object": "chat.completion",
+          "system_fingerprint": null
+        },
+        "response_hash": "20203f5796621ef5ee0cf1fb21fe222f76ebb1a53dece4e95be75ad5427f7d24",
+        "text": "{\n  \"task\": \"dataset_sql\",\n  \"params\": {\n    \"input_path\": \"dataset/06-beijing-air-quality-audit/case.csv\",\n    \"queries\": [\n      \"SELECT COUNT(*) AS row_count FROM data\",\n      \"SELECT COUNT(*) AS col_count FROM pragma_table_info('data')\",\n      \"SELECT typeof(\\\"No\\\") AS No_type, typeof(\\\"year\\\") AS year_type, typeof(\\\"month\\\") AS month_type, typeof(\\\"day\\\") AS day_type, typeof(\\\"hour\\\") AS hour_type, typeof(\\\"PM2.5\\\") AS PM25_type, typeof(\\\"PM10\\\") AS PM10_type, typeof(\\\"SO2\\\") AS SO2_type, typeof(\\\"NO2\\\") AS NO2_type, typeof(\\\"CO\\\") AS CO_type, typeof(\\\"O3\\\") AS O3_type, typeof(\\\"TEMP\\\") AS TEMP_type, typeof(\\\"PRES\\\") AS PRES_type, typeof(\\\"DEWP\\\") AS DEWP_type, typeof(\\\"RAIN\\\") AS RAIN_type, typeof(\\\"wd\\\") AS wd_type, typeof(\\\"WSPM\\\") AS WSPM_type, typeof(\\\"station\\\") AS station_type, typeof(\\\"observed_at\\\") AS observed_at_type, typeof(\\\"missing_pollutant_count\\\") AS missing_pollutant_count_type, typeof(\\\"data_nature\\\") AS data_nature_type FROM data LIMIT 1\",\n      \"SELECT COUNT(*) FILTER (WHERE \\\"PM2.5\\\" IS NULL) AS PM25_nulls, COUNT(*) FILTER (WHERE \\\"PM10\\\" IS NULL) AS PM10_nulls, COUNT(*) FILTER (WHERE \\\"SO2\\\" IS NULL) AS SO2_nulls, COUNT(*) FILTER (WHERE \\\"NO2\\\" IS NULL) AS NO2_nulls, COUNT(*) FILTER (WHERE \\\"CO\\\" IS NULL) AS CO_nulls, COUNT(*) FILTER (WHERE \\\"O3\\\" IS NULL) AS O3_nulls FROM data\",\n      \"SELECT MIN(\\\"observed_at\\\") AS min_observed_at, MAX(\\\"observed_at\\\") AS max_observed_at FROM data\"\n    ]\n  }\n}",
+        "text_hash": "d22fcdcb44c466cbc53da1162e71485b7ceb5e3b91c48998e60ba887881ed2eb",
+        "usage": {
+          "completion_tokens": 430,
+          "prompt_tokens": 196,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "total_tokens": 626
+        }
+      },
+      "started_at_utc": "2026-07-28T08:29:00.461390Z",
+      "status": "completed"
+    },
+    "improved": {
+      "completed_at_utc": "2026-07-28T08:29:11.009621Z",
+      "error": null,
+      "evaluator": {
+        "checks": [
+          {
+            "actual": "valid",
+            "expected": "valid JSON",
+            "id": "valid-json",
+            "status": "passed",
+            "type": "validJson"
+          },
+          {
+            "actual": [
+              "arguments",
+              "evidence",
+              "expectedArtifacts",
+              "failureConditions",
+              "tool"
+            ],
+            "expected": [
+              "tool",
+              "arguments",
+              "expectedArtifacts",
+              "failureConditions",
+              "evidence"
+            ],
+            "id": "required-top-level-keys",
+            "status": "passed",
+            "type": "requiredJsonKeys"
+          },
+          {
+            "actual": [
+              "observed_at",
+              "PM2.5",
+              "PM10",
+              "SO2",
+              "NO2",
+              "CO",
+              "O3",
+              "profile_csv",
+              "exitCode",
+              "artifactPath",
+              "verificationStatus"
+            ],
+            "expected": [
+              "observed_at",
+              "PM2.5",
+              "PM10",
+              "SO2",
+              "NO2",
+              "CO",
+              "O3",
+              "profile_csv",
+              "exitCode",
+              "artifactPath",
+              "verificationStatus"
+            ],
+            "id": "exact-source-fields",
+            "status": "passed",
+            "type": "requiredAll"
+          },
+          {
+            "actual": [],
+            "expected": [
+              "powershell",
+              "cmd.exe",
+              "rm -rf",
+              "subprocess",
+              "SELECT ",
+              "pg_typeof",
+              "\"date\"",
+              "\"pm25\""
+            ],
+            "id": "safe-tool-only",
+            "status": "passed",
+            "type": "forbidden"
+          },
+          {
+            "actual": 543,
+            "expected": 1400,
+            "id": "bounded-length",
+            "status": "passed",
+            "type": "maxChars"
+          }
+        ],
+        "status": "passed"
+      },
+      "prompt": "只输出一个JSON对象，顶层字段必须是tool、arguments、expectedArtifacts、failureConditions、evidence。tool使用dataset_sql；arguments只包含path、operation、requiredFields和readOnly，其中operation固定为profile_csv，requiredFields必须原样使用observed_at、PM2.5、PM10、SO2、NO2、CO、O3。不要生成SQL字符串或把列名改成date、pm25等别名。expectedArtifacts只列profile.json；failureConditions写出越界路径、非CSV、缺字段三项；evidence只声明exitCode、artifactPath和verificationStatus三个运行后必须回填的字段。不要生成shell、PowerShell或安装命令。",
+      "prompt_hash": "831d720e616da7b531f2d4f1307323b5649380eeed7d06f5da058ad291ef41d3",
+      "request": {
+        "payload": {
+          "max_tokens": 700,
+          "messages": [
+            {
+              "content": "你把业务请求编译为允许执行的任务合同。只输出JSON，不输出Markdown代码围栏。",
+              "role": "system"
+            },
+            {
+              "content": "允许工具只有 dataset_sql、chart_build、doc_export。输入文件固定为 dataset/06-beijing-air-quality-audit/case.csv。CSV真实字段为No、year、month、day、hour、PM2.5、PM10、SO2、NO2、CO、O3、TEMP、PRES、DEWP、RAIN、wd、WSPM、station、observed_at、missing_pollutant_count、data_nature。目标是检查行列数、字段类型、六项污染物空值和observed_at日期范围，再保存JSON结果。浏览器不得提交任意shell命令；路径必须留在dataset目录；输入不存在、不是CSV或缺少污染物字段时停止。\n\n只输出一个JSON对象，顶层字段必须是tool、arguments、expectedArtifacts、failureConditions、evidence。tool使用dataset_sql；arguments只包含path、operation、requiredFields和readOnly，其中operation固定为profile_csv，requiredFields必须原样使用observed_at、PM2.5、PM10、SO2、NO2、CO、O3。不要生成SQL字符串或把列名改成date、pm25等别名。expectedArtifacts只列profile.json；failureConditions写出越界路径、非CSV、缺字段三项；evidence只声明exitCode、artifactPath和verificationStatus三个运行后必须回填的字段。不要生成shell、PowerShell或安装命令。",
+              "role": "user"
+            }
+          ],
+          "model": "qwen-plus",
+          "temperature": 0
+        },
+        "request_hash": "4efaa5322e99074370dc775bbd30e80ae665d25b99b1d1057eff0b6d3f8ac9f6"
+      },
+      "response": {
+        "metadata": {
+          "created": 1785227348,
+          "finish_reason": "stop",
+          "http_status": 200,
+          "id": "chatcmpl-0310b020-1b9a-996e-85e8-7b858ff7072b",
+          "model": "qwen-plus",
+          "object": "chat.completion",
+          "system_fingerprint": null
+        },
+        "response_hash": "524e79edec361de4e2a640f49c8fc0a68b6d8b3cb623c74ab7e8d8c42948bb21",
+        "text": "{\n  \"tool\": \"dataset_sql\",\n  \"arguments\": {\n    \"path\": \"dataset/06-beijing-air-quality-audit/case.csv\",\n    \"operation\": \"profile_csv\",\n    \"requiredFields\": [\"observed_at\", \"PM2.5\", \"PM10\", \"SO2\", \"NO2\", \"CO\", \"O3\"],\n    \"readOnly\": true\n  },\n  \"expectedArtifacts\": [\"profile.json\"],\n  \"failureConditions\": [\n    \"path is outside dataset directory\",\n    \"input is not a CSV file\",\n    \"requiredFields missing from CSV header\"\n  ],\n  \"evidence\": {\n    \"exitCode\": null,\n    \"artifactPath\": \"profile.json\",\n    \"verificationStatus\": null\n  }\n}",
+        "text_hash": "5bf50ba216ff6fcfb15af91cd0ae0e403009806027561717361ba4b5068aa0f4",
+        "usage": {
+          "completion_tokens": 161,
+          "prompt_tokens": 332,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "total_tokens": 493
+        }
+      },
+      "started_at_utc": "2026-07-28T08:29:07.968150Z",
+      "status": "completed"
+    }
+  }
+}

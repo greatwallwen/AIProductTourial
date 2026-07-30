@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "17",
+  "slug": "cutter-health-review",
+  "title": "切刀健康偏差抬头：今晚要不要排检？",
+  "industry": "包装制造",
+  "family": "industrial",
+  "tier": "complete",
+  "dataset_path": "dataset/17-cutter-health-review",
+  "route": "/cases/17/work",
+  "runtime_mode": "deterministic_offline",
+  "productization": {
+    "metrics": [
+      "健康偏差峰值",
+      "证据可用占比",
+      "优先复核窗口"
+    ],
+    "decision_fields": [
+      "health_deviation_index",
+      "evidence_coverage",
+      "rule_review_level"
+    ],
+    "selection_changes_decision": true,
+    "business_state_changes_on_server": true
+  }
+}

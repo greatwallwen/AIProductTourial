@@ -1,0 +1,7 @@
+{
+  "task_id": "S01-example-01",
+  "task": "请检查这份本地 CSV 的字段类型、缺失值和重复值，先做数据体检。",
+  "inputs": {"csv_path": "dataset/06-beijing-air-quality-audit/case.csv"},
+  "requested_actions": ["read_local_data"],
+  "permissions": ["read_local_data"]
+}

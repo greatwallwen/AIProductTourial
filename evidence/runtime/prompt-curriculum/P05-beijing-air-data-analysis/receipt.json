@@ -1,0 +1,288 @@
+{
+  "case_id": "P05-beijing-air-data-analysis",
+  "completed_at_utc": "2026-07-28T07:58:07.130361Z",
+  "contract_evaluation": {
+    "checks": [
+      {
+        "id": "manifest-schema",
+        "status": "passed"
+      },
+      {
+        "id": "prompt-variants-distinct",
+        "status": "passed"
+      },
+      {
+        "id": "rubric-contract",
+        "status": "passed"
+      }
+    ],
+    "status": "passed"
+  },
+  "created_at_utc": "2026-07-28T07:57:48.325206Z",
+  "error": null,
+  "manifest": {
+    "file_hash": "8d1457d9bba7255314ceebe2f6b77e3b03757d90ffb0110bf20abb332f7c4e43",
+    "normalized_hash": "777527c160f05b398bda47fe19409f368ae5e1e13f7ebfbb60e5ccad1e8f01c8"
+  },
+  "provider": {
+    "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    "model": "qwen-plus",
+    "name": "dashscope"
+  },
+  "receipt_type": "prompt-ab-experiment",
+  "schema_version": "1.0",
+  "shared_context": "数据：北京12个监测站的公开空气质量课程切片，21039行，时间范围2013-03-01 00:00至2017-02-28 20:00。污染物空值数：PM2.5=466，PM10=334，SO2=417，NO2=656，CO=1027，O3=830。字段还包括站点、年/月/日/小时、温度、气压、露点、降雨、风向和风速。课程切片不是完整总体，当前只提供总体空值计数，没有逐站点完整性表，也没有健康结局数据。",
+  "status": "completed",
+  "system_prompt": "你是数据分析师。计算事实与解释必须分开；缺失值不能当作0，相关变化不能写成原因。",
+  "variants": {
+    "baseline": {
+      "completed_at_utc": "2026-07-28T07:57:59.655984Z",
+      "error": null,
+      "evaluator": {
+        "checks": [
+          {
+            "actual": [
+              "PM2.5",
+              "PM10",
+              "CO"
+            ],
+            "expected": [
+              "PM2.5",
+              "PM10",
+              "SO2",
+              "NO2",
+              "CO",
+              "O3"
+            ],
+            "id": "all-pollutants",
+            "status": "failed",
+            "type": "requiredAll"
+          },
+          {
+            "actual": [
+              "21,039"
+            ],
+            "expected": [
+              "21039",
+              "21,039"
+            ],
+            "id": "sample-size-visible",
+            "status": "passed",
+            "type": "requiredAny"
+          },
+          {
+            "actual": [],
+            "expected": [
+              "CO > O3 > NO2 > PM2.5 > SO2 > PM10"
+            ],
+            "id": "descending-order-checked",
+            "status": "failed",
+            "type": "requiredAll"
+          },
+          {
+            "actual": [],
+            "expected": [
+              "不能支持",
+              "不能判断",
+              "局限"
+            ],
+            "id": "limitations-visible",
+            "status": "failed",
+            "type": "requiredAny"
+          },
+          {
+            "actual": [],
+            "expected": [
+              "最严重的站点是",
+              "污染的原因是",
+              "健康危害"
+            ],
+            "id": "no-overclaim",
+            "status": "passed",
+            "type": "forbidden"
+          },
+          {
+            "actual": 1027,
+            "expected": 1800,
+            "id": "bounded-length",
+            "status": "passed",
+            "type": "maxChars"
+          }
+        ],
+        "status": "failed"
+      },
+      "prompt": "分析这份北京空气质量数据，告诉我哪里污染最严重以及原因。",
+      "prompt_hash": "c0f6e8a47a862168289b172a6e067235d1e5c3c1e65d67065fac455cb9622243",
+      "request": {
+        "payload": {
+          "max_tokens": 1100,
+          "messages": [
+            {
+              "content": "你是数据分析师。计算事实与解释必须分开；缺失值不能当作0，相关变化不能写成原因。",
+              "role": "system"
+            },
+            {
+              "content": "数据：北京12个监测站的公开空气质量课程切片，21039行，时间范围2013-03-01 00:00至2017-02-28 20:00。污染物空值数：PM2.5=466，PM10=334，SO2=417，NO2=656，CO=1027，O3=830。字段还包括站点、年/月/日/小时、温度、气压、露点、降雨、风向和风速。课程切片不是完整总体，当前只提供总体空值计数，没有逐站点完整性表，也没有健康结局数据。\n\n分析这份北京空气质量数据，告诉我哪里污染最严重以及原因。",
+              "role": "user"
+            }
+          ],
+          "model": "qwen-plus",
+          "temperature": 0
+        },
+        "request_hash": "8ffd700e736c19b7901e496eaca11e637a97c26ce6b4c339bc44c8b591e23a92"
+      },
+      "response": {
+        "metadata": {
+          "created": 1785225468,
+          "finish_reason": "stop",
+          "http_status": 200,
+          "id": "chatcmpl-ff9eb161-656b-90c2-aebe-75aceead8dc7",
+          "model": "qwen-plus",
+          "object": "chat.completion",
+          "system_fingerprint": null
+        },
+        "response_hash": "c7a7b0bc2b79846ac2d292514f82b1de673441e8114711b70df0b85e4345e21f",
+        "text": "根据您提供的数据描述，我无法确定“哪里污染最严重”，也无法说明“原因”。理由如下：\n\n**事实计算部分（可基于给定信息确认）：**  \n- 数据覆盖北京12个监测站，共21,039条记录，时间跨度为2013-03-01 00:00 至 2017-02-28 20:00（约4年，含小时级观测）。  \n- 各污染物存在缺失值：PM2.5（466）、PM10（334）、SO₂（417）、NO₂（656）、CO（1027）、O₃（830）——缺失值未按站点分布，也未提供各站点有效观测数或均值，因此**无法比较站点间污染水平高低**。  \n- 字段包含站点标识、时间、气象变量（温度、气压、露点、降雨、风向、风速），但未提供污染物浓度的站点汇总统计（如各站点PM2.5均值、90分位数等），亦无空间坐标或站点类型（如交通站、背景站、工业站）信息。  \n- 明确说明：“课程切片不是完整总体”“当前只提供总体空值计数，没有逐站点完整性表”“没有健康结局数据”。\n\n**解释限制（必须遵守分析规范）：**  \n- ❌ “哪里污染最严重”需依赖各站点污染物浓度的可比统计量（如剔除缺失后各站点PM2.5年均值排序），但数据中缺失分布未知、站点完整性未知、未提供任何浓度汇总结果，故该问题**缺乏计算基础，无法回答**。  \n- ❌ “原因”涉及归因分析（如气象条件、排放源、区域传输等），但数据中虽含气象字段，却无排放清单、源解析结果、边界层高度、后向轨迹等关键协变量；且缺失值未插补或标记，气象与污染物的关联分析不可靠。此外，“相关变化不能写成原因”——即使发现某站点风速低时PM2.5偏高，也不能推断“风速低导致污染严重”，仅能陈述统计关联（若数据完备且经检验）。  \n- ❌ 缺失值（如CO缺失1027条）不能默认为0或忽略，否则会系统性低估浓度或扭曲时空分布。\n\n**可行的下一步建议（不越界推断）：**  \n1. 生成逐站点各污染物有效观测数及基本统计量（均值、标准差、P90），评估数据可比性；  \n2. 检查缺失模式（如是否集中于特定站点/时段/仪器故障期）；  \n3. 若补充站点类型与地理信息，可探索站点代表性（如交通站NO₂通常高于背景站）；  \n4. 仅当气象数据与污染物同步率足够高时，方可计算相关性（非因果）。\n\n结论：基于当前信息，**无法识别污染最严重的站点，也无法归因原因**。所有结论必须以可计算、无缺失干扰、变量定义明确为前提。",
+        "text_hash": "946b200e2113562d9137bfb59e765115d392a605e2411f016209f3f6ab204a3e",
+        "usage": {
+          "completion_tokens": 698,
+          "prompt_tokens": 214,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "total_tokens": 912
+        }
+      },
+      "started_at_utc": "2026-07-28T07:57:48.325206Z",
+      "status": "completed"
+    },
+    "improved": {
+      "completed_at_utc": "2026-07-28T07:58:07.130361Z",
+      "error": null,
+      "evaluator": {
+        "checks": [
+          {
+            "actual": [
+              "PM2.5",
+              "PM10",
+              "SO2",
+              "NO2",
+              "CO",
+              "O3"
+            ],
+            "expected": [
+              "PM2.5",
+              "PM10",
+              "SO2",
+              "NO2",
+              "CO",
+              "O3"
+            ],
+            "id": "all-pollutants",
+            "status": "passed",
+            "type": "requiredAll"
+          },
+          {
+            "actual": [
+              "21039"
+            ],
+            "expected": [
+              "21039",
+              "21,039"
+            ],
+            "id": "sample-size-visible",
+            "status": "passed",
+            "type": "requiredAny"
+          },
+          {
+            "actual": [
+              "CO > O3 > NO2 > PM2.5 > SO2 > PM10"
+            ],
+            "expected": [
+              "CO > O3 > NO2 > PM2.5 > SO2 > PM10"
+            ],
+            "id": "descending-order-checked",
+            "status": "passed",
+            "type": "requiredAll"
+          },
+          {
+            "actual": [
+              "不能支持"
+            ],
+            "expected": [
+              "不能支持",
+              "不能判断",
+              "局限"
+            ],
+            "id": "limitations-visible",
+            "status": "passed",
+            "type": "requiredAny"
+          },
+          {
+            "actual": [],
+            "expected": [
+              "最严重的站点是",
+              "污染的原因是",
+              "健康危害"
+            ],
+            "id": "no-overclaim",
+            "status": "passed",
+            "type": "forbidden"
+          },
+          {
+            "actual": 731,
+            "expected": 1800,
+            "id": "bounded-length",
+            "status": "passed",
+            "type": "maxChars"
+          }
+        ],
+        "status": "passed"
+      },
+      "prompt": "先做一页数据完整性简报，不回答‘哪里污染最严重’和‘原因是什么’。按21039行分别计算六项污染物的空值率，污染物名必须按原字段写为PM2.5、PM10、SO2、NO2、CO、O3，不使用下标字符。表格按空值率从高到低排序，并在输出前复核相邻两行是否满足降序；表后另写一行‘排序校验：CO > O3 > NO2 > PM2.5 > SO2 > PM10’。写出公式和保留两位小数的结果。然后列出下一步比较站点与月份还需要计算的三项内容，以及这份课程切片不能支持的两个结论。不要给健康建议。",
+      "prompt_hash": "99a9c8ffc35ccd918466f277245eefee2a5f523f374dd1cafb70e4150961dffc",
+      "request": {
+        "payload": {
+          "max_tokens": 1100,
+          "messages": [
+            {
+              "content": "你是数据分析师。计算事实与解释必须分开；缺失值不能当作0，相关变化不能写成原因。",
+              "role": "system"
+            },
+            {
+              "content": "数据：北京12个监测站的公开空气质量课程切片，21039行，时间范围2013-03-01 00:00至2017-02-28 20:00。污染物空值数：PM2.5=466，PM10=334，SO2=417，NO2=656，CO=1027，O3=830。字段还包括站点、年/月/日/小时、温度、气压、露点、降雨、风向和风速。课程切片不是完整总体，当前只提供总体空值计数，没有逐站点完整性表，也没有健康结局数据。\n\n先做一页数据完整性简报，不回答‘哪里污染最严重’和‘原因是什么’。按21039行分别计算六项污染物的空值率，污染物名必须按原字段写为PM2.5、PM10、SO2、NO2、CO、O3，不使用下标字符。表格按空值率从高到低排序，并在输出前复核相邻两行是否满足降序；表后另写一行‘排序校验：CO > O3 > NO2 > PM2.5 > SO2 > PM10’。写出公式和保留两位小数的结果。然后列出下一步比较站点与月份还需要计算的三项内容，以及这份课程切片不能支持的两个结论。不要给健康建议。",
+              "role": "user"
+            }
+          ],
+          "model": "qwen-plus",
+          "temperature": 0
+        },
+        "request_hash": "add8e0d24e1987c4763353efd2311b577b77559192b1294c73307259e205528c"
+      },
+      "response": {
+        "metadata": {
+          "created": 1785225479,
+          "finish_reason": "stop",
+          "http_status": 200,
+          "id": "chatcmpl-35340ac6-6bd6-936a-a9fc-d1163a577350",
+          "model": "qwen-plus",
+          "object": "chat.completion",
+          "system_fingerprint": null
+        },
+        "response_hash": "f9d15dbc4e96f7327ec20315af6c341046158c231dc8398299929a1c991dcfb8",
+        "text": "**数据完整性简报（基于21039行总记录）**\n\n空值率计算公式：  \n`空值率 = (该污染物空值数 / 总行数) × 100%`  \n总行数 = 21039  \n\n| 污染物 | 空值数 | 空值率（%） |\n|--------|--------|-------------|\n| CO     | 1027   | 4.89        |\n| O3     | 830    | 3.95        |\n| NO2    | 656    | 3.12        |\n| PM2.5  | 466    | 2.22        |\n| SO2    | 417    | 1.98        |\n| PM10   | 334    | 1.59        |\n\n✅ 排序校验：CO > O3 > NO2 > PM2.5 > SO2 > PM10  \n\n---\n\n**下一步需计算的三项内容（用于站点与月份比较）：**  \n1. 各监测站对六项污染物的逐站空值率（即每站每污染物空值数 ÷ 该站总记录数）；  \n2. 各月份（2013-03 至 2017-02）六项污染物的月度空值率（即每月每污染物空值数 ÷ 该月总记录数）；  \n3. 各站点-月份组合下污染物的联合可用性比例（例如：某站某月PM2.5与PM10同时非空的记录占比）。  \n\n**本课程切片不能支持的两个结论：**  \n1. 无法推断任一监测站的全年/长期污染物浓度代表性（因缺失模式未知，且无逐站点完整性表，无法评估缺失是否随机或系统性）；  \n2. 无法建立污染物时间序列的完整趋势或周期性特征（因存在跨时段、跨站点不均衡缺失，且未提供插补或缺失机制说明）。",
+        "text_hash": "0fd7091fb1b7312fe757562438d9de43c0bb5e6f9e804bdf06a549c683d2c0f3",
+        "usage": {
+          "completion_tokens": 462,
+          "prompt_tokens": 366,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "total_tokens": 828
+        }
+      },
+      "started_at_utc": "2026-07-28T07:57:59.655984Z",
+      "status": "completed"
+    }
+  }
+}

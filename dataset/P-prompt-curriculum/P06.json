@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0",
+  "caseId": "P06-typed-data-profile-job",
+  "systemPrompt": "你把业务请求编译为允许执行的任务合同。只输出JSON，不输出Markdown代码围栏。",
+  "sharedContext": "允许工具只有 dataset_sql、chart_build、doc_export。输入文件固定为 dataset/06-beijing-air-quality-audit/case.csv。CSV真实字段为No、year、month、day、hour、PM2.5、PM10、SO2、NO2、CO、O3、TEMP、PRES、DEWP、RAIN、wd、WSPM、station、observed_at、missing_pollutant_count、data_nature。目标是检查行列数、字段类型、六项污染物空值和observed_at日期范围，再保存JSON结果。浏览器不得提交任意shell命令；路径必须留在dataset目录；输入不存在、不是CSV或缺少污染物字段时停止。",
+  "baselinePrompt": "用Python分析这个CSV并导出报告，请返回JSON。",
+  "improvedPrompt": "只输出一个JSON对象，顶层字段必须是tool、arguments、expectedArtifacts、failureConditions、evidence。tool使用dataset_sql；arguments只包含path、operation、requiredFields和readOnly，其中operation固定为profile_csv，requiredFields必须原样使用observed_at、PM2.5、PM10、SO2、NO2、CO、O3。不要生成SQL字符串或把列名改成date、pm25等别名。expectedArtifacts只列profile.json；failureConditions写出越界路径、非CSV、缺字段三项；evidence只声明exitCode、artifactPath和verificationStatus三个运行后必须回填的字段。不要生成shell、PowerShell或安装命令。",
+  "model": "qwen-plus",
+  "temperature": 0,
+  "maxTokens": 700,
+  "evaluators": [
+    {"id": "valid-json", "type": "validJson"},
+    {"id": "required-top-level-keys", "type": "requiredJsonKeys", "keys": ["tool", "arguments", "expectedArtifacts", "failureConditions", "evidence"]},
+    {"id": "exact-source-fields", "type": "requiredAll", "values": ["observed_at", "PM2.5", "PM10", "SO2", "NO2", "CO", "O3", "profile_csv", "exitCode", "artifactPath", "verificationStatus"]},
+    {"id": "safe-tool-only", "type": "forbidden", "values": ["powershell", "cmd.exe", "rm -rf", "subprocess", "SELECT ", "pg_typeof", "\"date\"", "\"pm25\""]},
+    {"id": "bounded-length", "type": "maxChars", "value": 1400}
+  ]
+}

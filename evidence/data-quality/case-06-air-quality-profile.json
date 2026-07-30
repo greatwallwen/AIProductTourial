@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-07-27T14:05:00+08:00",
+  "caseId": "06",
+  "sourceDataset": {
+    "name": "UCI Beijing Multi-Site Air Quality",
+    "rows": 420768,
+    "stations": 12,
+    "observedAtRange": {
+      "min": "2013-03-01 00:00:00",
+      "max": "2017-02-28 23:00:00"
+    }
+  },
+  "dataset": {
+    "path": "dataset/06-beijing-air-quality-audit/case.csv",
+    "sha256": "0055067502c1056beeb8de9f9de5aad357f267760b8a0df5fc303b2df3361108",
+    "checksumLedgerMatch": true,
+    "bytes": 2594622,
+    "rows": 21039,
+    "columns": 21
+  },
+  "validity": {
+    "distinctStations": 12,
+    "stationCounts": {
+      "Aotizhongxin": 1754,
+      "Changping": 1753,
+      "Dingling": 1753,
+      "Dongsi": 1753,
+      "Guanyuan": 1753,
+      "Gucheng": 1754,
+      "Huairou": 1753,
+      "Nongzhanguan": 1753,
+      "Shunyi": 1753,
+      "Tiantan": 1753,
+      "Wanliu": 1754,
+      "Wanshouxigong": 1753
+    },
+    "observedAtRange": {
+      "min": "2013-03-01 00:00:00",
+      "max": "2017-02-28 20:00:00"
+    },
+    "pm25ObservedRows": 20573,
+    "pm25Range": {
+      "min": 3.0,
+      "max": 844.0
+    },
+    "dataNatureValues": {
+      "public-derived": 21039
+    }
+  },
+  "completeness": {
+    "rowsWithAnyPollutantMissing": 1998,
+    "missingPollutantCells": 3730,
+    "missingCellsByStation": {
+      "Aotizhongxin": 411,
+      "Changping": 211,
+      "Dingling": 351,
+      "Dongsi": 349,
+      "Guanyuan": 277,
+      "Gucheng": 230,
+      "Huairou": 343,
+      "Nongzhanguan": 211,
+      "Shunyi": 397,
+      "Tiantan": 314,
+      "Wanliu": 407,
+      "Wanshouxigong": 229
+    }
+  },
+  "consistency": {
+    "samplingMethod": "systematic every-20th source row after station files are concatenated",
+    "distinctObservedAt": 8766,
+    "maxStationsPerTimestamp": 3,
+    "timestampsWithAll12Stations": 0,
+    "timestampStationCoverage": {
+      "2": 5259,
+      "3": 3507
+    },
+    "sourceRowNumberStepByStation": {
+      "Aotizhongxin": [
+        20
+      ],
+      "Changping": [
+        20
+      ],
+      "Dingling": [
+        20
+      ],
+      "Dongsi": [
+        20
+      ],
+      "Guanyuan": [
+        20
+      ],
+      "Gucheng": [
+        20
+      ],
+      "Huairou": [
+        20
+      ],
+      "Nongzhanguan": [
+        20
+      ],
+      "Shunyi": [
+        20
+      ],
+      "Tiantan": [
+        20
+      ],
+      "Wanliu": [
+        20
+      ],
+      "Wanshouxigong": [
+        20
+      ]
+    }
+  },
+  "findings": [
+    {
+      "severity": "high",
+      "finding": "The local CSV is a deterministic every-20th-row slice of the 420,768-row UCI source, not the complete hourly table.",
+      "impact": "Every screen and course claim must say 21,039-row systematic slice and retain the full local Parquet as source evidence."
+    },
+    {
+      "severity": "high",
+      "finding": "Station slices use staggered source-row offsets; no timestamp contains all 12 stations and the maximum is three.",
+      "impact": "Do not present the slice as a simultaneous twelve-station comparison or calculate a citywide hourly snapshot from it."
+    },
+    {
+      "severity": "medium",
+      "finding": "1,998 rows contain at least one missing pollutant field, with 3,730 missing pollutant cells in total.",
+      "impact": "Freeze station, pollutant, time window, row count, and missing denominator before publishing a descriptive evidence card."
+    }
+  ]
+}

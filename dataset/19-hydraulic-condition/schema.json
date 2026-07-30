@@ -1,0 +1,120 @@
+{
+  "schema_version": "1.0",
+  "case_id": "19",
+  "row_count": 2205,
+  "columns": [
+    {
+      "name": "cycle_id",
+      "origin": "source-fact"
+    },
+    {
+      "name": "main_pressure_mean",
+      "origin": "public-derived-cycle-mean"
+    },
+    {
+      "name": "return_pressure_mean",
+      "origin": "public-derived-cycle-mean"
+    },
+    {
+      "name": "system_pressure_mean",
+      "origin": "public-derived-cycle-mean"
+    },
+    {
+      "name": "motor_power_mean",
+      "origin": "public-derived-cycle-mean"
+    },
+    {
+      "name": "main_flow_mean",
+      "origin": "public-derived-cycle-mean"
+    },
+    {
+      "name": "tank_temperature_mean",
+      "origin": "public-derived-cycle-mean"
+    },
+    {
+      "name": "system_vibration_mean",
+      "origin": "public-derived-cycle-mean"
+    },
+    {
+      "name": "cooler_condition",
+      "origin": "source-fact"
+    },
+    {
+      "name": "cooler_state",
+      "origin": "delivery-mapped-label"
+    },
+    {
+      "name": "cooler_severity",
+      "origin": "delivery-mapped-severity"
+    },
+    {
+      "name": "valve_condition",
+      "origin": "source-fact"
+    },
+    {
+      "name": "valve_state",
+      "origin": "delivery-mapped-label"
+    },
+    {
+      "name": "valve_severity",
+      "origin": "delivery-mapped-severity"
+    },
+    {
+      "name": "pump_condition",
+      "origin": "source-fact"
+    },
+    {
+      "name": "pump_state",
+      "origin": "delivery-mapped-label"
+    },
+    {
+      "name": "pump_severity",
+      "origin": "delivery-mapped-severity"
+    },
+    {
+      "name": "accumulator_condition",
+      "origin": "source-fact"
+    },
+    {
+      "name": "accumulator_state",
+      "origin": "delivery-mapped-label"
+    },
+    {
+      "name": "accumulator_severity",
+      "origin": "delivery-mapped-severity"
+    },
+    {
+      "name": "stability_flag",
+      "origin": "source-fact"
+    },
+    {
+      "name": "stability_label",
+      "origin": "delivery-mapped-label"
+    },
+    {
+      "name": "overall_severity",
+      "origin": "delivery-derived-summary"
+    },
+    {
+      "name": "overall_severity_label",
+      "origin": "delivery-mapped-label"
+    },
+    {
+      "name": "affected_component_count",
+      "origin": "delivery-derived-summary"
+    },
+    {
+      "name": "automatic_maintenance_allowed",
+      "origin": "course-rule-derived"
+    },
+    {
+      "name": "allowed_action",
+      "origin": "course-rule-derived"
+    },
+    {
+      "name": "data_nature",
+      "origin": "course-rule-derived"
+    }
+  ],
+  "supplemental_artifacts": []
+}

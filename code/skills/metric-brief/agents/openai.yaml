@@ -1,0 +1,4 @@
+interface:
+  display_name: "Metric Brief"
+  short_description: "Build traceable metrics and concise business briefs"
+  default_prompt: "Use $metric-brief to turn verified metric results into a traceable business brief."

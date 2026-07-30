@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "runtime": "Playwright Chromium against Vite production dist",
+  "url": "http://127.0.0.1:4387/",
+  "observations": {
+    "restart_key": "R reset the game to 45 seconds and position 120,160",
+    "countdown": "44 seconds after the verification wait",
+    "keyboard": "ArrowRight changed position from 120,160 to 136,160",
+    "score_display": "visible with initial value 0",
+    "console_errors": 0,
+    "console_warnings": 0,
+    "health_boundary_visible": true
+  },
+  "evidence": {
+    "screenshot": "runtime-keyboard.png",
+    "accessibility_snapshot": "runtime-keyboard.snapshot.yml"
+  }
+}

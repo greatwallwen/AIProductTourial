@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "status": "generated",
+  "game_id": "beijing-air-data-clean-dispatch",
+  "engine": {
+    "name": "pixi.js",
+    "version": "8.8.1",
+    "render_loop": "Application.ticker"
+  },
+  "source": {
+    "path": "dataset/06-beijing-air-quality-audit/case.csv",
+    "sha256": "0055067502c1056beeb8de9f9de5aad357f267760b8a0df5fc303b2df3361108",
+    "row_count": 21039,
+    "fields_used_for_theme": [
+      "station",
+      "observed_at",
+      "missing_pollutant_count",
+      "data_nature"
+    ],
+    "data_nature": "public-derived"
+  },
+  "controls": [
+    "方向键或 WASD 移动",
+    "R 键或按钮重新开始"
+  ],
+  "states": [
+    "ready",
+    "playing",
+    "complete",
+    "restarted"
+  ],
+  "scoring": {
+    "ticket": 10,
+    "hazard": -5,
+    "minimum": 0
+  },
+  "countdown_seconds": 45,
+  "restart": {
+    "keyboard": "KeyR",
+    "button_id": "restart"
+  },
+  "health_boundary": "这是数据质量教学游戏，不表示实时空气质量，不提供健康建议。",
+  "acceptance": [
+    "pixi_application_initializes",
+    "keyboard_moves_player",
+    "ticket_increases_score",
+    "countdown_decreases",
+    "restart_resets_state",
+    "pagehide_destroys_application"
+  ]
+}

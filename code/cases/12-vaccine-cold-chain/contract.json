@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "12",
+  "slug": "vaccine-cold-chain",
+  "title": "县域冷链温度偏差调查与质量会签",
+  "industry": "医药供应链",
+  "family": "approval",
+  "tier": "complete",
+  "dataset_path": "dataset/12-vaccine-cold-chain",
+  "route": "/cases/12/work",
+  "runtime_mode": "deterministic_offline",
+  "productization": {
+    "metrics": [
+      "温度异常",
+      "交接异常",
+      "最长离线"
+    ],
+    "decision_fields": [
+      "temperature_c",
+      "handoff_status",
+      "offline_minutes"
+    ],
+    "selection_changes_decision": true,
+    "business_state_changes_on_server": true
+  }
+}

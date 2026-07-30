@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "20",
+  "slug": "pv-loss-attribution",
+  "title": "PV-08 在 2020-05-19 出现少发线索：站端先查什么？",
+  "industry": "新能源",
+  "family": "industrial",
+  "tier": "complete",
+  "dataset_path": "dataset/20-pv-loss-attribution",
+  "route": "/cases/20/work",
+  "runtime_mode": "deterministic_offline",
+  "productization": {
+    "metrics": [
+      "平均归一化出力比",
+      "疑似限电记录占比",
+      "平均温度降额线索"
+    ],
+    "decision_fields": [
+      "mean_efficiency_ratio",
+      "curtailment_suspected_share",
+      "mean_temperature_derating_pct"
+    ],
+    "selection_changes_decision": true,
+    "business_state_changes_on_server": true
+  }
+}

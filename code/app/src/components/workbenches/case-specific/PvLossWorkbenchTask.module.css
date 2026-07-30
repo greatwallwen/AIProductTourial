@@ -1,0 +1,46 @@
+.sourcesGrid { display: grid; gap: 8px; padding: 10px 11px; }
+
+.sourceCard {
+  min-height: 77px;
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 9px;
+  border: 1px solid #efc9b7;
+  border-radius: 8px;
+  color: #77452d;
+  background: #fff8f4;
+  cursor: pointer;
+}
+.sourceCard:has(input:checked) { border-color: #e29955; background: #fff3e8; box-shadow: inset 3px 0 #dd7e29; }
+.sourceCard input { width: 18px; height: 18px; accent-color: #d87526; }
+.sourceCard > span { min-width: 0; display: grid; gap: 2px; }
+.sourceCard strong { color: #573b2c; font-size: 13px; }
+.sourceCard small { overflow: hidden; color: #7c6a61; font-size: 12px; text-overflow: ellipsis; white-space: nowrap; }
+.sourceCard em { color: #a9512c; font-size: 12px; font-style: normal; }
+.sourceCard > b { min-width: 66px; padding: 6px; border-radius: 5px; color: #9b4a22; text-align: center; background: #fff0e8; white-space: nowrap; }
+
+.taskFields { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 10px 11px; }
+.taskFields label { display: grid; gap: 5px; color: #46627d; font-size: 13px; }
+.taskFields input, .taskFields select, .taskFields textarea {
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 9px;
+  border: 1px solid #d3e0eb;
+  border-radius: 7px;
+  color: #244563;
+  background: #fff;
+  font-size: 13px;
+}
+.taskFields textarea { min-height: 60px; resize: vertical; }
+.fullField { grid-column: 1 / 3; }
+
+.taskSummary { margin: 10px 11px 0; padding: 10px; border: 1px solid #c9dbed; border-radius: 8px; background: #f4f8fd; }
+.taskSummary header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.taskSummary header strong { color: #155cb8; font-size: 13px; }
+.taskSummary header span { color: #93601d; font-weight: 800; }
+.taskSummary dl { display: grid; gap: 6px; margin: 8px 0 0; }
+.taskSummary dl div { display: grid; grid-template-columns: 78px minmax(0, 1fr); gap: 7px; }
+.taskSummary dt { color: #71869a; }
+.taskSummary dd { margin: 0; color: #294965; font-weight: 700; }

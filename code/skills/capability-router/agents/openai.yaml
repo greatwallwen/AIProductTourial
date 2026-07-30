@@ -1,0 +1,4 @@
+interface:
+  display_name: "Capability Router"
+  short_description: "Route Chinese tasks to an allowlisted Skill"
+  default_prompt: "Use $capability-router to select the smallest permitted Skill for this task JSON."

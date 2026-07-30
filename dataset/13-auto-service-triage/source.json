@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0",
+  "case_id": "13",
+  "sources": [
+    {
+      "id": "DATA-13",
+      "title": "Vehicle Service and Repair Dataset for Analysis",
+      "url": "https://www.kaggle.com/datasets/neerugattivikram/vehicle-service-and-repair-dataset-for-analysis",
+      "publisher": "Kaggle dataset by neerugattivikram",
+      "version": "version 2 snapshot",
+      "license": "CC0",
+      "redistribution": "public-domain-dedication",
+      "boundary": "customer repair summaries remain India-located public reference facts"
+    },
+    {
+      "id": "COURSE-OPS-13",
+      "title": "中国售后接车课程运营层",
+      "publisher": "Course_AIProduct deterministic transform",
+      "version": "2026.1",
+      "license": "course-generated-fixture",
+      "redistribution": "course-local",
+      "data_nature": "deterministic-synthetic-cn-operations",
+      "boundary": "not row-level linked to DATA-13 and not a real repair order"
+    }
+  ],
+  "input_files": [
+    {
+      "path": "案例01_汽车售后服务辅助决策/vehicle_service_records.csv",
+      "role": "508-row public repair-summary reference snapshot",
+      "bytes": 56275,
+      "sha256": "a89d6c0551b9014b58e6af7a0c7b595469f78ce4aa93348cddc1f7ecfedc9cb5"
+    }
+  ],
+  "generation": {
+    "generator": "tools/build_demo_expansion.py",
+    "generator_version": "1.0.0",
+    "selection": {
+      "reference_selection": "all rows in source order",
+      "intake_count": 24,
+      "row_level_linkage": false,
+      "intake_text_design": "24 deterministic, distinct Chinese customer statements across six triage categories"
+    },
+    "field_lineage": {
+      "source_facts": [
+        "reference_id",
+        "customer_id",
+        "city",
+        "state",
+        "service_history",
+        "common_problem",
+        "historical_solution",
+        "vehicle_brand"
+      ],
+      "derived_fields": [
+        "intake_id",
+        "region",
+        "vehicle_class",
+        "symptom_text",
+        "symptom_category",
+        "safety_review_required",
+        "workflow_state",
+        "allowed_action",
+        "row_level_link_to_reference",
+        "automatic_repair_allowed",
+        "data_nature"
+      ]
+    }
+  },
+  "supplemental_outputs": [
+    {
+      "path": "public-reference.csv",
+      "source_id": "DATA-13",
+      "rows": 508,
+      "sha256": "daf95cd70495ddef5ccee24b04d0ac1280cebe58febf5a0c334836795090729f",
+      "data_nature": "public-reference"
+    }
+  ],
+  "transform_status": "derived-verified",
+  "materialized_status": "verified",
+  "rebuild_status": "blocked_missing_inputs",
+  "restriction": "公开印度地域维修汇总与中国接车运营层不做行级关联；不得自动诊断、维修或更换零部件。"
+}

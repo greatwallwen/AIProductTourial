@@ -1,0 +1,276 @@
+{
+  "case_id": "P01-smartphone-review-contract",
+  "completed_at_utc": "2026-07-28T08:10:02.729355Z",
+  "contract_evaluation": {
+    "checks": [
+      {
+        "id": "manifest-schema",
+        "status": "passed"
+      },
+      {
+        "id": "prompt-variants-distinct",
+        "status": "passed"
+      },
+      {
+        "id": "rubric-contract",
+        "status": "passed"
+      }
+    ],
+    "status": "passed"
+  },
+  "created_at_utc": "2026-07-28T08:09:50.525412Z",
+  "error": null,
+  "manifest": {
+    "file_hash": "3d4b7d30ad2b3cbade57eaf1dcba66d25007ca0ccaf6ba474f8614aabb703818",
+    "normalized_hash": "0aeaa298574d9e90d69545db18d87ec8fb329b1ea53030990586eb4d7cc17ff3"
+  },
+  "provider": {
+    "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    "model": "qwen-plus",
+    "name": "dashscope"
+  },
+  "receipt_type": "prompt-ab-experiment",
+  "schema_version": "1.0",
+  "shared_context": "评测对象：星河 X1（课程虚构型号）。给定资料：存储容量256GB；电池5000mAh；有线充电80W；机身198g；建议零售价3299元。资料没有提供处理器、无线充电、防水等级、实测续航和充电耗时。",
+  "status": "completed",
+  "system_prompt": "你是消费电子编辑。只能使用给定资料；资料没有写出的参数必须明确说资料未提供。",
+  "variants": {
+    "baseline": {
+      "completed_at_utc": "2026-07-28T08:09:57.843498Z",
+      "error": null,
+      "evaluator": {
+        "checks": [
+          {
+            "actual": [
+              "256GB",
+              "5000mAh",
+              "80W",
+              "198g",
+              "3299"
+            ],
+            "expected": [
+              "256GB",
+              "5000mAh",
+              "80W",
+              "198g",
+              "3299"
+            ],
+            "id": "facts-retained",
+            "status": "passed",
+            "type": "requiredAll"
+          },
+          {
+            "actual": [
+              "资料未提供"
+            ],
+            "expected": [
+              "资料未提供",
+              "不能证明",
+              "尚不能"
+            ],
+            "id": "uncertainty-visible",
+            "status": "passed",
+            "type": "requiredAny"
+          },
+          {
+            "actual": [
+              "同价位",
+              "很值得买"
+            ],
+            "expected": [
+              "它支持无线充电",
+              "具备IP68",
+              "搭载骁龙",
+              "一天中度使用",
+              "30分钟",
+              "70%以上",
+              "同价位",
+              "握持舒适",
+              "主流旗舰级",
+              "常见容量",
+              "较强性价比",
+              "值得优先考虑",
+              "行业第一梯队",
+              "具备较强竞争力",
+              "很值得买",
+              "务实之选",
+              "续航表现确实突出"
+            ],
+            "id": "no-invented-specs",
+            "status": "failed",
+            "type": "forbidden"
+          },
+          {
+            "actual": 583,
+            "expected": 1000,
+            "id": "bounded-length",
+            "status": "passed",
+            "type": "maxChars"
+          }
+        ],
+        "status": "failed"
+      },
+      "prompt": "我要写一篇手机评测，重点说它续航强、很值得买。",
+      "prompt_hash": "153aac9ed8fadee56552bdee57127dd1b755d7ee3b7e7197c590891c96778b92",
+      "request": {
+        "payload": {
+          "max_tokens": 900,
+          "messages": [
+            {
+              "content": "你是消费电子编辑。只能使用给定资料；资料没有写出的参数必须明确说资料未提供。",
+              "role": "system"
+            },
+            {
+              "content": "评测对象：星河 X1（课程虚构型号）。给定资料：存储容量256GB；电池5000mAh；有线充电80W；机身198g；建议零售价3299元。资料没有提供处理器、无线充电、防水等级、实测续航和充电耗时。\n\n我要写一篇手机评测，重点说它续航强、很值得买。",
+              "role": "user"
+            }
+          ],
+          "model": "qwen-plus",
+          "temperature": 0
+        },
+        "request_hash": "30ebb3fd298ab0667bf65f90b00bb3d840f346e36ce962a482e479c5164cd195"
+      },
+      "response": {
+        "metadata": {
+          "created": 1785226191,
+          "finish_reason": "stop",
+          "http_status": 200,
+          "id": "chatcmpl-551b9165-b409-9133-9efd-051da59355b8",
+          "model": "qwen-plus",
+          "object": "chat.completion",
+          "system_fingerprint": null
+        },
+        "response_hash": "96364640084f2bc1e8be6a008eaf620ef7c671da755ae8cf13648c00d3be68a3",
+        "text": "作为消费电子编辑，基于给定资料，我们对星河 X1 进行客观评测：\n\n续航表现确属同价位中突出：5000mAh 电池容量配合仅 198g 的轻量机身，在当前主流旗舰机型普遍在 190–210g 区间、电池多为 4500–5000mAh 的背景下，该组合有利于能效平衡与长时间使用。虽资料未提供实测续航数据（如亮屏时长、具体使用场景下的耗电表现），但5000mAh属大容量电池，结合其80W有线快充——意味着即便重度使用后电量告急，也能快速回血（注：资料未提供具体充电耗时，无法量化“快充效率”，仅可确认协议支持80W功率）。\n\n价格方面，3299元的建议零售价搭配256GB存储与5000mAh电池，相较同档位竞品普遍起售价3499元+、且常以128GB起步的配置策略，星河 X1 在存储规格与基础续航硬件上具备明确性价比优势。\n\n需明确说明：资料未提供处理器型号、无线充电功能、防水等级、以及任何实测续航数据（如视频播放时长、游戏续航、待机功耗等），因此无法评估其能效调校水平、温控表现或全天候可靠性。续航“强”的判断依据仅来自电池容量这一硬性参数，而非系统级优化验证。\n\n综上，若用户核心诉求是长续航+快充+高容量存储+合理定价，星河 X1 的硬件基础确实支撑“很值得买”这一结论；但若关注性能释放、无线便利性或严苛环境使用，则需等待更多参数披露或第三方实测补充。",
+        "text_hash": "149aeca8e3f19c6aab92e6288825eb49ef5c0d204a26b973a8110e41f25be7f6",
+        "usage": {
+          "completion_tokens": 396,
+          "prompt_tokens": 123,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "total_tokens": 519
+        }
+      },
+      "started_at_utc": "2026-07-28T08:09:50.525412Z",
+      "status": "completed"
+    },
+    "improved": {
+      "completed_at_utc": "2026-07-28T08:10:02.729355Z",
+      "error": null,
+      "evaluator": {
+        "checks": [
+          {
+            "actual": [
+              "256GB",
+              "5000mAh",
+              "80W",
+              "198g",
+              "3299"
+            ],
+            "expected": [
+              "256GB",
+              "5000mAh",
+              "80W",
+              "198g",
+              "3299"
+            ],
+            "id": "facts-retained",
+            "status": "passed",
+            "type": "requiredAll"
+          },
+          {
+            "actual": [
+              "资料未提供"
+            ],
+            "expected": [
+              "资料未提供",
+              "不能证明",
+              "尚不能"
+            ],
+            "id": "uncertainty-visible",
+            "status": "passed",
+            "type": "requiredAny"
+          },
+          {
+            "actual": [],
+            "expected": [
+              "它支持无线充电",
+              "具备IP68",
+              "搭载骁龙",
+              "一天中度使用",
+              "30分钟",
+              "70%以上",
+              "同价位",
+              "握持舒适",
+              "主流旗舰级",
+              "常见容量",
+              "较强性价比",
+              "值得优先考虑",
+              "行业第一梯队",
+              "具备较强竞争力",
+              "很值得买",
+              "务实之选",
+              "续航表现确实突出"
+            ],
+            "id": "no-invented-specs",
+            "status": "passed",
+            "type": "forbidden"
+          },
+          {
+            "actual": 415,
+            "expected": 1000,
+            "id": "bounded-length",
+            "status": "passed",
+            "type": "maxChars"
+          }
+        ],
+        "status": "passed"
+      },
+      "prompt": "为第一次购买中端手机、最担心电量不够的读者写一篇不超过500字的评测。依次写：已知参数、资料尚不能证明什么、购买前还应实测什么。第一段只能逐项陈述256GB、5000mAh、80W、198g和3299元，不得加入‘主流、常见、较快、舒适、性价比、值得买’等比较或评价。全文不得推算任何使用天数、亮屏时长、补电比例、充电分钟数、同价位排名或握持体验；不得补写处理器、无线充电和防水能力；结尾不要下购买结论。",
+      "prompt_hash": "ba4f157c493478d964cfb713e5a30412f6361ab0c0683b91a8a8f023eb911104",
+      "request": {
+        "payload": {
+          "max_tokens": 900,
+          "messages": [
+            {
+              "content": "你是消费电子编辑。只能使用给定资料；资料没有写出的参数必须明确说资料未提供。",
+              "role": "system"
+            },
+            {
+              "content": "评测对象：星河 X1（课程虚构型号）。给定资料：存储容量256GB；电池5000mAh；有线充电80W；机身198g；建议零售价3299元。资料没有提供处理器、无线充电、防水等级、实测续航和充电耗时。\n\n为第一次购买中端手机、最担心电量不够的读者写一篇不超过500字的评测。依次写：已知参数、资料尚不能证明什么、购买前还应实测什么。第一段只能逐项陈述256GB、5000mAh、80W、198g和3299元，不得加入‘主流、常见、较快、舒适、性价比、值得买’等比较或评价。全文不得推算任何使用天数、亮屏时长、补电比例、充电分钟数、同价位排名或握持体验；不得补写处理器、无线充电和防水能力；结尾不要下购买结论。",
+              "role": "user"
+            }
+          ],
+          "model": "qwen-plus",
+          "temperature": 0
+        },
+        "request_hash": "1f55a2ee72382abdcf14cca0d97599d7718814326e2db82c5a9ae2a421bc2388"
+      },
+      "response": {
+        "metadata": {
+          "created": 1785226198,
+          "finish_reason": "stop",
+          "http_status": 200,
+          "id": "chatcmpl-dcb3f233-390b-9494-9619-410b316c8481",
+          "model": "qwen-plus",
+          "object": "chat.completion",
+          "system_fingerprint": null
+        },
+        "response_hash": "83826bb843309d29754f03abf03e748a784ff53b6d7d84e631fd1b901ed85b9e",
+        "text": "星河 X1 存储容量256GB；电池5000mAh；有线充电80W；机身198g；建议零售价3299元。\n\n资料未提供实测续航表现，因此无法确认5000mAh电池在日常使用中的实际可用时长；资料未提供充电耗时数据，因此无法确认80W有线充电从0%充至100%所需的具体时间；资料未提供处理器型号及性能参数，因此无法判断其功耗控制水平对续航的影响；资料未提供无线充电能力、防水等级等信息，这些虽不直接决定电量焦虑程度，但可能间接影响充电便利性与设备长期可靠性。\n\n购买前还应实测以下项目：在典型使用场景（如连续刷短视频、混合使用社交/导航/轻度游戏）下的单次充电可支撑的亮屏使用时长；80W有线充电在常温环境下从20%充至80%的实际耗时；不同亮度与刷新率设置下屏幕的功耗变化趋势；以及长时间使用后电池温度升高情况与充电速度衰减表现。以上实测需在同一环境、同一测试标准下完成，且应覆盖至少两天的连续使用周期，以反映真实电量管理体验。",
+        "text_hash": "9458b7856d085ad289cef6d76f54976755b77940ab0b78ec95504ecbb3658e0a",
+        "usage": {
+          "completion_tokens": 276,
+          "prompt_tokens": 251,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "total_tokens": 527
+        }
+      },
+      "started_at_utc": "2026-07-28T08:09:57.843498Z",
+      "status": "completed"
+    }
+  }
+}

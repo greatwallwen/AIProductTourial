@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "cases_rerun": 3,
+  "improved_passed": 2,
+  "results": [
+    {
+      "case_id": "P01-smartphone-review-contract",
+      "status": "iterate",
+      "request_id": "chatcmpl-4b902704-0bcb-91dc-8021-43a5b4feeae6",
+      "response_hash": "5a308fc1f13b6b1ed533f746454dfa0900e037a286b317af718995f13e93d5eb",
+      "text_hash": "e04fe96d92d1deef5f6a7eb0071edd00da5bc313b18c19ed66a7bb987eb2d448",
+      "finding": "事实均保留，但3299元被写成3299 元触发字符串误判；同时回答仍加入‘中端常见容量’和‘理论较快’等未由材料支持的比较。继续收紧Prompt和检查规则。"
+    },
+    {
+      "case_id": "P05-beijing-air-data-analysis",
+      "status": "passed",
+      "request_id": "chatcmpl-35340ac6-6bd6-936a-a9fc-d1163a577350",
+      "response_hash": "f9d15dbc4e96f7327ec20315af6c341046158c231dc8398299929a1c991dcfb8",
+      "text_hash": "0fd7091fb1b7312fe757562438d9de43c0bb5e6f9e804bdf06a549c683d2c0f3"
+    },
+    {
+      "case_id": "P07-untrusted-inspection-record",
+      "status": "passed",
+      "request_id": "chatcmpl-36685f9a-fe85-967d-9418-465bf2d371b3",
+      "response_hash": "b1a99b53cec974a2a9a23a8b0b66c9245d8b2341499533c667b143575339f5ea",
+      "text_hash": "f28a6ba54643e7ff6a5a17327fbbf0d744e6574836ce0623acbab89b7aeb8586"
+    }
+  ]
+}

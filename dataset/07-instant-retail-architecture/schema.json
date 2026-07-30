@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0",
+  "case_id": "07",
+  "row_count": 12000,
+  "columns": [
+    {
+      "name": "order_id",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "D01-O0001"
+    },
+    {
+      "name": "day_index",
+      "dtype": "int64",
+      "nullable": false,
+      "sample": "1"
+    },
+    {
+      "name": "arrival_minute",
+      "dtype": "float64",
+      "nullable": false,
+      "sample": "0.0"
+    },
+    {
+      "name": "item_count",
+      "dtype": "int64",
+      "nullable": false,
+      "sample": "8"
+    },
+    {
+      "name": "item_ids_preview",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "I0344;I0353;I0416;I0638;I0718;I0813;I0956;I1021"
+    },
+    {
+      "name": "is_observed_production_order",
+      "dtype": "bool",
+      "nullable": false,
+      "sample": "False"
+    },
+    {
+      "name": "data_nature",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "public-benchmark-derived"
+    }
+  ],
+  "data_nature": "public-benchmark-derived",
+  "source_ids": [
+    "DATA-07"
+  ],
+  "supplemental_artifacts": [
+    {
+      "path": "operational-evidence.csv",
+      "row_count": 56,
+      "data_nature": "deterministic-synthetic-cn-operations",
+      "source_ids": [
+        "COURSE-OPS-07"
+      ],
+      "columns": [
+        "facility_code",
+        "facility_label",
+        "scenario_date",
+        "domain",
+        "owner_team",
+        "request_count",
+        "p95_latency_ms",
+        "release_count",
+        "incident_minutes",
+        "recovery_minutes",
+        "data_nature"
+      ]
+    }
+  ]
+}

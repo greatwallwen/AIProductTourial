@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "05",
+  "slug": "hospital-flow-coordination",
+  "title": "08:27 发生，09:09 才收到：这条更正怎么处理？",
+  "industry": "医院运营",
+  "family": "approval",
+  "tier": "flagship",
+  "dataset_path": "dataset/05-hospital-flow-coordination",
+  "route": "/cases/05/work",
+  "runtime_mode": "offline_replay_and_optional_live_model",
+  "productization": {
+    "metrics": [
+      "状态冲突",
+      "迟到事件",
+      "待会签事件"
+    ],
+    "decision_fields": [
+      "conflict_type",
+      "late_event",
+      "co_sign_status"
+    ],
+    "selection_changes_decision": true,
+    "business_state_changes_on_server": true
+  }
+}

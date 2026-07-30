@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "case_id": "07",
+  "captured_at": "2026-07-20T09:52:57.906750+08:00",
+  "sources": [
+    {
+      "id": "DATA-07",
+      "title": "Order set of the order picking problem",
+      "url": "https://data.mendeley.com/datasets/jnw2mr2vyw/2",
+      "publisher": "Mendeley Data",
+      "version": "2",
+      "doi": "10.17632/jnw2mr2vyw.2",
+      "license": "CC BY 4.0",
+      "state": "metadata-verified-materialization-pending",
+      "redistribution": "allowed-with-attribution"
+    },
+    {
+      "id": "COURSE-OPS-07",
+      "title": "中国前置仓课程运营证据",
+      "publisher": "Course_AIProduct",
+      "version": "1.0",
+      "license": "course-generated",
+      "state": "generated-verified",
+      "redistribution": "allowed-with-course"
+    }
+  ],
+  "artifacts": [
+    {
+      "source_id": "DATA-07",
+      "url": "https://data.mendeley.com/public-files/datasets/jnw2mr2vyw/files/fd2356d3-ba91-4ab8-986a-58bfff3b9b7a/file_downloaded",
+      "status": "downloaded-verified",
+      "path": "dataset/07-instant-retail-architecture/raw/order-set-v2.zip",
+      "bytes": 13716681,
+      "sha256": "8baa72fd14627e2ecc9e84cc5821d6e18b613f1f11eddf47a0ab0de38dcddb33"
+    }
+  ],
+  "transform_status": "derived-verified",
+  "derived_output": {
+    "path": "case.csv",
+    "rows": 12000,
+    "sha256": "5c5917e9dbca662ac0a3a33d8a4fadcbf9f6b533e2acc5fe6aa4bcafc92c6406",
+    "data_nature": "public-benchmark-derived"
+  },
+  "supplemental_outputs": [
+    {
+      "source_id": "COURSE-OPS-07",
+      "path": "operational-evidence.csv",
+      "rows": 56,
+      "sha256": "c324745739509ed67c2140de6c385966043f802b1715babf0057a13d820c8aea",
+      "data_nature": "deterministic-synthetic-cn-operations",
+      "boundary": "用于架构评审门禁的可复算课程场景，不是企业生产观测或经营结果。"
+    }
+  ]
+}

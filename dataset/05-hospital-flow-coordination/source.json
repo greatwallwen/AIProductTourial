@@ -1,0 +1,26 @@
+{
+  "schema_version": "2.0",
+  "case_id": "05",
+  "seed": "hospital-flow-handoff-v2",
+  "captured_at": "2026-07-23T00:00:00+08:00",
+  "sources": [
+    {
+      "id": "DATA-05",
+      "title": "公开医疗运营字段结构参考",
+      "url": "https://physionet.org/content/picdb/1.1.0/",
+      "publisher": "PhysioNet",
+      "version": "1.1.0",
+      "license": "credentialing and DUA required",
+      "state": "metadata-only",
+      "redistribution": "no raw data",
+      "course_use": "仅参考公开字段结构；不读取、校准或再分发原始记录"
+    }
+  ],
+  "transform_status": "derived-verified",
+  "derived_output": {
+    "path": "case.csv",
+    "rows": 4320,
+    "sha256": "8ee21bc8c61f22cb6aaf1d81efda5fc2dd912edaeb63f1fc4662a567a079a997",
+    "data_nature": "deterministic-synthetic-operational"
+  }
+}

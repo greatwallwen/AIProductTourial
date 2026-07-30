@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "18",
+  "slug": "boiler-temperature-review",
+  "title": "主蒸汽温度连续偏离 24 分钟：先查哪一段？",
+  "industry": "能源化工",
+  "family": "industrial",
+  "tier": "complete",
+  "dataset_path": "dataset/18-boiler-temperature-review",
+  "route": "/cases/18/work",
+  "runtime_mode": "deterministic_offline",
+  "productization": {
+    "metrics": [
+      "偏离窗口",
+      "最长连续偏离",
+      "温度峰值"
+    ],
+    "decision_fields": [
+      "temperature_state",
+      "consecutive_deviation_minutes",
+      "steam_temperature_max"
+    ],
+    "selection_changes_decision": true,
+    "business_state_changes_on_server": true
+  }
+}

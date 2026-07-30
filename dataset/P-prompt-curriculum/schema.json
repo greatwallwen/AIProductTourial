@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "Course_AIProduct.prompt-case.schema.json",
+  "title": "Prompt A/B experiment manifest",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "caseId",
+    "systemPrompt",
+    "sharedContext",
+    "baselinePrompt",
+    "improvedPrompt",
+    "model",
+    "evaluators"
+  ],
+  "properties": {
+    "schemaVersion": {"const": "1.0"},
+    "caseId": {"type": "string", "pattern": "^P0[1-8]-[A-Za-z0-9-]+$"},
+    "systemPrompt": {"type": "string", "minLength": 1},
+    "sharedContext": {"type": "string"},
+    "baselinePrompt": {"type": "string", "minLength": 1},
+    "improvedPrompt": {"type": "string", "minLength": 1},
+    "model": {"type": "string", "minLength": 1},
+    "temperature": {"type": "number", "minimum": 0, "maximum": 2},
+    "maxTokens": {"type": "integer", "minimum": 1},
+    "evaluators": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "type"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "type": {
+            "enum": [
+              "requiredAny",
+              "requiredAll",
+              "forbidden",
+              "validJson",
+              "requiredJsonKeys",
+              "jsonPathEquals",
+              "regexCount",
+              "maxChars"
+            ]
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": false
+}

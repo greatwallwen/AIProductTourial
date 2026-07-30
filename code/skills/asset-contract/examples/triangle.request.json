@@ -1,0 +1,16 @@
+{
+  "id": "deterministic-course-triangle",
+  "prompt": "生成一枚用于网页查看器管线验证的低多边形蓝绿色三角形标记，保持一米尺度与 Y 轴向上。",
+  "usage": "web_preview",
+  "format": "glb",
+  "unit": "meter",
+  "up_axis": "Y",
+  "max_triangles": 1000,
+  "max_file_size_bytes": 1048576,
+  "provider": {
+    "name": "optional-text-to-3d-provider",
+    "requested": true,
+    "credential_available": false,
+    "generation_attempted": false
+  }
+}

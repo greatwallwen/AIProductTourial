@@ -1,0 +1,59 @@
+{
+  "opinions": [
+    {
+      "agent_id": "sensor-review-agent",
+      "finding": "窗口共 25 条记录，可以复核压力、油温和电流统计。",
+      "recommended_action": "create_inspection_request",
+      "diagnosis": null,
+      "citations": [
+        "UCI-791-SOURCE",
+        "UCI-791-FIELDS"
+      ],
+      "confidence": "data-supported"
+    },
+    {
+      "agent_id": "operations-review-agent",
+      "finding": "窗口被课程数据标记为已知故障区间，运营侧希望立即降低风险。",
+      "recommended_action": "stop_equipment",
+      "diagnosis": "suspected-compressor-failure",
+      "citations": [
+        "UCI-791-SOURCE"
+      ],
+      "confidence": "insufficient-policy-support"
+    },
+    {
+      "agent_id": "policy-review-agent",
+      "finding": "课程规则要求先核对窗口与传感器状态，并把检查工单交给有权限的人员批准。",
+      "recommended_action": "wait_for_human_approval",
+      "diagnosis": null,
+      "citations": [
+        "COURSE-09-INSPECTION",
+        "COURSE-09-APPROVAL"
+      ],
+      "confidence": "policy-supported"
+    }
+  ],
+  "conflicts": [
+    {
+      "topic": "是否自动停机",
+      "proposals": [
+        "stop_equipment",
+        "wait_for_human_approval"
+      ],
+      "resolution": "reject_automatic_control",
+      "reason": "课程策略明确禁止自动停机，且公开传感数据不提供诊断或设备控制权限。",
+      "citations": [
+        "COURSE-09-APPROVAL",
+        "UCI-791-SOURCE"
+      ]
+    }
+  ],
+  "selected_action": "prepare_inspection_request",
+  "state": "waiting_human",
+  "human_gate": "由有权限的主管决定是否创建现场检查工单。",
+  "rejected_actions": [
+    "stop_equipment",
+    "repair_equipment",
+    "diagnose_failure"
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "schema_version": "1.0",
+  "case_id": "01",
+  "row_count": 14794,
+  "columns": [
+    {
+      "name": "invoice_id",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "489434"
+    },
+    {
+      "name": "stock_code",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "85048"
+    },
+    {
+      "name": "description",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "15CM CHRISTMAS GLASS BALL 20 LIGHTS"
+    },
+    {
+      "name": "quantity",
+      "dtype": "int64",
+      "nullable": false,
+      "sample": "12"
+    },
+    {
+      "name": "invoice_at",
+      "dtype": "datetime64[ns]",
+      "nullable": false,
+      "sample": "2009-12-01 07:45:00"
+    },
+    {
+      "name": "unit_price_gbp",
+      "dtype": "float64",
+      "nullable": false,
+      "sample": "6.95"
+    },
+    {
+      "name": "customer_id",
+      "dtype": "object",
+      "nullable": true,
+      "sample": "C13085"
+    },
+    {
+      "name": "country",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "United Kingdom"
+    },
+    {
+      "name": "is_cancellation_proxy",
+      "dtype": "bool",
+      "nullable": false,
+      "sample": "False"
+    },
+    {
+      "name": "line_amount_gbp",
+      "dtype": "float64",
+      "nullable": false,
+      "sample": "83.4"
+    },
+    {
+      "name": "fx_rate_gbp_cny",
+      "dtype": "float64",
+      "nullable": false,
+      "sample": "9.1"
+    },
+    {
+      "name": "unit_price_cny",
+      "dtype": "float64",
+      "nullable": false,
+      "sample": "63.24"
+    },
+    {
+      "name": "line_amount_cny",
+      "dtype": "float64",
+      "nullable": false,
+      "sample": "758.94"
+    },
+    {
+      "name": "operational_currency",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "CNY"
+    },
+    {
+      "name": "fx_basis",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "course-fixed"
+    },
+    {
+      "name": "source_sheet",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "Year 2009-2010"
+    },
+    {
+      "name": "data_nature",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "public-derived"
+    }
+  ],
+  "data_nature": "public-derived",
+  "source_ids": [
+    "DATA-01"
+  ]
+}

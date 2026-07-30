@@ -1,0 +1,27 @@
+{
+  "name": "@course-ai-product/workspace",
+  "version": "2.0.0",
+  "private": true,
+  "workspaces": [
+    "app",
+    "case-runtime",
+    "design-system"
+  ],
+  "engines": {
+    "node": ">=24.0.0",
+    "npm": ">=11"
+  },
+  "overrides": {
+    "next@16.2.12": {
+      "postcss": "8.5.23",
+      "sharp": "0.35.3"
+    }
+  },
+  "scripts": {
+    "dev": "npm run dev --workspace @course-ai-product/app",
+    "test": "npm run test --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "build": "npm run build --workspace @course-ai-product/app",
+    "start": "npm run start --workspace @course-ai-product/app"
+  }
+}

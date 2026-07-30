@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "status": "local-viewer-ready",
+  "asset": {
+    "path": "public/model.glb",
+    "sha256": "62d767463ef17456eaa78e302dfe42c422cf02944ba162f9d056be292b86e2fc",
+    "is_provider_output": false
+  },
+  "provider_generation_status": "blocked-not-verified",
+  "entry": "index.html",
+  "runtime": {
+    "three": "0.178.0",
+    "vite": "8.1.5"
+  }
+}

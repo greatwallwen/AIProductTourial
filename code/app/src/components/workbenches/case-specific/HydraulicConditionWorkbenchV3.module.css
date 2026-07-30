@@ -1,0 +1,29 @@
+.sceneV3 > img { opacity: 1; transition: opacity .2s ease; }
+.sceneV3[data-render-mode="webgl"] > img { opacity: 0; }
+
+.sceneModeControl { position: absolute; z-index: 5; right: 12px; top: 12px; width: 254px; display: grid; gap: 5px; padding: 6px; border: 1px solid #31566d; border-radius: 7px; background: rgb(4 17 26 / 94%); box-shadow: 0 10px 24px rgb(0 0 0 / 28%); }
+.sceneModeControl > div { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+.sceneModeControl button { min-height: 44px; padding: 0 8px; color: #a7becb; border: 1px solid transparent; border-radius: 5px; background: #0a2636; cursor: pointer; }
+.sceneModeControl button[aria-pressed="true"] { color: #fff; border-color: #4c98cf; background: #1b6498; }
+.sceneModeControl strong { color: #e4b263; font-size: 11px; text-align: center; }
+.sceneModeControl span { color: #89a2b1; font-size: 11px; text-align: center; }
+
+.orderRow { display: grid; grid-template-columns: minmax(0, 1fr) 36px; gap: 5px; }
+.orderItem { min-height: 44px; display: grid; grid-template-columns: 22px 18px 1fr 18px; align-items: center; gap: 6px; padding: 5px 7px; color: #d9e6ed; text-align: left; border: 1px solid #294b60; border-radius: 5px; background: #081e2b; cursor: pointer; }
+.orderItem > b { width: 21px; height: 21px; display: grid; place-items: center; color: #fff; border-radius: 50%; background: #d85449; font-size: 11px; }
+.orderRow[data-severity="warning"] .orderItem > b { background: #c98a31; }
+.orderRow[data-severity="normal"] .orderItem > b { color: #062015; background: #60ca84; }
+.orderItem > span { display: grid; }
+.orderItem strong { font-size: 13px; }
+.orderItem small { color: #839cab; font-size: 11px; }
+.orderRow[data-active="true"] .orderItem { border-color: #4d98cc; background: #0d2e42; }
+.orderMoves { display: grid; grid-template-rows: 1fr 1fr; gap: 3px; }
+.orderMoves button { min-width: 36px; min-height: 21px; display: grid; place-items: center; padding: 0; color: #a9c0cd; border: 1px solid #31546a; border-radius: 4px; background: #0a2534; cursor: pointer; }
+.orderMoves button:hover:not(:disabled) { color: #fff; border-color: #5aa6dc; background: #12405b; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sceneV3 > img,
+  .sceneModeControl,
+  .orderRow,
+  .orderMoves button { animation: none !important; transition: none !important; }
+}

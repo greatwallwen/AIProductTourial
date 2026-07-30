@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "case_id": "20",
+  "generated_at": "2026-07-27T22:00:00+08:00",
+  "primary_file": {
+    "path": "dataset/20-pv-loss-attribution/case.csv",
+    "sha256": "a874e707e0fdb51757f58a672e143ef043aab7f15bbe5cdb32cc45862ced6336",
+    "rows": 5327,
+    "unique_station_days": 5327,
+    "stations": 8,
+    "calendar_days": 731,
+    "missing_station_days": 521
+  },
+  "featured_station_day": {
+    "station_id": 8,
+    "date": "2020-05-19",
+    "capacity_mw": 30,
+    "source_records": 96,
+    "mean_irradiance": 331.79396,
+    "mean_air_temperature": 21.608491,
+    "mean_power_mw": 3.6710417,
+    "mean_efficiency_ratio": 0.36193088,
+    "mean_temperature_derating_pct": 0.0023726074,
+    "curtailment_suspected_share": 0.40625
+  },
+  "sparsity_checks": {
+    "pv03_has_2020_05_19": false,
+    "pv08_rows": 729,
+    "pv08_missing_dates": ["2020-11-09", "2020-11-10"]
+  },
+  "lineage": {
+    "station_id_and_capacity": "source facts",
+    "date_records_irradiance_temperature_and_power": "public records aggregated to station day",
+    "ratio_derating_and_curtailment_fields": "upstream derived values aggregated to station day",
+    "action_fields": "course rule derivations",
+    "rebuild_status": "blocked because the upstream competition files are not packaged"
+  },
+  "limitations": [
+    "the eight stations are anonymous and have no trustworthy coordinates or equipment model",
+    "the three upstream clue formulas are not included in the local snapshot",
+    "empty station days and empty measures must remain missing rather than becoming zero",
+    "the data supports a request for station records, not loss attribution or a control result"
+  ]
+}

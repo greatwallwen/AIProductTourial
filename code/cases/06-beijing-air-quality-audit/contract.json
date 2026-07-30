@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "06",
+  "slug": "beijing-air-quality-audit",
+  "title": "古城站 12:00 六项污染物全空：这条记录要不要纳入摘录？",
+  "industry": "公共数据",
+  "family": "investigation",
+  "tier": "complete",
+  "dataset_path": "dataset/06-beijing-air-quality-audit",
+  "route": "/cases/06/work",
+  "runtime_mode": "deterministic_offline",
+  "productization": {
+    "metrics": [
+      "缺测记录",
+      "PM2.5 峰值",
+      "涉及站点"
+    ],
+    "decision_fields": [
+      "missing_pollutant_count",
+      "PM2.5",
+      "station"
+    ],
+    "selection_changes_decision": true,
+    "business_state_changes_on_server": true
+  }
+}

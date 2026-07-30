@@ -1,0 +1,13 @@
+sensor_id,absolute_class_mean_difference,missing_rows,rank,data_nature
+sensor_161,334.9536,2,1,rule-derived-association-ranking
+sensor_159,310.03503,2,2,rule-derived-association-ranking
+sensor_021,274.16331,2,3,rule-derived-association-ranking
+sensor_024,215.09812,2,4,rule-derived-association-ranking
+sensor_158,210.34298,1429,5,rule-derived-association-ranking
+sensor_160,208.79341,2,6,rule-derived-association-ranking
+sensor_294,157.96562,2,7,rule-derived-association-ranking
+sensor_162,154.06111,2,8,rule-derived-association-ranking
+sensor_296,126.25979,2,9,rule-derived-association-ranking
+sensor_295,105.44913,2,10,rule-derived-association-ranking
+sensor_022,87.818368,2,11,rule-derived-association-ranking
+sensor_090,84.670097,51,12,rule-derived-association-ranking

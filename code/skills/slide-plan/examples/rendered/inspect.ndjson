@@ -1,0 +1,28 @@
+{"kind":"slide","id":"sl/nx0xxw","slide":1,"title":"EDITABLE COURSE DECK","textShapes":3}
+{"kind":"textbox","id":"sh/rih8zylo","slide":1,"name":"TITLE_KICKER","text":"EDITABLE COURSE DECK","textPreview":"EDITABLE COURSE DECK","textChars":20,"textLines":1,"bbox":[82,78,430,30]}
+{"kind":"textbox","id":"sh/sjqp8329","slide":1,"name":"SLIDE_TITLE","text":"让数据先过体检","textPreview":"让数据先过体检","textChars":7,"textLines":1,"bbox":[82,206,820,172]}
+{"kind":"textbox","id":"sh/dkzq183e","slide":1,"name":"SUBTITLE","text":"从可读的 Markdown 到可编辑、可审计的演示文稿","textPreview":"从可读的 Markdown 到可编辑、可审计的演示文稿","textChars":27,"textLines":1,"bbox":[86,430,760,76]}
+{"kind":"shape","id":"sh/el87adkz","slide":1,"name":"TITLE_ACCENT","bbox":[1032,0,248,720]}
+{"kind":"notes","id":"nt/nx0xxw","slide":1,"text":"开场说明本文稿的目标是建立数据质量共识，不对污染原因下结论。\n\n[Sources]\n- Course-local S02 profile output."}
+{"kind":"slide","id":"sl/h5tiyq","slide":2,"title":"SECTION 01","textShapes":2}
+{"kind":"textbox","id":"sh/o7mpc3it","slide":2,"name":"SECTION_NUMBER","text":"SECTION 01","textPreview":"SECTION 01","textChars":10,"textLines":1,"bbox":[84,74,360,32]}
+{"kind":"textbox","id":"sh/36dojy18","slide":2,"name":"SLIDE_TITLE","text":"01 为什么先体检","textPreview":"01 为什么先体检","textChars":9,"textLines":1,"bbox":[82,256,1080,144]}
+{"kind":"notes","id":"nt/h5tiyq","slide":2,"text":"转入方法部分：先确认数据边界，再决定能回答什么。\n\n[Sources]\n- Course-local course method."}
+{"kind":"slide","id":"sl/zosg1o","slide":3,"title":"缺失不是零","textShapes":3}
+{"kind":"textbox","id":"sh/l0va58je","slide":3,"name":"SLIDE_TITLE","text":"缺失不是零","textPreview":"缺失不是零","textChars":5,"textLines":1,"bbox":[76,48,1040,64]}
+{"kind":"textbox","id":"sh/yx4bud03","slide":3,"name":"PAGE_NUMBER","text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[1160,54,48,32]}
+{"kind":"shape","id":"sh/jyds3i1o","slide":3,"name":"ACCENT_RULE","bbox":[76,126,106,8]}
+{"kind":"textbox","id":"sh/wv2ts3ix","slide":3,"name":"BODY","text":"• 记录文件、编码、行列数与时间范围\n\n• 分字段统计缺失，不自动删除或填补\n\n• 把观察事实与处置建议分开","textPreview":"• 记录文件、编码、行列数与时间范围 |  | • 分字段统计缺失，不自动删除或填补 |  | • 把观察事实与处置建议分开","textChars":54,"textLines":5,"bbox":[92,176,1050,420]}
+{"kind":"notes","id":"nt/zosg1o","slide":3,"text":"强调缺失值会改变后续指标分母，但本页不预设填补方案。\n\n[Sources]\n- Course-local data-profile contract."}
+{"kind":"slide","id":"sl/97rgif","slide":4,"title":"三项代表污染物缺失需单列","textShapes":2}
+{"kind":"textbox","id":"sh/ed4vup4n","slide":4,"name":"SLIDE_TITLE","text":"三项代表污染物缺失需单列","textPreview":"三项代表污染物缺失需单列","textChars":12,"textLines":1,"bbox":[76,48,1040,64]}
+{"kind":"textbox","id":"sh/1gvu5kne","slide":4,"name":"PAGE_NUMBER","text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[1160,54,48,32]}
+{"kind":"shape","id":"sh/0fmdwfmt","slide":4,"name":"ACCENT_RULE","bbox":[76,126,106,8]}
+{"kind":"table","id":"tb/i5orm5o7","slide":4,"name":"DATA_TABLE:table-4","rows":4,"cols":3,"preview":"字段 | 缺失数 | 缺失率","bbox":[90,176,1100,420]}
+{"kind":"notes","id":"nt/97rgif","slide":4,"text":"表格只展示三个代表字段；完整六项数值保留在 profile.json。\n\n[Sources]\n- dataset/06-beijing-air-quality-audit/case.csv; S02 profile generated locally."}
+{"kind":"slide","id":"sl/21xc67","slide":5,"title":"把数据问题交给可复查的流程","textShapes":3}
+{"kind":"textbox","id":"sh/ja5s7mhc","slide":5,"name":"SLIDE_TITLE","text":"把数据问题交给可复查的流程","textPreview":"把数据问题交给可复查的流程","textChars":13,"textLines":1,"bbox":[76,48,1040,64]}
+{"kind":"textbox","id":"sh/kbe90ryh","slide":5,"name":"PAGE_NUMBER","text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[1160,54,48,32]}
+{"kind":"shape","id":"sh/lcna9wz2","slide":5,"name":"ACCENT_RULE","bbox":[76,126,106,8]}
+{"kind":"textbox","id":"sh/alcruhgf","slide":5,"name":"GRAPHIC_PLACEHOLDER:quality-review-flow","text":"图形占位\n待绘制“读取→体检→人工复核→分析”四步流程，保留一个停止分支。","textPreview":"图形占位 | 待绘制“读取→体检→人工复核→分析”四步流程，保留一个停止分支。","textChars":37,"textLines":2,"bbox":[104,176,1072,420]}
+{"kind":"notes","id":"nt/21xc67","slide":5,"text":"图形仍是占位合同，不应在没有绘制和检查时写成已完成。\n\n[Sources]\n- Course-local workflow contract."}

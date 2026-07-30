@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "status": "passed",
+  "renderer": "@oai/artifact-tool",
+  "rendered_slide_count": 5,
+  "bounds_issues": [],
+  "overlap_issues": [],
+  "text_overflow_issues": [],
+  "layout_exports": [
+    {
+      "slide_number": 1,
+      "bytes": 5955
+    },
+    {
+      "slide_number": 2,
+      "bytes": 4126
+    },
+    {
+      "slide_number": 3,
+      "bytes": 7367
+    },
+    {
+      "slide_number": 4,
+      "bytes": 13826
+    },
+    {
+      "slide_number": 5,
+      "bytes": 7141
+    }
+  ]
+}

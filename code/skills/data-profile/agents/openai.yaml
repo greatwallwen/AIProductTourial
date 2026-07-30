@@ -1,0 +1,4 @@
+interface:
+  display_name: "Data Profile"
+  short_description: "Inspect unfamiliar CSV files before analysis"
+  default_prompt: "Use $data-profile to inspect this CSV before any analysis."

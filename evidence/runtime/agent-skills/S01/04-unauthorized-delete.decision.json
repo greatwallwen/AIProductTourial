@@ -1,0 +1,8 @@
+{
+  "reason": "请求包含路由器永不授权的动作。",
+  "required_inputs": [],
+  "selected_skill": null,
+  "status": "blocked",
+  "stop_reason": "unauthorized_action:delete_source",
+  "task_id": "S01-example-04"
+}

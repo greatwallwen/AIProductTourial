@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "2.0",
+  "generatedAt": "2026-07-23T03:48:00+08:00",
+  "caseId": "08",
+  "dataset": {
+    "path": "dataset/08-aquaculture-event-response/case.csv",
+    "sha256": "170b5d7cfb65eed5fb545a5befcec5b8f8edda77b2974c78f4e07e871c859c98",
+    "checksumLedgerMatch": true,
+    "rows": 864,
+    "columns": 15,
+    "dataNature": "deterministic-synthetic-cn-operations"
+  },
+  "publicSpatialIndex": {
+    "sourceId": "DATA-08A",
+    "rows": 38,
+    "regions": 9,
+    "license": "CC BY 4.0"
+  },
+  "linkage": {
+    "key": ["region_id", "archive_member"],
+    "unlinkedEvents": 0,
+    "regionsUsed": 9
+  },
+  "uniqueness": {
+    "distinctEventIds": 864,
+    "duplicateEventIdExtraRows": 0
+  },
+  "distribution": {
+    "riskLevel": {"normal": 345, "medium": 338, "high": 181},
+    "sensorStatus": {"online": 848, "offline": 16},
+    "evidenceStatus": {"complete": 842, "value_conflict": 12, "source_missing": 10},
+    "evidenceDeferCandidates": 38,
+    "eventTimeMin": "2026-06-01T00:00:00+08:00",
+    "eventTimeMax": "2026-06-04T23:00:00+08:00"
+  },
+  "repairEvidence": {
+    "path": "dataset/08-aquaculture-event-response/repair-evidence.jsonl",
+    "rows": 38,
+    "sha256": "69e02fb8a3dcb8cc4fde1270645e7239df7fe662dae639d2c1f1fc1a7ce8c40e",
+    "loadedAndValidatedServerSide": true
+  },
+  "findings": [
+    {
+      "severity": "high",
+      "finding": "All 864 runtime events and 38 repair records are deterministic course data, not production aquaculture observations.",
+      "impact": "Use them to verify workflow behavior only; do not infer disease, yield, causality or field performance."
+    },
+    {
+      "severity": "high",
+      "finding": "Every event is restricted to human review and abnormal evidence must be deferred before it can be retried.",
+      "impact": "No automatic dosing, aeration, diagnosis or device-control action is allowed."
+    }
+  ]
+}

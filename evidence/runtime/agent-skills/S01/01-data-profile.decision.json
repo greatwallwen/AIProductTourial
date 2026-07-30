@@ -1,0 +1,8 @@
+{
+  "reason": "data-profile 是匹配任务且权限范围内的最小本地能力。",
+  "required_inputs": [],
+  "selected_skill": "data-profile",
+  "status": "selected",
+  "stop_reason": null,
+  "task_id": "S01-example-01"
+}

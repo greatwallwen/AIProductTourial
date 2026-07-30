@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "skill_id": "S01",
+  "skill_name": "capability-router",
+  "verification_status": "verified",
+  "verified_scope": "allowlisted routing and stop behavior",
+  "provider_scope": null,
+  "known_limitations": [],
+  "commands": [
+    "python -B code/skills/capability-router/scripts/route_task.py --input <example.json> --output evidence/runtime/agent-skills/S01/<decision.json>"
+  ],
+  "key_results": [
+    "5 个任务：3 个路由成功，2 个按合同停止"
+  ],
+  "artifact_count": 5,
+  "artifacts": [
+    {
+      "path": "evidence/runtime/agent-skills/S01/01-data-profile.decision.json",
+      "bytes": 236,
+      "sha256": "47784e76824ef356c7a4bc97d73d42c60a53148b68fe8e86a0c70a4cc4ecb1fb"
+    },
+    {
+      "path": "evidence/runtime/agent-skills/S01/02-metric-brief.decision.json",
+      "bytes": 236,
+      "sha256": "3a751adbf87f64fb3fa489cfb1fadd9ec218b120c8cbe7657fd9ad3d28f79047"
+    },
+    {
+      "path": "evidence/runtime/agent-skills/S01/03-missing-input.decision.json",
+      "bytes": 289,
+      "sha256": "9352d67f67a4d4cba0beb4529ce7d77eb11a95fcddc1f88eab6707371a0dc926"
+    },
+    {
+      "path": "evidence/runtime/agent-skills/S01/04-unauthorized-delete.decision.json",
+      "bytes": 231,
+      "sha256": "87ef8be229a46a6ef193ec52a131ca4a4636974e345f4b94b6c58b2a7b7569a2"
+    },
+    {
+      "path": "evidence/runtime/agent-skills/S01/05-opportunity-map.decision.json",
+      "bytes": 258,
+      "sha256": "d3fa11925fdc79c77a56b34536bc4476188b4a5467d021f461a70d76f19e1a39"
+    }
+  ],
+  "focused_tests": 6,
+  "quick_validate": "passed"
+}

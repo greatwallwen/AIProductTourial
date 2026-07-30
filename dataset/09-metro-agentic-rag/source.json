@@ -1,0 +1,62 @@
+{
+  "schema_version": "2.0",
+  "case_id": "09",
+  "captured_at": "2026-07-20T09:53:01.785573+08:00",
+  "sources": [
+    {
+      "id": "DATA-09",
+      "title": "MetroPT-3 Dataset",
+      "url": "https://archive.ics.uci.edu/dataset/791/metropt%2B3%2B",
+      "publisher": "UCI Machine Learning Repository",
+      "version": "dataset id 791",
+      "license": "CC BY 4.0",
+      "state": "artifact-and-metadata-verified",
+      "expected_instances": 1516948,
+      "redistribution": "allowed-with-attribution"
+    },
+    {
+      "id": "COURSE-POLICY-09",
+      "title": "压缩机检查程序与人工审批课程策略",
+      "publisher": "Course_AIProduct",
+      "version": "1.0.0",
+      "license": "course-generated-fixture",
+      "state": "generated-verified",
+      "redistribution": "allowed-with-course",
+      "usage_boundary": "课程内检查与审批策略，不是厂商维修手册或真实地铁运营制度。"
+    }
+  ],
+  "artifacts": [
+    {
+      "source_id": "DATA-09",
+      "url": "https://archive.ics.uci.edu/static/public/791/metropt+3+dataset.zip",
+      "status": "downloaded-verified",
+      "path": "dataset/09-metro-agentic-rag/raw/metropt-3.zip",
+      "bytes": 218381995,
+      "sha256": "aab991a970e58210de853bb8078ce0e63abb4d9412fdc5c79792dae3d8e1721a"
+    }
+  ],
+  "transform_status": "derived-verified",
+  "derived_output": {
+    "path": "case.csv",
+    "rows": 4090,
+    "sha256": "fc717d919649406167311cbe875c08950b1a98c9f0d3a02d2a9dfe0211e2270e",
+    "data_nature": "public-derived-contiguous-slice"
+  },
+  "sampling_contract": {
+    "method": "contiguous-fixed-slice",
+    "failure_boundary": "2020-04-18 00:00:00",
+    "rows_before_boundary": 2045,
+    "rows_from_boundary": 2045,
+    "workbench_window": "fixed-5-minute-25-source-records"
+  },
+  "knowledge_corpus": {
+    "path": "knowledge.jsonl",
+    "sha256": "86b24e32072a8506143a803578ade4877758c897bd246bdbe74a7558baae320c",
+    "source_ids": [
+      "DATA-09",
+      "COURSE-POLICY-09"
+    ],
+    "versioned": true,
+    "course_policies_are_not_vendor_manuals": true
+  }
+}

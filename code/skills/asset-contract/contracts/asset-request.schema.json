@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Text-to-3D asset request",
+  "type": "object",
+  "required": ["id", "prompt", "usage", "format", "unit", "up_axis", "max_triangles", "max_file_size_bytes", "provider"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+    "prompt": {"type": "string", "minLength": 1},
+    "usage": {"enum": ["web_preview", "animation", "print", "engineering"]},
+    "format": {"enum": ["glb", "gltf"]},
+    "unit": {"enum": ["meter", "centimeter", "millimeter"]},
+    "up_axis": {"enum": ["Y", "Z"]},
+    "max_triangles": {"type": "integer", "minimum": 1},
+    "max_file_size_bytes": {"type": "integer", "minimum": 1},
+    "provider": {"type": "object"}
+  },
+  "additionalProperties": false
+}

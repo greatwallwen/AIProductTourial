@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Local glTF inspection result",
+  "type": "object",
+  "required": ["status", "format", "sha256", "byte_length", "asset_version", "scenes", "nodes", "meshes", "primitives", "vertices", "indices", "bounds", "external_buffers"],
+  "properties": {
+    "status": {"const": "passed"},
+    "format": {"enum": ["gltf", "glb"]},
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "byte_length": {"type": "integer", "minimum": 1},
+    "asset_version": {"const": "2.0"},
+    "scenes": {"type": "integer"},
+    "nodes": {"type": "integer"},
+    "meshes": {"type": "integer"},
+    "primitives": {"type": "integer"},
+    "vertices": {"type": "integer"},
+    "indices": {"type": "integer"},
+    "bounds": {"type": ["object", "null"]},
+    "external_buffers": {"type": "array"}
+  },
+  "additionalProperties": false
+}

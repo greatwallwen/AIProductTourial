@@ -1,0 +1,4 @@
+interface:
+  display_name: "PixiJS Game Contract"
+  short_description: "Generate and audit a runnable PixiJS mini-game"
+  default_prompt: "Use $pixijs-game-contract to turn this Chinese game brief into a runnable, tested PixiJS project."

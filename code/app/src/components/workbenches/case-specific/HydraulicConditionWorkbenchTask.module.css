@@ -1,0 +1,24 @@
+.basis { display: grid; gap: 7px; margin: 0; padding: 8px 9px; border: 1px solid #31566d; border-radius: 6px; }
+.basis legend { padding: 0 5px; color: #b5c8d3; font-size: 13px; font-weight: 700; }
+.basis label { min-height: 44px; display: grid; grid-template-columns: 20px 1fr; gap: 8px; align-items: center; color: #bed0da; cursor: pointer; }
+.basis input { width: 18px; height: 18px; min-height: 0; margin: 0; accent-color: #62d38b; }
+.basis b,
+.basis small { display: block; }
+.basis b { font-size: 13px; }
+.basis small { margin-top: 2px; color: #819baa; font-size: 11px; }
+
+.taskFields { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.taskFields label,
+.supervisorField { display: grid; gap: 4px; color: #a6bbc8; font-size: 13px; }
+.taskFields input,
+.supervisorField input { width: 100%; min-height: 44px; padding: 8px 9px; color: #e8f0f5; border: 1px solid #31566d; border-radius: 6px; background: #051722; }
+.fullField { grid-column: 1 / -1; }
+
+.taskSummary { padding: 10px; border: 1px solid #35627c; border-radius: 6px; background: #0a2635; }
+.taskSummary header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.taskSummary header strong { color: #8dccff; font-size: 13px; }
+.taskSummary header span { color: #f0b35a; font-size: 12px; font-weight: 700; }
+.taskSummary dl { display: grid; gap: 6px; margin: 8px 0 0; }
+.taskSummary dl div { display: grid; grid-template-columns: 64px 1fr; gap: 7px; }
+.taskSummary dt { color: #819baa; font-size: 12px; }
+.taskSummary dd { margin: 0; color: #c9d9e2; font-size: 12px; font-weight: 600; line-height: 1.45; }

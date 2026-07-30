@@ -1,44 +1,27 @@
-# 第二部分 · 案例演示与验证
+# 二十个综合案例
 
-## 数字化系统全景（先看这张图）
+| 编号 | 案例 | 代码 |
+|---|---|---|
+| B01 | [取消单原单核对](B01-retail-return-evidence.md) | `code/cases/01-retail-return-evidence` |
+| B02 | [会员优惠券试投](B02-member-value-experiment.md) | `code/cases/02-member-value-experiment` |
+| B03 | [餐饮评论问题调查](B03-local-service-voc.md) | `code/cases/03-local-service-voc` |
+| B04 | [信贷材料补正](B04-credit-human-review.md) | `code/cases/04-credit-human-review` |
+| B05 | [医院转运事件调和](B05-hospital-flow-coordination.md) | `code/cases/05-hospital-flow-coordination` |
+| B06 | [空气质量摘录质检](B06-beijing-air-quality-audit.md) | `code/cases/06-beijing-air-quality-audit` |
+| B07 | [即时履约架构评审](B07-instant-retail-architecture.md) | `code/cases/07-instant-retail-architecture` |
+| B08 | [养殖塘事件响应](B08-aquaculture-event-response.md) | `code/cases/08-aquaculture-event-response` |
+| B09 | [地铁空压机检索辅助排查](B09-metro-agentic-rag.md) | `code/cases/09-metro-agentic-rag` |
+| B10 | [通信请求恢复核查](B10-telecom-complaint-orchestration.md) | `code/cases/10-telecom-complaint-orchestration` |
+| B11 | [企业模型准入补测](B11-model-release-multi-agent.md) | `code/cases/11-model-release-multi-agent` |
+| B12 | [县域冷链运输调查](B12-vaccine-cold-chain.md) | `code/cases/12-vaccine-cold-chain` |
+| B13 | [汽车售后安全分流](B13-auto-service-triage.md) | `code/cases/13-auto-service-triage` |
+| B14 | [浮选高硅事件核查](B14-flotation-impurity-review.md) | `code/cases/14-flotation-impurity-review` |
+| B15 | [半导体生产记录复测](B15-wafer-quality-review.md) | `code/cases/15-wafer-quality-review` |
+| B16 | [风机出力下偏核查](B16-wind-underperformance.md) | `code/cases/16-wind-underperformance` |
+| B17 | [包装切刀健康复核](B17-cutter-health-review.md) | `code/cases/17-cutter-health-review` |
+| B18 | [锅炉主汽低温事件核查](B18-boiler-temperature-review.md) | `code/cases/18-boiler-temperature-review` |
+| B19 | [液压系统维护排序](B19-hydraulic-condition.md) | `code/cases/19-hydraulic-condition` |
+| B20 | [光伏站端损失归因](B20-pv-loss-attribution.md) | `code/cases/20-pv-loss-attribution` |
 
-第一部分讲的理念、原理、规范、设计，不是散点——它们共同构成**一套数字化系统**。下面 10 个代表性案例，正是这套系统在不同环节、不同层的**实操演示**（每案标注它更偏哪个角色镜头）：
+每个案例都按“需求—问题—数据—解决方案—Prompt—演示—实现与排错”组织。案例页面用于演示业务动作和状态变化，正文负责解释为什么这样设计。
 
-![数字化系统全景](../../outputs/product_case_library/svg/fig_system_panorama.svg)
-
-- **纵向三层**：`底座平台`（44 向量库·45 关系库·46 架构契约·51 SDD 建造·54 事件总线）→ `能力智能`（指标/检索/AI）→ `业务应用`（业务场景）。
-- **横向数据价值闭环**：`采集 → 治理 → 洞察 → 决策 → 执行 → 验收 → 增长`，再反馈回采集。
-- **怎么读**：先在全景里定位一个案例在「哪一层·哪一环节」，再进它看它把哪条理论落成了什么操作。
-
-## 案例总览
-
-| # | 场景 | 行业 | 角色镜头 | 演示原理 | 设计 | 链接 |
-|---|---|---|---|---|---|---|
-| 01 | 电商早会·退货异常预警（细分：把退货当滞后质量信号，早会即派单） | 电商零售 | 产品/研发/项目 | 2.1/2.7 | graphite-hud | [打开](01-morning_ops_grid.md) |
-| 02 | 大陆 P2P 信贷·新客 vs 复借 差异化放款与信用画像分层 | P2P信贷 | 产品 | 2.7/8.3 | amber-funnel | [打开](02-p2p_credit.md) |
-| 03 | 零售综合闭环·高价值流失会员挽回（细分：真实 RFM 锁定 M高R大 群） | 零售经营 | 产品/研发/项目 | 2.7/3.1/4.1 | graphite-hud | [打开](03-retail_capstone_board.md) |
-| 04 | 医疗健康知识库语义检索 | 中文医疗知识库 | 研发/产品 | 1.3/3.3 | emerald-flow | [打开](04-rag_knowledge_retrieval.md) |
-| 05 | 北京空气质量大表·查询优化与复合索引 | 数据工程 | 研发 | 3.3/4.1 | steel-queue | [打开](05-postgres_relational_arch.md) |
-| 06 | 后端子系统分解与接口契约（对照真实国产开源微服务·若依） | 系统架构 | 研发/项目 | 3.1/3.3 | cyan-matrix | [打开](06-system_arch_flow.md) |
-| 07 | RAG 回答评测台 | AI 产品·中文医疗 RAG | 产品/研发 | 2.3/1.3 | cyan-matrix | [打开](07-rag_eval_harness.md) |
-| 08 | 规格驱动系统建造台 | 研发效能 / 架构 | 研发/项目/产品 | 3.0/2.3 | cyan-matrix | [打开](08-sdd_system_build.md) |
-| 09 | 仓库事件总线·事件溯源（本仓库 dogfood + 大型国产开源项目 nacos 对照） | 软件工程 | 研发/项目 | 7.2/9.4/2.3 | emerald-flow | [打开](09-repo_event_bus.md) |
-| 10 | 运营商·客户投诉升级分诊与 SLA 违约预警 | 电信运营商 | 产品 | 2.7/8.3 | steel-queue | [打开](10-telecom_complaint_escalation.md) |
-
-## 原理 → 案例 反查（哪个原理，被哪些案例演示）
-
-> 读完第一部分某个原理，想看它怎么落地？按这张表直达（自动从各案 `demonstrates` 反转，只列被真实演示到的原理）。
-
-| 原理 | 演示它的案例 |
-|---|---|
-| §1.3 | [案例 04](04-rag_knowledge_retrieval.md)、[案例 07](07-rag_eval_harness.md) |
-| §2.1 | [案例 01](01-morning_ops_grid.md) |
-| §2.3 | [案例 07](07-rag_eval_harness.md)、[案例 08](08-sdd_system_build.md)、[案例 09](09-repo_event_bus.md) |
-| §2.7 | [案例 01](01-morning_ops_grid.md)、[案例 02](02-p2p_credit.md)、[案例 03](03-retail_capstone_board.md)、[案例 10](10-telecom_complaint_escalation.md) |
-| §3.0 | [案例 08](08-sdd_system_build.md) |
-| §3.1 | [案例 03](03-retail_capstone_board.md)、[案例 06](06-system_arch_flow.md) |
-| §3.3 | [案例 04](04-rag_knowledge_retrieval.md)、[案例 05](05-postgres_relational_arch.md)、[案例 06](06-system_arch_flow.md) |
-| §4.1 | [案例 03](03-retail_capstone_board.md)、[案例 05](05-postgres_relational_arch.md) |
-| §7.2 | [案例 09](09-repo_event_bus.md) |
-| §8.3 | [案例 02](02-p2p_credit.md)、[案例 10](10-telecom_complaint_escalation.md) |
-| §9.4 | [案例 09](09-repo_event_bus.md) |
