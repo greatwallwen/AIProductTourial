@@ -10,23 +10,13 @@ from compose_course import compose, load_manifest
 ROOT = Path(__file__).resolve().parents[1]
 EXPECTED_RUNTIME_PROMPTS = [f"P{index:03d}" for index in range(1, 9)]
 EXPECTED_UNITS = ["P001", "P002", "P003", "P005", "P006", "P008"]
+EXPECTED_PROMPT_STEPS = ["第一步", "第二步", "第三步", "第四步", "第五步", "第六步"]
 EXPECTED_SKILLS = [f"S{index:03d}" for index in range(1, 10)]
 EXPECTED_RUNTIME_LOOPS = [f"L{index:03d}" for index in range(1, 4)]
 EXPECTED_LOOPS = [f"L{index:03d}" for index in range(1, 5)]
 EXPECTED_LABS = EXPECTED_RUNTIME_PROMPTS + EXPECTED_SKILLS + EXPECTED_RUNTIME_LOOPS
 EXPECTED_TEACHING = EXPECTED_UNITS + EXPECTED_SKILLS + EXPECTED_LOOPS
 EXPECTED_BUSINESS = [f"B{index:03d}" for index in range(1, 25)]
-S_CONTENT_HEADINGS = {
-    "S001": ("### 五张任务卡的分诊结果", "### 这五个决定说明什么", "### 为什么“停下”也是正确结果"),
-    "S002": ("### 数据体检记录", "### 六项缺失率", "### 为什么计算交给 Skill"),
-    "S003": ("### 本地简报计算", "### 简报怎样说", "### 为什么要保留“不可计算”"),
-    "S004": ("### 从原话到首个实验", "### 机会图", "### 为什么先画机会而不是功能"),
-    "S005": ("### 三个方向怎样不同", "### 选中的预览", "### 为什么最终选择仍要交给人"),
-    "S006": ("### 五页怎样对应大纲", "### 第四页和检查结果", "### 为什么生成后还要逐页看"),
-    "S007": ("### 浏览器里测到什么", "### 运行画面", "### 原型离完整小游戏还有什么"),
-    "S008": ("### 本地完成到哪里", "### 怎样查看", "### 本地检查与在线生成是两件事"),
-    "S009": ("### 状态和动效怎样分工", "### 为什么只选一个组件", "### 哪些检查不能省"),
-}
 BANNED_TEXT = (
     "讲师使用说明",
     "讲师工作坊",
@@ -106,9 +96,14 @@ def verify_screenshot_links(
 def verify_markdown_case(case_id: str, text: str, errors: list[str]) -> None:
     if "```mermaid" in text.lower():
         errors.append(f"{case_id} must not use Mermaid")
-    for heading in ("问题", "数据", "解决方案", "CodeBuddy Prompt", "演示"):
-        if not re.search(rf"^## {re.escape(heading)}\s*$", text, flags=re.MULTILINE):
-            errors.append(f"{case_id} missing section: {heading}")
+    headings = re.findall(r"^## ([^\n]+)$", text, flags=re.MULTILINE)
+    if len(headings) != 3 or len(set(headings)) != 3:
+        errors.append(f"{case_id} must have three distinct scene-specific sections")
+    retired = {"需求", "问题", "数据", "解决方案", "CodeBuddy Prompt", "演示", "实现与排错"}
+    if retired.intersection(headings):
+        errors.append(f"{case_id} still uses the retired case template")
+    if "```text" not in text or "CodeBuddy" not in text:
+        errors.append(f"{case_id} missing a copyable CodeBuddy Prompt")
 
 
 def section_map(text: str, pattern: str) -> dict[str, str]:
@@ -181,24 +176,30 @@ def main() -> int:
             if item.get("route"):
                 errors.append(f"{lab_id} must not require a web route")
 
-    unit_sections = section_map(text, r"^## (P\d{3})[^\n]*$")
+    unit_sections = section_map(text, r"^## (第[一二三四五六]步)[^\n]*$")
     skill_sections = section_map(text, r"^## (S\d{3})[^\n]*$")
     loop_sections = section_map(text, r"^## (L\d{3})[^\n]*$")
-    capability_sections = {**unit_sections, **skill_sections, **loop_sections}
-    if list(capability_sections) != EXPECTED_TEACHING:
-        errors.append(f"Markdown capability sequence mismatch: {list(capability_sections)}")
-    for unit_id in EXPECTED_UNITS:
-        section = capability_sections.get(unit_id, "")
+    if list(unit_sections) != EXPECTED_PROMPT_STEPS:
+        errors.append(f"Markdown Prompt sequence mismatch: {list(unit_sections)}")
+    if list(skill_sections) != EXPECTED_SKILLS:
+        errors.append(f"Markdown Skill sequence mismatch: {list(skill_sections)}")
+    if list(loop_sections) != EXPECTED_LOOPS:
+        errors.append(f"Markdown Loop sequence mismatch: {list(loop_sections)}")
+    for unit_id in EXPECTED_PROMPT_STEPS:
+        section = unit_sections.get(unit_id, "")
         experiments = re.findall(r"^### 实验 ([123])：", section, flags=re.MULTILINE)
         if experiments != ["1", "2", "3"]:
             errors.append(f"{unit_id} experiment sequence mismatch: {experiments}")
         if len(re.findall(r"^(?:```|~~~)text\s*$", section, flags=re.MULTILINE)) < 3:
             errors.append(f"{unit_id} must contain three full Prompt inputs")
     for lab_id in EXPECTED_SKILLS:
-        section = capability_sections.get(lab_id, "")
-        for heading in ("### 场景", "### 交给 CodeBuddy", *S_CONTENT_HEADINGS[lab_id]):
-            if heading not in section:
-                errors.append(f"{lab_id} missing {heading}")
+        section = skill_sections.get(lab_id, "")
+        if "**交给 CodeBuddy**" not in section:
+            errors.append(f"{lab_id} missing its CodeBuddy task")
+        if len(re.findall(r"^\*\*[^\n]+\*\*$", section, flags=re.MULTILINE)) < 4:
+            errors.append(f"{lab_id} lacks readable inline result cues")
+        if "### 场景" in section or "### 交给 CodeBuddy" in section:
+            errors.append(f"{lab_id} still uses worksheet-style repeated headings")
         if "code/skills/" not in section:
             errors.append(f"{lab_id} missing its Skill source path")
 
@@ -206,14 +207,16 @@ def main() -> int:
     if "```powershell" in prompt_skill_text.lower():
         errors.append("Prompt and Agent+Skills chapters must not contain PowerShell runbooks")
 
-    business_sections = section_map(text, r"^# 综合案例 (B\d{3})[^\n]*$")
+    business_sections = section_map(text, r"^### 综合案例 (B\d{3})[^\n]*$")
     if list(business_sections) != EXPECTED_BUSINESS:
         errors.append(f"Markdown business sequence mismatch: {list(business_sections)}")
     for case_id in EXPECTED_BUSINESS:
         section = business_sections.get(case_id, "")
-        if not re.search(r"^## 需求\s*$", section, flags=re.MULTILINE):
-            errors.append(f"{case_id} missing section: 需求")
-        verify_markdown_case(case_id, section, errors)
+        case_headings = re.findall(r"^#### ([^\n]+)$", section, flags=re.MULTILINE)
+        if len(case_headings) != 3 or len(set(case_headings)) != 3:
+            errors.append(f"{case_id} composed narrative must have three distinct sections")
+        if any(heading in {"需求", "问题", "数据", "解决方案", "CodeBuddy Prompt", "演示", "实现与排错"} for heading in case_headings):
+            errors.append(f"{case_id} composed narrative still uses the retired template")
 
     runtime_ids = [f"B{index:03d}" for index in range(1, 25)]
     manifest_cases = manifest.get("cases", [])

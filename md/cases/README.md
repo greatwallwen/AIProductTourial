@@ -27,4 +27,4 @@
 | B023 | [春节档排片沙盘](B023-spring-festival-screening.md) | `code/cases/B023-spring-festival-screening` |
 | B024 | [连锁门店补货排序](B024-supermarket-replenishment.md) | `code/cases/B024-supermarket-replenishment` |
 
-每个案例都按“需求—问题—数据—解决方案—Prompt—演示—实现与排错”组织。案例页面用于演示业务动作和状态变化，正文负责解释为什么这样设计。
+每个案例从一个正在发生的决定写起，再把数据、页面、Prompt 和演示动作串成完整过程。标题会随场景变化，不再套用同一组小节；案例页面负责呈现业务动作和状态变化，正文解释关键取舍。

@@ -10,7 +10,7 @@ from compose_course import compose, load_manifest, output_path
 
 ROOT = Path(__file__).resolve().parents[1]
 
-REQUIRED_HEADINGS = (
+RETIRED_HEADINGS = {
     "需求",
     "问题",
     "数据",
@@ -18,7 +18,7 @@ REQUIRED_HEADINGS = (
     "CodeBuddy Prompt",
     "演示",
     "实现与排错",
-)
+}
 
 FORBIDDEN = (
     "讲师使用说明",
@@ -41,7 +41,7 @@ def main() -> int:
     text = compose(course_structure)
     composed_dir = output_path(course_structure).parent
     errors: list[str] = []
-    starts = list(re.finditer(r"(?m)^# 综合案例 (B\d{3})\s+(.+)$", text))
+    starts = list(re.finditer(r"(?m)^### 综合案例 (B\d{3})\s+(.+)$", text))
     expected_ids = [f"B{number:03d}" for number in range(1, 25)]
     actual_ids = [match.group(1) for match in starts]
     if actual_ids != expected_ids:
@@ -52,15 +52,17 @@ def main() -> int:
         end = starts[index + 1].start() if index + 1 < len(starts) else len(text)
         block = text[match.start() : end]
 
-        for heading in REQUIRED_HEADINGS:
-            if not re.search(rf"(?m)^## {re.escape(heading)}$", block):
-                errors.append(f"{case_id} missing section: {heading}")
+        headings = re.findall(r"(?m)^#### ([^\n]+)$", block)
+        if len(headings) != 3 or len(set(headings)) != 3:
+            errors.append(f"{case_id} expected three distinct narrative sections, got {headings}")
+        if RETIRED_HEADINGS.intersection(headings):
+            errors.append(f"{case_id} still uses the retired seven-heading template")
 
         if "```text" not in block or not re.search(r"(?:请实现案例|实现[“\"])", block):
             errors.append(f"{case_id} missing copyable CodeBuddy build Prompt")
         if not any(word in block for word in ("不能", "缺少", "缺失", "待补", "不得")):
             errors.append(f"{case_id} does not state what remains unknown or disallowed")
-        if "## 实现与排错" not in block or "若" not in block:
+        if "**代码与排查**" not in block or "若" not in block:
             errors.append(f"{case_id} missing a concrete error symptom")
 
         expected_assets = {

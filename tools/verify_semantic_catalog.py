@@ -155,7 +155,7 @@ def main() -> None:
         fail(f"local Skill set mismatch: {sorted(actual_skills)}")
 
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    for phrase in ("P001—P008", "S001—S009", "L001—L004", "B001—B024", "9 个可运行 Skill"):
+    for phrase in ("六步，共 18 个实验", "S001—S009", "L001—L004", "B001—B024", "9 个可运行 Skill"):
         if phrase not in readme:
             fail(f"README missing frozen count or range: {phrase}")
 

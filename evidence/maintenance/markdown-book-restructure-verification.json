@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "1.0",
+  "verifiedAt": "2026-07-30T19:55:00+08:00",
+  "status": "passed",
+  "deliverable": "output/Course_AIProduct.md",
+  "measurements": {
+    "characters": 94051,
+    "lines": 3532,
+    "allHeadings": 196,
+    "levelOneToThreeHeadings": 122,
+    "maximumHeadingRepeat": 1,
+    "formulaicContrastPairs": 1,
+    "promptSteps": 6,
+    "promptExperiments": 18,
+    "agentSkills": 9,
+    "loopPatterns": 4,
+    "businessCases": 24,
+    "caseGroups": 4,
+    "caseNarrativeHeadings": 72,
+    "runtimeScreenshots": 24,
+    "caseDiagrams": 48
+  },
+  "preserved": {
+    "datasetGroups": 27,
+    "datasetCaseIds": 43,
+    "datasetRecords": 100612,
+    "codeChanged": false,
+    "datasetChanged": false,
+    "assetsChanged": false,
+    "powerPointChanged": false
+  },
+  "checks": [
+    "python -B tools/compose_course.py build",
+    "python -B tools/compose_course.py check",
+    "python -B tools/audit_markdown_style.py",
+    "python -B tools/verify_content_completeness.py",
+    "python -B tools/verify_curriculum_spine.py",
+    "python -B tools/verify_semantic_catalog.py",
+    "python -B tools/verify_course.py",
+    "python -B tools/verify_business_case_contracts.py",
+    "python -B tools/validate_datasets.py --all",
+    "python -B tools/verify_prompt_labs.py",
+    "python -B tools/verify_agent_skills.py",
+    "python -B tools/verify_agent_skill_runtime.py",
+    "python -B tools/verify_loop_runtime.py",
+    "python -B tools/verify_advanced_agent_lab.py",
+    "python -B -m unittest discover -s tools/tests -v",
+    "git diff --check"
+  ]
+}

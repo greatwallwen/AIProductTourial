@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -12,7 +13,7 @@ MANIFEST_PATH = ROOT / "md" / "course-structure.json"
 
 def load_manifest() -> dict:
     manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
-    if manifest.get("schema_version") != "2.0":
+    if manifest.get("schema_version") != "3.0":
         raise ValueError("unsupported course structure schema")
     sections = manifest.get("sections")
     if not isinstance(sections, list) or not sections:
@@ -23,6 +24,17 @@ def load_manifest() -> dict:
     expected_case_ids = [f"B{index:03d}" for index in range(1, 25)]
     if case_ids != expected_case_ids:
         raise ValueError(f"course cases must be B001-B024 in order, got {case_ids}")
+    groups = manifest.get("case_groups")
+    if not isinstance(groups, list) or [group.get("before") for group in groups] != [
+        "B001",
+        "B007",
+        "B013",
+        "B021",
+    ]:
+        raise ValueError("course case groups must start at B001, B007, B013 and B021")
+    for group in groups:
+        if not group.get("title") or not group.get("intro"):
+            raise ValueError("every case group needs a title and introduction")
     return manifest
 
 
@@ -56,13 +68,25 @@ def section_text(entry: dict, manifest: dict) -> str:
     rewrites = [*rewrites, *entry.get("rewrite_links", [])]
     for rewrite in rewrites:
         text = text.replace(rewrite["from"], rewrite["to"])
+    if entry.get("kind") == "case":
+        text = re.sub(
+            r"^(#{1,4})(?=\s)",
+            lambda match: "#" * (len(match.group(1)) + 2),
+            text,
+            flags=re.MULTILINE,
+        )
     return text
 
 
 def compose(manifest: dict) -> str:
-    return "\n\n".join(
-        section_text(entry, manifest).rstrip("\n") for entry in manifest["sections"]
-    ) + "\n"
+    groups = {group["before"]: group for group in manifest["case_groups"]}
+    parts: list[str] = []
+    for entry in manifest["sections"]:
+        if entry.get("kind") == "case" and entry["id"] in groups:
+            group = groups[entry["id"]]
+            parts.append(f"## {group['title']}\n\n{group['intro']}")
+        parts.append(section_text(entry, manifest).rstrip("\n"))
+    return "\n\n".join(parts) + "\n"
 
 
 def output_path(manifest: dict) -> Path:

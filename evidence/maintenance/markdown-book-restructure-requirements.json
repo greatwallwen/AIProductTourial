@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "1.0",
+  "objective": "Rewrite the modular Markdown sources as one continuous instructor course instead of a stack of cards and repeated case templates.",
+  "confirmedDecisions": [
+    {
+      "id": "course-spine",
+      "answer": "Keep the established progression from reasoning and Prompt through Agent plus Skills, Loop, product architecture, engineering and business cases.",
+      "basis": "The user repeatedly confirmed the progression and asked for a unified knowledge base rather than a day-based schedule."
+    },
+    {
+      "id": "source-model",
+      "answer": "Keep modular canonical sources and deterministically compose the complete instructor handbook.",
+      "basis": "The prior approved Markdown refactor froze this model; the current problem is narrative fragmentation, not the existence of source modules."
+    },
+    {
+      "id": "case-shape",
+      "answer": "Group the 24 cases into four readable acts and replace the seven repeated headings with three case-specific narrative sections.",
+      "basis": "Half of the current headings come from the same seven labels repeated in every case."
+    },
+    {
+      "id": "writing-style",
+      "answer": "Use concrete roles, objects, numbers and actions; remove internal delivery prose, ritual disclaimers and formulaic contrast sentences from the visible course.",
+      "basis": "The user explicitly asked for maximum removal of AI-like writing while preserving rigor and teachability."
+    },
+    {
+      "id": "development-methodology",
+      "answer": "agile",
+      "basis": "The rewrite can be verified in bounded editorial iterations and has no release, hardware or regulated stage gate."
+    }
+  ],
+  "targetReadingPath": [
+    "Start from one concrete product decision and establish the difference between observation, inference and action.",
+    "Use Prompt experiments to make one response checkable.",
+    "Use Agent and Skills to complete files, data analysis and visible artifacts.",
+    "Use Grill, Harness and Loop to manage ambiguity, tools, correction and stopping.",
+    "Turn the workflow into roles, states, data contracts and a maintainable system.",
+    "Apply the same reasoning in 24 grouped business cases and one course project."
+  ],
+  "caseGroups": [
+    {"range": "B001-B006", "title": "经营与公共服务：材料不全时怎样继续工作"},
+    {"range": "B007-B012", "title": "复杂系统协作：一次操作怎样跨过多道门"},
+    {"range": "B013-B020", "title": "工业与现场运营：先定位核查范围，不抢着诊断"},
+    {"range": "B021-B024", "title": "日常数据产品：少一点猜测，多一个可交接决定"}
+  ],
+  "acceptance": [
+    "The composed course reads in one prerequisite order and contains short transitions between major parts.",
+    "The 24 cases remain complete, runnable and individually recognizable, but none uses the old seven-heading template.",
+    "Each case keeps its dataset facts, CodeBuddy prompt, runtime screenshot, requirement diagram, architecture diagram, runnable path and troubleshooting guidance.",
+    "The complete handbook has no more than 230 level-one through level-three headings and no generic case heading repeated across all cases.",
+    "Visible prose contains none of the retired instructor, workshop, evidence-boundary, failure-branch, replay, request-id or hash narration.",
+    "Prompt and Agent plus Skills remain practical instructor material rather than command-line runbooks or page-interaction exercises.",
+    "Composition, content, links, datasets and course verification pass."
+  ],
+  "nonGoals": [
+    "PowerPoint generation",
+    "case UI redesign",
+    "dataset replacement",
+    "C drive cleanup",
+    "changing the 24 case identifiers or routes"
+  ],
+  "openDecisions": []
+}

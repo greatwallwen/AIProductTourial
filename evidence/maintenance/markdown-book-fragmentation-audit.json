@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "1.0",
+  "auditedAt": "2026-07-30T17:20:00+08:00",
+  "scope": "md/*.md, md/cases/B*.md and output/Course_AIProduct.md",
+  "measurements": {
+    "canonicalMarkdownFilesMeasured": 35,
+    "composedCharacters": 93341,
+    "composedLines": 3645,
+    "levelOneToThreeHeadings": 333,
+    "tableRows": 375,
+    "images": 81,
+    "shortParagraphsUnder60Characters": 620,
+    "promptChapterLines": 899,
+    "agentSkillLevelThreeHeadings": 53,
+    "businessCases": 24,
+    "repeatedHeadingsPerBusinessCase": 7,
+    "headingsConsumedByBusinessCaseTemplate": 168
+  },
+  "findings": [
+    {
+      "id": "case-template-dominates-book",
+      "severity": "high",
+      "finding": "需求、问题、数据、解决方案、CodeBuddy Prompt、演示、实现与排错各重复 24 次。",
+      "impact": "Half of the heading hierarchy describes the template instead of the case."
+    },
+    {
+      "id": "prompt-card-density",
+      "severity": "high",
+      "finding": "The Prompt chapter uses 899 lines and 120 table rows for 18 short experiments.",
+      "impact": "Frequent visual resets obscure the progression from task definition to evaluation."
+    },
+    {
+      "id": "skill-card-density",
+      "severity": "high",
+      "finding": "The Agent plus Skills chapter contains 53 level-three headings and repeats the same scene and CodeBuddy labels.",
+      "impact": "Distinct artifacts read like one generated worksheet repeated nine times."
+    },
+    {
+      "id": "flat-case-catalog",
+      "severity": "medium",
+      "finding": "All 24 cases follow one flat sequence without narrative group transitions.",
+      "impact": "Readers cannot see why one case follows another or which capability is being combined."
+    },
+    {
+      "id": "meta-language-in-body",
+      "severity": "medium",
+      "finding": "Verification and delivery vocabulary still appears in reader-facing paragraphs even when the underlying fact is useful.",
+      "impact": "The course sometimes explains its production process instead of the subject."
+    }
+  ]
+}

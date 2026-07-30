@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0",
+  "status": "passed",
+  "measurements": {
+    "characters": 94051,
+    "lines": 3532,
+    "allHeadings": 196,
+    "levelOneToThreeHeadings": 122,
+    "maximumHeadingRepeat": 1,
+    "formulaicContrastPairs": 1,
+    "realWordOccurrences": 15,
+    "promptExperiments": 18,
+    "businessCases": 24,
+    "caseNarrativeHeadings": 72,
+    "caseGroups": 4
+  },
+  "errors": []
+}

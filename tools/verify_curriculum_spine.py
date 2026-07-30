@@ -10,17 +10,7 @@ from compose_course import compose, load_manifest, output_path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-S_CONTENT_HEADINGS = {
-    "S001": ("### 五张任务卡的分诊结果", "### 这五个决定说明什么", "### 为什么“停下”也是正确结果"),
-    "S002": ("### 数据体检记录", "### 六项缺失率", "### 为什么计算交给 Skill"),
-    "S003": ("### 本地简报计算", "### 简报怎样说", "### 为什么要保留“不可计算”"),
-    "S004": ("### 从原话到首个实验", "### 机会图", "### 为什么先画机会而不是功能"),
-    "S005": ("### 三个方向怎样不同", "### 选中的预览", "### 为什么最终选择仍要交给人"),
-    "S006": ("### 五页怎样对应大纲", "### 第四页和检查结果", "### 为什么生成后还要逐页看"),
-    "S007": ("### 浏览器里测到什么", "### 运行画面", "### 原型离完整小游戏还有什么"),
-    "S008": ("### 本地完成到哪里", "### 怎样查看", "### 本地检查与在线生成是两件事"),
-    "S009": ("### 状态和动效怎样分工", "### 为什么只选一个组件", "### 哪些检查不能省"),
-}
+PROMPT_STEPS = ["第一步", "第二步", "第三步", "第四步", "第五步", "第六步"]
 
 
 def sections(text: str, pattern: str) -> dict[str, str]:
@@ -39,14 +29,13 @@ def main() -> int:
     markdown_base = output_path(course_structure).parent
     manifest = json.loads((ROOT / "course-manifest.json").read_text(encoding="utf-8"))
 
-    capability_sections = sections(text, r"^## ([PSL]\d{3})\b")
-    p_sections = {key: value for key, value in capability_sections.items() if key.startswith("P")}
-    s_sections = {key: value for key, value in capability_sections.items() if key.startswith("S")}
-    l_sections = {key: value for key, value in capability_sections.items() if key.startswith("L")}
-    b_sections = sections(text, r"^# 综合案例 (B\d{3})\b")
+    p_sections = sections(text, r"^## (第[一二三四五六]步)\b")
+    s_sections = sections(text, r"^## (S\d{3})\b")
+    l_sections = sections(text, r"^## (L\d{3})\b")
+    b_sections = sections(text, r"^### 综合案例 (B\d{3})\b")
 
     expected = {
-        "P": manifest["teaching_spine"]["prompt_units"],
+        "P": PROMPT_STEPS,
         "S": manifest["teaching_spine"]["agent_skill_workshops"],
         "L": manifest["teaching_spine"]["loop_patterns"],
         "B": manifest["teaching_spine"]["business_cases"],
@@ -69,9 +58,12 @@ def main() -> int:
             errors.append(f"{unit_id} must contain three full Prompt inputs")
 
     for case_id, section in s_sections.items():
-        for required in ("### 场景", "### 交给 CodeBuddy", *S_CONTENT_HEADINGS[case_id]):
-            if required not in section:
-                errors.append(f"{case_id} missing {required}")
+        if "**交给 CodeBuddy**" not in section:
+            errors.append(f"{case_id} missing its CodeBuddy task")
+        if len(re.findall(r"^\*\*[^\n]+\*\*$", section, flags=re.MULTILINE)) < 4:
+            errors.append(f"{case_id} lacks readable inline result cues")
+        if "### 场景" in section or "### 交给 CodeBuddy" in section:
+            errors.append(f"{case_id} still uses repeated worksheet headings")
         if "code/skills/" not in section:
             errors.append(f"{case_id} missing its Skill source path")
 
@@ -84,9 +76,11 @@ def main() -> int:
             errors.append("L004 missing its code-test-debug example")
 
     for case_id, section in b_sections.items():
-        for required in ("## 问题", "## 数据", "## 解决方案", "## CodeBuddy Prompt", "## 演示"):
-            if required not in section:
-                errors.append(f"{case_id} missing {required}")
+        case_headings = re.findall(r"^#### ([^\n]+)$", section, flags=re.MULTILINE)
+        if len(case_headings) != 3 or len(set(case_headings)) != 3:
+            errors.append(f"{case_id} must contain three distinct narrative sections")
+        if "```text" not in section or "CodeBuddy" not in section:
+            errors.append(f"{case_id} missing its copyable CodeBuddy Prompt")
         runtime_screenshots = re.findall(
             r"!\[[^\]]*\]\(\.\./evidence/screenshots/[^)]+\.png\)",
             section,

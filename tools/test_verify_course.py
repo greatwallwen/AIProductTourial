@@ -51,11 +51,13 @@ class CourseVerificationTest(unittest.TestCase):
         text = "\n".join(
             [
                 "# 案例 01 示例",
-                "## 问题",
-                "## 数据",
-                "## 解决方案",
-                "## CodeBuddy Prompt",
-                "## 演示",
+                "## 先看哪张记录",
+                "## 把材料放回案卷",
+                "在 CodeBuddy 中实现时，任务可以这样写：",
+                "```text",
+                "实现一个可检查的页面",
+                "```",
+                "## 让另一位同事确认",
             ]
         )
         errors: list[str] = []
@@ -66,13 +68,15 @@ class CourseVerificationTest(unittest.TestCase):
         text = "\n".join(
             [
                 "## 问题",
-                "## 数据",
-                "## 解决方案",
+                "## 把材料放回案卷",
                 "```mermaid",
                 "flowchart LR",
                 "```",
-                "## CodeBuddy Prompt",
-                "## 演示",
+                "在 CodeBuddy 中实现时，任务可以这样写：",
+                "```text",
+                "实现一个可检查的页面",
+                "```",
+                "## 让另一位同事确认",
             ]
         )
         errors: list[str] = []

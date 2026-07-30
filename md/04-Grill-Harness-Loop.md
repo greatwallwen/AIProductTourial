@@ -1,6 +1,6 @@
 # 第三部分　Grill、Harness 与 Loop：把任务做完，也知道何时停
 
-Prompt 说明一次工作，Grill 把模糊决定问清楚，Harness 准备可以工作的现场，Loop 根据结果决定下一步。四者不是四套流行术语，而是一条任务从“想做”走到“做完”的路径。
+Prompt 说明一次工作，Grill 把模糊决定问清楚，Harness 准备可以工作的现场，Loop 根据结果决定下一步。四者接力，把任务从“想做”带到“做完”。
 
 ![AI 工作循环](../assets/theory/loop.png)
 
@@ -83,11 +83,11 @@ revise   保留限制，不补造收入和时间
 complete 四项硬条件通过，停止
 ```
 
-结果见 [L001 运行记录](../evidence/runtime/loop-runtime/loop-run-L001.json) 和 [经营简报](../evidence/runtime/loop-runtime/L001/business-brief.md)。四项条件都通过后停止。
+最终的[经营简报](../evidence/runtime/loop-runtime/L001/business-brief.md)满足四项检查，循环在这里停止。
 
 ## L002　三套方向生成后，把审美选择交给人
 
-L002 调用 `poster-recipe`，生成三套差异化配方和一个可编辑 SVG。方向数量、选择理由和 SVG 可编辑性都能检查，但“最终喜欢哪一套”没有客观唯一答案。
+L002 调用 `poster-recipe`，生成三套差异化配方和一个[可编辑 SVG](../evidence/runtime/loop-runtime/L002/poster.svg)。方向数量、选择理由和 SVG 可编辑性都能检查，但“最终喜欢哪一套”没有客观唯一答案。
 
 ```text
 observe  读取受众、文案、画面主体和禁用项
@@ -98,7 +98,7 @@ revise   自动选择只保留为推荐
 waiting  等人确认最终视觉方向
 ```
 
-[L002 运行记录](../evidence/runtime/loop-runtime/loop-run-L002.json) 停在 `visual_choice_required`，由负责作品的人选择最终方向。
+三套方向生成后，状态停在 `visual_choice_required`，由负责作品的人选择最终方向。
 
 ## L003　长任务分段执行，高影响动作交给人
 
@@ -115,7 +115,7 @@ revise   删除诊断和维修措辞
 waiting  等有权限的主管决定是否创建检查工单
 ```
 
-[L003 运行记录](../evidence/runtime/loop-runtime/loop-run-L003.json) 停在 `permission_required`：材料够整理申请，还不能替人做高影响决定。
+材料齐到可以整理申请时，状态停在 `permission_required`；是否创建工单仍由有权限的主管决定。
 
 如果调查跨越多个任务，在每个可独立验收的节点保存不超过 1200 字的检查点：目标、已完成、决定、改动路径、检查、阻塞、唯一下一步。恢复时先核对文件和检查结果仍存在，再从唯一下一步继续；不要靠回放整段聊天找进度。
 
@@ -143,3 +143,5 @@ stop       没有新失败就停止
 ```
 
 如果修复重启却弄坏倒计时，循环回到 `locate`；如果测试全绿但浏览器按键仍异常，再补一次真实页面操作。测试是快速筛网，用户动作是最终确认。
+
+Loop 能把一项任务带到终点，却没有回答产品由哪些角色、状态和系统承担。下一部分把刚才的工作流翻译成规格、领域对象、事件和架构选择。

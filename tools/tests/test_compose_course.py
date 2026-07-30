@@ -33,6 +33,15 @@ class ComposeCourseTests(unittest.TestCase):
         self.assertTrue(output.endswith("\n"))
         self.assertNotIn("\r", output)
 
+    def test_cases_are_grouped_and_demoted_in_the_handbook(self) -> None:
+        manifest = compose_course.load_manifest()
+        output = compose_course.compose(manifest)
+        self.assertEqual(4, len(manifest["case_groups"]))
+        self.assertEqual(24, output.count("### 综合案例 B"))
+        self.assertNotIn("\n# 综合案例 B", output)
+        self.assertIn("## 经营与公共服务：材料不全时怎样继续工作", output)
+        self.assertIn("#### 八万多元取消单，先别猜原单", output)
+
 
 if __name__ == "__main__":
     unittest.main()

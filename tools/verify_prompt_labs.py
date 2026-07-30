@@ -10,6 +10,7 @@ from compose_course import compose, load_manifest
 
 
 ROOT = Path(__file__).resolve().parents[1]
+PROMPT_STEPS = ["第一步", "第二步", "第三步", "第四步", "第五步", "第六步"]
 
 
 def fail(errors: list[str]) -> int:
@@ -23,14 +24,14 @@ def main() -> int:
     text = compose(load_manifest())
     errors: list[str] = []
 
-    units = re.findall(r"^## (P\d{3})\s", text, flags=re.MULTILINE)
-    if units != ["P001", "P002", "P003", "P005", "P006", "P008"]:
-        errors.append(f"expected teaching units P001/P002/P003/P005/P006/P008 in order, got {units}")
+    units = re.findall(r"^## (第[一二三四五六]步)\s", text, flags=re.MULTILINE)
+    if units != PROMPT_STEPS:
+        errors.append(f"expected six visible Prompt steps in order, got {units}")
 
-    unit_blocks = re.split(r"(?=^## P\d{3}\s)", text, flags=re.MULTILINE)[1:]
+    unit_blocks = re.split(r"(?=^## 第[一二三四五六]步\s)", text, flags=re.MULTILINE)[1:]
     experiment_count = 0
     for unit in unit_blocks:
-        unit_id = re.match(r"## (P\d{3})", unit)
+        unit_id = re.match(r"## (第[一二三四五六]步)", unit)
         name = unit_id.group(1) if unit_id else "unknown"
         experiments = re.split(r"(?=^### 实验 \d+：)", unit, flags=re.MULTILINE)[1:]
         experiment_count += len(experiments)
@@ -38,11 +39,15 @@ def main() -> int:
             errors.append(f"{name} expected 3 experiments, got {len(experiments)}")
         for experiment in experiments:
             title = experiment.splitlines()[0]
-            for heading in ("#### 场景资料", "#### 可见结果", "#### 讲解"):
-                if heading not in experiment:
-                    errors.append(f"{title} missing {heading.removeprefix('#### ')}")
-            if not re.search(r"^#### (?:原始 |改写 )?Prompt$|^#### Prompt$", experiment, re.MULTILINE):
-                errors.append(f"{title} missing a Prompt heading")
+            for cue in ("**手里的材料**", "**结果对照**", "**这一轮练什么**"):
+                if cue not in experiment:
+                    errors.append(f"{title} missing inline cue {cue}")
+            if not re.search(
+                r"^\*\*(?:第一次怎么问|换一种问法|可以直接使用的 Prompt)\*\*$",
+                experiment,
+                re.MULTILINE,
+            ):
+                errors.append(f"{title} missing a copyable Prompt cue")
             if "~~~text" not in experiment:
                 errors.append(f"{title} missing a copyable text Prompt")
 
