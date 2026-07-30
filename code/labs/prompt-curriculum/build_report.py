@@ -12,7 +12,7 @@ from typing import Any
 COURSE_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_MANIFEST_DIR = COURSE_ROOT / "dataset" / "P-prompt-curriculum"
 DEFAULT_RECEIPT_DIR = COURSE_ROOT / "evidence" / "runtime" / "prompt-curriculum"
-EXPECTED_IDS = [f"P{index:02d}" for index in range(1, 9)]
+EXPECTED_IDS = [f"P{index:03d}" for index in range(1, 9)]
 SENSITIVE_KEY_NAMES = {"authorization", "apikey", "api_key", "dashscope_api_key"}
 SENSITIVE_VALUE_PATTERN = re.compile(r"(?i)\bauthorization\b|\bbearer\s+\S+|DASHSCOPE_API_KEY")
 
@@ -302,7 +302,7 @@ def write_outputs(report: dict[str, Any], markdown_output: Path, json_output: Pa
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Build a deterministic report from P01-P08 Prompt A/B receipts")
+    parser = argparse.ArgumentParser(description="Build a deterministic report from P001-P008 Prompt A/B receipts")
     parser.add_argument("--manifest-dir", type=Path, default=DEFAULT_MANIFEST_DIR)
     parser.add_argument("--receipt-dir", type=Path, default=DEFAULT_RECEIPT_DIR)
     parser.add_argument("--markdown-output", type=Path, required=True)

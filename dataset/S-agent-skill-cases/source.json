@@ -3,8 +3,8 @@
   "dataset_id": "S-agent-skill-cases",
   "state": "course-local",
   "data_nature": "deterministic-course-action-summaries",
-  "boundary": "32条课程摘要依据当前本地Skill工件整理；不是在线Agent轨迹、外部Provider回执、隐藏推理或业务成效。只有S04四行是机会图生成器的直接输入。",
-  "materialized_from": "evidence/runtime/agent-skills/S01-S08/receipt.json",
+  "boundary": "32条课程摘要依据当前本地Skill工件整理；不是在线Agent轨迹、外部Provider回执、隐藏推理或业务成效。只有S004四行是机会图生成器的直接输入。",
+  "materialized_from": "evidence/runtime/agent-skills/S001-S008/receipt.json",
   "sources": [
     {"id":"SKILL-SPEC-OPENAI","kind":"public-github-method-reference"},
     {"id":"SKILL-PM-DEANPETERS","kind":"public-github-method-reference"},

@@ -49,7 +49,7 @@ describe("productized domain gates for cases 19 and 20", () => {
       reviewNote: "先核对泵泄漏，再核对比例阀和冷却器状态。",
     };
     const input: DomainCommandInput = {
-      caseId: "19",
+      caseId: "B019",
       command: "submit_maintenance_review",
       actorRole: "reliability_engineer",
       actorId: "reliability-engineer-01",
@@ -64,7 +64,7 @@ describe("productized domain gates for cases 19 and 20", () => {
         "basis:sensor-trend-20",
       ],
       data,
-      current: projection("19", payload),
+      current: projection("B019", payload),
     };
     expect(() => validateDomainCommand(input)).not.toThrow();
     expect(() => validateDomainCommand({
@@ -114,7 +114,7 @@ describe("productized domain gates for cases 19 and 20", () => {
       },
     };
     const input: DomainCommandInput = {
-      caseId: "20",
+      caseId: "B020",
       command: "submit_station_check",
       actorRole: "performance_engineer",
       actorId: "performance-engineer-01",
@@ -126,7 +126,7 @@ describe("productized domain gates for cases 19 and 20", () => {
         "load-failure:maintenance-work-order",
       ],
       data,
-      current: projection("20", payload),
+      current: projection("B020", payload),
     };
     expect(() => validateDomainCommand(input)).not.toThrow();
     expect(() => validateDomainCommand({

@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0",
+  "case_id": "B016",
+  "row_count": 938,
+  "columns": [
+    {
+      "name": "turbine_id",
+      "origin": "source-fact"
+    },
+    {
+      "name": "day",
+      "origin": "source-fact"
+    },
+    {
+      "name": "source_records",
+      "origin": "source-fact"
+    },
+    {
+      "name": "valid_wind_records",
+      "origin": "source-fact"
+    },
+    {
+      "name": "valid_power_records",
+      "origin": "source-fact"
+    },
+    {
+      "name": "mean_wind_speed",
+      "origin": "source-fact"
+    },
+    {
+      "name": "mean_active_power",
+      "origin": "source-fact"
+    },
+    {
+      "name": "underperformance_share",
+      "origin": "derived"
+    },
+    {
+      "name": "turbine_x",
+      "origin": "source-fact"
+    },
+    {
+      "name": "turbine_y",
+      "origin": "source-fact"
+    },
+    {
+      "name": "manual_inspection_only",
+      "origin": "derived"
+    },
+    {
+      "name": "allowed_action",
+      "origin": "derived"
+    },
+    {
+      "name": "data_nature",
+      "origin": "derived"
+    }
+  ],
+  "supplemental_artifacts": [
+    {
+      "path": "turbine-locations.csv",
+      "row_count": 134,
+      "columns": [
+        "turbine_id",
+        "turbine_x",
+        "turbine_y",
+        "data_nature"
+      ],
+      "source_ids": [
+        "DATA-16"
+      ],
+      "data_nature": "public-location-fact"
+    }
+  ]
+}

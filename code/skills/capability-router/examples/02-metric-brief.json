@@ -1,8 +1,8 @@
 {
-  "task_id": "S01-example-02",
+  "task_id": "S001-example-02",
   "task": "基于会员分层 CSV 生成一页会员经营简报，评估8元优惠券是否先在成长分层做实验。",
   "inputs": {
-    "csv_path": "dataset/02-member-value-experiment/case.csv",
+    "csv_path": "dataset/B002-member-value-experiment/case.csv",
     "coupon_amount_cny": 8,
     "target_segment": "成长"
   },

@@ -4,8 +4,8 @@
   "states": ["observe", "choose", "act", "check", "revise", "waiting_human", "completed"],
   "stopConditions": ["acceptance_passed", "visual_choice_required", "permission_required"],
   "cases": [
-    {"id": "L01", "artifact": "loop-run-L01.json", "terminal": "completed", "stopReason": "acceptance_passed"},
-    {"id": "L02", "artifact": "loop-run-L02.json", "terminal": "waiting_human", "stopReason": "visual_choice_required"},
-    {"id": "L03", "artifact": "loop-run-L03.json", "terminal": "waiting_human", "stopReason": "permission_required"}
+    {"id": "L001", "artifact": "loop-run-L001.json", "terminal": "completed", "stopReason": "acceptance_passed"},
+    {"id": "L002", "artifact": "loop-run-L002.json", "terminal": "waiting_human", "stopReason": "visual_choice_required"},
+    {"id": "L003", "artifact": "loop-run-L003.json", "terminal": "waiting_human", "stopReason": "permission_required"}
   ]
 }

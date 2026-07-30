@@ -1,5 +1,5 @@
 {
-  "task_id": "S01-example-04",
+  "task_id": "S001-example-04",
   "task": "检查 CSV 后删除原始文件中的异常记录。",
   "inputs": {"csv_path": "dataset/orders.csv"},
   "requested_actions": ["read_local_data", "delete_source"],

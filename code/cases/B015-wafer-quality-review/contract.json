@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "B015",
+  "slug": "wafer-quality-review",
+  "title": "生产观测 SECOM-0003 未通过：先复测，还是先查通道？",
+  "industry": "半导体制造",
+  "family": "industrial",
+  "tier": "flagship",
+  "dataset_path": "dataset/B015-wafer-quality-review",
+  "route": "/cases/B015/work",
+  "runtime_mode": "offline_replay_and_optional_live_model",
+  "productization": {
+    "metrics": [
+      "未通过观测",
+      "高优先级复核",
+      "禁止自动报废"
+    ],
+    "decision_fields": [
+      "quality_label",
+      "review_priority",
+      "automatic_scrap_allowed"
+    ],
+    "selection_changes_decision": true,
+    "business_state_changes_on_server": true
+  }
+}

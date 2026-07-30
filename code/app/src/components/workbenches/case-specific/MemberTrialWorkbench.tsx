@@ -332,7 +332,7 @@ export function MemberTrialWorkbench(props: CaseWorkbenchProps) {
     props.onCommand(commandId, trialPlanReason, {
       data: trialData,
       evidenceIds: ["DATA-02", `cohort:${assignmentKey}`, `selected:${String(selectedRow.user_id ?? props.selected.objectId)}`],
-      idempotencyKey: `case-02:${props.selected.objectId}:design_trial:v${props.selected.version}:${assignmentKey}`,
+      idempotencyKey: `case-B002:${props.selected.objectId}:design_trial:v${props.selected.version}:${assignmentKey}`,
     });
   }
 

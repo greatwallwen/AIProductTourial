@@ -366,14 +366,14 @@ export function HydraulicConditionWorkbench(props: CaseWorkbenchProps) {
 
         <div className={styles.headerTools}>
           <label className={styles.role}><UserRound aria-hidden="true" size={16} /><select aria-label="当前操作角色" value={props.actorRole} onChange={(event) => props.onActorRoleChange(event.target.value)}>{props.roles.map((role) => <option value={role} key={role}>{roleLabel(role)}</option>)}</select></label>
-          <button type="button" aria-label="恢复案例 B19" title="恢复案例 B19" onClick={reset} disabled={props.busy}><RefreshCw aria-hidden="true" size={17} /></button>
+          <button type="button" aria-label="恢复案例 B019" title="恢复案例 B019" onClick={reset} disabled={props.busy}><RefreshCw aria-hidden="true" size={17} /></button>
         </div>
       </header>
 
       <section className={styles.workspace}>
         <section className={styles.visualColumn}>
           <section className={`${styles.scene} ${v3Styles.sceneV3}`} aria-label="液压动力单元现场" data-render-mode={sceneMode}>
-            <img src="/case-assets/case-19/scene.png" alt="液压动力单元设备语境示意（非来源现场）" suppressHydrationWarning />
+            <img src="/case-assets/case-B019/scene.png" alt="液压动力单元设备语境示意（非来源现场）" suppressHydrationWarning />
             <div className={styles.sceneShade} aria-hidden="true" />
             {webglAvailable && threeDRequested && !sceneFailed ? (
               <SceneErrorBoundary onError={() => {

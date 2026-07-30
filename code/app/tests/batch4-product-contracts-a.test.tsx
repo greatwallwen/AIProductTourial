@@ -30,7 +30,7 @@ const metroGapRows = [
 
 function metroProjection(task?: Record<string, unknown>): CaseProjection {
   return {
-    caseId: "09",
+    caseId: "B009",
     objectId: "09-gap-window",
     state: "待检索",
     version: 0,
@@ -43,7 +43,7 @@ function metroProjection(task?: Record<string, unknown>): CaseProjection {
 function metroProps(overrides: Partial<CaseWorkbenchProps> = {}): CaseWorkbenchProps {
   const selected = metroProjection();
   return {
-    definition: getCaseDefinition("09")!,
+    definition: getCaseDefinition("B009")!,
     objects: [selected], selected, events: [], metrics: [], datasetRowCount: 4090,
     sceneRows: metroGapRows, supportingArtifacts: { "knowledge.jsonl": knowledge },
     actorRole: "engineer", roles: ["engineer", "supervisor"],
@@ -77,7 +77,7 @@ const persistedReview = {
 
 function flotationProjection(task?: Record<string, unknown>): CaseProjection {
   return {
-    caseId: "14", objectId: "14-55", state: "工艺复核中", version: 1,
+    caseId: "B014", objectId: "14-55", state: "工艺复核中", version: 1,
     payload: flotationRows[55]!, task, updatedAt: "2026-07-26T08:00:00.000Z",
   };
 }
@@ -85,7 +85,7 @@ function flotationProjection(task?: Record<string, unknown>): CaseProjection {
 function flotationProps(overrides: Partial<CaseWorkbenchProps> = {}): CaseWorkbenchProps {
   const selected = flotationProjection();
   return {
-    definition: getCaseDefinition("14")!, objects: [selected], selected, events: [], metrics: [], datasetRowCount: 720,
+    definition: getCaseDefinition("B014")!, objects: [selected], selected, events: [], metrics: [], datasetRowCount: 720,
     sceneRows: flotationRows, supportingArtifacts: {}, actorRole: "process_engineer", roles: ["process_engineer", "supervisor"],
     commands: [{ id: "submit_process_review", label: "提交工艺复核", tone: "primary" }], busy: false,
     onActorRoleChange: vi.fn(), onCommand: vi.fn(), onReset: vi.fn(), onSelect: vi.fn(),

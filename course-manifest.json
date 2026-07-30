@@ -1,22 +1,117 @@
 {
-  "schema_version": "5.0",
-  "updated_at": "2026-07-29T15:40:00+08:00",
+  "schema_version": "6.0",
+  "updated_at": "2026-07-30T13:13:00+08:00",
   "case_id_policy": {
-    "teaching_ids": "B01-B20",
-    "runtime_ids": "01-20",
-    "rule": "驾驶舱、教程和公开路由使用 B 前缀；内部数据目录、API 和既有状态合同继续使用两位运行 ID。"
+    "canonical_pattern": "P/S/L/B + three digits",
+    "business_case_ids": "B001-B024",
+    "display_order_field": "display_order",
+    "legacy_routes": "redirect_only",
+    "rule": "清单、目录、API、状态与公开路由使用同一个三位主编号；排序不写入编号。"
   },
   "capability_spine": {
-    "prompt_labs": ["P01", "P02", "P03", "P04", "P05", "P06", "P07", "P08"],
-    "agent_skill_cases": ["S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08"],
-    "loop_cases": ["L01", "L02", "L03"],
-    "business_cases": ["B01", "B02", "B03", "B04", "B05", "B06", "B07", "B08", "B09", "B10", "B11", "B12", "B13", "B14", "B15", "B16", "B17", "B18", "B19", "B20"]
+    "prompt_labs": [
+      "P001",
+      "P002",
+      "P003",
+      "P004",
+      "P005",
+      "P006",
+      "P007",
+      "P008"
+    ],
+    "agent_skill_cases": [
+      "S001",
+      "S002",
+      "S003",
+      "S004",
+      "S005",
+      "S006",
+      "S007",
+      "S008"
+    ],
+    "loop_cases": [
+      "L001",
+      "L002",
+      "L003"
+    ],
+    "business_cases": [
+      "B001",
+      "B002",
+      "B003",
+      "B004",
+      "B005",
+      "B006",
+      "B007",
+      "B008",
+      "B009",
+      "B010",
+      "B011",
+      "B012",
+      "B013",
+      "B014",
+      "B015",
+      "B016",
+      "B017",
+      "B018",
+      "B019",
+      "B020",
+      "B021",
+      "B022",
+      "B023",
+      "B024"
+    ]
   },
   "teaching_spine": {
-    "prompt_units": ["U01", "U02", "U03", "U04", "U05", "U06"],
-    "agent_skill_workshops": ["S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08"],
-    "loop_patterns": ["L01", "L02", "L03", "L04"],
-    "business_cases": ["B01", "B02", "B03", "B04", "B05", "B06", "B07", "B08", "B09", "B10", "B11", "B12", "B13", "B14", "B15", "B16", "B17", "B18", "B19", "B20"]
+    "prompt_units": [
+      "P001",
+      "P002",
+      "P003",
+      "P005",
+      "P006",
+      "P008"
+    ],
+    "agent_skill_workshops": [
+      "S001",
+      "S002",
+      "S003",
+      "S004",
+      "S005",
+      "S006",
+      "S007",
+      "S008"
+    ],
+    "loop_patterns": [
+      "L001",
+      "L002",
+      "L003",
+      "L004"
+    ],
+    "business_cases": [
+      "B001",
+      "B002",
+      "B003",
+      "B004",
+      "B005",
+      "B006",
+      "B007",
+      "B008",
+      "B009",
+      "B010",
+      "B011",
+      "B012",
+      "B013",
+      "B014",
+      "B015",
+      "B016",
+      "B017",
+      "B018",
+      "B019",
+      "B020",
+      "B021",
+      "B022",
+      "B023",
+      "B024"
+    ]
   },
   "course": {
     "id": "ai-product-engineering",
@@ -32,8 +127,8 @@
       "title": "逻辑、证据与 AI 基础",
       "purpose": "约束结论、反例与模型能力边界",
       "case_ids": [
-        "B01",
-        "B04"
+        "B001",
+        "B004"
       ]
     },
     {
@@ -41,9 +136,13 @@
       "title": "业务问题、需求合同与指标",
       "purpose": "把业务愿望改写为可追踪决定",
       "case_ids": [
-        "B03",
-        "B06",
-        "B13"
+        "B003",
+        "B006",
+        "B013",
+        "B021",
+        "B022",
+        "B023",
+        "B024"
       ]
     },
     {
@@ -51,13 +150,13 @@
       "title": "数据、实验与因果边界",
       "purpose": "建立真实性、口径与因果声明门槛",
       "case_ids": [
-        "B02",
-        "B06",
-        "B14",
-        "B15",
-        "B16",
-        "B18",
-        "B20"
+        "B002",
+        "B006",
+        "B014",
+        "B015",
+        "B016",
+        "B018",
+        "B020"
       ]
     },
     {
@@ -65,8 +164,8 @@
       "title": "Prompt、Context、Harness 与 Loop",
       "purpose": "把模型调用装入可停止反馈回路",
       "case_ids": [
-        "B08",
-        "B09"
+        "B008",
+        "B009"
       ]
     },
     {
@@ -74,8 +173,8 @@
       "title": "规格驱动的系统架构",
       "purpose": "用质量属性、C4、契约和 ADR 固化决定",
       "case_ids": [
-        "B07",
-        "B10"
+        "B007",
+        "B010"
       ]
     },
     {
@@ -83,16 +182,20 @@
       "title": "领域、状态与事件",
       "purpose": "用通用语言、不变量和事件维护业务真相",
       "case_ids": [
-        "B05",
-        "B07",
-        "B08",
-        "B13",
-        "B14",
-        "B16",
-        "B17",
-        "B18",
-        "B19",
-        "B20"
+        "B005",
+        "B007",
+        "B008",
+        "B013",
+        "B014",
+        "B016",
+        "B017",
+        "B018",
+        "B019",
+        "B020",
+        "B021",
+        "B022",
+        "B023",
+        "B024"
       ]
     },
     {
@@ -100,9 +203,9 @@
       "title": "检索、智能体与长期执行",
       "purpose": "约束 RAG、多智能体、恢复和停止",
       "case_ids": [
-        "B09",
-        "B10",
-        "B11"
+        "B009",
+        "B010",
+        "B011"
       ]
     },
     {
@@ -110,26 +213,30 @@
       "title": "React/Next.js 工程与可执行证据",
       "purpose": "把代码、构建、浏览器和截图形成证据链",
       "case_ids": [
-        "B01",
-        "B02",
-        "B03",
-        "B04",
-        "B05",
-        "B06",
-        "B07",
-        "B08",
-        "B09",
-        "B10",
-        "B11",
-        "B12",
-        "B13",
-        "B14",
-        "B15",
-        "B16",
-        "B17",
-        "B18",
-        "B19",
-        "B20"
+        "B001",
+        "B002",
+        "B003",
+        "B004",
+        "B005",
+        "B006",
+        "B007",
+        "B008",
+        "B009",
+        "B010",
+        "B011",
+        "B012",
+        "B013",
+        "B014",
+        "B015",
+        "B016",
+        "B017",
+        "B018",
+        "B019",
+        "B020",
+        "B021",
+        "B022",
+        "B023",
+        "B024"
       ]
     },
     {
@@ -137,8 +244,8 @@
       "title": "Skill 与知识资产治理",
       "purpose": "管理可复用规程、版本、权限和受控进化",
       "case_ids": [
-        "B10",
-        "B11"
+        "B010",
+        "B011"
       ]
     },
     {
@@ -146,12 +253,12 @@
       "title": "人工审批、发布与事故处理",
       "purpose": "控制高风险决定、降级、回滚和复盘",
       "case_ids": [
-        "B04",
-        "B05",
-        "B11",
-        "B12",
-        "B15",
-        "B17"
+        "B004",
+        "B005",
+        "B011",
+        "B012",
+        "B015",
+        "B017"
       ]
     }
   ],
@@ -169,7 +276,7 @@
   },
   "cases": [
     {
-      "id": "01",
+      "id": "B001",
       "slug": "retail-return-evidence",
       "title": "一张 8.17 万元取消单，缺的是哪张原单？",
       "runtime_title": "跨境售后异常调查 | AI 时代产品工程",
@@ -179,13 +286,13 @@
         "C08"
       ],
       "dataset_target": "UCI Online Retail II",
-      "dataset_path": "dataset/01-retail-return-evidence",
-      "code_path": "code/cases/01-retail-return-evidence",
+      "dataset_path": "dataset/B001-retail-return-evidence",
+      "code_path": "code/cases/B001-retail-return-evidence",
       "screenshots": [
         "evidence/screenshots/01-work-productized.png"
       ],
       "status": "verified_shared_runtime",
-      "route": "/cases/B01/work",
+      "route": "/cases/B001",
       "family": "commerce",
       "tier": "flagship",
       "runtime_mode": "offline_replay_and_optional_live_model",
@@ -202,10 +309,11 @@
         ],
         "selection_changes_decision": true,
         "business_state_changes_on_server": true
-      }
+      },
+      "display_order": 1
     },
     {
-      "id": "02",
+      "id": "B002",
       "slug": "member-value-experiment",
       "title": "3,000 元预算，8 元券先发给谁？",
       "runtime_title": "会员优惠首批试投 | AI 时代产品工程",
@@ -215,13 +323,13 @@
         "C08"
       ],
       "dataset_target": "Beibei user behavior（Figshare）",
-      "dataset_path": "dataset/02-member-value-experiment",
-      "code_path": "code/cases/02-member-value-experiment",
+      "dataset_path": "dataset/B002-member-value-experiment",
+      "code_path": "code/cases/B002-member-value-experiment",
       "screenshots": [
         "evidence/screenshots/02-work-productized.png"
       ],
       "status": "verified_shared_runtime",
-      "route": "/cases/B02/work",
+      "route": "/cases/B002",
       "family": "commerce",
       "tier": "complete",
       "runtime_mode": "deterministic_offline",
@@ -238,10 +346,11 @@
         ],
         "selection_changes_decision": true,
         "business_state_changes_on_server": true
-      }
+      },
+      "display_order": 2
     },
     {
-      "id": "03",
+      "id": "B003",
       "slug": "local-service-voc",
       "title": "6,970 条餐饮评论，先把哪个问题查清？",
       "runtime_title": "顾客评论研究室 | AI 时代产品工程",
@@ -251,13 +360,13 @@
         "C08"
       ],
       "dataset_target": "美团 ASAP 中文评论数据",
-      "dataset_path": "dataset/03-local-service-voc",
-      "code_path": "code/cases/03-local-service-voc",
+      "dataset_path": "dataset/B003-local-service-voc",
+      "code_path": "code/cases/B003-local-service-voc",
       "screenshots": [
         "evidence/screenshots/03-work-productized.png"
       ],
       "status": "verified_shared_runtime",
-      "route": "/cases/B03/work",
+      "route": "/cases/B003",
       "family": "commerce",
       "tier": "complete",
       "runtime_mode": "deterministic_offline",
@@ -274,10 +383,11 @@
         ],
         "selection_changes_decision": true,
         "business_state_changes_on_server": true
-      }
+      },
+      "display_order": 3
     },
     {
-      "id": "04",
+      "id": "B004",
       "slug": "credit-human-review",
       "title": "收入证明缺失：谁补，谁复核？",
       "runtime_title": "申请材料补正与双岗复核 | AI 时代产品工程",
@@ -288,13 +398,13 @@
         "C10"
       ],
       "dataset_target": "中国场景确定性合成申请记录（UCI 仅作方法参考）",
-      "dataset_path": "dataset/04-credit-human-review",
-      "code_path": "code/cases/04-credit-human-review",
+      "dataset_path": "dataset/B004-credit-human-review",
+      "code_path": "code/cases/B004-credit-human-review",
       "screenshots": [
         "evidence/screenshots/04-work-productized.png"
       ],
       "status": "verified_shared_runtime",
-      "route": "/cases/B04/work",
+      "route": "/cases/B004",
       "family": "approval",
       "tier": "complete",
       "runtime_mode": "deterministic_offline",
@@ -311,10 +421,11 @@
         ],
         "selection_changes_decision": true,
         "business_state_changes_on_server": true
-      }
+      },
+      "display_order": 4
     },
     {
-      "id": "05",
+      "id": "B005",
       "slug": "hospital-flow-coordination",
       "title": "08:27 发生，09:09 才收到：这条更正怎么处理？",
       "runtime_title": "转运晚到事件调和单 | AI 时代产品工程",
@@ -325,13 +436,13 @@
         "C10"
       ],
       "dataset_target": "基于 PIC 字段契约的确定性合成事件",
-      "dataset_path": "dataset/05-hospital-flow-coordination",
-      "code_path": "code/cases/05-hospital-flow-coordination",
+      "dataset_path": "dataset/B005-hospital-flow-coordination",
+      "code_path": "code/cases/B005-hospital-flow-coordination",
       "screenshots": [
         "evidence/screenshots/05-work-productized.png"
       ],
       "status": "verified_shared_runtime",
-      "route": "/cases/B05/work",
+      "route": "/cases/B005",
       "family": "approval",
       "tier": "flagship",
       "runtime_mode": "offline_replay_and_optional_live_model",
@@ -348,10 +459,11 @@
         ],
         "selection_changes_decision": true,
         "business_state_changes_on_server": true
-      }
+      },
+      "display_order": 5
     },
     {
-      "id": "06",
+      "id": "B006",
       "slug": "beijing-air-quality-audit",
       "title": "古城站 12:00 六项污染物全空：这条记录要不要纳入摘录？",
       "runtime_title": "历史空气质量数据摘录质检 | AI 时代产品工程",
@@ -362,13 +474,13 @@
         "C08"
       ],
       "dataset_target": "UCI Beijing Multi-Site Air Quality",
-      "dataset_path": "dataset/06-beijing-air-quality-audit",
-      "code_path": "code/cases/06-beijing-air-quality-audit",
+      "dataset_path": "dataset/B006-beijing-air-quality-audit",
+      "code_path": "code/cases/B006-beijing-air-quality-audit",
       "screenshots": [
         "evidence/screenshots/06-work-productized.png"
       ],
       "status": "verified_shared_runtime",
-      "route": "/cases/B06/work",
+      "route": "/cases/B006",
       "family": "investigation",
       "tier": "complete",
       "runtime_mode": "deterministic_offline",
@@ -385,10 +497,11 @@
         ],
         "selection_changes_decision": true,
         "business_state_changes_on_server": true
-      }
+      },
+      "display_order": 6
     },
     {
-      "id": "07",
+      "id": "B007",
       "slug": "instant-retail-architecture",
       "title": "请求更少，履约为什么反而最慢？",
       "runtime_title": "即时履约架构评审 | AI 时代产品工程",
@@ -399,13 +512,13 @@
         "C08"
       ],
       "dataset_target": "Mendeley O2O Order Data Set",
-      "dataset_path": "dataset/07-instant-retail-architecture",
-      "code_path": "code/cases/07-instant-retail-architecture",
+      "dataset_path": "dataset/B007-instant-retail-architecture",
+      "code_path": "code/cases/B007-instant-retail-architecture",
       "screenshots": [
         "evidence/screenshots/07-work-productized.png"
       ],
       "status": "verified_shared_runtime",
-      "route": "/cases/B07/work",
+      "route": "/cases/B007",
       "family": "commerce",
       "tier": "complete",
       "runtime_mode": "deterministic_offline",
@@ -423,10 +536,11 @@
         ],
         "selection_changes_decision": true,
         "business_state_changes_on_server": true
-      }
+      },
+      "display_order": 7
     },
     {
-      "id": "08",
+      "id": "B008",
       "slug": "aquaculture-event-response",
       "title": "数值冲突：谁取证，谁采信？",
       "runtime_title": "水质冲突现场取证单 | AI 时代产品工程",
@@ -437,13 +551,13 @@
         "C08"
       ],
       "dataset_target": "确定性中国水质运营记录",
-      "dataset_path": "dataset/08-aquaculture-event-response",
-      "code_path": "code/cases/08-aquaculture-event-response",
+      "dataset_path": "dataset/B008-aquaculture-event-response",
+      "code_path": "code/cases/B008-aquaculture-event-response",
       "screenshots": [
         "evidence/screenshots/08-work-productized.png"
       ],
       "status": "verified_shared_runtime",
-      "route": "/cases/B08/work",
+      "route": "/cases/B008",
       "family": "investigation",
       "tier": "complete",
       "runtime_mode": "deterministic_offline",
@@ -460,10 +574,11 @@
         ],
         "selection_changes_decision": true,
         "business_state_changes_on_server": true
-      }
+      },
+      "display_order": 8
     },
     {
-      "id": "09",
+      "id": "B009",
       "slug": "metro-agentic-rag",
       "title": "352 秒没有记录：现在能不能提交检查申请？",
       "runtime_title": "空压机遥测断档调查 | AI 时代产品工程",
@@ -474,13 +589,13 @@
         "C08"
       ],
       "dataset_target": "UCI MetroPT-3",
-      "dataset_path": "dataset/09-metro-agentic-rag",
-      "code_path": "code/cases/09-metro-agentic-rag",
+      "dataset_path": "dataset/B009-metro-agentic-rag",
+      "code_path": "code/cases/B009-metro-agentic-rag",
       "screenshots": [
         "evidence/screenshots/09-work-productized.png"
       ],
       "status": "verified_shared_runtime",
-      "route": "/cases/B09/work",
+      "route": "/cases/B009",
       "family": "investigation",
       "tier": "flagship",
       "runtime_mode": "deterministic_offline",
@@ -497,10 +612,11 @@
         ],
         "selection_changes_decision": true,
         "business_state_changes_on_server": true
-      }
+      },
+      "display_order": 9
     },
     {
-      "id": "10",
+      "id": "B010",
       "slug": "telecom-complaint-orchestration",
       "title": "查询已经发出，响应没回来：现在能不能重试？",
       "runtime_title": "通信请求恢复核查",
@@ -512,13 +628,13 @@
         "C09"
       ],
       "dataset_target": "中国通信投诉确定性运营记录（FCC 仅作字段参考）",
-      "dataset_path": "dataset/10-telecom-complaint-orchestration",
-      "code_path": "code/cases/10-telecom-complaint-orchestration",
+      "dataset_path": "dataset/B010-telecom-complaint-orchestration",
+      "code_path": "code/cases/B010-telecom-complaint-orchestration",
       "screenshots": [
         "evidence/screenshots/10-work-productized.png"
       ],
       "status": "verified_shared_runtime",
-      "route": "/cases/B10/work",
+      "route": "/cases/B010",
       "family": "approval",
       "tier": "flagship",
       "runtime_mode": "offline_replay_and_optional_live_model",
@@ -535,10 +651,11 @@
         ],
         "selection_changes_decision": true,
         "business_state_changes_on_server": true
-      }
+      },
+      "display_order": 10
     },
     {
-      "id": "11",
+      "id": "B011",
       "slug": "model-release-multi-agent",
       "title": "地区切片没有过线：先补测，再谈准入",
       "runtime_title": "企业模型准入补测",
@@ -550,13 +667,13 @@
         "C10"
       ],
       "dataset_target": "Qwen 公开候选材料 + 9 条确定性课程评测",
-      "dataset_path": "dataset/11-model-release-multi-agent",
-      "code_path": "code/cases/11-model-release-multi-agent",
+      "dataset_path": "dataset/B011-model-release-multi-agent",
+      "code_path": "code/cases/B011-model-release-multi-agent",
       "screenshots": [
         "evidence/screenshots/11-work-productized.png"
       ],
       "status": "verified_shared_runtime",
-      "route": "/cases/B11/work",
+      "route": "/cases/B011",
       "family": "approval",
       "tier": "flagship",
       "runtime_mode": "offline_replay_and_optional_live_model",
@@ -573,10 +690,11 @@
         ],
         "selection_changes_decision": true,
         "business_state_changes_on_server": true
-      }
+      },
+      "display_order": 11
     },
     {
-      "id": "12",
+      "id": "B012",
       "slug": "vaccine-cold-chain",
       "title": "30 条记录里有 5 次越界，缺的交接证据怎么补？",
       "runtime_title": "县域冷链运输记录调查",
@@ -586,13 +704,13 @@
         "C10"
       ],
       "dataset_target": "360 条中国县域课程运营记录 + Mendeley 公开热性能参考",
-      "dataset_path": "dataset/12-vaccine-cold-chain",
-      "code_path": "code/cases/12-vaccine-cold-chain",
+      "dataset_path": "dataset/B012-vaccine-cold-chain",
+      "code_path": "code/cases/B012-vaccine-cold-chain",
       "screenshots": [
         "evidence/screenshots/12-work-productized.png"
       ],
       "status": "verified_shared_runtime",
-      "route": "/cases/B12/work",
+      "route": "/cases/B012",
       "family": "approval",
       "tier": "complete",
       "runtime_mode": "deterministic_offline",
@@ -609,10 +727,11 @@
         ],
         "selection_changes_decision": true,
         "business_state_changes_on_server": true
-      }
+      },
+      "display_order": 12
     },
     {
-      "id": "13",
+      "id": "B013",
       "slug": "auto-service-triage",
       "title": "CN-AS-001 制动异响：客户回答够不够转技师？",
       "runtime_title": "接车通话安全分流 | AI 时代产品工程",
@@ -623,13 +742,13 @@
         "C08"
       ],
       "dataset_target": "汽车服务公开参考 + 中国场景合成进线",
-      "dataset_path": "dataset/13-auto-service-triage",
-      "code_path": "code/cases/13-auto-service-triage",
+      "dataset_path": "dataset/B013-auto-service-triage",
+      "code_path": "code/cases/B013-auto-service-triage",
       "screenshots": [
         "evidence/screenshots/13-work-productized.png"
       ],
       "status": "verified_shared_runtime",
-      "route": "/cases/B13/work",
+      "route": "/cases/B013",
       "family": "commerce",
       "tier": "complete",
       "runtime_mode": "deterministic_offline",
@@ -646,10 +765,11 @@
         ],
         "selection_changes_decision": true,
         "business_state_changes_on_server": true
-      }
+      },
+      "display_order": 13
     },
     {
-      "id": "14",
+      "id": "B014",
       "slug": "flotation-impurity-review",
       "title": "精矿硅连续 39 小时处于高值区：药剂、矿浆还是仪表？",
       "runtime_title": "浮选杂质趋势复核 | AI 时代产品工程",
@@ -660,13 +780,13 @@
         "C08"
       ],
       "dataset_target": "Kaggle 浮选过程质量数据",
-      "dataset_path": "dataset/14-flotation-impurity-review",
-      "code_path": "code/cases/14-flotation-impurity-review",
+      "dataset_path": "dataset/B014-flotation-impurity-review",
+      "code_path": "code/cases/B014-flotation-impurity-review",
       "screenshots": [
         "evidence/screenshots/14-work-productized.png"
       ],
       "status": "verified_shared_runtime",
-      "route": "/cases/B14/work",
+      "route": "/cases/B014",
       "family": "industrial",
       "tier": "complete",
       "runtime_mode": "deterministic_offline",
@@ -683,10 +803,11 @@
         ],
         "selection_changes_decision": true,
         "business_state_changes_on_server": true
-      }
+      },
+      "display_order": 14
     },
     {
-      "id": "15",
+      "id": "B015",
       "slug": "wafer-quality-review",
       "title": "生产观测 SECOM-0003 未通过：先复测，还是先查通道？",
       "runtime_title": "半导体生产记录复测 | AI 时代产品工程",
@@ -697,13 +818,13 @@
         "C10"
       ],
       "dataset_target": "UCI SECOM",
-      "dataset_path": "dataset/15-wafer-quality-review",
-      "code_path": "code/cases/15-wafer-quality-review",
+      "dataset_path": "dataset/B015-wafer-quality-review",
+      "code_path": "code/cases/B015-wafer-quality-review",
       "screenshots": [
         "evidence/screenshots/15-work-productized.png"
       ],
       "status": "verified_shared_runtime",
-      "route": "/cases/B15/work",
+      "route": "/cases/B015",
       "family": "industrial",
       "tier": "flagship",
       "runtime_mode": "offline_replay_and_optional_live_model",
@@ -720,10 +841,11 @@
         ],
         "selection_changes_decision": true,
         "business_state_changes_on_server": true
-      }
+      },
+      "display_order": 15
     },
     {
-      "id": "16",
+      "id": "B016",
       "slug": "wind-underperformance",
       "title": "风机 T007 连续七个运行日出现下偏标记：先补什么？",
       "runtime_title": "T007 七日下偏核查 | AI 时代产品工程",
@@ -734,13 +856,13 @@
         "C08"
       ],
       "dataset_target": "SDWPF 风电数据",
-      "dataset_path": "dataset/16-wind-underperformance",
-      "code_path": "code/cases/16-wind-underperformance",
+      "dataset_path": "dataset/B016-wind-underperformance",
+      "code_path": "code/cases/B016-wind-underperformance",
       "screenshots": [
         "evidence/screenshots/16-work-productized.png"
       ],
       "status": "verified_shared_runtime",
-      "route": "/cases/B16/work",
+      "route": "/cases/B016",
       "family": "industrial",
       "tier": "complete",
       "runtime_mode": "deterministic_offline",
@@ -757,10 +879,11 @@
         ],
         "selection_changes_decision": true,
         "business_state_changes_on_server": true
-      }
+      },
+      "display_order": 16
     },
     {
-      "id": "17",
+      "id": "B017",
       "slug": "cutter-health-review",
       "title": "BD-0003 三路波形都在：要不要列入排检候选？",
       "runtime_title": "BD-0003 切刀波形复核 | AI 时代产品工程",
@@ -771,13 +894,13 @@
         "C10"
       ],
       "dataset_target": "inIT-OWL 工业部件劣化数据",
-      "dataset_path": "dataset/17-cutter-health-review",
-      "code_path": "code/cases/17-cutter-health-review",
+      "dataset_path": "dataset/B017-cutter-health-review",
+      "code_path": "code/cases/B017-cutter-health-review",
       "screenshots": [
         "evidence/screenshots/17-work-productized.png"
       ],
       "status": "verified_shared_runtime",
-      "route": "/cases/B17/work",
+      "route": "/cases/B017",
       "family": "industrial",
       "tier": "complete",
       "runtime_mode": "deterministic_offline",
@@ -794,10 +917,11 @@
         ],
         "selection_changes_decision": true,
         "business_state_changes_on_server": true
-      }
+      },
+      "display_order": 17
     },
     {
-      "id": "18",
+      "id": "B018",
       "slug": "boiler-temperature-review",
       "title": "BT-0044 主汽低温持续 24 分钟：先查哪一段？",
       "runtime_title": "BT-0044 主汽低温事件核查 | AI 时代产品工程",
@@ -808,13 +932,13 @@
         "C08"
       ],
       "dataset_target": "工业锅炉运行时序数据",
-      "dataset_path": "dataset/18-boiler-temperature-review",
-      "code_path": "code/cases/18-boiler-temperature-review",
+      "dataset_path": "dataset/B018-boiler-temperature-review",
+      "code_path": "code/cases/B018-boiler-temperature-review",
       "screenshots": [
-        "evidence/screenshots/18-work-productized.png"
+        "evidence/screenshots/B018-golden-after.png"
       ],
       "status": "verified_shared_runtime",
-      "route": "/cases/B18/work",
+      "route": "/cases/B018",
       "family": "industrial",
       "tier": "complete",
       "runtime_mode": "deterministic_offline",
@@ -832,10 +956,11 @@
         ],
         "selection_changes_decision": true,
         "business_state_changes_on_server": true
-      }
+      },
+      "display_order": 18
     },
     {
-      "id": "19",
+      "id": "B019",
       "slug": "hydraulic-condition",
       "title": "第 217 次测量循环：三项同级，谁先查？",
       "runtime_title": "液压循环检查排序 | AI 时代产品工程",
@@ -845,13 +970,13 @@
         "C08"
       ],
       "dataset_target": "UCI 液压系统状态监测",
-      "dataset_path": "dataset/19-hydraulic-condition",
-      "code_path": "code/cases/19-hydraulic-condition",
+      "dataset_path": "dataset/B019-hydraulic-condition",
+      "code_path": "code/cases/B019-hydraulic-condition",
       "screenshots": [
         "evidence/screenshots/19-work-productized.png"
       ],
       "status": "verified_shared_runtime",
-      "route": "/cases/B19/work",
+      "route": "/cases/B019",
       "family": "industrial",
       "tier": "complete",
       "runtime_mode": "deterministic_offline",
@@ -868,10 +993,11 @@
         ],
         "selection_changes_decision": true,
         "business_state_changes_on_server": true
-      }
+      },
+      "display_order": 19
     },
     {
-      "id": "20",
+      "id": "B020",
       "slug": "pv-loss-attribution",
       "title": "PV-08 在 2020-05-19 出现少发线索：站端先查什么？",
       "runtime_title": "光伏站端记录核查 | AI 时代产品工程",
@@ -882,13 +1008,13 @@
         "C08"
       ],
       "dataset_target": "中国国家电网新能源预测竞赛光伏数据",
-      "dataset_path": "dataset/20-pv-loss-attribution",
-      "code_path": "code/cases/20-pv-loss-attribution",
+      "dataset_path": "dataset/B020-pv-loss-attribution",
+      "code_path": "code/cases/B020-pv-loss-attribution",
       "screenshots": [
         "evidence/screenshots/20-work-productized.png"
       ],
       "status": "verified_shared_runtime",
-      "route": "/cases/B20/work",
+      "route": "/cases/B020",
       "family": "industrial",
       "tier": "complete",
       "runtime_mode": "deterministic_offline",
@@ -905,199 +1031,295 @@
         ],
         "selection_changes_decision": true,
         "business_state_changes_on_server": true
-      }
+      },
+      "display_order": 20
+    },
+    {
+      "id": "B021",
+      "slug": "weekend-route-planner",
+      "title": "两天、800 元、四处想去：上海周末路线怎么排？",
+      "runtime_title": "上海周末路线编排",
+      "industry": "文旅服务",
+      "chapter_ids": ["C02", "C06", "C08"],
+      "dataset_target": "用户提供的中国 POI 历史快照",
+      "dataset_path": "dataset/B021-weekend-route-planner",
+      "code_path": "code/cases/B021-weekend-route-planner",
+      "screenshots": ["evidence/screenshots/B021-work.png"],
+      "status": "verified_shared_runtime",
+      "route": "/cases/B021",
+      "family": "commerce",
+      "tier": "complete",
+      "runtime_mode": "deterministic_offline",
+      "productization": {"metrics": ["路线点", "门票预算", "待核验项"], "decision_fields": ["poi_name", "price_cny", "district", "route_use"], "selection_changes_decision": true, "business_state_changes_on_server": true},
+      "display_order": 21
+    },
+    {
+      "id": "B022",
+      "slug": "transfer-notice-verification",
+      "title": "747 条历史调剂信息，哪些能进今天的核验清单？",
+      "runtime_title": "调剂信息新鲜度核验",
+      "industry": "教育信息服务",
+      "chapter_ids": ["C02", "C06", "C08"],
+      "dataset_target": "用户提供的 2021 年调剂信息历史快照",
+      "dataset_path": "dataset/B022-transfer-notice-verification",
+      "code_path": "code/cases/B022-transfer-notice-verification",
+      "screenshots": ["evidence/screenshots/B022-work.png"],
+      "status": "verified_shared_runtime",
+      "route": "/cases/B022",
+      "family": "investigation",
+      "tier": "complete",
+      "runtime_mode": "deterministic_offline",
+      "productization": {"metrics": ["历史通知", "涉及院校", "官方核验"], "decision_fields": ["published_date", "source_relative_url", "freshness_status"], "selection_changes_decision": true, "business_state_changes_on_server": true},
+      "display_order": 22
+    },
+    {
+      "id": "B023",
+      "slug": "spring-festival-screening",
+      "title": "黄金场只有 6 个：下一轮该给哪部片？",
+      "runtime_title": "春节档排片沙盘",
+      "industry": "影院经营",
+      "chapter_ids": ["C02", "C06", "C08"],
+      "dataset_target": "用户提供的 2022 春节档历史经营快照",
+      "dataset_path": "dataset/B023-spring-festival-screening",
+      "code_path": "code/cases/B023-spring-festival-screening",
+      "screenshots": ["evidence/screenshots/B023-work.png"],
+      "status": "verified_shared_runtime",
+      "route": "/cases/B023",
+      "family": "commerce",
+      "tier": "complete",
+      "runtime_mode": "deterministic_offline",
+      "productization": {"metrics": ["历史票房", "排片占比", "影厅时隙"], "decision_fields": ["movie_name", "runtime_minutes", "cumulative_audience"], "selection_changes_decision": true, "business_state_changes_on_server": true},
+      "display_order": 23
+    },
+    {
+      "id": "B024",
+      "slug": "supermarket-replenishment",
+      "title": "配送车只剩 12 个托盘：哪家门店先补？",
+      "runtime_title": "连锁门店补货排序",
+      "industry": "连锁零售",
+      "chapter_ids": ["C02", "C06", "C08"],
+      "dataset_target": "用户提供的连锁超市历史交易快照",
+      "dataset_path": "dataset/B024-supermarket-replenishment",
+      "code_path": "code/cases/B024-supermarket-replenishment",
+      "screenshots": ["evidence/screenshots/B024-work.png"],
+      "status": "verified_shared_runtime",
+      "route": "/cases/B024",
+      "family": "commerce",
+      "tier": "complete",
+      "runtime_mode": "deterministic_offline",
+      "productization": {"metrics": ["销量节奏", "核对队列", "配送容量"], "decision_fields": ["store_id", "category_id", "units", "sales_pressure_rank"], "selection_changes_decision": true, "business_state_changes_on_server": true},
+      "display_order": 24
     }
   ],
   "labs": [
     {
-      "id": "P01",
+      "id": "P001",
       "slug": "task-contract",
       "title": "把模糊愿望改成可执行、可验收的任务",
       "track": "prompt",
       "delivery": "prompt_instructor_chapter",
       "dataset_path": "dataset/P-prompt-curriculum",
       "code_path": "code/labs/prompt-curriculum",
-      "status": "provider_receipt_verified"
+      "status": "provider_receipt_verified",
+      "display_order": 1
     },
     {
-      "id": "P02",
+      "id": "P002",
       "slug": "context-examples-counterexamples",
       "title": "用上下文、正例和反例说清标准",
       "track": "prompt",
       "delivery": "prompt_instructor_chapter",
       "dataset_path": "dataset/P-prompt-curriculum",
       "code_path": "code/labs/prompt-curriculum",
-      "status": "provider_receipt_verified"
+      "status": "provider_receipt_verified",
+      "display_order": 2
     },
     {
-      "id": "P03",
+      "id": "P003",
       "slug": "roles-comparison-critique",
       "title": "让角色、比较和批评改变工作结果",
       "track": "prompt",
       "delivery": "prompt_instructor_chapter",
       "dataset_path": "dataset/P-prompt-curriculum",
       "code_path": "code/labs/prompt-curriculum",
-      "status": "provider_receipt_verified"
+      "status": "provider_receipt_verified",
+      "display_order": 3
     },
     {
-      "id": "P04",
+      "id": "P004",
       "slug": "decompose-and-clarify",
       "title": "先拆任务，只追问会改变方向的信息",
       "track": "prompt",
       "delivery": "prompt_instructor_chapter",
       "dataset_path": "dataset/P-prompt-curriculum",
       "code_path": "code/labs/prompt-curriculum",
-      "status": "provider_receipt_verified"
+      "status": "provider_receipt_verified",
+      "display_order": 4
     },
     {
-      "id": "P05",
+      "id": "P005",
       "slug": "data-analysis",
       "title": "让数据分析先回答可计算的问题",
       "track": "prompt",
       "delivery": "prompt_instructor_chapter",
       "dataset_path": "dataset/P-prompt-curriculum",
       "code_path": "code/labs/prompt-curriculum",
-      "status": "provider_receipt_verified"
+      "status": "provider_receipt_verified",
+      "display_order": 5
     },
     {
-      "id": "P06",
+      "id": "P006",
       "slug": "structured-tool-arguments",
       "title": "把自然语言编译成受控工具参数",
       "track": "prompt",
       "delivery": "prompt_instructor_chapter",
       "dataset_path": "dataset/P-prompt-curriculum",
       "code_path": "code/labs/prompt-curriculum",
-      "status": "provider_receipt_verified"
+      "status": "provider_receipt_verified",
+      "display_order": 6
     },
     {
-      "id": "P07",
+      "id": "P007",
       "slug": "multimodal-untrusted-input",
       "title": "区分参考材料、观察事实与不可信指令",
       "track": "prompt",
       "delivery": "prompt_instructor_chapter",
       "dataset_path": "dataset/P-prompt-curriculum",
       "code_path": "code/labs/prompt-curriculum",
-      "status": "provider_receipt_verified"
+      "status": "provider_receipt_verified",
+      "display_order": 7
     },
     {
-      "id": "P08",
+      "id": "P008",
       "slug": "evaluation-version-regression",
       "title": "用固定样本做版本比较与回归检查",
       "track": "prompt",
       "delivery": "prompt_instructor_chapter",
       "dataset_path": "dataset/P-prompt-curriculum",
       "code_path": "code/labs/prompt-curriculum",
-      "status": "provider_receipt_verified"
+      "status": "provider_receipt_verified",
+      "display_order": 8
     },
     {
-      "id": "S01",
+      "id": "S001",
       "slug": "agent-tool-router",
       "title": "Agent 应该调用哪个能力？",
       "track": "agent-skill",
       "delivery": "cli_artifact_skill",
       "dataset_path": "dataset/S-agent-skill-cases",
       "code_path": "code/skills/capability-router",
-      "status": "verified_local_contract"
+      "status": "verified_local_contract",
+      "display_order": 1
     },
     {
-      "id": "S02",
+      "id": "S002",
       "slug": "csv-data-profile",
       "title": "让 Agent 先检查数据，再开始分析",
       "track": "agent-skill",
       "delivery": "cli_artifact_skill",
       "dataset_path": "dataset/S-agent-skill-cases",
       "code_path": "code/skills/data-profile",
-      "status": "verified_local_contract"
+      "status": "verified_local_contract",
+      "display_order": 2
     },
     {
-      "id": "S03",
+      "id": "S003",
       "slug": "data-to-brief",
       "title": "从数据到一页经营简报",
       "track": "agent-skill",
       "delivery": "cli_artifact_skill",
       "dataset_path": "dataset/S-agent-skill-cases",
       "code_path": "code/skills/metric-brief",
-      "status": "verified_local_contract"
+      "status": "verified_local_contract",
+      "display_order": 3
     },
     {
-      "id": "S04",
+      "id": "S004",
       "slug": "product-research-skill",
       "title": "把零散需求变成产品机会图",
       "track": "agent-skill",
       "delivery": "cli_artifact_skill",
       "dataset_path": "dataset/S-agent-skill-cases",
       "code_path": "code/skills/product-opportunity-map",
-      "status": "verified_local_contract"
+      "status": "verified_local_contract",
+      "display_order": 4
     },
     {
-      "id": "S05",
+      "id": "S005",
       "slug": "idea-to-zine-poster",
       "title": "把一句想法画成杂志海报",
       "track": "agent-skill",
       "delivery": "cli_artifact_skill",
       "dataset_path": "dataset/S-agent-skill-cases",
       "code_path": "code/skills/poster-recipe",
-      "status": "verified_local_contract"
+      "status": "verified_local_contract",
+      "display_order": 5
     },
     {
-      "id": "S06",
+      "id": "S006",
       "slug": "markdown-to-slides",
       "title": "把 Markdown 变成可编辑演示文稿",
       "track": "agent-skill",
       "delivery": "cli_artifact_skill",
       "dataset_path": "dataset/S-agent-skill-cases",
       "code_path": "code/skills/slide-plan",
-      "status": "verified_local_contract"
+      "status": "verified_local_contract",
+      "display_order": 6
     },
     {
-      "id": "S07",
+      "id": "S007",
       "slug": "pixijs-mini-game",
       "title": "让 Agent 做一个真正能玩的小游戏",
       "track": "agent-skill",
       "delivery": "cli_artifact_skill",
       "dataset_path": "dataset/S-agent-skill-cases",
       "code_path": "code/skills/pixijs-game-contract",
-      "status": "verified_local_contract"
+      "status": "verified_local_contract",
+      "display_order": 7
     },
     {
-      "id": "S08",
+      "id": "S008",
       "slug": "text-to-3d-asset",
       "title": "文字怎样变成可检查的 3D 资产",
       "track": "agent-skill",
       "delivery": "cli_artifact_skill",
       "dataset_path": "dataset/S-agent-skill-cases",
       "code_path": "code/skills/asset-contract",
-      "status": "local_contract_verified_provider_generation_blocked"
+      "status": "local_contract_verified_provider_generation_blocked",
+      "display_order": 8
     },
     {
-      "id": "L01",
+      "id": "L001",
       "slug": "data-brief-loop",
       "title": "经营简报为什么要重算一次",
       "track": "loop",
       "delivery": "cli_runtime_case",
       "dataset_path": "dataset/L-loop-cases",
       "code_path": "code/labs/loop-runtime",
-      "status": "verified_local_contract"
+      "status": "verified_local_contract",
+      "display_order": 1
     },
     {
-      "id": "L02",
+      "id": "L002",
       "slug": "creative-quality-loop",
       "title": "第一稿不好看，系统下一步该改什么",
       "track": "loop",
       "delivery": "cli_runtime_case",
       "dataset_path": "dataset/L-loop-cases",
       "code_path": "code/labs/loop-runtime",
-      "status": "verified_local_contract"
+      "status": "verified_local_contract",
+      "display_order": 2
     },
     {
-      "id": "L03",
+      "id": "L003",
       "slug": "business-investigation-loop",
       "title": "信息没查全，业务动作就不能继续",
       "track": "loop",
       "delivery": "cli_runtime_case",
       "dataset_path": "dataset/L-loop-cases",
       "code_path": "code/labs/loop-runtime",
-      "status": "verified_local_contract"
+      "status": "verified_local_contract",
+      "display_order": 3
     }
   ],
   "runtime": {
@@ -1111,12 +1333,12 @@
       "api_key_environment": "DASHSCOPE_API_KEY",
       "default_model": "qwen-plus",
       "live_case_ids": [
-        "01",
-        "05",
-        "09",
-        "10",
-        "11",
-        "15"
+        "B001",
+        "B005",
+        "B009",
+        "B010",
+        "B011",
+        "B015"
       ]
     }
   }

@@ -269,7 +269,7 @@ export function AutoServiceTriageWorkbench(props: CaseWorkbenchProps) {
           <span><UserRound size={16} />{roleLabel(props.actorRole)}</span>
           <span><Clock3 size={16} />响应目标：{handoffWindow}</span>
           <label>当前角色<select aria-label="当前操作角色" value={props.actorRole} onChange={(event) => props.onActorRoleChange(event.target.value)}>{props.roles.map((role) => <option key={role} value={role}>{roleLabel(role)}</option>)}</select></label>
-          <button type="button" aria-label="恢复案例 B13" title="恢复演示数据" disabled={props.busy} onClick={reset}><RefreshCw size={17} /></button>
+          <button type="button" aria-label="恢复案例 B013" title="恢复演示数据" disabled={props.busy} onClick={reset}><RefreshCw size={17} /></button>
         </div>
       </header>
 
@@ -312,7 +312,7 @@ export function AutoServiceTriageWorkbench(props: CaseWorkbenchProps) {
           </section>
 
           <section className={styles.vehicle} aria-label="问题发生位置">
-            <div className={styles.vehicleImage}><img suppressHydrationWarning src="/case-assets/case-13/scene.png" alt="匿名车辆部位定位示意图" /></div>
+            <div className={styles.vehicleImage}><img suppressHydrationWarning src="/case-assets/case-B013/scene.png" alt="匿名车辆部位定位示意图" /></div>
             <div className={styles.areaButtons}>{Object.keys(categoryLabels).map((key) => <button type="button" key={key} aria-label={`${categoryLabels[key]}区域`} aria-pressed={activeArea === key} data-current={activeArea === key} onClick={() => setActiveArea(key)}>{categoryLabels[key]}区域</button>)}</div>
             <p><CarFront size={16} />部位只帮助组织追问，不生成故障或维修结论。</p>
           </section>

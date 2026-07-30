@@ -217,7 +217,7 @@ export function WaferRetestWorkbench(props: CaseWorkbenchProps) {
         ...sensorEvidence.map((item) => `sensor:${waferObservationId}:${item.sensorId}`),
         ...(taskId ? [`retest-task:${taskId}`] : []),
       ],
-      idempotencyKey: `case-15:wafer:${waferObservationId}:${command}:v${props.selected.version}`,
+      idempotencyKey: `case-B015:wafer:${waferObservationId}:${command}:v${props.selected.version}`,
     });
   }
 
@@ -245,7 +245,7 @@ export function WaferRetestWorkbench(props: CaseWorkbenchProps) {
           <div><dt>演示队列</dt><dd>{props.objects.length}</dd></div>
           <div><dt>当前角色</dt><dd>{roleLabel(props.actorRole)}</dd></div>
         </dl>
-        <button type="button" className={styles.reset} aria-label="恢复案例 B15" onClick={reset} disabled={props.busy}><RefreshCw size={17} /></button>
+        <button type="button" className={styles.reset} aria-label="恢复案例 B015" onClick={reset} disabled={props.busy}><RefreshCw size={17} /></button>
       </header>
 
       <section className={styles.layout}>

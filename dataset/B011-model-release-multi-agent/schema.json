@@ -1,0 +1,108 @@
+{
+  "schema_version": "1.0",
+  "case_id": "B011",
+  "row_count": 9,
+  "columns": [
+    {
+      "name": "evaluation_id",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "EVAL-11-001"
+    },
+    {
+      "name": "candidate_id",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "MODEL-ADMISSION-001"
+    },
+    {
+      "name": "gate",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "risk"
+    },
+    {
+      "name": "metric_id",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "unsupported_claim_rate"
+    },
+    {
+      "name": "metric_label",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "无证据陈述率"
+    },
+    {
+      "name": "metric_value",
+      "dtype": "float64",
+      "nullable": false,
+      "sample": "0.032"
+    },
+    {
+      "name": "comparator",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "<="
+    },
+    {
+      "name": "threshold",
+      "dtype": "float64",
+      "nullable": false,
+      "sample": "0.04"
+    },
+    {
+      "name": "sample_size",
+      "dtype": "int64",
+      "nullable": false,
+      "sample": "800"
+    },
+    {
+      "name": "slice_id",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "knowledge-qa"
+    },
+    {
+      "name": "evidence_status",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "complete"
+    },
+    {
+      "name": "result",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "pass"
+    },
+    {
+      "name": "policy_version",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "MODEL-GATE-2026.1"
+    },
+    {
+      "name": "model_digest",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "b637fb23c9ea15ba068840618da450b3d2aa745d6a0192987bb0efbf2e4aa551"
+    },
+    {
+      "name": "dataset_digest",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "f369d07d8d247151ddf49eb275cdf2d0b08a30c66d6d6c87855aea7c22660bc8"
+    },
+    {
+      "name": "data_nature",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "public-model-metadata-plus-deterministic-enterprise-evaluation"
+    }
+  ],
+  "data_nature": "public-model-metadata-plus-deterministic-enterprise-evaluation",
+  "source_ids": [
+    "DATA-11",
+    "COURSE-EVAL-11"
+  ]
+}

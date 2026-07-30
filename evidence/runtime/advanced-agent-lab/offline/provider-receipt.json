@@ -3,8 +3,8 @@
   "status": "not-run",
   "provider": "offline",
   "model": "qwen-plus",
-  "created_at": "2026-07-29T09:54:48.657576Z",
-  "completed_at": "2026-07-29T09:54:48.658153Z",
+  "created_at": "2026-07-30T06:22:54.707709Z",
+  "completed_at": "2026-07-30T06:22:54.707709Z",
   "redacted_fields": [
     "authorization",
     "provider_response_id"

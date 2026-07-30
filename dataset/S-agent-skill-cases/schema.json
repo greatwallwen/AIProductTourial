@@ -3,7 +3,7 @@
   "row_count": 32,
   "data_nature": "deterministic-course-action-summaries",
   "primary_key": ["lab_id", "step_id"],
-  "expected_cases": ["S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08"],
+  "expected_cases": ["S001", "S002", "S003", "S004", "S005", "S006", "S007", "S008"],
   "expected_stages": ["观察", "选择", "动作", "检查"],
   "columns": [
     {"name":"lab_id","dtype":"string","nullable":false},

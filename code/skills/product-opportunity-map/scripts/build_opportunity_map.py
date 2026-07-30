@@ -281,7 +281,7 @@ def render_svg(document: dict[str, Any]) -> str:
         f"来源：{source_label}"
     )
     ET.SubElement(footer, _svg_tag("text"), {"class": "label meta", "x": "70", "y": "722"}).text = (
-        f"筛选：lab_id=S04 · 样本：{document['source']['row_count']} 条 · 图中节点可编辑"
+        f"筛选：lab_id=S004 · 样本：{document['source']['row_count']} 条 · 图中节点可编辑"
     )
     return ET.tostring(root, encoding="unicode", xml_declaration=False) + "\n"
 

@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "case_id": "B021",
+  "row_count": 2443,
+  "columns": [
+    {
+      "name": "city_name",
+      "origin": "source-fact"
+    },
+    {
+      "name": "poi_name",
+      "origin": "source-fact"
+    },
+    {
+      "name": "star_level",
+      "origin": "source-fact"
+    },
+    {
+      "name": "rating",
+      "origin": "source-fact"
+    },
+    {
+      "name": "price_cny",
+      "origin": "source-fact"
+    },
+    {
+      "name": "sales_count",
+      "origin": "source-fact"
+    },
+    {
+      "name": "district",
+      "origin": "source-fact"
+    },
+    {
+      "name": "longitude",
+      "origin": "source-fact"
+    },
+    {
+      "name": "latitude",
+      "origin": "source-fact"
+    },
+    {
+      "name": "introduction",
+      "origin": "source-fact"
+    },
+    {
+      "name": "is_free",
+      "origin": "source-fact"
+    },
+    {
+      "name": "address",
+      "origin": "source-fact"
+    },
+    {
+      "name": "poi_id",
+      "origin": "derived"
+    },
+    {
+      "name": "route_use",
+      "origin": "derived"
+    },
+    {
+      "name": "state",
+      "origin": "derived"
+    },
+    {
+      "name": "data_nature",
+      "origin": "derived"
+    }
+  ],
+  "supplemental_artifacts": []
+}

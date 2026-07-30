@@ -1,35 +1,36 @@
 {
-  "schemaVersion": "6.0",
-  "executedAt": "2026-07-29T19:03:08.7431883+08:00",
+  "schemaVersion": "7.0",
+  "executedAt": "2026-07-30T14:29:05.5008178+08:00",
   "status": "passed_with_explicit_external_boundaries",
   "course": {
-    "chapterSources": 8,
-    "composedMarkdownLines": 3220,
+    "composedChapterSources": 32,
+    "composedMarkdownLines": 3436,
     "promptUnits": 6,
     "promptExperiments": 18,
     "agentSkills": 8,
     "loopPatterns": 4,
     "runnableLoopLabs": 3,
     "advancedAgentLabs": 1,
-    "businessCases": 20,
-    "businessScreenshots": 20,
-    "caseDiagrams": 40,
-    "datasetManifestEntries": 23,
-    "datasetTeachingIds": 39,
-    "datasetRows": 90190
+    "businessCases": 24,
+    "businessScreenshots": 24,
+    "caseDiagrams": 48,
+    "datasetManifestEntries": 27,
+    "datasetTeachingIds": 43,
+    "datasetRows": 100612
   },
   "runtimeEvidence": {
+    "browserRoutesVisited": 25,
+    "browserRoutesPassed": 25,
+    "browserConsoleWarnings": 0,
+    "browserConsoleErrors": 0,
+    "browserHydrationMismatches": 0,
+    "dashboardCaseButtons": 24,
+    "runBatProdHttpStatus": 200,
     "advancedAgentProvider": "DashScope qwen-plus",
     "advancedAgentProviderStatus": "completed",
     "advancedAgentMcpToolCalls": 3,
     "advancedAgentA2aTasks": 3,
     "agentSkillArtifacts": 50,
-    "browserRoutesVisited": 21,
-    "browserRoutesHttp200": 21,
-    "browserConsoleWarnings": 0,
-    "browserConsoleErrors": 0,
-    "browserPageErrors": 0,
-    "browserHydrationMismatches": 0,
     "codeBuddyIdeEntry": "verified 1.106.1",
     "codeBuddyCliEntry": "verified 2.128.1",
     "codeBuddyAuthenticatedModelRoundTrip": "blocked-not-verified"
@@ -49,15 +50,15 @@
     },
     {
       "command": "python -B -m unittest discover -s code/labs/advanced-agent-lab/tests -p test_*.py",
-      "result": "5 passed without PYTHONUTF8 or PYTHONIOENCODING shell overrides"
+      "result": "5 passed"
     },
     {
-      "command": "python -B tools/compose_course.py build && check",
-      "result": "8 chapter sources composed deterministically"
+      "command": "python -B tools/compose_course.py check",
+      "result": "32 sources compose deterministically"
     },
     {
       "command": "python -B tools/validate_datasets.py --all",
-      "result": "23 datasets; 39 teaching ids; 90190 rows; 8 blocked rebuilds"
+      "result": "27 datasets; 43 teaching ids; 100612 rows; 8 blocked rebuilds"
     },
     {
       "command": "python -B tools/verify_agent_skill_runtime.py --run-focused --write-report",
@@ -65,35 +66,23 @@
     },
     {
       "command": "python -B tools/verify_loop_runtime.py",
-      "result": "3 loops; 12 checks; 7 output artifacts; 1 completed + 2 waiting-human states"
+      "result": "3 loops; 12 checks; 7 output artifacts; 1 completed and 2 waiting-human states"
     },
     {
       "command": "python -B tools/verify_advanced_agent_lab.py",
       "result": "3 MCP calls; 3 A2A tasks; qwen-plus receipt; waiting-human final state"
     },
     {
-      "command": "python -B tools/verify_prompt_labs.py",
-      "result": "6 units; 18 experiments; member and agriculture data recomputed"
+      "command": "python -B tools/verify_business_case_contracts.py",
+      "result": "24 cases; 24 screenshots; 48 Chinese SVGs; 24 code links"
     },
     {
-      "command": "python -B tools/verify_content_completeness.py",
-      "result": "4 theory chapters; 37 concepts; 3 theory images"
-    },
-    {
-      "command": "python -B tools/build_case_diagrams.py --check && python -B tools/verify_business_case_contracts.py",
-      "result": "20 cases; 20 screenshots; 40 Chinese SVGs; 20 code links; 20 focused-test links"
-    },
-    {
-      "command": "python -B tools/verify_codebuddy_operations.py",
-      "result": "IDE 1.106.1 and CLI 2.128.1 entries passed; model round trip blocked-not-verified"
-    },
-    {
-      "command": "python -B tools/verify_curriculum_spine.py && verify_course.py && verify_semantic_catalog.py",
-      "result": "U=6; S=8; L=4; B=20; 19 capability cases + 20 business cases"
+      "command": "python -B tools/verify_semantic_catalog.py",
+      "result": "19 capability cases plus 24 business cases; canonical three-digit ids"
     },
     {
       "command": "npm.cmd run test",
-      "result": "72 test files; 432 tests passed"
+      "result": "68 app files / 432 app tests; 9 runtime tests; 3 design-system tests passed"
     },
     {
       "command": "npm.cmd run typecheck",
@@ -104,26 +93,31 @@
       "result": "Next.js 16.2.12 production build passed"
     },
     {
-      "command": "Playwright CLI production route audit",
-      "result": "dashboard plus B01-B20: 21/21 HTTP 200; 0 console warnings; 0 console errors; 0 page errors; 0 hydration mismatches"
+      "command": "run.bat prod and production browser audit",
+      "result": "launcher HTTP 200; dashboard plus B001-B024 passed; no hydration warning or horizontal overflow"
     }
   ],
   "artifactHashes": {
-    "md/Course_AIProduct.md": "1104c7084dee319ba49a8b2d0ea83e1b19f8ff068ef31eda906a943d0a3d038f",
-    "course-manifest.json": "df364ec1c34740eeebd961c25d4af42ff6477dfb1b02f63217281717de90f8d6",
-    "dataset/manifest.json": "8c5c80863222549e573eea0ab3b72fc88b526bfd17328820549891ca763bfcc0",
-    "run.bat": "65c368c523c1a2280e72dd34a9d33fbb0641d4badfe2fb306832c313a6258e48",
-    "README.md": "fe613c025f8074ffe440f0d3d2ea760f0be488d9bc062aa30f4499105c48c641",
-    "evidence/final/browser-audit.json": "ade54e671fd6d14390071499719da6f719782c1dd6ac16647264296756d04aee",
-    "evidence/final/context-capsule.md": "4b62e892cd1481aecfc0bf356af6a3f515a6e20e089123eac9a355aec9317f42",
-    "evidence/final/cleanup-audit.json": "e9612cf11b75e70be75303541c0887b826b71af1ef3b20dfaf1d34cbf20ecdf9",
-    "evidence/current/codebuddy-operations-2026-07/receipt.json": "db1719b8dded79fd0ef17327b99e47028722c345fd241113d7428ae18663bdfe"
+    "md/Course_AIProduct.md": "9b7c8d2ae59ba80057a04c53a12ba810d284f1b3f29b0036157ce17c7a5d471d",
+    "course-manifest.json": "d4cef9cfe3af98807039d3e08b6e2a22ff023c1ace1ad309d679239c6876698d",
+    "dataset/manifest.json": "ad9c63085bb7b37ce3f3578618a4861b82f3e8f08bdfc9d2a59dca642886d19c",
+    "run.bat": "ab2898da2496da928268e8e5256e3ea9a56112eeac7fd7be35969ecc4f91ecb2",
+    "README.md": "5296a1fc088dd679e35ae76e33a3fe31973dcf03ca490df1194379ca5aa07ba1",
+    "evidence/final/browser-audit.json": "0af9e8c19f4c5dd325a16f9708093414ea36cfcf15edd961e7a9df019bfc1459",
+    "evidence/final/context-capsule.md": "665dead78c2d583440fdb10dd3c85450036f961b4f159d159901711041f1a3b9",
+    "evidence/final/cleanup-audit.json": "102d23027418516c15e3939a818f9d4045cc785779d335a10f104d0c06dc6684",
+    "evidence/final/screenshot-checksums.sha256": "f3417e748e83bf2a66f89b2bddefe8b1e6f2ee669fecf1ba4ce06777c9b7e822"
+  },
+  "cleanup": {
+    "deletedFiles": 1237,
+    "deletedBytes": 333964265,
+    "remainingOwnedProcesses": 0,
+    "port3200ListenersAfterStop": 0
   },
   "boundaries": {
-    "CodeBuddy": "IDE and CLI program entries are verified. The CLI model request stopped at authentication, so no authenticated CodeBuddy model round trip is claimed.",
-    "S08Provider": "Local GLB contract and Three.js viewer are verified; external 3D generation remains blocked-not-verified because no provider call or receipt exists.",
-    "datasetRebuilds": "B13-B20 local snapshots validate, but eight upstream rebuilds remain blocked because their original inputs are absent from the workspace.",
-    "browserSemantics": "B14 and B18 are reachable and error-free but do not expose an h1; this is deferred to a separate UI semantics phase.",
-    "businessOutcome": "Runnable local data, UI behavior and runtime receipts do not prove production business outcomes."
+    "CodeBuddy": "IDE and CLI program entries are verified. The authenticated CLI model request stopped at authentication, so no CodeBuddy model round trip is claimed.",
+    "S008Provider": "Local GLB contract and Three.js viewer are verified; external 3D generation remains blocked-not-verified because no provider call or receipt exists.",
+    "datasetRebuilds": "B013-B020 local snapshots, licenses, schemas and checksums validate, but eight upstream rebuilds remain blocked because their original inputs are absent from the repository.",
+    "businessOutcome": "Runnable local data, UI behavior and runtime receipts do not prove production business outcomes or connection to live industry systems."
   }
 }

@@ -1,0 +1,37 @@
+{
+  "schema_version": "2.0",
+  "case_id": "B004",
+  "primary_file": "applications.csv",
+  "row_count": 1200,
+  "columns": [
+    { "name": "application_id", "dtype": "string", "nullable": false, "sample": "CR20260000001" },
+    { "name": "application_at", "dtype": "iso-8601", "nullable": false, "sample": "2026-04-01T08:47:00+08:00" },
+    { "name": "observation_cutoff", "dtype": "iso-8601", "nullable": false, "sample": "2026-07-14T23:59:59+08:00" },
+    { "name": "province_code", "dtype": "string", "nullable": false, "sample": "51" },
+    { "name": "province_name", "dtype": "string", "nullable": false, "sample": "四川省" },
+    { "name": "city_code", "dtype": "string", "nullable": false, "sample": "5101" },
+    { "name": "city_name", "dtype": "string", "nullable": false, "sample": "成都市" },
+    { "name": "customer_segment", "dtype": "enum", "nullable": false, "sample": "new_customer" },
+    { "name": "channel", "dtype": "string", "nullable": false, "sample": "客户经理" },
+    { "name": "requested_amount_fen", "dtype": "integer", "nullable": false, "sample": "379919" },
+    { "name": "declared_income_band", "dtype": "string", "nullable": false, "sample": "5000-7999" },
+    { "name": "identity_verification_status", "dtype": "enum", "nullable": false, "sample": "verified" },
+    { "name": "income_evidence_status", "dtype": "enum", "nullable": false, "sample": "missing" },
+    { "name": "consent_status", "dtype": "enum", "nullable": false, "sample": "confirmed" },
+    { "name": "application_consistency", "dtype": "enum", "nullable": false, "sample": "consistent" },
+    { "name": "internal_repayment_months", "dtype": "integer", "nullable": true, "sample": "" },
+    { "name": "recent_overdue_days", "dtype": "integer", "nullable": true, "sample": "" },
+    { "name": "debt_service_ratio_bps", "dtype": "integer", "nullable": false, "sample": "4315" },
+    { "name": "data_nature", "dtype": "enum", "nullable": false, "sample": "deterministic_synthetic" }
+  ],
+  "data_nature": "deterministic-synthetic-operational",
+  "source_ids": ["DATA-04"],
+  "supporting_artifacts": [
+    {
+      "path": "case.csv",
+      "row_count": 30000,
+      "data_nature": "public-derived",
+      "course_role": "offline-method-and-bias-reference-only"
+    }
+  ]
+}

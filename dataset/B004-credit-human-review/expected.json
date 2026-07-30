@@ -1,0 +1,26 @@
+{
+  "application_count": 1200,
+  "applications_removed_from_review": 480,
+  "automatic_credit_decision": false,
+  "business_outcome_verified": false,
+  "case_id": "B004",
+  "data_nature": "deterministic_synthetic",
+  "derived_signal_counts": {
+    "CONSENT": 24,
+    "CONSISTENCY": 12,
+    "HIGH_DSR": 24,
+    "IDENTITY_EVIDENCE": 48,
+    "INCOME_EVIDENCE": 72,
+    "NONE": 984,
+    "RECENT_OVERDUE": 36
+  },
+  "human_gate": "licensed_reviewer_final_decision",
+  "manual_review_rate_reduction_pp": 40.0,
+  "new_customer_count": 600,
+  "new_customer_structural_history_missing_count": 600,
+  "returning_customer_count": 600,
+  "schema_version": "1.0",
+  "seed": 20260714,
+  "segmented_manual_review_count": 216,
+  "unified_manual_review_count": 696
+}

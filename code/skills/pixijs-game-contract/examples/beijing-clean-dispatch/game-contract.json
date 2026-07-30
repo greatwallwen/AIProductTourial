@@ -8,7 +8,7 @@
     "render_loop": "Application.ticker"
   },
   "source": {
-    "path": "dataset/06-beijing-air-quality-audit/case.csv",
+    "path": "dataset/B006-beijing-air-quality-audit/case.csv",
     "sha256": "0055067502c1056beeb8de9f9de5aad357f267760b8a0df5fc303b2df3361108",
     "row_count": 21039,
     "fields_used_for_theme": [

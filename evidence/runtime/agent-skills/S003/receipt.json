@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "skill_id": "S003",
+  "skill_name": "metric-brief",
+  "verification_status": "verified",
+  "verified_scope": "deterministic member experiment metrics",
+  "provider_scope": null,
+  "known_limitations": [],
+  "commands": [
+    "python -B code/skills/metric-brief/scripts/build_member_brief.py --input dataset/B002-member-value-experiment/case.csv --allowed-root dataset --coupon-amount-cny 8 --target-segment 成长 --metrics-output evidence/runtime/agent-skills/S003/metrics.json --brief-output evidence/runtime/agent-skills/S003/business-brief.md"
+  ],
+  "key_results": [
+    "5,000 名会员；成长分层 1,250 名",
+    "8 元全量发券名义上限为 10,000 元",
+    "收入与最近购买间隔明确不可计算"
+  ],
+  "artifact_count": 2,
+  "artifacts": [
+    {
+      "path": "evidence/runtime/agent-skills/S003/business-brief.md",
+      "bytes": 1428,
+      "sha256": "bc9704e59711111fe02981fbb42a0c46de63cf1cd950f6a11890710b1642f17b"
+    },
+    {
+      "path": "evidence/runtime/agent-skills/S003/metrics.json",
+      "bytes": 6105,
+      "sha256": "d9b2abb17632286e593761cb10aca43d13a6001d0c12722084ce32eeac15a83c"
+    }
+  ],
+  "focused_tests": 3,
+  "quick_validate": "passed"
+}

@@ -33,30 +33,34 @@ const workspace = (
 ): WorkspaceCopy => ({ queueEyebrow, queueTitle, decisionTitle, sortHint });
 
 export const CASE_WORKSPACE_COPY: Record<string, WorkspaceCopy> = {
-  "01": workspace("退款核验队列", "先看取消标记与人民币金额", "退款处置判断", "取消代理、金额、客户身份"),
-  "02": workspace("试投候选会员", "按价值与参与度安排小流量试投", "会员入组判断", "价值分层、参与度、购买次数"),
-  "03": workspace("差评研判队列", "按低星与具体服务问题排序", "问题优先级判断", "星级、服务分项、餐食分项"),
-  "04": workspace("申请复核队列", "先处理身份、收入与授权材料缺口", "人工复核判断", "身份核验、收入材料、授权状态"),
-  "05": workspace("转运交接队列", "先处理冲突、迟到和缺失会签", "交接状态判断", "冲突类型、事件时序、会签状态"),
-  "06": workspace("历史摘录质检队列", "先核六项污染物是否齐备", "本批次纳入判断", "缺测数、站点、源行"),
-  "07": workspace("履约窗口队列", "按晚高峰和订单复杂度排序", "容量评审判断", "到单分钟、商品数、订单量"),
-  "08": workspace("水质事件队列", "先处理高风险与设备离线记录", "现场响应判断", "风险级别、传感器、证据状态"),
-  "09": workspace("设备检索队列", "故障窗口优先进入证据核验", "检查单判断", "故障窗口、电机电流、维护许可"),
-  "10": workspace("投诉任务队列", "高优先级与丢失响应任务在前", "任务恢复判断", "优先级、外部调用场景、证据完整度"),
-  "11": workspace("准入检查队列", "未通过与缺切片证据项优先", "发布候选判断", "检查结果、证据状态、样本量"),
-  "12": workspace("冷链调查队列", "温度、交接和离线记录联合排序", "质量会签判断", "温度、交接、离线时长"),
-  "13": workspace("接车进线", "逐题记录客户回答，紧急情况先转技师", "接车分流", "客户回答、安全标记、技师接收"),
-  "14": workspace("连续高硅事件", "按事件持续时长和完整记录排序", "现场核对单", "事件时段、72 小时趋势、优先核对槽位、品质记录"),
-  "15": workspace("生产观测复测队列", "未通过观测与高优先级记录在前", "观测复测判断", "质量标签、复核优先级、复测条件"),
-  "16": workspace("风机下偏核查队列", "按日级下偏标记与数据覆盖排序", "现场核查判断", "日级下偏标记、有效风速、平均功率"),
-  "17": workspace("设备健康队列", "偏差高且证据可用的窗口优先", "夜班排检判断", "健康偏差、证据覆盖、复核等级"),
-  "18": workspace("温度偏差队列", "按偏离方向与持续时间排序", "当班排查判断", "温度状态、持续时间、完整度"),
-  "19": workspace("液压循环待排序", "按总体状态和受影响部件核对", "部件检查顺序", "严重度、稳定性、部件数"),
-  "20": workspace("光伏站端资料核查", "先分清日均事实、派生线索和缺失资料", "站端核查任务", "归一化出力比、疑似限电、温度降额线索"),
+  "B001": workspace("退款核验队列", "先看取消标记与人民币金额", "退款处置判断", "取消代理、金额、客户身份"),
+  "B002": workspace("试投候选会员", "按价值与参与度安排小流量试投", "会员入组判断", "价值分层、参与度、购买次数"),
+  "B003": workspace("差评研判队列", "按低星与具体服务问题排序", "问题优先级判断", "星级、服务分项、餐食分项"),
+  "B004": workspace("申请复核队列", "先处理身份、收入与授权材料缺口", "人工复核判断", "身份核验、收入材料、授权状态"),
+  "B005": workspace("转运交接队列", "先处理冲突、迟到和缺失会签", "交接状态判断", "冲突类型、事件时序、会签状态"),
+  "B006": workspace("历史摘录质检队列", "先核六项污染物是否齐备", "本批次纳入判断", "缺测数、站点、源行"),
+  "B007": workspace("履约窗口队列", "按晚高峰和订单复杂度排序", "容量评审判断", "到单分钟、商品数、订单量"),
+  "B008": workspace("水质事件队列", "先处理高风险与设备离线记录", "现场响应判断", "风险级别、传感器、证据状态"),
+  "B009": workspace("设备检索队列", "故障窗口优先进入证据核验", "检查单判断", "故障窗口、电机电流、维护许可"),
+  "B010": workspace("投诉任务队列", "高优先级与丢失响应任务在前", "任务恢复判断", "优先级、外部调用场景、证据完整度"),
+  "B011": workspace("准入检查队列", "未通过与缺切片证据项优先", "发布候选判断", "检查结果、证据状态、样本量"),
+  "B012": workspace("冷链调查队列", "温度、交接和离线记录联合排序", "质量会签判断", "温度、交接、离线时长"),
+  "B013": workspace("接车进线", "逐题记录客户回答，紧急情况先转技师", "接车分流", "客户回答、安全标记、技师接收"),
+  "B014": workspace("连续高硅事件", "按事件持续时长和完整记录排序", "现场核对单", "事件时段、72 小时趋势、优先核对槽位、品质记录"),
+  "B015": workspace("生产观测复测队列", "未通过观测与高优先级记录在前", "观测复测判断", "质量标签、复核优先级、复测条件"),
+  "B016": workspace("风机下偏核查队列", "按日级下偏标记与数据覆盖排序", "现场核查判断", "日级下偏标记、有效风速、平均功率"),
+  "B017": workspace("设备健康队列", "偏差高且证据可用的窗口优先", "夜班排检判断", "健康偏差、证据覆盖、复核等级"),
+  "B018": workspace("温度偏差队列", "按偏离方向与持续时间排序", "当班排查判断", "温度状态、持续时间、完整度"),
+  "B019": workspace("液压循环待排序", "按总体状态和受影响部件核对", "部件检查顺序", "严重度、稳定性、部件数"),
+  "B020": workspace("光伏站端资料核查", "先分清日均事实、派生线索和缺失资料", "站端核查任务", "归一化出力比、疑似限电、温度降额线索"),
+  "B021": workspace("上海周末候选点", "先排地理顺序，再算门票与时间", "两日路线确认", "区域、门票、热度、人工核验项"),
+  "B022": workspace("历史调剂通知", "先看发布日期和来源路径", "回源核验清单", "年份、院校、专业、官方复核要求"),
+  "B023": workspace("春节档影片池", "在影厅容量内比较片长与历史热度", "下一轮排片沙盘", "片长、历史票房、排片占比、黄金场"),
+  "B024": workspace("门店补货候选", "销量节奏只能决定先核对谁", "补货任务确认", "门店、品类、销量速度、库存资料缺口"),
 };
 
 export const CASE_RULES: Record<string, CaseRuleSet> = {
-  "01": {
+  "B001": {
     metrics: [
       { id: "cancel-lines", label: "取消记录", note: "数据中标记为取消", field: "is_cancellation_proxy", aggregation: "count-where", where: [eq("is_cancellation_proxy", true)], format: "integer" },
       { id: "cancel-value", label: "取消涉及金额", note: "按人民币绝对值汇总", field: "line_amount_cny", aggregation: "sum", where: [eq("is_cancellation_proxy", true)], absolute: true, format: "currency-cny" },
@@ -68,7 +72,7 @@ export const CASE_RULES: Record<string, CaseRuleSet> = {
     ],
     defaultDecision: { level: "normal", label: "核对原单关系", reason: "当前行未触发取消异常，仍需完成原单关联后再处置。", recommendedCommand: "create_evidence_request", sourceFields: ["is_cancellation_proxy", "invoice_id", "customer_id"] },
   },
-  "02": {
+  "B002": {
     metrics: [
       { id: "engagement", label: "平均参与度", note: "浏览、加购与购买综合分", field: "engagement_score", aggregation: "mean", format: "decimal" },
       { id: "core-members", label: "核心会员", note: "价值分层为核心", field: "value_segment", aggregation: "count-where", where: [eq("value_segment", "核心")], format: "integer" },
@@ -80,7 +84,7 @@ export const CASE_RULES: Record<string, CaseRuleSet> = {
     ],
     defaultDecision: { level: "normal", label: "暂不扩大投放", reason: "当前行为强度较低，先保留为对照或观察样本。", recommendedCommand: "design_trial", sourceFields: ["value_segment", "engagement_score", "buy_count"] },
   },
-  "03": {
+  "B003": {
     metrics: [
       { id: "low-star", label: "低星评价", note: "一星或二星评价", field: "star", aggregation: "count-where", where: [lte("star", 2)], format: "integer" },
       { id: "service-negative", label: "服务负向", note: "排队、接待或时效明确负向", field: "Service#Queue", aggregation: "count-where", where: [eq("Service#Queue", -1), eq("Service#Hospitality", -1), eq("Service#Timely", -1)], match: "any", format: "integer" },
@@ -92,7 +96,7 @@ export const CASE_RULES: Record<string, CaseRuleSet> = {
     ],
     defaultDecision: { level: "normal", label: "归档为弱信号", reason: "当前评价没有形成明确的高优先问题组合。", recommendedCommand: "archive_signal", sourceFields: ["star", "Service#Queue", "Food#Taste"] },
   },
-  "04": {
+  "B004": {
     metrics: [
       { id: "income-missing", label: "收入材料缺失", note: "收入证明状态为缺失", field: "income_evidence_status", aggregation: "count-where", where: [eq("income_evidence_status", "missing")], format: "integer" },
       { id: "identity-pending", label: "身份待核验", note: "身份核验尚未完成", field: "identity_verification_status", aggregation: "count-where", where: [neq("identity_verification_status", "verified")], format: "integer" },
@@ -104,7 +108,7 @@ export const CASE_RULES: Record<string, CaseRuleSet> = {
     ],
     defaultDecision: { level: "normal", label: "材料状态无缺口", reason: "当前字段没有显示材料缺失，不创建补正任务；后续风险判断仍由人工完成。", recommendedCommand: "hold_application", sourceFields: ["identity_verification_status", "income_evidence_status", "consent_status"] },
   },
-  "05": {
+  "B005": {
     metrics: [
       { id: "conflicts", label: "状态冲突", note: "冲突类型不为“无”", field: "conflict_type", aggregation: "count-where", where: [neq("conflict_type", "none")], format: "integer" },
       { id: "late-events", label: "迟到事件", note: "事件被标记为迟到", field: "late_event", aggregation: "count-where", where: [eq("late_event", true)], format: "integer" },
@@ -117,7 +121,7 @@ export const CASE_RULES: Record<string, CaseRuleSet> = {
     ],
     defaultDecision: { level: "normal", label: "进入接收会签", reason: "事件时序未见冲突，按既定转运流程核对接收方。", recommendedCommand: "nurse_confirm", sourceFields: ["conflict_type", "late_event", "co_sign_status"] },
   },
-  "06": {
+  "B006": {
     metrics: [
       { id: "missing", label: "缺测记录", note: "至少一个污染物缺测", field: "missing_pollutant_count", aggregation: "count-where", where: [gt("missing_pollutant_count", 0)], format: "integer" },
       { id: "pm25-peak", label: "PM2.5 峰值", note: "本地样本最大观测值", field: "PM2.5", aggregation: "max", format: "decimal" },
@@ -129,7 +133,7 @@ export const CASE_RULES: Record<string, CaseRuleSet> = {
     ],
     defaultDecision: { level: "normal", label: "核对数据摘录", reason: "先核对站点、时次、源行和六项污染物原值。", recommendedCommand: "freeze_release_scope", sourceFields: ["missing_pollutant_count", "station", "No"] },
   },
-  "07": {
+  "B007": {
     metrics: [
       { id: "review-windows", label: "评审窗口", note: "场站日期窗口数量", aggregation: "count", format: "integer" },
       { id: "fulfillment-p95", label: "履约 P95", note: "合成运营窗口延迟", field: "fulfillment_p95_latency_ms", aggregation: "max", format: "integer" },
@@ -140,7 +144,7 @@ export const CASE_RULES: Record<string, CaseRuleSet> = {
     ],
     defaultDecision: { level: "normal", label: "进入窗口评审", reason: "先核对四域记录，不据此直接拆分服务。", recommendedCommand: "verify_evidence", sourceFields: ["facility_code", "scenario_date"] },
   },
-  "08": {
+  "B008": {
     metrics: [
       { id: "high-risk", label: "高风险记录", note: "风险级别为高", field: "risk_level", aggregation: "count-where", where: [eq("risk_level", "high")], format: "integer" },
       { id: "offline", label: "设备离线", note: "传感器处于离线状态", field: "sensor_status", aggregation: "count-where", where: [eq("sensor_status", "offline")], format: "integer" },
@@ -152,7 +156,7 @@ export const CASE_RULES: Record<string, CaseRuleSet> = {
     ],
     defaultDecision: { level: "normal", label: "进入常规记录核对", reason: "传感器在线且证据完整，仍按人工流程核对记录。", recommendedCommand: "dispatch_field_check", sourceFields: ["risk_level", "sensor_status", "evidence_status"] },
   },
-  "09": {
+  "B009": {
     metrics: [
       { id: "investigations", label: "断档调查", note: "固定调查对象数量", aggregation: "count", format: "integer" },
       { id: "gap-seconds", label: "最大断档", note: "相邻记录的真实时间差（秒）", field: "gap_seconds", aggregation: "max", format: "integer" },
@@ -163,7 +167,7 @@ export const CASE_RULES: Record<string, CaseRuleSet> = {
     ],
     defaultDecision: { level: "normal", label: "核对连续窗口", reason: "连续性通过后，仍需本地资料与人工复核才能提交检查申请。", recommendedCommand: "run_retrieval", sourceFields: ["investigation_id", "gap_seconds"] },
   },
-  "10": {
+  "B010": {
     metrics: [
       { id: "high-priority", label: "高优先级任务", note: "优先级为高", field: "priority", aggregation: "count-where", where: [eq("priority", "高")], format: "integer" },
       { id: "lookups", label: "外部查证任务", note: "已进入外部调用场景", field: "external_lookup_scenario", aggregation: "count-where", where: [neq("external_lookup_scenario", "not_committed")], format: "integer" },
@@ -175,7 +179,7 @@ export const CASE_RULES: Record<string, CaseRuleSet> = {
     ],
     defaultDecision: { level: "normal", label: "核对本地登记状态", reason: "当前课程标签为尚未提交，不应虚构外部效果或发起恢复重放。", recommendedCommand: "start_lookup", sourceFields: ["priority", "external_lookup_scenario", "evidence_complete"] },
   },
-  "11": {
+  "B011": {
     metrics: [
       { id: "failed-gates", label: "未通过检查项", note: "准入检查结果未通过", field: "result", aggregation: "count-where", where: [neq("result", "pass")], format: "integer" },
       { id: "evidence-gaps", label: "证据缺口", note: "准入检查证据尚未齐全", field: "evidence_status", aggregation: "count-where", where: [neq("evidence_status", "complete")], format: "integer" },
@@ -187,7 +191,7 @@ export const CASE_RULES: Record<string, CaseRuleSet> = {
     ],
     defaultDecision: { level: "normal", label: "进入会签核对", reason: "当前准入检查通过且证据完整，仍由多角色完成准入会签。", recommendedCommand: "request_release_evidence", sourceFields: ["result", "evidence_status", "sample_size"] },
   },
-  "12": {
+  "B012": {
     metrics: [
       { id: "temperature-excursion", label: "温度异常", note: "温度高于 8℃", field: "temperature_c", aggregation: "count-where", where: [gt("temperature_c", 8)], format: "integer" },
       { id: "handoff-gap", label: "交接异常", note: "交接记录尚未完整", field: "handoff_status", aggregation: "count-where", where: [neq("handoff_status", "complete")], format: "integer" },
@@ -199,7 +203,7 @@ export const CASE_RULES: Record<string, CaseRuleSet> = {
     ],
     defaultDecision: { level: "normal", label: "完成运输记录核对", reason: "当前记录没有异常，仍只确认记录完整性，不产生产品可用性结论。", recommendedCommand: "open_investigation", sourceFields: ["temperature_c", "handoff_status", "offline_minutes"] },
   },
-  "13": {
+  "B013": {
     metrics: [
       { id: "safety-review", label: "需要安全复核", note: "进线触发安全复核", field: "safety_review_required", aggregation: "count-where", where: [eq("safety_review_required", true)], format: "integer" },
       { id: "repair-blocked", label: "禁止自动维修", note: "未开放自动维修动作", field: "automatic_repair_allowed", aggregation: "count-where", where: [eq("automatic_repair_allowed", false)], format: "integer" },
@@ -211,7 +215,7 @@ export const CASE_RULES: Record<string, CaseRuleSet> = {
     ],
     defaultDecision: { level: "normal", label: "进入常规人工分流", reason: "当前未触发安全复核，仍保留人工改派入口。", recommendedCommand: "submit_triage", sourceFields: ["safety_review_required", "symptom_category", "automatic_repair_allowed"] },
   },
-  "14": {
+  "B014": {
     metrics: [
       { id: "high-silica", label: "连续事件", note: "事件表中的高硅规则事件", field: "event_id", aggregation: "count-distinct", format: "integer" },
       { id: "consecutive", label: "最长持续时长", note: "事件表记录的持续小时", field: "duration_hours", aggregation: "max", format: "integer" },
@@ -223,7 +227,7 @@ export const CASE_RULES: Record<string, CaseRuleSet> = {
     ],
     defaultDecision: { level: "normal", label: "复核事件记录", reason: "先核对事件时段与逐列记录，不由页面生成根因或设定值。", recommendedCommand: "submit_process_review", sourceFields: ["event_id", "duration_hours", "completeness_state"] },
   },
-  "15": {
+  "B015": {
     metrics: [
       { id: "failed", label: "未通过观测", note: "质量标签未通过", field: "quality_label", aggregation: "count-where", where: [eq("quality_label", "fail")], format: "integer" },
       { id: "high-priority", label: "高优先级复核", note: "进入质量门复核", field: "review_priority", aggregation: "count-where", where: [eq("review_priority", "quality-gate-review")], format: "integer" },
@@ -235,7 +239,7 @@ export const CASE_RULES: Record<string, CaseRuleSet> = {
     ],
     defaultDecision: { level: "normal", label: "执行常规复测抽查", reason: "质量标签通过，但仍不允许自动报废或自动放行。", recommendedCommand: "request_retest", sourceFields: ["quality_label", "review_priority", "automatic_scrap_allowed"] },
   },
-  "16": {
+  "B016": {
     metrics: [
       { id: "underperformance", label: "下偏标记占比", note: "日级下偏标记在运行日中的占比", field: "underperformance_share", aggregation: "mean", format: "percent" },
       { id: "wind-coverage", label: "有效风速覆盖", note: "有效风速记录 / 来源记录", field: "valid_wind_records", ratioDenominatorField: "source_records", aggregation: "mean", format: "percent" },
@@ -247,7 +251,7 @@ export const CASE_RULES: Record<string, CaseRuleSet> = {
     ],
     defaultDecision: { level: "normal", label: "保留为运行对照", reason: "当前日级下偏标记较少，继续观察运行数据。", recommendedCommand: "hold_attribution", sourceFields: ["underperformance_share", "valid_wind_records", "mean_active_power"] },
   },
-  "17": {
+  "B017": {
     metrics: [
       { id: "health-peak", label: "健康偏差峰值", note: "health_deviation_index 最大值", field: "health_deviation_index", aggregation: "max", format: "decimal" },
       { id: "evidence-usable", label: "证据可用占比", note: "证据覆盖状态为可用", field: "evidence_coverage", aggregation: "count-where", where: [eq("evidence_coverage", "可用")], shareOfRows: true, format: "percent" },
@@ -259,7 +263,7 @@ export const CASE_RULES: Record<string, CaseRuleSet> = {
     ],
     defaultDecision: { level: "normal", label: "继续采样观察", reason: "当前偏差未达到排检线，保持连续采样。", recommendedCommand: "continue_monitoring", sourceFields: ["health_deviation_index", "evidence_coverage", "rule_review_level"] },
   },
-  "18": {
+  "B018": {
     metrics: [
       { id: "deviation", label: "偏离窗口", note: "温度状态不是区间内", field: "temperature_state", aggregation: "count-where", where: [neq("temperature_state", "区间内")], format: "integer" },
       { id: "consecutive", label: "最长连续偏离", note: "连续偏离分钟", field: "consecutive_deviation_minutes", aggregation: "max", format: "integer" },
@@ -271,7 +275,7 @@ export const CASE_RULES: Record<string, CaseRuleSet> = {
     ],
     defaultDecision: { level: "normal", label: "保持常规监测", reason: "当前温度处于来源区间内，继续观察趋势。", recommendedCommand: "dispatch_shift_check", sourceFields: ["temperature_state", "consecutive_deviation_minutes", "steam_temperature_mean"] },
   },
-  "19": {
+  "B019": {
     metrics: [
       { id: "degraded", label: "退化周期", note: "总体严重度为退化", field: "overall_severity_label", aggregation: "count-where", where: [eq("overall_severity_label", "退化")], format: "integer" },
       { id: "unstable", label: "未稳定周期", note: "稳定性标签为未稳定", field: "stability_label", aggregation: "count-where", where: [eq("stability_label", "未稳定")], format: "integer" },
@@ -283,7 +287,7 @@ export const CASE_RULES: Record<string, CaseRuleSet> = {
     ],
     defaultDecision: { level: "normal", label: "继续循环采样", reason: "当前循环稳定且总体状态正常，保留为对照。", recommendedCommand: "continue_sampling", sourceFields: ["overall_severity_label", "stability_label", "affected_component_count"] },
   },
-  "20": {
+  "B020": {
     metrics: [
       { id: "efficiency", label: "平均归一化出力比", note: "课程归一化比值，不是物理效率", field: "mean_efficiency_ratio", aggregation: "mean", format: "decimal" },
       { id: "curtailment", label: "疑似限电记录占比", note: "满足课程规则的记录占比，尚未核实", field: "curtailment_suspected_share", aggregation: "mean", format: "percent" },
@@ -294,6 +298,51 @@ export const CASE_RULES: Record<string, CaseRuleSet> = {
       { level: "attention", label: "提交站端核查", reason: "归一化出力、疑似限电或温度线索需要站端记录核对。", recommendedCommand: "submit_station_check", when: [lte("mean_efficiency_ratio", 0.8), gte("curtailment_suspected_share", 0.05), gte("mean_temperature_derating_pct", 0.03)], match: "any" },
     ],
     defaultDecision: { level: "normal", label: "保留为运行对照日", reason: "当前归一化出力与疑似限电线索未达到核查线。", recommendedCommand: "submit_station_check", sourceFields: ["mean_efficiency_ratio", "curtailment_suspected_share", "mean_temperature_derating_pct"] },
+  },
+  "B021": {
+    metrics: [
+      { id: "cities", label: "覆盖城市", note: "历史快照中的城市数量", field: "city_name", aggregation: "count-distinct", format: "integer" },
+      { id: "free-poi", label: "免费候选点", note: "源数据标记为免费", field: "is_free", aggregation: "count-where", where: [eq("is_free", true)], format: "integer" },
+      { id: "mean-price", label: "平均门票", note: "历史快照票价，不代表当日价格", field: "price_cny", aggregation: "mean", format: "currency-cny" },
+    ],
+    decisions: [
+      { level: "attention", label: "先核对高价景点", reason: "单点历史票价较高，需在锁定路线前核对预约和当日价格。", recommendedCommand: "save_route_draft", when: [gte("price_cny", 250)] },
+      { level: "attention", label: "核对预约后入线", reason: "历史热度较高，排入路线前要核对预约和交通时间。", recommendedCommand: "save_route_draft", when: [gte("sales_count", 10000)] },
+    ],
+    defaultDecision: { level: "normal", label: "加入路线候选", reason: "该点可以进入地理与时间排序，最终营业信息仍需现场核对。", recommendedCommand: "save_route_draft", sourceFields: ["city_name", "district", "price_cny", "longitude", "latitude"] },
+  },
+  "B022": {
+    metrics: [
+      { id: "schools", label: "涉及院校", note: "历史通知中的去重院校", field: "school_name", aggregation: "count-distinct", format: "integer" },
+      { id: "historic", label: "历史快照", note: "不能直接作为当前招生信息", field: "freshness_status", aggregation: "count-where", where: [eq("freshness_status", "历史快照")], format: "integer" },
+      { id: "official-check", label: "需官方核验", note: "进入清单后仍须回到官方来源", field: "official_verification_required", aggregation: "count-where", where: [eq("official_verification_required", true)], format: "integer" },
+    ],
+    decisions: [
+      { level: "urgent", label: "只进入回源核验", reason: "这是一份历史快照，不能直接推断当前仍有调剂名额。", recommendedCommand: "create_verification_task", when: [eq("freshness_status", "历史快照")] },
+    ],
+    defaultDecision: { level: "attention", label: "核对来源和日期", reason: "先确认发布日期、来源路径和院校官方页面，再决定是否保留。", recommendedCommand: "create_verification_task", sourceFields: ["published_date", "source_relative_url", "official_verification_required"] },
+  },
+  "B023": {
+    metrics: [
+      { id: "box-office", label: "累计历史票房", note: "截至 2022-03-02 的历史快照", field: "cumulative_box_office_cny", aggregation: "sum", format: "currency-cny" },
+      { id: "audience", label: "累计观影人次", note: "源数据历史累计值", field: "cumulative_audience", aggregation: "sum", format: "integer" },
+      { id: "schedule-share", label: "平均历史排片占比（%）", note: "不是本影院当前排片", field: "latest_schedule_share_pct", aggregation: "mean", format: "decimal" },
+    ],
+    decisions: [
+      { level: "attention", label: "进入黄金场模拟", reason: "历史排片占比和受众规模较高，可进入影厅容量沙盘比较。", recommendedCommand: "save_screening_draft", when: [gte("latest_schedule_share_pct", 20)] },
+    ],
+    defaultDecision: { level: "normal", label: "安排非黄金场比较", reason: "先比较片长、受众和影厅周转，不按总票房直接分配黄金场。", recommendedCommand: "save_screening_draft", sourceFields: ["runtime_minutes", "cumulative_audience", "latest_schedule_share_pct"] },
+  },
+  "B024": {
+    metrics: [
+      { id: "stores", label: "覆盖门店", note: "历史交易涉及门店", field: "store_id", aggregation: "count-distinct", format: "integer" },
+      { id: "units", label: "历史销量", note: "交易记录中的销量合计，不是库存", field: "units", aggregation: "sum", format: "integer" },
+      { id: "mean-price", label: "平均成交单价", note: "历史交易口径", field: "unit_price_cny", aggregation: "mean", format: "currency-cny" },
+    ],
+    decisions: [
+      { level: "attention", label: "先核对库存资料", reason: "本单销量较高，只能提升核对优先级，不能直接生成补货量。", recommendedCommand: "create_inventory_check", when: [gte("units", 10)] },
+    ],
+    defaultDecision: { level: "normal", label: "进入门店品类聚合", reason: "单笔交易不足以决定补货，需与历史销量节奏和库存资料合并。", recommendedCommand: "create_inventory_check", sourceFields: ["store_id", "category_id", "units", "transaction_time"] },
   },
 };
 

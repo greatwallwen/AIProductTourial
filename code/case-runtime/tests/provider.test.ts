@@ -5,14 +5,14 @@ describe("dual-mode model provider", () => {
   it("returns a deterministic offline receipt without a key", async () => {
     const provider = createAssistProvider({ apiKey: "" });
     const first = await provider.assist({
-      caseId: "01",
+      caseId: "B001",
       objectId: "01-489434",
       question: "还缺什么证据？",
       facts: { cancellation: true, amountCny: 81768.96 },
       mode: "offline",
     });
     const second = await provider.assist({
-      caseId: "01",
+      caseId: "B001",
       objectId: "01-489434",
       question: "还缺什么证据？",
       facts: { cancellation: true, amountCny: 81768.96 },
@@ -27,8 +27,8 @@ describe("dual-mode model provider", () => {
     const provider = createAssistProvider({ apiKey: "" });
     await expect(
       provider.assist({
-        caseId: "05",
-        objectId: "05-T001",
+        caseId: "B005",
+        objectId: "B005-T001",
         question: "整理交接冲突",
         facts: { state: "待会签" },
         mode: "live",
@@ -51,7 +51,7 @@ describe("dual-mode model provider", () => {
       },
     });
     const receipt = await provider.assist({
-      caseId: "09",
+      caseId: "B009",
       objectId: "09-1",
       question: "生成检查建议",
       facts: { pressure: "high" },

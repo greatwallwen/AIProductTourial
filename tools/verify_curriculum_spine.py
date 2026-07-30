@@ -10,14 +10,14 @@ from urllib.parse import unquote
 ROOT = Path(__file__).resolve().parents[1]
 MARKDOWN = ROOT / "md" / "Course_AIProduct.md"
 S_CONTENT_HEADINGS = {
-    "S01": ("### 五张任务卡的分诊结果", "### 这五个决定说明什么", "### 为什么“停下”也是正确结果"),
-    "S02": ("### 数据体检记录", "### 六项缺失率", "### 为什么计算交给 Skill"),
-    "S03": ("### 本地简报计算", "### 简报怎样说", "### 为什么要保留“不可计算”"),
-    "S04": ("### 从原话到首个实验", "### 机会图", "### 为什么先画机会而不是功能"),
-    "S05": ("### 三个方向怎样不同", "### 选中的预览", "### 为什么最终选择仍要交给人"),
-    "S06": ("### 五页怎样对应大纲", "### 第四页和检查结果", "### 为什么生成后还要逐页看"),
-    "S07": ("### 浏览器里测到什么", "### 运行画面", "### 原型离完整小游戏还有什么"),
-    "S08": ("### 本地完成到哪里", "### 怎样查看", "### 本地检查与在线生成是两件事"),
+    "S001": ("### 五张任务卡的分诊结果", "### 这五个决定说明什么", "### 为什么“停下”也是正确结果"),
+    "S002": ("### 数据体检记录", "### 六项缺失率", "### 为什么计算交给 Skill"),
+    "S003": ("### 本地简报计算", "### 简报怎样说", "### 为什么要保留“不可计算”"),
+    "S004": ("### 从原话到首个实验", "### 机会图", "### 为什么先画机会而不是功能"),
+    "S005": ("### 三个方向怎样不同", "### 选中的预览", "### 为什么最终选择仍要交给人"),
+    "S006": ("### 五页怎样对应大纲", "### 第四页和检查结果", "### 为什么生成后还要逐页看"),
+    "S007": ("### 浏览器里测到什么", "### 运行画面", "### 原型离完整小游戏还有什么"),
+    "S008": ("### 本地完成到哪里", "### 怎样查看", "### 本地检查与在线生成是两件事"),
 }
 
 
@@ -35,20 +35,20 @@ def main() -> int:
     text = MARKDOWN.read_text(encoding="utf-8")
     manifest = json.loads((ROOT / "course-manifest.json").read_text(encoding="utf-8"))
 
-    capability_sections = sections(text, r"^## ([USL]\d{2})\b")
-    u_sections = {key: value for key, value in capability_sections.items() if key.startswith("U")}
+    capability_sections = sections(text, r"^## ([PSL]\d{3})\b")
+    p_sections = {key: value for key, value in capability_sections.items() if key.startswith("P")}
     s_sections = {key: value for key, value in capability_sections.items() if key.startswith("S")}
     l_sections = {key: value for key, value in capability_sections.items() if key.startswith("L")}
-    b_sections = sections(text, r"^# 综合案例 (B\d{2})\b")
+    b_sections = sections(text, r"^# 综合案例 (B\d{3})\b")
 
     expected = {
-        "U": manifest["teaching_spine"]["prompt_units"],
+        "P": manifest["teaching_spine"]["prompt_units"],
         "S": manifest["teaching_spine"]["agent_skill_workshops"],
         "L": manifest["teaching_spine"]["loop_patterns"],
         "B": manifest["teaching_spine"]["business_cases"],
     }
     actual = {
-        "U": list(u_sections),
+        "P": list(p_sections),
         "S": list(s_sections),
         "L": list(l_sections),
         "B": list(b_sections),
@@ -57,7 +57,7 @@ def main() -> int:
         if actual[track] != expected[track]:
             errors.append(f"{track} headings mismatch: {actual[track]}")
 
-    for unit_id, section in u_sections.items():
+    for unit_id, section in p_sections.items():
         experiments = re.findall(r"^### 实验 ([123])：", section, flags=re.MULTILINE)
         if experiments != ["1", "2", "3"]:
             errors.append(f"{unit_id} experiment sequence mismatch: {experiments}")
@@ -74,17 +74,17 @@ def main() -> int:
     for case_id, section in l_sections.items():
         if "```" not in section:
             errors.append(f"{case_id} missing an inspectable state trace")
-        if case_id != "L04" and not re.search(r"\]\(\.\./evidence/runtime/loop-runtime/[^)]+\)", section):
+        if case_id != "L004" and not re.search(r"\]\(\.\./evidence/runtime/loop-runtime/[^)]+\)", section):
             errors.append(f"{case_id} missing its runtime artifact link")
-        if case_id == "L04" and "pixijs-game-contract" not in section:
-            errors.append("L04 missing its code-test-debug example")
+        if case_id == "L004" and "pixijs-game-contract" not in section:
+            errors.append("L004 missing its code-test-debug example")
 
     for case_id, section in b_sections.items():
         for required in ("## 问题", "## 数据", "## 解决方案", "## CodeBuddy Prompt", "## 演示"):
             if required not in section:
                 errors.append(f"{case_id} missing {required}")
         runtime_screenshots = re.findall(
-            r"!\[[^\]]*\]\(\.\./evidence/screenshots/\d{2}-work-productized\.png\)",
+            r"!\[[^\]]*\]\(\.\./evidence/screenshots/[^)]+\.png\)",
             section,
         )
         if len(runtime_screenshots) != 1:
@@ -151,7 +151,7 @@ def main() -> int:
 
     print(
         "curriculum spine verified: "
-        f"U={len(u_sections)}, S={len(s_sections)}, "
+        f"P={len(p_sections)}, S={len(s_sections)}, "
         f"L={len(l_sections)}, B={len(b_sections)}"
     )
     return 0

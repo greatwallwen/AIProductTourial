@@ -77,7 +77,7 @@ function reviewOf(row: Record<string, unknown>): string {
 }
 
 function reviewId(row: Record<string, unknown>, fallback: string): string {
-  return text(row.id, fallback.replace(/^03-/, ""));
+  return text(row.id, fallback.replace(/^B003-/, ""));
 }
 
 function aspectFor(key: AspectKey) {
@@ -271,7 +271,7 @@ export function ReviewResearchWorkbench(props: CaseWorkbenchProps) {
     props.onCommand(createCommand.id, validationTask.testableQuestion, {
       data: validationTask,
       evidenceIds: [...new Set([...validationTask.supportEvidenceIds, ...validationTask.counterEvidenceIds])],
-      idempotencyKey: `case-03:${props.selected.objectId}:${createCommand.id}:v${props.selected.version}`,
+      idempotencyKey: `case-B003:${props.selected.objectId}:${createCommand.id}:v${props.selected.version}`,
     });
   }
 
@@ -286,7 +286,7 @@ export function ReviewResearchWorkbench(props: CaseWorkbenchProps) {
         supervisorReason: reason,
       },
       evidenceIds: [...new Set([...persistedTask.supportEvidenceIds, ...persistedTask.counterEvidenceIds])],
-      idempotencyKey: `case-03:${props.selected.objectId}:${commandId}:v${props.selected.version}:${persistedTask.taskId}`,
+      idempotencyKey: `case-B003:${props.selected.objectId}:${commandId}:v${props.selected.version}:${persistedTask.taskId}`,
     });
   }
 

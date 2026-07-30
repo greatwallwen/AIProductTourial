@@ -10,16 +10,16 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 EXPECTED = {
-    "prompt_labs": [f"P{index:02d}" for index in range(1, 9)],
-    "agent_skill_cases": [f"S{index:02d}" for index in range(1, 9)],
-    "loop_cases": [f"L{index:02d}" for index in range(1, 4)],
-    "business_cases": [f"B{index:02d}" for index in range(1, 21)],
+    "prompt_labs": [f"P{index:03d}" for index in range(1, 9)],
+    "agent_skill_cases": [f"S{index:03d}" for index in range(1, 9)],
+    "loop_cases": [f"L{index:03d}" for index in range(1, 4)],
+    "business_cases": [f"B{index:03d}" for index in range(1, 25)],
 }
 EXPECTED_TEACHING = {
-    "prompt_units": [f"U{index:02d}" for index in range(1, 7)],
-    "agent_skill_workshops": [f"S{index:02d}" for index in range(1, 9)],
-    "loop_patterns": [f"L{index:02d}" for index in range(1, 5)],
-    "business_cases": [f"B{index:02d}" for index in range(1, 21)],
+    "prompt_units": ["P001", "P002", "P003", "P005", "P006", "P008"],
+    "agent_skill_workshops": [f"S{index:03d}" for index in range(1, 9)],
+    "loop_patterns": [f"L{index:03d}" for index in range(1, 5)],
+    "business_cases": [f"B{index:03d}" for index in range(1, 25)],
 }
 
 
@@ -64,12 +64,12 @@ def main() -> None:
                 fail(f"{item['id']} must be a route-free CLI instructor chapter")
 
     cases = manifest.get("cases", [])
-    runtime_ids = [f"{index:02d}" for index in range(1, 21)]
+    runtime_ids = EXPECTED["business_cases"]
     if [item.get("id") for item in cases] != runtime_ids:
-        fail("manifest internal runtime case ids are not exactly 01-20")
+        fail("manifest business case ids are not exactly B001-B024")
     for teaching_id, item in zip(EXPECTED["business_cases"], cases, strict=True):
-        if item.get("route") != f"/cases/{teaching_id}/work":
-            fail(f"{item.get('id')} public route is not {teaching_id}")
+        if item.get("route") != f"/cases/{teaching_id}":
+            fail(f"{item.get('id')} public route is not /cases/{teaching_id}")
         code_path = ROOT / item.get("code_path", "")
         if not code_path.is_dir():
             fail(f"{teaching_id} missing code directory: {code_path.relative_to(ROOT)}")
@@ -119,7 +119,7 @@ def main() -> None:
 
     expected_dataset_ids = runtime_ids + expected_labs
     if covered_ids != expected_dataset_ids:
-        fail("dataset manifest ids do not match 01-20 plus P/S/L in semantic order")
+        fail("dataset manifest ids do not match B001-B024 plus P/S/L in semantic order")
 
     for data_dir in semantic_dataset_dirs:
         checksum_file = data_dir / "checksums.sha256"
@@ -146,12 +146,12 @@ def main() -> None:
         fail(f"local Skill set mismatch: {sorted(actual_skills)}")
 
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    for phrase in ("U01—U06", "S01—S08", "L01—L04", "B01—B20", "8 个可运行 Skill"):
+    for phrase in ("P001—P008", "S001—S008", "L001—L004", "B001—B024", "8 个可运行 Skill"):
         if phrase not in readme:
             fail(f"README missing frozen count or range: {phrase}")
 
     code_readme = (ROOT / "code" / "README.md").read_text(encoding="utf-8")
-    for phrase in ("P01—P08", "S01—S08", "L01—L03", "/cases/B01/work"):
+    for phrase in ("P001—P008", "S001—S008", "L001—L003", "B001—B024"):
         if phrase not in code_readme:
             fail(f"code README missing current semantic entry: {phrase}")
 
@@ -163,8 +163,8 @@ def main() -> None:
         fail("run.bat contains a machine-specific absolute path")
 
     registry = (ROOT / "code" / "cases" / "registry.ts").read_text(encoding="utf-8")
-    if not re.search(r"\^B\\d\{2\}\$.*slice\(1\)", registry, flags=re.IGNORECASE):
-        fail("case registry has no B-prefixed teaching-id alias")
+    if not re.search(r"\^B\\d\{3\}\$", registry, flags=re.IGNORECASE):
+        fail("case registry has no canonical three-digit business id check")
 
     print(
         "[PASS] semantic catalog: "

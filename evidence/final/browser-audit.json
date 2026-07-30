@@ -1,68 +1,48 @@
 {
-  "schemaVersion": "6.0",
-  "executedAt": "2026-07-29T19:03:08.7431883+08:00",
+  "schemaVersion": "7.0",
+  "executedAt": "2026-07-30T14:06:51.7816450+08:00",
   "baseUrl": "http://127.0.0.1:3200",
-  "runtime": "Next.js 16.2.12 production / clean Chromium / Playwright CLI",
+  "runtime": "Next.js 16.2.12 production / Codex in-app Chromium",
+  "viewport": { "width": 1440, "height": 900 },
   "routes": {
-    "visited": 21,
-    "http200": 21,
-    "notFound": 0,
+    "visited": 25,
+    "passed": 25,
     "dashboard": "/",
     "business": [
-      "/cases/B01/work",
-      "/cases/B02/work",
-      "/cases/B03/work",
-      "/cases/B04/work",
-      "/cases/B05/work",
-      "/cases/B06/work",
-      "/cases/B07/work",
-      "/cases/B08/work",
-      "/cases/B09/work",
-      "/cases/B10/work",
-      "/cases/B11/work",
-      "/cases/B12/work",
-      "/cases/B13/work",
-      "/cases/B14/work",
-      "/cases/B15/work",
-      "/cases/B16/work",
-      "/cases/B17/work",
-      "/cases/B18/work",
-      "/cases/B19/work",
-      "/cases/B20/work"
+      "/cases/B001/work", "/cases/B002/work", "/cases/B003/work", "/cases/B004/work",
+      "/cases/B005/work", "/cases/B006/work", "/cases/B007/work", "/cases/B008/work",
+      "/cases/B009/work", "/cases/B010/work", "/cases/B011/work", "/cases/B012/work",
+      "/cases/B013/work", "/cases/B014/work", "/cases/B015/work", "/cases/B016/work",
+      "/cases/B017/work", "/cases/B018/work", "/cases/B019/work", "/cases/B020/work",
+      "/cases/B021/work", "/cases/B022/work", "/cases/B023/work", "/cases/B024/work"
     ]
   },
   "catalogObservation": {
-    "observedBusinessCases": 20,
-    "caseButtons": 20,
-    "caseLinksInActiveScene": 1
+    "observedBusinessCases": 24,
+    "caseButtons": 24,
+    "horizontalOverflow": false
   },
   "browserSignals": {
     "consoleWarnings": 0,
     "consoleErrors": 0,
     "pageErrors": 0,
-    "hydrationMismatch": 0
-  },
-  "headingObservation": {
-    "routesWithH1": 19,
-    "routesWithoutH1": [
-      "/cases/B14/work",
-      "/cases/B18/work"
-    ],
-    "status": "deferred_ui_semantics",
-    "reason": "Both pages are reachable and error-free; heading consistency is outside the current Markdown, code-reference, and dataset content phase."
+    "hydrationMismatch": 0,
+    "routesWithoutH1": 0
   },
   "hydrationDiagnosis": {
-    "priorSignal": "data-extentions-extra-ocr-id was injected into img before hydration",
-    "currentObservation": "The clean production Chromium session visited the dashboard and all 20 case routes without a hydration warning.",
-    "claim": "Current production runtime is verified clean; the earlier extension-mutated session is not reproduced by this audit."
+    "priorSignal": "浏览器 OCR 扩展曾在 React 水合前向 img 注入 data-extentions-extra-ocr-id。",
+    "currentObservation": "生产构建在 25 条路由上未复现该警告，页面本身没有随机服务端属性或无效嵌套信号。",
+    "claim": "当前生产运行时已验证无水合警告；扩展修改 DOM 的旧会话不属于应用输出。"
   },
-  "screenshotsCapturedThisRun": [],
-  "existingCourseScreenshotsValidatedBy": "tools/verify_business_case_contracts.py",
-  "processReceipt": {
-    "registeredServerPid": 47768,
-    "playwrightSession": "course-final-v4",
-    "remainingOwnedProcesses": 0,
-    "port3200ListenersAfterStop": 0,
-    "playwrightSessionClosed": true
-  }
+  "evidence": {
+    "dashboardScreenshot": "evidence/screenshots/dashboard-24-catalog.png",
+    "journeyReceipts": [
+      "evidence/runtime/B018-browser-receipt.json",
+      "evidence/runtime/B021-browser-receipt.json",
+      "evidence/runtime/B022-browser-receipt.json",
+      "evidence/runtime/B023-browser-receipt.json",
+      "evidence/runtime/B024-browser-receipt.json"
+    ]
+  },
+  "boundary": "验证本地生产路由、标题、布局和浏览器控制台，不代表外部模型、实时交通、实时招生、影院售票或门店库存系统已连接。"
 }

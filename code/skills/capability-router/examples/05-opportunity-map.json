@@ -1,5 +1,5 @@
 {
-  "task_id": "S01-example-05",
+  "task_id": "S001-example-05",
   "task": "读取门店访谈记录，生成带来源字段的产品机会图。",
   "inputs": {"csv_path": "dataset/S-agent-skill-cases/case.csv"},
   "requested_actions": ["read_local_data", "write_artifact"],

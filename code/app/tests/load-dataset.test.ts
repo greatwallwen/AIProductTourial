@@ -3,7 +3,7 @@ import { loadDatasetProjection } from "../../cases/load-dataset";
 import { getCaseDefinition } from "../../cases/registry";
 
 describe("case 01 scene rows", () => {
-  const definition = getCaseDefinition("01")!;
+  const definition = getCaseDefinition("B001")!;
 
   it("keeps the featured cancellation and its real evidence neighbourhood", () => {
     const projection = loadDatasetProjection(definition);
@@ -11,7 +11,7 @@ describe("case 01 scene rows", () => {
 
     expect(sceneRows.length).toBeLessThanOrEqual(96);
     expect(projection.rows).toContainEqual(expect.objectContaining({
-      objectId: "01-C496116-M",
+      objectId: "B001-C496116-M",
     }));
     expect(sceneRows[0]).toMatchObject({
       invoice_id: "C496116",
@@ -51,14 +51,14 @@ describe("case 01 scene rows", () => {
 });
 
 describe("case 05 transfer aggregates", () => {
-  const definition = getCaseDefinition("05")!;
+  const definition = getCaseDefinition("B005")!;
 
   it("seeds one latest event projection per transport and keeps the featured conflict first", () => {
     const projection = loadDatasetProjection(definition);
     const transports = projection.rows.map((row) => String(row.transport_id));
 
     expect(projection.rows[0]).toMatchObject({
-      objectId: "05-TRN-0001-TRN-0001-06",
+      objectId: "B005-TRN-0001-TRN-0001-06",
       transport_id: "TRN-0001",
       event_version: "6",
       late_event: "True",
@@ -71,11 +71,11 @@ describe("case 05 transfer aggregates", () => {
 
 describe("case 07 to 09 product projections", () => {
   it("seeds case 07 as 14 facility-date review windows backed by 56 operations rows", () => {
-    const projection = loadDatasetProjection(getCaseDefinition("07")!);
+    const projection = loadDatasetProjection(getCaseDefinition("B007")!);
 
     expect(projection.rows).toHaveLength(14);
     expect(projection.rows[0]).toMatchObject({
-      objectId: "07-CN-FC-COURSE-01-2026-07-14",
+      objectId: "B007-CN-FC-COURSE-01-2026-07-14",
       facility_code: "CN-FC-COURSE-01",
       scenario_date: "2026-07-14",
       domain_count: "4",
@@ -87,12 +87,12 @@ describe("case 07 to 09 product projections", () => {
   });
 
   it("seeds case 09 as one gap investigation and exposes the gap plus recovery window", () => {
-    const projection = loadDatasetProjection(getCaseDefinition("09")!);
+    const projection = loadDatasetProjection(getCaseDefinition("B009")!);
     const timestamps = projection.sceneRows.map((row) => String(row.timestamp));
 
     expect(projection.rows).toHaveLength(1);
     expect(projection.rows[0]).toMatchObject({
-      objectId: "09-METROPT-20200418-GAP-01",
+      objectId: "B009-METROPT-20200418-GAP-01",
       investigation_id: "METROPT-20200418-GAP-01",
       gap_start: "2020-04-18 00:18:07",
       gap_end: "2020-04-18 00:23:59",

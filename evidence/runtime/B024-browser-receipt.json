@@ -1,0 +1,21 @@
+{
+  "case_id": "B024",
+  "verified_at": "2026-07-30T05:12:58.9945868Z",
+  "url": "http://127.0.0.1:3200/cases/B024",
+  "viewport": { "width": 1440, "height": 900 },
+  "main_landmark": "连锁门店补货排序台",
+  "journey": [
+    { "actor": "replenishment_planner", "action": "创建库存核对任务", "transition": "待核对 → 库存核对中" },
+    { "actor": "supervisor", "action": "确认补货任务", "transition": "库存核对中 → 补货任务已确认" }
+  ],
+  "reload_persistence": "补货任务已确认",
+  "document_metrics": { "width": 1440, "height": 900, "scroll_width": 1440, "scroll_height": 900 },
+  "console_errors": 0,
+  "console_warnings": 0,
+  "screenshot": {
+    "path": "evidence/screenshots/B024-work.png",
+    "bytes": 388204,
+    "sha256": "018326c6bf7ea18061f15429f0551b52ddaef4be41dbe1e4a936fa6101823a22"
+  },
+  "verification_boundary": "deterministic_offline；历史交易只用于决定库存核对顺序，缺少在库、在途和货架容量时不生成补货量。"
+}

@@ -195,12 +195,12 @@ function projectionRowsFor(
   rows: Record<string, string>[],
   supportingArtifacts: Record<string, Record<string, unknown>[]>,
 ): Record<string, string>[] {
-  if (definition.id === "07") return architectureWindowRows(rows, supportingArtifacts);
-  if (definition.id === "09") return metroInvestigationRows(rows);
-  if (definition.id === "11") return modelAdmissionRows(rows);
-  if (definition.id === "12") return coldChainInvestigationRows(rows);
-  if (definition.id === "14") return flotationEventRows(rows, supportingArtifacts);
-  if (definition.id === "18") return boilerEventRows(rows, supportingArtifacts);
+  if (definition.id === "B007") return architectureWindowRows(rows, supportingArtifacts);
+  if (definition.id === "B009") return metroInvestigationRows(rows);
+  if (definition.id === "B011") return modelAdmissionRows(rows);
+  if (definition.id === "B012") return coldChainInvestigationRows(rows);
+  if (definition.id === "B014") return flotationEventRows(rows, supportingArtifacts);
+  if (definition.id === "B018") return boilerEventRows(rows, supportingArtifacts);
   return rows;
 }
 
@@ -216,7 +216,7 @@ function representativeRows(
   }));
   if (projected.length <= limit) return projected;
 
-  if (definition.id === "05") {
+  if (definition.id === "B005") {
     const latestByTransport = new Map<string, DatasetProjection["rows"][number]>();
     for (const row of projected) {
       const transportId = String(row.transport_id ?? "");
@@ -234,7 +234,7 @@ function representativeRows(
     ].slice(0, limit);
   }
 
-  if (definition.id === "06") {
+  if (definition.id === "B006") {
     const featured = resolveFeaturedObject(projected, definition.featuredObjectId);
     const featuredDate = String(featured?.observed_at ?? "").slice(0, 10);
     const sameDate = projected.filter((row) => String(row.observed_at ?? "").startsWith(featuredDate));
@@ -259,7 +259,7 @@ function representativeRows(
     return selected.slice(0, limit);
   }
 
-  if (definition.id === "12") {
+  if (definition.id === "B012") {
     const peakByInvestigation = new Map<string, DatasetProjection["rows"][number]>();
     for (const row of projected) {
       const investigationId = String(row.investigation_id ?? "");
@@ -282,7 +282,7 @@ function representativeRows(
     selected.push(featured);
     selectedIds.add(featured.objectId);
   }
-  if (definition.id === "01") {
+  if (definition.id === "B001") {
     const selectedInvoices = new Set(
       selected.map((item) => String(item.invoice_id ?? "")),
     );
@@ -348,13 +348,13 @@ function supportingArtifactsFor(
       .map((item) => item.path)
       .filter((name): name is string => Boolean(name)),
   );
-  if (definition.id === "09") names.add("knowledge.jsonl");
+  if (definition.id === "B009") names.add("knowledge.jsonl");
   const result: Record<string, Record<string, unknown>[]> = {};
   for (const name of names) {
     const artifactPath = resolve(datasetRoot, name);
     if (!artifactPath.startsWith(`${datasetRoot}\\`) || !existsSync(artifactPath)) continue;
     const artifactRows = readArtifactRows(artifactPath);
-    result[name] = definition.id === "17" && name === "waveform.csv"
+    result[name] = definition.id === "B017" && name === "waveform.csv"
       ? artifactRows.slice(0, 2500)
       : artifactRows.slice(0, 200);
   }
@@ -366,13 +366,13 @@ function sceneRowsFor(
   rows: Record<string, string>[],
   supportingArtifacts: Record<string, Record<string, unknown>[]>,
 ): Record<string, unknown>[] {
-  if (definition.id === "02") {
+  if (definition.id === "B002") {
     // The trial builder displays an exact, filterable cohort distribution.
     // 5,000 compact rows remain small enough for the local teaching runtime,
     // and avoid presenting a 96-row preview as if it represented the dataset.
     return rows;
   }
-  if (definition.id === "01") {
+  if (definition.id === "B001") {
     const featuredIndex = rows.findIndex(
       (row, index) => objectIdFor(definition, row, index) === definition.featuredObjectId,
     );
@@ -429,12 +429,12 @@ function sceneRowsFor(
     add(rows);
     return selected;
   }
-  if (definition.id === "11" || definition.id === "13") {
+  if (definition.id === "B011" || definition.id === "B013") {
     return rows;
   }
-  if (definition.id === "12") return rows;
-  if (definition.id === "14") {
-    const featuredEventId = definition.featuredObjectId?.replace(/^14-/u, "");
+  if (definition.id === "B012") return rows;
+  if (definition.id === "B014") {
+    const featuredEventId = definition.featuredObjectId?.replace(/^B014-/u, "");
     const featuredEvent = (supportingArtifacts["events.csv"] ?? [])
       .find((event) => event.event_id === featuredEventId);
     const featuredEnd = String(featuredEvent?.end_hour ?? "");
@@ -445,7 +445,7 @@ function sceneRowsFor(
     // point silently folded into a view labelled "72 hours".
     return rows.slice(featuredIndex - 71, featuredIndex + 1);
   }
-  if (definition.id === "15") {
+  if (definition.id === "B015") {
     const featured = rows.find(
       (row, index) => objectIdFor(definition, row, index) === definition.featuredObjectId,
     );
@@ -453,17 +453,17 @@ function sceneRowsFor(
       ? [featured, ...rows.filter((row) => row !== featured).slice(0, 23)]
       : rows.slice(0, 24);
   }
-  if (definition.id === "16") {
+  if (definition.id === "B016") {
     // The fleet selector exposes all 134 turbines. Keep the compact seven-day
     // aggregates for every turbine so a lazily loaded object never degrades to
     // a single-row pseudo investigation.
     return rows;
   }
-  if (definition.id === "17") {
+  if (definition.id === "B017") {
     return rows;
   }
-  if (definition.id === "18") {
-    const featuredEventId = definition.featuredObjectId?.replace(/^18-/u, "");
+  if (definition.id === "B018") {
+    const featuredEventId = definition.featuredObjectId?.replace(/^B018-/u, "");
     const featuredEvent = (supportingArtifacts["events.csv"] ?? [])
       .find((event) => event.event_id === featuredEventId);
     const startMinute = String(featuredEvent?.start_time ?? "").slice(0, 16);
@@ -471,20 +471,20 @@ function sceneRowsFor(
     if (!startMinute || !endMinute) return [];
     return rows.filter((row) => row.monitor_minute >= startMinute && row.monitor_minute <= endMinute);
   }
-  if (definition.id === "19") {
+  if (definition.id === "B019") {
     const featuredIndex = rows.findIndex(
       (row, index) => objectIdFor(definition, row, index) === definition.featuredObjectId,
     );
     if (featuredIndex < 0) return rows.slice(0, 49);
     return rows.slice(Math.max(0, featuredIndex - 24), featuredIndex + 25);
   }
-  if (definition.id === "20") {
+  if (definition.id === "B020") {
     // All 5,327 compact station-day aggregates are under 1 MB on disk. The
     // station and date selectors expose the full matrix, so retain it rather
     // than showing a misleading featured-station-only trend after navigation.
     return rows;
   }
-  if (definition.id === "06") {
+  if (definition.id === "B006") {
     const featured = rows.find(
       (row, index) => objectIdFor(definition, row, index) === definition.featuredObjectId,
     );
@@ -497,10 +497,10 @@ function sceneRowsFor(
       (row, index, all) => all.findIndex((item) => item.No === row.No && item.station === row.station) === index,
     );
   }
-  if (definition.id === "08") {
+  if (definition.id === "B008") {
     return rows;
   }
-  if (definition.id === "09") {
+  if (definition.id === "B009") {
     return rows.filter((row) => (
       row.timestamp >= "2020-04-17 23:57:30" && row.timestamp <= "2020-04-18 00:02:30"
     ) || (
@@ -525,7 +525,7 @@ export function loadDatasetProjection(
   }) as Record<string, string>[];
   const supportingArtifacts = supportingArtifactsFor(definition, datasetRoot);
   const projectionRows = projectionRowsFor(definition, rows, supportingArtifacts);
-  const metricRows = definition.id === "07" || definition.id === "09"
+  const metricRows = definition.id === "B007" || definition.id === "B009"
     ? projectionRows
     : rows;
   return {

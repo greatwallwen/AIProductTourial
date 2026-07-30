@@ -104,8 +104,8 @@ class BuildReportTests(unittest.TestCase):
             self.assertEqual(first_json, json_path.read_bytes())
             self.assertEqual(report["case_count"], 8)
             self.assertEqual(report["summary"]["improved_passed"], 8)
-            self.assertIn("P01 baseline 完整回答", first_markdown.decode("utf-8"))
-            self.assertIn("request-P01-baseline", first_markdown.decode("utf-8"))
+            self.assertIn("P001 baseline 完整回答", first_markdown.decode("utf-8"))
+            self.assertIn("request-P001-baseline", first_markdown.decode("utf-8"))
             self.assertNotIn("SHA-256", first_markdown.decode("utf-8"))
             self.assertNotIn(b"Authorization", first_markdown)
             self.assertNotIn(b"Authorization", first_json)
@@ -114,7 +114,7 @@ class BuildReportTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             manifests, receipts = self.fixture_tree(root)
-            (receipts / "P08-fixture" / "receipt.json").unlink()
+            (receipts / "P008-fixture" / "receipt.json").unlink()
             with self.assertRaises(build_report.ReportError):
                 build_report.build_report(manifests, receipts)
 
@@ -122,7 +122,7 @@ class BuildReportTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             manifests, receipts = self.fixture_tree(root)
-            path = receipts / "P03-fixture" / "receipt.json"
+            path = receipts / "P003-fixture" / "receipt.json"
             receipt = json.loads(path.read_text(encoding="utf-8"))
             receipt["status"] = "blocked"
             path.write_text(json.dumps(receipt), encoding="utf-8")
@@ -133,7 +133,7 @@ class BuildReportTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             manifests, receipts = self.fixture_tree(root)
-            path = receipts / "P04-fixture" / "receipt.json"
+            path = receipts / "P004-fixture" / "receipt.json"
             receipt = json.loads(path.read_text(encoding="utf-8"))
             receipt["variants"]["improved"]["evaluator"]["status"] = "failed"
             path.write_text(json.dumps(receipt), encoding="utf-8")

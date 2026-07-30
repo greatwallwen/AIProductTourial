@@ -2,7 +2,7 @@
   "schema_version": "2.0",
   "dataset_id": "L-loop-cases",
   "state": "real-local-input-contract",
-  "boundary": "L01 读取课程会员数据，L02 读取本地创意简报，L03 读取 UCI MetroPT-3 固定窗口与课程审批规则。运行不会调用图像 Provider、诊断设备或执行控制动作。",
+  "boundary": "L001 读取课程会员数据，L002 读取本地创意简报，L003 读取 UCI MetroPT-3 固定窗口与课程审批规则。运行不会调用图像 Provider、诊断设备或执行控制动作。",
   "sources": [
     {"id": "DATA-02", "kind": "course-member-data"},
     {"id": "DATA-09", "kind": "public-derived-sensor-window"},

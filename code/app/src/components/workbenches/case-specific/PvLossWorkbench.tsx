@@ -349,7 +349,7 @@ export function PvLossWorkbench(props: CaseWorkbenchProps) {
     <header className={styles.header}>
       <div className={styles.brand}><span><Sun size={25} /></span><div><h1>光伏站端记录核查</h1><p>站日事实与资料补取</p></div></div>
       <div className={styles.businessState}><span>业务状态</span><strong>匿名 PV-{stationId.padStart(2, "0")}</strong><b>{currentDate}</b><em>{props.selected.state}</em></div>
-      <div className={styles.headerMeta}><span><Database size={17} />5,327 个站点日</span><span><UserRound size={17} />{roleLabel(props.actorRole)}</span><button type="button" aria-label="恢复案例 B20" onClick={reset}><RefreshCw size={18} /></button></div>
+      <div className={styles.headerMeta}><span><Database size={17} />5,327 个站点日</span><span><UserRound size={17} />{roleLabel(props.actorRole)}</span><button type="button" aria-label="恢复案例 B020" onClick={reset}><RefreshCw size={18} /></button></div>
     </header>
 
     <section className={styles.stationBar}>

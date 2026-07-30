@@ -53,7 +53,7 @@ function returnProjection(
     ...(overrides.payload ?? {}),
   };
   return {
-    caseId: "01",
+    caseId: "B001",
     objectId: `01-${invoiceId}-M`,
     state: "待核验",
     version: 0,
@@ -66,7 +66,7 @@ function returnProjection(
 function returnProps(overrides: Partial<CaseWorkbenchProps> = {}): CaseWorkbenchProps {
   const selected = returnProjection();
   return {
-    definition: getCaseDefinition("01")!,
+    definition: getCaseDefinition("B001")!,
     objects: [selected],
     selected,
     events: [],
@@ -119,8 +119,8 @@ const secondLateTransfer = {
 
 function transferProjection(): CaseProjection {
   return {
-    caseId: "05",
-    objectId: "05-TRN-9001-TRN-9001-02",
+    caseId: "B005",
+    objectId: "B005-TRN-9001-TRN-9001-02",
     state: "待会签",
     version: 0,
     payload: secondLateTransfer,
@@ -139,7 +139,7 @@ function transferProjection(): CaseProjection {
 function transferProps(overrides: Partial<CaseWorkbenchProps> = {}): CaseWorkbenchProps {
   const selected = transferProjection();
   return {
-    definition: getCaseDefinition("05")!,
+    definition: getCaseDefinition("B005")!,
     objects: [selected],
     selected,
     events: [],
@@ -181,7 +181,7 @@ function aquacultureProjection(
     ...(overrides.payload ?? {}),
   };
   return {
-    caseId: "08",
+    caseId: "B008",
     objectId: `08-${eventId}-${regionId}`,
     state: "待分派",
     version: 0,
@@ -196,7 +196,7 @@ function aquacultureProps(
   overrides: Partial<CaseWorkbenchProps> = {},
 ): CaseWorkbenchProps {
   return {
-    definition: getCaseDefinition("08")!,
+    definition: getCaseDefinition("B008")!,
     objects: [selected],
     selected,
     events: [],
@@ -221,8 +221,8 @@ describe("批次 3 红灯合同：案例 01、05、08", () => {
     const selected = returnProjection();
     const otherCaseEvent: CaseEvent = {
       eventId: "evt-other-case-request",
-      caseId: "01",
-      objectId: "01-C-OTHER-M",
+      caseId: "B001",
+      objectId: "B001-C-OTHER-M",
       command: "create_evidence_request",
       actor: { id: "analyst-other", role: "analyst" },
       fromState: "待核验",
@@ -287,7 +287,7 @@ describe("批次 3 红灯合同：案例 01、05、08", () => {
       secondLateTransfer.flow_token,
     ]);
     expect(options.idempotencyKey).toBe(
-      `case-05:TRN-9001:nurse_confirm:v0:${secondLateTransfer.event_id}`,
+      `case-B005:TRN-9001:nurse_confirm:v0:${secondLateTransfer.event_id}`,
     );
   });
 

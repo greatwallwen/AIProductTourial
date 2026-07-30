@@ -129,7 +129,7 @@
     },
     {
       "id": "COURSE-PROMPT-FIXTURES",
-      "title": "P01-P04 and P06-P08 deterministic course fixtures",
+      "title": "P001-P004 and P006-P008 deterministic course fixtures",
       "kind": "course-generated-fixture",
       "license": "course-generated-fixture",
       "state": "verified-local-contract",
@@ -551,6 +551,38 @@
       "download_url": "https://archive.ics.uci.edu/static/public/179/secom.zip",
       "license": "CC BY 4.0",
       "redistribution": "allowed-with-attribution"
+    },
+    {
+      "id": "DATA-21",
+      "title": "中国城市旅游 POI 快照",
+      "kind": "user-provided-local-dataset",
+      "state": "local-snapshot-hash-verified",
+      "license": "随附文件未声明",
+      "usage": "B021 路线候选与地址、价格、热度字段"
+    },
+    {
+      "id": "DATA-22",
+      "title": "2021 年考研调剂与院校信息快照",
+      "kind": "user-provided-local-dataset",
+      "state": "local-snapshot-hash-verified",
+      "license": "随附文件未声明",
+      "usage": "B022 信息新鲜度与回源核验"
+    },
+    {
+      "id": "DATA-23",
+      "title": "2022 春节档票房与排片快照",
+      "kind": "user-provided-local-dataset",
+      "state": "local-snapshot-hash-verified",
+      "license": "随附文件未声明",
+      "usage": "B023 历史影院经营推演"
+    },
+    {
+      "id": "DATA-24",
+      "title": "连锁超市历史交易明细",
+      "kind": "user-provided-local-dataset",
+      "state": "local-snapshot-hash-verified",
+      "license": "随附文件未声明",
+      "usage": "B024 销量压力排序与人工核库"
     }
   ]
 }

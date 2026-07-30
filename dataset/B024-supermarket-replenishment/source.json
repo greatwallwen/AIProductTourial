@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "case_id": "B024",
+  "sources": [
+    {
+      "id": "DATA-24",
+      "title": "连锁超市历史交易明细",
+      "publisher": "用户提供的课程参考数据",
+      "version": "2026-07-30 固定本地快照",
+      "license": "随附文件未声明",
+      "redistribution": "用户授权用于课程本地化；第三方再分发权未独立核验"
+    }
+  ],
+  "input_files": [
+    {
+      "path": "raw/order-14.1.csv",
+      "bytes": 241406,
+      "sha256": "ad338a62062f41470ae982c94e1bf5c8ab1c4c23aba88537f78563d0af8fe3b8",
+      "role": "user-provided reference snapshot"
+    },
+    {
+      "path": "raw/order-14.3.csv",
+      "bytes": 256671,
+      "sha256": "8b681f21749942dda8dac1cf7b8b8fa468942207872c8eae225de47936587a58",
+      "role": "user-provided reference snapshot"
+    }
+  ],
+  "generation": {
+    "generator": "tools/prepare_expansion_cases.py",
+    "generator_version": "1.0.0",
+    "field_lineage": {
+      "source_facts": [
+        "product_id",
+        "category_id",
+        "store_id",
+        "unit_price_cny",
+        "units",
+        "transaction_time",
+        "order_id"
+      ],
+      "derived_fields": [
+        "transaction_id",
+        "state",
+        "data_nature"
+      ]
+    }
+  },
+  "supplemental_outputs": [
+    {
+      "path": "sales-pressure.csv",
+      "source_id": "DATA-24",
+      "rows": 704,
+      "sha256": "c4369e0147ff3379e46bb79d5991417617a074f55ccd90ff6514c22f444006ad",
+      "data_nature": "derived-sales-pressure-not-inventory"
+    }
+  ],
+  "transform_status": "derived-verified",
+  "materialized_status": "verified",
+  "rebuild_status": "verified",
+  "restriction": "销量只能形成核库优先级；数据没有实时库存、在途、保质期或货架容量，禁止自动下补货单。"
+}

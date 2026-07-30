@@ -3,7 +3,7 @@
 > 从可读的 Markdown 到可编辑、可审计的演示文稿
 
 <!-- notes: 开场说明本文稿的目标是建立数据质量共识，不对污染原因下结论。 -->
-<!-- source: Course-local S02 profile output. -->
+<!-- source: Course-local S002 profile output. -->
 
 ## 01 为什么先体检
 
@@ -29,7 +29,7 @@
 | O3 | 830 | 3.95% |
 
 <!-- notes: 表格只展示三个代表字段；完整六项数值保留在 profile.json。 -->
-<!-- source: dataset/06-beijing-air-quality-audit/case.csv; S02 profile generated locally. -->
+<!-- source: dataset/B006-beijing-air-quality-audit/case.csv; S002 profile generated locally. -->
 
 ## 把数据问题交给可复查的流程
 

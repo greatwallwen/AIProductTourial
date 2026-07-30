@@ -66,7 +66,7 @@ function projection(caseId: string, objectId: string, payload: Record<string, un
   return {
     caseId,
     objectId,
-    state: caseId === "12" ? "待调查" : "待分流",
+    state: caseId === "B012" ? "待调查" : "待分流",
     version: 0,
     payload,
     updatedAt: "2026-07-26T08:00:00.000Z",
@@ -74,13 +74,13 @@ function projection(caseId: string, objectId: string, payload: Record<string, un
 }
 
 const coldChainObjects = [
-  projection("12", "12-CCI-TEMP-001-TEMP-PEAK-002", coldChainRows[1]),
-  projection("12", "12-CCI-HANDOFF-002-HANDOFF-ONLY-001", coldChainRows[2]),
+  projection("B012", "B012-CCI-TEMP-001-TEMP-PEAK-002", coldChainRows[1]),
+  projection("B012", "B012-CCI-HANDOFF-002-HANDOFF-ONLY-001", coldChainRows[2]),
 ];
 
 function coldChainProps(overrides: Partial<CaseWorkbenchProps> = {}): CaseWorkbenchProps {
   return {
-    definition: getCaseDefinition("12")!,
+    definition: getCaseDefinition("B012")!,
     objects: coldChainObjects,
     selected: coldChainObjects[0],
     events: [],
@@ -112,11 +112,11 @@ const autoServiceRow: Record<string, unknown> = {
   automatic_repair_allowed: false,
   data_nature: "deterministic-synthetic-cn-operations",
 };
-const autoServiceObject = projection("13", "13-CN-AS-001", autoServiceRow);
+const autoServiceObject = projection("B013", "B013-CN-AS-001", autoServiceRow);
 
 function autoServiceProps(overrides: Partial<CaseWorkbenchProps> = {}): CaseWorkbenchProps {
   return {
-    definition: getCaseDefinition("13")!,
+    definition: getCaseDefinition("B013")!,
     objects: [autoServiceObject],
     selected: autoServiceObject,
     events: [],

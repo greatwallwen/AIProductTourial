@@ -9,7 +9,7 @@ from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[3]
-DATASET = ROOT / "dataset" / "09-metro-agentic-rag"
+DATASET = ROOT / "dataset" / "B009-metro-agentic-rag"
 KNOWLEDGE = DATASET / "knowledge.jsonl"
 SENSOR_DATA = DATASET / "case.csv"
 PROTOCOL_VERSION = "2025-11-25"

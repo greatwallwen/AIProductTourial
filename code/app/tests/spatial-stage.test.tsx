@@ -7,7 +7,7 @@ import { SpatialEvidenceStage } from "../src/components/spatial/SpatialEvidenceS
 import type { SceneModel } from "../src/components/spatial/types";
 
 const model: SceneModel = {
-  caseId: "19",
+  caseId: "B019",
   title: "循环 H-0217 部件状态",
   disclosure: "示意结构",
   nodes: [

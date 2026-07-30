@@ -25,7 +25,7 @@ const windRow = {
   underperformance_share: "1",
 };
 const windSelected: CaseProjection = {
-  caseId: "16",
+  caseId: "B016",
   objectId: "16-7-1",
   state: "待定位",
   version: 0,
@@ -47,8 +47,8 @@ const cutterRow = {
   film_follow_error_std: "0.1057",
 };
 const cutterSelected: CaseProjection = {
-  caseId: "17",
-  objectId: "17-BD-0003",
+  caseId: "B017",
+  objectId: "B017-BD-0003",
   state: "待复核",
   version: 0,
   payload: cutterRow,
@@ -61,7 +61,7 @@ const waveform = [
 
 function windProps(overrides: Partial<CaseWorkbenchProps> = {}): CaseWorkbenchProps {
   return {
-    definition: getCaseDefinition("16")!,
+    definition: getCaseDefinition("B016")!,
     objects: [windSelected], selected: windSelected, events: [], metrics: [], datasetRowCount: 938,
     sceneRows: [windRow], supportingArtifacts: {}, actorRole: "supervisor",
     roles: ["reliability_engineer", "supervisor"],
@@ -72,7 +72,7 @@ function windProps(overrides: Partial<CaseWorkbenchProps> = {}): CaseWorkbenchPr
 
 function cutterProps(overrides: Partial<CaseWorkbenchProps> = {}): CaseWorkbenchProps {
   return {
-    definition: getCaseDefinition("17")!,
+    definition: getCaseDefinition("B017")!,
     objects: [cutterSelected], selected: cutterSelected, events: [], metrics: [], datasetRowCount: 519,
     sceneRows: [], supportingArtifacts: {}, actorRole: "maintenance_planner",
     roles: ["maintenance_planner", "supervisor"],

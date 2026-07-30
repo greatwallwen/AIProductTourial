@@ -23,8 +23,8 @@ const familyIcons = {
 };
 
 function sceneSource(caseId: string) {
-  return caseId === "18"
-    ? "/case-assets/case-18/boiler-plant-scene.png"
+  return caseId === "B018"
+    ? "/case-assets/case-B018/boiler-plant-scene.png"
     : `/case-assets/case-${caseId}/scene.png`;
 }
 

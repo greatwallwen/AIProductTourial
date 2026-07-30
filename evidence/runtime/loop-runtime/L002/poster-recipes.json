@@ -1,0 +1,166 @@
+{
+  "brief": {
+    "audience": "下班后想慢下来的城市读者",
+    "headline": "雨落下来，书页慢下来",
+    "supporting_copy": [
+      "躺进一页旧时光",
+      "周五 19:30 · 夜读与换书"
+    ],
+    "theme": "雨天旧书店",
+    "visible_subjects": [
+      "雨线",
+      "暖黄橱窗",
+      "旧书脊",
+      "一盏灯"
+    ]
+  },
+  "image_provider_called": false,
+  "image_provider_receipt": null,
+  "recipes": [
+    {
+      "audience": "下班后想慢下来的城市读者",
+      "concept": "用大量留白和一扇暖黄橱窗呈现“雨天旧书店”。",
+      "fonts": {
+        "body": "Noto Sans CJK SC / Microsoft YaHei",
+        "headline": "Noto Serif CJK SC / Source Han Serif SC"
+      },
+      "forbidden": [
+        "人物大特写",
+        "高饱和多色渐变",
+        "密集商业促销标签"
+      ],
+      "headline": "雨落下来，书页慢下来",
+      "id": "quiet-window",
+      "information_hierarchy": [
+        "雨落下来，书页慢下来",
+        "躺进一页旧时光",
+        "周五 19:30 · 夜读与换书",
+        "SECOND PAGE BOOKS"
+      ],
+      "layout": {
+        "anchor": "warm bookstore window",
+        "density": "low",
+        "headline_zone": "upper-left 58%",
+        "subject_zone": "lower-right 34%",
+        "system": "editorial-asymmetry"
+      },
+      "material_gaps": [
+        "没有实拍书店橱窗，本地版以可编辑矢量构成代替。"
+      ],
+      "name": "雨夜橱窗",
+      "palette": [
+        "#F4F0E6",
+        "#172A3A",
+        "#F4B942",
+        "#657786"
+      ],
+      "provider_prompt": "编辑式中文海报，主题雨天旧书店，雨夜旧书店橱窗，大量米白留白，深蓝雨线，一个高饱和暖黄色锚点，纸张颗粒，中文标题区清晰可读。",
+      "required_copy": [
+        "SECOND PAGE BOOKS",
+        "入场免费"
+      ],
+      "selection_reason": "标题与橱窗分区最清楚，小尺寸仍可读；冷雨与暖光的单一色锚直接对应“下班后慢下来”，且可用本地矢量元素完整表达，无需伪造图像 Provider 回执。",
+      "selection_score": 94
+    },
+    {
+      "audience": "下班后想慢下来的城市读者",
+      "concept": "让“雨落下来，书页慢下来”成为画面主体，用纵向字形节奏模拟雨幕。",
+      "fonts": {
+        "body": "Noto Sans CJK SC / Microsoft YaHei",
+        "headline": "Noto Sans CJK SC Black / Microsoft YaHei Bold"
+      },
+      "forbidden": [
+        "人物大特写",
+        "高饱和多色渐变",
+        "密集商业促销标签"
+      ],
+      "headline": "雨落下来，书页慢下来",
+      "id": "rain-type",
+      "information_hierarchy": [
+        "雨落下来，书页慢下来",
+        "SECOND PAGE BOOKS",
+        "躺进一页旧时光"
+      ],
+      "layout": {
+        "anchor": "cyan vertical rain typography",
+        "density": "medium",
+        "headline_zone": "center 72%",
+        "subject_zone": "bottom strip 18%",
+        "system": "type-dominant-grid"
+      },
+      "material_gaps": [
+        "没有实拍书店橱窗，本地版以可编辑矢量构成代替。"
+      ],
+      "name": "字成雨幕",
+      "palette": [
+        "#DDE9EF",
+        "#0D2A3A",
+        "#16A6B6",
+        "#F2C14E"
+      ],
+      "provider_prompt": "字体主导的中文海报，“雨落下来，书页慢下来”巨大排版形成雨幕，冷青蓝网格，底部仅保留旧书与灯光剪影，一点暖黄，丝网印刷质感。",
+      "required_copy": [
+        "SECOND PAGE BOOKS",
+        "入场免费"
+      ],
+      "selection_score": 86
+    },
+    {
+      "audience": "下班后想慢下来的城市读者",
+      "concept": "用深色大块面与窄而明亮的门洞形成“外部喧闹 / 内部安静”对比。",
+      "fonts": {
+        "body": "Noto Sans CJK SC / Microsoft YaHei",
+        "headline": "Source Han Serif SC Heavy / SimSun"
+      },
+      "forbidden": [
+        "人物大特写",
+        "高饱和多色渐变",
+        "密集商业促销标签"
+      ],
+      "headline": "雨落下来，书页慢下来",
+      "id": "shelter-cut",
+      "information_hierarchy": [
+        "雨落下来，书页慢下来",
+        "周五 19:30 · 夜读与换书",
+        "SECOND PAGE BOOKS"
+      ],
+      "layout": {
+        "anchor": "amber doorway cut-out",
+        "density": "low",
+        "headline_zone": "left 42%",
+        "subject_zone": "right doorway 46%",
+        "system": "cinematic-split"
+      },
+      "material_gaps": [
+        "没有实拍书店橱窗，本地版以可编辑矢量构成代替。"
+      ],
+      "name": "避雨入口",
+      "palette": [
+        "#101A2B",
+        "#F7E8C6",
+        "#E9A23B",
+        "#8DA9C4"
+      ],
+      "provider_prompt": "电影感中文海报，深蓝雨夜占画面大部分，右侧暖黄书店门洞，一个小人物走向光源，小标题沿边缘垂直排列，木刻和凸版质感。",
+      "required_copy": [
+        "SECOND PAGE BOOKS",
+        "入场免费"
+      ],
+      "selection_score": 89
+    }
+  ],
+  "render": {
+    "kind": "editable-svg",
+    "raster_images_embedded": 0
+  },
+  "schema_version": "1.0",
+  "selected_recipe_id": "quiet-window",
+  "selection_reason": "标题与橱窗分区最清楚，小尺寸仍可读；冷雨与暖光的单一色锚直接对应“下班后慢下来”，且可用本地矢量元素完整表达，无需伪造图像 Provider 回执。",
+  "source": {
+    "path": "D:\\cursor\\AI培训\\Course_AIProduct\\.publish\\AIProductTourial\\code\\skills\\poster-recipe\\examples\\rainy-bookstore-brief.json",
+    "read_mode": "read-only",
+    "sha256": "cb99ba4c67b8f0ce106eda96aeecbaf1c2595583632a57150a049a4d171d0185",
+    "source_write_performed": false
+  },
+  "status": "complete-local"
+}

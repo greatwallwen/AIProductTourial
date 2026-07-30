@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "course.browser-receipt.v1",
+  "caseId": "B018",
+  "verifiedAt": "2026-07-30T12:30:53.3226368+08:00",
+  "url": "http://127.0.0.1:3200/cases/B018",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "journey": [
+    {
+      "actor": "process_engineer",
+      "action": "选择减温水调节段并提交当班排查",
+      "fromState": "待定位",
+      "toState": "当班排查中",
+      "verifiedAfterReload": true
+    },
+    {
+      "actor": "supervisor",
+      "action": "核对已保存任务并确认优先检查段",
+      "fromState": "当班排查中",
+      "toState": "检查已下发",
+      "verifiedAfterReload": true
+    }
+  ],
+  "layout": {
+    "main": { "top": 0, "bottom": 900, "height": 900 },
+    "timeline": { "top": 654, "bottom": 840, "height": 186, "scrollHeight": 186 },
+    "chart": { "top": 694, "bottom": 840, "height": 146, "scrollHeight": 146 },
+    "timeLabels": { "top": 822, "bottom": 834, "height": 12 },
+    "footer": { "top": 840, "bottom": 900, "height": 60 },
+    "documentHorizontalOverflow": false,
+    "documentVerticalOverflow": false
+  },
+  "console": {
+    "errors": [],
+    "warnings": [],
+    "hydrationMismatch": false
+  },
+  "artifacts": [
+    {
+      "path": "evidence/screenshots/B018-golden-after.png",
+      "sha256": "94cc7670e7a644973120e902e78e99e18c17e6d486012bc161834b5206bbfdaf",
+      "bytes": 1118574
+    },
+    {
+      "path": "code/app/src/components/workbenches/case-specific/BoilerEventWorkbench.tsx",
+      "sha256": "f5b593754de4180f8e7ef51d4657dda1845a95813741e379edfbe1789e2dfebc",
+      "bytes": 22815
+    },
+    {
+      "path": "code/app/src/components/workbenches/case-specific/BoilerEventWorkbench.module.css",
+      "sha256": "7aa0545fa1f9e22f1643d288b0abde05550fcc7266fb0dc9e161a3375b71e9c2",
+      "bytes": 17702
+    }
+  ],
+  "status": "verified"
+}

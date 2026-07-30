@@ -16,9 +16,9 @@ def load(path: Path) -> dict:
 def main() -> None:
     contract = load(CONTRACT)
     expected = {
-        "L01": ("completed", "acceptance_passed"),
-        "L02": ("waiting_human", "visual_choice_required"),
-        "L03": ("waiting_human", "permission_required"),
+        "L001": ("completed", "acceptance_passed"),
+        "L002": ("waiting_human", "visual_choice_required"),
+        "L003": ("waiting_human", "permission_required"),
     }
     declared = {item["id"]: (item["terminal"], item["stopReason"]) for item in contract["cases"]}
     if declared != expected:
@@ -38,13 +38,13 @@ def main() -> None:
                 raise SystemExit(f"{lab_id}: missing or unsafe output {item}")
             artifact_count += 1
 
-    l02 = load(RUNTIME / "loop-run-L02.json")
+    l02 = load(RUNTIME / "loop-run-L002.json")
     if l02["facts"] != {"candidate_count": 3, "recommended": "quiet-window", "provider_called": False}:
-        raise SystemExit("L02: visual-choice facts changed")
-    l03_packet = load(RUNTIME / "L03" / "approval-packet.json")
+        raise SystemExit("L002: visual-choice facts changed")
+    l03_packet = load(RUNTIME / "L003" / "approval-packet.json")
     serialized = json.dumps(l03_packet, ensure_ascii=False)
     if l03_packet["status"] != "waiting_human" or any(term in serialized for term in ["故障根因是", "自动维修已执行", "自动停机已执行"]):
-        raise SystemExit("L03: approval packet crossed the allowed action boundary")
+        raise SystemExit("L003: approval packet crossed the allowed action boundary")
 
     print(f"loop_cases=3, checks=12, output_artifacts={artifact_count}, states=1-completed+2-waiting-human")
 

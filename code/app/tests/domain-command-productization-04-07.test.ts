@@ -58,16 +58,16 @@ describe("productized domain gates for cases 04, 06 and 07", () => {
       requestNote: "请补充近三个月收入材料并注明来源。",
       requesterId: "credit-reviewer-01",
     };
-    const initial = projection("04", "待复核", creditPayload);
-    expect(validate("04", "request_material", initial, request, "credit-reviewer-01", [
+    const initial = projection("B004", "待复核", creditPayload);
+    expect(validate("B004", "request_material", initial, request, "credit-reviewer-01", [
       "application:CR20260000001",
     ])).not.toThrow();
-    expect(validate("04", "request_material", initial, {
+    expect(validate("B004", "request_material", initial, {
       ...request,
       requestedMaterials: ["income", "identity"],
     }, "credit-reviewer-01", ["application:CR20260000001"])).toThrow("credit_material_invalid");
 
-    const pending = projection("04", "待补正", creditPayload, request);
+    const pending = projection("B004", "待补正", creditPayload, request);
     const returnedReceipt = {
       materialKey: "income",
       sourceRef: "匿名收入材料回传-01",
@@ -82,18 +82,18 @@ describe("productized domain gates for cases 04, 06 and 07", () => {
         },
       },
     };
-    expect(validate("04", "record_material_return", pending, returnedReceipt, "credit-reviewer-03", [
+    expect(validate("B004", "record_material_return", pending, returnedReceipt, "credit-reviewer-03", [
       "returned-material:income",
       "return-receipt:RET-CR20260000001-INCOME-01",
     ])).not.toThrow();
-    expect(validate("04", "record_material_return", pending, {
+    expect(validate("B004", "record_material_return", pending, {
       ...returnedReceipt,
       materialKey: "identity",
     }, "credit-reviewer-03", [
       "returned-material:identity",
       "return-receipt:RET-CR20260000001-INCOME-01",
     ])).toThrow("credit_material_invalid");
-    expect(validate("04", "record_material_return", pending, {
+    expect(validate("B004", "record_material_return", pending, {
       ...returnedReceipt,
       returnActorId: "another-reviewer",
     }, "credit-reviewer-03", [
@@ -101,7 +101,7 @@ describe("productized domain gates for cases 04, 06 and 07", () => {
       "return-receipt:RET-CR20260000001-INCOME-01",
     ])).toThrow("actor_mismatch");
 
-    const returnedProjection = projection("04", "待补正", creditPayload, {
+    const returnedProjection = projection("B004", "待补正", creditPayload, {
       ...request,
       materialStatus: returnedReceipt.materialStatus,
       returnReceipts: returnedReceipt.returnReceipts,
@@ -112,10 +112,10 @@ describe("productized domain gates for cases 04, 06 and 07", () => {
       reviewNote: "已核对收入材料来源和申请字段一致性。",
       separationConfirmed: true,
     };
-    expect(validate("04", "start_human_review", returnedProjection, returned, "credit-reviewer-02", [
+    expect(validate("B004", "start_human_review", returnedProjection, returned, "credit-reviewer-02", [
       "returned-material:income",
     ])).not.toThrow();
-    expect(validate("04", "start_human_review", returnedProjection, {
+    expect(validate("B004", "start_human_review", returnedProjection, {
       ...returned,
       secondReviewerId: "credit-reviewer-01",
     }, "credit-reviewer-01", ["returned-material:income"])).toThrow("actor_separation_required");
@@ -142,8 +142,8 @@ describe("productized domain gates for cases 04, 06 and 07", () => {
       pollutants: { "PM2.5": "16", PM10: "33", SO2: "7", NO2: "39", CO: "700", O3: "26" },
     };
     const completeness = { "PM2.5": "present", PM10: "present", SO2: "present", NO2: "present", CO: "present", O3: "present" };
-    const initial = projection("06", "待审核", payload);
-    expect(validate("06", "freeze_release_scope", initial, {
+    const initial = projection("B006", "待审核", payload);
+    expect(validate("B006", "freeze_release_scope", initial, {
       releasePackage,
       completeness,
       reviewNote: "六项污染物和站点时次已经逐项核对。",
@@ -152,7 +152,7 @@ describe("productized domain gates for cases 04, 06 and 07", () => {
       "station-hour:Wanliu:2016-12-27 12:00:00",
       "source-row:33541",
     ])).not.toThrow();
-    expect(validate("06", "freeze_release_scope", initial, {
+    expect(validate("B006", "freeze_release_scope", initial, {
       releasePackage: { ...releasePackage, pollutants: { ...releasePackage.pollutants, O3: "999" } },
       completeness,
       reviewNote: "六项污染物和站点时次已经逐项核对。",
@@ -162,18 +162,18 @@ describe("productized domain gates for cases 04, 06 and 07", () => {
       "source-row:33541",
     ])).toThrow("air_release_package_mismatch");
 
-    const pending = projection("06", "待发布", payload, {
+    const pending = projection("B006", "待发布", payload, {
       releasePackage,
       completeness,
       reviewNote: "六项污染物和站点时次已经逐项核对。",
       reviewerId: "case06-air-auditor",
     });
-    expect(validate("06", "publish", pending, {
+    expect(validate("B006", "publish", pending, {
       releasePackage,
       approvalNote: "主管已复核发布包版本和六项字段。",
       approverId: "case06-release-supervisor",
     }, "case06-release-supervisor", ["release-package:AQ-20161227-Wanliu-33541-v1"])).not.toThrow();
-    expect(validate("06", "publish", pending, {
+    expect(validate("B006", "publish", pending, {
       releasePackage,
       approvalNote: "审核员自行确认同一份发布包。",
       approverId: "case06-air-auditor",
@@ -195,14 +195,14 @@ describe("productized domain gates for cases 04, 06 and 07", () => {
       createdBy: "case07-architecture-reviewer",
     };
     const evidenceIds = ["public-order-slice:DATA-07", "ops:CN-FC-COURSE-01:2026-07-14"];
-    const initial = projection("07", "待评审", payload);
-    expect(validate("07", "verify_evidence", initial, task, "case07-architecture-reviewer", evidenceIds)).not.toThrow();
-    expect(validate("07", "verify_evidence", initial, {
+    const initial = projection("B007", "待评审", payload);
+    expect(validate("B007", "verify_evidence", initial, task, "case07-architecture-reviewer", evidenceIds)).not.toThrow();
+    expect(validate("B007", "verify_evidence", initial, {
       ...task,
       facts: ["public-order-slice", "production-sla-proven"],
     }, "case07-architecture-reviewer", evidenceIds)).toThrow("architecture_facts_invalid");
 
-    const reviewed = projection("07", "架构评审中", payload, task);
+    const reviewed = projection("B007", "架构评审中", payload, task);
     const adr = {
       ...task.adr,
       status: "accepted",
@@ -213,7 +213,7 @@ describe("productized domain gates for cases 04, 06 and 07", () => {
       signerId: "architecture-lead-02",
       statement: "同意批准单事件试点并承担验收复核",
     };
-    expect(validate("07", "start_event_contract_pilot", reviewed, {
+    expect(validate("B007", "start_event_contract_pilot", reviewed, {
       adr,
       signature,
       eventContract: {
@@ -229,7 +229,7 @@ describe("productized domain gates for cases 04, 06 and 07", () => {
         acceptanceCriteria: "重复、乱序和回滚测试全部通过",
       },
     }, "architecture-lead-02", evidenceIds)).not.toThrow();
-    expect(validate("07", "start_event_contract_pilot", reviewed, {
+    expect(validate("B007", "start_event_contract_pilot", reviewed, {
       adr,
       signature,
       eventContract: {

@@ -1,0 +1,132 @@
+{
+  "schemaVersion": "2.0",
+  "generatedAt": "2026-07-27T14:00:00+08:00",
+  "dataset": {
+    "path": "dataset/B004-credit-human-review/applications.csv",
+    "sha256": "14d4c64476bc7908db7497493d4284136795d3eb39ff09bcbbbefa9271c821d1",
+    "grain": "one anonymized synthetic credit application",
+    "rows": 1200,
+    "columns": 19,
+    "dataNature": "deterministic-synthetic-operational",
+    "containsPii": false,
+    "individualWorkspaceAuthority": true
+  },
+  "completeness": {
+    "requiredColumnsMissingRows": 0,
+    "nullableColumns": {
+      "internal_repayment_months": 600,
+      "recent_overdue_days": 600
+    },
+    "interpretation": "The two nullable history fields are structurally absent for all 600 new-customer records and must not be coerced to zero."
+  },
+  "uniqueness": {
+    "distinctApplicationIds": 1200,
+    "duplicateApplicationIdExtraRows": 0
+  },
+  "validity": {
+    "requestedAmountFen": {
+      "minimum": 303779,
+      "maximum": 4996186,
+      "average": 2623026.17,
+      "displayCurrency": "CNY",
+      "displayRule": "divide integer fen by 100"
+    },
+    "debtServiceRatioBps": {
+      "minimum": 3200,
+      "maximum": 6500,
+      "average": 3854.25,
+      "individualDecisionUse": false
+    },
+    "dataNatureValues": {
+      "deterministic_synthetic": 1200
+    }
+  },
+  "distributions": {
+    "identityVerificationStatus": {
+      "verified": 1152,
+      "pending": 48
+    },
+    "incomeEvidenceStatus": {
+      "complete": 1128,
+      "missing": 72
+    },
+    "consentStatus": {
+      "confirmed": 1176,
+      "not_confirmed": 24
+    },
+    "applicationConsistency": {
+      "consistent": 1188,
+      "needs_evidence": 12
+    },
+    "customerSegment": {
+      "new_customer": 600,
+      "returning_customer": 600
+    },
+    "channel": {
+      "手机银行": 400,
+      "合作机构": 400,
+      "客户经理": 400
+    },
+    "city": {
+      "武汉市": 200,
+      "南京市": 200,
+      "杭州市": 200,
+      "成都市": 200,
+      "广州市": 200,
+      "福州市": 200
+    },
+    "declaredIncomeBand": {
+      "3000-4999": 300,
+      "5000-7999": 300,
+      "8000-11999": 300,
+      "12000+": 300
+    }
+  },
+  "featuredApplication": {
+    "applicationId": "CR20260000001",
+    "city": "成都市",
+    "channel": "客户经理",
+    "requestedAmountFen": 379919,
+    "declaredIncomeBand": "5000-7999",
+    "identityVerificationStatus": "verified",
+    "incomeEvidenceStatus": "missing",
+    "consentStatus": "confirmed",
+    "applicationConsistency": "consistent",
+    "debtServiceRatioBps": 4315
+  },
+  "supportingDataset": {
+    "path": "dataset/B004-credit-human-review/case.csv",
+    "sha256": "3f8701ea5dbac0388c83d6b2e8f45bc5a2daa4e015cdfb847d4984330a6c2b4e",
+    "rows": 30000,
+    "columns": 28,
+    "dataNature": "public-derived",
+    "source": "UCI Default of Credit Card Clients, dataset 350",
+    "courseRole": "offline-method-and-bias-reference-only",
+    "entersIndividualWorkspace": false
+  },
+  "boundaries": [
+    "The primary file can support material-completeness checks, task routing, CNY display and two-actor workflow demonstrations.",
+    "It cannot establish document authenticity, creditworthiness, approval, rejection, credit limits, default probability or business outcomes.",
+    "No name, identity number, phone number, address or document image exists in the primary file.",
+    "The supporting UCI label default_next_month and sensitive attributes never enter individual workspace reasons or receipts."
+  ],
+  "findings": [
+    {
+      "severity": "medium",
+      "finding": "applications.csv is deterministic synthetic operational data, not observed China credit operations.",
+      "impact": "Use it to teach material remediation and human controls only; do not report policy performance or business benefit."
+    },
+    {
+      "severity": "high",
+      "finding": "case.csv contains a historical outcome label and sensitive attributes from a Taiwan research dataset.",
+      "impact": "Keep it outside the individual reviewer UI and use only for isolated offline method and bias teaching."
+    }
+  ],
+  "recommendedTests": [
+    "applications.csv has 1200 rows, 19 columns and 1200 unique application_id values",
+    "the featured application remains income-missing while identity, consent and consistency are confirmed",
+    "only source-record missing materials can enter a supplementation request",
+    "events and restored tasks are isolated by application objectId",
+    "case.csv and its future outcome or sensitive fields never enter the individual workspace"
+  ]
+}

@@ -18,7 +18,7 @@
       "title": "让数据先过体检",
       "source_line": 1,
       "notes_present": true,
-      "source_ref": "Course-local S02 profile output.",
+      "source_ref": "Course-local S002 profile output.",
       "placeholders": [],
       "content_budget": {
         "visible_characters": 34,
@@ -57,7 +57,7 @@
       "title": "三项代表污染物缺失需单列",
       "source_line": 23,
       "notes_present": true,
-      "source_ref": "dataset/06-beijing-air-quality-audit/case.csv; S02 profile generated locally.",
+      "source_ref": "dataset/B006-beijing-air-quality-audit/case.csv; S002 profile generated locally.",
       "placeholders": [
         {
           "id": "table-4",

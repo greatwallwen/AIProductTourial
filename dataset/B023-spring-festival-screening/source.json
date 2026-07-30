@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "case_id": "B023",
+  "sources": [
+    {
+      "id": "DATA-23",
+      "title": "2022 春节档票房与排片快照",
+      "publisher": "用户提供的课程参考数据",
+      "version": "2026-07-30 固定本地快照",
+      "license": "随附文件未声明",
+      "redistribution": "用户授权用于课程本地化；第三方再分发权未独立核验"
+    }
+  ],
+  "input_files": [
+    {
+      "path": "raw/春节档-电影票房表现概览.xlsx",
+      "bytes": 8537,
+      "sha256": "cde413d249940fa7751aea7a934b75ddb3af35cee5afd396ecee32614bda45b4",
+      "role": "user-provided reference snapshot"
+    },
+    {
+      "path": "raw/春节档-票房详情.xlsx",
+      "bytes": 8446,
+      "sha256": "ca6a7a8a97c92aca9b4d1095a48355a5a17771d100fe99ce177faba39e0d76ac",
+      "role": "user-provided reference snapshot"
+    },
+    {
+      "path": "raw/春节档-排片统计（场次）-top10影片.xlsx",
+      "bytes": 7025,
+      "sha256": "3f80027f7f6593e7af02dbd064bcef4cafc50d12532148afddc5667866594904",
+      "role": "user-provided reference snapshot"
+    }
+  ],
+  "generation": {
+    "generator": "tools/prepare_expansion_cases.py",
+    "generator_version": "1.0.0",
+    "field_lineage": {
+      "source_facts": [
+        "movie_name",
+        "main_genre",
+        "runtime_minutes",
+        "release_date",
+        "data_cutoff_date",
+        "cumulative_box_office_cny",
+        "cumulative_screenings",
+        "cumulative_audience",
+        "maoyan_score",
+        "douban_score",
+        "latest_schedule_share_pct"
+      ],
+      "derived_fields": [
+        "movie_id",
+        "screening_decision_boundary",
+        "state",
+        "data_nature"
+      ]
+    }
+  },
+  "supplemental_outputs": [
+    {
+      "path": "daily-box-office.csv",
+      "source_id": "DATA-23",
+      "rows": 38,
+      "sha256": "25d9d8afebba789431b5bc36269170e0cebfddda1c77bdc4ca0b91791c5e9f89",
+      "data_nature": "user-provided-historical-daily-box-office"
+    },
+    {
+      "path": "screening-schedule.csv",
+      "source_id": "DATA-23",
+      "rows": 70,
+      "sha256": "47e6531b13ed4eee9a4166aa509bbb523a8471e259b37ae7ebd424526c60561b",
+      "data_nature": "user-provided-historical-screening-schedule"
+    }
+  ],
+  "transform_status": "derived-verified",
+  "materialized_status": "verified",
+  "rebuild_status": "verified",
+  "restriction": "数据只支持历史经营演练；不得声称是当前实时票房、排片或影院售票结果。"
+}

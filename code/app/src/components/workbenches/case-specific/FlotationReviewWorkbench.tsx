@@ -239,7 +239,7 @@ export function FlotationReviewWorkbench(props: CaseWorkbenchProps) {
       <header className={styles.header}>
         <div className={styles.brand}>
           <AlertTriangle aria-hidden="true" size={22} />
-          <strong>连续高硅事件调查台</strong>
+          <h1>连续高硅事件调查台</h1>
           <span>高硅质事件</span>
           <b>{eventId}</b>
         </div>
@@ -251,7 +251,7 @@ export function FlotationReviewWorkbench(props: CaseWorkbenchProps) {
         <div className={styles.roleSwitch}>
           <UserRound size={16} />
           <label>当前角色<select aria-label="当前操作角色" value={props.actorRole} onChange={(event) => props.onActorRoleChange(event.target.value)}>{props.roles.map((role) => <option key={role} value={role}>{roleLabel(role)}</option>)}</select></label>
-          <button type="button" aria-label="恢复案例 B14" onClick={reset} disabled={props.busy}><RefreshCw size={16} /></button>
+          <button type="button" aria-label="恢复案例 B014" onClick={reset} disabled={props.busy}><RefreshCw size={16} /></button>
         </div>
       </header>
 
@@ -279,7 +279,7 @@ export function FlotationReviewWorkbench(props: CaseWorkbenchProps) {
           <section className={styles.process} aria-label="七列浮选工艺示意">
             <header><div><strong>工艺示意</strong><span>测点位置只用于课堂定位</span></div><dl><div><dt>精矿硅</dt><dd>{format(row.concentrate_silica_mean)}%</dd></div><div><dt>矿浆流量</dt><dd>{format(row.pulp_flow_mean)} m³/h</dd></div><div><dt>矿浆 pH</dt><dd>{format(row.pulp_ph_mean, 3)}</dd></div></dl></header>
             <div className={styles.scene}>
-              <img src="/case-assets/case-14/scene.png" alt="七列浮选工艺示意" suppressHydrationWarning />
+              <img src="/case-assets/case-B014/scene.png" alt="七列浮选工艺示意" suppressHydrationWarning />
               <svg viewBox="0 0 1000 420" preserveAspectRatio="none" aria-hidden="true"><path d="M74 328 H920" /><circle cx="74" cy="328" r="5" /></svg>
               <div className={styles.feed}><span>给矿</span><strong>{format(row.pulp_flow_mean)} m³/h</strong></div>
               {columns.map((column, index) => {

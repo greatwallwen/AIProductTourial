@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.1",
+  "case_id": "B014",
+  "sources": [
+    {
+      "id": "DATA-14",
+      "title": "Quality Prediction in a Mining Process",
+      "url": "https://www.kaggle.com/datasets/edumagalhaes/quality-prediction-in-a-mining-process",
+      "publisher": "Kaggle dataset by Eduardo Magalhaes Oliveira",
+      "version": "fixed delivery snapshot",
+      "license": "CC0",
+      "redistribution": "public-domain-dedication",
+      "geography_note": "公开海外矿业过程数据；中文字段和中文界面不代表中国矿山现场记录。"
+    }
+  ],
+  "input_files": [
+    {
+      "path": "案例02_精矿杂质提前干预/flotation_hourly_zh.csv",
+      "role": "delivery-derived hourly decision table",
+      "bytes": 5322329,
+      "sha256": "3d3156ae50fa0f8d91dfe7ad829cea83fbbb121b57c98ad519332c9ff556fbb0",
+      "availability": "not present in current project"
+    },
+    {
+      "path": "案例02_精矿杂质提前干预/flotation_events_zh.csv",
+      "role": "delivery-derived event snapshot",
+      "bytes": 53443,
+      "sha256": "fb6afaa6a44b4d4721ada40eaa504bd9a2ec3ed16b443f9f1ad45dc242519fee",
+      "availability": "not present in current project"
+    }
+  ],
+  "generation": {
+    "generator": "tools/build_demo_expansion.py",
+    "generator_version": "1.0.0",
+    "selection": {
+      "method": "first 720 materialized hourly rows from the delivery-derived table",
+      "start_offset": 0,
+      "rows": 720,
+      "continuous_natural_hours": false
+    },
+    "temporal_integrity": {
+      "first_hour": "2017-03-10 01:00:00",
+      "last_hour": "2017-04-22 06:00:00",
+      "largest_observed_interval_hours": 319,
+      "missing_hour_points_between_records": 318,
+      "gap_start": "2017-03-16 05:00:00",
+      "gap_end": "2017-03-29 12:00:00",
+      "statement": "720 rows are not 720 uninterrupted natural hours; the two boundary records are 319 hours apart."
+    },
+    "featured_event": {
+      "event_id": "FQ-0016",
+      "start_hour": "2017-03-31 17:00:00",
+      "end_hour": "2017-04-02 07:00:00",
+      "duration_hours": 39,
+      "recovery_hour": "2017-04-02 08:00:00",
+      "context_window_start": "2017-03-30 08:00:00",
+      "context_window_end": "2017-04-02 07:00:00",
+      "context_window_points": 72,
+      "context_window_continuous": true,
+      "priority_cell_ids": ["3", "1", "2"],
+      "priority_basis": "events.csv dominant_deviation order; manual review priority only"
+    },
+    "field_lineage": {
+      "public_measurement_hourly_aggregates": [
+        "feed_iron_mean", "feed_silica_mean", "starch_flow_mean", "amine_flow_mean",
+        "pulp_flow_mean", "pulp_ph_mean", "pulp_density_mean",
+        "column_1_air_mean", "column_1_level_mean", "column_2_air_mean", "column_2_level_mean",
+        "column_3_air_mean", "column_3_level_mean", "column_4_air_mean", "column_4_level_mean",
+        "column_5_air_mean", "column_5_level_mean", "column_6_air_mean", "column_6_level_mean",
+        "column_7_air_mean", "column_7_level_mean", "concentrate_iron_mean", "concentrate_silica_mean"
+      ],
+      "hourly_aggregation_metadata": ["monitor_hour", "source_samples", "completeness_state"],
+      "course_rule_derived": ["recent_silica_trend", "quality_state", "consecutive_high_hours"],
+      "course_policy_derived": ["causal_root_cause_allowed", "automatic_setpoint_allowed", "allowed_action", "data_nature"]
+    }
+  },
+  "supplemental_outputs": [
+    {
+      "path": "events.csv",
+      "source_id": "DATA-14",
+      "rows": 59,
+      "sha256": "3d862ae7c037ef0285452e734dcf99859e6ea71d0b93a2b8031b0f17b325f924",
+      "data_nature": "public-derived-rule-event-snapshot"
+    }
+  ],
+  "transform_status": "derived-verified",
+  "materialized_status": "verified",
+  "rebuild_status": "blocked_missing_inputs",
+  "restriction": "3.0% is a course review line, not a plant standard. Correlation and rule events may only support manual review ordering; they cannot assert root cause or write a setpoint."
+}

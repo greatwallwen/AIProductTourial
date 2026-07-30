@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "dataset_filter": {"lab_id": "S04"},
+  "dataset_filter": {"lab_id": "S004"},
   "rules": [
     {
       "id": "goal-label",
@@ -9,13 +9,13 @@
     },
     {
       "id": "evidence-from-observation",
-      "description": "Use the S04 observation detail verbatim as the problem evidence.",
+      "description": "Use the S004 observation detail verbatim as the problem evidence.",
       "step_id": "01",
       "field": "detail"
     },
     {
       "id": "split-action-opportunities",
-      "description": "Create two opportunity nodes only when both phrases occur in the S04 action detail.",
+      "description": "Create two opportunity nodes only when both phrases occur in the S004 action detail.",
       "step_id": "03",
       "field": "detail",
       "required_phrases": ["缩短订单定位", "审批等待"],
@@ -23,7 +23,7 @@
     },
     {
       "id": "experiment-from-check",
-      "description": "Use the S04 check detail verbatim as the first experiment.",
+      "description": "Use the S004 check detail verbatim as the first experiment.",
       "step_id": "04",
       "field": "detail"
     }

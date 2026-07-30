@@ -1,0 +1,21 @@
+{
+  "case_id": "B023",
+  "verified_at": "2026-07-30T05:12:58.9945868Z",
+  "url": "http://127.0.0.1:3200/cases/B023",
+  "viewport": { "width": 1440, "height": 900 },
+  "main_landmark": "春节档排片沙盘",
+  "journey": [
+    { "actor": "cinema_manager", "action": "保存下一轮排片草案", "transition": "待模拟排片 → 排片待审" },
+    { "actor": "supervisor", "action": "确认模拟排片", "transition": "排片待审 → 排片方案已确认" }
+  ],
+  "reload_persistence": "排片方案已确认",
+  "document_metrics": { "width": 1440, "height": 900, "scroll_width": 1440, "scroll_height": 900 },
+  "console_errors": 0,
+  "console_warnings": 0,
+  "screenshot": {
+    "path": "evidence/screenshots/B023-work.png",
+    "bytes": 441133,
+    "sha256": "d62c2c6da84093aa50641b40b9a76936e37905d2e6438d83e54b9cbaaf5f6ac5"
+  },
+  "verification_boundary": "deterministic_offline；历史影片和排片快照用于经营沙盘，不表示当前影院实时售票或上座率。"
+}

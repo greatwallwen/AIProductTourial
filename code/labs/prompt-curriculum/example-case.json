@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "caseId": "P01-example-clear-task",
+  "caseId": "P001-example-clear-task",
   "systemPrompt": "你是课程中的业务任务助手。不要承诺无法验证的经营结果。",
   "sharedContext": "原始请求：帮我提高复购。当前材料只有一句请求，没有会员明细。",
   "baselinePrompt": "请给出提高复购的方案。",

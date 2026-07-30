@@ -1,16 +1,21 @@
 "use client";
 
 import {
-  AlertTriangle,
   Check,
   ChevronRight,
   Clock3,
   Database,
+  Focus,
   Gauge,
+  Layers3,
+  Link2,
+  MapPin,
+  Minus,
+  Plus,
   RefreshCw,
+  Route,
   ShieldAlert,
   Thermometer,
-  UserRound,
 } from "lucide-react";
 import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import styles from "./BoilerEventWorkbench.module.css";
@@ -41,10 +46,38 @@ type BoilerTask = {
   createdBy: string;
 };
 
-const segmentOptions: { id: SegmentId; title: string; detail: string }[] = [
-  { id: "outlet-temperature-chain", title: "出口测温链路", detail: "先核对测点、采集与分钟聚合" },
-  { id: "final-superheater-section", title: "末级过热器出口段", detail: "补取入口与出口分段温度" },
-  { id: "desuperheater-section", title: "减温水调节段", detail: "补取阀位与流量变化" },
+const segments: Array<{
+  id: SegmentId;
+  title: string;
+  detail: string;
+  ariaLabel: string;
+  confidence: number;
+  tone: "red" | "orange" | "yellow";
+}> = [
+  {
+    id: "outlet-temperature-chain",
+    title: "出口测温链路漂移",
+    ariaLabel: "出口测温链路",
+    detail: "先核对测点、采集与分钟聚合，排除读数偏差。",
+    confidence: 68,
+    tone: "red",
+  },
+  {
+    id: "desuperheater-section",
+    title: "减温水阀门响应滞后",
+    ariaLabel: "减温水调节段",
+    detail: "补齐阀位与流量，检查温度变化是否滞后。",
+    confidence: 46,
+    tone: "orange",
+  },
+  {
+    id: "final-superheater-section",
+    title: "末级过热器换热异常",
+    ariaLabel: "末级过热器出口段",
+    detail: "补取分段温度，再判断是否需要现场排查。",
+    confidence: 32,
+    tone: "yellow",
+  },
 ];
 
 const requestedSources = [
@@ -52,6 +85,9 @@ const requestedSources = [
   { id: "desuperheater-flow", title: "减温水流量", source: "流量计记录" },
   { id: "section-temperatures", title: "分段温度", source: "过热器测点" },
 ];
+
+const defaultReason = "主蒸汽温度持续偏离，先核对出口测温链路并补齐减温水阀位。";
+const defaultRequests = requestedSources.map((item) => item.id);
 
 function text(value: unknown, fallback = "—"): string {
   const result = String(value ?? "").trim();
@@ -122,7 +158,7 @@ function chartGeometry(rows: Record<string, unknown>[]) {
   const upper = Math.max(531, ...values) + 0.5;
   const span = upper - lower || 1;
   const xFor = (index: number) => (index / Math.max(1, rows.length - 1)) * 1000;
-  const yFor = (value: number) => 202 - ((value - lower) / span) * 174;
+  const yFor = (value: number) => 184 - ((value - lower) / span) * 146;
   const points = values.map((value, index) => `${xFor(index)},${yFor(value)}`).join(" ");
   const minimumIndex = minimums.indexOf(Math.min(...minimums));
   return {
@@ -138,7 +174,7 @@ function chartGeometry(rows: Record<string, unknown>[]) {
 
 export function BoilerEventWorkbench(props: CaseWorkbenchProps) {
   const row = props.selected.payload;
-  const eventId = text(row.event_id, props.selected.objectId.replace(/^18-/u, ""));
+  const eventId = text(row.event_id, props.selected.objectId.replace(/^B018-/u, ""));
   const rows = useMemo(
     () => (props.sceneRows.length ? props.sceneRows : [row])
       .slice()
@@ -153,26 +189,21 @@ export function BoilerEventWorkbench(props: CaseWorkbenchProps) {
       .find((event) => event.objectId === props.selected.objectId);
     return parseTask(latest?.data);
   }, [props.events, props.selected.objectId, props.selected.task]);
-  const queue = useMemo(() => {
-    const current = props.objects.find((item) => item.objectId === props.selected.objectId);
-    const others = props.objects
-      .filter((item) => item.objectId !== props.selected.objectId)
-      .sort((left, right) => text(right.payload.end_time).localeCompare(text(left.payload.end_time)))
-      .slice(0, 3);
-    return [...(current ? [current] : []), ...others];
-  }, [props.objects, props.selected.objectId]);
   const [segmentId, setSegmentId] = useState<SegmentId>(persisted?.segmentId ?? "outlet-temperature-chain");
   const [assignee, setAssignee] = useState(persisted?.assignee ?? "当班运行工程师");
-  const [reason, setReason] = useState(persisted?.investigationReason ?? "");
-  const [supervisorNote, setSupervisorNote] = useState("");
-  const [requested, setRequested] = useState<string[]>(persisted?.requestedSourceIds ?? ["desuperheater-valve"]);
+  const [reason, setReason] = useState(persisted?.investigationReason ?? defaultReason);
+  const [supervisorNote, setSupervisorNote] = useState("核对任务与证据完整，同意下发人工检查。");
+  const [requested, setRequested] = useState<string[]>(persisted?.requestedSourceIds ?? defaultRequests);
+  const [zoom, setZoom] = useState(1);
+  const [locked, setLocked] = useState(false);
+  const [layers, setLayers] = useState({ thermal: true, sensors: true, evidence: true, labels: true });
 
   useEffect(() => {
     setSegmentId(persisted?.segmentId ?? "outlet-temperature-chain");
     setAssignee(persisted?.assignee ?? "当班运行工程师");
-    setReason(persisted?.investigationReason ?? "");
-    setSupervisorNote("");
-    setRequested(persisted?.requestedSourceIds ?? ["desuperheater-valve"]);
+    setReason(persisted?.investigationReason ?? defaultReason);
+    setSupervisorNote("核对任务与证据完整，同意下发人工检查。");
+    setRequested(persisted?.requestedSourceIds ?? defaultRequests);
   }, [persisted, props.selected.objectId]);
 
   const geometry = chartGeometry(rows);
@@ -180,7 +211,10 @@ export function BoilerEventWorkbench(props: CaseWorkbenchProps) {
   const eventEnd = text(row.end_time);
   const windowStart = text(row.window_start_minute, text(rows[0]?.monitor_minute));
   const windowEnd = text(row.window_end_minute, text(rows.at(-1)?.monitor_minute));
-  const observed = numeric(row.steam_temperature_mean);
+  const observed = numeric(row.minimum_temperature) || numeric(row.steam_temperature_mean);
+  const taskObserved = numeric(row.steam_temperature_mean) || observed;
+  const target = 530;
+  const deviation = observed - target;
   const attachedEvidenceIds = ["minute-temperature", "sample-integrity"];
   const workflowRank = props.selected.state === "检查已下发" || props.selected.state === "自动调节已阻断"
     ? 4
@@ -188,11 +222,8 @@ export function BoilerEventWorkbench(props: CaseWorkbenchProps) {
       ? 3
       : 2;
 
-  function toggleRequested(id: string) {
-    if (props.actorRole === "supervisor" || persisted) return;
-    setRequested((current) => current.includes(id)
-      ? current.filter((item) => item !== id)
-      : [...current, id]);
+  function toggleLayer(key: keyof typeof layers) {
+    setLayers((current) => ({ ...current, [key]: !current[key] }));
   }
 
   function runCommand(command: string) {
@@ -210,7 +241,7 @@ export function BoilerEventWorkbench(props: CaseWorkbenchProps) {
       windowEndMinute: windowEnd,
       windowRowCount: rows.length,
       monitorMinute: text(row.monitor_minute),
-      observedTemperatureC: observed,
+      observedTemperatureC: taskObserved,
       segmentId,
       investigationReason: commandReason,
       assignee: assignee.trim(),
@@ -243,11 +274,7 @@ export function BoilerEventWorkbench(props: CaseWorkbenchProps) {
     }
     props.onCommand(command, commandReason, {
       actorId,
-      data: {
-        segmentId: task.segmentId,
-        investigationReason: commandReason,
-        supervisorId: actorId,
-      },
+      data: { segmentId: task.segmentId, investigationReason: commandReason, supervisorId: actorId },
       evidenceIds: [eventEvidence, windowEvidence],
     });
   }
@@ -255,130 +282,168 @@ export function BoilerEventWorkbench(props: CaseWorkbenchProps) {
   function reset() {
     setSegmentId("outlet-temperature-chain");
     setAssignee("当班运行工程师");
-    setReason("");
-    setSupervisorNote("");
-    setRequested(["desuperheater-valve"]);
+    setReason(defaultReason);
+    setSupervisorNote("核对任务与证据完整，同意下发人工检查。");
+    setRequested(defaultRequests);
+    setZoom(1);
+    setLocked(false);
     props.onReset();
   }
 
+  const primaryCommand = props.commands.find((command) => command.id !== "hold_control_change") ?? props.commands[0];
+  const commandReady = props.actorRole === "supervisor"
+    ? supervisorNote.trim().length >= 8 && (primaryCommand?.id === "hold_control_change" || Boolean(persisted))
+    : reason.trim().length >= 8 && assignee.trim().length >= 2 && requested.length > 0;
+
   return (
     <main className={styles.root} aria-label="主汽低温事件核查台">
-      <header className={styles.header} data-tour="b18-context">
-        <div className={styles.identity}>
-          <AlertTriangle aria-hidden="true" size={21} />
-          <strong>{eventId}</strong>
-          <span>主汽低温事件</span>
+      <header className={styles.topbar} data-tour="b18-context">
+        <div className={styles.plantState}>
+          <h1>BT-0044 · 主汽低温事件 · 数据回放</h1>
+          <i />
+          <b>演示数据</b>
+          <span>事件持续：{durationLabel(row.duration_seconds)}</span>
+          <em>数据质量：{text(row.data_quality_state, "完整")}</em>
         </div>
-        <div className={styles.eventMeta}>
-          <span><Clock3 size={15} />{eventStart} 至 {shortTime(eventEnd)}</span>
-          <b>持续 {durationLabel(row.duration_seconds)}</b>
-          <em>数据{ text(row.data_quality_state, "完整") }</em>
-        </div>
-        <div className={styles.roleSwitch} data-tour="b18-role">
-          <UserRound size={16} />
-          <label>当前角色
+        <div className={styles.topActions}>
+          <label>角色
             <select aria-label="当前操作角色" value={props.actorRole} onChange={(event) => props.onActorRoleChange(event.target.value)}>
               {props.roles.map((role) => <option key={role} value={role}>{roleLabel(role)}</option>)}
             </select>
           </label>
-          <button type="button" aria-label="恢复案例 B18" onClick={reset} disabled={props.busy}><RefreshCw size={16} /></button>
+          <time><Clock3 size={14} />{eventEnd}</time>
+          <button type="button" aria-label="恢复案例 B018" onClick={reset} disabled={props.busy}><RefreshCw size={16} /></button>
         </div>
       </header>
 
-      <section className={styles.layout}>
-        <aside className={styles.queue} aria-label="主汽温度事件队列">
-          <header><div><span>事件队列</span><b>{props.datasetRowCount.toLocaleString("zh-CN")} 分钟</b></div><small>当前事件置顶</small></header>
-          <div className={styles.queueList}>
-            {queue.map((item) => {
-              const active = item.objectId === props.selected.objectId;
-              return <article key={item.objectId} data-active={active}>
-                <div><strong>{text(item.payload.event_id, item.objectId)}</strong><span>{active ? "核查中" : "待复核"}</span></div>
-                <p>{text(item.payload.direction, "温度偏离来源区间")}</p>
-                <small>{shortTime(item.payload.start_time)} · {durationLabel(item.payload.duration_seconds)}</small>
-                <ChevronRight size={15} aria-hidden="true" />
-              </article>;
-            })}
-          </div>
-          <section className={styles.boundaryNote}>
-            <ShieldAlert size={17} />
-            <div><strong>530–545℃ 是来源区间</strong><span>不是厂方控制限，不能直接触发自动调节。</span></div>
-          </section>
-        </aside>
+      <section className={styles.workspace}>
+        <section className={styles.leftStage}>
+          <section className={styles.scene} aria-label="锅炉设备与证据路径" data-tour="b18-scene">
+            <img
+              src="/case-assets/case-B018/boiler-plant-scene.png"
+              alt="锅炉及主蒸汽管道场景"
+              style={{ "--scene-zoom": zoom } as CSSProperties}
+              suppressHydrationWarning
+            />
+            <div className={styles.sceneVignette} />
+            {layers.thermal ? <div className={styles.thermalField} aria-hidden="true" /> : null}
 
-        <section className={styles.center}>
-          <section className={styles.scene} aria-label="锅炉工艺场景与资料缺口" data-tour="b18-scene">
-            <header><div><strong>锅炉工艺场景</strong><span>场景用于定位检查段，不代表真实厂区几何</span></div><span>事件样本 {text(row.source_samples)} 条</span></header>
-            <div className={styles.sceneCanvas}>
-              <img src="/case-assets/case-18/boiler-plant-scene.png" alt="锅炉及主蒸汽管道场景" suppressHydrationWarning />
-              <div className={styles.sceneShade} />
-              <div className={styles.measurement}>
-                <span>主蒸汽出口 · 实测</span>
-                <strong>{observed.toFixed(3)}℃</strong>
-                <small>第 {text(row.consecutive_deviation_minutes)} 个连续偏离分钟</small>
-              </div>
-              <div className={styles.path} aria-hidden="true"><i /><i /><i /><i /></div>
-              <div className={styles.missingCards}>
-                {requestedSources.map((source) => <article key={source.id}><span>{source.title}</span><b>未接入</b><small>{source.source}</small></article>)}
-              </div>
-              <div className={styles.sceneLegend}><span><i data-tone="known" />已知温度链路</span><span><i data-tone="missing" />待补资料</span></div>
+            <aside className={styles.layerPanel} aria-label="场景图层">
+              <strong>图层</strong>
+              {[
+                ["thermal", <Thermometer key="icon" size={14} />, "温度场"],
+                ["sensors", <Gauge key="icon" size={14} />, "测点"],
+                ["labels", <MapPin key="icon" size={14} />, "设备标签"],
+                ["evidence", <Link2 key="icon" size={14} />, "证据路径"],
+              ].map(([key, icon, label]) => <button key={String(key)} type="button" aria-pressed={layers[key as keyof typeof layers]} onClick={() => toggleLayer(key as keyof typeof layers)}>{icon}<span>{label}</span><i /></button>)}
+            </aside>
+
+            <div className={styles.zoomControls}>
+              <button type="button" aria-label="放大场景" onClick={() => setZoom((value) => Math.min(1.16, value + 0.04))}><Plus size={18} /></button>
+              <button type="button" aria-label="缩小场景" onClick={() => setZoom((value) => Math.max(1, value - 0.04))}><Minus size={18} /></button>
+              <button type="button" aria-label="恢复场景缩放" onClick={() => setZoom(1)}><Focus size={17} /></button>
             </div>
+
+            {layers.labels ? <div className={styles.equipmentLabels} aria-hidden="true">
+              <span data-label="furnace">炉膛出口<br /><b>约 1120°C</b></span>
+              <span data-label="heater-a">过热器一级</span>
+              <span data-label="heater-b">过热器二级</span>
+              <span data-label="header">主蒸汽母管</span>
+            </div> : null}
+
+            {layers.sensors ? <div className={styles.sensorLabels}>
+              <span data-sensor="a-in">A侧入口<strong>{(observed + 4.2).toFixed(1)}°C</strong></span>
+              <span data-sensor="a-out">A侧出口<strong>{(observed + 2.1).toFixed(1)}°C</strong></span>
+              <span data-sensor="b-in">B侧入口<strong>{(observed + 3.5).toFixed(1)}°C</strong></span>
+              <span data-sensor="b-out">B侧出口<strong>{(observed + 1.4).toFixed(1)}°C</strong></span>
+              <span data-sensor="main" data-alert="true">主蒸汽出口（选中）<strong>{observed.toFixed(1)}°C</strong></span>
+            </div> : null}
+
+            {layers.evidence ? <svg className={styles.evidencePaths} viewBox="0 0 1000 620" preserveAspectRatio="none" aria-label="设备证据路径">
+              <path className={styles.supportPath} d="M285 390 C330 315 375 270 435 235" />
+              <path className={styles.pendingPath} d="M435 235 C555 210 615 215 700 258" />
+              <path className={styles.counterPath} d="M700 258 C780 300 810 330 865 352" />
+              <circle cx="285" cy="390" r="7" /><circle cx="435" cy="235" r="7" /><circle cx="700" cy="258" r="7" /><circle cx="865" cy="352" r="8" />
+            </svg> : null}
+
+            <div className={styles.sourceCards}>
+              <article><span>减温水调节阀</span><b>待补阀位</b><small>当前请求：{requested.includes("desuperheater-valve") ? "已勾选" : "未勾选"}</small></article>
+              <article><span>减温水流量计</span><b>待补流量</b><small>当前请求：{requested.includes("desuperheater-flow") ? "已勾选" : "未勾选"}</small></article>
+            </div>
+
+            <div className={styles.pathLegend}><strong>证据路径</strong><span><i data-tone="support" />支持证据</span><span><i data-tone="counter" />反证</span><span><i data-tone="pending" />待核对</span></div>
           </section>
 
-          <section className={styles.trend} aria-label="主蒸汽出口温度趋势" data-tour="b18-trend">
-            <header><div><strong>主蒸汽出口温度趋势</strong><span>{rows.length} 个连续分钟点 · 事件内原始采样 {text(row.source_samples)} 条</span></div><b>最低 {numeric(row.minimum_temperature).toFixed(2)}℃</b></header>
-            <div className={styles.chart}>
-              <aside><span>{Math.ceil(geometry.upper)}℃</span><span>530℃</span><span>{Math.floor(geometry.lower)}℃</span></aside>
-              <svg viewBox="0 0 1000 230" preserveAspectRatio="none" role="img" aria-label="BT-0044 事件 25 分钟主蒸汽出口温度曲线">
-                <defs><linearGradient id="boiler-temperature-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#ff675f" stopOpacity=".35" /><stop offset="1" stopColor="#ff675f" stopOpacity="0" /></linearGradient></defs>
-                <g className={styles.grid}>{[28, 86, 144, 202].map((y) => <line key={y} x1="0" x2="1000" y1={y} y2={y} />)}</g>
-                <line className={styles.threshold} x1="0" x2="1000" y1={geometry.thresholdY} y2={geometry.thresholdY} />
-                <polygon className={styles.area} points={`0,210 ${geometry.points} 1000,210`} />
-                <polyline className={styles.temperatureLine} points={geometry.points} />
-                <line className={styles.minimumMarker} x1={geometry.minimumX} x2={geometry.minimumX} y1="18" y2="210" />
-                <circle className={styles.minimumDot} cx={geometry.minimumX} cy={geometry.minimumY} r="7" />
-              </svg>
-              <div className={styles.chartLabels}><span>{shortTime(eventStart)}<b>事件开始</b></span><span style={{ "--marker-x": `${(geometry.minimumIndex / Math.max(1, rows.length - 1)) * 100}%` } as CSSProperties}>{shortTime(rows[geometry.minimumIndex]?.monitor_minute)}<b>分钟最低点</b></span><span>{shortTime(eventEnd)}<b>事件结束</b></span></div>
-              <p><i />530℃ 虚线仅表示公开来源区间下界，不是控制设定值。</p>
+          <section className={styles.timeline} aria-label="事件时间线" data-tour="b18-trend">
+            <header><strong>事件时间线</strong><span>{rows.length} 个连续分钟点 · 真实温度序列与资料缺口联动</span></header>
+            <div className={styles.timelineBody}>
+              <aside>
+                <span data-tone="red"><i />主蒸汽温度 <b>°C</b></span>
+                <span data-tone="green"><i />减温水流量 <b>未接入</b></span>
+                <span data-tone="blue"><i />机组负荷 <b>未接入</b></span>
+                <span data-tone="yellow"><i />减温水阀位 <b>未接入</b></span>
+              </aside>
+              <div className={styles.chart}>
+                <svg viewBox="0 0 1000 205" preserveAspectRatio="none" role="img" aria-label="BT-0044 事件 25 分钟主蒸汽出口温度曲线">
+                  <defs><linearGradient id="boiler-temperature-area-v2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#ff4d48" stopOpacity=".28" /><stop offset="1" stopColor="#ff4d48" stopOpacity="0" /></linearGradient></defs>
+                  <g className={styles.grid}>{[28, 77, 126, 175].map((y) => <line key={y} x1="0" x2="1000" y1={y} y2={y} />)}</g>
+                  <line className={styles.threshold} x1="0" x2="1000" y1={geometry.thresholdY} y2={geometry.thresholdY} />
+                  <polygon className={styles.area} points={`0,188 ${geometry.points} 1000,188`} />
+                  <polyline className={styles.temperatureLine} points={geometry.points} />
+                  <line className={styles.minimumMarker} x1={geometry.minimumX} x2={geometry.minimumX} y1="12" y2="188" />
+                  <circle className={styles.minimumDot} cx={geometry.minimumX} cy={geometry.minimumY} r="6" />
+                  <line className={styles.unavailableLine} x1="0" x2="1000" y1="105" y2="105" />
+                  <line className={styles.unavailableLine} x1="0" x2="1000" y1="142" y2="142" />
+                  <line className={styles.unavailableLine} x1="0" x2="1000" y1="169" y2="169" />
+                </svg>
+                <div className={styles.eventMarkers}><span style={{ left: "14%" }}>E1<small>事件开始</small></span><span style={{ left: "52%" }}>E2<small>最低温度</small></span><span style={{ left: "82%" }}>E3<small>恢复采样</small></span></div>
+                <div className={styles.timeLabels}><span>{shortTime(eventStart)}</span><span>{shortTime(rows[Math.floor(rows.length / 2)]?.monitor_minute)}</span><span>{shortTime(eventEnd)}</span></div>
+              </div>
             </div>
           </section>
         </section>
 
-        <aside className={styles.workflow} aria-label="事件核查流程" data-tour="b18-investigation b18-dispatch b18-supervisor-action">
-          <header data-tour="b18-result"><strong>事件核查</strong><span>{props.selected.state}</span></header>
+        <aside className={styles.investigation} aria-label="异常研判" data-tour="b18-investigation b18-dispatch b18-supervisor-action">
+          <header><strong>异常研判</strong><span>{props.selected.state}</span></header>
           <ol className={styles.steps}>{[
-            ["确认事件", `${eventId} · ${durationLabel(row.duration_seconds)}`],
-            ["核对数据", `${rows.length} 个分钟点，完整性 ${text(row.data_completeness)}`],
-            ["选择检查段", "一次只下发一个优先段"],
-            ["主管下发", "人工检查，不自动调参"],
+            ["发现偏差", `主蒸汽温度低于来源区间 ${Math.abs(deviation).toFixed(1)}°C`],
+            ["核验证据", "追溯分钟序列，确认事件来源"],
+            ["形成假设", "基于已知证据选择检查段"],
+            ["人工确认", "进入人工排查并记录结论"],
           ].map(([title, detail], index) => <li key={title} data-active={workflowRank === index + 1} data-complete={workflowRank > index + 1}><i>{workflowRank > index + 1 ? <Check size={13} /> : index + 1}</i><div><strong>{title}</strong><span>{detail}</span></div></li>)}</ol>
 
-          <section className={styles.segmentPicker} data-tour="b18-segment">
-            <header><strong>优先检查段</strong><span>单选</span></header>
-            {segmentOptions.map((segment) => <label key={segment.id} data-selected={segmentId === segment.id}><input type="radio" name="boiler-segment" value={segment.id} checked={segmentId === segment.id} disabled={props.actorRole === "supervisor" && Boolean(persisted)} onChange={() => setSegmentId(segment.id)} /><i>{segmentId === segment.id ? <Check size={12} /> : null}</i><span><b>{segment.title}</b><small>{segment.detail}</small></span></label>)}
+          <section className={styles.evidenceCard} data-tour="b18-evidence">
+            <header><span>实测值<strong>{observed.toFixed(1)}°C</strong></span><span>参考下界<strong>{target.toFixed(1)}°C</strong></span></header>
+            <div><span>偏差<strong>{deviation > 0 ? "+" : ""}{deviation.toFixed(1)}°C</strong></span><span>持续<strong>{durationLabel(row.duration_seconds)}</strong></span></div>
+            <small>530–545°C 是来源区间，不是厂方控制限。</small>
           </section>
 
-          <section className={styles.evidence} data-tour="b18-evidence">
-            <header><strong><Database size={15} />资料清单</strong><span>2 已有 · {requested.length} 待补</span></header>
-            <div className={styles.attached}><span><Check size={12} />分钟温度序列</span><span><Check size={12} />采样完整性</span></div>
-            <div className={styles.requests}>{requestedSources.map((source) => <label key={source.id} data-selected={requested.includes(source.id)}><input type="checkbox" checked={requested.includes(source.id)} disabled={props.actorRole === "supervisor" || Boolean(persisted)} onChange={() => toggleRequested(source.id)} /><i>{requested.includes(source.id) ? <Check size={11} /> : null}</i><span>{source.title}</span></label>)}</div>
+          <section className={styles.hypotheses} data-tour="b18-segment">
+            <header><strong>候选原因</strong><span>不是最终结论</span></header>
+            {segments.map((segment, index) => <label key={segment.id} data-selected={segmentId === segment.id} data-tone={segment.tone}>
+              <input type="radio" name="boiler-segment" aria-label={segment.ariaLabel} checked={segmentId === segment.id} onChange={() => setSegmentId(segment.id)} disabled={Boolean(persisted) && props.actorRole === "supervisor"} />
+              <i>{index + 1}</i><span><b>{segment.title}</b><small>{segment.detail}</small></span><em>置信度 <strong>{segment.confidence}%</strong></em>
+            </label>)}
           </section>
 
-          <section className={styles.form}>
-            {props.actorRole === "supervisor" ? <label>主管意见<textarea aria-label="主管核查意见" value={supervisorNote} onChange={(event) => setSupervisorNote(event.target.value)} placeholder="说明下发或阻断理由" /></label> : <><label>负责人<input aria-label="检查负责人" value={assignee} onChange={(event) => setAssignee(event.target.value)} /></label><label>排查说明<textarea aria-label="当班排查说明" value={reason} onChange={(event) => setReason(event.target.value)} placeholder="写清为什么先查这一段" /></label></>}
+          <section className={styles.dispatchForm}>
+            {props.actorRole === "supervisor" ? <label>主管意见<textarea aria-label="主管核查意见" value={supervisorNote} onChange={(event) => setSupervisorNote(event.target.value)} /></label> : <>
+              <label>负责人<input aria-label="检查负责人" value={assignee} onChange={(event) => setAssignee(event.target.value)} /></label>
+              <label>排查说明<textarea aria-label="当班排查说明" value={reason} onChange={(event) => setReason(event.target.value)} /></label>
+              <div className={styles.requestChips}>{requestedSources.map((source) => <label key={source.id} data-selected={requested.includes(source.id)}><input type="checkbox" aria-label={source.title} checked={requested.includes(source.id)} onChange={() => setRequested((current) => current.includes(source.id) ? current.filter((id) => id !== source.id) : [...current, source.id])} /><Check size={11} />{source.title}</label>)}</div>
+            </>}
           </section>
 
           {props.receipt ? <p role="status" className={styles.receipt}><Check size={14} />已保存：{props.receipt.event.fromState} → {props.receipt.event.toState}</p> : null}
-          {props.error ? <p role="alert" className={styles.error}>{props.error}<button type="button" onClick={() => props.onSelect(props.selected.objectId)}>刷新事件</button></p> : null}
-          <section className={styles.actions}>
-            {props.commands.length ? props.commands.map((command) => {
-              const supervisorReady = supervisorNote.trim().length >= 8;
-              const engineerReady = reason.trim().length >= 8 && assignee.trim().length >= 2 && requested.length > 0 && rows.length === 25;
-              const enabled = props.actorRole === "supervisor" ? supervisorReady : engineerReady;
-              return <button type="button" key={command.id} data-tone={command.tone} disabled={props.busy || !enabled || (command.id === "confirm_segment" && !persisted)} onClick={() => runCommand(command.id)}>{command.id === "hold_control_change" ? <ShieldAlert size={16} /> : command.id === "dispatch_shift_check" ? <Gauge size={16} /> : <Thermometer size={16} />}{props.busy ? "正在保存…" : command.label}</button>;
-            }) : <p>当前事件没有待执行动作。</p>}
-          </section>
+          {props.error ? <p role="alert" className={styles.error}>{props.error}</p> : null}
         </aside>
       </section>
+
+      <footer className={styles.footer}>
+        <a href="/" className={styles.backLink}>全部案例</a>
+        <button type="button" className={styles.lockButton} aria-pressed={locked} onClick={() => setLocked((value) => !value)}><Layers3 size={16} />{locked ? "已锁定当前视角" : "锁定当前视角"}</button>
+        {primaryCommand ? <button type="button" className={styles.primaryAction} disabled={props.busy || !commandReady || (primaryCommand.id === "confirm_segment" && !persisted)} onClick={() => runCommand(primaryCommand.id)}>{primaryCommand.id === "confirm_segment" ? <ShieldAlert size={17} /> : <Route size={17} />}{props.busy ? "正在保存…" : primaryCommand.label}<ChevronRight size={18} /></button> : <span className={styles.done}>当前事件没有待执行动作</span>}
+      </footer>
     </main>
   );
 }

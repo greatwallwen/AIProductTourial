@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.1",
+  "case_id": "B010",
+  "captured_at": "2026-07-22T20:20:00+08:00",
+  "sources": [
+    {
+      "id": "MIIT-2025-Q2",
+      "title": "工业和信息化部关于2025年第二季度电信服务质量的通告",
+      "url": "https://wap.miit.gov.cn/zwgk/zcwj/wjfb/tg/art/2025/art_e279d1f22f6a4f7d9ced09a8e6ed289d.html",
+      "publisher": "中华人民共和国工业和信息化部",
+      "version": "2025年第二季度",
+      "state": "public-aggregate-verified",
+      "redistribution": "course source card",
+      "boundary": "只使用全国类别汇总比例，不含个人投诉记录"
+    },
+    {
+      "id": "DATA-10",
+      "title": "CGB Consumer Complaints Data",
+      "url": "https://catalog.data.gov/dataset/cgb-consumer-complaints-data",
+      "publisher": "Federal Communications Commission",
+      "version": "fixed 5000-row API slice",
+      "license": "US Government Work",
+      "state": "downloaded-verified",
+      "redistribution": "public",
+      "boundary": "consumer allegations are not verified by the FCC"
+    },
+    {
+      "id": "COURSE-OPS-10",
+      "title": "中国通信服务投诉课程运营层",
+      "publisher": "Course_AIProduct",
+      "version": "2026.1",
+      "state": "deterministic-synthetic",
+      "redistribution": "course-local",
+      "boundary": "类别比例锚定公开汇总；城市、渠道、任务和故障均为合成"
+    }
+  ],
+  "artifacts": [
+    {
+      "source_id": "MIIT-2025-Q2",
+      "path": "dataset/B010-telecom-complaint-orchestration/raw/miit-2025-q2-aggregate.json",
+      "bytes": 641,
+      "sha256": "a3d60acbfc549d10164b8f2dd029e3e84f22f06e65c01509ecde8362dd4187fc",
+      "status": "verified-source-card"
+    },
+    {
+      "source_id": "DATA-10",
+      "path": "dataset/B010-telecom-complaint-orchestration/raw/fcc-complaints-latest-5000.csv",
+      "bytes": 799126,
+      "sha256": "b84515213bfb6d588248250082d6926d0a6bf506ed542dcd766e8406e5493c4d",
+      "status": "downloaded-verified"
+    }
+  ],
+  "transform_status": "derived-verified",
+  "derived_output": {
+    "path": "case.csv",
+    "rows": 1000,
+    "sha256": "8f4ccf4cae2343960699c27357b902c1eb72f98085b4bc4d0fff52e102823b53",
+    "data_nature": "official-aggregate-anchor-plus-deterministic-synthetic-cn-operations"
+  }
+}

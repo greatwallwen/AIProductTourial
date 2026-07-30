@@ -367,7 +367,7 @@ export function MetroCompressorWorkbench(props: CaseWorkbenchProps) {
         actorId,
         data: { retrieval },
         evidenceIds: generatedResults.map((item) => `${item.id}@${item.version}`),
-        idempotencyKey: `case-09:${props.selected.objectId}:${command}:v${props.selected.version}:${activeWindow.id}:${activeTrace}`,
+        idempotencyKey: `case-B009:${props.selected.objectId}:${command}:v${props.selected.version}:${activeWindow.id}:${activeTrace}`,
       });
       return;
     }
@@ -388,7 +388,7 @@ export function MetroCompressorWorkbench(props: CaseWorkbenchProps) {
         actorId,
         data: { inspection },
         evidenceIds: [...new Set([...supportCitationIds, ...challengeCitationIds])],
-        idempotencyKey: `case-09:${props.selected.objectId}:${command}:v${props.selected.version}:${activeWindow.id}:${activeTrace}`,
+        idempotencyKey: `case-B009:${props.selected.objectId}:${command}:v${props.selected.version}:${activeWindow.id}:${activeTrace}`,
       });
       return;
     }
@@ -409,7 +409,7 @@ export function MetroCompressorWorkbench(props: CaseWorkbenchProps) {
           },
         },
         evidenceIds: [...new Set([...supportCitationIds, ...challengeCitationIds])],
-        idempotencyKey: `case-09:${props.selected.objectId}:${command}:v${props.selected.version}:${activeWindow.id}:${activeTrace}`,
+        idempotencyKey: `case-B009:${props.selected.objectId}:${command}:v${props.selected.version}:${activeWindow.id}:${activeTrace}`,
       });
       return;
     }
@@ -446,7 +446,7 @@ export function MetroCompressorWorkbench(props: CaseWorkbenchProps) {
         <div className={styles.headerTools}>
           <span className={styles.motionState}><Activity size={15} />{prefersReducedMotion ? "减弱动效：开" : "标准动效"}</span>
           <label>当前角色<select aria-label="当前操作角色" value={props.actorRole} onChange={(event) => props.onActorRoleChange(event.target.value)}>{props.roles.map((role) => <option key={role} value={role}>{roleLabel(role)}</option>)}</select></label>
-          <button type="button" aria-label="恢复案例 B09" title="恢复初始状态" onClick={reset} disabled={props.busy}><RefreshCw size={18} /></button>
+          <button type="button" aria-label="恢复案例 B009" title="恢复初始状态" onClick={reset} disabled={props.busy}><RefreshCw size={18} /></button>
         </div>
       </header>
 
@@ -464,7 +464,7 @@ export function MetroCompressorWorkbench(props: CaseWorkbenchProps) {
         <section className={styles.visualColumn}>
           <section className={styles.equipment} aria-label="空压机设备信息图">
             <header><span>设备位置示意 · 非真实几何</span><b>{activeMeta.label}</b></header>
-            <img src="/case-assets/case-09/scene.png" alt="空压机与管路的课程示意场景" suppressHydrationWarning />
+            <img src="/case-assets/case-B009/scene.png" alt="空压机与管路的课程示意场景" suppressHydrationWarning />
             <div className={styles.sceneShade} />
             <svg className={styles.dataFlow} viewBox="0 0 1000 520" preserveAspectRatio="none" aria-hidden="true">
               <path d="M250 410 C410 406 472 332 560 292 S760 220 940 220" />

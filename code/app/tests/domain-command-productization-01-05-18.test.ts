@@ -39,14 +39,14 @@ const returnRequest = {
 
 function case01Request(overrides: Partial<DomainCommandInput> = {}): DomainCommandInput {
   return {
-    caseId: "01",
+    caseId: "B001",
     command: "create_evidence_request",
     actorRole: "analyst",
     actorId: "case01-evidence-analyst",
     idempotencyKey: "return-evidence:01-C496116-M:0:request",
     evidenceIds: ["cancellation:C496116", "candidate:496015"],
     data: returnRequest,
-    current: projection("01", "01-C496116-M", returnPayload),
+    current: projection("B001", "B001-C496116-M", returnPayload),
     sceneRows: returnRows,
     ...overrides,
   };
@@ -65,11 +65,11 @@ const hospitalEvent = {
 
 function case05Nurse(overrides: Partial<DomainCommandInput> = {}): DomainCommandInput {
   return {
-    caseId: "05",
+    caseId: "B005",
     command: "nurse_confirm",
     actorRole: "coordinator",
     actorId: "ER-N-07",
-    idempotencyKey: "case-05:TRN-0001:nurse_confirm:v0:TRN-0001-06",
+    idempotencyKey: "case-B005:TRN-0001:nurse_confirm:v0:TRN-0001-06",
     evidenceIds: ["TRN-0001-06", "BED-008", "FLOW-0001"],
     data: {
       selectedEventId: "TRN-0001-06",
@@ -77,7 +77,7 @@ function case05Nurse(overrides: Partial<DomainCommandInput> = {}): DomainCommand
       reconciliationReason: "接收记录已存在，迟到事件只追加修正说明。",
       senderActorId: "ER-N-07",
     },
-    current: projection("05", "05-TRN-0001-TRN-0001-06", { transport_id: "TRN-0001" }),
+    current: projection("B005", "B005-TRN-0001-TRN-0001-06", { transport_id: "TRN-0001" }),
     sceneRows: [hospitalEvent],
     ...overrides,
   };
@@ -104,14 +104,14 @@ const boilerTask = {
 
 function case18Dispatch(overrides: Partial<DomainCommandInput> = {}): DomainCommandInput {
   return {
-    caseId: "18",
+    caseId: "B018",
     command: "dispatch_shift_check",
     actorRole: "process_engineer",
     actorId: "case18-process-engineer",
     idempotencyKey: `${boilerTask.taskId}:dispatch_shift_check`,
     evidenceIds: ["boiler-window:2022-03-29 17:46", "minute-temperature", "sample-integrity"],
     data: boilerTask,
-    current: projection("18", "18-2022-03-29-17-46", boilerPayload),
+    current: projection("B018", "18-2022-03-29-17-46", boilerPayload),
     ...overrides,
   };
 }
@@ -135,7 +135,7 @@ describe("productized domain gates for cases 01, 05 and 18", () => {
   });
 
   it("does not let a case 01 review shrink the persisted evidence request", () => {
-    const current = projection("01", "01-C496116-M", returnPayload, returnRequest, 1);
+    const current = projection("B001", "B001-C496116-M", returnPayload, returnRequest, 1);
     expect(() => validateDomainCommand({
       ...case01Request(),
       command: "submit_manual_review",
@@ -167,7 +167,7 @@ describe("productized domain gates for cases 01, 05 and 18", () => {
   });
 
   it("uses the persisted case 05 sender for independent cosign", () => {
-    const current = projection("05", "05-TRN-0001-TRN-0001-06", { transport_id: "TRN-0001" }, {
+    const current = projection("B005", "B005-TRN-0001-TRN-0001-06", { transport_id: "TRN-0001" }, {
       ...(case05Nurse().data ?? {}),
     }, 1);
     expect(() => validateDomainCommand({
@@ -229,7 +229,7 @@ describe("productized domain gates for cases 01, 05 and 18", () => {
     expect(() => validateDomainCommand({
       ...case05Nurse(),
       command: "reopen_late_event",
-      current: projection("05", "05-TRN-0001-TRN-0001-06", { transport_id: "TRN-0001" }, {
+      current: projection("B005", "B005-TRN-0001-TRN-0001-06", { transport_id: "TRN-0001" }, {
         handledLateEventIds: ["TRN-0001-06"],
       }, 2),
       data: {
@@ -251,12 +251,12 @@ describe("productized domain gates for cases 01, 05 and 18", () => {
 
   it("does not dispatch case 18 when the current temperature is inside the source interval", () => {
     expect(() => validateDomainCommand(case18Dispatch({
-      current: projection("18", "18-2022-03-29-17-46", { ...boilerPayload, temperature_state: "区间内" }),
+      current: projection("B018", "18-2022-03-29-17-46", { ...boilerPayload, temperature_state: "区间内" }),
     }))).toThrow("boiler_condition_invalid");
   });
 
   it("requires an independent case 18 supervisor and the persisted task receipt", () => {
-    const current = projection("18", "18-2022-03-29-17-46", boilerPayload, boilerTask, 1);
+    const current = projection("B018", "18-2022-03-29-17-46", boilerPayload, boilerTask, 1);
     expect(() => validateDomainCommand({
       ...case18Dispatch(),
       command: "confirm_segment",
@@ -279,7 +279,7 @@ describe("productized domain gates for cases 01, 05 and 18", () => {
       command: "hold_control_change",
       actorRole: "supervisor",
       actorId: "case18-shift-supervisor",
-      current: projection("18", "18-2022-03-29-17-46", {
+      current: projection("B018", "18-2022-03-29-17-46", {
         ...boilerPayload,
         consecutive_deviation_minutes: "9",
       }),

@@ -31,11 +31,11 @@ export default function SceneCanvas({
   cameraDistance: number;
 }) {
   const Scene =
-    model.caseId === "15"
+    model.caseId === "B015"
       ? WaferScene
-      : model.caseId === "16"
+      : model.caseId === "B016"
         ? WindComparisonScene
-        : model.caseId === "19"
+        : model.caseId === "B019"
           ? HydraulicScene
           : SolarFieldScene;
 

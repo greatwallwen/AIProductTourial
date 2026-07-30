@@ -112,8 +112,8 @@ function standardTour(seed: StandardTourSeed): CaseTourDefinition {
 
 const standardSeeds: StandardTourSeed[] = [
   {
-    caseId: "02",
-    featuredObjectId: "02-U00725",
+    caseId: "B002",
+    featuredObjectId: "B002-U00725",
     title: "会员优惠试投",
     contextTitle: "先看预算，不先猜转化率",
     context: "固定演示会员 U00725 属于首批候选池。任务是在 3,000 元预算内形成可复现的 8 元券试投名单。",
@@ -129,8 +129,8 @@ const standardSeeds: StandardTourSeed[] = [
     result: "名单、预算和分组种子已经保存；页面仍不宣称转化提升，因为真实投放尚未发生。",
   },
   {
-    caseId: "03",
-    featuredObjectId: "03-17229",
+    caseId: "B003",
+    featuredObjectId: "B003-17229",
     title: "餐饮评论调查",
     contextTitle: "从一条原话进入问题",
     context: "评论 17229 只是样本入口。目标不是自动总结 6,970 条评论，而是把一个顾客体验信号变成可验证的调查。",
@@ -146,8 +146,8 @@ const standardSeeds: StandardTourSeed[] = [
     result: "评论信号已经成为有负责人、有反例、有判断条件的调查任务。",
   },
   {
-    caseId: "05",
-    featuredObjectId: "05-TRN-0001-TRN-0001-06",
+    caseId: "B005",
+    featuredObjectId: "B005-TRN-0001-TRN-0001-06",
     title: "转运晚到事件调和",
     contextTitle: "先分清发生时间和接收时间",
     context: "TRN-0001 的更正 08:27 已发生，09:09 才进入系统。晚到不等于错误，也不能覆盖已经发生的历史。",
@@ -163,8 +163,8 @@ const standardSeeds: StandardTourSeed[] = [
     result: "更正、原事件和双人会签同时留存，交接状态才被确认。",
   },
   {
-    caseId: "07",
-    featuredObjectId: "07-CN-FC-COURSE-01-2026-07-14",
+    caseId: "B007",
+    featuredObjectId: "B007-CN-FC-COURSE-01-2026-07-14",
     title: "即时履约架构评审",
     contextTitle: "请求少不代表履约一定快",
     context: "这个日期窗口里请求量下降，履约 P95 却升高。先锁定同一场站、同一天的事实，再讨论架构。",
@@ -180,8 +180,8 @@ const standardSeeds: StandardTourSeed[] = [
     result: "架构决定绑定了同窗事实、约束和风险，后续可以用新数据推翻或升级。",
   },
   {
-    caseId: "09",
-    featuredObjectId: "09-METROPT-20200418-GAP-01",
+    caseId: "B009",
+    featuredObjectId: "B009-METROPT-20200418-GAP-01",
     title: "空压机遥测断档调查",
     contextTitle: "352 秒空白不能当成设备故障",
     context: "固定调查窗口有 352 秒没有遥测。任务是解释断档并决定是否申请现场目视检查，不是远程诊断设备。",
@@ -197,8 +197,8 @@ const standardSeeds: StandardTourSeed[] = [
     result: "系统保存的是带引用的检查申请，不是对空压机故障原因的自动判定。",
   },
   {
-    caseId: "11",
-    featuredObjectId: "11-MODEL-ADMISSION-001-MODEL-GATE-2026-1",
+    caseId: "B011",
+    featuredObjectId: "B011-MODEL-ADMISSION-001-MODEL-GATE-2026-1",
     title: "企业模型准入补测",
     contextTitle: "一项地区切片不过线就不能跳过",
     context: "候选模型的总体分数不是准入通行证；地区切片缺失时，风险、公平、安全三类检查都不能被总分覆盖。",
@@ -214,8 +214,8 @@ const standardSeeds: StandardTourSeed[] = [
     result: "页面确认的是本地补测完成，不等同于生产发布批准。",
   },
   {
-    caseId: "12",
-    featuredObjectId: "12-CCI-2026-001-CN-SC-PZ-01",
+    caseId: "B012",
+    featuredObjectId: "B012-CCI-2026-001-CN-SC-PZ-01",
     title: "县域冷链运输记录调查",
     contextTitle: "先看运输时间带，不先下质量结论",
     context: "这条县域路线有 30 条温度记录和 5 次越界。调查只核对记录链，不能替代产品质量判断。",
@@ -231,8 +231,8 @@ const standardSeeds: StandardTourSeed[] = [
     result: "运输记录调查已经闭合；页面没有把越界次数写成产品质量结论。",
   },
   {
-    caseId: "13",
-    featuredObjectId: "13-CN-AS-001",
+    caseId: "B013",
+    featuredObjectId: "B013-CN-AS-001",
     title: "接车通话安全分流",
     contextTitle: "制动异响先问能不能安全移动",
     context: "CN-AS-001 是一次服务进线，不是诊断工单。接车专员先确认车辆状态和安全边界，再决定交给哪个技师组。",
@@ -248,8 +248,8 @@ const standardSeeds: StandardTourSeed[] = [
     result: "接车信息完成了岗位交接；车辆故障原因仍由后续人工检视确认。",
   },
   {
-    caseId: "14",
-    featuredObjectId: "14-FQ-0016",
+    caseId: "B014",
+    featuredObjectId: "B014-FQ-0016",
     title: "连续高硅事件调查",
     contextTitle: "39 小时事件比一个高点更重要",
     context: "FQ-0016 是连续高硅事件。页面固定 72 小时窗口，避免只截取一个异常点解释整个过程。",
@@ -265,8 +265,8 @@ const standardSeeds: StandardTourSeed[] = [
     result: "工艺事件已转为人工核查任务，根因和调参决定仍未被系统擅自生成。",
   },
   {
-    caseId: "15",
-    featuredObjectId: "15-SECOM-0003",
+    caseId: "B015",
+    featuredObjectId: "B015-SECOM-0003",
     title: "半导体生产记录复测",
     contextTitle: "SECOM-0003 是匿名观测，不是真实批次",
     context: "公开数据只有匿名信号、质量标签和缺失值。页面不得虚构设备、工序或晶圆批次。",
@@ -282,8 +282,8 @@ const standardSeeds: StandardTourSeed[] = [
     result: "匿名生产观测获得了可追溯的复测任务，页面没有编造制造现场事实。",
   },
   {
-    caseId: "16",
-    featuredObjectId: "16-7-1",
+    caseId: "B016",
+    featuredObjectId: "B016-7-1",
     title: "风机出力下偏核查",
     contextTitle: "连续七天的标记仍不是故障结论",
     context: "风机 T007 连续七个运行日出现下偏标记。先补同群基线、限电和告警，再谈原因。",
@@ -299,8 +299,8 @@ const standardSeeds: StandardTourSeed[] = [
     result: "七日下偏线索已经形成现场核查记录，归因仍等待同群、限电和告警资料。",
   },
   {
-    caseId: "17",
-    featuredObjectId: "17-BD-0003",
+    caseId: "B017",
+    featuredObjectId: "B017-BD-0003",
     title: "切刀波形复核",
     contextTitle: "三路波形必须共用同一个游标",
     context: "BD-0003 的三路同步波形都在。任务是保存可复核的排检候选，不从一个偏差指数直接推断故障。",
@@ -316,8 +316,8 @@ const standardSeeds: StandardTourSeed[] = [
     result: "三路同步波形被保存为可复核候选，页面没有把候选写成已确诊故障。",
   },
   {
-    caseId: "19",
-    featuredObjectId: "19-217",
+    caseId: "B019",
+    featuredObjectId: "B019-217",
     title: "液压循环检查排序",
     contextTitle: "三项同级时，排序本身就是决策",
     context: "第 217 次测量循环里三个部件处于同级重点。任务是给人工检查排顺序，不是给设备下故障诊断。",
@@ -333,8 +333,8 @@ const standardSeeds: StandardTourSeed[] = [
     result: "同级重点部件获得了可执行的人工检查先后，原始状态值保持不变。",
   },
   {
-    caseId: "20",
-    featuredObjectId: "20-8-2020-05-19",
+    caseId: "B020",
+    featuredObjectId: "B020-8-2020-05-19",
     title: "光伏站端记录核查",
     contextTitle: "少发线索不等于限电结论",
     context: "PV-08 在 2020-05-19 出现少发线索。页面分开显示站日事实、派生标记和缺失资料。",
@@ -352,8 +352,8 @@ const standardSeeds: StandardTourSeed[] = [
 ];
 
 const case01Tour: CaseTourDefinition = {
-  caseId: "01",
-  featuredObjectId: "01-C496116-M",
+  caseId: "B001",
+  featuredObjectId: "B001-C496116-M",
   title: "跨境售后异常调查",
   steps: [
     { id: "case-context", element: selector("01", "context"), title: "先锁定这张 8.17 万元取消单", description: "C496116-M 金额很大，但退款前缺少可追溯的原始订单。高金额是调查优先级，不是退款理由。", side: "bottom", align: "start" },
@@ -366,8 +366,8 @@ const case01Tour: CaseTourDefinition = {
 };
 
 const case04Tour: CaseTourDefinition = {
-  caseId: "04",
-  featuredObjectId: "04-CR20260000001",
+  caseId: "B004",
+  featuredObjectId: "B004-CR20260000001",
   title: "申请材料补正",
   steps: [
     { id: "case-context", element: selector("04", "context"), title: "只补源记录里真实缺失的材料", description: "CR20260000001 缺少收入证明。页面不得顺手索取身份证、住址等未登记材料。", side: "bottom", align: "start" },
@@ -381,8 +381,8 @@ const case04Tour: CaseTourDefinition = {
 };
 
 const case06Tour: CaseTourDefinition = {
-  caseId: "06",
-  featuredObjectId: "06-Gucheng-33541",
+  caseId: "B006",
+  featuredObjectId: "B006-Gucheng-33541",
   title: "历史数据摘录质检",
   steps: [
     { id: "case-context", element: selector("06", "context"), title: "古城站 12:00 的六项污染物全空", description: "固定记录来自公开历史数据。空值必须保留为空，不能用均值或相邻时次偷偷补齐。", side: "bottom", align: "start" },
@@ -395,8 +395,8 @@ const case06Tour: CaseTourDefinition = {
 };
 
 const case08Tour: CaseTourDefinition = {
-  caseId: "08",
-  featuredObjectId: "08-CN-AQ-02-038-CN-POND-02",
+  caseId: "B008",
+  featuredObjectId: "B008-CN-AQ-02-038-CN-POND-02",
   title: "水质冲突现场取证单",
   steps: [
     { id: "case-context", element: selector("08", "context"), title: "系统读数和现场记录发生冲突", description: "CN-AQ-02-038 需要三次岗位交接：调度派单、现场回传、主管采信。", side: "bottom", align: "start" },
@@ -411,8 +411,8 @@ const case08Tour: CaseTourDefinition = {
 };
 
 const case10Tour: CaseTourDefinition = {
-  caseId: "10",
-  featuredObjectId: "10-CN-TEL-2025Q2-0008",
+  caseId: "B010",
+  featuredObjectId: "B010-CN-TEL-2025Q2-0008",
   title: "通信请求恢复核查",
   steps: [
     { id: "case-context", element: selector("10", "context"), title: "请求发出不等于外部效果已发生", description: "本地任务有幂等键，但外部响应缺失。课程故障标签和真实外部结果必须分开记录。", side: "bottom", align: "start" },
@@ -426,8 +426,8 @@ const case10Tour: CaseTourDefinition = {
 };
 
 const case18Tour: CaseTourDefinition = {
-  caseId: "18",
-  featuredObjectId: "18-BT-0044",
+  caseId: "B018",
+  featuredObjectId: "B018-BT-0044",
   title: "主汽低温事件核查",
   steps: [
     { id: "event-context", element: '[data-tour~="b18-context"]', title: "先确认是哪一次事件", description: "BT-0044 连续偏离 25 分钟。这里先锁定事件窗口，不把来源区间当成厂方控制限。", side: "bottom", align: "start" },

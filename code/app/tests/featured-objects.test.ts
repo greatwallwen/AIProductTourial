@@ -7,18 +7,18 @@ import {
 import { getCaseDefinition } from "../../cases/registry";
 
 const expectedFeaturedObjects = {
-  "01": "01-C496116-M",
-  "04": "04-CR20260000001",
-  "10": "10-CN-TEL-2025Q2-0008",
-  "11": "11-MODEL-ADMISSION-001-MODEL-GATE-2026-1",
-  "12": "12-CCI-2026-001-CN-SC-PZ-01",
-  "14": "14-FQ-0016",
-  "15": "15-SECOM-0003",
-  "16": "16-7-1",
-  "17": "17-BD-0003",
-  "18": "18-BT-0044",
-  "19": "19-217",
-  "20": "20-8-2020-05-19",
+  "B001": "B001-C496116-M",
+  "B004": "B004-CR20260000001",
+  "B010": "B010-CN-TEL-2025Q2-0008",
+  "B011": "B011-MODEL-ADMISSION-001-MODEL-GATE-2026-1",
+  "B012": "B012-CCI-2026-001-CN-SC-PZ-01",
+  "B014": "B014-FQ-0016",
+  "B015": "B015-SECOM-0003",
+  "B016": "B016-7-1",
+  "B017": "B017-BD-0003",
+  "B018": "B018-BT-0044",
+  "B019": "B019-217",
+  "B020": "B020-8-2020-05-19",
 } as const;
 
 describe("featured objects", () => {
@@ -36,7 +36,7 @@ describe("featured objects", () => {
   );
 
   it("loads case 04 from the authoritative applications file", () => {
-    const definition = getCaseDefinition("04")!;
+    const definition = getCaseDefinition("B004")!;
     const projection = loadDatasetProjection(definition, 24);
 
     expect(projection.sourcePath.replaceAll("\\", "/")).toMatch(
@@ -44,23 +44,23 @@ describe("featured objects", () => {
     );
     expect(projection.rowCount).toBe(1200);
     expect(projection.rows[0]).toMatchObject({
-      objectId: "04-CR20260000001",
+      objectId: "B004-CR20260000001",
       application_id: "CR20260000001",
       income_evidence_status: "missing",
     });
   });
 
   it("repairs a persisted runtime that predates the featured object contract", () => {
-    const existing = [{ objectId: "19-1005" }, { objectId: "19-1006" }];
-    const dataset = [{ objectId: "19-217" }, { objectId: "19-1005" }];
+    const existing = [{ objectId: "B019-1005" }, { objectId: "B019-1006" }];
+    const dataset = [{ objectId: "B019-217" }, { objectId: "B019-1005" }];
 
-    expect(featuredObjectToSeed(existing, dataset, "19-217")).toEqual({
-      objectId: "19-217",
+    expect(featuredObjectToSeed(existing, dataset, "B019-217")).toEqual({
+      objectId: "B019-217",
     });
     expect(
-      orderFeaturedFirst([...existing, dataset[0]!], "19-217").map(
+      orderFeaturedFirst([...existing, dataset[0]!], "B019-217").map(
         (row) => row.objectId,
       ),
-    ).toEqual(["19-217", "19-1005", "19-1006"]);
+    ).toEqual(["B019-217", "B019-1005", "B019-1006"]);
   });
 });

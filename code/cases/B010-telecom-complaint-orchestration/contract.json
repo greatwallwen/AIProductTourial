@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "B010",
+  "slug": "telecom-complaint-orchestration",
+  "title": "目录查询已经提交，响应却丢了",
+  "industry": "通信服务",
+  "family": "approval",
+  "tier": "flagship",
+  "dataset_path": "dataset/B010-telecom-complaint-orchestration",
+  "route": "/cases/B010/work",
+  "runtime_mode": "offline_replay_and_optional_live_model",
+  "productization": {
+    "metrics": [
+      "高优先级任务",
+      "外部查证任务",
+      "证据不完整"
+    ],
+    "decision_fields": [
+      "priority",
+      "external_lookup_scenario",
+      "evidence_complete"
+    ],
+    "selection_changes_decision": true,
+    "business_state_changes_on_server": true
+  }
+}

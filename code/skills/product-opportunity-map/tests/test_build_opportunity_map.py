@@ -24,7 +24,7 @@ class ProductOpportunityMapTests(unittest.TestCase):
 
     def test_uses_only_s04_source_rows(self) -> None:
         self.assertEqual(self.document["source"]["row_count"], 4)
-        self.assertEqual({row["lab_id"] for row in self.document["source_records"]}, {"S04"})
+        self.assertEqual({row["lab_id"] for row in self.document["source_records"]}, {"S004"})
         self.assertEqual(len(self.document["source_records"]), 4)
 
     def test_opportunity_labels_are_supported_by_action_detail(self) -> None:

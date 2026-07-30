@@ -7,23 +7,23 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MARKDOWN = ROOT / "md" / "Course_AIProduct.md"
-EXPECTED_RUNTIME_PROMPTS = [f"P{index:02d}" for index in range(1, 9)]
-EXPECTED_UNITS = [f"U{index:02d}" for index in range(1, 7)]
-EXPECTED_SKILLS = [f"S{index:02d}" for index in range(1, 9)]
-EXPECTED_RUNTIME_LOOPS = [f"L{index:02d}" for index in range(1, 4)]
-EXPECTED_LOOPS = [f"L{index:02d}" for index in range(1, 5)]
+EXPECTED_RUNTIME_PROMPTS = [f"P{index:03d}" for index in range(1, 9)]
+EXPECTED_UNITS = ["P001", "P002", "P003", "P005", "P006", "P008"]
+EXPECTED_SKILLS = [f"S{index:03d}" for index in range(1, 9)]
+EXPECTED_RUNTIME_LOOPS = [f"L{index:03d}" for index in range(1, 4)]
+EXPECTED_LOOPS = [f"L{index:03d}" for index in range(1, 5)]
 EXPECTED_LABS = EXPECTED_RUNTIME_PROMPTS + EXPECTED_SKILLS + EXPECTED_RUNTIME_LOOPS
 EXPECTED_TEACHING = EXPECTED_UNITS + EXPECTED_SKILLS + EXPECTED_LOOPS
-EXPECTED_BUSINESS = [f"B{index:02d}" for index in range(1, 21)]
+EXPECTED_BUSINESS = [f"B{index:03d}" for index in range(1, 25)]
 S_CONTENT_HEADINGS = {
-    "S01": ("### 五张任务卡的分诊结果", "### 这五个决定说明什么", "### 为什么“停下”也是正确结果"),
-    "S02": ("### 数据体检记录", "### 六项缺失率", "### 为什么计算交给 Skill"),
-    "S03": ("### 本地简报计算", "### 简报怎样说", "### 为什么要保留“不可计算”"),
-    "S04": ("### 从原话到首个实验", "### 机会图", "### 为什么先画机会而不是功能"),
-    "S05": ("### 三个方向怎样不同", "### 选中的预览", "### 为什么最终选择仍要交给人"),
-    "S06": ("### 五页怎样对应大纲", "### 第四页和检查结果", "### 为什么生成后还要逐页看"),
-    "S07": ("### 浏览器里测到什么", "### 运行画面", "### 原型离完整小游戏还有什么"),
-    "S08": ("### 本地完成到哪里", "### 怎样查看", "### 本地检查与在线生成是两件事"),
+    "S001": ("### 五张任务卡的分诊结果", "### 这五个决定说明什么", "### 为什么“停下”也是正确结果"),
+    "S002": ("### 数据体检记录", "### 六项缺失率", "### 为什么计算交给 Skill"),
+    "S003": ("### 本地简报计算", "### 简报怎样说", "### 为什么要保留“不可计算”"),
+    "S004": ("### 从原话到首个实验", "### 机会图", "### 为什么先画机会而不是功能"),
+    "S005": ("### 三个方向怎样不同", "### 选中的预览", "### 为什么最终选择仍要交给人"),
+    "S006": ("### 五页怎样对应大纲", "### 第四页和检查结果", "### 为什么生成后还要逐页看"),
+    "S007": ("### 浏览器里测到什么", "### 运行画面", "### 原型离完整小游戏还有什么"),
+    "S008": ("### 本地完成到哪里", "### 怎样查看", "### 本地检查与在线生成是两件事"),
 }
 BANNED_TEXT = (
     "讲师使用说明",
@@ -62,12 +62,12 @@ def case_topology_errors(
     """Return plain consistency errors for the numbered business-case spine."""
     errors: list[str] = []
     manifest_ids = [str(item.get("id")) for item in manifest_cases]
-    expected = [f"{index:02d}" for index in range(1, len(manifest_ids) + 1)]
+    expected = [f"B{index:03d}" for index in range(1, len(manifest_ids) + 1)]
     catalog_ids = [str(item.get("id")) for item in catalog_cases]
     dataset_ids = [
         case_id
         for case_id in dataset_case_ids(dataset_manifest)
-        if isinstance(case_id, str) and re.fullmatch(r"\d{2}", case_id)
+        if isinstance(case_id, str) and re.fullmatch(r"B\d{3}", case_id)
     ]
 
     if manifest_ids != expected:
@@ -84,7 +84,7 @@ def verify_screenshot_links(
     errors: list[str],
     *,
     root: Path = ROOT,
-    expected_count: int = 20,
+    expected_count: int = 24,
 ) -> None:
     if re.search(r"sha-?256|\bsha256\b", text, flags=re.IGNORECASE):
         errors.append("Markdown must not expose SHA values")
@@ -135,11 +135,11 @@ def main() -> int:
         errors.append("manifest lab ids do not match P/S/L registry")
     teaching_spine = manifest.get("teaching_spine", {})
     if teaching_spine.get("prompt_units") != EXPECTED_UNITS:
-        errors.append("manifest teaching Prompt units do not match U01-U06")
+        errors.append("manifest teaching Prompt units do not match P001-P008")
     if teaching_spine.get("agent_skill_workshops") != EXPECTED_SKILLS:
-        errors.append("manifest teaching Skill workshops do not match S01-S08")
+        errors.append("manifest teaching Skill workshops do not match S001-S008")
     if teaching_spine.get("loop_patterns") != EXPECTED_LOOPS:
-        errors.append("manifest teaching Loop patterns do not match L01-L04")
+        errors.append("manifest teaching Loop patterns do not match L001-L004")
     for item in manifest_labs:
         lab_id = str(item.get("id"))
         if not (ROOT / item.get("dataset_path", "")).is_dir():
@@ -152,9 +152,9 @@ def main() -> int:
             if item.get("route"):
                 errors.append(f"{lab_id} must not require a web route")
 
-    unit_sections = section_map(text, r"^## (U\d{2})[^\n]*$")
-    skill_sections = section_map(text, r"^## (S\d{2})[^\n]*$")
-    loop_sections = section_map(text, r"^## (L\d{2})[^\n]*$")
+    unit_sections = section_map(text, r"^## (P\d{3})[^\n]*$")
+    skill_sections = section_map(text, r"^## (S\d{3})[^\n]*$")
+    loop_sections = section_map(text, r"^## (L\d{3})[^\n]*$")
     capability_sections = {**unit_sections, **skill_sections, **loop_sections}
     if list(capability_sections) != EXPECTED_TEACHING:
         errors.append(f"Markdown capability sequence mismatch: {list(capability_sections)}")
@@ -177,7 +177,7 @@ def main() -> int:
     if "```powershell" in prompt_skill_text.lower():
         errors.append("Prompt and Agent+Skills chapters must not contain PowerShell runbooks")
 
-    business_sections = section_map(text, r"^# 综合案例 (B\d{2})[^\n]*$")
+    business_sections = section_map(text, r"^# 综合案例 (B\d{3})[^\n]*$")
     if list(business_sections) != EXPECTED_BUSINESS:
         errors.append(f"Markdown business sequence mismatch: {list(business_sections)}")
     for case_id in EXPECTED_BUSINESS:
@@ -186,23 +186,22 @@ def main() -> int:
             errors.append(f"{case_id} missing section: 需求")
         verify_markdown_case(case_id, section, errors)
 
-    runtime_ids = [f"{index:02d}" for index in range(1, 21)]
+    runtime_ids = [f"B{index:03d}" for index in range(1, 25)]
     manifest_cases = manifest.get("cases", [])
     if [item.get("id") for item in manifest_cases] != runtime_ids:
-        errors.append("manifest runtime ids are not 01-20")
+        errors.append("manifest runtime ids are not B001-B024")
     for runtime_id, item in zip(runtime_ids, manifest_cases, strict=False):
-        teaching_id = f"B{runtime_id}"
-        if item.get("route") != f"/cases/{teaching_id}/work":
-            errors.append(f"{teaching_id} public route mismatch")
+        if item.get("route") != f"/cases/{runtime_id}":
+            errors.append(f"{runtime_id} public route mismatch")
         code_path = ROOT / item.get("code_path", "")
         if not (code_path / "contract.json").is_file() or not (code_path / "index.ts").is_file():
-            errors.append(f"{teaching_id} code contract incomplete")
+            errors.append(f"{runtime_id} code contract incomplete")
 
     expected_dataset_ids = runtime_ids + EXPECTED_LABS
     if dataset_case_ids(datasets) != expected_dataset_ids:
         errors.append("dataset manifest does not cover 01-20 plus P/S/L in order")
 
-    verify_screenshot_links(text, errors, expected_count=20)
+    verify_screenshot_links(text, errors, expected_count=24)
 
     if errors:
         print("COURSE VERIFICATION FAILED")
@@ -213,7 +212,7 @@ def main() -> int:
     print(
         "COURSE VERIFICATION PASSED "
         f"teaching_units={len(EXPECTED_TEACHING)} business_cases={len(EXPECTED_BUSINESS)} "
-        "business_screenshots>=20"
+        "business_screenshots>=24"
     )
     return 0
 

@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "case_id": "B021",
+  "sources": [
+    {
+      "id": "DATA-21",
+      "title": "中国城市旅游 POI 快照",
+      "publisher": "用户提供的课程参考数据",
+      "version": "2026-07-30 固定本地快照",
+      "license": "随附文件未声明",
+      "redistribution": "用户授权用于课程本地化；第三方再分发权未独立核验"
+    }
+  ],
+  "input_files": [
+    {
+      "path": "raw/3-travle_poi.xlsx",
+      "bytes": 348872,
+      "sha256": "cbecb48e3276d3a64fd37ceae4a2fe4352b14ebed6db3af49f6b713d4e9e2fdd",
+      "role": "user-provided reference snapshot"
+    }
+  ],
+  "generation": {
+    "generator": "tools/prepare_expansion_cases.py",
+    "generator_version": "1.0.0",
+    "field_lineage": {
+      "source_facts": [
+        "city_name",
+        "poi_name",
+        "star_level",
+        "rating",
+        "price_cny",
+        "sales_count",
+        "district",
+        "longitude",
+        "latitude",
+        "introduction",
+        "is_free",
+        "address"
+      ],
+      "derived_fields": [
+        "poi_id",
+        "route_use",
+        "state",
+        "data_nature"
+      ]
+    }
+  },
+  "supplemental_outputs": [],
+  "transform_status": "derived-verified",
+  "materialized_status": "verified",
+  "rebuild_status": "verified",
+  "restriction": "路线仅是静态候选；不得声称营业时间、票价、交通或预约状态实时有效。"
+}

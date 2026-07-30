@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1.1",
+  "generatedAt": "2026-07-27T18:47:00+08:00",
+  "caseId": "13",
+  "dataset": {
+    "path": "dataset/B013-auto-service-triage/case.csv",
+    "sha256": "757c7cab2ab8d1e9d26c5171e69b8582cc08cab26b7e4be1bc7fa398b1163714",
+    "checksumLedgerMatch": true,
+    "rows": 24,
+    "columns": 11
+  },
+  "diversity": {
+    "distinctCustomerStatements": 24,
+    "symptomCategories": 6,
+    "regions": 4,
+    "vehicleClasses": 2,
+    "safetyReviewRequiredRows": 16,
+    "automaticRepairAllowedTrueRows": 0
+  },
+  "publicReference": {
+    "path": "dataset/B013-auto-service-triage/public-reference.csv",
+    "rows": 508,
+    "rowLevelLinkedToChineseIntakes": false,
+    "sourceGeography": "India",
+    "license": "CC0"
+  },
+  "findings": [
+    {
+      "severity": "high",
+      "finding": "24 条中国接车进线是确定性合成运营记录，与 508 条公开维修摘要没有行级关系。",
+      "impact": "公开摘要只支持字段设计，不能被表述为中国进线的真实维修结果。"
+    },
+    {
+      "severity": "high",
+      "finding": "数据没有客户身份、VIN、里程、故障码、车辆位置或真实维修结论。",
+      "impact": "页面只能保存客户回答和技师交接，不能生成诊断、救援或维修动作。"
+    }
+  ]
+}

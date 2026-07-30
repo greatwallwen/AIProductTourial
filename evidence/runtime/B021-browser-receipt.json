@@ -1,0 +1,21 @@
+{
+  "case_id": "B021",
+  "verified_at": "2026-07-30T05:12:58.9945868Z",
+  "url": "http://127.0.0.1:3200/cases/B021",
+  "viewport": { "width": 1440, "height": 900 },
+  "main_landmark": "上海周末路线编排台",
+  "journey": [
+    { "actor": "route_planner", "action": "保存两日路线草案", "transition": "待编排 → 路线待核验" },
+    { "actor": "supervisor", "action": "确认路线版本", "transition": "路线待核验 → 路线已确认" }
+  ],
+  "reload_persistence": "路线已确认",
+  "document_metrics": { "width": 1440, "height": 900, "scroll_width": 1440, "scroll_height": 900 },
+  "console_errors": 0,
+  "console_warnings": 0,
+  "screenshot": {
+    "path": "evidence/screenshots/B021-work.png",
+    "bytes": 422095,
+    "sha256": "768b7fc62cb8bb06f3a8f8d8a713d517a65a95a9d288c0c8a4a2a493a36109be"
+  },
+  "verification_boundary": "deterministic_offline；路线来自本地 POI 历史快照，交通费为明确标注的课程估算。"
+}

@@ -1,23 +1,23 @@
 # 课程代码
 
-`code/` 包含三类实现：Prompt 结果复核与 Loop 运行器、S01—S08 的本地 Skill，以及 B01—B20 的 React 19.2 + Next.js 16.2 产品案例。教程先用可复制 Prompt 讲业务与方法，需要读取数据或生成文件时再让 CodeBuddy 调用这里的 Skill。
+`code/` 包含三类实现：Prompt 结果复核与 Loop 运行器、S001—S008 的本地 Skill，以及 B001—B024 的 React 19.2 + Next.js 16.2 产品案例。教程先用可复制 Prompt 讲业务与方法，需要读取数据或生成文件时再让 CodeBuddy 调用这里的 Skill。
 
 ## 目录
 
 ```text
 code/
 ├─ app/                     # 驾驶舱、产品工作台、API 与浏览器测试
-├─ cases/                   # B01—B20 的业务合同；内部 ID 保持 01—20
+├─ cases/                   # B001—B024 的业务合同
 ├─ labs/
-│  ├─ prompt-curriculum/    # P01—P08 A/B 实验运行与报告
-│  └─ loop-runtime/         # L01—L03 多步运行与停止条件
-├─ skills/                  # S01—S08 可独立检查的本地 Skill
+│  ├─ prompt-curriculum/    # P001—P008 A/B 实验运行与报告
+│  └─ loop-runtime/         # L001—L003 多步运行与停止条件
+├─ skills/                  # S001—S008 可独立检查的本地 Skill
 ├─ case-runtime/            # 状态、类型化命令与本地回执
 ├─ design-system/           # 共用组件与设计令牌
 └─ runtime/                 # 可重建的本地状态数据库
 ```
 
-Prompt 案例以主教程中的可复制提示交付；Skill 与 Loop 在需要时生成本地工件，不要求网页路由。产品案例的公开路由是 `/cases/B01/work` 至 `/cases/B20/work`；浏览器只提交类型化动作，命令校验、权限和状态变化由服务端完成。
+Prompt 案例以主教程中的可复制提示交付；Skill 与 Loop 在需要时生成本地工件，不要求网页路由。产品案例的公开路由是 `/cases/B001/work` 至 `/cases/B020/work`；浏览器只提交类型化动作，命令校验、权限和状态变化由服务端完成。
 
 ## 运行产品案例
 

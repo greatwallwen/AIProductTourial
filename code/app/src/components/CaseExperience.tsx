@@ -58,6 +58,10 @@ import {
   TelecomRecoveryWorkbench,
   WaferRetestWorkbench,
   WindUnderperformanceWorkbench,
+  WeekendRouteWorkbench,
+  TransferNoticeWorkbench,
+  SpringFestivalScreeningWorkbench,
+  SupermarketReplenishmentWorkbench,
   type CaseWorkbenchProps,
   type WorkbenchCommandOptions,
 } from "./workbenches/case-specific";
@@ -70,26 +74,30 @@ const familyComponents = {
 };
 
 const caseSpecificWorkbenches: Record<string, ComponentType<CaseWorkbenchProps>> = {
-  "01": ReturnEvidenceWorkbench,
-  "02": MemberTrialWorkbench,
-  "03": ReviewResearchWorkbench,
-  "04": CreditMaterialWorkbench,
-  "05": HospitalTransferWorkbench,
-  "06": AirQualityReleaseWorkbench,
-  "07": RetailArchitectureWorkbench,
-  "08": AquacultureResponseWorkbench,
-  "09": MetroCompressorWorkbench,
-  "10": TelecomRecoveryWorkbench,
-  "11": ModelAdmissionWorkbench,
-  "12": ColdChainInvestigationWorkbench,
-  "13": AutoServiceTriageWorkbench,
-  "14": FlotationReviewWorkbench,
-  "15": WaferRetestWorkbench,
-  "16": WindUnderperformanceWorkbench,
-  "17": CutterHealthWorkbench,
-  "18": BoilerEventWorkbench,
-  "19": HydraulicConditionWorkbench,
-  "20": PvLossWorkbench,
+  "B001": ReturnEvidenceWorkbench,
+  "B002": MemberTrialWorkbench,
+  "B003": ReviewResearchWorkbench,
+  "B004": CreditMaterialWorkbench,
+  "B005": HospitalTransferWorkbench,
+  "B006": AirQualityReleaseWorkbench,
+  "B007": RetailArchitectureWorkbench,
+  "B008": AquacultureResponseWorkbench,
+  "B009": MetroCompressorWorkbench,
+  "B010": TelecomRecoveryWorkbench,
+  "B011": ModelAdmissionWorkbench,
+  "B012": ColdChainInvestigationWorkbench,
+  "B013": AutoServiceTriageWorkbench,
+  "B014": FlotationReviewWorkbench,
+  "B015": WaferRetestWorkbench,
+  "B016": WindUnderperformanceWorkbench,
+  "B017": CutterHealthWorkbench,
+  "B018": BoilerEventWorkbench,
+  "B019": HydraulicConditionWorkbench,
+  "B020": PvLossWorkbench,
+  "B021": WeekendRouteWorkbench,
+  "B022": TransferNoticeWorkbench,
+  "B023": SpringFestivalScreeningWorkbench,
+  "B024": SupermarketReplenishmentWorkbench,
 };
 
 function ProductWorkbenchFrame({
@@ -110,7 +118,7 @@ function ProductWorkbenchFrame({
   children: ReactNode;
 }) {
   const [drawer, setDrawer] = useState<"evidence" | "activity" | null>(null);
-  const teachingId = `B${definition.id}`;
+  const teachingId = definition.id;
   const objectEvents = events.filter((event) => event.objectId === selected.objectId);
   const evidenceFields = definition.displayFields.slice(0, 6);
   return (
@@ -452,7 +460,7 @@ export function CaseExperience({
   sceneRows?: Record<string, unknown>[];
   supportingArtifacts?: Record<string, Record<string, unknown>[]>;
 }) {
-  const teachingId = `B${definition.id}`;
+  const teachingId = definition.id;
   const [objects, setObjects] = useState(initialObjects);
   const [selectedId, setSelectedId] = useState(
     resolveFeaturedObject(initialObjects, definition.featuredObjectId)?.objectId ?? "",
@@ -729,28 +737,34 @@ export function CaseExperience({
         onPrepare={() => resetTourObject(tourDefinition.featuredObjectId)}
       />
     ) : undefined;
+    const workbench = (
+      <SpecificWorkbench
+        definition={definition}
+        objects={objects}
+        selected={selected}
+        events={events}
+        metrics={metrics}
+        datasetRowCount={datasetRowCount}
+        sceneRows={sceneRows}
+        supportingArtifacts={supportingArtifacts}
+        actorRole={actorRole}
+        roles={roles}
+        commands={commands}
+        busy={busy}
+        error={error}
+        receipt={receipt}
+        onActorRoleChange={setActorRole}
+        onCommand={execute}
+        onReset={reset}
+        onSelect={selectObject}
+      />
+    );
+    if (["B018", "B021", "B022", "B023", "B024"].includes(definition.id)) {
+      return workbench;
+    }
     return (
       <ProductWorkbenchFrame definition={definition} selected={selected} events={events} datasetRowCount={datasetRowCount} datasetHash={datasetHash} tourControl={tourControl}>
-        <SpecificWorkbench
-          definition={definition}
-          objects={objects}
-          selected={selected}
-          events={events}
-          metrics={metrics}
-          datasetRowCount={datasetRowCount}
-          sceneRows={sceneRows}
-          supportingArtifacts={supportingArtifacts}
-          actorRole={actorRole}
-          roles={roles}
-          commands={commands}
-          busy={busy}
-          error={error}
-          receipt={receipt}
-          onActorRoleChange={setActorRole}
-          onCommand={execute}
-          onReset={reset}
-          onSelect={selectObject}
-        />
+        {workbench}
       </ProductWorkbenchFrame>
     );
   }

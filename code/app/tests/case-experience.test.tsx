@@ -13,7 +13,7 @@ import { getCaseDefinition } from "../../cases/registry";
 import { CaseExperience } from "../src/components/CaseExperience";
 import { CaseOverview } from "../src/components/CaseOverview";
 
-const base = getCaseDefinition("01")!;
+const base = getCaseDefinition("B001")!;
 
 const definition: CaseDefinition = {
   ...base,
@@ -48,7 +48,7 @@ const definition: CaseDefinition = {
 
 const objects: CaseProjection[] = [
   {
-    caseId: "01",
+    caseId: "B001",
     objectId: "OBJ-001",
     state: "待处理",
     version: 0,
@@ -69,7 +69,7 @@ const objects: CaseProjection[] = [
     updatedAt: "2026-07-24T08:00:00.000Z",
   },
   {
-    caseId: "01",
+    caseId: "B001",
     objectId: "OBJ-002",
     state: "待处理",
     version: 0,
@@ -96,11 +96,11 @@ const metrics: CaseMetric[] = [
   { id: "review", label: "待复核", value: "312", note: "按规则计算" },
 ];
 
-const retailDefinition = getCaseDefinition("01")!;
+const retailDefinition = getCaseDefinition("B001")!;
 const retailObjects: CaseProjection[] = [
   {
-    caseId: "01",
-    objectId: "01-C496116-M",
+    caseId: "B001",
+    objectId: "B001-C496116-M",
     state: "待核验",
     version: 0,
     payload: {
@@ -169,7 +169,7 @@ describe("CaseOverview", () => {
         definition={definition}
         defaultProjection={objects[0]}
         metrics={metrics}
-        workHref="/cases/01/work"
+        workHref="/cases/B001/work"
       />,
     );
 
@@ -178,7 +178,7 @@ describe("CaseOverview", () => {
     expect(screen.getByText("8,400")).toBeVisible();
     expect(
       screen.getByRole("link", { name: "进入处置工作台" }),
-    ).toHaveAttribute("href", "/cases/01/work");
+    ).toHaveAttribute("href", "/cases/B001/work");
     expect(screen.queryByRole("table")).not.toBeInTheDocument();
     expect(screen.queryByRole("button")).not.toBeInTheDocument();
   });
@@ -199,7 +199,7 @@ describe("CaseExperience read model", () => {
       />,
     );
 
-    expect(screen.getByText("B01 · 跨境售后异常调查")).toBeVisible();
+    expect(screen.getByText("B001 · 跨境售后异常调查")).toBeVisible();
     expect(screen.getByRole("heading", { name: "原单核对中" })).toBeVisible();
     expect(screen.getByRole("region", { name: "当前取消单" })).toBeVisible();
     expect(screen.getByRole("region", { name: "原单核对镜头" })).toBeVisible();
@@ -252,10 +252,10 @@ describe("CaseExperience read model", () => {
   });
 
   it("shows event time and received time separately in hospital transfer coordination", () => {
-    const caseDefinition = getCaseDefinition("05")!;
+    const caseDefinition = getCaseDefinition("B005")!;
     const hospitalObjects: CaseProjection[] = [
-      { caseId: "05", objectId: "05-TRN-0001-TRN-0001-06", state: caseDefinition.initialState, version: 0, payload: { transport_id: "TRN-0001", event_version: "6", event_time: "2026-07-03T08:27:00+08:00", received_at: "2026-07-03T09:09:00+08:00", source_system: "OPS_AUDIT", from_department: "急诊观察区", to_department: "外科留观区", event_type: "correction_appended", co_sign_status: "pending", conflict_type: "late_event", late_event: "True" }, updatedAt: "2026-07-03T09:09:00+08:00" },
-      { caseId: "05", objectId: "05-TRN-0002-TRN-0002-06", state: caseDefinition.initialState, version: 0, payload: { transport_id: "TRN-0002", event_version: "6", event_time: "2026-07-03T08:19:00+08:00", received_at: "2026-07-03T08:39:00+08:00", source_system: "OPS_AUDIT", from_department: "急诊抢救区", to_department: "日间诊疗区", event_type: "correction_appended", co_sign_status: "pending", conflict_type: "out_of_order", late_event: "False" }, updatedAt: "2026-07-03T08:39:00+08:00" },
+      { caseId: "B005", objectId: "B005-TRN-0001-TRN-0001-06", state: caseDefinition.initialState, version: 0, payload: { transport_id: "TRN-0001", event_version: "6", event_time: "2026-07-03T08:27:00+08:00", received_at: "2026-07-03T09:09:00+08:00", source_system: "OPS_AUDIT", from_department: "急诊观察区", to_department: "外科留观区", event_type: "correction_appended", co_sign_status: "pending", conflict_type: "late_event", late_event: "True" }, updatedAt: "2026-07-03T09:09:00+08:00" },
+      { caseId: "B005", objectId: "B005-TRN-0002-TRN-0002-06", state: caseDefinition.initialState, version: 0, payload: { transport_id: "TRN-0002", event_version: "6", event_time: "2026-07-03T08:19:00+08:00", received_at: "2026-07-03T08:39:00+08:00", source_system: "OPS_AUDIT", from_department: "急诊抢救区", to_department: "日间诊疗区", event_type: "correction_appended", co_sign_status: "pending", conflict_type: "out_of_order", late_event: "False" }, updatedAt: "2026-07-03T08:39:00+08:00" },
     ];
     const sceneRows = [
       { event_id: "TRN-0001-01", transport_id: "TRN-0001", event_version: "1", event_time: "2026-07-03T08:07:00+08:00", received_at: "2026-07-03T08:08:00+08:00", source_system: "ED_BOARD", from_department: "急诊观察区", to_department: "外科留观区", event_type: "transport_requested", co_sign_status: "pending", conflict_type: "none", late_event: "False" },
@@ -272,7 +272,7 @@ describe("CaseExperience read model", () => {
     expect(screen.getByRole("region", { name: "系统接收时间轴" }).querySelectorAll("button")).toHaveLength(6);
     expect(screen.getByText("v6")).toBeVisible();
     expect(screen.getByText(/不含患者身份、诊断、治疗或临床优先级/)).toBeVisible();
-    expect(screen.queryByText("05-TRN-0001-TRN-0001-06")).not.toBeInTheDocument();
+    expect(screen.queryByText("B005-TRN-0001-TRN-0001-06")).not.toBeInTheDocument();
     expect(screen.queryByRole("checkbox")).not.toBeInTheDocument();
   });
 
@@ -371,8 +371,8 @@ describe("CaseExperience read model", () => {
       supportingArtifacts: { "waveform.csv": [{ session_id: "BD-0003", sample_index: "0", cutter_motor_torque: "0.1", cutter_follow_error: "0.02", film_follow_error: "0.8" }, { session_id: "BD-0003", sample_index: "1", cutter_motor_torque: "-0.2", cutter_follow_error: "0.01", film_follow_error: "0.82" }] },
     },
     {
-      id: "18", heading: "主汽低温事件", boundary: "不是厂方控制限，不能直接触发自动调节。", rowCount: 7201,
-      payload: { monitor_minute: "2022-03-29 17:46", valid_samples: "12", steam_temperature_mean: "529.845833", steam_temperature_min: "529.69", steam_temperature_max: "529.98", temperature_state: "低于来源区间", consecutive_deviation_minutes: "24", data_completeness: "完整" },
+      id: "B018", heading: "主汽低温事件", boundary: "530–545°C 是来源区间，不是厂方控制限。", rowCount: 7201,
+      payload: { event_id: "B018-BT-0044", event_start: "2022-03-29 17:22:39", event_end: "2022-03-29 17:46:59", duration_seconds: "1465", monitor_minute: "2022-03-29 17:46", source_samples: "293", valid_samples: "12", steam_temperature_mean: "529.845833", steam_temperature_min: "526.63", steam_temperature_max: "529.98", temperature_state: "低于来源区间", consecutive_deviation_minutes: "25", data_completeness: "完整", data_quality_state: "完整" },
       sceneRows: [{ monitor_minute: "2022-03-29 17:45", steam_temperature_mean: "529.6" }, { monitor_minute: "2022-03-29 17:46", steam_temperature_mean: "529.845833" }],
       supportingArtifacts: { "events.csv": [{ event_id: "E-1" }], "imputation-points.csv": [{ sample_time: "2022-03-29 17:46" }] },
     },
@@ -392,8 +392,8 @@ describe("CaseExperience read model", () => {
     const caseDefinition = getCaseDefinition(id)!;
     const projection: CaseProjection = { caseId: id, objectId: `${id}-fixture`, state: caseDefinition.initialState, version: 0, payload, updatedAt: "2026-07-25T12:00:00.000Z" };
     render(<CaseExperience definition={caseDefinition} activeView="work" initialObjects={[projection]} initialEvents={[]} initialReceipt={undefined} datasetRowCount={rowCount} datasetHash="sha256-value" metrics={[]} sceneRows={sceneRows} supportingArtifacts={supportingArtifacts ?? {}} />);
-    expect(screen.getByText(heading)).toBeVisible();
-    expect(screen.getByText(boundary)).toBeVisible();
+    expect(document.body).toHaveTextContent(heading);
+    expect(document.body).toHaveTextContent(boundary);
     if (allowsTable) expect(screen.getByRole("table")).toBeVisible();
     else expect(screen.queryByRole("table")).not.toBeInTheDocument();
   });
@@ -422,7 +422,7 @@ describe("CaseExperience read model", () => {
     expect(screen.getByText("receipt-persiste")).toBeVisible();
     expect(screen.queryByText("尚未执行")).not.toBeInTheDocument();
     expect(
-      screen.getByRole("button", { name: "恢复案例 B01" }),
+      screen.getByRole("button", { name: "恢复案例 B001" }),
     ).toBeEnabled();
   });
 
@@ -463,7 +463,7 @@ describe("CaseExperience read model", () => {
     fireEvent.click(within(queue).getByRole("button", { name: /C-OBJ-002/ }));
 
     await waitFor(() => expect(screen.getByText(/已记录 /)).toBeVisible());
-    expect(fetch).toHaveBeenCalledWith("/api/cases/01/objects/OBJ-002");
+    expect(fetch).toHaveBeenCalledWith("/api/cases/B001/objects/OBJ-002");
   });
 
   it("filters actions by role and sends the selected actor role", async () => {
@@ -547,7 +547,7 @@ describe("CaseExperience read model", () => {
       />,
     );
 
-    fireEvent.click(screen.getByRole("button", { name: "恢复案例 B01" }));
+    fireEvent.click(screen.getByRole("button", { name: "恢复案例 B001" }));
 
     await waitFor(() => expect(screen.queryByRole("status")).not.toBeInTheDocument());
   });

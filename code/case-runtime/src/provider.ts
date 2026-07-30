@@ -1,7 +1,7 @@
 import OpenAI from "openai";
 import { digest } from "./receipt";
 
-const LIVE_CASES = new Set(["01", "05", "09", "10", "11", "15"]);
+const LIVE_CASES = new Set(["B001", "B005", "B009", "B010", "B011", "B015"]);
 
 export type AssistMode = "offline" | "live";
 

@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "mode": "apply",
+  "root": "D:\\cursor\\AI培训\\Course_AIProduct\\.publish\\AIProductTourial",
+  "changed_file_count": 5,
+  "renamed_path_count": 0,
+  "changed_files": [
+    "code\\skills\\slide-plan\\examples\\air-quality-presentation.pptx.inspect.ndjson",
+    "code\\skills\\slide-plan\\examples\\rendered\\inspect.ndjson",
+    "dataset\\B003-local-service-voc\\case.csv",
+    "dataset\\P-prompt-curriculum\\checksums.sha256",
+    "dataset\\S-agent-skill-cases\\case.csv"
+  ],
+  "renamed_paths": []
+}

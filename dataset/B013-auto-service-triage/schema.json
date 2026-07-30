@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "case_id": "B013",
+  "row_count": 24,
+  "columns": [
+    {
+      "name": "intake_id",
+      "origin": "derived"
+    },
+    {
+      "name": "region",
+      "origin": "derived"
+    },
+    {
+      "name": "vehicle_class",
+      "origin": "derived"
+    },
+    {
+      "name": "symptom_text",
+      "origin": "derived"
+    },
+    {
+      "name": "symptom_category",
+      "origin": "derived"
+    },
+    {
+      "name": "safety_review_required",
+      "origin": "derived"
+    },
+    {
+      "name": "workflow_state",
+      "origin": "derived"
+    },
+    {
+      "name": "allowed_action",
+      "origin": "derived"
+    },
+    {
+      "name": "row_level_link_to_reference",
+      "origin": "derived"
+    },
+    {
+      "name": "automatic_repair_allowed",
+      "origin": "derived"
+    },
+    {
+      "name": "data_nature",
+      "origin": "derived"
+    }
+  ],
+  "supplemental_artifacts": [
+    {
+      "path": "public-reference.csv",
+      "row_count": 508,
+      "columns": [
+        "reference_id",
+        "customer_id",
+        "city",
+        "state",
+        "service_history",
+        "common_problem",
+        "historical_solution",
+        "vehicle_brand",
+        "data_nature"
+      ],
+      "source_ids": [
+        "DATA-13"
+      ],
+      "data_nature": "public-reference"
+    }
+  ]
+}

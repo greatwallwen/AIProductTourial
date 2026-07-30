@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-KNOWLEDGE_BASE = ROOT / "AI时代研发产品项目一体化知识库"
+KNOWLEDGE_BASE = ROOT / "md"
 
 
 REQUIRED_TERMS = {
@@ -77,7 +77,7 @@ def main() -> int:
     for filename, terms in REQUIRED_TERMS.items():
         path = KNOWLEDGE_BASE / filename
         if not path.is_file():
-            errors.append(f"missing chapter: AI时代研发产品项目一体化知识库/{filename}")
+            errors.append(f"missing chapter: md/{filename}")
             continue
         text = path.read_text(encoding="utf-8")
         chapter_text[filename] = text

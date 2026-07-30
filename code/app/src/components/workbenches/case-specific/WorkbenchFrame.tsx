@@ -86,7 +86,7 @@ export function WorkbenchFrame({
         <button
           className="case-studio__reset"
           type="button"
-          aria-label={`恢复案例 B${props.definition.id}`}
+          aria-label={`恢复案例 ${props.definition.id}`}
           title="恢复初始状态"
           disabled={props.busy}
           onClick={props.onReset}

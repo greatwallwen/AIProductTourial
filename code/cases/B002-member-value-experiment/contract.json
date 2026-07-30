@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "B002",
+  "slug": "member-value-experiment",
+  "title": "3,000 元预算，8 元券先发给谁？",
+  "industry": "电商增长",
+  "family": "commerce",
+  "tier": "complete",
+  "dataset_path": "dataset/B002-member-value-experiment",
+  "route": "/cases/B002/work",
+  "runtime_mode": "deterministic_offline",
+  "productization": {
+    "metrics": [
+      "平均参与度",
+      "核心会员",
+      "购买行为"
+    ],
+    "decision_fields": [
+      "value_segment",
+      "engagement_score",
+      "buy_count"
+    ],
+    "selection_changes_decision": true,
+    "business_state_changes_on_server": true
+  }
+}

@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { getCaseDefinition } from "@cases/registry";
 import {
   ensureCaseSeeded,
@@ -18,10 +18,22 @@ export default async function CasePage({
   if (!definition) {
     notFound();
   }
-  const requestedView = view?.[0] ?? "overview";
+  const rawView = view?.[0];
+  const requestedView = rawView ?? "work";
   const activeView = requestedView === "workbench" ? "work" : requestedView;
   if (!definition.views.some((item) => item.id === activeView)) {
     notFound();
+  }
+  const canonicalPath =
+    activeView === "work"
+      ? `/cases/${definition.id}`
+      : `/cases/${definition.id}/${activeView}`;
+  if (
+    caseId !== definition.id ||
+    rawView === "workbench" ||
+    rawView === "work"
+  ) {
+    redirect(canonicalPath);
   }
   const dataset = ensureCaseSeeded(definition);
   const selected =

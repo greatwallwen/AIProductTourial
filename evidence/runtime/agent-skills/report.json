@@ -1,10 +1,10 @@
 {
   "schema_version": "1.0",
   "status": "passed",
-  "generated_at": "2026-07-30T00:34:52.396579+00:00",
-  "scope": "S01-S08 local Skill runtime artifacts",
+  "generated_at": "2026-07-30T06:20:42.296443+00:00",
+  "scope": "S001-S008 local Skill runtime artifacts",
   "provider_boundary": {
-    "S08": "blocked-not-verified",
+    "S008": "blocked-not-verified",
     "reason": "No authorized provider call, receipt, or downloaded provider artifact exists; local fixture and viewer are independently verified."
   },
   "summary": {
@@ -23,157 +23,157 @@
     "quick_validate_expected": 8,
     "test_runs": [
       {
-        "skill_id": "S01",
+        "skill_id": "S001",
         "command": "python -B -m unittest discover -s ${COURSE_ROOT}\\code\\skills\\capability-router\\tests -p test_*.py",
         "exit_code": 0,
         "expected_tests": 6,
-        "duration_seconds": 0.124,
+        "duration_seconds": 0.131,
         "stdout_tail": "",
         "stderr_tail": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.001s\n\nOK"
       },
       {
-        "skill_id": "S02",
+        "skill_id": "S002",
         "command": "python -B -m unittest discover -s ${COURSE_ROOT}\\code\\skills\\data-profile\\tests -p test_*.py",
         "exit_code": 0,
         "expected_tests": 3,
-        "duration_seconds": 0.253,
+        "duration_seconds": 0.256,
         "stdout_tail": "",
-        "stderr_tail": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.137s\n\nOK"
+        "stderr_tail": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.119s\n\nOK"
       },
       {
-        "skill_id": "S03",
+        "skill_id": "S003",
         "command": "python -B -m unittest discover -s ${COURSE_ROOT}\\code\\skills\\metric-brief\\tests -p test_*.py",
         "exit_code": 0,
         "expected_tests": 3,
-        "duration_seconds": 0.242,
+        "duration_seconds": 0.259,
         "stdout_tail": "",
-        "stderr_tail": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.107s\n\nOK"
+        "stderr_tail": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.124s\n\nOK"
       },
       {
-        "skill_id": "S04",
+        "skill_id": "S004",
         "command": "python -B -m unittest discover -s ${COURSE_ROOT}\\code\\skills\\product-opportunity-map\\tests -p test_*.py",
         "exit_code": 0,
         "expected_tests": 5,
-        "duration_seconds": 0.137,
+        "duration_seconds": 0.148,
         "stdout_tail": "",
-        "stderr_tail": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.006s\n\nOK"
+        "stderr_tail": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.008s\n\nOK"
       },
       {
-        "skill_id": "S05",
+        "skill_id": "S005",
         "command": "python -B -m unittest discover -s ${COURSE_ROOT}\\code\\skills\\poster-recipe\\tests -p test_*.py",
         "exit_code": 0,
         "expected_tests": 3,
-        "duration_seconds": 0.23,
+        "duration_seconds": 0.264,
         "stdout_tail": "",
-        "stderr_tail": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.107s\n\nOK"
+        "stderr_tail": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.116s\n\nOK"
       },
       {
-        "skill_id": "S06",
+        "skill_id": "S006",
         "command": "python -B -m unittest discover -s ${COURSE_ROOT}\\code\\skills\\slide-plan\\tests -p test_*.py",
         "exit_code": 0,
         "expected_tests": 3,
-        "duration_seconds": 32.262,
+        "duration_seconds": 0.435,
         "stdout_tail": "",
-        "stderr_tail": "...\n----------------------------------------------------------------------\nRan 3 tests in 31.984s\n\nOK"
+        "stderr_tail": "s.s\n----------------------------------------------------------------------\nRan 3 tests in 0.052s\n\nOK (skipped=2)"
       },
       {
-        "skill_id": "S07",
+        "skill_id": "S007",
         "command": "node --test ${COURSE_ROOT}\\code\\skills\\pixijs-game-contract\\tests\\game-contract.test.mjs",
         "exit_code": 0,
         "expected_tests": 3,
-        "duration_seconds": 0.193,
-        "stdout_tail": "✔ generated game passes the static runtime contract (3.7615ms)\n✔ game contract records required lifecycle and provenance (1.2832ms)\n✔ game source implements visible play mechanics (0.427ms)\nℹ tests 3\nℹ suites 0\nℹ pass 3\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 111.2393",
+        "duration_seconds": 0.232,
+        "stdout_tail": "✔ generated game passes the static runtime contract (4.3574ms)\n✔ game contract records required lifecycle and provenance (1.2257ms)\n✔ game source implements visible play mechanics (0.8168ms)\nℹ tests 3\nℹ suites 0\nℹ pass 3\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 129.2817",
         "stderr_tail": ""
       },
       {
-        "skill_id": "S08",
+        "skill_id": "S008",
         "command": "python -B -m unittest discover -s ${COURSE_ROOT}\\code\\skills\\asset-contract\\tests -p test_*.py",
         "exit_code": 0,
         "expected_tests": 5,
-        "duration_seconds": 0.135,
+        "duration_seconds": 0.147,
         "stdout_tail": "",
         "stderr_tail": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.007s\n\nOK"
       },
       {
-        "skill_id": "S08",
+        "skill_id": "S008",
         "command": "node --test ${COURSE_ROOT}\\code\\skills\\asset-contract\\tests\\viewer-contract.test.mjs",
         "exit_code": 0,
         "expected_tests": 2,
-        "duration_seconds": 0.192,
-        "stdout_tail": "✔ local Three.js viewer passes its static contract (3.0082ms)\n✔ viewer explicitly distinguishes local fixture from provider generation (1.0136ms)\nℹ tests 2\nℹ suites 0\nℹ pass 2\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 112.8687",
+        "duration_seconds": 0.217,
+        "stdout_tail": "✔ local Three.js viewer passes its static contract (3.0057ms)\n✔ viewer explicitly distinguishes local fixture from provider generation (1.158ms)\nℹ tests 2\nℹ suites 0\nℹ pass 2\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 122.9035",
         "stderr_tail": ""
       }
     ],
     "quick_validate_runs": [
       {
-        "skill_id": "S01",
+        "skill_id": "S001",
         "command": "python -B ${COURSE_ROOT}\\tools\\validate_skill.py ${COURSE_ROOT}\\code\\skills\\capability-router",
         "exit_code": 0,
         "expected_tests": null,
-        "duration_seconds": 0.074,
+        "duration_seconds": 0.07,
         "stdout_tail": "Skill is valid!",
         "stderr_tail": ""
       },
       {
-        "skill_id": "S02",
+        "skill_id": "S002",
         "command": "python -B ${COURSE_ROOT}\\tools\\validate_skill.py ${COURSE_ROOT}\\code\\skills\\data-profile",
         "exit_code": 0,
         "expected_tests": null,
-        "duration_seconds": 0.066,
+        "duration_seconds": 0.073,
         "stdout_tail": "Skill is valid!",
         "stderr_tail": ""
       },
       {
-        "skill_id": "S03",
+        "skill_id": "S003",
         "command": "python -B ${COURSE_ROOT}\\tools\\validate_skill.py ${COURSE_ROOT}\\code\\skills\\metric-brief",
         "exit_code": 0,
         "expected_tests": null,
-        "duration_seconds": 0.068,
+        "duration_seconds": 0.075,
         "stdout_tail": "Skill is valid!",
         "stderr_tail": ""
       },
       {
-        "skill_id": "S04",
+        "skill_id": "S004",
         "command": "python -B ${COURSE_ROOT}\\tools\\validate_skill.py ${COURSE_ROOT}\\code\\skills\\product-opportunity-map",
         "exit_code": 0,
         "expected_tests": null,
-        "duration_seconds": 0.067,
+        "duration_seconds": 0.071,
         "stdout_tail": "Skill is valid!",
         "stderr_tail": ""
       },
       {
-        "skill_id": "S05",
+        "skill_id": "S005",
         "command": "python -B ${COURSE_ROOT}\\tools\\validate_skill.py ${COURSE_ROOT}\\code\\skills\\poster-recipe",
         "exit_code": 0,
         "expected_tests": null,
-        "duration_seconds": 0.066,
+        "duration_seconds": 0.073,
         "stdout_tail": "Skill is valid!",
         "stderr_tail": ""
       },
       {
-        "skill_id": "S06",
+        "skill_id": "S006",
         "command": "python -B ${COURSE_ROOT}\\tools\\validate_skill.py ${COURSE_ROOT}\\code\\skills\\slide-plan",
         "exit_code": 0,
         "expected_tests": null,
-        "duration_seconds": 0.061,
+        "duration_seconds": 0.071,
         "stdout_tail": "Skill is valid!",
         "stderr_tail": ""
       },
       {
-        "skill_id": "S07",
+        "skill_id": "S007",
         "command": "python -B ${COURSE_ROOT}\\tools\\validate_skill.py ${COURSE_ROOT}\\code\\skills\\pixijs-game-contract",
         "exit_code": 0,
         "expected_tests": null,
-        "duration_seconds": 0.061,
+        "duration_seconds": 0.07,
         "stdout_tail": "Skill is valid!",
         "stderr_tail": ""
       },
       {
-        "skill_id": "S08",
+        "skill_id": "S008",
         "command": "python -B ${COURSE_ROOT}\\tools\\validate_skill.py ${COURSE_ROOT}\\code\\skills\\asset-contract",
         "exit_code": 0,
         "expected_tests": null,
-        "duration_seconds": 0.063,
+        "duration_seconds": 0.071,
         "stdout_tail": "Skill is valid!",
         "stderr_tail": ""
       }
@@ -181,7 +181,7 @@
   },
   "skills": [
     {
-      "skill_id": "S01",
+      "skill_id": "S001",
       "skill_name": "capability-router",
       "title": "能力路由",
       "verification_status": "verified",
@@ -192,34 +192,34 @@
       "artifact_count": 5,
       "artifacts": [
         {
-          "path": "evidence/runtime/agent-skills/S01/01-data-profile.decision.json",
+          "path": "evidence/runtime/agent-skills/S001/01-data-profile.decision.json",
           "bytes": 236,
           "sha256": "47784e76824ef356c7a4bc97d73d42c60a53148b68fe8e86a0c70a4cc4ecb1fb"
         },
         {
-          "path": "evidence/runtime/agent-skills/S01/02-metric-brief.decision.json",
+          "path": "evidence/runtime/agent-skills/S001/02-metric-brief.decision.json",
           "bytes": 236,
           "sha256": "3a751adbf87f64fb3fa489cfb1fadd9ec218b120c8cbe7657fd9ad3d28f79047"
         },
         {
-          "path": "evidence/runtime/agent-skills/S01/03-missing-input.decision.json",
+          "path": "evidence/runtime/agent-skills/S001/03-missing-input.decision.json",
           "bytes": 289,
           "sha256": "9352d67f67a4d4cba0beb4529ce7d77eb11a95fcddc1f88eab6707371a0dc926"
         },
         {
-          "path": "evidence/runtime/agent-skills/S01/04-unauthorized-delete.decision.json",
+          "path": "evidence/runtime/agent-skills/S001/04-unauthorized-delete.decision.json",
           "bytes": 231,
           "sha256": "87ef8be229a46a6ef193ec52a131ca4a4636974e345f4b94b6c58b2a7b7569a2"
         },
         {
-          "path": "evidence/runtime/agent-skills/S01/05-opportunity-map.decision.json",
+          "path": "evidence/runtime/agent-skills/S001/05-opportunity-map.decision.json",
           "bytes": 258,
           "sha256": "d3fa11925fdc79c77a56b34536bc4476188b4a5467d021f461a70d76f19e1a39"
         }
       ]
     },
     {
-      "skill_id": "S02",
+      "skill_id": "S002",
       "skill_name": "data-profile",
       "title": "CSV 数据体检",
       "verification_status": "verified",
@@ -231,19 +231,19 @@
       "artifact_count": 2,
       "artifacts": [
         {
-          "path": "evidence/runtime/agent-skills/S02/profile.json",
+          "path": "evidence/runtime/agent-skills/S002/profile.json",
           "bytes": 2673,
           "sha256": "4c0020e198956ed2bd9ad1ad10fe97389dd5d03f954321e34990845df776c8d0"
         },
         {
-          "path": "evidence/runtime/agent-skills/S02/profile.md",
+          "path": "evidence/runtime/agent-skills/S002/profile.md",
           "bytes": 821,
           "sha256": "7fc0c62d6dbb5c3e307554ab3e6da17082e0a83e6e61564a2832f04172bf42b8"
         }
       ]
     },
     {
-      "skill_id": "S03",
+      "skill_id": "S003",
       "skill_name": "metric-brief",
       "title": "会员实验指标简报",
       "verification_status": "verified",
@@ -256,19 +256,19 @@
       "artifact_count": 2,
       "artifacts": [
         {
-          "path": "evidence/runtime/agent-skills/S03/business-brief.md",
+          "path": "evidence/runtime/agent-skills/S003/business-brief.md",
           "bytes": 1428,
           "sha256": "bc9704e59711111fe02981fbb42a0c46de63cf1cd950f6a11890710b1642f17b"
         },
         {
-          "path": "evidence/runtime/agent-skills/S03/metrics.json",
+          "path": "evidence/runtime/agent-skills/S003/metrics.json",
           "bytes": 6105,
           "sha256": "d9b2abb17632286e593761cb10aca43d13a6001d0c12722084ce32eeac15a83c"
         }
       ]
     },
     {
-      "skill_id": "S04",
+      "skill_id": "S004",
       "skill_name": "product-opportunity-map",
       "title": "产品机会图",
       "verification_status": "verified",
@@ -280,19 +280,19 @@
       "artifact_count": 2,
       "artifacts": [
         {
-          "path": "evidence/runtime/agent-skills/S04/opportunity-map.json",
+          "path": "evidence/runtime/agent-skills/S004/opportunity-map.json",
           "bytes": 5630,
           "sha256": "d76a5059f976ee22268c310e21cc79ae33750b58de0634cd1d29ea2b0e7d0074"
         },
         {
-          "path": "evidence/runtime/agent-skills/S04/opportunity-map.svg",
+          "path": "evidence/runtime/agent-skills/S004/opportunity-map.svg",
           "bytes": 3981,
           "sha256": "3002f88048f4445b98cb96980604ea777feafa0132bb90372c312520d778dbfa"
         }
       ]
     },
     {
-      "skill_id": "S05",
+      "skill_id": "S005",
       "skill_name": "poster-recipe",
       "title": "雨天旧书店海报",
       "verification_status": "verified-local",
@@ -304,19 +304,19 @@
       "artifact_count": 2,
       "artifacts": [
         {
-          "path": "evidence/runtime/agent-skills/S05/poster-recipes.json",
+          "path": "evidence/runtime/agent-skills/S005/poster-recipes.json",
           "bytes": 5954,
           "sha256": "c60b111dbd020641abb7ccd0f2bda9a2891b46d6769aefc9b89f0a1bf15ee3b6"
         },
         {
-          "path": "evidence/runtime/agent-skills/S05/poster.svg",
+          "path": "evidence/runtime/agent-skills/S005/poster.svg",
           "bytes": 3042,
           "sha256": "5b93ffbd84c3572003cf2a0a599b2888ae476ae14599e86642bc6e31f9ff0182"
         }
       ]
     },
     {
-      "skill_id": "S06",
+      "skill_id": "S006",
       "skill_name": "slide-plan",
       "title": "Markdown 到可编辑演示文稿",
       "verification_status": "verified",
@@ -332,94 +332,94 @@
       "artifact_count": 17,
       "artifacts": [
         {
-          "path": "evidence/runtime/agent-skills/S06/outline.md",
+          "path": "evidence/runtime/agent-skills/S006/outline.md",
           "bytes": 1423,
           "sha256": "17aff24c991e20a74d02b0436759426bde3fb7de969808d52bdeabfbd65f53b2"
         },
         {
-          "path": "evidence/runtime/agent-skills/S06/presentation.pptx",
+          "path": "evidence/runtime/agent-skills/S006/presentation.pptx",
           "bytes": 23339,
           "sha256": "452f6fcd94c270d64b8802aff824b597c7a6e8210e222e0232c61496f72c5336"
         },
         {
-          "path": "evidence/runtime/agent-skills/S06/presentation.pptx.inspect.ndjson",
+          "path": "evidence/runtime/agent-skills/S006/presentation.pptx.inspect.ndjson",
           "bytes": 5126,
           "sha256": "47232ffefa13514a7d2290d31a2e744cbe607e6e80027cc31d96b769b9533abc"
         },
         {
-          "path": "evidence/runtime/agent-skills/S06/rendered/inspect.ndjson",
+          "path": "evidence/runtime/agent-skills/S006/rendered/inspect.ndjson",
           "bytes": 4875,
           "sha256": "bfa0a82b020189b50910c7e044d0326b93d7058dc7d01970bae60496226ca30d"
         },
         {
-          "path": "evidence/runtime/agent-skills/S06/rendered/slide-01.layout.json",
+          "path": "evidence/runtime/agent-skills/S006/rendered/slide-01.layout.json",
           "bytes": 5955,
           "sha256": "df458c6824f2c9f110766caaa1958b7ae96bd01068bb47738ac9c9bfe0a76b18"
         },
         {
-          "path": "evidence/runtime/agent-skills/S06/rendered/slide-01.png",
+          "path": "evidence/runtime/agent-skills/S006/rendered/slide-01.png",
           "bytes": 30337,
           "sha256": "67232e1e7bb6e119985c786e315c158ab4fc15fe2d9b0a471ef36b58f8b2af85"
         },
         {
-          "path": "evidence/runtime/agent-skills/S06/rendered/slide-02.layout.json",
+          "path": "evidence/runtime/agent-skills/S006/rendered/slide-02.layout.json",
           "bytes": 4126,
           "sha256": "609c507150fcdd211cd04750d11e8679c9c21c671555d618955d11105ab95f0e"
         },
         {
-          "path": "evidence/runtime/agent-skills/S06/rendered/slide-02.png",
+          "path": "evidence/runtime/agent-skills/S006/rendered/slide-02.png",
           "bytes": 15687,
           "sha256": "0368ffc5f20b1f4dbb96ef9af893b8a90c019be9b9778512d637ac7191f0ebe6"
         },
         {
-          "path": "evidence/runtime/agent-skills/S06/rendered/slide-03.layout.json",
+          "path": "evidence/runtime/agent-skills/S006/rendered/slide-03.layout.json",
           "bytes": 7367,
           "sha256": "cf5117f64757436f8deee61705c72167ab6ae09b887590334fcd0168f3cc7795"
         },
         {
-          "path": "evidence/runtime/agent-skills/S06/rendered/slide-03.png",
+          "path": "evidence/runtime/agent-skills/S006/rendered/slide-03.png",
           "bytes": 34717,
           "sha256": "9a41b0a3c6c5e43ea4c683a20022e84b40915bb77ee3c8c612a67744c4eca1ec"
         },
         {
-          "path": "evidence/runtime/agent-skills/S06/rendered/slide-04.layout.json",
+          "path": "evidence/runtime/agent-skills/S006/rendered/slide-04.layout.json",
           "bytes": 13826,
           "sha256": "05a2f93efbe7b69e0ae3734562428eca9e83b9b5f0ada186d0f797eb0bd8ebc1"
         },
         {
-          "path": "evidence/runtime/agent-skills/S06/rendered/slide-04.png",
+          "path": "evidence/runtime/agent-skills/S006/rendered/slide-04.png",
           "bytes": 29852,
           "sha256": "14fbc4cb364122a9f1edca99d311eac00be2715032b139692df9ae566a4da326"
         },
         {
-          "path": "evidence/runtime/agent-skills/S06/rendered/slide-05.layout.json",
+          "path": "evidence/runtime/agent-skills/S006/rendered/slide-05.layout.json",
           "bytes": 7141,
           "sha256": "4274fd1be6d0ef0f3b523602882bb53f9ded2e12e6053d4197b33e16dd4fd6f7"
         },
         {
-          "path": "evidence/runtime/agent-skills/S06/rendered/slide-05.png",
+          "path": "evidence/runtime/agent-skills/S006/rendered/slide-05.png",
           "bytes": 37709,
           "sha256": "769a01aa3c332fb2621656f22eab2b7f4529f6cbf563ddd4198fe46707984e6f"
         },
         {
-          "path": "evidence/runtime/agent-skills/S06/slide-plan.json",
+          "path": "evidence/runtime/agent-skills/S006/slide-plan.json",
           "bytes": 2788,
           "sha256": "1ce8fdfc077658ba75f57cf996e04800b7a4121209bc395515a906e43d1d3604"
         },
         {
-          "path": "evidence/runtime/agent-skills/S06/structure-audit.json",
+          "path": "evidence/runtime/agent-skills/S006/structure-audit.json",
           "bytes": 1576,
           "sha256": "79b3576e80c099287c1c89020272ac758495779d01bd88582f9c2903ae764149"
         },
         {
-          "path": "evidence/runtime/agent-skills/S06/visual-qa.json",
+          "path": "evidence/runtime/agent-skills/S006/visual-qa.json",
           "bytes": 511,
           "sha256": "0d0a4cad91363b42aaa01cb56dc0ddb0b26b0ed0805b16a53c100af0c021d271"
         }
       ]
     },
     {
-      "skill_id": "S07",
+      "skill_id": "S007",
       "skill_name": "pixijs-game-contract",
       "title": "北京空气数据清洁调度",
       "verification_status": "verified-runtime",
@@ -432,49 +432,49 @@
       "artifact_count": 8,
       "artifacts": [
         {
-          "path": "evidence/runtime/agent-skills/S07/browser-verification.json",
+          "path": "evidence/runtime/agent-skills/S007/browser-verification.json",
           "bytes": 643,
           "sha256": "75bc1a27b2f895e6b9d29a79fb02315111fb0e340568adb7db2bbb2b488f5c7b"
         },
         {
-          "path": "evidence/runtime/agent-skills/S07/dist/assets/index-4jypZS68.js",
+          "path": "evidence/runtime/agent-skills/S007/dist/assets/index-4jypZS68.js",
           "bytes": 4852,
           "sha256": "74b62d7f0726d25d829df8c874285d61f674c5d15a2bb1ed1fdf9d48d915b9d2"
         },
         {
-          "path": "evidence/runtime/agent-skills/S07/dist/assets/index-ClGy6XrL.css",
+          "path": "evidence/runtime/agent-skills/S007/dist/assets/index-ClGy6XrL.css",
           "bytes": 1885,
           "sha256": "6636dfd86a575b0a479c16143c63b24e57c38742e378eb3bb195638df012f5fc"
         },
         {
-          "path": "evidence/runtime/agent-skills/S07/dist/index.html",
+          "path": "evidence/runtime/agent-skills/S007/dist/index.html",
           "bytes": 1714,
           "sha256": "6a451d63a403f641280796e4cebe0be9f70878d04ce22b9412b05cf262a85ff4"
         },
         {
-          "path": "evidence/runtime/agent-skills/S07/game-contract.json",
+          "path": "evidence/runtime/agent-skills/S007/game-contract.json",
           "bytes": 1264,
           "sha256": "3bb938d98dbf7b0428c232612d3092f4e01a43885b496b8997643243b1f8705c"
         },
         {
-          "path": "evidence/runtime/agent-skills/S07/request.json",
+          "path": "evidence/runtime/agent-skills/S007/request.json",
           "bytes": 886,
           "sha256": "c85f82730ce7e66a2b16405b89fa3176d0aa099e73dfd12cc850d4afc1bcd8b6"
         },
         {
-          "path": "evidence/runtime/agent-skills/S07/runtime-keyboard.png",
+          "path": "evidence/runtime/agent-skills/S007/runtime-keyboard.png",
           "bytes": 147091,
           "sha256": "ec6f61904f1104ebd8377517b943daab0758983a13255f86c8efb12eaafcae6c"
         },
         {
-          "path": "evidence/runtime/agent-skills/S07/runtime-keyboard.snapshot.yml",
+          "path": "evidence/runtime/agent-skills/S007/runtime-keyboard.snapshot.yml",
           "bytes": 1256,
           "sha256": "461d133a0b106a2b7f7ad36cc6dde0377534ab0cdf4630b58204d92df03fb4f2"
         }
       ]
     },
     {
-      "skill_id": "S08",
+      "skill_id": "S008",
       "skill_name": "asset-contract",
       "title": "本地 3D 资产合同与查看器",
       "verification_status": "verified-local-provider-blocked",
@@ -488,62 +488,62 @@
       "artifact_count": 12,
       "artifacts": [
         {
-          "path": "evidence/runtime/agent-skills/S08/asset-contract.json",
+          "path": "evidence/runtime/agent-skills/S008/asset-contract.json",
           "bytes": 1154,
           "sha256": "c6a7cec07eb962c9ca4092a59c6b3c5d1f66a145d79ec545f953c0b9ea03bccb"
         },
         {
-          "path": "evidence/runtime/agent-skills/S08/browser-verification.json",
+          "path": "evidence/runtime/agent-skills/S008/browser-verification.json",
           "bytes": 921,
           "sha256": "8a9a04806945997fee4d3ba3f1f37f5cb41fdd66a99abf1fada9c7f7c220540d"
         },
         {
-          "path": "evidence/runtime/agent-skills/S08/fixture-manifest.json",
+          "path": "evidence/runtime/agent-skills/S008/fixture-manifest.json",
           "bytes": 820,
           "sha256": "6d2cc971c922b045f5dd38f8948b36fc9238aed5d798e7a788e6a21c70fc93d7"
         },
         {
-          "path": "evidence/runtime/agent-skills/S08/inspection-glb.json",
+          "path": "evidence/runtime/agent-skills/S008/inspection-glb.json",
           "bytes": 442,
           "sha256": "1f5584b2bcdb72390bb361192c635995117814633c4068b6593a4e3c7d8222db"
         },
         {
-          "path": "evidence/runtime/agent-skills/S08/model.glb",
+          "path": "evidence/runtime/agent-skills/S008/model.glb",
           "bytes": 768,
           "sha256": "62d767463ef17456eaa78e302dfe42c422cf02944ba162f9d056be292b86e2fc"
         },
         {
-          "path": "evidence/runtime/agent-skills/S08/request.json",
+          "path": "evidence/runtime/agent-skills/S008/request.json",
           "bytes": 481,
           "sha256": "830d6cea9c4e77986f7e719b1da6d2025e8d047be3f9d6ca7129eb9d085d6353"
         },
         {
-          "path": "evidence/runtime/agent-skills/S08/viewer-contract.json",
+          "path": "evidence/runtime/agent-skills/S008/viewer-contract.json",
           "bytes": 384,
           "sha256": "1e994f9f65256a5ce01a516ba0ea91944074daadb83934c41b25a19db9575e0d"
         },
         {
-          "path": "evidence/runtime/agent-skills/S08/viewer-dist/assets/index-BMIUMlrN.css",
+          "path": "evidence/runtime/agent-skills/S008/viewer-dist/assets/index-BMIUMlrN.css",
           "bytes": 1120,
           "sha256": "811269741956fad223c8d6f5940c1f5535819403ab476da6feae45e8f5983838"
         },
         {
-          "path": "evidence/runtime/agent-skills/S08/viewer-dist/assets/index-DRrBq3tY.js",
+          "path": "evidence/runtime/agent-skills/S008/viewer-dist/assets/index-DRrBq3tY.js",
           "bytes": 582138,
           "sha256": "330ad9fe78902b92c0abec8e208d60395524475f9ab0e7cffc6d835b32648051"
         },
         {
-          "path": "evidence/runtime/agent-skills/S08/viewer-dist/index.html",
+          "path": "evidence/runtime/agent-skills/S008/viewer-dist/index.html",
           "bytes": 1285,
           "sha256": "4cf791c50dc49ad1789fdf7cdb8686e691c38d3702156691eab56ee7ccb3c70d"
         },
         {
-          "path": "evidence/runtime/agent-skills/S08/viewer-dist/model.glb",
+          "path": "evidence/runtime/agent-skills/S008/viewer-dist/model.glb",
           "bytes": 768,
           "sha256": "62d767463ef17456eaa78e302dfe42c422cf02944ba162f9d056be292b86e2fc"
         },
         {
-          "path": "evidence/runtime/agent-skills/S08/viewer-runtime.png",
+          "path": "evidence/runtime/agent-skills/S008/viewer-runtime.png",
           "bytes": 188455,
           "sha256": "18eb7ad371d265163aa17544c9e31a5f55f290ca3d6c1d69ce7dfc315bcc2987"
         }

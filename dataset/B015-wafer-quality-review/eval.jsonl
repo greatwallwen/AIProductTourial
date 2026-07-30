@@ -1,0 +1,1 @@
+{"case_id": "B015", "check": "data-contract", "expected": "source hashes, deterministic selection, field lineage and manual action boundary remain verifiable"}

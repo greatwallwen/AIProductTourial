@@ -1,12 +1,19 @@
 {
-  "schema_version": "6.0",
+  "schema_version": "7.0",
   "updated_at": "2026-07-28T17:10:00+08:00",
   "policy": {
     "root": "dataset",
     "hash_algorithm": "SHA-256",
     "localization": "original facts preserved; Chinese labels are derived presentation fields",
-    "required_files": ["README.md", "source.json", "schema.json"],
-    "derived_dataset_files": ["transform.py", "checksums.sha256"],
+    "required_files": [
+      "README.md",
+      "source.json",
+      "schema.json"
+    ],
+    "derived_dataset_files": [
+      "transform.py",
+      "checksums.sha256"
+    ],
     "truth_levels": [
       "public-real",
       "public-derived",
@@ -20,9 +27,9 @@
   },
   "datasets": [
     {
-      "case_id": "01",
+      "case_id": "B001",
       "slug": "retail-return-evidence",
-      "directory": "dataset/01-retail-return-evidence",
+      "directory": "dataset/B001-retail-return-evidence",
       "source_ids": [
         "DATA-01"
       ],
@@ -31,12 +38,13 @@
       "row_count": 14794,
       "column_count": 17,
       "sha256": "ac85fc27d39a33b7e5cd42542889302a20fc2dace36bff970163ed92d6393f37",
-      "materialized_nature": "public-derived"
+      "materialized_nature": "public-derived",
+      "display_order": 1
     },
     {
-      "case_id": "02",
+      "case_id": "B002",
       "slug": "member-value-experiment",
-      "directory": "dataset/02-member-value-experiment",
+      "directory": "dataset/B002-member-value-experiment",
       "source_ids": [
         "DATA-02"
       ],
@@ -45,12 +53,13 @@
       "row_count": 5000,
       "column_count": 9,
       "sha256": "0c2b11465184aecd420ea43881c2106b37dc2094ab655e86de7e3e1a3937d4be",
-      "materialized_nature": "public-derived-with-sequence-proxy"
+      "materialized_nature": "public-derived-with-sequence-proxy",
+      "display_order": 2
     },
     {
-      "case_id": "03",
+      "case_id": "B003",
       "slug": "local-service-voc",
-      "directory": "dataset/03-local-service-voc",
+      "directory": "dataset/B003-local-service-voc",
       "source_ids": [
         "DATA-03"
       ],
@@ -58,13 +67,14 @@
       "status": "derived-verified",
       "row_count": 6970,
       "column_count": 24,
-      "sha256": "426d5f5b38f2bf7c35bbb7d1fad4cd6ae8ac844ed5533a18c03cfb7c83457133",
-      "materialized_nature": "public-derived"
+      "sha256": "1d6f8050b04e8cfda0d27c89081e3ddf64294fe37ecd4ecf1657ace78b67c754",
+      "materialized_nature": "public-derived",
+      "display_order": 3
     },
     {
-      "case_id": "04",
+      "case_id": "B004",
       "slug": "credit-human-review",
-      "directory": "dataset/04-credit-human-review",
+      "directory": "dataset/B004-credit-human-review",
       "source_ids": [
         "DATA-04"
       ],
@@ -74,12 +84,13 @@
       "row_count": 1200,
       "column_count": 19,
       "sha256": "14d4c64476bc7908db7497493d4284136795d3eb39ff09bcbbbefa9271c821d1",
-      "materialized_nature": "deterministic-synthetic-operational"
+      "materialized_nature": "deterministic-synthetic-operational",
+      "display_order": 4
     },
     {
-      "case_id": "05",
+      "case_id": "B005",
       "slug": "hospital-flow-coordination",
-      "directory": "dataset/05-hospital-flow-coordination",
+      "directory": "dataset/B005-hospital-flow-coordination",
       "source_ids": [
         "DATA-05"
       ],
@@ -89,12 +100,13 @@
       "row_count": 4320,
       "column_count": 18,
       "sha256": "8ee21bc8c61f22cb6aaf1d81efda5fc2dd912edaeb63f1fc4662a567a079a997",
-      "materialized_nature": "deterministic-synthetic-operational"
+      "materialized_nature": "deterministic-synthetic-operational",
+      "display_order": 5
     },
     {
-      "case_id": "06",
+      "case_id": "B006",
       "slug": "beijing-air-quality-audit",
-      "directory": "dataset/06-beijing-air-quality-audit",
+      "directory": "dataset/B006-beijing-air-quality-audit",
       "source_ids": [
         "DATA-06"
       ],
@@ -103,12 +115,13 @@
       "row_count": 21039,
       "column_count": 21,
       "sha256": "0055067502c1056beeb8de9f9de5aad357f267760b8a0df5fc303b2df3361108",
-      "materialized_nature": "public-derived"
+      "materialized_nature": "public-derived",
+      "display_order": 6
     },
     {
-      "case_id": "07",
+      "case_id": "B007",
       "slug": "instant-retail-architecture",
-      "directory": "dataset/07-instant-retail-architecture",
+      "directory": "dataset/B007-instant-retail-architecture",
       "source_ids": [
         "DATA-07",
         "COURSE-OPS-07"
@@ -119,12 +132,13 @@
       "row_count": 12000,
       "column_count": 7,
       "sha256": "5c5917e9dbca662ac0a3a33d8a4fadcbf9f6b533e2acc5fe6aa4bcafc92c6406",
-      "materialized_nature": "public-benchmark-derived-plus-deterministic-synthetic-cn-operations"
+      "materialized_nature": "public-benchmark-derived-plus-deterministic-synthetic-cn-operations",
+      "display_order": 7
     },
     {
-      "case_id": "08",
+      "case_id": "B008",
       "slug": "aquaculture-event-response",
-      "directory": "dataset/08-aquaculture-event-response",
+      "directory": "dataset/B008-aquaculture-event-response",
       "source_ids": [
         "DATA-08A",
         "COURSE-OPS-08"
@@ -135,12 +149,13 @@
       "row_count": 864,
       "column_count": 15,
       "sha256": "170b5d7cfb65eed5fb545a5befcec5b8f8edda77b2974c78f4e07e871c859c98",
-      "materialized_nature": "deterministic-synthetic-cn-operations-linked-to-public-spatial-index"
+      "materialized_nature": "deterministic-synthetic-cn-operations-linked-to-public-spatial-index",
+      "display_order": 8
     },
     {
-      "case_id": "09",
+      "case_id": "B009",
       "slug": "metro-agentic-rag",
-      "directory": "dataset/09-metro-agentic-rag",
+      "directory": "dataset/B009-metro-agentic-rag",
       "source_ids": [
         "DATA-09",
         "COURSE-POLICY-09"
@@ -151,12 +166,13 @@
       "row_count": 4090,
       "column_count": 21,
       "sha256": "fc717d919649406167311cbe875c08950b1a98c9f0d3a02d2a9dfe0211e2270e",
-      "materialized_nature": "public-derived-contiguous-slice"
+      "materialized_nature": "public-derived-contiguous-slice",
+      "display_order": 9
     },
     {
-      "case_id": "10",
+      "case_id": "B010",
       "slug": "telecom-complaint-orchestration",
-      "directory": "dataset/10-telecom-complaint-orchestration",
+      "directory": "dataset/B010-telecom-complaint-orchestration",
       "source_ids": [
         "MIIT-2025-Q2",
         "DATA-10",
@@ -168,12 +184,13 @@
       "row_count": 1000,
       "column_count": 15,
       "sha256": "8f4ccf4cae2343960699c27357b902c1eb72f98085b4bc4d0fff52e102823b53",
-      "materialized_nature": "official-aggregate-anchor-plus-deterministic-synthetic-cn-operations"
+      "materialized_nature": "official-aggregate-anchor-plus-deterministic-synthetic-cn-operations",
+      "display_order": 10
     },
     {
-      "case_id": "11",
+      "case_id": "B011",
       "slug": "model-release-multi-agent",
-      "directory": "dataset/11-model-release-multi-agent",
+      "directory": "dataset/B011-model-release-multi-agent",
       "source_ids": [
         "DATA-11",
         "COURSE-EVAL-11"
@@ -184,12 +201,13 @@
       "row_count": 9,
       "column_count": 16,
       "sha256": "a78da306b49dd1cf03f5d5293f8a3d256d4ba9d36fa5d7845a0c8438648940a0",
-      "materialized_nature": "public-model-metadata-plus-deterministic-enterprise-evaluation"
+      "materialized_nature": "public-model-metadata-plus-deterministic-enterprise-evaluation",
+      "display_order": 11
     },
     {
-      "case_id": "12",
+      "case_id": "B012",
       "slug": "vaccine-cold-chain",
-      "directory": "dataset/12-vaccine-cold-chain",
+      "directory": "dataset/B012-vaccine-cold-chain",
       "source_ids": [
         "DATA-12",
         "POLICY-12",
@@ -201,12 +219,13 @@
       "row_count": 360,
       "column_count": 20,
       "sha256": "e64e2a53c0e1b81e94326b1898e5a7f95a91407d6a2030631feb33b7c0b220cf",
-      "materialized_nature": "public-thermal-benchmark-plus-deterministic-synthetic-cn-operations"
+      "materialized_nature": "public-thermal-benchmark-plus-deterministic-synthetic-cn-operations",
+      "display_order": 12
     },
     {
-      "case_id": "13",
+      "case_id": "B013",
       "slug": "auto-service-triage",
-      "directory": "dataset/13-auto-service-triage",
+      "directory": "dataset/B013-auto-service-triage",
       "source_ids": [
         "DATA-13",
         "COURSE-OPS-13"
@@ -219,12 +238,13 @@
       "row_count": 24,
       "column_count": 11,
       "sha256": "757c7cab2ab8d1e9d26c5171e69b8582cc08cab26b7e4be1bc7fa398b1163714",
-      "materialized_nature": "deterministic-synthetic-cn-operations"
+      "materialized_nature": "deterministic-synthetic-cn-operations",
+      "display_order": 13
     },
     {
-      "case_id": "14",
+      "case_id": "B014",
       "slug": "flotation-impurity-review",
-      "directory": "dataset/14-flotation-impurity-review",
+      "directory": "dataset/B014-flotation-impurity-review",
       "source_ids": [
         "DATA-14"
       ],
@@ -236,12 +256,13 @@
       "row_count": 720,
       "column_count": 33,
       "sha256": "9adf0dc7cf541fe42e0b430267a1cfea7d5de7dcec4bc20a7a3e0dd12238c3a5",
-      "materialized_nature": "public-derived-contiguous-hour-slice"
+      "materialized_nature": "public-derived-contiguous-hour-slice",
+      "display_order": 14
     },
     {
-      "case_id": "15",
+      "case_id": "B015",
       "slug": "wafer-quality-review",
-      "directory": "dataset/15-wafer-quality-review",
+      "directory": "dataset/B015-wafer-quality-review",
       "source_ids": [
         "DATA-15"
       ],
@@ -253,12 +274,13 @@
       "row_count": 1567,
       "column_count": 20,
       "sha256": "368b6043cd9824d3c565577deb68094837b754ff918df490d456b4811d439fbd",
-      "materialized_nature": "public-derived-fixed-sensor-slice"
+      "materialized_nature": "public-derived-fixed-sensor-slice",
+      "display_order": 15
     },
     {
-      "case_id": "16",
+      "case_id": "B016",
       "slug": "wind-underperformance",
-      "directory": "dataset/16-wind-underperformance",
+      "directory": "dataset/B016-wind-underperformance",
       "source_ids": [
         "DATA-16"
       ],
@@ -270,12 +292,13 @@
       "row_count": 938,
       "column_count": 13,
       "sha256": "3b3330802874dfafe9ea32fd91871fe3eaa5f24f6c64ddfcc217e3af6cf3bc13",
-      "materialized_nature": "public-derived-entity-complete-daily-aggregate"
+      "materialized_nature": "public-derived-entity-complete-daily-aggregate",
+      "display_order": 16
     },
     {
-      "case_id": "17",
+      "case_id": "B017",
       "slug": "cutter-health-review",
-      "directory": "dataset/17-cutter-health-review",
+      "directory": "dataset/B017-cutter-health-review",
       "source_ids": [
         "DATA-17"
       ],
@@ -287,12 +310,13 @@
       "row_count": 519,
       "column_count": 29,
       "sha256": "96fb5118d438ed3da258fe504e8976af3c30497b049f33bff41603d18f7713ac",
-      "materialized_nature": "public-derived-session-summary"
+      "materialized_nature": "public-derived-session-summary",
+      "display_order": 17
     },
     {
-      "case_id": "18",
+      "case_id": "B018",
       "slug": "boiler-temperature-review",
-      "directory": "dataset/18-boiler-temperature-review",
+      "directory": "dataset/B018-boiler-temperature-review",
       "source_ids": [
         "DATA-18"
       ],
@@ -304,12 +328,13 @@
       "row_count": 7201,
       "column_count": 14,
       "sha256": "50b7bdd21090f2b1bcbfc99cd99d587950520f5b35e09198eb1dd53de491939f",
-      "materialized_nature": "public-derived-minute-aggregate"
+      "materialized_nature": "public-derived-minute-aggregate",
+      "display_order": 18
     },
     {
-      "case_id": "19",
+      "case_id": "B019",
       "slug": "hydraulic-condition",
-      "directory": "dataset/19-hydraulic-condition",
+      "directory": "dataset/B019-hydraulic-condition",
       "source_ids": [
         "DATA-19"
       ],
@@ -321,12 +346,13 @@
       "row_count": 2205,
       "column_count": 28,
       "sha256": "857a6289cf73d9f03c2074ab98ab85bf95f8ba94a3d8566845a92c0cf1fc9af8",
-      "materialized_nature": "public-derived-cycle-feature-table"
+      "materialized_nature": "public-derived-cycle-feature-table",
+      "display_order": 19
     },
     {
-      "case_id": "20",
+      "case_id": "B020",
       "slug": "pv-loss-attribution",
-      "directory": "dataset/20-pv-loss-attribution",
+      "directory": "dataset/B020-pv-loss-attribution",
       "source_ids": [
         "DATA-20"
       ],
@@ -338,42 +364,160 @@
       "row_count": 5327,
       "column_count": 13,
       "sha256": "a874e707e0fdb51757f58a672e143ef043aab7f15bbe5cdb32cc45862ced6336",
-      "materialized_nature": "public-derived-entity-complete-daily-aggregate"
+      "materialized_nature": "public-derived-entity-complete-daily-aggregate",
+      "display_order": 20
     },
     {
-      "case_ids": ["P01", "P02", "P03", "P04", "P05", "P06", "P07", "P08"],
+      "case_id": "B021",
+      "slug": "weekend-route-planner",
+      "directory": "dataset/B021-weekend-route-planner",
+      "source_ids": [
+        "DATA-21"
+      ],
+      "target_nature": "user-provided-historical-poi-snapshot",
+      "status": "derived-verified",
+      "row_count": 2443,
+      "column_count": 16,
+      "sha256": "291b13ff7308d68e2b6d7e26415ab79d520f3845b31277f4482172f272aee77a",
+      "materialized_nature": "user-provided-historical-poi-snapshot",
+      "materialized_status": "verified",
+      "rebuild_status": "verified",
+      "display_order": 21
+    },
+    {
+      "case_id": "B022",
+      "slug": "transfer-notice-verification",
+      "directory": "dataset/B022-transfer-notice-verification",
+      "source_ids": [
+        "DATA-22"
+      ],
+      "target_nature": "user-provided-historical-transfer-snapshot",
+      "status": "derived-verified",
+      "row_count": 747,
+      "column_count": 14,
+      "sha256": "fc336be86c85146c6769e8f62031b12824d3c750a3a01b724649640a33b11aa3",
+      "materialized_nature": "user-provided-historical-transfer-snapshot",
+      "materialized_status": "verified",
+      "rebuild_status": "verified",
+      "display_order": 22
+    },
+    {
+      "case_id": "B023",
+      "slug": "spring-festival-screening",
+      "directory": "dataset/B023-spring-festival-screening",
+      "source_ids": [
+        "DATA-23"
+      ],
+      "target_nature": "user-provided-historical-cinema-snapshot",
+      "status": "derived-verified",
+      "row_count": 10,
+      "column_count": 15,
+      "sha256": "a5859b64a9ded13cf663575d04fb4384e0a52c845b79b11f7a96d670bf62f2fd",
+      "materialized_nature": "user-provided-historical-cinema-snapshot",
+      "materialized_status": "verified",
+      "rebuild_status": "verified",
+      "display_order": 23
+    },
+    {
+      "case_id": "B024",
+      "slug": "supermarket-replenishment",
+      "directory": "dataset/B024-supermarket-replenishment",
+      "source_ids": [
+        "DATA-24"
+      ],
+      "target_nature": "user-provided-historical-retail-transactions",
+      "status": "derived-verified",
+      "row_count": 7222,
+      "column_count": 10,
+      "sha256": "97c7d3542539125de3a9a5299f5593737fe510d4d839031c9720755b47afc3fc",
+      "materialized_nature": "user-provided-historical-retail-transactions",
+      "materialized_status": "verified",
+      "rebuild_status": "verified",
+      "display_order": 24
+    },
+    {
+      "case_ids": [
+        "P001",
+        "P002",
+        "P003",
+        "P004",
+        "P005",
+        "P006",
+        "P007",
+        "P008"
+      ],
       "slug": "prompt-curriculum",
       "directory": "dataset/P-prompt-curriculum",
-      "source_ids": ["DATA-06", "SYNTH-AGRICULTURAL-PRICE", "COURSE-PROMPT-FIXTURES"],
+      "source_ids": [
+        "DATA-06",
+        "SYNTH-AGRICULTURAL-PRICE",
+        "COURSE-PROMPT-FIXTURES"
+      ],
       "target_nature": "public-derived-and-explicit-course-fixtures",
       "status": "course-local-verified",
       "restriction": "Eight input manifests and their checks are course assets; live model answers and Provider receipts remain separate runtime evidence.",
-      "primary_files": ["P01.json", "P02.json", "P03.json", "P04.json", "P05.json", "P06.json", "P07.json", "P08.json"],
+      "primary_files": [
+        "P001.json",
+        "P002.json",
+        "P003.json",
+        "P004.json",
+        "P005.json",
+        "P006.json",
+        "P007.json",
+        "P008.json"
+      ],
       "record_count": 8,
       "materialized_nature": "prompt-experiment-manifests"
     },
     {
-      "case_ids": ["S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08"],
+      "case_ids": [
+        "S001",
+        "S002",
+        "S003",
+        "S004",
+        "S005",
+        "S006",
+        "S007",
+        "S008"
+      ],
       "slug": "agent-skill-cases",
       "directory": "dataset/S-agent-skill-cases",
-      "source_ids": ["SKILL-SPEC-OPENAI", "SKILL-PM-DEANPETERS", "SKILL-ZINE", "SKILL-PPTX-LAYOUTS", "SKILL-PIXI-OFFICIAL", "SKILL-RODIN3D"],
+      "source_ids": [
+        "SKILL-SPEC-OPENAI",
+        "SKILL-PM-DEANPETERS",
+        "SKILL-ZINE",
+        "SKILL-PPTX-LAYOUTS",
+        "SKILL-PIXI-OFFICIAL",
+        "SKILL-RODIN3D"
+      ],
       "target_nature": "deterministic-course-action-summaries",
       "status": "course-local-verified",
-      "restriction": "Course summaries are not online Agent traces, hidden reasoning, external Provider receipts, or business outcomes; only the four S04 rows are a direct generator input.",
+      "restriction": "Course summaries are not online Agent traces, hidden reasoning, external Provider receipts, or business outcomes; only the four S004 rows are a direct generator input.",
       "row_count": 32,
       "column_count": 7,
-      "sha256": "244e2cbff4876e41f97c942e9a64778aeb4948908c191c628953f269de3d8e3f",
+      "sha256": "b4e68c8a45ffc041f0d78dab51ae7492141a1542851b7aa1219f451af3177ccc",
       "materialized_nature": "deterministic-course-action-summaries"
     },
     {
-      "case_ids": ["L01", "L02", "L03"],
+      "case_ids": [
+        "L001",
+        "L002",
+        "L003"
+      ],
       "slug": "loop-cases",
       "directory": "dataset/L-loop-cases",
-      "source_ids": ["DATA-02", "DATA-09", "COURSE-POLICY-09", "LOOP-COURSE-CONTRACT"],
+      "source_ids": [
+        "DATA-02",
+        "DATA-09",
+        "COURSE-POLICY-09",
+        "LOOP-COURSE-CONTRACT"
+      ],
       "target_nature": "course-runtime-contract-referencing-real-local-inputs",
       "status": "course-local-verified",
       "restriction": "The contract names local inputs and terminal states; generated artifacts prove only the corresponding local run, never field diagnosis or business action.",
-      "primary_files": ["schema.json"],
+      "primary_files": [
+        "schema.json"
+      ],
       "record_count": 3,
       "materialized_nature": "loop-input-and-state-contracts"
     }

@@ -307,7 +307,7 @@ export function CutterHealthWorkbench(props: CaseWorkbenchProps) {
         `session:${sessionId}:summary`,
         ...(waveformRows.length ? [`waveform:${sessionId}:samples-${waveformRows.length}`, `waveform:${sessionId}:cursor-${sampleNumber}`] : []),
       ],
-      idempotencyKey: `case-17:session:${sessionId}:${command}:v${props.selected.version}`,
+      idempotencyKey: `case-B017:session:${sessionId}:${command}:v${props.selected.version}`,
     });
   }
 
@@ -339,7 +339,7 @@ export function CutterHealthWorkbench(props: CaseWorkbenchProps) {
       </div>
       <div className={styles.headerActions}>
         <label><UserRound size={18} /><span className={styles.srOnly}>当前操作角色</span><select aria-label="当前操作角色" value={props.actorRole} onChange={(event) => props.onActorRoleChange(event.target.value)}>{props.roles.map((role) => <option value={role} key={role}>{roleLabel(role)}</option>)}</select></label>
-        <button type="button" aria-label="恢复案例 B17" title="恢复案例 B17" onClick={reset}><RefreshCw size={18} /></button>
+        <button type="button" aria-label="恢复案例 B017" title="恢复案例 B017" onClick={reset}><RefreshCw size={18} /></button>
       </div>
     </header>
 

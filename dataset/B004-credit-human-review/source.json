@@ -1,0 +1,46 @@
+{
+  "schema_version": "2.0",
+  "case_id": "B004",
+  "captured_at": "2026-07-20T09:52:55.797935+08:00",
+  "sources": [
+    {
+      "id": "DATA-04",
+      "title": "Default of Credit Card Clients",
+      "url": "https://archive.ics.uci.edu/dataset/350/default%2Bof%2Bcredit%2Bcard%2Bclients",
+      "publisher": "UCI Machine Learning Repository",
+      "version": "dataset id 350",
+      "license": "CC BY 4.0",
+      "state": "downloaded-verified",
+      "expected_instances": 30000,
+      "redistribution": "allowed-with-attribution",
+      "course_role": "offline-method-and-bias-reference-only"
+    }
+  ],
+  "artifacts": [
+    {
+      "source_id": "DATA-04",
+      "url": "https://archive.ics.uci.edu/static/public/350/default+of+credit+card+clients.zip",
+      "status": "downloaded-verified",
+      "path": "dataset/B004-credit-human-review/raw/default-credit-clients.zip",
+      "bytes": 5539494,
+      "sha256": "56c885f84457f6680f8438f02bfcdac9579323d8a94465ee5f26e32baa727602"
+    }
+  ],
+  "transform_status": "derived-verified",
+  "derived_output": {
+    "path": "applications.csv",
+    "rows": 1200,
+    "columns": 19,
+    "sha256": "14d4c64476bc7908db7497493d4284136795d3eb39ff09bcbbbefa9271c821d1",
+    "data_nature": "deterministic-synthetic-operational",
+    "contains_pii": false,
+    "automatic_credit_decision": false
+  },
+  "supporting_output": {
+    "path": "case.csv",
+    "rows": 30000,
+    "sha256": "3f8701ea5dbac0388c83d6b2e8f45bc5a2daa4e015cdfb847d4984330a6c2b4e",
+    "data_nature": "public-derived",
+    "course_role": "offline-method-and-bias-reference-only"
+  }
+}

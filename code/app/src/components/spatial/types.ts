@@ -10,7 +10,7 @@ export type SceneNode = {
 };
 
 export type SceneModel = {
-  caseId: "15" | "16" | "19" | "20";
+  caseId: "B015" | "B016" | "B019" | "B020";
   title: string;
   disclosure: "比较视图" | "示意结构";
   nodes: SceneNode[];

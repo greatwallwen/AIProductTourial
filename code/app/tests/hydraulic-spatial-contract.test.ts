@@ -7,7 +7,7 @@ const projectRoot = resolve(process.cwd(), "../..");
 describe("案例 19 的空间检查合同", () => {
   it("img2threejs 规格保留四个业务检查节点和浏览器性能预算", () => {
     const spec = JSON.parse(readFileSync(
-      resolve(projectRoot, "assets/cases/case-19/spatial-contract.json"),
+      resolve(projectRoot, "assets/cases/case-B019/spatial-contract.json"),
       "utf8",
     )) as {
       componentTree: Array<{ id: string; parent: string | null }>;

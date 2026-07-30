@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0",
+  "case_id": "B024",
+  "row_count": 7222,
+  "columns": [
+    {
+      "name": "product_id",
+      "origin": "source-fact"
+    },
+    {
+      "name": "category_id",
+      "origin": "source-fact"
+    },
+    {
+      "name": "store_id",
+      "origin": "source-fact"
+    },
+    {
+      "name": "unit_price_cny",
+      "origin": "source-fact"
+    },
+    {
+      "name": "units",
+      "origin": "source-fact"
+    },
+    {
+      "name": "transaction_time",
+      "origin": "source-fact"
+    },
+    {
+      "name": "order_id",
+      "origin": "source-fact"
+    },
+    {
+      "name": "transaction_id",
+      "origin": "derived"
+    },
+    {
+      "name": "state",
+      "origin": "derived"
+    },
+    {
+      "name": "data_nature",
+      "origin": "derived"
+    }
+  ],
+  "supplemental_artifacts": [
+    {
+      "path": "sales-pressure.csv",
+      "row_count": 704,
+      "columns": [
+        "store_id",
+        "category_id",
+        "transaction_count",
+        "units_sold",
+        "sales_amount_cny",
+        "active_days",
+        "sales_velocity_units_per_day",
+        "sales_pressure_rank",
+        "recommended_action",
+        "data_nature"
+      ],
+      "source_ids": [
+        "DATA-24"
+      ],
+      "data_nature": "derived-sales-pressure-not-inventory"
+    }
+  ]
+}

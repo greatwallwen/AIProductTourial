@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "id": "B022",
+  "slug": "transfer-notice-verification",
+  "title": "747 条历史调剂信息，哪些能进今天的核验清单？",
+  "industry": "教育信息服务",
+  "family": "investigation",
+  "tier": "complete",
+  "dataset_path": "dataset/B022-transfer-notice-verification",
+  "route": "/cases/B022",
+  "runtime_mode": "deterministic_offline",
+  "productization": {
+    "metrics": ["历史通知", "涉及院校", "需官方核验"],
+    "decision_fields": ["published_date", "source_relative_url", "freshness_status"],
+    "selection_changes_decision": true,
+    "business_state_changes_on_server": true
+  }
+}

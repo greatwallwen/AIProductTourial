@@ -1,0 +1,110 @@
+{
+  "schema_version": "1.0",
+  "skill_id": "S006",
+  "skill_name": "slide-plan",
+  "verification_status": "verified",
+  "verified_scope": "editable five-slide PPTX, notes, full rendering, geometry and structure QA",
+  "provider_scope": null,
+  "known_limitations": [
+    "Artifact Tool 导出的 docProps/app.xml 记录 Slides=0、Notes=0；实际包内 slide XML 与带 [Sources] 的 notes XML 均为 5，结构审计为 5/5。"
+  ],
+  "commands": [
+    "node code/skills/slide-plan/scripts/build_deck.mjs --workspace <D-drive-artifact-workspace> --input code/skills/slide-plan/examples/air-quality-outline.md --allowed-root code/skills/slide-plan/examples --plan-output evidence/runtime/agent-skills/S006/slide-plan.json --pptx-output evidence/runtime/agent-skills/S006/presentation.pptx --render-dir evidence/runtime/agent-skills/S006/rendered --qa-output evidence/runtime/agent-skills/S006/visual-qa.json",
+    "python -B code/skills/slide-plan/scripts/audit_pptx.py --input evidence/runtime/agent-skills/S006/presentation.pptx --plan evidence/runtime/agent-skills/S006/slide-plan.json --report-output evidence/runtime/agent-skills/S006/structure-audit.json"
+  ],
+  "key_results": [
+    "@oai/artifact-tool 生成 5 页可编辑 PPTX",
+    "5 张 1280×720 渲染图已检查",
+    "边界、重叠、溢出、空白页与备注检查全部通过"
+  ],
+  "artifact_count": 17,
+  "artifacts": [
+    {
+      "path": "evidence/runtime/agent-skills/S006/outline.md",
+      "bytes": 1423,
+      "sha256": "17aff24c991e20a74d02b0436759426bde3fb7de969808d52bdeabfbd65f53b2"
+    },
+    {
+      "path": "evidence/runtime/agent-skills/S006/presentation.pptx",
+      "bytes": 23339,
+      "sha256": "452f6fcd94c270d64b8802aff824b597c7a6e8210e222e0232c61496f72c5336"
+    },
+    {
+      "path": "evidence/runtime/agent-skills/S006/presentation.pptx.inspect.ndjson",
+      "bytes": 5126,
+      "sha256": "47232ffefa13514a7d2290d31a2e744cbe607e6e80027cc31d96b769b9533abc"
+    },
+    {
+      "path": "evidence/runtime/agent-skills/S006/rendered/inspect.ndjson",
+      "bytes": 4875,
+      "sha256": "bfa0a82b020189b50910c7e044d0326b93d7058dc7d01970bae60496226ca30d"
+    },
+    {
+      "path": "evidence/runtime/agent-skills/S006/rendered/slide-01.layout.json",
+      "bytes": 5955,
+      "sha256": "df458c6824f2c9f110766caaa1958b7ae96bd01068bb47738ac9c9bfe0a76b18"
+    },
+    {
+      "path": "evidence/runtime/agent-skills/S006/rendered/slide-01.png",
+      "bytes": 30337,
+      "sha256": "67232e1e7bb6e119985c786e315c158ab4fc15fe2d9b0a471ef36b58f8b2af85"
+    },
+    {
+      "path": "evidence/runtime/agent-skills/S006/rendered/slide-02.layout.json",
+      "bytes": 4126,
+      "sha256": "609c507150fcdd211cd04750d11e8679c9c21c671555d618955d11105ab95f0e"
+    },
+    {
+      "path": "evidence/runtime/agent-skills/S006/rendered/slide-02.png",
+      "bytes": 15687,
+      "sha256": "0368ffc5f20b1f4dbb96ef9af893b8a90c019be9b9778512d637ac7191f0ebe6"
+    },
+    {
+      "path": "evidence/runtime/agent-skills/S006/rendered/slide-03.layout.json",
+      "bytes": 7367,
+      "sha256": "cf5117f64757436f8deee61705c72167ab6ae09b887590334fcd0168f3cc7795"
+    },
+    {
+      "path": "evidence/runtime/agent-skills/S006/rendered/slide-03.png",
+      "bytes": 34717,
+      "sha256": "9a41b0a3c6c5e43ea4c683a20022e84b40915bb77ee3c8c612a67744c4eca1ec"
+    },
+    {
+      "path": "evidence/runtime/agent-skills/S006/rendered/slide-04.layout.json",
+      "bytes": 13826,
+      "sha256": "05a2f93efbe7b69e0ae3734562428eca9e83b9b5f0ada186d0f797eb0bd8ebc1"
+    },
+    {
+      "path": "evidence/runtime/agent-skills/S006/rendered/slide-04.png",
+      "bytes": 29852,
+      "sha256": "14fbc4cb364122a9f1edca99d311eac00be2715032b139692df9ae566a4da326"
+    },
+    {
+      "path": "evidence/runtime/agent-skills/S006/rendered/slide-05.layout.json",
+      "bytes": 7141,
+      "sha256": "4274fd1be6d0ef0f3b523602882bb53f9ded2e12e6053d4197b33e16dd4fd6f7"
+    },
+    {
+      "path": "evidence/runtime/agent-skills/S006/rendered/slide-05.png",
+      "bytes": 37709,
+      "sha256": "769a01aa3c332fb2621656f22eab2b7f4529f6cbf563ddd4198fe46707984e6f"
+    },
+    {
+      "path": "evidence/runtime/agent-skills/S006/slide-plan.json",
+      "bytes": 2788,
+      "sha256": "1ce8fdfc077658ba75f57cf996e04800b7a4121209bc395515a906e43d1d3604"
+    },
+    {
+      "path": "evidence/runtime/agent-skills/S006/structure-audit.json",
+      "bytes": 1576,
+      "sha256": "79b3576e80c099287c1c89020272ac758495779d01bd88582f9c2903ae764149"
+    },
+    {
+      "path": "evidence/runtime/agent-skills/S006/visual-qa.json",
+      "bytes": 511,
+      "sha256": "0d0a4cad91363b42aaa01cb56dc0ddb0b26b0ed0805b16a53c100af0c021d271"
+    }
+  ],
+  "focused_tests": 3,
+  "quick_validate": "passed"
+}

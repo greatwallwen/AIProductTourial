@@ -1,0 +1,21 @@
+{
+  "case_id": "B022",
+  "verified_at": "2026-07-30T05:12:58.9945868Z",
+  "url": "http://127.0.0.1:3200/cases/B022",
+  "viewport": { "width": 1440, "height": 900 },
+  "main_landmark": "调剂信息新鲜度核验台",
+  "journey": [
+    { "actor": "information_reviewer", "action": "加入官方回源清单", "transition": "待回源核验 → 官方核验中" },
+    { "actor": "supervisor", "action": "确认核验清单", "transition": "官方核验中 → 核验清单已确认" }
+  ],
+  "reload_persistence": "核验清单已确认",
+  "document_metrics": { "width": 1440, "height": 900, "scroll_width": 1440, "scroll_height": 900 },
+  "console_errors": 0,
+  "console_warnings": 0,
+  "screenshot": {
+    "path": "evidence/screenshots/B022-work.png",
+    "bytes": 440076,
+    "sha256": "b39f294cbf104dfc9a0c9979e342243398f8bbf81a9cb25ed21824166583767a"
+  },
+  "verification_boundary": "deterministic_offline；747 条记录是 2021 年历史快照，只能训练回源核验，不能表示当前调剂名额。"
+}

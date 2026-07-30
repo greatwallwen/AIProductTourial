@@ -414,7 +414,7 @@ export function WindUnderperformanceWorkbench(props: CaseWorkbenchProps) {
         `wind-window:${selectedKey}:days-${operatingRows.map((row) => text(row.day)).join("-")}`,
         ...evidenceKinds.flatMap((item) => evidenceStatus[item.id].reference ? [`evidence:${item.id}:${evidenceStatus[item.id].reference}`] : []),
       ],
-      idempotencyKey: `case-16:turbine:${selectedKey}:${command}:v${props.selected.version}`,
+      idempotencyKey: `case-B016:turbine:${selectedKey}:${command}:v${props.selected.version}`,
     });
   }
 

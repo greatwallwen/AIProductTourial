@@ -13,7 +13,7 @@ from tools.validate_datasets import (
 
 
 def test_csv_contract_checks_manifest_schema_and_actual_columns() -> None:
-    item = {"case_id": "05", "column_count": 3}
+    item = {"case_id": "B005", "column_count": 3}
     schema = {"columns": [{"name": "event_id"}, {"name": "privacy_scope"}, {"name": "clinical_decision_allowed"}]}
     rows = [{"event_id": "EVT-1", "privacy_scope": "operational_only", "clinical_decision_allowed": "False"}]
 
@@ -24,7 +24,7 @@ def test_csv_contract_checks_manifest_schema_and_actual_columns() -> None:
 
 
 def test_medical_case_rejects_scope_clinical_and_sensitive_columns() -> None:
-    item = {"case_id": "05", "column_count": 4}
+    item = {"case_id": "B005", "column_count": 4}
     schema = {"columns": [
         {"name": "event_id"},
         {"name": "privacy_scope"},
@@ -47,7 +47,7 @@ def test_medical_case_rejects_scope_clinical_and_sensitive_columns() -> None:
 def test_medical_case_rejects_common_sensitive_aliases() -> None:
     aliases = ["full_name", "birth_date", "patient_identifier", "diagnostic_text"]
     fieldnames = ["event_id", "privacy_scope", "clinical_decision_allowed", *aliases]
-    item = {"case_id": "05", "column_count": len(fieldnames)}
+    item = {"case_id": "B005", "column_count": len(fieldnames)}
     schema = {"columns": [{"name": name} for name in fieldnames]}
     row = {name: "redacted" for name in fieldnames}
     row.update({"privacy_scope": "operational_only", "clinical_decision_allowed": "False"})
@@ -111,7 +111,7 @@ def test_supplemental_output_rejects_path_escape_and_unlisted_source(tmp_path) -
 
 def test_case_11_requires_three_gate_families_without_issue_body() -> None:
     fieldnames = ["gate", "metric_value", "threshold", "sample_size", "data_nature"]
-    item = {"case_id": "11", "column_count": len(fieldnames)}
+    item = {"case_id": "B011", "column_count": len(fieldnames)}
     schema = {"columns": [{"name": name} for name in fieldnames]}
     rows = [
         {
@@ -137,7 +137,7 @@ def test_case_13_rejects_reference_linkage_and_automatic_repair() -> None:
         "automatic_repair_allowed",
         "allowed_action",
     ]
-    item = {"case_id": "13", "column_count": len(fieldnames)}
+    item = {"case_id": "B013", "column_count": len(fieldnames)}
     schema = {"columns": [{"name": name} for name in fieldnames]}
     rows = [{
         "intake_id": "CN-AS-001",
@@ -159,7 +159,7 @@ def test_case_15_rejects_causal_and_automatic_scrap_claims() -> None:
         "automatic_scrap_allowed",
         "allowed_action",
     ]
-    item = {"case_id": "15", "column_count": len(fieldnames)}
+    item = {"case_id": "B015", "column_count": len(fieldnames)}
     schema = {"columns": [{"name": name} for name in fieldnames]}
     rows = [{
         "wafer_id": "SECOM-0001",

@@ -1,0 +1,1 @@
+{"case_id": "B021", "check": "data-contract", "expected": "主表可复建，源事实与派生字段分开，页面不得越过人工核验边界"}

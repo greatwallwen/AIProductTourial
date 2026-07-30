@@ -4,12 +4,16 @@ node_modules/
 dist/
 coverage/
 *.log
+*.tsbuildinfo
 .DS_Store
 .env
 .env.*
 !.env.example
 dataset/**/raw/
 evidence/current/
+code/runtime/*.sqlite
+code/runtime/*.sqlite-shm
+code/runtime/*.sqlite-wal
 
 # 参考源包只按来源账本选择性引入
 AI agent/

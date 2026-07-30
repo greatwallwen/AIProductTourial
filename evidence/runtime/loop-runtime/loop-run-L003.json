@@ -1,0 +1,76 @@
+{
+  "schema_version": "2.0",
+  "lab_id": "L003",
+  "objective": "基于公开压缩机窗口准备现场检查申请，而不是自动诊断或控制设备",
+  "state": "waiting_human",
+  "stop_reason": "permission_required",
+  "capability_sequence": [
+    "fixed-window-reader",
+    "bounded-retrieval",
+    "approval-packet"
+  ],
+  "input_artifacts": [
+    "dataset/B009-metro-agentic-rag/case.csv",
+    "dataset/B009-metro-agentic-rag/knowledge.jsonl"
+  ],
+  "output_artifacts": [
+    "evidence/runtime/loop-runtime/L003/approval-packet.json"
+  ],
+  "facts": {
+    "from": "2020-04-17 23:57:36",
+    "to": "2020-04-18 00:02:25",
+    "rows": 25
+  },
+  "checks": [
+    {
+      "id": "fixed-window",
+      "passed": true
+    },
+    {
+      "id": "source-and-policy-separated",
+      "passed": true
+    },
+    {
+      "id": "no-control-authority",
+      "passed": true
+    },
+    {
+      "id": "no-diagnosis",
+      "passed": true
+    }
+  ],
+  "calls": [],
+  "transitions": [
+    {
+      "step": 1,
+      "state": "observe",
+      "result": "从公开数据固定窗口读取 25 条传感记录。"
+    },
+    {
+      "step": 2,
+      "state": "choose",
+      "result": "只检索数据字段说明、课程检查程序和审批策略。"
+    },
+    {
+      "step": 3,
+      "state": "act",
+      "result": "计算压力、油温和电流的窗口统计。"
+    },
+    {
+      "step": 4,
+      "state": "check",
+      "result": "数据没有维修结果，且 maintenance_action_allowed 全为 False。"
+    },
+    {
+      "step": 5,
+      "state": "revise",
+      "result": "删除任何根因或维修措辞，只整理检查申请。"
+    },
+    {
+      "step": 6,
+      "state": "waiting_human",
+      "result": "审批包完成；自动动作停止。"
+    }
+  ],
+  "human_gate": "由有权限的主管决定是否创建现场检查工单"
+}

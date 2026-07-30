@@ -158,7 +158,7 @@
           "content": [
             {
               "type": "text",
-              "text": "{\"query\": \"五分钟窗口的压力、油温、电流和字段是什么\", \"source_ids\": [\"DATA-09\"], \"hits\": [{\"id\": \"UCI-791-FIELDS\", \"source_id\": \"DATA-09\", \"title\": \"压缩机传感字段说明\", \"content\": \"TP2 和 TP3 是压力相关信号，Oil_temperature 表示油温，Motor_current 表示电机电流；五分钟窗口只对这些原始字段做确定性统计。\", \"citation\": \"dataset/09-metro-agentic-rag/knowledge.jsonl#UCI-791-FIELDS\", \"score\": 6}, {\"id\": \"UCI-791-SOURCE\", \"source_id\": \"DATA-09\", \"title\": \"MetroPT-3 数据来源事实\", \"content\": \"MetroPT-3 公开数据记录地铁空气生产单元压缩机的 TP2、TP3、Oil_temperature、Motor_current 等传感信号；本案例使用原始 CSV 的连续固定切片。\", \"citation\": \"https://archive.ics.uci.edu/dataset/791/metropt+3+dataset\", \"score\": 1}]}"
+              "text": "{\"query\": \"五分钟窗口的压力、油温、电流和字段是什么\", \"source_ids\": [\"DATA-09\"], \"hits\": [{\"id\": \"UCI-791-FIELDS\", \"source_id\": \"DATA-09\", \"title\": \"压缩机传感字段说明\", \"content\": \"TP2 和 TP3 是压力相关信号，Oil_temperature 表示油温，Motor_current 表示电机电流；五分钟窗口只对这些原始字段做确定性统计。\", \"citation\": \"dataset/B009-metro-agentic-rag/knowledge.jsonl#UCI-791-FIELDS\", \"score\": 6}, {\"id\": \"UCI-791-SOURCE\", \"source_id\": \"DATA-09\", \"title\": \"MetroPT-3 数据来源事实\", \"content\": \"MetroPT-3 公开数据记录地铁空气生产单元压缩机的 TP2、TP3、Oil_temperature、Motor_current 等传感信号；本案例使用原始 CSV 的连续固定切片。\", \"citation\": \"https://archive.ics.uci.edu/dataset/791/metropt+3+dataset\", \"score\": 1}]}"
             }
           ],
           "structuredContent": {
@@ -172,7 +172,7 @@
                 "source_id": "DATA-09",
                 "title": "压缩机传感字段说明",
                 "content": "TP2 和 TP3 是压力相关信号，Oil_temperature 表示油温，Motor_current 表示电机电流；五分钟窗口只对这些原始字段做确定性统计。",
-                "citation": "dataset/09-metro-agentic-rag/knowledge.jsonl#UCI-791-FIELDS",
+                "citation": "dataset/B009-metro-agentic-rag/knowledge.jsonl#UCI-791-FIELDS",
                 "score": 6
               },
               {
@@ -285,7 +285,7 @@
           "content": [
             {
               "type": "text",
-              "text": "{\"query\": \"检查工单是否需要人工审批，是否允许自动停机或维修\", \"source_ids\": [\"COURSE-POLICY-09\"], \"hits\": [{\"id\": \"COURSE-09-APPROVAL\", \"source_id\": \"COURSE-POLICY-09\", \"title\": \"检查工单人工审批策略\", \"content\": \"检查工单必须进入人工批准队列；系统禁止自动停机、维修、诊断故障或调用设备执行工具，授权人员批准前只能保存调查证据。\", \"citation\": \"dataset/09-metro-agentic-rag/knowledge.jsonl#COURSE-09-APPROVAL\", \"score\": 5}, {\"id\": \"COURSE-09-INSPECTION\", \"source_id\": \"COURSE-POLICY-09\", \"title\": \"异常窗口现场检查程序\", \"content\": \"当电机电流、油温或压力组合异常时，先核对窗口起止、样本数量、数据哈希和传感器状态，再创建现场检查建议；现场人员复核设备状态并补充观察记录。\", \"citation\": \"dataset/09-metro-agentic-rag/knowledge.jsonl#COURSE-09-INSPECTION\", \"score\": 3}]}"
+              "text": "{\"query\": \"检查工单是否需要人工审批，是否允许自动停机或维修\", \"source_ids\": [\"COURSE-POLICY-09\"], \"hits\": [{\"id\": \"COURSE-09-APPROVAL\", \"source_id\": \"COURSE-POLICY-09\", \"title\": \"检查工单人工审批策略\", \"content\": \"检查工单必须进入人工批准队列；系统禁止自动停机、维修、诊断故障或调用设备执行工具，授权人员批准前只能保存调查证据。\", \"citation\": \"dataset/B009-metro-agentic-rag/knowledge.jsonl#COURSE-09-APPROVAL\", \"score\": 5}, {\"id\": \"COURSE-09-INSPECTION\", \"source_id\": \"COURSE-POLICY-09\", \"title\": \"异常窗口现场检查程序\", \"content\": \"当电机电流、油温或压力组合异常时，先核对窗口起止、样本数量、数据哈希和传感器状态，再创建现场检查建议；现场人员复核设备状态并补充观察记录。\", \"citation\": \"dataset/B009-metro-agentic-rag/knowledge.jsonl#COURSE-09-INSPECTION\", \"score\": 3}]}"
             }
           ],
           "structuredContent": {
@@ -299,7 +299,7 @@
                 "source_id": "COURSE-POLICY-09",
                 "title": "检查工单人工审批策略",
                 "content": "检查工单必须进入人工批准队列；系统禁止自动停机、维修、诊断故障或调用设备执行工具，授权人员批准前只能保存调查证据。",
-                "citation": "dataset/09-metro-agentic-rag/knowledge.jsonl#COURSE-09-APPROVAL",
+                "citation": "dataset/B009-metro-agentic-rag/knowledge.jsonl#COURSE-09-APPROVAL",
                 "score": 5
               },
               {
@@ -307,7 +307,7 @@
                 "source_id": "COURSE-POLICY-09",
                 "title": "异常窗口现场检查程序",
                 "content": "当电机电流、油温或压力组合异常时，先核对窗口起止、样本数量、数据哈希和传感器状态，再创建现场检查建议；现场人员复核设备状态并补充观察记录。",
-                "citation": "dataset/09-metro-agentic-rag/knowledge.jsonl#COURSE-09-INSPECTION",
+                "citation": "dataset/B009-metro-agentic-rag/knowledge.jsonl#COURSE-09-INSPECTION",
                 "score": 3
               }
             ]

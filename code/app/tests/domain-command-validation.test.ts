@@ -41,14 +41,14 @@ function validate(
 describe("case domain command gates", () => {
   it("requires a reproducible evidence request for case 01", () => {
     const current = {
-      ...projection("01", "待核验"),
+      ...projection("B001", "待核验"),
       payload: { invoice_id: "C536365", invoice_at: "2010-12-02 09:00:00" },
     };
-    expect(validate("01", "create_evidence_request", current, {})).toThrow(
+    expect(validate("B001", "create_evidence_request", current, {})).toThrow(
       "candidate_required",
     );
     expect(
-      validate("01", "create_evidence_request", current, {
+      validate("B001", "create_evidence_request", current, {
         candidateId: "536365",
         requestedEvidence: ["original_order", "payment_record"],
         assignee: "售后运营",
@@ -64,7 +64,7 @@ describe("case domain command gates", () => {
 
   it("blocks case 01 review until every requested item is received", () => {
     const current = {
-      ...projection("01", "待补证", {
+      ...projection("B001", "待补证", {
       candidateId: "536365",
       requestedEvidence: ["original_order", "payment_record"],
       assignee: "售后运营",
@@ -74,7 +74,7 @@ describe("case domain command gates", () => {
       payload: { invoice_id: "C536365", invoice_at: "2010-12-02 09:00:00" },
     };
     expect(
-      validate("01", "submit_manual_review", current, {
+      validate("B001", "submit_manual_review", current, {
         evidenceStatus: { original_order: "received", payment_record: "missing" },
         reviewNote: "原单已核对，等待付款记录。",
       }, {
@@ -84,7 +84,7 @@ describe("case domain command gates", () => {
       }),
     ).toThrow("evidence_incomplete");
     expect(
-      validate("01", "submit_manual_review", current, {
+      validate("B001", "submit_manual_review", current, {
         evidenceStatus: { original_order: "received", payment_record: "received" },
         reviewNote: "两项材料已回传，提交独立复核。",
       }, {
@@ -97,7 +97,7 @@ describe("case domain command gates", () => {
 
   it("requires two different actors for the case 05 cosign", () => {
     const current = {
-      ...projection("05", "待接收会签", {
+      ...projection("B005", "待接收会签", {
       selectedEventId: "EVT-06",
       authoritativeState: "接收方已接收，保留迟到修正",
       reconciliationReason: "以病区接收事件和护理确认记录为准。",
@@ -115,7 +115,7 @@ describe("case domain command gates", () => {
       late_event: "True",
     }];
     expect(
-      validate("05", "cosign_transfer", current, {
+      validate("B005", "cosign_transfer", current, {
         receiverActorId: "nurse-li",
         cosignNote: "已接收。",
       }, {
@@ -125,7 +125,7 @@ describe("case domain command gates", () => {
       }),
     ).toThrow("actor_separation_required");
     expect(
-      validate("05", "cosign_transfer", current, {
+      validate("B005", "cosign_transfer", current, {
         receiverActorId: "ward-chen",
         cosignNote: "病区已核对床位和到达时间。",
       }, {
@@ -138,9 +138,9 @@ describe("case domain command gates", () => {
 
   it("keeps the case 18 submitted and confirmed segment identical", () => {
     const current = {
-      ...projection("18", "当班排查中", {
-        taskId: "boiler-check:18-OBJECT-1:v1",
-        objectId: "18-OBJECT-1",
+      ...projection("B018", "当班排查中", {
+        taskId: "boiler-check:B018-OBJECT-1:v1",
+        objectId: "B018-OBJECT-1",
         objectVersion: 1,
         monitorMinute: "2026-07-26 09:00",
         observedTemperatureC: 528.5,
@@ -158,31 +158,31 @@ describe("case domain command gates", () => {
       },
     };
     expect(
-      validate("18", "confirm_segment", current, {
+      validate("B018", "confirm_segment", current, {
         segmentId: "desuperheater-section",
         supervisorNote: "先查减温水阀。",
         supervisorId: "shift-supervisor",
-        prerequisiteTaskId: "boiler-check:18-OBJECT-1:v1",
+        prerequisiteTaskId: "boiler-check:B018-OBJECT-1:v1",
       }, {
         actorId: "shift-supervisor",
-        evidenceIds: ["boiler-window:2026-07-26 09:00", "boiler-task:boiler-check:18-OBJECT-1:v1"],
+        evidenceIds: ["boiler-window:2026-07-26 09:00", "boiler-task:boiler-check:B018-OBJECT-1:v1"],
       }),
     ).toThrow("segment_mismatch");
     expect(
-      validate("18", "confirm_segment", current, {
+      validate("B018", "confirm_segment", current, {
         segmentId: "final-superheater-section",
         supervisorNote: "同意先查过热器出口测点与邻近温度。",
         supervisorId: "shift-supervisor",
-        prerequisiteTaskId: "boiler-check:18-OBJECT-1:v1",
+        prerequisiteTaskId: "boiler-check:B018-OBJECT-1:v1",
       }, {
         actorId: "shift-supervisor",
-        evidenceIds: ["boiler-window:2026-07-26 09:00", "boiler-task:boiler-check:18-OBJECT-1:v1"],
+        evidenceIds: ["boiler-window:2026-07-26 09:00", "boiler-task:boiler-check:B018-OBJECT-1:v1"],
       }),
     ).not.toThrow();
   });
 
   it("uses the displayed case 10 business key in the actual request", () => {
-    const current = projection("10", "执行中");
+    const current = projection("B010", "执行中");
     const lookupData = {
       businessIdempotencyKey: "IK-TASK-001",
       createdBy: "case10-coordinator",
@@ -190,7 +190,7 @@ describe("case domain command gates", () => {
     };
     expect(
       validate(
-        "10",
+        "B010",
         "start_lookup",
         current,
         lookupData,
@@ -199,7 +199,7 @@ describe("case domain command gates", () => {
     ).toThrow("idempotency_key_mismatch");
     expect(
       validate(
-        "10",
+        "B010",
         "start_lookup",
         current,
         lookupData,
@@ -209,7 +209,7 @@ describe("case domain command gates", () => {
   });
 
   it("rejects overlapping or underfunded case 02 trial assignments", () => {
-    const current = projection("02", "待入组");
+    const current = projection("B002", "待入组");
     const trialPlan = {
       planName: "8 元券首批试投",
       hypothesis: "向高参与会员发放 8 元券，会提高 7 日核销率",
@@ -234,9 +234,9 @@ describe("case domain command gates", () => {
       budget: { couponValueCny: 8, ceilingCny: 100, estimatedCny: 16 },
       stopRule: { maxTreatments: 2, maxBudgetCny: 80 },
     };
-    expect(validate("02", "design_trial", current, trialPlan)).not.toThrow();
+    expect(validate("B002", "design_trial", current, trialPlan)).not.toThrow();
     expect(
-      validate("02", "design_trial", current, {
+      validate("B002", "design_trial", current, {
         ...trialPlan,
         assignment: {
           ...trialPlan.assignment,
@@ -245,13 +245,13 @@ describe("case domain command gates", () => {
       }),
     ).toThrow("trial_assignment_overlap");
     expect(
-      validate("02", "design_trial", current, {
+      validate("B002", "design_trial", current, {
         ...trialPlan,
         budget: { couponValueCny: 8, ceilingCny: 8, estimatedCny: 16 },
       }),
     ).toThrow("trial_budget_invalid");
     expect(
-      validate("02", "design_trial", current, {
+      validate("B002", "design_trial", current, {
         ...trialPlan,
         assignment: { ...trialPlan.assignment, treatmentPercent: 80 },
       }),
@@ -259,14 +259,14 @@ describe("case domain command gates", () => {
   });
 
   it("requires case 02 supervisor actions to reuse a persisted plan", () => {
-    const empty = projection("02", "试投待审");
-    expect(validate("02", "start_trial", empty, {})).toThrow(
+    const empty = projection("B002", "试投待审");
+    expect(validate("B002", "start_trial", empty, {})).toThrow(
       "persisted_task_required",
     );
   });
 
   it("requires support and counter evidence in case 03", () => {
-    const current = projection("03", "待研判");
+    const current = projection("B003", "待研判");
     const task = {
       taskId: "RR-100-Service-Hospitality",
       aspectKey: "Service#Hospitality",
@@ -281,9 +281,9 @@ describe("case domain command gates", () => {
       observationWindow: "连续 14 天",
       successCriteria: "同主题负向样本占比连续两周超过 15%",
     };
-    expect(validate("03", "create_validation_task", current, task)).not.toThrow();
+    expect(validate("B003", "create_validation_task", current, task)).not.toThrow();
     expect(
-      validate("03", "create_validation_task", current, {
+      validate("B003", "create_validation_task", current, {
         ...task,
         counterEvidenceIds: ["review:100"],
       }),
@@ -305,16 +305,16 @@ describe("case domain command gates", () => {
       observationWindow: "连续 14 天",
       successCriteria: "同主题负向样本占比连续两周超过 15%",
     };
-    const current = projection("03", "待验证", savedTask);
+    const current = projection("B003", "待验证", savedTask);
     expect(
-      validate("03", "accept_backlog", current, {
+      validate("B003", "accept_backlog", current, {
         taskId: savedTask.taskId,
         validationTask: savedTask,
         supervisorReason: "样本、方法和期限均可执行。",
       }),
     ).not.toThrow();
     expect(
-      validate("03", "accept_backlog", current, {
+      validate("B003", "accept_backlog", current, {
         taskId: "RR-SWAPPED",
         validationTask: { ...savedTask, taskId: "RR-SWAPPED" },
         supervisorReason: "换成另一张任务单。",
@@ -324,7 +324,7 @@ describe("case domain command gates", () => {
 
   it("requires a complete, object-bound case 13 technician handoff", () => {
     const current = {
-      ...projection("13", "待分流"),
+      ...projection("B013", "待分流"),
       payload: { intake_id: "CN-AS-001" },
     };
     const handoff = {
@@ -344,7 +344,7 @@ describe("case domain command gates", () => {
     };
     expect(
       validate(
-        "13",
+        "B013",
         "submit_triage",
         current,
         { handoff },
@@ -353,7 +353,7 @@ describe("case domain command gates", () => {
     ).not.toThrow();
     expect(
       validate(
-        "13",
+        "B013",
         "submit_triage",
         current,
         { handoff: { ...handoff, answers: {
@@ -368,11 +368,11 @@ describe("case domain command gates", () => {
 
   it("keeps case 13 details requests actionable and technician acceptance separated", () => {
     const pending = {
-      ...projection("13", "待分流"),
+      ...projection("B013", "待分流"),
       payload: { intake_id: "CN-AS-001" },
     };
     expect(
-      validate("13", "request_details", pending, {
+      validate("B013", "request_details", pending, {
         detailsRequest: {
           intakeId: "CN-AS-001",
           requestedQuestionIds: ["warning", "condition", "recurrence"],
@@ -402,12 +402,12 @@ describe("case domain command gates", () => {
       createdBy: "case13-service-dispatcher",
     };
     const submitted = {
-      ...projection("13", "技师复核已提交", { handoff }),
+      ...projection("B013", "技师复核已提交", { handoff }),
       payload: { intake_id: "CN-AS-001" },
     };
     expect(
       validate(
-        "13",
+        "B013",
         "dispatch_rescue",
         submitted,
         {
@@ -423,7 +423,7 @@ describe("case domain command gates", () => {
     ).not.toThrow();
     expect(
       validate(
-        "13",
+        "B013",
         "dispatch_rescue",
         submitted,
         {
@@ -473,13 +473,13 @@ describe("case domain command gates", () => {
 
   it("binds case 14 review to the actual 72-hour event slice", () => {
     const current = {
-      ...projection("14", "待诊断"),
-      objectId: "14-FQ-0016",
+      ...projection("B014", "待诊断"),
+      objectId: "B014-FQ-0016",
       payload: case14Payload,
     };
     expect(
       validate(
-        "14",
+        "B014",
         "submit_process_review",
         current,
         { processReview: case14Review },
@@ -488,7 +488,7 @@ describe("case domain command gates", () => {
     ).not.toThrow();
     expect(
       validate(
-        "14",
+        "B014",
         "submit_process_review",
         current,
         { processReview: { ...case14Review, rowCount: 71 } },
@@ -499,13 +499,13 @@ describe("case domain command gates", () => {
 
   it("requires the case 14 supervisor to confirm the persisted task as a different actor", () => {
     const current = {
-      ...projection("14", "工艺复核中", { processReview: case14Review }),
-      objectId: "14-FQ-0016",
+      ...projection("B014", "工艺复核中", { processReview: case14Review }),
+      objectId: "B014-FQ-0016",
       payload: case14Payload,
     };
     expect(
       validate(
-        "14",
+        "B014",
         "dispatch_instrument_check",
         current,
         {
@@ -521,7 +521,7 @@ describe("case domain command gates", () => {
     ).not.toThrow();
     expect(
       validate(
-        "14",
+        "B014",
         "dispatch_instrument_check",
         current,
         {
@@ -539,8 +539,8 @@ describe("case domain command gates", () => {
 
   it("rejects a case 14 supervisor payload that rewrites the persisted review window", () => {
     const current = {
-      ...projection("14", "工艺复核中", { processReview: case14Review }),
-      objectId: "14-FQ-0016",
+      ...projection("B014", "工艺复核中", { processReview: case14Review }),
+      objectId: "B014-FQ-0016",
       payload: case14Payload,
     };
     const rewritten = {
@@ -550,7 +550,7 @@ describe("case domain command gates", () => {
 
     expect(
       validate(
-        "14",
+        "B014",
         "dispatch_instrument_check",
         current,
         {

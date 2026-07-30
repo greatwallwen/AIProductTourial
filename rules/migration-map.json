@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0",
+  "policy": {
+    "canonical_id_pattern": "^[PSLB][0-9]{3}$",
+    "display_order_field": "display_order",
+    "one_runtime_state_key": true,
+    "legacy_routes_redirect_only": true
+  },
+  "prompt_aliases": [
+    { "legacy_unit": "U01", "canonical_id": "P001", "meaning": "任务合同" },
+    { "legacy_unit": "U02", "canonical_id": "P002", "meaning": "参照、正例与反例" },
+    { "legacy_unit": "U03", "canonical_id": "P003", "meaning": "角色、比较与批评" },
+    { "legacy_unit": "U04", "canonical_id": "P005", "meaning": "数据分析" },
+    { "legacy_unit": "U05", "canonical_id": "P006", "meaning": "受控工具参数" },
+    { "legacy_unit": "U06", "canonical_id": "P008", "meaning": "评测与回归" }
+  ],
+  "prompt": [
+    { "legacy_id": "P01", "canonical_id": "P001", "display_order": 1 },
+    { "legacy_id": "P02", "canonical_id": "P002", "display_order": 2 },
+    { "legacy_id": "P03", "canonical_id": "P003", "display_order": 3 },
+    { "legacy_id": "P04", "canonical_id": "P004", "display_order": 4 },
+    { "legacy_id": "P05", "canonical_id": "P005", "display_order": 5 },
+    { "legacy_id": "P06", "canonical_id": "P006", "display_order": 6 },
+    { "legacy_id": "P07", "canonical_id": "P007", "display_order": 7 },
+    { "legacy_id": "P08", "canonical_id": "P008", "display_order": 8 }
+  ],
+  "agent_skills": [
+    { "legacy_id": "S01", "canonical_id": "S001", "display_order": 1 },
+    { "legacy_id": "S02", "canonical_id": "S002", "display_order": 2 },
+    { "legacy_id": "S03", "canonical_id": "S003", "display_order": 3 },
+    { "legacy_id": "S04", "canonical_id": "S004", "display_order": 4 },
+    { "legacy_id": "S05", "canonical_id": "S005", "display_order": 5 },
+    { "legacy_id": "S06", "canonical_id": "S006", "display_order": 6 },
+    { "legacy_id": "S07", "canonical_id": "S007", "display_order": 7 },
+    { "legacy_id": "S08", "canonical_id": "S008", "display_order": 8 }
+  ],
+  "loops": [
+    { "legacy_id": "L01", "canonical_id": "L001", "display_order": 1 },
+    { "legacy_id": "L02", "canonical_id": "L002", "display_order": 2 },
+    { "legacy_id": "L03", "canonical_id": "L003", "display_order": 3 },
+    { "legacy_id": "L04", "canonical_id": "L004", "display_order": 4 }
+  ],
+  "business_cases": [
+    { "legacy_teaching_id": "B01", "legacy_runtime_id": "01", "canonical_id": "B001", "display_order": 1 },
+    { "legacy_teaching_id": "B02", "legacy_runtime_id": "02", "canonical_id": "B002", "display_order": 2 },
+    { "legacy_teaching_id": "B03", "legacy_runtime_id": "03", "canonical_id": "B003", "display_order": 3 },
+    { "legacy_teaching_id": "B04", "legacy_runtime_id": "04", "canonical_id": "B004", "display_order": 4 },
+    { "legacy_teaching_id": "B05", "legacy_runtime_id": "05", "canonical_id": "B005", "display_order": 5 },
+    { "legacy_teaching_id": "B06", "legacy_runtime_id": "06", "canonical_id": "B006", "display_order": 6 },
+    { "legacy_teaching_id": "B07", "legacy_runtime_id": "07", "canonical_id": "B007", "display_order": 7 },
+    { "legacy_teaching_id": "B08", "legacy_runtime_id": "08", "canonical_id": "B008", "display_order": 8 },
+    { "legacy_teaching_id": "B09", "legacy_runtime_id": "09", "canonical_id": "B009", "display_order": 9 },
+    { "legacy_teaching_id": "B10", "legacy_runtime_id": "10", "canonical_id": "B010", "display_order": 10 },
+    { "legacy_teaching_id": "B11", "legacy_runtime_id": "11", "canonical_id": "B011", "display_order": 11 },
+    { "legacy_teaching_id": "B12", "legacy_runtime_id": "12", "canonical_id": "B012", "display_order": 12 },
+    { "legacy_teaching_id": "B13", "legacy_runtime_id": "13", "canonical_id": "B013", "display_order": 13 },
+    { "legacy_teaching_id": "B14", "legacy_runtime_id": "14", "canonical_id": "B014", "display_order": 14 },
+    { "legacy_teaching_id": "B15", "legacy_runtime_id": "15", "canonical_id": "B015", "display_order": 15 },
+    { "legacy_teaching_id": "B16", "legacy_runtime_id": "16", "canonical_id": "B016", "display_order": 16 },
+    { "legacy_teaching_id": "B17", "legacy_runtime_id": "17", "canonical_id": "B017", "display_order": 17 },
+    { "legacy_teaching_id": "B18", "legacy_runtime_id": "18", "canonical_id": "B018", "display_order": 18 },
+    { "legacy_teaching_id": "B19", "legacy_runtime_id": "19", "canonical_id": "B019", "display_order": 19 },
+    { "legacy_teaching_id": "B20", "legacy_runtime_id": "20", "canonical_id": "B020", "display_order": 20 },
+    { "legacy_teaching_id": null, "legacy_runtime_id": null, "canonical_id": "B021", "display_order": 21 },
+    { "legacy_teaching_id": null, "legacy_runtime_id": null, "canonical_id": "B022", "display_order": 22 },
+    { "legacy_teaching_id": null, "legacy_runtime_id": null, "canonical_id": "B023", "display_order": 23 },
+    { "legacy_teaching_id": null, "legacy_runtime_id": null, "canonical_id": "B024", "display_order": 24 }
+  ],
+  "route_policy": {
+    "canonical": "/cases/{canonical_id}",
+    "legacy_redirects": [
+      "/cases/{legacy_runtime_id}",
+      "/cases/{legacy_runtime_id}/work",
+      "/cases/{legacy_teaching_id}",
+      "/cases/{legacy_teaching_id}/work"
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "skill_id": "S004",
+  "skill_name": "product-opportunity-map",
+  "verification_status": "verified",
+  "verified_scope": "traceable JSON and editable SVG",
+  "provider_scope": null,
+  "known_limitations": [],
+  "commands": [
+    "python -B code/skills/product-opportunity-map/scripts/build_opportunity_map.py --input dataset/S-agent-skill-cases/case.csv --allowed-root dataset --json-output evidence/runtime/agent-skills/S004/opportunity-map.json --svg-output evidence/runtime/agent-skills/S004/opportunity-map.svg"
+  ],
+  "key_results": [
+    "4 条访谈流程记录生成 5 个节点、5 条关系",
+    "每个节点都保留来源引用"
+  ],
+  "artifact_count": 2,
+  "artifacts": [
+    {
+      "path": "evidence/runtime/agent-skills/S004/opportunity-map.json",
+      "bytes": 5630,
+      "sha256": "d76a5059f976ee22268c310e21cc79ae33750b58de0634cd1d29ea2b0e7d0074"
+    },
+    {
+      "path": "evidence/runtime/agent-skills/S004/opportunity-map.svg",
+      "bytes": 3981,
+      "sha256": "3002f88048f4445b98cb96980604ea777feafa0132bb90372c312520d778dbfa"
+    }
+  ],
+  "focused_tests": 5,
+  "quick_validate": "passed"
+}

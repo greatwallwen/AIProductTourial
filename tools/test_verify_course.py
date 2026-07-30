@@ -43,7 +43,7 @@ class CourseVerificationTest(unittest.TestCase):
     def test_rejects_topology_gap(self) -> None:
         manifest = [{"id": "01"}, {"id": "02"}]
         catalog = [{"id": "01"}, {"id": "03"}]
-        datasets = {"datasets": [{"case_id": "01"}, {"case_id": "02"}]}
+        datasets = {"datasets": [{"case_id": "B001"}, {"case_id": "B002"}]}
         errors = case_topology_errors(manifest, catalog, datasets)
         self.assertTrue(any("contiguous" in error for error in errors))
 

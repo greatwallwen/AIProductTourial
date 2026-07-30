@@ -7,8 +7,8 @@
 `逻辑与证据 → Prompt → Agent + Skills → Grill / Harness / Loop → 产品与系统架构 → 20 个业务案例`
 
 - [完整教程](md/Course_AIProduct.md)
-- [分章目录](AI时代研发产品项目一体化知识库/README.md)
-- [20 个案例](AI时代研发产品项目一体化知识库/案例/README.md)
+- [分章目录](md/README.md)
+- [24 个案例](md/cases/README.md)
 - [案例数据](dataset/manifest.json)
 - [运行代码](code/README.md)
 
@@ -32,17 +32,17 @@ macOS 或 Linux：
 
 | 层次 | 内容 | 实操 |
 |---|---|---|
-| Prompt | U01—U06，共 18 个实验 | 任务、参照、角色、数据、工具和回归检查 |
-| Agent + Skills | S01—S08，含 8 个可运行 Skill | 数据体检、经营简报、机会图、海报、PPTX、小游戏和 3D 资产检查 |
-| Loop | L01—L04 | 生成—检查、数据回查、长任务恢复和代码修复 |
+| Prompt | P001—P008，共 18 个实验 | 任务、参照、角色、数据、工具和回归检查 |
+| Agent + Skills | S001—S008，含 8 个可运行 Skill | 数据体检、经营简报、机会图、海报、PPTX、小游戏和 3D 资产检查 |
+| Loop | L001—L004 | 生成—检查、数据回查、长任务恢复和代码修复 |
 | 产品工程 | 需求、数据合同、C4、DDD、事件和微服务 | 从业务决定走到可运行系统 |
-| 综合案例 | B01—B20，覆盖电商、公共服务、医院运营和工业现场 | 20 个 React + Next.js 工作台 |
+| 综合案例 | B001—B024，覆盖电商、公共服务、医院运营、工业现场、文旅、教育、影院与连锁零售 | 24 个 React + Next.js 工作台 |
 
 ## 目录
 
 ```text
 AIProductTourial/
-├─ AI时代研发产品项目一体化知识库/  # 分章教程、专题与案例
+├─ md/                              # 主教程、分章教程与案例
 ├─ md/Course_AIProduct.md           # 确定性合成的完整教程
 ├─ code/                            # React 19 + Next.js 16 驾驶舱与实验
 ├─ dataset/                         # 课堂数据、来源与许可边界

@@ -309,7 +309,7 @@ def validate_csv_contract(item: dict, schema: dict, fieldnames: list[str], rows:
     if schema_columns != fieldnames:
         errors.append(f"{case_id}: schema/CSV 列名或顺序不一致")
 
-    if case_id == "05":
+    if case_id == "B005":
         forbidden = forbidden_medical_columns(fieldnames)
         if forbidden:
             errors.append(f"05: 医学运营数据包含禁用字段 {', '.join(forbidden)}")
@@ -317,14 +317,14 @@ def validate_csv_contract(item: dict, schema: dict, fieldnames: list[str], rows:
             errors.append("05: privacy_scope 必须全部为 operational_only")
         if any(str(row.get("clinical_decision_allowed", "")).strip().lower() not in {"false", "0"} for row in rows):
             errors.append("05: clinical_decision_allowed 必须全部为 False")
-    if case_id == "11":
+    if case_id == "B011":
         gates = {str(row.get("gate", "")).strip() for row in rows}
         if gates != {"risk", "fairness", "safety"}:
             errors.append("11: 必须同时包含 risk/fairness/safety 三类门禁")
         required_values = ("metric_value", "threshold", "sample_size")
         if any(not str(row.get(name, "")).strip() for row in rows for name in required_values):
             errors.append("11: 门禁指标、阈值和样本量不能为空")
-    if case_id == "13":
+    if case_id == "B013":
         if any(str(row.get("row_level_link_to_reference", "")).strip().lower() not in {"false", "0"} for row in rows):
             errors.append("13: 公开参考与中国接车记录不得行级关联")
         if any(str(row.get("automatic_repair_allowed", "")).strip().lower() not in {"false", "0"} for row in rows):
@@ -332,45 +332,45 @@ def validate_csv_contract(item: dict, schema: dict, fieldnames: list[str], rows:
         allowed = {"lookup_reference", "handoff_to_technician", "request_more_info"}
         if any(str(row.get("allowed_action", "")) not in allowed for row in rows):
             errors.append("13: allowed_action 超出人工接车动作白名单")
-    if case_id == "14":
+    if case_id == "B014":
         if any(str(row.get("automatic_setpoint_allowed", "")).strip().lower() not in {"false", "0"} for row in rows):
             errors.append("14: 不得自动下发浮选设定值")
         if any(str(row.get("causal_root_cause_allowed", "")).strip().lower() not in {"false", "0"} for row in rows):
             errors.append("14: 过程偏离不得写成根因")
         if any(str(row.get("allowed_action", "")) != "request_process_review" for row in rows):
             errors.append("14: allowed_action 仅允许发起工艺复核")
-    if case_id == "15":
+    if case_id == "B015":
         if any(str(row.get("causal_root_cause_allowed", "")).strip().lower() not in {"false", "0"} for row in rows):
             errors.append("15: 传感器关联不得写成根因")
         if any(str(row.get("automatic_scrap_allowed", "")).strip().lower() not in {"false", "0"} for row in rows):
             errors.append("15: 不得自动报废晶圆")
         if any(str(row.get("allowed_action", "")) != "submit_quality_review" for row in rows):
             errors.append("15: allowed_action 仅允许送入质量复核")
-    if case_id == "16":
+    if case_id == "B016":
         if any(str(row.get("manual_inspection_only", "")).strip().lower() not in {"true", "1"} for row in rows):
             errors.append("16: 不得自动派发登检")
         if any(str(row.get("allowed_action", "")) != "adjust_inspection_priority" for row in rows):
             errors.append("16: allowed_action 仅允许调整人工登检优先级")
-    if case_id == "17":
+    if case_id == "B017":
         if any(str(row.get("automatic_stop_allowed", "")).strip().lower() not in {"false", "0"} for row in rows):
             errors.append("17: 不得自动停机")
         if any(str(row.get("automatic_replacement_allowed", "")).strip().lower() not in {"false", "0"} for row in rows):
             errors.append("17: 不得自动更换切刀")
         if any(str(row.get("allowed_action", "")) != "register_maintenance_candidate" for row in rows):
             errors.append("17: allowed_action 仅允许登记检修候选")
-    if case_id == "18":
+    if case_id == "B018":
         if any(str(row.get("automatic_control_allowed", "")).strip().lower() not in {"false", "0"} for row in rows):
             errors.append("18: 不得自动控制锅炉")
         if any(str(row.get("source_interval_is_factory_limit", "")).strip().lower() not in {"false", "0"} for row in rows):
             errors.append("18: 来源区间不得写成厂方控制限")
         if any(str(row.get("allowed_action", "")) != "submit_operations_review" for row in rows):
             errors.append("18: allowed_action 仅允许运行复核")
-    if case_id == "19":
+    if case_id == "B019":
         if any(str(row.get("automatic_maintenance_allowed", "")).strip().lower() not in {"false", "0"} for row in rows):
             errors.append("19: 不得自动执行液压检修")
         if any(str(row.get("allowed_action", "")) != "route_maintenance_review" for row in rows):
             errors.append("19: allowed_action 仅允许分流人工检修复核")
-    if case_id == "20":
+    if case_id == "B020":
         if any(str(row.get("automatic_control_allowed", "")).strip().lower() not in {"false", "0"} for row in rows):
             errors.append("20: 不得自动控制电站")
         if any(str(row.get("allowed_action", "")) != "register_operations_review" for row in rows):
@@ -452,7 +452,7 @@ def validate_case(
     directory = (ROOT / item["directory"]).resolve()
     if DATASET_ROOT.resolve() not in directory.parents:
         return [f"{case_id}: 目录越界 {directory}"]
-    is_lab = all(re.fullmatch(r"[PSL]\d{2}", value) for value in case_ids)
+    is_lab = all(re.fullmatch(r"[PSL]\d{3}", value) for value in case_ids)
     for name in (REQUIRED_LAB if is_lab else REQUIRED_PRODUCT):
         if not (directory / name).is_file():
             errors.append(f"{case_id}: 缺少 {name}")
@@ -510,15 +510,15 @@ def validate_case(
     if len(rows) != item["row_count"]:
         errors.append(f"{case_id}: CSV 实际行数 {len(rows)} != {item['row_count']}")
     errors.extend(validate_csv_contract({**item, "case_id": case_id}, schema, fieldnames, rows))
-    if case_id == "05" and (directory / "raw").exists():
+    if case_id == "B005" and (directory / "raw").exists():
         errors.append("05: 医学案例不应包含 PIC raw 目录")
-    if case_id == "08" and any(row.get("row_level_link_to_sensor") not in (None, "False", "false", "0") for row in rows):
+    if case_id == "B008" and any(row.get("row_level_link_to_sensor") not in (None, "False", "false", "0") for row in rows):
         errors.append("08: 两来源被伪造成行级关联")
-    if case_id == "10" and any(row.get("allegation_verified") not in ("False", "false", "0") for row in rows):
+    if case_id == "B010" and any(row.get("allegation_verified") not in ("False", "false", "0") for row in rows):
         errors.append("10: 投诉被标记为已核验事实")
-    if case_id == "11" and "body_retained" in fieldnames and any(row.get("body_retained") not in ("False", "false", "0") for row in rows):
+    if case_id == "B011" and "body_retained" in fieldnames and any(row.get("body_retained") not in ("False", "false", "0") for row in rows):
         errors.append("11: issue 正文进入课程子集")
-    if case_id == "12" and any(row.get("usability_decision_allowed") not in ("False", "false", "0") for row in rows):
+    if case_id == "B012" and any(row.get("usability_decision_allowed") not in ("False", "false", "0") for row in rows):
         errors.append("12: 温度数据被允许自动决定可用性")
     return errors
 

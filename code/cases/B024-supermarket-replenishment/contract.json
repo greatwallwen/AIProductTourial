@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "id": "B024",
+  "slug": "supermarket-replenishment",
+  "title": "配送车只剩 12 个托盘：哪家门店先补？",
+  "industry": "连锁零售",
+  "family": "commerce",
+  "tier": "complete",
+  "dataset_path": "dataset/B024-supermarket-replenishment",
+  "route": "/cases/B024",
+  "runtime_mode": "deterministic_offline",
+  "productization": {
+    "metrics": ["历史销量节奏", "库存核对队列", "配送容量"],
+    "decision_fields": ["store_id", "category_id", "sales_pressure_rank", "units_sold"],
+    "selection_changes_decision": true,
+    "business_state_changes_on_server": true
+  }
+}

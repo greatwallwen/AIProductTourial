@@ -7,7 +7,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED = [f"S{index:02d}" for index in range(1, 9)]
+EXPECTED = [f"S{index:03d}" for index in range(1, 9)]
 REQUIRED_SKILLS = {
     "capability-router",
     "data-profile",
@@ -27,10 +27,10 @@ def load_json(path: Path):
 def main() -> None:
     manifest = load_json(ROOT / "course-manifest.json")
     if manifest["capability_spine"]["agent_skill_cases"] != EXPECTED:
-        raise ValueError("course manifest S01-S08 order mismatch")
+        raise ValueError("course manifest S001-S008 order mismatch")
     skill_labs = [lab for lab in manifest["labs"] if lab["track"] == "agent-skill"]
     if [lab["id"] for lab in skill_labs] != EXPECTED:
-        raise ValueError("S01-S08 order mismatch")
+        raise ValueError("S001-S008 order mismatch")
 
     source_card = load_json(ROOT / "sources" / "skills-research-card.json")
     sources = {item["id"]: item for item in source_card["sources"]}
@@ -60,7 +60,7 @@ def main() -> None:
             digest = hashlib.sha256(artifact_path.read_bytes()).hexdigest()
             if digest != artifact["sha256"] or artifact_path.stat().st_size != artifact["bytes"]:
                 raise ValueError(f"{lab['id']} stale artifact receipt: {artifact['path']}")
-        if lab["id"] in {"S05", "S08"} and receipt.get("provider_scope") not in {
+        if lab["id"] in {"S005", "S008"} and receipt.get("provider_scope") not in {
             None,
             "blocked-not-verified",
         }:

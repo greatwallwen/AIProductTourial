@@ -6,8 +6,8 @@ import {
 } from "../../cases/runtime-revision";
 
 const projection = (payload: Record<string, unknown>): CaseProjection => ({
-  caseId: "04",
-  objectId: "04-CR20260000001",
+  caseId: "B004",
+  objectId: "B004-CR20260000001",
   state: "待复核",
   version: 0,
   payload,

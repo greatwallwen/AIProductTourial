@@ -18,4 +18,10 @@ export { CutterHealthWorkbench } from "./CutterHealthWorkbench";
 export { BoilerEventWorkbench } from "./BoilerEventWorkbench";
 export { HydraulicConditionWorkbench } from "./HydraulicConditionWorkbench";
 export { PvLossWorkbench } from "./PvLossWorkbench";
+export {
+  WeekendRouteWorkbench,
+  TransferNoticeWorkbench,
+  SpringFestivalScreeningWorkbench,
+  SupermarketReplenishmentWorkbench,
+} from "./ExpansionCaseWorkbenches";
 export type { CaseWorkbenchProps, WorkbenchCommandOptions } from "./types";

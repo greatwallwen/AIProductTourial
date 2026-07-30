@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.0",
+  "case_id": "B015",
+  "sources": [
+    {
+      "id": "DATA-15",
+      "title": "SECOM",
+      "publisher": "UCI Machine Learning Repository",
+      "dataset_id": 179,
+      "version": "dataset id 179",
+      "doi": "10.24432/C54305",
+      "url": "https://archive.ics.uci.edu/dataset/179/secom",
+      "download_url": "https://archive.ics.uci.edu/static/public/179/secom.zip",
+      "license": "CC BY 4.0",
+      "redistribution": "allowed-with-attribution"
+    }
+  ],
+  "input_files": [
+    {
+      "path": "uci-secom-179-iwr.zip",
+      "role": "official UCI SECOM archive",
+      "bytes": 1964989,
+      "sha256": "eea568baf3c2229096d7d294cf0b096b5502bd96d92c0b80a65b84714059be8e"
+    }
+  ],
+  "generation": {
+    "generator": "tools/build_demo_expansion.py",
+    "generator_version": "1.0.0",
+    "selection": {
+      "row_selection": "all official rows in source order",
+      "sensor_selection": "top absolute pass/fail class-mean difference; ties by source index",
+      "selected_sensor_indices": [
+        161,
+        159,
+        21,
+        24,
+        158,
+        160,
+        294,
+        162,
+        296,
+        295,
+        22,
+        90
+      ]
+    },
+    "field_lineage": {
+      "source_facts": [
+        "wafer_id",
+        "test_timestamp",
+        "quality_label",
+        "sensor_161",
+        "sensor_159",
+        "sensor_021",
+        "sensor_024",
+        "sensor_158",
+        "sensor_160",
+        "sensor_294",
+        "sensor_162",
+        "sensor_296",
+        "sensor_295",
+        "sensor_022",
+        "sensor_090"
+      ],
+      "derived_fields": [
+        "review_priority",
+        "causal_root_cause_allowed",
+        "automatic_scrap_allowed",
+        "allowed_action",
+        "data_nature"
+      ]
+    }
+  },
+  "supplemental_outputs": [
+    {
+      "path": "sensor-ranking.csv",
+      "source_id": "DATA-15",
+      "rows": 12,
+      "sha256": "031008f76e98f9e4d22e461a5333bb2aad23d812d0a5fc71aa962ce1388895f3",
+      "data_nature": "rule-derived-association-ranking"
+    }
+  ],
+  "transform_status": "derived-verified",
+  "materialized_status": "verified",
+  "rebuild_status": "blocked_missing_inputs",
+  "restriction": "传感器排序表示与质量标签的关联，不证明工序根因；不得自动报废或放行晶圆。"
+}

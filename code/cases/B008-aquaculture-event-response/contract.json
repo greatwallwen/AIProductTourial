@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "B008",
+  "slug": "aquaculture-event-response",
+  "title": "水质事件进入队列后，什么时候必须暂缓？",
+  "industry": "水产运营",
+  "family": "investigation",
+  "tier": "complete",
+  "dataset_path": "dataset/B008-aquaculture-event-response",
+  "route": "/cases/B008/work",
+  "runtime_mode": "deterministic_offline",
+  "productization": {
+    "metrics": [
+      "高风险记录",
+      "设备离线",
+      "证据异常"
+    ],
+    "decision_fields": [
+      "risk_level",
+      "sensor_status",
+      "evidence_status"
+    ],
+    "selection_changes_decision": true,
+    "business_state_changes_on_server": true
+  }
+}

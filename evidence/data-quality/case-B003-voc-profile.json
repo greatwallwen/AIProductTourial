@@ -1,0 +1,157 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-07-20T17:15:00+08:00",
+  "caseId": "03",
+  "dataset": {
+    "path": "dataset/B003-local-service-voc/case.csv",
+    "sha256": "426d5f5b38f2bf7c35bbb7d1fad4cd6ae8ac844ed5533a18c03cfb7c83457133",
+    "checksumLedgerMatch": true,
+    "rows": 6970,
+    "columns": 24
+  },
+  "uniqueness": {
+    "distinctIds": 6970,
+    "duplicateIdExtraRows": 0,
+    "duplicateReviewExtraRows": 0
+  },
+  "validity": {
+    "starCounts": {
+      "1": 1370,
+      "2": 1400,
+      "3": 1400,
+      "4": 1400,
+      "5": 1400
+    },
+    "splitCounts": {
+      "dev": 787,
+      "train": 6183
+    },
+    "aspectLabelDomain": [
+      -2,
+      -1,
+      0,
+      1
+    ],
+    "aspectCount": 18,
+    "dataNatureValues": {
+      "public-derived": 6970
+    }
+  },
+  "consistency": {
+    "reviewLengthCharacters": {
+      "min": 65,
+      "median": 278,
+      "p95": 622,
+      "max": 996
+    },
+    "aspectEvidence": {
+      "Location#Transportation": {
+        "negativeRows": 77,
+        "mentionedRows": 1031,
+        "negativeShareAmongMentions": 0.074685
+      },
+      "Location#Downtown": {
+        "negativeRows": 31,
+        "mentionedRows": 932,
+        "negativeShareAmongMentions": 0.033262
+      },
+      "Location#Easy_to_find": {
+        "negativeRows": 213,
+        "mentionedRows": 1051,
+        "negativeShareAmongMentions": 0.202664
+      },
+      "Service#Queue": {
+        "negativeRows": 345,
+        "mentionedRows": 988,
+        "negativeShareAmongMentions": 0.34919
+      },
+      "Service#Hospitality": {
+        "negativeRows": 1936,
+        "mentionedRows": 4451,
+        "negativeShareAmongMentions": 0.434958
+      },
+      "Service#Parking": {
+        "negativeRows": 101,
+        "mentionedRows": 365,
+        "negativeShareAmongMentions": 0.276712
+      },
+      "Service#Timely": {
+        "negativeRows": 701,
+        "mentionedRows": 1302,
+        "negativeShareAmongMentions": 0.538402
+      },
+      "Price#Level": {
+        "negativeRows": 1303,
+        "mentionedRows": 3568,
+        "negativeShareAmongMentions": 0.365191
+      },
+      "Price#Cost_effective": {
+        "negativeRows": 395,
+        "mentionedRows": 1358,
+        "negativeShareAmongMentions": 0.290869
+      },
+      "Price#Discount": {
+        "negativeRows": 216,
+        "mentionedRows": 1971,
+        "negativeShareAmongMentions": 0.109589
+      },
+      "Ambience#Decoration": {
+        "negativeRows": 298,
+        "mentionedRows": 2682,
+        "negativeShareAmongMentions": 0.111111
+      },
+      "Ambience#Noise": {
+        "negativeRows": 359,
+        "mentionedRows": 1767,
+        "negativeShareAmongMentions": 0.203169
+      },
+      "Ambience#Space": {
+        "negativeRows": 464,
+        "mentionedRows": 2179,
+        "negativeShareAmongMentions": 0.212942
+      },
+      "Ambience#Sanitary": {
+        "negativeRows": 734,
+        "mentionedRows": 2310,
+        "negativeShareAmongMentions": 0.317749
+      },
+      "Food#Portion": {
+        "negativeRows": 1078,
+        "mentionedRows": 2813,
+        "negativeShareAmongMentions": 0.383221
+      },
+      "Food#Taste": {
+        "negativeRows": 1115,
+        "mentionedRows": 6245,
+        "negativeShareAmongMentions": 0.178543
+      },
+      "Food#Appearance": {
+        "negativeRows": 523,
+        "mentionedRows": 1653,
+        "negativeShareAmongMentions": 0.316394
+      },
+      "Food#Recommend": {
+        "negativeRows": 225,
+        "mentionedRows": 932,
+        "negativeShareAmongMentions": 0.241416
+      }
+    }
+  },
+  "findings": [
+    {
+      "severity": "high",
+      "finding": "The 6,970-row file is a deterministic star-stratified slice of a 46,730-review corpus.",
+      "impact": "Do not report the slice as current platform demand, market share, or population sentiment."
+    },
+    {
+      "severity": "high",
+      "finding": "Aspect labels are human annotations: 1 positive, 0 neutral, -1 negative, -2 not mentioned.",
+      "impact": "Use them to retrieve evidence and test classifiers; frequency alone cannot set a roadmap priority."
+    },
+    {
+      "severity": "medium",
+      "finding": "Each record retains the verbatim review and has no duplicate review in the local slice.",
+      "impact": "Present source excerpts with counterexamples instead of replacing voice-of-customer evidence with a generated summary."
+    }
+  ]
+}

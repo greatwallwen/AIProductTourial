@@ -3,7 +3,7 @@ import { authorizeCommandActor } from "../../cases/command-authorization";
 import { getCaseDefinition } from "../../cases/registry";
 
 describe("command actor authorization", () => {
-  const definition = getCaseDefinition("04")!;
+  const definition = getCaseDefinition("B004")!;
 
   it("allows the case role to request material", () => {
     expect(

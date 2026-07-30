@@ -14,7 +14,7 @@ afterEach(cleanup);
 
 function projection(payload: Record<string, unknown>): CaseProjection {
   return {
-    caseId: "02",
+    caseId: "B002",
     objectId: `02-${String(payload.user_id)}`,
     state: "待入组",
     version: 0,
@@ -35,7 +35,7 @@ const memberRows = Array.from({ length: 20 }, (_, index) => ({
 function props(overrides: Partial<CaseWorkbenchProps> = {}): CaseWorkbenchProps {
   const objects = memberRows.map(projection);
   return {
-    definition: getCaseDefinition("02")!,
+    definition: getCaseDefinition("B002")!,
     objects,
     selected: objects[0]!,
     events: [],

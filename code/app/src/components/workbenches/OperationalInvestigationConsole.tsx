@@ -252,7 +252,7 @@ export function OperationalInvestigationConsole({
   onSelect,
 }: OperationalInvestigationConsoleProps) {
   const config = getCaseConsoleConfig(definition.id);
-  const teachingId = `B${definition.id}`;
+  const teachingId = definition.id;
   const [showSignals, setShowSignals] = useState(true);
   const [showGaps, setShowGaps] = useState(true);
   const [showExplanations, setShowExplanations] = useState(true);

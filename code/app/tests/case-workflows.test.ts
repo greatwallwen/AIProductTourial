@@ -145,29 +145,29 @@ describe("all 20 case command loops", () => {
   it("preserves the specialized case 04, 07, 08 and 09 role contracts", () => {
     const byId = Object.fromEntries(CASES.map((item) => [item.id, item]));
 
-    expect(byId["04"]!.workflow.commands.record_material_return).toMatchObject({
+    expect(byId["B004"]!.workflow.commands.record_material_return).toMatchObject({
       from: ["待补正"], to: "待补正", roles: ["reviewer"],
     });
-    expect(byId["04"]!.workflow.commands.start_human_review.roles).toEqual(["supervisor"]);
+    expect(byId["B004"]!.workflow.commands.start_human_review.roles).toEqual(["supervisor"]);
 
-    expect(byId["07"]!.workflow.commands.verify_evidence).toMatchObject({
+    expect(byId["B007"]!.workflow.commands.verify_evidence).toMatchObject({
       from: ["待评审", "待补观测"], roles: ["architect"],
     });
-    expect(byId["07"]!.workflow.commands.start_event_contract_pilot.roles).toEqual(["supervisor"]);
+    expect(byId["B007"]!.workflow.commands.start_event_contract_pilot.roles).toEqual(["supervisor"]);
 
-    expect(byId["08"]!.workflow.commands.dispatch_field_check.roles).toEqual(["dispatcher"]);
-    expect(byId["08"]!.workflow.commands.submit_field_return.roles).toEqual(["field_operator"]);
-    expect(byId["08"]!.workflow.commands.confirm_event.roles).toEqual(["supervisor"]);
+    expect(byId["B008"]!.workflow.commands.dispatch_field_check.roles).toEqual(["dispatcher"]);
+    expect(byId["B008"]!.workflow.commands.submit_field_return.roles).toEqual(["field_operator"]);
+    expect(byId["B008"]!.workflow.commands.confirm_event.roles).toEqual(["supervisor"]);
 
-    expect(byId["09"]!.workflow.commands.run_retrieval).toMatchObject({
+    expect(byId["B009"]!.workflow.commands.run_retrieval).toMatchObject({
       from: ["待核对", "等待设备记录"], roles: ["engineer"],
     });
-    expect(byId["09"]!.workflow.commands.hold_investigation.roles).toEqual(["engineer"]);
-    expect(byId["09"]!.workflow.commands.create_inspection_order.roles).toEqual(["supervisor"]);
+    expect(byId["B009"]!.workflow.commands.hold_investigation.roles).toEqual(["engineer"]);
+    expect(byId["B009"]!.workflow.commands.create_inspection_order.roles).toEqual(["supervisor"]);
   });
 
   it("case 01 stops at independent human review rather than approving a refund", () => {
-    const definition = CASES.find((item) => item.id === "01")!;
+    const definition = CASES.find((item) => item.id === "B001")!;
     const row = loadDatasetProjection(definition, 1).rows[0]!;
     store.seed(definition.id, row.objectId, row);
     const evidence = store.dispatch({
@@ -193,6 +193,6 @@ describe("all 20 case command loops", () => {
     expect(
       Object.values(definition.workflow.commands).map((command) => command.to),
     ).not.toContain("退款已放行");
-    store.resetCase(definition.id, "RESET-01");
+    store.resetCase(definition.id, "RESET-B001");
   });
 });

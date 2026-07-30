@@ -16,7 +16,7 @@ describe("shared product controls", () => {
     render(
       <CaseNav
         active="work"
-        caseId="01"
+        caseId="B001"
         items={[
           { id: "overview", label: "总览" },
           { id: "work", label: "调查台" },

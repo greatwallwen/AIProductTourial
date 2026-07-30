@@ -17,8 +17,8 @@ afterEach(() => {
   vi.restoreAllMocks();
 });
 
-const case18 = getCaseDefinition("18")!;
-const case20 = getCaseDefinition("20")!;
+const case18 = getCaseDefinition("B018")!;
+const case20 = getCaseDefinition("B020")!;
 const dataset18 = loadDatasetProjection(case18);
 const dataset20 = loadDatasetProjection(case20);
 
@@ -166,7 +166,7 @@ describe("batch 4 product contracts C", () => {
     let validationError: unknown;
     try {
       validateDomainCommand({
-        caseId: "18",
+        caseId: "B018",
         command: "dispatch_shift_check",
         actorRole: "process_engineer",
         actorId: "case18-boiler-engineer",
@@ -205,8 +205,8 @@ describe("batch 4 product contracts C", () => {
     expect(dataset18.supportingArtifacts["events.csv"]).toHaveLength(93);
     expect(dataset18.supportingArtifacts["imputation-points.csv"]).toHaveLength(30);
     expect(dataset18.supportingArtifacts["imputation-points.csv"]?.[0]).toHaveProperty("primary_desuperheater_water_flow_imputed");
-    expect(screen.getByRole("region", { name: "主蒸汽出口温度趋势" })).toHaveTextContent("25 个连续分钟点");
-    expect(screen.getByText("530–545℃ 是来源区间")).toBeVisible();
+    expect(screen.getByRole("region", { name: "事件时间线" })).toHaveTextContent("25 个连续分钟点");
+    expect(screen.getByText(/530–545.*来源区间/)).toBeVisible();
     expect(screen.queryByText(/30 条补点记录/)).not.toBeInTheDocument();
   });
 

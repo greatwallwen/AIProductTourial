@@ -309,7 +309,7 @@ export function ColdChainInvestigationWorkbench(props: CaseWorkbenchProps) {
           serverValidationRequired: true,
         },
         evidenceIds: rows.map((item) => `route-event:${text(item.event_id)}`).concat(evidenceId.trim() ? [`supplement:${evidenceId.trim()}`] : []),
-        idempotencyKey: `case-12:investigation:${investigationId}:route:${routeId}:${command}:v${props.selected.version}`,
+        idempotencyKey: `case-B012:investigation:${investigationId}:route:${routeId}:${command}:v${props.selected.version}`,
       },
     );
   }
@@ -345,7 +345,7 @@ export function ColdChainInvestigationWorkbench(props: CaseWorkbenchProps) {
         <div className={styles.headerTools}>
           <span className={styles.statePill} data-waiting={waitingForEvidence}>{displayState(props.selected.state)}</span>
           <span className={styles.role}><UserRound size={16} />{roleLabel(props.actorRole)}</span>
-          <button type="button" aria-label="恢复案例 B12" onClick={reset} disabled={props.busy}><RefreshCw size={17} /></button>
+          <button type="button" aria-label="恢复案例 B012" onClick={reset} disabled={props.busy}><RefreshCw size={17} /></button>
         </div>
       </header>
 

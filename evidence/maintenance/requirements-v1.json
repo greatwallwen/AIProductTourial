@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "1.0",
+  "baselineId": "course-requirements-v1",
+  "title": "AI 时代产品工程课程重构基线",
+  "approved": true,
+  "primaryDeliverables": [
+    "完整讲师 Markdown 教程",
+    "统一且可复现的数据集",
+    "24 个可运行的行业业务案例",
+    "案例驾驶舱与一键启动"
+  ],
+  "curriculumSpine": [
+    "Prompt",
+    "Agent + Skills",
+    "Loop",
+    "综合业务案例"
+  ],
+  "identifierPolicy": {
+    "prompt": "P001...",
+    "agentSkill": "S001...",
+    "loop": "L001...",
+    "business": "B001...B024",
+    "orderingField": "display_order",
+    "legacyRoutes": "redirect"
+  },
+  "businessCaseTarget": {
+    "count": 24,
+    "maturity": "instructor_ready_vertical_slice",
+    "requiredElements": [
+      "明确行业角色与业务决策",
+      "真实或明确标注的确定性中国场景数据",
+      "正常流程与异常路径",
+      "人工动作与状态持久化",
+      "可保存或下载的业务结果",
+      "真实浏览器运行截图"
+    ]
+  },
+  "newCases": [
+    "B021 周末旅行路线编排",
+    "B022 考研调剂信息时效核查",
+    "B023 春节档排片调整",
+    "B024 连锁商超补货优先级"
+  ],
+  "visualPolicy": {
+    "viewport": "1440x900 desktop",
+    "mobile": false,
+    "caseSpecificInformationArchitecture": true,
+    "image2CandidatesPerCase": 3,
+    "selectedReferenceIntent": "literal",
+    "threeJsRule": "仅在空间、流程或因果表达有价值时使用",
+    "runtimeCopyRule": "不出现讲师说明、验收术语或 AI 过场文字",
+    "diagramRule": "需求图和架构图使用专业可编辑图形，不使用 Mermaid"
+  },
+  "dataPolicy": {
+    "canonicalCandidateSource": "D:/cursor/AI培训/references/dataset",
+    "duplicateSource": "D:/cursor/AI培训/Course_AIProduct/dataset-anlalyse",
+    "localizeUsedData": true,
+    "doNotBlindCopyDuplicateBytes": true,
+    "restrictedData": "仅保留脱敏、确定性教学切片或来源说明"
+  },
+  "tutorialPolicy": {
+    "primaryFormat": "Markdown",
+    "chapterUnit": "问题—数据—判断—做法—结果—故障处理",
+    "removeFromNarrative": [
+      "SHA 清单",
+      "机械验收术语",
+      "讲师使用说明",
+      "模板化 AI 过场文字"
+    ],
+    "pptxOnCriticalPath": false
+  },
+  "deliveryMethod": "hybrid",
+  "publicationPolicy": "通过完整门禁后推送分支；未验收前不合并 main"
+}

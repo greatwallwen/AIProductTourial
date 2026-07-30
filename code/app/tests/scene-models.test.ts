@@ -19,7 +19,7 @@ function projection(
 
 describe("spatial scene models", () => {
   it("builds a deterministic 12-sensor wafer view without inventing coordinates", () => {
-    const wafer = projection("15", "15-SECOM-0003", {
+    const wafer = projection("B015", "B015-SECOM-0003", {
       wafer_id: "SECOM-0003",
       quality_label: "fail",
       sensor_161: "759",
@@ -27,8 +27,8 @@ describe("spatial scene models", () => {
       sensor_021: "-5447.75",
     });
 
-    const first = buildSceneModel("15", wafer);
-    const second = buildSceneModel("15", wafer);
+    const first = buildSceneModel("B015", wafer);
+    const second = buildSceneModel("B015", wafer);
 
     expect(first).toEqual(second);
     expect(first?.nodes).toHaveLength(12);
@@ -39,14 +39,14 @@ describe("spatial scene models", () => {
   });
 
   it("uses a comparison grid for wind turbines", () => {
-    const wind = projection("16", "16-7-1", {
+    const wind = projection("B016", "16-7-1", {
       turbine_id: "7",
       day: "1",
       underperformance_share: "1",
       mean_active_power: "579.36203",
     });
 
-    const model = buildSceneModel("16", wind);
+    const model = buildSceneModel("B016", wind);
 
     expect(model?.disclosure).toBe("比较视图");
     expect(model?.nodes).toHaveLength(9);
@@ -54,7 +54,7 @@ describe("spatial scene models", () => {
   });
 
   it("keeps the four hydraulic components in the inspection vocabulary", () => {
-    const hydraulic = projection("19", "19-217", {
+    const hydraulic = projection("B019", "19-217", {
       cycle_id: "217",
       cooler_severity: "critical",
       valve_severity: "critical",
@@ -63,19 +63,19 @@ describe("spatial scene models", () => {
     });
 
     expect(
-      buildSceneModel("19", hydraulic)?.nodes.map((node) => node.label),
+      buildSceneModel("B019", hydraulic)?.nodes.map((node) => node.label),
     ).toEqual(["冷却器", "阀", "泵", "蓄能器"]);
   });
 
   it("builds eight station positions while keeping unknown peers explicit", () => {
-    const solar = projection("20", "20-8-2020-05-19", {
+    const solar = projection("B020", "20-8-2020-05-19", {
       station_id: "8",
       date: "2020-05-19",
       mean_efficiency_ratio: "0.36193088",
       curtailment_suspected_share: "0.40625",
     });
 
-    const model = buildSceneModel("20", solar);
+    const model = buildSceneModel("B020", solar);
 
     expect(model?.nodes).toHaveLength(8);
     expect(model?.nodes.find((node) => node.id === solar.objectId)?.status).not.toBe(
@@ -85,6 +85,6 @@ describe("spatial scene models", () => {
   });
 
   it("does not create a spatial model for ordinary cases", () => {
-    expect(buildSceneModel("14", projection("14", "14-1", {}))).toBeUndefined();
+    expect(buildSceneModel("B014", projection("B014", "14-1", {}))).toBeUndefined();
   });
 });

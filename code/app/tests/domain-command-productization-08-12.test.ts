@@ -52,7 +52,7 @@ describe("productized domain gates for cases 08, 09, 11 and 12", () => {
       requiredEvidence: ["temperature_c", "dissolved_oxygen_mg_l", "ph", "turbidity_ntu", "field_photo"],
       createdBy: "case08-field-dispatcher",
     };
-    const current = projection("08", "现场取证中", {
+    const current = projection("B008", "现场取证中", {
       event_id: "CN-AQ-02-038",
       region_id: "CN-POND-02",
       evidence_status: "value_conflict",
@@ -72,18 +72,18 @@ describe("productized domain gates for cases 08, 09, 11 and 12", () => {
       note: "现场值与备用仪表一致，采用现场复测值。",
       confirmedBy: "case08-aquaculture-supervisor",
     };
-    expect(command("08", "submit_field_return", current, {
+    expect(command("B008", "submit_field_return", current, {
       fieldReturn: { ...fieldReturn, eventId: "CN-AQ-02-038" },
     }, "AQ-FIELD-02", [fieldReturn.photoAssetId])).not.toThrow();
-    expect(command("08", "submit_field_return", current, {
+    expect(command("B008", "submit_field_return", current, {
       fieldReturn: { ...fieldReturn, eventId: "CN-AQ-02-038", ph: 18 },
     }, "AQ-FIELD-02", [fieldReturn.photoAssetId])).toThrow("field_reading_invalid");
 
-    const returned = projection("08", "待主管采信", current.payload, {
+    const returned = projection("B008", "待主管采信", current.payload, {
       dispatch,
       fieldReturn: { ...fieldReturn, eventId: "CN-AQ-02-038" },
     });
-    expect(command("08", "confirm_event", returned, { validation }, "case08-aquaculture-supervisor", [fieldReturn.photoAssetId])).not.toThrow();
+    expect(command("B008", "confirm_event", returned, { validation }, "case08-aquaculture-supervisor", [fieldReturn.photoAssetId])).not.toThrow();
   });
 
   it("binds case 09 citations and inspection to the persisted retrieval", () => {
@@ -100,7 +100,7 @@ describe("productized domain gates for cases 08, 09, 11 and 12", () => {
       ],
       createdBy: "case09-duty-engineer",
     };
-    const current = projection("09", "资料待核验", { timestamp: retrieval.timestamp }, { retrieval });
+    const current = projection("B009", "资料待核验", { timestamp: retrieval.timestamp }, { retrieval });
     const inspection = {
       query: retrieval.query,
       activeTrace: retrieval.activeTrace,
@@ -117,8 +117,8 @@ describe("productized domain gates for cases 08, 09, 11 and 12", () => {
       { timestamp: "2020-04-18 00:00:01" },
       { timestamp: "2020-04-18 00:00:06" },
     ];
-    expect(command("09", "create_inspection_order", current, { inspection }, "case09-maintenance-supervisor", ["DOC-TP2", "DOC-APPROVAL"], continuousRows)).not.toThrow();
-    expect(command("09", "create_inspection_order", current, {
+    expect(command("B009", "create_inspection_order", current, { inspection }, "case09-maintenance-supervisor", ["DOC-TP2", "DOC-APPROVAL"], continuousRows)).not.toThrow();
+    expect(command("B009", "create_inspection_order", current, {
       inspection: { ...inspection, supportCitationIds: ["DOC-APPROVAL"], challengeCitationIds: ["DOC-TP2"] },
     }, "case09-maintenance-supervisor", ["DOC-APPROVAL", "DOC-TP2"], continuousRows)).toThrow("retrieval_citation_invalid");
   });
@@ -141,7 +141,7 @@ describe("productized domain gates for cases 08, 09, 11 and 12", () => {
         datasetVersion: "region-slice-2026.2",
       },
     };
-    const current = projection("11", "补测中", payload, persisted);
+    const current = projection("B011", "补测中", payload, persisted);
     const data = {
       aggregateType: "model_admission_candidate",
       candidateId: payload.candidate_id,
@@ -178,8 +178,8 @@ describe("productized domain gates for cases 08, 09, 11 and 12", () => {
       decisionBy: "case11-admission-chair",
       note: "补测数据与三类准入检查均已复核。",
     };
-    expect(command("11", "approve_canary", current, data, "case11-admission-chair")).not.toThrow();
-    expect(command("11", "approve_canary", current, {
+    expect(command("B011", "approve_canary", current, data, "case11-admission-chair")).not.toThrow();
+    expect(command("B011", "approve_canary", current, {
       ...data,
       gateReviews: { ...data.gateReviews, safety: { role: "safety_reviewer", signerId: "case11-risk-reviewer", status: "signed" } },
     }, "case11-admission-chair")).toThrow("actor_separation_required");
@@ -213,13 +213,13 @@ describe("productized domain gates for cases 08, 09, 11 and 12", () => {
       decisionBy: "case12-quality-supervisor",
       note: "补录交接记录已由质量角色核验。",
     };
-    const current = projection("12", "调查中", payload, {
+    const current = projection("B012", "调查中", payload, {
       investigationId: payload.investigation_id,
       routeId: payload.route_id,
       createdBy: "case12-quality-reviewer",
     });
-    expect(command("12", "quality_cosign", current, base, "case12-quality-supervisor", ["supplement:HANDOFF-CCI-001"])).not.toThrow();
-    expect(command("12", "quality_cosign", current, {
+    expect(command("B012", "quality_cosign", current, base, "case12-quality-supervisor", ["supplement:HANDOFF-CCI-001"])).not.toThrow();
+    expect(command("B012", "quality_cosign", current, {
       ...base,
       supplementalEvidence: { ...base.supplementalEvidence, recordedAtEventId: "OTHER-ROUTE" },
     }, "case12-quality-supervisor", ["supplement:HANDOFF-CCI-001"])).toThrow("cold_chain_evidence_mismatch");

@@ -1,6 +1,6 @@
 async page => {
   const baseUrl = "http://127.0.0.1:3200";
-  const ids = Array.from({ length: 20 }, (_, index) => `B${String(index + 1).padStart(2, "0")}`);
+  const ids = Array.from({ length: 24 }, (_, index) => `B${String(index + 1).padStart(3, "0")}`);
   const current = { route: "/" };
   const consoleIssues = [];
   const pageErrors = [];
@@ -36,7 +36,7 @@ async page => {
   await page.goto(`${baseUrl}/`, { waitUntil: "domcontentloaded" });
   await page.waitForTimeout(300);
   const dashboardLinks = await page.locator('a[href^="/cases/B"]').count();
-  const dashboardCaseButtons = await page.getByRole("button", { name: /^选择案例 B\d{2}：/ }).count();
+  const dashboardCaseButtons = await page.getByRole("button", { name: /^选择案例 B\d{3}：/ }).count();
   return {
     visited: results.length,
     passed: results.filter((item) => item.status === 200 && !item.notFound).length,

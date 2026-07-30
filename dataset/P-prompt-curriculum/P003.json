@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "1.0",
+  "caseId": "P003-revenue-review-three-perspectives",
+  "systemPrompt": "你是经营复盘会议记录员。只能从同一张事实表出发，把观察、假设和建议分开。",
+  "sharedContext": "某直营网店Q1与Q2事实表：收入1240万元→1060万元（-14.5%）；访问量-3.1%；支付转化率3.8%→3.1%；客单价212元→215元；取消代理率5.2%→8.9%；华东区域超时履约率2.1%→4.8%。当前没有渠道投放、库存、活动、用户访谈或竞品数据。取消代理率不等于已经退款，超时履约率与收入同时变化不等于因果。",
+  "baselinePrompt": "分析收入为什么下降，并给出解决方案。",
+  "improvedPrompt": "让数据分析师、业务经理、数据总监分别读取同一张事实表。数据分析师只写异常和需要复算的指标；业务经理只写可以立即检查的运营环节；数据总监只写会改变资源配置、但仍需补证据的假设。每条都引用一个输入数字，不得使用‘导致’或‘证明了’。最后输出‘共同点、冲突、待补证据’三栏。",
+  "model": "qwen-plus",
+  "temperature": 0,
+  "maxTokens": 1400,
+  "evaluators": [
+    {"id": "three-roles", "type": "requiredAll", "values": ["数据分析师", "业务经理", "数据总监"]},
+    {"id": "review-synthesis", "type": "requiredAll", "values": ["共同点", "冲突", "待补证据"]},
+    {"id": "no-causal-overclaim", "type": "forbidden", "values": ["证明了", "必然导致", "就是因为"]},
+    {"id": "bounded-length", "type": "maxChars", "value": 2200}
+  ]
+}

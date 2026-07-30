@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "id": "B021",
+  "slug": "weekend-route-planner",
+  "title": "两天、800 元、四处想去：上海周末路线怎么排？",
+  "industry": "文旅服务",
+  "family": "commerce",
+  "tier": "complete",
+  "dataset_path": "dataset/B021-weekend-route-planner",
+  "route": "/cases/B021",
+  "runtime_mode": "deterministic_offline",
+  "productization": {
+    "metrics": ["路线点", "历史门票预算", "出发前核验项"],
+    "decision_fields": ["poi_name", "price_cny", "district", "route_use"],
+    "selection_changes_decision": true,
+    "business_state_changes_on_server": true
+  }
+}

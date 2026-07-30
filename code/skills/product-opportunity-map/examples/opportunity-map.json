@@ -6,7 +6,7 @@
     "sha256": "f4e9500396df6812585bce656c359a7315212fe47b32538c82fba0b376546b38",
     "encoding": "utf-8-sig",
     "filter": {
-      "lab_id": "S04"
+      "lab_id": "S004"
     },
     "row_count": 4,
     "fields": [
@@ -27,13 +27,13 @@
     },
     {
       "id": "evidence-from-observation",
-      "description": "Use the S04 observation detail verbatim as the problem evidence.",
+      "description": "Use the S004 observation detail verbatim as the problem evidence.",
       "step_id": "01",
       "field": "detail"
     },
     {
       "id": "split-action-opportunities",
-      "description": "Create two opportunity nodes only when both phrases occur in the S04 action detail.",
+      "description": "Create two opportunity nodes only when both phrases occur in the S004 action detail.",
       "step_id": "03",
       "field": "detail",
       "required_phrases": [
@@ -47,7 +47,7 @@
     },
     {
       "id": "experiment-from-check",
-      "description": "Use the S04 check detail verbatim as the first experiment.",
+      "description": "Use the S004 check detail verbatim as the first experiment.",
       "step_id": "04",
       "field": "detail"
     }
@@ -55,7 +55,7 @@
   "source_records": [
     {
       "row_number": 14,
-      "lab_id": "S04",
+      "lab_id": "S004",
       "step_id": "01",
       "stage": "观察",
       "title": "读取门店访谈",
@@ -65,7 +65,7 @@
     },
     {
       "row_number": 15,
-      "lab_id": "S04",
+      "lab_id": "S004",
       "step_id": "02",
       "stage": "选择",
       "title": "问题框定加机会树",
@@ -75,7 +75,7 @@
     },
     {
       "row_number": 16,
-      "lab_id": "S04",
+      "lab_id": "S004",
       "step_id": "03",
       "stage": "动作",
       "title": "建立机会节点",
@@ -85,7 +85,7 @@
     },
     {
       "row_number": 17,
-      "lab_id": "S04",
+      "lab_id": "S004",
       "step_id": "04",
       "stage": "检查",
       "title": "选择首个验证",
@@ -103,7 +103,7 @@
       "source_refs": [
         {
           "row_number": 16,
-          "lab_id": "S04",
+          "lab_id": "S004",
           "step_id": "03",
           "field": "detail",
           "value": "机会不是做一个AI按钮，而是缩短订单定位与审批等待。"
@@ -118,7 +118,7 @@
       "source_refs": [
         {
           "row_number": 14,
-          "lab_id": "S04",
+          "lab_id": "S004",
           "step_id": "01",
           "field": "detail",
           "value": "店长说差评来时不知道先找订单、先回复还是先问区域经理。"
@@ -133,7 +133,7 @@
       "source_refs": [
         {
           "row_number": 16,
-          "lab_id": "S04",
+          "lab_id": "S004",
           "step_id": "03",
           "field": "detail",
           "value": "机会不是做一个AI按钮，而是缩短订单定位与审批等待。"
@@ -148,7 +148,7 @@
       "source_refs": [
         {
           "row_number": 16,
-          "lab_id": "S04",
+          "lab_id": "S004",
           "step_id": "03",
           "field": "detail",
           "value": "机会不是做一个AI按钮，而是缩短订单定位与审批等待。"
@@ -163,7 +163,7 @@
       "source_refs": [
         {
           "row_number": 17,
-          "lab_id": "S04",
+          "lab_id": "S004",
           "step_id": "04",
           "field": "detail",
           "value": "先验证订单关联能否把平均定位时间降到三分钟。"

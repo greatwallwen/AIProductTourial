@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "case_id": "B022",
+  "sources": [
+    {
+      "id": "DATA-22",
+      "title": "2021 年考研调剂与院校信息快照",
+      "publisher": "用户提供的课程参考数据",
+      "version": "2026-07-30 固定本地快照",
+      "license": "随附文件未声明",
+      "redistribution": "用户授权用于课程本地化；第三方再分发权未独立核验"
+    }
+  ],
+  "input_files": [
+    {
+      "path": "raw/考研调剂数据-3.08.xlsx",
+      "bytes": 46912,
+      "sha256": "0318a005e1c31c90febfd4b86bda4908b512b35275154d44176cba8aed7e7d9a",
+      "role": "user-provided reference snapshot"
+    },
+    {
+      "path": "raw/大学信息2021new.xlsx",
+      "bytes": 34262,
+      "sha256": "d818cb1ad3889fce546b37eea1ef9c9e2cc08b5b19317f0d42da29713d57629c",
+      "role": "user-provided reference snapshot"
+    }
+  ],
+  "generation": {
+    "generator": "tools/prepare_expansion_cases.py",
+    "generator_version": "1.0.0",
+    "field_lineage": {
+      "source_facts": [
+        "school_name",
+        "major_name",
+        "notice_title",
+        "source_relative_url",
+        "published_date",
+        "province",
+        "school_type",
+        "school_attribute"
+      ],
+      "derived_fields": [
+        "notice_id",
+        "snapshot_year",
+        "freshness_status",
+        "official_verification_required",
+        "state",
+        "data_nature"
+      ]
+    }
+  },
+  "supplemental_outputs": [],
+  "transform_status": "derived-verified",
+  "materialized_status": "verified",
+  "rebuild_status": "verified",
+  "restriction": "全部记录是历史资料；必须回到院校官网或中国研究生招生信息网核验，不提供当年名额或录取承诺。"
+}

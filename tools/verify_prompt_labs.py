@@ -22,14 +22,14 @@ def main() -> int:
     text = CHAPTER.read_text(encoding="utf-8")
     errors: list[str] = []
 
-    units = re.findall(r"^## U(\d{2})\s", text, flags=re.MULTILINE)
-    if units != ["01", "02", "03", "04", "05", "06"]:
-        errors.append(f"expected units U01-U06 in order, got {units}")
+    units = re.findall(r"^## (P\d{3})\s", text, flags=re.MULTILINE)
+    if units != ["P001", "P002", "P003", "P005", "P006", "P008"]:
+        errors.append(f"expected teaching units P001/P002/P003/P005/P006/P008 in order, got {units}")
 
-    unit_blocks = re.split(r"(?=^## U\d{2}\s)", text, flags=re.MULTILINE)[1:]
+    unit_blocks = re.split(r"(?=^## P\d{3}\s)", text, flags=re.MULTILINE)[1:]
     experiment_count = 0
     for unit in unit_blocks:
-        unit_id = re.match(r"## (U\d{2})", unit)
+        unit_id = re.match(r"## (P\d{3})", unit)
         name = unit_id.group(1) if unit_id else "unknown"
         experiments = re.split(r"(?=^### 实验 \d+：)", unit, flags=re.MULTILINE)[1:]
         experiment_count += len(experiments)
@@ -62,7 +62,7 @@ def main() -> int:
         if phrase in text:
             errors.append(f"forbidden classroom wording: {phrase}")
 
-    member_path = ROOT / "dataset" / "02-member-value-experiment" / "case.csv"
+    member_path = ROOT / "dataset" / "B002-member-value-experiment" / "case.csv"
     with member_path.open(encoding="utf-8-sig", newline="") as handle:
         members = list(csv.DictReader(handle))
     segments = Counter(row["value_segment"] for row in members)

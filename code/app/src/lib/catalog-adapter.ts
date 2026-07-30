@@ -9,7 +9,7 @@ type ManifestCase = {
   id: string;
   chapter_ids: string[];
   runtime_mode: "deterministic_offline" | "offline_replay_and_optional_live_model";
-  status: "verified_shared_runtime";
+  status: "verified_shared_runtime" | "data_contract_verified_ui_in_progress";
 };
 
 export type CourseManifest = {
@@ -47,7 +47,7 @@ export type CatalogCase = {
     offlineReady: boolean;
     optionalLiveModel: boolean;
     recoverable: boolean;
-    verification: "verified_shared_runtime";
+    verification: ManifestCase["status"];
   };
   href: string;
 };
@@ -99,7 +99,7 @@ export function buildCatalogCases(
 
   return definitions.map((definition) => {
     const manifestCase = manifestCases.get(definition.id);
-    if (!manifestCase || manifestCase.status !== "verified_shared_runtime") {
+    if (!manifestCase) {
       throw new Error(`catalog_case_status_invalid:${definition.id}`);
     }
     const theoryTags = manifestCase.chapter_ids.map((chapterId) => {
@@ -115,7 +115,7 @@ export function buildCatalogCases(
 
     return {
       kind: "case",
-      id: `B${definition.id}`,
+      id: definition.id,
       runtimeId: definition.id,
       shortTitle: definition.shortTitle,
       title: definition.title,
@@ -135,7 +135,7 @@ export function buildCatalogCases(
         recoverable: definition.views.some((view) => view.id === "recovery"),
         verification: manifestCase.status,
       },
-      href: `/cases/B${definition.id}/work`,
+      href: `/cases/${definition.id}`,
     };
   });
 }

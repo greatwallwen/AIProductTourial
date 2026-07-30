@@ -1,0 +1,155 @@
+{
+  "schema_version": "1.0",
+  "case_id": "B003",
+  "row_count": 6970,
+  "columns": [
+    {
+      "name": "id",
+      "dtype": "int64",
+      "nullable": false,
+      "sample": "44998"
+    },
+    {
+      "name": "split",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "train"
+    },
+    {
+      "name": "review",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "家就住附近，自从这家店开业以来，来过不下10次了，一句话：越来越差！今晚家人又来吃，先点了6个菜，3个没有（东坡肘子、青蛤蒸蛋、清炒豌豆尖）！要知道当时刚刚晚上6点！相反，两个凉菜秒上，相信是早就备好的，换句话说不知道做好多久了！最终点的8"
+    },
+    {
+      "name": "star",
+      "dtype": "float64",
+      "nullable": false,
+      "sample": "1.0"
+    },
+    {
+      "name": "Location#Transportation",
+      "dtype": "int64",
+      "nullable": false,
+      "sample": "-2"
+    },
+    {
+      "name": "Location#Downtown",
+      "dtype": "int64",
+      "nullable": false,
+      "sample": "-2"
+    },
+    {
+      "name": "Location#Easy_to_find",
+      "dtype": "int64",
+      "nullable": false,
+      "sample": "-2"
+    },
+    {
+      "name": "Service#Queue",
+      "dtype": "int64",
+      "nullable": false,
+      "sample": "-2"
+    },
+    {
+      "name": "Service#Hospitality",
+      "dtype": "int64",
+      "nullable": false,
+      "sample": "-2"
+    },
+    {
+      "name": "Service#Parking",
+      "dtype": "int64",
+      "nullable": false,
+      "sample": "-2"
+    },
+    {
+      "name": "Service#Timely",
+      "dtype": "int64",
+      "nullable": false,
+      "sample": "1"
+    },
+    {
+      "name": "Price#Level",
+      "dtype": "int64",
+      "nullable": false,
+      "sample": "-2"
+    },
+    {
+      "name": "Price#Cost_effective",
+      "dtype": "int64",
+      "nullable": false,
+      "sample": "-2"
+    },
+    {
+      "name": "Price#Discount",
+      "dtype": "int64",
+      "nullable": false,
+      "sample": "-2"
+    },
+    {
+      "name": "Ambience#Decoration",
+      "dtype": "int64",
+      "nullable": false,
+      "sample": "-2"
+    },
+    {
+      "name": "Ambience#Noise",
+      "dtype": "int64",
+      "nullable": false,
+      "sample": "-2"
+    },
+    {
+      "name": "Ambience#Space",
+      "dtype": "int64",
+      "nullable": false,
+      "sample": "-2"
+    },
+    {
+      "name": "Ambience#Sanitary",
+      "dtype": "int64",
+      "nullable": false,
+      "sample": "-2"
+    },
+    {
+      "name": "Food#Portion",
+      "dtype": "int64",
+      "nullable": false,
+      "sample": "-2"
+    },
+    {
+      "name": "Food#Taste",
+      "dtype": "int64",
+      "nullable": false,
+      "sample": "-1"
+    },
+    {
+      "name": "Food#Appearance",
+      "dtype": "int64",
+      "nullable": false,
+      "sample": "-2"
+    },
+    {
+      "name": "Food#Recommend",
+      "dtype": "int64",
+      "nullable": false,
+      "sample": "-2"
+    },
+    {
+      "name": "source_id",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "DATA-03"
+    },
+    {
+      "name": "data_nature",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "public-derived"
+    }
+  ],
+  "data_nature": "public-derived",
+  "source_ids": [
+    "DATA-03"
+  ]
+}

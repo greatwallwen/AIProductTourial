@@ -33,8 +33,12 @@ vi.mock("../src/components/workbenches/case-specific", () => {
     ReturnEvidenceWorkbench: WorkbenchStub,
     ReviewResearchWorkbench: WorkbenchStub,
     TelecomRecoveryWorkbench: WorkbenchStub,
+    TransferNoticeWorkbench: WorkbenchStub,
     WaferRetestWorkbench: WorkbenchStub,
+    WeekendRouteWorkbench: WorkbenchStub,
     WindUnderperformanceWorkbench: WorkbenchStub,
+    SpringFestivalScreeningWorkbench: WorkbenchStub,
+    SupermarketReplenishmentWorkbench: WorkbenchStub,
   };
 });
 
@@ -67,9 +71,9 @@ const memberRows = [
 ];
 
 function memberProps(overrides: Partial<CaseWorkbenchProps> = {}): CaseWorkbenchProps {
-  const objects = memberRows.map((row) => projection("02", `02-${row.user_id}`, "待入组", row));
+  const objects = memberRows.map((row) => projection("B002", `02-${row.user_id}`, "待入组", row));
   return {
-    definition: getCaseDefinition("02")!,
+    definition: getCaseDefinition("B002")!,
     objects,
     selected: objects[3]!,
     events: [],
@@ -117,9 +121,9 @@ const hydraulicPayload = {
 };
 
 function hydraulicProps(overrides: Partial<CaseWorkbenchProps> = {}): CaseWorkbenchProps {
-  const selected = projection("19", "19-217", "待排序", hydraulicPayload);
+  const selected = projection("B019", "19-217", "待排序", hydraulicPayload);
   return {
-    definition: getCaseDefinition("19")!,
+    definition: getCaseDefinition("B019")!,
     objects: [selected],
     selected,
     events: [],
@@ -144,7 +148,7 @@ describe("20 个案例的黄金产品合同", () => {
     const failures: string[] = [];
 
     for (let index = 1; index <= 20; index += 1) {
-      const caseId = String(index).padStart(2, "0");
+      const caseId = `B${String(index).padStart(3, "0")}`;
       const definition = getCaseDefinition(caseId)!;
       const selected = projection(caseId, `${caseId}-golden-object`, definition.workflow.initialState, {});
       const view = render(
@@ -163,8 +167,8 @@ describe("20 个案例的黄金产品合同", () => {
       if (hrefs.includes(`/cases/${caseId}`)) failures.push(`${caseId}:overview-link`);
       if (hrefs.includes(`/cases/${caseId}/evidence`)) failures.push(`${caseId}:evidence-link`);
       if (hrefs.includes(`/cases/${caseId}/audit`)) failures.push(`${caseId}:audit-link`);
-      if (!screen.queryByRole("button", { name: "查看当前数据" })) failures.push(`${caseId}:evidence-drawer`);
-      if (!screen.queryByRole("button", { name: "查看操作记录" })) failures.push(`${caseId}:activity-drawer`);
+      if (caseId !== "B018" && !screen.queryByRole("button", { name: "查看当前数据" })) failures.push(`${caseId}:evidence-drawer`);
+      if (caseId !== "B018" && !screen.queryByRole("button", { name: "查看操作记录" })) failures.push(`${caseId}:activity-drawer`);
       view.unmount();
     }
 

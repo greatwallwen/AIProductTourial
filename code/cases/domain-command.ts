@@ -2167,24 +2167,24 @@ function validateCase20(input: DomainCommandInput): void {
 
 export function validateDomainCommand(input: DomainCommandInput): void {
   validateEnvelope(input);
-  if (input.caseId === "01") validateCase01(input);
-  if (input.caseId === "02") validateCase02(input);
-  if (input.caseId === "03") validateCase03(input);
-  if (input.caseId === "04") validateCase04(input);
-  if (input.caseId === "05") validateCase05(input);
-  if (input.caseId === "06") validateCase06(input);
-  if (input.caseId === "07") validateCase07(input);
-  if (input.caseId === "08") validateCase08(input);
-  if (input.caseId === "09") validateCase09(input);
-  if (input.caseId === "10") validateCase10(input);
-  if (input.caseId === "11") validateCase11(input);
-  if (input.caseId === "12") validateCase12(input);
-  if (input.caseId === "13") validateCase13(input);
-  if (input.caseId === "14") validateCase14(input);
-  if (input.caseId === "15") validateCase15(input);
-  if (input.caseId === "16") validateCase16(input);
-  if (input.caseId === "17") validateCase17(input);
-  if (input.caseId === "18") validateCase18(input);
-  if (input.caseId === "19") validateCase19(input);
-  if (input.caseId === "20") validateCase20(input);
+  if (input.caseId === "B001") validateCase01(input);
+  if (input.caseId === "B002") validateCase02(input);
+  if (input.caseId === "B003") validateCase03(input);
+  if (input.caseId === "B004") validateCase04(input);
+  if (input.caseId === "B005") validateCase05(input);
+  if (input.caseId === "B006") validateCase06(input);
+  if (input.caseId === "B007") validateCase07(input);
+  if (input.caseId === "B008") validateCase08(input);
+  if (input.caseId === "B009") validateCase09(input);
+  if (input.caseId === "B010") validateCase10(input);
+  if (input.caseId === "B011") validateCase11(input);
+  if (input.caseId === "B012") validateCase12(input);
+  if (input.caseId === "B013") validateCase13(input);
+  if (input.caseId === "B014") validateCase14(input);
+  if (input.caseId === "B015") validateCase15(input);
+  if (input.caseId === "B016") validateCase16(input);
+  if (input.caseId === "B017") validateCase17(input);
+  if (input.caseId === "B018") validateCase18(input);
+  if (input.caseId === "B019") validateCase19(input);
+  if (input.caseId === "B020") validateCase20(input);
 }

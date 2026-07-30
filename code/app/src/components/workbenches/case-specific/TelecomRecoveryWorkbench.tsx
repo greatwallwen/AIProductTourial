@@ -286,7 +286,7 @@ export function TelecomRecoveryWorkbench(props: CaseWorkbenchProps) {
         </dl>
         <div className={styles.headerActions}>
           <label>当前操作角色<select aria-label="当前操作角色" value={props.actorRole} onChange={(event) => props.onActorRoleChange(event.target.value)}>{props.roles.map((role) => <option key={role} value={role}>{roleLabel(role)}</option>)}</select></label>
-          <button type="button" aria-label="恢复案例 B10" title="恢复案例" disabled={props.busy} onClick={props.onReset}><RefreshCw size={18} /></button>
+          <button type="button" aria-label="恢复案例 B010" title="恢复案例" disabled={props.busy} onClick={props.onReset}><RefreshCw size={18} /></button>
         </div>
       </header>
 

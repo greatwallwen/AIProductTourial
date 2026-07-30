@@ -43,7 +43,7 @@ describe("CaseTourLauncher", () => {
   it("does nothing until the instructor starts the tour, then prepares state before loading Driver.js", async () => {
     installBrowserStubs();
     const onPrepare = vi.fn().mockResolvedValue(true);
-    const definition = getCaseTourDefinition("18")!;
+    const definition = getCaseTourDefinition("B018")!;
     render(
       <CaseTourLauncher
         definition={definition}
@@ -63,7 +63,7 @@ describe("CaseTourLauncher", () => {
 
   it("does not load the tour engine when the demonstration object cannot be restored", async () => {
     installBrowserStubs();
-    const definition = getCaseTourDefinition("18")!;
+    const definition = getCaseTourDefinition("B018")!;
     render(
       <CaseTourLauncher
         definition={definition}

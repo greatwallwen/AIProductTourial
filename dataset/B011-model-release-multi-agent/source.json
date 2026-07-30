@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.1",
+  "case_id": "B011",
+  "captured_at": "2026-07-22T20:20:00+08:00",
+  "sources": [
+    {
+      "id": "DATA-11",
+      "title": "Qwen official repositories and public metadata",
+      "url": "https://github.com/QwenLM/Qwen3",
+      "publisher": "QwenLM",
+      "version": "course-pinned metadata card plus retained Qwen repository snapshot",
+      "license": "repository code and model weights require separate checks",
+      "state": "metadata-verified",
+      "redistribution": "metadata subset only",
+      "boundary": "公开元数据不证明具体模型适合企业场景"
+    },
+    {
+      "id": "COURSE-EVAL-11",
+      "title": "企业模型准入课程评测",
+      "publisher": "Course_AIProduct",
+      "version": "MODEL-GATE-2026.1",
+      "state": "deterministic-synthetic",
+      "redistribution": "course-local",
+      "boundary": "所有指标与门槛用于课程演练，不是 Qwen 官方或企业生产评测"
+    }
+  ],
+  "artifacts": [
+    {
+      "source_id": "DATA-11",
+      "path": "dataset/B011-model-release-multi-agent/raw/qwen3-model-metadata.json",
+      "bytes": 495,
+      "sha256": "ce7ce6a2bb0a153dde551481cf7da14c19a96740de0f8385ecc4d8656a70b47d",
+      "status": "verified-source-card"
+    },
+    {
+      "source_id": "DATA-11",
+      "path": "dataset/B011-model-release-multi-agent/raw/qwen-commit-2df8e8ac.json",
+      "bytes": 4816,
+      "sha256": "176f1bc4f1874e8a6c2fd5bab8f25c37a558204451c9e395398d83af94e82969",
+      "status": "retained-verified-reference"
+    },
+    {
+      "source_id": "DATA-11",
+      "path": "dataset/B011-model-release-multi-agent/raw/qwen-issues-50.json",
+      "bytes": 279143,
+      "sha256": "5412991de0b2cc4401adb6e69e179f40da0ce25050368743a599d16966e4f982",
+      "status": "retained-verified-reference"
+    }
+  ],
+  "transform_status": "derived-verified",
+  "derived_output": {
+    "path": "case.csv",
+    "rows": 9,
+    "sha256": "a78da306b49dd1cf03f5d5293f8a3d256d4ba9d36fa5d7845a0c8438648940a0",
+    "data_nature": "public-model-metadata-plus-deterministic-enterprise-evaluation"
+  }
+}

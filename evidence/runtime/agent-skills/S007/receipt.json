@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0",
+  "skill_id": "S007",
+  "skill_name": "pixijs-game-contract",
+  "verification_status": "verified-runtime",
+  "verified_scope": "production dist and real Playwright keyboard lifecycle",
+  "provider_scope": null,
+  "known_limitations": [],
+  "commands": [
+    "node code/skills/pixijs-game-contract/scripts/audit_game_contract.mjs code/skills/pixijs-game-contract/examples/beijing-clean-dispatch",
+    "Playwright Chromium against Vite production dist; receipt and screenshot copied into S007"
+  ],
+  "key_results": [
+    "R 键重置为 45 秒，方向键将坐标从 120,160 移到 136,160",
+    "倒计时真实下降；控制台 0 error / 0 warning",
+    "浏览器截图保留完整游戏画面"
+  ],
+  "artifact_count": 8,
+  "artifacts": [
+    {
+      "path": "evidence/runtime/agent-skills/S007/browser-verification.json",
+      "bytes": 643,
+      "sha256": "75bc1a27b2f895e6b9d29a79fb02315111fb0e340568adb7db2bbb2b488f5c7b"
+    },
+    {
+      "path": "evidence/runtime/agent-skills/S007/dist/assets/index-4jypZS68.js",
+      "bytes": 4852,
+      "sha256": "74b62d7f0726d25d829df8c874285d61f674c5d15a2bb1ed1fdf9d48d915b9d2"
+    },
+    {
+      "path": "evidence/runtime/agent-skills/S007/dist/assets/index-ClGy6XrL.css",
+      "bytes": 1885,
+      "sha256": "6636dfd86a575b0a479c16143c63b24e57c38742e378eb3bb195638df012f5fc"
+    },
+    {
+      "path": "evidence/runtime/agent-skills/S007/dist/index.html",
+      "bytes": 1714,
+      "sha256": "6a451d63a403f641280796e4cebe0be9f70878d04ce22b9412b05cf262a85ff4"
+    },
+    {
+      "path": "evidence/runtime/agent-skills/S007/game-contract.json",
+      "bytes": 1264,
+      "sha256": "3bb938d98dbf7b0428c232612d3092f4e01a43885b496b8997643243b1f8705c"
+    },
+    {
+      "path": "evidence/runtime/agent-skills/S007/request.json",
+      "bytes": 886,
+      "sha256": "c85f82730ce7e66a2b16405b89fa3176d0aa099e73dfd12cc850d4afc1bcd8b6"
+    },
+    {
+      "path": "evidence/runtime/agent-skills/S007/runtime-keyboard.png",
+      "bytes": 147091,
+      "sha256": "ec6f61904f1104ebd8377517b943daab0758983a13255f86c8efb12eaafcae6c"
+    },
+    {
+      "path": "evidence/runtime/agent-skills/S007/runtime-keyboard.snapshot.yml",
+      "bytes": 1256,
+      "sha256": "461d133a0b106a2b7f7ad36cc6dde0377534ab0cdf4630b58204d92df03fb4f2"
+    }
+  ],
+  "focused_tests": 3,
+  "quick_validate": "passed"
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "case_id": "18",
+  "generated_at": "2026-07-27T19:55:00+08:00",
+  "primary_file": {
+    "path": "dataset/B018-boiler-temperature-review/case.csv",
+    "sha256": "50b7bdd21090f2b1bcbfc99cd99d587950520f5b35e09198eb1dd53de491939f",
+    "rows": 7201,
+    "first_minute": "2022-03-27 14:28",
+    "last_minute": "2022-04-01 14:28"
+  },
+  "event_file": {
+    "path": "dataset/B018-boiler-temperature-review/events.csv",
+    "sha256": "4ab6fad769122248401cbccebd5f183f8ee7d5eae1b91681ae31cb632499e461",
+    "rows": 93
+  },
+  "imputation_file": {
+    "path": "dataset/B018-boiler-temperature-review/imputation-points.csv",
+    "sha256": "d842af611316d70a7610d479535f4b8315b0d52c2faa41e34e2dac3a0d052a8f",
+    "rows": 30,
+    "signal": "一级减温水流量",
+    "temperature_evidence": false
+  },
+  "featured_event": {
+    "event_id": "BT-0044",
+    "start_time": "2022-03-29 17:22:39",
+    "end_time": "2022-03-29 17:46:59",
+    "duration_seconds": 1465,
+    "minimum_temperature_c": 526.63,
+    "maximum_temperature_c": 529.98,
+    "event_trimmed_source_samples": 293,
+    "recovery_time": "2022-03-29 17:47:04",
+    "data_quality_state": "完整"
+  },
+  "featured_minute_window": {
+    "start_minute": "2022-03-29 17:22",
+    "end_minute": "2022-03-29 17:46",
+    "rows": 25,
+    "distinct_minutes": 25,
+    "continuous_one_minute": true,
+    "full_minute_samples": 300,
+    "minimum_observed_temperature_c": 526.63,
+    "maximum_observed_temperature_c": 530.17,
+    "sample_count_note": "300 counts all samples in the 25 minute bins; 293 is the event-trimmed sample count from 17:22:39 through 17:46:59."
+  },
+  "lineage": {
+    "temperature_series": "public source observations materialized as minute aggregates",
+    "events": "course-rule-derived snapshots using the source interval",
+    "source_interval": "530-545 degrees Celsius from the source metadata; not verified as a factory control limit",
+    "action_boundary": "course policy allows only human investigation and blocks automatic control"
+  },
+  "limitations": [
+    "Only the main-steam outlet temperature is available for the featured investigation.",
+    "Valve position, desuperheater flow, section temperatures, pressure and unit load are not available.",
+    "Flow imputation records must not be plotted as temperature evidence.",
+    "The event supports investigation ordering, not a root-cause or automatic-control conclusion."
+  ]
+}

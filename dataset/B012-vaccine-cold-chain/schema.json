@@ -1,0 +1,133 @@
+{
+  "schema_version": "1.0",
+  "case_id": "B012",
+  "row_count": 360,
+  "columns": [
+    {
+      "name": "investigation_id",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "CCI-2026-001"
+    },
+    {
+      "name": "event_id",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "CN-CC-01-001"
+    },
+    {
+      "name": "event_time",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "2026-07-06T07:30:00"
+    },
+    {
+      "name": "province",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "四川"
+    },
+    {
+      "name": "county",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "彭州市"
+    },
+    {
+      "name": "route_id",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "CN-SC-PZ-01"
+    },
+    {
+      "name": "vehicle_code",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "COURSE-VEH-01"
+    },
+    {
+      "name": "container_code",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "COURSE-BOX-01"
+    },
+    {
+      "name": "logger_code",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "COURSE-LOGGER-01"
+    },
+    {
+      "name": "temperature_c",
+      "dtype": "float64",
+      "nullable": false,
+      "sample": "4.08"
+    },
+    {
+      "name": "reference_profile_type",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "freeze_preventive"
+    },
+    {
+      "name": "route_record_status",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "complete"
+    },
+    {
+      "name": "calibration_status",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "valid"
+    },
+    {
+      "name": "handoff_status",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "missing"
+    },
+    {
+      "name": "sample_completeness",
+      "dtype": "float64",
+      "nullable": false,
+      "sample": "1.0"
+    },
+    {
+      "name": "offline_minutes",
+      "dtype": "int64",
+      "nullable": false,
+      "sample": "0"
+    },
+    {
+      "name": "evidence_digest",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "568b26c8d7067cdef8d62fdce90dcf5b6dadd883ec4dccf9a812f313f04780bd"
+    },
+    {
+      "name": "policy_version",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "COLD-CHAIN-INVESTIGATION-2026.1"
+    },
+    {
+      "name": "usability_decision_allowed",
+      "dtype": "bool",
+      "nullable": false,
+      "sample": "False"
+    },
+    {
+      "name": "data_nature",
+      "dtype": "object",
+      "nullable": false,
+      "sample": "deterministic-synthetic-cn-operations"
+    }
+  ],
+  "data_nature": "public-thermal-benchmark-plus-deterministic-synthetic-cn-operations",
+  "source_ids": [
+    "DATA-12",
+    "POLICY-12",
+    "COURSE-OPS-12"
+  ]
+}

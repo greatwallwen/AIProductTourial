@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "2.0",
+  "generatedAt": "2026-07-23T03:48:00+08:00",
+  "caseId": "09",
+  "dataset": {
+    "path": "dataset/B009-metro-agentic-rag/case.csv",
+    "sha256": "fc717d919649406167311cbe875c08950b1a98c9f0d3a02d2a9dfe0211e2270e",
+    "checksumLedgerMatch": true,
+    "rows": 4090,
+    "columns": 21,
+    "dataNature": "public-derived"
+  },
+  "uniqueness": {
+    "distinctTimestamps": 4090,
+    "duplicateTimestampExtraRows": 0
+  },
+  "windowAggregation": {
+    "serviceWindow": "fixed-5-minute",
+    "windows": 153,
+    "minSamples": 6,
+    "maxSamples": 31,
+    "gapDetectedWindows": 1,
+    "maxSampleGapSeconds": 352
+  },
+  "sourceLabels": {
+    "knownFailureWindowTrue": 2045,
+    "knownFailureWindowFalse": 2045,
+    "maintenanceActionAllowedTrueRows": 0
+  },
+  "knowledgeCorpus": {
+    "path": "dataset/B009-metro-agentic-rag/knowledge.jsonl",
+    "documents": 4,
+    "sha256": "86b24e32072a8506143a803578ade4877758c897bd246bdbe74a7558baae320c",
+    "allowedSourceIds": ["DATA-09", "COURSE-POLICY-09"],
+    "types": ["source-fact", "field-definition", "inspection-procedure", "approval-policy"],
+    "validatedServerSide": true
+  },
+  "findings": [
+    {
+      "severity": "high",
+      "finding": "A 352-second ingress gap is preserved in one five-minute window.",
+      "impact": "The window may be retrieved for explanation but must fail verification and work-order creation."
+    },
+    {
+      "severity": "high",
+      "finding": "The inspection procedure and approval policy are course documents, not vendor manuals or metro operator rules.",
+      "impact": "The product can create one pending-human-approval inspection order per investigation run and nothing more."
+    }
+  ]
+}

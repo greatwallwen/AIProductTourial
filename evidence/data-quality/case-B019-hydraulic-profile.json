@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "case_id": "19",
+  "generated_at": "2026-07-27T22:00:00+08:00",
+  "primary_file": {
+    "path": "dataset/B019-hydraulic-condition/case.csv",
+    "sha256": "857a6289cf73d9f03c2074ab98ab85bf95f8ba94a3d8566845a92c0cf1fc9af8",
+    "rows": 2205,
+    "unique_cycles": 2205
+  },
+  "featured_cycle": {
+    "cycle_id": 217,
+    "continuous_measures": 7,
+    "main_pressure_mean": 156.552065,
+    "return_pressure_mean": 105.31137183333334,
+    "system_pressure_mean": 1.645498,
+    "motor_power_mean": 2423.7161,
+    "main_flow_mean": 6.234048333333334,
+    "tank_temperature_mean": 54.27211666666667,
+    "system_vibration_mean": 0.68205,
+    "critical_components": ["pump", "valve", "cooler"],
+    "normal_components": ["accumulator"],
+    "affected_component_count": 3,
+    "stability_label": "稳定",
+    "overall_severity_label": "临界"
+  },
+  "lineage": {
+    "cycle_id_and_condition_codes": "public source facts",
+    "continuous_measures": "public observations normalized to one mean per cycle",
+    "chinese_labels_and_severity": "delivery mapping",
+    "summary_and_action_fields": "delivery and course rule derivations",
+    "rebuild_status": "blocked because the normalized upstream input is not packaged"
+  },
+  "limitations": [
+    "cycle_id is a sequence, not a timestamp",
+    "the dataset has no station, asset number, work order, maintenance history or inspection result",
+    "three critical components are tied; their initial display order is not a risk ranking",
+    "the scene and optional approximate 3D view are navigation aids, not measurement evidence"
+  ]
+}

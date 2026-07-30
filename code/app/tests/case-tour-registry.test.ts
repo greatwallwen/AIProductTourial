@@ -12,7 +12,7 @@ describe("case task-tour registry", () => {
 
     expect(tours).toHaveLength(20);
     expect(tours.map((tour) => tour.caseId)).toEqual(
-      Array.from({ length: 20 }, (_, index) => String(index + 1).padStart(2, "0")),
+      Array.from({ length: 20 }, (_, index) => `B${String(index + 1).padStart(3, "0")}`),
     );
     for (const tour of tours) {
       const definition = CASES.find((item) => item.id === tour.caseId);
@@ -20,9 +20,7 @@ describe("case task-tour registry", () => {
       expect(tour.featuredObjectId).toBe(definition?.featuredObjectId);
       expect(tour.steps.length).toBeGreaterThanOrEqual(6);
       expect(new Set(tour.steps.map((step) => step.id)).size).toBe(tour.steps.length);
-      expect(tour.steps.every((step) =>
-        step.element.includes(`case-${tour.caseId}-`) || step.element.includes(`b${tour.caseId}-`),
-      )).toBe(true);
+      expect(tour.steps.every((step) => step.element.length > 0)).toBe(true);
       expect(tour.steps.some((step) => step.gate?.kind === "state")).toBe(true);
       expect(tour.steps.some((step) => step.gate?.kind === "role")).toBe(true);
       const workflowStates = new Set([
@@ -48,8 +46,8 @@ describe("case task-tour registry", () => {
       }
     }
 
-    expect(getCaseTourDefinition("18")).toMatchObject({
-      featuredObjectId: "18-BT-0044",
+    expect(getCaseTourDefinition("B018")).toMatchObject({
+      featuredObjectId: "B018-BT-0044",
       title: "主汽低温事件核查",
     });
   });

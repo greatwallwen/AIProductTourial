@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.0",
+  "case_id": "B023",
+  "row_count": 10,
+  "columns": [
+    {
+      "name": "movie_name",
+      "origin": "source-fact"
+    },
+    {
+      "name": "main_genre",
+      "origin": "source-fact"
+    },
+    {
+      "name": "runtime_minutes",
+      "origin": "source-fact"
+    },
+    {
+      "name": "release_date",
+      "origin": "source-fact"
+    },
+    {
+      "name": "data_cutoff_date",
+      "origin": "source-fact"
+    },
+    {
+      "name": "cumulative_box_office_cny",
+      "origin": "source-fact"
+    },
+    {
+      "name": "cumulative_screenings",
+      "origin": "source-fact"
+    },
+    {
+      "name": "cumulative_audience",
+      "origin": "source-fact"
+    },
+    {
+      "name": "maoyan_score",
+      "origin": "source-fact"
+    },
+    {
+      "name": "douban_score",
+      "origin": "source-fact"
+    },
+    {
+      "name": "latest_schedule_share_pct",
+      "origin": "source-fact"
+    },
+    {
+      "name": "movie_id",
+      "origin": "derived"
+    },
+    {
+      "name": "screening_decision_boundary",
+      "origin": "derived"
+    },
+    {
+      "name": "state",
+      "origin": "derived"
+    },
+    {
+      "name": "data_nature",
+      "origin": "derived"
+    }
+  ],
+  "supplemental_artifacts": [
+    {
+      "path": "daily-box-office.csv",
+      "row_count": 38,
+      "columns": [
+        "date",
+        "box_office_cny",
+        "screenings",
+        "audience",
+        "audience_per_screening",
+        "average_ticket_price_cny",
+        "daily_champion",
+        "service_fee_cny",
+        "data_nature"
+      ],
+      "source_ids": [
+        "DATA-23"
+      ],
+      "data_nature": "user-provided-historical-daily-box-office"
+    },
+    {
+      "path": "screening-schedule.csv",
+      "row_count": 70,
+      "columns": [
+        "date",
+        "movie_name",
+        "screenings",
+        "share_pct",
+        "data_nature"
+      ],
+      "source_ids": [
+        "DATA-23"
+      ],
+      "data_nature": "user-provided-historical-screening-schedule"
+    }
+  ]
+}

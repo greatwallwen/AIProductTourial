@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "id": "B023",
+  "slug": "spring-festival-screening",
+  "title": "黄金场只有 6 个：下一轮该给哪部片？",
+  "industry": "影院经营",
+  "family": "commerce",
+  "tier": "complete",
+  "dataset_path": "dataset/B023-spring-festival-screening",
+  "route": "/cases/B023",
+  "runtime_mode": "deterministic_offline",
+  "productization": {
+    "metrics": ["历史票房", "历史排片占比", "影厅时隙"],
+    "decision_fields": ["movie_name", "runtime_minutes", "cumulative_audience"],
+    "selection_changes_decision": true,
+    "business_state_changes_on_server": true
+  }
+}

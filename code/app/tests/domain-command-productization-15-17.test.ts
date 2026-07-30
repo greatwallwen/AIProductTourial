@@ -25,7 +25,7 @@ function run(input: DomainCommandInput) {
 
 describe("dataset-backed domain gates for cases 15, 16 and 17", () => {
   it("case 15 recomputes blank sensor evidence instead of treating it as zero", () => {
-    const current = projection("15", {
+    const current = projection("B015", {
       wafer_id: "SECOM-0003",
       test_timestamp: "19/07/2008 13:17:00",
       quality_label: "fail",
@@ -59,11 +59,11 @@ describe("dataset-backed domain gates for cases 15, 16 and 17", () => {
       serverValidationRequired: true,
     };
     const input: DomainCommandInput = {
-      caseId: "15",
+      caseId: "B015",
       command: "request_retest",
       actorRole: "quality_engineer",
       actorId: "case15-quality-engineer",
-      idempotencyKey: "case-15:wafer:SECOM-0003:request_retest:v0",
+      idempotencyKey: "case-B015:wafer:SECOM-0003:request_retest:v0",
       evidenceIds: ["wafer:SECOM-0003", "sensor:SECOM-0003:sensor_158", "retest-task:RETEST-SECOM-0003-V1"],
       data,
       current,
@@ -88,7 +88,7 @@ describe("dataset-backed domain gates for cases 15, 16 and 17", () => {
       valid_wind_records: index === 6 ? "9" : "10",
       valid_power_records: "10",
     }));
-    const current = projection("16", rows[0]);
+    const current = projection("B016", rows[0]);
     const data = {
       aggregateType: "wind_underperformance_investigation",
       investigationId: "WIND-INV-7",
@@ -121,11 +121,11 @@ describe("dataset-backed domain gates for cases 15, 16 and 17", () => {
       serverValidationRequired: true,
     };
     const input: DomainCommandInput = {
-      caseId: "16",
+      caseId: "B016",
       command: "submit_field_check",
       actorRole: "reliability_engineer",
       actorId: "reliability-engineer-01",
-      idempotencyKey: "case-16:turbine:7:submit_field_check:v0",
+      idempotencyKey: "case-B016:turbine:7:submit_field_check:v0",
       evidenceIds: ["wind-window:7:days-1-2-3-4-5-6-7"],
       data,
       current,
@@ -139,7 +139,7 @@ describe("dataset-backed domain gates for cases 15, 16 and 17", () => {
   });
 
   it("case 17 verifies the synchronized cursor against the local waveform", () => {
-    const current = projection("17", { session_id: "BD-0003" });
+    const current = projection("B017", { session_id: "BD-0003" });
     const waveform = [
       { session_id: "BD-0003", sample_index: "1", cutter_motor_torque: "1.1", cutter_follow_error: "0.1", film_follow_error: "0.2" },
       { session_id: "BD-0003", sample_index: "2", cutter_motor_torque: "1.2", cutter_follow_error: "0.2", film_follow_error: "0.3" },
@@ -180,11 +180,11 @@ describe("dataset-backed domain gates for cases 15, 16 and 17", () => {
       serverValidationRequired: true,
     };
     const input: DomainCommandInput = {
-      caseId: "17",
+      caseId: "B017",
       command: "schedule_night_inspection",
       actorRole: "maintenance_planner",
       actorId: "planner-01",
-      idempotencyKey: "case-17:session:BD-0003:schedule_night_inspection:v0",
+      idempotencyKey: "case-B017:session:BD-0003:schedule_night_inspection:v0",
       evidenceIds: ["session:BD-0003:summary", "waveform:BD-0003:samples-3", "waveform:BD-0003:cursor-2"],
       data,
       current,

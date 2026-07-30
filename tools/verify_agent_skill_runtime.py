@@ -22,25 +22,25 @@ REPORT_MD = EVIDENCE_ROOT / "report.md"
 QUICK_VALIDATE = Path(os.environ.get("CODEX_SKILL_QUICK_VALIDATE", ROOT / "tools" / "validate_skill.py"))
 
 SKILLS = {
-    "S01": {"name": "capability-router", "title": "能力路由"},
-    "S02": {"name": "data-profile", "title": "CSV 数据体检"},
-    "S03": {"name": "metric-brief", "title": "会员实验指标简报"},
-    "S04": {"name": "product-opportunity-map", "title": "产品机会图"},
-    "S05": {"name": "poster-recipe", "title": "雨天旧书店海报"},
-    "S06": {"name": "slide-plan", "title": "Markdown 到可编辑演示文稿"},
-    "S07": {"name": "pixijs-game-contract", "title": "北京空气数据清洁调度"},
-    "S08": {"name": "asset-contract", "title": "本地 3D 资产合同与查看器"},
+    "S001": {"name": "capability-router", "title": "能力路由"},
+    "S002": {"name": "data-profile", "title": "CSV 数据体检"},
+    "S003": {"name": "metric-brief", "title": "会员实验指标简报"},
+    "S004": {"name": "product-opportunity-map", "title": "产品机会图"},
+    "S005": {"name": "poster-recipe", "title": "雨天旧书店海报"},
+    "S006": {"name": "slide-plan", "title": "Markdown 到可编辑演示文稿"},
+    "S007": {"name": "pixijs-game-contract", "title": "北京空气数据清洁调度"},
+    "S008": {"name": "asset-contract", "title": "本地 3D 资产合同与查看器"},
 }
 
 EXPECTED_TESTS = {
-    "S01": 6,
-    "S02": 3,
-    "S03": 3,
-    "S04": 5,
-    "S05": 3,
-    "S06": 3,
-    "S07": 3,
-    "S08": 7,
+    "S001": 6,
+    "S002": 3,
+    "S003": 3,
+    "S004": 5,
+    "S005": 3,
+    "S006": 3,
+    "S007": 3,
+    "S008": 7,
 }
 
 
@@ -80,7 +80,7 @@ def png_dimensions(path: Path) -> tuple[int, int]:
 
 
 def verify_s01() -> dict[str, Any]:
-    folder = EVIDENCE_ROOT / "S01"
+    folder = EVIDENCE_ROOT / "S001"
     expected = {
         "01-data-profile.decision.json": ("selected", "data-profile", None),
         "02-metric-brief.decision.json": ("selected", "metric-brief", None),
@@ -91,9 +91,9 @@ def verify_s01() -> dict[str, Any]:
     selected = blocked = 0
     for filename, values in expected.items():
         value = load_json(folder / filename)
-        require(value.get("status") == values[0], f"S01_status:{filename}")
-        require(value.get("selected_skill") == values[1], f"S01_selected_skill:{filename}")
-        require(value.get("stop_reason") == values[2], f"S01_stop_reason:{filename}")
+        require(value.get("status") == values[0], f"S001_status:{filename}")
+        require(value.get("selected_skill") == values[1], f"S001_selected_skill:{filename}")
+        require(value.get("stop_reason") == values[2], f"S001_stop_reason:{filename}")
         selected += value["status"] == "selected"
         blocked += value["status"] == "blocked"
     return {
@@ -104,19 +104,19 @@ def verify_s01() -> dict[str, Any]:
 
 
 def verify_s02() -> dict[str, Any]:
-    folder = EVIDENCE_ROOT / "S02"
+    folder = EVIDENCE_ROOT / "S002"
     profile = load_json(folder / "profile.json")
-    require(profile.get("status") == "complete", "S02_not_complete")
-    require(profile.get("rows") == 21039, "S02_row_count")
-    require(profile.get("column_count") == 21, "S02_column_count")
-    require(profile.get("exact_duplicates") == 0, "S02_duplicate_count")
+    require(profile.get("status") == "complete", "S002_not_complete")
+    require(profile.get("rows") == 21039, "S002_row_count")
+    require(profile.get("column_count") == 21, "S002_column_count")
+    require(profile.get("exact_duplicates") == 0, "S002_duplicate_count")
     require(profile.get("date_ranges", {}).get("observed_at") == {
         "min": "2013-03-01 00:00:00",
         "max": "2017-02-28 20:00:00",
-    }, "S02_date_range")
+    }, "S002_date_range")
     expected_missing = {"PM2.5": 466, "PM10": 334, "SO2": 417, "NO2": 656, "CO": 1027, "O3": 830}
-    require({key: profile["pollutants"][key]["missing_count"] for key in expected_missing} == expected_missing, "S02_pollutant_missing")
-    require((folder / "profile.md").is_file(), "S02_profile_markdown")
+    require({key: profile["pollutants"][key]["missing_count"] for key in expected_missing} == expected_missing, "S002_pollutant_missing")
+    require((folder / "profile.md").is_file(), "S002_profile_markdown")
     return {
         "verification_status": "verified",
         "verified_scope": "read-only full CSV scan",
@@ -125,21 +125,21 @@ def verify_s02() -> dict[str, Any]:
 
 
 def verify_s03() -> dict[str, Any]:
-    folder = EVIDENCE_ROOT / "S03"
+    folder = EVIDENCE_ROOT / "S003"
     metrics = load_json(folder / "metrics.json")
-    require(metrics.get("status") == "complete", "S03_not_complete")
-    require(metrics.get("row_count") == 5000, "S03_row_count")
-    require(metrics.get("currency") == "CNY", "S03_currency")
-    require(metrics.get("parameters", {}).get("target_segment") == "成长", "S03_target_segment_utf8")
-    require(metrics.get("business_question") == "面向会员经营实验，8 元优惠券是否应先在“成长”分层内测试？", "S03_business_question_utf8")
+    require(metrics.get("status") == "complete", "S003_not_complete")
+    require(metrics.get("row_count") == 5000, "S003_row_count")
+    require(metrics.get("currency") == "CNY", "S003_currency")
+    require(metrics.get("parameters", {}).get("target_segment") == "成长", "S003_target_segment_utf8")
+    require(metrics.get("business_question") == "面向会员经营实验，8 元优惠券是否应先在“成长”分层内测试？", "S003_business_question_utf8")
     by_id = {item["metric_id"]: item for item in metrics.get("metrics", [])}
-    require(by_id["member_count"]["value"] == 5000, "S03_member_count")
-    require(set(by_id["segment_distribution"]["value"]) == {"成长", "核心", "活跃", "观察"}, "S03_segment_keys_utf8")
-    require(by_id["average_buy_count"]["value"]["overall"] == 8.5866, "S03_average_buy_count")
-    require(by_id["target_full_issue_budget"]["value"] == 10000.0, "S03_budget")
-    require(by_id["historical_revenue"]["status"] == "not_calculable", "S03_revenue_boundary")
-    require(by_id["purchase_recency"]["status"] == "not_calculable", "S03_recency_boundary")
-    require((folder / "business-brief.md").is_file(), "S03_brief")
+    require(by_id["member_count"]["value"] == 5000, "S003_member_count")
+    require(set(by_id["segment_distribution"]["value"]) == {"成长", "核心", "活跃", "观察"}, "S003_segment_keys_utf8")
+    require(by_id["average_buy_count"]["value"]["overall"] == 8.5866, "S003_average_buy_count")
+    require(by_id["target_full_issue_budget"]["value"] == 10000.0, "S003_budget")
+    require(by_id["historical_revenue"]["status"] == "not_calculable", "S003_revenue_boundary")
+    require(by_id["purchase_recency"]["status"] == "not_calculable", "S003_recency_boundary")
+    require((folder / "business-brief.md").is_file(), "S003_brief")
     return {
         "verification_status": "verified",
         "verified_scope": "deterministic member experiment metrics",
@@ -148,15 +148,15 @@ def verify_s03() -> dict[str, Any]:
 
 
 def verify_s04() -> dict[str, Any]:
-    folder = EVIDENCE_ROOT / "S04"
+    folder = EVIDENCE_ROOT / "S004"
     document = load_json(folder / "opportunity-map.json")
-    require(document.get("status") == "complete", "S04_not_complete")
-    require(document.get("source", {}).get("row_count") == 4, "S04_source_rows")
-    require(len(document.get("nodes", [])) == 5, "S04_node_count")
-    require(len(document.get("edges", [])) == 5, "S04_edge_count")
-    require(all(node.get("source_refs") for node in document["nodes"]), "S04_missing_source_refs")
+    require(document.get("status") == "complete", "S004_not_complete")
+    require(document.get("source", {}).get("row_count") == 4, "S004_source_rows")
+    require(len(document.get("nodes", [])) == 5, "S004_node_count")
+    require(len(document.get("edges", [])) == 5, "S004_edge_count")
+    require(all(node.get("source_refs") for node in document["nodes"]), "S004_missing_source_refs")
     svg = (folder / "opportunity-map.svg").read_text(encoding="utf-8")
-    require("<svg" in svg and "<text" in svg and "<image" not in svg, "S04_svg_contract")
+    require("<svg" in svg and "<text" in svg and "<image" not in svg, "S004_svg_contract")
     return {
         "verification_status": "verified",
         "verified_scope": "traceable JSON and editable SVG",
@@ -165,15 +165,15 @@ def verify_s04() -> dict[str, Any]:
 
 
 def verify_s05() -> dict[str, Any]:
-    folder = EVIDENCE_ROOT / "S05"
+    folder = EVIDENCE_ROOT / "S005"
     recipes = load_json(folder / "poster-recipes.json")
-    require(recipes.get("status") == "complete-local", "S05_not_complete")
-    require(len(recipes.get("recipes", [])) == 3, "S05_recipe_count")
-    require(recipes.get("selected_recipe_id") == "quiet-window", "S05_selection")
-    require(recipes.get("image_provider_called") is False, "S05_provider_claim")
-    require(recipes.get("image_provider_receipt") is None, "S05_provider_receipt")
+    require(recipes.get("status") == "complete-local", "S005_not_complete")
+    require(len(recipes.get("recipes", [])) == 3, "S005_recipe_count")
+    require(recipes.get("selected_recipe_id") == "quiet-window", "S005_selection")
+    require(recipes.get("image_provider_called") is False, "S005_provider_claim")
+    require(recipes.get("image_provider_receipt") is None, "S005_provider_receipt")
     svg = (folder / "poster.svg").read_text(encoding="utf-8")
-    require("<svg" in svg and "<text" in svg and "<image" not in svg, "S05_svg_contract")
+    require("<svg" in svg and "<text" in svg and "<image" not in svg, "S005_svg_contract")
     return {
         "verification_status": "verified-local",
         "verified_scope": "three local recipes, explicit selection, editable SVG",
@@ -182,7 +182,7 @@ def verify_s05() -> dict[str, Any]:
 
 
 def pptx_notes_count(path: Path) -> tuple[int, int]:
-    require(path.is_file() and path.stat().st_size > 20_000, "S06_invalid_pptx")
+    require(path.is_file() and path.stat().st_size > 20_000, "S006_invalid_pptx")
     with zipfile.ZipFile(path) as archive:
         names = archive.namelist()
         slides = [name for name in names if name.startswith("ppt/slides/slide") and name.endswith(".xml")]
@@ -209,26 +209,26 @@ def pptx_app_metadata_counts(path: Path) -> tuple[int | None, int | None]:
 
 
 def verify_s06() -> dict[str, Any]:
-    folder = EVIDENCE_ROOT / "S06"
+    folder = EVIDENCE_ROOT / "S006"
     plan = load_json(folder / "slide-plan.json")
     visual = load_json(folder / "visual-qa.json")
     structural = load_json(folder / "structure-audit.json")
-    require(plan.get("generator") == "@oai/artifact-tool", "S06_generator")
-    require(plan.get("editable") is True and plan.get("slide_count") == 5, "S06_plan")
-    require(visual.get("status") == "passed", "S06_visual_status")
-    require(visual.get("renderer") == "@oai/artifact-tool", "S06_renderer")
-    require(visual.get("rendered_slide_count") == 5, "S06_render_count")
+    require(plan.get("generator") == "@oai/artifact-tool", "S006_generator")
+    require(plan.get("editable") is True and plan.get("slide_count") == 5, "S006_plan")
+    require(visual.get("status") == "passed", "S006_visual_status")
+    require(visual.get("renderer") == "@oai/artifact-tool", "S006_renderer")
+    require(visual.get("rendered_slide_count") == 5, "S006_render_count")
     for field in ("bounds_issues", "overlap_issues", "text_overflow_issues"):
-        require(visual.get(field) == [], f"S06_{field}")
-    require(structural.get("status") == "passed" and structural.get("page_count") == 5, "S06_structure")
-    require(all(slide.get("notes_present") and slide.get("sources_block_present") and not slide.get("blank") for slide in structural.get("slides", [])), "S06_notes_or_blank")
+        require(visual.get(field) == [], f"S006_{field}")
+    require(structural.get("status") == "passed" and structural.get("page_count") == 5, "S006_structure")
+    require(all(slide.get("notes_present") and slide.get("sources_block_present") and not slide.get("blank") for slide in structural.get("slides", [])), "S006_notes_or_blank")
     slides, source_notes = pptx_notes_count(folder / "presentation.pptx")
-    require((slides, source_notes) == (5, 5), "S06_pptx_notes")
+    require((slides, source_notes) == (5, 5), "S006_pptx_notes")
     app_slides, app_notes = pptx_app_metadata_counts(folder / "presentation.pptx")
     images = sorted((folder / "rendered").glob("slide-*.png"))
-    require(len(images) == 5, "S06_rendered_files")
-    require(all(png_dimensions(image) == (1280, 720) for image in images), "S06_render_dimensions")
-    require((folder / "presentation.pptx.inspect.ndjson").is_file(), "S06_inspect_output")
+    require(len(images) == 5, "S006_rendered_files")
+    require(all(png_dimensions(image) == (1280, 720) for image in images), "S006_render_dimensions")
+    require((folder / "presentation.pptx.inspect.ndjson").is_file(), "S006_inspect_output")
     return {
         "verification_status": "verified",
         "verified_scope": "editable five-slide PPTX, notes, full rendering, geometry and structure QA",
@@ -240,21 +240,21 @@ def verify_s06() -> dict[str, Any]:
 
 
 def verify_s07() -> dict[str, Any]:
-    folder = EVIDENCE_ROOT / "S07"
+    folder = EVIDENCE_ROOT / "S007"
     contract = load_json(folder / "game-contract.json")
     browser = load_json(folder / "browser-verification.json")
-    require(contract.get("engine") == {"name": "pixi.js", "version": "8.8.1", "render_loop": "Application.ticker"}, "S07_engine")
-    require(contract.get("countdown_seconds") == 45, "S07_countdown_contract")
-    require(contract.get("restart", {}).get("keyboard") == "KeyR", "S07_restart_contract")
-    require(browser.get("status") == "passed", "S07_browser_status")
+    require(contract.get("engine") == {"name": "pixi.js", "version": "8.8.1", "render_loop": "Application.ticker"}, "S007_engine")
+    require(contract.get("countdown_seconds") == 45, "S007_countdown_contract")
+    require(contract.get("restart", {}).get("keyboard") == "KeyR", "S007_restart_contract")
+    require(browser.get("status") == "passed", "S007_browser_status")
     observations = browser.get("observations", {})
-    require("136,160" in observations.get("keyboard", ""), "S07_keyboard_observation")
-    require(observations.get("console_errors") == 0 and observations.get("console_warnings") == 0, "S07_console")
-    require(observations.get("health_boundary_visible") is True, "S07_boundary")
-    require(png_dimensions(folder / "runtime-keyboard.png") == (1280, 720), "S07_screenshot_dimensions")
+    require("136,160" in observations.get("keyboard", ""), "S007_keyboard_observation")
+    require(observations.get("console_errors") == 0 and observations.get("console_warnings") == 0, "S007_console")
+    require(observations.get("health_boundary_visible") is True, "S007_boundary")
+    require(png_dimensions(folder / "runtime-keyboard.png") == (1280, 720), "S007_screenshot_dimensions")
     dist = folder / "dist"
-    require((dist / "index.html").is_file(), "S07_dist_index")
-    require(any((dist / "assets").glob("*.js")), "S07_dist_js")
+    require((dist / "index.html").is_file(), "S007_dist_index")
+    require(any((dist / "assets").glob("*.js")), "S007_dist_js")
     return {
         "verification_status": "verified-runtime",
         "verified_scope": "production dist and real Playwright keyboard lifecycle",
@@ -263,30 +263,30 @@ def verify_s07() -> dict[str, Any]:
 
 
 def verify_s08() -> dict[str, Any]:
-    folder = EVIDENCE_ROOT / "S08"
+    folder = EVIDENCE_ROOT / "S008"
     contract = load_json(folder / "asset-contract.json")
     inspection = load_json(folder / "inspection-glb.json")
     fixture = load_json(folder / "fixture-manifest.json")
     viewer = load_json(folder / "viewer-contract.json")
     provider = contract.get("provider_generation", {})
-    require(provider.get("status") == "blocked-not-verified", "S08_provider_status")
-    require(provider.get("attempted") is False and provider.get("receipt") is None and provider.get("artifact_url") is None, "S08_provider_boundary")
-    require(contract.get("local_fixture", {}).get("is_provider_output") is False, "S08_fixture_claim")
-    require(inspection.get("status") == "passed" and inspection.get("format") == "glb", "S08_inspection")
-    require(inspection.get("asset_version") == "2.0", "S08_gltf_version")
-    require((inspection.get("vertices"), inspection.get("indices")) == (3, 3), "S08_geometry")
-    require(fixture.get("geometry", {}).get("triangles") == 1, "S08_triangle_count")
-    require(viewer.get("status") == "local-viewer-ready", "S08_viewer")
-    require(viewer.get("asset", {}).get("is_provider_output") is False, "S08_viewer_claim")
-    require(viewer.get("provider_generation_status") == "blocked-not-verified", "S08_viewer_provider_status")
+    require(provider.get("status") == "blocked-not-verified", "S008_provider_status")
+    require(provider.get("attempted") is False and provider.get("receipt") is None and provider.get("artifact_url") is None, "S008_provider_boundary")
+    require(contract.get("local_fixture", {}).get("is_provider_output") is False, "S008_fixture_claim")
+    require(inspection.get("status") == "passed" and inspection.get("format") == "glb", "S008_inspection")
+    require(inspection.get("asset_version") == "2.0", "S008_gltf_version")
+    require((inspection.get("vertices"), inspection.get("indices")) == (3, 3), "S008_geometry")
+    require(fixture.get("geometry", {}).get("triangles") == 1, "S008_triangle_count")
+    require(viewer.get("status") == "local-viewer-ready", "S008_viewer")
+    require(viewer.get("asset", {}).get("is_provider_output") is False, "S008_viewer_claim")
+    require(viewer.get("provider_generation_status") == "blocked-not-verified", "S008_viewer_provider_status")
     model = folder / "model.glb"
     data = model.read_bytes()
-    require(len(data) >= 12 and data[:4] == b"glTF", "S08_glb_magic")
+    require(len(data) >= 12 and data[:4] == b"glTF", "S008_glb_magic")
     version, declared_length = struct.unpack("<II", data[4:12])
-    require(version == 2 and declared_length == len(data), "S08_glb_header")
-    require(sha256(model) == inspection.get("sha256") == viewer.get("asset", {}).get("sha256"), "S08_asset_digest_chain")
+    require(version == 2 and declared_length == len(data), "S008_glb_header")
+    require(sha256(model) == inspection.get("sha256") == viewer.get("asset", {}).get("sha256"), "S008_asset_digest_chain")
     dist = folder / "viewer-dist"
-    require((dist / "index.html").is_file() and any((dist / "assets").glob("*.js")), "S08_viewer_dist")
+    require((dist / "index.html").is_file() and any((dist / "assets").glob("*.js")), "S008_viewer_dist")
     return {
         "verification_status": "verified-local-provider-blocked",
         "verified_scope": "local GLB fixture inspection and built Three.js viewer",
@@ -296,14 +296,14 @@ def verify_s08() -> dict[str, Any]:
 
 
 VERIFY_FUNCTIONS = {
-    "S01": verify_s01,
-    "S02": verify_s02,
-    "S03": verify_s03,
-    "S04": verify_s04,
-    "S05": verify_s05,
-    "S06": verify_s06,
-    "S07": verify_s07,
-    "S08": verify_s08,
+    "S001": verify_s01,
+    "S002": verify_s02,
+    "S003": verify_s03,
+    "S004": verify_s04,
+    "S005": verify_s05,
+    "S006": verify_s06,
+    "S007": verify_s07,
+    "S008": verify_s08,
 }
 
 
@@ -361,12 +361,12 @@ def run_command(command: list[str], expected_tests: int | None = None) -> dict[s
 def run_focused_checks() -> dict[str, Any]:
     require(QUICK_VALIDATE.is_file(), f"missing_quick_validate:{QUICK_VALIDATE}")
     python_suites = {
-        "S01": SKILLS_ROOT / "capability-router" / "tests",
-        "S02": SKILLS_ROOT / "data-profile" / "tests",
-        "S03": SKILLS_ROOT / "metric-brief" / "tests",
-        "S04": SKILLS_ROOT / "product-opportunity-map" / "tests",
-        "S05": SKILLS_ROOT / "poster-recipe" / "tests",
-        "S06": SKILLS_ROOT / "slide-plan" / "tests",
+        "S001": SKILLS_ROOT / "capability-router" / "tests",
+        "S002": SKILLS_ROOT / "data-profile" / "tests",
+        "S003": SKILLS_ROOT / "metric-brief" / "tests",
+        "S004": SKILLS_ROOT / "product-opportunity-map" / "tests",
+        "S005": SKILLS_ROOT / "poster-recipe" / "tests",
+        "S006": SKILLS_ROOT / "slide-plan" / "tests",
     }
     test_runs: list[dict[str, Any]] = []
     for skill_id, folder in python_suites.items():
@@ -376,10 +376,10 @@ def run_focused_checks() -> dict[str, Any]:
                 **run_command([sys.executable, "-B", "-m", "unittest", "discover", "-s", str(folder), "-p", "test_*.py"], EXPECTED_TESTS[skill_id]),
             }
         )
-    test_runs.append({"skill_id": "S07", **run_command(["node", "--test", str(SKILLS_ROOT / "pixijs-game-contract" / "tests" / "game-contract.test.mjs")], EXPECTED_TESTS["S07"])})
+    test_runs.append({"skill_id": "S007", **run_command(["node", "--test", str(SKILLS_ROOT / "pixijs-game-contract" / "tests" / "game-contract.test.mjs")], EXPECTED_TESTS["S007"])})
     s08_python = run_command([sys.executable, "-B", "-m", "unittest", "discover", "-s", str(SKILLS_ROOT / "asset-contract" / "tests"), "-p", "test_*.py"], 5)
     s08_node = run_command(["node", "--test", str(SKILLS_ROOT / "asset-contract" / "tests" / "viewer-contract.test.mjs")], 2)
-    test_runs.extend([{"skill_id": "S08", **s08_python}, {"skill_id": "S08", **s08_node}])
+    test_runs.extend([{"skill_id": "S008", **s08_python}, {"skill_id": "S008", **s08_node}])
 
     quick_runs: list[dict[str, Any]] = []
     for skill_id, meta in SKILLS.items():
@@ -429,9 +429,9 @@ def make_report(focused: dict[str, Any] | None) -> dict[str, Any]:
         "schema_version": "1.0",
         "status": "passed",
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "scope": "S01-S08 local Skill runtime artifacts",
+        "scope": "S001-S008 local Skill runtime artifacts",
         "provider_boundary": {
-            "S08": "blocked-not-verified",
+            "S008": "blocked-not-verified",
             "reason": "No authorized provider call, receipt, or downloaded provider artifact exists; local fixture and viewer are independently verified.",
         },
         "summary": {
@@ -449,14 +449,14 @@ def make_report(focused: dict[str, Any] | None) -> dict[str, Any]:
 
 def receipt_commands(skill_id: str) -> list[str]:
     return {
-        "S01": ["python -B code/skills/capability-router/scripts/route_task.py --input <example.json> --output evidence/runtime/agent-skills/S01/<decision.json>"],
-        "S02": ["python -B code/skills/data-profile/scripts/profile_csv.py --input dataset/06-beijing-air-quality-audit/case.csv --allowed-root dataset --json-output evidence/runtime/agent-skills/S02/profile.json --markdown-output evidence/runtime/agent-skills/S02/profile.md"],
-        "S03": ["python -B code/skills/metric-brief/scripts/build_member_brief.py --input dataset/02-member-value-experiment/case.csv --allowed-root dataset --coupon-amount-cny 8 --target-segment 成长 --metrics-output evidence/runtime/agent-skills/S03/metrics.json --brief-output evidence/runtime/agent-skills/S03/business-brief.md"],
-        "S04": ["python -B code/skills/product-opportunity-map/scripts/build_opportunity_map.py --input dataset/S-agent-skill-cases/case.csv --allowed-root dataset --json-output evidence/runtime/agent-skills/S04/opportunity-map.json --svg-output evidence/runtime/agent-skills/S04/opportunity-map.svg"],
-        "S05": ["python -B code/skills/poster-recipe/scripts/build_poster.py --input code/skills/poster-recipe/examples/rainy-bookstore-brief.json --allowed-root code/skills/poster-recipe/examples --recipe-output evidence/runtime/agent-skills/S05/poster-recipes.json --svg-output evidence/runtime/agent-skills/S05/poster.svg"],
-        "S06": ["node code/skills/slide-plan/scripts/build_deck.mjs --workspace <D-drive-artifact-workspace> --input code/skills/slide-plan/examples/air-quality-outline.md --allowed-root code/skills/slide-plan/examples --plan-output evidence/runtime/agent-skills/S06/slide-plan.json --pptx-output evidence/runtime/agent-skills/S06/presentation.pptx --render-dir evidence/runtime/agent-skills/S06/rendered --qa-output evidence/runtime/agent-skills/S06/visual-qa.json", "python -B code/skills/slide-plan/scripts/audit_pptx.py --input evidence/runtime/agent-skills/S06/presentation.pptx --plan evidence/runtime/agent-skills/S06/slide-plan.json --report-output evidence/runtime/agent-skills/S06/structure-audit.json"],
-        "S07": ["node code/skills/pixijs-game-contract/scripts/audit_game_contract.mjs code/skills/pixijs-game-contract/examples/beijing-clean-dispatch", "Playwright Chromium against Vite production dist; receipt and screenshot copied into S07"],
-        "S08": ["python -B code/skills/asset-contract/scripts/create_asset_contract.py --input code/skills/asset-contract/examples/triangle.request.json --output evidence/runtime/agent-skills/S08/asset-contract.json", "python -B code/skills/asset-contract/scripts/inspect_gltf.py --input evidence/runtime/agent-skills/S08/model.glb --allowed-root evidence/runtime/agent-skills/S08 --output evidence/runtime/agent-skills/S08/inspection-glb.json"],
+        "S001": ["python -B code/skills/capability-router/scripts/route_task.py --input <example.json> --output evidence/runtime/agent-skills/S001/<decision.json>"],
+        "S002": ["python -B code/skills/data-profile/scripts/profile_csv.py --input dataset/B006-beijing-air-quality-audit/case.csv --allowed-root dataset --json-output evidence/runtime/agent-skills/S002/profile.json --markdown-output evidence/runtime/agent-skills/S002/profile.md"],
+        "S003": ["python -B code/skills/metric-brief/scripts/build_member_brief.py --input dataset/B002-member-value-experiment/case.csv --allowed-root dataset --coupon-amount-cny 8 --target-segment 成长 --metrics-output evidence/runtime/agent-skills/S003/metrics.json --brief-output evidence/runtime/agent-skills/S003/business-brief.md"],
+        "S004": ["python -B code/skills/product-opportunity-map/scripts/build_opportunity_map.py --input dataset/S-agent-skill-cases/case.csv --allowed-root dataset --json-output evidence/runtime/agent-skills/S004/opportunity-map.json --svg-output evidence/runtime/agent-skills/S004/opportunity-map.svg"],
+        "S005": ["python -B code/skills/poster-recipe/scripts/build_poster.py --input code/skills/poster-recipe/examples/rainy-bookstore-brief.json --allowed-root code/skills/poster-recipe/examples --recipe-output evidence/runtime/agent-skills/S005/poster-recipes.json --svg-output evidence/runtime/agent-skills/S005/poster.svg"],
+        "S006": ["node code/skills/slide-plan/scripts/build_deck.mjs --workspace <D-drive-artifact-workspace> --input code/skills/slide-plan/examples/air-quality-outline.md --allowed-root code/skills/slide-plan/examples --plan-output evidence/runtime/agent-skills/S006/slide-plan.json --pptx-output evidence/runtime/agent-skills/S006/presentation.pptx --render-dir evidence/runtime/agent-skills/S006/rendered --qa-output evidence/runtime/agent-skills/S006/visual-qa.json", "python -B code/skills/slide-plan/scripts/audit_pptx.py --input evidence/runtime/agent-skills/S006/presentation.pptx --plan evidence/runtime/agent-skills/S006/slide-plan.json --report-output evidence/runtime/agent-skills/S006/structure-audit.json"],
+        "S007": ["node code/skills/pixijs-game-contract/scripts/audit_game_contract.mjs code/skills/pixijs-game-contract/examples/beijing-clean-dispatch", "Playwright Chromium against Vite production dist; receipt and screenshot copied into S007"],
+        "S008": ["python -B code/skills/asset-contract/scripts/create_asset_contract.py --input code/skills/asset-contract/examples/triangle.request.json --output evidence/runtime/agent-skills/S008/asset-contract.json", "python -B code/skills/asset-contract/scripts/inspect_gltf.py --input evidence/runtime/agent-skills/S008/model.glb --allowed-root evidence/runtime/agent-skills/S008 --output evidence/runtime/agent-skills/S008/inspection-glb.json"],
     }[skill_id]
 
 
@@ -488,7 +488,7 @@ def write_reports(report: dict[str, Any]) -> None:
     lines = [
         "# Agent + Skills 运行证据",
         "",
-        "8 个 Skill 均由当前代码和本地输入重新验证。S01–S07 的约定范围已通过；S08 的本地 GLB 与 Three.js 查看器已验证，外部 3D Provider 因没有授权调用与真实回执，保持 `blocked-not-verified`。",
+        "8 个 Skill 均由当前代码和本地输入重新验证。S001–S007 的约定范围已通过；S008 的本地 GLB 与 Three.js 查看器已验证，外部 3D Provider 因没有授权调用与真实回执，保持 `blocked-not-verified`。",
         "",
         "| Skill | 当前结果 | 正式工件 |",
         "|---|---|---|",
@@ -503,10 +503,10 @@ def write_reports(report: dict[str, Any]) -> None:
             "",
             f"- Skill 合同校验：{summary['quick_validations_passed']}/8 通过。",
             f"- Python / Node / Artifact Tool 聚焦测试：{summary['focused_tests_passed']}/33 通过。",
-            "- S06：5 页全部渲染为 1280×720 PNG；边界、重叠、文字溢出、空白页、标题、备注和来源块均通过。",
-            "- S06 导出限制：`docProps/app.xml` 的 Slides/Notes 仍为 0/0；实际压缩包含 5 个 slide XML 与 5 个 notes XML，结构审计按实际内容通过 5/5。",
-            "- S07：浏览器回执记录键盘移动、倒计时与重启；截图为真实 Chromium 运行画面，控制台无 error/warning。",
-            "- S08：本地 fixture 和 viewer 验证通过；Provider 没有被标为已验证。",
+            "- S006：5 页全部渲染为 1280×720 PNG；边界、重叠、文字溢出、空白页、标题、备注和来源块均通过。",
+            "- S006 导出限制：`docProps/app.xml` 的 Slides/Notes 仍为 0/0；实际压缩包含 5 个 slide XML 与 5 个 notes XML，结构审计按实际内容通过 5/5。",
+            "- S007：浏览器回执记录键盘移动、倒计时与重启；截图为真实 Chromium 运行画面，控制台无 error/warning。",
+            "- S008：本地 fixture 和 viewer 验证通过；Provider 没有被标为已验证。",
             "",
             "## 复核命令",
             "",
@@ -524,7 +524,7 @@ def write_reports(report: dict[str, Any]) -> None:
 def compare_saved_report(current: dict[str, Any]) -> None:
     saved = load_json(REPORT_JSON)
     require(saved.get("status") == "passed", "saved_report_status")
-    require(saved.get("provider_boundary", {}).get("S08") == "blocked-not-verified", "saved_report_provider_boundary")
+    require(saved.get("provider_boundary", {}).get("S008") == "blocked-not-verified", "saved_report_provider_boundary")
     saved_rows = {skill["skill_id"]: skill for skill in saved.get("skills", [])}
     current_rows = {skill["skill_id"]: skill for skill in current.get("skills", [])}
     require(set(saved_rows) == set(SKILLS) == set(current_rows), "saved_report_skill_set")
@@ -535,7 +535,7 @@ def compare_saved_report(current: dict[str, Any]) -> None:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Verify formal S01-S08 Agent + Skills runtime evidence.")
+    parser = argparse.ArgumentParser(description="Verify formal S001-S008 Agent + Skills runtime evidence.")
     parser.add_argument("--run-focused", action="store_true", help="Rerun all focused tests and eight skill quick validations.")
     parser.add_argument("--write-report", action="store_true", help="Write report.json, report.md, and per-Skill receipts after verification.")
     args = parser.parse_args()
@@ -558,7 +558,7 @@ def main() -> int:
                 "artifacts": sum(row["artifact_count"] for row in report["skills"]),
                 "focused_tests": focused["passed_test_count"] if focused else "not-rerun",
                 "quick_validate": focused["quick_validate_passed"] if focused else "not-rerun",
-                "provider": "S08 blocked-not-verified",
+                "provider": "S008 blocked-not-verified",
                 "report_written": args.write_report,
             },
             ensure_ascii=False,

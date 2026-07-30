@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "status": "completed",
   "mode": "offline",
-  "created_at": "2026-07-29T09:54:48.658153Z",
+  "created_at": "2026-07-30T06:22:54.707709Z",
   "final_state": "waiting_human",
   "checks": [
     {
@@ -49,7 +49,7 @@
     },
     {
       "path": "mcp-transcript.json",
-      "sha256": "83c39e1f701f6ca7f07ef94850f5f0d122d6de5e1695c1f16b5a0313c2980482"
+      "sha256": "32363f1692f26dfe8a172e2061f830ed84fef6ab7bfcc0ab4984765b714983f3"
     },
     {
       "path": "a2a-tasks.json",
@@ -65,7 +65,7 @@
     },
     {
       "path": "provider-receipt.json",
-      "sha256": "a5b611390d31422dc117f4e047f308c40f27f071a6e37998ae7de487d850a796"
+      "sha256": "9b1419ca675410503f50e46c069850ad87f70a2a6a2093121c95086c6bc52798"
     }
   ]
 }

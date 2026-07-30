@@ -61,7 +61,7 @@ function waferModel(projection: CaseProjection): SceneModel {
   });
   const missing = nodes.filter((node) => node.status === "unknown").length;
   return {
-    caseId: "15",
+    caseId: "B015",
     title: `${String(projection.payload.wafer_id ?? projection.objectId)} 匿名测点`,
     disclosure: "示意结构",
     nodes,
@@ -81,7 +81,7 @@ function windModel(projection: CaseProjection): SceneModel {
     const turbine = String(index + 1);
     const selected = turbine === selectedTurbine;
     return {
-      id: selected ? projection.objectId : `16-${turbine}-${day}`,
+      id: selected ? projection.objectId : `B016-${turbine}-${day}`,
       label: `T${turbine.padStart(3, "0")}`,
       kind: "turbine",
       value: selected ? numeric(projection.payload.mean_active_power) : undefined,
@@ -94,7 +94,7 @@ function windModel(projection: CaseProjection): SceneModel {
     };
   });
   return {
-    caseId: "16",
+    caseId: "B016",
     title: `T${selectedTurbine.padStart(3, "0")} / Day ${day} 同群比较`,
     disclosure: "比较视图",
     nodes,
@@ -118,7 +118,7 @@ function hydraulicModel(projection: CaseProjection): SceneModel {
     };
   });
   return {
-    caseId: "19",
+    caseId: "B019",
     title: `循环 H-${String(projection.payload.cycle_id ?? "").padStart(4, "0")} 部件状态`,
     disclosure: "示意结构",
     nodes,
@@ -140,7 +140,7 @@ function solarModel(projection: CaseProjection): SceneModel {
     const station = String(index + 1);
     const selected = station === selectedStation;
     return {
-      id: selected ? projection.objectId : `20-${station}-${date}`,
+      id: selected ? projection.objectId : `B020-${station}-${date}`,
       label: `PV-${station.padStart(2, "0")}`,
       kind: "station",
       value: selected ? numeric(projection.payload.mean_efficiency_ratio) : undefined,
@@ -153,7 +153,7 @@ function solarModel(projection: CaseProjection): SceneModel {
     };
   });
   return {
-    caseId: "20",
+    caseId: "B020",
     title: `PV-${selectedStation.padStart(2, "0")} / ${date} 站日比较`,
     disclosure: "比较视图",
     nodes,
@@ -169,9 +169,9 @@ export function buildSceneModel(
   caseId: string,
   projection: CaseProjection,
 ): SceneModel | undefined {
-  if (caseId === "15") return waferModel(projection);
-  if (caseId === "16") return windModel(projection);
-  if (caseId === "19") return hydraulicModel(projection);
-  if (caseId === "20") return solarModel(projection);
+  if (caseId === "B015") return waferModel(projection);
+  if (caseId === "B016") return windModel(projection);
+  if (caseId === "B019") return hydraulicModel(projection);
+  if (caseId === "B020") return solarModel(projection);
   return undefined;
 }

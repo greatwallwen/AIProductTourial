@@ -306,7 +306,7 @@ export function AquacultureResponseWorkbench(props: CaseWorkbenchProps) {
       actorId: currentActor,
       data: { dispatch },
       evidenceIds: [text(row.event_id), text(row.archive_member)].filter(Boolean),
-      idempotencyKey: `case-08:${props.selected.objectId}:dispatch_field_check:v${props.selected.version}`,
+      idempotencyKey: `case-B008:${props.selected.objectId}:dispatch_field_check:v${props.selected.version}`,
     });
     setPanel(null);
   }
@@ -327,7 +327,7 @@ export function AquacultureResponseWorkbench(props: CaseWorkbenchProps) {
       actorId: returned.operatorId,
       data: { fieldReturn: returned },
       evidenceIds: [text(row.event_id), returned.photoAssetId],
-      idempotencyKey: `case-08:${props.selected.objectId}:submit_field_return:v${props.selected.version}:${returned.operatorId}`,
+      idempotencyKey: `case-B008:${props.selected.objectId}:submit_field_return:v${props.selected.version}:${returned.operatorId}`,
     });
   }
 
@@ -349,7 +349,7 @@ export function AquacultureResponseWorkbench(props: CaseWorkbenchProps) {
         text(persistedReturn.photoAssetId),
         ...(repair ? [text(repair.repair_id), text(repair.evidence_hash)] : []),
       ].filter(Boolean),
-      idempotencyKey: `case-08:${props.selected.objectId}:confirm_event:v${props.selected.version}:${text(persistedReturn.operatorId)}`,
+      idempotencyKey: `case-B008:${props.selected.objectId}:confirm_event:v${props.selected.version}:${text(persistedReturn.operatorId)}`,
     });
   }
 
@@ -366,7 +366,7 @@ export function AquacultureResponseWorkbench(props: CaseWorkbenchProps) {
       actorId: currentActor,
       data: { hold },
       evidenceIds: [text(row.event_id)],
-      idempotencyKey: `case-08:${props.selected.objectId}:hold_for_evidence:v${props.selected.version}`,
+      idempotencyKey: `case-B008:${props.selected.objectId}:hold_for_evidence:v${props.selected.version}`,
     });
     setPanel(null);
   }
@@ -389,7 +389,7 @@ export function AquacultureResponseWorkbench(props: CaseWorkbenchProps) {
               {props.roles.map((role) => <option key={role} value={role}>{roleLabel(role)}</option>)}
             </select>
           </label>
-          <button type="button" className={styles.iconButton} aria-label="恢复案例 B08" title="恢复初始状态" onClick={props.onReset} disabled={props.busy}><RefreshCw size={18} /></button>
+          <button type="button" className={styles.iconButton} aria-label="恢复案例 B008" title="恢复初始状态" onClick={props.onReset} disabled={props.busy}><RefreshCw size={18} /></button>
         </div>
       </header>
 

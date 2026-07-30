@@ -72,7 +72,7 @@ const reviewObjects = [positiveSelectedReview, negativeHospitalityReview];
 
 function reviewProps(overrides: Partial<CaseWorkbenchProps> = {}): CaseWorkbenchProps {
   return {
-    definition: getCaseDefinition("03")!,
+    definition: getCaseDefinition("B003")!,
     objects: reviewObjects,
     selected: positiveSelectedReview,
     events: [],
@@ -89,7 +89,7 @@ function reviewProps(overrides: Partial<CaseWorkbenchProps> = {}): CaseWorkbench
   };
 }
 
-const creditApplication = object("04", "04-CR20260000001", "待复核", {
+const creditApplication = object("04", "B004-CR20260000001", "待复核", {
   application_id: "CR20260000001",
   province_name: "四川省",
   city_name: "成都市",
@@ -104,7 +104,7 @@ const creditObjects = [creditApplication];
 
 function creditProps(overrides: Partial<CaseWorkbenchProps> = {}): CaseWorkbenchProps {
   return {
-    definition: getCaseDefinition("04")!,
+    definition: getCaseDefinition("B004")!,
     objects: creditObjects,
     selected: creditObjects[0]!,
     events: [],
@@ -157,7 +157,7 @@ const wanliuPackage = {
 
 function airProps(overrides: Partial<CaseWorkbenchProps> = {}): CaseWorkbenchProps {
   return {
-    definition: getCaseDefinition("06")!,
+    definition: getCaseDefinition("B006")!,
     objects: airObjects,
     selected: airObjects[0]!,
     events: [],
@@ -208,7 +208,7 @@ const retailEvidence = [
 
 function retailProps(): CaseWorkbenchProps {
   return {
-    definition: getCaseDefinition("07")!,
+    definition: getCaseDefinition("B007")!,
     objects: retailOrders,
     selected: retailOrders[0]!,
     events: [],
@@ -245,7 +245,7 @@ const telecomObjects = Array.from({ length: 19 }, (_, index) => {
 
 function telecomProps(): CaseWorkbenchProps {
   return {
-    definition: getCaseDefinition("10")!,
+    definition: getCaseDefinition("B010")!,
     objects: telecomObjects,
     selected: telecomObjects[0]!,
     events: [],
@@ -269,7 +269,7 @@ const admissionRows = [
 const admissionObjects = admissionRows.map((row) => object("11", `11-${row.evaluation_id}-${row.candidate_id}`, "待会签", row));
 const admissionEvent: CaseEvent = {
   eventId: "evt-11-batch2",
-  caseId: "11",
+  caseId: "B011",
   objectId: admissionObjects[1]!.objectId,
   command: "request_release_evidence",
   actor: { id: "case11-release-manager", role: "release_manager" },
@@ -282,7 +282,7 @@ const admissionEvent: CaseEvent = {
 
 function admissionProps(): CaseWorkbenchProps {
   return {
-    definition: getCaseDefinition("11")!,
+    definition: getCaseDefinition("B011")!,
     objects: admissionObjects,
     selected: admissionObjects[1]!,
     events: [admissionEvent],
@@ -312,7 +312,7 @@ const waferSensors = {
   sensor_295: "329.6406",
   sensor_296: "325.0672",
 };
-const wafer = object("15", "15-SECOM-0003", "待复核", {
+const wafer = object("15", "B015-SECOM-0003", "待复核", {
   wafer_id: "SECOM-0003",
   test_timestamp: "19/07/2008 13:13:00",
   quality_label: "fail",
@@ -322,7 +322,7 @@ const wafer = object("15", "15-SECOM-0003", "待复核", {
 
 function waferProps(): CaseWorkbenchProps {
   return {
-    definition: getCaseDefinition("15")!,
+    definition: getCaseDefinition("B015")!,
     objects: [wafer],
     selected: wafer,
     events: [],

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "case_id": "B022",
+  "row_count": 747,
+  "columns": [
+    {
+      "name": "school_name",
+      "origin": "source-fact"
+    },
+    {
+      "name": "major_name",
+      "origin": "source-fact"
+    },
+    {
+      "name": "notice_title",
+      "origin": "source-fact"
+    },
+    {
+      "name": "source_relative_url",
+      "origin": "source-fact"
+    },
+    {
+      "name": "published_date",
+      "origin": "source-fact"
+    },
+    {
+      "name": "province",
+      "origin": "source-fact"
+    },
+    {
+      "name": "school_type",
+      "origin": "source-fact"
+    },
+    {
+      "name": "school_attribute",
+      "origin": "source-fact"
+    },
+    {
+      "name": "notice_id",
+      "origin": "derived"
+    },
+    {
+      "name": "snapshot_year",
+      "origin": "derived"
+    },
+    {
+      "name": "freshness_status",
+      "origin": "derived"
+    },
+    {
+      "name": "official_verification_required",
+      "origin": "derived"
+    },
+    {
+      "name": "state",
+      "origin": "derived"
+    },
+    {
+      "name": "data_nature",
+      "origin": "derived"
+    }
+  ],
+  "supplemental_artifacts": []
+}

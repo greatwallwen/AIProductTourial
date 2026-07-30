@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-07-20T18:45:00+08:00",
+  "caseId": "02",
+  "dataset": {
+    "path": "dataset/B002-member-value-experiment/case.csv",
+    "sha256": "0c2b11465184aecd420ea43881c2106b37dc2094ab655e86de7e3e1a3937d4be",
+    "checksumLedgerMatch": true,
+    "rows": 5000,
+    "columns": 9
+  },
+  "uniqueness": {
+    "distinctUserIds": 5000,
+    "duplicateUserIdExtraRows": 0
+  },
+  "validity": {
+    "segmentCounts": {
+      "成长": 1250,
+      "核心": 1250,
+      "活跃": 1250,
+      "观察": 1250
+    },
+    "recencyAvailableTrueRows": 0,
+    "monetaryAvailableTrueRows": 0,
+    "dataNatureValues": {
+      "public-derived-with-sequence-proxy": 5000
+    }
+  },
+  "consistency": {
+    "viewCountAtCapRows": 5000,
+    "cartCountAtCapRows": 5000,
+    "buyCountAtCapRows": 1442,
+    "quartileSegmentRows": [
+      1250,
+      1250,
+      1250,
+      1250
+    ],
+    "featureRule": "engagement_score = view_count + 3*cart_count + 8*buy_count"
+  },
+  "findings": [
+    {
+      "severity": "high",
+      "finding": "Absolute event time and monetary value are absent for every profile row.",
+      "impact": "Do not claim Recency, Monetary, full RFM, CLV, or a current customer-value score."
+    },
+    {
+      "severity": "high",
+      "finding": "View and cart counts are capped at 12 and saturated for the current 5000-user slice.",
+      "impact": "Segment separation is dominated by capped sequence counts and buy_count; do not interpret the labels as natural market clusters."
+    },
+    {
+      "severity": "medium",
+      "finding": "The four labels are equal-sized qcut ranks created by the course transform.",
+      "impact": "Use labels to define falsifiable experiment cohorts, not to report business population shares."
+    }
+  ]
+}

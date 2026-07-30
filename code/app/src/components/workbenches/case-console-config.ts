@@ -38,13 +38,13 @@ export type CaseConsoleConfig = {
 };
 
 const configs: Record<string, CaseConsoleConfig> = {
-  "01": {
+  "B001": {
     sceneAria: "退货核验现场",
     title: "退款调查",
     subject: "取消记录与原单关系",
     decisionQuestion: "原单尚未关联，这笔退款现在能否继续？",
     sceneAlt: "退款核验工作台、交易账簿与退货仓库背景",
-    sceneAsset: "/case-assets/case-01/scene.png",
+    sceneAsset: "/case-assets/case-B001/scene.png",
     sequenceTitle: "同一客户的取消记录",
     sequenceKind: "time",
     timeField: "invoice_at",
@@ -63,13 +63,13 @@ const configs: Record<string, CaseConsoleConfig> = {
     ],
     steps: ["发现大额取消", "查找原单关系", "核对退款与退货记录", "人工决定是否继续"],
   },
-  "02": {
+  "B002": {
     sceneAria: "会员行为分析台",
     title: "首批试投",
     subject: "浏览、加购与购买行为",
     decisionQuestion: "哪些会员只进入首批小范围试投？",
     sceneAlt: "会员运营分析中心与匿名人群分布",
-    sceneAsset: "/case-assets/case-02/scene.png",
+    sceneAsset: "/case-assets/case-B002/scene.png",
     sequenceTitle: "会员行为序列",
     sequenceKind: "records",
     plotField: "engagement_score",
@@ -87,13 +87,13 @@ const configs: Record<string, CaseConsoleConfig> = {
     ],
     steps: ["划分行为群体", "核对三类行为", "形成首批名单", "主管确认试投"],
   },
-  "03": {
+  "B003": {
     sceneAria: "餐饮服务现场",
     title: "差评问题排查",
     subject: "接待、排队与上菜体验",
     decisionQuestion: "接待态度是否先进入小范围验证？",
     sceneAlt: "中式餐饮服务现场与接待、排队、上菜触点",
-    sceneAsset: "/case-assets/case-03/scene.png",
+    sceneAsset: "/case-assets/case-B003/scene.png",
     sequenceTitle: "评论样本分布",
     sequenceKind: "records",
     plotField: "star",
@@ -111,13 +111,13 @@ const configs: Record<string, CaseConsoleConfig> = {
     ],
     steps: ["定位低星评论", "回看评论原文", "区分服务触点", "创建验证任务"],
   },
-  "04": {
+  "B004": {
     sceneAria: "申请材料核验桌面",
     title: "材料完整性复核",
     subject: "身份、收入、授权与一致性",
     decisionQuestion: "材料是否足够进入人工复核？",
     sceneAlt: "中国金融机构申请卷宗与材料核验桌面",
-    sceneAsset: "/case-assets/case-04/scene.png",
+    sceneAsset: "/case-assets/case-B004/scene.png",
     sequenceTitle: "材料核对步骤",
     sequenceKind: "process",
     plotField: "debt_service_ratio_bps",
@@ -135,13 +135,13 @@ const configs: Record<string, CaseConsoleConfig> = {
     ],
     steps: ["打开申请卷宗", "逐项核对材料", "标出缺失项", "请求补充材料"],
   },
-  "05": {
+  "B005": {
     sceneAria: "急诊转运协调中心",
     title: "交接冲突处理",
     subject: "实际发生时间与系统收到时间",
     decisionQuestion: "迟到事件是否推翻当前交接状态？",
     sceneAlt: "医院急诊观察区至留观区的转运协调中心，不含患者身份信息",
-    sceneAsset: "/case-assets/case-05/scene.png",
+    sceneAsset: "/case-assets/case-B005/scene.png",
     sequenceTitle: "转运事件到达顺序",
     sequenceKind: "time",
     timeField: "event_time",
@@ -160,13 +160,13 @@ const configs: Record<string, CaseConsoleConfig> = {
     ],
     steps: ["发现状态冲突", "对齐两个时间", "核对版本与会签", "人工升级协调"],
   },
-  "06": {
+  "B006": {
     sceneAria: "空气质量监测网",
     title: "小时数据发布审核",
     subject: "站点污染物记录",
     decisionQuestion: "选中站点的这一小时能否纳入发布？",
     sceneAlt: "北京空气质量监测控制室与十二站点数据网",
-    sceneAsset: "/case-assets/case-06/scene.png",
+    sceneAsset: "/case-assets/case-B006/scene.png",
     sequenceTitle: "六类污染物与缺测带",
     sequenceKind: "time",
     timeField: "observed_at",
@@ -185,13 +185,13 @@ const configs: Record<string, CaseConsoleConfig> = {
     ],
     steps: ["选中站点小时", "检查六项记录", "核对缺失与高值", "人工提交或拒绝"],
   },
-  "07": {
+  "B007": {
     sceneAria: "履约运行控制中心",
     title: "履约解耦试点评审",
     subject: "发布、故障与恢复",
     decisionQuestion: "是否只启动一个事件接口试点？",
     sceneAlt: "中国即时零售履约控制中心和责任域运行视图",
-    sceneAsset: "/case-assets/case-07/scene.png",
+    sceneAsset: "/case-assets/case-B007/scene.png",
     sequenceTitle: "十四天运行记录",
     sequenceKind: "time",
     timeField: "day_index",
@@ -210,13 +210,13 @@ const configs: Record<string, CaseConsoleConfig> = {
     ],
     steps: ["观察运行波动", "核对发布与故障", "提出最小试点", "评审是否启动"],
   },
-  "08": {
+  "B008": {
     sceneAria: "养殖水质现场",
     title: "塘区异常研判",
     subject: "水温、溶氧、pH 与浊度",
     decisionQuestion: "现在派现场核查，还是先补现场读数？",
     sceneAlt: "中国水产养殖塘区俯视场景与水质监测点",
-    sceneAsset: "/case-assets/case-08/scene.png",
+    sceneAsset: "/case-assets/case-B008/scene.png",
     sequenceTitle: "九十六小时水质记录",
     sequenceKind: "time",
     timeField: "event_time",
@@ -235,13 +235,13 @@ const configs: Record<string, CaseConsoleConfig> = {
     ],
     steps: ["发现异常读数", "检查传感器状态", "区分数据与现场问题", "派发现场核查"],
   },
-  "09": {
+  "B009": {
     sceneAria: "地铁机电设备现场",
     title: "压缩机现场检查",
     subject: "压力、油温与电机电流",
     decisionQuestion: "现有记录是否足够创建现场检查单？",
     sceneAlt: "中国地铁机电压缩机房与空气生产单元",
-    sceneAsset: "/case-assets/case-09/scene.png",
+    sceneAsset: "/case-assets/case-B009/scene.png",
     sequenceTitle: "故障边界前后五分钟",
     sequenceKind: "time",
     timeField: "timestamp",
@@ -260,13 +260,13 @@ const configs: Record<string, CaseConsoleConfig> = {
     ],
     steps: ["定位故障窗口", "核对压力与温度", "列出检查点", "提交现场检查"],
   },
-  "10": {
+  "B010": {
     sceneAria: "通信任务链",
     title: "投诉任务恢复核查",
     subject: "请求状态与外部效果",
     decisionQuestion: "查询响应丢失后，是否进入人工恢复核查？",
     sceneAlt: "通信投诉任务恢复控制中心与省级复核队列",
-    sceneAsset: "/case-assets/case-10/scene.png",
+    sceneAsset: "/case-assets/case-B010/scene.png",
     sequenceTitle: "任务处理链",
     sequenceKind: "process",
     timeField: "received_at",
@@ -285,13 +285,13 @@ const configs: Record<string, CaseConsoleConfig> = {
     ],
     steps: ["找到中断任务", "核对外部效果", "补齐事件账本", "进入人工恢复"],
   },
-  "11": {
+  "B011": {
     sceneAria: "企业模型准入检查中心",
     title: "模型准入补测",
     subject: "风险、公平与安全准入检查",
     decisionQuestion: "当前候选能否进入灰度会签？",
     sceneAlt: "企业模型发布准入检查工作台与三类评测检查项",
-    sceneAsset: "/case-assets/case-11/scene.png",
+    sceneAsset: "/case-assets/case-B011/scene.png",
     sequenceTitle: "准入检查顺序",
     sequenceKind: "process",
     plotField: "metric_value",
@@ -309,13 +309,13 @@ const configs: Record<string, CaseConsoleConfig> = {
     ],
     steps: ["核对三类准入检查", "定位失败切片", "发起补测", "补齐后再会签"],
   },
-  "12": {
+  "B012": {
     sceneAria: "冷链运输现场",
     title: "冷链偏差调查",
     subject: "车辆、保温箱与记录器",
     decisionQuestion: "是否启动温度偏差调查？",
     sceneAlt: "中国县域冷链车辆、保温箱与温度记录器",
-    sceneAsset: "/case-assets/case-12/scene.png",
+    sceneAsset: "/case-assets/case-B012/scene.png",
     sequenceTitle: "五分钟温度记录",
     sequenceKind: "time",
     timeField: "event_time",
@@ -334,13 +334,13 @@ const configs: Record<string, CaseConsoleConfig> = {
     ],
     steps: ["发现温度越界", "核对记录器与交接", "划定偏差窗口", "启动质量调查"],
   },
-  "13": {
+  "B013": {
     sceneAria: "汽车售后车间",
     title: "车辆安全复核",
     subject: "客户报告的车辆症状",
     decisionQuestion: "直接转技师复核，还是先补充车辆状态？",
     sceneAlt: "中国汽车售后车间与客户接车检查场景",
-    sceneAsset: "/case-assets/case-13/scene.png",
+    sceneAsset: "/case-assets/case-B013/scene.png",
     sequenceTitle: "接车核对步骤",
     sequenceKind: "process",
     plotField: "review_required",
@@ -358,13 +358,13 @@ const configs: Record<string, CaseConsoleConfig> = {
     ],
     steps: ["记录客户原话", "补充车辆状态", "标记安全复核", "转交技师"],
   },
-  "14": {
+  "B014": {
     sceneAria: "选矿浮选现场",
     title: "浮选工艺核查",
     subject: "精矿硅与工艺参数",
     decisionQuestion: "先创建哪一项人工核查任务？",
     sceneAlt: "中国选矿浮选流程工厂和七组浮选柱",
-    sceneAsset: "/case-assets/case-14/scene.png",
+    sceneAsset: "/case-assets/case-B014/scene.png",
     sequenceTitle: "七百二十小时工艺记录",
     sequenceKind: "time",
     timeField: "timestamp",
@@ -383,13 +383,13 @@ const configs: Record<string, CaseConsoleConfig> = {
     ],
     steps: ["发现高硅窗口", "对齐工艺参数", "列出同步偏离项", "创建工艺核查单"],
   },
-  "15": {
+  "B015": {
     sceneAria: "半导体检测站",
     title: "生产记录复测",
     subject: "匿名信号通道与检测结果",
     decisionQuestion: "哪条生产观测需要隔离并申请复测？",
     sceneAlt: "半导体制造检测站与匿名信号通道显示",
-    sceneAsset: "/case-assets/case-15/scene.png",
+    sceneAsset: "/case-assets/case-B015/scene.png",
     sequenceTitle: "生产观测记录序列",
     sequenceKind: "time",
     timeField: "test_timestamp",
@@ -408,13 +408,13 @@ const configs: Record<string, CaseConsoleConfig> = {
     ],
     steps: ["找到未通过记录", "检查通道覆盖", "标记待复核信号", "隔离并申请复测"],
   },
-  "16": {
+  "B016": {
     sceneAria: "风电场运行现场",
     title: "风机少发核查",
     subject: "风速、功率与日级下偏标记",
     decisionQuestion: "哪台风机优先提交现场核查？",
     sceneAlt: "中国风电场环境与机组运行场景",
-    sceneAsset: "/case-assets/case-16/scene.png",
+    sceneAsset: "/case-assets/case-B016/scene.png",
     sequenceTitle: "七天风速与功率",
     sequenceKind: "time",
     timeField: "day",
@@ -433,13 +433,13 @@ const configs: Record<string, CaseConsoleConfig> = {
     ],
     steps: ["发现少发记录", "核对数据覆盖", "补充同群比较", "提交现场核查"],
   },
-  "17": {
+  "B017": {
     sceneAria: "包装设备现场",
     title: "切刀健康排检",
     subject: "转矩、跟随误差与主轴速度",
     decisionQuestion: "哪次会话列入夜班排检候选？",
     sceneAlt: "包装机切刀、刀座、薄膜输送和主轴设备",
-    sceneAsset: "/case-assets/case-17/scene.png",
+    sceneAsset: "/case-assets/case-B017/scene.png",
     sequenceTitle: "五百一十九次会话趋势",
     sequenceKind: "records",
     plotField: "health_deviation_index",
@@ -457,13 +457,13 @@ const configs: Record<string, CaseConsoleConfig> = {
     ],
     steps: ["找到高偏差会话", "核对信号覆盖", "查看可用波形", "列入排检候选"],
   },
-  "19": {
+  "B019": {
     sceneAria: "液压动力单元",
     title: "部件检查排序",
     subject: "压力、流量与四类部件状态",
     decisionQuestion: "第 217 次测量循环应先检查哪个部件？",
     sceneAlt: "工业液压动力单元、冷却器、比例阀、泵和蓄能器",
-    sceneAsset: "/case-assets/case-19/scene.png",
+    sceneAsset: "/case-assets/case-B019/scene.png",
     sequenceTitle: "测量循环趋势",
     sequenceKind: "records",
     plotField: "cycle_id",
@@ -481,13 +481,13 @@ const configs: Record<string, CaseConsoleConfig> = {
     ],
     steps: ["找到异常循环", "核对部件状态", "排出检查顺序", "人工确认"],
   },
-  "20": {
+  "B020": {
     sceneAria: "光伏场站现场",
     title: "光伏少发核查",
     subject: "辐照、功率与归一化出力比",
     decisionQuestion: "站端下一步应先核查哪类线索？",
     sceneAlt: "中国光伏电站环境与站端运行场景",
-    sceneAsset: "/case-assets/case-20/scene.png",
+    sceneAsset: "/case-assets/case-B020/scene.png",
     sequenceTitle: "相邻日期站端记录",
     sequenceKind: "time",
     timeField: "date",

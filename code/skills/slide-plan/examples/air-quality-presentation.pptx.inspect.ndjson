@@ -6,7 +6,7 @@
 {"kind":"textbox","id":"sh/sjqp8329","slide":1,"name":"SLIDE_TITLE","text":"让数据先过体检","textPreview":"让数据先过体检","textChars":7,"textLines":1,"bbox":[82,206,820,172]}
 {"kind":"textbox","id":"sh/dkzq183e","slide":1,"name":"SUBTITLE","text":"从可读的 Markdown 到可编辑、可审计的演示文稿","textPreview":"从可读的 Markdown 到可编辑、可审计的演示文稿","textChars":27,"textLines":1,"bbox":[86,430,760,76]}
 {"kind":"shape","id":"sh/el87adkz","slide":1,"name":"TITLE_ACCENT","bbox":[1032,0,248,720]}
-{"kind":"notes","id":"nt/nx0xxw","slide":1,"text":"开场说明本文稿的目标是建立数据质量共识，不对污染原因下结论。\n\n[Sources]\n- Course-local S02 profile output."}
+{"kind":"notes","id":"nt/nx0xxw","slide":1,"text":"开场说明本文稿的目标是建立数据质量共识，不对污染原因下结论。\n\n[Sources]\n- Course-local S002 profile output."}
 {"kind":"slide","id":"sl/h5tiyq","slide":2,"title":"SECTION 01","textShapes":2}
 {"kind":"textbox","id":"sh/o7mpc3it","slide":2,"name":"SECTION_NUMBER","text":"SECTION 01","textPreview":"SECTION 01","textChars":10,"textLines":1,"bbox":[84,74,360,32]}
 {"kind":"textbox","id":"sh/36dojy18","slide":2,"name":"SLIDE_TITLE","text":"01 为什么先体检","textPreview":"01 为什么先体检","textChars":9,"textLines":1,"bbox":[82,256,1080,144]}
@@ -22,7 +22,7 @@
 {"kind":"textbox","id":"sh/1gvu5kne","slide":4,"name":"PAGE_NUMBER","text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[1160,54,48,32]}
 {"kind":"shape","id":"sh/0fmdwfmt","slide":4,"name":"ACCENT_RULE","bbox":[76,126,106,8]}
 {"kind":"table","id":"tb/i5orm5o7","slide":4,"name":"DATA_TABLE:table-4","rows":4,"cols":3,"preview":"字段 | 缺失数 | 缺失率","bbox":[90,176,1100,420]}
-{"kind":"notes","id":"nt/97rgif","slide":4,"text":"表格只展示三个代表字段；完整六项数值保留在 profile.json。\n\n[Sources]\n- dataset/06-beijing-air-quality-audit/case.csv; S02 profile generated locally."}
+{"kind":"notes","id":"nt/97rgif","slide":4,"text":"表格只展示三个代表字段；完整六项数值保留在 profile.json。\n\n[Sources]\n- dataset/B006-beijing-air-quality-audit/case.csv; S002 profile generated locally."}
 {"kind":"slide","id":"sl/21xc67","slide":5,"title":"把数据问题交给可复查的流程","textShapes":3}
 {"kind":"textbox","id":"sh/ja5s7mhc","slide":5,"name":"SLIDE_TITLE","text":"把数据问题交给可复查的流程","textPreview":"把数据问题交给可复查的流程","textChars":13,"textLines":1,"bbox":[76,48,1040,64]}
 {"kind":"textbox","id":"sh/kbe90ryh","slide":5,"name":"PAGE_NUMBER","text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[1160,54,48,32]}

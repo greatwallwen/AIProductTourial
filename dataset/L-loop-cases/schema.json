@@ -3,20 +3,20 @@
   "data_nature": "course-runtime-contract-referencing-real-local-inputs",
   "cases": [
     {
-      "id": "L01",
-      "inputs": ["dataset/02-member-value-experiment/case.csv"],
+      "id": "L001",
+      "inputs": ["dataset/B002-member-value-experiment/case.csv"],
       "skills": ["data-profile", "metric-brief"],
       "terminal": "completed"
     },
     {
-      "id": "L02",
+      "id": "L002",
       "inputs": ["code/skills/poster-recipe/examples/rainy-bookstore-brief.json"],
       "skills": ["poster-recipe"],
       "terminal": "waiting_human"
     },
     {
-      "id": "L03",
-      "inputs": ["dataset/09-metro-agentic-rag/case.csv", "dataset/09-metro-agentic-rag/knowledge.jsonl"],
+      "id": "L003",
+      "inputs": ["dataset/B009-metro-agentic-rag/case.csv", "dataset/B009-metro-agentic-rag/knowledge.jsonl"],
       "skills": ["fixed-window-reader", "bounded-retrieval", "approval-packet"],
       "terminal": "waiting_human"
     }

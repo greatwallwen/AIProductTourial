@@ -32,28 +32,28 @@ class LoopRuntimeTests(unittest.TestCase):
         return output, receipt
 
     def test_l01_runs_two_real_skills_and_stops(self) -> None:
-        output, receipt = self.run_case("L01")
+        output, receipt = self.run_case("L001")
         self.assertEqual(receipt["state"], "completed")
         self.assertEqual(receipt["stop_reason"], "acceptance_passed")
         self.assertEqual(receipt["facts"]["members"], 5000)
         self.assertEqual(receipt["facts"]["coupon_face_value_ceiling_cny"], 10000.0)
         self.assertEqual(len(receipt["calls"]), 2)
-        self.assertTrue((output / "L01" / "business-brief.md").exists())
+        self.assertTrue((output / "L001" / "business-brief.md").exists())
 
     def test_l02_creates_three_directions_then_waits_for_visual_choice(self) -> None:
-        output, receipt = self.run_case("L02")
+        output, receipt = self.run_case("L002")
         self.assertEqual(receipt["state"], "waiting_human")
         self.assertEqual(receipt["stop_reason"], "visual_choice_required")
         self.assertEqual(receipt["facts"]["candidate_count"], 3)
         self.assertFalse(receipt["facts"]["provider_called"])
-        self.assertTrue((output / "L02" / "poster.svg").exists())
+        self.assertTrue((output / "L002" / "poster.svg").exists())
 
     def test_l03_uses_public_window_without_claiming_diagnosis(self) -> None:
-        output, receipt = self.run_case("L03")
+        output, receipt = self.run_case("L003")
         self.assertEqual(receipt["state"], "waiting_human")
         self.assertEqual(receipt["stop_reason"], "permission_required")
         self.assertEqual(receipt["facts"]["rows"], 25)
-        packet = json.loads((output / "L03" / "approval-packet.json").read_text(encoding="utf-8"))
+        packet = json.loads((output / "L003" / "approval-packet.json").read_text(encoding="utf-8"))
         self.assertEqual(packet["status"], "waiting_human")
         self.assertNotIn("diagnosis", packet)
 

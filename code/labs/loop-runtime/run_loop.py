@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import os
 import subprocess
 import sys
 from datetime import datetime
@@ -27,6 +28,9 @@ def relative(path: Path) -> str:
 
 
 def run_python(script: Path, *arguments: str) -> dict[str, Any]:
+    child_env = os.environ.copy()
+    child_env["PYTHONUTF8"] = "1"
+    child_env["PYTHONIOENCODING"] = "utf-8"
     completed = subprocess.run(
         [sys.executable, "-B", str(script), *arguments],
         cwd=ROOT,
@@ -34,6 +38,7 @@ def run_python(script: Path, *arguments: str) -> dict[str, Any]:
         capture_output=True,
         text=True,
         encoding="utf-8",
+        env=child_env,
     )
     return {
         "command": " ".join(["python", "-B", relative(script), *arguments]),
@@ -48,9 +53,9 @@ def metric(metrics: dict[str, Any], metric_id: str) -> dict[str, Any]:
 
 
 def l01(output: Path) -> dict[str, Any]:
-    case_dir = output / "L01"
+    case_dir = output / "L001"
     case_dir.mkdir(parents=True, exist_ok=True)
-    source = DATASET_ROOT / "02-member-value-experiment" / "case.csv"
+    source = DATASET_ROOT / "B002-member-value-experiment" / "case.csv"
     profile_json = case_dir / "profile.json"
     profile_md = case_dir / "profile.md"
     metrics_json = case_dir / "metrics.json"
@@ -87,7 +92,7 @@ def l01(output: Path) -> dict[str, Any]:
         {"id": "missing-metrics-not-invented", "passed": revenue["status"] == "not_calculable" and recency["status"] == "not_calculable"},
     ]
     if not all(item["passed"] for item in checks):
-        raise ValueError("L01 acceptance check failed")
+        raise ValueError("L001 acceptance check failed")
     transitions = [
         {"step": 1, "state": "observe", "result": f"完整扫描 {profile['rows']} 行、{profile['column_count']} 列。"},
         {"step": 2, "state": "choose", "result": "选择 data-profile 后再调用 metric-brief；不先写经营结论。"},
@@ -98,7 +103,7 @@ def l01(output: Path) -> dict[str, Any]:
     ]
     return {
         "schema_version": "2.0",
-        "lab_id": "L01",
+        "lab_id": "L001",
         "objective": "从会员明细生成一页可复核经营简报",
         "state": "completed",
         "stop_reason": "acceptance_passed",
@@ -114,7 +119,7 @@ def l01(output: Path) -> dict[str, Any]:
 
 
 def l02(output: Path) -> dict[str, Any]:
-    case_dir = output / "L02"
+    case_dir = output / "L002"
     case_dir.mkdir(parents=True, exist_ok=True)
     brief = ROOT / "code" / "skills" / "poster-recipe" / "examples" / "rainy-bookstore-brief.json"
     recipes_json = case_dir / "poster-recipes.json"
@@ -135,7 +140,7 @@ def l02(output: Path) -> dict[str, Any]:
         {"id": "provider-boundary", "passed": recipes["image_provider_called"] is False and recipes["image_provider_receipt"] is None},
     ]
     if not all(item["passed"] for item in checks):
-        raise ValueError("L02 acceptance check failed")
+        raise ValueError("L002 acceptance check failed")
     transitions = [
         {"step": 1, "state": "observe", "result": "读取受众、标题、必备文字、画面元素和禁用项。"},
         {"step": 2, "state": "choose", "result": "选择 poster-recipe，限定为三套方向与一个可编辑本地预览。"},
@@ -146,7 +151,7 @@ def l02(output: Path) -> dict[str, Any]:
     ]
     return {
         "schema_version": "2.0",
-        "lab_id": "L02",
+        "lab_id": "L002",
         "objective": "把雨天旧书店简报变成三套可比较的海报方向",
         "state": "waiting_human",
         "stop_reason": "visual_choice_required",
@@ -166,10 +171,10 @@ def parse_time(value: str) -> datetime:
 
 
 def l03(output: Path) -> dict[str, Any]:
-    case_dir = output / "L03"
+    case_dir = output / "L003"
     case_dir.mkdir(parents=True, exist_ok=True)
-    source = DATASET_ROOT / "09-metro-agentic-rag" / "case.csv"
-    knowledge_path = DATASET_ROOT / "09-metro-agentic-rag" / "knowledge.jsonl"
+    source = DATASET_ROOT / "B009-metro-agentic-rag" / "case.csv"
+    knowledge_path = DATASET_ROOT / "B009-metro-agentic-rag" / "knowledge.jsonl"
     start = parse_time("2020-04-17 23:57:30")
     end = parse_time("2020-04-18 00:02:30")
     with source.open("r", encoding="utf-8-sig", newline="") as handle:
@@ -201,7 +206,7 @@ def l03(output: Path) -> dict[str, Any]:
         {"id": "no-diagnosis", "passed": "diagnosis" not in packet and packet["status"] == "waiting_human"},
     ]
     if not all(item["passed"] for item in checks):
-        raise ValueError("L03 acceptance check failed")
+        raise ValueError("L003 acceptance check failed")
     transitions = [
         {"step": 1, "state": "observe", "result": "从公开数据固定窗口读取 25 条传感记录。"},
         {"step": 2, "state": "choose", "result": "只检索数据字段说明、课程检查程序和审批策略。"},
@@ -212,7 +217,7 @@ def l03(output: Path) -> dict[str, Any]:
     ]
     return {
         "schema_version": "2.0",
-        "lab_id": "L03",
+        "lab_id": "L003",
         "objective": "基于公开压缩机窗口准备现场检查申请，而不是自动诊断或控制设备",
         "state": "waiting_human",
         "stop_reason": "permission_required",
@@ -227,10 +232,14 @@ def l03(output: Path) -> dict[str, Any]:
     }
 
 
-RUNNERS = {"L01": l01, "L02": l02, "L03": l03}
+RUNNERS = {"L001": l01, "L002": l02, "L003": l03}
 
 
 def main() -> None:
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
+    if hasattr(sys.stderr, "reconfigure"):
+        sys.stderr.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(description="Run a real, bounded course Loop")
     parser.add_argument("--lab", required=True, choices=sorted(RUNNERS))
     parser.add_argument("--output", type=Path, required=True)

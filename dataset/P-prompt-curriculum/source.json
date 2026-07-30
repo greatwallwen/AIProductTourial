@@ -1,14 +1,14 @@
 {
   "schema_version": "1.0",
   "dataset_id": "P-prompt-curriculum",
-  "purpose": "U01-U06 课堂 Prompt 实验输入",
+  "purpose": "P001-P008 课堂 Prompt 实验输入",
   "sources": [
     {
       "id": "DATA-06",
       "kind": "project-dataset",
-      "path": "dataset/06-beijing-air-quality-audit/case.csv",
+      "path": "dataset/B006-beijing-air-quality-audit/case.csv",
       "license": "CC BY 4.0",
-      "use": "U04 的时间范围、污染物空值与摘录检查"
+      "use": "P005 的时间范围、污染物空值与摘录检查"
     },
     {
       "id": "SYNTH-AGRICULTURAL-PRICE",
@@ -24,14 +24,14 @@
       ],
       "license": "course-generated",
       "redistribution": "allowed-with-course",
-      "use": "U04 的相邻月份变化、异常窗口和因果边界实验"
+      "use": "P005 的相邻月份变化、异常窗口和因果边界实验"
     },
     {
       "id": "COURSE-PROMPT-FIXTURES",
       "kind": "deterministic-synthetic",
       "license": "course-generated",
       "redistribution": "allowed-with-course",
-      "use": "U01-U03、U05-U06 的任务、反例、安全和回归检查"
+      "use": "P001-P003、P006-P008 的任务、反例、安全和回归检查"
     }
   ]
 }

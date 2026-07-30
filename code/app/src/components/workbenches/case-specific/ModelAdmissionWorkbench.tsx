@@ -223,7 +223,7 @@ export function ModelAdmissionWorkbench(props: CaseWorkbenchProps) {
         },
         actorId,
         evidenceIds: rows.map((item) => `evaluation:${text(item.evaluation_id)}`).concat(!requestingRetest && retestComplete ? [`retest:${retestId}:${datasetVersion.trim()}`] : []),
-        idempotencyKey: `case-11:candidate:${candidateId}:${command}:v${props.selected.version}`,
+        idempotencyKey: `case-B011:candidate:${candidateId}:${command}:v${props.selected.version}`,
       },
     );
   }
@@ -251,7 +251,7 @@ export function ModelAdmissionWorkbench(props: CaseWorkbenchProps) {
         <nav aria-label="准入工具">
           <button ref={reportTriggerRef} type="button" onClick={() => setReportOpen(true)}><FileText size={17} />评测报告</button>
           <button ref={auditTriggerRef} type="button" onClick={() => setAuditOpen(true)}><History size={17} />操作日志</button>
-          <button type="button" aria-label="恢复案例 B11" title="恢复初始状态" onClick={reset} disabled={props.busy}><RefreshCw size={17} />刷新</button>
+          <button type="button" aria-label="恢复案例 B011" title="恢复初始状态" onClick={reset} disabled={props.busy}><RefreshCw size={17} />刷新</button>
         </nav>
       </header>
 

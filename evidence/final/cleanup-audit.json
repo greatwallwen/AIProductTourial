@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "executed_at": "2026-07-30T14:25:00+08:00",
+  "scope": "Course_AIProduct/.publish/AIProductTourial only",
+  "deleted": {
+    "files": 1237,
+    "bytes": 333964265,
+    "categories": [
+      {
+        "name": "旧编号与演示运行态",
+        "files": 139,
+        "bytes": 19962035,
+        "items": "code/runtime 下 01-20 与 B001-B024 SQLite/WAL/SHM、旧驾驶舱截图、B018 旧对比稿、两张旧 final 运行图和旧 TypeScript 缓存"
+      },
+      {
+        "name": "最终构建缓存",
+        "files": 1098,
+        "bytes": 314002230,
+        "items": "code/app/.next 与 code/app/tsconfig.tsbuildinfo；均可由 run.bat rebuild 或 npm run build 重建"
+      }
+    ]
+  },
+  "retained": [
+    "code/node_modules：一键启动所需的已安装依赖，不进入 Git",
+    "24 个案例数据、代码、中文图、最新截图和浏览器回执",
+    "8 个上游原始重建输入缺失案例的诚实 blocked_missing_inputs 状态"
+  ],
+  "post_conditions": {
+    "port_3200_listener": 0,
+    "owned_background_processes": 0,
+    "code_runtime_directory_present": false,
+    "next_build_cache_present": false,
+    "old_dashboard_screenshot_present": false,
+    "old_b018_comparison_present": false
+  }
+}

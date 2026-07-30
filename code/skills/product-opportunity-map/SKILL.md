@@ -18,4 +18,4 @@ python -B scripts/build_opportunity_map.py `
   --svg-output examples/opportunity-map.svg
 ```
 
-Stop if required S04 rows or source phrases are absent. Never infer sample size, prevalence, solution demand, or causal impact.
+Stop if required S004 rows or source phrases are absent. Never infer sample size, prevalence, solution demand, or causal impact.

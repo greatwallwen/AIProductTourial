@@ -251,7 +251,7 @@ export function HospitalTransferWorkbench(props: CaseWorkbenchProps) {
       value(selectedEvent.payload.flow_token),
     ].filter((item) => item && item !== "—");
     const common = {
-      idempotencyKey: `case-05:${transportId}:${commandId}:v${props.selected.version}:${selectedEventId}`,
+      idempotencyKey: `case-B005:${transportId}:${commandId}:v${props.selected.version}:${selectedEventId}`,
       evidenceIds: [...new Set(evidenceIds)],
     };
 

@@ -14,24 +14,24 @@ from typing import Any
 
 
 CASE_SLUGS = {
-    "13": "auto-service-triage",
-    "14": "flotation-impurity-review",
-    "15": "wafer-quality-review",
-    "16": "wind-underperformance",
-    "17": "cutter-health-review",
-    "18": "boiler-temperature-review",
-    "19": "hydraulic-condition",
-    "20": "pv-loss-attribution",
+    "B013": "auto-service-triage",
+    "B014": "flotation-impurity-review",
+    "B015": "wafer-quality-review",
+    "B016": "wind-underperformance",
+    "B017": "cutter-health-review",
+    "B018": "boiler-temperature-review",
+    "B019": "hydraulic-condition",
+    "B020": "pv-loss-attribution",
 }
 
 SOURCE_DIRECTORIES = {
-    "13": "案例01_汽车售后服务辅助决策",
-    "14": "案例02_精矿杂质提前干预",
-    "16": "案例04_风电机组出力下偏定位台",
-    "17": "案例05_包装机切刀劣化复核/reference_data_analysis",
-    "18": "案例06_工业锅炉蒸汽温度持续偏离复核/reference_data_analysis",
-    "19": "案例07_液压系统状态监测/reference_data_analysis",
-    "20": "案例08_辐照转化效率异常归因",
+    "B013": "案例01_汽车售后服务辅助决策",
+    "B014": "案例02_精矿杂质提前干预",
+    "B016": "案例04_风电机组出力下偏定位台",
+    "B017": "案例05_包装机切刀劣化复核/reference_data_analysis",
+    "B018": "案例06_工业锅炉蒸汽温度持续偏离复核/reference_data_analysis",
+    "B019": "案例07_液压系统状态监测/reference_data_analysis",
+    "B020": "案例08_辐照转化效率异常归因",
 }
 
 SOURCE_CONTRACTS: dict[str, dict[str, Any]] = {
@@ -912,14 +912,14 @@ def build_all(
     output_root = output_root.resolve()
     secom_archive = secom_archive.resolve() if secom_archive is not None else None
     builders = {
-        "13": lambda: _case13(source_root, case13_intakes),
-        "14": lambda: _case14(source_root, case14_hours),
-        "15": lambda: _case15(secom_archive),
-        "16": lambda: _case16(source_root, case16_days),
-        "17": lambda: _case17(source_root, case17_waveform_sessions, case17_waveform_samples),
-        "18": lambda: _case18(source_root),
-        "19": lambda: _case19(source_root),
-        "20": lambda: _case20(source_root),
+        "B013": lambda: _case13(source_root, case13_intakes),
+        "B014": lambda: _case14(source_root, case14_hours),
+        "B015": lambda: _case15(secom_archive),
+        "B016": lambda: _case16(source_root, case16_days),
+        "B017": lambda: _case17(source_root, case17_waveform_sessions, case17_waveform_samples),
+        "B018": lambda: _case18(source_root),
+        "B019": lambda: _case19(source_root),
+        "B020": lambda: _case20(source_root),
     }
     items = []
     for case_id in sorted(selected_cases, key=int):

@@ -20,7 +20,7 @@ afterEach(() => {
 });
 
 function projection(
-  caseId: "16" | "17",
+  caseId: "B016" | "17",
   objectId: string,
   state: string,
   payload: Record<string, unknown>,
@@ -36,7 +36,7 @@ function projection(
 }
 
 function baseProps(
-  caseId: "16" | "17",
+  caseId: "B016" | "17",
   selected: CaseProjection,
   overrides: Partial<CaseWorkbenchProps> = {},
 ): CaseWorkbenchProps {
@@ -46,11 +46,11 @@ function baseProps(
     selected,
     events: [],
     metrics: [],
-    datasetRowCount: caseId === "16" ? 938 : 519,
+    datasetRowCount: caseId === "B016" ? 938 : 519,
     sceneRows: [],
     supportingArtifacts: {},
-    actorRole: caseId === "16" ? "reliability_engineer" : "maintenance_planner",
-    roles: caseId === "16"
+    actorRole: caseId === "B016" ? "reliability_engineer" : "maintenance_planner",
+    roles: caseId === "B016"
       ? ["reliability_engineer", "supervisor"]
       : ["maintenance_planner", "supervisor"],
     commands: [],
@@ -83,13 +83,13 @@ const windRows = [
   manual_inspection_only: "True",
 }));
 
-const windSelected = projection("16", "16-7-1", "待定位", {
+const windSelected = projection("B016", "16-7-1", "待定位", {
   ...windRows[0],
   valid_wind_records: "143",
   valid_power_records: "143",
 });
 
-const cutterSelected = projection("17", "17-BD-0003", "待复核", {
+const cutterSelected = projection("B017", "B017-BD-0003", "待复核", {
   session_id: "BD-0003",
   operating_mode: "1",
   source_samples: "2048",
@@ -161,7 +161,7 @@ describe("WindUnderperformanceWorkbench", () => {
     const onCommand = vi.fn();
     const onReset = vi.fn();
     const onSelect = vi.fn();
-    const second = projection("16", "16-8-1", "待定位", {
+    const second = projection("B016", "16-8-1", "待定位", {
       ...windRows[0],
       turbine_id: "8",
       underperformance_share: "0",
@@ -185,7 +185,7 @@ describe("WindUnderperformanceWorkbench", () => {
     fireEvent.change(screen.getByLabelText("当前操作角色"), { target: { value: "supervisor" } });
     fireEvent.click(screen.getByRole("button", { name: "提交现场核查" }));
     fireEvent.click(screen.getByRole("button", { name: /T008/ }));
-    fireEvent.click(screen.getByRole("button", { name: "恢复案例 B16" }));
+    fireEvent.click(screen.getByRole("button", { name: "恢复案例 B016" }));
 
     expect(onActorRoleChange).toHaveBeenCalledWith("supervisor");
     expect(onCommand).toHaveBeenCalledOnce();
@@ -199,7 +199,7 @@ describe("WindUnderperformanceWorkbench", () => {
         serverValidationRequired: true,
       },
       evidenceIds: expect.any(Array),
-      idempotencyKey: expect.stringMatching(/^case-16:turbine:7:submit_field_check:v0/),
+      idempotencyKey: expect.stringMatching(/^case-B016:turbine:7:submit_field_check:v0/),
     });
     expect(onSelect).toHaveBeenCalledWith("16-8-1");
     expect(onReset).toHaveBeenCalledOnce();
@@ -236,7 +236,7 @@ describe("CutterHealthWorkbench", () => {
 
   it("lists only waveform sessions and keeps the no-waveform summary truthful", () => {
     const onSelect = vi.fn();
-    const withoutWaveform = projection("17", "17-BD-0010", "待复核", { ...cutterSelected.payload, session_id: "BD-0010" });
+    const withoutWaveform = projection("B017", "B017-BD-0010", "待复核", { ...cutterSelected.payload, session_id: "BD-0010" });
     const { rerender } = render(
       <CutterHealthWorkbench
         {...baseProps("17", cutterSelected, {
@@ -277,7 +277,7 @@ describe("CutterHealthWorkbench", () => {
   });
 
   it("restores the review draft and exposes role, recovery, and reset controls", () => {
-    const event: CaseEvent = { eventId: "evt-17", caseId: "17", objectId: cutterSelected.objectId, command: "schedule_night_inspection", fromState: "待复核", toState: "排检候选待确认", actor: { id: "maintenance_planner", role: "maintenance_planner" }, version: 1, occurredAt: "2026-07-26T08:00:00.000Z", reason: 'cutter-review:{"signal":"cutter_follow_error","viewed":true,"direction":"切刀跟随误差与传动间隙","note":"复核传动间隙。"}', evidenceIds: [] };
+    const event: CaseEvent = { eventId: "evt-17", caseId: "B017", objectId: cutterSelected.objectId, command: "schedule_night_inspection", fromState: "待复核", toState: "排检候选待确认", actor: { id: "maintenance_planner", role: "maintenance_planner" }, version: 1, occurredAt: "2026-07-26T08:00:00.000Z", reason: 'cutter-review:{"signal":"cutter_follow_error","viewed":true,"direction":"切刀跟随误差与传动间隙","note":"复核传动间隙。"}', evidenceIds: [] };
     const onActorRoleChange = vi.fn(); const onSelect = vi.fn(); const onReset = vi.fn();
     render(<CutterHealthWorkbench {...baseProps("17", cutterSelected, { events: [event], supportingArtifacts: { "waveform.csv": waveform }, error: "记录写入失败，请刷新后重试", onActorRoleChange, onSelect, onReset })} />);
     expect(screen.getByRole("button", { name: /切刀跟随误差/ })).toHaveAttribute("data-active", "true");
@@ -287,7 +287,7 @@ describe("CutterHealthWorkbench", () => {
     expect(onActorRoleChange).toHaveBeenCalledWith("supervisor");
     fireEvent.click(screen.getByRole("button", { name: "刷新当前会话" }));
     expect(onSelect).toHaveBeenCalledWith(cutterSelected.objectId);
-    fireEvent.click(screen.getByRole("button", { name: "恢复案例 B17" }));
+    fireEvent.click(screen.getByRole("button", { name: "恢复案例 B017" }));
     expect(onReset).toHaveBeenCalledOnce();
   });
 });
