@@ -11,13 +11,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 EXPECTED = {
     "prompt_labs": [f"P{index:03d}" for index in range(1, 9)],
-    "agent_skill_cases": [f"S{index:03d}" for index in range(1, 9)],
+    "agent_skill_cases": [f"S{index:03d}" for index in range(1, 10)],
     "loop_cases": [f"L{index:03d}" for index in range(1, 4)],
     "business_cases": [f"B{index:03d}" for index in range(1, 25)],
 }
 EXPECTED_TEACHING = {
     "prompt_units": ["P001", "P002", "P003", "P005", "P006", "P008"],
-    "agent_skill_workshops": [f"S{index:03d}" for index in range(1, 9)],
+    "agent_skill_workshops": [f"S{index:03d}" for index in range(1, 10)],
     "loop_patterns": [f"L{index:03d}" for index in range(1, 5)],
     "business_cases": [f"B{index:03d}" for index in range(1, 25)],
 }
@@ -55,10 +55,14 @@ def main() -> None:
     if [item.get("id") for item in manifest_labs] != expected_labs:
         fail("course-manifest labs do not match the active semantic lab registry")
     for item in manifest_labs:
-        for key in ("dataset_path", "code_path"):
-            path = ROOT / item.get(key, "")
-            if not path.is_dir():
-                fail(f"{item['id']} missing {key}: {item.get(key)}")
+        code_path = ROOT / item.get("code_path", "")
+        if not code_path.is_dir():
+            fail(f"{item['id']} missing code_path: {item.get('code_path')}")
+        dataset_path = item.get("dataset_path")
+        if dataset_path is not None and not (ROOT / dataset_path).is_dir():
+            fail(f"{item['id']} missing dataset_path: {dataset_path}")
+        if dataset_path is None and item.get("delivery") != "react_component_skill":
+            fail(f"{item['id']} omits a dataset without a component-only delivery contract")
         if item["id"] in EXPECTED["prompt_labs"]:
             if item.get("delivery") != "prompt_instructor_chapter" or item.get("route"):
                 fail(f"{item['id']} must be a route-free CLI instructor chapter")
@@ -117,9 +121,13 @@ def main() -> None:
         if any(case_id in expected_labs for case_id in entry_ids):
             semantic_dataset_dirs.add(data_dir)
 
-    expected_dataset_ids = runtime_ids + expected_labs
+    expected_dataset_ids = runtime_ids + [
+        str(item["id"])
+        for item in manifest_labs
+        if item.get("dataset_path") is not None
+    ]
     if covered_ids != expected_dataset_ids:
-        fail("dataset manifest ids do not match B001-B024 plus P/S/L in semantic order")
+        fail("dataset manifest ids do not match dataset-backed B/P/S/L items in semantic order")
 
     for data_dir in semantic_dataset_dirs:
         checksum_file = data_dir / "checksums.sha256"
@@ -139,6 +147,7 @@ def main() -> None:
         "pixijs-game-contract",
         "poster-recipe",
         "product-opportunity-map",
+        "react-bits-motion",
         "slide-plan",
     }
     actual_skills = {path.name for path in (ROOT / "code" / "skills").iterdir() if (path / "SKILL.md").is_file()}
@@ -146,12 +155,12 @@ def main() -> None:
         fail(f"local Skill set mismatch: {sorted(actual_skills)}")
 
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    for phrase in ("P001—P008", "S001—S008", "L001—L004", "B001—B024", "8 个可运行 Skill"):
+    for phrase in ("P001—P008", "S001—S009", "L001—L004", "B001—B024", "9 个可运行 Skill"):
         if phrase not in readme:
             fail(f"README missing frozen count or range: {phrase}")
 
     code_readme = (ROOT / "code" / "README.md").read_text(encoding="utf-8")
-    for phrase in ("P001—P008", "S001—S008", "L001—L003", "B001—B024"):
+    for phrase in ("P001—P008", "S001—S009", "L001—L003", "B001—B024"):
         if phrase not in code_readme:
             fail(f"code README missing current semantic entry: {phrase}")
 

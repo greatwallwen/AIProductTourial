@@ -27,7 +27,8 @@
       "S005",
       "S006",
       "S007",
-      "S008"
+      "S008",
+      "S009"
     ],
     "loop_cases": [
       "L001",
@@ -78,7 +79,8 @@
       "S005",
       "S006",
       "S007",
-      "S008"
+      "S008",
+      "S009"
     ],
     "loop_patterns": [
       "L001",
@@ -1287,6 +1289,17 @@
       "code_path": "code/skills/asset-contract",
       "status": "local_contract_verified_provider_generation_blocked",
       "display_order": 8
+    },
+    {
+      "id": "S009",
+      "slug": "react-bits-motion",
+      "title": "让动效表达状态，而不是装饰页面",
+      "track": "agent-skill",
+      "delivery": "react_component_skill",
+      "dataset_path": null,
+      "code_path": "code/skills/react-bits-motion",
+      "status": "verified_local_contract",
+      "display_order": 9
     },
     {
       "id": "L001",

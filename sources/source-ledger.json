@@ -1,6 +1,6 @@
 {
   "schema_version": "2.0",
-  "accessed_at": "2026-07-28",
+  "accessed_at": "2026-07-30",
   "policy": {
     "priority": [
       "original_institution_or_doi_repository",
@@ -195,6 +195,28 @@
       "license": "MIT",
       "state": "web-verified-2026-07-28",
       "boundary": "Provider credentials and live generation are not verified in this course package."
+    },
+    {
+      "id": "SKILL-REACT-BITS",
+      "title": "DavidHDev/react-bits",
+      "url": "https://github.com/DavidHDev/react-bits",
+      "kind": "public-react-component-reference",
+      "version": "b9158acb37e7bdfd6c5bc5894da1826fe1d05a6b",
+      "license": "MIT + Commons Clause License Condition v1.0",
+      "state": "web-verified-2026-07-30",
+      "usage": "S009 uses one adapted SpotlightCard inside the course application; copyright and license are retained.",
+      "boundary": "The course does not redistribute React Bits as a standalone component collection or port."
+    },
+    {
+      "id": "SKILL-BROWSERACT",
+      "title": "browser-act/skills",
+      "url": "https://github.com/browser-act/skills/tree/main/browser-act",
+      "kind": "optional-browser-research-adapter",
+      "version": "060f5be942894174722a705b2c450c3e082db379; skill-version 2.0.2",
+      "license": "MIT",
+      "state": "evaluated-not-installed",
+      "usage": "Candidate for protected-page research, isolated sessions and explicit human handoff in Supergrill.",
+      "boundary": "Not an acceptance runner; stealth, captcha, proxy, profile import, login and external actions require separate approval."
     },
     {
       "id": "LOOP-COURSE-CONTRACT",

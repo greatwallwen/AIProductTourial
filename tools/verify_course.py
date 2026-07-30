@@ -10,7 +10,7 @@ from compose_course import compose, load_manifest
 ROOT = Path(__file__).resolve().parents[1]
 EXPECTED_RUNTIME_PROMPTS = [f"P{index:03d}" for index in range(1, 9)]
 EXPECTED_UNITS = ["P001", "P002", "P003", "P005", "P006", "P008"]
-EXPECTED_SKILLS = [f"S{index:03d}" for index in range(1, 9)]
+EXPECTED_SKILLS = [f"S{index:03d}" for index in range(1, 10)]
 EXPECTED_RUNTIME_LOOPS = [f"L{index:03d}" for index in range(1, 4)]
 EXPECTED_LOOPS = [f"L{index:03d}" for index in range(1, 5)]
 EXPECTED_LABS = EXPECTED_RUNTIME_PROMPTS + EXPECTED_SKILLS + EXPECTED_RUNTIME_LOOPS
@@ -25,6 +25,7 @@ S_CONTENT_HEADINGS = {
     "S006": ("### 五页怎样对应大纲", "### 第四页和检查结果", "### 为什么生成后还要逐页看"),
     "S007": ("### 浏览器里测到什么", "### 运行画面", "### 原型离完整小游戏还有什么"),
     "S008": ("### 本地完成到哪里", "### 怎样查看", "### 本地检查与在线生成是两件事"),
+    "S009": ("### 状态和动效怎样分工", "### 为什么只选一个组件", "### 哪些检查不能省"),
 }
 BANNED_TEXT = (
     "讲师使用说明",
@@ -162,13 +163,16 @@ def main() -> int:
     if teaching_spine.get("prompt_units") != EXPECTED_UNITS:
         errors.append("manifest teaching Prompt units do not match P001-P008")
     if teaching_spine.get("agent_skill_workshops") != EXPECTED_SKILLS:
-        errors.append("manifest teaching Skill workshops do not match S001-S008")
+        errors.append("manifest teaching Skill workshops do not match S001-S009")
     if teaching_spine.get("loop_patterns") != EXPECTED_LOOPS:
         errors.append("manifest teaching Loop patterns do not match L001-L004")
     for item in manifest_labs:
         lab_id = str(item.get("id"))
-        if not (ROOT / item.get("dataset_path", "")).is_dir():
+        dataset_path = item.get("dataset_path")
+        if dataset_path is not None and not (ROOT / dataset_path).is_dir():
             errors.append(f"{lab_id} dataset path missing")
+        if dataset_path is None and item.get("delivery") != "react_component_skill":
+            errors.append(f"{lab_id} omits a dataset without a component-only delivery contract")
         if not (ROOT / item.get("code_path", "")).is_dir():
             errors.append(f"{lab_id} code path missing")
         if lab_id in EXPECTED_RUNTIME_PROMPTS:
@@ -222,9 +226,13 @@ def main() -> int:
         if not (code_path / "contract.json").is_file() or not (code_path / "index.ts").is_file():
             errors.append(f"{runtime_id} code contract incomplete")
 
-    expected_dataset_ids = runtime_ids + EXPECTED_LABS
+    expected_dataset_ids = runtime_ids + [
+        str(item["id"])
+        for item in manifest_labs
+        if item.get("dataset_path") is not None
+    ]
     if dataset_case_ids(datasets) != expected_dataset_ids:
-        errors.append("dataset manifest does not cover B001-B024 plus P/S/L in order")
+        errors.append("dataset manifest does not cover every dataset-backed B/P/S/L item in order")
 
     verify_screenshot_links(text, errors, expected_count=24)
 

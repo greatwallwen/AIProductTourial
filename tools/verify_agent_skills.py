@@ -7,7 +7,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED = [f"S{index:03d}" for index in range(1, 9)]
+EXPECTED = [f"S{index:03d}" for index in range(1, 10)]
 REQUIRED_SKILLS = {
     "capability-router",
     "data-profile",
@@ -17,6 +17,7 @@ REQUIRED_SKILLS = {
     "slide-plan",
     "pixijs-game-contract",
     "asset-contract",
+    "react-bits-motion",
 }
 
 
@@ -27,10 +28,10 @@ def load_json(path: Path):
 def main() -> None:
     manifest = load_json(ROOT / "course-manifest.json")
     if manifest["capability_spine"]["agent_skill_cases"] != EXPECTED:
-        raise ValueError("course manifest S001-S008 order mismatch")
+        raise ValueError("course manifest S001-S009 order mismatch")
     skill_labs = [lab for lab in manifest["labs"] if lab["track"] == "agent-skill"]
     if [lab["id"] for lab in skill_labs] != EXPECTED:
-        raise ValueError("S001-S008 order mismatch")
+        raise ValueError("S001-S009 order mismatch")
 
     source_card = load_json(ROOT / "sources" / "skills-research-card.json")
     sources = {item["id"]: item for item in source_card["sources"]}
@@ -44,6 +45,14 @@ def main() -> None:
         raise ValueError(f"expected 32 runtime rows, found {len(rows)}")
 
     for lab in skill_labs:
+        if lab["id"] == "S009":
+            if lab.get("delivery") != "react_component_skill" or lab.get("dataset_path") is not None:
+                raise ValueError("S009 must remain an explicit component-only Skill")
+            if not (ROOT / "code" / "app" / "src" / "components" / "react-bits" / "SpotlightCard.tsx").is_file():
+                raise ValueError("S009 adapted component missing")
+            if not (ROOT / "assets" / "vendor" / "react-bits" / "LICENSE.md").is_file():
+                raise ValueError("S009 React Bits license missing")
+            continue
         scoped = [row for row in rows if row["lab_id"] == lab["id"]]
         if len(scoped) != 4 or [row["stage"] for row in scoped] != ["观察", "选择", "动作", "检查"]:
             raise ValueError(f"{lab['id']} does not have the four-stage runtime")
@@ -76,7 +85,7 @@ def main() -> None:
             f"local Skill set mismatch: expected={sorted(REQUIRED_SKILLS)} actual={sorted(actual_skills)}"
         )
 
-    print("Agent + Skills verified: labs=8, runtime_rows=32, local_skills=8, provider_overclaims=0")
+    print("Agent + Skills verified: labs=9, runtime_rows=32, local_skills=9, provider_overclaims=0")
 
 
 if __name__ == "__main__":

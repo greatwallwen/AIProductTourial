@@ -1,0 +1,32 @@
+.root {
+  --spotlight-x: 50%;
+  --spotlight-y: 50%;
+  --spotlight-color: rgb(57 189 248 / 16%);
+  position: relative;
+  overflow: hidden;
+}
+
+.root::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(circle at var(--spotlight-x) var(--spotlight-y), var(--spotlight-color), transparent 64%);
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 240ms ease;
+}
+
+.root:hover::before,
+.root:focus-within::before {
+  opacity: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root::before { transition: none; }
+}

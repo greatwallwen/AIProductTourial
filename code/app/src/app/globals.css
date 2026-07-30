@@ -2,6 +2,7 @@
 .catalog-masthead, .catalog-stage, .catalog-filmstrip { max-width: 1580px; margin-inline: auto; }
 .catalog-masthead { display: flex; min-height: 46px; align-items: center; justify-content: space-between; padding: 0 4px; }
 .catalog-brand { display: inline-flex; align-items: center; gap: 9px; color: #0b4db7; font-size: 11px; font-weight: 900; letter-spacing: .14em; }
+.catalog-map-return { display: inline-flex; min-height: 40px; align-items: center; gap: 8px; margin-left: auto; margin-right: 10px; padding: 0 13px; border: 1px solid #cfdae5; border-radius: 11px; color: #315b83; background: rgb(255 255 255 / 84%); font: inherit; font-size: 11px; font-weight: 850; cursor: pointer; }.catalog-map-return:hover { color: #fff; border-color: #126fe8; background: #126fe8; }
 .catalog-masthead p { margin: 0; color: #607287; font-size: 12px; font-weight: 700; }
 .catalog-stage { position: relative; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(340px, .58fr); min-height: 565px; overflow: hidden; border: 1px solid rgb(170 194 219 / 72%); border-radius: 22px; background: #071727; box-shadow: 0 30px 80px rgb(31 59 92 / 18%); isolation: isolate; animation: catalog-stage-in 420ms cubic-bezier(.2,.75,.2,1); }
 .catalog-stage__scene { position: absolute; z-index: -3; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(.94) contrast(1.06); }

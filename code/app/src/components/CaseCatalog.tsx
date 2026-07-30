@@ -7,6 +7,7 @@ import {
   ArrowUpRight,
   BriefcaseBusiness,
   Factory,
+  Map,
   Landmark,
   Search,
   SearchCheck,
@@ -93,7 +94,7 @@ function ProductStage({ selected }: { selected: CatalogCase }) {
   );
 }
 
-export function CaseCatalog({ cases }: { cases: CatalogCase[] }) {
+export function CaseCatalog({ cases, onBackToMap }: { cases: CatalogCase[]; onBackToMap?: () => void }) {
   const [query, setQuery] = useState("");
   const [selectedCaseId, setSelectedCaseId] = useState(cases[0]?.id ?? "");
   const filteredCases = searchCases(cases, query);
@@ -110,6 +111,11 @@ export function CaseCatalog({ cases }: { cases: CatalogCase[] }) {
     <main className="catalog-shell">
       <header className="catalog-masthead">
         <div className="catalog-brand"><Landmark aria-hidden="true" size={19} /><span>AI PRODUCT ENGINEERING</span></div>
+        {onBackToMap ? (
+          <button type="button" className="catalog-map-return" onClick={onBackToMap}>
+            <Map aria-hidden="true" size={16} />能力地图
+          </button>
+        ) : null}
         <div className="catalog-search">
           <Search aria-hidden="true" size={17} />
           <label className="sr-only" htmlFor="catalog-query">搜索课程案例</label>

@@ -19,8 +19,9 @@ class ComposeCourseTests(unittest.TestCase):
 
     def test_chapter_manifest_has_unique_files_and_headings(self) -> None:
         manifest = compose_course.load_manifest()
-        files = [item["file"] for item in manifest["chapters"]]
-        headings = [item["start_heading"] for item in manifest["chapters"]]
+        chapters = [item for item in manifest["sections"] if item["kind"] == "chapter"]
+        files = [item["file"] for item in chapters]
+        headings = [item["start_heading"] for item in chapters]
         self.assertEqual(len(files), len(set(files)))
         self.assertEqual(len(headings), len(set(headings)))
 
