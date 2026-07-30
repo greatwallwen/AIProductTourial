@@ -1,0 +1,14 @@
+{
+  "question": "五分钟传感窗口是否足以判定压缩机故障并自动停机？",
+  "strategy": "single_retrieval",
+  "queries": 1,
+  "citations": [
+    "UCI-791-FIELDS",
+    "UCI-791-SOURCE"
+  ],
+  "answer": "这两条资料只能说明字段和窗口统计；没有取回人工批准规则，不能回答是否可以停机。",
+  "missing": [
+    "COURSE-POLICY-09"
+  ],
+  "state": "incomplete"
+}

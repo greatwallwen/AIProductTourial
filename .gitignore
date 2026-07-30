@@ -1,8 +1,15 @@
 node_modules/
-code/web/dist/
-dataset/_raw/
+.next/
+.vite/
+dist/
+coverage/
 *.log
 .DS_Store
+.env
+.env.*
+!.env.example
+dataset/**/raw/
+evidence/current/
 
-# 参考源包（选择性 vendored，勿整包提交）
+# 参考源包只按来源账本选择性引入
 AI agent/

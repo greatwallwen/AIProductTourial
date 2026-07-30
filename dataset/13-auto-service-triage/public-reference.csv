@@ -1,0 +1,509 @@
+reference_id,customer_id,city,state,service_history,common_problem,historical_solution,vehicle_brand,data_nature
+VS-0001,1,Ananthapuram,Andhra Pradesh,Oil Change; Brake Repair,Brake noise,Brake pad replacement,Maruti Suzuki,public-reference
+VS-0002,2,Ananthapuram,Andhra Pradesh,Engine Repair; Tire Rotation,Engine overheating,Radiator replacement,Hyundai,public-reference
+VS-0003,3,Ananthapuram,Andhra Pradesh,Bodywork; Paint Job,Dents and scratches,Body repair and repaint,Tata Motors,public-reference
+VS-0004,4,Ananthapuram,Andhra Pradesh,Oil Change; General Maintenance,Oil leak,Oil seal replacement,Mahindra & Mahindra,public-reference
+VS-0005,5,Ananthapuram,Andhra Pradesh,Tire Alignment; Engine Repair,Misaligned wheels,Wheel alignment,Honda,public-reference
+VS-0006,6,Ananthapuram,Andhra Pradesh,Check Engine Light; Diagnostics,Check engine light,Diagnostic scan and repairs,Toyota,public-reference
+VS-0007,7,Ananthapuram,Andhra Pradesh,Brake Service; Oil Change,Brake fluid leak,Brake fluid replacement,Ford,public-reference
+VS-0008,8,Ananthapuram,Andhra Pradesh,Exhaust Repair; General Maintenance,Exhaust leak,Exhaust system repair,Nissan,public-reference
+VS-0009,9,Ananthapuram,Andhra Pradesh,Transmission Service; Brake Fluid Change,Slipping transmission,Transmission fluid change,Volkswagen,public-reference
+VS-0010,10,Ananthapuram,Andhra Pradesh,Body Repair; Tire Replacement,Body damage,Body repair,Renault,public-reference
+VS-0011,11,Ananthapuram,Andhra Pradesh,Oil Change; Brake Inspection,Brake noise,Brake pad replacement,Hero MotoCorp,public-reference
+VS-0012,12,Ananthapuram,Andhra Pradesh,Engine Diagnostics; Tune-Up,Engine misfiring,Spark plug replacement,Ford,public-reference
+VS-0013,13,Ananthapuram,Andhra Pradesh,Suspension Repair; Brake Service,Steering issues,Suspension adjustment,Audi,public-reference
+VS-0014,14,Ananthapuram,Andhra Pradesh,Tire Rotation; General Maintenance,Tire wear,Tire rotation and balancing,Skoda,public-reference
+VS-0015,15,Ananthapuram,Andhra Pradesh,Transmission Fluid Change; Engine Repair,Transmission issues,Transmission service,Kia,public-reference
+VS-0016,16,Ananthapuram,Andhra Pradesh,Brake Inspection; Diagnostics,Brake wear,Brake replacement,Bajaj Auto,public-reference
+VS-0017,17,Ananthapuram,Andhra Pradesh,Oil Change; Tire Alignment,Misaligned wheels,Wheel alignment,Hero MotoCorp,public-reference
+VS-0018,18,Ananthapuram,Andhra Pradesh,Exhaust Leak; General Maintenance,Exhaust noise,Exhaust system repair,TVS Motor Company,public-reference
+VS-0019,19,Ananthapuram,Andhra Pradesh,Check Engine Light; Brake Fluid Change,Check engine light,Diagnostic scan,Royal Enfield,public-reference
+VS-0020,20,Ananthapuram,Andhra Pradesh,Tire Replacement; Oil Change,Poor fuel economy,Fuel system cleaning,Honda (Motorcycle),public-reference
+VS-0021,21,Ananthapuram,Andhra Pradesh,Fluid Leak; Tire Rotation,Fluid leak,Fluid replacement,Yamaha,public-reference
+VS-0022,22,Ananthapuram,Andhra Pradesh,Engine Overheating; Diagnostics,Engine overheating,Cooling system flush,Suzuki (Motorcycle),public-reference
+VS-0023,23,Ananthapuram,Andhra Pradesh,Transmission Repair; Brake Service,Transmission slipping,Transmission fluid change,Kia,public-reference
+VS-0024,24,Ananthapuram,Andhra Pradesh,Oil Change; Battery Replacement,Dead battery,Battery replacement,Kia,public-reference
+VS-0025,25,Ananthapuram,Andhra Pradesh,Tire Alignment; General Maintenance,Misaligned tires,Tire alignment,Tata Motors,public-reference
+VS-0026,26,Ananthapuram,Andhra Pradesh,Brake Inspection; Oil Change,Brake noise,Brake pad replacement,Maruti Suzuki,public-reference
+VS-0027,27,Ananthapuram,Andhra Pradesh,Engine Diagnostics; Tune-Up,Engine misfiring,Spark plug replacement,Ford,public-reference
+VS-0028,28,Ananthapuram,Andhra Pradesh,Suspension Repair; Brake Service,Steering issues,Suspension adjustment,Honda,public-reference
+VS-0029,29,Ananthapuram,Andhra Pradesh,Tire Rotation; General Maintenance,Tire wear,Tire rotation and balancing,Toyota,public-reference
+VS-0030,30,Ananthapuram,Andhra Pradesh,Transmission Fluid Change; Engine Repair,Transmission issues,Transmission service,Mahindra & Mahindra,public-reference
+VS-0031,31,Ananthapuram,Andhra Pradesh,Brake Inspection; Diagnostics,Brake wear,Brake replacement,Nissan,public-reference
+VS-0032,32,Ananthapuram,Andhra Pradesh,Oil Change; Tire Alignment,Misaligned wheels,Wheel alignment,Volkswagen,public-reference
+VS-0033,33,Ananthapuram,Andhra Pradesh,Exhaust Leak; General Maintenance,Exhaust noise,Exhaust system repair,Renault,public-reference
+VS-0034,34,Ananthapuram,Andhra Pradesh,Check Engine Light; Brake Fluid Change,Check engine light,Diagnostic scan,Hyundai,public-reference
+VS-0035,35,Ananthapuram,Andhra Pradesh,Tire Replacement; Oil Change,Poor fuel economy,Fuel system cleaning,Bajaj Auto,public-reference
+VS-0036,36,Ananthapuram,Andhra Pradesh,Fluid Leak; Tire Rotation,Fluid leak,Fluid replacement,TVS Motor Company,public-reference
+VS-0037,37,Ananthapuram,Andhra Pradesh,Engine Overheating; Diagnostics,Engine overheating,Cooling system flush,Hero MotoCorp,public-reference
+VS-0038,38,Ananthapuram,Andhra Pradesh,Transmission Repair; Brake Service,Transmission slipping,Transmission fluid change,Toyota,public-reference
+VS-0039,39,Ananthapuram,Andhra Pradesh,Oil Change; Battery Inspection,Dead battery,Battery replacement,Hyundai,public-reference
+VS-0040,40,Ananthapuram,Andhra Pradesh,Tire Alignment; General Maintenance,Tire wear,Tire rotation,Honda,public-reference
+VS-0041,41,Ananthapuram,Andhra Pradesh,Brake Repair; Oil Change,Brake squeal,Brake pad replacement,Tvs,public-reference
+VS-0042,42,Ananthapuram,Andhra Pradesh,Engine Check; Suspension Repair,Steering issues,Suspension adjustment,Kia,public-reference
+VS-0043,43,Ananthapuram,Andhra Pradesh,Exhaust Repair; Brake Service,Exhaust noise,Exhaust system repair,Tata Motors,public-reference
+VS-0044,44,Ananthapuram,Andhra Pradesh,Transmission Service; Oil Change,Slipping transmission,Transmission fluid change,Maruti Suzuki,public-reference
+VS-0045,45,Ananthapuram,Andhra Pradesh,Fluid Check; Tire Replacement,Poor fuel economy,Fuel system cleaning,Honda,public-reference
+VS-0046,46,Ananthapuram,Andhra Pradesh,Check Engine Light; General Maintenance,Check engine light,Diagnostic scan,Royal Enfield,public-reference
+VS-0047,47,Ananthapuram,Andhra Pradesh,Brake Fluid Change; Engine Repair,Brake fluid leak,Brake fluid replacement,Yamaha,public-reference
+VS-0048,48,Ananthapuram,Andhra Pradesh,Tire Alignment; Oil Change,Misaligned wheels,Wheel alignment,KTM,public-reference
+VS-0049,49,Ananthapuram,Andhra Pradesh,Oil Change; Battery Replacement,Dead battery,Battery replacement,Suzuki (Motorcycle),public-reference
+VS-0050,50,Ananthapuram,Andhra Pradesh,Engine Diagnostics; Tire Rotation,Engine misfiring,Spark plug replacement,Tvs,public-reference
+VS-0051,51,Ananthapuram,Andhra Pradesh,Brake Inspection; General Maintenance,Brake noise,Brake pad replacement,Ford,public-reference
+VS-0052,52,Ananthapuram,Andhra Pradesh,Exhaust Leak; Oil Change,Exhaust noise,Exhaust system repair,Mahindra & Mahindra,public-reference
+VS-0053,53,Ananthapuram,Andhra Pradesh,Transmission Repair; Brake Fluid Change,Transmission slipping,Transmission fluid change,Nissan,public-reference
+VS-0054,54,Ananthapuram,Andhra Pradesh,Oil Change; Battery Check,Dead battery,Battery replacement,Volkswagen,public-reference
+VS-0055,55,Ananthapuram,Andhra Pradesh,Fluid Leak; Tire Alignment,Fluid leak,Fluid replacement,Hyundai,public-reference
+VS-0056,56,Ananthapuram,Andhra Pradesh,Suspension Repair; Engine Check,Steering issues,Suspension adjustment,Toyota,public-reference
+VS-0057,57,Ananthapuram,Andhra Pradesh,Brake Service; General Maintenance,Brake wear,Brake replacement,Bajaj Auto,public-reference
+VS-0058,58,Ananthapuram,Andhra Pradesh,Exhaust Repair; Oil Change,Exhaust noise,Exhaust system repair,TVS Motor Company,public-reference
+VS-0059,59,Ananthapuram,Andhra Pradesh,"Oil Change, Brake Inspection",Engine overheating,Check coolant level; flush radiator; replace thermostat.,Hero Motocrop,public-reference
+VS-0060,60,Ananthapuram,Andhra Pradesh,"Tire Rotation, Brake Replacement",Brakes making noise,Inspect pads/rotors; replace if worn.,Mercedes-Benz,public-reference
+VS-0061,61,Ananthapuram,Andhra Pradesh,Transmission Service; Diagnostics,Transmission slipping,Transmission fluid change,Tata Motors,public-reference
+VS-0062,62,Ananthapuram,Andhra Pradesh,Tire Replacement; Oil Change,Poor fuel economy,Fuel system cleaning,Ford,public-reference
+VS-0063,63,Ananthapuram,Andhra Pradesh,Exhaust Repair; Brake Service,Exhaust noise,Exhaust system repair,Hyundai,public-reference
+VS-0064,64,Ananthapuram,Andhra Pradesh,Brake Inspection; Tire Rotation,Misaligned wheels,Wheel alignment,Nissan,public-reference
+VS-0065,65,Ananthapuram,Andhra Pradesh,General Maintenance; Engine Check,Engine misfiring,Spark plug replacement,Volkswagen,public-reference
+VS-0066,66,Ananthapuram,Andhra Pradesh,Suspension Repair; Oil Change,Steering issues,Suspension adjustment,Kia,public-reference
+VS-0067,67,Ananthapuram,Andhra Pradesh,Engine Repair; Tire Alignment,Misaligned tires,Tire alignment,Toyota,public-reference
+VS-0068,68,Ananthapuram,Andhra Pradesh,Battery Replacement; General Maintenance,Dead battery,Battery replacement,Hero MotoCorp,public-reference
+VS-0069,69,Ananthapuram,Andhra Pradesh,Exhaust Leak; Diagnostics,Exhaust leak,Exhaust system repair,Bajaj Auto,public-reference
+VS-0070,70,Ananthapuram,Andhra Pradesh,Oil Change; Brake Fluid Change,Brake fluid leak,Brake fluid replacement,Mahindra,public-reference
+VS-0071,71,Ananthapuram,Andhra Pradesh,Tire Alignment; General Maintenance,Tire wear,Tire rotation and balancing,Renault,public-reference
+VS-0072,72,Ananthapuram,Andhra Pradesh,Engine Overheating; Tune-Up,Engine overheating,Cooling system flush,Audi,public-reference
+VS-0073,73,Ananthapuram,Andhra Pradesh,Brake Repair; Tire Replacement,Body damage,Body repair,Volkswagen,public-reference
+VS-0074,74,Ananthapuram,Andhra Pradesh,Fluid Leak; Oil Change,Fluid leak,Fluid replacement,TVS Motor Company,public-reference
+VS-0075,75,Ananthapuram,Andhra Pradesh,General Maintenance; Engine Diagnostics,Check engine light,Diagnostic scan,Hero MotoCorp,public-reference
+VS-0076,76,Ananthapuram,Andhra Pradesh,Brake Service; Oil Change,Brake wear,Brake replacement,Hyundai,public-reference
+VS-0077,77,Ananthapuram,Andhra Pradesh,Tire Replacement; Engine Check,Tire wear,Tire rotation and balancing,Bajaj Auto,public-reference
+VS-0078,78,Ananthapuram,Andhra Pradesh,Exhaust Repair; Brake Fluid Change,Exhaust noise,Exhaust system repair,Ford,public-reference
+VS-0079,79,Ananthapuram,Andhra Pradesh,Oil Change; Brake Inspection,Brake noise,Brake pad replacement,Maruti Suzuki,public-reference
+VS-0080,80,Ananthapuram,Andhra Pradesh,Engine Repair; Diagnostics,Engine misfire,Diagnostic scan,Nissan,public-reference
+VS-0081,81,Ananthapuram,Andhra Pradesh,Tire Rotation; Brake Service,Tire wear,Tire rotation and balancing,Hyundai,public-reference
+VS-0082,82,Ananthapuram,Andhra Pradesh,Fluid Check; Oil Change,Low oil,Oil replacement,Ford,public-reference
+VS-0083,83,Ananthapuram,Andhra Pradesh,Brake Inspection; General Maintenance,Brake noise,Brake pad replacement,Mahindra,public-reference
+VS-0084,84,Ananthapuram,Andhra Pradesh,Engine Diagnostics; Tune-Up,Engine roughness,Spark plug replacement,Toyota,public-reference
+VS-0085,85,Ananthapuram,Andhra Pradesh,Transmission Fluid Change; Brake Service,Slipping transmission,Transmission fluid change,Volkswagen,public-reference
+VS-0086,86,Ananthapuram,Andhra Pradesh,General Maintenance; Tire Inspection,Tire wear,Tire rotation,Audi,public-reference
+VS-0087,87,Ananthapuram,Andhra Pradesh,Oil Change; Brake Fluid Change,Brake fluid leak,Brake fluid replacement,Tata Motors,public-reference
+VS-0088,88,Ananthapuram,Andhra Pradesh,Exhaust Repair; Engine Check,Exhaust noise,Exhaust system repair,Bajaj Auto,public-reference
+VS-0089,89,Ananthapuram,Andhra Pradesh,Battery Inspection; General Maintenance,Dead battery,Battery replacement,Hero MotoCorp,public-reference
+VS-0090,90,Ananthapuram,Andhra Pradesh,Fluid Leak; Tire Rotation,Fluid leak,Fluid replacement,TVS Motor Company,public-reference
+VS-0091,91,Ananthapuram,Andhra Pradesh,Engine Repair; Brake Service,Engine overheating,Cooling system flush,Hyundai,public-reference
+VS-0092,92,Ananthapuram,Andhra Pradesh,Brake Inspection; Oil Change,Brake noise,Brake pad replacement,Ford,public-reference
+VS-0093,93,Ananthapuram,Andhra Pradesh,Tire Replacement; Diagnostics,Tire damage,Tire replacement,Tata Motors,public-reference
+VS-0094,94,Ananthapuram,Andhra Pradesh,General Maintenance; Engine Repair,Engine misfiring,Spark plug replacement,Nissan,public-reference
+VS-0095,95,Ananthapuram,Andhra Pradesh,Suspension Repair; Oil Change,Steering issues,Suspension adjustment,Kia,public-reference
+VS-0096,96,Ananthapuram,Andhra Pradesh,Brake Service; Tire Inspection,Brake wear,Brake pad replacement,Hero MotoCorp,public-reference
+VS-0097,97,Ananthapuram,Andhra Pradesh,Fluid Check; Engine Diagnostics,Fluid leak,Fluid replacement,Volkswagen,public-reference
+VS-0098,98,Ananthapuram,Andhra Pradesh,Tire Alignment; Brake Inspection,Misaligned tires,Tire alignment,Mahindra,public-reference
+VS-0099,99,Ananthapuram,Andhra Pradesh,Exhaust Leak; General Maintenance,Exhaust noise,Exhaust system repair,Toyota,public-reference
+VS-0100,100,Ananthapuram,Andhra Pradesh,Brake Repair; Oil Change,Brake noise,Brake pad replacement,Audi,public-reference
+VS-0101,101,Ananthapuram,Andhra Pradesh,Oil Change; Brake Repair,Brake noise,Brake pad replacement,Honda,public-reference
+VS-0102,102,Ananthapuram,Andhra Pradesh,Transmission Service; Diagnostics,Transmission slipping,Transmission fluid change,Tata Motors,public-reference
+VS-0103,103,Ananthapuram,Andhra Pradesh,Tire Replacement; Oil Change,Poor fuel economy,Fuel system cleaning,Ford,public-reference
+VS-0104,104,Ananthapuram,Andhra Pradesh,Exhaust Repair; Brake Service,Exhaust noise,Exhaust system repair,Hyundai,public-reference
+VS-0105,105,Ananthapuram,Andhra Pradesh,Brake Inspection; Tire Rotation,Misaligned wheels,Wheel alignment,Nissan,public-reference
+VS-0106,106,Ananthapuram,Andhra Pradesh,General Maintenance; Engine Check,Engine misfiring,Spark plug replacement,Volkswagen,public-reference
+VS-0107,107,Ananthapuram,Andhra Pradesh,Suspension Repair; Oil Change,Steering issues,Suspension adjustment,Kia,public-reference
+VS-0108,108,Ananthapuram,Andhra Pradesh,Engine Repair; Tire Alignment,Misaligned tires,Tire alignment,Toyota,public-reference
+VS-0109,109,Ananthapuram,Andhra Pradesh,Battery Replacement; General Maintenance,Dead battery,Battery replacement,Hero MotoCorp,public-reference
+VS-0110,110,Ananthapuram,Andhra Pradesh,Exhaust Leak; Diagnostics,Exhaust leak,Exhaust system repair,Bajaj Auto,public-reference
+VS-0111,111,Ananthapuram,Andhra Pradesh,Oil Change; Brake Fluid Change,Brake fluid leak,Brake fluid replacement,Mahindra,public-reference
+VS-0112,112,Ananthapuram,Andhra Pradesh,Tire Alignment; General Maintenance,Tire wear,Tire rotation and balancing,Renault,public-reference
+VS-0113,113,Ananthapuram,Andhra Pradesh,Engine Overheating; Tune-Up,Engine overheating,Cooling system flush,Audi,public-reference
+VS-0114,114,Ananthapuram,Andhra Pradesh,Brake Repair; Tire Replacement,Body damage,Body repair,Volkswagen,public-reference
+VS-0115,115,Ananthapuram,Andhra Pradesh,Fluid Leak; Oil Change,Fluid leak,Fluid replacement,TVS Motor Company,public-reference
+VS-0116,116,Ananthapuram,Andhra Pradesh,General Maintenance; Engine Diagnostics,Check engine light,Diagnostic scan,Hero MotoCorp,public-reference
+VS-0117,117,Ananthapuram,Andhra Pradesh,Brake Service; Oil Change,Brake wear,Brake replacement,Hyundai,public-reference
+VS-0118,118,Ananthapuram,Andhra Pradesh,Tire Replacement; Engine Check,Tire wear,Tire rotation and balancing,Bajaj Auto,public-reference
+VS-0119,119,Ananthapuram,Andhra Pradesh,Exhaust Repair; Brake Fluid Change,Exhaust noise,Exhaust system repair,Ford,public-reference
+VS-0120,120,Ananthapuram,Andhra Pradesh,Oil Change; Brake Inspection,Brake noise,Brake pad replacement,Maruti Suzuki,public-reference
+VS-0121,121,Ananthapuram,Andhra Pradesh,Engine Repair; Diagnostics,Engine misfire,Diagnostic scan,Nissan,public-reference
+VS-0122,122,Ananthapuram,Andhra Pradesh,Tire Rotation; Brake Service,Tire wear,Tire rotation and balancing,Hyundai,public-reference
+VS-0123,123,Ananthapuram,Andhra Pradesh,Fluid Check; Oil Change,Low oil,Oil replacement,Ford,public-reference
+VS-0124,124,Ananthapuram,Andhra Pradesh,Brake Inspection; General Maintenance,Brake noise,Brake pad replacement,Mahindra,public-reference
+VS-0125,125,Ananthapuram,Andhra Pradesh,Engine Diagnostics; Tune-Up,Engine roughness,Spark plug replacement,Toyota,public-reference
+VS-0126,126,Ananthapuram,Andhra Pradesh,Transmission Fluid Change; Brake Service,Slipping transmission,Transmission fluid change,Volkswagen,public-reference
+VS-0127,127,Ananthapuram,Andhra Pradesh,General Maintenance; Tire Inspection,Tire wear,Tire rotation,Audi,public-reference
+VS-0128,128,Ananthapuram,Andhra Pradesh,Oil Change; Brake Fluid Change,Brake fluid leak,Brake fluid replacement,Tata Motors,public-reference
+VS-0129,129,Ananthapuram,Andhra Pradesh,Exhaust Repair; Engine Check,Exhaust noise,Exhaust system repair,Bajaj Auto,public-reference
+VS-0130,130,Ananthapuram,Andhra Pradesh,Battery Inspection; General Maintenance,Dead battery,Battery replacement,Hero MotoCorp,public-reference
+VS-0131,131,Ananthapuram,Andhra Pradesh,Fluid Leak; Tire Rotation,Fluid leak,Fluid replacement,TVS Motor Company,public-reference
+VS-0132,132,Ananthapuram,Andhra Pradesh,Engine Repair; Brake Service,Engine overheating,Cooling system flush,Hyundai,public-reference
+VS-0133,133,Ananthapuram,Andhra Pradesh,Brake Inspection; Oil Change,Brake noise,Brake pad replacement,Ford,public-reference
+VS-0134,134,Ananthapuram,Andhra Pradesh,Tire Replacement; Diagnostics,Tire damage,Tire replacement,Tata Motors,public-reference
+VS-0135,135,Ananthapuram,Andhra Pradesh,General Maintenance; Engine Repair,Engine misfiring,Spark plug replacement,Nissan,public-reference
+VS-0136,136,Ananthapuram,Andhra Pradesh,Suspension Repair; Oil Change,Steering issues,Suspension adjustment,Kia,public-reference
+VS-0137,137,Ananthapuram,Andhra Pradesh,Brake Service; Tire Inspection,Brake wear,Brake pad replacement,Hero MotoCorp,public-reference
+VS-0138,138,Ananthapuram,Andhra Pradesh,Fluid Check; Engine Diagnostics,Fluid leak,Fluid replacement,Volkswagen,public-reference
+VS-0139,139,Ananthapuram,Andhra Pradesh,Tire Alignment; Brake Inspection,Misaligned tires,Tire alignment,Mahindra,public-reference
+VS-0140,140,Ananthapuram,Andhra Pradesh,Exhaust Leak; General Maintenance,Exhaust noise,Exhaust system repair,Toyota,public-reference
+VS-0141,141,Ananthapuram,Andhra Pradesh,Brake Repair; Oil Change,Brake noise,Brake pad replacement,Audi,public-reference
+VS-0142,142,Ananthapuram,Andhra Pradesh,Oil Change; Brake Repair,Brake noise,Brake pad replacement,Honda,public-reference
+VS-0143,143,Ananthapuram,Andhra Pradesh,Transmission Service; Diagnostics,Transmission slipping,Transmission fluid change,Tata Motors,public-reference
+VS-0144,144,Ananthapuram,Andhra Pradesh,Tire Replacement; Oil Change,Poor fuel economy,Fuel system cleaning,Ford,public-reference
+VS-0145,145,Ananthapuram,Andhra Pradesh,Exhaust Repair; Brake Service,Exhaust noise,Exhaust system repair,Hyundai,public-reference
+VS-0146,146,Ananthapuram,Andhra Pradesh,Brake Inspection; Tire Rotation,Misaligned wheels,Wheel alignment,Nissan,public-reference
+VS-0147,147,Ananthapuram,Andhra Pradesh,General Maintenance; Engine Check,Engine misfiring,Spark plug replacement,Volkswagen,public-reference
+VS-0148,148,Ananthapuram,Andhra Pradesh,Suspension Repair; Oil Change,Steering issues,Suspension adjustment,Kia,public-reference
+VS-0149,149,Ananthapuram,Andhra Pradesh,Engine Repair; Tire Alignment,Misaligned tires,Tire alignment,Toyota,public-reference
+VS-0150,150,Ananthapuram,Andhra Pradesh,Battery Replacement; General Maintenance,Dead battery,Battery replacement,Hero MotoCorp,public-reference
+VS-0151,151,Ananthapuram,Andhra Pradesh,Exhaust Leak; Diagnostics,Exhaust leak,Exhaust system repair,Bajaj Auto,public-reference
+VS-0152,152,Ananthapuram,Andhra Pradesh,Oil Change; Brake Fluid Change,Brake fluid leak,Brake fluid replacement,Mahindra,public-reference
+VS-0153,153,Ananthapuram,Andhra Pradesh,Tire Alignment; General Maintenance,Tire wear,Tire rotation and balancing,Renault,public-reference
+VS-0154,154,Ananthapuram,Andhra Pradesh,Engine Overheating; Tune-Up,Engine overheating,Cooling system flush,Audi,public-reference
+VS-0155,155,Ananthapuram,Andhra Pradesh,Brake Repair; Tire Replacement,Body damage,Body repair,Volkswagen,public-reference
+VS-0156,156,Ananthapuram,Andhra Pradesh,Fluid Leak; Oil Change,Fluid leak,Fluid replacement,TVS Motor Company,public-reference
+VS-0157,157,Ananthapuram,Andhra Pradesh,General Maintenance; Engine Diagnostics,Check engine light,Diagnostic scan,Hero MotoCorp,public-reference
+VS-0158,158,Ananthapuram,Andhra Pradesh,Brake Service; Oil Change,Brake wear,Brake replacement,Hyundai,public-reference
+VS-0159,159,Ananthapuram,Andhra Pradesh,Tire Replacement; Engine Check,Tire wear,Tire rotation and balancing,Bajaj Auto,public-reference
+VS-0160,160,Ananthapuram,Andhra Pradesh,Exhaust Repair; Brake Fluid Change,Exhaust noise,Exhaust system repair,Ford,public-reference
+VS-0161,161,Ananthapuram,Andhra Pradesh,Oil Change; Brake Inspection,Brake noise,Brake pad replacement,Maruti Suzuki,public-reference
+VS-0162,162,Ananthapuram,Andhra Pradesh,Engine Repair; Diagnostics,Engine misfire,Diagnostic scan,Nissan,public-reference
+VS-0163,163,Ananthapuram,Andhra Pradesh,Tire Rotation; Brake Service,Tire wear,Tire rotation and balancing,Hyundai,public-reference
+VS-0164,164,Ananthapuram,Andhra Pradesh,Fluid Check; Oil Change,Low oil,Oil replacement,Ford,public-reference
+VS-0165,165,Ananthapuram,Andhra Pradesh,Brake Inspection; General Maintenance,Brake noise,Brake pad replacement,Mahindra,public-reference
+VS-0166,166,Ananthapuram,Andhra Pradesh,Engine Diagnostics; Tune-Up,Engine roughness,Spark plug replacement,Toyota,public-reference
+VS-0167,167,Ananthapuram,Andhra Pradesh,Transmission Fluid Change; Brake Service,Slipping transmission,Transmission fluid change,Volkswagen,public-reference
+VS-0168,168,Ananthapuram,Andhra Pradesh,General Maintenance; Tire Inspection,Tire wear,Tire rotation,Audi,public-reference
+VS-0169,169,Ananthapuram,Andhra Pradesh,Oil Change; Brake Fluid Change,Brake fluid leak,Brake fluid replacement,Tata Motors,public-reference
+VS-0170,170,Ananthapuram,Andhra Pradesh,Exhaust Repair; Engine Check,Exhaust noise,Exhaust system repair,Bajaj Auto,public-reference
+VS-0171,171,Ananthapuram,Andhra Pradesh,Battery Inspection; General Maintenance,Dead battery,Battery replacement,Hero MotoCorp,public-reference
+VS-0172,172,Ananthapuram,Andhra Pradesh,Fluid Leak; Tire Rotation,Fluid leak,Fluid replacement,TVS Motor Company,public-reference
+VS-0173,173,Ananthapuram,Andhra Pradesh,Engine Repair; Brake Service,Engine overheating,Cooling system flush,Hyundai,public-reference
+VS-0174,174,Ananthapuram,Andhra Pradesh,Brake Inspection; Oil Change,Brake noise,Brake pad replacement,Ford,public-reference
+VS-0175,175,Ananthapuram,Andhra Pradesh,Tire Replacement; Diagnostics,Tire damage,Tire replacement,Tata Motors,public-reference
+VS-0176,176,Ananthapuram,Andhra Pradesh,General Maintenance; Engine Repair,Engine misfiring,Spark plug replacement,Nissan,public-reference
+VS-0177,177,Ananthapuram,Andhra Pradesh,Suspension Repair; Oil Change,Steering issues,Suspension adjustment,Kia,public-reference
+VS-0178,178,Ananthapuram,Andhra Pradesh,Brake Service; Tire Inspection,Brake wear,Brake pad replacement,Hero MotoCorp,public-reference
+VS-0179,179,Ananthapuram,Andhra Pradesh,Fluid Check; Engine Diagnostics,Fluid leak,Fluid replacement,Volkswagen,public-reference
+VS-0180,180,Ananthapuram,Andhra Pradesh,Tire Alignment; Brake Inspection,Misaligned tires,Tire alignment,Mahindra,public-reference
+VS-0181,181,Ananthapuram,Andhra Pradesh,Exhaust Leak; General Maintenance,Exhaust noise,Exhaust system repair,Toyota,public-reference
+VS-0182,182,Ananthapuram,Andhra Pradesh,Brake Repair; Oil Change,Brake noise,Brake pad replacement,Audi,public-reference
+VS-0183,183,Ananthapuram,Andhra Pradesh,Oil Change; Brake Repair,Brake noise,Brake pad replacement,Honda,public-reference
+VS-0184,184,Ananthapuram,Andhra Pradesh,Transmission Service; Diagnostics,Transmission slipping,Transmission fluid change,Tata Motors,public-reference
+VS-0185,185,Ananthapuram,Andhra Pradesh,Tire Replacement; Oil Change,Poor fuel economy,Fuel system cleaning,Ford,public-reference
+VS-0186,186,Ananthapuram,Andhra Pradesh,Exhaust Repair; Brake Service,Exhaust noise,Exhaust system repair,Hyundai,public-reference
+VS-0187,187,Ananthapuram,Andhra Pradesh,Brake Inspection; Tire Rotation,Misaligned wheels,Wheel alignment,Nissan,public-reference
+VS-0188,188,Ananthapuram,Andhra Pradesh,General Maintenance; Engine Check,Engine misfiring,Spark plug replacement,Volkswagen,public-reference
+VS-0189,189,Ananthapuram,Andhra Pradesh,Suspension Repair; Oil Change,Steering issues,Suspension adjustment,Kia,public-reference
+VS-0190,190,Ananthapuram,Andhra Pradesh,Engine Repair; Tire Alignment,Misaligned tires,Tire alignment,Toyota,public-reference
+VS-0191,191,Ananthapuram,Andhra Pradesh,Battery Replacement; General Maintenance,Dead battery,Battery replacement,Hero MotoCorp,public-reference
+VS-0192,192,Ananthapuram,Andhra Pradesh,Exhaust Leak; Diagnostics,Exhaust leak,Exhaust system repair,Bajaj Auto,public-reference
+VS-0193,193,Ananthapuram,Andhra Pradesh,Oil Change; Brake Fluid Change,Brake fluid leak,Brake fluid replacement,Mahindra,public-reference
+VS-0194,194,Ananthapuram,Andhra Pradesh,Tire Alignment; General Maintenance,Tire wear,Tire rotation and balancing,Renault,public-reference
+VS-0195,195,Ananthapuram,Andhra Pradesh,Engine Overheating; Tune-Up,Engine overheating,Cooling system flush,Audi,public-reference
+VS-0196,196,Ananthapuram,Andhra Pradesh,Brake Repair; Tire Replacement,Body damage,Body repair,Volkswagen,public-reference
+VS-0197,197,Ananthapuram,Andhra Pradesh,Fluid Leak; Oil Change,Fluid leak,Fluid replacement,TVS Motor Company,public-reference
+VS-0198,198,Ananthapuram,Andhra Pradesh,General Maintenance; Engine Diagnostics,Check engine light,Diagnostic scan,Hero MotoCorp,public-reference
+VS-0199,199,Ananthapuram,Andhra Pradesh,Brake Service; Oil Change,Brake wear,Brake replacement,Hyundai,public-reference
+VS-0200,200,Ananthapuram,Andhra Pradesh,Tire Replacement; Engine Check,Tire wear,Tire rotation and balancing,Bajaj Auto,public-reference
+VS-0201,201,Ananthapuram,Andhra Pradesh,Exhaust Repair; Brake Fluid Change,Exhaust noise,Exhaust system repair,Ford,public-reference
+VS-0202,202,Ananthapuram,Andhra Pradesh,Oil Change; Brake Inspection,Brake noise,Brake pad replacement,Maruti Suzuki,public-reference
+VS-0203,203,Ananthapuram,Andhra Pradesh,Engine Repair; Diagnostics,Engine misfire,Diagnostic scan,Nissan,public-reference
+VS-0204,204,Ananthapuram,Andhra Pradesh,Tire Rotation; Brake Service,Tire wear,Tire rotation and balancing,Hyundai,public-reference
+VS-0205,205,Ananthapuram,Andhra Pradesh,Fluid Check; Oil Change,Low oil,Oil replacement,Ford,public-reference
+VS-0206,206,Ananthapuram,Andhra Pradesh,Brake Inspection; General Maintenance,Brake noise,Brake pad replacement,Mahindra,public-reference
+VS-0207,207,Ananthapuram,Andhra Pradesh,Engine Diagnostics; Tune-Up,Engine roughness,Spark plug replacement,Toyota,public-reference
+VS-0208,208,Ananthapuram,Andhra Pradesh,Transmission Fluid Change; Brake Service,Slipping transmission,Transmission fluid change,Volkswagen,public-reference
+VS-0209,209,Ananthapuram,Andhra Pradesh,General Maintenance; Tire Inspection,Tire wear,Tire rotation,Audi,public-reference
+VS-0210,210,Ananthapuram,Andhra Pradesh,Oil Change; Brake Fluid Change,Brake fluid leak,Brake fluid replacement,Tata Motors,public-reference
+VS-0211,211,Ananthapuram,Andhra Pradesh,Exhaust Repair; Engine Check,Exhaust noise,Exhaust system repair,Bajaj Auto,public-reference
+VS-0212,212,Ananthapuram,Andhra Pradesh,Battery Inspection; General Maintenance,Dead battery,Battery replacement,Hero MotoCorp,public-reference
+VS-0213,213,Ananthapuram,Andhra Pradesh,Fluid Leak; Tire Rotation,Fluid leak,Fluid replacement,TVS Motor Company,public-reference
+VS-0214,214,Ananthapuram,Andhra Pradesh,Engine Repair; Brake Service,Engine overheating,Cooling system flush,Hyundai,public-reference
+VS-0215,215,Ananthapuram,Andhra Pradesh,Brake Inspection; Oil Change,Brake noise,Brake pad replacement,Ford,public-reference
+VS-0216,216,Ananthapuram,Andhra Pradesh,Tire Replacement; Diagnostics,Tire damage,Tire replacement,Tata Motors,public-reference
+VS-0217,217,Ananthapuram,Andhra Pradesh,General Maintenance; Engine Repair,Engine misfiring,Spark plug replacement,Nissan,public-reference
+VS-0218,218,Ananthapuram,Andhra Pradesh,Suspension Repair; Oil Change,Steering issues,Suspension adjustment,Kia,public-reference
+VS-0219,219,Ananthapuram,Andhra Pradesh,Brake Service; Tire Inspection,Brake wear,Brake pad replacement,Hero MotoCorp,public-reference
+VS-0220,220,Ananthapuram,Andhra Pradesh,Fluid Check; Engine Diagnostics,Fluid leak,Fluid replacement,Volkswagen,public-reference
+VS-0221,221,Ananthapuram,Andhra Pradesh,Tire Alignment; Brake Inspection,Misaligned tires,Tire alignment,Mahindra,public-reference
+VS-0222,222,Ananthapuram,Andhra Pradesh,Exhaust Leak; General Maintenance,Exhaust noise,Exhaust system repair,Toyota,public-reference
+VS-0223,223,Ananthapuram,Andhra Pradesh,Brake Repair; Oil Change,Brake noise,Brake pad replacement,Audi,public-reference
+VS-0224,224,Ananthapuram,Andhra Pradesh,Oil Change; Brake Repair,Brake noise,Brake pad replacement,Honda,public-reference
+VS-0225,225,Ananthapuram,Andhra Pradesh,Transmission Service; Diagnostics,Transmission slipping,Transmission fluid change,Tata Motors,public-reference
+VS-0226,226,Ananthapuram,Andhra Pradesh,Tire Replacement; Oil Change,Poor fuel economy,Fuel system cleaning,Ford,public-reference
+VS-0227,227,Ananthapuram,Andhra Pradesh,Exhaust Repair; Brake Service,Exhaust noise,Exhaust system repair,Hyundai,public-reference
+VS-0228,228,Ananthapuram,Andhra Pradesh,Brake Inspection; Tire Rotation,Misaligned wheels,Wheel alignment,Nissan,public-reference
+VS-0229,229,Ananthapuram,Andhra Pradesh,General Maintenance; Engine Check,Engine misfiring,Spark plug replacement,Volkswagen,public-reference
+VS-0230,230,Ananthapuram,Andhra Pradesh,Suspension Repair; Oil Change,Steering issues,Suspension adjustment,Kia,public-reference
+VS-0231,231,Ananthapuram,Andhra Pradesh,Engine Repair; Tire Alignment,Misaligned tires,Tire alignment,Toyota,public-reference
+VS-0232,232,Ananthapuram,Andhra Pradesh,Battery Replacement; General Maintenance,Dead battery,Battery replacement,Hero MotoCorp,public-reference
+VS-0233,233,Ananthapuram,Andhra Pradesh,Exhaust Leak; Diagnostics,Exhaust leak,Exhaust system repair,Bajaj Auto,public-reference
+VS-0234,234,Ananthapuram,Andhra Pradesh,Oil Change; Brake Fluid Change,Brake fluid leak,Brake fluid replacement,Mahindra,public-reference
+VS-0235,235,Ananthapuram,Andhra Pradesh,Tire Alignment; General Maintenance,Tire wear,Tire rotation and balancing,Renault,public-reference
+VS-0236,236,Ananthapuram,Andhra Pradesh,Engine Overheating; Tune-Up,Engine overheating,Cooling system flush,Audi,public-reference
+VS-0237,237,Ananthapuram,Andhra Pradesh,Brake Repair; Tire Replacement,Body damage,Body repair,Volkswagen,public-reference
+VS-0238,238,Ananthapuram,Andhra Pradesh,Fluid Leak; Oil Change,Fluid leak,Fluid replacement,TVS Motor Company,public-reference
+VS-0239,239,Ananthapuram,Andhra Pradesh,General Maintenance; Engine Diagnostics,Check engine light,Diagnostic scan,Hero MotoCorp,public-reference
+VS-0240,240,Ananthapuram,Andhra Pradesh,Brake Service; Oil Change,Brake wear,Brake replacement,Hyundai,public-reference
+VS-0241,241,Ananthapuram,Andhra Pradesh,Tire Replacement; Engine Check,Tire wear,Tire rotation and balancing,Bajaj Auto,public-reference
+VS-0242,242,Ananthapuram,Andhra Pradesh,Exhaust Repair; Brake Fluid Change,Exhaust noise,Exhaust system repair,Ford,public-reference
+VS-0243,243,Ananthapuram,Andhra Pradesh,Oil Change; Brake Inspection,Brake noise,Brake pad replacement,Maruti Suzuki,public-reference
+VS-0244,244,Ananthapuram,Andhra Pradesh,Engine Repair; Diagnostics,Engine misfire,Diagnostic scan,Nissan,public-reference
+VS-0245,245,Ananthapuram,Andhra Pradesh,Tire Rotation; Brake Service,Tire wear,Tire rotation and balancing,Hyundai,public-reference
+VS-0246,246,Ananthapuram,Andhra Pradesh,Fluid Check; Oil Change,Low oil,Oil replacement,Ford,public-reference
+VS-0247,247,Ananthapuram,Andhra Pradesh,Brake Inspection; General Maintenance,Brake noise,Brake pad replacement,Mahindra,public-reference
+VS-0248,248,Ananthapuram,Andhra Pradesh,Engine Diagnostics; Tune-Up,Engine roughness,Spark plug replacement,Toyota,public-reference
+VS-0249,249,Ananthapuram,Andhra Pradesh,Transmission Fluid Change; Brake Service,Slipping transmission,Transmission fluid change,Volkswagen,public-reference
+VS-0250,250,Ananthapuram,Andhra Pradesh,General Maintenance; Tire Inspection,Tire wear,Tire rotation,Audi,public-reference
+VS-0251,251,Ananthapuram,Andhra Pradesh,Battery Replacement; General Maintenance,Dead battery,Battery replacement,Hero MotoCorp,public-reference
+VS-0252,252,Ananthapuram,Andhra Pradesh,Exhaust Leak; Diagnostics,Exhaust leak,Exhaust system repair,Bajaj Auto,public-reference
+VS-0253,253,Ananthapuram,Andhra Pradesh,Oil Change; Brake Fluid Change,Brake fluid leak,Brake fluid replacement,Mahindra,public-reference
+VS-0254,254,Ananthapuram,Andhra Pradesh,Tire Alignment; General Maintenance,Tire wear,Tire rotation and balancing,Renault,public-reference
+VS-0255,255,Ananthapuram,Andhra Pradesh,Engine Overheating; Tune-Up,Engine overheating,Cooling system flush,Audi,public-reference
+VS-0256,256,Ananthapuram,Andhra Pradesh,Brake Repair; Tire Replacement,Body damage,Body repair,Volkswagen,public-reference
+VS-0257,257,Ananthapuram,Andhra Pradesh,Fluid Leak; Oil Change,Fluid leak,Fluid replacement,TVS Motor Company,public-reference
+VS-0258,258,Ananthapuram,Andhra Pradesh,General Maintenance; Engine Diagnostics,Check engine light,Diagnostic scan,Hero MotoCorp,public-reference
+VS-0259,259,Ananthapuram,Andhra Pradesh,Brake Service; Oil Change,Brake wear,Brake replacement,Hyundai,public-reference
+VS-0260,260,Ananthapuram,Andhra Pradesh,Tire Replacement; Engine Check,Tire wear,Tire rotation and balancing,Bajaj Auto,public-reference
+VS-0261,261,Ananthapuram,Andhra Pradesh,Exhaust Repair; Brake Fluid Change,Exhaust noise,Exhaust system repair,Ford,public-reference
+VS-0262,262,Ananthapuram,Andhra Pradesh,Oil Change; Brake Inspection,Brake noise,Brake pad replacement,Maruti Suzuki,public-reference
+VS-0263,263,Ananthapuram,Andhra Pradesh,Engine Repair; Diagnostics,Engine misfire,Diagnostic scan,Nissan,public-reference
+VS-0264,264,Ananthapuram,Andhra Pradesh,Tire Rotation; Brake Service,Tire wear,Tire rotation and balancing,Hyundai,public-reference
+VS-0265,265,Ananthapuram,Andhra Pradesh,Fluid Check; Oil Change,Low oil,Oil replacement,Ford,public-reference
+VS-0266,266,Ananthapuram,Andhra Pradesh,Brake Inspection; General Maintenance,Brake noise,Brake pad replacement,Mahindra,public-reference
+VS-0267,267,Ananthapuram,Andhra Pradesh,Engine Diagnostics; Tune-Up,Engine roughness,Spark plug replacement,Toyota,public-reference
+VS-0268,268,Ananthapuram,Andhra Pradesh,Transmission Fluid Change; Brake Service,Slipping transmission,Transmission fluid change,Volkswagen,public-reference
+VS-0269,269,Ananthapuram,Andhra Pradesh,General Maintenance; Tire Inspection,Tire wear,Tire rotation,Audi,public-reference
+VS-0270,270,Ananthapuram,Andhra Pradesh,Oil Change; Tire Alignment,Misaligned tires,Tire alignment,Hyundai,public-reference
+VS-0271,271,Ananthapuram,Andhra Pradesh,Brake Repair; Engine Check,Brake noise,Brake pad replacement,Ford,public-reference
+VS-0272,272,Ananthapuram,Andhra Pradesh,Transmission Repair; Oil Change,Slipping transmission,Transmission fluid change,Tata Motors,public-reference
+VS-0273,273,Ananthapuram,Andhra Pradesh,Exhaust Leak; Tire Inspection,Exhaust noise,Exhaust system repair,Hero MotoCorp,public-reference
+VS-0274,274,Ananthapuram,Andhra Pradesh,Fluid Leak; Brake Inspection,Fluid leak,Fluid replacement,Audi,public-reference
+VS-0275,275,Ananthapuram,Andhra Pradesh,Engine Diagnostics; Oil Change,Engine misfire,Diagnostic scan,Volkswagen,public-reference
+VS-0276,276,Ananthapuram,Andhra Pradesh,Suspension Repair; General Maintenance,Steering issues,Suspension adjustment,Tata Motors,public-reference
+VS-0277,277,Ananthapuram,Andhra Pradesh,Tire Rotation; Brake Service,Tire wear,Tire rotation,Kia,public-reference
+VS-0278,278,Ananthapuram,Andhra Pradesh,Brake Fluid Change; Oil Change,Brake fluid leak,Brake fluid replacement,Bajaj Auto,public-reference
+VS-0279,279,Ananthapuram,Andhra Pradesh,Engine Check; Tire Replacement,Tire damage,Tire replacement,Hero MotoCorp,public-reference
+VS-0280,280,Ananthapuram,Andhra Pradesh,Transmission Fluid Change; Diagnostics,Transmission slipping,Transmission fluid change,Hyundai,public-reference
+VS-0281,281,Ananthapuram,Andhra Pradesh,Oil Change; Brake Repair,Brake noise,Brake pad replacement,Renault,public-reference
+VS-0282,282,Ananthapuram,Andhra Pradesh,Fluid Check; General Maintenance,Fluid leak,Fluid replacement,Toyota,public-reference
+VS-0283,283,Ananthapuram,Andhra Pradesh,Engine Overheating; Tune-Up,Engine overheating,Cooling system flush,Ford,public-reference
+VS-0284,284,Ananthapuram,Andhra Pradesh,Tire Alignment; Brake Fluid Change,Misaligned tires,Tire alignment,Kia,public-reference
+VS-0285,285,Ananthapuram,Andhra Pradesh,Exhaust Repair; Oil Change,Exhaust noise,Exhaust system repair,Honda,public-reference
+VS-0286,286,Ananthapuram,Andhra Pradesh,Brake Inspection; Tire Rotation,Brake noise,Brake pad replacement,Bajaj Auto,public-reference
+VS-0287,287,Ananthapuram,Andhra Pradesh,Engine Diagnostics; Oil Change,Check engine light,Diagnostic scan,Nissan,public-reference
+VS-0288,288,Ananthapuram,Andhra Pradesh,Fluid Leak; Tire Replacement,Fluid leak,Fluid replacement,Tata Motors,public-reference
+VS-0289,289,Ananthapuram,Andhra Pradesh,General Maintenance; Engine Repair,Engine roughness,Spark plug replacement,Hyundai,public-reference
+VS-0290,290,Ananthapuram,Andhra Pradesh,Brake Repair; Oil Change,Brake noise,Brake pad replacement,Ford,public-reference
+VS-0291,291,Ananthapuram,Andhra Pradesh,Tire Alignment; Brake Inspection,Misaligned wheels,Wheel alignment,Renault,public-reference
+VS-0292,292,Ananthapuram,Andhra Pradesh,Suspension Repair; Tire Inspection,Steering issues,Suspension adjustment,Kia,public-reference
+VS-0293,293,Ananthapuram,Andhra Pradesh,Exhaust Leak; General Maintenance,Exhaust noise,Exhaust system repair,Hyundai,public-reference
+VS-0294,294,Ananthapuram,Andhra Pradesh,Engine Overheating; Tune-Up,Engine overheating,Cooling system flush,Volkswagen,public-reference
+VS-0295,295,Ananthapuram,Andhra Pradesh,Oil Change; Tire Alignment,Misaligned tires,Tire alignment,Hyundai,public-reference
+VS-0296,296,Ananthapuram,Andhra Pradesh,Brake Repair; Engine Check,Brake noise,Brake pad replacement,Ford,public-reference
+VS-0297,297,Ananthapuram,Andhra Pradesh,Transmission Repair; Oil Change,Slipping transmission,Transmission fluid change,Tata Motors,public-reference
+VS-0298,298,Ananthapuram,Andhra Pradesh,Exhaust Leak; Tire Inspection,Exhaust noise,Exhaust system repair,Hero MotoCorp,public-reference
+VS-0299,299,Ananthapuram,Andhra Pradesh,Fluid Leak; Brake Inspection,Fluid leak,Fluid replacement,Audi,public-reference
+VS-0300,300,Ananthapuram,Andhra Pradesh,Engine Diagnostics; Oil Change,Engine misfire,Diagnostic scan,Volkswagen,public-reference
+VS-0301,301,Ananthapuram,Andhra Pradesh,Suspension Repair; General Maintenance,Steering issues,Suspension adjustment,Tata Motors,public-reference
+VS-0302,302,Ananthapuram,Andhra Pradesh,Tire Rotation; Brake Service,Tire wear,Tire rotation,Kia,public-reference
+VS-0303,303,Ananthapuram,Andhra Pradesh,Brake Fluid Change; Oil Change,Brake fluid leak,Brake fluid replacement,Bajaj Auto,public-reference
+VS-0304,304,Ananthapuram,Andhra Pradesh,Engine Check; Tire Replacement,Tire damage,Tire replacement,Hero MotoCorp,public-reference
+VS-0305,305,Ananthapuram,Andhra Pradesh,Transmission Fluid Change; Diagnostics,Transmission slipping,Transmission fluid change,Hyundai,public-reference
+VS-0306,306,Ananthapuram,Andhra Pradesh,Oil Change; Brake Repair,Brake noise,Brake pad replacement,Renault,public-reference
+VS-0307,307,Ananthapuram,Andhra Pradesh,Fluid Check; General Maintenance,Fluid leak,Fluid replacement,Toyota,public-reference
+VS-0308,308,Ananthapuram,Andhra Pradesh,Engine Overheating; Tune-Up,Engine overheating,Cooling system flush,Ford,public-reference
+VS-0309,309,Ananthapuram,Andhra Pradesh,Tire Alignment; Brake Fluid Change,Misaligned tires,Tire alignment,Kia,public-reference
+VS-0310,310,Ananthapuram,Andhra Pradesh,Exhaust Repair; Oil Change,Exhaust noise,Exhaust system repair,Honda,public-reference
+VS-0311,311,Ananthapuram,Andhra Pradesh,Brake Inspection; Tire Rotation,Brake noise,Brake pad replacement,Bajaj Auto,public-reference
+VS-0312,312,Ananthapuram,Andhra Pradesh,Engine Diagnostics; Oil Change,Check engine light,Diagnostic scan,Nissan,public-reference
+VS-0313,313,Ananthapuram,Andhra Pradesh,Fluid Leak; Tire Replacement,Fluid leak,Fluid replacement,Tata Motors,public-reference
+VS-0314,314,Ananthapuram,Andhra Pradesh,General Maintenance; Engine Repair,Engine roughness,Spark plug replacement,Hyundai,public-reference
+VS-0315,315,Ananthapuram,Andhra Pradesh,Brake Repair; Oil Change,Brake noise,Brake pad replacement,Ford,public-reference
+VS-0316,316,Ananthapuram,Andhra Pradesh,Tire Alignment; Brake Inspection,Misaligned wheels,Wheel alignment,Renault,public-reference
+VS-0317,317,Ananthapuram,Andhra Pradesh,Suspension Repair; Tire Inspection,Steering issues,Suspension adjustment,Kia,public-reference
+VS-0318,318,Ananthapuram,Andhra Pradesh,Exhaust Leak; General Maintenance,Exhaust noise,Exhaust system repair,Hyundai,public-reference
+VS-0319,319,Ananthapuram,Andhra Pradesh,Engine Overheating; Tune-Up,Engine overheating,Cooling system flush,Volkswagen,public-reference
+VS-0320,320,Ananthapuram,Andhra Pradesh,Oil Change; Tire Alignment,Misaligned tires,Tire alignment,Hyundai,public-reference
+VS-0321,321,Ananthapuram,Andhra Pradesh,Brake Repair; Engine Check,Brake noise,Brake pad replacement,Ford,public-reference
+VS-0322,322,Ananthapuram,Andhra Pradesh,Transmission Repair; Oil Change,Slipping transmission,Transmission fluid change,Tata Motors,public-reference
+VS-0323,323,Ananthapuram,Andhra Pradesh,Exhaust Leak; Tire Inspection,Exhaust noise,Exhaust system repair,Hero MotoCorp,public-reference
+VS-0324,324,Ananthapuram,Andhra Pradesh,Fluid Leak; Brake Inspection,Fluid leak,Fluid replacement,Audi,public-reference
+VS-0325,325,Ananthapuram,Andhra Pradesh,Engine Diagnostics; Oil Change,Engine misfire,Diagnostic scan,Volkswagen,public-reference
+VS-0326,326,Ananthapuram,Andhra Pradesh,Suspension Repair; General Maintenance,Steering issues,Suspension adjustment,Tata Motors,public-reference
+VS-0327,327,Ananthapuram,Andhra Pradesh,Tire Rotation; Brake Service,Tire wear,Tire rotation,Kia,public-reference
+VS-0328,328,Ananthapuram,Andhra Pradesh,Brake Fluid Change; Oil Change,Brake fluid leak,Brake fluid replacement,Bajaj Auto,public-reference
+VS-0329,329,Ananthapuram,Andhra Pradesh,Engine Check; Tire Replacement,Tire damage,Tire replacement,Hero MotoCorp,public-reference
+VS-0330,330,Ananthapuram,Andhra Pradesh,Transmission Fluid Change; Diagnostics,Transmission slipping,Transmission fluid change,Hyundai,public-reference
+VS-0331,331,Ananthapuram,Andhra Pradesh,Oil Change; Brake Repair,Brake noise,Brake pad replacement,Renault,public-reference
+VS-0332,332,Ananthapuram,Andhra Pradesh,Fluid Check; General Maintenance,Fluid leak,Fluid replacement,Toyota,public-reference
+VS-0333,333,Ananthapuram,Andhra Pradesh,Engine Overheating; Tune-Up,Engine overheating,Cooling system flush,Ford,public-reference
+VS-0334,334,Ananthapuram,Andhra Pradesh,Tire Alignment; Brake Fluid Change,Misaligned tires,Tire alignment,Kia,public-reference
+VS-0335,335,Ananthapuram,Andhra Pradesh,Exhaust Repair; Oil Change,Exhaust noise,Exhaust system repair,Honda,public-reference
+VS-0336,336,Ananthapuram,Andhra Pradesh,Brake Inspection; Tire Rotation,Brake noise,Brake pad replacement,Bajaj Auto,public-reference
+VS-0337,337,Ananthapuram,Andhra Pradesh,Engine Diagnostics; Oil Change,Check engine light,Diagnostic scan,Nissan,public-reference
+VS-0338,338,Ananthapuram,Andhra Pradesh,Fluid Leak; Tire Replacement,Fluid leak,Fluid replacement,Tata Motors,public-reference
+VS-0339,339,Ananthapuram,Andhra Pradesh,General Maintenance; Engine Repair,Engine roughness,Spark plug replacement,Hyundai,public-reference
+VS-0340,340,Ananthapuram,Andhra Pradesh,Brake Repair; Oil Change,Brake noise,Brake pad replacement,Ford,public-reference
+VS-0341,341,Ananthapuram,Andhra Pradesh,Tire Alignment; Brake Inspection,Misaligned wheels,Wheel alignment,Renault,public-reference
+VS-0342,342,Ananthapuram,Andhra Pradesh,Suspension Repair; Tire Inspection,Steering issues,Suspension adjustment,Kia,public-reference
+VS-0343,343,Ananthapuram,Andhra Pradesh,Exhaust Leak; General Maintenance,Exhaust noise,Exhaust system repair,Hyundai,public-reference
+VS-0344,344,Ananthapuram,Andhra Pradesh,Engine Overheating; Tune-Up,Engine overheating,Cooling system flush,Volkswagen,public-reference
+VS-0345,345,Ananthapuram,Andhra Pradesh,Oil Change; Tire Alignment,Misaligned tires,Tire alignment,Hyundai,public-reference
+VS-0346,346,Ananthapuram,Andhra Pradesh,Brake Repair; Engine Check,Brake noise,Brake pad replacement,Ford,public-reference
+VS-0347,347,Ananthapuram,Andhra Pradesh,Transmission Repair; Oil Change,Slipping transmission,Transmission fluid change,Tata Motors,public-reference
+VS-0348,348,Ananthapuram,Andhra Pradesh,Exhaust Leak; Tire Inspection,Exhaust noise,Exhaust system repair,Hero MotoCorp,public-reference
+VS-0349,349,Ananthapuram,Andhra Pradesh,Fluid Leak; Brake Inspection,Fluid leak,Fluid replacement,Audi,public-reference
+VS-0350,350,Ananthapuram,Andhra Pradesh,Engine Diagnostics; Oil Change,Engine misfire,Diagnostic scan,Volkswagen,public-reference
+VS-0351,351,Ananthapuram,Andhra Pradesh,Suspension Repair; General Maintenance,Steering issues,Suspension adjustment,Tata Motors,public-reference
+VS-0352,352,Ananthapuram,Andhra Pradesh,Tire Rotation; Brake Service,Tire wear,Tire rotation,Kia,public-reference
+VS-0353,353,Ananthapuram,Andhra Pradesh,Brake Fluid Change; Oil Change,Brake fluid leak,Brake fluid replacement,Bajaj Auto,public-reference
+VS-0354,354,Ananthapuram,Andhra Pradesh,Engine Check; Tire Replacement,Tire damage,Tire replacement,Hero MotoCorp,public-reference
+VS-0355,355,Ananthapuram,Andhra Pradesh,Transmission Fluid Change; Diagnostics,Transmission slipping,Transmission fluid change,Hyundai,public-reference
+VS-0356,356,Ananthapuram,Andhra Pradesh,Oil Change; Brake Repair,Brake noise,Brake pad replacement,Renault,public-reference
+VS-0357,357,Ananthapuram,Andhra Pradesh,Fluid Check; General Maintenance,Fluid leak,Fluid replacement,Toyota,public-reference
+VS-0358,358,Ananthapuram,Andhra Pradesh,Engine Overheating; Tune-Up,Engine overheating,Cooling system flush,Ford,public-reference
+VS-0359,359,Ananthapuram,Andhra Pradesh,Tire Alignment; Brake Fluid Change,Misaligned tires,Tire alignment,Kia,public-reference
+VS-0360,360,Ananthapuram,Andhra Pradesh,Exhaust Repair; Oil Change,Exhaust noise,Exhaust system repair,Honda,public-reference
+VS-0361,361,Ananthapuram,Andhra Pradesh,Brake Inspection; Tire Rotation,Brake noise,Brake pad replacement,Bajaj Auto,public-reference
+VS-0362,362,Ananthapuram,Andhra Pradesh,Engine Diagnostics; Oil Change,Check engine light,Diagnostic scan,Nissan,public-reference
+VS-0363,363,Ananthapuram,Andhra Pradesh,Fluid Leak; Tire Replacement,Fluid leak,Fluid replacement,Tata Motors,public-reference
+VS-0364,364,Ananthapuram,Andhra Pradesh,General Maintenance; Engine Repair,Engine roughness,Spark plug replacement,Hyundai,public-reference
+VS-0365,365,Ananthapuram,Andhra Pradesh,Brake Repair; Oil Change,Brake noise,Brake pad replacement,Ford,public-reference
+VS-0366,366,Ananthapuram,Andhra Pradesh,Tire Alignment; Brake Inspection,Misaligned wheels,Wheel alignment,Renault,public-reference
+VS-0367,367,Ananthapuram,Andhra Pradesh,Suspension Repair; Tire Inspection,Steering issues,Suspension adjustment,Kia,public-reference
+VS-0368,368,Ananthapuram,Andhra Pradesh,Exhaust Leak; General Maintenance,Exhaust noise,Exhaust system repair,Hyundai,public-reference
+VS-0369,369,Ananthapuram,Andhra Pradesh,Engine Overheating; Tune-Up,Engine overheating,Cooling system flush,Volkswagen,public-reference
+VS-0370,370,Ananthapuram,Andhra Pradesh,Oil Change; Tire Alignment,Misaligned tires,Tire alignment,Hyundai,public-reference
+VS-0371,371,Ananthapuram,Andhra Pradesh,Brake Repair; Engine Check,Brake noise,Brake pad replacement,Ford,public-reference
+VS-0372,372,Ananthapuram,Andhra Pradesh,Transmission Repair; Oil Change,Slipping transmission,Transmission fluid change,Tata Motors,public-reference
+VS-0373,373,Ananthapuram,Andhra Pradesh,Exhaust Leak; Tire Inspection,Exhaust noise,Exhaust system repair,Hero MotoCorp,public-reference
+VS-0374,374,Ananthapuram,Andhra Pradesh,Fluid Leak; Brake Inspection,Fluid leak,Fluid replacement,Audi,public-reference
+VS-0375,375,Ananthapuram,Andhra Pradesh,Engine Diagnostics; Oil Change,Engine misfire,Diagnostic scan,Volkswagen,public-reference
+VS-0376,376,Ananthapuram,Andhra Pradesh,Suspension Repair; General Maintenance,Steering issues,Suspension adjustment,Tata Motors,public-reference
+VS-0377,377,Ananthapuram,Andhra Pradesh,Tire Rotation; Brake Service,Tire wear,Tire rotation,Kia,public-reference
+VS-0378,378,Ananthapuram,Andhra Pradesh,Brake Fluid Change; Oil Change,Brake fluid leak,Brake fluid replacement,Bajaj Auto,public-reference
+VS-0379,379,Ananthapuram,Andhra Pradesh,Engine Check; Tire Replacement,Tire damage,Tire replacement,Hero MotoCorp,public-reference
+VS-0380,376,Ananthapuram,Andhra Pradesh,Suspension Repair; General Maintenance,Steering issues,Suspension adjustment,Tata Motors,public-reference
+VS-0381,377,Ananthapuram,Andhra Pradesh,Tire Rotation; Brake Service,Tire wear,Tire rotation,Kia,public-reference
+VS-0382,378,Ananthapuram,Andhra Pradesh,Brake Fluid Change; Oil Change,Brake fluid leak,Brake fluid replacement,Bajaj Auto,public-reference
+VS-0383,379,Ananthapuram,Andhra Pradesh,Engine Check; Tire Replacement,Tire damage,Tire replacement,Hero MotoCorp,public-reference
+VS-0384,376,Ananthapuram,Andhra Pradesh,Suspension Repair; General Maintenance,Steering issues,Suspension adjustment,Tata Motors,public-reference
+VS-0385,377,Ananthapuram,Andhra Pradesh,Tire Rotation; Brake Service,Tire wear,Tire rotation,Kia,public-reference
+VS-0386,378,Ananthapuram,Andhra Pradesh,Brake Fluid Change; Oil Change,Brake fluid leak,Brake fluid replacement,Bajaj Auto,public-reference
+VS-0387,379,Ananthapuram,Andhra Pradesh,Engine Check; Tire Replacement,Tire damage,Tire replacement,Hero MotoCorp,public-reference
+VS-0388,380,Ananthapuram,Andhra Pradesh,Battery Check; Oil Change,Battery drainage,Battery replacement,Honda,public-reference
+VS-0389,381,Ananthapuram,Andhra Pradesh,AC Service; Engine Tune-Up,AC not cooling,AC repair,Maruti Suzuki,public-reference
+VS-0390,382,Ananthapuram,Andhra Pradesh,Wheel Alignment; Brake Inspection,Misalignment,Wheel alignment,Ford,public-reference
+VS-0391,383,Ananthapuram,Andhra Pradesh,Fuel Filter Change; Oil Change,Fuel blockage,Fuel filter replacement,Tata Motors,public-reference
+VS-0392,384,Ananthapuram,Andhra Pradesh,Timing Belt Replacement; Engine Check,Timing issues,Timing belt replacement,Hyundai,public-reference
+VS-0393,385,Ananthapuram,Andhra Pradesh,Transmission Fluid Change; Brake Service,Gear slipping,Transmission fluid replacement,Nissan,public-reference
+VS-0394,386,Ananthapuram,Andhra Pradesh,Radiator Flush; Cooling System Check,Overheating,Radiator repair,Chevrolet,public-reference
+VS-0395,387,Ananthapuram,Andhra Pradesh,Light Replacement; General Maintenance,Flickering lights,Headlight replacement,Suzuki,public-reference
+VS-0396,388,Ananthapuram,Andhra Pradesh,Exhaust System Repair; Emission Test,Loud exhaust,Exhaust repair,Volkswagen,public-reference
+VS-0397,389,Ananthapuram,Andhra Pradesh,Oil Filter Change; Tire Rotation,Oil leak,Oil filter replacement,Renault,public-reference
+VS-0398,390,Ananthapuram,Andhra Pradesh,Spark Plug Replacement; Engine Diagnostics,Poor acceleration,Spark plug replacement,Toyota,public-reference
+VS-0399,391,Ananthapuram,Andhra Pradesh,Clutch Replacement; Brake Inspection,Sticking clutch,Clutch repair,Mahindra,public-reference
+VS-0400,392,Ananthapuram,Andhra Pradesh,Fuel Injection Service; Oil Change,Rough idling,Fuel injector cleaning,Bajaj Auto,public-reference
+VS-0401,393,Ananthapuram,Andhra Pradesh,Windshield Wiper Replacement; General Maintenance,Streaky wipers,Wiper replacement,Ford,public-reference
+VS-0402,394,Ananthapuram,Andhra Pradesh,Power Steering Fluid Change; Tire Rotation,Hard steering,Power steering service,Honda,public-reference
+VS-0403,395,Ananthapuram,Andhra Pradesh,Differential Service; Brake Fluid Change,Noise while turning,Differential repair,Kia,public-reference
+VS-0404,396,Ananthapuram,Andhra Pradesh,Antifreeze Change; Engine Check,Cooling issues,Antifreeze replacement,Hyundai,public-reference
+VS-0405,397,Ananthapuram,Andhra Pradesh,Serpentine Belt Replacement; General Maintenance,Squeaking noise,Belt replacement,Nissan,public-reference
+VS-0406,398,Ananthapuram,Andhra Pradesh,Engine Filter Change; Tire Replacement,Decreased power,Engine filter replacement,Tata Motors,public-reference
+VS-0407,399,Ananthapuram,Andhra Pradesh,Safety Inspection; Brake Service,Warning lights,Inspection service,Chevrolet,public-reference
+VS-0408,400,Ananthapuram,Andhra Pradesh,Headlight Restoration; Oil Change,Cloudy headlights,Headlight restoration,Suzuki,public-reference
+VS-0409,401,Ananthapuram,Andhra Pradesh,Headlight Restoration; Oil Change,Cloudy headlights,Headlight restoration,Honda City,public-reference
+VS-0410,402,Ananthapuram,Andhra Pradesh,Headlight Restoration; Brake Check,Dim headlights,Headlight restoration,Maruti Swift,public-reference
+VS-0411,403,Ananthapuram,Andhra Pradesh,Headlight Restoration; Tire Rotation,Yellowed headlights,Headlight restoration,Toyota Corolla,public-reference
+VS-0412,404,Ananthapuram,Andhra Pradesh,Headlight Restoration; Oil Change,Scratched headlights,Headlight restoration,Ford EcoSport,public-reference
+VS-0413,405,Ananthapuram,Andhra Pradesh,Headlight Restoration; Battery Replacement,Cloudy headlights,Headlight restoration,Hyundai Verna,public-reference
+VS-0414,406,Ananthapuram,Andhra Pradesh,Headlight Restoration; Engine Tune-Up,Faded headlights,Headlight restoration,Chevrolet Beat,public-reference
+VS-0415,407,Ananthapuram,Andhra Pradesh,Headlight Restoration; Oil Change,Cloudy headlights,Headlight restoration,Tata Nexon,public-reference
+VS-0416,408,Ananthapuram,Andhra Pradesh,Headlight Restoration; Suspension Check,Dull headlights,Headlight restoration,Nissan Micra,public-reference
+VS-0417,409,Ananthapuram,Andhra Pradesh,Headlight Restoration; Tire Alignment,Cloudy headlights,Headlight restoration,Renault Duster,public-reference
+VS-0418,410,Ananthapuram,Andhra Pradesh,Headlight Restoration; Oil Change,Cloudy headlights,Headlight restoration,Mahindra XUV300,public-reference
+VS-0419,411,Ananthapuram,Andhra Pradesh,Headlight Restoration; Oil Change,Cloudy headlights,Headlight restoration,Kia Seltos,public-reference
+VS-0420,412,Ananthapuram,Andhra Pradesh,Headlight Restoration; Brake Check,Dim headlights,Headlight restoration,Tata Tiago,public-reference
+VS-0421,413,Ananthapuram,Andhra Pradesh,Headlight Restoration; Tire Rotation,Yellowed headlights,Headlight restoration,Skoda Rapid,public-reference
+VS-0422,414,Ananthapuram,Andhra Pradesh,Headlight Restoration; Oil Change,Scratched headlights,Headlight restoration,Volkswagen Polo,public-reference
+VS-0423,415,Ananthapuram,Andhra Pradesh,Headlight Restoration; Battery Replacement,Cloudy headlights,Headlight restoration,Nissan Sunny,public-reference
+VS-0424,416,Ananthapuram,Andhra Pradesh,Headlight Restoration; Engine Tune-Up,Faded headlights,Headlight restoration,Honda Jazz,public-reference
+VS-0425,417,Ananthapuram,Andhra Pradesh,Headlight Restoration; Oil Change,Cloudy headlights,Headlight restoration,Ford Figo,public-reference
+VS-0426,418,Ananthapuram,Andhra Pradesh,Headlight Restoration; Suspension Check,Dull headlights,Headlight restoration,Maruti Baleno,public-reference
+VS-0427,419,Ananthapuram,Andhra Pradesh,Headlight Restoration; Tire Alignment,Cloudy headlights,Headlight restoration,Hyundai Creta,public-reference
+VS-0428,420,Ananthapuram,Andhra Pradesh,Headlight Restoration; Oil Change,Cloudy headlights,Headlight restoration,Mahindra Thar,public-reference
+VS-0429,421,Ananthapuram,Andhra Pradesh,Headlight Restoration; Brake Check,Dim headlights,Headlight restoration,Hyundai Elite i20,public-reference
+VS-0430,422,Ananthapuram,Andhra Pradesh,Headlight Restoration; Tire Rotation,Yellowed headlights,Headlight restoration,Tata Harrier,public-reference
+VS-0431,423,Ananthapuram,Andhra Pradesh,Headlight Restoration; Oil Change,Scratched headlights,Headlight restoration,Kia Carnival,public-reference
+VS-0432,424,Ananthapuram,Andhra Pradesh,Headlight Restoration; Battery Replacement,Cloudy headlights,Headlight restoration,Toyota Innova,public-reference
+VS-0433,425,Ananthapuram,Andhra Pradesh,Headlight Restoration; Engine Tune-Up,Faded headlights,Headlight restoration,Skoda Kushaq,public-reference
+VS-0434,426,Ananthapuram,Andhra Pradesh,Headlight Restoration; Oil Change,Cloudy headlights,Headlight restoration,Maruti Suzuki Vitara Brezza,public-reference
+VS-0435,427,Ananthapuram,Andhra Pradesh,Headlight Restoration; Suspension Check,Dull headlights,Headlight restoration,Nissan Magnite,public-reference
+VS-0436,428,Ananthapuram,Andhra Pradesh,Headlight Restoration; Tire Alignment,Cloudy headlights,Headlight restoration,Honda Accord,public-reference
+VS-0437,429,Ananthapuram,Andhra Pradesh,Headlight Restoration; Oil Change,Cloudy headlights,Headlight restoration,MG Hector,public-reference
+VS-0438,430,Ananthapuram,Andhra Pradesh,Headlight Restoration; Oil Change,Cloudy headlights,Headlight restoration,Mahindra Scorpio,public-reference
+VS-0439,431,Ananthapuram,Andhra Pradesh,Headlight Restoration; Brake Check,Dim headlights,Headlight restoration,Tata Safari,public-reference
+VS-0440,432,Ananthapuram,Andhra Pradesh,Headlight Restoration; Tire Rotation,Yellowed headlights,Headlight restoration,Hyundai i20,public-reference
+VS-0441,433,Ananthapuram,Andhra Pradesh,Headlight Restoration; Engine Tune-Up,Faded headlights,Headlight restoration,Honda WR-V,public-reference
+VS-0442,434,Ananthapuram,Andhra Pradesh,Headlight Restoration; Oil Change,Cloudy headlights,Headlight restoration,Maruti Celerio,public-reference
+VS-0443,435,Ananthapuram,Andhra Pradesh,Headlight Restoration; Battery Replacement,Cloudy headlights,Headlight restoration,Renault Captur,public-reference
+VS-0444,436,Ananthapuram,Andhra Pradesh,Headlight Restoration; Suspension Check,Dull headlights,Headlight restoration,Tata Nexon,public-reference
+VS-0445,437,Ananthapuram,Andhra Pradesh,Headlight Restoration; Oil Change,Cloudy headlights,Headlight restoration,Ford EcoSport,public-reference
+VS-0446,438,Ananthapuram,Andhra Pradesh,Headlight Restoration; Brake Check,Dim headlights,Headlight restoration,Mahindra KUV100,public-reference
+VS-0447,439,Ananthapuram,Andhra Pradesh,Headlight Restoration; Tire Rotation,Yellowed headlights,Headlight restoration,Nissan Kicks,public-reference
+VS-0448,440,Ananthapuram,Andhra Pradesh,Headlight Restoration; Engine Tune-Up,Faded headlights,Headlight restoration,Skoda Octavia,public-reference
+VS-0449,441,Ananthapuram,Andhra Pradesh,Headlight Restoration; Oil Change,Cloudy headlights,Headlight restoration,MG Hector Plus,public-reference
+VS-0450,442,Ananthapuram,Andhra Pradesh,Headlight Restoration; Battery Replacement,Cloudy headlights,Headlight restoration,Hyundai Venue,public-reference
+VS-0451,443,Ananthapuram,Andhra Pradesh,Headlight Restoration; Suspension Check,Dull headlights,Headlight restoration,Hyundai,public-reference
+VS-0452,444,Ananthapuram,Andhra Pradesh,Headlight Restoration; Tire Alignment,Cloudy headlights,Headlight restoration,Mahindra Thar,public-reference
+VS-0453,445,Ananthapuram,Andhra Pradesh,Headlight Restoration; Oil Change,Cloudy headlights,Headlight restoration,Ford EcoSport,public-reference
+VS-0454,446,Ananthapuram,Andhra Pradesh,Headlight Restoration; Battery Replacement,Cloudy headlights,Headlight restoration,Renault Duster,public-reference
+VS-0455,447,Ananthapuram,Andhra Pradesh,Headlight Restoration; Engine Tune-Up,Faded headlights,Headlight restoration,Tata Harrier,public-reference
+VS-0456,448,Ananthapuram,Andhra Pradesh,Headlight Restoration; Oil Change,Cloudy headlights,Headlight restoration,Maruti Alto,public-reference
+VS-0457,449,Ananthapuram,Andhra Pradesh,Headlight Restoration; Brake Check,Dim headlights,Headlight restoration,Hyundai Creta,public-reference
+VS-0458,450,Ananthapuram,Andhra Pradesh,Headlight Restoration; Tire Rotation,Yellowed headlights,Headlight restoration,Honda WR-V,public-reference
+VS-0459,451,Ananthapuram,Andhra Pradesh,Headlight Restoration; Oil Change,Scratched headlights,Headlight restoration,Tata Nexon,public-reference
+VS-0460,452,Ananthapuram,Andhra Pradesh,Headlight Restoration; Battery Replacement,Cloudy headlights,Headlight restoration,Ford Figo,public-reference
+VS-0461,453,Ananthapuram,Andhra Pradesh,Headlight Restoration; Engine Tune-Up,Faded headlights,Headlight restoration,Renault Duster,public-reference
+VS-0462,454,Ananthapuram,Andhra Pradesh,Headlight Restoration; Oil Change,Cloudy headlights,Headlight restoration,Mahindra,public-reference
+VS-0463,455,Ananthapuram,Andhra Pradesh,Headlight Restoration; Brake Check,Dim headlights,Headlight restoration,Maruti Swift,public-reference
+VS-0464,456,Ananthapuram,Andhra Pradesh,Headlight Restoration; Tire Rotation,Yellowed headlights,Headlight restoration,Hyundai i20,public-reference
+VS-0465,457,Ananthapuram,Andhra Pradesh,Headlight Restoration; Suspension Check,Dull headlights,Headlight restoration,Tata Harrier,public-reference
+VS-0466,458,Ananthapuram,Andhra Pradesh,Headlight Restoration; Oil Change,Cloudy headlights,Headlight restoration,Honda City,public-reference
+VS-0467,459,Ananthapuram,Andhra Pradesh,Headlight Restoration; Brake Check,Dim headlights,Headlight restoration,Maruti Baleno,public-reference
+VS-0468,460,Ananthapuram,Andhra Pradesh,Headlight Restoration; Tire Alignment,Cloudy headlights,Headlight restoration,Toyota Yaris,public-reference
+VS-0469,461,Ananthapuram,Andhra Pradesh,Headlight Restoration; Engine Tune-Up,Faded headlights,Headlight restoration,Hyundai Venue,public-reference
+VS-0470,462,Ananthapuram,Andhra Pradesh,Headlight Restoration; Oil Change,Cloudy headlights,Headlight restoration,Nissan Kicks,public-reference
+VS-0471,463,Ananthapuram,Andhra Pradesh,Headlight Restoration; Battery Replacement,Cloudy headlights,Headlight restoration,Tata Nexon,public-reference
+VS-0472,464,Ananthapuram,Andhra Pradesh,Headlight Restoration; Suspension Check,Dull headlights,Headlight restoration,MG Hector,public-reference
+VS-0473,465,Ananthapuram,Andhra Pradesh,Headlight Restoration; Tire Alignment,Cloudy headlights,Headlight restoration,Ford EcoSport,public-reference
+VS-0474,466,Ananthapuram,Andhra Pradesh,Headlight Restoration; Oil Change,Cloudy headlights,Headlight restoration,Renault Captur,public-reference
+VS-0475,467,Ananthapuram,Andhra Pradesh,Headlight Restoration; Brake Check,Dim headlights,Headlight restoration,Skoda Kushaq,public-reference
+VS-0476,468,Ananthapuram,Andhra Pradesh,Headlight Restoration; Tire Rotation,Yellowed headlights,Headlight restoration,Honda Accord,public-reference
+VS-0477,469,Ananthapuram,Andhra Pradesh,Headlight Restoration; Engine Tune-Up,Faded headlights,Headlight restoration,Maruti Vitara Brezza,public-reference
+VS-0478,470,Ananthapuram,Andhra Pradesh,Headlight Restoration; Oil Change,Cloudy headlights,Headlight restoration,Hyundai Creta,public-reference
+VS-0479,471,Ananthapuram,Andhra Pradesh,Headlight Restoration; Battery Replacement,Cloudy headlights,Headlight restoration,Tata Nexon,public-reference
+VS-0480,472,Ananthapuram,Andhra Pradesh,Headlight Restoration; Suspension Check,Dull headlights,Headlight restoration,Ford EcoSport,public-reference
+VS-0481,473,Ananthapuram,Andhra Pradesh,Headlight Restoration; Tire Alignment,Cloudy headlights,Headlight restoration,Nissan Magnite,public-reference
+VS-0482,474,Ananthapuram,Andhra Pradesh,Headlight Restoration; Oil Change,Cloudy headlights,Headlight restoration,Mahindra Thar,public-reference
+VS-0483,475,Ananthapuram,Andhra Pradesh,Headlight Restoration; Brake Check,Dim headlights,Headlight restoration,Toyota Innova,public-reference
+VS-0484,476,Ananthapuram,Andhra Pradesh,Headlight Restoration; Tire Rotation,Yellowed headlights,Headlight restoration,Hyundai Elite i20,public-reference
+VS-0485,477,Ananthapuram,Andhra Pradesh,Headlight Restoration; Engine Tune-Up,Faded headlights,Headlight restoration,Renault Duster,public-reference
+VS-0486,478,Ananthapuram,Andhra Pradesh,Headlight Restoration; Oil Change,Cloudy headlights,Headlight restoration,Tata Harrier,public-reference
+VS-0487,479,Ananthapuram,Andhra Pradesh,Headlight Restoration; Battery Replacement,Cloudy headlights,Headlight restoration,Maruti Swift,public-reference
+VS-0488,480,Ananthapuram,Andhra Pradesh,Headlight Restoration; Suspension Check,Dull headlights,Headlight restoration,Honda WR-V,public-reference
+VS-0489,481,Ananthapuram,Andhra Pradesh,Headlight Restoration; Tire Alignment,Cloudy headlights,Headlight restoration,Ford Figo,public-reference
+VS-0490,482,Ananthapuram,Andhra Pradesh,Headlight Restoration; Oil Change,Cloudy headlights,Headlight restoration,Hyundai Creta,public-reference
+VS-0491,483,Ananthapuram,Andhra Pradesh,Headlight Restoration; Brake Check,Dim headlights,Headlight restoration,MG Hector,public-reference
+VS-0492,484,Ananthapuram,Andhra Pradesh,Headlight Restoration; Tire Rotation,Yellowed headlights,Headlight restoration,Toyota Fortuner,public-reference
+VS-0493,485,Ananthapuram,Andhra Pradesh,Headlight Restoration; Engine Tune-Up,Faded headlights,Headlight restoration,Tata Nexon,public-reference
+VS-0494,486,Ananthapuram,Andhra Pradesh,Headlight Restoration; Oil Change,Cloudy headlights,Headlight restoration,Nissan Kicks,public-reference
+VS-0495,487,Ananthapuram,Andhra Pradesh,Headlight Restoration; Battery Replacement,Cloudy headlights,Headlight restoration,Honda,public-reference
+VS-0496,488,Ananthapuram,Andhra Pradesh,Headlight Restoration; Suspension Check,Dull headlights,Headlight restoration,Mahindra XUV300,public-reference
+VS-0497,489,Ananthapuram,Andhra Pradesh,Headlight Restoration; Tire Alignment,Cloudy headlights,Headlight restoration,Ford EcoSport,public-reference
+VS-0498,490,Ananthapuram,Andhra Pradesh,Headlight Restoration; Oil Change,Cloudy headlights,Headlight restoration,Hyundai Venue,public-reference
+VS-0499,491,Ananthapuram,Andhra Pradesh,Headlight Restoration; Brake Check,Dim headlights,Headlight restoration,Tata Tiago,public-reference
+VS-0500,492,Ananthapuram,Andhra Pradesh,Headlight Restoration; Tire Rotation,Yellowed headlights,Headlight restoration,Renault Captur,public-reference
+VS-0501,493,Ananthapuram,Andhra Pradesh,Headlight Restoration; Engine Tune-Up,Faded headlights,Headlight restoration,Skoda Kushaq,public-reference
+VS-0502,494,Ananthapuram,Andhra Pradesh,Headlight Restoration; Oil Change,Cloudy headlights,Headlight restoration,Maruti Vitara,public-reference
+VS-0503,495,Ananthapuram,Andhra Pradesh,Headlight Restoration; Battery Replacement,Cloudy headlights,Headlight restoration,Toyota Yaris,public-reference
+VS-0504,496,Ananthapuram,Andhra Pradesh,Headlight Restoration; Suspension Check,Dull headlights,Headlight restoration,Hyundai Creta,public-reference
+VS-0505,497,Ananthapuram,Andhra Pradesh,Headlight Restoration; Tire Alignment,Cloudy headlights,Headlight restoration,Tata Nexon,public-reference
+VS-0506,498,Ananthapuram,Andhra Pradesh,Headlight Restoration; Oil Change,Cloudy headlights,Headlight restoration,Mahindra Scorpio,public-reference
+VS-0507,499,Ananthapuram,Andhra Pradesh,Headlight Restoration; Brake Check,Dim headlights,Headlight restoration,Nissan Kicks,public-reference
+VS-0508,500,Ananthapuram,Andhra Pradesh,Headlight Restoration; Tire Rotation,Yellowed headlights,Headlight restoration,Honda Accord,public-reference

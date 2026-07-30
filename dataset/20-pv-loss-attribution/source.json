@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0",
+  "case_id": "20",
+  "sources": [
+    {
+      "id": "DATA-20",
+      "title": "Solar and wind power data from the Chinese State Grid Renewable Energy Generation Forecasting Competition",
+      "url": "https://doi.org/10.6084/m9.figshare.17304221",
+      "publisher": "Figshare",
+      "version": "8-station delivery aggregation",
+      "license": "CC0",
+      "redistribution": "public-domain-dedication"
+    }
+  ],
+  "input_files": [
+    {
+      "path": "案例08_辐照转化效率异常归因/stategrid_pv_8stations.csv",
+      "role": "8-station public SCADA delivery snapshot",
+      "bytes": 43579106,
+      "sha256": "4bbf6e19a1c6e042b27ef6d8d087a8ce7f48fa3f3ca1c1bdeda491a04333e4b6"
+    }
+  ],
+  "generation": {
+    "generator": "tools/build_demo_expansion.py",
+    "generator_version": "1.0.0",
+    "selection": {
+      "entity_selection": "all eight stations",
+      "time_selection": "all observed dates within each station; no cross-station date imputation",
+      "aggregation": "station/day"
+    },
+    "field_lineage": {
+      "source_facts": [
+        "station_id",
+        "capacity_mw"
+      ],
+      "derived_fields": [
+        "date",
+        "source_records",
+        "mean_irradiance",
+        "mean_air_temperature",
+        "mean_power_mw",
+        "mean_efficiency_ratio",
+        "mean_temperature_derating_pct",
+        "curtailment_suspected_share",
+        "automatic_control_allowed",
+        "allowed_action",
+        "data_nature"
+      ],
+      "derivation_layers": {
+        "station_day_aggregation": [
+          "date",
+          "source_records",
+          "mean_irradiance",
+          "mean_air_temperature",
+          "mean_power_mw"
+        ],
+        "upstream_prederived_daily_means": [
+          "mean_efficiency_ratio",
+          "mean_temperature_derating_pct",
+          "curtailment_suspected_share"
+        ],
+        "course_action_fields": [
+          "automatic_control_allowed",
+          "allowed_action",
+          "data_nature"
+        ]
+      }
+    }
+  },
+  "supplemental_outputs": [
+    {
+      "path": "stations.csv",
+      "source_id": "DATA-20",
+      "rows": 8,
+      "sha256": "34c264b571c0c773e2b5af18d8e2bc2155930604a1f57da58cfdb5341d16d523",
+      "data_nature": "public-station-fact"
+    }
+  ],
+  "transform_status": "derived-verified",
+  "materialized_status": "verified",
+  "rebuild_status": "blocked_missing_inputs",
+  "restriction": "mean_efficiency_ratio 是上游 eff_ratio 的日均值，称为归一化出力比，不是物理转换效率；温度降额和疑似限电占比也只是站端核查线索。"
+}

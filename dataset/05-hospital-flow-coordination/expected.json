@@ -1,0 +1,29 @@
+{
+  "seed": "hospital-flow-handoff-v2",
+  "row_count": 4320,
+  "transport_count": 720,
+  "event_versions": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "fixed_coverage": {
+    "late_event": 120,
+    "out_of_order": 120,
+    "duplicate": 120,
+    "missing": 120,
+    "mutually_exclusive": 120,
+    "late_reopen": 120
+  },
+  "safety": {
+    "contains_pii": false,
+    "contains_diagnosis": false,
+    "contains_treatment": false,
+    "clinical_decision_allowed_values": [
+      "False"
+    ]
+  }
+}

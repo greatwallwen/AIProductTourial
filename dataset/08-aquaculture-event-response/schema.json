@@ -1,0 +1,174 @@
+{
+  "schema_version": "1.1",
+  "case_id": "08",
+  "row_count": 864,
+  "columns": [
+    {
+      "name": "event_id",
+      "dtype": "string",
+      "nullable": false,
+      "sample": "CN-AQ-01-001"
+    },
+    {
+      "name": "event_time",
+      "dtype": "datetime-with-offset",
+      "nullable": false,
+      "sample": "2026-06-01T00:00:00+08:00"
+    },
+    {
+      "name": "region_id",
+      "dtype": "string",
+      "nullable": false,
+      "sample": "CN-POND-01"
+    },
+    {
+      "name": "archive_member",
+      "dtype": "string",
+      "nullable": false,
+      "sample": "Region1/region1_2024_merge.tif"
+    },
+    {
+      "name": "asset_year",
+      "dtype": "integer",
+      "nullable": false,
+      "sample": "2024"
+    },
+    {
+      "name": "temperature_c",
+      "dtype": "float",
+      "nullable": false,
+      "sample": "25.56"
+    },
+    {
+      "name": "dissolved_oxygen_mg_l",
+      "dtype": "float",
+      "nullable": false,
+      "sample": "7.87"
+    },
+    {
+      "name": "ph",
+      "dtype": "float",
+      "nullable": false,
+      "sample": "7.24"
+    },
+    {
+      "name": "turbidity_ntu",
+      "dtype": "float",
+      "nullable": false,
+      "sample": "5.46"
+    },
+    {
+      "name": "sensor_status",
+      "dtype": "enum",
+      "nullable": false,
+      "values": [
+        "online",
+        "offline"
+      ]
+    },
+    {
+      "name": "evidence_status",
+      "dtype": "enum",
+      "nullable": false,
+      "values": [
+        "complete",
+        "source_missing",
+        "value_conflict"
+      ]
+    },
+    {
+      "name": "risk_level",
+      "dtype": "enum",
+      "nullable": false,
+      "values": [
+        "normal",
+        "medium",
+        "high"
+      ]
+    },
+    {
+      "name": "control_authority",
+      "dtype": "enum",
+      "nullable": false,
+      "values": [
+        "human-review-only"
+      ]
+    },
+    {
+      "name": "data_nature",
+      "dtype": "enum",
+      "nullable": false,
+      "values": [
+        "deterministic-synthetic-cn-operations"
+      ]
+    },
+    {
+      "name": "source_id",
+      "dtype": "enum",
+      "nullable": false,
+      "values": [
+        "COURSE-OPS-08"
+      ]
+    }
+  ],
+  "primary_key": [
+    "event_id"
+  ],
+  "spatial_reference_key": [
+    "region_id",
+    "archive_member"
+  ],
+  "data_nature": "deterministic-synthetic-cn-operations",
+  "source_ids": [
+    "DATA-08A",
+    "COURSE-OPS-08"
+  ],
+  "related_artifacts": [
+    {
+      "path": "repair-evidence.jsonl",
+      "row_count": 38,
+      "data_nature": "deterministic-synthetic-cn-repair-evidence",
+      "fields": [
+        "repair_id",
+        "event_id",
+        "region_id",
+        "archive_member",
+        "version",
+        "status",
+        "source_data_hash",
+        "repaired_data_hash",
+        "data_nature",
+        "evidence_hash"
+      ]
+    }
+  ],
+  "forbidden_claims": [
+    "real farm",
+    "automatic medication",
+    "automatic aeration",
+    "diagnosis",
+    "causal attribution"
+  ],
+  "supplemental_artifacts": [
+    {
+      "path": "repair-evidence.jsonl",
+      "row_count": 38,
+      "data_nature": "deterministic-synthetic-cn-repair-evidence",
+      "source_ids": [
+        "COURSE-OPS-08"
+      ],
+      "columns": [
+        "repair_id",
+        "event_id",
+        "region_id",
+        "archive_member",
+        "version",
+        "status",
+        "source_data_hash",
+        "repaired_data_hash",
+        "data_nature",
+        "evidence_hash"
+      ]
+    }
+  ]
+}

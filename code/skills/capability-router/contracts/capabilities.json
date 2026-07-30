@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "allowed_actions": [
+    "read_local_data",
+    "write_artifact"
+  ],
+  "prohibited_actions": [
+    "arbitrary_shell",
+    "delete_source",
+    "modify_source",
+    "network_access",
+    "publish_external",
+    "send_external_message"
+  ],
+  "capabilities": [
+    {
+      "id": "data-profile",
+      "description": "对本地 CSV 做确定性数据体检。",
+      "keywords": ["csv体检", "csv质量", "数据体检", "缺失值", "重复值", "字段类型"],
+      "required_inputs": ["csv_path"],
+      "required_actions": ["read_local_data"]
+    },
+    {
+      "id": "metric-brief",
+      "description": "依据会员分层 CSV 和明确实验参数生成会员经营简报。",
+      "keywords": ["会员经营简报", "优惠券实验", "会员分层", "会员指标"],
+      "required_inputs": ["csv_path", "coupon_amount_cny", "target_segment"],
+      "required_actions": ["read_local_data", "write_artifact"]
+    },
+    {
+      "id": "product-opportunity-map",
+      "description": "把可核验的客户或流程证据整理为产品机会图。",
+      "keywords": ["产品机会图", "机会图", "客户原话", "访谈记录", "机会节点"],
+      "required_inputs": ["csv_path"],
+      "required_actions": ["read_local_data", "write_artifact"]
+    },
+    {
+      "id": "poster-recipe",
+      "description": "把创意简报编译为可检查的海报配方。",
+      "keywords": ["海报", "视觉方向", "创意简报", "版式"],
+      "required_inputs": ["creative_brief"],
+      "required_actions": ["write_artifact"]
+    },
+    {
+      "id": "slide-plan",
+      "description": "把 Markdown 内容和版式约束整理为幻灯片计划。",
+      "keywords": ["pptx", "幻灯片", "演示文稿", "markdown转ppt"],
+      "required_inputs": ["markdown_path"],
+      "required_actions": ["read_local_data", "write_artifact"]
+    },
+    {
+      "id": "pixijs-game-contract",
+      "description": "为 PixiJS 小游戏生成可验收的实现合同。",
+      "keywords": ["pixijs", "小游戏", "可玩游戏", "游戏合同"],
+      "required_inputs": ["game_brief"],
+      "required_actions": ["write_artifact"]
+    },
+    {
+      "id": "asset-contract",
+      "description": "为 3D 或其他生成资产建立本地验收合同。",
+      "keywords": ["3d资产", "glb", "资产合同", "文本到3d"],
+      "required_inputs": ["asset_request"],
+      "required_actions": ["write_artifact"]
+    }
+  ]
+}

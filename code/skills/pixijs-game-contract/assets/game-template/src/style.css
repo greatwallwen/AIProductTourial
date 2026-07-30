@@ -1,0 +1,35 @@
+:root {
+  color: #edf6ff;
+  background: #06131f;
+  font-family: Inter, "Microsoft YaHei", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; min-height: 100vh; background: radial-gradient(circle at 30% 0%, #12324b, #06131f 55%); }
+.shell { width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 30px 0 24px; }
+.hero { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 18px; }
+.eyebrow { margin: 0 0 8px; color: #63d4ff; font-size: 12px; letter-spacing: .18em; }
+h1 { margin: 0; font-size: clamp(30px, 5vw, 52px); }
+.lede { max-width: 720px; margin: 10px 0 0; color: #b8cadd; }
+.hud { display: grid; grid-template-columns: repeat(3, minmax(82px, 1fr)); gap: 8px; margin: 0; }
+.hud div { padding: 12px 14px; border: 1px solid #2c506b; border-radius: 14px; background: #0b2133cc; }
+.hud dt { color: #8fb0c8; font-size: 12px; }
+.hud dd { margin: 4px 0 0; color: #fff; font-weight: 700; }
+.play-area { display: grid; grid-template-columns: minmax(0, 960px) 180px; gap: 16px; align-items: stretch; }
+#game-stage { overflow: hidden; min-height: 540px; border: 1px solid #27506d; border-radius: 20px; background: #0c1b2a; box-shadow: 0 24px 70px #0008; }
+#game-stage canvas { display: block; width: 100%; height: auto; outline: none; }
+#game-stage canvas:focus-visible { box-shadow: inset 0 0 0 4px #63d4ff; }
+.instructions { padding: 18px; border: 1px solid #27506d; border-radius: 20px; background: #0b2133cc; }
+.instructions h2 { margin-top: 0; font-size: 18px; }
+.instructions ul { padding-left: 20px; color: #c5d5e2; }
+.status { min-height: 48px; color: #7ee7c2; }
+button { width: 100%; padding: 12px 14px; border: 0; border-radius: 12px; background: #63d4ff; color: #052033; font: inherit; font-weight: 800; cursor: pointer; }
+button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+kbd { padding: 2px 6px; border-radius: 5px; background: #0b3049; color: #fff; }
+.boundary { margin: 16px 0 0; color: #94aabd; font-size: 13px; }
+
+@media (max-width: 900px) {
+  .hero { align-items: stretch; flex-direction: column; }
+  .play-area { grid-template-columns: 1fr; }
+  #game-stage { min-height: 300px; }
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "1.0",
+  "purpose": "案例 19 可选三维部件定位合同",
+  "provenance": {
+    "tool": "img2threejs",
+    "commit": "9614f1ac830bb3977b186ebf98af0f75796742ed",
+    "license": "Apache-2.0"
+  },
+  "componentTree": [
+    { "id": "root", "parent": null },
+    { "id": "pump", "parent": "root" },
+    { "id": "valve", "parent": "root" },
+    { "id": "cooler", "parent": "root" },
+    { "id": "accumulator", "parent": "root" }
+  ],
+  "performanceBudget": {
+    "targetTriangles": 90000,
+    "maxDrawCalls": 42,
+    "fpsTarget": 45
+  },
+  "approximationNotes": [
+    "Single-view reconstruction is used only for approximate component location.",
+    "It must not be used for measurement, diagnosis, maintenance clearance, or digital-twin claims."
+  ]
+}

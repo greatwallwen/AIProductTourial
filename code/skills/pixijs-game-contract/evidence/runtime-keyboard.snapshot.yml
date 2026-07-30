@@ -1,0 +1,26 @@
+- main [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - paragraph [ref=e5]: PIXIJS · 数据质量训练
+      - heading "北京空气质量数据清洁调度" [level=1] [ref=e6]
+      - paragraph [ref=e7]: 移动数据巡检员，回收字段校验工单并避开口径漂移。
+    - generic "游戏状态" [ref=e8]:
+      - generic [ref=e9]:
+        - term [ref=e10]: 得分
+        - definition [ref=e11]: "0"
+      - generic [ref=e12]:
+        - term [ref=e13]: 剩余
+        - definition [ref=e14]: 45 秒
+      - generic [ref=e15]:
+        - term [ref=e16]: 位置
+        - definition [ref=e17]: 120, 160
+  - region "北京空气质量数据清洁调度" [ref=e18]:
+    - generic "数据清洁调度游戏画布，使用方向键或 WASD 移动" [active] [ref=e20]
+    - complementary [ref=e21]:
+      - heading "调度说明" [level=2] [ref=e22]
+      - list [ref=e23]:
+        - listitem [ref=e24]: 方向键或 WASD 移动
+        - listitem [ref=e25]: R 键或按钮重新开始
+      - paragraph [ref=e26]: 调度开始：回收绿色数据校验工单。
+      - button "重新开始 R" [ref=e27] [cursor=pointer]
+  - paragraph [ref=e28]: 这是数据质量教学游戏，不表示实时空气质量，不提供健康建议。

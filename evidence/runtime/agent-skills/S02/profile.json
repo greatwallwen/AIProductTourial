@@ -1,0 +1,134 @@
+{
+  "column_count": 21,
+  "columns": [
+    "No",
+    "year",
+    "month",
+    "day",
+    "hour",
+    "PM2.5",
+    "PM10",
+    "SO2",
+    "NO2",
+    "CO",
+    "O3",
+    "TEMP",
+    "PRES",
+    "DEWP",
+    "RAIN",
+    "wd",
+    "WSPM",
+    "station",
+    "observed_at",
+    "missing_pollutant_count",
+    "data_nature"
+  ],
+  "date_ranges": {
+    "observed_at": {
+      "max": "2017-02-28 20:00:00",
+      "min": "2013-03-01 00:00:00"
+    }
+  },
+  "exact_duplicates": 0,
+  "file": {
+    "bytes": 2594622,
+    "encoding": "utf-8-sig",
+    "path": "${COURSE_ROOT}\\dataset\\06-beijing-air-quality-audit\\case.csv"
+  },
+  "nulls": {
+    "CO": 1027,
+    "DEWP": 25,
+    "NO2": 656,
+    "No": 0,
+    "O3": 830,
+    "PM10": 334,
+    "PM2.5": 466,
+    "PRES": 24,
+    "RAIN": 23,
+    "SO2": 417,
+    "TEMP": 24,
+    "WSPM": 16,
+    "data_nature": 0,
+    "day": 0,
+    "hour": 0,
+    "missing_pollutant_count": 0,
+    "month": 0,
+    "observed_at": 0,
+    "station": 0,
+    "wd": 93,
+    "year": 0
+  },
+  "pollutants": {
+    "CO": {
+      "field_present": true,
+      "missing_count": 1027,
+      "missing_rate": 0.048814
+    },
+    "NO2": {
+      "field_present": true,
+      "missing_count": 656,
+      "missing_rate": 0.03118
+    },
+    "O3": {
+      "field_present": true,
+      "missing_count": 830,
+      "missing_rate": 0.039451
+    },
+    "PM10": {
+      "field_present": true,
+      "missing_count": 334,
+      "missing_rate": 0.015875
+    },
+    "PM2.5": {
+      "field_present": true,
+      "missing_count": 466,
+      "missing_rate": 0.022149
+    },
+    "SO2": {
+      "field_present": true,
+      "missing_count": 417,
+      "missing_rate": 0.01982
+    }
+  },
+  "read_boundary": {
+    "allowed_root": "${COURSE_ROOT}\\dataset",
+    "missing_tokens": [
+      "",
+      "n/a",
+      "na",
+      "nan",
+      "none",
+      "null"
+    ],
+    "mode": "read-only-full-scan",
+    "source_stat_unchanged": true,
+    "source_write_performed": false
+  },
+  "rows": 21039,
+  "schema_version": "1.0",
+  "status": "complete",
+  "types": {
+    "CO": "number",
+    "DEWP": "number",
+    "NO2": "number",
+    "No": "integer",
+    "O3": "number",
+    "PM10": "number",
+    "PM2.5": "number",
+    "PRES": "number",
+    "RAIN": "number",
+    "SO2": "number",
+    "TEMP": "number",
+    "WSPM": "number",
+    "data_nature": "text",
+    "day": "integer",
+    "hour": "integer",
+    "missing_pollutant_count": "integer",
+    "month": "integer",
+    "observed_at": "date",
+    "station": "text",
+    "wd": "text",
+    "year": "integer"
+  },
+  "warnings": []
+}

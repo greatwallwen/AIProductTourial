@@ -1,0 +1,8 @@
+{
+  "reason": "metric-brief 是匹配任务且权限范围内的最小本地能力。",
+  "required_inputs": [],
+  "selected_skill": "metric-brief",
+  "status": "selected",
+  "stop_reason": null,
+  "task_id": "S01-example-02"
+}

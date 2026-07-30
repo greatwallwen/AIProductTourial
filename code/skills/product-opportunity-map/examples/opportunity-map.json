@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "source": {
+    "path": "${COURSE_ROOT}\\dataset\\S-agent-skill-cases\\case.csv",
+    "sha256": "f4e9500396df6812585bce656c359a7315212fe47b32538c82fba0b376546b38",
+    "encoding": "utf-8-sig",
+    "filter": {
+      "lab_id": "S04"
+    },
+    "row_count": 4,
+    "fields": [
+      "lab_id",
+      "step_id",
+      "stage",
+      "title",
+      "detail",
+      "status",
+      "artifact"
+    ]
+  },
+  "business_rules": [
+    {
+      "id": "goal-label",
+      "description": "Use a neutral map title; do not state that a solution is validated.",
+      "label": "门店差评处理机会"
+    },
+    {
+      "id": "evidence-from-observation",
+      "description": "Use the S04 observation detail verbatim as the problem evidence.",
+      "step_id": "01",
+      "field": "detail"
+    },
+    {
+      "id": "split-action-opportunities",
+      "description": "Create two opportunity nodes only when both phrases occur in the S04 action detail.",
+      "step_id": "03",
+      "field": "detail",
+      "required_phrases": [
+        "缩短订单定位",
+        "审批等待"
+      ],
+      "opportunity_labels": [
+        "缩短订单定位",
+        "缩短审批等待"
+      ]
+    },
+    {
+      "id": "experiment-from-check",
+      "description": "Use the S04 check detail verbatim as the first experiment.",
+      "step_id": "04",
+      "field": "detail"
+    }
+  ],
+  "source_records": [
+    {
+      "row_number": 14,
+      "lab_id": "S04",
+      "step_id": "01",
+      "stage": "观察",
+      "title": "读取门店访谈",
+      "detail": "店长说差评来时不知道先找订单、先回复还是先问区域经理。",
+      "status": "ready",
+      "artifact": "interview-notes.json"
+    },
+    {
+      "row_number": 15,
+      "lab_id": "S04",
+      "step_id": "02",
+      "stage": "选择",
+      "title": "问题框定加机会树",
+      "detail": "先聚合决策困难，再形成可以验证的机会节点。",
+      "status": "selected",
+      "artifact": "method-decision.json"
+    },
+    {
+      "row_number": 16,
+      "lab_id": "S04",
+      "step_id": "03",
+      "stage": "动作",
+      "title": "建立机会节点",
+      "detail": "机会不是做一个AI按钮，而是缩短订单定位与审批等待。",
+      "status": "complete",
+      "artifact": "opportunity-map.json"
+    },
+    {
+      "row_number": 17,
+      "lab_id": "S04",
+      "step_id": "04",
+      "stage": "检查",
+      "title": "选择首个验证",
+      "detail": "先验证订单关联能否把平均定位时间降到三分钟。",
+      "status": "passed",
+      "artifact": "opportunity-map.json"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "goal",
+      "kind": "goal",
+      "label": "门店差评处理机会",
+      "rule_id": "goal-label",
+      "source_refs": [
+        {
+          "row_number": 16,
+          "lab_id": "S04",
+          "step_id": "03",
+          "field": "detail",
+          "value": "机会不是做一个AI按钮，而是缩短订单定位与审批等待。"
+        }
+      ]
+    },
+    {
+      "id": "problem-evidence",
+      "kind": "evidence",
+      "label": "店长说差评来时不知道先找订单、先回复还是先问区域经理。",
+      "rule_id": "evidence-from-observation",
+      "source_refs": [
+        {
+          "row_number": 14,
+          "lab_id": "S04",
+          "step_id": "01",
+          "field": "detail",
+          "value": "店长说差评来时不知道先找订单、先回复还是先问区域经理。"
+        }
+      ]
+    },
+    {
+      "id": "opportunity-order-link",
+      "kind": "opportunity",
+      "label": "缩短订单定位",
+      "rule_id": "split-action-opportunities",
+      "source_refs": [
+        {
+          "row_number": 16,
+          "lab_id": "S04",
+          "step_id": "03",
+          "field": "detail",
+          "value": "机会不是做一个AI按钮，而是缩短订单定位与审批等待。"
+        }
+      ]
+    },
+    {
+      "id": "opportunity-approval-wait",
+      "kind": "opportunity",
+      "label": "缩短审批等待",
+      "rule_id": "split-action-opportunities",
+      "source_refs": [
+        {
+          "row_number": 16,
+          "lab_id": "S04",
+          "step_id": "03",
+          "field": "detail",
+          "value": "机会不是做一个AI按钮，而是缩短订单定位与审批等待。"
+        }
+      ]
+    },
+    {
+      "id": "first-experiment",
+      "kind": "experiment",
+      "label": "先验证订单关联能否把平均定位时间降到三分钟。",
+      "rule_id": "experiment-from-check",
+      "source_refs": [
+        {
+          "row_number": 17,
+          "lab_id": "S04",
+          "step_id": "04",
+          "field": "detail",
+          "value": "先验证订单关联能否把平均定位时间降到三分钟。"
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "goal",
+      "to": "problem-evidence",
+      "relation": "framed_by"
+    },
+    {
+      "from": "problem-evidence",
+      "to": "opportunity-order-link",
+      "relation": "supports"
+    },
+    {
+      "from": "problem-evidence",
+      "to": "opportunity-approval-wait",
+      "relation": "supports"
+    },
+    {
+      "from": "opportunity-order-link",
+      "to": "first-experiment",
+      "relation": "tested_by"
+    },
+    {
+      "from": "opportunity-approval-wait",
+      "to": "first-experiment",
+      "relation": "not_yet_tested"
+    }
+  ]
+}

@@ -1,0 +1,290 @@
+{
+  "agent_cards": {
+    "sensor-review-agent": {
+      "name": "传感窗口复核 Agent",
+      "description": "复核固定时间窗统计，只描述数据，不诊断故障。",
+      "version": "1.0.0",
+      "skills": [
+        {
+          "id": "sensor-window-review",
+          "name": "传感窗口复核"
+        }
+      ],
+      "supportedInterfaces": [
+        {
+          "protocolBinding": "local-course-a2a",
+          "protocolVersion": "1.0.0"
+        }
+      ]
+    },
+    "operations-review-agent": {
+      "name": "运营响应 Agent",
+      "description": "从运营连续性角度提出动作建议，供汇总器检查。",
+      "version": "1.0.0",
+      "skills": [
+        {
+          "id": "operations-response",
+          "name": "运营响应建议"
+        }
+      ],
+      "supportedInterfaces": [
+        {
+          "protocolBinding": "local-course-a2a",
+          "protocolVersion": "1.0.0"
+        }
+      ]
+    },
+    "policy-review-agent": {
+      "name": "权限规则 Agent",
+      "description": "核对课程检查程序、人工批准与禁止动作。",
+      "version": "1.0.0",
+      "skills": [
+        {
+          "id": "policy-review",
+          "name": "权限规则复核"
+        }
+      ],
+      "supportedInterfaces": [
+        {
+          "protocolBinding": "local-course-a2a",
+          "protocolVersion": "1.0.0"
+        }
+      ]
+    }
+  },
+  "tasks": [
+    {
+      "id": "task-1",
+      "contextId": "metro-review-20200418",
+      "status": {
+        "state": "completed",
+        "timestamp": "2020-04-18T00:02:25Z"
+      },
+      "history": [
+        {
+          "messageId": "message-1",
+          "role": "user",
+          "parts": [
+            {
+              "kind": "text",
+              "text": "复核地铁压缩机固定窗口，并给出本岗位建议。"
+            },
+            {
+              "kind": "data",
+              "data": {
+                "question": "五分钟传感窗口是否足以判定压缩机故障并自动停机？",
+                "window": {
+                  "from": "2020-04-17 23:57:36",
+                  "to": "2020-04-18 00:02:25",
+                  "rows": 25
+                },
+                "citations": [
+                  "UCI-791-FIELDS",
+                  "UCI-791-SOURCE",
+                  "COURSE-09-APPROVAL",
+                  "COURSE-09-INSPECTION"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "artifacts": [
+        {
+          "artifactId": "task-1-opinion",
+          "name": "传感窗口复核 Agent意见",
+          "parts": [
+            {
+              "kind": "data",
+              "data": {
+                "agent_id": "sensor-review-agent",
+                "finding": "窗口共 25 条记录，可以复核压力、油温和电流统计。",
+                "recommended_action": "create_inspection_request",
+                "diagnosis": null,
+                "citations": [
+                  "UCI-791-SOURCE",
+                  "UCI-791-FIELDS"
+                ],
+                "confidence": "data-supported"
+              }
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "agentCard": {
+          "name": "传感窗口复核 Agent",
+          "description": "复核固定时间窗统计，只描述数据，不诊断故障。",
+          "version": "1.0.0",
+          "skills": [
+            {
+              "id": "sensor-window-review",
+              "name": "传感窗口复核"
+            }
+          ],
+          "supportedInterfaces": [
+            {
+              "protocolBinding": "local-course-a2a",
+              "protocolVersion": "1.0.0"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "task-2",
+      "contextId": "metro-review-20200418",
+      "status": {
+        "state": "completed",
+        "timestamp": "2020-04-18T00:02:25Z"
+      },
+      "history": [
+        {
+          "messageId": "message-2",
+          "role": "user",
+          "parts": [
+            {
+              "kind": "text",
+              "text": "复核地铁压缩机固定窗口，并给出本岗位建议。"
+            },
+            {
+              "kind": "data",
+              "data": {
+                "question": "五分钟传感窗口是否足以判定压缩机故障并自动停机？",
+                "window": {
+                  "from": "2020-04-17 23:57:36",
+                  "to": "2020-04-18 00:02:25",
+                  "rows": 25
+                },
+                "citations": [
+                  "UCI-791-FIELDS",
+                  "UCI-791-SOURCE",
+                  "COURSE-09-APPROVAL",
+                  "COURSE-09-INSPECTION"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "artifacts": [
+        {
+          "artifactId": "task-2-opinion",
+          "name": "运营响应 Agent意见",
+          "parts": [
+            {
+              "kind": "data",
+              "data": {
+                "agent_id": "operations-review-agent",
+                "finding": "窗口被课程数据标记为已知故障区间，运营侧希望立即降低风险。",
+                "recommended_action": "stop_equipment",
+                "diagnosis": "suspected-compressor-failure",
+                "citations": [
+                  "UCI-791-SOURCE"
+                ],
+                "confidence": "insufficient-policy-support"
+              }
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "agentCard": {
+          "name": "运营响应 Agent",
+          "description": "从运营连续性角度提出动作建议，供汇总器检查。",
+          "version": "1.0.0",
+          "skills": [
+            {
+              "id": "operations-response",
+              "name": "运营响应建议"
+            }
+          ],
+          "supportedInterfaces": [
+            {
+              "protocolBinding": "local-course-a2a",
+              "protocolVersion": "1.0.0"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "task-3",
+      "contextId": "metro-review-20200418",
+      "status": {
+        "state": "completed",
+        "timestamp": "2020-04-18T00:02:25Z"
+      },
+      "history": [
+        {
+          "messageId": "message-3",
+          "role": "user",
+          "parts": [
+            {
+              "kind": "text",
+              "text": "复核地铁压缩机固定窗口，并给出本岗位建议。"
+            },
+            {
+              "kind": "data",
+              "data": {
+                "question": "五分钟传感窗口是否足以判定压缩机故障并自动停机？",
+                "window": {
+                  "from": "2020-04-17 23:57:36",
+                  "to": "2020-04-18 00:02:25",
+                  "rows": 25
+                },
+                "citations": [
+                  "UCI-791-FIELDS",
+                  "UCI-791-SOURCE",
+                  "COURSE-09-APPROVAL",
+                  "COURSE-09-INSPECTION"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "artifacts": [
+        {
+          "artifactId": "task-3-opinion",
+          "name": "权限规则 Agent意见",
+          "parts": [
+            {
+              "kind": "data",
+              "data": {
+                "agent_id": "policy-review-agent",
+                "finding": "课程规则要求先核对窗口与传感器状态，并把检查工单交给有权限的人员批准。",
+                "recommended_action": "wait_for_human_approval",
+                "diagnosis": null,
+                "citations": [
+                  "COURSE-09-INSPECTION",
+                  "COURSE-09-APPROVAL"
+                ],
+                "confidence": "policy-supported"
+              }
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "agentCard": {
+          "name": "权限规则 Agent",
+          "description": "核对课程检查程序、人工批准与禁止动作。",
+          "version": "1.0.0",
+          "skills": [
+            {
+              "id": "policy-review",
+              "name": "权限规则复核"
+            }
+          ],
+          "supportedInterfaces": [
+            {
+              "protocolBinding": "local-course-a2a",
+              "protocolVersion": "1.0.0"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

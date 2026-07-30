@@ -1,0 +1,556 @@
+{
+  "schema_version": "2.0",
+  "accessed_at": "2026-07-28",
+  "policy": {
+    "priority": [
+      "original_institution_or_doi_repository",
+      "government_or_official_github",
+      "mirror_with_provenance"
+    ],
+    "kaggle_role": "discovery_only_until_original_provenance_and_license_are_verified",
+    "materialization_rule": "downloaded files require URL, version, license, bytes, SHA-256 and deterministic transform receipt"
+  },
+  "sources": [
+    {
+      "id": "SRC-AIPRODUCTTOURIAL",
+      "title": "greatwallwen/AIProductTourial",
+      "url": "https://github.com/greatwallwen/AIProductTourial",
+      "kind": "course-method-reference",
+      "version": "04ae33461362660fd010e02c5da9791fc1fe3978",
+      "license": "no top-level license detected at fixed commit",
+      "state": "commit-verified",
+      "usage": "independent rewrite of organization, Loop, case-contract and Skill-governance methods; no copied text, code or assets",
+      "path": "sources/cards/aiproducttourial-2026-07.md"
+    },
+    {
+      "id": "SRC-LOGIC-LOCAL",
+      "title": "大模型与逻辑方法",
+      "path": "sources/cards/logic-methods.md",
+      "kind": "integrated-source-card",
+      "state": "integrated-summary-retained",
+      "integrity": "tree-sha256:90a7c764f049f3d5aabb3f6d6c7418f00fb0115ba4b4ab472d2307354195e967;files:118;bytes:65416133",
+      "usage": "logic, falsification, induction, sampling, experiments, statistics and causal boundaries"
+    },
+    {
+      "id": "SRC-AGENT-SKILLS-SPEC",
+      "title": "Agent Skills Specification",
+      "url": "https://agentskills.io/specification",
+      "kind": "primary-specification",
+      "state": "web-verified-2026-07-28",
+      "usage": "Skill directory, SKILL.md frontmatter, optional scripts/references/assets, progressive disclosure and validation",
+      "path": "sources/cards/prompt-skills-research-2026-07.md"
+    },
+    {
+      "id": "SRC-OPENAI-PLUGINS",
+      "title": "openai/plugins",
+      "url": "https://github.com/openai/plugins",
+      "kind": "official-plugin-examples",
+      "state": "web-verified-2026-07-28",
+      "usage": "Skill, MCP, app and plugin packaging boundary; no copied implementation"
+    },
+    {
+      "id": "SRC-OPENAI-ROLE-PLUGINS",
+      "title": "openai/role-specific-plugins",
+      "url": "https://github.com/openai/role-specific-plugins",
+      "kind": "official-role-plugin-examples",
+      "state": "web-verified-2026-07-28",
+      "usage": "data analytics and role-specific composition patterns"
+    },
+    {
+      "id": "SRC-OPENAI-MODEL-GUIDE",
+      "title": "OpenAI model guidance",
+      "url": "https://developers.openai.com/api/docs/guides/latest-model",
+      "kind": "official-prompt-guidance",
+      "state": "web-verified-2026-07-28",
+      "usage": "lean prompt contracts, constraints, success criteria and representative evaluation"
+    },
+    {
+      "id": "SRC-ANTHROPIC-SKILLS",
+      "title": "anthropics/skills",
+      "url": "https://github.com/anthropics/skills",
+      "kind": "primary-skill-examples",
+      "state": "web-verified-2026-07-28",
+      "usage": "compare general Agent Skill structures and examples"
+    },
+    {
+      "id": "SRC-SUPERPOWERS",
+      "title": "obra/superpowers",
+      "url": "https://github.com/obra/superpowers",
+      "kind": "workflow-skill-reference",
+      "license": "MIT",
+      "state": "web-verified-2026-07-28",
+      "usage": "composable workflow, test-first development and verification-before-completion methods"
+    },
+    {
+      "id": "SRC-MATTPOCOCK-SKILLS",
+      "title": "mattpocock/skills",
+      "url": "https://github.com/mattpocock/skills",
+      "kind": "engineering-skill-reference",
+      "state": "web-verified-2026-07-28",
+      "usage": "compare compact engineering Skill instructions"
+    },
+    {
+      "id": "SRC-HUGGINGFACE-SKILLS",
+      "title": "huggingface/skills",
+      "url": "https://github.com/huggingface/skills",
+      "kind": "domain-skill-reference",
+      "state": "web-verified-2026-07-28",
+      "usage": "compare external ecosystem and model-tool Skills"
+    },
+    {
+      "id": "SRC-NVIDIA-SKILLS",
+      "title": "NVIDIA/skills",
+      "url": "https://github.com/NVIDIA/skills",
+      "kind": "domain-skill-reference",
+      "state": "web-verified-2026-07-28",
+      "usage": "compare hardware, simulation and dependency-heavy Skill contracts"
+    },
+    {
+      "id": "SRC-PROMPT-LOCAL",
+      "title": "AIGC实操-Prompt工程",
+      "kind": "user-provided-course-reference",
+      "state": "read-only-audited",
+      "usage": "Chinese business exercises, few-shot examples and classroom rhythm; independently rewritten"
+    },
+    {
+      "id": "SRC-DATA-ANALYSIS-LOCAL",
+      "title": "AIGC实操 -数据分析",
+      "kind": "user-provided-course-reference",
+      "state": "read-only-audited",
+      "usage": "Chinese data stories and candidate datasets; old dependencies and unverifiable claims excluded"
+    },
+    {
+      "id": "SRC-AIGC-AGENT-PDF",
+      "title": "AIGC-agent",
+      "kind": "user-provided-course-reference",
+      "state": "read-only-audited-56-pages",
+      "integrity": "sha256:c67766a99bca7f32aef3b574d7f2bf7665f2627e60970b0f261ac4167fed374c;bytes:2760733",
+      "usage": "Prompt task framing, material checks, incremental revision and e-commerce case rhythm; Agent and Skill gaps independently supplemented"
+    },
+    {
+      "id": "COURSE-PROMPT-FIXTURES",
+      "title": "P01-P04 and P06-P08 deterministic course fixtures",
+      "kind": "course-generated-fixture",
+      "license": "course-generated-fixture",
+      "state": "verified-local-contract",
+      "usage": "Fictional brands, task contracts, business facts and adversarial text used only for reproducible Prompt experiments.",
+      "boundary": "The fixtures do not represent a real company, customer, device diagnosis or business outcome."
+    },
+    {
+      "id": "SYNTH-AGRICULTURAL-PRICE",
+      "title": "农产品批发价格月度课程样本",
+      "publisher": "Course_AIProduct",
+      "version": "1.0",
+      "kind": "deterministic-synthetic",
+      "license": "course-generated-fixture",
+      "state": "verified-local-contract",
+      "redistribution": "allowed-with-course",
+      "boundary": "用于练习月份变化、异常窗口和因果表述，不代表真实市场报价。"
+    },
+    {
+      "id": "SKILL-SPEC-OPENAI",
+      "title": "openai/skills",
+      "url": "https://github.com/openai/skills",
+      "kind": "public-github-method-reference",
+      "license": "repository-specific; inspect before reuse",
+      "state": "web-verified-2026-07-28"
+    },
+    {
+      "id": "SKILL-PM-DEANPETERS",
+      "title": "deanpeters/Product-Manager-Skills",
+      "url": "https://github.com/deanpeters/Product-Manager-Skills",
+      "kind": "public-github-method-reference",
+      "license": "CC BY-NC-SA 4.0 reported by repository",
+      "state": "web-verified-2026-07-28"
+    },
+    {
+      "id": "SKILL-ZINE",
+      "title": "LiamGvchi/gc-minimal-zine-poster",
+      "url": "https://github.com/LiamGvchi/gc-minimal-zine-poster",
+      "kind": "public-github-skill-reference",
+      "license": "MIT",
+      "state": "web-verified-2026-07-28"
+    },
+    {
+      "id": "SKILL-PPTX-LAYOUTS",
+      "title": "tristan-mcinnis/pptx-from-layouts-skill",
+      "url": "https://github.com/tristan-mcinnis/pptx-from-layouts-skill",
+      "kind": "public-github-skill-reference",
+      "license": "MIT",
+      "state": "web-verified-2026-07-28"
+    },
+    {
+      "id": "SKILL-PIXI-OFFICIAL",
+      "title": "pixijs/pixijs-skills",
+      "url": "https://github.com/pixijs/pixijs-skills",
+      "kind": "official-public-github-skill-reference",
+      "license": "MIT",
+      "state": "web-verified-2026-07-28"
+    },
+    {
+      "id": "SKILL-RODIN3D",
+      "title": "DeemosTech/rodin3d-skills",
+      "url": "https://github.com/DeemosTech/rodin3d-skills",
+      "kind": "official-provider-skill-reference",
+      "license": "MIT",
+      "state": "web-verified-2026-07-28",
+      "boundary": "Provider credentials and live generation are not verified in this course package."
+    },
+    {
+      "id": "LOOP-COURSE-CONTRACT",
+      "title": "Course_AIProduct deterministic Loop state contract",
+      "kind": "course-local-state-machine",
+      "license": "course-generated-fixture",
+      "state": "verified-local-contract",
+      "boundary": "The state transitions demonstrate control flow only; they do not prove a provider or business outcome."
+    },
+    {
+      "id": "DATA-COURSE-SUPERMARKET",
+      "title": "中国超市订单教学数据",
+      "publisher": "user-provided course material",
+      "state": "admitted-course-local-source-license-unverified",
+      "redistribution": "course-local-only-until-source-and-license-verified",
+      "boundary": "not presented as publicly redistributable data"
+    },
+    {
+      "id": "DATA-COURSE-AGRI",
+      "title": "农产品批发价格教学数据",
+      "publisher": "user-provided course material with Ministry of Agriculture and Rural Affairs source description",
+      "state": "admitted-course-local-source-url-and-license-unverified",
+      "redistribution": "course-local-only-until-source-and-license-verified",
+      "boundary": "government source description retained without claiming an unverified redistribution license"
+    },
+    {
+      "id": "COURSE-SAFE-24",
+      "title": "提示注入与工具授权确定性样本",
+      "publisher": "Course_AIProduct",
+      "version": "1.0",
+      "license": "course-generated-fixture",
+      "state": "planned",
+      "redistribution": "allowed-with-course"
+    },
+    {
+      "id": "COURSE-SKILL-AUDIT-FIXTURE",
+      "title": "Skill 供应链审查确定性样本",
+      "publisher": "Course_AIProduct",
+      "version": "1.0",
+      "license": "course-generated-fixture",
+      "state": "planned",
+      "redistribution": "allowed-with-course"
+    },
+    {
+      "id": "COURSE-SKILL-DECISION-CARDS",
+      "title": "Skill、MCP 与 Plugin 选择卡",
+      "publisher": "Course_AIProduct",
+      "version": "1.0",
+      "license": "course-generated-fixture",
+      "state": "planned",
+      "redistribution": "allowed-with-course"
+    },
+    {
+      "id": "DATA-01",
+      "title": "Online Retail II",
+      "url": "https://archive.ics.uci.edu/dataset/502/online%2Bretail%2Bii",
+      "publisher": "UCI Machine Learning Repository",
+      "version": "dataset id 502",
+      "license": "CC BY 4.0",
+      "state": "derived-verified",
+      "expected_instances": 1067371,
+      "redistribution": "allowed-with-attribution"
+    },
+    {
+      "id": "DATA-02",
+      "title": "Beibei dataset",
+      "url": "https://figshare.com/articles/dataset/Untitled_Item/25844296",
+      "publisher": "Figshare",
+      "version": "2",
+      "license": "CC BY 4.0",
+      "state": "derived-verified",
+      "redistribution": "allowed-with-attribution"
+    },
+    {
+      "id": "COURSE-POLICY-09",
+      "title": "压缩机检查程序与人工审批课程策略",
+      "publisher": "Course_AIProduct",
+      "version": "1.0.0",
+      "license": "course-generated-fixture",
+      "state": "generated-verified",
+      "redistribution": "allowed-with-course",
+      "boundary": "课程内检查与审批策略，不是厂商维修手册或真实地铁运营制度"
+    },
+    {
+      "id": "COURSE-OPS-07",
+      "title": "中国前置仓课程运营证据",
+      "publisher": "Course_AIProduct deterministic transform",
+      "version": "1.0",
+      "license": "course-generated-fixture",
+      "state": "generated-verified",
+      "redistribution": "allowed-with-course",
+      "data_nature": "deterministic-synthetic-cn-operations",
+      "boundary": "用于架构评审门禁，不是企业生产观测或经营结果"
+    },
+    {
+      "id": "DATA-03",
+      "title": "ASAP Chinese Review Dataset",
+      "url": "https://github.com/Meituan-Dianping/asap",
+      "publisher": "Meituan-Dianping",
+      "version": "pin commit during download",
+      "license": "Apache-2.0",
+      "state": "derived-verified",
+      "expected_instances": 46730,
+      "redistribution": "allowed-under-license"
+    },
+    {
+      "id": "DATA-04",
+      "title": "Default of Credit Card Clients",
+      "url": "https://archive.ics.uci.edu/dataset/350/default%2Bof%2Bcredit%2Bcard%2Bclients",
+      "publisher": "UCI Machine Learning Repository",
+      "version": "dataset id 350",
+      "license": "CC BY 4.0",
+      "state": "derived-verified",
+      "expected_instances": 30000,
+      "redistribution": "allowed-with-attribution"
+    },
+    {
+      "id": "DATA-05",
+      "title": "Paediatric Intensive Care database",
+      "url": "https://physionet.org/content/picdb/1.1.0/",
+      "publisher": "PhysioNet",
+      "version": "1.1.0",
+      "license": "credentialing and DUA required",
+      "state": "calibrated-synthetic-verified-raw-data-prohibited",
+      "redistribution": "raw-data-not-redistributed",
+      "course_use": "public schema and paper statistics calibrate deterministic de-identified operational events"
+    },
+    {
+      "id": "DATA-06",
+      "title": "Beijing Multi-Site Air Quality",
+      "url": "https://archive.ics.uci.edu/dataset/501/beijingmultisiteairqualitydata",
+      "publisher": "UCI Machine Learning Repository",
+      "version": "dataset id 501",
+      "license": "CC BY 4.0",
+      "state": "derived-verified",
+      "expected_instances": 420768,
+      "redistribution": "allowed-with-attribution"
+    },
+    {
+      "id": "DATA-07",
+      "title": "Order set of the order picking problem",
+      "url": "https://data.mendeley.com/datasets/jnw2mr2vyw/2",
+      "publisher": "Mendeley Data",
+      "version": "2",
+      "doi": "10.17632/jnw2mr2vyw.2",
+      "license": "CC BY 4.0",
+      "state": "derived-verified",
+      "redistribution": "allowed-with-attribution"
+    },
+    {
+      "id": "COURSE-OPS-08",
+      "title": "中国养殖水质确定性课程运营序列",
+      "publisher": "Course_AIProduct deterministic transform",
+      "version": "1.0",
+      "license": "course-generated-fixture",
+      "state": "generated-verified",
+      "redistribution": "allowed-with-course",
+      "data_nature": "deterministic-synthetic-cn-operations",
+      "boundary": "与公开中国空间资产可追踪关联，但不代表真实养殖场、诊断、因果归因或设备控制记录"
+    },
+    {
+      "id": "DATA-08A",
+      "title": "Four-Decade Spatiotemporal Distribution of Aquaculture Ponds in Typical Coastal Regions of China",
+      "url": "https://data.mendeley.com/datasets/nbnx734fmv",
+      "publisher": "Mendeley Data",
+      "version": "1",
+      "doi": "10.17632/nbnx734fmv.1",
+      "license": "CC BY 4.0",
+      "state": "derived-verified",
+      "redistribution": "allowed-with-attribution"
+    },
+    {
+      "id": "DATA-08B",
+      "title": "IoT Monitoring Dataset of Water Quality and Tilapia Health",
+      "url": "https://data.mendeley.com/datasets/3g2b4sh65m/1",
+      "publisher": "Mendeley Data",
+      "version": "1",
+      "doi": "10.17632/3g2b4sh65m.1",
+      "license": "CC BY 4.0",
+      "state": "derived-verified",
+      "redistribution": "allowed-with-attribution",
+      "boundary": "not row-level linked to DATA-08A"
+    },
+    {
+      "id": "DATA-09",
+      "title": "MetroPT-3 Dataset",
+      "url": "https://archive.ics.uci.edu/dataset/791/metropt%2B3%2B",
+      "publisher": "UCI Machine Learning Repository",
+      "version": "dataset id 791",
+      "license": "CC BY 4.0",
+      "state": "derived-verified",
+      "expected_instances": 1516948,
+      "redistribution": "allowed-with-attribution"
+    },
+    {
+      "id": "MIIT-2025-Q2",
+      "title": "工业和信息化部关于2025年第二季度电信服务质量的通告",
+      "url": "https://wap.miit.gov.cn/zwgk/zcwj/wjfb/tg/art/2025/art_e279d1f22f6a4f7d9ced09a8e6ed289d.html",
+      "publisher": "中华人民共和国工业和信息化部",
+      "version": "2025年第二季度",
+      "state": "public-aggregate-verified",
+      "redistribution": "course source card",
+      "boundary": "only national category shares are retained"
+    },
+    {
+      "id": "DATA-10",
+      "title": "CGB Consumer Complaints Data",
+      "url": "https://catalog.data.gov/dataset/cgb-consumer-complaints-data",
+      "publisher": "Federal Communications Commission",
+      "version": "fixed API query at materialization",
+      "license": "US Government Work",
+      "state": "derived-verified",
+      "redistribution": "public",
+      "boundary": "consumer allegations are not verified by the FCC"
+    },
+    {
+      "id": "COURSE-OPS-10",
+      "title": "中国通信服务投诉课程运营层",
+      "publisher": "Course_AIProduct",
+      "version": "2026.1",
+      "state": "deterministic-synthetic",
+      "redistribution": "course-local"
+    },
+    {
+      "id": "DATA-11",
+      "title": "Qwen official repositories and public metadata",
+      "url": "https://github.com/QwenLM/Qwen3",
+      "publisher": "QwenLM",
+      "version": "course-pinned metadata card plus retained Qwen repository snapshot",
+      "license": "repository code Apache-2.0; model licenses evaluated separately",
+      "state": "derived-verified",
+      "redistribution": "metadata subset only"
+    },
+    {
+      "id": "COURSE-EVAL-11",
+      "title": "企业模型准入课程评测",
+      "publisher": "Course_AIProduct",
+      "version": "MODEL-GATE-2026.1",
+      "state": "deterministic-synthetic",
+      "redistribution": "course-local"
+    },
+    {
+      "id": "DATA-12",
+      "title": "Long-range freeze-preventive vaccine carriers in Nepal: thermal data",
+      "url": "https://data.mendeley.com/datasets/j277dvs69g/1",
+      "publisher": "Mendeley Data",
+      "version": "1",
+      "doi": "10.17632/j277dvs69g.1",
+      "license": "CC BY 4.0",
+      "state": "derived-verified",
+      "redistribution": "allowed-with-attribution"
+    },
+    {
+      "id": "POLICY-12",
+      "title": "疫苗储存和运输管理规范（2017年版）",
+      "url": "https://www.nhc.gov.cn/jkj/c100063/201712/982060d7df934725bed222c2e38bb9ce.shtml",
+      "publisher": "国家卫生计生委、国家食品药品监管总局",
+      "version": "2017",
+      "state": "public-policy-verified",
+      "redistribution": "course source card"
+    },
+    {
+      "id": "COURSE-OPS-12",
+      "title": "中国县域冷链课程运营层",
+      "publisher": "Course_AIProduct",
+      "version": "2026.1",
+      "state": "deterministic-synthetic",
+      "redistribution": "course-local"
+    },
+    {
+      "id": "COURSE-OPS-13",
+      "title": "中国售后接车课程运营层",
+      "publisher": "Course_AIProduct deterministic transform",
+      "version": "2026.1",
+      "license": "course-generated-fixture",
+      "redistribution": "course-local",
+      "data_nature": "deterministic-synthetic-cn-operations",
+      "boundary": "not row-level linked to DATA-13 and not a real repair order"
+    },
+    {
+      "id": "DATA-13",
+      "title": "Vehicle Service and Repair Dataset for Analysis",
+      "url": "https://www.kaggle.com/datasets/neerugattivikram/vehicle-service-and-repair-dataset-for-analysis",
+      "publisher": "Kaggle dataset by neerugattivikram",
+      "version": "version 2 snapshot",
+      "license": "CC0",
+      "redistribution": "public-domain-dedication",
+      "boundary": "customer repair summaries remain India-located public reference facts"
+    },
+    {
+      "id": "DATA-14",
+      "title": "Quality Prediction in a Mining Process",
+      "url": "https://www.kaggle.com/datasets/edumagalhaes/quality-prediction-in-a-mining-process",
+      "publisher": "Kaggle dataset by Eduardo Magalhaes Oliveira",
+      "version": "fixed delivery snapshot",
+      "license": "CC0",
+      "redistribution": "public-domain-dedication"
+    },
+    {
+      "id": "DATA-16",
+      "title": "Spatial Dynamic Wind Power Forecasting Dataset",
+      "url": "https://doi.org/10.6084/m9.figshare.24798654",
+      "publisher": "Figshare",
+      "version": "SDWPF 245-day release; delivery-derived 80-day snapshot",
+      "license": "CC BY 4.0",
+      "redistribution": "allowed-with-attribution"
+    },
+    {
+      "id": "DATA-17",
+      "title": "One Year Industrial Component Degradation",
+      "url": "https://www.kaggle.com/datasets/inIT-OWL/one-year-industrial-component-degradation",
+      "publisher": "Kaggle dataset by inIT-OWL",
+      "version": "519-session deterministic delivery snapshot",
+      "license": "CC BY-SA 3.0",
+      "redistribution": "allowed-with-attribution-and-share-alike"
+    },
+    {
+      "id": "DATA-18",
+      "title": "A long-tailed distribution time-series dataset in boiler equipment",
+      "url": "https://springernature.figshare.com/articles/dataset/28868849",
+      "publisher": "Springer Nature Figshare",
+      "version": "posted 2025-05-06; fixed delivery-derived snapshot",
+      "license": "CC0",
+      "redistribution": "public-domain-dedication",
+      "boundary": "dataset license does not apply to paper figures"
+    },
+    {
+      "id": "DATA-19",
+      "title": "Condition Monitoring of Hydraulic Systems",
+      "url": "https://archive.ics.uci.edu/dataset/447/condition+monitoring+of+hydraulic+systems",
+      "publisher": "UCI Machine Learning Repository",
+      "version": "dataset id 447; delivery-normalized snapshot",
+      "doi": "10.24432/C5CW21",
+      "license": "CC BY 4.0",
+      "redistribution": "allowed-with-attribution"
+    },
+    {
+      "id": "DATA-20",
+      "title": "Solar and wind power data from the Chinese State Grid Renewable Energy Generation Forecasting Competition",
+      "url": "https://doi.org/10.6084/m9.figshare.17304221",
+      "publisher": "Figshare",
+      "version": "8-station delivery aggregation",
+      "license": "CC0",
+      "redistribution": "public-domain-dedication"
+    },
+    {
+      "id": "DATA-15",
+      "title": "SECOM",
+      "publisher": "UCI Machine Learning Repository",
+      "dataset_id": 179,
+      "version": "dataset id 179",
+      "doi": "10.24432/C54305",
+      "url": "https://archive.ics.uci.edu/dataset/179/secom",
+      "download_url": "https://archive.ics.uci.edu/static/public/179/secom.zip",
+      "license": "CC BY 4.0",
+      "redistribution": "allowed-with-attribution"
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0",
+  "case_id": "15",
+  "row_count": 1567,
+  "columns": [
+    {
+      "name": "wafer_id",
+      "origin": "source-fact"
+    },
+    {
+      "name": "test_timestamp",
+      "origin": "source-fact"
+    },
+    {
+      "name": "quality_label",
+      "origin": "source-fact"
+    },
+    {
+      "name": "sensor_161",
+      "origin": "source-fact"
+    },
+    {
+      "name": "sensor_159",
+      "origin": "source-fact"
+    },
+    {
+      "name": "sensor_021",
+      "origin": "source-fact"
+    },
+    {
+      "name": "sensor_024",
+      "origin": "source-fact"
+    },
+    {
+      "name": "sensor_158",
+      "origin": "source-fact"
+    },
+    {
+      "name": "sensor_160",
+      "origin": "source-fact"
+    },
+    {
+      "name": "sensor_294",
+      "origin": "source-fact"
+    },
+    {
+      "name": "sensor_162",
+      "origin": "source-fact"
+    },
+    {
+      "name": "sensor_296",
+      "origin": "source-fact"
+    },
+    {
+      "name": "sensor_295",
+      "origin": "source-fact"
+    },
+    {
+      "name": "sensor_022",
+      "origin": "source-fact"
+    },
+    {
+      "name": "sensor_090",
+      "origin": "source-fact"
+    },
+    {
+      "name": "review_priority",
+      "origin": "derived"
+    },
+    {
+      "name": "causal_root_cause_allowed",
+      "origin": "derived"
+    },
+    {
+      "name": "automatic_scrap_allowed",
+      "origin": "derived"
+    },
+    {
+      "name": "allowed_action",
+      "origin": "derived"
+    },
+    {
+      "name": "data_nature",
+      "origin": "derived"
+    }
+  ],
+  "supplemental_artifacts": [
+    {
+      "path": "sensor-ranking.csv",
+      "row_count": 12,
+      "columns": [
+        "sensor_id",
+        "absolute_class_mean_difference",
+        "missing_rows",
+        "rank",
+        "data_nature"
+      ],
+      "source_ids": [
+        "DATA-15"
+      ],
+      "data_nature": "rule-derived-association-ranking"
+    }
+  ]
+}

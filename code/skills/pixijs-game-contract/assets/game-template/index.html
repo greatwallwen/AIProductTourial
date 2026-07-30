@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#081a29" />
+    <link rel="icon" href="data:," />
+    <title>数据清洁调度</title>
+    <script type="importmap">
+      {
+        "imports": {
+          "pixi.js": "https://cdn.jsdelivr.net/npm/pixi.js@8.8.1/dist/pixi.mjs"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">PIXIJS · 数据质量训练</p>
+          <h1 id="game-title">数据清洁调度</h1>
+          <p id="game-description" class="lede"></p>
+        </div>
+        <dl class="hud" aria-label="游戏状态">
+          <div><dt>得分</dt><dd id="score" data-testid="score">0</dd></div>
+          <div><dt>剩余</dt><dd><span id="timer" data-testid="timer">0</span> 秒</dd></div>
+          <div><dt>位置</dt><dd id="position" data-testid="position">0, 0</dd></div>
+        </dl>
+      </header>
+      <section class="play-area" aria-labelledby="game-title">
+        <div id="game-stage"></div>
+        <aside class="instructions">
+          <h2>调度说明</h2>
+          <ul id="controls"></ul>
+          <p id="live-status" class="status" aria-live="polite">准备开始</p>
+          <button id="restart" type="button">重新开始 <kbd>R</kbd></button>
+        </aside>
+      </section>
+      <p id="health-boundary" class="boundary" data-health-boundary></p>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

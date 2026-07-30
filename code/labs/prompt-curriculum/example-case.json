@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "1.0",
+  "caseId": "P01-example-clear-task",
+  "systemPrompt": "你是课程中的业务任务助手。不要承诺无法验证的经营结果。",
+  "sharedContext": "原始请求：帮我提高复购。当前材料只有一句请求，没有会员明细。",
+  "baselinePrompt": "请给出提高复购的方案。",
+  "improvedPrompt": "为会员运营团队设计一次可观察的优惠券试验。写清目标对象、人民币预算、所需字段、人工确认项；缺少会员ID、最近购买日期或退款状态时停止生成名单。",
+  "model": "qwen-plus",
+  "temperature": 0,
+  "maxTokens": 800,
+  "evaluators": [
+    {"id": "mentions-budget-or-limit", "type": "requiredAny", "values": ["预算", "限制"]},
+    {"id": "has-required-conditions", "type": "requiredAll", "values": ["对象", "停止"]},
+    {"id": "no-guarantee", "type": "forbidden", "values": ["保证提高", "一定提升"]},
+    {"id": "concise", "type": "maxChars", "value": 1200}
+  ]
+}

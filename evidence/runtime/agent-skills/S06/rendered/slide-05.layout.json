@@ -1,0 +1,301 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/r37cdn",
+    "id": "r37cdn",
+    "slide": 5,
+    "layoutId": "882d3e64-9791-415a-8804-2fb883a2e6df",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "7a4f5e9b-5230-4c26-a6cd-e051470c1a1e",
+    "masterLayoutName": "Master",
+    "backgroundColor": "#F7F4EC",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "+mn-lt"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "882d3e64-9791-415a-8804-2fb883a2e6df",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "7a4f5e9b-5230-4c26-a6cd-e051470c1a1e",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "7a4f5e9b-5230-4c26-a6cd-e051470c1a1e",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/byd0r254",
+      "id": "1",
+      "name": "SLIDE_TITLE",
+      "bbox": [
+        76,
+        48,
+        1040,
+        64
+      ],
+      "geometry": "rect",
+      "text": "把数据问题交给可复查的流程",
+      "textPreview": "把数据问题交给可复查的流程",
+      "resolvedFontSize": 48,
+      "resolvedTextStyle": {
+        "fontSize": 48,
+        "typeface": "+mn-lt",
+        "color": "#1A2B38",
+        "bold": true,
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "把数据问题交给可复查的流程"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "把数据问题交给可复查的流程",
+          "resolvedTextStyle": {
+            "fontSize": 48,
+            "color": "#1A2B38",
+            "bold": true
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "把数据问题交给可复查的流程",
+              "fontSize": 48,
+              "color": "#1A2B38",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/wjm107mp",
+      "id": "2",
+      "name": "PAGE_NUMBER",
+      "bbox": [
+        1160,
+        54,
+        48,
+        32
+      ],
+      "geometry": "rect",
+      "text": "05",
+      "textPreview": "05",
+      "resolvedFontSize": 20,
+      "resolvedTextStyle": {
+        "fontSize": 20,
+        "typeface": "+mn-lt",
+        "color": "#1A2B38",
+        "bold": true,
+        "alignment": "right",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "05"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "05",
+          "resolvedTextStyle": {
+            "fontSize": 20,
+            "color": "#1A2B38",
+            "bold": true,
+            "alignment": "right"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "05",
+              "fontSize": 20,
+              "color": "#1A2B38",
+              "bold": true,
+              "alignment": "right"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/xkvitcna",
+      "id": "3",
+      "name": "ACCENT_RULE",
+      "bbox": [
+        76,
+        126,
+        106,
+        8
+      ],
+      "geometry": "rect",
+      "fillColor": "#F0B134",
+      "lineWidth": 0
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/mtkjux4n",
+      "id": "4",
+      "name": "GRAPHIC_PLACEHOLDER:quality-review-flow",
+      "bbox": [
+        104,
+        176,
+        1072,
+        420
+      ],
+      "geometry": "roundRect",
+      "text": "图形占位\n待绘制“读取→体检→人工复核→分析”四步流程，保留一个停止分支。",
+      "textPreview": "图形占位 | 待绘制“读取→体检→人工复核→分析”四步流程，保留一个停止分支。",
+      "resolvedFontSize": 26,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 26,
+        "typeface": "+mn-lt",
+        "color": "#172A3A",
+        "bold": true,
+        "alignment": "center",
+        "verticalAlignment": "middle",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "图形占位"
+          },
+          {
+            "index": 2,
+            "text": "待绘制“读取→体检→人工复核→分析”四步流程，保留一个停止分支。"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "图形占位",
+          "resolvedTextStyle": {
+            "fontSize": 26,
+            "color": "#172A3A",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "图形占位",
+              "fontSize": 26,
+              "color": "#172A3A",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "待绘制“读取→体检→人工复核→分析”四步流程，保留一个停止分支。",
+          "resolvedTextStyle": {
+            "fontSize": 26,
+            "color": "#172A3A",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "待绘制“读取→体检→人工复核→分析”四步流程，保留一个停止分支。",
+              "fontSize": 26,
+              "color": "#172A3A",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "fillColor": "#D8E4E8",
+      "lineColor": "#172A3A",
+      "lineWidth": 2
+    }
+  ],
+  "composeRuns": []
+}

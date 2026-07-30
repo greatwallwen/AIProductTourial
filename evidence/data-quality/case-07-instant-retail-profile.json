@@ -1,0 +1,176 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-07-20T15:53:30.892303+08:00",
+  "dataset": {
+    "path": "dataset/07-instant-retail-architecture/case.csv",
+    "sha256": "5c5917e9dbca662ac0a3a33d8a4fadcbf9f6b533e2acc5fe6aa4bcafc92c6406",
+    "grain": "one benchmark order with arrival-time source value and item-set preview",
+    "rows": 12000,
+    "columns": 7
+  },
+  "sourceArtifact": {
+    "path": "dataset/source-downloads.json#cases.07[0]",
+    "sha256": "8baa72fd14627e2ecc9e84cc5821d6e18b613f1f11eddf47a0ab0de38dcddb33",
+    "description": "The order set file includes the arrival time and the detailed ordered items\r\nfor a timeframe of 60 days with 4000 customer orders, in a online-to-offline grocery.\r\nThe arrival time is 0~750.\r\nThe number of items is 1200. The value is 1 if the item is ordered, otherwise 0.",
+    "declaredDays": 60,
+    "declaredOrdersPerDay": 4000,
+    "declaredArrivalRange": [
+      0,
+      750
+    ],
+    "declaredItemUniverse": 1200
+  },
+  "completeness": {
+    "order_id": {
+      "missing": 0,
+      "rate": 0.0
+    },
+    "day_index": {
+      "missing": 0,
+      "rate": 0.0
+    },
+    "arrival_minute": {
+      "missing": 0,
+      "rate": 0.0
+    },
+    "item_count": {
+      "missing": 0,
+      "rate": 0.0
+    },
+    "item_ids_preview": {
+      "missing": 0,
+      "rate": 0.0
+    },
+    "is_observed_production_order": {
+      "missing": 0,
+      "rate": 0.0
+    },
+    "data_nature": {
+      "missing": 0,
+      "rate": 0.0
+    }
+  },
+  "uniqueness": {
+    "distinctOrderIds": 12000,
+    "duplicateOrderIdExtraRows": 0,
+    "exactDuplicateExtraRows": 0
+  },
+  "validity": {
+    "dayValues": [
+      1,
+      2,
+      3
+    ],
+    "dayStats": {
+      "1": {
+        "rows": 4000,
+        "arrivalMin": 0.0,
+        "arrivalMax": 750.0,
+        "nonMonotonicAdjacentRows": 0,
+        "peak30UnitWindowOrders": 191
+      },
+      "2": {
+        "rows": 4000,
+        "arrivalMin": 0.0,
+        "arrivalMax": 750.0,
+        "nonMonotonicAdjacentRows": 0,
+        "peak30UnitWindowOrders": 191
+      },
+      "3": {
+        "rows": 4000,
+        "arrivalMin": 0.0,
+        "arrivalMax": 750.0,
+        "nonMonotonicAdjacentRows": 0,
+        "peak30UnitWindowOrders": 194
+      }
+    },
+    "arrivalOutsideDeclaredRangeRows": 0,
+    "itemCount": {
+      "min": 1,
+      "mean": 5.4756,
+      "p50": 5.0,
+      "p90": 9.0,
+      "p95": 10.0,
+      "p99": 10.0,
+      "max": 10
+    },
+    "previewCountMismatchRows": 0,
+    "previewTruncatedRows": 0,
+    "uniquePreviewItemIds": 1200,
+    "invalidPreviewItemCodes": [],
+    "productionObservationValues": {
+      "False": 12000
+    },
+    "dataNatureValues": {
+      "public-benchmark-derived": 12000
+    }
+  },
+  "consistency": {
+    "courseSliceDays": 3,
+    "rowsPerDay": {
+      "1": 4000,
+      "2": 4000,
+      "3": 4000
+    },
+    "expectedRowsForThreeDaySlice": 12000,
+    "peak30SourceTimeWindow": {
+      "dayIndex": 3,
+      "fromSourceTime": 720,
+      "toSourceTime": 750,
+      "orders": 194
+    }
+  },
+  "findings": [
+    {
+      "severity": "high",
+      "finding": "The source archive declares 60 days, while the localized course dataset contains only days 1 to 3.",
+      "evidence": {
+        "sourceDays": 60,
+        "courseSliceDays": 3,
+        "rows": 12000
+      },
+      "impact": "Label every aggregate as a three-day deterministic slice and do not extrapolate seasonality or production capacity."
+    },
+    {
+      "severity": "high",
+      "finding": "The dataset contains order arrivals and item sets, but no inventory, picking, dispatch, latency, or outcome observations.",
+      "evidence": {
+        "columns": [
+          "order_id",
+          "day_index",
+          "arrival_minute",
+          "item_count",
+          "item_ids_preview",
+          "is_observed_production_order",
+          "data_nature"
+        ]
+      },
+      "impact": "Show downstream lifecycle steps only as proposed context and event contracts, never as observed fulfillment facts."
+    },
+    {
+      "severity": "medium",
+      "finding": "The source description gives an arrival-time range of 0 to 750 but does not state the unit.",
+      "evidence": {
+        "description": "The order set file includes the arrival time and the detailed ordered items\r\nfor a timeframe of 60 days with 4000 customer orders, in a online-to-offline grocery.\r\nThe arrival time is 0~750.\r\nThe number of items is 1200. The value is 1 if the item is ordered, otherwise 0."
+      },
+      "impact": "Use the reviewer-facing label '到达时点（源值）' instead of asserting that the value is minutes."
+    },
+    {
+      "severity": "medium",
+      "finding": "Every row is explicitly marked as not verified production observation.",
+      "evidence": {
+        "values": {
+          "False": 12000
+        }
+      },
+      "impact": "Use the sample to test architecture decisions and contract completeness, not to claim real enterprise throughput or business improvement."
+    }
+  ],
+  "recommendedTests": [
+    "order_id is unique and every day contains 4000 rows",
+    "arrival source values stay in the declared 0 to 750 range and preserve within-day order",
+    "item preview count equals min(item_count, 20) and item IDs use the Idddd format",
+    "all downstream fulfillment events are tagged proposed_contract rather than source_fact",
+    "ADR actions preserve the three-day benchmark boundary and deterministic evidence hash"
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "column_count": 9,
+  "columns": [
+    "user_id",
+    "buy_count",
+    "cart_count",
+    "view_count",
+    "engagement_score",
+    "value_segment",
+    "recency_available",
+    "monetary_available",
+    "data_nature"
+  ],
+  "date_ranges": {},
+  "exact_duplicates": 0,
+  "file": {
+    "bytes": 365824,
+    "encoding": "utf-8-sig",
+    "path": "${COURSE_ROOT}\\dataset\\02-member-value-experiment\\case.csv"
+  },
+  "nulls": {
+    "buy_count": 0,
+    "cart_count": 0,
+    "data_nature": 0,
+    "engagement_score": 0,
+    "monetary_available": 0,
+    "recency_available": 0,
+    "user_id": 0,
+    "value_segment": 0,
+    "view_count": 0
+  },
+  "pollutants": {
+    "CO": {
+      "field_present": false,
+      "missing_count": 5000,
+      "missing_rate": 1.0
+    },
+    "NO2": {
+      "field_present": false,
+      "missing_count": 5000,
+      "missing_rate": 1.0
+    },
+    "O3": {
+      "field_present": false,
+      "missing_count": 5000,
+      "missing_rate": 1.0
+    },
+    "PM10": {
+      "field_present": false,
+      "missing_count": 5000,
+      "missing_rate": 1.0
+    },
+    "PM2.5": {
+      "field_present": false,
+      "missing_count": 5000,
+      "missing_rate": 1.0
+    },
+    "SO2": {
+      "field_present": false,
+      "missing_count": 5000,
+      "missing_rate": 1.0
+    }
+  },
+  "read_boundary": {
+    "allowed_root": "${COURSE_ROOT}\\dataset",
+    "missing_tokens": [
+      "",
+      "n/a",
+      "na",
+      "nan",
+      "none",
+      "null"
+    ],
+    "mode": "read-only-full-scan",
+    "source_stat_unchanged": true,
+    "source_write_performed": false
+  },
+  "rows": 5000,
+  "schema_version": "1.0",
+  "status": "complete",
+  "types": {
+    "buy_count": "integer",
+    "cart_count": "integer",
+    "data_nature": "text",
+    "engagement_score": "integer",
+    "monetary_available": "text",
+    "recency_available": "text",
+    "user_id": "text",
+    "value_segment": "text",
+    "view_count": "integer"
+  },
+  "warnings": []
+}

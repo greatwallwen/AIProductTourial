@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.0",
+  "manifest": {
+    "required": ["schemaVersion", "caseId", "systemPrompt", "sharedContext", "baselinePrompt", "improvedPrompt", "evaluators"],
+    "optional": ["model", "temperature", "maxTokens"],
+    "evaluatorTypes": ["requiredAny", "requiredAll", "forbidden", "validJson", "requiredJsonKeys", "jsonPathEquals", "regexCount", "maxChars"],
+    "jsonPathEquals": {
+      "required": ["path", "value"],
+      "pathSyntax": "Dot-separated object keys and non-negative array indexes, for example results.2.label",
+      "comparison": "JSON type and value must both match exactly"
+    },
+    "regexCount": {
+      "required": ["pattern", "value"],
+      "meaning": "Count multiline regular-expression matches in the response and require the exact integer value."
+    }
+  },
+  "providers": {
+    "offline": "Validate the manifest and evaluator contract; responses and evaluator results remain not-run.",
+    "dashscope": {
+      "apiKeyEnvironmentVariable": "DASHSCOPE_API_KEY",
+      "defaultBaseUrl": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "defaultModel": "qwen-plus",
+      "protocol": "OpenAI-compatible chat completions"
+    }
+  },
+  "receiptStatuses": ["completed", "not-run", "blocked"],
+  "outputLayout": "<output-dir>/<caseId>/receipt.json",
+  "security": [
+    "Never persist authorization headers or API keys.",
+    "Authentication and network failures must write a blocked receipt and return a non-zero exit code."
+  ]
+}

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1440" viewBox="0 0 1080 1440" role="img" aria-labelledby="poster-title poster-desc" data-editable="true">
+  <title id="poster-title">雨落下来，书页慢下来</title>
+  <desc id="poster-desc">本地确定性矢量海报，没有调用图像 Provider。</desc>
+  <rect id="paper" width="1080" height="1440" fill="#F4F0E6" />
+  <g id="rain" stroke="#172A3A" stroke-width="5" stroke-linecap="round" opacity="0.38">
+    <line x1="650" y1="130" x2="632" y2="184" />
+<line x1="735" y1="210" x2="717" y2="264" />
+<line x1="820" y1="105" x2="802" y2="159" />
+<line x1="905" y1="285" x2="887" y2="339" />
+<line x1="990" y1="175" x2="972" y2="229" />
+<line x1="710" y1="430" x2="692" y2="484" />
+<line x1="870" y1="510" x2="852" y2="564" />
+  </g>
+  <g id="headline-block" font-family="Noto Serif CJK SC, Source Han Serif SC, SimSun, serif" fill="#172A3A">
+    <text x="92" y="178" font-size="34" letter-spacing="5">EDITORIAL  /  RAIN  /  BOOKS</text>
+    <text font-size="98" font-weight="700">
+      <tspan x="84" y="338">雨落下来，</tspan>
+      <tspan x="84" y="458">书页慢下来</tspan>
+    </text>
+    <line x1="88" y1="510" x2="510" y2="510" stroke="#F4B942" stroke-width="14" />
+  </g>
+  <g id="information" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" fill="#172A3A">
+    <text x="92" y="610" font-size="36">躺进一页旧时光</text>
+    <text x="92" y="668" font-size="24" opacity="0.72">受众｜下班后想慢下来的城市读者</text>
+    <text x="92" y="1310" font-size="24" letter-spacing="2">SECOND PAGE BOOKS · 入场免费</text>
+  </g>
+  <g id="bookstore-window" data-material="editable-vector">
+    <rect x="620" y="760" width="364" height="500" rx="10" fill="#172A3A" />
+    <rect x="650" y="790" width="304" height="410" fill="#F4B942" />
+    <rect x="674" y="820" width="256" height="250" fill="#FFF6DD" opacity="0.94" />
+    <line x1="802" y1="820" x2="802" y2="1070" stroke="#172A3A" stroke-width="10" />
+    <line x1="674" y1="952" x2="930" y2="952" stroke="#172A3A" stroke-width="10" />
+    <circle cx="802" cy="900" r="58" fill="#FFE38A" opacity="0.72" />
+    <path d="M755 1180 Q802 1125 849 1180" fill="none" stroke="#FFF6DD" stroke-width="12" />
+    <rect x="662" y="1110" width="28" height="128" rx="2" fill="#172A3A" />
+<rect x="700" y="1092" width="28" height="146" rx="2" fill="#F4B942" />
+<rect x="738" y="1074" width="28" height="164" rx="2" fill="#172A3A" />
+<rect x="776" y="1110" width="28" height="128" rx="2" fill="#F4B942" />
+<rect x="814" y="1092" width="28" height="146" rx="2" fill="#172A3A" />
+<rect x="852" y="1074" width="28" height="164" rx="2" fill="#F4B942" />
+<rect x="890" y="1110" width="28" height="128" rx="2" fill="#172A3A" />
+  </g>
+  <g id="footer" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" fill="#172A3A">
+    <text x="92" y="1380" font-size="18" opacity="0.62">LOCAL EDITABLE SVG · NO IMAGE PROVIDER RECEIPT</text>
+  </g>
+</svg>

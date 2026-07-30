@@ -1,0 +1,24 @@
+{
+  "question": "五分钟传感窗口是否足以判定压缩机故障并自动停机？",
+  "strategy": "retrieve_check_expand_stop",
+  "queries": 2,
+  "coverage_check": {
+    "required_sources": [
+      "DATA-09",
+      "COURSE-POLICY-09"
+    ],
+    "missing_after_first_query": [
+      "COURSE-POLICY-09"
+    ],
+    "complete_after_second_query": true
+  },
+  "citations": [
+    "UCI-791-FIELDS",
+    "UCI-791-SOURCE",
+    "COURSE-09-APPROVAL",
+    "COURSE-09-INSPECTION"
+  ],
+  "answer": "窗口可用于整理检查申请，不能据此诊断故障或自动停机；下一步交给有权限的主管决定。",
+  "state": "waiting_human",
+  "stop_reason": "required_sources_found_and_permission_required"
+}

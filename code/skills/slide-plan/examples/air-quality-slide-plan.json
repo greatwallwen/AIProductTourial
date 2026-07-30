@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.0",
+  "status": "complete-local",
+  "source": {
+    "path": "${COURSE_ROOT}\\code\\skills\\slide-plan\\examples\\air-quality-outline.md",
+    "sha256": "17aff24c991e20a74d02b0436759426bde3fb7de969808d52bdeabfbd65f53b2",
+    "read_mode": "read-only",
+    "source_write_performed": false
+  },
+  "format": "pptx",
+  "editable": true,
+  "generator": "@oai/artifact-tool",
+  "slide_count": 5,
+  "slides": [
+    {
+      "slide_number": 1,
+      "kind": "title",
+      "title": "让数据先过体检",
+      "source_line": 1,
+      "notes_present": true,
+      "source_ref": "Course-local S02 profile output.",
+      "placeholders": [],
+      "content_budget": {
+        "visible_characters": 34,
+        "status": "within-local-template-budget"
+      }
+    },
+    {
+      "slide_number": 2,
+      "kind": "section",
+      "title": "01 为什么先体检",
+      "source_line": 8,
+      "notes_present": true,
+      "source_ref": "Course-local course method.",
+      "placeholders": [],
+      "content_budget": {
+        "visible_characters": 9,
+        "status": "within-local-template-budget"
+      }
+    },
+    {
+      "slide_number": 3,
+      "kind": "content",
+      "title": "缺失不是零",
+      "source_line": 14,
+      "notes_present": true,
+      "source_ref": "Course-local data-profile contract.",
+      "placeholders": [],
+      "content_budget": {
+        "visible_characters": 49,
+        "status": "within-local-template-budget"
+      }
+    },
+    {
+      "slide_number": 4,
+      "kind": "table",
+      "title": "三项代表污染物缺失需单列",
+      "source_line": 23,
+      "notes_present": true,
+      "source_ref": "dataset/06-beijing-air-quality-audit/case.csv; S02 profile generated locally.",
+      "placeholders": [
+        {
+          "id": "table-4",
+          "type": "data-table",
+          "editable": true,
+          "rows": 4,
+          "columns": 3
+        }
+      ],
+      "content_budget": {
+        "visible_characters": 12,
+        "status": "within-local-template-budget"
+      }
+    },
+    {
+      "slide_number": 5,
+      "kind": "graphic",
+      "title": "把数据问题交给可复查的流程",
+      "source_line": 34,
+      "notes_present": true,
+      "source_ref": "Course-local workflow contract.",
+      "placeholders": [
+        {
+          "id": "quality-review-flow",
+          "type": "graphic-placeholder",
+          "editable": true,
+          "requirements": "待绘制“读取→体检→人工复核→分析”四步流程，保留一个停止分支。"
+        }
+      ],
+      "content_budget": {
+        "visible_characters": 13,
+        "status": "within-local-template-budget"
+      }
+    }
+  ]
+}

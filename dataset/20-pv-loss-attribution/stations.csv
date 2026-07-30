@@ -1,0 +1,9 @@
+station_id,capacity_mw,data_nature
+1,50,public-station-fact
+2,130,public-station-fact
+3,30,public-station-fact
+4,130,public-station-fact
+5,110,public-station-fact
+6,35,public-station-fact
+7,30,public-station-fact
+8,30,public-station-fact

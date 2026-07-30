@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Capability routing decision",
+  "type": "object",
+  "required": ["task_id", "status", "selected_skill", "reason", "required_inputs", "stop_reason"],
+  "properties": {
+    "task_id": {"type": "string"},
+    "status": {"enum": ["selected", "blocked"]},
+    "selected_skill": {"type": ["string", "null"]},
+    "reason": {"type": "string"},
+    "required_inputs": {"type": "array", "items": {"type": "string"}},
+    "stop_reason": {"type": ["string", "null"]}
+  },
+  "additionalProperties": false
+}

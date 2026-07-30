@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "1.1",
+  "generatedAt": "2026-07-27T17:25:00+08:00",
+  "caseId": "11",
+  "dataset": {
+    "path": "dataset/11-model-release-multi-agent/case.csv",
+    "sha256": "a78da306b49dd1cf03f5d5293f8a3d256d4ba9d36fa5d7845a0c8438648940a0",
+    "checksumLedgerMatch": true,
+    "rows": 9,
+    "columns": 16
+  },
+  "uniqueness": {
+    "distinctCandidates": 1,
+    "distinctPolicyVersions": 1,
+    "distinctEvaluations": 9
+  },
+  "validity": {
+    "gateCounts": {
+      "risk": 3,
+      "fairness": 3,
+      "safety": 3
+    },
+    "resultCounts": {
+      "pass": 8,
+      "evidence_required": 1
+    },
+    "evidenceStatusCounts": {
+      "complete": 8,
+      "missing_slice": 1
+    },
+    "policyVersion": "MODEL-GATE-2026.1",
+    "dataNatureValues": {
+      "public-model-metadata-plus-deterministic-enterprise-evaluation": 9
+    }
+  },
+  "findings": [
+    {
+      "severity": "high",
+      "finding": "九项指标和阈值是本地课程评测，公开 Qwen 元数据不证明候选模型适合企业场景。",
+      "impact": "页面必须标明本地评测，并保留地区切片缺失这一阻断项。"
+    },
+    {
+      "severity": "medium",
+      "finding": "风险、公平和安全各有三项检查，但最终决定仍需明确责任人。",
+      "impact": "多角色负责收集和签署证据，不能把多个检查结果写成自动批准。"
+    }
+  ]
+}

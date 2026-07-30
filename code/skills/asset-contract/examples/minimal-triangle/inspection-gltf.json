@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "format": "gltf",
+  "sha256": "246484e3c822462e077566bf07c10c15cb6547aa10ee311a383b5fd07d52d20f",
+  "byte_length": 716,
+  "asset_version": "2.0",
+  "scenes": 1,
+  "nodes": 1,
+  "meshes": 1,
+  "primitives": 1,
+  "vertices": 3,
+  "indices": 3,
+  "bounds": {
+    "min": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "max": [
+      1.0,
+      1.0,
+      0.0
+    ]
+  },
+  "external_buffers": [
+    "model.bin"
+  ]
+}

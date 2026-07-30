@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "1.1",
+  "generatedAt": "2026-07-27T18:28:00+08:00",
+  "caseId": "15",
+  "dataset": {
+    "path": "dataset/15-wafer-quality-review/case.csv",
+    "sha256": "368b6043cd9824d3c565577deb68094837b754ff918df490d456b4811d439fbd",
+    "checksumLedgerMatch": true,
+    "rows": 1567,
+    "columns": 20
+  },
+  "validity": {
+    "passRows": 1463,
+    "failRows": 104,
+    "qualityGateReviewRows": 104,
+    "sensor158MissingRows": 1429,
+    "sensor158AvailableRows": 138,
+    "sensor158CoveragePercent": 8.8,
+    "automaticScrapAllowedTrueRows": 0,
+    "causalRootCauseAllowedTrueRows": 0,
+    "dataNatureValues": {
+      "public-derived-fixed-sensor-slice": 1567
+    }
+  },
+  "findings": [
+    {
+      "severity": "high",
+      "finding": "12 个字段都是匿名测量通道，没有设备、工序、单位、控制限或晶圆坐标映射。",
+      "impact": "可以选择复测通道，不能从关联排序推断工序根因或绘制缺陷地图。"
+    },
+    {
+      "severity": "high",
+      "finding": "sensor_158 缺失 1,429 条，覆盖率只有 8.8%。",
+      "impact": "缺失通道需要被显式标记；不能把空值当作 0 或稳定判定依据。"
+    },
+    {
+      "severity": "high",
+      "finding": "数据没有真实复测结果，且全部记录禁止自动报废。",
+      "impact": "案例只能保存复测申请与主管确认，不能宣称已经复测、放行或报废。"
+    }
+  ]
+}

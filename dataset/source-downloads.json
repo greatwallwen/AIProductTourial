@@ -1,0 +1,168 @@
+{
+  "schema_version": "1.0",
+  "estimated_total_bytes": 410000000,
+  "concurrency": 2,
+  "cases": {
+    "01": [
+      {
+        "source_id": "DATA-01",
+        "url": "https://archive.ics.uci.edu/static/public/502/online+retail+ii.zip",
+        "path": "01-retail-return-evidence/raw/online-retail-ii.zip"
+      }
+    ],
+    "02": [
+      {
+        "source_id": "DATA-02",
+        "url": "https://ndownloader.figshare.com/files/46383112",
+        "path": "02-member-value-experiment/raw/beibei-v2.zip",
+        "expected_bytes": 16335728,
+        "expected_md5": "ceb7688e1bb5609e13ba4076b77528da"
+      }
+    ],
+    "03": [
+      {
+        "source_id": "DATA-03",
+        "url": "https://github.com/Meituan-Dianping/asap/archive/975122a60065240124df62cb4d5dbfd19ed9ef2c.zip",
+        "path": "03-local-service-voc/raw/asap-975122a.zip",
+        "pinned_commit": "975122a60065240124df62cb4d5dbfd19ed9ef2c"
+      }
+    ],
+    "04": [
+      {
+        "source_id": "DATA-04",
+        "url": "https://archive.ics.uci.edu/static/public/350/default+of+credit+card+clients.zip",
+        "path": "04-credit-human-review/raw/default-credit-clients.zip"
+      }
+    ],
+    "05": [
+      {
+        "source_id": "DATA-05",
+        "url": "https://physionet.org/content/picdb/1.1.0/",
+        "path": null,
+        "metadata_only": true
+      }
+    ],
+    "06": [
+      {
+        "source_id": "DATA-06",
+        "url": "https://archive.ics.uci.edu/static/public/501/beijing+multi+site+air+quality+data.zip",
+        "path": "06-beijing-air-quality-audit/raw/beijing-multi-site-air-quality.zip"
+      }
+    ],
+    "07": [
+      {
+        "source_id": "DATA-07",
+        "url": "https://data.mendeley.com/public-files/datasets/jnw2mr2vyw/files/fd2356d3-ba91-4ab8-986a-58bfff3b9b7a/file_downloaded",
+        "path": "07-instant-retail-architecture/raw/order-set-v2.zip",
+        "expected_bytes": 13716681,
+        "expected_sha256": "8baa72fd14627e2ecc9e84cc5821d6e18b613f1f11eddf47a0ab0de38dcddb33"
+      }
+    ],
+    "08": [
+      {
+        "source_id": "DATA-08A",
+        "url": "https://data.mendeley.com/public-files/datasets/nbnx734fmv/files/55aeec30-228d-4874-92de-307ebd1bb257/file_downloaded",
+        "path": "08-aquaculture-event-response/raw/china-aquaculture-ponds-v1.7z",
+        "expected_bytes": 5258168,
+        "expected_sha256": "3eb4168c38adf384daf9e8a32061f226b525729e5944e28507d2f511d953fc6a"
+      },
+      {
+        "source_id": "DATA-08B",
+        "url": "https://data.mendeley.com/public-files/datasets/3g2b4sh65m/files/c93b6197-f7fa-4af0-b510-7febe40445f8/file_downloaded",
+        "path": "08-aquaculture-event-response/raw/iot-water-quality-v1.xlsx",
+        "expected_bytes": 589563,
+        "expected_sha256": "5c7fba481c91d4f227450044d8f620af157406061b360c0f2c669c0b041a9bfe"
+      }
+    ],
+    "09": [
+      {
+        "source_id": "DATA-09",
+        "url": "https://archive.ics.uci.edu/static/public/791/metropt+3+dataset.zip",
+        "path": "09-metro-agentic-rag/raw/metropt-3.zip"
+      }
+    ],
+    "10": [
+      {
+        "source_id": "DATA-10",
+        "url": "https://opendata.fcc.gov/resource/3xyp-aqkj.csv?$select=id,ticket_created,date_created,issue_date,issue_type,method,issue,city,state,type_of_call_or_messge,type_of_property_goods_or_services&$limit=5000&$order=date_created%20DESC",
+        "path": "10-telecom-complaint-orchestration/raw/fcc-complaints-latest-5000.csv",
+        "query_snapshot": "latest 5000 by date_created, materialized 2026-07-20"
+      }
+    ],
+    "11": [
+      {
+        "source_id": "DATA-11",
+        "url": "https://api.github.com/repos/QwenLM/Qwen/commits/2df8e8ac450fa185c421a08b0090ef81826caa6e",
+        "path": "11-model-release-multi-agent/raw/qwen-commit-2df8e8ac.json",
+        "pinned_commit": "2df8e8ac450fa185c421a08b0090ef81826caa6e"
+      },
+      {
+        "source_id": "DATA-11",
+        "url": "https://api.github.com/repos/QwenLM/Qwen/releases?per_page=20",
+        "path": "11-model-release-multi-agent/raw/qwen-releases-20.json"
+      },
+      {
+        "source_id": "DATA-11",
+        "url": "https://api.github.com/repos/QwenLM/Qwen/issues?state=all&per_page=50&sort=updated&direction=desc",
+        "path": "11-model-release-multi-agent/raw/qwen-issues-50.json",
+        "privacy": "derive only public operational fields; do not retain bodies in course subset"
+      }
+    ],
+    "12": [
+      {
+        "source_id": "DATA-12",
+        "url": "https://data.mendeley.com/public-api/zip/j277dvs69g/download/1",
+        "path": "12-vaccine-cold-chain/raw/nepal-vaccine-carriers-v1.zip",
+        "expected_bytes": 9409645
+      }
+    ],
+    "13": [
+      {
+        "source_id": "DATA-13",
+        "recovery_status": "blocked_missing_inputs"
+      }
+    ],
+    "14": [
+      {
+        "source_id": "DATA-14",
+        "recovery_status": "blocked_missing_inputs"
+      }
+    ],
+    "15": [
+      {
+        "source_id": "DATA-15",
+        "recovery_status": "blocked_missing_inputs"
+      }
+    ],
+    "16": [
+      {
+        "source_id": "DATA-16",
+        "recovery_status": "blocked_missing_inputs"
+      }
+    ],
+    "17": [
+      {
+        "source_id": "DATA-17",
+        "recovery_status": "blocked_missing_inputs"
+      }
+    ],
+    "18": [
+      {
+        "source_id": "DATA-18",
+        "recovery_status": "blocked_missing_inputs"
+      }
+    ],
+    "19": [
+      {
+        "source_id": "DATA-19",
+        "recovery_status": "blocked_missing_inputs"
+      }
+    ],
+    "20": [
+      {
+        "source_id": "DATA-20",
+        "recovery_status": "blocked_missing_inputs"
+      }
+    ]
+  }
+}

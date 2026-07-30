@@ -1,0 +1,4 @@
+interface:
+  display_name: "3D Asset Contract"
+  short_description: "Contract, inspect, and preview local glTF assets"
+  default_prompt: "Use $asset-contract to define this 3D request, inspect the local artifact, and keep Provider status honest."

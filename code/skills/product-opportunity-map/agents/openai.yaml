@@ -1,0 +1,4 @@
+interface:
+  display_name: "Product Opportunity Map"
+  short_description: "Build traceable Chinese opportunity-map artifacts"
+  default_prompt: "Use $product-opportunity-map to build an editable SVG and provenance JSON from this approved CSV."

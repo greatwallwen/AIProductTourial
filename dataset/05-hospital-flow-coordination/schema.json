@@ -1,0 +1,119 @@
+{
+  "schema_version": "2.0",
+  "case_id": "05",
+  "row_count": 4320,
+  "columns": [
+    {
+      "name": "event_id",
+      "dtype": "string",
+      "nullable": false,
+      "sample": "TRN-0001-01"
+    },
+    {
+      "name": "transport_id",
+      "dtype": "string",
+      "nullable": false,
+      "sample": "TRN-0001"
+    },
+    {
+      "name": "flow_token",
+      "dtype": "string",
+      "nullable": false,
+      "sample": "FLOW-0001"
+    },
+    {
+      "name": "event_version",
+      "dtype": "string",
+      "nullable": false,
+      "sample": "1"
+    },
+    {
+      "name": "event_time",
+      "dtype": "string",
+      "nullable": false,
+      "sample": "2026-07-03T08:07:00+08:00"
+    },
+    {
+      "name": "received_at",
+      "dtype": "string",
+      "nullable": false,
+      "sample": "2026-07-03T08:08:00+08:00"
+    },
+    {
+      "name": "source_system",
+      "dtype": "string",
+      "nullable": false,
+      "sample": "ED_BOARD"
+    },
+    {
+      "name": "from_department",
+      "dtype": "string",
+      "nullable": false,
+      "sample": "急诊观察区"
+    },
+    {
+      "name": "to_department",
+      "dtype": "string",
+      "nullable": false,
+      "sample": "外科留观区"
+    },
+    {
+      "name": "bed_request_id",
+      "dtype": "string",
+      "nullable": false,
+      "sample": "BED-008"
+    },
+    {
+      "name": "role",
+      "dtype": "string",
+      "nullable": false,
+      "sample": "emergency_nurse"
+    },
+    {
+      "name": "actor_id",
+      "dtype": "string",
+      "nullable": false,
+      "sample": "ER-N-01"
+    },
+    {
+      "name": "event_type",
+      "dtype": "string",
+      "nullable": false,
+      "sample": "transport_requested"
+    },
+    {
+      "name": "co_sign_status",
+      "dtype": "string",
+      "nullable": true,
+      "sample": "pending"
+    },
+    {
+      "name": "privacy_scope",
+      "dtype": "string",
+      "nullable": false,
+      "sample": "operational_only"
+    },
+    {
+      "name": "clinical_decision_allowed",
+      "dtype": "string",
+      "nullable": false,
+      "sample": "False"
+    },
+    {
+      "name": "conflict_type",
+      "dtype": "string",
+      "nullable": false,
+      "sample": "none"
+    },
+    {
+      "name": "late_event",
+      "dtype": "string",
+      "nullable": false,
+      "sample": "False"
+    }
+  ],
+  "data_nature": "deterministic-synthetic-operational",
+  "source_ids": [
+    "DATA-05"
+  ]
+}

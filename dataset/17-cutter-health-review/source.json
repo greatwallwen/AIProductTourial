@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.0",
+  "case_id": "17",
+  "sources": [
+    {
+      "id": "DATA-17",
+      "title": "One Year Industrial Component Degradation",
+      "url": "https://www.kaggle.com/datasets/inIT-OWL/one-year-industrial-component-degradation",
+      "publisher": "Kaggle dataset by inIT-OWL",
+      "version": "519-session deterministic delivery snapshot",
+      "license": "CC BY-SA 3.0",
+      "redistribution": "allowed-with-attribution-and-share-alike"
+    }
+  ],
+  "input_files": [
+    {
+      "path": "案例05_包装机切刀劣化复核/reference_data_analysis/blade_sessions_zh.csv",
+      "role": "delivery-derived session summary",
+      "bytes": 128357,
+      "sha256": "6c5d47db7843f7938b506d835b7b3dad37a431a8190f2484dabfc703a9d8351c"
+    },
+    {
+      "path": "案例05_包装机切刀劣化复核/reference_data_analysis/blade_review_queue_zh.csv",
+      "role": "rule-derived review queue",
+      "bytes": 21386,
+      "sha256": "82702ef10fb7ea1a19780b3761294245e8b2d8c853b9911d8e60965256f3e2c7"
+    },
+    {
+      "path": "案例05_包装机切刀劣化复核/reference_data_analysis/blade_signals_zh.csv",
+      "role": "delivery-derived public waveform table",
+      "bytes": 168007595,
+      "sha256": "c870897994aff7a9d48a038a0989d31f17498e9094ce38356897a1d97f2ee513"
+    }
+  ],
+  "generation": {
+    "generator": "tools/build_demo_expansion.py",
+    "generator_version": "1.0.0",
+    "selection": {
+      "session_selection": "all sessions in source order",
+      "waveform_sessions": 8,
+      "waveform_samples_per_session": 256
+    },
+    "field_lineage": {
+      "source_facts": [
+        "session_id",
+        "source_file",
+        "observation_label",
+        "source_batch_index",
+        "source_order",
+        "operating_mode",
+        "source_samples",
+        "cutter_torque_mean",
+        "cutter_torque_std",
+        "cutter_torque_rms",
+        "cutter_torque_abs_peak",
+        "cutter_follow_error_mean",
+        "cutter_follow_error_std",
+        "cutter_follow_error_rms",
+        "cutter_follow_error_abs_peak",
+        "film_follow_error_mean",
+        "film_follow_error_std",
+        "film_follow_error_rms",
+        "film_follow_error_abs_peak"
+      ],
+      "derived_fields": [
+        "health_deviation_index",
+        "rule_threshold",
+        "evidence_coverage",
+        "dominant_deviation_signal",
+        "rule_review_level",
+        "causal_root_cause_allowed",
+        "automatic_stop_allowed",
+        "automatic_replacement_allowed",
+        "allowed_action",
+        "data_nature"
+      ]
+    }
+  },
+  "supplemental_outputs": [
+    {
+      "path": "waveform.csv",
+      "source_id": "DATA-17",
+      "rows": 2048,
+      "sha256": "54c0d63c5f7bf9ec64493e3e9ea1c15c6c448ce88c7146c205e63334ca3b8fc6",
+      "data_nature": "public-waveform-fixed-slice"
+    },
+    {
+      "path": "review-queue.csv",
+      "source_id": "DATA-17",
+      "rows": 152,
+      "sha256": "36c335fb39a2e9d5891aa1afdac6b38894fb1fb5b2ed60dd481b68339f1a81f7",
+      "data_nature": "rule-derived-review-queue-not-work-orders"
+    }
+  ],
+  "transform_status": "derived-verified",
+  "materialized_status": "verified",
+  "rebuild_status": "blocked_missing_inputs",
+  "restriction": "健康偏离与复核等级是规则派生，不是磨损率、寿命或根因；不得自动停机或更换切刀。"
+}

@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "1.0",
+  "caseId": "P05-beijing-air-data-analysis",
+  "systemPrompt": "你是数据分析师。计算事实与解释必须分开；缺失值不能当作0，相关变化不能写成原因。",
+  "sharedContext": "数据：北京12个监测站的公开空气质量课程切片，21039行，时间范围2013-03-01 00:00至2017-02-28 20:00。污染物空值数：PM2.5=466，PM10=334，SO2=417，NO2=656，CO=1027，O3=830。字段还包括站点、年/月/日/小时、温度、气压、露点、降雨、风向和风速。课程切片不是完整总体，当前只提供总体空值计数，没有逐站点完整性表，也没有健康结局数据。",
+  "baselinePrompt": "分析这份北京空气质量数据，告诉我哪里污染最严重以及原因。",
+  "improvedPrompt": "先做一页数据完整性简报，不回答‘哪里污染最严重’和‘原因是什么’。按21039行分别计算六项污染物的空值率，污染物名必须按原字段写为PM2.5、PM10、SO2、NO2、CO、O3，不使用下标字符。表格按空值率从高到低排序，并在输出前复核相邻两行是否满足降序；表后另写一行‘排序校验：CO > O3 > NO2 > PM2.5 > SO2 > PM10’。写出公式和保留两位小数的结果。然后列出下一步比较站点与月份还需要计算的三项内容，以及这份课程切片不能支持的两个结论。不要给健康建议。",
+  "model": "qwen-plus",
+  "temperature": 0,
+  "maxTokens": 1100,
+  "evaluators": [
+    {"id": "all-pollutants", "type": "requiredAll", "values": ["PM2.5", "PM10", "SO2", "NO2", "CO", "O3"]},
+    {"id": "sample-size-visible", "type": "requiredAny", "values": ["21039", "21,039"]},
+    {"id": "descending-order-checked", "type": "requiredAll", "values": ["CO > O3 > NO2 > PM2.5 > SO2 > PM10"]},
+    {"id": "limitations-visible", "type": "requiredAny", "values": ["不能支持", "不能判断", "局限"]},
+    {"id": "no-overclaim", "type": "forbidden", "values": ["最严重的站点是", "污染的原因是", "健康危害"]},
+    {"id": "bounded-length", "type": "maxChars", "value": 1800}
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Capability routing task",
+  "type": "object",
+  "required": ["task_id", "task", "inputs", "requested_actions", "permissions"],
+  "properties": {
+    "task_id": {"type": "string", "minLength": 1},
+    "task": {"type": "string", "minLength": 1},
+    "inputs": {"type": "object"},
+    "requested_actions": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "permissions": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+  },
+  "additionalProperties": false
+}

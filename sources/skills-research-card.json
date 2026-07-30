@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "checked_at": "2026-07-28",
+  "purpose": "S01-S08 的开源 Skill 选型与运行边界",
+  "sources": [
+    {
+      "id": "SKILL-SPEC-OPENAI",
+      "name": "openai/skills",
+      "url": "https://github.com/openai/skills",
+      "license": "repository-specific; inspect before reuse",
+      "use": "只借鉴 SKILL.md 加可选资源和脚本的渐进式装载结构，不复制未审查内容。"
+    },
+    {
+      "id": "SKILL-PM-DEANPETERS",
+      "name": "deanpeters/Product-Manager-Skills",
+      "url": "https://github.com/deanpeters/Product-Manager-Skills",
+      "license": "CC BY-NC-SA 4.0 reported by repository",
+      "use": "S04 仅借鉴问题框定和机会树的方法类型；课程使用自行重写的中文输入、合同和脚本。"
+    },
+    {
+      "id": "SKILL-ZINE",
+      "name": "LiamGvchi/gc-minimal-zine-poster",
+      "url": "https://github.com/LiamGvchi/gc-minimal-zine-poster",
+      "license": "MIT",
+      "use": "S05 借鉴可解释的视觉配方与最终 Prompt 双工件；没有图像 Provider 时只验证本地配方。"
+    },
+    {
+      "id": "SKILL-PPTX-LAYOUTS",
+      "name": "tristan-mcinnis/pptx-from-layouts-skill",
+      "url": "https://github.com/tristan-mcinnis/pptx-from-layouts-skill",
+      "license": "MIT",
+      "use": "S06 借鉴模板布局剖析、语义版式映射和生成后验证；本阶段本地运行版式计划，PPTX 生成在文稿阶段复用正式工具链。"
+    },
+    {
+      "id": "SKILL-PIXI-OFFICIAL",
+      "name": "pixijs/pixijs-skills",
+      "url": "https://github.com/pixijs/pixijs-skills",
+      "license": "MIT",
+      "use": "S07 采用官方 PixiJS v8 Skill 路由思想，覆盖 Application、Assets、Events、Ticker、Accessibility 与 Performance。"
+    },
+    {
+      "id": "SKILL-RODIN3D",
+      "name": "DeemosTech/rodin3d-skills",
+      "url": "https://github.com/DeemosTech/rodin3d-skills",
+      "license": "MIT",
+      "use": "S08 只实现本地资产请求合同和 GLB 查看边界；Hyper3D API 需要密钥和额度，当前标记 provider-not-verified。"
+    }
+  ]
+}

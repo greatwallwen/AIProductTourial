@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "lab_id": "A01",
+  "title": "地铁压缩机检查申请：从普通 RAG 到多 Agent 交接",
+  "question": "五分钟传感窗口是否足以判定压缩机故障并自动停机？",
+  "inputs": [
+    "dataset/09-metro-agentic-rag/case.csv",
+    "dataset/09-metro-agentic-rag/knowledge.jsonl"
+  ],
+  "protocols": {
+    "mcp": "2025-11-25",
+    "a2a": "1.0.0"
+  },
+  "provider": {
+    "offline": "default",
+    "live": "dashscope",
+    "model": "qwen-plus"
+  },
+  "acceptance": [
+    "普通 RAG 只检索一次并明确缺少课程策略",
+    "Agentic RAG 检查来源覆盖后追加策略检索并停止在人工决定",
+    "本地 MCP 完成 initialize、tools/list 和 tools/call",
+    "三个独立角色通过 A2A Message、Task 和 Artifact 交接意见",
+    "汇总器识别自动停机冲突并采用有来源的禁止规则",
+    "离线模式可完整重放，实时模式只保存脱敏 qwen-plus 回执"
+  ],
+  "terminal_state": "waiting_human"
+}

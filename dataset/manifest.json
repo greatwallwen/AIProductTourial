@@ -1,0 +1,381 @@
+{
+  "schema_version": "6.0",
+  "updated_at": "2026-07-28T17:10:00+08:00",
+  "policy": {
+    "root": "dataset",
+    "hash_algorithm": "SHA-256",
+    "localization": "original facts preserved; Chinese labels are derived presentation fields",
+    "required_files": ["README.md", "source.json", "schema.json"],
+    "derived_dataset_files": ["transform.py", "checksums.sha256"],
+    "truth_levels": [
+      "public-real",
+      "public-derived",
+      "public-benchmark",
+      "calibrated-synthetic",
+      "deterministic-synthetic-operational",
+      "fixture"
+    ],
+    "claim_rule": "fixture, runtime and business outcome are separate evidence states",
+    "grouped_lab_rule": "Grouped P/S/L entries declare either a CSV primary_file or an explicit primary_files list; checksums.sha256 covers every retained contract file."
+  },
+  "datasets": [
+    {
+      "case_id": "01",
+      "slug": "retail-return-evidence",
+      "directory": "dataset/01-retail-return-evidence",
+      "source_ids": [
+        "DATA-01"
+      ],
+      "target_nature": "public-derived",
+      "status": "derived-verified",
+      "row_count": 14794,
+      "column_count": 17,
+      "sha256": "ac85fc27d39a33b7e5cd42542889302a20fc2dace36bff970163ed92d6393f37",
+      "materialized_nature": "public-derived"
+    },
+    {
+      "case_id": "02",
+      "slug": "member-value-experiment",
+      "directory": "dataset/02-member-value-experiment",
+      "source_ids": [
+        "DATA-02"
+      ],
+      "target_nature": "public-derived",
+      "status": "derived-verified",
+      "row_count": 5000,
+      "column_count": 9,
+      "sha256": "0c2b11465184aecd420ea43881c2106b37dc2094ab655e86de7e3e1a3937d4be",
+      "materialized_nature": "public-derived-with-sequence-proxy"
+    },
+    {
+      "case_id": "03",
+      "slug": "local-service-voc",
+      "directory": "dataset/03-local-service-voc",
+      "source_ids": [
+        "DATA-03"
+      ],
+      "target_nature": "public-derived",
+      "status": "derived-verified",
+      "row_count": 6970,
+      "column_count": 24,
+      "sha256": "426d5f5b38f2bf7c35bbb7d1fad4cd6ae8ac844ed5533a18c03cfb7c83457133",
+      "materialized_nature": "public-derived"
+    },
+    {
+      "case_id": "04",
+      "slug": "credit-human-review",
+      "directory": "dataset/04-credit-human-review",
+      "source_ids": [
+        "DATA-04"
+      ],
+      "primary_file": "applications.csv",
+      "target_nature": "deterministic-synthetic-operational",
+      "status": "derived-verified",
+      "row_count": 1200,
+      "column_count": 19,
+      "sha256": "14d4c64476bc7908db7497493d4284136795d3eb39ff09bcbbbefa9271c821d1",
+      "materialized_nature": "deterministic-synthetic-operational"
+    },
+    {
+      "case_id": "05",
+      "slug": "hospital-flow-coordination",
+      "directory": "dataset/05-hospital-flow-coordination",
+      "source_ids": [
+        "DATA-05"
+      ],
+      "target_nature": "deterministic-synthetic-operational",
+      "status": "derived-verified",
+      "restriction": "no raw PIC data",
+      "row_count": 4320,
+      "column_count": 18,
+      "sha256": "8ee21bc8c61f22cb6aaf1d81efda5fc2dd912edaeb63f1fc4662a567a079a997",
+      "materialized_nature": "deterministic-synthetic-operational"
+    },
+    {
+      "case_id": "06",
+      "slug": "beijing-air-quality-audit",
+      "directory": "dataset/06-beijing-air-quality-audit",
+      "source_ids": [
+        "DATA-06"
+      ],
+      "target_nature": "public-derived",
+      "status": "derived-verified",
+      "row_count": 21039,
+      "column_count": 21,
+      "sha256": "0055067502c1056beeb8de9f9de5aad357f267760b8a0df5fc303b2df3361108",
+      "materialized_nature": "public-derived"
+    },
+    {
+      "case_id": "07",
+      "slug": "instant-retail-architecture",
+      "directory": "dataset/07-instant-retail-architecture",
+      "source_ids": [
+        "DATA-07",
+        "COURSE-OPS-07"
+      ],
+      "target_nature": "public-derived-plus-deterministic-synthetic",
+      "status": "derived-verified",
+      "restriction": "public benchmark facts and synthetic China operations evidence must remain visibly separated",
+      "row_count": 12000,
+      "column_count": 7,
+      "sha256": "5c5917e9dbca662ac0a3a33d8a4fadcbf9f6b533e2acc5fe6aa4bcafc92c6406",
+      "materialized_nature": "public-benchmark-derived-plus-deterministic-synthetic-cn-operations"
+    },
+    {
+      "case_id": "08",
+      "slug": "aquaculture-event-response",
+      "directory": "dataset/08-aquaculture-event-response",
+      "source_ids": [
+        "DATA-08A",
+        "COURSE-OPS-08"
+      ],
+      "target_nature": "public-spatial-assets-plus-deterministic-synthetic",
+      "status": "derived-verified",
+      "restriction": "every synthetic operations row references a public China spatial asset; no farm, diagnosis, causality or equipment-control claim",
+      "row_count": 864,
+      "column_count": 15,
+      "sha256": "170b5d7cfb65eed5fb545a5befcec5b8f8edda77b2974c78f4e07e871c859c98",
+      "materialized_nature": "deterministic-synthetic-cn-operations-linked-to-public-spatial-index"
+    },
+    {
+      "case_id": "09",
+      "slug": "metro-agentic-rag",
+      "directory": "dataset/09-metro-agentic-rag",
+      "source_ids": [
+        "DATA-09",
+        "COURSE-POLICY-09"
+      ],
+      "target_nature": "public-derived-plus-versioned-course-policy",
+      "status": "derived-verified",
+      "restriction": "sensor windows are public-derived; inspection and approval documents are course policy, not vendor manuals or operator procedures",
+      "row_count": 4090,
+      "column_count": 21,
+      "sha256": "fc717d919649406167311cbe875c08950b1a98c9f0d3a02d2a9dfe0211e2270e",
+      "materialized_nature": "public-derived-contiguous-slice"
+    },
+    {
+      "case_id": "10",
+      "slug": "telecom-complaint-orchestration",
+      "directory": "dataset/10-telecom-complaint-orchestration",
+      "source_ids": [
+        "MIIT-2025-Q2",
+        "DATA-10",
+        "COURSE-OPS-10"
+      ],
+      "target_nature": "official-aggregate-anchor-plus-deterministic-synthetic-cn-operations",
+      "status": "derived-verified",
+      "restriction": "China operations are synthetic and FCC allegations remain unverified",
+      "row_count": 1000,
+      "column_count": 15,
+      "sha256": "8f4ccf4cae2343960699c27357b902c1eb72f98085b4bc4d0fff52e102823b53",
+      "materialized_nature": "official-aggregate-anchor-plus-deterministic-synthetic-cn-operations"
+    },
+    {
+      "case_id": "11",
+      "slug": "model-release-multi-agent",
+      "directory": "dataset/11-model-release-multi-agent",
+      "source_ids": [
+        "DATA-11",
+        "COURSE-EVAL-11"
+      ],
+      "target_nature": "public-model-metadata-plus-deterministic-enterprise-evaluation",
+      "status": "derived-verified",
+      "restriction": "course evaluation metrics are synthetic and repository code license is not a weight license conclusion",
+      "row_count": 9,
+      "column_count": 16,
+      "sha256": "a78da306b49dd1cf03f5d5293f8a3d256d4ba9d36fa5d7845a0c8438648940a0",
+      "materialized_nature": "public-model-metadata-plus-deterministic-enterprise-evaluation"
+    },
+    {
+      "case_id": "12",
+      "slug": "vaccine-cold-chain",
+      "directory": "dataset/12-vaccine-cold-chain",
+      "source_ids": [
+        "DATA-12",
+        "POLICY-12",
+        "COURSE-OPS-12"
+      ],
+      "target_nature": "public-thermal-benchmark-plus-deterministic-synthetic-cn-operations",
+      "status": "derived-verified",
+      "restriction": "China operations are synthetic and temperature evidence never determines product usability",
+      "row_count": 360,
+      "column_count": 20,
+      "sha256": "e64e2a53c0e1b81e94326b1898e5a7f95a91407d6a2030631feb33b7c0b220cf",
+      "materialized_nature": "public-thermal-benchmark-plus-deterministic-synthetic-cn-operations"
+    },
+    {
+      "case_id": "13",
+      "slug": "auto-service-triage",
+      "directory": "dataset/13-auto-service-triage",
+      "source_ids": [
+        "DATA-13",
+        "COURSE-OPS-13"
+      ],
+      "target_nature": "deterministic-synthetic-cn-operations",
+      "status": "derived-verified",
+      "materialized_status": "verified",
+      "rebuild_status": "blocked_missing_inputs",
+      "restriction": "公开印度地域维修汇总与中国接车运营层不做行级关联；不得自动诊断、维修或更换零部件。",
+      "row_count": 24,
+      "column_count": 11,
+      "sha256": "757c7cab2ab8d1e9d26c5171e69b8582cc08cab26b7e4be1bc7fa398b1163714",
+      "materialized_nature": "deterministic-synthetic-cn-operations"
+    },
+    {
+      "case_id": "14",
+      "slug": "flotation-impurity-review",
+      "directory": "dataset/14-flotation-impurity-review",
+      "source_ids": [
+        "DATA-14"
+      ],
+      "target_nature": "public-derived-contiguous-hour-slice",
+      "status": "derived-verified",
+      "materialized_status": "verified",
+      "rebuild_status": "blocked_missing_inputs",
+      "restriction": "3.0% 等规则阈值不是厂方标准；过程偏离只支持复采和工艺人工核查，不得自动调参。",
+      "row_count": 720,
+      "column_count": 33,
+      "sha256": "9adf0dc7cf541fe42e0b430267a1cfea7d5de7dcec4bc20a7a3e0dd12238c3a5",
+      "materialized_nature": "public-derived-contiguous-hour-slice"
+    },
+    {
+      "case_id": "15",
+      "slug": "wafer-quality-review",
+      "directory": "dataset/15-wafer-quality-review",
+      "source_ids": [
+        "DATA-15"
+      ],
+      "target_nature": "public-derived-fixed-sensor-slice",
+      "status": "derived-verified",
+      "materialized_status": "verified",
+      "rebuild_status": "blocked_missing_inputs",
+      "restriction": "传感器排序表示与质量标签的关联，不证明工序根因；不得自动报废或放行晶圆。",
+      "row_count": 1567,
+      "column_count": 20,
+      "sha256": "368b6043cd9824d3c565577deb68094837b754ff918df490d456b4811d439fbd",
+      "materialized_nature": "public-derived-fixed-sensor-slice"
+    },
+    {
+      "case_id": "16",
+      "slug": "wind-underperformance",
+      "directory": "dataset/16-wind-underperformance",
+      "source_ids": [
+        "DATA-16"
+      ],
+      "target_nature": "public-derived-entity-complete-daily-aggregate",
+      "status": "derived-verified",
+      "materialized_status": "verified",
+      "rebuild_status": "blocked_missing_inputs",
+      "restriction": "下偏比例与同风况比较仅用于调整人工登检优先级，不自动派工或停机。",
+      "row_count": 938,
+      "column_count": 13,
+      "sha256": "3b3330802874dfafe9ea32fd91871fe3eaa5f24f6c64ddfcc217e3af6cf3bc13",
+      "materialized_nature": "public-derived-entity-complete-daily-aggregate"
+    },
+    {
+      "case_id": "17",
+      "slug": "cutter-health-review",
+      "directory": "dataset/17-cutter-health-review",
+      "source_ids": [
+        "DATA-17"
+      ],
+      "target_nature": "public-derived-session-summary",
+      "status": "derived-verified",
+      "materialized_status": "verified",
+      "rebuild_status": "blocked_missing_inputs",
+      "restriction": "健康偏离与复核等级是规则派生，不是磨损率、寿命或根因；不得自动停机或更换切刀。",
+      "row_count": 519,
+      "column_count": 29,
+      "sha256": "96fb5118d438ed3da258fe504e8976af3c30497b049f33bff41603d18f7713ac",
+      "materialized_nature": "public-derived-session-summary"
+    },
+    {
+      "case_id": "18",
+      "slug": "boiler-temperature-review",
+      "directory": "dataset/18-boiler-temperature-review",
+      "source_ids": [
+        "DATA-18"
+      ],
+      "target_nature": "public-derived-minute-aggregate",
+      "status": "derived-verified",
+      "materialized_status": "verified",
+      "rebuild_status": "blocked_missing_inputs",
+      "restriction": "530–545℃是来源数据区间，不是厂方控制限；缺失与来源填补必须同屏披露，不得自动调参。",
+      "row_count": 7201,
+      "column_count": 14,
+      "sha256": "50b7bdd21090f2b1bcbfc99cd99d587950520f5b35e09198eb1dd53de491939f",
+      "materialized_nature": "public-derived-minute-aggregate"
+    },
+    {
+      "case_id": "19",
+      "slug": "hydraulic-condition",
+      "directory": "dataset/19-hydraulic-condition",
+      "source_ids": [
+        "DATA-19"
+      ],
+      "target_nature": "public-derived-cycle-feature-table",
+      "status": "derived-verified",
+      "materialized_status": "verified",
+      "rebuild_status": "blocked_missing_inputs",
+      "restriction": "组件状态来自 UCI 标签和公开派生特征，只分流人工检修复核，不自动执行维护。",
+      "row_count": 2205,
+      "column_count": 28,
+      "sha256": "857a6289cf73d9f03c2074ab98ab85bf95f8ba94a3d8566845a92c0cf1fc9af8",
+      "materialized_nature": "public-derived-cycle-feature-table"
+    },
+    {
+      "case_id": "20",
+      "slug": "pv-loss-attribution",
+      "directory": "dataset/20-pv-loss-attribution",
+      "source_ids": [
+        "DATA-20"
+      ],
+      "target_nature": "public-derived-entity-complete-daily-aggregate",
+      "status": "derived-verified",
+      "materialized_status": "verified",
+      "rebuild_status": "blocked_missing_inputs",
+      "restriction": "损失拆分字段是排查线索，不是已核实根因；不得自动改变电站控制设定。",
+      "row_count": 5327,
+      "column_count": 13,
+      "sha256": "a874e707e0fdb51757f58a672e143ef043aab7f15bbe5cdb32cc45862ced6336",
+      "materialized_nature": "public-derived-entity-complete-daily-aggregate"
+    },
+    {
+      "case_ids": ["P01", "P02", "P03", "P04", "P05", "P06", "P07", "P08"],
+      "slug": "prompt-curriculum",
+      "directory": "dataset/P-prompt-curriculum",
+      "source_ids": ["DATA-06", "SYNTH-AGRICULTURAL-PRICE", "COURSE-PROMPT-FIXTURES"],
+      "target_nature": "public-derived-and-explicit-course-fixtures",
+      "status": "course-local-verified",
+      "restriction": "Eight input manifests and their checks are course assets; live model answers and Provider receipts remain separate runtime evidence.",
+      "primary_files": ["P01.json", "P02.json", "P03.json", "P04.json", "P05.json", "P06.json", "P07.json", "P08.json"],
+      "record_count": 8,
+      "materialized_nature": "prompt-experiment-manifests"
+    },
+    {
+      "case_ids": ["S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08"],
+      "slug": "agent-skill-cases",
+      "directory": "dataset/S-agent-skill-cases",
+      "source_ids": ["SKILL-SPEC-OPENAI", "SKILL-PM-DEANPETERS", "SKILL-ZINE", "SKILL-PPTX-LAYOUTS", "SKILL-PIXI-OFFICIAL", "SKILL-RODIN3D"],
+      "target_nature": "deterministic-course-action-summaries",
+      "status": "course-local-verified",
+      "restriction": "Course summaries are not online Agent traces, hidden reasoning, external Provider receipts, or business outcomes; only the four S04 rows are a direct generator input.",
+      "row_count": 32,
+      "column_count": 7,
+      "sha256": "244e2cbff4876e41f97c942e9a64778aeb4948908c191c628953f269de3d8e3f",
+      "materialized_nature": "deterministic-course-action-summaries"
+    },
+    {
+      "case_ids": ["L01", "L02", "L03"],
+      "slug": "loop-cases",
+      "directory": "dataset/L-loop-cases",
+      "source_ids": ["DATA-02", "DATA-09", "COURSE-POLICY-09", "LOOP-COURSE-CONTRACT"],
+      "target_nature": "course-runtime-contract-referencing-real-local-inputs",
+      "status": "course-local-verified",
+      "restriction": "The contract names local inputs and terminal states; generated artifacts prove only the corresponding local run, never field diagnosis or business action.",
+      "primary_files": ["schema.json"],
+      "record_count": 3,
+      "materialized_nature": "loop-input-and-state-contracts"
+    }
+  ]
+}

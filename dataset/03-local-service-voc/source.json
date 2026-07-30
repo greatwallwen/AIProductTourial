@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "case_id": "03",
+  "captured_at": "2026-07-20T09:52:55.643680+08:00",
+  "sources": [
+    {
+      "id": "DATA-03",
+      "title": "ASAP Chinese Review Dataset",
+      "url": "https://github.com/Meituan-Dianping/asap",
+      "publisher": "Meituan-Dianping",
+      "version": "pin commit during download",
+      "license": "Apache-2.0",
+      "state": "metadata-verified-materialization-pending",
+      "expected_instances": 46730,
+      "redistribution": "allowed-under-license"
+    }
+  ],
+  "artifacts": [
+    {
+      "source_id": "DATA-03",
+      "url": "https://github.com/Meituan-Dianping/asap/archive/975122a60065240124df62cb4d5dbfd19ed9ef2c.zip",
+      "status": "downloaded-verified",
+      "path": "dataset/03-local-service-voc/raw/asap-975122a.zip",
+      "bytes": 20764585,
+      "sha256": "8eeb4932911c86c6f9fc42e03e60200244bfc6a234fa455901afd4c231bda01a"
+    }
+  ],
+  "transform_status": "derived-verified",
+  "derived_output": {
+    "path": "case.csv",
+    "rows": 6970,
+    "sha256": "426d5f5b38f2bf7c35bbb7d1fad4cd6ae8ac844ed5533a18c03cfb7c83457133",
+    "data_nature": "public-derived"
+  }
+}

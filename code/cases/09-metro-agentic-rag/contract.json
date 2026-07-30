@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "09",
+  "slug": "metro-agentic-rag",
+  "title": "传感器异常后，什么时候能提交现场检查请求？",
+  "industry": "轨道交通",
+  "family": "investigation",
+  "tier": "flagship",
+  "dataset_path": "dataset/09-metro-agentic-rag",
+  "route": "/cases/09/work",
+  "runtime_mode": "offline_replay_and_optional_live_model",
+  "productization": {
+    "metrics": [
+      "已知故障窗",
+      "可直接维护",
+      "电机电流峰值"
+    ],
+    "decision_fields": [
+      "known_failure_window",
+      "maintenance_action_allowed",
+      "Motor_current"
+    ],
+    "selection_changes_decision": true,
+    "business_state_changes_on_server": true
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0",
+  "caseId": "P02-hotpot-slogan-examples",
+  "systemPrompt": "你是品牌文案编辑。参考材料只用于提炼形式，不得照抄连续短语或虚构经营事实。",
+  "sharedContext": "品牌：巷口小炉（课程虚构品牌）。已知特点：人均约79元；一人一锅；牛油锅底与清汤锅底分开；营业到凌晨2点；主打下班后的轻松聚餐。形式参照：短句、一个具体利益点、一个容易复述的记忆钩子。反例：只喊‘麻辣传奇’‘味蕾狂欢’等空泛口号；照抄其他品牌名称或口号；声称百年老店、全城第一。",
+  "baselinePrompt": "为一家中档麻辣火锅店想10个Slogan。",
+  "improvedPrompt": "先用三个短横线条目写出参照材料的形式特征，再为‘巷口小炉’写恰好10条原创Slogan，必须按‘1. 文案｜场景’到‘10. 文案｜场景’编号。每条文案不超过16个汉字，至少体现一项已知特点；十条要覆盖独食、聚餐、深夜三个场景。不要使用品牌材料之外的年份、排名或效果承诺；79元只能写成人均约79元，不能推成吃饱或管饱；不得声称不拼桌、不等位、位置便利、空间宽窄等材料没有提供的事实。最终不加注释、合规说明或自检文字，也不要复述禁用表达。",
+  "model": "qwen-plus",
+  "temperature": 0.4,
+  "maxTokens": 1100,
+  "evaluators": [
+    {"id": "uses-real-features", "type": "requiredAny", "values": ["一人一锅", "凌晨2点", "79元", "下班"]},
+    {"id": "covers-solo", "type": "requiredAny", "values": ["独食", "一人一锅", "独坐"]},
+    {"id": "covers-group", "type": "requiredAny", "values": ["聚餐", "朋友", "你辣我清汤", "各一锅"]},
+    {"id": "covers-late-night", "type": "requiredAny", "values": ["深夜", "凌晨2点", "夜归"]},
+    {"id": "exactly-ten-slogans", "type": "regexCount", "pattern": "^(?:[1-9]|10)\\. ", "value": 10},
+    {"id": "avoids-empty-or-false-claims", "type": "forbidden", "values": ["麻辣传奇", "味蕾狂欢", "百年老店", "全城第一", "吃饱", "管饱", "不拼桌", "不等位", "位置亲民", "位置便利"]},
+    {"id": "bounded-length", "type": "maxChars", "value": 1600}
+  ]
+}

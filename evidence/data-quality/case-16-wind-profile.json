@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "case_id": "16",
+  "generated_at": "2026-07-27T20:00:00+08:00",
+  "primary_file": {
+    "path": "dataset/16-wind-underperformance/case.csv",
+    "sha256": "3b3330802874dfafe9ea32fd91871fe3eaa5f24f6c64ddfcc217e3af6cf3bc13",
+    "rows": 938,
+    "turbines": 134,
+    "operating_days_per_turbine": 7,
+    "complete_turbine_day_matrix": true
+  },
+  "location_file": {
+    "path": "dataset/16-wind-underperformance/turbine-locations.csv",
+    "sha256": "922c06c2500a76b51cfdc5986a83d190f9e4fdab058397610c388e42f5c2b2b2",
+    "rows": 134,
+    "coordinate_type": "anonymous relative XY",
+    "x_range": [0, 5501.4529],
+    "y_range": [0, 12121.00426],
+    "is_geographic_map": false
+  },
+  "featured_investigation": {
+    "turbine_id": "T007",
+    "operating_days": [1, 2, 3, 4, 5, 6, 7],
+    "rows": 7,
+    "underperformance_marked_days": 7,
+    "valid_wind_records": 1004,
+    "valid_power_records": 1004,
+    "source_records": 1008,
+    "day_3": { "mean_wind_speed_mps": 11.596667, "mean_active_power_kw": 1140.758 },
+    "day_7": { "mean_wind_speed_mps": 3.4093706, "mean_active_power_kw": 90.366573 }
+  },
+  "cohort": {
+    "turbines_with_seven_of_seven_marked_days": 20,
+    "t007_is_unique_worst": false,
+    "interpretation": "T007 is a course-designated investigation object, not a severity winner."
+  },
+  "lineage": {
+    "source": "public SDWPF-derived materialized snapshot",
+    "daily_values": "turbine-day aggregates",
+    "underperformance_share": "course-derived daily binary mark",
+    "rebuild_status": "blocked_missing_inputs"
+  },
+  "limitations": [
+    "The relative coordinates are not longitude, latitude or a verified wind-farm topology.",
+    "The daily mark is not a fault probability or root-cause score.",
+    "Peer baseline, curtailment order, alarm log and maintenance outcome are absent.",
+    "The local materialized result is verified, but the original delivery inputs are not present for a clean rebuild."
+  ]
+}

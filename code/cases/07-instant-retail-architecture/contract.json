@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "07",
+  "slug": "instant-retail-architecture",
+  "title": "高峰时段，履约域要不要拆？",
+  "industry": "即时零售",
+  "family": "commerce",
+  "tier": "complete",
+  "dataset_path": "dataset/07-instant-retail-architecture",
+  "route": "/cases/07/work",
+  "runtime_mode": "deterministic_offline",
+  "productization": {
+    "metrics": [
+      "晚高峰订单",
+      "平均商品数",
+      "最晚到单"
+    ],
+    "decision_fields": [
+      "arrival_minute",
+      "item_count",
+      "order_id"
+    ],
+    "selection_changes_decision": true,
+    "business_state_changes_on_server": true
+  }
+}

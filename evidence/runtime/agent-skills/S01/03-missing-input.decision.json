@@ -1,0 +1,10 @@
+{
+  "reason": "任务最接近 product-opportunity-map，但不能凭空补全输入。",
+  "required_inputs": [
+    "csv_path"
+  ],
+  "selected_skill": "product-opportunity-map",
+  "status": "blocked",
+  "stop_reason": "missing_required_inputs",
+  "task_id": "S01-example-03"
+}

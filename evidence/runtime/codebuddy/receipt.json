@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "1.0",
+  "executedAt": "2026-07-29T10:41:58.3742968Z",
+  "environment": {
+    "os": "Windows"
+  },
+  "ide": {
+    "product": "CodeBuddy CN",
+    "command": "buddycn.cmd --version",
+    "exitCode": 0,
+    "version": "1.106.1",
+    "architecture": "x64",
+    "status": "verified_program_entry"
+  },
+  "cli": {
+    "package": "@tencent-ai/codebuddy-code",
+    "command": "codebuddy.cmd --version",
+    "exitCode": 0,
+    "version": "2.128.1",
+    "status": "verified_program_entry"
+  },
+  "modelProbe": {
+    "command": "codebuddy -p <fixed-response-prompt> --tools <none> --output-format json",
+    "exitCode": 0,
+    "stdout": "Authentication required. Please use /login command to sign in to your account",
+    "modelResponseObserved": false,
+    "status": "blocked_not_verified",
+    "reason": "CodeBuddy CLI account authentication was not active; exit code 0 is not treated as a successful model round trip."
+  },
+  "claims": {
+    "ideProgramEntryVerified": true,
+    "cliProgramEntryVerified": true,
+    "authenticatedCodeBuddyModelRoundTripVerified": false,
+    "businessOutcomeVerified": false
+  }
+}

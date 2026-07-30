@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.1",
+  "case_id": "14",
+  "row_count": 720,
+  "primary_grain": "one materialized hourly aggregate",
+  "geography": "public overseas mining-process data; Chinese field labels do not make it a Chinese mine record",
+  "temporal_integrity": {
+    "continuous_dataset": false,
+    "largest_observed_interval_hours": 319,
+    "missing_hour_points_between_records": 318,
+    "featured_window_continuous": true,
+    "featured_window_points": 72
+  },
+  "origin_vocabulary": {
+    "public-measurement-hourly-aggregate": "公开过程测量经小时聚合后的数值，不是原始逐分钟值",
+    "hourly-aggregation-metadata": "小时聚合过程产生的样本数或完整度信息",
+    "course-rule-derived": "由课程规则派生，不是公开数据原字段或厂方标准",
+    "course-policy-derived": "课程演示的动作边界，不是控制系统能力声明"
+  },
+  "columns": [
+    { "name": "monitor_hour", "type": "datetime", "unit": "timezone-not-asserted", "nullable": false, "origin": "hourly-aggregation-metadata" },
+    { "name": "source_samples", "type": "integer", "unit": "samples", "nullable": false, "origin": "hourly-aggregation-metadata" },
+    { "name": "completeness_state", "type": "string", "unit": null, "nullable": false, "origin": "hourly-aggregation-metadata" },
+    { "name": "feed_iron_mean", "type": "number", "unit": "%", "nullable": true, "origin": "public-measurement-hourly-aggregate" },
+    { "name": "feed_silica_mean", "type": "number", "unit": "%", "nullable": true, "origin": "public-measurement-hourly-aggregate" },
+    { "name": "starch_flow_mean", "type": "number", "unit": "source-unit-not-asserted", "nullable": true, "origin": "public-measurement-hourly-aggregate" },
+    { "name": "amine_flow_mean", "type": "number", "unit": "source-unit-not-asserted", "nullable": true, "origin": "public-measurement-hourly-aggregate" },
+    { "name": "pulp_flow_mean", "type": "number", "unit": "source-unit-not-asserted", "nullable": true, "origin": "public-measurement-hourly-aggregate" },
+    { "name": "pulp_ph_mean", "type": "number", "unit": "pH", "nullable": true, "origin": "public-measurement-hourly-aggregate" },
+    { "name": "pulp_density_mean", "type": "number", "unit": "source-unit-not-asserted", "nullable": true, "origin": "public-measurement-hourly-aggregate" },
+    { "name": "column_1_air_mean", "type": "number", "unit": "source-unit-not-asserted", "nullable": true, "origin": "public-measurement-hourly-aggregate" },
+    { "name": "column_1_level_mean", "type": "number", "unit": "source-unit-not-asserted", "nullable": true, "origin": "public-measurement-hourly-aggregate" },
+    { "name": "column_2_air_mean", "type": "number", "unit": "source-unit-not-asserted", "nullable": true, "origin": "public-measurement-hourly-aggregate" },
+    { "name": "column_2_level_mean", "type": "number", "unit": "source-unit-not-asserted", "nullable": true, "origin": "public-measurement-hourly-aggregate" },
+    { "name": "column_3_air_mean", "type": "number", "unit": "source-unit-not-asserted", "nullable": true, "origin": "public-measurement-hourly-aggregate" },
+    { "name": "column_3_level_mean", "type": "number", "unit": "source-unit-not-asserted", "nullable": true, "origin": "public-measurement-hourly-aggregate" },
+    { "name": "column_4_air_mean", "type": "number", "unit": "source-unit-not-asserted", "nullable": true, "origin": "public-measurement-hourly-aggregate" },
+    { "name": "column_4_level_mean", "type": "number", "unit": "source-unit-not-asserted", "nullable": true, "origin": "public-measurement-hourly-aggregate" },
+    { "name": "column_5_air_mean", "type": "number", "unit": "source-unit-not-asserted", "nullable": true, "origin": "public-measurement-hourly-aggregate" },
+    { "name": "column_5_level_mean", "type": "number", "unit": "source-unit-not-asserted", "nullable": true, "origin": "public-measurement-hourly-aggregate" },
+    { "name": "column_6_air_mean", "type": "number", "unit": "source-unit-not-asserted", "nullable": true, "origin": "public-measurement-hourly-aggregate" },
+    { "name": "column_6_level_mean", "type": "number", "unit": "source-unit-not-asserted", "nullable": true, "origin": "public-measurement-hourly-aggregate" },
+    { "name": "column_7_air_mean", "type": "number", "unit": "source-unit-not-asserted", "nullable": true, "origin": "public-measurement-hourly-aggregate" },
+    { "name": "column_7_level_mean", "type": "number", "unit": "source-unit-not-asserted", "nullable": true, "origin": "public-measurement-hourly-aggregate" },
+    { "name": "concentrate_iron_mean", "type": "number", "unit": "%", "nullable": true, "origin": "public-measurement-hourly-aggregate" },
+    { "name": "concentrate_silica_mean", "type": "number", "unit": "%", "nullable": true, "origin": "public-measurement-hourly-aggregate" },
+    { "name": "recent_silica_trend", "type": "number", "unit": "percentage-point change", "nullable": false, "origin": "course-rule-derived" },
+    { "name": "quality_state", "type": "string", "unit": null, "nullable": false, "origin": "course-rule-derived", "rule_note": "3.0% is a course review line, not a plant control standard" },
+    { "name": "consecutive_high_hours", "type": "integer", "unit": "hours", "nullable": false, "origin": "course-rule-derived" },
+    { "name": "causal_root_cause_allowed", "type": "boolean", "unit": null, "nullable": false, "origin": "course-policy-derived", "constant": false },
+    { "name": "automatic_setpoint_allowed", "type": "boolean", "unit": null, "nullable": false, "origin": "course-policy-derived", "constant": false },
+    { "name": "allowed_action", "type": "string", "unit": null, "nullable": false, "origin": "course-policy-derived", "constant": "request_process_review" },
+    { "name": "data_nature", "type": "string", "unit": null, "nullable": false, "origin": "course-policy-derived" }
+  ],
+  "supplemental_artifacts": [
+    {
+      "path": "events.csv",
+      "row_count": 59,
+      "grain": "one course-rule event",
+      "columns": ["event_id", "start_hour", "end_hour", "duration_hours", "peak_silica", "mean_silica", "dominant_deviation", "recovery_hour", "rule_review_state", "rule_threshold", "data_nature"],
+      "column_contracts": [
+        { "name": "event_id", "type": "string", "origin": "course-rule-derived" },
+        { "name": "start_hour", "type": "datetime", "origin": "course-rule-derived" },
+        { "name": "end_hour", "type": "datetime", "origin": "course-rule-derived" },
+        { "name": "duration_hours", "type": "integer", "unit": "hours", "origin": "course-rule-derived" },
+        { "name": "peak_silica", "type": "number", "unit": "%", "origin": "course-rule-derived" },
+        { "name": "mean_silica", "type": "number", "unit": "%", "origin": "course-rule-derived" },
+        { "name": "dominant_deviation", "type": "string", "origin": "course-rule-derived", "meaning": "priority for manual review, not root cause" },
+        { "name": "recovery_hour", "type": "datetime", "origin": "course-rule-derived" },
+        { "name": "rule_review_state", "type": "string", "origin": "course-rule-derived" },
+        { "name": "rule_threshold", "type": "number", "unit": "%", "origin": "course-rule-derived", "rule_note": "course review line, not plant standard" },
+        { "name": "data_nature", "type": "string", "origin": "course-policy-derived" }
+      ],
+      "source_ids": ["DATA-14"],
+      "data_nature": "public-derived-rule-event-snapshot"
+    }
+  ]
+}

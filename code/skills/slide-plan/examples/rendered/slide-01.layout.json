@@ -1,0 +1,265 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/nx0xxw",
+    "id": "nx0xxw",
+    "slide": 1,
+    "layoutId": "871138b0-2616-496e-9dc3-6a54152cb733",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "b1ce4f55-4668-4aea-ab42-92a052c4632b",
+    "masterLayoutName": "Master",
+    "backgroundColor": "#F7F4EC",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "+mn-lt"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "871138b0-2616-496e-9dc3-6a54152cb733",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "b1ce4f55-4668-4aea-ab42-92a052c4632b",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "b1ce4f55-4668-4aea-ab42-92a052c4632b",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/rih8zylo",
+      "id": "1",
+      "name": "TITLE_KICKER",
+      "bbox": [
+        82,
+        78,
+        430,
+        30
+      ],
+      "geometry": "rect",
+      "text": "EDITABLE COURSE DECK",
+      "textPreview": "EDITABLE COURSE DECK",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "+mn-lt",
+        "color": "#172A3A",
+        "bold": true,
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "EDITABLE COURSE DECK"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "EDITABLE COURSE DECK",
+          "resolvedTextStyle": {
+            "fontSize": 18,
+            "color": "#172A3A",
+            "bold": true
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "EDITABLE COURSE DECK",
+              "fontSize": 18,
+              "color": "#172A3A",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/sjqp8329",
+      "id": "2",
+      "name": "SLIDE_TITLE",
+      "bbox": [
+        82,
+        206,
+        820,
+        172
+      ],
+      "geometry": "rect",
+      "text": "让数据先过体检",
+      "textPreview": "让数据先过体检",
+      "resolvedFontSize": 70,
+      "resolvedTextStyle": {
+        "fontSize": 70,
+        "typeface": "+mn-lt",
+        "color": "#1A2B38",
+        "bold": true,
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "让数据先过体检"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "让数据先过体检",
+          "resolvedTextStyle": {
+            "fontSize": 70,
+            "color": "#1A2B38",
+            "bold": true
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "让数据先过体检",
+              "fontSize": 70,
+              "color": "#1A2B38",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/dkzq183e",
+      "id": "3",
+      "name": "SUBTITLE",
+      "bbox": [
+        86,
+        430,
+        760,
+        76
+      ],
+      "geometry": "rect",
+      "text": "从可读的 Markdown 到可编辑、可审计的演示文稿",
+      "textPreview": "从可读的 Markdown 到可编辑、可审计的演示文稿",
+      "resolvedFontSize": 30,
+      "resolvedTextStyle": {
+        "fontSize": 30,
+        "typeface": "+mn-lt",
+        "color": "#516572",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "从可读的 Markdown 到可编辑、可审计的演示文稿"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "从可读的 Markdown 到可编辑、可审计的演示文稿",
+          "resolvedTextStyle": {
+            "fontSize": 30,
+            "color": "#516572"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "从可读的 Markdown 到可编辑、可审计的演示文稿",
+              "fontSize": 30,
+              "color": "#516572"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/el87adkz",
+      "id": "4",
+      "name": "TITLE_ACCENT",
+      "bbox": [
+        1032,
+        0,
+        248,
+        720
+      ],
+      "geometry": "rect",
+      "fillColor": "#F0B134",
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": []
+}

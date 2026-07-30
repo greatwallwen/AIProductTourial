@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "format": "glb",
+  "sha256": "62d767463ef17456eaa78e302dfe42c422cf02944ba162f9d056be292b86e2fc",
+  "byte_length": 768,
+  "asset_version": "2.0",
+  "scenes": 1,
+  "nodes": 1,
+  "meshes": 1,
+  "primitives": 1,
+  "vertices": 3,
+  "indices": 3,
+  "bounds": {
+    "min": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "max": [
+      1.0,
+      1.0,
+      0.0
+    ]
+  },
+  "external_buffers": []
+}

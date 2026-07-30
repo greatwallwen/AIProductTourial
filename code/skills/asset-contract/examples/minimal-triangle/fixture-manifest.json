@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "fixture": "deterministic-triangle",
+  "is_provider_output": false,
+  "generator": "scripts/generate_minimal_fixture.py",
+  "geometry": {
+    "vertices": 3,
+    "indices": 3,
+    "triangles": 1,
+    "bounds": {
+      "min": [
+        0,
+        0,
+        0
+      ],
+      "max": [
+        1,
+        1,
+        0
+      ]
+    }
+  },
+  "files": {
+    "model.gltf": {
+      "sha256": "246484e3c822462e077566bf07c10c15cb6547aa10ee311a383b5fd07d52d20f",
+      "byte_length": 716
+    },
+    "model.bin": {
+      "sha256": "d3478e66e380d8a2b0c9d80f3459f75660efb111e7b801a7d1c1f8f48723d79b",
+      "byte_length": 44
+    },
+    "model.glb": {
+      "sha256": "62d767463ef17456eaa78e302dfe42c422cf02944ba162f9d056be292b86e2fc",
+      "byte_length": 768
+    }
+  }
+}

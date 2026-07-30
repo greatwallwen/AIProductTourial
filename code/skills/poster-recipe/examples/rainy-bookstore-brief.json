@@ -1,0 +1,14 @@
+{
+  "theme": "雨天旧书店",
+  "audience": "下班后想慢下来的城市读者",
+  "headline": "雨落下来，书页慢下来",
+  "supporting_copy": [
+    "躺进一页旧时光",
+    "周五 19:30 · 夜读与换书"
+  ],
+  "required_copy": ["SECOND PAGE BOOKS", "入场免费"],
+  "visible_subjects": ["雨线", "暖黄橱窗", "旧书脊", "一盏灯"],
+  "forbidden": ["人物大特写", "高饱和多色渐变", "密集商业促销标签"],
+  "material_gaps": ["没有实拍书店橱窗，本地版以可编辑矢量构成代替。"],
+  "canvas": {"width": 1080, "height": 1440}
+}

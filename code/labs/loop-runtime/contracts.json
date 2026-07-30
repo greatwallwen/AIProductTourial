@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "2.0",
+  "runner": "bounded-real-artifact-loop",
+  "states": ["observe", "choose", "act", "check", "revise", "waiting_human", "completed"],
+  "stopConditions": ["acceptance_passed", "visual_choice_required", "permission_required"],
+  "cases": [
+    {"id": "L01", "artifact": "loop-run-L01.json", "terminal": "completed", "stopReason": "acceptance_passed"},
+    {"id": "L02", "artifact": "loop-run-L02.json", "terminal": "waiting_human", "stopReason": "visual_choice_required"},
+    {"id": "L03", "artifact": "loop-run-L03.json", "terminal": "waiting_human", "stopReason": "permission_required"}
+  ]
+}

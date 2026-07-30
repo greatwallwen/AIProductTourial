@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "id": "16",
+  "slug": "wind-underperformance",
+  "title": "风机 T007 连续七个运行日出现下偏标记：先补什么？",
+  "industry": "新能源",
+  "family": "industrial",
+  "tier": "complete",
+  "dataset_path": "dataset/16-wind-underperformance",
+  "route": "/cases/16/work",
+  "runtime_mode": "deterministic_offline",
+  "productization": {
+    "metrics": [
+      "下偏标记占比",
+      "有效风速覆盖",
+      "平均有功功率"
+    ],
+    "decision_fields": [
+      "underperformance_share",
+      "valid_wind_records",
+      "mean_active_power"
+    ],
+    "selection_changes_decision": true,
+    "business_state_changes_on_server": true
+  }
+}

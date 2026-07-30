@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "status": "completed",
+  "mode": "offline",
+  "created_at": "2026-07-29T09:54:48.658153Z",
+  "final_state": "waiting_human",
+  "checks": [
+    {
+      "id": "ordinary-rag-stops-incomplete",
+      "passed": true
+    },
+    {
+      "id": "agentic-rag-expands-source",
+      "passed": true
+    },
+    {
+      "id": "mcp-initialized-and-called",
+      "passed": true
+    },
+    {
+      "id": "a2a-tasks-completed",
+      "passed": true
+    },
+    {
+      "id": "multi-agent-conflict-resolved",
+      "passed": true
+    },
+    {
+      "id": "no-automatic-control",
+      "passed": true
+    },
+    {
+      "id": "provider-secret-redacted",
+      "passed": true
+    },
+    {
+      "id": "provider-result-recorded",
+      "passed": true
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "ordinary-rag.json",
+      "sha256": "ac85e21f19a9dd0d3e32782410eebf42121dd20126a5a474f2a5b0e7faa3759a"
+    },
+    {
+      "path": "agentic-rag.json",
+      "sha256": "058436a13f5f2d1766bfaaf6c609799a0964438b948d66a18ea841411bb34638"
+    },
+    {
+      "path": "mcp-transcript.json",
+      "sha256": "83c39e1f701f6ca7f07ef94850f5f0d122d6de5e1695c1f16b5a0313c2980482"
+    },
+    {
+      "path": "a2a-tasks.json",
+      "sha256": "949d4cad2b0c1a4a79e119cf4d4052977bb740b7b4ac409517ad4e86675161b4"
+    },
+    {
+      "path": "multi-agent-review.json",
+      "sha256": "a7e7a969f676da21639cfb02f0aba31bc90393e8a15d12e8e924a5fb694c6380"
+    },
+    {
+      "path": "final-report.json",
+      "sha256": "03fdaaf41b5f65537e9e16951ae4c64cf1b943249b7f3fcc81032444d10d487c"
+    },
+    {
+      "path": "provider-receipt.json",
+      "sha256": "a5b611390d31422dc117f4e047f308c40f27f071a6e37998ae7de487d850a796"
+    }
+  ]
+}
