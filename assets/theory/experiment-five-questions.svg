@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="760" viewBox="0 0 1600 760" role="img" aria-labelledby="title desc">
+  <title id="title">从总体到实验结论的五个问题</title>
+  <desc id="desc">依次明确总体、样本、分组、指标和结论范围，避免把历史相关性当成优惠券增量效果。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFDF7"/>
+      <stop offset="1" stop-color="#EFF6FF"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#0F172A" flood-opacity="0.09"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="760" rx="36" fill="url(#bg)"/>
+  <text x="90" y="92" fill="#0F172A" font-family="Microsoft YaHei, Noto Sans SC, sans-serif" font-size="43" font-weight="700">“8 元券有没有用”要拆成五个问题</text>
+  <text x="90" y="143" fill="#64748B" font-family="Microsoft YaHei, Noto Sans SC, sans-serif" font-size="24">漏掉任何一问，最后的增量数字都可能没有意义。</text>
+
+  <g font-family="Microsoft YaHei, Noto Sans SC, sans-serif" filter="url(#shadow)">
+    <g transform="translate(80 220)">
+      <circle cx="140" cy="140" r="132" fill="#FFFFFF" stroke="#BFDBFE" stroke-width="3"/>
+      <circle cx="140" cy="48" r="30" fill="#2563EB"/>
+      <text x="140" y="58" text-anchor="middle" fill="#FFFFFF" font-size="26" font-weight="700">1</text>
+      <text x="140" y="122" text-anchor="middle" fill="#1D4ED8" font-size="20" font-weight="700">总体是谁</text>
+      <text x="140" y="162" text-anchor="middle" fill="#0F172A" font-size="23" font-weight="700">这次想影响</text>
+      <text x="140" y="196" text-anchor="middle" fill="#0F172A" font-size="23" font-weight="700">哪一群会员</text>
+    </g>
+    <g transform="translate(390 220)">
+      <circle cx="140" cy="140" r="132" fill="#FFFFFF" stroke="#C4B5FD" stroke-width="3"/>
+      <circle cx="140" cy="48" r="30" fill="#7C3AED"/>
+      <text x="140" y="58" text-anchor="middle" fill="#FFFFFF" font-size="26" font-weight="700">2</text>
+      <text x="140" y="122" text-anchor="middle" fill="#6D28D9" font-size="20" font-weight="700">样本怎么来</text>
+      <text x="140" y="162" text-anchor="middle" fill="#0F172A" font-size="23" font-weight="700">谁有机会</text>
+      <text x="140" y="196" text-anchor="middle" fill="#0F172A" font-size="23" font-weight="700">进入试投</text>
+    </g>
+    <g transform="translate(700 220)">
+      <circle cx="140" cy="140" r="132" fill="#FFFFFF" stroke="#99F6E4" stroke-width="3"/>
+      <circle cx="140" cy="48" r="30" fill="#0D9488"/>
+      <text x="140" y="58" text-anchor="middle" fill="#FFFFFF" font-size="26" font-weight="700">3</text>
+      <text x="140" y="122" text-anchor="middle" fill="#0F766E" font-size="20" font-weight="700">怎样分组</text>
+      <text x="140" y="162" text-anchor="middle" fill="#0F172A" font-size="23" font-weight="700">随机、稳定</text>
+      <text x="140" y="196" text-anchor="middle" fill="#0F172A" font-size="23" font-weight="700">互不重叠</text>
+    </g>
+    <g transform="translate(1010 220)">
+      <circle cx="140" cy="140" r="132" fill="#FFFFFF" stroke="#FDE68A" stroke-width="3"/>
+      <circle cx="140" cy="48" r="30" fill="#D97706"/>
+      <text x="140" y="58" text-anchor="middle" fill="#FFFFFF" font-size="26" font-weight="700">4</text>
+      <text x="140" y="122" text-anchor="middle" fill="#B45309" font-size="20" font-weight="700">量什么结果</text>
+      <text x="140" y="162" text-anchor="middle" fill="#0F172A" font-size="23" font-weight="700">购买、毛利</text>
+      <text x="140" y="196" text-anchor="middle" fill="#0F172A" font-size="23" font-weight="700">退货与投诉</text>
+    </g>
+    <g transform="translate(1320 220)">
+      <circle cx="140" cy="140" r="132" fill="#FFFFFF" stroke="#FECACA" stroke-width="3"/>
+      <circle cx="140" cy="48" r="30" fill="#DC2626"/>
+      <text x="140" y="58" text-anchor="middle" fill="#FFFFFF" font-size="26" font-weight="700">5</text>
+      <text x="140" y="122" text-anchor="middle" fill="#B91C1C" font-size="20" font-weight="700">能说到哪</text>
+      <text x="140" y="162" text-anchor="middle" fill="#0F172A" font-size="23" font-weight="700">这批人、这次券</text>
+      <text x="140" y="196" text-anchor="middle" fill="#0F172A" font-size="23" font-weight="700">这个观察窗</text>
+    </g>
+  </g>
+
+  <path d="M220 520 C400 640 1200 640 1460 520" fill="none" stroke="#CBD5E1" stroke-width="3" stroke-dasharray="9 10"/>
+  <rect x="280" y="590" width="1040" height="80" rx="40" fill="#0F172A"/>
+  <text x="800" y="640" text-anchor="middle" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, sans-serif" font-size="25" font-weight="600">历史行为能帮你选人，只有投放后的可比结果才能回答增量。</text>
+</svg>

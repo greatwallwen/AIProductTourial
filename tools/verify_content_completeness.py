@@ -12,13 +12,31 @@ REQUIRED_TERMS = {
     "01-逻辑证据与AI基础.md": (
         "命题",
         "前提",
+        "观察",
+        "推断",
+        "动作",
+        "qwen-plus",
+    ),
+    "CH02-推理链.md": (
+        "与",
+        "或",
+        "非",
+        "蕴含",
+        "等价",
+        "三段论",
         "反例",
         "证伪",
         "演绎",
+    ),
+    "CH03-从样本到结论.md": (
         "归纳",
         "抽样",
         "统计",
+        "相关",
+        "回归",
         "因果",
+        "随机",
+        "实验",
     ),
     "03-Agent与Skill工程.md": (
         "普通工作流",
@@ -57,9 +75,17 @@ REQUIRED_TERMS = {
 }
 
 THEORY_IMAGES = {
-    "01-逻辑证据与AI基础.md": "../assets/theory/ai-stack.png",
-    "04-Grill-Harness-Loop.md": "../assets/theory/loop.png",
-    "05-产品与系统架构.md": "../assets/theory/architecture.png",
+    "01-逻辑证据与AI基础.md": (
+        "../assets/theory/logic-three-step.svg",
+        "../assets/theory/logic-five-layer.svg",
+    ),
+    "CH02-推理链.md": (
+        "../assets/theory/ai-stack.png",
+        "../assets/theory/logic-chain-review.svg",
+    ),
+    "CH03-从样本到结论.md": ("../assets/theory/experiment-five-questions.svg",),
+    "04-Grill-Harness-Loop.md": ("../assets/theory/loop.png",),
+    "05-产品与系统架构.md": ("../assets/theory/architecture.png",),
 }
 
 FORBIDDEN = (
@@ -85,13 +111,14 @@ def main() -> int:
             if term not in text:
                 errors.append(f"{filename} missing required concept: {term}")
 
-    for filename, target in THEORY_IMAGES.items():
+    for filename, targets in THEORY_IMAGES.items():
         text = chapter_text.get(filename, "")
-        if target not in text:
-            errors.append(f"{filename} missing theory image: {target}")
-        asset = (KNOWLEDGE_BASE / target).resolve()
-        if not asset.is_file():
-            errors.append(f"theory image does not exist: {target}")
+        for target in targets:
+            if target not in text:
+                errors.append(f"{filename} missing theory image: {target}")
+            asset = (KNOWLEDGE_BASE / target).resolve()
+            if not asset.is_file():
+                errors.append(f"theory image does not exist: {target}")
 
     combined = "\n".join(chapter_text.values())
     for phrase in FORBIDDEN:
@@ -111,7 +138,7 @@ def main() -> int:
     print(
         "CONTENT COMPLETENESS PASSED "
         f"chapters={len(REQUIRED_TERMS)} concepts={sum(map(len, REQUIRED_TERMS.values()))} "
-        f"theory_images={len(THEORY_IMAGES)}"
+        f"theory_images={sum(map(len, THEORY_IMAGES.values()))}"
     )
     return 0
 

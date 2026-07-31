@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="720" viewBox="0 0 1600 720" role="img" aria-labelledby="title desc">
+  <title id="title">从想法到可运行结果的逻辑三步</title>
+  <desc id="desc">先把想法写成可判断真假的命题，再建立条件和冲突关系，最后检查每一步能否回到材料或规则。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F8FAFF"/>
+      <stop offset="1" stop-color="#EEF4FF"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2563EB"/>
+      <stop offset="1" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="violet" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7C3AED"/>
+      <stop offset="1" stop-color="#A78BFA"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#059669"/>
+      <stop offset="1" stop-color="#34D399"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#1E3A8A" flood-opacity="0.10"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0 0 L12 6 L0 12 Z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="720" rx="36" fill="url(#bg)"/>
+  <circle cx="1450" cy="90" r="180" fill="#BFDBFE" opacity="0.22"/>
+  <circle cx="130" cy="640" r="220" fill="#DDD6FE" opacity="0.20"/>
+
+  <text x="100" y="105" fill="#0F172A" font-family="Microsoft YaHei, Noto Sans SC, sans-serif" font-size="44" font-weight="700">想法不直接进入系统</text>
+  <text x="100" y="154" fill="#64748B" font-family="Microsoft YaHei, Noto Sans SC, sans-serif" font-size="24">先变成能检查的句子，再变成能执行的关系。</text>
+
+  <path d="M510 346 H580" stroke="#94A3B8" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <path d="M1018 346 H1088" stroke="#94A3B8" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="90" y="220" width="420" height="300" rx="28" fill="#FFFFFF" stroke="#DBEAFE" stroke-width="2"/>
+    <circle cx="150" cy="280" r="34" fill="url(#blue)"/>
+    <text x="150" y="292" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="30" font-weight="700">1</text>
+    <text x="205" y="291" fill="#0F172A" font-family="Microsoft YaHei, Noto Sans SC, sans-serif" font-size="31" font-weight="700">写成命题</text>
+    <text x="130" y="361" fill="#334155" font-family="Microsoft YaHei, Noto Sans SC, sans-serif" font-size="23">谁 · 什么对象 · 哪个时间</text>
+    <text x="130" y="407" fill="#334155" font-family="Microsoft YaHei, Noto Sans SC, sans-serif" font-size="23">能不能判断真或假</text>
+    <rect x="130" y="446" width="330" height="44" rx="22" fill="#EFF6FF"/>
+    <text x="295" y="476" text-anchor="middle" fill="#1D4ED8" font-family="Microsoft YaHei, Noto Sans SC, sans-serif" font-size="19" font-weight="600">模糊想法 → 可核对陈述</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="580" y="220" width="438" height="300" rx="28" fill="#FFFFFF" stroke="#EDE9FE" stroke-width="2"/>
+    <circle cx="640" cy="280" r="34" fill="url(#violet)"/>
+    <text x="640" y="292" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="30" font-weight="700">2</text>
+    <text x="695" y="291" fill="#0F172A" font-family="Microsoft YaHei, Noto Sans SC, sans-serif" font-size="31" font-weight="700">建立关系</text>
+    <text x="620" y="361" fill="#334155" font-family="Microsoft YaHei, Noto Sans SC, sans-serif" font-size="23">条件 · 并列 · 取舍 · 冲突</text>
+    <text x="620" y="407" fill="#334155" font-family="Microsoft YaHei, Noto Sans SC, sans-serif" font-size="23">哪些前提被悄悄省略</text>
+    <rect x="620" y="446" width="358" height="44" rx="22" fill="#F5F3FF"/>
+    <text x="799" y="476" text-anchor="middle" fill="#6D28D9" font-family="Microsoft YaHei, Noto Sans SC, sans-serif" font-size="19" font-weight="600">孤立句子 → 可执行规则</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="1088" y="220" width="422" height="300" rx="28" fill="#FFFFFF" stroke="#D1FAE5" stroke-width="2"/>
+    <circle cx="1148" cy="280" r="34" fill="url(#green)"/>
+    <text x="1148" y="292" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="30" font-weight="700">3</text>
+    <text x="1203" y="291" fill="#0F172A" font-family="Microsoft YaHei, Noto Sans SC, sans-serif" font-size="31" font-weight="700">检查链条</text>
+    <text x="1128" y="361" fill="#334155" font-family="Microsoft YaHei, Noto Sans SC, sans-serif" font-size="23">每一步回到材料或规则</text>
+    <text x="1128" y="407" fill="#334155" font-family="Microsoft YaHei, Noto Sans SC, sans-serif" font-size="23">走不通时停在断点</text>
+    <rect x="1128" y="446" width="342" height="44" rx="22" fill="#ECFDF5"/>
+    <text x="1299" y="476" text-anchor="middle" fill="#047857" font-family="Microsoft YaHei, Noto Sans SC, sans-serif" font-size="19" font-weight="600">规则草稿 → 可运行结果</text>
+  </g>
+
+  <rect x="250" y="586" width="1100" height="72" rx="36" fill="#0F172A"/>
+  <text x="800" y="632" text-anchor="middle" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, sans-serif" font-size="25" font-weight="600">AI 可以帮你拆句和找缺口；业务事实、规则与最终动作仍要有人负责。</text>
+</svg>

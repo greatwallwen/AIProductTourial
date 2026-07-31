@@ -1,0 +1,113 @@
+{
+  "schemaVersion": "1.0",
+  "scope": "Course_AIProduct 逻辑基础三章",
+  "visualPolicy": "旧图先审计；内容、清晰度和来源都合格才复用，否则保留内容依据并重绘。",
+  "visuals": [
+    {
+      "id": "LOGIC-V00",
+      "path": "assets/theory/ai-stack.png",
+      "kind": "existing-course-reuse",
+      "basis": [
+        "Course_AIProduct 既有理论图：业务事实、逻辑关系、数据规则、模型工具与人工决定"
+      ],
+      "decision": "分层准确、中文清晰，与新第二章主线一致，继续复用。"
+    },
+    {
+      "id": "LOGIC-V01",
+      "path": "assets/theory/logic-three-step.svg",
+      "kind": "editable-redraw",
+      "basis": [
+        "大模型与逻辑方法/第一章 导论与路径.md：第01讲的命题、关系、链条三步",
+        "大模型与逻辑方法/项目与逻辑关联/assets/screenshots/fig-three-steps.png"
+      ],
+      "decision": "保留原有知识关系，重做为适合 16:9 课程正文的中文矢量图。"
+    },
+    {
+      "id": "LOGIC-V02",
+      "path": "assets/theory/logic-proposition-table.png",
+      "kind": "exact-local-reuse",
+      "basis": [
+        "大模型与逻辑方法/项目与逻辑关联/assets/screenshots/tbl-propositions.png"
+      ],
+      "sha256": "9d387fe6f5935d0d3749476f67da75ffce479dfde37f3b761f4e41d55d02aedd",
+      "decision": "表格与电信投诉案例直接相关，原图可读，原样复用。"
+    },
+    {
+      "id": "LOGIC-V03",
+      "path": "assets/theory/logic-five-layer.svg",
+      "kind": "editable-course-original",
+      "basis": [
+        "大模型与逻辑方法/第二章 拆分基本单元.md：事实、观点与判断",
+        "大模型与逻辑方法/第六章 逻辑的应用.md：逻辑边界",
+        "md/cases/B018-boiler-temperature-review.md：锅炉温度偏离场景"
+      ],
+      "decision": "用现有工业案例把观察、命题、前提、推断和动作画成一张可编辑图。"
+    },
+    {
+      "id": "LOGIC-V04",
+      "path": "assets/theory/logic-chain-review.svg",
+      "kind": "editable-redraw",
+      "basis": [
+        "大模型与逻辑方法/第四章 推理逻辑链条.md：一致性、断链与三段论",
+        "大模型与逻辑方法/项目与逻辑关联/assets/screenshots/fig-broken-chain.png",
+        "md/cases/B010-telecom-complaint-orchestration.md"
+      ],
+      "decision": "保留旧图的断链思想，改写成事实、规则、动作三段式业务推理链。"
+    },
+    {
+      "id": "LOGIC-V05",
+      "path": "assets/theory/experiment-five-questions.svg",
+      "kind": "editable-course-original",
+      "basis": [
+        "大模型与逻辑方法/第八章 数据的收集.md：总体、抽样与实验",
+        "大模型与逻辑方法/第九章 数据的对比与处理.md：比较、相关与结论范围",
+        "md/cases/B002-member-value-experiment.md"
+      ],
+      "decision": "用会员发券案例把抽样与实验设计压缩成五个可操作问题。"
+    }
+  ],
+  "theorySources": [
+    {
+      "id": "TRANSFORMER-2017",
+      "title": "Attention Is All You Need",
+      "url": "https://arxiv.org/abs/1706.03762",
+      "publisher": "Vaswani et al.",
+      "use": "解释 Transformer 通过注意力建模上下文关系；不把论文图直接搬入教程。"
+    },
+    {
+      "id": "NIST-AI-600-1",
+      "title": "Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile",
+      "url": "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf",
+      "publisher": "National Institute of Standards and Technology",
+      "use": "校正生成式模型可能产生流畅但错误内容的表述。"
+    },
+    {
+      "id": "MIIT-2025-Q2",
+      "title": "工业和信息化部关于2025年第二季度电信服务质量的通告",
+      "url": "https://www.miit.gov.cn/zwgk/zcwj/wjfb/tg/art/2025/art_e279d1f22f6a4f7d9ced09a8e6ed289d.html",
+      "publisher": "中华人民共和国工业和信息化部",
+      "use": "锚定电信投诉课程数据的类别比例，不把公开汇总解释为个人投诉事实。"
+    },
+    {
+      "id": "NBS-SAMPLING-2025",
+      "title": "什么是抽样调查",
+      "url": "https://www.stats.gov.cn/zs/tjws/tjdc/202301/t20230101_1903786.html",
+      "publisher": "中华人民共和国国家统计局",
+      "use": "校正总体、抽样框、概率抽样、统计推断及抽样与非抽样误差的讲法。"
+    },
+    {
+      "id": "NIST-DOE-5.1.1",
+      "title": "What is experimental design?",
+      "url": "https://itl.nist.gov/div898/handbook/pri/section1/pri11.htm",
+      "publisher": "National Institute of Standards and Technology",
+      "use": "说明实验应预先确定目标、因素、响应变量和分析计划。"
+    },
+    {
+      "id": "NIST-DOE-5.3.3.1",
+      "title": "Completely randomized designs",
+      "url": "https://www.itl.nist.gov/div898/handbook/pri/section3/pri331.htm",
+      "publisher": "National Institute of Standards and Technology",
+      "use": "说明处理水平随机分配给实验单位的基本含义。"
+    }
+  ]
+}

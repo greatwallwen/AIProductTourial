@@ -125,6 +125,8 @@ def main() -> int:
     expected_top_level = [
         "md/00-课程地图.md",
         "md/01-逻辑证据与AI基础.md",
+        "md/CH02-推理链.md",
+        "md/CH03-从样本到结论.md",
         "md/02-Prompt工程.md",
         "md/03-Agent与Skill工程.md",
         "md/04-Grill-Harness-Loop.md",
@@ -176,9 +178,9 @@ def main() -> int:
             if item.get("route"):
                 errors.append(f"{lab_id} must not require a web route")
 
-    unit_sections = section_map(text, r"^## (第[一二三四五六]步)[^\n]*$")
-    skill_sections = section_map(text, r"^## (S\d{3})[^\n]*$")
-    loop_sections = section_map(text, r"^## (L\d{3})[^\n]*$")
+    unit_sections = section_map(text, r"^## 4\.\d+ (第[一二三四五六]步)[^\n]*$")
+    skill_sections = section_map(text, r"^## 5\.\d+ (S\d{3})[^\n]*$")
+    loop_sections = section_map(text, r"^## 6\.\d+ (L\d{3})[^\n]*$")
     if list(unit_sections) != EXPECTED_PROMPT_STEPS:
         errors.append(f"Markdown Prompt sequence mismatch: {list(unit_sections)}")
     if list(skill_sections) != EXPECTED_SKILLS:
@@ -187,7 +189,7 @@ def main() -> int:
         errors.append(f"Markdown Loop sequence mismatch: {list(loop_sections)}")
     for unit_id in EXPECTED_PROMPT_STEPS:
         section = unit_sections.get(unit_id, "")
-        experiments = re.findall(r"^### 实验 ([123])：", section, flags=re.MULTILINE)
+        experiments = re.findall(r"^### 4\.\d+\.\d+ 实验 ([123])：", section, flags=re.MULTILINE)
         if experiments != ["1", "2", "3"]:
             errors.append(f"{unit_id} experiment sequence mismatch: {experiments}")
         if len(re.findall(r"^(?:```|~~~)text\s*$", section, flags=re.MULTILINE)) < 3:
@@ -203,7 +205,7 @@ def main() -> int:
         if "code/skills/" not in section:
             errors.append(f"{lab_id} missing its Skill source path")
 
-    prompt_skill_text = text[text.index("# 第一部分"):text.index("# 第三部分")]
+    prompt_skill_text = text[text.index("# 第4章"):text.index("# 第6章")]
     if "```powershell" in prompt_skill_text.lower():
         errors.append("Prompt and Agent+Skills chapters must not contain PowerShell runbooks")
 

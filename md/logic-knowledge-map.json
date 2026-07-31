@@ -1,0 +1,101 @@
+{
+  "schemaVersion": "1.0",
+  "source": "大模型与逻辑方法",
+  "targetArchitecture": [
+    {
+      "chapterId": "CH01",
+      "display": "第1章 从想法到可以判断的命题",
+      "sections": [
+        {"id": "1.1", "title": "先把想法拆开"},
+        {"id": "1.2", "title": "事实、观点与命题"},
+        {"id": "1.3", "title": "条件、范围与判断边界"},
+        {"id": "1.4", "title": "模型回答也要逐句验明身份"},
+        {"id": "1.5", "title": "综合案例：一条投诉需求怎样变成系统规则"}
+      ]
+    },
+    {
+      "chapterId": "CH02",
+      "display": "第2章 把命题连成可检查的推理链",
+      "sections": [
+        {"id": "2.1", "title": "与、或、非、蕴含和等价"},
+        {"id": "2.2", "title": "一致性、矛盾和逻辑定律"},
+        {"id": "2.3", "title": "三段论、谓词与有效推理"},
+        {"id": "2.4", "title": "偏差与常见逻辑谬误"},
+        {"id": "2.5", "title": "反例、证伪与科学边界"},
+        {"id": "2.6", "title": "综合案例：一次投诉怎样穿过分派、复核和升级"}
+      ]
+    },
+    {
+      "chapterId": "CH03",
+      "display": "第3章 从样本走向可验证的结论",
+      "sections": [
+        {"id": "3.1", "title": "归纳、数据与变量"},
+        {"id": "3.2", "title": "分布、图形和相对位置"},
+        {"id": "3.3", "title": "调查、样本与幸存者偏差"},
+        {"id": "3.4", "title": "实验、随机分配与混杂因素"},
+        {"id": "3.5", "title": "比较、相关、回归与因果"},
+        {"id": "3.6", "title": "从局部结论回到真实世界"},
+        {"id": "3.7", "title": "综合案例：8元券到底带来了多少增量"}
+      ]
+    }
+  ],
+  "lessons": [
+    {"sourceId":"L01","sourceTitle":"路径：使用逻辑讲道理，需要哪三步？","sourceFile":"第一章 导论与路径.md","targetIds":["1.1.1"],"disposition":"retain","use":"用想法、命题、关系、链条建立全课起点。"},
+    {"sourceId":"L02","sourceTitle":"命题：如何清晰地表达我们的思想？","sourceFile":"第二章 拆分基本单元.md","targetIds":["1.2.1","1.2.2"],"disposition":"retain","use":"展开命题、真假、同一律和事实观点区分。"},
+    {"sourceId":"L03","sourceTitle":"应用：讲道理的双方为什么会吵架？","sourceFile":"第二章 拆分基本单元.md","targetIds":["1.1.2","1.2.3"],"disposition":"retain","use":"作为生活故事，说明指代、范围和前提没有对齐。"},
+    {"sourceId":"L04","sourceTitle":"与、或、非关系：如何建立语句之间的联系？","sourceFile":"第三章 明确逻辑关系.md","targetIds":["2.1.1","2.1.2"],"disposition":"retain","use":"进入组合条件、真值表和业务规则。"},
+    {"sourceId":"L05","sourceTitle":"蕴含、等价关系：从正确的前提出发有多重要？","sourceFile":"第三章 明确逻辑关系.md","targetIds":["2.1.3","2.1.4"],"disposition":"retain","use":"讲清隐藏前提、逆否和条件规则。"},
+    {"sourceId":"L06","sourceTitle":"对齐：如何保持逻辑链条的一致性？","sourceFile":"第四章 推理逻辑链条.md","targetIds":["2.2.1"],"disposition":"retain","use":"连接需求、状态和同一业务上下文。"},
+    {"sourceId":"L07","sourceTitle":"验证：如何判断两个命题的逻辑是否一致？","sourceFile":"第四章 推理逻辑链条.md","targetIds":["2.2.2"],"disposition":"retain","use":"用真假条件检查链条。"},
+    {"sourceId":"L08","sourceTitle":"应用：如何发现对方的自相矛盾","sourceFile":"第四章 推理逻辑链条.md","targetIds":["2.2.3"],"disposition":"retain","use":"把生活争论转为需求冲突检查。"},
+    {"sourceId":"L09","sourceTitle":"逻辑定律：如何简化复杂的逻辑关系？","sourceFile":"第四章 推理逻辑链条.md","targetIds":["2.2.4"],"disposition":"retain","use":"保留德摩根律等能直接改善规则表达的部分。"},
+    {"sourceId":"L10","sourceTitle":"简单的推理：如何正确使用三段论？","sourceFile":"第四章 推理逻辑链条.md","targetIds":["2.3.1"],"disposition":"retain","use":"检查规则、当前事实与结论是否真的相连。"},
+    {"sourceId":"L11","sourceTitle":"推理的条件：已知条件越多越有利吗？","sourceFile":"第四章 推理逻辑链条.md","targetIds":["2.3.2"],"disposition":"retain","use":"说明更多上下文未必更可靠。"},
+    {"sourceId":"L12","sourceTitle":"可能性：如何从已有条件中分析一件事情是否会发生？","sourceFile":"第四章 推理逻辑链条.md","targetIds":["2.3.3"],"disposition":"retain","use":"区分可能、必然和缺少条件。"},
+    {"sourceId":"L13","sourceTitle":"分解命题：怎样用谓词逻辑分析复杂关系？","sourceFile":"第五章 推理的进阶.md","targetIds":["2.3.4"],"disposition":"retain","use":"把角色、对象、动作和量词落到业务关系。"},
+    {"sourceId":"L14","sourceTitle":"避免无效推理：哪些三段论是有效的？","sourceFile":"第五章 推理的进阶.md","targetIds":["2.3.5"],"disposition":"merge","use":"与L10合并，保留常见无效结构及反例。"},
+    {"sourceId":"L15","sourceTitle":"检验：怎样判断推理过程是否有效？","sourceFile":"第五章 推理的进阶.md","targetIds":["2.3.6"],"disposition":"retain","use":"形成可重复的推理检查清单。"},
+    {"sourceId":"L16","sourceTitle":"数学归纳法：为什么出发点如此重要？","sourceFile":"第五章 推理的进阶.md","targetIds":["2.3.7"],"disposition":"condense","use":"压缩证明细节，保留起点与递推条件不能偷换。"},
+    {"sourceId":"L17","sourceTitle":"边界：为什么逻辑推理不能解决所有问题？","sourceFile":"第六章 逻辑的应用.md","targetIds":["1.3.3","2.5.1"],"disposition":"retain","use":"建立材料、能力和责任边界。"},
+    {"sourceId":"L18","sourceTitle":"科学精神：为什么科学需要证伪？","sourceFile":"第六章 逻辑的应用.md","targetIds":["2.5.2"],"disposition":"retain","use":"把反例变成模型和产品的检查机制。"},
+    {"sourceId":"L19","sourceTitle":"如何理解必然和不可能？","sourceFile":"第六章 逻辑的应用.md","targetIds":["1.3.2","2.3.3"],"disposition":"merge","use":"与条件和可能性合并，校正绝对化措辞。"},
+    {"sourceId":"L20","sourceTitle":"偏差：为什么道理都懂，却还是过不好一生？","sourceFile":"第六章 逻辑的应用.md","targetIds":["2.4.1"],"disposition":"retain","use":"用认知偏差引出人和模型共同复核。"},
+    {"sourceId":"L21","sourceTitle":"常见的逻辑谬误（1）：上了补习班，就一定能考好吗？","sourceFile":"第六章 逻辑的应用.md","targetIds":["2.4.2"],"disposition":"retain","use":"讲相关、前后发生与因果误判。"},
+    {"sourceId":"L22","sourceTitle":"常见的逻辑谬误（2）：为什么做到全对很重要？","sourceFile":"第六章 逻辑的应用.md","targetIds":["2.4.3"],"disposition":"retain","use":"讲有效推理中一个条件出错就会破坏结论。"},
+    {"sourceId":"L23","sourceTitle":"常见的逻辑谬误（3）：为什么要避免感情用事？","sourceFile":"第六章 逻辑的应用.md","targetIds":["2.4.4"],"disposition":"retain","use":"区分情绪表达与事实判断。"},
+    {"sourceId":"L24","sourceTitle":"常见的逻辑谬误（4）：为什么权威不总是可靠的？","sourceFile":"第六章 逻辑的应用.md","targetIds":["2.4.5"],"disposition":"retain","use":"检查来源、专业范围和时效。"},
+    {"sourceId":"L25","sourceTitle":"常见的逻辑谬误（5）：如何辨别互联网上的信息是否靠谱？","sourceFile":"第六章 逻辑的应用.md","targetIds":["2.4.6"],"disposition":"retain","use":"连接检索、来源核验和RAG引用。"},
+    {"sourceId":"L26","sourceTitle":"常见的逻辑谬误（6）：骗子是如何胡说八道的？","sourceFile":"第六章 逻辑的应用.md","targetIds":["2.4.7"],"disposition":"retain","use":"识别概念偷换、虚假两难和无关结论。"},
+    {"sourceId":"L27","sourceTitle":"概述：如何正确使用归纳的方法？","sourceFile":"第七章 统计的方法.md","targetIds":["3.1.1"],"disposition":"retain","use":"从演绎过渡到样本中的模式。"},
+    {"sourceId":"L28","sourceTitle":"基础：数据在统计中的作用有多大？","sourceFile":"第七章 统计的方法.md","targetIds":["3.1.2"],"disposition":"retain","use":"区分数据、信息、对象和变量。"},
+    {"sourceId":"L29","sourceTitle":"分析：如何通过分析数据得到信息？","sourceFile":"第七章 统计的方法.md","targetIds":["3.1.3","3.2.1"],"disposition":"retain","use":"从一元变量到多变量分析。"},
+    {"sourceId":"L30","sourceTitle":"图形工具：如何对数据产生直观感受？","sourceFile":"第七章 统计的方法.md","targetIds":["3.2.2"],"disposition":"retain","use":"用分布图、箱线图和散点图替代孤立数字。"},
+    {"sourceId":"L31","sourceTitle":"应用：如何用数据指导生活？","sourceFile":"第七章 统计的方法.md","targetIds":["3.2.3"],"disposition":"retain","use":"保留裁判评分等生活案例并接入AI分析。"},
+    {"sourceId":"L32","sourceTitle":"调查（1）：如何通过调查收集数据？","sourceFile":"第八章 数据的收集.md","targetIds":["3.3.1"],"disposition":"retain","use":"明确总体、问题、测量和收集方式。"},
+    {"sourceId":"L33","sourceTitle":"调查（2）：如何抽取有代表性的样本？","sourceFile":"第八章 数据的收集.md","targetIds":["3.3.2"],"disposition":"retain","use":"讲抽样框、代表性和随机抽样。"},
+    {"sourceId":"L34","sourceTitle":"调查（3）：选取样本中有哪些需要防范的错误？","sourceFile":"第八章 数据的收集.md","targetIds":["3.3.3"],"disposition":"retain","use":"展开选择偏差、无回答和幸存者偏差。"},
+    {"sourceId":"L35","sourceTitle":"实验：通过实验收集数据有什么特点？","sourceFile":"第八章 数据的收集.md","targetIds":["3.4.1"],"disposition":"retain","use":"区分观察性研究和可控实验。"},
+    {"sourceId":"L36","sourceTitle":"实验设计（1）：设计实验有哪些步骤？","sourceFile":"第八章 数据的收集.md","targetIds":["3.4.2"],"disposition":"retain","use":"固定目标、单位、变量、分组和指标。"},
+    {"sourceId":"L37","sourceTitle":"实验设计（2）：好的实验设计有哪些标准？","sourceFile":"第八章 数据的收集.md","targetIds":["3.4.3"],"disposition":"retain","use":"保留简单、可重复、可控和随机原则。"},
+    {"sourceId":"L38","sourceTitle":"双盲实验：如何排除主观因素的影响？","sourceFile":"第八章 数据的收集.md","targetIds":["3.4.4"],"disposition":"retain","use":"用于讨论评审者偏差和模型评测泄漏。"},
+    {"sourceId":"L39","sourceTitle":"数据对比：如何了解我们所处的位置？","sourceFile":"第九章 数据的对比与处理.md","targetIds":["3.2.4"],"disposition":"retain","use":"强调参照系、分位数和相对位置。"},
+    {"sourceId":"L40","sourceTitle":"两组数据的比较：如何得出相对准确的结论？","sourceFile":"第九章 数据的对比与处理.md","targetIds":["3.5.1"],"disposition":"retain","use":"建立同口径、同窗口和分层比较。"},
+    {"sourceId":"L41","sourceTitle":"数据相关性：如何判断事件之间是否有关联？","sourceFile":"第九章 数据的对比与处理.md","targetIds":["3.5.2"],"disposition":"retain","use":"区分决定、相关和无关。"},
+    {"sourceId":"L42","sourceTitle":"线性回归：如何通过已知预测未知？","sourceFile":"第九章 数据的对比与处理.md","targetIds":["3.5.3"],"disposition":"retain","use":"讲预测用途、拟合线和残差。"},
+    {"sourceId":"L43","sourceTitle":"应用：为什么有时线性回归模型会失灵？","sourceFile":"第九章 数据的对比与处理.md","targetIds":["3.5.4"],"disposition":"retain","use":"检查弱相关、非线性、外推和分布变化。"},
+    {"sourceId":"L44","sourceTitle":"从局部到整体：实验结论为什么能用于真实世界？","sourceFile":"第九章 数据的对比与处理.md","targetIds":["3.6.1"],"disposition":"retain","use":"讲样本到总体的适用条件。"},
+    {"sourceId":"L45","sourceTitle":"鸿沟：统计结果和真实世界的差距在哪？","sourceFile":"第九章 数据的对比与处理.md","targetIds":["3.6.2"],"disposition":"retain","use":"区分统计量、参数、偏差和变异。"},
+    {"sourceId":"L46","sourceTitle":"改变：为什么规律会在现实世界的运用中失灵？","sourceFile":"第九章 数据的对比与处理.md","targetIds":["3.6.3"],"disposition":"retain","use":"引出环境变化、反馈效应和模型漂移。"},
+    {"sourceId":"L47","sourceTitle":"量化：如何验证一个结论是否成立？","sourceFile":"第九章 数据的对比与处理.md","targetIds":["3.6.4"],"disposition":"retain","use":"保留假设检验的直觉和产品判断，减少公式堆叠。"},
+    {"sourceId":"L48","sourceTitle":"全集：如何对两个全集进行比较？","sourceFile":"第九章 数据的对比与处理.md","targetIds":["3.6.5"],"disposition":"retain","use":"讲可比性、全集定义和分层。"},
+    {"sourceId":"L49","sourceTitle":"实战演练：如何从统计中找到规律？","sourceFile":"第九章 数据的对比与处理.md","targetIds":["3.7.1"],"disposition":"retain","use":"并入会员优惠券综合案例的完整分析过程。"},
+    {"sourceId":"L50","sourceTitle":"用科学的方法来讨论，外星人是否存在？","sourceFile":"第十章 结语.md","targetIds":["2.5.3","3.6.6"],"disposition":"condense","use":"保留证据强度、过滤条件和不知道时怎样停下，压缩重复问答。"}
+  ],
+  "summary": {
+    "sourceLessons": 50,
+    "retained": 46,
+    "merged": 2,
+    "condensed": 2,
+    "omitted": 0
+  }
+}

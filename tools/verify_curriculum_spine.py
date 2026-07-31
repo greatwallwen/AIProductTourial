@@ -29,9 +29,9 @@ def main() -> int:
     markdown_base = output_path(course_structure).parent
     manifest = json.loads((ROOT / "course-manifest.json").read_text(encoding="utf-8"))
 
-    p_sections = sections(text, r"^## (第[一二三四五六]步)\b")
-    s_sections = sections(text, r"^## (S\d{3})\b")
-    l_sections = sections(text, r"^## (L\d{3})\b")
+    p_sections = sections(text, r"^## 4\.\d+ (第[一二三四五六]步)\b")
+    s_sections = sections(text, r"^## 5\.\d+ (S\d{3})\b")
+    l_sections = sections(text, r"^## 6\.\d+ (L\d{3})\b")
     b_sections = sections(text, r"^### 综合案例 (B\d{3})\b")
 
     expected = {
@@ -51,7 +51,7 @@ def main() -> int:
             errors.append(f"{track} headings mismatch: {actual[track]}")
 
     for unit_id, section in p_sections.items():
-        experiments = re.findall(r"^### 实验 ([123])：", section, flags=re.MULTILINE)
+        experiments = re.findall(r"^### 4\.\d+\.\d+ 实验 ([123])：", section, flags=re.MULTILINE)
         if experiments != ["1", "2", "3"]:
             errors.append(f"{unit_id} experiment sequence mismatch: {experiments}")
         if len(re.findall(r"^(?:```|~~~)text\s*$", section, flags=re.MULTILINE)) < 3:
@@ -108,7 +108,7 @@ def main() -> int:
         if phrase in text:
             errors.append(f"forbidden wording: {phrase}")
 
-    first_two_parts = text.split("# 第一部分", 1)[1].split("# 第三部分", 1)[0]
+    first_two_parts = text.split("# 第4章", 1)[1].split("# 第6章", 1)[0]
     if re.search(r"^(```|~~~)powershell\b", first_two_parts, flags=re.MULTILINE):
         errors.append("Prompt and Agent+Skills teaching still contains a PowerShell runbook")
     for command_fragment in ("python -B ", "npm run ", "pnpm ", "npx "):

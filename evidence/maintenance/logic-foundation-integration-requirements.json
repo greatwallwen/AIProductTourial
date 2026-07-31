@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "1.0",
+  "status": "frozen_for_planning",
+  "objective": "Integrate the 大模型与逻辑方法 lectures into the AI product course as a rigorous, story-led and instructor-ready knowledge foundation.",
+  "primaryDeliverable": "The canonical Markdown course modules and their deterministic complete-book output.",
+  "confirmedDecisions": [
+    {
+      "id": "foundation-spine",
+      "decision": "Reorganize the ten source chapters into three AI-facing foundation chapters: propositions and boundaries; reasoning chains and falsification; samples, experiments and causal claims."
+    },
+    {
+      "id": "anchor-cases",
+      "decision": "Use telecom complaints, member coupons and boiler temperature review as three progressive anchor cases; retain the other twenty-one business cases as industry extensions."
+    },
+    {
+      "id": "source-prose",
+      "decision": "Use most of the useful oral prose from all fifty lectures after de-duplication, fact checking and editing; extract concise points while retaining teachable narration as the body beneath each numbered knowledge node."
+    },
+    {
+      "id": "numbering",
+      "decision": "Apply one course-wide hierarchy of chapter, section and knowledge point with no fourth numbered level; keep stable internal IDs separate from display numbering."
+    },
+    {
+      "id": "visuals",
+      "decision": "Audit every legacy image. Retain useful, clear and attributable images; redraw logic diagrams when needed; retrieve authoritative or openly reusable real-world figures; use real AI inputs, outputs and runtime screenshots for AI evidence."
+    },
+    {
+      "id": "case-depth",
+      "decision": "Every major chapter ends with a comprehensive teaching case. Theory chapters use complete materials, prompts, results and analysis without requiring a new web app; the twenty-four industry cases remain the product-level runnable applications."
+    },
+    {
+      "id": "autonomous-confirmation",
+      "decision": "Resolve reversible editorial, source-selection and implementation details autonomously; ask only when a decision changes scope, safety, architecture or acceptance."
+    }
+  ],
+  "structure": [
+    "logic foundation: propositions, facts, opinions and boundaries",
+    "logic foundation: relations, reasoning chains, contradiction, counterexamples and falsification",
+    "logic foundation: induction, sampling, experiments, comparison, correlation, regression and causality",
+    "Prompt engineering",
+    "Agent plus Skills",
+    "Grill, Harness and Loop",
+    "product and system architecture",
+    "engineering and delivery",
+    "twenty-four runnable industry cases",
+    "course project"
+  ],
+  "writingRules": [
+    "Begin each major concept with a concrete life story or observable situation when the source supports one.",
+    "Move from story to principle, then to an AI example, and close each major chapter with a comprehensive case.",
+    "Do not transplant the fifty-lesson source order or preserve repeated course-host phrasing.",
+    "Do not add repetitive instructor instructions, delivery-process narration or evidence bureaucracy to the teaching body.",
+    "Do not create headings merely to hold one sentence; every numbered node must contain a coherent teachable unit.",
+    "Distinguish source facts, computed results, inferences and decisions without turning those distinctions into repetitive labels.",
+    "Use Chinese labels and explanations for diagrams that enter the main course."
+  ],
+  "visualRules": [
+    "A retained source image must have a clear instructional purpose, acceptable resolution and recoverable provenance.",
+    "An external figure must be traced to an authoritative or openly reusable source and recorded in the source ledger.",
+    "A redrawn diagram must preserve the supported concept and remain editable when practical.",
+    "Generated imagery may illustrate a story but may not stand in for a real chart, source document, model response or application screenshot."
+  ],
+  "acceptance": [
+    "The complete book follows the new numbered hierarchy without breaking existing case IDs, routes, datasets or screenshots.",
+    "All fifty source lectures are mapped to retained, merged or omitted content with a reason; most useful oral narration is incorporated rather than summarized away.",
+    "Each major chapter contains a story, a rigorous principle explanation, an AI example and a comprehensive teaching case.",
+    "The three anchor cases visibly deepen across the course without duplicating full applications.",
+    "Every retained or new non-runtime visual has a recorded source or redraw basis; AI results use current real artifacts.",
+    "The final Markdown passes composition, structure, source, link, style, dataset and case verification.",
+    "No PowerPoint expansion is on the critical path for this phase."
+  ]
+}

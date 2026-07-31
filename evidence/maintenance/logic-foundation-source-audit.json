@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "1.0",
+  "auditedAt": "2026-07-31T08:29:30+08:00",
+  "sourceRoot": "大模型与逻辑方法",
+  "inventory": {
+    "files": 119,
+    "markdownFiles": 11,
+    "markdownCharacters": 259957,
+    "markdownLines": 6808,
+    "numberedLessons": 50,
+    "images": 106,
+    "powerPointFiles": 1,
+    "archiveFiles": 1,
+    "totalBytes": 74221178
+  },
+  "findings": [
+    "The source is a complete logic and statistics course rather than a small supplement.",
+    "The current AI foundation chapter is too small to absorb the source without a new course-wide hierarchy.",
+    "The source already connects logic concepts to requirements, complaint handling and existing industrial cases.",
+    "The source contains strong oral explanations and life stories, but also repeated transitions, course-platform phrasing and uneven heading levels.",
+    "The legacy image set mixes simple diagrams, tables, unattributed screenshots and at least one externally sourced real data chart; image-by-image disposition is required.",
+    "The statistics chapters overlap with existing Prompt data experiments and should be integrated through shared cases rather than duplicated."
+  ],
+  "preservation": [
+    "Treat the entire source directory as read-only reference input.",
+    "Do not delete or rewrite the uploaded Markdown, PowerPoint, archive or images during integration.",
+    "Write revised course content only in the canonical md modules and course manifests."
+  ]
+}

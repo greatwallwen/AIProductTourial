@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="760" viewBox="0 0 1600 760" role="img" aria-labelledby="title desc">
+  <title id="title">一条可以检查的业务推理链</title>
+  <desc id="desc">从已知事实经过规则得到允许动作，每一段分别检查对象、条件和责任角色，任何断点都会阻止继续执行。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F8FAFF"/>
+      <stop offset="1" stop-color="#EFF6FF"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="15" stdDeviation="18" flood-color="#1E3A8A" flood-opacity="0.10"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0 0 L12 6 L0 12 Z" fill="#64748B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="760" rx="36" fill="url(#bg)"/>
+  <text x="90" y="92" fill="#0F172A" font-family="Microsoft YaHei, Noto Sans SC, sans-serif" font-size="43" font-weight="700">链条不是一排箭头，而是三次核对</text>
+  <text x="90" y="143" fill="#64748B" font-family="Microsoft YaHei, Noto Sans SC, sans-serif" font-size="24">事实对不对、规则适不适用、动作由谁负责。</text>
+
+  <g filter="url(#shadow)" font-family="Microsoft YaHei, Noto Sans SC, sans-serif">
+    <rect x="90" y="220" width="380" height="286" rx="28" fill="#FFFFFF" stroke="#BFDBFE" stroke-width="2"/>
+    <rect x="90" y="220" width="380" height="12" rx="6" fill="#2563EB"/>
+    <text x="128" y="286" fill="#1D4ED8" font-size="21" font-weight="700">已知事实</text>
+    <text x="128" y="345" fill="#0F172A" font-size="26" font-weight="700">请求已经发出</text>
+    <text x="128" y="389" fill="#0F172A" font-size="26" font-weight="700">外部响应没有收到</text>
+    <line x1="128" y1="427" x2="432" y2="427" stroke="#E2E8F0"/>
+    <text x="128" y="469" fill="#475569" font-size="19">核对：任务号、时间、日志</text>
+
+    <rect x="610" y="220" width="380" height="286" rx="28" fill="#FFFFFF" stroke="#DDD6FE" stroke-width="2"/>
+    <rect x="610" y="220" width="380" height="12" rx="6" fill="#7C3AED"/>
+    <text x="648" y="286" fill="#6D28D9" font-size="21" font-weight="700">适用规则</text>
+    <text x="648" y="345" fill="#0F172A" font-size="26" font-weight="700">无响应 ≠ 未执行</text>
+    <text x="648" y="389" fill="#0F172A" font-size="26" font-weight="700">重试沿用原业务键</text>
+    <line x1="648" y1="427" x2="952" y2="427" stroke="#E2E8F0"/>
+    <text x="648" y="469" fill="#475569" font-size="19">核对：条件、例外、有效期</text>
+
+    <rect x="1130" y="220" width="380" height="286" rx="28" fill="#FFFFFF" stroke="#BBF7D0" stroke-width="2"/>
+    <rect x="1130" y="220" width="380" height="12" rx="6" fill="#16A34A"/>
+    <text x="1168" y="286" fill="#15803D" font-size="21" font-weight="700">允许动作</text>
+    <text x="1168" y="345" fill="#0F172A" font-size="26" font-weight="700">先查询外部效果</text>
+    <text x="1168" y="389" fill="#0F172A" font-size="26" font-weight="700">异人复核后关闭</text>
+    <line x1="1168" y1="427" x2="1472" y2="427" stroke="#E2E8F0"/>
+    <text x="1168" y="469" fill="#475569" font-size="19">核对：角色、材料、状态</text>
+  </g>
+
+  <path d="M470 356 H594" stroke="#64748B" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <path d="M990 356 H1114" stroke="#64748B" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <g font-family="Microsoft YaHei, Noto Sans SC, sans-serif">
+    <rect x="481" y="320" width="105" height="38" rx="19" fill="#FEF2F2" stroke="#FCA5A5"/>
+    <text x="533" y="346" text-anchor="middle" fill="#B91C1C" font-size="16" font-weight="700">不能跳步</text>
+    <rect x="1001" y="320" width="105" height="38" rx="19" fill="#FEF2F2" stroke="#FCA5A5"/>
+    <text x="1053" y="346" text-anchor="middle" fill="#B91C1C" font-size="16" font-weight="700">不能越权</text>
+  </g>
+
+  <rect x="165" y="585" width="1270" height="86" rx="28" fill="#0F172A"/>
+  <text x="205" y="621" fill="#93C5FD" font-family="Microsoft YaHei, Noto Sans SC, sans-serif" font-size="18" font-weight="700">断链信号</text>
+  <text x="205" y="654" fill="#FFFFFF" font-family="Microsoft YaHei, Noto Sans SC, sans-serif" font-size="22">对象换了 · 时间窗换了 · 前提未核实 · 从结果倒推原因 · 责任角色缺席</text>
+</svg>

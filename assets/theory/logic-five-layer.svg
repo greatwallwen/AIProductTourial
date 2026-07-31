@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="760" viewBox="0 0 1600 760" role="img" aria-labelledby="title desc">
+  <title id="title">一句工业判断中的五层信息</title>
+  <desc id="desc">观察和可计算命题可以直接核对；前提需要查规则；原因推断需要补证据；操作动作需要权限和人工确认。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F8FAFC"/>
+      <stop offset="1" stop-color="#EEF2FF"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#0F172A" flood-opacity="0.09"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="760" rx="36" fill="url(#bg)"/>
+  <text x="90" y="92" fill="#0F172A" font-family="Microsoft YaHei, Noto Sans SC, sans-serif" font-size="43" font-weight="700">一句话，常常跨过了五道门</text>
+  <text x="90" y="143" fill="#64748B" font-family="Microsoft YaHei, Noto Sans SC, sans-serif" font-size="24">越往右，越不能只靠当前记录下结论。</text>
+
+  <g font-family="Microsoft YaHei, Noto Sans SC, sans-serif" filter="url(#shadow)">
+    <g transform="translate(90 215)">
+      <rect width="270" height="300" rx="28" fill="#FFFFFF" stroke="#BAE6FD" stroke-width="2"/>
+      <rect width="270" height="12" rx="6" fill="#0284C7"/>
+      <text x="28" y="66" fill="#0369A1" font-size="21" font-weight="700">01 观察</text>
+      <text x="28" y="125" fill="#0F172A" font-size="28" font-weight="700">出口温度</text>
+      <text x="28" y="167" fill="#0F172A" font-size="34" font-weight="700">574.6℃</text>
+      <line x1="28" y1="204" x2="242" y2="204" stroke="#E2E8F0"/>
+      <text x="28" y="244" fill="#475569" font-size="19">核对测点、时间、单位</text>
+      <rect x="28" y="264" width="125" height="32" rx="16" fill="#E0F2FE"/>
+      <text x="90" y="286" text-anchor="middle" fill="#0369A1" font-size="16" font-weight="700">直接核对</text>
+    </g>
+
+    <g transform="translate(378 215)">
+      <rect width="270" height="300" rx="28" fill="#FFFFFF" stroke="#BFDBFE" stroke-width="2"/>
+      <rect width="270" height="12" rx="6" fill="#2563EB"/>
+      <text x="28" y="66" fill="#1D4ED8" font-size="21" font-weight="700">02 命题</text>
+      <text x="28" y="125" fill="#0F172A" font-size="25" font-weight="700">高于目标值</text>
+      <text x="28" y="167" fill="#0F172A" font-size="34" font-weight="700">8.6℃</text>
+      <line x1="28" y1="204" x2="242" y2="204" stroke="#E2E8F0"/>
+      <text x="28" y="244" fill="#475569" font-size="19">目标值成立时可复算</text>
+      <rect x="28" y="264" width="125" height="32" rx="16" fill="#DBEAFE"/>
+      <text x="90" y="286" text-anchor="middle" fill="#1D4ED8" font-size="16" font-weight="700">可以计算</text>
+    </g>
+
+    <g transform="translate(666 215)">
+      <rect width="270" height="300" rx="28" fill="#FFFFFF" stroke="#DDD6FE" stroke-width="2"/>
+      <rect width="270" height="12" rx="6" fill="#7C3AED"/>
+      <text x="28" y="66" fill="#6D28D9" font-size="21" font-weight="700">03 前提</text>
+      <text x="28" y="125" fill="#0F172A" font-size="25" font-weight="700">566.0℃ 是</text>
+      <text x="28" y="167" fill="#0F172A" font-size="25" font-weight="700">当前工况目标</text>
+      <line x1="28" y1="204" x2="242" y2="204" stroke="#E2E8F0"/>
+      <text x="28" y="244" fill="#475569" font-size="19">查工况、规则与有效期</text>
+      <rect x="28" y="264" width="125" height="32" rx="16" fill="#EDE9FE"/>
+      <text x="90" y="286" text-anchor="middle" fill="#6D28D9" font-size="16" font-weight="700">先核规则</text>
+    </g>
+
+    <g transform="translate(954 215)">
+      <rect width="270" height="300" rx="28" fill="#FFFFFF" stroke="#FED7AA" stroke-width="2"/>
+      <rect width="270" height="12" rx="6" fill="#EA580C"/>
+      <text x="28" y="66" fill="#C2410C" font-size="21" font-weight="700">04 推断</text>
+      <text x="28" y="125" fill="#0F172A" font-size="25" font-weight="700">减温水阀</text>
+      <text x="28" y="167" fill="#0F172A" font-size="25" font-weight="700">响应滞后？</text>
+      <line x1="28" y1="204" x2="242" y2="204" stroke="#E2E8F0"/>
+      <text x="28" y="244" fill="#475569" font-size="19">补阀位、流量与工况</text>
+      <rect x="28" y="264" width="125" height="32" rx="16" fill="#FFEDD5"/>
+      <text x="90" y="286" text-anchor="middle" fill="#C2410C" font-size="16" font-weight="700">需要证据</text>
+    </g>
+
+    <g transform="translate(1242 215)">
+      <rect width="270" height="300" rx="28" fill="#FFFFFF" stroke="#FECACA" stroke-width="2"/>
+      <rect width="270" height="12" rx="6" fill="#DC2626"/>
+      <text x="28" y="66" fill="#B91C1C" font-size="21" font-weight="700">05 动作</text>
+      <text x="28" y="125" fill="#0F172A" font-size="25" font-weight="700">立即调整</text>
+      <text x="28" y="167" fill="#0F172A" font-size="25" font-weight="700">阀位？</text>
+      <line x1="28" y1="204" x2="242" y2="204" stroke="#E2E8F0"/>
+      <text x="28" y="244" fill="#475569" font-size="19">核对权限、风险与责任</text>
+      <rect x="28" y="264" width="140" height="32" rx="16" fill="#FEE2E2"/>
+      <text x="98" y="286" text-anchor="middle" fill="#B91C1C" font-size="16" font-weight="700">人工确认</text>
+    </g>
+  </g>
+
+  <path d="M120 595 H1480" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="7 10"/>
+  <text x="120" y="650" fill="#0F172A" font-family="Microsoft YaHei, Noto Sans SC, sans-serif" font-size="25" font-weight="700">课堂判断：</text>
+  <text x="270" y="650" fill="#0284C7" font-family="Microsoft YaHei, Noto Sans SC, sans-serif" font-size="25" font-weight="700">记录能确认什么</text>
+  <text x="500" y="650" fill="#64748B" font-family="Microsoft YaHei, Noto Sans SC, sans-serif" font-size="25">→</text>
+  <text x="550" y="650" fill="#7C3AED" font-family="Microsoft YaHei, Noto Sans SC, sans-serif" font-size="25" font-weight="700">还缺哪条规则</text>
+  <text x="780" y="650" fill="#64748B" font-family="Microsoft YaHei, Noto Sans SC, sans-serif" font-size="25">→</text>
+  <text x="830" y="650" fill="#EA580C" font-family="Microsoft YaHei, Noto Sans SC, sans-serif" font-size="25" font-weight="700">需要补什么材料</text>
+  <text x="1090" y="650" fill="#64748B" font-family="Microsoft YaHei, Noto Sans SC, sans-serif" font-size="25">→</text>
+  <text x="1140" y="650" fill="#DC2626" font-family="Microsoft YaHei, Noto Sans SC, sans-serif" font-size="25" font-weight="700">谁有权决定</text>
+</svg>

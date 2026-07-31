@@ -39,10 +39,10 @@ RETIRED_PROSE = (
 )
 
 CASE_GROUPS = (
-    "经营与公共服务：材料不全时怎样继续工作",
-    "复杂系统协作：一次操作怎样跨过多道门",
-    "工业与现场运营：先定位核查范围，不抢着诊断",
-    "日常数据产品：少一点猜测，多一个可交接决定",
+    "9.1 经营与公共服务：材料不全时怎样继续工作",
+    "9.2 复杂系统协作：一次操作怎样跨过多道门",
+    "9.3 工业与现场运营：先定位核查范围，不抢着诊断",
+    "9.4 日常数据产品：少一点猜测，多一个可交接决定",
 )
 
 
@@ -54,10 +54,10 @@ def audit() -> dict:
     shallow = sum(len(marks) <= 3 for marks, _ in headings)
     repeated = Counter(title for _, title in headings)
 
-    if shallow > 230:
-        errors.append(f"level-one through level-three headings {shallow} > 230")
-    if len(headings) > 220:
-        errors.append(f"all visible headings {len(headings)} > 220")
+    if shallow > 190:
+        errors.append(f"level-one through level-three headings {shallow} > 190")
+    if len(headings) > 280:
+        errors.append(f"all visible headings {len(headings)} > 280")
     for title, count in repeated.items():
         if count > 4:
             errors.append(f"heading repeated {count} times: {title}")
@@ -101,7 +101,7 @@ def audit() -> dict:
     if duplicates:
         errors.append(f"case-specific headings are duplicated: {duplicates}")
 
-    if len(re.findall(r"^### 实验 [123]：", text, flags=re.MULTILINE)) != 18:
+    if len(re.findall(r"^### 4\.\d+\.\d+ 实验 [123]：", text, flags=re.MULTILINE)) != 18:
         errors.append("Prompt experiment count must remain 18")
     if re.search(r"^### (?:场景|交给 CodeBuddy)$", text, flags=re.MULTILINE):
         errors.append("worksheet-style repeated Skill or Agent headings remain")
@@ -118,7 +118,7 @@ def audit() -> dict:
             "formulaicContrastPairs": contrast_pairs,
             "realWordOccurrences": text.count("真正"),
             "promptExperiments": len(
-                re.findall(r"^### 实验 [123]：", text, flags=re.MULTILINE)
+                re.findall(r"^### 4\.\d+\.\d+ 实验 [123]：", text, flags=re.MULTILINE)
             ),
             "businessCases": len(case_files),
             "caseNarrativeHeadings": len(case_headings),
