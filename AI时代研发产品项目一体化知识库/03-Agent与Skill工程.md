@@ -428,6 +428,97 @@ Markdown 提供内容层次，Skill 决定页型、对象和检查。生成出 P
 
 Agent 没有外部服务条件时，不应假装"文字转 3D 已完成"。它仍然可以把请求要求、资产检查和查看器先做好；什么时候继续，取决于是否真正拿到了可检查的生成资产。
 
+## S09　把静态流程图变成会走的动画：Archify + 录屏
+
+### 场景
+
+案例库里每个 B 案例都有两张 SVG：`*-requirement.svg`（需求流程）和 `*-architecture.svg`（技术架构）。静态图能看懂结构，但看不出"谁先动、数据往哪流、哪一步是关键判断"。把静态 SVG 变成会按 trace 顺序逐节点点亮的动画视频，读者一眼就能看到流程方向和重点步骤。
+
+### 原静态图
+
+![B01 需求流程](../assets/case-diagrams/B01-requirement.svg) 
+
+![B01 技术架构](../assets/case-diagrams/B01-architecture.svg) 
+
+### 交给 CodeBuddy
+
+~~~text
+把 assets/case-diagrams/B01-requirement.svg 和 B01-architecture.svg
+变成带 trace 动画的 webm 视频。
+
+第一步：用 archify-main skill 的 render 命令，把案例 JSON IR 渲染成
+  交互式 HTML（含 trace 动画、play/replay 按钮、showAll 复位）。
+  - 需求流程用 diagram_type=workflow
+  - 技术架构用 diagram_type=architecture
+  - meta.animation = trace
+
+第二步：用 puppeteer 打开 HTML（?present=1），按 15fps 截帧。
+  - 先移除 data-wide-diagram 属性（否则 SVG 固定 720px 只占左上角）
+  - 需求流程：用 getCTM()+getBBox() 计算所有节点实际边界，重设 viewBox 让内容占满
+  - 技术架构：不调 viewBox，用页面原始 1600×900 尺寸
+  - 触发 play，监测按钮文本变成 "Replay"（动画播完）
+  - 检测到 Replay 后调用 showAll 复位视图，再截 1 秒尾帧后停止
+  - 用 ffmpeg 把帧序列编码为 webm（libvpx-vp9, 500k, yuva420p）
+
+输出：assets/case-diagrams/B01-requirement.webm 和 B01-architecture.webm
+~~~
+
+### 三步管线
+
+| 步骤 | 脚本 | 输入 → 输出 |
+|---|---|---|
+| 1. 生成 JSON IR | `gen-json.mjs` | 案例数据 → `B01-*.json`（节点、边、泳道、阶段） |
+| 2. 渲染交互 HTML | `deliver-all.mjs` 调 `archify render` | `B01-*.json` → `B01-*.html`（含 trace 动画） |
+| 3. 录屏编码 webm | `make-webm.mjs` 调 puppeteer + ffmpeg | `B01-*.html` → `B01-*.webm` |
+
+三个脚本都在 `assets/case-diagrams/gif-work/` 下。archify-main skill 负责第二步——把 JSON IR 变成可交互、可播放的 HTML；第一步和第三步是围绕它的"喂料"和"收尾"。
+
+### 实际踩坑与调整
+
+录屏不是"打开就截"那么简单，实际遇到三个问题：
+
+| 问题 | 原因 | 解决 |
+|---|---|---|
+| 需求流程图只占左上角 | `data-wide-diagram` 把 SVG 固定 720px | 移除该属性 + 用 `getCTM()`/`getBBox()` 重算 viewBox |
+| 技术架构图被裁切 | 调了 viewBox 反而破坏原始布局 | 不调 viewBox，用页面原始 1600×900 |
+| 视频太长（8-10 秒） | 固定截帧数，不管动画是否播完 | 动态检测 "Replay" 文本 → 调 `showAll` → 等 1 秒停 |
+
+### 执行结果
+
+<video src="../assets/case-diagrams/B01-requirement.webm" controls muted loop></video>
+
+<a href="../assets/case-diagrams/gif-work/B01-requirement.html" target="_blank">查看 B01 需求流程html</a>
+
+<video src="../assets/case-diagrams/B01-architecture.webm" controls muted loop></video>
+
+<a href="../assets/case-diagrams/gif-work/B01-architecture.html" target="_blank">查看 B01 技术架构html</a>
+
+| 文件 | 大小 | 时长 | 说明 |
+|---|---|---|---|
+| `B01-requirement.webm` | ~132 KB | ~2.7s | 需求流程：进入→锁定→核对→保存→确认 |
+| `B01-architecture.webm` | ~248 KB | ~4.1s | 技术架构：数据→界面→命令→领域规则→状态 |
+
+### 为什么用 Skill 而不是直接手写动画
+
+手写 SVG 动画要逐节点算 `stroke-dasharray`、逐边写 `<animate>`，20 个案例 × 2 张 = 40 张图，维护成本高且风格难统一。archify-main skill 把"JSON IR → 交互 HTML"这一层固化下来：节点、边、泳道、阶段、trace 顺序都由 JSON 描述，渲染逻辑由 skill 的模板统一控制。换案例只需换 JSON，不动渲染代码。
+
+录屏脚本（`make-webm.mjs`）解决的是另一个问题：archify 产出的是 HTML，案例 md 里嵌的是 webm。puppeteer 负责把"可交互"变成"可播放"——自动 play、检测 Replay、showAll 复位、截帧、ffmpeg 编码，整条链不需要人按按钮。
+
+### 怎样复用到其他案例
+
+```text
+# 1. 生成 JSON IR（改 gen-json.mjs 里的案例参数）
+node gen-json.mjs
+
+# 2. 用 archify 渲染 HTML
+node deliver-all.mjs
+
+# 3. 录屏编码 webm（改 make-webm.mjs 的 targets 数组）
+node make-webm.mjs
+```
+
+`deliver-all.mjs` 的 `files` 数组和 `make-webm.mjs` 的 `targets` 数组里加一行 `B02-*`，就能对 B02 重复同样的流程。B01-B20 共 40 张图，同一套管线批量产出。
+
 ## A01　一次查不够时，Agent 怎样补查、交接并停下来
 
 ### 场景

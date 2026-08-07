@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>课程 Skill Map · 3D 立体地图</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:linear-gradient(135deg,#f6f4f0,#ece8e0);font-family:"Noto Sans CJK SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;display:flex;flex-direction:column;align-items:center;min-height:100vh;padding:16px}
+.container{width:100%;max-width:1720px;background:#fffdf9;border-radius:18px;padding:20px;box-shadow:0 8px 32px rgba(99,102,241,.07),0 2px 8px rgba(0,0,0,.04);border:1px solid rgba(255,255,255,.6)}
+.header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:12px}
+.header h1{font-size:21px;font-weight:700;color:#2d2a3e}
+.header .subtitle{font-size:11px;color:#9a96a8;margin-top:3px}
+.header .badge{font-size:11px;color:#fff;background:linear-gradient(135deg,#6366F1,#4338CA);padding:4px 12px;border-radius:20px;font-weight:600}
+.svg-wrap{border-radius:14px;overflow:hidden;position:relative;background:linear-gradient(180deg,#fefcf7,#f5f1e8);border:1px solid rgba(0,0,0,.04);perspective:2400px}
+.svg-wrap svg{display:block;width:100%;height:auto;transform:rotateX(22deg);transform-origin:center 45%;transition:transform .6s ease}
+.node-g{cursor:pointer;transition:opacity .25s ease}
+.rel-g{transition:opacity .25s ease}
+.svg-wrap.has-hover .node-g{opacity:.14}
+.svg-wrap.has-hover .rel-g{opacity:.06}
+.svg-wrap.has-hover .node-g.active{opacity:1}
+.svg-wrap.has-hover .rel-g.active{opacity:1}
+.svg-wrap.has-hover .rel-g.active .rel-path{stroke-width:4}
+.svg-wrap.has-hover .blob-g{opacity:.5}
+.svg-wrap.has-hover .blob-g.active{opacity:1}
+.legend{display:flex;gap:16px;justify-content:center;margin-top:12px;flex-wrap:wrap}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:11px;color:#6b6770}
+.legend-line{width:26px;height:0;border-top:2.5px solid;border-radius:2px}
+.legend-line.data{border-color:#6366F1}
+.legend-line.control{border-color:#F59E0B;border-style:dashed}
+.legend-line.feedback{border-color:#8B5CF6;border-style:dotted;border-top-width:2.5px}
+.legend-line.compose{border-color:#14B8A6;border-top-width:2px}
+.legend-divider{width:1px;height:18px;background:#e0dce4;margin:0 2px}
+.legend-node{width:13px;height:13px;border-radius:50%;border:2px solid;display:inline-block}
+.legend-node.core{background:#F59E0B;border-color:#D97706}
+.legend-node.hub{background:#0EA5E9;border-color:#0284C7}
+.legend-node.normal{background:#6366F1;border-color:#4338CA}
+.hint{text-align:center;font-size:11px;color:#aaa6b0;margin-top:8px}
+.ctrl{display:flex;gap:8px;justify-content:center;margin-top:10px}
+.ctrl button{background:#fffdf9;color:#4338CA;border:1px solid #e0dce4;border-radius:8px;padding:7px 14px;font-size:12px;cursor:pointer;transition:all .2s}
+.ctrl button:hover{background:#f3f0ff;border-color:#6366F1}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<div><h1>课程 Skill Map · 3D 立体地图</h1>
+<div class="subtitle">4 层立体浮岛 · 30 Skill · 逻辑底层→方法论内核→执行治理 · 5 条闭环主线 · 2026-08</div></div>
+<div class="badge">课程 × Skill</div>
+</div>
+<div class="svg-wrap" id="svgWrap"><svg id="map" viewBox="0 0 1680 1240" xmlns="http://www.w3.org/2000/svg"></svg></div>
+<div class="legend">
+<div class="legend-item"><div class="legend-line data"></div><span>数据流 逻辑→工程</span></div>
+<div class="legend-item"><div class="legend-line control"></div><span>控制流 supergrill 调度</span></div>
+<div class="legend-item"><div class="legend-line feedback"></div><span>反馈流 闭环回绕</span></div>
+<div class="legend-item"><div class="legend-line compose"></div><span>同层组合</span></div>
+<div class="legend-divider"></div>
+<div class="legend-item"><div class="legend-node normal"></div><span>常规 Skill</span></div>
+<div class="legend-item"><div class="legend-node core"></div><span>核心 supergrill</span></div>
+<div class="legend-item"><div class="legend-node hub"></div><span>Hub 证伪/命题</span></div>
+</div>
+<div class="hint">悬停节点高亮关联关系与上下游 · 4 层浮岛：顶层执行治理 / 中层方法论内核 / 底层逻辑底层 · 5 条紫色反馈线构成闭环</div>
+<div class="ctrl"><button onclick="setTilt(0)">平视</button><button onclick="setTilt(1)">俯视</button><button onclick="setTilt(2)">深俯视</button></div>
+</div>
+<script>
+const NS='http://www.w3.org/2000/svg';
+function el(t,a){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e}
+function ep(cx,cy,r,tx,ty){const dx=tx-cx,dy=ty-cy,d=Math.sqrt(dx*dx+dy*dy);if(d<.1)return{x:cx,y:cy};return{x:cx+dx/d*r,y:cy+dy/d*r}}
+function cv(x1,y1,x2,y2,b){const dx=x2-x1,dy=y2-y1,dist=Math.sqrt(dx*dx+dy*dy);if(dist<1)return{d:`M ${x1} ${y1} L ${x2} ${y2}`};const px=-dy/dist,py=dx/dist,o=dist*b;return{d:`M ${x1} ${y1} C ${x1+dx*.35+px*o} ${y1+dy*.35+py*o}, ${x1+dx*.65+px*o} ${y1+dy*.65+py*o}, ${x2} ${y2}`}}
+const clusters=[
+ {id:'A',name:'A 工程层',sub:'8 skill',color:'#6366F1',light:'#C7D2FE',blob:{cx:300,cy:200,rx:200,ry:130}},
+ {id:'B',name:'B 可视化',sub:'3 skill',color:'#14B8A6',light:'#99F6E4',blob:{cx:840,cy:200,rx:130,ry:110}},
+ {id:'C',name:'C 治理层',sub:'3 skill',color:'#8B5CF6',light:'#DDD6FE',blob:{cx:1380,cy:200,rx:130,ry:110}},
+ {id:'M',name:'方法论内核',sub:'supergrill',color:'#F59E0B',light:'#FDE68A',blob:{cx:840,cy:560,rx:160,ry:100}},
+ {id:'L',name:'L 逻辑底层',sub:'15 skill',color:'#0EA5E9',light:'#BAE6FD',blob:{cx:840,cy:980,rx:520,ry:200}},
+];
+const nodes=[
+ {id:'A1',name:'工程闭环',x:180,y:150,c:0},{id:'A2',name:'TDD',x:300,y:110,c:0},
+ {id:'A3',name:'Git',x:420,y:150,c:0},{id:'A4',name:'Code Review',x:200,y:230,c:0},
+ {id:'A5',name:'重构',x:320,y:270,c:0},{id:'A6',name:'调试',x:440,y:230,c:0},
+ {id:'A7',name:'部署',x:140,y:270,c:0},{id:'A8',name:'监控',x:460,y:270,c:0},
+ {id:'B1',name:'图表生成',x:780,y:160,c:1},{id:'B2',name:'交互原型',x:900,y:160,c:1},
+ {id:'B3',name:'文档渲染',x:840,y:250,c:1},
+ {id:'C1',name:'多Agent评审',x:1320,y:160,c:2},{id:'C2',name:'Skill Lint',x:1440,y:160,c:2},
+ {id:'C3',name:'验收门控',x:1380,y:250,c:2},
+ {id:'SG',name:'supergrill',x:840,y:560,c:3,core:true},
+ {id:'L1',name:'同一律',x:380,y:920,c:4},{id:'L2',name:'矛盾律',x:480,y:860,c:4},
+ {id:'L3',name:'排中律',x:580,y:820,c:4},{id:'L4',name:'充足理由',x:680,y:800,c:4},
+ {id:'L5',name:'概念清晰',x:780,y:790,c:4},{id:'L6',name:'命题化',x:840,y:790,c:4,hub:true},
+ {id:'L7',name:'三步法',x:900,y:790,c:4},{id:'L8',name:'相关性',x:1000,y:800,c:4},
+ {id:'L9',name:'参照系',x:1100,y:820,c:4},{id:'L10',name:'归纳前提',x:1200,y:860,c:4},
+ {id:'L11',name:'证伪',x:1300,y:920,c:4,hub:true},{id:'L12',name:'量词',x:360,y:1020,c:4},
+ {id:'L13',name:'一致性',x:560,y:1060,c:4},{id:'L14',name:'例外警告',x:840,y:1080,c:4},
+ {id:'L15',name:'事实观点',x:1120,y:1060,c:4},{id:'L16',name:'排他分析',x:1320,y:1020,c:4},
+];
+function getNode(id){return nodes.find(n=>n.id===id)}
+const rc={data:{color:'#6366F1',width:2.2,dash:null,arrow:true},control:{color:'#F59E0B',width:1.8,dash:'8 4',arrow:true},feedback:{color:'#8B5CF6',width:2.0,dash:'2 4',arrow:true},compose:{color:'#14B8A6',width:1.2,dash:null,arrow:false}};
+const rels=[
+ {from:'A1',to:'A2',type:'compose'},{from:'A1',to:'A3',type:'compose'},{from:'A2',to:'A4',type:'compose'},{from:'A5',to:'A6',type:'compose'},
+ {from:'B1',to:'B2',type:'compose'},{from:'B1',to:'B3',type:'compose'},{from:'C1',to:'C2',type:'compose'},{from:'C2',to:'C3',type:'compose'},
+ {from:'L1',to:'L2',type:'compose'},{from:'L2',to:'L3',type:'compose'},{from:'L4',to:'L5',type:'compose'},{from:'L5',to:'L6',type:'compose'},
+ {from:'L6',to:'L7',type:'compose'},{from:'L8',to:'L9',type:'compose'},{from:'L9',to:'L10',type:'compose'},{from:'L10',to:'L11',type:'compose'},
+ {from:'L6',to:'A1',type:'data',label:'命题→工程',bend:0.15},{from:'L11',to:'C1',type:'data',label:'证伪→评审',bend:0.18},
+ {from:'L10',to:'A2',type:'data',label:'归纳→TDD',bend:0.12},{from:'L5',to:'A4',type:'data',label:'清晰→评审',bend:0.10},
+ {from:'L13',to:'C3',type:'data',label:'一致→门控',bend:0.20},
+ {from:'SG',to:'A1',type:'control',label:'拷问选型',bend:-0.15},{from:'SG',to:'C3',type:'control',label:'治理门控',bend:0.10},
+ {from:'SG',to:'L11',type:'control',label:'证伪锚',bend:0.12},{from:'SG',to:'L6',type:'control',label:'命题锚',bend:-0.12},
+ {from:'SG',to:'B1',type:'control',bend:0.20},
+ {from:'A8',to:'L10',type:'feedback',label:'监控→归纳',bend:0.25},{from:'C1',to:'L11',type:'feedback',label:'评审→证伪',bend:0.22},
+ {from:'C3',to:'L13',type:'feedback',label:'门控→一致',bend:0.18},{from:'A5',to:'L5',type:'feedback',label:'重构→清晰',bend:0.20},
+ {from:'B3',to:'L7',type:'feedback',label:'文档→三步',bend:0.15},
+];
+const svg=document.getElementById('map');
+const defs=el('defs');
+const wc=el('filter',{id:'wc',x:'-50%',y:'-50%',width:'200%',height:'200%'});wc.appendChild(el('feGaussianBlur',{stdDeviation:'28'}));defs.appendChild(wc);
+const sg=el('linearGradient',{id:'side',x1:'0',y1:'0',x2:'0',y2:'1'});sg.appendChild(el('stop',{offset:'0%','stop-color':'#d8d2c8'}));sg.appendChild(el('stop',{offset:'100%','stop-color':'#b8b0a0'}));defs.appendChild(sg);
+clusters.forEach((c,i)=>{const g=el('radialGradient',{id:`cg-${i}`,cx:'35%',cy:'32%',r:'70%'});g.appendChild(el('stop',{offset:'0%','stop-color':c.light}));g.appendChild(el('stop',{offset:'100%','stop-color':c.color}));defs.appendChild(g)});
+const coreG=el('radialGradient',{id:'core-grad',cx:'35%',cy:'32%',r:'70%'});coreG.appendChild(el('stop',{offset:'0%','stop-color':'#FCD34D'}));coreG.appendChild(el('stop',{offset:'100%','stop-color':'#D97706'}));defs.appendChild(coreG);
+const hubG=el('radialGradient',{id:'hub-grad',cx:'35%',cy:'32%',r:'70%'});hubG.appendChild(el('stop',{offset:'0%','stop-color':'#7DD3FC'}));hubG.appendChild(el('stop',{offset:'100%','stop-color':'#0284C7'}));defs.appendChild(hubG);
+['data','control','feedback','compose'].forEach(t=>{const m=el('marker',{id:`arr-${t}`,viewBox:'0 0 8 8',refX:'7',refY:'4',markerWidth:'6',markerHeight:'6',orient:'auto',markerUnits:'userSpaceOnUse'});m.appendChild(el('path',{d:'M1 1 L7 4 L1 7 Z',fill:rc[t].color}));defs.appendChild(m)});
+svg.appendChild(defs);
+const plates=[
+ {x:60,y:60,w:1560,h:280,label:'顶层 · 执行治理层 (Z=240)'},
+ {x:620,y:470,w:440,h:180,label:'中层 · 方法论内核 (Z=120)'},
+ {x:240,y:740,w:1200,h:380,label:'底层 · 逻辑底层 (Z=0)'},
+];
+plates.forEach(p=>{
+ svg.appendChild(el('rect',{x:p.x+6,y:p.y+p.h,width:p.w,height:14,rx:6,fill:'url(#side)',opacity:'0.5'}));
+ svg.appendChild(el('rect',{x:p.x,y:p.y,width:p.w,height:p.h,rx:14,fill:'#fffdf9',stroke:'#e0dce4','stroke-width':'1',opacity:'0.7'}));
+ const lbl=el('text',{x:p.x+16,y:p.y+22,'font-size':'12','font-weight':'700',fill:'#9a96a8','letter-spacing':'1'});lbl.textContent=p.label;svg.appendChild(lbl);
+});
+clusters.forEach(c=>{
+ const g=el('g',{class:'blob-g','data-cluster':c.id});
+ g.appendChild(el('ellipse',{cx:c.blob.cx,cy:c.blob.cy,rx:c.blob.rx,ry:c.blob.ry,fill:c.color,opacity:'0.10',filter:'url(#wc)'}));
+ const lbl=el('text',{x:c.blob.cx,y:c.blob.cy-c.blob.ry+22,'text-anchor':'middle','font-size':'14','font-weight':'700',fill:c.color,'letter-spacing':'1.5',opacity:'0.6'});lbl.textContent=c.name;g.appendChild(lbl);
+ const sub=el('text',{x:c.blob.cx,y:c.blob.cy-c.blob.ry+38,'text-anchor':'middle','font-size':'10',fill:c.color,opacity:'0.45'});sub.textContent=c.sub;g.appendChild(sub);
+ svg.appendChild(g);
+});
+rels.forEach(rel=>{
+ const from=getNode(rel.from),to=getNode(rel.to);if(!from||!to)return;
+ const r=rc[rel.type];const r1=from.core?34:(from.hub?26:20),r2=to.core?34:(to.hub?26:20);
+ const s=ep(from.x,from.y,r1,to.x,to.y),e=ep(to.x,to.y,r2,from.x,from.y);
+ const c=cv(s.x,s.y,e.x,e.y,rel.bend||0.12);
+ const g=el('g',{class:'rel-g','data-from':rel.from,'data-to':rel.to});
+ const p=el('path',{class:'rel-path',d:c.d,stroke:r.color,'stroke-width':r.width,fill:'none','stroke-linecap':'round',opacity:'0.5'});
+ if(r.dash)p.setAttribute('stroke-dasharray',r.dash);
+ if(r.arrow)p.setAttribute('marker-end',`url(#arr-${rel.type})`);
+ g.appendChild(p);
+ if(rel.label){const mx=0.125*s.x+0.375*c.c1x+0.375*c.c2x+0.125*e.x,my=0.125*s.y+0.375*c.c1y+0.375*c.c2y+0.125*e.y;const lw=rel.label.length*8+10;g.appendChild(el('rect',{x:mx-lw/2,y:my-8,width:lw,height:15,rx:4,fill:'#fffdf9',opacity:'0.92'}));const t=el('text',{x:mx,y:my+3,'text-anchor':'middle','font-size':'9',fill:r.color,'font-weight':'600'});t.textContent=rel.label;g.appendChild(t)}
+ svg.appendChild(g);
+});
+nodes.forEach(sk=>{
+ const g=el('g',{class:'node-g','data-id':sk.id});const cc=clusters[sk.c];
+ let r,fill,stroke,strokeW,numSize,nameColor,nameY;
+ if(sk.core){r=34;fill='url(#core-grad)';stroke='#D97706';strokeW=2.5;numSize=11;nameColor='#D97706';nameY=sk.y+r+16}
+ else if(sk.hub){r=26;fill='url(#hub-grad)';stroke='#0284C7';strokeW=2;numSize=11;nameColor='#0284C7';nameY=sk.y+r+15}
+ else{r=20;fill=`url(#cg-${sk.c})`;stroke=cc.color;strokeW=1.5;numSize=10;nameColor=cc.color;nameY=sk.y+r+14}
+ g.appendChild(el('circle',{cx:sk.x,cy:sk.y,r:r+6,fill:stroke,opacity:'0.08'}));
+ g.appendChild(el('circle',{cx:sk.x,cy:sk.y,r:r,fill:fill,stroke:stroke,'stroke-width':strokeW}));
+ g.appendChild(el('circle',{cx:sk.x-r*0.3,cy:sk.y-r*0.35,r:r*0.18,fill:'#fff',opacity:'0.30'}));
+ const num=el('text',{x:sk.x,y:sk.y+4,'text-anchor':'middle','font-size':numSize,fill:'#fff','font-weight':'700'});num.textContent=sk.id;g.appendChild(num);
+ if(sk.core){const bg=el('circle',{cx:sk.x+r*0.72,cy:sk.y-r*0.72,r:8,fill:'#D97706',stroke:'#fff','stroke-width':'1.2'});g.appendChild(bg);const bt=el('text',{x:sk.x+r*0.72,y:sk.y-r*0.72+3,'text-anchor':'middle','font-size':'7',fill:'#fff','font-weight':'700'});bt.textContent='核';g.appendChild(bt)}
+ const name=el('text',{x:sk.x,y:nameY,'text-anchor':'middle','font-size':'10',fill:nameColor,'font-weight':'600'});name.textContent=sk.name;g.appendChild(name);
+ svg.appendChild(g);
+});
+const svgWrap=document.getElementById('svgWrap');
+const nodeGroups=svg.querySelectorAll('.node-g');
+const relGroups=svg.querySelectorAll('.rel-g');
+const blobGroups=svg.querySelectorAll('.blob-g');
+nodeGroups.forEach(node=>{
+ node.addEventListener('mouseenter',()=>{
+  const id=node.dataset.id;const sk=getNode(id);
+  svgWrap.classList.add('has-hover');node.classList.add('active');
+  if(sk)blobGroups.forEach(b=>{if(b.dataset.cluster===clusters[sk.c].id)b.classList.add('active')});
+  relGroups.forEach(rel=>{
+   if(rel.dataset.from===id||rel.dataset.to===id){
+    rel.classList.add('active');
+    const fn=svg.querySelector(`.node-g[data-id="${rel.dataset.from}"]`),tn=svg.querySelector(`.node-g[data-id="${rel.dataset.to}"]`);
+    if(fn)fn.classList.add('active');if(tn)tn.classList.add('active');
+    if(fn){const fs=getNode(fn.dataset.id);if(fs)blobGroups.forEach(b=>{if(b.dataset.cluster===clusters[fs.c].id)b.classList.add('active')})}
+    if(tn){const ts=getNode(tn.dataset.id);if(ts)blobGroups.forEach(b=>{if(b.dataset.cluster===clusters[ts.c].id)b.classList.add('active')})}
+   }
+  });
+ });
+ node.addEventListener('mouseleave',()=>{
+  svgWrap.classList.remove('has-hover');
+  nodeGroups.forEach(n=>n.classList.remove('active'));
+  relGroups.forEach(r=>r.classList.remove('active'));
+  blobGroups.forEach(b=>b.classList.remove('active'));
+ });
+});
+function setTilt(i){const v=[0,22,40];document.getElementById('map').style.transform=`rotateX(${v[i]}deg)`}
+</script>
+</body>
+</html>
