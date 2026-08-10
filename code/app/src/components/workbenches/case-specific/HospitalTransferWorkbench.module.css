@@ -7,6 +7,9 @@
   --orange: #ef8f12;
   --ink: #173a47;
   --muted: #6e838b;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  height: 100%;
   min-height: 100%;
   color: var(--ink);
   background: #f7fafb;
@@ -40,7 +43,7 @@
   display: grid;
   grid-template-columns: 274px minmax(680px, 1fr) 340px;
   gap: 12px;
-  min-height: calc(100vh - 64px);
+  min-height: 0;
 }
 
 .queuePanel,

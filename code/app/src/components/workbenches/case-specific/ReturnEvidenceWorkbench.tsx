@@ -160,7 +160,10 @@ export function ReturnEvidenceWorkbench(props: CaseWorkbenchProps) {
     });
     setReviewNote(restoredTask.reviewNote ?? "");
     setDecisionReason(restoredTask.decisionReason ?? "");
-  }, [props.selected.objectId, props.selected.version, props.selected.updatedAt, restoredTask]);
+    // restoredTask 是基于上述原始字段派生的 useMemo，其对象引用会随父组件 events 数组重建而变化；
+    // 此处只应在切换对象或版本推进时恢复本地状态，避免编辑中的 reviewNote/evidenceStatus 被意外重置。
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.selected.objectId, props.selected.version, props.selected.updatedAt]);
 
   const candidates = useMemo<Candidate[]>(() => {
     const rows = (props.sceneRows.length ? props.sceneRows : props.objects.map((item) => item.payload))
@@ -280,7 +283,7 @@ export function ReturnEvidenceWorkbench(props: CaseWorkbenchProps) {
       </header>
 
       <div className={styles.workspace}>
-        <section className={styles.claimCard} aria-label="当前取消单">
+        <section className={styles.claimCard} aria-label="当前取消单" data-active={!candidateDecisionMade ? "true" : "false"}>
           <header><span>当前取消单</span><b>{props.selected.state}</b></header>
           <div className={styles.amount}><small>涉及金额</small><strong>{money(claim.line_amount_cny)}</strong><span>CNY · 负向交易</span></div>
           <dl>
@@ -294,7 +297,7 @@ export function ReturnEvidenceWorkbench(props: CaseWorkbenchProps) {
           <button type="button" aria-pressed={noMatch} onClick={chooseNoMatch}>没有可确认原单</button>
         </section>
 
-        <section className={styles.matchLens} role="region" aria-label="原单核对镜头">
+        <section className={styles.matchLens} role="region" aria-label="原单核对镜头" data-active={!candidateDecisionMade ? "true" : "false"}>
           <header>
             <div><span>订单匹配镜头</span><h1>原单核对中</h1></div>
             <p>{focusedCandidate ? `正在查看候选 ${text(focus?.invoice_id)}` : "当前数据切片没有正向交易"}</p>
@@ -329,7 +332,7 @@ export function ReturnEvidenceWorkbench(props: CaseWorkbenchProps) {
           </div>
         </section>
 
-        <aside className={styles.actionPanel} aria-label="补证与处理">
+        <aside className={styles.actionPanel} aria-label="补证与处理" data-active={candidateDecisionMade ? "true" : "false"}>
           <header><div><span>下一步</span><h2>补齐可核验材料</h2></div><b>{completeness}%</b></header>
           <section className={styles.requestBuilder} aria-label="补证案卷">
             <div className={styles.requestFields}>
@@ -345,7 +348,7 @@ export function ReturnEvidenceWorkbench(props: CaseWorkbenchProps) {
             </div>
             {!requestPersisted && !requestHasRequiredEvidence ? <p role="alert">原单回执和付款凭证是必需项。</p> : null}
             {requestPersisted ? <p>{requestedEvidence.filter((item) => evidenceStatus[item] === "received").length}/{requestedEvidence.length} 项材料已回传。</p> : null}
-            {requestPersisted ? <label className={styles.noteField}><span>复核说明</span><textarea aria-label="人工复核说明" value={reviewNote} maxLength={180} onChange={(event) => setReviewNote(event.target.value)} placeholder="说明材料来源与仍需核对的关系" /></label> : null}
+            {requestPersisted ? <label className={styles.noteField}><span>复核说明（至少 6 个字符）</span><textarea aria-label="人工复核说明" value={reviewNote} maxLength={180} onChange={(event) => setReviewNote(event.target.value)} placeholder="说明材料来源与仍需核对的关系，至少填写 6 个字符方可提交复核" /><small>{reviewNote.trim().length}/6 字符</small></label> : null}
             {props.commands.some((command) => command.id === "hold_refund") ? <label className={styles.noteField}><span>暂缓理由</span><textarea aria-label="暂缓退款理由" value={decisionReason} maxLength={180} onChange={(event) => setDecisionReason(event.target.value)} placeholder="写明仍缺少的证据" /></label> : null}
           </section>
           <label className={styles.roleSelect}><span>操作角色</span><select aria-label="当前操作角色" value={props.actorRole} onChange={(event) => props.onActorRoleChange(event.target.value)}>{props.roles.map((role) => <option key={role} value={role}>{roleLabel(role)}</option>)}</select></label>

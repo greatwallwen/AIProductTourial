@@ -309,12 +309,13 @@ export function AirQualityReleaseWorkbench(props: CaseWorkbenchProps) {
           <footer><span>课程切片共 {props.datasetRowCount.toLocaleString("zh-CN")} 行</span><small>每 20 行取 1 行</small></footer>
         </aside>
 
-        <section className={styles.inspection}>
+        <section className={styles.inspection} style={{ gridTemplateRows: 'auto minmax(0,1fr) auto', maxHeight: 'calc(100vh - 88px)' }}>
           <header className={styles.recordHeader}>
             <div><span>当前检查记录</span><h2>{stationName(row.station)}站</h2></div>
             <dl><div><dt>时间</dt><dd>{observedLabel(row.observed_at)}</dd></div><div><dt>源行</dt><dd>{text(row.No)}</dd></div><div><dt>状态</dt><dd>{stateLabel(props.selected.state)}</dd></div></dl>
           </header>
 
+          <div style={{ minHeight: 0, overflow: 'auto' }}>
           <section className={styles.gates} aria-label="六指标质量闸门">
             <header><div><h2>六指标质量闸门</h2><p>系统按源字段逐项核对，不填 0，不用其他记录补值。</p></div><strong data-complete={availableCount === pollutants.length}>{availableCount} / 6 项可用</strong></header>
             <div className={styles.gateList} key={props.selected.objectId}>
@@ -345,6 +346,7 @@ export function AirQualityReleaseWorkbench(props: CaseWorkbenchProps) {
               <p className={styles.unsampled}>其他站点未进入当前切片，不等于缺测</p>
             </div>
           </section>
+          </div>
 
           <footer className={styles.recordNav}><button type="button" disabled={!previousObject} onClick={() => previousObject && props.onSelect(previousObject.objectId)}><ArrowLeft aria-hidden="true" />上一条</button><span>{currentIndex + 1} / {props.objects.length}</span><button type="button" disabled={!nextObject} onClick={() => nextObject && props.onSelect(nextObject.objectId)}>下一条<ArrowRight aria-hidden="true" /></button></footer>
         </section>

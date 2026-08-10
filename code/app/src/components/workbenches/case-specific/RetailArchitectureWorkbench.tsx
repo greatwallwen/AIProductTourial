@@ -312,8 +312,8 @@ export function RetailArchitectureWorkbench(props: CaseWorkbenchProps) {
       subtitle="用同一设施的连续窗口比较发布、故障与恢复，再决定继续观察、补观测，或批准一条可回退的事件试点。"
       tone="architecture"
     >
-      <div className={styles.workbench}>
-        <aside className={styles.rail} aria-label="评审窗口">
+      <div className={styles.workbench} style={{ height: "100%", minHeight: 0, overflow: "hidden" }}>
+        <aside className={styles.rail} aria-label="评审窗口" style={{ overflowY: "auto", minHeight: 0 }}>
           <section className={styles.railSection}>
             <header><span>评审对象（窗口）</span><Building2 aria-hidden="true" size={16} /></header>
             <select aria-label="评审设施" value={selectedFacility} onChange={(event) => setSelectedFacility(event.target.value)}>
@@ -364,7 +364,7 @@ export function RetailArchitectureWorkbench(props: CaseWorkbenchProps) {
           </section>
         </aside>
 
-        <section className={styles.matrixPanel} aria-label="发布与恢复耦合矩阵">
+        <section className={styles.matrixPanel} aria-label="发布与恢复耦合矩阵" style={{ overflowY: "auto", minHeight: 0 }}>
           <header className={styles.matrixHeader}>
             <div><span className={styles.eyebrow}>发布 / 恢复耦合矩阵</span><strong>{selectedFacility} · {selectedDate}</strong></div>
             <span className={styles.statePill}><i />{props.selected.state}</span>
@@ -434,7 +434,7 @@ export function RetailArchitectureWorkbench(props: CaseWorkbenchProps) {
           </section> : null}
         </section>
 
-        <aside className={styles.archive} aria-label="架构档案">
+        <aside className={styles.archive} aria-label="架构档案" style={{ overflowY: "auto", minHeight: 0 }}>
           <header className={styles.archiveHeader}><span><ClipboardCheck aria-hidden="true" size={18} />架构档案</span><small>{shortDate(selectedDate)}</small></header>
           <div role="tablist" aria-label="架构档案阶段" className={styles.tabs}>{(["观察", "假设", "决定"] as ArchiveTab[]).map((tab) => <button type="button" key={tab} role="tab" aria-selected={activeTab === tab} onClick={() => setActiveTab(tab)}>{tab}</button>)}</div>
 

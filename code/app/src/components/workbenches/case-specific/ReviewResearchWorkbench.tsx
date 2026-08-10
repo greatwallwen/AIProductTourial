@@ -304,7 +304,7 @@ export function ReviewResearchWorkbench(props: CaseWorkbenchProps) {
         ...props.metrics.slice(0, 3).map((metric) => ({ label: metric.label, value: metric.value, note: metric.note })),
       ]} />
 
-      <div className={styles.hearingShell}>
+      <div className={styles.hearingShell} style={{ minHeight: 0, overflow: 'hidden' }}>
         <aside className={styles.topicRail} aria-label="主题与筛选">
           <header className={styles.railTitle}>
             <Scale aria-hidden="true" size={20} />
@@ -345,8 +345,8 @@ export function ReviewResearchWorkbench(props: CaseWorkbenchProps) {
           </div>
         </aside>
 
-        <section className={styles.hearingWorkarea} role="complementary" aria-label="主题摘要与验证">
-        <section className={styles.evidenceStage} aria-label="评论证据研究">
+        <section className={styles.hearingWorkarea} role="complementary" aria-label="主题摘要与验证" style={{ minHeight: 0, overflow: 'hidden' }}>
+        <section className={styles.evidenceStage} aria-label="评论证据研究" style={{ overflow: 'auto', minHeight: 0 }}>
           <section className={styles.sourceCard} aria-label="评论原文与出处">
             <header>
               <div><Quote aria-hidden="true" size={18} /><strong>评论摘要</strong></div>
@@ -407,7 +407,7 @@ export function ReviewResearchWorkbench(props: CaseWorkbenchProps) {
           </section>
         </section>
 
-        <aside className={styles.taskPanel} aria-label="研究任务">
+        <aside className={styles.taskPanel} aria-label="研究任务" style={{ minHeight: 0 }}>
           <header>
             <div><ClipboardCheck aria-hidden="true" size={18} /><strong>研究任务</strong></div>
             <button type="button" onClick={() => props.onSelect(props.selected.objectId)} disabled={props.busy}>

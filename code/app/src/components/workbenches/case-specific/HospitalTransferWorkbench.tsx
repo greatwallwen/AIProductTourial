@@ -333,7 +333,7 @@ export function HospitalTransferWorkbench(props: CaseWorkbenchProps) {
   }
 
   return (
-    <main className={styles.workbench} aria-label="转运晚到事件调和台">
+    <main className={styles.workbench} aria-label="转运晚到事件调和台" style={{ display: 'grid', gridTemplateRows: 'auto minmax(0, 1fr)', height: '100%' }}>
       <header className={styles.topbar}>
         <div className={styles.brand}><Workflow aria-hidden="true" size={22} /><div><h1>转运晚到事件调和单</h1><span>运营事件调和</span></div></div>
         <div className={styles.topSummary}>
@@ -343,7 +343,7 @@ export function HospitalTransferWorkbench(props: CaseWorkbenchProps) {
         </div>
       </header>
 
-      <div className={styles.workspace}>
+      <div className={styles.workspace} style={{ minHeight: 0, overflow: 'hidden', gridTemplateRows: 'minmax(0, 1fr)', height: '100%' }}>
         <aside className={styles.queuePanel} aria-label="待处理转运冲突">
           <header><div><strong>待处理转运冲突</strong><span>{transports.filter((item) => isConflict(item.focus)).length}</span></div><small>优先显示存在冲突的事件</small></header>
           <label className={styles.searchBox}><Search aria-hidden="true" size={15} /><input aria-label="按转运单号筛选" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="输入转运单号" /></label>
@@ -401,7 +401,7 @@ export function HospitalTransferWorkbench(props: CaseWorkbenchProps) {
           </section>
         </section>
 
-        <aside className={styles.actionPanel} aria-label="当前冲突调和">
+        <aside className={styles.actionPanel} aria-label="当前冲突调和" style={{ overflow: 'auto', minHeight: 0 }}>
           <header><div><span>当前事件</span><strong>{value(selectedEvent.payload.event_id)}</strong></div><b data-conflict={selectedKind}>{conflictLabels[selectedKind] ?? "状态冲突"}</b></header>
           <section className={styles.delayCard} aria-label="事件双时点">
             <div><span>业务发生</span><strong>{time(selectedEvent.payload.event_time)}</strong></div>
