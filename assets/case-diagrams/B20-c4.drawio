@@ -1,0 +1,70 @@
+<mxfile host="app.diagrams.net" modified="2026-08-06T07:01:24.368Z" agent="B20-c4-gen-v2" version="22.0.0">
+<diagram name="L1-SystemContext" id="l1-systemcontext">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="800" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="perf_engineer" value="性能工程师&lt;br&gt;[Person]&lt;br&gt;查看站日事实与派生线索，提交站端核查任务" style="shape=mxgraph.c4.person2;html=1;whiteSpace=wrap;fontSize=12;fontColor=#ffffff;align=center;fillColor=#083F75;strokeColor=#06315C;" vertex="1" parent="1"><mxGeometry x="80" y="80" width="200" height="180" as="geometry"/></mxCell>
+        <mxCell id="supervisor" value="运维主管&lt;br&gt;[Person]&lt;br&gt;确认核查方向，登记禁止控制变更" style="shape=mxgraph.c4.person2;html=1;whiteSpace=wrap;fontSize=12;fontColor=#ffffff;align=center;fillColor=#083F75;strokeColor=#06315C;" vertex="1" parent="1"><mxGeometry x="80" y="320" width="200" height="180" as="geometry"/></mxCell>
+        <mxCell id="pv_workbench" value="光伏站端记录核查台&lt;br&gt;[Software System]&lt;br&gt;分栏展示事实/线索/缺失/任务，不自动改变控制" style="rounded=1;arcSize=10;html=1;whiteSpace=wrap;fontSize=12;fontColor=#ffffff;align=center;fillColor=#1061B0;strokeColor=#0D5091;" vertex="1" parent="1"><mxGeometry x="480" y="200" width="240" height="120" as="geometry"/></mxCell>
+        <mxCell id="public_dataset" value="公开站日数据集&lt;br&gt;[Software System]&lt;br&gt;5,327 站日 · 8 匿名站点 · CSV" style="rounded=1;arcSize=10;html=1;whiteSpace=wrap;fontSize=12;fontColor=#ffffff;align=center;fillColor=#8C8496;strokeColor=#736782;" vertex="1" parent="1"><mxGeometry x="920" y="80" width="240" height="120" as="geometry"/></mxCell>
+        <mxCell id="dispatch_system" value="调度/告警/检修系统&lt;br&gt;[Software System]&lt;br&gt;数据集未包含，需申请补取" style="rounded=1;arcSize=10;html=1;whiteSpace=wrap;fontSize=12;fontColor=#ffffff;align=center;fillColor=#8C8496;strokeColor=#736782;" vertex="1" parent="1"><mxGeometry x="920" y="320" width="240" height="120" as="geometry"/></mxCell>
+        <mxCell id="edge_0" value="提交核查" style="endArrow=classic;startArrow=none;endFill=1;endSize=12;html=1;fontSize=11;fontColor=#404040;strokeColor=#828282;labelBackgroundColor=#ffffff;rounded=0;" edge="1" parent="1" source="perf_engineer" target="pv_workbench"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="edge_1" value="确认/登记" style="endArrow=classic;startArrow=none;endFill=1;endSize=12;html=1;fontSize=11;fontColor=#404040;strokeColor=#828282;labelBackgroundColor=#ffffff;rounded=0;" edge="1" parent="1" source="supervisor" target="pv_workbench"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="edge_2" value="读取站日" style="endArrow=classic;startArrow=none;endFill=1;endSize=12;html=1;fontSize=11;fontColor=#404040;strokeColor=#828282;labelBackgroundColor=#ffffff;rounded=0;" edge="1" parent="1" source="pv_workbench" target="public_dataset"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="edge_3" value="申请补取（未接入）" style="endArrow=classic;startArrow=none;endFill=1;endSize=12;html=1;fontSize=11;fontColor=#404040;strokeColor=#828282;labelBackgroundColor=#ffffff;rounded=0;" edge="1" parent="1" source="pv_workbench" target="dispatch_system"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+<diagram name="L2-Containers" id="l2-containers">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="800" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="spa" value="Next.js 工作台&lt;br&gt;[Container: React/TS]&lt;br&gt;事实/线索/缺失/任务四栏 SPA" style="rounded=1;arcSize=10;html=1;whiteSpace=wrap;fontSize=12;fontColor=#ffffff;align=center;fillColor=#23A2D9;strokeColor=#0E7DAD;" vertex="1" parent="1"><mxGeometry x="80" y="120" width="240" height="120" as="geometry"/></mxCell>
+        <mxCell id="command_svc" value="类型化命令服务&lt;br&gt;[Container: Node.js]&lt;br&gt;申请·提交·确认·登记" style="rounded=1;arcSize=10;html=1;whiteSpace=wrap;fontSize=12;fontColor=#ffffff;align=center;fillColor=#23A2D9;strokeColor=#0E7DAD;" vertex="1" parent="1"><mxGeometry x="480" y="120" width="240" height="120" as="geometry"/></mxCell>
+        <mxCell id="event_log" value="事件记录&lt;br&gt;[Container: SQLite]&lt;br&gt;状态持久化与版本追溯" style="shape=cylinder3;size=15;boundedLbl=1;html=1;whiteSpace=wrap;fontSize=12;fontColor=#ffffff;align=center;fillColor=#23A2D9;strokeColor=#0E7DAD;" vertex="1" parent="1"><mxGeometry x="880" y="120" width="240" height="120" as="geometry"/></mxCell>
+        <mxCell id="csv_store" value="站日事实存储&lt;br&gt;[Container: CSV]&lt;br&gt;case.csv + stations.csv" style="rounded=1;arcSize=10;html=1;whiteSpace=wrap;fontSize=12;fontColor=#ffffff;align=center;fillColor=#23A2D9;strokeColor=#0E7DAD;" vertex="1" parent="1"><mxGeometry x="80" y="360" width="240" height="120" as="geometry"/></mxCell>
+        <mxCell id="edge_0" value="onCommand" style="endArrow=classic;startArrow=none;endFill=1;endSize=12;html=1;fontSize=11;fontColor=#404040;strokeColor=#828282;labelBackgroundColor=#ffffff;rounded=0;" edge="1" parent="1" source="spa" target="command_svc"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="edge_1" value="持久化事件" style="endArrow=classic;startArrow=none;endFill=1;endSize=12;html=1;fontSize=11;fontColor=#404040;strokeColor=#828282;labelBackgroundColor=#ffffff;rounded=0;" edge="1" parent="1" source="command_svc" target="event_log"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="edge_2" value="加载站日" style="endArrow=classic;startArrow=none;endFill=1;endSize=12;html=1;fontSize=11;fontColor=#404040;strokeColor=#828282;labelBackgroundColor=#ffffff;rounded=0;" edge="1" parent="1" source="spa" target="csv_store"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+<diagram name="L3-Components" id="l3-components">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="800" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="facts_panel" value="站日事实面板&lt;br&gt;[Component]&lt;br&gt;装机/记录数/辐照度/气温/功率/出力比" style="rounded=1;arcSize=10;html=1;whiteSpace=wrap;fontSize=12;fontColor=#ffffff;align=center;fillColor=#63BEF2;strokeColor=#2086C9;" vertex="1" parent="1"><mxGeometry x="480" y="80" width="240" height="120" as="geometry"/></mxCell>
+        <mxCell id="clues_panel" value="派生线索面板&lt;br&gt;[Component]&lt;br&gt;温度/限电/设备三选一，标注派生非结论" style="rounded=1;arcSize=10;html=1;whiteSpace=wrap;fontSize=12;fontColor=#ffffff;align=center;fillColor=#63BEF2;strokeColor=#2086C9;" vertex="1" parent="1"><mxGeometry x="880" y="80" width="240" height="120" as="geometry"/></mxCell>
+        <mxCell id="gaps_panel" value="缺失记录面板&lt;br&gt;[Component]&lt;br&gt;调度/告警/检修勾选申请补取" style="rounded=1;arcSize=10;html=1;whiteSpace=wrap;fontSize=12;fontColor=#ffffff;align=center;fillColor=#63BEF2;strokeColor=#2086C9;" vertex="1" parent="1"><mxGeometry x="880" y="320" width="240" height="120" as="geometry"/></mxCell>
+        <mxCell id="task_panel" value="人工核查任务面板&lt;br&gt;[Component]&lt;br&gt;负责人/期限/提交人/说明/主管确认" style="rounded=1;arcSize=10;html=1;whiteSpace=wrap;fontSize=12;fontColor=#ffffff;align=center;fillColor=#63BEF2;strokeColor=#2086C9;" vertex="1" parent="1"><mxGeometry x="480" y="320" width="240" height="120" as="geometry"/></mxCell>
+        <mxCell id="trend_view" value="日级历史趋势&lt;br&gt;[Component]&lt;br&gt;最近 14 站日，缺测断线不补零" style="rounded=1;arcSize=10;html=1;whiteSpace=wrap;fontSize=12;fontColor=#ffffff;align=center;fillColor=#63BEF2;strokeColor=#2086C9;" vertex="1" parent="1"><mxGeometry x="80" y="320" width="240" height="120" as="geometry"/></mxCell>
+        <mxCell id="station_bar" value="站点选择栏&lt;br&gt;[Component]&lt;br&gt;匿名站点当日可用性" style="rounded=1;arcSize=10;html=1;whiteSpace=wrap;fontSize=12;fontColor=#ffffff;align=center;fillColor=#63BEF2;strokeColor=#2086C9;" vertex="1" parent="1"><mxGeometry x="80" y="80" width="240" height="120" as="geometry"/></mxCell>
+        <mxCell id="edge_0" value="选中站日" style="endArrow=classic;startArrow=none;endFill=1;endSize=12;html=1;fontSize=11;fontColor=#404040;strokeColor=#828282;labelBackgroundColor=#ffffff;rounded=0;" edge="1" parent="1" source="station_bar" target="facts_panel"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="edge_1" value="派生线索" style="endArrow=classic;startArrow=none;endFill=1;endSize=12;html=1;fontSize=11;fontColor=#404040;strokeColor=#828282;labelBackgroundColor=#ffffff;rounded=0;" edge="1" parent="1" source="facts_panel" target="clues_panel"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="edge_2" value="关联缺口" style="endArrow=classic;startArrow=none;endFill=1;endSize=12;html=1;fontSize=11;fontColor=#404040;strokeColor=#828282;labelBackgroundColor=#ffffff;rounded=0;" edge="1" parent="1" source="clues_panel" target="gaps_panel"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="edge_3" value="组装任务" style="endArrow=classic;startArrow=none;endFill=1;endSize=12;html=1;fontSize=11;fontColor=#404040;strokeColor=#828282;labelBackgroundColor=#ffffff;rounded=0;" edge="1" parent="1" source="gaps_panel" target="task_panel"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="edge_4" value="上下文" style="endArrow=classic;startArrow=none;endFill=1;endSize=12;html=1;fontSize=11;fontColor=#404040;strokeColor=#828282;labelBackgroundColor=#ffffff;rounded=0;" edge="1" parent="1" source="task_panel" target="trend_view"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+<diagram name="L4-Code" id="l4-code">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="800" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="pvl_workbench" value="PvLossWorkbench.tsx&lt;br&gt;[Component: React]&lt;br&gt;主组件，四栏布局与命令分发" style="rounded=1;arcSize=10;html=1;whiteSpace=wrap;fontSize=12;fontColor=#ffffff;align=center;fillColor=#63BEF2;strokeColor=#2086C9;" vertex="1" parent="1"><mxGeometry x="80" y="200" width="240" height="120" as="geometry"/></mxCell>
+        <mxCell id="restore_task" value="restoreTask()&lt;br&gt;[Component]&lt;br&gt;从事件流还原任务状态" style="rounded=1;arcSize=10;html=1;whiteSpace=wrap;fontSize=12;fontColor=#ffffff;align=center;fillColor=#63BEF2;strokeColor=#2086C9;" vertex="1" parent="1"><mxGeometry x="480" y="80" width="240" height="120" as="geometry"/></mxCell>
+        <mxCell id="run_command" value="runCommand()&lt;br&gt;[Component]&lt;br&gt;submit/confirm/hold 三命令" style="rounded=1;arcSize=10;html=1;whiteSpace=wrap;fontSize=12;fontColor=#ffffff;align=center;fillColor=#63BEF2;strokeColor=#2086C9;" vertex="1" parent="1"><mxGeometry x="480" y="200" width="240" height="120" as="geometry"/></mxCell>
+        <mxCell id="trend_segments" value="trendSegments()&lt;br&gt;[Component]&lt;br&gt;缺测断线，日历缺口分段" style="rounded=1;arcSize=10;html=1;whiteSpace=wrap;fontSize=12;fontColor=#ffffff;align=center;fillColor=#63BEF2;strokeColor=#2086C9;" vertex="1" parent="1"><mxGeometry x="480" y="320" width="240" height="120" as="geometry"/></mxCell>
+        <mxCell id="domain_cmd" value="domain-command.ts&lt;br&gt;[Component: TS]&lt;br&gt;类型化命令与状态机定义" style="rounded=1;arcSize=10;html=1;whiteSpace=wrap;fontSize=12;fontColor=#ffffff;align=center;fillColor=#63BEF2;strokeColor=#2086C9;" vertex="1" parent="1"><mxGeometry x="880" y="200" width="240" height="120" as="geometry"/></mxCell>
+        <mxCell id="edge_0" value="useMemo" style="endArrow=classic;startArrow=none;endFill=1;endSize=12;html=1;fontSize=11;fontColor=#404040;strokeColor=#828282;labelBackgroundColor=#ffffff;rounded=0;" edge="1" parent="1" source="pvl_workbench" target="restore_task"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="edge_1" value="onClick" style="endArrow=classic;startArrow=none;endFill=1;endSize=12;html=1;fontSize=11;fontColor=#404040;strokeColor=#828282;labelBackgroundColor=#ffffff;rounded=0;" edge="1" parent="1" source="pvl_workbench" target="run_command"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="edge_2" value="渲染趋势" style="endArrow=classic;startArrow=none;endFill=1;endSize=12;html=1;fontSize=11;fontColor=#404040;strokeColor=#828282;labelBackgroundColor=#ffffff;rounded=0;" edge="1" parent="1" source="pvl_workbench" target="trend_segments"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="edge_3" value="类型约束" style="endArrow=classic;startArrow=none;endFill=1;endSize=12;html=1;fontSize=11;fontColor=#404040;strokeColor=#828282;labelBackgroundColor=#ffffff;rounded=0;" edge="1" parent="1" source="run_command" target="domain_cmd"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

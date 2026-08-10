@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>B02 · 会员分层人均购买次数 · Rung Bars</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F0EFEB; --ink:#1C1C1A; --muted:#8F8E88; --faint:#C6C5BF; --grid:#DEDDD6;
+    --paper:#FAF9F5; --accent:#1C1C1A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  body{padding:48px 40px 56px;max-width:920px;margin:0 auto}
+  .meta{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+  .meta b{color:var(--ink);font-weight:500}
+  h1{font-family:'Fraunces',serif;font-weight:600;font-size:34px;line-height:1.15;letter-spacing:-.01em;margin-bottom:8px}
+  .sub{font-family:'Fraunces',serif;font-style:italic;font-size:16px;color:var(--muted);margin-bottom:6px}
+  .legend{font-size:12px;color:var(--muted);margin-bottom:28px;line-height:1.5}
+  .legend b{color:var(--ink);font-weight:500}
+  .chart{background:var(--paper);border:1px solid var(--grid);padding:28px 24px 20px;position:relative}
+  .chart svg{display:block;width:100%;height:auto}
+  .status-row{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px;font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--muted)}
+  .status-row .tag{display:inline-flex;align-items:center;gap:6px}
+  .status-row .dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+  .dot.calc{background:var(--ink)}
+  .dot.na{background:var(--faint);border:1.5px dashed var(--muted)}
+  .foot{margin-top:22px;font-size:11px;color:var(--muted);line-height:1.6;border-top:1px solid var(--grid);padding-top:14px}
+  .foot b{color:var(--ink);font-weight:500}
+  .foot .warn{color:var(--ink);font-weight:500}
+  @media(max-width:640px){body{padding:24px 16px}h1{font-size:26px}}
+</style>
+</head>
+<body>
+
+<div class="meta">B02 · 会员发券实验 · <b>lieflat-charts / F1 Rung Bars</b> · 单色</div>
+
+<h1>会员分层人均购买次数</h1>
+<div class="sub">one rung = one purchase per member · 基线数据（实验前）</div>
+
+<div class="legend">
+  数据来源：<b>dataset/02-member-value-experiment/case.csv</b> · 字段 <b>value_segment, buy_count</b> ·
+  口径：分层算术平均（次/会员）· 样本 <b>5000</b> 人，每层 <b>1250</b> 人。
+</div>
+
+<div class="chart">
+<svg viewBox="0 0 760 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="会员分层人均购买次数 rung bars">
+  <defs>
+    <style>
+      .lbl{font-family:'Fraunces',serif;font-size:15px;fill:#1C1C1A}
+      .num{font-family:'Fraunces',serif;font-weight:600;font-size:22px;fill:#1C1C1A}
+      .cnt{font-family:'JetBrains Mono',monospace;font-size:10px;fill:#8F8E88;letter-spacing:.04em}
+      .rung{fill:#1C1C1A}
+      .rung.faint{fill:#C6C5BF}
+      .tick{font-family:'JetBrains Mono',monospace;font-size:9px;fill:#8F8E88}
+      .target{font-family:'JetBrains Mono',monospace;font-size:10px;fill:#1C1C1A;letter-spacing:.06em}
+      .axis{stroke:#DEDDD6;stroke-width:1}
+      .note{font-family:'Fraunces',serif;font-style:italic;font-size:11px;fill:#8F8E88}
+    </style>
+  </defs>
+
+  <!-- baseline -->
+  <line class="axis" x1="60" y1="400" x2="720" y2="400"/>
+
+  <!-- bars: 4 segments, ascending by buy_count -->
+  <!-- bar width ~110, gap ~50, start x=80 -->
+  <!-- rung: w=100, h=14, gap=2, 1 rung=1次 -->
+
+  <!-- 观察: 4.7088 → 5 rungs (ceil) -->
+  <g transform="translate(80,0)">
+    <!-- rungs -->
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-16)"/>
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-32)"/>
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-48)"/>
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-64)"/>
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-80)"/>
+    <!-- 5th rung dot marker -->
+    <circle cx="50" cy="312" r="2.5" fill="#1C1C1A"/>
+    <!-- number -->
+    <text class="num" x="50" y="300" text-anchor="middle">4.71</text>
+    <!-- label -->
+    <text class="lbl" x="50" y="425" text-anchor="middle">观察</text>
+    <text class="cnt" x="50" y="442" text-anchor="middle">1250 人</text>
+  </g>
+
+  <!-- 成长: 7.4712 → 8 rungs (target segment) -->
+  <g transform="translate(230,0)">
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-16)"/>
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-32)"/>
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-48)"/>
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-64)"/>
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-80)"/>
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-96)"/>
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-112)"/>
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-128)"/>
+    <!-- 5th rung dot marker -->
+    <circle cx="50" cy="312" r="2.5" fill="#1C1C1A"/>
+    <!-- target bracket -->
+    <rect x="-6" y="262" width="112" height="148" fill="none" stroke="#1C1C1A" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <text class="target" x="50" y="254" text-anchor="middle">▼ 发券目标层</text>
+    <!-- number -->
+    <text class="num" x="50" y="242" text-anchor="middle">7.47</text>
+    <!-- label -->
+    <text class="lbl" x="50" y="425" text-anchor="middle">成长</text>
+    <text class="cnt" x="50" y="442" text-anchor="middle">1250 人</text>
+  </g>
+
+  <!-- 活跃: 10.1664 → 11 rungs -->
+  <g transform="translate(380,0)">
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-16)"/>
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-32)"/>
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-48)"/>
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-64)"/>
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-80)"/>
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-96)"/>
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-112)"/>
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-128)"/>
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-144)"/>
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-160)"/>
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-176)"/>
+    <!-- 5th & 10th rung dot markers -->
+    <circle cx="50" cy="312" r="2.5" fill="#1C1C1A"/>
+    <circle cx="50" cy="232" r="2.5" fill="#1C1C1A"/>
+    <!-- number -->
+    <text class="num" x="50" y="210" text-anchor="middle">10.17</text>
+    <!-- label -->
+    <text class="lbl" x="50" y="425" text-anchor="middle">活跃</text>
+    <text class="cnt" x="50" y="442" text-anchor="middle">1250 人</text>
+  </g>
+
+  <!-- 核心: 12.0 → 12 rungs -->
+  <g transform="translate(530,0)">
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-16)"/>
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-32)"/>
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-48)"/>
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-64)"/>
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-80)"/>
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-96)"/>
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-112)"/>
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-128)"/>
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-144)"/>
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-160)"/>
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-176)"/>
+    <rect class="rung" x="0" y="400" width="100" height="14" transform="translate(0,-192)"/>
+    <!-- 5th & 10th rung dot markers -->
+    <circle cx="50" cy="312" r="2.5" fill="#1C1C1A"/>
+    <circle cx="50" cy="232" r="2.5" fill="#1C1C1A"/>
+    <!-- number -->
+    <text class="num" x="50" y="200" text-anchor="middle">12.00</text>
+    <!-- label -->
+    <text class="lbl" x="50" y="425" text-anchor="middle">核心</text>
+    <text class="cnt" x="50" y="442" text-anchor="middle">1250 人</text>
+  </g>
+
+  <!-- overall reference line: 8.5866 -->
+  <g transform="translate(680,0)">
+    <line x1="0" y1="400" x2="0" y2="-138" stroke="#8F8E88" stroke-width="1" stroke-dasharray="2 3"/>
+    <text class="note" x="6" y="262" >全体</text>
+    <text class="note" x="6" y="276">均值</text>
+    <text class="num" x="6" y="298" text-anchor="start" style="font-size:16px">8.59</text>
+  </g>
+
+  <!-- y-axis ticks (every 5 rungs = 5次) -->
+  <text class="tick" x="52" y="404" text-anchor="end">0</text>
+  <text class="tick" x="52" y="324" text-anchor="end">5</text>
+  <text class="tick" x="52" y="244" text-anchor="end">10</text>
+  <text class="tick" x="52" y="164" text-anchor="end">15</text>
+</svg>
+</div>
+
+<div class="status-row">
+  <span class="tag"><span class="dot calc"></span> 可计算：人均购买次数（buy_count 算术平均）</span>
+  <span class="tag"><span class="dot calc"></span> 可计算：分层人数（value_segment 计数）</span>
+  <span class="tag"><span class="dot na"></span> 待验证：发券后购买增量（无投放后数据）</span>
+  <span class="tag"><span class="dot na"></span> 待验证：历史收入金额（无 monetary 字段）</span>
+</div>
+
+<div class="foot">
+  <p><b>实验设计</b>：从 5000 会员中抽样 300 人，80%（240 人）发 8 元券、20%（60 人）对照，预算 ¥1920。
+  目标分层为「成长」（1250 人，全量发券预算上限 ¥10000）。</p>
+  <p style="margin-top:8px"><span class="warn">⚠ 不把相关性画成因果：</span>本图只展示实验<b>前</b>的分层基线差异。
+  分层间购买次数的共变线索不等于「券起效」——发券组与对照组的<b>投放后</b>购买差异尚未测量，
+  因果结论需等待 A/B 实验数据回流后另行判断。</p>
+  <p style="margin-top:8px"><b>图表规范</b>：lieflat-charts · F1 Rung Bars · 单色（INK #1C1C1A on PAPER #FAF9F5）·
+  1 rung = 1 次/会员 · 每 5 档标圆点 · 数值取 2 位小数标注于柱顶。</p>
+</div>
+
+</body>
+</html>
