@@ -18,7 +18,7 @@
 
 ## 解决方案
 
-![汽车售后安全分流](../../evidence/screenshots/13-work-productized.png)
+![汽车售后安全分流](../../assets/cases/case-13/13-work-productized.png)
 
 ![B13 需求流程](../../assets/case-diagrams/B13-requirement.svg)
 

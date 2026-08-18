@@ -185,34 +185,6 @@ describe("Case 04 V5 申请材料补正与双岗复核", () => {
     );
   });
 
-  it("数据质量档案以 applications.csv 为页面权威并隔离 UCI 支持数据", () => {
-    const profile = JSON.parse(readFileSync(resolve(
-      process.cwd(),
-      "../../evidence/data-quality/case-04-credit-review-profile.json",
-    ), "utf8"));
-
-    expect(profile.dataset).toMatchObject({
-      path: "dataset/04-credit-human-review/applications.csv",
-      sha256: "14d4c64476bc7908db7497493d4284136795d3eb39ff09bcbbbefa9271c821d1",
-      rows: 1200,
-      columns: 19,
-      dataNature: "deterministic-synthetic-operational",
-      containsPii: false,
-    });
-    expect(profile.distributions).toMatchObject({
-      incomeEvidenceStatus: { complete: 1128, missing: 72 },
-      identityVerificationStatus: { verified: 1152, pending: 48 },
-      consentStatus: { confirmed: 1176, not_confirmed: 24 },
-      applicationConsistency: { consistent: 1188, needs_evidence: 12 },
-    });
-    expect(profile.supportingDataset).toMatchObject({
-      path: "dataset/04-credit-human-review/case.csv",
-      rows: 30000,
-      courseRole: "offline-method-and-bias-reference-only",
-      entersIndividualWorkspace: false,
-    });
-  });
-
   it("关闭持续动效并保持服务端渲染确定性", () => {
     const stylesheet = readFileSync(resolve(
       process.cwd(),

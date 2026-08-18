@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "skill_id": "S02",
+  "skill_name": "data-profile",
+  "verification_status": "verified",
+  "verified_scope": "read-only full CSV scan",
+  "provider_scope": null,
+  "known_limitations": [],
+  "commands": [
+    "python -B code/skills/data-profile/scripts/profile_csv.py --input dataset/06-beijing-air-quality-audit/case.csv --allowed-root dataset --json-output runtime/agent-skills/S02/profile.json --markdown-output runtime/agent-skills/S02/profile.md"
+  ],
+  "key_results": [
+    "21,039 行、21 列、精确重复 0 行",
+    "六项污染物缺失数均由脚本逐行统计"
+  ],
+  "artifact_count": 2,
+  "artifacts": [
+    {
+      "path": "runtime/agent-skills/S02/profile.json",
+      "bytes": 2673,
+      "sha256": "4c0020e198956ed2bd9ad1ad10fe97389dd5d03f954321e34990845df776c8d0"
+    },
+    {
+      "path": "runtime/agent-skills/S02/profile.md",
+      "bytes": 821,
+      "sha256": "7fc0c62d6dbb5c3e307554ab3e6da17082e0a83e6e61564a2832f04172bf42b8"
+    }
+  ],
+  "focused_tests": 3,
+  "quick_validate": "passed"
+}

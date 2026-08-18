@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0",
+  "skill_id": "S08",
+  "skill_name": "asset-contract",
+  "verification_status": "verified-local-provider-blocked",
+  "verified_scope": "local GLB fixture inspection and built Three.js viewer",
+  "provider_scope": "blocked-not-verified",
+  "known_limitations": [],
+  "commands": [
+    "python -B code/skills/asset-contract/scripts/create_asset_contract.py --input code/skills/asset-contract/examples/triangle.request.json --output runtime/agent-skills/S08/asset-contract.json",
+    "python -B code/skills/asset-contract/scripts/inspect_gltf.py --input runtime/agent-skills/S08/model.glb --allowed-root runtime/agent-skills/S08 --output runtime/agent-skills/S08/inspection-glb.json"
+  ],
+  "key_results": [
+    "本地 glTF 2.0 / GLB：3 个顶点、1 个三角形",
+    "Three.js 查看器生产构建已保留",
+    "Provider 未调用、无回执，严格标记 blocked-not-verified"
+  ],
+  "artifact_count": 12,
+  "artifacts": [
+    {
+      "path": "runtime/agent-skills/S08/asset-contract.json",
+      "bytes": 1154,
+      "sha256": "c6a7cec07eb962c9ca4092a59c6b3c5d1f66a145d79ec545f953c0b9ea03bccb"
+    },
+    {
+      "path": "runtime/agent-skills/S08/browser-verification.json",
+      "bytes": 921,
+      "sha256": "8a9a04806945997fee4d3ba3f1f37f5cb41fdd66a99abf1fada9c7f7c220540d"
+    },
+    {
+      "path": "runtime/agent-skills/S08/fixture-manifest.json",
+      "bytes": 820,
+      "sha256": "6d2cc971c922b045f5dd38f8948b36fc9238aed5d798e7a788e6a21c70fc93d7"
+    },
+    {
+      "path": "runtime/agent-skills/S08/inspection-glb.json",
+      "bytes": 442,
+      "sha256": "1f5584b2bcdb72390bb361192c635995117814633c4068b6593a4e3c7d8222db"
+    },
+    {
+      "path": "runtime/agent-skills/S08/model.glb",
+      "bytes": 768,
+      "sha256": "62d767463ef17456eaa78e302dfe42c422cf02944ba162f9d056be292b86e2fc"
+    },
+    {
+      "path": "runtime/agent-skills/S08/request.json",
+      "bytes": 481,
+      "sha256": "830d6cea9c4e77986f7e719b1da6d2025e8d047be3f9d6ca7129eb9d085d6353"
+    },
+    {
+      "path": "runtime/agent-skills/S08/viewer-contract.json",
+      "bytes": 384,
+      "sha256": "1e994f9f65256a5ce01a516ba0ea91944074daadb83934c41b25a19db9575e0d"
+    },
+    {
+      "path": "runtime/agent-skills/S08/viewer-dist/assets/index-BMIUMlrN.css",
+      "bytes": 1120,
+      "sha256": "811269741956fad223c8d6f5940c1f5535819403ab476da6feae45e8f5983838"
+    },
+    {
+      "path": "runtime/agent-skills/S08/viewer-dist/assets/index-DRrBq3tY.js",
+      "bytes": 582138,
+      "sha256": "330ad9fe78902b92c0abec8e208d60395524475f9ab0e7cffc6d835b32648051"
+    },
+    {
+      "path": "runtime/agent-skills/S08/viewer-dist/index.html",
+      "bytes": 1285,
+      "sha256": "4cf791c50dc49ad1789fdf7cdb8686e691c38d3702156691eab56ee7ccb3c70d"
+    },
+    {
+      "path": "runtime/agent-skills/S08/viewer-dist/model.glb",
+      "bytes": 768,
+      "sha256": "62d767463ef17456eaa78e302dfe42c422cf02944ba162f9d056be292b86e2fc"
+    },
+    {
+      "path": "runtime/agent-skills/S08/viewer-runtime.png",
+      "bytes": 188455,
+      "sha256": "18eb7ad371d265163aa17544c9e31a5f55f290ca3d6c1d69ce7dfc315bcc2987"
+    }
+  ],
+  "focused_tests": 7,
+  "quick_validate": "passed"
+}

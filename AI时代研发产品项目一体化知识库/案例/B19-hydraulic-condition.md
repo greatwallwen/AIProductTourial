@@ -16,7 +16,7 @@
 
 ## 解决方案
 
-![液压动力单元检查排序](../../evidence/screenshots/19-work-productized.png)
+![液压动力单元检查排序](../../assets/cases/case-19/19-work-productized.png)
 
 ![B19 需求流程](../../assets/case-diagrams/B19-requirement.svg)
 

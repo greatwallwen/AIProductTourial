@@ -26,7 +26,7 @@
 
 ## 解决方案
 
-![退货证据核验台](../../evidence/screenshots/01-work-productized.png)
+![退货证据核验台](../../assets/cases/case-01/01-work-productized.png)
 
 <video src="../../assets/case-diagrams/B01-requirement.webm" controls muted loop></video>
 

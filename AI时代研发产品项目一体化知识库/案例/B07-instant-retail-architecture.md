@@ -18,7 +18,7 @@
 
 ## 解决方案
 
-![即时履约架构评审](../../evidence/screenshots/07-work-productized.png)
+![即时履约架构评审](../../assets/cases/case-07/07-work-productized.png)
 
 ![B07 需求流程](../../assets/case-diagrams/B07-requirement.svg)
 

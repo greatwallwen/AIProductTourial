@@ -238,7 +238,7 @@ U04 的语言模型已经把问题缩小，却把两个空值率算错了 0.01 �
 | SO2 | 417 | 1.98% |
 | PM10 | 334 | 1.59% |
 
-完整结果可打开查看：[数据体检](../evidence/runtime/agent-skills/S02/profile.md)。
+完整结果可打开查看：[数据体检](../runtime/agent-skills/S02/profile.md)。
 
 ### 为什么计算交给 Skill
 
@@ -284,7 +284,7 @@ U04 的语言模型已经把问题缩小，却把两个空值率算错了 0.01 �
 
 ### 简报怎样说
 
-[经营简报](../evidence/runtime/agent-skills/S03/business-brief.md)把四种内容分开：
+[经营简报](../runtime/agent-skills/S03/business-brief.md)把四种内容分开：
 
 > 事实：1,250 × 8 元 = 10,000 元。  
 > 解释："成长"分层只是候选实验对象。  
@@ -331,7 +331,7 @@ U04 的语言模型已经把问题缩小，却把两个空值率算错了 0.01 �
 
 ### 机会图
 
-![门店差评处理机会图](../evidence/runtime/agent-skills/S04/opportunity-map.svg)
+![门店差评处理机会图](../runtime/agent-skills/S04/opportunity-map.svg)
 
 ### 为什么先画机会而不是功能
 
@@ -372,7 +372,7 @@ U04 的语言模型已经把问题缩小，却把两个空值率算错了 0.01 �
 
 ### 选中的预览
 
-![雨天旧书店可编辑预览](../evidence/runtime/agent-skills/S05/poster.svg)
+![雨天旧书店可编辑预览](../runtime/agent-skills/S05/poster.svg)
 
 ### 为什么最终选择仍要交给人
 
@@ -412,11 +412,11 @@ U04 的语言模型已经把问题缩小，却把两个空值率算错了 0.01 �
 | 4 | 数据表页 | 三项代表污染物缺失 |
 | 5 | 待绘图页 | 读取→体检→人工复核→分析 |
 
-生成了 [5 页可编辑 PPTX](../evidence/runtime/agent-skills/S06/presentation.pptx)和五张 1280×720 预览。空白页、越界、重叠和文字溢出均未发现；第 5 页仍是待绘图页，这份文件可用于继续编辑，暂不作为完整课件。
+生成了 [5 页可编辑 PPTX](../runtime/agent-skills/S06/presentation.pptx)和五张 1280×720 预览。空白页、越界、重叠和文字溢出均未发现；第 5 页仍是待绘图页，这份文件可用于继续编辑，暂不作为完整课件。
 
 ### 第四页和检查结果
 
-![Markdown 转 PPTX 的数据页](../evidence/runtime/agent-skills/S06/rendered/slide-04.png)
+![Markdown 转 PPTX 的数据页](../runtime/agent-skills/S06/rendered/slide-04.png)
 
 - 备注摘录："缺失值会改变后续指标分母，但本页不预设填补方案。"
 - 可编辑对象：第 4 页保留命名数据表 DATA_TABLE:table-4；第 5 页保留待绘图对象 quality-review-flow。
@@ -463,7 +463,7 @@ Markdown 提供内容层次，Skill 决定页型、对象和检查。生成出 P
 
 ### 运行画面
 
-![PixiJS 键盘运行结果](../evidence/runtime/agent-skills/S07/runtime-keyboard.png)
+![PixiJS 键盘运行结果](../runtime/agent-skills/S07/runtime-keyboard.png)
 
 ### 原型离完整小游戏还有什么
 
@@ -503,13 +503,13 @@ Markdown 提供内容层次，Skill 决定页型、对象和检查。生成出 P
 | 查看器 | Three.js 生产构建已生成 |
 | 在线文字转 3D | 当前项目没有新请求或下载资产 |
 
-![本地 3D 资产查看器运行结果](../evidence/runtime/agent-skills/S08/viewer-runtime.png)
+![本地 3D 资产查看器运行结果](../runtime/agent-skills/S08/viewer-runtime.png)
 
 真实浏览器中，本地 GLB 加载完成，控制台为 0 error、0 warning。画面中的网格用于观察朝向和尺度；文件大小、顶点、三角面与包围盒仍以同页检查表为准。
 
 ### 怎样查看
 
-查看器构建位于 [viewer-dist](../evidence/runtime/agent-skills/S08/viewer-dist/index.html)。它使用站点根路径加载资源，不能直接双击 HTML；需要把 viewer-dist 作为本地静态站点根目录后再打开。画面中的三角形只检查资产加载、朝向和尺度。
+查看器构建位于 [viewer-dist](../runtime/agent-skills/S08/viewer-dist/index.html)。它使用站点根路径加载资源，不能直接双击 HTML；需要把 viewer-dist 作为本地静态站点根目录后再打开。画面中的三角形只检查资产加载、朝向和尺度。
 
 ### 本地检查与在线生成是两件事
 
@@ -667,7 +667,7 @@ Agent 第一次检索后发现只有 `DATA-09`，于是把问题改成"检查工
 | `search_knowledge` | 查询、`DATA-09` / `COURSE-POLICY-09`、1～5 条 | 任意目录、未知来源、互联网补查 |
 | `read_sensor_window` | 固定切片、起止时间、四个传感字段 | 任意文件、密码字段、设备命令 |
 
-本轮实际记录到 `initialize`、`notifications/initialized`、`tools/list` 和三次 `tools/call`。完整消息在 [MCP 记录](../evidence/runtime/advanced-agent-lab/qwen-plus/mcp-transcript.json) 中。
+本轮实际记录到 `initialize`、`notifications/initialized`、`tools/list` 和三次 `tools/call`。完整消息在 [MCP 记录](../runtime/advanced-agent-lab/qwen-plus/mcp-transcript.json) 中。
 
 ### A2A 为什么不是三个本地函数
 
@@ -679,11 +679,11 @@ Agent 第一次检索后发现只有 `DATA-09`，于是把问题改成"检查工
 | 运营响应 | 立即停机 | 只有数据来源 | 缺权限规则，驳回 |
 | 权限复核 | 等待人工批准 | 检查程序、批准规则 | 保留 |
 
-冲突不是投票解决。`COURSE-09-APPROVAL` 明确禁止自动停机，而公开传感数据也不提供诊断或控制权限，因此汇总结果选择"准备检查申请"，状态保持"等待人工"。三份任务和产物见 [A2A 交接记录](../evidence/runtime/advanced-agent-lab/qwen-plus/a2a-tasks.json)。
+冲突不是投票解决。`COURSE-09-APPROVAL` 明确禁止自动停机，而公开传感数据也不提供诊断或控制权限，因此汇总结果选择"准备检查申请"，状态保持"等待人工"。三份任务和产物见 [A2A 交接记录](../runtime/advanced-agent-lab/qwen-plus/a2a-tasks.json)。
 
 ### 离线重放与 qwen-plus 结果
 
-在 CodeBuddy 中先选择"离线重放"，输出目录使用 `evidence/runtime/advanced-agent-lab/offline`。网络断开时，它仍能重新得到同样的检索选择、窗口统计、任务交接和冲突处理；精确命令保留在[实验 README](../code/labs/advanced-agent-lab/README.md)，不占用课堂正文。
+在 CodeBuddy 中先选择"离线重放"，输出目录使用 `runtime/advanced-agent-lab/offline`。网络断开时，它仍能重新得到同样的检索选择、窗口统计、任务交接和冲突处理；精确命令保留在[实验 README](../code/labs/advanced-agent-lab/README.md)，不占用课堂正文。
 
 配置好阿里密钥后，实时模式只让 `qwen-plus` 压缩已经生成的最终报告，不让模型重新决定动作。本轮请求返回 HTTP 200，模型为 `qwen-plus`，使用 2,384 个 token；密钥和供应商响应标识没有写入回执。四行结果是：
 
@@ -692,7 +692,7 @@ Agent 第一次检索后发现只有 `DATA-09`，于是把问题改成"检查工
 > 意见冲突：运营侧建议停机降风险，权限规则要求必须人工审批。  
 > 下一步：等待人工决定是否创建现场检查工单。
 
-三项检查都通过：保留 25 与 13、保留"人工决定"、没有给出直接控制指令。脱敏回执见 [qwen-plus 运行记录](../evidence/runtime/advanced-agent-lab/qwen-plus/provider-receipt.json)。
+三项检查都通过：保留 25 与 13、保留"人工决定"、没有给出直接控制指令。脱敏回执见 [qwen-plus 运行记录](../runtime/advanced-agent-lab/qwen-plus/provider-receipt.json)。
 
 ### 出了问题怎么查
 

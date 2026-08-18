@@ -18,7 +18,7 @@
 
 ## 解决方案
 
-![连续高硅事件调查台](../../evidence/screenshots/14-work-productized.png)
+![连续高硅事件调查台](../../assets/cases/case-14/14-work-productized.png)
 
 ![B14 需求流程](../../assets/case-diagrams/B14-requirement.svg)
 

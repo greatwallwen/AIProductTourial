@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "skill_id": "S05",
+  "skill_name": "poster-recipe",
+  "verification_status": "verified-local",
+  "verified_scope": "three local recipes, explicit selection, editable SVG",
+  "provider_scope": null,
+  "known_limitations": [],
+  "commands": [
+    "python -B code/skills/poster-recipe/scripts/build_poster.py --input code/skills/poster-recipe/examples/rainy-bookstore-brief.json --allowed-root code/skills/poster-recipe/examples --recipe-output runtime/agent-skills/S05/poster-recipes.json --svg-output runtime/agent-skills/S05/poster.svg"
+  ],
+  "key_results": [
+    "三套方向均可比较，选中“雨夜橱窗”",
+    "本地 SVG 可编辑；没有冒充图像 Provider 结果"
+  ],
+  "artifact_count": 2,
+  "artifacts": [
+    {
+      "path": "runtime/agent-skills/S05/poster-recipes.json",
+      "bytes": 5954,
+      "sha256": "c60b111dbd020641abb7ccd0f2bda9a2891b46d6769aefc9b89f0a1bf15ee3b6"
+    },
+    {
+      "path": "runtime/agent-skills/S05/poster.svg",
+      "bytes": 3042,
+      "sha256": "5b93ffbd84c3572003cf2a0a599b2888ae476ae14599e86642bc6e31f9ff0182"
+    }
+  ],
+  "focused_tests": 3,
+  "quick_validate": "passed"
+}

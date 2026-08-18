@@ -6,7 +6,6 @@
 
 `逻辑与证据 → Prompt → Agent + Skills → Grill / Harness / Loop → 产品与系统架构 → 20 个业务案例`
 
-- [完整教程](md/Course_AIProduct.md)
 - [分章目录](AI时代研发产品项目一体化知识库/README.md)
 - [20 个案例](AI时代研发产品项目一体化知识库/案例/README.md)
 - [案例数据](dataset/manifest.json)
@@ -43,11 +42,10 @@ macOS 或 Linux：
 ```text
 AIProductTourial/
 ├─ AI时代研发产品项目一体化知识库/  # 分章教程、专题与案例
-├─ md/Course_AIProduct.md           # 确定性合成的完整教程
 ├─ code/                            # React 19 + Next.js 16 驾驶舱与实验
 ├─ dataset/                         # 课堂数据、来源与许可边界
-├─ assets/                          # 理论图、需求图、架构图与场景素材
-├─ evidence/                        # 运行截图和可复核的实验产物
+├─ assets/                          # 理论图、需求图、架构图、场景素材与运行截图
+├─ runtime/                         # 可复核的实验产物
 ├─ skills/                          # 产品与 Loop 技能资料
 ├─ sources/                         # 来源账本
 ├─ tools/                           # 内容、数据和代码门禁

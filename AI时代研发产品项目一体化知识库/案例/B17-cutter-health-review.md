@@ -16,7 +16,7 @@ BD-0003 的切刀转矩均值为 -0.0215，切刀跟随误差均值接近 0，�
 
 ## 解决方案
 
-![包装切刀健康复核](../../evidence/screenshots/17-work-productized.png)
+![包装切刀健康复核](../../assets/cases/case-17/17-work-productized.png)
 
 ![B17 需求流程](../../assets/case-diagrams/B17-requirement.svg)
 

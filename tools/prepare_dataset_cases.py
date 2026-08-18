@@ -23,7 +23,6 @@ import xlrd
 
 ROOT = Path(__file__).resolve().parents[1]
 DATASET_ROOT = ROOT / "dataset"
-EVIDENCE_ROOT = ROOT / "evidence" / "data-quality"
 SEED = 20260720
 CASE_01_FX_RATE_GBP_CNY = 9.10
 CASE_DIRS = {
@@ -773,10 +772,6 @@ def run(case_id: str) -> dict:
         receipt = finalize(case_id, frame, title, boundaries, extra)
     receipt["started_at"] = started
     receipt["finished_at"] = datetime.now().astimezone().isoformat()
-    EVIDENCE_ROOT.mkdir(parents=True, exist_ok=True)
-    (EVIDENCE_ROOT / f"transform-{case_id}.json").write_text(
-        json.dumps(receipt, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
-    )
     return receipt
 
 

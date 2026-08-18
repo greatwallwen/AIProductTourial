@@ -16,7 +16,7 @@
 
 ## 解决方案
 
-![半导体生产记录复测](../../evidence/screenshots/15-work-productized.png)
+![半导体生产记录复测](../../assets/cases/case-15/15-work-productized.png)
 
 ![B15 需求流程](../../assets/case-diagrams/B15-requirement.svg)
 

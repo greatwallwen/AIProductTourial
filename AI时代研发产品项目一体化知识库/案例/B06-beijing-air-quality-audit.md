@@ -18,7 +18,7 @@
 
 ## 解决方案
 
-![历史空气质量数据摘录质检](../../evidence/screenshots/06-work-productized.png)
+![历史空气质量数据摘录质检](../../assets/cases/case-06/06-work-productized.png)
 
 ![B06 需求流程](../../assets/case-diagrams/B06-requirement.svg)
 

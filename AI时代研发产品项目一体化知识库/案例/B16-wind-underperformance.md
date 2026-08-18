@@ -18,7 +18,7 @@
 
 ## 解决方案
 
-![风机出力下偏核查](../../evidence/screenshots/16-work-productized.png)
+![风机出力下偏核查](../../assets/cases/case-16/16-work-productized.png)
 
 ![B16 需求流程](../../assets/case-diagrams/B16-requirement.svg)
 

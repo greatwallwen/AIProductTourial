@@ -18,7 +18,7 @@
 
 ## 解决方案
 
-![地铁空压机检索辅助排查](../../evidence/screenshots/09-work-productized.png)
+![地铁空压机检索辅助排查](../../assets/cases/case-09/09-work-productized.png)
 
 ![B09 需求流程](../../assets/case-diagrams/B09-requirement.svg)
 

@@ -18,7 +18,7 @@
 
 ## 解决方案
 
-![企业模型准入补测](../../evidence/screenshots/11-work-productized.png)
+![企业模型准入补测](../../assets/cases/case-11/11-work-productized.png)
 
 ![B11 需求流程](../../assets/case-diagrams/B11-requirement.svg)
 

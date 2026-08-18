@@ -18,7 +18,7 @@
 
 ## 解决方案
 
-![养殖塘事件响应](../../evidence/screenshots/08-work-productized.png)
+![养殖塘事件响应](../../assets/cases/case-08/08-work-productized.png)
 
 ![B08 需求流程](../../assets/case-diagrams/B08-requirement.svg)
 

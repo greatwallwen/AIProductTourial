@@ -20,7 +20,7 @@
 
 ## 解决方案
 
-![BT-0044 主汽低温事件核查](../../evidence/screenshots/18-work-productized.png)
+![BT-0044 主汽低温事件核查](../../assets/cases/case-18/18-work-productized.png)
 
 ![B18 需求流程](../../assets/case-diagrams/B18-requirement.svg)
 

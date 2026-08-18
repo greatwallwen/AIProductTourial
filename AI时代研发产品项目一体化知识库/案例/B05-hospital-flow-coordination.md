@@ -16,7 +16,7 @@
 
 ## 解决方案
 
-![转运晚到事件调和单](../../evidence/screenshots/05-work-productized.png)
+![转运晚到事件调和单](../../assets/cases/case-05/05-work-productized.png)
 
 ![B05 需求流程](../../assets/case-diagrams/B05-requirement.svg)
 

@@ -74,7 +74,7 @@ def main() -> int:
     for case_id, section in l_sections.items():
         if "```" not in section:
             errors.append(f"{case_id} missing an inspectable state trace")
-        if case_id != "L04" and not re.search(r"\]\(\.\./evidence/runtime/loop-runtime/[^)]+\)", section):
+        if case_id != "L04" and not re.search(r"\]\(\.\./runtime/loop-runtime/[^)]+\)", section):
             errors.append(f"{case_id} missing its runtime artifact link")
         if case_id == "L04" and "pixijs-game-contract" not in section:
             errors.append("L04 missing its code-test-debug example")
@@ -84,7 +84,7 @@ def main() -> int:
             if required not in section:
                 errors.append(f"{case_id} missing {required}")
         runtime_screenshots = re.findall(
-            r"!\[[^\]]*\]\(\.\./evidence/screenshots/\d{2}-work-productized\.png\)",
+            r"!\[[^\]]*\]\(\.\./assets/cases/case-\d{2}/\d{2}-work-productized\.png\)",
             section,
         )
         if len(runtime_screenshots) != 1:

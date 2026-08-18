@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "case_id": "S08",
+  "receipt_type": "real-browser-runtime-check",
+  "executed_at": "2026-07-28T19:02:18+08:00",
+  "url": "http://127.0.0.1:4398/",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "observed": {
+    "page_title": "本地 3D 资产查看器",
+    "load_status": "本地 GLB 已加载；可拖动旋转并滚轮缩放。",
+    "provider_status": "blocked-not-verified",
+    "asset_name": "model.glb",
+    "console_errors": 0,
+    "console_warnings": 0
+  },
+  "screenshot": {
+    "path": "runtime/agent-skills/S08/viewer-runtime.png",
+    "bytes": 188455,
+    "width": 1440,
+    "height": 900,
+    "sha256": "18eb7ad371d265163aa17544c9e31a5f55f290ca3d6c1d69ce7dfc315bcc2987"
+  },
+  "cleanup": {
+    "playwright_sessions_closed": ["course-s08", "course-s08-clean"],
+    "static_server_pid": 4928,
+    "static_server_stopped": true
+  },
+  "status": "passed"
+}

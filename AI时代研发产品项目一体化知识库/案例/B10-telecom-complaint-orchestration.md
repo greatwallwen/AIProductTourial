@@ -18,7 +18,7 @@
 
 ## 解决方案
 
-![通信请求恢复核查](../../evidence/screenshots/10-work-productized.png)
+![通信请求恢复核查](../../assets/cases/case-10/10-work-productized.png)
 
 ![B10 需求流程](../../assets/case-diagrams/B10-requirement.svg)
 

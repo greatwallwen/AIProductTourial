@@ -73,7 +73,7 @@ revise   保留限制，不补造收入和时间
 complete 四项硬条件通过，停止
 ```
 
-结果见 [L01 运行记录](../evidence/runtime/loop-runtime/loop-run-L01.json) 和 [经营简报](../evidence/runtime/loop-runtime/L01/business-brief.md)。四项条件都通过后停止。
+结果见 [L01 运行记录](../runtime/loop-runtime/loop-run-L01.json) 和 [经营简报](../runtime/loop-runtime/L01/business-brief.md)。四项条件都通过后停止。
 
 ## L02　三套方向生成后，把审美选择交给人
 
@@ -88,13 +88,13 @@ revise   自动选择只保留为推荐
 waiting  等人确认最终视觉方向
 ```
 
-[L02 运行记录](../evidence/runtime/loop-runtime/loop-run-L02.json) 停在 `visual_choice_required`，由负责作品的人选择最终方向。
+[L02 运行记录](../runtime/loop-runtime/loop-run-L02.json) 停在 `visual_choice_required`，由负责作品的人选择最终方向。
 
 ## L03　长任务分段执行，高影响动作交给人
 
 L03 读取 UCI MetroPT-3 的固定五分钟窗口：2020-04-17 23:57:36 至 2020-04-18 00:02:25，共 25 条记录。它计算 TP2、TP3、油温和电机电流的窗口统计，再读取两条公开数据说明与两条课程检查规则。
 
-源数据的 `maintenance_action_allowed` 全部为 `False`，资料也没有真实维修结果。因此系统只生成 [现场检查申请](../evidence/runtime/loop-runtime/L03/approval-packet.json)，不会写故障根因，更不会停机、维修或调用设备工具。
+源数据的 `maintenance_action_allowed` 全部为 `False`，资料也没有真实维修结果。因此系统只生成 [现场检查申请](../runtime/loop-runtime/L03/approval-packet.json)，不会写故障根因，更不会停机、维修或调用设备工具。
 
 ```text
 observe  读取 25 条公开传感记录
@@ -105,7 +105,7 @@ revise   删除诊断和维修措辞
 waiting  等有权限的主管决定是否创建检查工单
 ```
 
-[L03 运行记录](../evidence/runtime/loop-runtime/loop-run-L03.json) 停在 `permission_required`：材料够整理申请，还不能替人做高影响决定。
+[L03 运行记录](../runtime/loop-runtime/loop-run-L03.json) 停在 `permission_required`：材料够整理申请，还不能替人做高影响决定。
 
 > L03停在permission_required，只生成检查申请不诊断不停机——这是逻辑边界守护在Loop中的落地。统计推理可以缩小范围（哪些设备值得查），但高影响动作（停机/调参）的最终判断必须由人完成。Loop的传感器负责"有没有问题"，人负责"要不要动手"。
 

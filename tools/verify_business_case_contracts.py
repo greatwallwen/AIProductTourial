@@ -65,7 +65,7 @@ def main() -> int:
             errors.append(f"{case_id} missing a concrete error symptom")
 
         expected_assets = {
-            "screenshot": rf"\.\./evidence/screenshots/{int(case_id[1:]):02d}-work-productized\.png",
+            "screenshot": rf"\.\./assets/cases/case-{int(case_id[1:]):02d}/{int(case_id[1:]):02d}-work-productized\.png",
             "requirement": rf"\.\./assets/case-diagrams/{case_id}-requirement\.svg",
             "architecture": rf"\.\./assets/case-diagrams/{case_id}-architecture\.svg",
         }

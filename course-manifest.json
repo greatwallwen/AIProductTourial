@@ -7,16 +7,101 @@
     "rule": "驾驶舱、教程和公开路由使用 B 前缀；内部数据目录、API 和既有状态合同继续使用两位运行 ID。"
   },
   "capability_spine": {
-    "prompt_labs": ["P01", "P02", "P03", "P04", "P05", "P06", "P07", "P08"],
-    "agent_skill_cases": ["S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08"],
-    "loop_cases": ["L01", "L02", "L03"],
-    "business_cases": ["B01", "B02", "B03", "B04", "B05", "B06", "B07", "B08", "B09", "B10", "B11", "B12", "B13", "B14", "B15", "B16", "B17", "B18", "B19", "B20"]
+    "prompt_labs": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P07",
+      "P08"
+    ],
+    "agent_skill_cases": [
+      "S01",
+      "S02",
+      "S03",
+      "S04",
+      "S05",
+      "S06",
+      "S07",
+      "S08"
+    ],
+    "loop_cases": [
+      "L01",
+      "L02",
+      "L03"
+    ],
+    "business_cases": [
+      "B01",
+      "B02",
+      "B03",
+      "B04",
+      "B05",
+      "B06",
+      "B07",
+      "B08",
+      "B09",
+      "B10",
+      "B11",
+      "B12",
+      "B13",
+      "B14",
+      "B15",
+      "B16",
+      "B17",
+      "B18",
+      "B19",
+      "B20"
+    ]
   },
   "teaching_spine": {
-    "prompt_units": ["U01", "U02", "U03", "U04", "U05", "U06"],
-    "agent_skill_workshops": ["S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08"],
-    "loop_patterns": ["L01", "L02", "L03", "L04"],
-    "business_cases": ["B01", "B02", "B03", "B04", "B05", "B06", "B07", "B08", "B09", "B10", "B11", "B12", "B13", "B14", "B15", "B16", "B17", "B18", "B19", "B20"]
+    "prompt_units": [
+      "U01",
+      "U02",
+      "U03",
+      "U04",
+      "U05",
+      "U06"
+    ],
+    "agent_skill_workshops": [
+      "S01",
+      "S02",
+      "S03",
+      "S04",
+      "S05",
+      "S06",
+      "S07",
+      "S08"
+    ],
+    "loop_patterns": [
+      "L01",
+      "L02",
+      "L03",
+      "L04"
+    ],
+    "business_cases": [
+      "B01",
+      "B02",
+      "B03",
+      "B04",
+      "B05",
+      "B06",
+      "B07",
+      "B08",
+      "B09",
+      "B10",
+      "B11",
+      "B12",
+      "B13",
+      "B14",
+      "B15",
+      "B16",
+      "B17",
+      "B18",
+      "B19",
+      "B20"
+    ]
   },
   "course": {
     "id": "ai-product-engineering",
@@ -182,7 +267,7 @@
       "dataset_path": "dataset/01-retail-return-evidence",
       "code_path": "code/cases/01-retail-return-evidence",
       "screenshots": [
-        "evidence/screenshots/01-work-productized.png"
+        "assets/cases/case-01/01-work-productized.png"
       ],
       "status": "verified_shared_runtime",
       "route": "/cases/B01/work",
@@ -218,7 +303,7 @@
       "dataset_path": "dataset/02-member-value-experiment",
       "code_path": "code/cases/02-member-value-experiment",
       "screenshots": [
-        "evidence/screenshots/02-work-productized.png"
+        "assets/cases/case-02/02-work-productized.png"
       ],
       "status": "verified_shared_runtime",
       "route": "/cases/B02/work",
@@ -254,7 +339,7 @@
       "dataset_path": "dataset/03-local-service-voc",
       "code_path": "code/cases/03-local-service-voc",
       "screenshots": [
-        "evidence/screenshots/03-work-productized.png"
+        "assets/cases/case-03/03-work-productized.png"
       ],
       "status": "verified_shared_runtime",
       "route": "/cases/B03/work",
@@ -291,7 +376,7 @@
       "dataset_path": "dataset/04-credit-human-review",
       "code_path": "code/cases/04-credit-human-review",
       "screenshots": [
-        "evidence/screenshots/04-work-productized.png"
+        "assets/cases/case-04/04-work-productized.png"
       ],
       "status": "verified_shared_runtime",
       "route": "/cases/B04/work",
@@ -328,7 +413,7 @@
       "dataset_path": "dataset/05-hospital-flow-coordination",
       "code_path": "code/cases/05-hospital-flow-coordination",
       "screenshots": [
-        "evidence/screenshots/05-work-productized.png"
+        "assets/cases/case-05/05-work-productized.png"
       ],
       "status": "verified_shared_runtime",
       "route": "/cases/B05/work",
@@ -365,7 +450,7 @@
       "dataset_path": "dataset/06-beijing-air-quality-audit",
       "code_path": "code/cases/06-beijing-air-quality-audit",
       "screenshots": [
-        "evidence/screenshots/06-work-productized.png"
+        "assets/cases/case-06/06-work-productized.png"
       ],
       "status": "verified_shared_runtime",
       "route": "/cases/B06/work",
@@ -402,7 +487,7 @@
       "dataset_path": "dataset/07-instant-retail-architecture",
       "code_path": "code/cases/07-instant-retail-architecture",
       "screenshots": [
-        "evidence/screenshots/07-work-productized.png"
+        "assets/cases/case-07/07-work-productized.png"
       ],
       "status": "verified_shared_runtime",
       "route": "/cases/B07/work",
@@ -440,7 +525,7 @@
       "dataset_path": "dataset/08-aquaculture-event-response",
       "code_path": "code/cases/08-aquaculture-event-response",
       "screenshots": [
-        "evidence/screenshots/08-work-productized.png"
+        "assets/cases/case-08/08-work-productized.png"
       ],
       "status": "verified_shared_runtime",
       "route": "/cases/B08/work",
@@ -477,7 +562,7 @@
       "dataset_path": "dataset/09-metro-agentic-rag",
       "code_path": "code/cases/09-metro-agentic-rag",
       "screenshots": [
-        "evidence/screenshots/09-work-productized.png"
+        "assets/cases/case-09/09-work-productized.png"
       ],
       "status": "verified_shared_runtime",
       "route": "/cases/B09/work",
@@ -515,7 +600,7 @@
       "dataset_path": "dataset/10-telecom-complaint-orchestration",
       "code_path": "code/cases/10-telecom-complaint-orchestration",
       "screenshots": [
-        "evidence/screenshots/10-work-productized.png"
+        "assets/cases/case-10/10-work-productized.png"
       ],
       "status": "verified_shared_runtime",
       "route": "/cases/B10/work",
@@ -553,7 +638,7 @@
       "dataset_path": "dataset/11-model-release-multi-agent",
       "code_path": "code/cases/11-model-release-multi-agent",
       "screenshots": [
-        "evidence/screenshots/11-work-productized.png"
+        "assets/cases/case-11/11-work-productized.png"
       ],
       "status": "verified_shared_runtime",
       "route": "/cases/B11/work",
@@ -589,7 +674,7 @@
       "dataset_path": "dataset/12-vaccine-cold-chain",
       "code_path": "code/cases/12-vaccine-cold-chain",
       "screenshots": [
-        "evidence/screenshots/12-work-productized.png"
+        "assets/cases/case-12/12-work-productized.png"
       ],
       "status": "verified_shared_runtime",
       "route": "/cases/B12/work",
@@ -626,7 +711,7 @@
       "dataset_path": "dataset/13-auto-service-triage",
       "code_path": "code/cases/13-auto-service-triage",
       "screenshots": [
-        "evidence/screenshots/13-work-productized.png"
+        "assets/cases/case-13/13-work-productized.png"
       ],
       "status": "verified_shared_runtime",
       "route": "/cases/B13/work",
@@ -663,7 +748,7 @@
       "dataset_path": "dataset/14-flotation-impurity-review",
       "code_path": "code/cases/14-flotation-impurity-review",
       "screenshots": [
-        "evidence/screenshots/14-work-productized.png"
+        "assets/cases/case-14/14-work-productized.png"
       ],
       "status": "verified_shared_runtime",
       "route": "/cases/B14/work",
@@ -700,7 +785,7 @@
       "dataset_path": "dataset/15-wafer-quality-review",
       "code_path": "code/cases/15-wafer-quality-review",
       "screenshots": [
-        "evidence/screenshots/15-work-productized.png"
+        "assets/cases/case-15/15-work-productized.png"
       ],
       "status": "verified_shared_runtime",
       "route": "/cases/B15/work",
@@ -737,7 +822,7 @@
       "dataset_path": "dataset/16-wind-underperformance",
       "code_path": "code/cases/16-wind-underperformance",
       "screenshots": [
-        "evidence/screenshots/16-work-productized.png"
+        "assets/cases/case-16/16-work-productized.png"
       ],
       "status": "verified_shared_runtime",
       "route": "/cases/B16/work",
@@ -774,7 +859,7 @@
       "dataset_path": "dataset/17-cutter-health-review",
       "code_path": "code/cases/17-cutter-health-review",
       "screenshots": [
-        "evidence/screenshots/17-work-productized.png"
+        "assets/cases/case-17/17-work-productized.png"
       ],
       "status": "verified_shared_runtime",
       "route": "/cases/B17/work",
@@ -811,7 +896,7 @@
       "dataset_path": "dataset/18-boiler-temperature-review",
       "code_path": "code/cases/18-boiler-temperature-review",
       "screenshots": [
-        "evidence/screenshots/18-work-productized.png"
+        "assets/cases/case-18/18-work-productized.png"
       ],
       "status": "verified_shared_runtime",
       "route": "/cases/B18/work",
@@ -848,7 +933,7 @@
       "dataset_path": "dataset/19-hydraulic-condition",
       "code_path": "code/cases/19-hydraulic-condition",
       "screenshots": [
-        "evidence/screenshots/19-work-productized.png"
+        "assets/cases/case-19/19-work-productized.png"
       ],
       "status": "verified_shared_runtime",
       "route": "/cases/B19/work",
@@ -885,7 +970,7 @@
       "dataset_path": "dataset/20-pv-loss-attribution",
       "code_path": "code/cases/20-pv-loss-attribution",
       "screenshots": [
-        "evidence/screenshots/20-work-productized.png"
+        "assets/cases/case-20/20-work-productized.png"
       ],
       "status": "verified_shared_runtime",
       "route": "/cases/B20/work",

@@ -20,7 +20,7 @@
 
 ## 解决方案
 
-![申请材料补正与双岗复核](../../evidence/screenshots/04-work-productized.png)
+![申请材料补正与双岗复核](../../assets/cases/case-04/04-work-productized.png)
 
 ![B04 需求流程](../../assets/case-diagrams/B04-requirement.svg)
 

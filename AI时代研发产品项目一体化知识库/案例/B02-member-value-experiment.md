@@ -19,11 +19,11 @@
 
 ## 解决方案
 
-![8 元券首批试投](../../evidence/screenshots/02-work-productized.png)
+![8 元券首批试投](../../assets/cases/case-02/02-work-productized.png)
 
-![B02 需求流程](../../assets/case-diagrams/B02-requirement.svg)
+<video src="../../assets/case-diagrams/B02-requirement.webm" controls muted loop></video>
 
-![B02 技术架构](../../assets/case-diagrams/B02-architecture.svg)
+<video src="../../assets/case-diagrams/B02-architecture.webm" controls muted loop></video>
 
 人群分组图是页面中心。筛选条件变化时，它同步显示剩余人数；固定种子把 300 人稳定分为 240 人发券组和 60 人对照组。点开任一成员，可以看到浏览、加购、购买次数及入组原因。
 

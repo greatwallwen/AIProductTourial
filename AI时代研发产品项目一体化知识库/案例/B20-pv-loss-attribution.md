@@ -16,7 +16,7 @@
 
 ## 解决方案
 
-![光伏站端记录核查](../../evidence/screenshots/20-work-productized.png)
+![光伏站端记录核查](../../assets/cases/case-20/20-work-productized.png)
 
 ![B20 需求流程](../../assets/case-diagrams/B20-requirement.svg)
 

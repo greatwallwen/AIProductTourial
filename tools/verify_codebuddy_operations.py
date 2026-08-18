@@ -35,7 +35,7 @@ def main() -> int:
     if "--dangerously-skip-permissions" in chapter or "bypassPermissions" in chapter:
         errors.append("course map recommends bypassing CodeBuddy permissions")
 
-    receipt_link = "../evidence/runtime/codebuddy/receipt.json"
+    receipt_link = "../runtime/codebuddy/receipt.json"
     if receipt_link not in chapter:
         errors.append("course map missing CodeBuddy receipt link")
     if not (CHAPTER.parent / receipt_link).resolve().is_file():

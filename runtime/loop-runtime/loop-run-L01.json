@@ -1,0 +1,90 @@
+{
+  "schema_version": "2.0",
+  "lab_id": "L01",
+  "objective": "从会员明细生成一页可复核经营简报",
+  "state": "completed",
+  "stop_reason": "acceptance_passed",
+  "capability_sequence": [
+    "data-profile",
+    "metric-brief"
+  ],
+  "input_artifacts": [
+    "dataset/02-member-value-experiment/case.csv"
+  ],
+  "output_artifacts": [
+    "runtime/loop-runtime/L01/profile.json",
+    "runtime/loop-runtime/L01/profile.md",
+    "runtime/loop-runtime/L01/metrics.json",
+    "runtime/loop-runtime/L01/business-brief.md"
+  ],
+  "facts": {
+    "rows": 5000,
+    "members": 5000,
+    "coupon_face_value_ceiling_cny": 10000.0
+  },
+  "checks": [
+    {
+      "id": "profile-complete",
+      "passed": true
+    },
+    {
+      "id": "member-count",
+      "passed": true
+    },
+    {
+      "id": "coupon-ceiling",
+      "passed": true
+    },
+    {
+      "id": "missing-metrics-not-invented",
+      "passed": true
+    }
+  ],
+  "calls": [
+    {
+      "command": "python -B code/skills/data-profile/scripts/profile_csv.py --input ${COURSE_ROOT}\\dataset\\02-member-value-experiment\\case.csv --allowed-root ${COURSE_ROOT}\\dataset --json-output ${COURSE_ROOT}\\evidence\\runtime\\loop-runtime\\L01\\profile.json --markdown-output ${COURSE_ROOT}\\evidence\\runtime\\loop-runtime\\L01\\profile.md",
+      "exit_code": 0,
+      "stdout": "{\"status\": \"complete\", \"rows\": 5000, \"column_count\": 9, \"json_output\": \"${COURSE_ROOT}\\\\evidence\\\\runtime\\\\loop-runtime\\\\L01\\\\profile.json\", \"markdown_output\": \"${COURSE_ROOT}\\\\evidence\\\\runtime\\\\loop-runtime\\\\L01\\\\profile.md\"}",
+      "stderr": ""
+    },
+    {
+      "command": "python -B code/skills/metric-brief/scripts/build_member_brief.py --input ${COURSE_ROOT}\\dataset\\02-member-value-experiment\\case.csv --allowed-root ${COURSE_ROOT}\\dataset --coupon-amount-cny 8 --target-segment 成长 --metrics-output ${COURSE_ROOT}\\evidence\\runtime\\loop-runtime\\L01\\metrics.json --brief-output ${COURSE_ROOT}\\evidence\\runtime\\loop-runtime\\L01\\business-brief.md",
+      "exit_code": 0,
+      "stdout": "{\"status\": \"complete\", \"row_count\": 5000, \"metrics_output\": \"${COURSE_ROOT}\\\\evidence\\\\runtime\\\\loop-runtime\\\\L01\\\\metrics.json\", \"brief_output\": \"${COURSE_ROOT}\\\\evidence\\\\runtime\\\\loop-runtime\\\\L01\\\\business-brief.md\"}",
+      "stderr": ""
+    }
+  ],
+  "transitions": [
+    {
+      "step": 1,
+      "state": "observe",
+      "result": "完整扫描 5000 行、9 列。"
+    },
+    {
+      "step": 2,
+      "state": "choose",
+      "result": "选择 data-profile 后再调用 metric-brief；不先写经营结论。"
+    },
+    {
+      "step": 3,
+      "state": "act",
+      "result": "计算会员数、分层、购买次数代理与 8 元券名义发放上限。"
+    },
+    {
+      "step": 4,
+      "state": "check",
+      "result": "发现源表缺少交易金额和绝对时间，收入与复购间隔不可计算。"
+    },
+    {
+      "step": 5,
+      "state": "revise",
+      "result": "保留可算指标，将不可算指标写入限制条件。"
+    },
+    {
+      "step": 6,
+      "state": "completed",
+      "result": "四项硬检查通过，停止循环。"
+    }
+  ],
+  "human_gate": null
+}

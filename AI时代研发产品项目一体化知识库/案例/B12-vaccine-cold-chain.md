@@ -18,7 +18,7 @@
 
 ## 解决方案
 
-![县域冷链运输记录调查](../../evidence/screenshots/12-work-productized.png)
+![县域冷链运输记录调查](../../assets/cases/case-12/12-work-productized.png)
 
 ![B12 需求流程](../../assets/case-diagrams/B12-requirement.svg)
 
