@@ -434,16 +434,9 @@ function sceneRowsFor(
   }
   if (definition.id === "12") return rows;
   if (definition.id === "14") {
-    const featuredEventId = definition.featuredObjectId?.replace(/^14-/u, "");
-    const featuredEvent = (supportingArtifacts["events.csv"] ?? [])
-      .find((event) => event.event_id === featuredEventId);
-    const featuredEnd = String(featuredEvent?.end_hour ?? "");
-    const featuredIndex = rows.findIndex((row) => row.monitor_hour === featuredEnd);
-    if (featuredIndex < 71) return [];
-    // FQ-0016 is shown against the 72 real, consecutive observations ending
-    // at the event boundary. Recovery time remains an event fact, not a 73rd
-    // point silently folded into a view labelled "72 hours".
-    return rows.slice(featuredIndex - 71, featuredIndex + 1);
+    // 返回全部 720 小时行，由 workbench 按选中事件的 end_hour 截取窗口。
+    // 原先只返回 FQ-0016 的 72 行，切换其他事件时 sceneRows 无数据导致折线图为空。
+    return rows;
   }
   if (definition.id === "15") {
     const featured = rows.find(
@@ -463,13 +456,9 @@ function sceneRowsFor(
     return rows;
   }
   if (definition.id === "18") {
-    const featuredEventId = definition.featuredObjectId?.replace(/^18-/u, "");
-    const featuredEvent = (supportingArtifacts["events.csv"] ?? [])
-      .find((event) => event.event_id === featuredEventId);
-    const startMinute = String(featuredEvent?.start_time ?? "").slice(0, 16);
-    const endMinute = String(featuredEvent?.end_time ?? "").slice(0, 16);
-    if (!startMinute || !endMinute) return [];
-    return rows.filter((row) => row.monitor_minute >= startMinute && row.monitor_minute <= endMinute);
+    // 返回全部分钟行，由 workbench 按选中事件的 start_time/end_time 截取窗口。
+    // 原先只返回 BT-0044 的 25 行，切换其他事件时 sceneRows 无数据导致折线图为空。
+    return rows;
   }
   if (definition.id === "19") {
     const featuredIndex = rows.findIndex(

@@ -48,8 +48,10 @@
 .events > header span { font-size: 15px; font-weight: 850; }
 .events > header b { min-width: 30px; padding: 3px 7px; text-align: center; color: #81c9f1; border-radius: 999px; background: #0f354b; font-size: 11px; }
 .events > header small { display: block; margin-top: 5px; color: #718a9e; font-size: 10px; }
-.eventList { overflow: auto; padding: 12px 0; }
-.eventList article { min-height: 104px; position: relative; margin-bottom: 8px; padding: 13px 32px 12px 14px; color: #a9bac7; border: 1px solid #1e3c52; border-radius: 8px; background: #0a2132; }
+.eventList { overflow-y: auto; max-height: 560px; padding: 12px 0; }
+.eventList article { min-height: 104px; position: relative; margin-bottom: 8px; padding: 13px 32px 12px 14px; color: #a9bac7; border: 1px solid #1e3c52; border-radius: 8px; background: #0a2132; cursor: pointer; transition: border-color .15s, background .15s; }
+.eventList article:hover { border-color: rgba(75, 156, 255, .5); background: #0d2a3e; }
+.eventList article:focus-visible { outline: 2px solid #4db6ff; outline-offset: 2px; }
 .eventList article[data-active="true"] { color: #f2f8fc; border-color: #d94a3f; background: linear-gradient(135deg, #302019, #102637); box-shadow: inset 3px 0 #f15749, 0 10px 28px rgb(0 0 0 / 18%); }
 .eventList article > div { display: flex; align-items: center; gap: 8px; }
 .eventList article i { width: 8px; height: 8px; border-radius: 50%; background: #63c987; }

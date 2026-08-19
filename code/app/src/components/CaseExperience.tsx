@@ -114,7 +114,7 @@ function ProductWorkbenchFrame({
   const objectEvents = events.filter((event) => event.objectId === selected.objectId);
   const evidenceFields = definition.displayFields.slice(0, 6);
   return (
-    <div className="product-workbench-frame">
+    <div className="product-workbench-frame" data-case={teachingId}>
       <nav className="product-workbench-nav" aria-label="案例产品导航" data-tour={`case-${definition.id}-context`}>
         <a className="product-workbench-nav__home" href="/">全部案例</a>
         <span aria-hidden="true">/</span>

@@ -57,6 +57,7 @@
   overflow: hidden;
 }
 
+.trend { overflow-y: auto; }
 .queue, .workflow { height: 100%; min-height: 0; }
 
 .queue > header, .scene > header, .trend > header, .workflow > header {
@@ -73,8 +74,10 @@
 .queue > header small { color: #66849b; font-size: 10px; }
 
 .queue { display: flex; flex-direction: column; }
-.queueList { padding: 8px; display: grid; gap: 7px; }
-.queueList article { position: relative; min-height: 102px; padding: 13px 25px 11px 12px; border: 1px solid rgba(111, 158, 192, .17); border-radius: 8px; background: rgba(13, 43, 65, .64); }
+.queueList { padding: 8px; display: grid; gap: 7px; overflow-y: auto; max-height: 560px; }
+.queueList article { position: relative; min-height: 102px; padding: 13px 25px 11px 12px; border: 1px solid rgba(111, 158, 192, .17); border-radius: 8px; background: rgba(13, 43, 65, .64); cursor: pointer; transition: border-color .15s, background .15s; }
+.queueList article:hover { border-color: rgba(75, 156, 255, .5); background: rgba(20, 58, 88, .7); }
+.queueList article:focus-visible { outline: 2px solid #4db6ff; outline-offset: 2px; }
 .queueList article[data-active="true"] { border-color: #3e99ff; background: linear-gradient(135deg, rgba(30, 93, 147, .5), rgba(11, 38, 59, .86)); box-shadow: inset 3px 0 #4ea1ff, 0 0 20px rgba(46, 143, 255, .12); }
 .queueList article > div { display: flex; justify-content: space-between; gap: 7px; }
 .queueList article strong { font-size: 14px; }

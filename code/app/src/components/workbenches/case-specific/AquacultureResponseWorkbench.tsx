@@ -372,7 +372,7 @@ export function AquacultureResponseWorkbench(props: CaseWorkbenchProps) {
   }
 
   return (
-    <main className={styles.root} aria-label="水质冲突现场取证工作台">
+    <main className={styles.root} style={{ overflow: "visible", minHeight: "auto" }} aria-label="水质冲突现场取证工作台">
       <header className={styles.header}>
         <div className={styles.titleBlock}>
           <span className={styles.caseNumber}>案例 08</span>

@@ -18,6 +18,7 @@
 
 .locator,
 .workflow { display: grid; align-content: start; }
+.locator, .evidenceStage, .workflow { overflow-y: auto; }
 
 .panelTitle {
   display: flex;

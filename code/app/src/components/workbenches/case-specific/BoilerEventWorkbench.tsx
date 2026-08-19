@@ -157,8 +157,7 @@ export function BoilerEventWorkbench(props: CaseWorkbenchProps) {
     const current = props.objects.find((item) => item.objectId === props.selected.objectId);
     const others = props.objects
       .filter((item) => item.objectId !== props.selected.objectId)
-      .sort((left, right) => text(right.payload.end_time).localeCompare(text(left.payload.end_time)))
-      .slice(0, 3);
+      .sort((left, right) => text(right.payload.end_time).localeCompare(text(left.payload.end_time)));
     return [...(current ? [current] : []), ...others];
   }, [props.objects, props.selected.objectId]);
   const [segmentId, setSegmentId] = useState<SegmentId>(persisted?.segmentId ?? "outlet-temperature-chain");
@@ -175,11 +174,25 @@ export function BoilerEventWorkbench(props: CaseWorkbenchProps) {
     setRequested(persisted?.requestedSourceIds ?? ["desuperheater-valve"]);
   }, [persisted, props.selected.objectId]);
 
-  const geometry = chartGeometry(rows);
   const eventStart = text(row.start_time);
   const eventEnd = text(row.end_time);
-  const windowStart = text(row.window_start_minute, text(rows[0]?.monitor_minute));
-  const windowEnd = text(row.window_end_minute, text(rows.at(-1)?.monitor_minute));
+  // monitor_minute 格式为 16 字符（"YYYY-MM-DD HH:MM"），start_time/end_time 含秒（19 字符）。
+  // 截取到 16 字符使字符串比较一致，否则前缀不匹配导致 findIndex 失败。
+  const eventStartMinute = eventStart !== "—" ? eventStart.slice(0, 16) : "";
+  const eventEndMinute = eventEnd !== "—" ? eventEnd.slice(0, 16) : "";
+  const windowRows = useMemo(() => {
+    if (eventStartMinute && eventEndMinute) {
+      const startIdx = rows.findIndex((item) => text(item.monitor_minute) >= eventStartMinute);
+      const endIdx = rows.findIndex((item) => text(item.monitor_minute) > eventEndMinute);
+      const end = endIdx === -1 ? rows.length : endIdx;
+      const start = startIdx === -1 ? 0 : startIdx;
+      return rows.slice(start, end);
+    }
+    return rows.length > 25 ? rows.slice(0, 25) : rows;
+  }, [rows, eventStartMinute, eventEndMinute]);
+  const geometry = chartGeometry(windowRows);
+  const windowStart = text(row.window_start_minute, text(windowRows[0]?.monitor_minute));
+  const windowEnd = text(row.window_end_minute, text(windowRows.at(-1)?.monitor_minute));
   const observed = numeric(row.steam_temperature_mean);
   const attachedEvidenceIds = ["minute-temperature", "sample-integrity"];
   const workflowRank = props.selected.state === "检查已下发" || props.selected.state === "自动调节已阻断"
@@ -208,7 +221,7 @@ export function BoilerEventWorkbench(props: CaseWorkbenchProps) {
       eventEndTime: eventEnd,
       windowStartMinute: windowStart,
       windowEndMinute: windowEnd,
-      windowRowCount: rows.length,
+      windowRowCount: windowRows.length,
       monitorMinute: text(row.monitor_minute),
       observedTemperatureC: observed,
       segmentId,
@@ -291,7 +304,9 @@ export function BoilerEventWorkbench(props: CaseWorkbenchProps) {
           <div className={styles.queueList}>
             {queue.map((item) => {
               const active = item.objectId === props.selected.objectId;
-              return <article key={item.objectId} data-active={active}>
+              return <article key={item.objectId} data-active={active} role="button" tabIndex={0}
+                onClick={() => props.onSelect(item.objectId)}
+                onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); props.onSelect(item.objectId); } }}>
                 <div><strong>{text(item.payload.event_id, item.objectId)}</strong><span>{active ? "核查中" : "待复核"}</span></div>
                 <p>{text(item.payload.direction, "温度偏离来源区间")}</p>
                 <small>{shortTime(item.payload.start_time)} · {durationLabel(item.payload.duration_seconds)}</small>
@@ -325,7 +340,7 @@ export function BoilerEventWorkbench(props: CaseWorkbenchProps) {
           </section>
 
           <section className={styles.trend} aria-label="主蒸汽出口温度趋势" data-tour="b18-trend">
-            <header><div><strong>主蒸汽出口温度趋势</strong><span>{rows.length} 个连续分钟点 · 事件内原始采样 {text(row.source_samples)} 条</span></div><b>最低 {numeric(row.minimum_temperature).toFixed(2)}℃</b></header>
+            <header><div><strong>主蒸汽出口温度趋势</strong><span>{windowRows.length} 个连续分钟点 · 事件内原始采样 {text(row.source_samples)} 条</span></div><b>最低 {numeric(row.minimum_temperature).toFixed(2)}℃</b></header>
             <div className={styles.chart}>
               <aside><span>{Math.ceil(geometry.upper)}℃</span><span>530℃</span><span>{Math.floor(geometry.lower)}℃</span></aside>
               <svg viewBox="0 0 1000 230" preserveAspectRatio="none" role="img" aria-label="BT-0044 事件 25 分钟主蒸汽出口温度曲线">
@@ -337,7 +352,7 @@ export function BoilerEventWorkbench(props: CaseWorkbenchProps) {
                 <line className={styles.minimumMarker} x1={geometry.minimumX} x2={geometry.minimumX} y1="18" y2="210" />
                 <circle className={styles.minimumDot} cx={geometry.minimumX} cy={geometry.minimumY} r="7" />
               </svg>
-              <div className={styles.chartLabels}><span>{shortTime(eventStart)}<b>事件开始</b></span><span style={{ "--marker-x": `${(geometry.minimumIndex / Math.max(1, rows.length - 1)) * 100}%` } as CSSProperties}>{shortTime(rows[geometry.minimumIndex]?.monitor_minute)}<b>分钟最低点</b></span><span>{shortTime(eventEnd)}<b>事件结束</b></span></div>
+              <div className={styles.chartLabels}><span>{shortTime(eventStart)}<b>事件开始</b></span><span style={{ "--marker-x": `${(geometry.minimumIndex / Math.max(1, windowRows.length - 1)) * 100}%` } as CSSProperties}>{shortTime(windowRows[geometry.minimumIndex]?.monitor_minute)}<b>分钟最低点</b></span><span>{shortTime(eventEnd)}<b>事件结束</b></span></div>
               <p><i />530℃ 虚线仅表示公开来源区间下界，不是控制设定值。</p>
             </div>
           </section>
@@ -347,7 +362,7 @@ export function BoilerEventWorkbench(props: CaseWorkbenchProps) {
           <header data-tour="b18-result"><strong>事件核查</strong><span>{props.selected.state}</span></header>
           <ol className={styles.steps}>{[
             ["确认事件", `${eventId} · ${durationLabel(row.duration_seconds)}`],
-            ["核对数据", `${rows.length} 个分钟点，完整性 ${text(row.data_completeness)}`],
+            ["核对数据", `${windowRows.length} 个分钟点，完整性 ${text(row.data_completeness)}`],
             ["选择检查段", "一次只下发一个优先段"],
             ["主管下发", "人工检查，不自动调参"],
           ].map(([title, detail], index) => <li key={title} data-active={workflowRank === index + 1} data-complete={workflowRank > index + 1}><i>{workflowRank > index + 1 ? <Check size={13} /> : index + 1}</i><div><strong>{title}</strong><span>{detail}</span></div></li>)}</ol>
@@ -372,7 +387,7 @@ export function BoilerEventWorkbench(props: CaseWorkbenchProps) {
           <section className={styles.actions}>
             {props.commands.length ? props.commands.map((command) => {
               const supervisorReady = supervisorNote.trim().length >= 8;
-              const engineerReady = reason.trim().length >= 8 && assignee.trim().length >= 2 && requested.length > 0 && rows.length === 25;
+              const engineerReady = reason.trim().length >= 8 && assignee.trim().length >= 2 && requested.length > 0 && windowRows.length === 25;
               const enabled = props.actorRole === "supervisor" ? supervisorReady : engineerReady;
               return <button type="button" key={command.id} data-tone={command.tone} disabled={props.busy || !enabled || (command.id === "confirm_segment" && !persisted)} onClick={() => runCommand(command.id)}>{command.id === "hold_control_change" ? <ShieldAlert size={16} /> : command.id === "dispatch_shift_check" ? <Gauge size={16} /> : <Thermometer size={16} />}{props.busy ? "正在保存…" : command.label}</button>;
             }) : <p>当前事件没有待执行动作。</p>}

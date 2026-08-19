@@ -129,22 +129,21 @@ export function FlotationReviewWorkbench(props: CaseWorkbenchProps) {
     [props.sceneRows, row],
   );
   const sourceEvents = (props.supportingArtifacts["events.csv"] ?? emptyEvents) as EventRow[];
-  const currentEvent = useMemo(() => sourceEvents.find((item) => text(item.event_id) === "FQ-0016") ?? ({
-    event_id: "FQ-0016",
+  const selectedEventId = text(row.event_id, props.selected.objectId.replace(/^14-/u, ""));
+  const currentEvent = useMemo(() => sourceEvents.find((item) => text(item.event_id) === selectedEventId) ?? ({
+    event_id: selectedEventId,
     start_hour: text(row.start_hour ?? rows[Math.max(0, rows.length - 39)]?.monitor_hour),
     end_hour: text(row.end_hour ?? row.monitor_hour),
     duration_hours: text(row.duration_hours ?? row.consecutive_high_hours ?? 39),
     dominant_deviation: "3号浮选柱风量|1号浮选柱风量|2号浮选柱风量",
-  } satisfies EventRow), [row.consecutive_high_hours, row.monitor_hour, rows, sourceEvents]);
-  const eventId = text(currentEvent.event_id, "FQ-0016");
+  } satisfies EventRow), [selectedEventId, row.consecutive_high_hours, row.monitor_hour, rows, sourceEvents]);
+  const eventId = text(currentEvent.event_id, selectedEventId);
   const priorityIds = useMemo(() => priorityCellIds(currentEvent), [currentEvent]);
   const eventQueue = useMemo(() => {
-    const bounded = sourceEvents
-      .filter((item) => text(item.end_hour) <= text(currentEvent.end_hour))
-      .sort((left, right) => text(right.end_hour).localeCompare(text(left.end_hour)))
-      .slice(0, 4);
-    return bounded.length ? bounded : [currentEvent];
-  }, [currentEvent, sourceEvents]);
+    return sourceEvents
+      .slice()
+      .sort((left, right) => text(right.end_hour).localeCompare(text(left.end_hour)));
+  }, [sourceEvents]);
   const persisted = useMemo(() => {
     const fromProjection = parseReviewData(props.selected.task);
     if (fromProjection) return fromProjection;
@@ -171,7 +170,30 @@ export function FlotationReviewWorkbench(props: CaseWorkbenchProps) {
   }, [persisted, priorityIds, props.selected.objectId]);
 
   const effectiveHours = props.actorRole === "supervisor" && persistedTask ? persistedTask.hours : windowHours;
-  const windowRows = rows.slice(-Math.min(Number(effectiveHours) || 72, rows.length));
+  const eventStartHour = text(currentEvent.start_hour);
+  const eventEndHour = text(currentEvent.end_hour);
+  const windowRows = useMemo(() => {
+    const hours = Number(effectiveHours) || 72;
+    // 以 end_hour 为终点截取 hours 小时窗口（匹配原始 sceneRowsFor 设计）。
+    // sceneRows 现在包含全部 720 行，需按事件时间窗口截取。
+    if (eventEndHour && eventEndHour !== "—") {
+      const afterEndIdx = rows.findIndex((item) => text(item.monitor_hour) > eventEndHour);
+      const endIdx = afterEndIdx === -1 ? rows.length - 1 : afterEndIdx - 1;
+      if (endIdx >= 0) {
+        const start = Math.max(0, endIdx - hours + 1);
+        return rows.slice(start, endIdx + 1);
+      }
+    }
+    // 回退：按 start/end 区间过滤
+    if (eventStartHour && eventStartHour !== "—" && eventEndHour && eventEndHour !== "—") {
+      const startIdx = rows.findIndex((item) => text(item.monitor_hour) >= eventStartHour);
+      const endIdx = rows.findIndex((item) => text(item.monitor_hour) > eventEndHour);
+      const end = endIdx === -1 ? rows.length : endIdx;
+      const start = startIdx === -1 ? Math.max(0, rows.length - hours) : startIdx;
+      return rows.slice(start, end);
+    }
+    return rows.slice(-Math.min(hours, rows.length));
+  }, [rows, eventStartHour, eventEndHour, effectiveHours]);
   const columns = Array.from({ length: 7 }, (_, index) => ({
     id: index + 1,
     air: numeric(row[`column_${index + 1}_air_mean`]),
@@ -261,7 +283,10 @@ export function FlotationReviewWorkbench(props: CaseWorkbenchProps) {
           <div className={styles.eventList}>
             {eventQueue.map((item, index) => {
               const active = text(item.event_id) === eventId;
-              return <article key={text(item.event_id, String(index))} data-active={active}>
+              const targetObjectId = `14-${text(item.event_id)}`;
+              return <article key={text(item.event_id, String(index))} data-active={active} role="button" tabIndex={0}
+                onClick={() => props.onSelect(targetObjectId)}
+                onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); props.onSelect(targetObjectId); } }}>
                 <div><i /><strong>{text(item.event_id)}</strong><span>{text(item.duration_hours)} 小时</span></div>
                 <p>{shortHour(item.start_hour)} 至 {shortHour(item.end_hour)}</p>
                 <small>{active ? "当前调查事件" : "较早事件"}</small>

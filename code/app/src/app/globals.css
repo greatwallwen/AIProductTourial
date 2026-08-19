@@ -2750,6 +2750,8 @@ tbody tr[data-selected="true"] {
 .product-workbench-frame { position: relative; height: 100vh; min-height: 800px; display: grid; grid-template-rows: 48px minmax(0, 1fr); overflow: hidden; background: #f4f7fa; }
 .product-workbench-frame__body { min-height: 0; height: 100%; overflow: hidden; }
 .product-workbench-frame__body > main { height: 100%; min-height: 100%; }
+.product-workbench-frame[data-case="B08"] { height: auto; min-height: 100vh; overflow: visible; }
+.product-workbench-frame[data-case="B08"] .product-workbench-frame__body { overflow: visible; }
 .product-workbench-nav { z-index: 50; display: flex; align-items: center; gap: 8px; padding: 0 16px; color: #536575; border-bottom: 1px solid #d9e1e8; background: rgb(255 255 255 / 96%); box-shadow: 0 1px 0 rgb(14 30 43 / 3%); font-size: 12px; font-family: "Microsoft YaHei UI", "PingFang SC", sans-serif; }
 .product-workbench-nav > b { color: #172c3a; font-size: 12px; }
 .product-workbench-nav > span { color: #a3afb8; }
