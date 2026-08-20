@@ -12,6 +12,7 @@ import {
   Factory,
   FileCheck2,
   Gauge,
+  MapPin,
   RefreshCw,
   ShieldCheck,
   Sun,
@@ -23,6 +24,7 @@ import { useEffect, useMemo, useState } from "react";
 import styles from "./PvLossWorkbench.module.css";
 import taskStyles from "./PvLossWorkbenchTask.module.css";
 import type { CaseWorkbenchProps } from "./types";
+import { ChinaTerrain3D } from "./ChinaTerrain3D";
 
 type Factor = "temperature" | "curtailment" | "equipment";
 type RetrievalSourceId = "dispatch-curtailment-log" | "inverter-alert-log" | "maintenance-work-order";
@@ -152,6 +154,8 @@ function trendSegments(rows: Record<string, unknown>[], field: string): string[]
   return segments.map((segment) => segment.length === 1 ? `${segment[0]} ${segment[0]}` : segment.join(" "));
 }
 
+
+
 export function PvLossWorkbench(props: CaseWorkbenchProps) {
   const row = props.selected.payload;
   const stationId = displayText(row.station_id);
@@ -178,6 +182,7 @@ export function PvLossWorkbench(props: CaseWorkbenchProps) {
   const sameDate = useMemo(() => props.sceneRows.filter((item) => displayText(item.date) === currentDate), [props.sceneRows, currentDate]);
   const availableStationIds = useMemo(() => new Set(sameDate.map((item) => displayText(item.station_id))), [sameDate]);
   const stations = stationFacts.length ? stationFacts : sameDate;
+  const terrainStations = stations.map((s) => ({ id: displayText(s.station_id), capacityMw: s.capacity_mw }));
   const dates = history.map((item) => displayText(item.date));
   const dateIndex = Math.max(0, dates.indexOf(currentDate));
   const recentEnd = dates.indexOf(currentDate) >= 0 ? dates.indexOf(currentDate) + 1 : history.length;
@@ -351,6 +356,8 @@ export function PvLossWorkbench(props: CaseWorkbenchProps) {
       <div className={styles.businessState}><span>业务状态</span><strong>匿名 PV-{stationId.padStart(2, "0")}</strong><b>{currentDate}</b><em>{props.selected.state}</em></div>
       <div className={styles.headerMeta}><span><Database size={17} />5,327 个站点日</span><span><UserRound size={17} />{roleLabel(props.actorRole)}</span><button type="button" aria-label="恢复案例 B20" onClick={reset}><RefreshCw size={18} /></button></div>
     </header>
+
+    <ChinaTerrain3D stations={terrainStations} selectedStationId={stationId} onSelectStation={selectStation} />
 
     <section className={styles.stationBar}>
       <div className={styles.stationLead}><div><strong>站点选择</strong><span>匿名 · 当日可用性</span></div><div className={styles.dateNav}><button type="button" aria-label="上一核查日期" disabled={dateIndex <= 0} onClick={() => selectDate(dates[dateIndex - 1])}><ChevronLeft size={18} /></button><label><CalendarDays size={17} /><select aria-label="核查日期" value={currentDate} onChange={(event) => selectDate(event.target.value)}>{dates.map((date) => <option key={date} value={date}>{date}</option>)}</select></label><button type="button" aria-label="下一核查日期" disabled={dateIndex >= dates.length - 1} onClick={() => selectDate(dates[dateIndex + 1])}><ChevronRight size={18} /></button></div></div>
