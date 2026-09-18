@@ -1,0 +1,257 @@
+{
+  "checkedAt": "2026-09-17T07:52:16.582Z",
+  "pages": [
+    {
+      "page": 1,
+      "variants": [
+        {
+          "id": "v1",
+          "blank": false,
+          "text": "让数据先过体检 可编辑、可审计 数据先体检 cover 读取 先确认数据边界，再进入分析。 读取 · 输入边界 体检 · 字段缺失 决策 · 人工复核 让数据先过体检",
+          "layout": "theme07_page001",
+          "variant": "v1",
+          "overflow": [
+            "DIV.sweep"
+          ],
+          "forbidden": []
+        },
+        {
+          "id": "v2",
+          "blank": false,
+          "text": "让数据先过体检 可编辑、可审计 数据先体检 cover 读取 输入边界体检记录输入边界 决策 · 人工复核 体检 · 字段缺失 读取 · 输入边界 先确认数据边界，再进入分析。 决策",
+          "layout": "theme07_page002",
+          "variant": "v2",
+          "overflow": [],
+          "forbidden": []
+        },
+        {
+          "id": "v3",
+          "blank": false,
+          "text": "让数据先过体检 可编辑、可审计 体检 · 字段缺失 决策 · 人工复核 读取 · 输入边界 数据先体检 cover 先确认数据边界，再进入分析。 读取",
+          "layout": "theme07_page003",
+          "variant": "v3",
+          "overflow": [],
+          "forbidden": []
+        },
+        {
+          "id": "v4",
+          "blank": false,
+          "text": "COVER 数据先体检 “ 先确认数据边界，再进入分析。 可编辑、可审计 01 读取 输入边界 02 体检 字段缺失 03 决策 人工复核",
+          "layout": null,
+          "variant": "v4",
+          "overflow": [
+            "DIV.bespoke-runtime-root",
+            "DIV",
+            "DIV"
+          ],
+          "forbidden": []
+        }
+      ]
+    },
+    {
+      "page": 2,
+      "variants": [
+        {
+          "id": "v1",
+          "blank": false,
+          "text": "01 为什么先体检 为什么先体检 为什么先体检 “ 先边界，后结论transition确认边界 记录输入 限定结论 先确认数据边界，再决定能回答什么。",
+          "layout": "theme07_page055",
+          "variant": "v1",
+          "overflow": [
+            "DIV.tri-glow"
+          ],
+          "forbidden": []
+        },
+        {
+          "id": "v2",
+          "blank": false,
+          "text": "01 为什么先体检 为什么先体检 先边界，后结论 先确认数据边界，再决定能回答什么。 限定回答 · 限定结论 确认边界 · 记录输入 01 为什么先体检 transition",
+          "layout": "theme07_page016",
+          "variant": "v2",
+          "overflow": [],
+          "forbidden": []
+        },
+        {
+          "id": "v3",
+          "blank": false,
+          "text": "01 为什么先体检 为什么先体检 “ 先边界，后结论transition确认边界限定回答 确认边界 记录输入 限定回答 限定结论 先边界，后结论 数据边界决定后续结论的可信范围。 先确认数据边界，再决定能回答什么。",
+          "layout": "theme07_page015",
+          "variant": "v3",
+          "overflow": [],
+          "forbidden": []
+        },
+        {
+          "id": "v4",
+          "blank": false,
+          "text": "TRANSITION 为什么先体检 先确认数据边界，再决定能回答什么。 先边界，后结论 01 确认边界 记录输入 02 限定回答 限定结论",
+          "layout": null,
+          "variant": "v4",
+          "overflow": [
+            "DIV.bespoke-runtime-root",
+            "DIV",
+            "DIV"
+          ],
+          "forbidden": []
+        }
+      ]
+    },
+    {
+      "page": 3,
+      "variants": [
+        {
+          "id": "v1",
+          "blank": false,
+          "text": "事实与建议分开 缺失不是零 缺失不是零 “ statement记录输入统计缺失 文件与范围 不自动处理 事实与建议 缺失值不是零，也不能在原因不明时自动处理。",
+          "layout": "theme07_page055",
+          "variant": "v1",
+          "overflow": [
+            "DIV.tri-glow"
+          ],
+          "forbidden": []
+        },
+        {
+          "id": "v2",
+          "blank": false,
+          "text": "事实与建议分开 缺失不是零 “ statement记录输入统计缺失分开表达 分开表达 事实与建议 统计缺失 不自动处理 记录输入 文件与范围 缺失值不是零，也不能在原因不明时自动处理。",
+          "layout": "theme07_page015",
+          "variant": "v2",
+          "overflow": [],
+          "forbidden": []
+        },
+        {
+          "id": "v3",
+          "blank": false,
+          "text": "事实与建议分开 缺失不是零 记录输入 STATEMENT 缺失值不是零，也不能在原因不明时自动处理。 01 分开表达 事实与建议 02 统计缺失 不自动处理 03 记录输入 文件与范围 04 事实与建议分开 把观察事实与处置建议分开，原因不明时保留停止规则。 统计缺失",
+          "layout": "theme07_page071",
+          "variant": "v3",
+          "overflow": [
+            "DIV.ab-glow"
+          ],
+          "forbidden": []
+        },
+        {
+          "id": "v4",
+          "blank": false,
+          "text": "STATEMENT 缺失不是零 “ 缺失值不是零，也不能在原因不明时自动处理。 事实与建议分开 01 记录输入 文件与范围 02 统计缺失 不自动处理 03 分开表达 事实与建议",
+          "layout": null,
+          "variant": "v4",
+          "overflow": [
+            "DIV.bespoke-runtime-root",
+            "DIV",
+            "DIV"
+          ],
+          "forbidden": []
+        }
+      ]
+    },
+    {
+      "page": 4,
+      "variants": [
+        {
+          "id": "v1",
+          "blank": false,
+          "text": "三项代表污染物缺失需单列 代表污染物缺失 metrics O3 PM2.5 2.21% 缺失 466 CO 4.88% 缺失 1,027 O3 3.95% 缺失 830 3点｜2.21%–4.88% 只陈述缺失事实 三项代表污染物的缺失必须单列。 PM2.5",
+          "layout": "theme07_page050",
+          "variant": "v1",
+          "overflow": [
+            "DIV.rs-glow"
+          ],
+          "forbidden": []
+        },
+        {
+          "id": "v2",
+          "blank": false,
+          "text": "三项代表污染物缺失需单列 代表污染物缺失 PM2.5 只陈述缺失事实 METRICS 三项代表污染物的缺失必须单列。 O3 3.95 4.88 2.21 O3 · 3.95% 缺失 830 CO · 4.88% 缺失 1,027 PM2.5 · 2.21% 缺失 466 PM2.5 2.21% CO 4.88% O3 3.95% CO",
+          "layout": "theme07_page021",
+          "variant": "v2",
+          "overflow": [
+            "DIV.cl-glow"
+          ],
+          "forbidden": []
+        },
+        {
+          "id": "v3",
+          "blank": false,
+          "text": "三项代表污染物缺失需单列 代表污染物缺失 PM2.5 METRICS 三项代表污染物的缺失必须单列。 CO 缺失率使用固定样本总行数计算，本页不解释污染原因。 3点｜2.21%–4.88% 亿 CO · 4.88% 4.88%亿 缺失 1,027 O3 · 3.95% 3.95%亿 缺失 830 PM2.5 · 2.21% 2.21%亿 缺失 466 首值｜PM2.52.21% 亿 O3",
+          "layout": "theme07_page035",
+          "variant": "v3",
+          "overflow": [
+            "DIV.cp-glow"
+          ],
+          "forbidden": []
+        },
+        {
+          "id": "v4",
+          "blank": false,
+          "text": "METRICS 代表污染物缺失 三项代表污染物的缺失必须单列。 只陈述缺失事实 2.21% PM2.5 4.88% CO 3.95% O3 01 PM2.5 缺失 466 · 2.21% 02 CO 缺失 1,027 · 4.88% 03 O3 缺失 830 · 3.95%",
+          "layout": null,
+          "variant": "v4",
+          "overflow": [
+            "DIV.bespoke-runtime-root",
+            "DIV",
+            "DIV"
+          ],
+          "forbidden": []
+        }
+      ]
+    },
+    {
+      "page": 5,
+      "variants": [
+        {
+          "id": "v1",
+          "blank": false,
+          "text": "把数据问题交给可复查的流程 可复查的流程 保留停止分支 字段或口径不足时，流程必须停在人工复核。 process 记录来源 读取",
+          "layout": "theme07_page026",
+          "variant": "v1",
+          "overflow": [
+            "DIV.iv-glow"
+          ],
+          "forbidden": []
+        },
+        {
+          "id": "v2",
+          "blank": false,
+          "text": "把数据问题交给可复查的流程 可复查的流程 process 保留停止分支 字段或口径不足时，流程必须停在人工复核。 人工复核 01 分析 通过后分析 02 人工复核 不足则停止 03 体检 检查缺失 04 读取 记录来源 读取",
+          "layout": "theme07_page071",
+          "variant": "v2",
+          "overflow": [
+            "DIV.ab-glow"
+          ],
+          "forbidden": []
+        },
+        {
+          "id": "v3",
+          "blank": false,
+          "text": "把数据问题交给可复查的流程 可复查的流程 保留停止分支 字段或口径不足时，流程必须停在人工复核。 人工复核 体检 分析 读取 保留停止分支 01 不足则停止 02 检查缺失 03 通过后分析 04 记录来源 05 读取、体检、人工复核、分析；证据不足时不直接进入分析。 读取",
+          "layout": "theme07_page013",
+          "variant": "v3",
+          "overflow": [
+            "DIV.rs-glow"
+          ],
+          "forbidden": []
+        },
+        {
+          "id": "v4",
+          "blank": false,
+          "text": "PROCESS 可复查的流程 字段或口径不足时，流程必须停在人工复核。 保留停止分支 01 读取 记录来源 02 体检 检查缺失 03 人工复核 不足则停止 04 分析 通过后分析",
+          "layout": null,
+          "variant": "v4",
+          "overflow": [
+            "DIV.bespoke-runtime-root",
+            "DIV",
+            "DIV"
+          ],
+          "forbidden": []
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "mobile": {
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "scrollHeight": 844,
+    "clientHeight": 844
+  }
+}

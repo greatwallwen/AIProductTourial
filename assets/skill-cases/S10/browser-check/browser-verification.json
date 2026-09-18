@@ -1,0 +1,81 @@
+{
+  "checkedAt": "2026-09-17T08:08:06.517Z",
+  "variants": [
+    {
+      "variant": "skill-only",
+      "consoleErrors": [],
+      "viewports": [
+        {
+          "name": "desktop",
+          "width": 1440,
+          "height": 900,
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "regions": 6,
+          "recordVisible": true,
+          "horizontalOverflow": false
+        },
+        {
+          "name": "mobile",
+          "width": 390,
+          "height": 844,
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "regions": 6,
+          "recordVisible": true,
+          "horizontalOverflow": false
+        }
+      ],
+      "interactions": {
+        "initialVisible": 3,
+        "unknownVisible": 3,
+        "searchVisible": 1,
+        "initialRecordDisabled": true,
+        "pendingEnabled": true,
+        "pendingMessage": "已保留待核对；演示页没有改写外部效果。",
+        "noEvidenceDisabled": true,
+        "knownEnabled": true,
+        "knownMessage": "已记录“已生效”演示结果；未向外部系统发送请求。",
+        "firstFocus": "skip-link"
+      }
+    },
+    {
+      "variant": "tabler",
+      "consoleErrors": [],
+      "viewports": [
+        {
+          "name": "desktop",
+          "width": 1440,
+          "height": 900,
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "regions": 6,
+          "recordVisible": true,
+          "horizontalOverflow": false
+        },
+        {
+          "name": "mobile",
+          "width": 390,
+          "height": 844,
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "regions": 6,
+          "recordVisible": true,
+          "horizontalOverflow": false
+        }
+      ],
+      "interactions": {
+        "initialVisible": 3,
+        "unknownVisible": 3,
+        "searchVisible": 1,
+        "initialRecordDisabled": true,
+        "pendingEnabled": true,
+        "pendingMessage": "已保留待核对；演示页没有改写外部效果。",
+        "noEvidenceDisabled": true,
+        "knownEnabled": true,
+        "knownMessage": "已记录“已生效”演示结果；未向外部系统发送请求。",
+        "firstFocus": "skip-link"
+      }
+    }
+  ]
+}

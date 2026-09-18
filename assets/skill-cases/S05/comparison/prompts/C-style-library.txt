@@ -1,0 +1,11 @@
+Selected template: Poster Layout System / 海报排版系统
+Template ID: poster-layout-system
+Example cases: case 345, case 5, case 10
+
+Subject and task: 为“雨天旧书店”生成一张完成度高的活动海报，面向下班后想慢下来的城市读者。
+Composition and layout: 3:4 竖版；采用编辑式不对称布局。标题位于上部主要阅读区，暖黄橱窗作为唯一视觉锚点，旧书脊集中在下部，细雨线连接上下空间。标题、活动信息、品牌文字形成清楚的三级层级，至少保留约 30% 安静留白。不要输出 moodboard、宫格或设计过程。
+Visual style and materials: 当代编辑海报、克制的纸张颗粒、米白与深蓝为主色，只用一个暖黄色锚点；冷雨和暖光形成清晰对比。字体气质为现代宋体标题配中性无衬线正文。
+Text and labels (verbatim): “雨落下来，书页慢下来”；“躺进一页旧时光”、“周五 19:30 · 夜读与换书”；“SECOND PAGE BOOKS”、“入场免费”。每段只出现一次，不得改写、漏字或增加随机文字。
+Aspect ratio and output: 3:4 竖版单张完成海报。
+Required subjects: “雨线”、“暖黄橱窗”、“旧书脊”、“一盏灯”。
+Constraints and negative details: 禁止“人物大特写”、“高饱和多色渐变”、“密集商业促销标签”；禁止拼贴展示板、无关装饰符号、乱码、随机英文、Logo 和水印；保证标题层级和主视觉在手机缩略图中仍可辨认。

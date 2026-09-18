@@ -1,0 +1,66 @@
+{
+  "checks": [
+    "page_count",
+    "titles",
+    "speaker_notes",
+    "sources_blocks",
+    "placeholder_contracts",
+    "no_blank_slides"
+  ],
+  "errors": [],
+  "file": "${COURSE_ROOT}\\evidence\\runtime\\agent-skills\\S06\\presentation.pptx",
+  "page_count": 5,
+  "schema_version": "1.0",
+  "slides": [
+    {
+      "blank": false,
+      "errors": [],
+      "notes_present": true,
+      "placeholders": [],
+      "slide_number": 1,
+      "sources_block_present": true,
+      "title": "让数据先过体检"
+    },
+    {
+      "blank": false,
+      "errors": [],
+      "notes_present": true,
+      "placeholders": [],
+      "slide_number": 2,
+      "sources_block_present": true,
+      "title": "01 为什么先体检"
+    },
+    {
+      "blank": false,
+      "errors": [],
+      "notes_present": true,
+      "placeholders": [],
+      "slide_number": 3,
+      "sources_block_present": true,
+      "title": "缺失不是零"
+    },
+    {
+      "blank": false,
+      "errors": [],
+      "notes_present": true,
+      "placeholders": [
+        "DATA_TABLE:table-4"
+      ],
+      "slide_number": 4,
+      "sources_block_present": true,
+      "title": "三项代表污染物缺失需单列"
+    },
+    {
+      "blank": false,
+      "errors": [],
+      "notes_present": true,
+      "placeholders": [
+        "GRAPHIC_PLACEHOLDER:quality-review-flow"
+      ],
+      "slide_number": 5,
+      "sources_block_present": true,
+      "title": "把数据问题交给可复查的流程"
+    }
+  ],
+  "status": "passed"
+}

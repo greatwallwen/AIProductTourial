@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "S05-prompt-skill-comparison",
+  "source": {
+    "path": "/home/fq/AIProductTourial/code/skills/poster-recipe/examples/rainy-bookstore-brief.json",
+    "sha256": "a022ed659e871f040f4693c977bd4c5a0416b749a4e86838c1f455a8d9eb331e",
+    "read_mode": "read-only"
+  },
+  "controls": {
+    "same_brief": true,
+    "same_provider_required": true,
+    "same_model_required": true,
+    "same_size_required": true,
+    "same_output_count_required": true
+  },
+  "groups": [
+    {
+      "id": "A",
+      "label": "普通 Prompt",
+      "method": "ordinary-prompt",
+      "prompt": "为“雨天旧书店”设计一张竖版活动海报，标题是“雨落下来，书页慢下来”。",
+      "prompt_coverage": {
+        "covered": 2,
+        "total": 7
+      },
+      "task_fit": "baseline"
+    },
+    {
+      "id": "B",
+      "label": "人工结构化 Prompt",
+      "method": "structured-prompt",
+      "prompt": "Use case: ads-marketing\nAsset type: 3:4 竖版活动海报\nPrimary request: 为“雨天旧书店”设计一张可直接发布的活动海报\nAudience: 下班后想慢下来的城市读者\nScene/backdrop: 深蓝雨夜中的旧书店，画面安静、克制，不做热闹促销氛围\nSubject: “雨线”、“暖黄橱窗”、“旧书脊”、“一盏灯”\nComposition/framing: 3:4 竖构图；标题、活动信息、品牌文字形成清楚的三级层级；保留足够留白\nLighting/mood: 冷雨与单一暖黄灯光对比，表达下班后慢下来的情绪\nColor palette: 米白、深蓝、暖黄与低饱和灰；不使用多色渐变\nText (verbatim): 主标题“雨落下来，书页慢下来”；辅助文字“躺进一页旧时光”、“周五 19:30 · 夜读与换书”；必备文字“SECOND PAGE BOOKS”、“入场免费”\nConstraints: 所有指定文字逐字准确、各出现一次；雨线、暖黄橱窗、旧书脊和一盏灯必须可见；小尺寸仍可读；只输出一张完成海报\nAvoid: “人物大特写”、“高饱和多色渐变”、“密集商业促销标签”、乱码、随机英文、额外活动信息、Logo、水印、拼贴过程板",
+      "prompt_coverage": {
+        "covered": 7,
+        "total": 7
+      },
+      "task_fit": "full"
+    },
+    {
+      "id": "C",
+      "label": "模板 Skill",
+      "method": "skill-guided-prompt",
+      "skill_source": "skills/gpt-image-2-style-library/SKILL.md",
+      "template_id": "poster-layout-system",
+      "prompt": "Selected template: Poster Layout System / 海报排版系统\nTemplate ID: poster-layout-system\nExample cases: case 345, case 5, case 10\n\nSubject and task: 为“雨天旧书店”生成一张完成度高的活动海报，面向下班后想慢下来的城市读者。\nComposition and layout: 3:4 竖版；采用编辑式不对称布局。标题位于上部主要阅读区，暖黄橱窗作为唯一视觉锚点，旧书脊集中在下部，细雨线连接上下空间。标题、活动信息、品牌文字形成清楚的三级层级，至少保留约 30% 安静留白。不要输出 moodboard、宫格或设计过程。\nVisual style and materials: 当代编辑海报、克制的纸张颗粒、米白与深蓝为主色，只用一个暖黄色锚点；冷雨和暖光形成清晰对比。字体气质为现代宋体标题配中性无衬线正文。\nText and labels (verbatim): “雨落下来，书页慢下来”；“躺进一页旧时光”、“周五 19:30 · 夜读与换书”；“SECOND PAGE BOOKS”、“入场免费”。每段只出现一次，不得改写、漏字或增加随机文字。\nAspect ratio and output: 3:4 竖版单张完成海报。\nRequired subjects: “雨线”、“暖黄橱窗”、“旧书脊”、“一盏灯”。\nConstraints and negative details: 禁止“人物大特写”、“高饱和多色渐变”、“密集商业促销标签”；禁止拼贴展示板、无关装饰符号、乱码、随机英文、Logo 和水印；保证标题层级和主视觉在手机缩略图中仍可辨认。",
+      "prompt_coverage": {
+        "covered": 7,
+        "total": 7
+      },
+      "task_fit": "full"
+    },
+    {
+      "id": "D",
+      "label": "强风格 Skill",
+      "method": "skill-guided-prompt",
+      "skill_source": "skills/visual-memory-translator/SKILL.md",
+      "preset": "editorial_text_card",
+      "prompt": "Skill preset: editorial_text_card\nInput mode: text\nPreview mode: skip\nOriginal display mode: translation_only\nLayout mode: large_whitespace_small_art\nStyle mode: editorial_metaphor_card\nRatio: 3:4\n\n将“雨落下来，书页慢下来”转译为一张 3:4 竖版编辑隐喻海报，同时保留活动信息功能。面向下班后想慢下来的城市读者，整体像独立艺术出版页，不像商业促销模板。\n\n只使用一个视觉隐喻：一张打开的旧书页像窄屋檐承接三条雨线，书页下方一个小型暖黄矩形代表旧书店橱窗灯光，旁边只保留少量旧书脊线条和一盏灯的轮廓。视觉隐喻占画面 15%–30%，其余为暖米白艺术纸留白。配色限定为深灰、米白、深蓝和一个暖黄强调色，无渐变。\n\nText (verbatim): 主标题“雨落下来，书页慢下来”；辅助文字“躺进一页旧时光”、“周五 19:30 · 夜读与换书”；必备文字“SECOND PAGE BOOKS”、“入场免费”。保留原句，不改写成鸡汤；所有文字逐字准确、各出现一次，文字总面积保持克制但活动时间必须可读。\n\n避免完整雨夜场景、雨窗照片、人物情节、PPT 图标墙、毛玻璃卡片、手账贴纸、人物大特写、高饱和多色渐变、密集商业促销标签、随机英文、Logo、水印和额外文字。只输出一张完成海报。",
+      "prompt_coverage": {
+        "covered": 7,
+        "total": 7
+      },
+      "task_fit": "partial",
+      "task_fit_note": "原 Skill 面向编辑隐喻卡，不以活动信息承载为首要目标。"
+    }
+  ],
+  "prompt_assessment": {
+    "status": "complete",
+    "basis": "可观察的简报字段覆盖与任务适配，不代表图片质量。"
+  },
+  "provider_execution": {
+    "status": "not-run",
+    "provider": null,
+    "model": null,
+    "request_ids": [],
+    "reason": "生成器只编译 Prompt；真实图片必须由同一 Provider 另行执行并保存回执。"
+  },
+  "output_evaluation": {
+    "status": "not-available",
+    "reason": "没有真实图片和 Provider 回执，禁止填写图片质量分数。"
+  },
+  "claims": {
+    "prompts_compiled": true,
+    "images_generated": false
+  }
+}

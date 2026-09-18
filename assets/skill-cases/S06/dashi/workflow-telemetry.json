@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "runId": "20260917072123435-8fe35277",
+  "goalPath": "/home/fq/AIProductTourial/assets/skill-cases/S06/dashi/goal.json",
+  "startedAt": "2026-09-17T07:21:23.435Z",
+  "updatedAt": "2026-09-17T07:34:11.573Z",
+  "totalDurationMs": 768138,
+  "totalStageCount": 2,
+  "failureCount": 0,
+  "retryCount": 0,
+  "stages": {
+    "scaffold": {
+      "count": 1,
+      "successCount": 1,
+      "failureCount": 0,
+      "retryCount": 0,
+      "durationMs": 1182,
+      "lastStatus": "passed",
+      "lastFailureCategory": null,
+      "lastFailureReason": null,
+      "metrics": {
+        "planningPasses": 1,
+        "layoutQueryPasses": 1,
+        "projectionPlansEvaluated": 52,
+        "allocationPasses": 1,
+        "materializationPasses": 1,
+        "materializedVariants": 15,
+        "pageCount": 5
+      }
+    },
+    "render": {
+      "count": 1,
+      "successCount": 1,
+      "failureCount": 0,
+      "retryCount": 0,
+      "durationMs": 585,
+      "lastStatus": "passed",
+      "lastFailureCategory": null,
+      "lastFailureReason": null,
+      "metrics": {
+        "logicalPageCount": 5,
+        "renderedSlideCount": 5
+      }
+    }
+  },
+  "failures": []
+}

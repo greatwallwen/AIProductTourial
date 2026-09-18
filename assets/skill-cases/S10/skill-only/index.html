@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>通信请求恢复核查 · UI Workbench Skill</title>
+  
+  <style>
+    :root { --ink:#17211f; --muted:#64726e; --line:#ccd6d2; --surface:#fff; --green:#126b5b; --amber:#a66a13; --red:#ae3e32; }
+    * { box-sizing:border-box; }
+    html,body { margin:0; min-height:100%; font-family:"Noto Sans CJK SC","Microsoft YaHei",sans-serif; letter-spacing:0; }
+    body { font-size:14px; line-height:1.45; }
+    button,input,textarea { font:inherit; }
+    button { cursor:pointer; }
+    .skip-link { position:fixed; left:12px; top:10px; z-index:100; padding:8px 12px; background:#111; color:#fff; transform:translateY(-160%); }
+    .skip-link:focus { transform:none; }
+    .topbar { min-height:72px; display:flex; align-items:center; justify-content:space-between; gap:24px; padding:14px 24px; border-bottom:1px solid var(--line); }
+    .brand { display:flex; align-items:center; gap:13px; min-width:0; }
+    .brand-mark { width:11px; height:36px; background:#19a78f; }
+    .brand h1 { margin:0; font-size:20px; line-height:1.25; }
+    .brand p { margin:3px 0 0; color:var(--muted); font-size:12px; }
+    .top-metrics { display:flex; gap:28px; }
+    .metric { display:grid; gap:1px; text-align:right; } .metric strong { font-size:20px; } .metric span { color:var(--muted); font-size:11px; }
+    .shell { display:grid; grid-template-columns:270px minmax(520px,1fr) 330px; min-height:calc(100vh - 72px); }
+    .directory,.work-panel { border-right:1px solid var(--line); }
+    .directory,.work-panel,.decision-panel { min-width:0; padding:18px; }
+    .section-head { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:14px; }
+    .section-head h2,.section-head h3 { margin:0; font-size:15px; }
+    .eyebrow { font-size:11px; font-weight:800; text-transform:uppercase; }
+    .search { width:100%; height:38px; padding:0 11px; border:1px solid var(--line); background:#fff; color:var(--ink); }
+    .filter-row { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; margin:10px 0 12px; }
+    .filter-button { min-height:52px; border:1px solid var(--line); background:#f8faf9; color:var(--ink); padding:7px 4px; }
+    .filter-button strong,.filter-button span { display:block; } .filter-button span { color:var(--muted); font-size:11px; }
+    .filter-button[aria-pressed="true"] { border-color:#126b5b; box-shadow:inset 0 -3px #126b5b; }
+    .task-list { display:grid; gap:6px; }
+    .task-row { width:100%; min-height:56px; display:flex; justify-content:space-between; align-items:center; gap:12px; text-align:left; padding:9px 10px; border:1px solid transparent; background:transparent; color:var(--ink); }
+    .task-row:hover,.task-row:focus-visible { background:#f2f7f5; border-color:var(--line); } .task-row.is-active { background:#e8f3ef; border-color:#8ec3b6; }
+    .task-row span:first-child { min-width:0; } .task-row strong,.task-row small { display:block; overflow:hidden; text-overflow:ellipsis; } .task-row strong { font-size:12px; white-space:nowrap; } .task-row small { margin-top:4px; color:var(--muted); }
+    .status-dot { flex:0 0 auto; width:9px; height:9px; border-radius:50%; background:#7b8582; } .status-committed_response_lost { background:#d08918; } .status-effect_status_unknown { background:#b44438; } .status-not_committed { background:#3e8878; }
+    .record-head { display:flex; justify-content:space-between; gap:24px; align-items:start; padding:4px 2px 18px; }
+    .record-head h2 { margin:4px 0 5px; font-size:24px; } .record-head p { margin:0; color:var(--muted); }
+    .state-badge { display:inline-flex; align-items:center; min-height:28px; padding:4px 9px; background:#fff1d8; color:#7a4b08; border:1px solid #e4be7a; white-space:nowrap; }
+    .chain-block,.evidence-block,.decision-card { border:1px solid var(--line); }
+    .chain-block { padding:18px; }
+    .chain { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:18px; }
+    .chain-step { position:relative; min-height:115px; padding:15px; border-top:4px solid #126b5b; background:#f7f9f8; }
+    .chain-step:not(:last-child)::after { content:"→"; position:absolute; right:-21px; top:42px; color:#8a9692; font-size:18px; }
+    .chain-step strong,.chain-step span { display:block; } .chain-step strong { margin-bottom:12px; } .chain-step span { color:var(--muted); }
+    .evidence-block { margin-top:14px; overflow:hidden; } .evidence-block .section-head { padding:16px 18px 0; }
+    .evidence-table { width:100%; border-collapse:collapse; }
+    .evidence-table th,.evidence-table td { padding:12px 16px; text-align:left; border-top:1px solid var(--line); vertical-align:top; } .evidence-table th { color:var(--muted); font-size:11px; }
+    .fact { color:#245c50; } .unknown { color:#a53b32; font-weight:700; }
+    .decision-panel { background:#f7f8f7; }
+    .decision-card { background:#fff; padding:17px; }
+    .decision-card fieldset { border:0; padding:0; margin:18px 0; } .decision-card legend { margin-bottom:8px; font-weight:700; }
+    .form-row { display:grid; gap:6px; margin-top:13px; } .form-row label { font-weight:700; font-size:12px; }
+    .form-row input,.form-row textarea { width:100%; border:1px solid var(--line); padding:9px 10px; background:#fff; color:var(--ink); } .form-row textarea { min-height:78px; resize:vertical; }
+    .result-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; }
+    .result-option { display:flex; align-items:center; justify-content:center; gap:5px; min-height:42px; border:1px solid var(--line); background:#fff; }
+    .actions { display:grid; gap:8px; margin-top:16px; }
+    .actions button { min-height:42px; border:1px solid var(--line); padding:8px 12px; }
+    .primary-action { border-color:transparent!important; color:#fff!important; } .secondary-action { background:#fff; color:var(--ink); }
+    .actions button:disabled { cursor:not-allowed; opacity:.45; }
+    .gate-list { margin:16px 0 0; padding:13px 0 0 18px; border-top:1px solid var(--line); color:var(--muted); }
+    .live-status { min-height:22px; margin:10px 0 0; color:#245c50; font-size:12px; }
+    :focus-visible { outline:3px solid #f2b544; outline-offset:2px; }
+    [hidden] { display:none!important; }
+    
+    body { background:#eef2f1; color:#17211f; }
+    .topbar,.directory,.work-panel,.evidence-block,.chain-block { background:#fff; border-color:#ccd6d2; }
+    .primary-action { background:#126b5b; }
+    .eyebrow,.metric strong,.chain-step strong { color:#126b5b; }
+
+    @media (max-width: 1050px) { .shell { grid-template-columns:230px minmax(440px,1fr); } .decision-panel { grid-column:1 / -1; border-top:1px solid var(--line); } .decision-card { max-width:none; } }
+    @media (max-width: 760px) { .topbar { align-items:flex-start; padding:12px 14px; } .top-metrics { display:none; } .shell { display:block; } .directory,.work-panel { border-right:0; border-bottom:1px solid var(--line); } .directory,.work-panel,.decision-panel { padding:14px; } .chain { grid-template-columns:1fr; gap:8px; } .chain-step:not(:last-child)::after { display:none; } .record-head { display:grid; gap:10px; } .record-head h2 { font-size:20px; } .evidence-block { overflow-x:auto; } .evidence-table { min-width:620px; } .filter-row { grid-template-columns:1fr; } .result-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#workspace">跳到核查工作区</a>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark" aria-hidden="true"></span><div><h1>通信请求恢复核查</h1><p>UI Workbench Skill · 课程离线样本</p></div></div>
+    <div class="top-metrics" aria-label="任务概览">
+      <div class="metric"><strong>1,000</strong><span>匿名课程任务</span></div>
+      <div class="metric"><strong>333</strong><span>响应丢失</span></div>
+      <div class="metric"><strong>333</strong><span>效果未知</span></div>
+    </div>
+  </header>
+  <main class="shell" id="workspace">
+    <aside class="directory" aria-label="匿名恢复核查单目录">
+      <div class="section-head"><div><div class="eyebrow">Queue</div><h2>待核查任务</h2></div><span>9 / 1000</span></div>
+      <label class="visually-hidden" for="task-search">搜索任务</label>
+      <input class="search" id="task-search" type="search" placeholder="任务号、地区或类别" autocomplete="off">
+      <div class="filter-row" aria-label="状态筛选">
+        <button class="filter-button" type="button" data-filter="committed_response_lost" aria-pressed="true"><strong>333</strong><span>响应丢失</span></button>
+        <button class="filter-button" type="button" data-filter="effect_status_unknown" aria-pressed="false"><strong>333</strong><span>效果未知</span></button>
+        <button class="filter-button" type="button" data-filter="not_committed" aria-pressed="false"><strong>334</strong><span>尚未提交</span></button>
+      </div>
+      <div class="task-list"><button class="task-row is-active" type="button" data-task="CN-TEL-2025Q2-0008" data-scenario="committed_response_lost" aria-pressed="true">
+              <span><strong>CN-TEL-2025Q2-0008</strong><small>福建 · 福州</small></span>
+              <span class="status-dot status-committed_response_lost" aria-label="响应丢失"></span>
+            </button>
+<button class="task-row" type="button" data-task="CN-TEL-2025Q2-0001" data-scenario="not_committed" aria-pressed="false">
+              <span><strong>CN-TEL-2025Q2-0001</strong><small>四川 · 成都</small></span>
+              <span class="status-dot status-not_committed" aria-label="尚未提交"></span>
+            </button>
+<button class="task-row" type="button" data-task="CN-TEL-2025Q2-0002" data-scenario="committed_response_lost" aria-pressed="false">
+              <span><strong>CN-TEL-2025Q2-0002</strong><small>广东 · 广州</small></span>
+              <span class="status-dot status-committed_response_lost" aria-label="响应丢失"></span>
+            </button>
+<button class="task-row" type="button" data-task="CN-TEL-2025Q2-0003" data-scenario="effect_status_unknown" aria-pressed="false">
+              <span><strong>CN-TEL-2025Q2-0003</strong><small>河南 · 郑州</small></span>
+              <span class="status-dot status-effect_status_unknown" aria-label="效果未知"></span>
+            </button>
+<button class="task-row" type="button" data-task="CN-TEL-2025Q2-0004" data-scenario="not_committed" aria-pressed="false">
+              <span><strong>CN-TEL-2025Q2-0004</strong><small>湖北 · 武汉</small></span>
+              <span class="status-dot status-not_committed" aria-label="尚未提交"></span>
+            </button>
+<button class="task-row" type="button" data-task="CN-TEL-2025Q2-0005" data-scenario="committed_response_lost" aria-pressed="false">
+              <span><strong>CN-TEL-2025Q2-0005</strong><small>浙江 · 杭州</small></span>
+              <span class="status-dot status-committed_response_lost" aria-label="响应丢失"></span>
+            </button>
+<button class="task-row" type="button" data-task="CN-TEL-2025Q2-0006" data-scenario="effect_status_unknown" aria-pressed="false">
+              <span><strong>CN-TEL-2025Q2-0006</strong><small>陕西 · 西安</small></span>
+              <span class="status-dot status-effect_status_unknown" aria-label="效果未知"></span>
+            </button>
+<button class="task-row" type="button" data-task="CN-TEL-2025Q2-0007" data-scenario="not_committed" aria-pressed="false">
+              <span><strong>CN-TEL-2025Q2-0007</strong><small>辽宁 · 沈阳</small></span>
+              <span class="status-dot status-not_committed" aria-label="尚未提交"></span>
+            </button>
+<button class="task-row" type="button" data-task="CN-TEL-2025Q2-0009" data-scenario="effect_status_unknown" aria-pressed="false">
+              <span><strong>CN-TEL-2025Q2-0009</strong><small>四川 · 成都</small></span>
+              <span class="status-dot status-effect_status_unknown" aria-label="效果未知"></span>
+            </button></div>
+    </aside>
+
+    <section class="work-panel" aria-label="通信请求恢复记录">
+      <div class="record-head"><div><div class="eyebrow">Recovery record</div><h2>CN-TEL-2025Q2-0008</h2><p>福建 · 福州 · 合约套餐变更 · 关注优先级</p></div><span class="state-badge">外部效果未知</span></div>
+      <section class="chain-block" aria-label="调用链路取证">
+        <div class="section-head"><div><div class="eyebrow">Trace</div><h3>调用链路取证</h3></div><span>只陈述已观察事实</span></div>
+        <div class="chain">
+          <div class="chain-step"><strong>本地系统</strong><span class="fact">已登记任务与恢复关联键</span></div>
+          <div class="chain-step"><strong>网络边界</strong><span class="fact">查询发出后响应未取得</span></div>
+          <div class="chain-step"><strong>外部系统</strong><span class="unknown">外部效果未知</span></div>
+        </div>
+      </section>
+      <section class="evidence-block" aria-label="证据对比矩阵">
+        <div class="section-head"><div><div class="eyebrow">Evidence matrix</div><h3>观察、材料与结论分开</h3></div></div>
+        <table class="evidence-table"><thead><tr><th>核对项</th><th>当前观察</th><th>可用材料</th><th>允许结论</th></tr></thead><tbody>
+          <tr><td>本地任务</td><td class="fact">任务已登记</td><td>任务号、接收时间</td><td>可确认</td></tr>
+          <tr><td>查询发送</td><td class="fact">存在发送线索</td><td>恢复关联键</td><td>可确认</td></tr>
+          <tr><td>查询响应</td><td class="unknown">响应未取得</td><td>暂无外部回执</td><td>不可推断失败</td></tr>
+          <tr><td>外部效果</td><td class="unknown">尚未核对</td><td>需补查询材料</td><td>保持待核对</td></tr>
+        </tbody></table>
+      </section>
+    </section>
+
+    <aside class="decision-panel" aria-label="核对结果与完成条件">
+      <form class="decision-card" id="result-form" novalidate>
+        <div class="section-head"><div><div class="eyebrow">Decision gate</div><h2>核对结果</h2></div></div>
+        <div class="form-row"><label for="lookup-target">查询目标</label><input id="lookup-target" value="计费中心"></div>
+        <div class="form-row"><label for="lookup-note">查询说明</label><textarea id="lookup-note">只查询套餐变更是否已经生效，不重放原请求</textarea></div>
+        <fieldset><legend>外部核对结果</legend><div class="result-grid">
+          <label class="result-option"><input type="radio" name="result" value="unknown" checked>仍未知</label>
+          <label class="result-option"><input type="radio" name="result" value="effective">已生效</label>
+          <label class="result-option"><input type="radio" name="result" value="ineffective">未生效</label>
+        </div></fieldset>
+        <div class="form-row"><label for="result-summary">查询结果摘要</label><textarea id="result-summary" placeholder="写明观察，不把用户陈述改成事实"></textarea></div>
+        <div class="form-row"><label for="evidence-id">证据编号</label><input id="evidence-id" placeholder="明确结果时必填"></div>
+        <div class="actions"><button class="primary-action" id="record-result" type="submit" disabled>记录核对结果</button><button class="secondary-action" id="keep-pending" type="button" disabled>保留待核对</button><button class="secondary-action" type="button" disabled>关闭课程恢复核查</button></div>
+        <p class="live-status" id="live-status" aria-live="polite"></p>
+        <ul class="gate-list"><li>明确结果需要摘要和证据编号</li><li>仍未知需要说明原因</li><li>关闭人与查询发起人必须不同</li></ul>
+      </form>
+    </aside>
+  </main>
+  <script>
+    const search=document.getElementById('task-search');
+    const filters=[...document.querySelectorAll('[data-filter]')];
+    const tasks=[...document.querySelectorAll('.task-row')];
+    let activeFilter='committed_response_lost';
+    function applyDirectoryFilter(){const query=search.value.trim().toLowerCase();tasks.forEach(task=>{const matchesFilter=task.dataset.scenario===activeFilter;const matchesQuery=task.innerText.toLowerCase().includes(query);task.hidden=!(matchesFilter&&matchesQuery);});}
+    filters.forEach(button=>button.addEventListener('click',()=>{activeFilter=button.dataset.filter;filters.forEach(item=>item.setAttribute('aria-pressed',String(item===button)));applyDirectoryFilter();}));
+    search.addEventListener('input',applyDirectoryFilter);
+    tasks.forEach(task=>task.addEventListener('click',()=>{tasks.forEach(item=>{item.classList.toggle('is-active',item===task);item.setAttribute('aria-pressed',String(item===task));});document.getElementById('live-status').textContent=`已选择 ${task.dataset.task}；演示数据面板仍固定展示代表任务 0008。`;}));
+    const form=document.getElementById('result-form');const summary=document.getElementById('result-summary');const evidence=document.getElementById('evidence-id');const record=document.getElementById('record-result');const pending=document.getElementById('keep-pending');const live=document.getElementById('live-status');
+    function validateResult(){const status=form.elements.result.value;const hasSummary=summary.value.trim().length>=8;const hasEvidence=evidence.value.trim().length>=6;record.disabled=status==='unknown'||!hasSummary||!hasEvidence;pending.disabled=status!=='unknown'||!hasSummary;evidence.required=status!=='unknown';return {status,hasSummary,hasEvidence};}
+    form.addEventListener('input',validateResult);form.addEventListener('change',validateResult);
+    form.addEventListener('submit',event=>{event.preventDefault();const state=validateResult();if(record.disabled)return;live.textContent=`已记录“${state.status==='effective'?'已生效':'未生效'}”演示结果；未向外部系统发送请求。`;});
+    pending.addEventListener('click',()=>{if(pending.disabled)return;live.textContent='已保留待核对；演示页没有改写外部效果。';});
+    validateResult();applyDirectoryFilter();
+  </script>
+</body>
+</html>

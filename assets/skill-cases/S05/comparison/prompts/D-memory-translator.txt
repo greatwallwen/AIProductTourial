@@ -1,0 +1,15 @@
+Skill preset: editorial_text_card
+Input mode: text
+Preview mode: skip
+Original display mode: translation_only
+Layout mode: large_whitespace_small_art
+Style mode: editorial_metaphor_card
+Ratio: 3:4
+
+将“雨落下来，书页慢下来”转译为一张 3:4 竖版编辑隐喻海报，同时保留活动信息功能。面向下班后想慢下来的城市读者，整体像独立艺术出版页，不像商业促销模板。
+
+只使用一个视觉隐喻：一张打开的旧书页像窄屋檐承接三条雨线，书页下方一个小型暖黄矩形代表旧书店橱窗灯光，旁边只保留少量旧书脊线条和一盏灯的轮廓。视觉隐喻占画面 15%–30%，其余为暖米白艺术纸留白。配色限定为深灰、米白、深蓝和一个暖黄强调色，无渐变。
+
+Text (verbatim): 主标题“雨落下来，书页慢下来”；辅助文字“躺进一页旧时光”、“周五 19:30 · 夜读与换书”；必备文字“SECOND PAGE BOOKS”、“入场免费”。保留原句，不改写成鸡汤；所有文字逐字准确、各出现一次，文字总面积保持克制但活动时间必须可读。
+
+避免完整雨夜场景、雨窗照片、人物情节、PPT 图标墙、毛玻璃卡片、手账贴纸、人物大特写、高饱和多色渐变、密集商业促销标签、随机英文、Logo、水印和额外文字。只输出一张完成海报。

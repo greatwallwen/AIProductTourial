@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "checked_at": "2026-07-28",
-  "purpose": "S01-S08 的开源 Skill 选型与运行边界",
+  "checked_at": "2026-09-15",
+  "purpose": "S01-S08 的开源 Skill 选型、Prompt 对比与运行边界",
   "sources": [
     {
       "id": "SKILL-SPEC-OPENAI",
@@ -25,11 +25,60 @@
       "use": "S05 借鉴可解释的视觉配方与最终 Prompt 双工件；没有图像 Provider 时只验证本地配方。"
     },
     {
+      "id": "SKILL-GPT-IMAGE-STYLE-LIBRARY",
+      "name": "freestylefly/awesome-gpt-image-2",
+      "url": "https://github.com/freestylefly/awesome-gpt-image-2/tree/0dc09c46c8a30b1fdd89c18cc78a894dac2104e3/agents/skills/gpt-image-2-style-library",
+      "license": "MIT",
+      "use": "S05 C 组固定使用 poster-layout-system 编译 Prompt；它是模板库而非图像模型。安装脚本会覆盖目标 Skill 目录，课程只读使用，不执行安装脚本。"
+    },
+    {
+      "id": "SKILL-VISUAL-MEMORY-TRANSLATOR",
+      "name": "TanShilongMario/visual-memory-translator-SKILL",
+      "url": "https://github.com/TanShilongMario/visual-memory-translator-SKILL/tree/98a18ef20ba98a124161be7b8caa8e0a7cdaf13b/visual-memory-translator",
+      "license": "MIT",
+      "use": "S05 D 组使用 editorial_text_card 验证强审美 Skill 的收益与任务适配边界；不把风格鲜明等同于活动海报交付更优。"
+    },
+    {
       "id": "SKILL-PPTX-LAYOUTS",
       "name": "tristan-mcinnis/pptx-from-layouts-skill",
       "url": "https://github.com/tristan-mcinnis/pptx-from-layouts-skill",
       "license": "MIT",
       "use": "S06 借鉴模板布局剖析、语义版式映射和生成后验证；本阶段本地运行版式计划，PPTX 生成在文稿阶段复用正式工具链。"
+    },
+    {
+      "id": "SKILL-FRONTEND-SLIDES",
+      "name": "zarazhangrui/frontend-slides",
+      "url": "https://github.com/zarazhangrui/frontend-slides/tree/9906a34d640d2111f724544cbc50f7f130569ae1",
+      "license": "MIT",
+      "use": "S06 C 组实际使用固定 1920×1080 舞台、浏览器导航和交付规程，生成单文件离线 HTML；不运行其 Vercel 部署或 PDF 安装脚本。"
+    },
+    {
+      "id": "SKILL-DASHI-PPT",
+      "name": "chuspeeism/dashi-ppt-skill",
+      "url": "https://github.com/chuspeeism/dashi-ppt-skill/tree/21dc7e5fc8c3a0d7f6a94948153dd1ee954f4e64",
+      "license": "AGPL-3.0",
+      "use": "S06 D 组实际运行 PageContentPack、3+1 方案生成、HTML 渲染和浏览器切换；CAUTION，依赖面大且候选仍需人工筛选。"
+    },
+    {
+      "id": "SKILL-UI-WORKBENCH",
+      "name": "course/ui-workbench",
+      "url": "code/skills/ui-workbench/SKILL.md",
+      "license": "course repository",
+      "use": "S10 课程自有 Skill；固定后台工作流、状态矩阵、证据边界和浏览器验收，不冒充 GitHub 下载项。"
+    },
+    {
+      "id": "UIKIT-TABLER",
+      "name": "tabler/tabler",
+      "url": "https://github.com/tabler/tabler/tree/b295d84b3eb57b05003ba155f4da925be71f1214",
+      "license": "MIT",
+      "use": "S10 D 组使用官方 npm 包 @tabler/core@1.4.0 的 CSS；Tabler 是 UI Kit 而非 Skill，只比较组件一致性和依赖成本。"
+    },
+    {
+      "id": "SKILL-THREE-SCOPE-MAP",
+      "name": "songsummer920-dazzle/three-scope-map-skill",
+      "url": "https://github.com/songsummer920-dazzle/three-scope-map-skill/tree/605867c0dc7f3a3b3ce601e76a695e4d9fe7a943",
+      "license": "GPL-3.0-or-later",
+      "use": "S11 C 组真实运行固定模板、GeoJSON 校验、严格检查、Vite 构建和 Chrome 下钻；CAUTION，保留作者署名，生产包约 9.96 MB，手机控制与标签拥挤。"
     },
     {
       "id": "SKILL-PIXI-OFFICIAL",

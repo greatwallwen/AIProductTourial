@@ -1,0 +1,105 @@
+{
+  "source": "/home/fq/AIProductTourial/assets/skill-cases/S06/frontend-slides/index.html",
+  "checkedAt": "2026-09-17T07:39:42.879Z",
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 900,
+      "pages": [
+        {
+          "index": 0,
+          "label": "第 1 页，共 5 页",
+          "activeCount": 1,
+          "overflow": [],
+          "stageRatio": 1.7778,
+          "status": "1 / 5"
+        },
+        {
+          "index": 1,
+          "label": "第 2 页，共 5 页",
+          "activeCount": 1,
+          "overflow": [],
+          "stageRatio": 1.7778,
+          "status": "2 / 5"
+        },
+        {
+          "index": 2,
+          "label": "第 3 页，共 5 页",
+          "activeCount": 1,
+          "overflow": [],
+          "stageRatio": 1.7778,
+          "status": "3 / 5"
+        },
+        {
+          "index": 3,
+          "label": "第 4 页，共 5 页",
+          "activeCount": 1,
+          "overflow": [],
+          "stageRatio": 1.7778,
+          "status": "4 / 5"
+        },
+        {
+          "index": 4,
+          "label": "第 5 页，共 5 页",
+          "activeCount": 1,
+          "overflow": [],
+          "stageRatio": 1.7778,
+          "status": "5 / 5"
+        }
+      ],
+      "editEnabled": true,
+      "localSave": true
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844,
+      "pages": [
+        {
+          "index": 0,
+          "label": "第 1 页，共 5 页",
+          "activeCount": 1,
+          "overflow": [],
+          "stageRatio": 1.7778,
+          "status": "1 / 5"
+        },
+        {
+          "index": 1,
+          "label": "第 2 页，共 5 页",
+          "activeCount": 1,
+          "overflow": [],
+          "stageRatio": 1.7778,
+          "status": "2 / 5"
+        },
+        {
+          "index": 2,
+          "label": "第 3 页，共 5 页",
+          "activeCount": 1,
+          "overflow": [],
+          "stageRatio": 1.7778,
+          "status": "3 / 5"
+        },
+        {
+          "index": 3,
+          "label": "第 4 页，共 5 页",
+          "activeCount": 1,
+          "overflow": [],
+          "stageRatio": 1.7778,
+          "status": "4 / 5"
+        },
+        {
+          "index": 4,
+          "label": "第 5 页，共 5 页",
+          "activeCount": 1,
+          "overflow": [],
+          "stageRatio": 1.7778,
+          "status": "5 / 5"
+        }
+      ],
+      "editEnabled": true,
+      "localSave": true
+    }
+  ],
+  "consoleErrors": []
+}

@@ -1,0 +1,138 @@
+{
+  "checkedAt": "2026-09-17T10:38:14.102Z",
+  "baseUrl": "http://127.0.0.1:5292",
+  "variants": {
+    "a": {
+      "desktop": {
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "horizontalOverflow": false,
+        "canvasCount": 0,
+        "webglCanvasCount": 0
+      },
+      "screenshot": {
+        "file": "A-css-fake-desktop.png",
+        "spread": 251.98,
+        "nonBlank": true
+      },
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    "b": {
+      "desktop": {
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "horizontalOverflow": false,
+        "canvasCount": 1,
+        "webglCanvasCount": 1
+      },
+      "initial": {
+        "scope": "country",
+        "region": "中国",
+        "featureCount": 35,
+        "renderReady": true,
+        "hovered": "",
+        "lastAction": "ready"
+      },
+      "hoverObserved": "黑龙江省",
+      "drilled": {
+        "scope": "province",
+        "region": "浙江省",
+        "featureCount": 11,
+        "renderReady": true,
+        "hovered": "",
+        "lastAction": "drill-zhejiang"
+      },
+      "returned": {
+        "scope": "country",
+        "region": "中国",
+        "featureCount": 35,
+        "renderReady": true,
+        "hovered": "",
+        "lastAction": "back-country"
+      },
+      "canvasSignal": {
+        "file": "B-three-canvas-desktop.png",
+        "spread": 37.17,
+        "nonBlank": true
+      },
+      "screenshot": {
+        "file": "B-three-desktop.png",
+        "spread": 37.16,
+        "nonBlank": true
+      },
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "mobile": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "horizontalOverflow": false,
+        "canvasCount": 1,
+        "webglCanvasCount": 1
+      },
+      "mobileScreenshot": {
+        "file": "B-three-mobile.png",
+        "spread": 62.45,
+        "nonBlank": true
+      }
+    },
+    "c": {
+      "desktop": {
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "horizontalOverflow": false,
+        "canvasCount": 2,
+        "webglCanvasCount": 2
+      },
+      "earthHoverPoint": {
+        "x": 763,
+        "y": 414
+      },
+      "countryControl": "返回上级\n国家 / 中国\n保存统一\n保存本层\n恢复本层\n恢复全部",
+      "hoverObserved": "浙江省",
+      "provinceControl": "返回上级\n省级 / 浙江省\n保存统一\n保存本层\n恢复本层\n恢复全部",
+      "returnedControl": "返回上级\n国家 / 中国\n保存统一\n保存本层\n恢复本层\n恢复全部",
+      "earthCanvasSignal": {
+        "file": "C-skill-earth-canvas-desktop.png",
+        "spread": 67.68,
+        "nonBlank": true
+      },
+      "mapCanvasSignal": {
+        "file": "C-skill-map-canvas-desktop.png",
+        "spread": 69.31,
+        "nonBlank": true
+      },
+      "screenshot": {
+        "file": "C-skill-desktop.png",
+        "spread": 69.22,
+        "nonBlank": true
+      },
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "mobileEarthHoverPoint": {
+        "x": 207,
+        "y": 388
+      },
+      "mobile": {
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "horizontalOverflow": false,
+        "canvasCount": 2,
+        "webglCanvasCount": 2
+      },
+      "mobileScreenshot": {
+        "file": "C-skill-mobile.png",
+        "spread": 94.51,
+        "nonBlank": true
+      }
+    }
+  },
+  "failures": [],
+  "visualReviewWarnings": [
+    "C 组 390x844 页面无页面级横向溢出，但顶部控制栏文字被压成竖排。",
+    "C 组全国 35 个省级标签在手机宽度下明显拥挤并相互遮挡，移动端可读性未通过人工视觉复核。"
+  ]
+}

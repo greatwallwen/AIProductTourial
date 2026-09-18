@@ -1,0 +1,4 @@
+interface:
+  display_name: "UI Workbench"
+  short_description: "将业务流程与案例数据转成可访问、可响应、可验收的后台工作台界面"
+  default_prompt: "Use $ui-workbench to turn this workflow and case data into an accessible, responsive operations workbench."

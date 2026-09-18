@@ -1,0 +1,1 @@
+使用 $ui-workbench 读取 dataset/10-telecom-complaint-orchestration/case.csv，按其工作流、状态矩阵、可访问性和浏览器验收规则生成 B10 工作台；不加载外部 UI Kit。

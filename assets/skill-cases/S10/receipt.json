@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "status": "complete-local",
+  "source": {
+    "path": "/home/fq/AIProductTourial/dataset/10-telecom-complaint-orchestration/case.csv",
+    "sha256": "e350701d8a9d8ea8294fd9e5e0b6de2dc54220d1aafbd1c51b95801c0e4f7a4e",
+    "read_mode": "read-only"
+  },
+  "row_count": 1000,
+  "selected_task": "CN-TEL-2025Q2-0008",
+  "source_skill": "code/skills/ui-workbench/SKILL.md",
+  "ui_kit": "@tabler/core@1.4.0",
+  "ui_kit_css_sha256": "7ef750bd10546a695d0b12767ad8048bd8f3ec5de7daefb1067f9d0daa3d1c9a",
+  "outputs": [
+    "skill-only/index.html",
+    "tabler/index.html"
+  ],
+  "claims": {
+    "a_output_generated": false,
+    "b_output_generated": false,
+    "c_output_generated": true,
+    "d_output_generated": true
+  }
+}

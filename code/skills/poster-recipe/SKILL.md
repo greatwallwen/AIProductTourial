@@ -1,6 +1,6 @@
 ---
 name: poster-recipe
-description: Compile a Chinese creative brief into three clearly differentiated poster recipes, select one with an explicit rationale, and render a deterministic editable SVG without claiming an image-provider result. Use for poster concepts, campaign key visuals, visual-direction comparison, or local fallback artwork when no image provider is available.
+description: Compile a Chinese creative brief into three clearly differentiated poster recipes, select one with an explicit rationale, render a deterministic editable SVG, or compile a controlled A/B/C/D image-Prompt comparison without claiming an image-provider result. Use for poster concepts, campaign key visuals, Prompt-versus-Skill evaluation, visual-direction comparison, or local fallback artwork when no image provider is available.
 ---
 
 # Poster recipe
@@ -19,3 +19,14 @@ python -B scripts/build_poster.py `
 ```
 
 Read [references/output-contract.md](references/output-contract.md) when validating or consuming the artifacts. SVG text and vector groups remain editable; the script embeds no raster image.
+
+For a Prompt-versus-Skill experiment, read [references/prompt-comparison-contract.md](references/prompt-comparison-contract.md), then compile the fixed A/B/C/D groups:
+
+```powershell
+python -B scripts/build_prompt_comparison.py `
+  --input <brief.json> `
+  --allowed-root <brief-root> `
+  --output-dir <output>/comparison
+```
+
+Treat prompt-field coverage as a prompt assessment only. Do not score or rank image quality until every group has a real output from the same provider/model/settings and a saved provider receipt.

@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "status": "complete-local",
+  "data": {
+    "china": {
+      "feature_count": 35,
+      "bbox": [
+        73.502355,
+        3.39716187,
+        135.09567,
+        53.563269
+      ],
+      "sha256": "99adfeded5223848bbe37a0a12f8023e11ee12161c7800521c27db42fdeac275",
+      "source_url": "https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json"
+    },
+    "zhejiang": {
+      "feature_count": 11,
+      "bbox": [
+        118.028378,
+        27.136168,
+        122.839911,
+        31.178782
+      ],
+      "sha256": "f87241d47687264861aa619b8dc37ffeb61a2be5d6018a8c01ec0ce0acb5cb38",
+      "source_url": "https://geo.datav.aliyun.com/areas_v3/bound/330000_full.json"
+    }
+  },
+  "three": {
+    "version": "0.178.0",
+    "module_sha256": "bc0d236927f5163414e7c59a5567257dfe925f1929ce0a151ac4185dc45ca5a2",
+    "core_sha256": "562b72799ef1145f77997ece49a34f578422873757b0a13e41d76dcbfb776f06"
+  },
+  "skill": {
+    "repository": "https://github.com/songsummer920-dazzle/three-scope-map-skill",
+    "commit": "605867c0dc7f3a3b3ce601e76a695e4d9fe7a943",
+    "license": "GPL-3.0-or-later",
+    "verdict": "CAUTION",
+    "attribution": "作者全平台ID：宋夏天Dazzle；公众号：送你整个夏天"
+  },
+  "claims": {
+    "a_is_webgl": false,
+    "b_is_webgl": true,
+    "c_generated": true
+  },
+  "external_business_data_used": false
+}

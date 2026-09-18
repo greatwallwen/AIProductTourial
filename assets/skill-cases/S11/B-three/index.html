@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>S11 B · 手写 Three.js GeoJSON 地图</title>
+  <style>
+    *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#07100e;color:#edf5f1;font-family:"Microsoft YaHei",sans-serif;letter-spacing:0}button{font:inherit}
+    #stage{position:fixed;inset:0}canvas{display:block;width:100%;height:100%}.hud{position:fixed;z-index:4;left:18px;right:18px;top:16px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;pointer-events:none}.title,.controls{pointer-events:auto;background:rgba(7,16,14,.86);border:1px solid rgba(123,178,155,.42);backdrop-filter:blur(8px)}.title{padding:11px 14px;max-width:500px}.title h1{margin:0;font-size:17px}.title p{margin:5px 0 0;color:#a9bcb4;font-size:12px}.controls{display:flex;align-items:center;gap:8px;padding:8px}.controls button{min-height:36px;padding:7px 10px;border:1px solid #608f7c;background:#10241e;color:#e7f5ef;cursor:pointer}.controls button:disabled{opacity:.42;cursor:not-allowed}.scope{padding:0 6px;color:#91d9bb;font-size:12px;white-space:nowrap}
+    .tooltip{position:fixed;z-index:5;display:none;padding:7px 9px;background:#f5faf7;color:#17231f;border:1px solid #7eb69f;pointer-events:none;font-size:12px}.status{position:fixed;z-index:4;left:18px;bottom:16px;max-width:min(520px,calc(100vw - 36px));padding:9px 12px;background:rgba(7,16,14,.86);border-left:3px solid #67d2a5;color:#b8cbc3;font-size:12px;line-height:1.5}
+    @media(max-width:680px){.hud{left:10px;right:10px;top:10px;display:grid}.title{max-width:none}.title p{display:none}.controls{justify-content:space-between;flex-wrap:wrap}.status{left:10px;bottom:10px;max-width:calc(100vw - 20px)}}
+  </style>
+</head>
+<body>
+  <div id="stage" aria-label="可交互的 Three.js 中国行政区地图"></div>
+  <div class="hud"><div class="title"><h1>B · 普通 Prompt 手写 Three.js</h1><p>真实 GeoJSON 挤出几何；移动指针查看区域，点击浙江或使用按钮下钻。</p></div><div class="controls"><span class="scope" id="scope">全国 · 35</span><button id="drill" type="button">下钻浙江</button><button id="back" type="button" disabled>返回全国</button></div></div>
+  <div class="tooltip" id="tooltip" role="status"></div><div class="status" id="status">GeoJSON 已加载；等待 WebGL 首帧。</div>
+  <script type="module">
+    import * as THREE from '../vendor/three.module.js';
+
+    const stage=document.getElementById('stage');const scopeEl=document.getElementById('scope');const statusEl=document.getElementById('status');const tooltip=document.getElementById('tooltip');const drillButton=document.getElementById('drill');const backButton=document.getElementById('back');
+    const scene=new THREE.Scene();scene.background=new THREE.Color(0x07100e);scene.fog=new THREE.FogExp2(0x07100e,.0048);
+    const camera=new THREE.PerspectiveCamera(36,innerWidth/innerHeight,.1,500);camera.position.set(0,-102,116);camera.lookAt(0,0,0);
+    const renderer=new THREE.WebGLRenderer({antialias:true,alpha:false,powerPreference:'high-performance'});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(innerWidth,innerHeight);renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.domElement.dataset.s11='three-map';stage.appendChild(renderer.domElement);
+    scene.add(new THREE.HemisphereLight(0xb8ffe2,0x07100e,2.1));const sun=new THREE.DirectionalLight(0xffffff,3.2);sun.position.set(-30,-45,100);scene.add(sun);
+    const floor=new THREE.Mesh(new THREE.CircleGeometry(92,64),new THREE.MeshBasicMaterial({color:0x0c1c17,transparent:true,opacity:.6}));floor.position.z=-1.5;scene.add(floor);
+    const raycaster=new THREE.Raycaster();const pointer=new THREE.Vector2();let mapGroup=new THREE.Group();scene.add(mapGroup);let interactive=[];let hovered=null;let activeScope='country';let activeName='中国';let currentData=null;let chinaData=null;let zhejiangData=null;
+    window.__S11_MAP_STATE__={scope:activeScope,region:activeName,featureCount:0,renderReady:false,hovered:'',lastAction:'boot'};
+
+    function codeOf(feature){const p=feature.properties||{};return String(p.adcode||p.code||'')}
+    function nameOf(feature){const p=feature.properties||{};return String(p.name||p.fullname||p.adcode||p.code||'未命名区域')}
+    function walkCoords(value,out=[]){if(Array.isArray(value)&&value.length>=2&&typeof value[0]==='number'&&typeof value[1]==='number'){out.push(value)}else if(Array.isArray(value)){value.forEach(item=>walkCoords(item,out))}return out}
+    function polygonsOf(geometry){if(geometry.type==='Polygon')return [geometry.coordinates];if(geometry.type==='MultiPolygon')return geometry.coordinates;return []}
+    function disposeMap(){mapGroup.traverse(object=>{if(object.geometry)object.geometry.dispose();if(object.material){const list=Array.isArray(object.material)?object.material:[object.material];list.forEach(item=>item.dispose())}});scene.remove(mapGroup);mapGroup=new THREE.Group();scene.add(mapGroup);interactive=[];hovered=null}
+    function ringPoints(ring,project){const points=ring.slice(0,-1).map(project).map(([x,y])=>new THREE.Vector2(x,y));return points}
+    function createShape(rings,project){const outer=ringPoints(rings[0],project);if(!THREE.ShapeUtils.isClockWise(outer))outer.reverse();const shape=new THREE.Shape(outer);for(const ring of rings.slice(1)){const points=ringPoints(ring,project);if(THREE.ShapeUtils.isClockWise(points))points.reverse();shape.holes.push(new THREE.Path(points))}return shape}
+    function buildMap(data,scope,name){disposeMap();currentData=data;activeScope=scope;activeName=name;const all=walkCoords(data.features.map(feature=>feature.geometry.coordinates));const xs=all.map(p=>p[0]);const ys=all.map(p=>p[1]);const minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);const centerX=(minX+maxX)/2,centerY=(minY+maxY)/2;const lonFactor=Math.cos(centerY*Math.PI/180);const scale=Math.min(92/((maxX-minX)*lonFactor),68/(maxY-minY));const project=([lon,lat])=>[(lon-centerX)*lonFactor*scale,(lat-centerY)*scale];
+      for(const feature of data.features){const featureName=nameOf(feature);const featureCode=codeOf(feature);for(const polygon of polygonsOf(feature.geometry)){if(!polygon[0]||polygon[0].length<4)continue;const shape=createShape(polygon,project);const geometry=new THREE.ExtrudeGeometry(shape,{depth:scope==='country'?2.8:4,bevelEnabled:false,curveSegments:1});const top=new THREE.MeshStandardMaterial({color:0x254f42,roughness:.7,metalness:.08,emissive:0x07130f,emissiveIntensity:.7});const side=new THREE.MeshStandardMaterial({color:0x0e2b21,roughness:.82,metalness:.02});const mesh=new THREE.Mesh(geometry,[top,side]);mesh.userData={feature,featureName,featureCode,baseColor:0x254f42};mapGroup.add(mesh);interactive.push(mesh)}}
+      mapGroup.rotation.z=scope==='country'?-0.08:0.04;scopeEl.textContent=`${name} · ${data.features.length}`;backButton.disabled=scope==='country';drillButton.disabled=scope!=='country';statusEl.textContent=scope==='country'?'全国省级 GeoJSON 已挤出；浙江数据已离线预载。':'浙江 11 个市级要素已挤出；本案例到市级为止。';Object.assign(window.__S11_MAP_STATE__,{scope,region:name,featureCount:data.features.length,hovered:'',lastAction:'render'});renderOnce()}
+    function setHover(hit,event){if(hovered===hit)return;if(hovered)hovered.material[0].color.setHex(hovered.userData.baseColor);hovered=hit||null;if(!hovered){tooltip.style.display='none';window.__S11_MAP_STATE__.hovered='';return}hovered.material[0].color.setHex(0x62c99f);tooltip.textContent=`${hovered.userData.featureName} · ${hovered.userData.featureCode}`;tooltip.style.display='block';tooltip.style.left=`${Math.min(event.clientX+14,innerWidth-160)}px`;tooltip.style.top=`${Math.min(event.clientY+14,innerHeight-48)}px`;window.__S11_MAP_STATE__.hovered=hovered.userData.featureName}
+    function pick(event){const rect=renderer.domElement.getBoundingClientRect();pointer.x=((event.clientX-rect.left)/rect.width)*2-1;pointer.y=-((event.clientY-rect.top)/rect.height)*2+1;raycaster.setFromCamera(pointer,camera);return raycaster.intersectObjects(interactive,false)[0]?.object||null}
+    renderer.domElement.addEventListener('pointermove',event=>setHover(pick(event),event));renderer.domElement.addEventListener('pointerleave',event=>setHover(null,event));renderer.domElement.addEventListener('click',event=>{const hit=pick(event);if(!hit)return;if(activeScope==='country'&&hit.userData.featureCode==='330000')drillZhejiang();else statusEl.textContent=activeScope==='country'?'离线实验只预载浙江下一级数据；未虚构其他省市。':`${hit.userData.featureName} 为本案例终点，不继续请求区县数据。`});
+    function drillZhejiang(){buildMap(zhejiangData,'province','浙江省');window.__S11_MAP_STATE__.lastAction='drill-zhejiang'}function backChina(){buildMap(chinaData,'country','中国');window.__S11_MAP_STATE__.lastAction='back-country'}drillButton.addEventListener('click',drillZhejiang);backButton.addEventListener('click',backChina);window.__S11_API__={drillZhejiang,backChina};
+    function renderOnce(){renderer.render(scene,camera);requestAnimationFrame(()=>renderer.render(scene,camera))}function animate(){requestAnimationFrame(animate);mapGroup.rotation.x=Math.sin(performance.now()/5000)*.012;renderer.render(scene,camera)}
+    addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight)});
+    try{[chinaData,zhejiangData]=await Promise.all([fetch('../data/china.json').then(r=>{if(!r.ok)throw new Error(`china ${r.status}`);return r.json()}),fetch('../data/zhejiang.json').then(r=>{if(!r.ok)throw new Error(`zhejiang ${r.status}`);return r.json()})]);buildMap(chinaData,'country','中国');animate();window.__S11_MAP_STATE__.renderReady=true;window.__S11_MAP_STATE__.lastAction='ready';statusEl.textContent='全国省级 GeoJSON 已挤出；移动指针查看，点击浙江下钻。'}catch(error){console.error(error);statusEl.textContent=`地图加载失败：${error.message}`;window.__S11_MAP_STATE__.lastAction='error'}
+  </script>
+</body>
+</html>

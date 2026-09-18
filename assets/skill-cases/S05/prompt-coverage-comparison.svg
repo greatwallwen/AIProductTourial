@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="760" viewBox="0 0 1440 760" role="img" aria-labelledby="title desc">
+  <title id="title">S05 四种 Prompt 方法对比</title>
+  <desc id="desc">普通 Prompt 覆盖 2 个字段，结构化 Prompt、模板 Skill 和强风格 Skill 均覆盖 7 个字段，但强风格 Skill 对活动海报仅部分适配。</desc>
+  <rect width="1440" height="760" fill="#f7f8fa"/>
+  <text x="80" y="82" font-family="Arial, 'Microsoft YaHei', sans-serif" font-size="38" font-weight="700" fill="#17212b">同一份海报简报，四种方法实际保留了什么？</text>
+  <text x="80" y="126" font-family="Arial, 'Microsoft YaHei', sans-serif" font-size="22" fill="#52616f">字段覆盖只评价 Prompt 完整度，不代表图片质量排名</text>
+
+  <g font-family="Arial, 'Microsoft YaHei', sans-serif">
+    <rect x="80" y="178" width="300" height="470" rx="6" fill="#ffffff" stroke="#cfd6dc"/>
+    <rect x="80" y="178" width="300" height="10" fill="#d9534f"/>
+    <text x="108" y="238" font-size="28" font-weight="700" fill="#17212b">A 普通 Prompt</text>
+    <text x="108" y="276" font-size="20" fill="#6b7785">只写主题和标题</text>
+    <text x="108" y="348" font-size="64" font-weight="700" fill="#d9534f">2 / 7</text>
+    <text x="108" y="386" font-size="19" fill="#6b7785">简报字段覆盖</text>
+    <rect x="108" y="424" width="244" height="18" rx="3" fill="#e9edf0"/>
+    <rect x="108" y="424" width="70" height="18" rx="3" fill="#d9534f"/>
+    <text x="108" y="500" font-size="20" font-weight="700" fill="#8f2f2b">大量信息交给模型猜</text>
+    <text x="108" y="540" font-size="18" fill="#52616f">受众、主体、层级、</text>
+    <text x="108" y="570" font-size="18" fill="#52616f">比例和禁用项均缺失</text>
+
+    <rect x="406" y="178" width="300" height="470" rx="6" fill="#ffffff" stroke="#cfd6dc"/>
+    <rect x="406" y="178" width="300" height="10" fill="#247ba0"/>
+    <text x="434" y="238" font-size="28" font-weight="700" fill="#17212b">B 结构化 Prompt</text>
+    <text x="434" y="276" font-size="20" fill="#6b7785">人工补齐执行约束</text>
+    <text x="434" y="348" font-size="64" font-weight="700" fill="#247ba0">7 / 7</text>
+    <text x="434" y="386" font-size="19" fill="#6b7785">简报字段覆盖</text>
+    <rect x="434" y="424" width="244" height="18" rx="3" fill="#e9edf0"/>
+    <rect x="434" y="424" width="244" height="18" rx="3" fill="#247ba0"/>
+    <text x="434" y="500" font-size="20" font-weight="700" fill="#15536d">任务适配：完整</text>
+    <text x="434" y="540" font-size="18" fill="#52616f">把简报转换为可执行的</text>
+    <text x="434" y="570" font-size="18" fill="#52616f">画面、文字和验收约束</text>
+
+    <rect x="732" y="178" width="300" height="470" rx="6" fill="#ffffff" stroke="#cfd6dc"/>
+    <rect x="732" y="178" width="300" height="10" fill="#2a9d6f"/>
+    <text x="760" y="238" font-size="28" font-weight="700" fill="#17212b">C 模板 Skill</text>
+    <text x="760" y="276" font-size="20" fill="#6b7785">gpt-image-2 风格库</text>
+    <text x="760" y="348" font-size="64" font-weight="700" fill="#2a9d6f">7 / 7</text>
+    <text x="760" y="386" font-size="19" fill="#6b7785">简报字段覆盖</text>
+    <rect x="760" y="424" width="244" height="18" rx="3" fill="#e9edf0"/>
+    <rect x="760" y="424" width="244" height="18" rx="3" fill="#2a9d6f"/>
+    <text x="760" y="500" font-size="20" font-weight="700" fill="#19724f">任务适配：完整</text>
+    <text x="760" y="540" font-size="18" fill="#52616f">增加单张成品、缩略图</text>
+    <text x="760" y="570" font-size="18" fill="#52616f">可读和禁止 moodboard</text>
+
+    <rect x="1058" y="178" width="300" height="470" rx="6" fill="#ffffff" stroke="#cfd6dc"/>
+    <rect x="1058" y="178" width="300" height="10" fill="#b7791f"/>
+    <text x="1086" y="238" font-size="28" font-weight="700" fill="#17212b">D 强风格 Skill</text>
+    <text x="1086" y="276" font-size="20" fill="#6b7785">visual-memory-translator</text>
+    <text x="1086" y="348" font-size="64" font-weight="700" fill="#b7791f">7 / 7</text>
+    <text x="1086" y="386" font-size="19" fill="#6b7785">简报字段覆盖</text>
+    <rect x="1086" y="424" width="244" height="18" rx="3" fill="#e9edf0"/>
+    <rect x="1086" y="424" width="244" height="18" rx="3" fill="#b7791f"/>
+    <text x="1086" y="500" font-size="20" font-weight="700" fill="#855714">任务适配：部分</text>
+    <text x="1086" y="540" font-size="18" fill="#52616f">隐喻鲜明，但会压缩</text>
+    <text x="1086" y="570" font-size="18" fill="#52616f">活动时间和品牌信息</text>
+  </g>
+  <text x="80" y="704" font-family="Arial, 'Microsoft YaHei', sans-serif" font-size="20" fill="#52616f">结论：Skill 的规则更多，不等于更适合当前任务；没有真实 Provider 图片时，不评价出图优劣。</text>
+</svg>

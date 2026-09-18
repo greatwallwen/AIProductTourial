@@ -1,0 +1,2089 @@
+{
+  "schemaVersion": 2,
+  "variantOutputMode": "comparison",
+  "title": "让数据先过体检",
+  "goal": "用同一份数据质量大纲比较模板化 Skill 与课程自有生成器的交付差异",
+  "themePack": "theme07",
+  "pageCount": 5,
+  "randomSeed": "s06-data-audit-20260917-k3m",
+  "workflowRunId": "20260917072123435-8fe35277",
+  "slides": [
+    {
+      "id": "page-1",
+      "content": {
+        "presentation": {
+          "pageIntent": "cover",
+          "coreMessage": "先确认数据边界，再进入分析。",
+          "title": {
+            "full": "让数据先过体检",
+            "short": "数据先体检"
+          },
+          "summary": {
+            "full": "从可读的 Markdown 到可编辑、可审计的演示文稿",
+            "short": "可编辑、可审计"
+          },
+          "items": [
+            {
+              "id": "step-read",
+              "label": "读取",
+              "detail": {
+                "full": "记录输入边界",
+                "short": "输入边界"
+              },
+              "required": true,
+              "priority": "high"
+            },
+            {
+              "id": "step-check",
+              "label": "体检",
+              "detail": {
+                "full": "统计字段缺失",
+                "short": "字段缺失"
+              },
+              "required": true,
+              "priority": "high"
+            },
+            {
+              "id": "step-decide",
+              "label": "决策",
+              "detail": {
+                "full": "保留人工复核",
+                "short": "人工复核"
+              },
+              "required": true,
+              "priority": "high"
+            }
+          ],
+          "chartData": [],
+          "media": []
+        }
+      },
+      "selectedVariant": "v1",
+      "variants": [
+        {
+          "id": "v1",
+          "kind": "template",
+          "layout": "theme07_page001",
+          "contentMap": {
+            "kicker": "presentation.title.short",
+            "sub": "presentation.coreMessage",
+            "logo": "presentation.title.full",
+            "phase": "presentation.summary.short",
+            "titleL1": "presentation.pageIntent",
+            "titleL2": "presentation.items[0].label"
+          },
+          "projection": {
+            "chartMode": "none",
+            "contentPaths": [
+              "tags",
+              "year",
+              "kicker",
+              "sub",
+              "logo",
+              "phase",
+              "titleL1",
+              "titleL2"
+            ],
+            "projectedItemIds": [
+              "step-read",
+              "step-check",
+              "step-decide"
+            ],
+            "chartBindings": [],
+            "structure": {
+              "arrays": [
+                {
+                  "path": "tags",
+                  "fields": [
+                    {
+                      "key": null,
+                      "semantic": "label"
+                    }
+                  ],
+                  "items": [
+                    {
+                      "sourceId": "step-read"
+                    },
+                    {
+                      "sourceId": "step-check"
+                    },
+                    {
+                      "sourceId": "step-decide"
+                    },
+                    {
+                      "sourceId": "support:title"
+                    }
+                  ]
+                }
+              ],
+              "values": [
+                {
+                  "path": "year",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "v2",
+          "kind": "template",
+          "layout": "theme07_page002",
+          "contentMap": {
+            "kicker": "presentation.title.short",
+            "summary": "presentation.coreMessage",
+            "phaseLeft": "presentation.title.full",
+            "phaseRight": "presentation.summary.short",
+            "titleL1": "presentation.pageIntent",
+            "titleL2": "presentation.items[0].label",
+            "subPre": "presentation.items[0].detail.short",
+            "years": "presentation.items[1].label",
+            "subPost": "presentation.items[0].detail.full",
+            "logo": "presentation.items[2].label"
+          },
+          "projection": {
+            "chartMode": "none",
+            "contentPaths": [
+              "timeline",
+              "photoLabel",
+              "imageCount",
+              "kicker",
+              "summary",
+              "phaseLeft",
+              "phaseRight",
+              "titleL1",
+              "titleL2",
+              "subPre",
+              "years",
+              "subPost",
+              "logo"
+            ],
+            "projectedItemIds": [
+              "step-decide",
+              "step-check",
+              "step-read"
+            ],
+            "chartBindings": [],
+            "structure": {
+              "arrays": [
+                {
+                  "path": "timeline",
+                  "fields": [
+                    {
+                      "key": null,
+                      "semantic": "label"
+                    }
+                  ],
+                  "items": [
+                    {
+                      "sourceId": "step-decide"
+                    },
+                    {
+                      "sourceId": "step-check"
+                    },
+                    {
+                      "sourceId": "step-read"
+                    }
+                  ]
+                }
+              ],
+              "values": [
+                {
+                  "path": "photoLabel",
+                  "value": ""
+                },
+                {
+                  "path": "imageCount",
+                  "value": 0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "v3",
+          "kind": "template",
+          "layout": "theme07_page003",
+          "contentMap": {
+            "titleL1": "presentation.title.short",
+            "sub": "presentation.coreMessage",
+            "logo": "presentation.title.full",
+            "phase": "presentation.summary.short",
+            "titleL2": "presentation.pageIntent",
+            "slogan": "presentation.items[0].label"
+          },
+          "projection": {
+            "chartMode": "none",
+            "contentPaths": [
+              "crumbs",
+              "titleL1",
+              "sub",
+              "logo",
+              "phase",
+              "titleL2",
+              "slogan"
+            ],
+            "projectedItemIds": [
+              "step-check",
+              "step-decide",
+              "step-read"
+            ],
+            "chartBindings": [],
+            "structure": {
+              "arrays": [
+                {
+                  "path": "crumbs",
+                  "fields": [
+                    {
+                      "key": null,
+                      "semantic": "label"
+                    }
+                  ],
+                  "items": [
+                    {
+                      "sourceId": "step-check"
+                    },
+                    {
+                      "sourceId": "step-decide"
+                    },
+                    {
+                      "sourceId": "step-read"
+                    }
+                  ]
+                }
+              ],
+              "values": []
+            }
+          }
+        },
+        {
+          "id": "v4",
+          "kind": "bespoke",
+          "adjustable": false,
+          "composition": {
+            "designIntent": {
+              "objective": "呈现单页核心信息",
+              "audience": "当前演示文稿受众",
+              "narrativeRole": "推进单页叙事",
+              "emphasis": "突出内容层级与证据关系",
+              "rationale": "statement-1 结构投影"
+            },
+            "background": "default",
+            "elements": [
+              {
+                "id": "bespoke-statement-kicker",
+                "type": "text",
+                "grid": {
+                  "column": 1,
+                  "row": 1,
+                  "width": 4,
+                  "height": 1
+                },
+                "role": "kicker"
+              },
+              {
+                "id": "bespoke-statement-title",
+                "type": "text",
+                "grid": {
+                  "column": 1,
+                  "row": 2,
+                  "width": 8,
+                  "height": 1
+                },
+                "role": "title"
+              },
+              {
+                "id": "bespoke-statement-core",
+                "type": "quote",
+                "grid": {
+                  "column": 1,
+                  "row": 3,
+                  "width": 9,
+                  "height": 5
+                }
+              },
+              {
+                "id": "bespoke-statement-facts",
+                "type": "list",
+                "grid": {
+                  "column": 10,
+                  "row": 3,
+                  "width": 3,
+                  "height": 5
+                },
+                "ordered": true
+              }
+            ]
+          },
+          "projection": {
+            "itemBindings": [
+              {
+                "id": "step-read",
+                "target": "elements[3].items[0]"
+              },
+              {
+                "id": "step-check",
+                "target": "elements[3].items[1]"
+              },
+              {
+                "id": "step-decide",
+                "target": "elements[3].items[2]"
+              }
+            ],
+            "chartBindings": [],
+            "mediaBindings": []
+          },
+          "contentMap": {
+            "elements[0].text": "presentation.pageIntent",
+            "elements[1].text": "presentation.title.short",
+            "elements[2].quote": "presentation.coreMessage",
+            "elements[2].attribution": "presentation.summary.short"
+          }
+        }
+      ]
+    },
+    {
+      "id": "page-2",
+      "content": {
+        "presentation": {
+          "pageIntent": "transition",
+          "coreMessage": "先确认数据边界，再决定能回答什么。",
+          "title": {
+            "full": "01 为什么先体检",
+            "short": "为什么先体检"
+          },
+          "summary": {
+            "full": "数据边界决定后续结论的可信范围。",
+            "short": "先边界，后结论"
+          },
+          "items": [
+            {
+              "id": "boundary",
+              "label": "确认边界",
+              "detail": {
+                "full": "记录文件、字段与时间范围",
+                "short": "记录输入"
+              },
+              "required": true,
+              "priority": "high"
+            },
+            {
+              "id": "answer",
+              "label": "限定回答",
+              "detail": {
+                "full": "只回答证据能够支持的问题",
+                "short": "限定结论"
+              },
+              "required": true,
+              "priority": "high"
+            }
+          ],
+          "chartData": [],
+          "media": []
+        }
+      },
+      "selectedVariant": "v1",
+      "variants": [
+        {
+          "id": "v1",
+          "kind": "template",
+          "layout": "theme07_page055",
+          "contentMap": {
+            "kicker": "presentation.title.short",
+            "source": "presentation.coreMessage",
+            "eyebrow": "presentation.title.full",
+            "quoteLead": "presentation.summary.short",
+            "quoteEm": "presentation.pageIntent",
+            "quoteTail": "presentation.items[0].label"
+          },
+          "projection": {
+            "chartMode": "none",
+            "contentPaths": [
+              "pillars",
+              "pillarCount",
+              "kicker",
+              "source",
+              "eyebrow",
+              "quoteLead",
+              "quoteEm",
+              "quoteTail"
+            ],
+            "projectedItemIds": [
+              "boundary",
+              "answer"
+            ],
+            "chartBindings": [],
+            "structure": {
+              "arrays": [
+                {
+                  "path": "pillars",
+                  "fields": [
+                    {
+                      "key": "glyph",
+                      "semantic": "label"
+                    },
+                    {
+                      "key": "zh",
+                      "semantic": "optional"
+                    },
+                    {
+                      "key": "en",
+                      "semantic": "optional"
+                    },
+                    {
+                      "key": "note",
+                      "semantic": "detail"
+                    }
+                  ],
+                  "items": [
+                    {
+                      "sourceId": "boundary"
+                    },
+                    {
+                      "sourceId": "answer"
+                    }
+                  ],
+                  "countPath": "pillarCount"
+                }
+              ],
+              "values": []
+            }
+          }
+        },
+        {
+          "id": "v2",
+          "kind": "template",
+          "layout": "theme07_page016",
+          "contentMap": {
+            "title": "presentation.title.short",
+            "lead": "presentation.coreMessage",
+            "eyebrow": "presentation.title.full",
+            "sub": "presentation.summary.short",
+            "closing": "presentation.pageIntent"
+          },
+          "projection": {
+            "chartMode": "none",
+            "contentPaths": [
+              "keywords",
+              "keywordCount",
+              "index",
+              "title",
+              "lead",
+              "eyebrow",
+              "sub",
+              "closing"
+            ],
+            "projectedItemIds": [
+              "answer",
+              "boundary"
+            ],
+            "chartBindings": [],
+            "structure": {
+              "arrays": [
+                {
+                  "path": "keywords",
+                  "fields": [
+                    {
+                      "key": null,
+                      "semantic": "label"
+                    }
+                  ],
+                  "items": [
+                    {
+                      "sourceId": "answer"
+                    },
+                    {
+                      "sourceId": "boundary"
+                    },
+                    {
+                      "sourceId": "support:title"
+                    }
+                  ],
+                  "countPath": "keywordCount"
+                }
+              ],
+              "values": [
+                {
+                  "path": "index",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "v3",
+          "kind": "template",
+          "layout": "theme07_page015",
+          "contentMap": {
+            "kicker": "presentation.title.short",
+            "source": "presentation.coreMessage",
+            "eyebrow": "presentation.title.full",
+            "quoteLead": "presentation.summary.short",
+            "quoteEm1": "presentation.pageIntent",
+            "quoteMid": "presentation.items[0].label",
+            "quoteEm2": "presentation.items[1].label"
+          },
+          "projection": {
+            "chartMode": "none",
+            "contentPaths": [
+              "conclusions",
+              "itemCount",
+              "quoteTail",
+              "kicker",
+              "source",
+              "eyebrow",
+              "quoteLead",
+              "quoteEm1",
+              "quoteMid",
+              "quoteEm2"
+            ],
+            "projectedItemIds": [
+              "boundary",
+              "answer"
+            ],
+            "chartBindings": [],
+            "structure": {
+              "arrays": [
+                {
+                  "path": "conclusions",
+                  "fields": [
+                    {
+                      "key": "idx",
+                      "semantic": "label"
+                    },
+                    {
+                      "key": "title",
+                      "semantic": "optional"
+                    },
+                    {
+                      "key": "note",
+                      "semantic": "detail"
+                    }
+                  ],
+                  "items": [
+                    {
+                      "sourceId": "boundary"
+                    },
+                    {
+                      "sourceId": "answer"
+                    },
+                    {
+                      "sourceId": "support:summary"
+                    }
+                  ],
+                  "countPath": "itemCount"
+                }
+              ],
+              "values": [
+                {
+                  "path": "quoteTail",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "v4",
+          "kind": "bespoke",
+          "adjustable": false,
+          "composition": {
+            "designIntent": {
+              "objective": "呈现单页核心信息",
+              "audience": "当前演示文稿受众",
+              "narrativeRole": "推进单页叙事",
+              "emphasis": "突出内容层级与证据关系",
+              "rationale": "ledger-2 结构投影"
+            },
+            "background": "default",
+            "elements": [
+              {
+                "id": "bespoke-ledger-kicker",
+                "type": "text",
+                "grid": {
+                  "column": 10,
+                  "row": 1,
+                  "width": 3,
+                  "height": 1
+                },
+                "role": "kicker"
+              },
+              {
+                "id": "bespoke-ledger-title",
+                "type": "text",
+                "grid": {
+                  "column": 1,
+                  "row": 1,
+                  "width": 9,
+                  "height": 1
+                },
+                "role": "title"
+              },
+              {
+                "id": "bespoke-ledger-core",
+                "type": "text",
+                "grid": {
+                  "column": 6,
+                  "row": 2,
+                  "width": 7,
+                  "height": 1
+                },
+                "role": "subtitle"
+              },
+              {
+                "id": "bespoke-ledger-summary",
+                "type": "text",
+                "grid": {
+                  "column": 1,
+                  "row": 2,
+                  "width": 5,
+                  "height": 1
+                },
+                "role": "caption"
+              },
+              {
+                "id": "bespoke-ledger-facts",
+                "type": "list",
+                "grid": {
+                  "column": 1,
+                  "row": 3,
+                  "width": 12,
+                  "height": 6
+                },
+                "ordered": true
+              }
+            ]
+          },
+          "projection": {
+            "itemBindings": [
+              {
+                "id": "boundary",
+                "target": "elements[4].items[0]"
+              },
+              {
+                "id": "answer",
+                "target": "elements[4].items[1]"
+              }
+            ],
+            "chartBindings": [],
+            "mediaBindings": []
+          },
+          "contentMap": {
+            "elements[0].text": "presentation.pageIntent",
+            "elements[1].text": "presentation.title.short",
+            "elements[2].text": "presentation.coreMessage",
+            "elements[3].text": "presentation.summary.short"
+          }
+        }
+      ]
+    },
+    {
+      "id": "page-3",
+      "content": {
+        "presentation": {
+          "pageIntent": "statement",
+          "coreMessage": "缺失值不是零，也不能在原因不明时自动处理。",
+          "title": {
+            "full": "缺失不是零",
+            "short": "缺失不是零"
+          },
+          "summary": {
+            "full": "把观察事实与处置建议分开，原因不明时保留停止规则。",
+            "short": "事实与建议分开"
+          },
+          "items": [
+            {
+              "id": "fact-1",
+              "label": "记录输入",
+              "detail": {
+                "full": "记录文件、编码、行列数与时间范围",
+                "short": "文件与范围"
+              },
+              "required": true,
+              "priority": "high"
+            },
+            {
+              "id": "fact-2",
+              "label": "统计缺失",
+              "detail": {
+                "full": "分字段统计缺失，不自动删除或填补",
+                "short": "不自动处理"
+              },
+              "required": true,
+              "priority": "high"
+            },
+            {
+              "id": "fact-3",
+              "label": "分开表达",
+              "detail": {
+                "full": "把观察事实与处置建议分开",
+                "short": "事实与建议"
+              },
+              "required": true,
+              "priority": "high"
+            }
+          ],
+          "chartData": [],
+          "media": []
+        }
+      },
+      "selectedVariant": "v1",
+      "variants": [
+        {
+          "id": "v1",
+          "kind": "template",
+          "layout": "theme07_page055",
+          "contentMap": {
+            "kicker": "presentation.title.short",
+            "source": "presentation.coreMessage",
+            "eyebrow": "presentation.summary.short",
+            "quoteLead": "presentation.pageIntent",
+            "quoteEm": "presentation.items[0].label",
+            "quoteTail": "presentation.items[1].label"
+          },
+          "projection": {
+            "chartMode": "none",
+            "contentPaths": [
+              "pillars",
+              "pillarCount",
+              "kicker",
+              "source",
+              "eyebrow",
+              "quoteLead",
+              "quoteEm",
+              "quoteTail"
+            ],
+            "projectedItemIds": [
+              "fact-1",
+              "fact-2",
+              "fact-3"
+            ],
+            "chartBindings": [],
+            "structure": {
+              "arrays": [
+                {
+                  "path": "pillars",
+                  "fields": [
+                    {
+                      "key": "glyph",
+                      "semantic": "label"
+                    },
+                    {
+                      "key": "zh",
+                      "semantic": "optional"
+                    },
+                    {
+                      "key": "en",
+                      "semantic": "optional"
+                    },
+                    {
+                      "key": "note",
+                      "semantic": "detail"
+                    }
+                  ],
+                  "items": [
+                    {
+                      "sourceId": "fact-1"
+                    },
+                    {
+                      "sourceId": "fact-2"
+                    },
+                    {
+                      "sourceId": "fact-3"
+                    }
+                  ],
+                  "countPath": "pillarCount"
+                }
+              ],
+              "values": []
+            }
+          }
+        },
+        {
+          "id": "v2",
+          "kind": "template",
+          "layout": "theme07_page015",
+          "contentMap": {
+            "kicker": "presentation.title.short",
+            "source": "presentation.coreMessage",
+            "eyebrow": "presentation.summary.short",
+            "quoteLead": "presentation.pageIntent",
+            "quoteEm1": "presentation.items[0].label",
+            "quoteMid": "presentation.items[1].label",
+            "quoteEm2": "presentation.items[2].label"
+          },
+          "projection": {
+            "chartMode": "none",
+            "contentPaths": [
+              "conclusions",
+              "itemCount",
+              "quoteTail",
+              "kicker",
+              "source",
+              "eyebrow",
+              "quoteLead",
+              "quoteEm1",
+              "quoteMid",
+              "quoteEm2"
+            ],
+            "projectedItemIds": [
+              "fact-3",
+              "fact-2",
+              "fact-1"
+            ],
+            "chartBindings": [],
+            "structure": {
+              "arrays": [
+                {
+                  "path": "conclusions",
+                  "fields": [
+                    {
+                      "key": "idx",
+                      "semantic": "label"
+                    },
+                    {
+                      "key": "title",
+                      "semantic": "optional"
+                    },
+                    {
+                      "key": "note",
+                      "semantic": "detail"
+                    }
+                  ],
+                  "items": [
+                    {
+                      "sourceId": "fact-3"
+                    },
+                    {
+                      "sourceId": "fact-2"
+                    },
+                    {
+                      "sourceId": "fact-1"
+                    }
+                  ],
+                  "countPath": "itemCount"
+                }
+              ],
+              "values": [
+                {
+                  "path": "quoteTail",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "v3",
+          "kind": "template",
+          "layout": "theme07_page071",
+          "contentMap": {
+            "title": "presentation.title.short",
+            "lead": "presentation.coreMessage",
+            "eyebrow": "presentation.summary.short",
+            "segment": "presentation.pageIntent",
+            "titleTail": "presentation.items[0].label",
+            "closing": "presentation.items[1].label",
+            "badge": "presentation.items[2].label"
+          },
+          "projection": {
+            "chartMode": "none",
+            "contentPaths": [
+              "cards",
+              "cardCount",
+              "statLine",
+              "listTitle",
+              "contactTitle",
+              "contacts",
+              "showContact",
+              "imageCount",
+              "title",
+              "lead",
+              "eyebrow",
+              "segment",
+              "titleTail",
+              "closing",
+              "badge"
+            ],
+            "projectedItemIds": [
+              "fact-3",
+              "fact-2",
+              "fact-1"
+            ],
+            "chartBindings": [],
+            "structure": {
+              "arrays": [
+                {
+                  "path": "cards",
+                  "fields": [
+                    {
+                      "key": "label",
+                      "semantic": "label"
+                    },
+                    {
+                      "key": "note",
+                      "semantic": "detail"
+                    }
+                  ],
+                  "items": [
+                    {
+                      "sourceId": "fact-3"
+                    },
+                    {
+                      "sourceId": "fact-2"
+                    },
+                    {
+                      "sourceId": "fact-1"
+                    },
+                    {
+                      "sourceId": "support:summary"
+                    }
+                  ],
+                  "countPath": "cardCount"
+                }
+              ],
+              "values": [
+                {
+                  "path": "statLine",
+                  "value": ""
+                },
+                {
+                  "path": "listTitle",
+                  "value": ""
+                },
+                {
+                  "path": "contactTitle",
+                  "value": ""
+                },
+                {
+                  "path": "contacts",
+                  "value": []
+                },
+                {
+                  "path": "showContact",
+                  "value": false
+                },
+                {
+                  "path": "imageCount",
+                  "value": 0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "v4",
+          "kind": "bespoke",
+          "adjustable": false,
+          "composition": {
+            "designIntent": {
+              "objective": "呈现单页核心信息",
+              "audience": "当前演示文稿受众",
+              "narrativeRole": "推进单页叙事",
+              "emphasis": "突出内容层级与证据关系",
+              "rationale": "statement-3 结构投影"
+            },
+            "background": "default",
+            "elements": [
+              {
+                "id": "bespoke-statement-kicker",
+                "type": "text",
+                "grid": {
+                  "column": 1,
+                  "row": 1,
+                  "width": 4,
+                  "height": 1
+                },
+                "role": "kicker"
+              },
+              {
+                "id": "bespoke-statement-title",
+                "type": "text",
+                "grid": {
+                  "column": 1,
+                  "row": 2,
+                  "width": 8,
+                  "height": 1
+                },
+                "role": "title"
+              },
+              {
+                "id": "bespoke-statement-core",
+                "type": "quote",
+                "grid": {
+                  "column": 1,
+                  "row": 3,
+                  "width": 9,
+                  "height": 5
+                }
+              },
+              {
+                "id": "bespoke-statement-facts",
+                "type": "list",
+                "grid": {
+                  "column": 10,
+                  "row": 3,
+                  "width": 3,
+                  "height": 5
+                },
+                "ordered": true
+              }
+            ]
+          },
+          "projection": {
+            "itemBindings": [
+              {
+                "id": "fact-1",
+                "target": "elements[3].items[0]"
+              },
+              {
+                "id": "fact-2",
+                "target": "elements[3].items[1]"
+              },
+              {
+                "id": "fact-3",
+                "target": "elements[3].items[2]"
+              }
+            ],
+            "chartBindings": [],
+            "mediaBindings": []
+          },
+          "contentMap": {
+            "elements[0].text": "presentation.pageIntent",
+            "elements[1].text": "presentation.title.short",
+            "elements[2].quote": "presentation.coreMessage",
+            "elements[2].attribution": "presentation.summary.short"
+          }
+        }
+      ]
+    },
+    {
+      "id": "page-4",
+      "content": {
+        "presentation": {
+          "pageIntent": "metrics",
+          "coreMessage": "三项代表污染物的缺失必须单列。",
+          "title": {
+            "full": "三项代表污染物缺失需单列",
+            "short": "代表污染物缺失"
+          },
+          "summary": {
+            "full": "缺失率使用固定样本总行数计算，本页不解释污染原因。",
+            "short": "只陈述缺失事实"
+          },
+          "items": [
+            {
+              "id": "pm25",
+              "label": "PM2.5",
+              "detail": {
+                "full": "缺失 466 条，占 2.21%",
+                "short": "缺失 466"
+              },
+              "value": 2.21,
+              "displayValue": "2.21",
+              "unit": "%",
+              "required": true,
+              "priority": "high"
+            },
+            {
+              "id": "co",
+              "label": "CO",
+              "detail": {
+                "full": "缺失 1,027 条，占 4.88%",
+                "short": "缺失 1,027"
+              },
+              "value": 4.88,
+              "displayValue": "4.88",
+              "unit": "%",
+              "required": true,
+              "priority": "high"
+            },
+            {
+              "id": "o3",
+              "label": "O3",
+              "detail": {
+                "full": "缺失 830 条，占 3.95%",
+                "short": "缺失 830"
+              },
+              "value": 3.95,
+              "displayValue": "3.95",
+              "unit": "%",
+              "required": true,
+              "priority": "high"
+            }
+          ],
+          "chartData": [
+            {
+              "id": "pm25",
+              "label": "PM2.5",
+              "value": 2.21,
+              "displayValue": "2.21",
+              "unit": "%"
+            },
+            {
+              "id": "co",
+              "label": "CO",
+              "value": 4.88,
+              "displayValue": "4.88",
+              "unit": "%"
+            },
+            {
+              "id": "o3",
+              "label": "O3",
+              "value": 3.95,
+              "displayValue": "3.95",
+              "unit": "%"
+            }
+          ],
+          "media": []
+        }
+      },
+      "selectedVariant": "v1",
+      "variants": [
+        {
+          "id": "v1",
+          "kind": "template",
+          "layout": "theme07_page050",
+          "contentMap": {
+            "title": "presentation.title.short",
+            "lead": "presentation.coreMessage",
+            "eyebrow": "presentation.title.full",
+            "segment": "presentation.summary.short",
+            "titleTail": "presentation.pageIntent",
+            "closing": "presentation.items[0].label",
+            "badge": "presentation.items[1].label",
+            "panelTitle": "presentation.items[2].label"
+          },
+          "projection": {
+            "chartMode": "summary",
+            "contentPaths": [
+              "cards",
+              "cardCount",
+              "statLine",
+              "imageCount",
+              "title",
+              "lead",
+              "eyebrow",
+              "segment",
+              "titleTail",
+              "closing",
+              "badge",
+              "panelTitle"
+            ],
+            "projectedItemIds": [
+              "pm25",
+              "co",
+              "o3"
+            ],
+            "chartBindings": [
+              {
+                "mode": "summary",
+                "sourceIds": [
+                  "pm25",
+                  "co",
+                  "o3"
+                ],
+                "target": "cards[3]"
+              }
+            ],
+            "structure": {
+              "arrays": [
+                {
+                  "path": "cards",
+                  "fields": [
+                    {
+                      "key": "glyph",
+                      "semantic": "label"
+                    },
+                    {
+                      "key": "label",
+                      "semantic": "optional"
+                    },
+                    {
+                      "key": "value",
+                      "semantic": "displayValue"
+                    },
+                    {
+                      "key": "unit",
+                      "semantic": "unit"
+                    },
+                    {
+                      "key": "note",
+                      "semantic": "detail"
+                    }
+                  ],
+                  "items": [
+                    {
+                      "sourceId": "pm25"
+                    },
+                    {
+                      "sourceId": "co"
+                    },
+                    {
+                      "sourceId": "o3"
+                    },
+                    {
+                      "sourceId": "chart-summary",
+                      "sourceIds": [
+                        "pm25",
+                        "co",
+                        "o3"
+                      ]
+                    }
+                  ],
+                  "countPath": "cardCount"
+                }
+              ],
+              "values": [
+                {
+                  "path": "statLine",
+                  "value": ""
+                },
+                {
+                  "path": "imageCount",
+                  "value": 0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "v2",
+          "kind": "template",
+          "layout": "theme07_page021",
+          "contentMap": {
+            "title": "presentation.title.short",
+            "lead": "presentation.coreMessage",
+            "eyebrow": "presentation.title.full",
+            "marker": "presentation.summary.short",
+            "season": "presentation.pageIntent",
+            "titleTail": "presentation.items[0].label",
+            "closing": "presentation.items[1].label",
+            "chartLabel": "presentation.items[2].label"
+          },
+          "projection": {
+            "chartMode": "full",
+            "contentPaths": [
+              "nodes",
+              "nodeCount",
+              "metrics",
+              "metricCount",
+              "baselineLabel",
+              "declineLabel",
+              "declineValue",
+              "title",
+              "lead",
+              "eyebrow",
+              "marker",
+              "season",
+              "titleTail",
+              "closing",
+              "chartLabel"
+            ],
+            "projectedItemIds": [
+              "o3",
+              "co",
+              "pm25"
+            ],
+            "chartBindings": [
+              {
+                "mode": "point",
+                "sourceIds": [
+                  "pm25"
+                ],
+                "target": "metrics[0]"
+              },
+              {
+                "mode": "point",
+                "sourceIds": [
+                  "co"
+                ],
+                "target": "metrics[1]"
+              },
+              {
+                "mode": "point",
+                "sourceIds": [
+                  "o3"
+                ],
+                "target": "metrics[2]"
+              }
+            ],
+            "structure": {
+              "arrays": [
+                {
+                  "path": "nodes",
+                  "fields": [
+                    {
+                      "key": "q",
+                      "semantic": "label"
+                    },
+                    {
+                      "key": "amount",
+                      "semantic": "value"
+                    },
+                    {
+                      "key": "phase",
+                      "semantic": "optional"
+                    },
+                    {
+                      "key": "note",
+                      "semantic": "detail"
+                    }
+                  ],
+                  "items": [
+                    {
+                      "sourceId": "o3"
+                    },
+                    {
+                      "sourceId": "co"
+                    },
+                    {
+                      "sourceId": "pm25"
+                    }
+                  ],
+                  "countPath": "nodeCount"
+                },
+                {
+                  "path": "metrics",
+                  "fields": [
+                    {
+                      "key": "label",
+                      "semantic": "label"
+                    },
+                    {
+                      "key": "value",
+                      "semantic": "displayValue"
+                    },
+                    {
+                      "key": "unit",
+                      "semantic": "unit"
+                    }
+                  ],
+                  "items": [
+                    {
+                      "sourceId": "chart:pm25",
+                      "structure": {
+                        "badge": false
+                      }
+                    },
+                    {
+                      "sourceId": "chart:co",
+                      "structure": {
+                        "badge": false
+                      }
+                    },
+                    {
+                      "sourceId": "chart:o3",
+                      "structure": {
+                        "badge": false
+                      }
+                    }
+                  ],
+                  "countPath": "metricCount"
+                }
+              ],
+              "values": [
+                {
+                  "path": "baselineLabel",
+                  "value": ""
+                },
+                {
+                  "path": "declineLabel",
+                  "value": ""
+                },
+                {
+                  "path": "declineValue",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "v3",
+          "kind": "template",
+          "layout": "theme07_page035",
+          "contentMap": {
+            "title": "presentation.title.short",
+            "lead": "presentation.coreMessage",
+            "eyebrow": "presentation.title.full",
+            "marker": "presentation.summary.short",
+            "segment": "presentation.pageIntent",
+            "titleTail": "presentation.items[0].label",
+            "anchorLabel": "presentation.items[1].label",
+            "closing": "presentation.items[2].label",
+            "colHeads.note": "presentation.summary.full"
+          },
+          "projection": {
+            "chartMode": "summary",
+            "contentPaths": [
+              "rows",
+              "rowCount",
+              "statLine",
+              "anchorValue",
+              "anchorUnit",
+              "colHeads.dim",
+              "colHeads.val",
+              "colHeads.share",
+              "title",
+              "lead",
+              "eyebrow",
+              "marker",
+              "segment",
+              "titleTail",
+              "anchorLabel",
+              "closing",
+              "colHeads.note"
+            ],
+            "projectedItemIds": [
+              "co",
+              "o3",
+              "pm25"
+            ],
+            "chartBindings": [
+              {
+                "mode": "summary",
+                "sourceIds": [
+                  "pm25",
+                  "co",
+                  "o3"
+                ],
+                "target": "rows[0]"
+              },
+              {
+                "mode": "summary",
+                "sourceIds": [
+                  "pm25"
+                ],
+                "target": "rows[4]"
+              }
+            ],
+            "structure": {
+              "arrays": [
+                {
+                  "path": "rows",
+                  "fields": [
+                    {
+                      "key": "dim",
+                      "semantic": "label"
+                    },
+                    {
+                      "key": "tier",
+                      "semantic": "optional"
+                    },
+                    {
+                      "key": "val",
+                      "semantic": "displayValue"
+                    },
+                    {
+                      "key": "note",
+                      "semantic": "detail"
+                    }
+                  ],
+                  "items": [
+                    {
+                      "sourceId": "chart-summary",
+                      "sourceIds": [
+                        "pm25",
+                        "co",
+                        "o3"
+                      ]
+                    },
+                    {
+                      "sourceId": "co"
+                    },
+                    {
+                      "sourceId": "o3"
+                    },
+                    {
+                      "sourceId": "pm25"
+                    },
+                    {
+                      "sourceId": "chart-first",
+                      "sourceIds": [
+                        "pm25"
+                      ]
+                    }
+                  ],
+                  "countPath": "rowCount"
+                }
+              ],
+              "values": [
+                {
+                  "path": "statLine",
+                  "value": ""
+                },
+                {
+                  "path": "anchorValue",
+                  "value": ""
+                },
+                {
+                  "path": "anchorUnit",
+                  "value": ""
+                },
+                {
+                  "path": "colHeads.dim",
+                  "value": ""
+                },
+                {
+                  "path": "colHeads.val",
+                  "value": ""
+                },
+                {
+                  "path": "colHeads.share",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "v4",
+          "kind": "bespoke",
+          "adjustable": false,
+          "composition": {
+            "designIntent": {
+              "objective": "呈现单页核心信息",
+              "audience": "当前演示文稿受众",
+              "narrativeRole": "推进单页叙事",
+              "emphasis": "突出内容层级与证据关系",
+              "rationale": "chart-1 结构投影"
+            },
+            "background": "default",
+            "elements": [
+              {
+                "id": "bespoke-chart-kicker",
+                "type": "text",
+                "grid": {
+                  "column": 1,
+                  "row": 1,
+                  "width": 3,
+                  "height": 1
+                },
+                "role": "kicker"
+              },
+              {
+                "id": "bespoke-chart-title",
+                "type": "text",
+                "grid": {
+                  "column": 4,
+                  "row": 1,
+                  "width": 9,
+                  "height": 1
+                },
+                "role": "title"
+              },
+              {
+                "id": "bespoke-chart-core",
+                "type": "text",
+                "grid": {
+                  "column": 1,
+                  "row": 2,
+                  "width": 8,
+                  "height": 1
+                },
+                "role": "subtitle"
+              },
+              {
+                "id": "bespoke-chart-summary",
+                "type": "text",
+                "grid": {
+                  "column": 9,
+                  "row": 2,
+                  "width": 4,
+                  "height": 1
+                },
+                "role": "caption"
+              },
+              {
+                "id": "bespoke-chart-plot",
+                "type": "chart",
+                "grid": {
+                  "column": 5,
+                  "row": 3,
+                  "width": 8,
+                  "height": 6
+                },
+                "chartType": "bar",
+                "showValues": true
+              },
+              {
+                "id": "bespoke-chart-facts",
+                "type": "list",
+                "grid": {
+                  "column": 1,
+                  "row": 3,
+                  "width": 4,
+                  "height": 6
+                },
+                "ordered": true
+              }
+            ]
+          },
+          "projection": {
+            "itemBindings": [
+              {
+                "id": "pm25",
+                "target": "elements[5].items[0]"
+              },
+              {
+                "id": "co",
+                "target": "elements[5].items[1]"
+              },
+              {
+                "id": "o3",
+                "target": "elements[5].items[2]"
+              }
+            ],
+            "chartBindings": [
+              {
+                "mode": "point",
+                "sourceIds": [
+                  "pm25"
+                ],
+                "target": "elements[4].data[0]"
+              },
+              {
+                "mode": "point",
+                "sourceIds": [
+                  "co"
+                ],
+                "target": "elements[4].data[1]"
+              },
+              {
+                "mode": "point",
+                "sourceIds": [
+                  "o3"
+                ],
+                "target": "elements[4].data[2]"
+              }
+            ],
+            "mediaBindings": []
+          },
+          "contentMap": {
+            "elements[0].text": "presentation.pageIntent",
+            "elements[1].text": "presentation.title.short",
+            "elements[2].text": "presentation.coreMessage",
+            "elements[3].text": "presentation.summary.short"
+          }
+        }
+      ]
+    },
+    {
+      "id": "page-5",
+      "content": {
+        "presentation": {
+          "pageIntent": "process",
+          "coreMessage": "字段或口径不足时，流程必须停在人工复核。",
+          "title": {
+            "full": "把数据问题交给可复查的流程",
+            "short": "可复查的流程"
+          },
+          "summary": {
+            "full": "读取、体检、人工复核、分析；证据不足时不直接进入分析。",
+            "short": "保留停止分支"
+          },
+          "items": [
+            {
+              "id": "flow-1",
+              "label": "读取",
+              "detail": {
+                "full": "读取输入并记录来源",
+                "short": "记录来源"
+              },
+              "required": true,
+              "priority": "high"
+            },
+            {
+              "id": "flow-2",
+              "label": "体检",
+              "detail": {
+                "full": "检查结构、字段与缺失",
+                "short": "检查缺失"
+              },
+              "required": true,
+              "priority": "high"
+            },
+            {
+              "id": "flow-3",
+              "label": "人工复核",
+              "detail": {
+                "full": "字段或口径不足时停止",
+                "short": "不足则停止"
+              },
+              "required": true,
+              "priority": "high"
+            },
+            {
+              "id": "flow-4",
+              "label": "分析",
+              "detail": {
+                "full": "复核通过后进入分析",
+                "short": "通过后分析"
+              },
+              "required": true,
+              "priority": "high"
+            }
+          ],
+          "chartData": [],
+          "media": []
+        }
+      },
+      "selectedVariant": "v1",
+      "variants": [
+        {
+          "id": "v1",
+          "kind": "template",
+          "layout": "theme07_page026",
+          "contentMap": {
+            "title": "presentation.title.short",
+            "lead": "presentation.coreMessage",
+            "eyebrow": "presentation.title.full",
+            "titleTail": "presentation.summary.short",
+            "anchorLead": "presentation.pageIntent",
+            "anchorNote": "presentation.items[0].detail.short",
+            "closing": "presentation.items[0].label"
+          },
+          "projection": {
+            "chartMode": "none",
+            "contentPaths": [
+              "slots",
+              "anchorUnit",
+              "imageCount",
+              "title",
+              "lead",
+              "eyebrow",
+              "titleTail",
+              "anchorLead",
+              "anchorNote",
+              "closing"
+            ],
+            "projectedItemIds": [
+              "flow-1",
+              "flow-2",
+              "flow-3",
+              "flow-4"
+            ],
+            "chartBindings": [],
+            "structure": {
+              "arrays": [
+                {
+                  "path": "slots",
+                  "fields": [
+                    {
+                      "key": "name",
+                      "semantic": "label"
+                    },
+                    {
+                      "key": "role",
+                      "semantic": "optional"
+                    }
+                  ],
+                  "items": [
+                    {
+                      "sourceId": "flow-1"
+                    },
+                    {
+                      "sourceId": "flow-2"
+                    },
+                    {
+                      "sourceId": "flow-3"
+                    },
+                    {
+                      "sourceId": "flow-4"
+                    }
+                  ]
+                }
+              ],
+              "values": [
+                {
+                  "path": "anchorUnit",
+                  "value": ""
+                },
+                {
+                  "path": "imageCount",
+                  "value": 0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "v2",
+          "kind": "template",
+          "layout": "theme07_page071",
+          "contentMap": {
+            "title": "presentation.title.short",
+            "lead": "presentation.coreMessage",
+            "eyebrow": "presentation.title.full",
+            "segment": "presentation.summary.short",
+            "titleTail": "presentation.pageIntent",
+            "closing": "presentation.items[0].label",
+            "badge": "presentation.items[1].label",
+            "listTitle": "presentation.items[2].label",
+            "contactTitle": "presentation.items[3].label"
+          },
+          "projection": {
+            "chartMode": "none",
+            "contentPaths": [
+              "cards",
+              "cardCount",
+              "statLine",
+              "contacts",
+              "showContact",
+              "imageCount",
+              "title",
+              "lead",
+              "eyebrow",
+              "segment",
+              "titleTail",
+              "closing",
+              "badge",
+              "listTitle",
+              "contactTitle"
+            ],
+            "projectedItemIds": [
+              "flow-4",
+              "flow-3",
+              "flow-2",
+              "flow-1"
+            ],
+            "chartBindings": [],
+            "structure": {
+              "arrays": [
+                {
+                  "path": "cards",
+                  "fields": [
+                    {
+                      "key": "label",
+                      "semantic": "label"
+                    },
+                    {
+                      "key": "note",
+                      "semantic": "detail"
+                    }
+                  ],
+                  "items": [
+                    {
+                      "sourceId": "flow-4"
+                    },
+                    {
+                      "sourceId": "flow-3"
+                    },
+                    {
+                      "sourceId": "flow-2"
+                    },
+                    {
+                      "sourceId": "flow-1"
+                    }
+                  ],
+                  "countPath": "cardCount"
+                }
+              ],
+              "values": [
+                {
+                  "path": "statLine",
+                  "value": ""
+                },
+                {
+                  "path": "contacts",
+                  "value": []
+                },
+                {
+                  "path": "showContact",
+                  "value": false
+                },
+                {
+                  "path": "imageCount",
+                  "value": 0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "v3",
+          "kind": "template",
+          "layout": "theme07_page013",
+          "contentMap": {
+            "title": "presentation.title.short",
+            "lead": "presentation.coreMessage",
+            "eyebrow": "presentation.title.full",
+            "sub": "presentation.summary.short",
+            "chainTitle": "presentation.pageIntent",
+            "closing": "presentation.items[0].label",
+            "imageRatio": "presentation.items[1].label"
+          },
+          "projection": {
+            "chartMode": "none",
+            "contentPaths": [
+              "risks",
+              "cardCount",
+              "imageCount",
+              "title",
+              "lead",
+              "eyebrow",
+              "sub",
+              "chainTitle",
+              "closing",
+              "imageRatio"
+            ],
+            "projectedItemIds": [
+              "flow-3",
+              "flow-2",
+              "flow-4",
+              "flow-1"
+            ],
+            "chartBindings": [],
+            "structure": {
+              "arrays": [
+                {
+                  "path": "risks",
+                  "fields": [
+                    {
+                      "key": "node",
+                      "semantic": "label"
+                    },
+                    {
+                      "key": "title",
+                      "semantic": "optional"
+                    },
+                    {
+                      "key": "desc",
+                      "semantic": "detail"
+                    }
+                  ],
+                  "items": [
+                    {
+                      "sourceId": "flow-3"
+                    },
+                    {
+                      "sourceId": "flow-2"
+                    },
+                    {
+                      "sourceId": "flow-4"
+                    },
+                    {
+                      "sourceId": "flow-1"
+                    },
+                    {
+                      "sourceId": "support:summary"
+                    }
+                  ],
+                  "countPath": "cardCount"
+                }
+              ],
+              "values": [
+                {
+                  "path": "imageCount",
+                  "value": 0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "v4",
+          "kind": "bespoke",
+          "adjustable": false,
+          "composition": {
+            "designIntent": {
+              "objective": "呈现单页核心信息",
+              "audience": "当前演示文稿受众",
+              "narrativeRole": "推进单页叙事",
+              "emphasis": "突出内容层级与证据关系",
+              "rationale": "ledger-2 结构投影"
+            },
+            "background": "default",
+            "elements": [
+              {
+                "id": "bespoke-ledger-kicker",
+                "type": "text",
+                "grid": {
+                  "column": 1,
+                  "row": 1,
+                  "width": 3,
+                  "height": 1
+                },
+                "role": "kicker"
+              },
+              {
+                "id": "bespoke-ledger-title",
+                "type": "text",
+                "grid": {
+                  "column": 4,
+                  "row": 1,
+                  "width": 9,
+                  "height": 1
+                },
+                "role": "title"
+              },
+              {
+                "id": "bespoke-ledger-core",
+                "type": "text",
+                "grid": {
+                  "column": 1,
+                  "row": 2,
+                  "width": 7,
+                  "height": 1
+                },
+                "role": "subtitle"
+              },
+              {
+                "id": "bespoke-ledger-summary",
+                "type": "text",
+                "grid": {
+                  "column": 8,
+                  "row": 2,
+                  "width": 5,
+                  "height": 1
+                },
+                "role": "caption"
+              },
+              {
+                "id": "bespoke-ledger-facts",
+                "type": "list",
+                "grid": {
+                  "column": 1,
+                  "row": 3,
+                  "width": 12,
+                  "height": 6
+                },
+                "ordered": true
+              }
+            ]
+          },
+          "projection": {
+            "itemBindings": [
+              {
+                "id": "flow-1",
+                "target": "elements[4].items[0]"
+              },
+              {
+                "id": "flow-2",
+                "target": "elements[4].items[1]"
+              },
+              {
+                "id": "flow-3",
+                "target": "elements[4].items[2]"
+              },
+              {
+                "id": "flow-4",
+                "target": "elements[4].items[3]"
+              }
+            ],
+            "chartBindings": [],
+            "mediaBindings": []
+          },
+          "contentMap": {
+            "elements[0].text": "presentation.pageIntent",
+            "elements[1].text": "presentation.title.short",
+            "elements[2].text": "presentation.coreMessage",
+            "elements[3].text": "presentation.summary.short"
+          }
+        }
+      ]
+    }
+  ]
+}

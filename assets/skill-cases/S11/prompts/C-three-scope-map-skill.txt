@@ -1,0 +1,1 @@
+使用 $three-scope-map 的一对一模板和真实 GeoJSON 生成中国 3D 地图，保留 Earth 入口、挤出侧壁、边界、标签、hover、飞线、追光、浙江下钻、返回上级、GPL-3.0 SPDX 与原作者署名；构建后必须做桌面和手机浏览器、canvas 非空像素、WebGL、hover、下钻、控制台和资源体积验收。

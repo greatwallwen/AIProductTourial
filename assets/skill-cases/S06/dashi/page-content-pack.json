@@ -1,0 +1,88 @@
+{
+  "pages": [
+    {
+      "id": "page-1",
+      "presentation": {
+        "pageIntent": "cover",
+        "coreMessage": "先确认数据边界，再进入分析。",
+        "title": {"full": "让数据先过体检", "short": "数据先体检"},
+        "summary": {"full": "从可读的 Markdown 到可编辑、可审计的演示文稿", "short": "可编辑、可审计"},
+        "items": [
+          {"id": "step-read", "label": "读取", "detail": {"full": "记录输入边界", "short": "输入边界"}, "required": true, "priority": "high"},
+          {"id": "step-check", "label": "体检", "detail": {"full": "统计字段缺失", "short": "字段缺失"}, "required": true, "priority": "high"},
+          {"id": "step-decide", "label": "决策", "detail": {"full": "保留人工复核", "short": "人工复核"}, "required": true, "priority": "high"}
+        ],
+        "chartData": [],
+        "media": []
+      }
+    },
+    {
+      "id": "page-2",
+      "presentation": {
+        "pageIntent": "transition",
+        "coreMessage": "先确认数据边界，再决定能回答什么。",
+        "title": {"full": "01 为什么先体检", "short": "为什么先体检"},
+        "summary": {"full": "数据边界决定后续结论的可信范围。", "short": "先边界，后结论"},
+        "items": [
+          {"id": "boundary", "label": "确认边界", "detail": {"full": "记录文件、字段与时间范围", "short": "记录输入"}, "required": true, "priority": "high"},
+          {"id": "answer", "label": "限定回答", "detail": {"full": "只回答证据能够支持的问题", "short": "限定结论"}, "required": true, "priority": "high"}
+        ],
+        "chartData": [],
+        "media": []
+      }
+    },
+    {
+      "id": "page-3",
+      "presentation": {
+        "pageIntent": "statement",
+        "coreMessage": "缺失值不是零，也不能在原因不明时自动处理。",
+        "title": {"full": "缺失不是零", "short": "缺失不是零"},
+        "summary": {"full": "把观察事实与处置建议分开，原因不明时保留停止规则。", "short": "事实与建议分开"},
+        "items": [
+          {"id": "fact-1", "label": "记录输入", "detail": {"full": "记录文件、编码、行列数与时间范围", "short": "文件与范围"}, "required": true, "priority": "high"},
+          {"id": "fact-2", "label": "统计缺失", "detail": {"full": "分字段统计缺失，不自动删除或填补", "short": "不自动处理"}, "required": true, "priority": "high"},
+          {"id": "fact-3", "label": "分开表达", "detail": {"full": "把观察事实与处置建议分开", "short": "事实与建议"}, "required": true, "priority": "high"}
+        ],
+        "chartData": [],
+        "media": []
+      }
+    },
+    {
+      "id": "page-4",
+      "presentation": {
+        "pageIntent": "metrics",
+        "coreMessage": "三项代表污染物的缺失必须单列。",
+        "title": {"full": "三项代表污染物缺失需单列", "short": "代表污染物缺失"},
+        "summary": {"full": "缺失率使用固定样本总行数计算，本页不解释污染原因。", "short": "只陈述缺失事实"},
+        "items": [
+          {"id": "pm25", "label": "PM2.5", "detail": {"full": "缺失 466 条，占 2.21%", "short": "缺失 466"}, "value": 2.21, "displayValue": "2.21", "unit": "%", "required": true, "priority": "high"},
+          {"id": "co", "label": "CO", "detail": {"full": "缺失 1,027 条，占 4.88%", "short": "缺失 1,027"}, "value": 4.88, "displayValue": "4.88", "unit": "%", "required": true, "priority": "high"},
+          {"id": "o3", "label": "O3", "detail": {"full": "缺失 830 条，占 3.95%", "short": "缺失 830"}, "value": 3.95, "displayValue": "3.95", "unit": "%", "required": true, "priority": "high"}
+        ],
+        "chartData": [
+          {"id": "pm25", "label": "PM2.5", "value": 2.21, "displayValue": "2.21", "unit": "%"},
+          {"id": "co", "label": "CO", "value": 4.88, "displayValue": "4.88", "unit": "%"},
+          {"id": "o3", "label": "O3", "value": 3.95, "displayValue": "3.95", "unit": "%"}
+        ],
+        "media": []
+      }
+    },
+    {
+      "id": "page-5",
+      "presentation": {
+        "pageIntent": "process",
+        "coreMessage": "字段或口径不足时，流程必须停在人工复核。",
+        "title": {"full": "把数据问题交给可复查的流程", "short": "可复查的流程"},
+        "summary": {"full": "读取、体检、人工复核、分析；证据不足时不直接进入分析。", "short": "保留停止分支"},
+        "items": [
+          {"id": "flow-1", "label": "读取", "detail": {"full": "读取输入并记录来源", "short": "记录来源"}, "required": true, "priority": "high"},
+          {"id": "flow-2", "label": "体检", "detail": {"full": "检查结构、字段与缺失", "short": "检查缺失"}, "required": true, "priority": "high"},
+          {"id": "flow-3", "label": "人工复核", "detail": {"full": "字段或口径不足时停止", "short": "不足则停止"}, "required": true, "priority": "high"},
+          {"id": "flow-4", "label": "分析", "detail": {"full": "复核通过后进入分析", "short": "通过后分析"}, "required": true, "priority": "high"}
+        ],
+        "chartData": [],
+        "media": []
+      }
+    }
+  ]
+}

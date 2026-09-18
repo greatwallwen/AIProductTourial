@@ -1,0 +1,1 @@
+使用 $ui-workbench 读取同一 B10 数据和交互合同，并使用固定版本 @tabler/core@1.4.0实现按钮、徽标、卡片和表格；不得把 Tabler 写成 Skill，保持与 C 组相同功能和文案。
