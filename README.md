@@ -61,9 +61,7 @@ AIProductTourial/
 ## 校验
 
 ```powershell
-python tools\compose_course.py check
 python tools\validate_datasets.py --all
-python tools\verify_course.py
 python tools\verify_business_case_contracts.py
 
 Set-Location code
@@ -73,3 +71,5 @@ npm.cmd run build
 ```
 
 本地数据、界面和运行回执可以证明课程样本在当前工程中复现；它们不能证明企业系统已经接入，也不能替代真实经营结果或高影响行业中的人工决定。
+
+旧书稿规划目录 `chapters/`、`codex/` 和临时制作目录 `tmp/` 已退出当前目录；历史原件保留在 Git 提交 `74aaba7392c2fc3ac0971e9877c6ba064964335c`。29 张教学图统一位于 `assets/knowledge-diagrams/`，分章知识库中的引用已同步。旧合卷校验脚本依赖退役目录，不再用于分章知识库验收。

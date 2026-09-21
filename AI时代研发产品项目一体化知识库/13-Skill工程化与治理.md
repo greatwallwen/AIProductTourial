@@ -2,7 +2,7 @@
 
 > 你写了一个很好用的代码审查 Skill，里面沉淀了团队的前端规范、接口规范、异常处理、日志规范。同事也想用，你说「我发你一份，复制到本地」。复制几次之后问题就来了：**谁手上的是最新版？谁改过？改坏了怎么办？新人怎么拿到？安全团队审过的版本，怎么保证大家用的是同一个？** 这一章讲的就是：当 Skill 从个人 prompt 变成团队基础设施，它需要什么。
 
-![Skill Registry 生命周期](../outputs/product_case_library/svg/fig_skill_lifecycle.svg)
+![Skill Registry 生命周期](../assets/knowledge-diagrams/fig_skill_lifecycle.svg)
 
 > <img src="../assets/vendor/lucide/built/target.svg" width="14" alt="" style="vertical-align:-2px" /> **本章学习目标**（读完你能——）
 > - 说清为什么 Skill 是「团队 AI 工程的基础单元」，以及它和 Maven/npm 依赖治理的类比；
@@ -109,7 +109,7 @@ node code/tools/check_my_work.mjs 07 你的方案.md
 
 它精确报出你漏标了哪几个 Skill，还告诉你回哪读。于是链条闭合了：**Registry 治理 Skill 的生命周期与安全（6.2/6.3）→ 六槽保证每张卡结构完整 → 案例聚合根的 `skills` 字段声明「这个活该用哪几张卡」→ check_my_work 反过来查你到底用没用。** Skill 不再是散落各处的个人小抄，而是被治理、被引用、被核对的团队资产。这条闭环也回答了本章开头那个问题——「同事想用你的 Skill，你发他一份复制过去」为什么迟早失控：复制出去的那份没有根、没有版本、没有扫描、也没有引用它的案例替它把关；而 Registry 加上聚合根的 `skills` 引用，恰好把这四样一次补齐。
 
-![Skill 分发：Registry → 多 Agent](../outputs/product_case_library/svg/fig_skill_distribution.svg)
+![Skill 分发：Registry → 多 Agent](../assets/knowledge-diagrams/fig_skill_distribution.svg)
 
 开源 Skill 只作为结构参考；课程保留实际采用的触发条件、输入输出、许可和测试，不维护容易过时的工具排行榜。
 
@@ -153,7 +153,7 @@ node code/tools/check_my_work.mjs 07 你的方案.md
 — 确认无误后，再执行完整优化 —
 ```
 
-这与 §6.6 的 `skill_lint` 互补：`skill_lint` 是治理工具（查毒和结构完整性），优化指令模板是迭代工具（让主文件保持精简）。团队级用 Registry + scanner，个人级用分层迭代 + 优化模板。分层迭代的详细方法论见 [§2 · Skill 怎样从零搭起来](../03-Agent与Skill工程.md#skill-怎样从零搭起来先-sop再分层迭代)。
+这与 §6.6 的 `skill_lint` 互补：`skill_lint` 是治理工具（查毒和结构完整性），优化指令模板是迭代工具（让主文件保持精简）。团队级用 Registry + scanner，个人级用分层迭代 + 优化模板。分层迭代的详细方法论见 [§2 · Skill 怎样从零搭起来](03-Agent与Skill工程.md#skill-怎样从零搭起来先-sop再分层迭代)。
 
 > 参考：米果AI研究室《别再瞎堆提示词了，这才是 Skill 的正确用法》（2026-08-07）。
 
