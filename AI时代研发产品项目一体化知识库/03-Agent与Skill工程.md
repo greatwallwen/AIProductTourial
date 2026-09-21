@@ -578,11 +578,11 @@ Agent 没有外部服务条件时，不应假装"文字转 3D 已完成"。它�
 
 <video src="../assets/case-diagrams/B01-requirement.webm" controls muted loop></video>
 
-<a href="../assets/case-diagrams/gif-work/B01-requirement.html" target="_blank">查看 B01 需求流程html</a>
+<a href="../assets/case-diagrams/B01-requirement.svg" target="_blank">查看 B01 需求流程 SVG</a>
 
 <video src="../assets/case-diagrams/B01-architecture.webm" controls muted loop></video>
 
-<a href="../assets/case-diagrams/gif-work/B01-architecture.html" target="_blank">查看 B01 技术架构html</a>
+<a href="../assets/case-diagrams/B01-architecture.svg" target="_blank">查看 B01 技术架构 SVG</a>
 
 | 文件 | 大小 | 时长 | 说明 |
 |---|---|---|---|

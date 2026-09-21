@@ -13,3 +13,9 @@ evidence/current/
 
 # 参考源包只按来源账本选择性引入
 AI agent/
+
+# Local working files, never publish regenerated caches or mutable journals
+/tmp/
+*.tsbuildinfo
+*.sqlite-shm
+*.sqlite-wal
