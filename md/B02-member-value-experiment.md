@@ -19,11 +19,11 @@
 
 ## 解决方案
 
-![8 元券首批试投](../../assets/cases/case-02/02-work-productized.png)
+![8 元券首批试投](../assets/cases/case-02/02-work-productized.png)
 
-<video src="../../assets/case-diagrams/B02-requirement.webm" controls muted loop></video>
+![案例图](../assets/case-diagrams/B02-requirement.svg)
 
-<video src="../../assets/case-diagrams/B02-architecture.webm" controls muted loop></video>
+![案例图](../assets/case-diagrams/B02-architecture.svg)
 
 人群分组图是页面中心。筛选条件变化时，它同步显示剩余人数；固定种子把 300 人稳定分为 240 人发券组和 60 人对照组。点开任一成员，可以看到浏览、加购、购买次数及入组原因。
 
@@ -74,8 +74,8 @@
 
 ## 实现与排错
 
-- 实现：[`code/cases/02-member-value-experiment`](../../code/cases/02-member-value-experiment/)。
-- 聚焦测试：[`case-02-member-trial-domain.test.tsx`](../../code/app/tests/case-02-member-trial-domain.test.tsx)。
+- 实现：[`code/cases/02-member-value-experiment`](../code/cases/02-member-value-experiment)。
+- 聚焦测试：[`case-02-member-trial-domain.test.tsx`](../code/app/tests/case-02-member-trial-domain.test.tsx)。
 - 排查：若刷新后试投名单变化，检查抽样前是否按匿名会员编号稳定排序，并确认分组种子没有在客户端重新生成。
 
 ---

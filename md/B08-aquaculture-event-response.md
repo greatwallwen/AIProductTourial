@@ -28,11 +28,11 @@
 
 ## 解决方案
 
-![养殖塘事件响应](../../assets/cases/case-08/08-work-productized.png)
+![养殖塘事件响应](../assets/cases/case-08/08-work-productized.png)
 
-![B08 需求流程](../../assets/case-diagrams/B08-requirement.svg)
+![B08 需求流程](../assets/case-diagrams/B08-requirement.svg)
 
-![B08 技术架构](../../assets/case-diagrams/B08-architecture.svg)
+![B08 技术架构](../assets/case-diagrams/B08-architecture.svg)
 
 页面按三栏展开同一份取证单：系统记录、现场回传、主管采信。开始时只有第一栏有值；派发后第二栏解锁，现场人员填写身份、采集时间、照片资产号和四项读数；提交后第三栏才允许主管填写采信说明。96 小时四测点趋势放在事件详情抽屉，不占据主流程首屏。
 
@@ -68,8 +68,8 @@
 
 ## 实现与排错
 
-- 实现：[`code/cases/08-aquaculture-event-response`](../../code/cases/08-aquaculture-event-response/)。
-- 聚焦测试：[`case-08-aquaculture-domain.test.tsx`](../../code/app/tests/case-08-aquaculture-domain.test.tsx)。
+- 实现：[`code/cases/08-aquaculture-event-response`](../code/cases/08-aquaculture-event-response)。
+- 聚焦测试：[`case-08-aquaculture-domain.test.tsx`](../code/app/tests/case-08-aquaculture-domain.test.tsx)。
 - 排查：若冲突数值被直接覆盖，检查采集时间、来源优先级和人工采信记录；原始读数必须并存，不能只保留最后一个值。
 
 ---

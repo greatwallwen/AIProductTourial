@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-CHAPTER = ROOT / "AI时代研发产品项目一体化知识库" / "07-课程项目.md"
+CHAPTER = ROOT / "md" / "07-课程项目.md"
 RECEIPT = ROOT / "evidence" / "runtime" / "codebuddy" / "receipt.json"
 SOURCE_CARD = ROOT / "sources" / "cards" / "codebuddy-official-operations-2026-07.md"
 

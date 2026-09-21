@@ -92,7 +92,7 @@ def verify_screenshot_links(
     if len(set(paths)) < expected_count:
         errors.append(f"Markdown screenshot links {len(set(paths))} < {expected_count}")
     for relative in sorted(set(paths)):
-        path = (root / "AI时代研发产品项目一体化知识库" / "案例" / relative).resolve()
+        path = (root / "md" / "案例" / relative).resolve()
         if root.resolve() not in path.parents:
             errors.append(f"screenshot path escapes course root: {relative}")
         elif not path.is_file():

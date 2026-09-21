@@ -32,11 +32,11 @@
 
 ## 解决方案
 
-![风机出力下偏核查](../../assets/cases/case-16/16-work-productized.png)
+![风机出力下偏核查](../assets/cases/case-16/16-work-productized.png)
 
-![B16 需求流程](../../assets/case-diagrams/B16-requirement.svg)
+![B16 需求流程](../assets/case-diagrams/B16-requirement.svg)
 
-![B16 技术架构](../../assets/case-diagrams/B16-architecture.svg)
+![B16 技术架构](../assets/case-diagrams/B16-architecture.svg)
 
 中间把 134 台风机画在相对坐标平面上，突出 T007；下方只比较七个运行日的平均风速和平均有功功率。右侧先确认下偏和有效记录，再明确列出四个缺口：同群基线、限电指令、告警、维修记录。
 
@@ -66,8 +66,8 @@
 
 ## 实现与排错
 
-- 实现：[`code/cases/16-wind-underperformance`](../../code/cases/16-wind-underperformance/)。
-- 聚焦测试：[`case-16-wind-investigation-domain.test.tsx`](../../code/app/tests/case-16-wind-investigation-domain.test.tsx)。
+- 实现：[`code/cases/16-wind-underperformance`](../code/cases/16-wind-underperformance)。
+- 聚焦测试：[`case-16-wind-investigation-domain.test.tsx`](../code/app/tests/case-16-wind-investigation-domain.test.tsx)。
 - 排查：若七个运行日被画成连续分钟曲线，检查时间粒度和缺日处理；页面只能连接真实站日，不能用插值制造连续运行。
 
 ---

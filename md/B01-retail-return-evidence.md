@@ -36,11 +36,11 @@
 
 ## 解决方案
 
-![退货证据核验台](../../assets/cases/case-01/01-work-productized.png)
+![退货证据核验台](../assets/cases/case-01/01-work-productized.png)
 
-<video src="../../assets/case-diagrams/B01-requirement.webm" controls muted loop></video>
+<video src="../assets/case-diagrams/B01-requirement.webm" controls muted loop></video>
 
-<video src="../../assets/case-diagrams/B01-architecture.webm" controls muted loop></video>
+<video src="../assets/case-diagrams/B01-architecture.webm" controls muted loop></video>
 
 页面分成四块：
 
@@ -93,8 +93,8 @@
 
 ## 实现与排错
 
-- 实现：[`code/cases/01-retail-return-evidence`](../../code/cases/01-retail-return-evidence/)。
-- 聚焦测试：[`case-01-return-evidence.test.tsx`](../../code/app/tests/case-01-return-evidence.test.tsx)。
+- 实现：[`code/cases/01-retail-return-evidence`](../code/cases/01-retail-return-evidence)。
+- 聚焦测试：[`case-01-return-evidence.test.tsx`](../code/app/tests/case-01-return-evidence.test.tsx)。
 - 排查：若材料已经回传但仍不能提交复核，先核对材料编号是否都关联当前取消单，再检查提交人与复核人是否被错误地设成同一人。
 
 ---

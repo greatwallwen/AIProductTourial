@@ -28,11 +28,11 @@ BD-0003 的切刀转矩均值为 -0.0215，切刀跟随误差均值接近 0，�
 
 ## 解决方案
 
-![包装切刀健康复核](../../assets/cases/case-17/17-work-productized.png)
+![包装切刀健康复核](../assets/cases/case-17/17-work-productized.png)
 
-![B17 需求流程](../../assets/case-diagrams/B17-requirement.svg)
+![B17 需求流程](../assets/case-diagrams/B17-requirement.svg)
 
-![B17 技术架构](../../assets/case-diagrams/B17-architecture.svg)
+![B17 技术架构](../assets/case-diagrams/B17-architecture.svg)
 
 左侧只列本地确实有 256 点波形的 8 个会话；中间以三路同步波形为主画布，共用一个游标和一个样本窗口。右侧只显示当前角色要完成的表单。设备图只是环境示意，不标传感器位置。
 
@@ -61,8 +61,8 @@ BD-0003 的切刀转矩均值为 -0.0215，切刀跟随误差均值接近 0，�
 
 ## 实现与排错
 
-- 实现：[`code/cases/17-cutter-health-review`](../../code/cases/17-cutter-health-review/)。
-- 聚焦测试：[`case-17-cutter-review-domain.test.tsx`](../../code/app/tests/case-17-cutter-review-domain.test.tsx)。
+- 实现：[`code/cases/17-cutter-health-review`](../code/cases/17-cutter-health-review)。
+- 聚焦测试：[`case-17-cutter-review-domain.test.tsx`](../code/app/tests/case-17-cutter-review-domain.test.tsx)。
 - 排查：若 BD-0003 不能进入排检候选，检查三路波形覆盖和同一测量窗口；候选成立后仍需另一角色复核。
 
 ---

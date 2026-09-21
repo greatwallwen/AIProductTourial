@@ -30,11 +30,11 @@
 
 ## 解决方案
 
-![半导体生产记录复测](../../assets/cases/case-15/15-work-productized.png)
+![半导体生产记录复测](../assets/cases/case-15/15-work-productized.png)
 
-![B15 需求流程](../../assets/case-diagrams/B15-requirement.svg)
+![B15 需求流程](../assets/case-diagrams/B15-requirement.svg)
 
-![B15 技术架构](../../assets/case-diagrams/B15-architecture.svg)
+![B15 技术架构](../assets/case-diagrams/B15-architecture.svg)
 
 左侧是 24 条演示观测队列，并明确标出完整数据集共有 1,567 条；中间一次只聚焦一个通道，覆盖率、缺失量和当前原值放在同一视区。下方的 12 通道矩阵同时负责切换查看和选择复测对象，不再用第二套卡片重复选择。右侧把工作收成四步：核对记录、选择通道、保存申请、主管确认。
 
@@ -66,8 +66,8 @@
 
 ## 实现与排错
 
-- 实现：[`code/cases/15-wafer-quality-review`](../../code/cases/15-wafer-quality-review/)。
-- 聚焦测试：[`case-15-wafer-retest-domain.test.tsx`](../../code/app/tests/case-15-wafer-retest-domain.test.tsx)。
+- 实现：[`code/cases/15-wafer-quality-review`](../code/cases/15-wafer-quality-review)。
+- 聚焦测试：[`case-15-wafer-retest-domain.test.tsx`](../code/app/tests/case-15-wafer-retest-domain.test.tsx)。
 - 排查：若复测值已录入但状态不前进，检查测量项是否齐全、批次是否仍为 SECOM-0003，以及复核人是否独立于录入人。
 
 ---

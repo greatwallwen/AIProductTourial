@@ -30,11 +30,11 @@
 
 ## 解决方案
 
-![光伏站端记录核查](../../assets/cases/case-20/20-work-productized.png)
+![光伏站端记录核查](../assets/cases/case-20/20-work-productized.png)
 
-![B20 需求流程](../../assets/case-diagrams/B20-requirement.svg)
+![B20 需求流程](../assets/case-diagrams/B20-requirement.svg)
 
-![B20 技术架构](../../assets/case-diagrams/B20-architecture.svg)
+![B20 技术架构](../assets/case-diagrams/B20-architecture.svg)
 
 页面按四段组织工作：站日事实、派生线索、缺少的站端记录、人工核查任务。三类缺失资料都显示“数据集未包含”，勾选表示“申请补取”，不是已经取得。底部三条独立日级曲线只画最近 14 个真实站日。
 
@@ -65,9 +65,9 @@
 
 ## 实现与排错
 
-- 实现：[`code/cases/20-pv-loss-attribution`](../../code/cases/20-pv-loss-attribution/)。
-- 聚焦测试：[`case-20-pv-loss.test.tsx`](../../code/app/tests/case-20-pv-loss.test.tsx)。
-- 三维总览：[`ChinaTerrain3D.tsx`](../../code/app/src/components/workbenches/case-specific/ChinaTerrain3D.tsx)（R3F + drei）。地形底图为无文字纹理，站点坐标示意排布、非真实地理坐标；点击 3D 标签可联动站点选择器，但不生成位置置信度或设备关系。
+- 实现：[`code/cases/20-pv-loss-attribution`](../code/cases/20-pv-loss-attribution)。
+- 聚焦测试：[`case-20-pv-loss.test.tsx`](../code/app/tests/case-20-pv-loss.test.tsx)。
+- 三维总览：[`ChinaTerrain3D.tsx`](../code/app/src/components/workbenches/case-specific/ChinaTerrain3D.tsx)（R3F + drei）。地形底图为无文字纹理，站点坐标示意排布、非真实地理坐标；点击 3D 标签可联动站点选择器，但不生成位置置信度或设备关系。
 - 排查：若 40.6% 被显示成发电损失率，检查字段标签和派生说明；它只能表示疑似记录占比，也不能触发任何站端控制命令。
 
 ---

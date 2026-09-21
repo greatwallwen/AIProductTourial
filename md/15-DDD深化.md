@@ -76,7 +76,7 @@ node code/tools/verify_course_package.mjs
 grep -c '"num"' code/tools/case_definitions.json         # ① 定义层：几个聚合根
 grep -n 'defs.cases.map' code/server/services/cases.ts   # ② 服务层：业务怎么读它
 grep -n '/case/' code/web/src/App.tsx | head -1          # ③ 路由层：URL 从哪来
-ls AI时代研发产品项目一体化知识库/案例/                    # ④ 书页层：文档叫什么
+ls md/案例/                    # ④ 书页层：文档叫什么
 ```
 
 关键输出行：

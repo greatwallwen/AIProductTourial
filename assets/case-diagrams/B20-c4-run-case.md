@@ -15,7 +15,7 @@
 
 ## 输入
 
-- 案例：`AI时代研发产品项目一体化知识库/案例/B20-pv-loss-attribution.md`
+- 案例：`md/B20-pv-loss-attribution.md`
 - 代码：`code/cases/20-pv-loss-attribution/`、`code/app/src/components/workbenches/case-specific/PvLossWorkbench.tsx`
 - C4 规格：`tmp/B20-c4-spec.json`（4 层 × 元素 × 关系）
 
