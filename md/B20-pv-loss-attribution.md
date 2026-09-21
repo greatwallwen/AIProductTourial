@@ -30,11 +30,11 @@
 
 ## 解决方案
 
-![光伏站端记录核查](../assets/cases/case-20/20-work-productized.png)
+![光伏站端记录核查](../assets/B20/20-work-productized.png)
 
-![B20 需求流程](../assets/case-diagrams/B20-requirement.svg)
+![B20 需求流程](../assets/diagrams/B20-requirement.svg)
 
-![B20 技术架构](../assets/case-diagrams/B20-architecture.svg)
+![B20 技术架构](../assets/diagrams/B20-architecture.svg)
 
 页面按四段组织工作：站日事实、派生线索、缺少的站端记录、人工核查任务。三类缺失资料都显示“数据集未包含”，勾选表示“申请补取”，不是已经取得。底部三条独立日级曲线只画最近 14 个真实站日。
 

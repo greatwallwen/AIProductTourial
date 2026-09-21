@@ -1,0 +1,1276 @@
+{
+  "schema_version": "1.0",
+  "skill_id": "S06",
+  "skill_name": "slide-plan",
+  "verification_status": "verified",
+  "verified_scope": "editable five-slide PPTX, notes, full rendering, geometry and structure QA",
+  "verification_note": "Artifact structure and focused tests rechecked after path migration; browser observations and screenshots are historical, not rerun.",
+  "provider_scope": null,
+  "known_limitations": [
+    "Artifact Tool 导出的 docProps/app.xml 记录 Slides=0、Notes=0；实际包内 slide XML 与带 [Sources] 的 notes XML 均为 5，结构审计为 5/5。"
+  ],
+  "commands": [
+    "node code/skills/slide-plan/scripts/build_deck.mjs --workspace <D-drive-artifact-workspace> --input code/skills/slide-plan/examples/air-quality-outline.md --allowed-root code/skills/slide-plan/examples --plan-output assets/S06/slide-plan.json --pptx-output assets/S06/presentation.pptx --render-dir assets/S06/rendered --qa-output assets/S06/visual-qa.json",
+    "python -B code/skills/slide-plan/scripts/audit_pptx.py --input assets/S06/presentation.pptx --plan assets/S06/slide-plan.json --report-output assets/S06/structure-audit.json"
+  ],
+  "key_results": [
+    "@oai/artifact-tool 生成 5 页可编辑 PPTX",
+    "5 张 1280×720 渲染图已检查",
+    "边界、重叠、溢出、空白页与备注检查全部通过"
+  ],
+  "artifact_count": 250,
+  "artifacts": [
+    {
+      "path": "assets/S06/comparison/prompts/A-ordinary.txt",
+      "bytes": 103,
+      "sha256": "e9d6c7fdff9c3cea8adfd9ecfc9cccc725fae30ca91407b500c2af6175d4ad1e"
+    },
+    {
+      "path": "assets/S06/comparison/prompts/B-structured.txt",
+      "bytes": 858,
+      "sha256": "6cd2adb8aec9f40594f3e347795b89edc3ca763a0b7b7f7c93728a790d661cea"
+    },
+    {
+      "path": "assets/S06/dashi/browser-check/browser-verification.json",
+      "bytes": 10047,
+      "sha256": "4492a4fe8693531ef404f0d79a865b618dd0bbd5317b22090dfcfdbcde4723a7"
+    },
+    {
+      "path": "assets/S06/dashi/browser-check/mobile-page-4.png",
+      "bytes": 32089,
+      "sha256": "b11f737eca025bb5ee3d72e0ab9e9677df9e662e2b1ca6cb58b016169275c85d"
+    },
+    {
+      "path": "assets/S06/dashi/browser-check/page-1-v1.png",
+      "bytes": 182272,
+      "sha256": "f57f5acc997124237fb52f03f438c673231654fd09b8ad64f9878553a8ae5fde"
+    },
+    {
+      "path": "assets/S06/dashi/browser-check/page-1-v4.png",
+      "bytes": 182129,
+      "sha256": "4177e980dff411e22f2acd2389c917ddd01f79f2ed61275d75acfaefbfcc9369"
+    },
+    {
+      "path": "assets/S06/dashi/browser-check/page-2-v1.png",
+      "bytes": 169285,
+      "sha256": "46d3458c4e5bf710166c3d31cd063d25467690aae8690ef41aa31f70fa32faf1"
+    },
+    {
+      "path": "assets/S06/dashi/browser-check/page-2-v4.png",
+      "bytes": 166125,
+      "sha256": "b06ddc5ebabbef7ec58d4a2973ce892539b84238295f25c5746d69b36dffbc53"
+    },
+    {
+      "path": "assets/S06/dashi/browser-check/page-3-v1.png",
+      "bytes": 168651,
+      "sha256": "c039cb41343e8d49ab7d91f4f1fc096fd479dd9549e6d640cade0db1e4fefb4a"
+    },
+    {
+      "path": "assets/S06/dashi/browser-check/page-3-v4.png",
+      "bytes": 184836,
+      "sha256": "11107ee0585eba7bb21ef17cd8782ae9ad4f4febfac543c47b4144560ce7b430"
+    },
+    {
+      "path": "assets/S06/dashi/browser-check/page-4-v1.png",
+      "bytes": 205392,
+      "sha256": "73e92ee0160f9e3fad8b3f917ed9215a6cb1021bd5eeff3b54626c95a146f5e1"
+    },
+    {
+      "path": "assets/S06/dashi/browser-check/page-4-v4.png",
+      "bytes": 176594,
+      "sha256": "320daff7e743f2e09ec6b6d507919417ea24c5f3ddbb9515c72a11f892aab85c"
+    },
+    {
+      "path": "assets/S06/dashi/browser-check/page-5-v1.png",
+      "bytes": 170866,
+      "sha256": "44b713b846b4cf66500302e7f397d25eeee33093449d1fb02dc1426aa2c5628b"
+    },
+    {
+      "path": "assets/S06/dashi/browser-check/page-5-v4.png",
+      "bytes": 169693,
+      "sha256": "2d4509fd56805adfff2ad62ffdb34d237dfc4cfb3ba87b532a037aef2ad17049"
+    },
+    {
+      "path": "assets/S06/dashi/goal.fill-plan.json",
+      "bytes": 45845,
+      "sha256": "2a960dd84297d33ea336871f53d954bedd8c7fd45c2b324e8996b465d39522dd"
+    },
+    {
+      "path": "assets/S06/dashi/goal.json",
+      "bytes": 60246,
+      "sha256": "e14695ee5f7f60f2e87b575485ac68a625a94a822a8fd752a0ffc7fd3e2998ba"
+    },
+    {
+      "path": "assets/S06/dashi/goal.part-01.fill-plan.json",
+      "bytes": 45941,
+      "sha256": "3625e65a6763426421ff6e3a0037992a0ef90988375bff4138987da1744c5914"
+    },
+    {
+      "path": "assets/S06/dashi/goal.part-01.json",
+      "bytes": 60285,
+      "sha256": "f7456e0906a41982060875b7d54f032a13790e09a30d80dd4b408ab783ee070f"
+    },
+    {
+      "path": "assets/S06/dashi/page-content-pack.json",
+      "bytes": 5346,
+      "sha256": "9e733046c30c073c2b688338b8bb5ac2d12949b1b4a97a110ea8ba9ed01fb2d8"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/.image-slots.state.json",
+      "bytes": 3,
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/imported-theme-runtime.js",
+      "bytes": 1209832,
+      "sha256": "9fd9b65862b452ca4cb91c9e3b0dfe6cf7c4b9c48a9e23e7c6d7a9e993fccb4f"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/skill/dashi-ppt-favicon.png",
+      "bytes": 2025,
+      "sha256": "de1f8027482eae99807f4665ae847bb17823e631fe4f3c2ff0c7ef9df92e17d9"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/social-icons/bilibili.svg",
+      "bytes": 8091,
+      "sha256": "6dff941506d8f75e4709c1481790120ec708436421bafc424fc20b6b1910e68c"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/social-icons/douyin.svg",
+      "bytes": 4829,
+      "sha256": "693053576de1153d2157e2085c472d101ec428c765e90f594f30ee3a857a34d6"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/social-icons/github.svg",
+      "bytes": 1303,
+      "sha256": "d9b171550495b0b1b802f508a528225f4b46d8c66d764d6a119e21d610b81adb"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/social-icons/redbook.svg",
+      "bytes": 3571,
+      "sha256": "5bbbbf5d8c86f806747ef4ce2c9c6df329d8fa743b0fd86915b1a5ec74a12809"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/ui-icons/sidebar.svg",
+      "bytes": 1302,
+      "sha256": "f6789e4553a2d6ae3a0762dadcd3c19512175a57ece008b572c1ceb636dd0bee"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/unicorn/automations_remix_scene.json",
+      "bytes": 43940,
+      "sha256": "24c59ebdbac6eb0fc25aeb986d9f968f7aac841b056797c44cdfdc829250039c"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/unicorn/goey_balls_remix_scene.json",
+      "bytes": 14524,
+      "sha256": "f32b7469a6c47a0c21d4e7898e64451673048747aea1e9c3fb7afbeb615446c9"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/unicorn/media/blue_noise_med.png",
+      "bytes": 211368,
+      "sha256": "b13e8110a3cff03dc719ad21a732652afc1f2f83127ecb4e0213b09ac34ae136"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/unicorn/media/font_atlas.png",
+      "bytes": 66140,
+      "sha256": "37e7d94a611a42d2d29e5236186c16decbe07119fa8ba99ec33c2454822e12d7"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/unicorn/moving_into_remix_scene.json",
+      "bytes": 69422,
+      "sha256": "434d721553699ddcd138a7a6b8b21d83a0ae8d8865c55c1bd1f9cc016bf97bf7"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/unicorn/tech_background_remix_scene.json",
+      "bytes": 53478,
+      "sha256": "6f3cbc3b9dbae8f6be824c745f1d812db5d1f301ce1afe2ee2d1fe55984735fa"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/editable-pptx-browser.js",
+      "bytes": 79189,
+      "sha256": "db975933bc6a31de8113faa2fd283fe7b91f56da3bbef7b032a5a64e31b93c86"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/anton-400-1.woff2",
+      "bytes": 8680,
+      "sha256": "82cc85bd416dc825c05b4264a8a58e189e528fed8a05fbd471b5493e010d623b"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/anton-400-2.woff2",
+      "bytes": 31356,
+      "sha256": "0d17b7880f389deeb6663a52fa4eadc6d9116bdda725f0aa1f3d404fbb7d3d59"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/anton-400-3.woff2",
+      "bytes": 18612,
+      "sha256": "d0fa07ff63dd60cbc0e2f58e29c802dca2a5ae0276c999f59c6111ab7bbaec3b"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/archivo-400-1.woff2",
+      "bytes": 13240,
+      "sha256": "5a621c5598a31392555104ccdc41a46c3104f1cc22666024a8afb881ca9adaab"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/archivo-400-2.woff2",
+      "bytes": 32608,
+      "sha256": "ff4f17d21930e36d6d93baba663e624cb767afc3feebf7adaebd82242638de05"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/archivo-400-3.woff2",
+      "bytes": 34928,
+      "sha256": "8f704806dbedeaaeca334b11ec348bc3ac3a439d6431544b3afb54f534ee4967"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/archivo-500-1.woff2",
+      "bytes": 13240,
+      "sha256": "5a621c5598a31392555104ccdc41a46c3104f1cc22666024a8afb881ca9adaab"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/archivo-500-2.woff2",
+      "bytes": 32608,
+      "sha256": "ff4f17d21930e36d6d93baba663e624cb767afc3feebf7adaebd82242638de05"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/archivo-500-3.woff2",
+      "bytes": 34928,
+      "sha256": "8f704806dbedeaaeca334b11ec348bc3ac3a439d6431544b3afb54f534ee4967"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/archivo-600-1.woff2",
+      "bytes": 13240,
+      "sha256": "5a621c5598a31392555104ccdc41a46c3104f1cc22666024a8afb881ca9adaab"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/archivo-600-2.woff2",
+      "bytes": 32608,
+      "sha256": "ff4f17d21930e36d6d93baba663e624cb767afc3feebf7adaebd82242638de05"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/archivo-600-3.woff2",
+      "bytes": 34928,
+      "sha256": "8f704806dbedeaaeca334b11ec348bc3ac3a439d6431544b3afb54f534ee4967"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/archivo-700-1.woff2",
+      "bytes": 13240,
+      "sha256": "5a621c5598a31392555104ccdc41a46c3104f1cc22666024a8afb881ca9adaab"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/archivo-700-2.woff2",
+      "bytes": 32608,
+      "sha256": "ff4f17d21930e36d6d93baba663e624cb767afc3feebf7adaebd82242638de05"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/archivo-700-3.woff2",
+      "bytes": 34928,
+      "sha256": "8f704806dbedeaaeca334b11ec348bc3ac3a439d6431544b3afb54f534ee4967"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/archivo-800-1.woff2",
+      "bytes": 13240,
+      "sha256": "5a621c5598a31392555104ccdc41a46c3104f1cc22666024a8afb881ca9adaab"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/archivo-800-2.woff2",
+      "bytes": 32608,
+      "sha256": "ff4f17d21930e36d6d93baba663e624cb767afc3feebf7adaebd82242638de05"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/archivo-800-3.woff2",
+      "bytes": 34928,
+      "sha256": "8f704806dbedeaaeca334b11ec348bc3ac3a439d6431544b3afb54f534ee4967"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/archivo-900-1.woff2",
+      "bytes": 13240,
+      "sha256": "5a621c5598a31392555104ccdc41a46c3104f1cc22666024a8afb881ca9adaab"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/archivo-900-2.woff2",
+      "bytes": 32608,
+      "sha256": "ff4f17d21930e36d6d93baba663e624cb767afc3feebf7adaebd82242638de05"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/archivo-900-3.woff2",
+      "bytes": 34928,
+      "sha256": "8f704806dbedeaaeca334b11ec348bc3ac3a439d6431544b3afb54f534ee4967"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/caveat-400-1.woff2",
+      "bytes": 42856,
+      "sha256": "4956ec7b19798cb8418f2e44349e90c0ab7310594350c4b9c2998dc092122d5a"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/caveat-400-2.woff2",
+      "bytes": 77216,
+      "sha256": "6276a2f5a5554c16b422f00f114773a8d4013a81df18a338f7c216d80103c9af"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/caveat-400-3.woff2",
+      "bytes": 29472,
+      "sha256": "f626b95c1efa95cf6b7c9b043d3bbe8862b6abbe5f55a082102f33f7de2fd4f9"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/caveat-400-4.woff2",
+      "bytes": 74932,
+      "sha256": "891951df5e8b5b0f0bc760d31375405e795c666b5add70437de12d4a6482b33f"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/caveat-600-1.woff2",
+      "bytes": 42856,
+      "sha256": "4956ec7b19798cb8418f2e44349e90c0ab7310594350c4b9c2998dc092122d5a"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/caveat-600-2.woff2",
+      "bytes": 77216,
+      "sha256": "6276a2f5a5554c16b422f00f114773a8d4013a81df18a338f7c216d80103c9af"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/caveat-600-3.woff2",
+      "bytes": 29472,
+      "sha256": "f626b95c1efa95cf6b7c9b043d3bbe8862b6abbe5f55a082102f33f7de2fd4f9"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/caveat-600-4.woff2",
+      "bytes": 74932,
+      "sha256": "891951df5e8b5b0f0bc760d31375405e795c666b5add70437de12d4a6482b33f"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/caveat-700-1.woff2",
+      "bytes": 42856,
+      "sha256": "4956ec7b19798cb8418f2e44349e90c0ab7310594350c4b9c2998dc092122d5a"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/caveat-700-2.woff2",
+      "bytes": 77216,
+      "sha256": "6276a2f5a5554c16b422f00f114773a8d4013a81df18a338f7c216d80103c9af"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/caveat-700-3.woff2",
+      "bytes": 29472,
+      "sha256": "f626b95c1efa95cf6b7c9b043d3bbe8862b6abbe5f55a082102f33f7de2fd4f9"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/caveat-700-4.woff2",
+      "bytes": 74932,
+      "sha256": "891951df5e8b5b0f0bc760d31375405e795c666b5add70437de12d4a6482b33f"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-mono-200-1.woff2",
+      "bytes": 6664,
+      "sha256": "24d6d838a4c6aa31a3260f08a53d468b729120ca2b5c7d8ae877fd4252ca7107"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-mono-200-2.woff2",
+      "bytes": 8212,
+      "sha256": "0409ce1efcf1ca55e9393efb53c1af72314f1b72423ec38b43ba89aee2122084"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-mono-200-3.woff2",
+      "bytes": 5908,
+      "sha256": "b61f141821ef9e4aae671f6503951367a224da05f29e653e368acc9e3ca748dd"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-mono-200-4.woff2",
+      "bytes": 13420,
+      "sha256": "f61deac4596e0b6353a5b1af69b0f8798ac3ffdac7b9276417e54697cbf13603"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-mono-200-5.woff2",
+      "bytes": 14940,
+      "sha256": "fc952b841b3a64865b32b421c2907791238590cfbf929d8fed143510903fd833"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-mono-300-1.woff2",
+      "bytes": 6780,
+      "sha256": "c129280f7831f0e528f327ee4496a7dd097a71a0d659d382ba4d579713eeaf0d"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-mono-300-2.woff2",
+      "bytes": 8268,
+      "sha256": "4cadd515f7e69b84af2247ebfba34dd40d7aa9fddce147d6e783ee6993d07c74"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-mono-300-3.woff2",
+      "bytes": 5832,
+      "sha256": "7f043a9329be5da82e519825b674eb502979851b5b26e1e63408f58fdb1a79a6"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-mono-300-4.woff2",
+      "bytes": 13404,
+      "sha256": "40a4c5fb57ace858d7d9f7da764a9104a75976c88fc27f8e957d717e6189938d"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-mono-300-5.woff2",
+      "bytes": 14748,
+      "sha256": "d2ce22595d55a52b0c63f837515729bd97706bfa1b833816509f13d93daa59b5"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-mono-400-1.woff2",
+      "bytes": 6912,
+      "sha256": "f8c22ec1804bd6966b70f43ac7c327025645b4c09597117fca2a5a6c750106fe"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-mono-400-2.woff2",
+      "bytes": 8356,
+      "sha256": "7635422bd10ddbbcb0e0caa1154b928298f5c8319b8c00b30978d4395f4783ce"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-mono-400-3.woff2",
+      "bytes": 5868,
+      "sha256": "62632b6375305e70ddcafdd895218e6ae41a184fcd280a69c739460604ca00a9"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-mono-400-4.woff2",
+      "bytes": 13348,
+      "sha256": "6bc0f226a5b7884a8170e3f62c63d7675609d4631bdc5931b5cdab81821f00eb"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-mono-400-5.woff2",
+      "bytes": 14708,
+      "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-mono-400-italic-1.woff2",
+      "bytes": 7864,
+      "sha256": "a0b3b8cbe5a516e75f8e98305a0c7062adaddb791f6ed3bd15665e95ff8fec71"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-mono-400-italic-2.woff2",
+      "bytes": 10404,
+      "sha256": "4aded3f2f2a7d27d9430ca6f6ef9dc7d7efa861a61891a5f67758d467da9ed14"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-mono-400-italic-3.woff2",
+      "bytes": 6364,
+      "sha256": "a6bab38af4f9c761284fabe543b32eb4fa5760321f1e2550971e6b0f44b725a5"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-mono-400-italic-4.woff2",
+      "bytes": 14524,
+      "sha256": "1b07eee6df7d26b31864581c2365131d384077605e0b63ae67c4a0a64363a6de"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-mono-400-italic-5.woff2",
+      "bytes": 16448,
+      "sha256": "0840095faae86403735a8c04014b72cb29e7923646b222b360b7e8252932e4e3"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-mono-500-1.woff2",
+      "bytes": 6972,
+      "sha256": "3febe5c7f22e4b07b4552738673c3dbe8bced2dc5f48b866edf7ccd9552d109a"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-mono-500-2.woff2",
+      "bytes": 8460,
+      "sha256": "1d89462e86cb8e87e7e9d6f6635605bd7c3081baca6caaecee84916bf7b60edc"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-mono-500-3.woff2",
+      "bytes": 6040,
+      "sha256": "781633d95de88040fb77141d1e65d928c87c0144691fbc74da5a64d137a7e910"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-mono-500-4.woff2",
+      "bytes": 13432,
+      "sha256": "6bb06407c97584b0867a959e05e8874693bfeb8c317de190811c51598f2d99ea"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-mono-500-5.woff2",
+      "bytes": 14888,
+      "sha256": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-mono-600-1.woff2",
+      "bytes": 7692,
+      "sha256": "83109cdd4f8665b475dfc11d61bd44da328bf7e6eab3d3953d39c49b1b9f6015"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-mono-600-2.woff2",
+      "bytes": 9352,
+      "sha256": "2b05a8695c7f9f4abd7178b279646a3b005a8ce57546bef6fd145f25d131e0aa"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-mono-600-3.woff2",
+      "bytes": 6932,
+      "sha256": "51b74d53e106ba8a26dd33464b231a562069be2a234b923c115beb622e6f6bc6"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-mono-600-4.woff2",
+      "bytes": 14328,
+      "sha256": "32057cf50dd14bdb21a2c93766c4a2c43e4abe688ea3922df3203cac7751a98b"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-mono-600-5.woff2",
+      "bytes": 15620,
+      "sha256": "0d1f0b8d0722224e32e9f28261bdc86c79115be73444ae5eceb73976a1bcdf83"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-sans-200-1.woff2",
+      "bytes": 12300,
+      "sha256": "995d3efb287522350f00f3525ffbf62bcc3f306ad83f8564c165810696353f2a"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-sans-200-2.woff2",
+      "bytes": 14956,
+      "sha256": "0e25c4571381ec5d1e6556737990aa2ae42849ae41da535956ba4961e3e986e2"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-sans-200-3.woff2",
+      "bytes": 10412,
+      "sha256": "4f5dace9e2b026596a1193a3436b9f1df129e928ff29c372a652505a29d4c0d9"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-sans-200-4.woff2",
+      "bytes": 8304,
+      "sha256": "0a1500396ef15b0cd26c3aa24eacd52afebd72a867c060f1eba9d9093521db1c"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-sans-200-5.woff2",
+      "bytes": 16660,
+      "sha256": "cee350a8c999b117d0616326eccc805f0ae3314ac45276c115b2fa3e227adbc3"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-sans-200-6.woff2",
+      "bytes": 24536,
+      "sha256": "c833796fdabe4792da42802d0f69bc37356ba7d9a9970cf8c94773c54d63eebb"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-sans-300-1.woff2",
+      "bytes": 23568,
+      "sha256": "7d0037a170882a49e65a45c38ef195237bb07b1cc791d078379f0ac0d7ae1935"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-sans-300-2.woff2",
+      "bytes": 29512,
+      "sha256": "9409ee21811f0f5272b7e1d828fe8838005b0573481ef906e7e55b63f6610ab0"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-sans-300-3.woff2",
+      "bytes": 19500,
+      "sha256": "f598dd0700f155e2facfaa8ecfacace397d4c2c153e9ce37ab7ad310e8505bc2"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-sans-300-4.woff2",
+      "bytes": 13160,
+      "sha256": "73e7f7b1c980416ae0c2461268b14c7cfcce0668e683dc43fbb11a82a227b9f2"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-sans-300-5.woff2",
+      "bytes": 30964,
+      "sha256": "d160e20920ae4d6556518d352d3af27a74e9b0de3d8fe17b1c1044fc75aa2f81"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-sans-300-6.woff2",
+      "bytes": 45712,
+      "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-sans-400-1.woff2",
+      "bytes": 23568,
+      "sha256": "7d0037a170882a49e65a45c38ef195237bb07b1cc791d078379f0ac0d7ae1935"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-sans-400-2.woff2",
+      "bytes": 29512,
+      "sha256": "9409ee21811f0f5272b7e1d828fe8838005b0573481ef906e7e55b63f6610ab0"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-sans-400-3.woff2",
+      "bytes": 19500,
+      "sha256": "f598dd0700f155e2facfaa8ecfacace397d4c2c153e9ce37ab7ad310e8505bc2"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-sans-400-4.woff2",
+      "bytes": 13160,
+      "sha256": "73e7f7b1c980416ae0c2461268b14c7cfcce0668e683dc43fbb11a82a227b9f2"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-sans-400-5.woff2",
+      "bytes": 30964,
+      "sha256": "d160e20920ae4d6556518d352d3af27a74e9b0de3d8fe17b1c1044fc75aa2f81"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-sans-400-6.woff2",
+      "bytes": 45712,
+      "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-sans-500-1.woff2",
+      "bytes": 23568,
+      "sha256": "7d0037a170882a49e65a45c38ef195237bb07b1cc791d078379f0ac0d7ae1935"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-sans-500-2.woff2",
+      "bytes": 29512,
+      "sha256": "9409ee21811f0f5272b7e1d828fe8838005b0573481ef906e7e55b63f6610ab0"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-sans-500-3.woff2",
+      "bytes": 19500,
+      "sha256": "f598dd0700f155e2facfaa8ecfacace397d4c2c153e9ce37ab7ad310e8505bc2"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-sans-500-4.woff2",
+      "bytes": 13160,
+      "sha256": "73e7f7b1c980416ae0c2461268b14c7cfcce0668e683dc43fbb11a82a227b9f2"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-sans-500-5.woff2",
+      "bytes": 30964,
+      "sha256": "d160e20920ae4d6556518d352d3af27a74e9b0de3d8fe17b1c1044fc75aa2f81"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/ibm-plex-sans-500-6.woff2",
+      "bytes": 45712,
+      "sha256": "e2291e842cf5af167122a22881a740c7f2dda7716f1e8cd76680264f4a859470"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-400-1.woff2",
+      "bytes": 25960,
+      "sha256": "ca157063339ac4ad418f214f3abfed119b0798ab4d377386ce5c9e5a7a435ebd"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-400-2.woff2",
+      "bytes": 18748,
+      "sha256": "71d5ee93cc1e9f1d520a3a8b66456de18c7879d8df09d57fcd2eaff75fef0075"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-400-3.woff2",
+      "bytes": 11232,
+      "sha256": "6e9e020a25f9b56d418f2c085b1d3c09725a4da23fe693a5b463064606732190"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-400-4.woff2",
+      "bytes": 18996,
+      "sha256": "1be3448e292fbf05ffe176fe1e43f135013d50b1e7d324ad1a558f623d3bb6f6"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-400-5.woff2",
+      "bytes": 10252,
+      "sha256": "5c66f9e07e90c6d4ac4922cc68d60de26c17b1858e677fb5e603fce3952b3ff2"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-400-6.woff2",
+      "bytes": 85068,
+      "sha256": "34b9c504cab7a73e37b746343a449132e56cf7b5481af2cb81dc74dcff25c956"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-400-7.woff2",
+      "bytes": 48256,
+      "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-500-1.woff2",
+      "bytes": 25960,
+      "sha256": "ca157063339ac4ad418f214f3abfed119b0798ab4d377386ce5c9e5a7a435ebd"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-500-2.woff2",
+      "bytes": 18748,
+      "sha256": "71d5ee93cc1e9f1d520a3a8b66456de18c7879d8df09d57fcd2eaff75fef0075"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-500-3.woff2",
+      "bytes": 11232,
+      "sha256": "6e9e020a25f9b56d418f2c085b1d3c09725a4da23fe693a5b463064606732190"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-500-4.woff2",
+      "bytes": 18996,
+      "sha256": "1be3448e292fbf05ffe176fe1e43f135013d50b1e7d324ad1a558f623d3bb6f6"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-500-5.woff2",
+      "bytes": 10252,
+      "sha256": "5c66f9e07e90c6d4ac4922cc68d60de26c17b1858e677fb5e603fce3952b3ff2"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-500-6.woff2",
+      "bytes": 85068,
+      "sha256": "34b9c504cab7a73e37b746343a449132e56cf7b5481af2cb81dc74dcff25c956"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-500-7.woff2",
+      "bytes": 48256,
+      "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-600-1.woff2",
+      "bytes": 25960,
+      "sha256": "ca157063339ac4ad418f214f3abfed119b0798ab4d377386ce5c9e5a7a435ebd"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-600-2.woff2",
+      "bytes": 18748,
+      "sha256": "71d5ee93cc1e9f1d520a3a8b66456de18c7879d8df09d57fcd2eaff75fef0075"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-600-3.woff2",
+      "bytes": 11232,
+      "sha256": "6e9e020a25f9b56d418f2c085b1d3c09725a4da23fe693a5b463064606732190"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-600-4.woff2",
+      "bytes": 18996,
+      "sha256": "1be3448e292fbf05ffe176fe1e43f135013d50b1e7d324ad1a558f623d3bb6f6"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-600-5.woff2",
+      "bytes": 10252,
+      "sha256": "5c66f9e07e90c6d4ac4922cc68d60de26c17b1858e677fb5e603fce3952b3ff2"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-600-6.woff2",
+      "bytes": 85068,
+      "sha256": "34b9c504cab7a73e37b746343a449132e56cf7b5481af2cb81dc74dcff25c956"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-600-7.woff2",
+      "bytes": 48256,
+      "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-700-1.woff2",
+      "bytes": 25960,
+      "sha256": "ca157063339ac4ad418f214f3abfed119b0798ab4d377386ce5c9e5a7a435ebd"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-700-2.woff2",
+      "bytes": 18748,
+      "sha256": "71d5ee93cc1e9f1d520a3a8b66456de18c7879d8df09d57fcd2eaff75fef0075"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-700-3.woff2",
+      "bytes": 11232,
+      "sha256": "6e9e020a25f9b56d418f2c085b1d3c09725a4da23fe693a5b463064606732190"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-700-4.woff2",
+      "bytes": 18996,
+      "sha256": "1be3448e292fbf05ffe176fe1e43f135013d50b1e7d324ad1a558f623d3bb6f6"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-700-5.woff2",
+      "bytes": 10252,
+      "sha256": "5c66f9e07e90c6d4ac4922cc68d60de26c17b1858e677fb5e603fce3952b3ff2"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-700-6.woff2",
+      "bytes": 85068,
+      "sha256": "34b9c504cab7a73e37b746343a449132e56cf7b5481af2cb81dc74dcff25c956"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-700-7.woff2",
+      "bytes": 48256,
+      "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-800-1.woff2",
+      "bytes": 25960,
+      "sha256": "ca157063339ac4ad418f214f3abfed119b0798ab4d377386ce5c9e5a7a435ebd"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-800-2.woff2",
+      "bytes": 18748,
+      "sha256": "71d5ee93cc1e9f1d520a3a8b66456de18c7879d8df09d57fcd2eaff75fef0075"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-800-3.woff2",
+      "bytes": 11232,
+      "sha256": "6e9e020a25f9b56d418f2c085b1d3c09725a4da23fe693a5b463064606732190"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-800-4.woff2",
+      "bytes": 18996,
+      "sha256": "1be3448e292fbf05ffe176fe1e43f135013d50b1e7d324ad1a558f623d3bb6f6"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-800-5.woff2",
+      "bytes": 10252,
+      "sha256": "5c66f9e07e90c6d4ac4922cc68d60de26c17b1858e677fb5e603fce3952b3ff2"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-800-6.woff2",
+      "bytes": 85068,
+      "sha256": "34b9c504cab7a73e37b746343a449132e56cf7b5481af2cb81dc74dcff25c956"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-800-7.woff2",
+      "bytes": 48256,
+      "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-900-1.woff2",
+      "bytes": 25960,
+      "sha256": "ca157063339ac4ad418f214f3abfed119b0798ab4d377386ce5c9e5a7a435ebd"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-900-2.woff2",
+      "bytes": 18748,
+      "sha256": "71d5ee93cc1e9f1d520a3a8b66456de18c7879d8df09d57fcd2eaff75fef0075"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-900-3.woff2",
+      "bytes": 11232,
+      "sha256": "6e9e020a25f9b56d418f2c085b1d3c09725a4da23fe693a5b463064606732190"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-900-4.woff2",
+      "bytes": 18996,
+      "sha256": "1be3448e292fbf05ffe176fe1e43f135013d50b1e7d324ad1a558f623d3bb6f6"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-900-5.woff2",
+      "bytes": 10252,
+      "sha256": "5c66f9e07e90c6d4ac4922cc68d60de26c17b1858e677fb5e603fce3952b3ff2"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-900-6.woff2",
+      "bytes": 85068,
+      "sha256": "34b9c504cab7a73e37b746343a449132e56cf7b5481af2cb81dc74dcff25c956"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/inter-900-7.woff2",
+      "bytes": 48256,
+      "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/jetbrains-mono-400-1.woff2",
+      "bytes": 1640,
+      "sha256": "62213be8a78b42f1e29d1452d91e2f8b3e745572a9dd98d3941e39fa00b37d76"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/jetbrains-mono-400-2.woff2",
+      "bytes": 8872,
+      "sha256": "e17cfd15fb96909d64095015f958207063a0c07191da3512df7d560a781aebdf"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/jetbrains-mono-400-3.woff2",
+      "bytes": 6836,
+      "sha256": "0a557721b1f8b36d3f3f84442689a71ca4a744300abcb46a1953f51bfc663b66"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/jetbrains-mono-400-4.woff2",
+      "bytes": 5888,
+      "sha256": "c89b9cc0bc6262bd4f8d8494b6961601f3aefa829d08c2e3635f4d501d3a47c2"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/jetbrains-mono-400-5.woff2",
+      "bytes": 11624,
+      "sha256": "db5ff4db83e580426280e9337a58dc57d3a83784a1b03ad80914651594441d52"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/jetbrains-mono-400-6.woff2",
+      "bytes": 31432,
+      "sha256": "83c005d49d8a6a50474c73a5a36ac0468076e9c4a29da7bdb14995d80560a5be"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/jetbrains-mono-500-1.woff2",
+      "bytes": 1640,
+      "sha256": "62213be8a78b42f1e29d1452d91e2f8b3e745572a9dd98d3941e39fa00b37d76"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/jetbrains-mono-500-2.woff2",
+      "bytes": 8872,
+      "sha256": "e17cfd15fb96909d64095015f958207063a0c07191da3512df7d560a781aebdf"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/jetbrains-mono-500-3.woff2",
+      "bytes": 6836,
+      "sha256": "0a557721b1f8b36d3f3f84442689a71ca4a744300abcb46a1953f51bfc663b66"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/jetbrains-mono-500-4.woff2",
+      "bytes": 5888,
+      "sha256": "c89b9cc0bc6262bd4f8d8494b6961601f3aefa829d08c2e3635f4d501d3a47c2"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/jetbrains-mono-500-5.woff2",
+      "bytes": 11624,
+      "sha256": "db5ff4db83e580426280e9337a58dc57d3a83784a1b03ad80914651594441d52"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/jetbrains-mono-500-6.woff2",
+      "bytes": 31432,
+      "sha256": "83c005d49d8a6a50474c73a5a36ac0468076e9c4a29da7bdb14995d80560a5be"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/jetbrains-mono-600-1.woff2",
+      "bytes": 1640,
+      "sha256": "62213be8a78b42f1e29d1452d91e2f8b3e745572a9dd98d3941e39fa00b37d76"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/jetbrains-mono-600-2.woff2",
+      "bytes": 8872,
+      "sha256": "e17cfd15fb96909d64095015f958207063a0c07191da3512df7d560a781aebdf"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/jetbrains-mono-600-3.woff2",
+      "bytes": 6836,
+      "sha256": "0a557721b1f8b36d3f3f84442689a71ca4a744300abcb46a1953f51bfc663b66"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/jetbrains-mono-600-4.woff2",
+      "bytes": 5888,
+      "sha256": "c89b9cc0bc6262bd4f8d8494b6961601f3aefa829d08c2e3635f4d501d3a47c2"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/jetbrains-mono-600-5.woff2",
+      "bytes": 11624,
+      "sha256": "db5ff4db83e580426280e9337a58dc57d3a83784a1b03ad80914651594441d52"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/jetbrains-mono-600-6.woff2",
+      "bytes": 31432,
+      "sha256": "83c005d49d8a6a50474c73a5a36ac0468076e9c4a29da7bdb14995d80560a5be"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/newsreader-300-1.woff2",
+      "bytes": 27904,
+      "sha256": "0c22099dbcb30110e74c393b51e00018b9b5d7d224a1a5324d9701b3a8266bb3"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/newsreader-300-2.woff2",
+      "bytes": 95540,
+      "sha256": "bb24f6648f75d909eb74535916015c97ef72a1344e532ec7bbaf3f80eb6f389f"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/newsreader-300-3.woff2",
+      "bytes": 146872,
+      "sha256": "5dfcd10d24af8c82927ba57f7983dd997f7b200594c09c35a1b1ed9fc4597506"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/newsreader-400-1.woff2",
+      "bytes": 27904,
+      "sha256": "0c22099dbcb30110e74c393b51e00018b9b5d7d224a1a5324d9701b3a8266bb3"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/newsreader-400-2.woff2",
+      "bytes": 95540,
+      "sha256": "bb24f6648f75d909eb74535916015c97ef72a1344e532ec7bbaf3f80eb6f389f"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/newsreader-400-3.woff2",
+      "bytes": 146872,
+      "sha256": "5dfcd10d24af8c82927ba57f7983dd997f7b200594c09c35a1b1ed9fc4597506"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/newsreader-500-1.woff2",
+      "bytes": 27904,
+      "sha256": "0c22099dbcb30110e74c393b51e00018b9b5d7d224a1a5324d9701b3a8266bb3"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/newsreader-500-2.woff2",
+      "bytes": 95540,
+      "sha256": "bb24f6648f75d909eb74535916015c97ef72a1344e532ec7bbaf3f80eb6f389f"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/newsreader-500-3.woff2",
+      "bytes": 146872,
+      "sha256": "5dfcd10d24af8c82927ba57f7983dd997f7b200594c09c35a1b1ed9fc4597506"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/newsreader-800-1.woff2",
+      "bytes": 5608,
+      "sha256": "ea74b1b2d70e4111172dca431c897cf65d8749ebe0a18949bcfcf7e607291859"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/newsreader-800-2.woff2",
+      "bytes": 16172,
+      "sha256": "9bf9c1fc630e4c07def28f2273d354929cefae3251688c0ec229ec892cc48695"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/newsreader-800-3.woff2",
+      "bytes": 25636,
+      "sha256": "0cb88954ffb33a799a4896050dfd5d5ac15f5851d5ae9812b7fa1eb255e8140c"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/newsreader-normal-500-1.woff2",
+      "bytes": 5436,
+      "sha256": "f950f15b6fab6593349cdad92849419530bd4305d9a2edd4145cfc42d0c2c5a1"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/newsreader-normal-500-2.woff2",
+      "bytes": 15068,
+      "sha256": "9b553af5de5ebba87ea66530fa0cc05a3e5ed68c4a051915af0bc21188a9df9c"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/newsreader-normal-500-3.woff2",
+      "bytes": 23624,
+      "sha256": "5613e2fc8377392c02e8ac9d55014689fb5320a5f2a7be55e8088a314728ac2c"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/newsreader-normal-800-1.woff2",
+      "bytes": 5452,
+      "sha256": "5080c491d3b77df3a6f88e37dbf88b696abf3f16d4d23a9678b297f36a1b964f"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/newsreader-normal-800-2.woff2",
+      "bytes": 14884,
+      "sha256": "d799c75bee5ee74f5cd4f42d44542aec082896135c9dec8a2083e7ca4fbe6b8d"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/newsreader-normal-800-3.woff2",
+      "bytes": 23504,
+      "sha256": "a80d960e5f0dca38702676840bc5b80bcea51c5efd90d9b2160fd643d41f2685"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/space-grotesk-300-1.woff2",
+      "bytes": 4216,
+      "sha256": "1be9d147b2fe90351a57ad27575d1097b6dbabe6bfa7d11cf5682194164777f4"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/space-grotesk-300-2.woff2",
+      "bytes": 11980,
+      "sha256": "18faaede6f5cfb5dbb352c7185169f7a9d420a49509ddf0334904226153077de"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/space-grotesk-300-3.woff2",
+      "bytes": 12908,
+      "sha256": "a5de30e3b00eec05d96c3db37b9a90e36c6ed68f1bed5b38eb3e6871ff04a145"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/space-grotesk-400-1.woff2",
+      "bytes": 6712,
+      "sha256": "8895e3d49825128bfa5238e4c96e9b432d7a3dadbe5c17c6081267398305dc71"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/space-grotesk-400-2.woff2",
+      "bytes": 18940,
+      "sha256": "952dddb45d2f96f71cbf3b7f510b24379afc3c89ea02fcf89d377b45d62c0166"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/space-grotesk-400-3.woff2",
+      "bytes": 22288,
+      "sha256": "0640890476fc1198ab4de571fb658de443c4d85b66466ec09534a8737ab1ce9d"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/space-grotesk-500-1.woff2",
+      "bytes": 6712,
+      "sha256": "8895e3d49825128bfa5238e4c96e9b432d7a3dadbe5c17c6081267398305dc71"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/space-grotesk-500-2.woff2",
+      "bytes": 18940,
+      "sha256": "952dddb45d2f96f71cbf3b7f510b24379afc3c89ea02fcf89d377b45d62c0166"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/space-grotesk-500-3.woff2",
+      "bytes": 22288,
+      "sha256": "0640890476fc1198ab4de571fb658de443c4d85b66466ec09534a8737ab1ce9d"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/space-grotesk-600-1.woff2",
+      "bytes": 6712,
+      "sha256": "8895e3d49825128bfa5238e4c96e9b432d7a3dadbe5c17c6081267398305dc71"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/space-grotesk-600-2.woff2",
+      "bytes": 18940,
+      "sha256": "952dddb45d2f96f71cbf3b7f510b24379afc3c89ea02fcf89d377b45d62c0166"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/space-grotesk-600-3.woff2",
+      "bytes": 22288,
+      "sha256": "0640890476fc1198ab4de571fb658de443c4d85b66466ec09534a8737ab1ce9d"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/space-grotesk-700-1.woff2",
+      "bytes": 6712,
+      "sha256": "8895e3d49825128bfa5238e4c96e9b432d7a3dadbe5c17c6081267398305dc71"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/space-grotesk-700-2.woff2",
+      "bytes": 18940,
+      "sha256": "952dddb45d2f96f71cbf3b7f510b24379afc3c89ea02fcf89d377b45d62c0166"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/space-grotesk-700-3.woff2",
+      "bytes": 22288,
+      "sha256": "0640890476fc1198ab4de571fb658de443c4d85b66466ec09534a8737ab1ce9d"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/space-mono-400-1.woff2",
+      "bytes": 7272,
+      "sha256": "a748973d5d192a27d69862f5af5f9182d4420d3a924e7b992ae82182e9b12cd8"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/space-mono-400-2.woff2",
+      "bytes": 15832,
+      "sha256": "44ad50c760fa8f5b62da3d489edb40adebabaf97988b9b0adbbc3f0be859050a"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/space-mono-400-3.woff2",
+      "bytes": 16520,
+      "sha256": "fb4a81a2d0a893e5c38c394a7e716a1cef0b24610a0af49c96f6d529bd66bf2b"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/space-mono-700-1.woff2",
+      "bytes": 7332,
+      "sha256": "97f6df0559c6393b851812484ae859b7c539815d5fcdab7d17234492480fa16c"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/space-mono-700-2.woff2",
+      "bytes": 15808,
+      "sha256": "52edd9a8959ec3e68d618e2a4757182c0e61bfeea61679850cad8744a68cadf3"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/fonts/space-mono-700-3.woff2",
+      "bytes": 16724,
+      "sha256": "2d46bd159b53f55c41167a4f1540a074649464194fd1e416f5b4694a6c0f282c"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/gsap.min.js",
+      "bytes": 72927,
+      "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/html-to-image.js",
+      "bytes": 20562,
+      "sha256": "a90b42909d80964269ef6d5f3d1e4a5a7e2a4c263a5d2a76a9e7151901343262"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/pdf-lib.min.js",
+      "bytes": 525099,
+      "sha256": "0f9a5cad07941f0826586c94e089d89b918c46e5c17cf2d5a3c6f666e3bc694f"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/pptxgen.bundle.js",
+      "bytes": 460889,
+      "sha256": "4fb9eac5cfefb213e2d8743c2b7151025f31bfb3f834c73c12062916daa0f3f8"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/assets/vendor/unicornstudio.umd.js",
+      "bytes": 134676,
+      "sha256": "2072685e173484fab6496b597c03e86f9fcf2bea1cc1711c9c9fbf743644f357"
+    },
+    {
+      "path": "assets/S06/dashi/ppt/index.html",
+      "bytes": 539971,
+      "sha256": "aa67e8e3b56c2099a15b3b28d0125a91d1ec0753996fb852af33c9397721c082"
+    },
+    {
+      "path": "assets/S06/dashi/workflow-telemetry.json",
+      "bytes": 1172,
+      "sha256": "b2a783b330584ad85b88bdb12a6776ff3382526c5135c619851becde375fea79"
+    },
+    {
+      "path": "assets/S06/frontend-slides/browser-check/browser-verification.json",
+      "bytes": 2489,
+      "sha256": "3d960aa39413d6f266ffd57563f987ea5bc03ed9f2b34ccea6b92d282ed6f3c7"
+    },
+    {
+      "path": "assets/S06/frontend-slides/browser-check/desktop-slide-4.png",
+      "bytes": 69752,
+      "sha256": "eee197c4940c7ea26d274ac9960dd2be0687ddb828a7e97cb6d2aef211e6cbef"
+    },
+    {
+      "path": "assets/S06/frontend-slides/browser-check/desktop-slide-5.png",
+      "bytes": 69391,
+      "sha256": "7e4e19c13a9cbd85375726bf00b12333672cb676156df7038f43c3ebf568508e"
+    },
+    {
+      "path": "assets/S06/frontend-slides/browser-check/mobile-slide-4.png",
+      "bytes": 18101,
+      "sha256": "1fa75ee89228dbcb2e267c852ea6ed2b8a617e1612ac7c3a528b84b8c71bcd15"
+    },
+    {
+      "path": "assets/S06/frontend-slides/browser-check/mobile-slide-5.png",
+      "bytes": 19023,
+      "sha256": "8c54609932cb49648d632d8a8b6554075cd31a0f5ce2325c53d5638e94fa233a"
+    },
+    {
+      "path": "assets/S06/frontend-slides/index.html",
+      "bytes": 13736,
+      "sha256": "dc82f0a350f9903f900083011762d90eee85448d610bbf9adcefd7248b8830da"
+    },
+    {
+      "path": "assets/S06/outline.md",
+      "bytes": 1423,
+      "sha256": "17aff24c991e20a74d02b0436759426bde3fb7de969808d52bdeabfbd65f53b2"
+    },
+    {
+      "path": "assets/S06/presentation.pptx",
+      "bytes": 23339,
+      "sha256": "452f6fcd94c270d64b8802aff824b597c7a6e8210e222e0232c61496f72c5336"
+    },
+    {
+      "path": "assets/S06/presentation.pptx.inspect.ndjson",
+      "bytes": 5126,
+      "sha256": "47232ffefa13514a7d2290d31a2e744cbe607e6e80027cc31d96b769b9533abc"
+    },
+    {
+      "path": "assets/S06/rendered/inspect.ndjson",
+      "bytes": 4875,
+      "sha256": "bfa0a82b020189b50910c7e044d0326b93d7058dc7d01970bae60496226ca30d"
+    },
+    {
+      "path": "assets/S06/rendered/slide-01.layout.json",
+      "bytes": 5955,
+      "sha256": "df458c6824f2c9f110766caaa1958b7ae96bd01068bb47738ac9c9bfe0a76b18"
+    },
+    {
+      "path": "assets/S06/rendered/slide-01.png",
+      "bytes": 30337,
+      "sha256": "67232e1e7bb6e119985c786e315c158ab4fc15fe2d9b0a471ef36b58f8b2af85"
+    },
+    {
+      "path": "assets/S06/rendered/slide-02.layout.json",
+      "bytes": 4126,
+      "sha256": "609c507150fcdd211cd04750d11e8679c9c21c671555d618955d11105ab95f0e"
+    },
+    {
+      "path": "assets/S06/rendered/slide-02.png",
+      "bytes": 15687,
+      "sha256": "0368ffc5f20b1f4dbb96ef9af893b8a90c019be9b9778512d637ac7191f0ebe6"
+    },
+    {
+      "path": "assets/S06/rendered/slide-03.layout.json",
+      "bytes": 7367,
+      "sha256": "cf5117f64757436f8deee61705c72167ab6ae09b887590334fcd0168f3cc7795"
+    },
+    {
+      "path": "assets/S06/rendered/slide-03.png",
+      "bytes": 34717,
+      "sha256": "9a41b0a3c6c5e43ea4c683a20022e84b40915bb77ee3c8c612a67744c4eca1ec"
+    },
+    {
+      "path": "assets/S06/rendered/slide-04.layout.json",
+      "bytes": 13826,
+      "sha256": "05a2f93efbe7b69e0ae3734562428eca9e83b9b5f0ada186d0f797eb0bd8ebc1"
+    },
+    {
+      "path": "assets/S06/rendered/slide-04.png",
+      "bytes": 29852,
+      "sha256": "14fbc4cb364122a9f1edca99d311eac00be2715032b139692df9ae566a4da326"
+    },
+    {
+      "path": "assets/S06/rendered/slide-05.layout.json",
+      "bytes": 7141,
+      "sha256": "4274fd1be6d0ef0f3b523602882bb53f9ded2e12e6053d4197b33e16dd4fd6f7"
+    },
+    {
+      "path": "assets/S06/rendered/slide-05.png",
+      "bytes": 37709,
+      "sha256": "769a01aa3c332fb2621656f22eab2b7f4529f6cbf563ddd4198fe46707984e6f"
+    },
+    {
+      "path": "assets/S06/slide-plan.json",
+      "bytes": 2692,
+      "sha256": "c189d687de432d1c1fb8aea3f0e397cd30af9f197103db3027ae26ca8dd592c5"
+    },
+    {
+      "path": "assets/S06/structure-audit.json",
+      "bytes": 1510,
+      "sha256": "d550afb3ab6fc2c005f97edd515aec070122f7b028a1cae463fd54f6abef9176"
+    },
+    {
+      "path": "assets/S06/visual-qa.json",
+      "bytes": 511,
+      "sha256": "0d0a4cad91363b42aaa01cb56dc0ddb0b26b0ed0805b16a53c100af0c021d271"
+    }
+  ],
+  "focused_tests": 3,
+  "quick_validate": "passed"
+}

@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0",
+  "skill_id": "S08",
+  "skill_name": "asset-contract",
+  "verification_status": "verified-local-provider-blocked",
+  "verified_scope": "local GLB fixture inspection and built Three.js viewer",
+  "verification_note": "Artifact structure and focused tests rechecked after path migration; browser observations and screenshots are historical, not rerun.",
+  "provider_scope": "blocked-not-verified",
+  "known_limitations": [],
+  "commands": [
+    "python -B code/skills/asset-contract/scripts/create_asset_contract.py --input code/skills/asset-contract/examples/triangle.request.json --output assets/S08/asset-contract.json",
+    "python -B code/skills/asset-contract/scripts/inspect_gltf.py --input assets/S08/model.glb --allowed-root assets/S08 --output assets/S08/inspection-glb.json"
+  ],
+  "key_results": [
+    "本地 glTF 2.0 / GLB：3 个顶点、1 个三角形",
+    "Three.js 查看器生产构建已保留",
+    "Provider 未调用、无回执，严格标记 blocked-not-verified"
+  ],
+  "artifact_count": 12,
+  "artifacts": [
+    {
+      "path": "assets/S08/asset-contract.json",
+      "bytes": 1120,
+      "sha256": "82e40257459968e9daa8db2e39c2951c58017017e58bf84cf3eb8f8eb9d2fedd"
+    },
+    {
+      "path": "assets/S08/browser-verification.json",
+      "bytes": 898,
+      "sha256": "9ccd98d1b5043b0c9894399d6bf2346fc65f268028d11fbbf7fcb9a723dd1e8f"
+    },
+    {
+      "path": "assets/S08/fixture-manifest.json",
+      "bytes": 783,
+      "sha256": "933d5dd1a8fbcfc3d7705348b29834aeb0bc408ae93191de9bdd72b52409f139"
+    },
+    {
+      "path": "assets/S08/inspection-glb.json",
+      "bytes": 416,
+      "sha256": "92205cf719c428a53b474de5a7d51c7ea9e938770b417cbd7612b22ac9d94fbb"
+    },
+    {
+      "path": "assets/S08/model.glb",
+      "bytes": 768,
+      "sha256": "62d767463ef17456eaa78e302dfe42c422cf02944ba162f9d056be292b86e2fc"
+    },
+    {
+      "path": "assets/S08/request.json",
+      "bytes": 481,
+      "sha256": "830d6cea9c4e77986f7e719b1da6d2025e8d047be3f9d6ca7129eb9d085d6353"
+    },
+    {
+      "path": "assets/S08/viewer-contract.json",
+      "bytes": 369,
+      "sha256": "043cb08c3f1925741c0ba721c029d38a47222cc1c1df636739fb39d7264c7c06"
+    },
+    {
+      "path": "assets/S08/viewer-dist/assets/index-BMIUMlrN.css",
+      "bytes": 1120,
+      "sha256": "811269741956fad223c8d6f5940c1f5535819403ab476da6feae45e8f5983838"
+    },
+    {
+      "path": "assets/S08/viewer-dist/assets/index-DRrBq3tY.js",
+      "bytes": 582138,
+      "sha256": "330ad9fe78902b92c0abec8e208d60395524475f9ab0e7cffc6d835b32648051"
+    },
+    {
+      "path": "assets/S08/viewer-dist/index.html",
+      "bytes": 1285,
+      "sha256": "4cf791c50dc49ad1789fdf7cdb8686e691c38d3702156691eab56ee7ccb3c70d"
+    },
+    {
+      "path": "assets/S08/viewer-dist/model.glb",
+      "bytes": 768,
+      "sha256": "62d767463ef17456eaa78e302dfe42c422cf02944ba162f9d056be292b86e2fc"
+    },
+    {
+      "path": "assets/S08/viewer-runtime.png",
+      "bytes": 188455,
+      "sha256": "18eb7ad371d265163aa17544c9e31a5f55f290ca3d6c1d69ce7dfc315bcc2987"
+    }
+  ],
+  "focused_tests": 7,
+  "quick_validate": "passed"
+}

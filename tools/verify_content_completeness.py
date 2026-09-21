@@ -57,9 +57,9 @@ REQUIRED_TERMS = {
 }
 
 THEORY_IMAGES = {
-    "01-逻辑证据与AI基础.md": "../assets/theory/ai-stack.png",
-    "04-Grill-Harness-Loop.md": "../assets/theory/loop.png",
-    "05-产品与系统架构.md": "../assets/theory/architecture.png",
+    "01-逻辑证据与AI基础.md": "../assets/diagrams/ai-stack.png",
+    "04-Grill-Harness-Loop.md": "../assets/diagrams/loop.png",
+    "05-产品与系统架构.md": "../assets/diagrams/architecture.png",
 }
 
 FORBIDDEN = (

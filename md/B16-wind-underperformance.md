@@ -32,11 +32,11 @@
 
 ## 解决方案
 
-![风机出力下偏核查](../assets/cases/case-16/16-work-productized.png)
+![风机出力下偏核查](../assets/B16/16-work-productized.png)
 
-![B16 需求流程](../assets/case-diagrams/B16-requirement.svg)
+![B16 需求流程](../assets/diagrams/B16-requirement.svg)
 
-![B16 技术架构](../assets/case-diagrams/B16-architecture.svg)
+![B16 技术架构](../assets/diagrams/B16-architecture.svg)
 
 中间把 134 台风机画在相对坐标平面上，突出 T007；下方只比较七个运行日的平均风速和平均有功功率。右侧先确认下偏和有效记录，再明确列出四个缺口：同群基线、限电指令、告警、维修记录。
 

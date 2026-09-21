@@ -18,11 +18,11 @@
 
 ## 解决方案
 
-![通信请求恢复核查](../assets/cases/case-10/10-work-productized.png)
+![通信请求恢复核查](../assets/B10/10-work-productized.png)
 
-![B10 需求流程](../assets/case-diagrams/B10-requirement.svg)
+![B10 需求流程](../assets/diagrams/B10-requirement.svg)
 
-![B10 技术架构](../assets/case-diagrams/B10-architecture.svg)
+![B10 技术架构](../assets/diagrams/B10-architecture.svg)
 
 左侧目录按结果状态分组，也能按任务号、类别或地区搜索。中间用三段调用链展示“本地已登记—响应未取得—外部效果未知”，下方表格把观察、材料和结论分开。右侧完成实际操作：选择查询目标，记录核对结果和材料编号；如果仍然查不到，就说明原因并保留待核对。
 

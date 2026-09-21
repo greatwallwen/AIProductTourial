@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "skill_id": "S03",
+  "skill_name": "metric-brief",
+  "verification_status": "verified",
+  "verified_scope": "deterministic member experiment metrics",
+  "verification_note": "Artifact structure and focused tests rechecked after path migration; browser observations and screenshots are historical, not rerun.",
+  "provider_scope": null,
+  "known_limitations": [],
+  "commands": [
+    "python -B code/skills/metric-brief/scripts/build_member_brief.py --input dataset/02-member-value-experiment/case.csv --allowed-root dataset --coupon-amount-cny 8 --target-segment 成长 --metrics-output assets/S03/metrics.json --brief-output assets/S03/business-brief.md"
+  ],
+  "key_results": [
+    "5,000 名会员；成长分层 1,250 名",
+    "8 元全量发券名义上限为 10,000 元",
+    "收入与最近购买间隔明确不可计算"
+  ],
+  "artifact_count": 2,
+  "artifacts": [
+    {
+      "path": "assets/S03/business-brief.md",
+      "bytes": 1400,
+      "sha256": "d029e2dbfeb473651d085c0c4b34bc05a68e6a94b966776079bc2da89e612f4d"
+    },
+    {
+      "path": "assets/S03/metrics.json",
+      "bytes": 5937,
+      "sha256": "a0bfc5f590dbdff16513b51d8456075a06b78e3c9c767e5c07a62d0817fccd91"
+    }
+  ],
+  "focused_tests": 3,
+  "quick_validate": "passed"
+}

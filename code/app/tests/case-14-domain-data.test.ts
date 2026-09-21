@@ -9,6 +9,7 @@ import { getCaseDefinition } from "../../cases/registry";
 const definition = getCaseDefinition("14")!;
 const dataset = loadDatasetProjection(definition);
 const featured = dataset.rows.find((row) => row.event_id === "FQ-0016")!;
+const featuredWindow = dataset.sceneRows.filter((row) => String(row.monitor_hour) >= "2017-03-30 08:00:00" && String(row.monitor_hour) <= "2017-04-02 07:00:00");
 
 const review = {
   taskId: "FLOT-FQ-0016-V1",
@@ -72,10 +73,10 @@ describe("case 14 event and dataset contract", () => {
       monitor_hour: "2017-04-02 07:00:00",
       priority_cell_ids: "3|1|2",
     });
-    expect(dataset.sceneRows).toHaveLength(72);
-    expect(dataset.sceneRows[0]?.monitor_hour).toBe("2017-03-30 08:00:00");
-    expect(dataset.sceneRows.at(-1)?.monitor_hour).toBe("2017-04-02 07:00:00");
-    const hours = dataset.sceneRows.map((row) => Date.parse(`${String(row.monitor_hour).replace(" ", "T")}+08:00`));
+    expect(featuredWindow).toHaveLength(72);
+    expect(featuredWindow[0]?.monitor_hour).toBe("2017-03-30 08:00:00");
+    expect(featuredWindow.at(-1)?.monitor_hour).toBe("2017-04-02 07:00:00");
+    const hours = featuredWindow.map((row) => Date.parse(`${String(row.monitor_hour).replace(" ", "T")}+08:00`));
     expect(hours.slice(1).every((hour, index) => hour - hours[index]! === 3_600_000)).toBe(true);
     expect(String(featured.dominant_deviation)).toContain("3号浮选柱风量");
     expect(String(featured.dominant_deviation)).not.toContain("5号浮选柱风量");

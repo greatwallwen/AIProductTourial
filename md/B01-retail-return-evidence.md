@@ -36,11 +36,11 @@
 
 ## 解决方案
 
-![退货证据核验台](../assets/cases/case-01/01-work-productized.png)
+![退货证据核验台](../assets/B01/01-work-productized.png)
 
-<video src="../assets/case-diagrams/B01-requirement.webm" controls muted loop></video>
+<video src="../assets/diagrams/B01-requirement.webm" controls muted loop></video>
 
-<video src="../assets/case-diagrams/B01-architecture.webm" controls muted loop></video>
+<video src="../assets/diagrams/B01-architecture.webm" controls muted loop></video>
 
 页面分成四块：
 

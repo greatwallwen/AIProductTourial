@@ -34,11 +34,11 @@
 
 ## 解决方案
 
-![BT-0044 主汽低温事件核查](../assets/cases/case-18/18-work-productized.png)
+![BT-0044 主汽低温事件核查](../assets/B18/18-work-productized.png)
 
-![B18 需求流程](../assets/case-diagrams/B18-requirement.svg)
+![B18 需求流程](../assets/diagrams/B18-requirement.svg)
 
-![B18 技术架构](../assets/case-diagrams/B18-architecture.svg)
+![B18 技术架构](../assets/diagrams/B18-architecture.svg)
 
 页面左侧列事件，中间把出口测点放回锅炉场景，并只画 `BT-0044` 的 25 个分钟点；阀位、流量和分段温度统一显示“未接入”。右侧只保留一次检查选择：出口测温链路、末级过热器出口段或减温水调节段。运行工程师提交后，检查段和资料清单被冻结，再由运行主管确认。
 

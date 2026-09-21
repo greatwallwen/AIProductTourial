@@ -12,10 +12,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[4]
 SCRIPT = ROOT / "code/labs/three-map-comparison/build_s11_comparison.py"
-CHINA = ROOT / "assets/skill-cases/S11/data/china.json"
-ZHEJIANG = ROOT / "assets/skill-cases/S11/data/zhejiang.json"
+CHINA = ROOT / "assets/S11/data/china.json"
+ZHEJIANG = ROOT / "assets/S11/data/zhejiang.json"
 THREE = ROOT / "code/node_modules/three/build/three.module.js"
-IMAGE = ROOT / "code/app/public/case-assets/case-20/china-topographic-map.jpg"
+IMAGE = ROOT / "assets/S11/A-css-fake/assets/china-topographic-map.jpg"
 
 
 def sha256(path: Path) -> str:

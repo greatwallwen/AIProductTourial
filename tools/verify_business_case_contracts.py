@@ -65,9 +65,9 @@ def main() -> int:
             errors.append(f"{case_id} missing a concrete error symptom")
 
         expected_assets = {
-            "screenshot": rf"\.\./assets/cases/case-{int(case_id[1:]):02d}/{int(case_id[1:]):02d}-work-productized\.png",
-            "requirement": rf"\.\./assets/case-diagrams/{case_id}-requirement\.svg",
-            "architecture": rf"\.\./assets/case-diagrams/{case_id}-architecture\.svg",
+            "screenshot": rf"\.\./assets/B{int(case_id[1:]):02d}/{int(case_id[1:]):02d}-work-productized\.png",
+            "requirement": rf"\.\./assets/diagrams/{case_id}-requirement\.svg",
+            "architecture": rf"\.\./assets/diagrams/{case_id}-architecture\.svg",
         }
         for kind, pattern in expected_assets.items():
             matches = re.findall(pattern, block)
@@ -88,7 +88,7 @@ def main() -> int:
             errors.append(f"{case_id} expected one focused-test link, got {len(test_links)}")
 
         for suffix in ("requirement", "architecture"):
-            svg = ROOT / "assets" / "case-diagrams" / f"{case_id}-{suffix}.svg"
+            svg = ROOT / "assets" / "diagrams" / f"{case_id}-{suffix}.svg"
             try:
                 root = ET.parse(svg).getroot()
             except (ET.ParseError, OSError) as error:

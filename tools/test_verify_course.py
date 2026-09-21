@@ -12,13 +12,13 @@ class CourseVerificationTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             for case_id in ("01", "02"):
-                case_dir = root / "assets" / "cases" / f"case-{case_id}"
+                case_dir = root / "assets" / f"B{case_id}"
                 case_dir.mkdir(parents=True)
                 (case_dir / f"{case_id}-work-productized.png").write_bytes(
                     b"\x89PNG\r\n\x1a\n"
                 )
             text = "\n".join(
-                f"![界面](../assets/cases/case-{case_id}/{case_id}-work-productized.png)"
+                f"![界面](../assets/B{case_id}/{case_id}-work-productized.png)"
                 for case_id in ("01", "02")
             )
             errors: list[str] = []
@@ -28,12 +28,12 @@ class CourseVerificationTest(unittest.TestCase):
     def test_rejects_visible_sha(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
-            screenshot = root / "assets" / "cases" / "case-01" / "01-work-productized.png"
+            screenshot = root / "assets" / "B01" / "01-work-productized.png"
             screenshot.parent.mkdir(parents=True)
             screenshot.write_bytes(b"png")
             errors: list[str] = []
             verify_screenshot_links(
-                "![界面](../assets/cases/case-01/01-work-productized.png)\nSHA-256",
+                "![界面](../assets/B01/01-work-productized.png)\nSHA-256",
                 errors,
                 root=root,
                 expected_count=1,

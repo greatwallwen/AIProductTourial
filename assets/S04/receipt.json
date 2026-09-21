@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "skill_id": "S04",
+  "skill_name": "product-opportunity-map",
+  "verification_status": "verified",
+  "verified_scope": "traceable JSON and editable SVG",
+  "verification_note": "Artifact structure and focused tests rechecked after path migration; browser observations and screenshots are historical, not rerun.",
+  "provider_scope": null,
+  "known_limitations": [],
+  "commands": [
+    "python -B code/skills/product-opportunity-map/scripts/build_opportunity_map.py --input dataset/S-agent-skill-cases/case.csv --allowed-root dataset --json-output assets/S04/opportunity-map.json --svg-output assets/S04/opportunity-map.svg"
+  ],
+  "key_results": [
+    "4 条访谈流程记录生成 5 个节点、5 条关系",
+    "每个节点都保留来源引用"
+  ],
+  "artifact_count": 2,
+  "artifacts": [
+    {
+      "path": "assets/S04/opportunity-map.json",
+      "bytes": 5429,
+      "sha256": "a2c12e022f5443e4be51c1e1b66a1454bbc0925a30d50124284687e171c894dd"
+    },
+    {
+      "path": "assets/S04/opportunity-map.svg",
+      "bytes": 4049,
+      "sha256": "f017d94df37ff39c59128a789b7f33c07ecc2e902afcf597f9012137a83bf577"
+    }
+  ],
+  "focused_tests": 5,
+  "quick_validate": "passed"
+}

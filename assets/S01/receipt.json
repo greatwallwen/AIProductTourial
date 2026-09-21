@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "skill_id": "S01",
+  "skill_name": "capability-router",
+  "verification_status": "verified",
+  "verified_scope": "allowlisted routing and stop behavior",
+  "verification_note": "Artifact structure and focused tests rechecked after path migration; browser observations and screenshots are historical, not rerun.",
+  "provider_scope": null,
+  "known_limitations": [],
+  "commands": [
+    "python -B code/skills/capability-router/scripts/route_task.py --input <example.json> --output assets/S01/<decision.json>"
+  ],
+  "key_results": [
+    "5 个任务：3 个路由成功，2 个按合同停止"
+  ],
+  "artifact_count": 5,
+  "artifacts": [
+    {
+      "path": "assets/S01/01-data-profile.decision.json",
+      "bytes": 228,
+      "sha256": "9ed954b6cb73e60d9955576772298b518af7a9ef199b4ddd4a483b14ef2ee2cc"
+    },
+    {
+      "path": "assets/S01/02-metric-brief.decision.json",
+      "bytes": 228,
+      "sha256": "8d884a91bd84ee218b614567921b0b88faa215a9a4b7ead40dfc99991d5ebb54"
+    },
+    {
+      "path": "assets/S01/03-missing-input.decision.json",
+      "bytes": 279,
+      "sha256": "7c2d287bd94ced5fec246958e571891dd32ecda724cd7177242895ebe4b8cf85"
+    },
+    {
+      "path": "assets/S01/04-unauthorized-delete.decision.json",
+      "bytes": 223,
+      "sha256": "08191c9097f2b263fe420aeb9f59c60d91916ecdecd5093b085a58cd017f3efd"
+    },
+    {
+      "path": "assets/S01/05-opportunity-map.decision.json",
+      "bytes": 250,
+      "sha256": "90fec17d95e057b6fe5f5c79dd9b94f98234809cf95923508549288044915fa7"
+    }
+  ],
+  "focused_tests": 6,
+  "quick_validate": "passed"
+}

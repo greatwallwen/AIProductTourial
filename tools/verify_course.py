@@ -88,11 +88,11 @@ def verify_screenshot_links(
 ) -> None:
     if re.search(r"sha-?256|\bsha256\b", text, flags=re.IGNORECASE):
         errors.append("Markdown must not expose SHA values")
-    paths = re.findall(r"!\[[^\]]*\]\((\.\./assets/cases/[^)]+\.png)\)", text)
+    paths = re.findall(r"!\[[^\]]*\]\((\.\./assets/[^)]+\.png)\)", text)
     if len(set(paths)) < expected_count:
         errors.append(f"Markdown screenshot links {len(set(paths))} < {expected_count}")
     for relative in sorted(set(paths)):
-        path = (root / "md" / "案例" / relative).resolve()
+        path = (root / "md" / relative).resolve()
         if root.resolve() not in path.parents:
             errors.append(f"screenshot path escapes course root: {relative}")
         elif not path.is_file():

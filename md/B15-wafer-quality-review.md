@@ -30,11 +30,11 @@
 
 ## 解决方案
 
-![半导体生产记录复测](../assets/cases/case-15/15-work-productized.png)
+![半导体生产记录复测](../assets/B15/15-work-productized.png)
 
-![B15 需求流程](../assets/case-diagrams/B15-requirement.svg)
+![B15 需求流程](../assets/diagrams/B15-requirement.svg)
 
-![B15 技术架构](../assets/case-diagrams/B15-architecture.svg)
+![B15 技术架构](../assets/diagrams/B15-architecture.svg)
 
 左侧是 24 条演示观测队列，并明确标出完整数据集共有 1,567 条；中间一次只聚焦一个通道，覆盖率、缺失量和当前原值放在同一视区。下方的 12 通道矩阵同时负责切换查看和选择复测对象，不再用第二套卡片重复选择。右侧把工作收成四步：核对记录、选择通道、保存申请、主管确认。
 

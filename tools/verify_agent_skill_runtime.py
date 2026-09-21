@@ -16,9 +16,9 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 SKILLS_ROOT = ROOT / "code" / "skills"
-EVIDENCE_ROOT = ROOT / "evidence" / "runtime" / "agent-skills"
-REPORT_JSON = EVIDENCE_ROOT / "report.json"
-REPORT_MD = EVIDENCE_ROOT / "report.md"
+EVIDENCE_ROOT = ROOT / "assets"
+REPORT_JSON = EVIDENCE_ROOT / "skill-results" / "report.json"
+REPORT_MD = EVIDENCE_ROOT / "skill-results" / "report.md"
 QUICK_VALIDATE = Path(os.environ.get("CODEX_SKILL_QUICK_VALIDATE", ROOT / "tools" / "validate_skill.py"))
 
 SKILLS = {
@@ -310,7 +310,7 @@ VERIFY_FUNCTIONS = {
 def artifact_rows(folder: Path) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     for path in sorted(folder.rglob("*")):
-        if not path.is_file() or path.name == "receipt.json":
+        if not path.is_file() or path.name in {"receipt.json", "runtime-receipt.json"}:
             continue
         rows.append(
             {
@@ -449,14 +449,14 @@ def make_report(focused: dict[str, Any] | None) -> dict[str, Any]:
 
 def receipt_commands(skill_id: str) -> list[str]:
     return {
-        "S01": ["python -B code/skills/capability-router/scripts/route_task.py --input <example.json> --output runtime/agent-skills/S01/<decision.json>"],
-        "S02": ["python -B code/skills/data-profile/scripts/profile_csv.py --input dataset/06-beijing-air-quality-audit/case.csv --allowed-root dataset --json-output runtime/agent-skills/S02/profile.json --markdown-output runtime/agent-skills/S02/profile.md"],
-        "S03": ["python -B code/skills/metric-brief/scripts/build_member_brief.py --input dataset/02-member-value-experiment/case.csv --allowed-root dataset --coupon-amount-cny 8 --target-segment 成长 --metrics-output runtime/agent-skills/S03/metrics.json --brief-output runtime/agent-skills/S03/business-brief.md"],
-        "S04": ["python -B code/skills/product-opportunity-map/scripts/build_opportunity_map.py --input dataset/S-agent-skill-cases/case.csv --allowed-root dataset --json-output runtime/agent-skills/S04/opportunity-map.json --svg-output runtime/agent-skills/S04/opportunity-map.svg"],
-        "S05": ["python -B code/skills/poster-recipe/scripts/build_poster.py --input code/skills/poster-recipe/examples/rainy-bookstore-brief.json --allowed-root code/skills/poster-recipe/examples --recipe-output assets/skill-cases/S05/poster-recipes.json --svg-output assets/skill-cases/S05/poster.svg", "python -B code/skills/poster-recipe/scripts/build_prompt_comparison.py --input code/skills/poster-recipe/examples/rainy-bookstore-brief.json --allowed-root code/skills/poster-recipe/examples --output-dir assets/skill-cases/S05/comparison"],
-        "S06": ["node code/skills/slide-plan/scripts/build_deck.mjs --workspace <D-drive-artifact-workspace> --input code/skills/slide-plan/examples/air-quality-outline.md --allowed-root code/skills/slide-plan/examples --plan-output assets/skill-cases/S06/slide-plan.json --pptx-output assets/skill-cases/S06/presentation.pptx --render-dir assets/skill-cases/S06/rendered --qa-output assets/skill-cases/S06/visual-qa.json", "python -B code/skills/slide-plan/scripts/audit_pptx.py --input assets/skill-cases/S06/presentation.pptx --plan assets/skill-cases/S06/slide-plan.json --report-output assets/skill-cases/S06/structure-audit.json"],
+        "S01": ["python -B code/skills/capability-router/scripts/route_task.py --input <example.json> --output assets/S01/<decision.json>"],
+        "S02": ["python -B code/skills/data-profile/scripts/profile_csv.py --input dataset/06-beijing-air-quality-audit/case.csv --allowed-root dataset --json-output assets/S02/profile.json --markdown-output assets/S02/profile.md"],
+        "S03": ["python -B code/skills/metric-brief/scripts/build_member_brief.py --input dataset/02-member-value-experiment/case.csv --allowed-root dataset --coupon-amount-cny 8 --target-segment 成长 --metrics-output assets/S03/metrics.json --brief-output assets/S03/business-brief.md"],
+        "S04": ["python -B code/skills/product-opportunity-map/scripts/build_opportunity_map.py --input dataset/S-agent-skill-cases/case.csv --allowed-root dataset --json-output assets/S04/opportunity-map.json --svg-output assets/S04/opportunity-map.svg"],
+        "S05": ["python -B code/skills/poster-recipe/scripts/build_poster.py --input code/skills/poster-recipe/examples/rainy-bookstore-brief.json --allowed-root code/skills/poster-recipe/examples --recipe-output assets/S05/poster-recipes.json --svg-output assets/S05/poster.svg", "python -B code/skills/poster-recipe/scripts/build_prompt_comparison.py --input code/skills/poster-recipe/examples/rainy-bookstore-brief.json --allowed-root code/skills/poster-recipe/examples --output-dir assets/S05/comparison"],
+        "S06": ["node code/skills/slide-plan/scripts/build_deck.mjs --workspace <D-drive-artifact-workspace> --input code/skills/slide-plan/examples/air-quality-outline.md --allowed-root code/skills/slide-plan/examples --plan-output assets/S06/slide-plan.json --pptx-output assets/S06/presentation.pptx --render-dir assets/S06/rendered --qa-output assets/S06/visual-qa.json", "python -B code/skills/slide-plan/scripts/audit_pptx.py --input assets/S06/presentation.pptx --plan assets/S06/slide-plan.json --report-output assets/S06/structure-audit.json"],
         "S07": ["node code/skills/pixijs-game-contract/scripts/audit_game_contract.mjs code/skills/pixijs-game-contract/examples/beijing-clean-dispatch", "Playwright Chromium against Vite production dist; receipt and screenshot copied into S07"],
-        "S08": ["python -B code/skills/asset-contract/scripts/create_asset_contract.py --input code/skills/asset-contract/examples/triangle.request.json --output runtime/agent-skills/S08/asset-contract.json", "python -B code/skills/asset-contract/scripts/inspect_gltf.py --input runtime/agent-skills/S08/model.glb --allowed-root runtime/agent-skills/S08 --output runtime/agent-skills/S08/inspection-glb.json"],
+        "S08": ["python -B code/skills/asset-contract/scripts/create_asset_contract.py --input code/skills/asset-contract/examples/triangle.request.json --output assets/S08/asset-contract.json", "python -B code/skills/asset-contract/scripts/inspect_gltf.py --input assets/S08/model.glb --allowed-root assets/S08 --output assets/S08/inspection-glb.json"],
     }[skill_id]
 
 
@@ -469,6 +469,7 @@ def write_reports(report: dict[str, Any]) -> None:
             "skill_name": skill["skill_name"],
             "verification_status": skill["verification_status"],
             "verified_scope": skill["verified_scope"],
+            "verification_note": "Artifact structure and focused tests rechecked after path migration; browser observations and screenshots are historical, not rerun.",
             "provider_scope": skill.get("provider_scope"),
             "known_limitations": skill.get("known_limitations", []),
             "commands": receipt_commands(skill["skill_id"]),
@@ -478,7 +479,7 @@ def write_reports(report: dict[str, Any]) -> None:
             "focused_tests": EXPECTED_TESTS[skill["skill_id"]],
             "quick_validate": "passed",
         }
-        (EVIDENCE_ROOT / skill["skill_id"] / "receipt.json").write_text(
+        (EVIDENCE_ROOT / skill["skill_id"] / ("runtime-receipt.json" if skill["skill_id"] in {"S05", "S06"} else "receipt.json")).write_text(
             json.dumps(receipt, ensure_ascii=False, indent=2) + "\n",
             encoding="utf-8",
         )
@@ -495,7 +496,7 @@ def write_reports(report: dict[str, Any]) -> None:
     ]
     for skill in report["skills"]:
         result = "；".join(skill["key_results"])
-        lines.append(f"| {skill['skill_id']} {skill['title']} | {result} | [{skill['artifact_count']} 个文件]({skill['skill_id']}/receipt.json) |")
+        lines.append(f"| {skill['skill_id']} {skill['title']} | {result} | [{skill['artifact_count']} 个文件](../{skill['skill_id']}/{"runtime-receipt.json" if skill["skill_id"] in {"S05", "S06"} else "receipt.json"}) |")
     lines.extend(
         [
             "",

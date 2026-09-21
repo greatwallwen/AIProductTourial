@@ -1,6 +1,6 @@
 ## 2. 理念框架（会 Loop 的产品工程）〔篇一 · 转型与操作模型〕
 
-![三层 Loop](../assets/knowledge-diagrams/fig_ideology_loops.svg)
+![三层 Loop](../assets/diagrams/fig_ideology_loops.svg)
 
 上一章你认识了 AI 的「零件」——Token、上下文、Agent。可零件不会自己干活：真正把它们组织成「能无人值守跑一整晚、还不跑偏」系统的，是**会 Loop 的工程**。这一章讲这套骨架——它和你电脑里到点就跑死脚本的 cron 差在哪，为什么「传感器」决定它收敛得快还是慢。
 
@@ -52,9 +52,9 @@
 
 > 传感器分确定性校验（管有没有）和概率性评测evals（管好不好）——这对应**证伪思维**的两层：确定性校验是"找反例证伪"（不通过即红），概率性评测是"量化结论强度"（必然/可能/排他）。"平庸提示+强验证"胜过"好提示+弱验证"，本质上是证伪思维优于证实思维——找反例比找正例更有效。
 
-![评测鸿沟：语料有≠检索中（案例07实测）](../assets/knowledge-diagrams/fig_eval_gap.svg)
+![评测鸿沟：语料有≠检索中（案例07实测）](../assets/diagrams/fig_eval_gap.svg)
 
-![控制论反馈闭环](../assets/knowledge-diagrams/fig_loop_cybernetic.svg)
+![控制论反馈闭环](../assets/diagrams/fig_loop_cybernetic.svg)
 
 ### 2.4 Loop 六件套
 > <img src="../assets/vendor/lucide/built/check-circle.svg" width="14" alt="" style="vertical-align:-2px" /> **必读** ｜ 进阶 ｜ 关键词：**触发 · 隔离 · 技能 · 连接 · 子代理 · 记忆**（自转 Loop 的六件基础设施）

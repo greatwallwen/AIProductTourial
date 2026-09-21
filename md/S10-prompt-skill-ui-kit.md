@@ -14,10 +14,10 @@
 
 | 组 | 唯一变化 | 当前证据 |
 |---|---|---|
-| A 普通 Prompt | 只有“做一个好看的通信投诉后台” | [完整 Prompt](../assets/skill-cases/S10/prompts/A-ordinary.txt)，未做独立模型调用 |
-| B 结构化 Prompt | 补齐布局、状态、响应式、可访问性和禁止项 | [完整 Prompt](../assets/skill-cases/S10/prompts/B-structured.txt)，未做独立模型调用 |
-| C `ui-workbench` Skill | 用固定工作流、状态矩阵和浏览器验收生成页面 | [实际页面](../assets/skill-cases/S10/skill-only/index.html) |
-| D `ui-workbench` + Tabler | 保持 C 的内容和交互，只增加固定版本 UI Kit | [实际页面](../assets/skill-cases/S10/tabler/index.html) |
+| A 普通 Prompt | 只有“做一个好看的通信投诉后台” | [完整 Prompt](../assets/S10/prompts/A-ordinary.txt)，未做独立模型调用 |
+| B 结构化 Prompt | 补齐布局、状态、响应式、可访问性和禁止项 | [完整 Prompt](../assets/S10/prompts/B-structured.txt)，未做独立模型调用 |
+| C `ui-workbench` Skill | 用固定工作流、状态矩阵和浏览器验收生成页面 | [实际页面](../assets/S10/skill-only/index.html) |
+| D `ui-workbench` + Tabler | 保持 C 的内容和交互，只增加固定版本 UI Kit | [实际页面](../assets/S10/tabler/index.html) |
 
 A/B 可以真实比较“指令写进了什么”，不能比较“页面谁更好”，因为本轮没有启动两个隔离模型会话分别生成页面。把当前 Agent 在已经读过 Skill 后补写的 HTML 冒充普通 Prompt 输出，会污染实验，反而不真实。
 
@@ -34,7 +34,7 @@ A/B 可以真实比较“指令写进了什么”，不能比较“页面谁更�
 - “已生效 / 未生效”必须同时填写结果摘要和证据编号；
 - 演示按钮只更新页面状态，不向任何外部系统发请求。
 
-![Skill-only 桌面工作台](../assets/skill-cases/S10/browser-check/skill-only-desktop.png)
+![Skill-only 桌面工作台](../assets/S10/browser-check/skill-only-desktop.png)
 
 ## 4. Skill 实际做了什么
 
@@ -48,7 +48,7 @@ D 组使用 `@tabler/core@1.4.0` 的官方 CSS。项目副本与官方 npm tarba
 
 Tabler 是 UI Kit，不是 Skill。它没有决定“外部效果未知时要停下来”，也没有替页面补齐证据门槛；这些来自 Skill。它实际改善的是按钮、徽标、边框、表格和间距的一致性，代价是额外引入 536,141 字节 CSS。
 
-![Tabler 桌面工作台](../assets/skill-cases/S10/browser-check/tabler-desktop.png)
+![Tabler 桌面工作台](../assets/S10/browser-check/tabler-desktop.png)
 
 ## 6. 真实浏览器检查
 
@@ -84,7 +84,7 @@ python3 -B code/skills/ui-workbench/scripts/build_ui_comparison.py \
   --input dataset/10-telecom-complaint-orchestration/case.csv \
   --allowed-root dataset/10-telecom-complaint-orchestration \
   --tabler-css vendor/tabler/1.4.0/tabler.min.css \
-  --output-dir assets/skill-cases/S10
+  --output-dir assets/S10
 ```
 
-生成回执见 [receipt.json](../assets/skill-cases/S10/receipt.json)，浏览器回执见 [browser-verification.json](../assets/skill-cases/S10/browser-check/browser-verification.json)。
+生成回执见 [receipt.json](../assets/S10/receipt.json)，浏览器回执见 [browser-verification.json](../assets/S10/browser-check/browser-verification.json)。

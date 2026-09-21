@@ -182,7 +182,7 @@ export function PvLossWorkbench(props: CaseWorkbenchProps) {
   const sameDate = useMemo(() => props.sceneRows.filter((item) => displayText(item.date) === currentDate), [props.sceneRows, currentDate]);
   const availableStationIds = useMemo(() => new Set(sameDate.map((item) => displayText(item.station_id))), [sameDate]);
   const stations = stationFacts.length ? stationFacts : sameDate;
-  const terrainStations = stations.map((s) => ({ id: displayText(s.station_id), capacityMw: s.capacity_mw }));
+  const terrainStations = stations.map((s) => ({ id: displayText(s.station_id), capacityMw: displayText(s.capacity_mw) }));
   const dates = history.map((item) => displayText(item.date));
   const dateIndex = Math.max(0, dates.indexOf(currentDate));
   const recentEnd = dates.indexOf(currentDate) >= 0 ? dates.indexOf(currentDate) + 1 : history.length;

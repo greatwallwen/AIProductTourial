@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { extname, resolve, sep } from "node:path";
 
-const assetRoot = resolve(process.cwd(), "../../assets/cases");
+const assetRoot = resolve(process.cwd(), "../../assets");
 const contentTypes: Record<string, string> = {
   ".avif": "image/avif",
   ".jpeg": "image/jpeg",
@@ -15,7 +15,10 @@ export async function GET(
   { params }: { params: Promise<{ path: string[] }> },
 ) {
   const { path } = await params;
-  const target = resolve(assetRoot, ...path);
+  if (!/^case-\d{2}$/.test(path[0] ?? "")) {
+    return new Response("Not found", { status: 404 });
+  }
+  const target = resolve(assetRoot, path[0].replace("case-", "B"), ...path.slice(1));
   if (!target.startsWith(`${assetRoot}${sep}`)) {
     return new Response("Not found", { status: 404 });
   }

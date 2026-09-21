@@ -32,11 +32,11 @@
 
 ## 解决方案
 
-![连续高硅事件调查台](../assets/cases/case-14/14-work-productized.png)
+![连续高硅事件调查台](../assets/B14/14-work-productized.png)
 
-![B14 需求流程](../assets/case-diagrams/B14-requirement.svg)
+![B14 需求流程](../assets/diagrams/B14-requirement.svg)
 
-![B14 技术架构](../assets/case-diagrams/B14-architecture.svg)
+![B14 技术架构](../assets/diagrams/B14-architecture.svg)
 
 左侧按事件而不是零散小时组织调查；中间把七列槽作为工艺定位图，并把 3、1、2 号槽标成“优先核对”；底部用相互独立的量纲显示精矿硅、矿浆流量和 pH；右侧形成一张可执行核查单。工程师提交后，事件、窗口、核查项、负责人和期限一起冻结，主管不能在下发时偷换调查范围。
 
