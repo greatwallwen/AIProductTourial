@@ -9,8 +9,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 LAB = ROOT / "code" / "labs" / "advanced-agent-lab"
-OFFLINE = ROOT / "evidence" / "runtime" / "advanced-agent-lab" / "offline"
-LIVE = ROOT / "evidence" / "runtime" / "advanced-agent-lab" / "qwen-plus"
+OFFLINE = ROOT / "assets" / "advanced-agent" / "offline"
+LIVE = ROOT / "assets" / "advanced-agent" / "qwen-plus"
 CHAPTER = ROOT / "md" / "03-Agent与Skill工程.md"
 
 

@@ -27,7 +27,7 @@ DDD 第一原则不是画图，是**说同一种话**：业务叫「案例」，
 > 聚合根不变量是逻辑一致性在聚合层面的落地：所有子对象必须在同一时刻满足同一组约束，不能出现「fields 说有三个字段但 metricSpec 引用了第四个」——条件被偷换，一致性就破了。守卫（verify）的存在就是不断检查「当前条件是否一致」。
 ```
 
-![聚合根=一致性边界（案例聚合真实结构）](../assets/knowledge-diagrams/fig_aggregate_root.svg)
+![聚合根=一致性边界（案例聚合真实结构）](../assets/diagrams/fig_aggregate_root.svg)
 
 ### 8.3 领域服务与领域事件
 > <img src="../assets/vendor/lucide/built/check-circle.svg" width="14" alt="" style="vertical-align:-2px" /> **必读** ｜ 进阶 ｜ 关键词：**无状态动词** · **事件=过去时事实**

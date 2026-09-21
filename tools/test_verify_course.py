@@ -28,12 +28,12 @@ class CourseVerificationTest(unittest.TestCase):
     def test_rejects_visible_sha(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
-            screenshot = root / "assets" / "cases" / "case-01" / "01-work-productized.png"
+            screenshot = root / "assets" / "B01" / "01-work-productized.png"
             screenshot.parent.mkdir(parents=True)
             screenshot.write_bytes(b"png")
             errors: list[str] = []
             verify_screenshot_links(
-                "![界面](../assets/cases/case-01/01-work-productized.png)\nSHA-256",
+                "![界面](../assets/B01/01-work-productized.png)\nSHA-256",
                 errors,
                 root=root,
                 expected_count=1,

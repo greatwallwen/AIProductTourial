@@ -28,11 +28,11 @@
 
 ## 解决方案
 
-![地铁空压机检索辅助排查](../assets/cases/case-09/09-work-productized.png)
+![地铁空压机检索辅助排查](../assets/B09/09-work-productized.png)
 
-![B09 需求流程](../assets/case-diagrams/B09-requirement.svg)
+![B09 需求流程](../assets/diagrams/B09-requirement.svg)
 
-![B09 技术架构](../assets/case-diagrams/B09-architecture.svg)
+![B09 技术架构](../assets/diagrams/B09-architecture.svg)
 
 左侧设备示意只标出 TP2、油温、电机电流三个测点，并明确“非真实几何”。下方把断档前、352 秒空白、恢复后三段并排。右侧是三道门禁：窗口与样本、资料来源、人工复核。断档片段的申请表单保持锁定；选择恢复后的连续片段并完成资料核对后，表单才解锁。
 

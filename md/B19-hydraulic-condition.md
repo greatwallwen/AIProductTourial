@@ -30,11 +30,11 @@
 
 ## 解决方案
 
-![液压动力单元检查排序](../assets/cases/case-19/19-work-productized.png)
+![液压动力单元检查排序](../assets/B19/19-work-productized.png)
 
-![B19 需求流程](../assets/case-diagrams/B19-requirement.svg)
+![B19 需求流程](../assets/diagrams/B19-requirement.svg)
 
-![B19 技术架构](../assets/case-diagrams/B19-architecture.svg)
+![B19 技术架构](../assets/diagrams/B19-architecture.svg)
 
 页面把 7 项本循环读数、4 个部件状态、人工检查顺序和最近 20 次记录放在同一屏。三个重点部件明确标为“同级、尚未人工确认”，避免把数组顺序误当成风险排名。默认画面是通用设备语境示意；用户主动打开“近似三维定位”时才加载三维部件，只用于选择，不表示真实管路、测点或数字孪生。
 

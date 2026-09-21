@@ -18,11 +18,11 @@
 | `md` | 教程与案例，文件平铺 |
 | `code` | 应用与实验代码 |
 | `dataset` | 课堂数据与来源说明 |
-| `assets` | 图形、媒体与截图 |
+| `assets` | 按 B/S/L 案例归集的素材、结果与回执；公共图在 diagrams |
 | `skills` | 技能资料；工程约定并入 [工程规范](md/11-工程规范与约束.md) |
 | `tools` | 校验和生成工具 |
-| `runtime`、`sources` | 运行产物与来源记录 |
+| `sources` | 来源记录 |
 
 数据的真实、合成或受限属性见各案例的 `source.json`。运行截图不代表已接入企业系统。
 
-`runtime/` 保存教程引用的实验产物和回执，不是可整目录删除的缓存。`run.bat` 和 `run.sh` 分别提供 Windows 与 macOS/Linux 的安装、构建和启动入口。
+实验产物和回执已归入 `assets/`。`run.bat` 和 `run.sh` 分别提供 Windows 与 macOS/Linux 的安装、构建和启动入口。

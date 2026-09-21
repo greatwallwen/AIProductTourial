@@ -11,7 +11,7 @@ from typing import Any
 
 COURSE_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_MANIFEST_DIR = COURSE_ROOT / "dataset" / "P-prompt-curriculum"
-DEFAULT_RECEIPT_DIR = COURSE_ROOT / "evidence" / "runtime" / "prompt-curriculum"
+DEFAULT_RECEIPT_DIR = COURSE_ROOT / "assets" / "prompt-experiments"
 EXPECTED_IDS = [f"P{index:02d}" for index in range(1, 9)]
 SENSITIVE_KEY_NAMES = {"authorization", "apikey", "api_key", "dashscope_api_key"}
 SENSITIVE_VALUE_PATTERN = re.compile(r"(?i)\bauthorization\b|\bbearer\s+\S+|DASHSCOPE_API_KEY")

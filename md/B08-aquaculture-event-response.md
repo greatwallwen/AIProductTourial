@@ -28,11 +28,11 @@
 
 ## 解决方案
 
-![养殖塘事件响应](../assets/cases/case-08/08-work-productized.png)
+![养殖塘事件响应](../assets/B08/08-work-productized.png)
 
-![B08 需求流程](../assets/case-diagrams/B08-requirement.svg)
+![B08 需求流程](../assets/diagrams/B08-requirement.svg)
 
-![B08 技术架构](../assets/case-diagrams/B08-architecture.svg)
+![B08 技术架构](../assets/diagrams/B08-architecture.svg)
 
 页面按三栏展开同一份取证单：系统记录、现场回传、主管采信。开始时只有第一栏有值；派发后第二栏解锁，现场人员填写身份、采集时间、照片资产号和四项读数；提交后第三栏才允许主管填写采信说明。96 小时四测点趋势放在事件详情抽屉，不占据主流程首屏。
 

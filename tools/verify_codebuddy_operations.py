@@ -7,7 +7,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CHAPTER = ROOT / "md" / "07-课程项目.md"
-RECEIPT = ROOT / "evidence" / "runtime" / "codebuddy" / "receipt.json"
+RECEIPT = ROOT / "assets" / "codebuddy" / "receipt.json"
 SOURCE_CARD = ROOT / "sources" / "cards" / "codebuddy-official-operations-2026-07.md"
 
 
@@ -35,7 +35,7 @@ def main() -> int:
     if "--dangerously-skip-permissions" in chapter or "bypassPermissions" in chapter:
         errors.append("course map recommends bypassing CodeBuddy permissions")
 
-    receipt_link = "../runtime/codebuddy/receipt.json"
+    receipt_link = "../assets/codebuddy/receipt.json"
     if receipt_link not in chapter:
         errors.append("course map missing CodeBuddy receipt link")
     if not (CHAPTER.parent / receipt_link).resolve().is_file():

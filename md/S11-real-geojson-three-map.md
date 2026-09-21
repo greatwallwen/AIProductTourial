@@ -8,13 +8,13 @@
 
 | 组 | 实际实现 | 当前产物 |
 |---|---|---|
-| A CSS 伪 3D | JPG 倾斜、阴影和假厚度 | [A 组页面](../assets/skill-cases/S11/A-css-fake/index.html) |
-| B 普通 Prompt 手写 | Three.js 读取真实 GeoJSON，生成挤出几何 | [B 组页面](../assets/skill-cases/S11/B-three/index.html) |
-| C GitHub Skill | `three-scope-map` 固定 Vue/Three.js 模板 | [C 组源码与构建配置](../assets/skill-cases/S11/C-skill/) |
+| A CSS 伪 3D | JPG 倾斜、阴影和假厚度 | [A 组页面](../assets/S11/A-css-fake/index.html) |
+| B 普通 Prompt 手写 | Three.js 读取真实 GeoJSON，生成挤出几何 | [B 组页面](../assets/S11/B-three/index.html) |
+| C GitHub Skill | `three-scope-map` 固定 Vue/Three.js 模板 | [C 组源码与构建配置](../assets/S11/C-skill/) |
 
 A 看起来有透视，但页面中没有 canvas，不能 hover、计算边界或下钻。它适合做反例：一张斜放的地图图片不能证明“Three.js 地图已经完成”。
 
-![A 组 CSS 伪 3D](../assets/skill-cases/S11/browser-check/A-css-fake-desktop.png)
+![A 组 CSS 伪 3D](../assets/S11/browser-check/A-css-fake-desktop.png)
 
 ## 2. GeoJSON 从哪里来
 
@@ -25,7 +25,7 @@ A 看起来有透视，但页面中没有 canvas，不能 hover、计算边界�
 | 中国 | `https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json` | 35 | 省级 | `99adfeded5223848bbe37a0a12f8023e11ee12161c7800521c27db42fdeac275` |
 | 浙江 | `https://geo.datav.aliyun.com/areas_v3/bound/330000_full.json` | 11 | 市级 | `f87241d47687264861aa619b8dc37ffeb61a2be5d6018a8c01ec0ce0acb5cb38` |
 
-全国数据与 GitHub Skill 模板自带 `china.json` 哈希完全一致。浙江使用本轮重新下载的当前公开数据，保存在 `assets/skill-cases/S11/data/`，不依赖浏览器临时联网。
+全国数据与 GitHub Skill 模板自带 `china.json` 哈希完全一致。浙江使用本轮重新下载的当前公开数据，保存在 `assets/S11/data/`，不依赖浏览器临时联网。
 
 ## 3. GitHub Skill 是否真的下载和运行
 
@@ -57,7 +57,7 @@ B 组用本地 Three.js 0.178.0 把 Polygon / MultiPolygon 转为 `ExtrudeGeomet
 - 返回全国；
 - 桌面和手机自适应。
 
-![B 组手写 Three.js](../assets/skill-cases/S11/browser-check/B-three-desktop.png)
+![B 组手写 Three.js](../assets/S11/browser-check/B-three-desktop.png)
 
 浏览器实测记录到 hover“黑龙江省”，状态按 `35 → 11 → 35` 完成下钻和返回。canvas 像素 spread 为 37.17，非空；桌面和 390×844 手机均只有 1 个 WebGL canvas、无页面级横向溢出、0 console error。
 
@@ -67,11 +67,11 @@ B 组用本地 Three.js 0.178.0 把 Polygon / MultiPolygon 转为 `ExtrudeGeomet
 
 C 从 Skill 自带的一对一模板开始，没有重新凭印象手写。严格检查确认存在：Earth 球体、China 曲面、挤出侧壁、行政边界、地形纹理、hover 抬升、标签、飞线、外轮廓追光、南海插图、层级栈、相机配置和资源释放。
 
-![C 组 Earth 入口](../assets/skill-cases/S11/browser-check/C-skill-earth-canvas-desktop.png)
+![C 组 Earth 入口](../assets/S11/browser-check/C-skill-earth-canvas-desktop.png)
 
 真实浏览器操作顺序为：Earth 上 hover 中国 → 点击进入全国地图 → hover 浙江省 → 下钻至 11 个市 → 返回全国。桌面截图中的发光侧壁、标签和轮廓不是后期图片，而是通过 Chrome 运行的 WebGL canvas。
 
-![C 组全国地图](../assets/skill-cases/S11/browser-check/C-skill-desktop.png)
+![C 组全国地图](../assets/S11/browser-check/C-skill-desktop.png)
 
 ## 6. C 不是无条件更好
 
@@ -86,7 +86,7 @@ C 从 Skill 自带的一对一模板开始，没有重新凭印象手写。严�
 
 C 的 390×844 截图暴露了真实问题：顶部控制栏被压成竖排，全国 35 个标签相互拥挤。canvas 非空和 `scrollWidth == clientWidth` 并不能替代人工看图。
 
-![C 组手机端拥挤问题](../assets/skill-cases/S11/browser-check/C-skill-mobile.png)
+![C 组手机端拥挤问题](../assets/S11/browser-check/C-skill-mobile.png)
 
 安装时还发现 `nanoid@3.3.16` 的高危公告 `GHSA-2v37-7h3g-55p8`。它是 Vite → PostCSS 的间接开发依赖，本案例只在运行副本升级到 `nanoid@3.3.19`，再次审计为 0 vulnerability；原始 `skills/three-scope-map/` 固定版本没有改动。
 
@@ -105,4 +105,4 @@ cd assets/skill-cases/S11
 python3 -m http.server 5292 --bind 127.0.0.1
 ```
 
-打开 `http://127.0.0.1:5292/`。完整运行回执见 [receipt.json](../assets/skill-cases/S11/receipt.json)，浏览器回执见 [browser-verification.json](../assets/skill-cases/S11/browser-check/browser-verification.json)。
+打开 `http://127.0.0.1:5292/`。完整运行回执见 [receipt.json](../assets/S11/receipt.json)，浏览器回执见 [browser-verification.json](../assets/S11/browser-check/browser-verification.json)。

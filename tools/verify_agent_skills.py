@@ -48,7 +48,7 @@ def main() -> None:
         if len(scoped) != 4 or [row["stage"] for row in scoped] != ["观察", "选择", "动作", "检查"]:
             raise ValueError(f"{lab['id']} does not have the four-stage runtime")
         skill_name = Path(lab["code_path"]).name
-        receipt = load_json(ROOT / "evidence" / "runtime" / "agent-skills" / lab["id"] / "receipt.json")
+        receipt = load_json(ROOT / "assets" / lab["id"] / ("runtime-receipt.json" if lab["id"] in {"S05", "S06"} else "receipt.json"))
         if receipt["skill_name"] != skill_name:
             raise ValueError(f"{lab['id']} receipt Skill mismatch")
         if receipt["artifact_count"] != len(receipt["artifacts"]):

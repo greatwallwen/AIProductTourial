@@ -28,11 +28,11 @@
 
 ## 解决方案
 
-![县域冷链运输记录调查](../assets/cases/case-12/12-work-productized.png)
+![县域冷链运输记录调查](../assets/B12/12-work-productized.png)
 
-![B12 需求流程](../assets/case-diagrams/B12-requirement.svg)
+![B12 需求流程](../assets/diagrams/B12-requirement.svg)
 
-![B12 技术架构](../assets/case-diagrams/B12-architecture.svg)
+![B12 技术架构](../assets/diagrams/B12-architecture.svg)
 
 左侧按越界、交接、路线、校准和离线问题筛选调查单。中间把 30 个五分钟事件排成时间带，并在同一屏展示温度曲线和可拖动的调查窗口；点击任意事件，立即看到该时刻的温度、交接、路线、校准和离线记录。右侧列出缺口，要求补录材料编号、关联事件、摘要和核验状态。
 

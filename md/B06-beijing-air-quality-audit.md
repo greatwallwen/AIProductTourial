@@ -28,11 +28,11 @@
 
 ## 解决方案
 
-![历史空气质量数据摘录质检](../assets/cases/case-06/06-work-productized.png)
+![历史空气质量数据摘录质检](../assets/B06/06-work-productized.png)
 
-![B06 需求流程](../assets/case-diagrams/B06-requirement.svg)
+![B06 需求流程](../assets/diagrams/B06-requirement.svg)
 
-![B06 技术架构](../assets/case-diagrams/B06-architecture.svg)
+![B06 技术架构](../assets/diagrams/B06-architecture.svg)
 
 中央六道质量闸门逐项显示污染物原值、单位和“有值/缺测”。气象字段放在次级区域，避免被误解为补值来源。下方只列当前切片在同一时点实际保留下来的另外两条记录，并明确“仅供核对抽样内容，不用于插补”。
 

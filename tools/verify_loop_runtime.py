@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-RUNTIME = ROOT / "evidence" / "runtime" / "loop-runtime"
+RUNTIME = ROOT / "assets" / "loop-results"
 CONTRACT = ROOT / "code" / "labs" / "loop-runtime" / "contracts.json"
 
 
@@ -41,7 +41,7 @@ def main() -> None:
     l02 = load(RUNTIME / "loop-run-L02.json")
     if l02["facts"] != {"candidate_count": 3, "recommended": "quiet-window", "provider_called": False}:
         raise SystemExit("L02: visual-choice facts changed")
-    l03_packet = load(RUNTIME / "L03" / "approval-packet.json")
+    l03_packet = load(ROOT / "assets" / "L03" / "approval-packet.json")
     serialized = json.dumps(l03_packet, ensure_ascii=False)
     if l03_packet["status"] != "waiting_human" or any(term in serialized for term in ["故障根因是", "自动维修已执行", "自动停机已执行"]):
         raise SystemExit("L03: approval packet crossed the allowed action boundary")

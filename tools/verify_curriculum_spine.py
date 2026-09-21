@@ -74,7 +74,7 @@ def main() -> int:
     for case_id, section in l_sections.items():
         if "```" not in section:
             errors.append(f"{case_id} missing an inspectable state trace")
-        if case_id != "L04" and not re.search(r"\]\(\.\./runtime/loop-runtime/[^)]+\)", section):
+        if case_id != "L04" and not re.search(r"\]\(\.\./assets/loop-results/[^)]+\)", section):
             errors.append(f"{case_id} missing its runtime artifact link")
         if case_id == "L04" and "pixijs-game-contract" not in section:
             errors.append("L04 missing its code-test-debug example")

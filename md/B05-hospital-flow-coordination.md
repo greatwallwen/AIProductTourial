@@ -26,11 +26,11 @@
 
 ## 解决方案
 
-![转运晚到事件调和单](../assets/cases/case-05/05-work-productized.png)
+![转运晚到事件调和单](../assets/B05/05-work-productized.png)
 
-![B05 需求流程](../assets/case-diagrams/B05-requirement.svg)
+![B05 需求流程](../assets/diagrams/B05-requirement.svg)
 
-![B05 技术架构](../assets/case-diagrams/B05-architecture.svg)
+![B05 技术架构](../assets/diagrams/B05-architecture.svg)
 
 主画面只保留两条时间轴：上方按 `event_time` 排列业务事件，下方按 `received_at` 排列系统接收。点击同一事件，两处时点和连接线同时高亮；只有用户推进接收时钟后，尚未到达的事件才出现。
 

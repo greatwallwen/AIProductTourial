@@ -28,11 +28,11 @@
 
 ## 解决方案
 
-![顾客评论调查台](../assets/cases/case-03/03-work-productized.png)
+![顾客评论调查台](../assets/B03/03-work-productized.png)
 
-![案例图](../assets/case-diagrams/B03-requirement.svg)
+![案例图](../assets/diagrams/B03-requirement.svg)
 
-![案例图](../assets/case-diagrams/B03-architecture.svg)
+![案例图](../assets/diagrams/B03-architecture.svg)
 
 页面先展示一条顾客原话，过长内容只显示摘要，完整原文可以展开。选择“接待态度、排队、上菜时效、餐食品质”中的一个主题后，系统把候选评论分为两组：支持这个判断的原话，以及不支持这个判断的原话。
 
