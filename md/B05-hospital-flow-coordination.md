@@ -26,11 +26,11 @@
 
 ## 解决方案
 
-![转运晚到事件调和单](../../assets/cases/case-05/05-work-productized.png)
+![转运晚到事件调和单](../assets/cases/case-05/05-work-productized.png)
 
-![B05 需求流程](../../assets/case-diagrams/B05-requirement.svg)
+![B05 需求流程](../assets/case-diagrams/B05-requirement.svg)
 
-![B05 技术架构](../../assets/case-diagrams/B05-architecture.svg)
+![B05 技术架构](../assets/case-diagrams/B05-architecture.svg)
 
 主画面只保留两条时间轴：上方按 `event_time` 排列业务事件，下方按 `received_at` 排列系统接收。点击同一事件，两处时点和连接线同时高亮；只有用户推进接收时钟后，尚未到达的事件才出现。
 
@@ -64,8 +64,8 @@
 
 ## 实现与排错
 
-- 实现：[`code/cases/05-hospital-flow-coordination`](../../code/cases/05-hospital-flow-coordination/)。
-- 聚焦测试：[`case-05-hospital-transfer.test.tsx`](../../code/app/tests/case-05-hospital-transfer.test.tsx)。
+- 实现：[`code/cases/05-hospital-flow-coordination`](../code/cases/05-hospital-flow-coordination)。
+- 聚焦测试：[`case-05-hospital-transfer.test.tsx`](../code/app/tests/case-05-hospital-transfer.test.tsx)。
 - 排查：若晚到更正没有进入待调和队列，分别检查事件发生时间与系统接收时间；两者不能被一个更新时间覆盖。
 
 ---

@@ -14,12 +14,12 @@
 
 | 组 | 输入或工具 | 实际产物 | 当前状态 |
 |---|---|---|---|
-| A 普通 Prompt | “把大纲做成好看的演示文稿” | [完整 Prompt](../../assets/skill-cases/S06/comparison/prompts/A-ordinary.txt) | 未调用外部模型，不伪造结果 |
-| B 结构化 Prompt + 课程 `slide-plan` | 明确 5 种页型、事实和验收 | [可编辑 PPTX](../../assets/skill-cases/S06/presentation.pptx) | 已生成并审计 |
-| C GitHub `frontend-slides` | 固定 1920×1080、单文件 HTML、浏览器交互 | [离线 HTML](../../assets/skill-cases/S06/frontend-slides/index.html) | 已生成并做桌面/手机实测 |
-| D GitHub `dashi-ppt` | PageContentPack + 每页 3 个模板方案 + 1 个定制方案 | [Dashi HTML](../../assets/skill-cases/S06/dashi/ppt/index.html) | 5 页、20 个方案状态已逐一实测 |
+| A 普通 Prompt | “把大纲做成好看的演示文稿” | [完整 Prompt](../assets/skill-cases/S06/comparison/prompts/A-ordinary.txt) | 未调用外部模型，不伪造结果 |
+| B 结构化 Prompt + 课程 `slide-plan` | 明确 5 种页型、事实和验收 | [可编辑 PPTX](../assets/skill-cases/S06/presentation.pptx) | 已生成并审计 |
+| C GitHub `frontend-slides` | 固定 1920×1080、单文件 HTML、浏览器交互 | [离线 HTML](../assets/skill-cases/S06/frontend-slides/index.html) | 已生成并做桌面/手机实测 |
+| D GitHub `dashi-ppt` | PageContentPack + 每页 3 个模板方案 + 1 个定制方案 | [Dashi HTML](../assets/skill-cases/S06/dashi/ppt/index.html) | 5 页、20 个方案状态已逐一实测 |
 
-A/B 的完整输入分别保存在 [A-ordinary.txt](../../assets/skill-cases/S06/comparison/prompts/A-ordinary.txt) 和 [B-structured.txt](../../assets/skill-cases/S06/comparison/prompts/B-structured.txt)。A 没有输出并不是失败，而是证据边界：当前任务没有调用一个“默认生成 PPT”的外部模型，因此不能凭想象补一份结果。
+A/B 的完整输入分别保存在 [A-ordinary.txt](../assets/skill-cases/S06/comparison/prompts/A-ordinary.txt) 和 [B-structured.txt](../assets/skill-cases/S06/comparison/prompts/B-structured.txt)。A 没有输出并不是失败，而是证据边界：当前任务没有调用一个“默认生成 PPT”的外部模型，因此不能凭想象补一份结果。
 
 ## 3. GitHub Skill 是否真的下载并使用
 
@@ -38,7 +38,7 @@ B 组输出 23,339 字节的 5 页 PPTX，并保存 `slide-plan.json`、逐页�
 
 它的优势不是动画，而是 Office 对象可继续编辑。限制也很明确：第 5 页保留的是待绘图对象合同，适合继续制作，不应冒充已经完成的流程图。
 
-![PPTX 数据表页](../../assets/skill-cases/S06/rendered/slide-04.png)
+![PPTX 数据表页](../assets/skill-cases/S06/rendered/slide-04.png)
 
 ## 5. C 组：轻量 HTML Skill 带来什么
 
@@ -55,7 +55,7 @@ C 组是 13,736 字节的单文件 HTML，无远程字体、图片或脚本。�
 | 浏览器内文字编辑 | `E` 键或铅笔按钮可启用，`localStorage` 保存通过 |
 | 控制台 | 0 error |
 
-![Frontend Slides 流程页](../../assets/skill-cases/S06/frontend-slides/browser-check/desktop-slide-5.png)
+![Frontend Slides 流程页](../assets/skill-cases/S06/frontend-slides/browser-check/desktop-slide-5.png)
 
 这里对上游规则做了一项有意偏离：原 Skill 推荐在线字体，本案例为了真正离线使用保留本地中文字体栈。偏离写进回执，不把“遵循 Skill”理解为机械复制所有建议。
 
@@ -63,9 +63,9 @@ C 组是 13,736 字节的单文件 HTML，无远程字体、图片或脚本。�
 
 D 组先把 5 页事实写入唯一的 `page-content-pack.json`，再由 Skill 用固定 seed 为每页生成 3 个模板方案和 1 个 Agent 定制方案。HTML 本体约 540 KB，连同运行时约 8.5 MB。浏览器逐页切换并检查了 20 个方案状态：全部非空，未出现 `AI Capital`、`SoundWave`、`OpenAI`、`Anthropic`、`Roadmap` 或“请输入文本”等默认文案。
 
-![Dashi 数据表模板方案](../../assets/skill-cases/S06/dashi/browser-check/page-4-v1.png)
+![Dashi 数据表模板方案](../assets/skill-cases/S06/dashi/browser-check/page-4-v1.png)
 
-![Dashi 数据表定制方案](../../assets/skill-cases/S06/dashi/browser-check/page-4-v4.png)
+![Dashi 数据表定制方案](../assets/skill-cases/S06/dashi/browser-check/page-4-v4.png)
 
 但真实运行也暴露了三项问题：
 

@@ -23,7 +23,7 @@
 | 禁用项 | 人物大特写、高饱和多色渐变、密集商业促销标签 |
 | 画布 | 1080 × 1440，3:4 竖版 |
 
-原始输入保存在 [`rainy-bookstore-brief.json`](../../code/skills/poster-recipe/examples/rainy-bookstore-brief.json)，生成器只读该文件，并在结果中记录 SHA-256。
+原始输入保存在 [`rainy-bookstore-brief.json`](../code/skills/poster-recipe/examples/rainy-bookstore-brief.json)，生成器只读该文件，并在结果中记录 SHA-256。
 
 ## 实验设计
 
@@ -59,11 +59,11 @@
 | C | `gpt-image-2-style-library` | 7/7 | 完整 | 在 B 的约束上增加编辑式不对称版式、单一色彩锚点、缩略图可读和禁止 moodboard |
 | D | `visual-memory-translator` | 7/7 | 部分 | 把“书页像屋檐承接雨线”固定为单一隐喻，并使用大留白、小画面的编辑卡片风格 |
 
-![S05 四种 Prompt 方法的字段覆盖与任务适配对比](../../assets/skill-cases/S05/prompt-coverage-comparison.svg)
+![S05 四种 Prompt 方法的字段覆盖与任务适配对比](../assets/skill-cases/S05/prompt-coverage-comparison.svg)
 
 七类字段指主题、受众、标题、辅助文字、必备文字、可见主体和禁用项。覆盖完整只表示 Prompt 没漏掉简报信息，不表示最后图片一定更美。
 
-四份 Prompt 全文和机器可读结果保存在[对比记录](../../assets/skill-cases/S05/comparison/prompt-comparison.md)中。下面截取最能说明差异的部分：
+四份 Prompt 全文和机器可读结果保存在[对比记录](../assets/skill-cases/S05/comparison/prompt-comparison.md)中。下面截取最能说明差异的部分：
 
 ```text
 A：为“雨天旧书店”设计一张竖版活动海报，
@@ -81,7 +81,7 @@ D：只使用一个视觉隐喻：一张打开的旧书页像窄屋檐承接三�
 
 下面这张图是课程自有 `poster-recipe` 根据同一简报生成的**本地可编辑 SVG 构图样张**。它用于展示信息层级、冷暖色锚和构图交接，不是 OpenAI 或其他图片模型的输出。
 
-![雨天旧书店本地可编辑构图样张](../../assets/skill-cases/S05/poster.svg)
+![雨天旧书店本地可编辑构图样张](../assets/skill-cases/S05/poster.svg)
 
 这张样张让案例在没有 Key 时仍能现场展示三件事：
 
@@ -144,12 +144,12 @@ python3 -B code/skills/poster-recipe/scripts/build_poster.py \
 
 主要证据：
 
-- [四组 Prompt 与结论边界](../../assets/skill-cases/S05/comparison/prompt-comparison.md)
-- [机器可读实验记录](../../assets/skill-cases/S05/comparison/prompt-comparison.json)
-- [本地海报配方](../../assets/skill-cases/S05/poster-recipes.json)
-- [`poster-recipe` Skill](../../code/skills/poster-recipe/SKILL.md)
-- [`gpt-image-2-style-library` 固定副本](../../skills/gpt-image-2-style-library/SKILL.md)
-- [`visual-memory-translator` 固定副本](../../skills/visual-memory-translator/SKILL.md)
+- [四组 Prompt 与结论边界](../assets/skill-cases/S05/comparison/prompt-comparison.md)
+- [机器可读实验记录](../assets/skill-cases/S05/comparison/prompt-comparison.json)
+- [本地海报配方](../assets/skill-cases/S05/poster-recipes.json)
+- [`poster-recipe` Skill](../code/skills/poster-recipe/SKILL.md)
+- [`gpt-image-2-style-library` 固定副本](../skills/gpt-image-2-style-library/SKILL.md)
+- [`visual-memory-translator` 固定副本](../skills/visual-memory-translator/SKILL.md)
 
 当前实验状态应保持：`prompts_compiled=true`、`images_generated=false`、`provider_execution.status=not-run`。
 

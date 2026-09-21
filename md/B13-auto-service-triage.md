@@ -32,11 +32,11 @@
 
 ## 解决方案
 
-![汽车售后安全分流](../../assets/cases/case-13/13-work-productized.png)
+![汽车售后安全分流](../assets/cases/case-13/13-work-productized.png)
 
-![B13 需求流程](../../assets/case-diagrams/B13-requirement.svg)
+![B13 需求流程](../assets/case-diagrams/B13-requirement.svg)
 
-![B13 技术架构](../../assets/case-diagrams/B13-architecture.svg)
+![B13 技术架构](../assets/case-diagrams/B13-architecture.svg)
 
 左侧只显示六条代表进线；中间一次追问一个问题，并提供“可以、不能、不确定、未询问”等可保存回答。回答后，右侧接车事实单立即增加一项，“仍缺少”同步减少。车辆图缩为部位定位辅助，不再占据主任务。底部只保留“保存并请求补充”和“转交技师安全复核”。
 
@@ -68,8 +68,8 @@
 
 ## 实现与排错
 
-- 实现：[`code/cases/13-auto-service-triage`](../../code/cases/13-auto-service-triage/)。
-- 聚焦测试：[`case-13-auto-service.test.tsx`](../../code/app/tests/case-13-auto-service.test.tsx)。
+- 实现：[`code/cases/13-auto-service-triage`](../code/cases/13-auto-service-triage)。
+- 聚焦测试：[`case-13-auto-service.test.tsx`](../code/app/tests/case-13-auto-service.test.tsx)。
 - 排查：若客户回答“不能移动”后仍不能转技师，检查安全回答的优先规则；未问完的问题应保留，但不能阻断高风险转交。
 
 ---

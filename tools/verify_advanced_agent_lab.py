@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 LAB = ROOT / "code" / "labs" / "advanced-agent-lab"
 OFFLINE = ROOT / "evidence" / "runtime" / "advanced-agent-lab" / "offline"
 LIVE = ROOT / "evidence" / "runtime" / "advanced-agent-lab" / "qwen-plus"
-CHAPTER = ROOT / "AI时代研发产品项目一体化知识库" / "03-Agent与Skill工程.md"
+CHAPTER = ROOT / "md" / "03-Agent与Skill工程.md"
 
 
 def read_json(path: Path) -> dict:

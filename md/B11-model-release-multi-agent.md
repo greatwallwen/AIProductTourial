@@ -18,11 +18,11 @@
 
 ## 解决方案
 
-![企业模型准入补测](../../assets/cases/case-11/11-work-productized.png)
+![企业模型准入补测](../assets/cases/case-11/11-work-productized.png)
 
-![B11 需求流程](../../assets/case-diagrams/B11-requirement.svg)
+![B11 需求流程](../assets/case-diagrams/B11-requirement.svg)
 
-![B11 技术架构](../../assets/case-diagrams/B11-architecture.svg)
+![B11 技术架构](../assets/case-diagrams/B11-architecture.svg)
 
 顶部先给出“8/9 通过、1 项阻断”。中间三条检查轨道把九项结果一次排开，地区切片标尺直接显示 4.7% 与 3.0% 的差距。右侧填写补测样本量、数据版本和新结果；补测过线后，风险、公平、安全三个职责分别签署，最后由另一名主管确认。
 
@@ -75,8 +75,8 @@
 
 ## 实现与排错
 
-- 实现：[`code/cases/11-model-release-multi-agent`](../../code/cases/11-model-release-multi-agent/)。
-- 聚焦测试：[`case-11-model-admission-domain.test.tsx`](../../code/app/tests/case-11-model-admission-domain.test.tsx)。
+- 实现：[`code/cases/11-model-release-multi-agent`](../code/cases/11-model-release-multi-agent)。
+- 聚焦测试：[`case-11-model-admission-domain.test.tsx`](../code/app/tests/case-11-model-admission-domain.test.tsx)。
 - 排查：若地区切片未通过仍能准入，检查准入条件是否读取最新补测状态，而不是只读取总体指标。
 
 ---

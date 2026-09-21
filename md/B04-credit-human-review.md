@@ -30,11 +30,11 @@
 
 ## 解决方案
 
-![申请材料补正与双岗复核](../../assets/cases/case-04/04-work-productized.png)
+![申请材料补正与双岗复核](../assets/cases/case-04/04-work-productized.png)
 
-![B04 需求流程](../../assets/case-diagrams/B04-requirement.svg)
+![B04 需求流程](../assets/case-diagrams/B04-requirement.svg)
 
-![B04 技术架构](../../assets/case-diagrams/B04-architecture.svg)
+![B04 技术架构](../assets/case-diagrams/B04-architecture.svg)
 
 页面以一张匿名案卷为中心。四个材料槽位直接显示源记录状态，只有真实缺失项才出现“发起补正”；已核验项不能勾选。补件任务必须写清负责人、回传日期和缺少内容，并绑定当前申请号和材料类型。
 
@@ -68,8 +68,8 @@
 
 ## 实现与排错
 
-- 实现：[`code/cases/04-credit-human-review`](../../code/cases/04-credit-human-review/)。
-- 聚焦测试：[`case-04-credit-material.test.tsx`](../../code/app/tests/case-04-credit-material.test.tsx)。
+- 实现：[`code/cases/04-credit-human-review`](../code/cases/04-credit-human-review)。
+- 聚焦测试：[`case-04-credit-material.test.tsx`](../code/app/tests/case-04-credit-material.test.tsx)。
 - 排查：若补正材料齐全后复核按钮仍不可用，检查必填字段、材料状态以及申请岗与复核岗是否真正分离。
 
 ---

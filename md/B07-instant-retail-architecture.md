@@ -28,11 +28,11 @@
 
 ## 解决方案
 
-![即时履约架构评审](../../assets/cases/case-07/07-work-productized.png)
+![即时履约架构评审](../assets/cases/case-07/07-work-productized.png)
 
-![B07 需求流程](../../assets/case-diagrams/B07-requirement.svg)
+![B07 需求流程](../assets/case-diagrams/B07-requirement.svg)
 
-![B07 技术架构](../../assets/case-diagrams/B07-architecture.svg)
+![B07 技术架构](../assets/case-diagrams/B07-architecture.svg)
 
 左侧选择 14 个场站日期窗口。中间是 14×4 矩阵：每个单元显示 P95 和发布、故障、恢复标记；日期游标同时移动四个责任域。底部只给出两句判断：“发布增加与恢复变慢同窗出现”“仍缺调用链，不能确认因果”。右侧依次保存观察、待验证假设和决定。
 
@@ -70,8 +70,8 @@
 
 ## 实现与排错
 
-- 实现：[`code/cases/07-instant-retail-architecture`](../../code/cases/07-instant-retail-architecture/)。
-- 聚焦测试：[`case-07-retail-architecture.test.tsx`](../../code/app/tests/case-07-retail-architecture.test.tsx)。
+- 实现：[`code/cases/07-instant-retail-architecture`](../code/cases/07-instant-retail-architecture)。
+- 聚焦测试：[`case-07-retail-architecture.test.tsx`](../code/app/tests/case-07-retail-architecture.test.tsx)。
 - 排查：若总览与链路明细给出不同结论，沿同一请求编号检查投影游标和事件顺序，先排除旧投影再讨论架构瓶颈。
 
 ---

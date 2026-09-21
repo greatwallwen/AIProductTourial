@@ -28,11 +28,11 @@
 
 ## 解决方案
 
-![顾客评论调查台](../../assets/cases/case-03/03-work-productized.png)
+![顾客评论调查台](../assets/cases/case-03/03-work-productized.png)
 
-<video src="../../assets/case-diagrams/B03-requirement.webm" controls muted loop></video>
+![案例图](../assets/case-diagrams/B03-requirement.svg)
 
-<video src="../../assets/case-diagrams/B03-architecture.webm" controls muted loop></video>
+![案例图](../assets/case-diagrams/B03-architecture.svg)
 
 页面先展示一条顾客原话，过长内容只显示摘要，完整原文可以展开。选择“接待态度、排队、上菜时效、餐食品质”中的一个主题后，系统把候选评论分为两组：支持这个判断的原话，以及不支持这个判断的原话。
 
@@ -68,8 +68,8 @@
 
 ## 实现与排错
 
-- 实现：[`code/cases/03-local-service-voc`](../../code/cases/03-local-service-voc/)。
-- 聚焦测试：[`case-03-review-research-domain.test.tsx`](../../code/app/tests/case-03-review-research-domain.test.tsx)。
+- 实现：[`code/cases/03-local-service-voc`](../code/cases/03-local-service-voc)。
+- 聚焦测试：[`case-03-review-research-domain.test.tsx`](../code/app/tests/case-03-review-research-domain.test.tsx)。
 - 排查：若筛选后的主题数与评论明细对不上，检查主题统计和明细查询是否使用了同一城市、时间窗与分词规则。
 
 ---
