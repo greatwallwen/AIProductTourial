@@ -4,6 +4,7 @@
   "skill_name": "product-opportunity-map",
   "verification_status": "verified",
   "verified_scope": "traceable JSON and editable SVG",
+  "verification_note": "Artifact structure and focused tests rechecked after path migration; browser observations and screenshots are historical, not rerun.",
   "provider_scope": null,
   "known_limitations": [],
   "commands": [
@@ -17,13 +18,13 @@
   "artifacts": [
     {
       "path": "assets/S04/opportunity-map.json",
-      "bytes": 5630,
-      "sha256": "d76a5059f976ee22268c310e21cc79ae33750b58de0634cd1d29ea2b0e7d0074"
+      "bytes": 5429,
+      "sha256": "a2c12e022f5443e4be51c1e1b66a1454bbc0925a30d50124284687e171c894dd"
     },
     {
       "path": "assets/S04/opportunity-map.svg",
-      "bytes": 3981,
-      "sha256": "3002f88048f4445b98cb96980604ea777feafa0132bb90372c312520d778dbfa"
+      "bytes": 4049,
+      "sha256": "f017d94df37ff39c59128a789b7f33c07ecc2e902afcf597f9012137a83bf577"
     }
   ],
   "focused_tests": 5,

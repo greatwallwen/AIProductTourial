@@ -4,6 +4,7 @@
   "skill_name": "pixijs-game-contract",
   "verification_status": "verified-runtime",
   "verified_scope": "production dist and real Playwright keyboard lifecycle",
+  "verification_note": "Artifact structure and focused tests rechecked after path migration; browser observations and screenshots are historical, not rerun.",
   "provider_scope": null,
   "known_limitations": [],
   "commands": [
@@ -39,8 +40,8 @@
     },
     {
       "path": "assets/S07/game-contract.json",
-      "bytes": 1264,
-      "sha256": "3bb938d98dbf7b0428c232612d3092f4e01a43885b496b8997643243b1f8705c"
+      "bytes": 1213,
+      "sha256": "7d96ae6a68e0a41476e3d29704f5f51f06bce75f5237bc28d9f6a7e8157db214"
     },
     {
       "path": "assets/S07/request.json",

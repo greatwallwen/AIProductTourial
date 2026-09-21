@@ -11,8 +11,8 @@
     "code/skills/poster-recipe/examples/rainy-bookstore-brief.json"
   ],
   "output_artifacts": [
-    "assets/L02/poster-recipes.json",
-    "assets/L02/poster.svg"
+    "assets/S05/poster-recipes.json",
+    "assets/S05/poster.svg"
   ],
   "facts": {
     "candidate_count": 3,

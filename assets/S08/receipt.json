@@ -4,11 +4,12 @@
   "skill_name": "asset-contract",
   "verification_status": "verified-local-provider-blocked",
   "verified_scope": "local GLB fixture inspection and built Three.js viewer",
+  "verification_note": "Artifact structure and focused tests rechecked after path migration; browser observations and screenshots are historical, not rerun.",
   "provider_scope": "blocked-not-verified",
   "known_limitations": [],
   "commands": [
     "python -B code/skills/asset-contract/scripts/create_asset_contract.py --input code/skills/asset-contract/examples/triangle.request.json --output assets/S08/asset-contract.json",
-    "python -B code/skills/asset-contract/scripts/inspect_gltf.py --input assets/S08/model.glb --allowed-root assets/skill-results/S08 --output assets/S08/inspection-glb.json"
+    "python -B code/skills/asset-contract/scripts/inspect_gltf.py --input assets/S08/model.glb --allowed-root assets/S08 --output assets/S08/inspection-glb.json"
   ],
   "key_results": [
     "本地 glTF 2.0 / GLB：3 个顶点、1 个三角形",
@@ -19,23 +20,23 @@
   "artifacts": [
     {
       "path": "assets/S08/asset-contract.json",
-      "bytes": 1154,
-      "sha256": "c6a7cec07eb962c9ca4092a59c6b3c5d1f66a145d79ec545f953c0b9ea03bccb"
+      "bytes": 1120,
+      "sha256": "82e40257459968e9daa8db2e39c2951c58017017e58bf84cf3eb8f8eb9d2fedd"
     },
     {
       "path": "assets/S08/browser-verification.json",
-      "bytes": 921,
-      "sha256": "8a9a04806945997fee4d3ba3f1f37f5cb41fdd66a99abf1fada9c7f7c220540d"
+      "bytes": 898,
+      "sha256": "9ccd98d1b5043b0c9894399d6bf2346fc65f268028d11fbbf7fcb9a723dd1e8f"
     },
     {
       "path": "assets/S08/fixture-manifest.json",
-      "bytes": 820,
-      "sha256": "6d2cc971c922b045f5dd38f8948b36fc9238aed5d798e7a788e6a21c70fc93d7"
+      "bytes": 783,
+      "sha256": "933d5dd1a8fbcfc3d7705348b29834aeb0bc408ae93191de9bdd72b52409f139"
     },
     {
       "path": "assets/S08/inspection-glb.json",
-      "bytes": 442,
-      "sha256": "1f5584b2bcdb72390bb361192c635995117814633c4068b6593a4e3c7d8222db"
+      "bytes": 416,
+      "sha256": "92205cf719c428a53b474de5a7d51c7ea9e938770b417cbd7612b22ac9d94fbb"
     },
     {
       "path": "assets/S08/model.glb",
@@ -49,8 +50,8 @@
     },
     {
       "path": "assets/S08/viewer-contract.json",
-      "bytes": 384,
-      "sha256": "1e994f9f65256a5ce01a516ba0ea91944074daadb83934c41b25a19db9575e0d"
+      "bytes": 369,
+      "sha256": "043cb08c3f1925741c0ba721c029d38a47222cc1c1df636739fb39d7264c7c06"
     },
     {
       "path": "assets/S08/viewer-dist/assets/index-BMIUMlrN.css",

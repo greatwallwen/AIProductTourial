@@ -12,13 +12,13 @@ class CourseVerificationTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             for case_id in ("01", "02"):
-                case_dir = root / "assets" / "cases" / f"case-{case_id}"
+                case_dir = root / "assets" / f"B{case_id}"
                 case_dir.mkdir(parents=True)
                 (case_dir / f"{case_id}-work-productized.png").write_bytes(
                     b"\x89PNG\r\n\x1a\n"
                 )
             text = "\n".join(
-                f"![界面](../assets/cases/case-{case_id}/{case_id}-work-productized.png)"
+                f"![界面](../assets/B{case_id}/{case_id}-work-productized.png)"
                 for case_id in ("01", "02")
             )
             errors: list[str] = []

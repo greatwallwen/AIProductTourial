@@ -66,7 +66,7 @@ const events = [{
 function projection(overrides: Partial<CaseProjection> = {}): CaseProjection {
   return {
     caseId: "14",
-    objectId: "14-2017-04-02-07-00-00",
+    objectId: "14-FQ-0016",
     state: "待诊断",
     version: 0,
     payload: rows.at(-1)!,

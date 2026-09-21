@@ -17,8 +17,8 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 SKILLS_ROOT = ROOT / "code" / "skills"
 EVIDENCE_ROOT = ROOT / "assets"
-REPORT_JSON = EVIDENCE_ROOT / "report.json"
-REPORT_MD = EVIDENCE_ROOT / "report.md"
+REPORT_JSON = EVIDENCE_ROOT / "skill-results" / "report.json"
+REPORT_MD = EVIDENCE_ROOT / "skill-results" / "report.md"
 QUICK_VALIDATE = Path(os.environ.get("CODEX_SKILL_QUICK_VALIDATE", ROOT / "tools" / "validate_skill.py"))
 
 SKILLS = {
@@ -310,7 +310,7 @@ VERIFY_FUNCTIONS = {
 def artifact_rows(folder: Path) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     for path in sorted(folder.rglob("*")):
-        if not path.is_file() or path.name == "receipt.json":
+        if not path.is_file() or path.name in {"receipt.json", "runtime-receipt.json"}:
             continue
         rows.append(
             {
@@ -469,6 +469,7 @@ def write_reports(report: dict[str, Any]) -> None:
             "skill_name": skill["skill_name"],
             "verification_status": skill["verification_status"],
             "verified_scope": skill["verified_scope"],
+            "verification_note": "Artifact structure and focused tests rechecked after path migration; browser observations and screenshots are historical, not rerun.",
             "provider_scope": skill.get("provider_scope"),
             "known_limitations": skill.get("known_limitations", []),
             "commands": receipt_commands(skill["skill_id"]),
@@ -478,7 +479,7 @@ def write_reports(report: dict[str, Any]) -> None:
             "focused_tests": EXPECTED_TESTS[skill["skill_id"]],
             "quick_validate": "passed",
         }
-        (EVIDENCE_ROOT / skill["skill_id"] / "receipt.json").write_text(
+        (EVIDENCE_ROOT / skill["skill_id"] / ("runtime-receipt.json" if skill["skill_id"] in {"S05", "S06"} else "receipt.json")).write_text(
             json.dumps(receipt, ensure_ascii=False, indent=2) + "\n",
             encoding="utf-8",
         )
@@ -495,7 +496,7 @@ def write_reports(report: dict[str, Any]) -> None:
     ]
     for skill in report["skills"]:
         result = "；".join(skill["key_results"])
-        lines.append(f"| {skill['skill_id']} {skill['title']} | {result} | [{skill['artifact_count']} 个文件]({skill['skill_id']}/receipt.json) |")
+        lines.append(f"| {skill['skill_id']} {skill['title']} | {result} | [{skill['artifact_count']} 个文件](../{skill['skill_id']}/{"runtime-receipt.json" if skill["skill_id"] in {"S05", "S06"} else "receipt.json"}) |")
     lines.extend(
         [
             "",

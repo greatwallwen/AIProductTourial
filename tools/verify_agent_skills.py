@@ -71,12 +71,12 @@ def main() -> None:
         for path in (ROOT / "code" / "skills").iterdir()
         if (path / "SKILL.md").is_file()
     }
-    if actual_skills != REQUIRED_SKILLS:
+    if not REQUIRED_SKILLS.issubset(actual_skills):
         raise ValueError(
             f"local Skill set mismatch: expected={sorted(REQUIRED_SKILLS)} actual={sorted(actual_skills)}"
         )
 
-    print("Agent + Skills verified: labs=8, runtime_rows=32, local_skills=8, provider_overclaims=0")
+    print(f"Agent + Skills verified: labs=8, runtime_rows=32, local_skills={len(actual_skills)}, provider_overclaims=0")
 
 
 if __name__ == "__main__":

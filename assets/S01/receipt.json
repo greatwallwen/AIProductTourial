@@ -4,6 +4,7 @@
   "skill_name": "capability-router",
   "verification_status": "verified",
   "verified_scope": "allowlisted routing and stop behavior",
+  "verification_note": "Artifact structure and focused tests rechecked after path migration; browser observations and screenshots are historical, not rerun.",
   "provider_scope": null,
   "known_limitations": [],
   "commands": [
@@ -16,28 +17,28 @@
   "artifacts": [
     {
       "path": "assets/S01/01-data-profile.decision.json",
-      "bytes": 236,
-      "sha256": "47784e76824ef356c7a4bc97d73d42c60a53148b68fe8e86a0c70a4cc4ecb1fb"
+      "bytes": 228,
+      "sha256": "9ed954b6cb73e60d9955576772298b518af7a9ef199b4ddd4a483b14ef2ee2cc"
     },
     {
       "path": "assets/S01/02-metric-brief.decision.json",
-      "bytes": 236,
-      "sha256": "3a751adbf87f64fb3fa489cfb1fadd9ec218b120c8cbe7657fd9ad3d28f79047"
+      "bytes": 228,
+      "sha256": "8d884a91bd84ee218b614567921b0b88faa215a9a4b7ead40dfc99991d5ebb54"
     },
     {
       "path": "assets/S01/03-missing-input.decision.json",
-      "bytes": 289,
-      "sha256": "9352d67f67a4d4cba0beb4529ce7d77eb11a95fcddc1f88eab6707371a0dc926"
+      "bytes": 279,
+      "sha256": "7c2d287bd94ced5fec246958e571891dd32ecda724cd7177242895ebe4b8cf85"
     },
     {
       "path": "assets/S01/04-unauthorized-delete.decision.json",
-      "bytes": 231,
-      "sha256": "87ef8be229a46a6ef193ec52a131ca4a4636974e345f4b94b6c58b2a7b7569a2"
+      "bytes": 223,
+      "sha256": "08191c9097f2b263fe420aeb9f59c60d91916ecdecd5093b085a58cd017f3efd"
     },
     {
       "path": "assets/S01/05-opportunity-map.decision.json",
-      "bytes": 258,
-      "sha256": "d3fa11925fdc79c77a56b34536bc4476188b4a5467d021f461a70d76f19e1a39"
+      "bytes": 250,
+      "sha256": "90fec17d95e057b6fe5f5c79dd9b94f98234809cf95923508549288044915fa7"
     }
   ],
   "focused_tests": 6,

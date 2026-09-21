@@ -84,7 +84,7 @@ def main() -> int:
             if required not in section:
                 errors.append(f"{case_id} missing {required}")
         runtime_screenshots = re.findall(
-            r"!\[[^\]]*\]\(\.\./assets/cases/case-\d{2}/\d{2}-work-productized\.png\)",
+            r"!\[[^\]]*\]\(\.\./assets/B\d{2}/\d{2}-work-productized\.png\)",
             section,
         )
         if len(runtime_screenshots) != 1:

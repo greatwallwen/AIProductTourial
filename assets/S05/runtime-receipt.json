@@ -4,28 +4,65 @@
   "skill_name": "poster-recipe",
   "verification_status": "verified-local",
   "verified_scope": "three local recipes, explicit selection, editable SVG",
+  "verification_note": "Artifact structure and focused tests rechecked after path migration; browser observations and screenshots are historical, not rerun.",
   "provider_scope": null,
   "known_limitations": [],
   "commands": [
-    "python -B code/skills/poster-recipe/scripts/build_poster.py --input code/skills/poster-recipe/examples/rainy-bookstore-brief.json --allowed-root code/skills/poster-recipe/examples --recipe-output assets/S05/poster-recipes.json --svg-output assets/S05/poster.svg"
+    "python -B code/skills/poster-recipe/scripts/build_poster.py --input code/skills/poster-recipe/examples/rainy-bookstore-brief.json --allowed-root code/skills/poster-recipe/examples --recipe-output assets/S05/poster-recipes.json --svg-output assets/S05/poster.svg",
+    "python -B code/skills/poster-recipe/scripts/build_prompt_comparison.py --input code/skills/poster-recipe/examples/rainy-bookstore-brief.json --allowed-root code/skills/poster-recipe/examples --output-dir assets/S05/comparison"
   ],
   "key_results": [
     "三套方向均可比较，选中“雨夜橱窗”",
     "本地 SVG 可编辑；没有冒充图像 Provider 结果"
   ],
-  "artifact_count": 2,
+  "artifact_count": 9,
   "artifacts": [
     {
+      "path": "assets/S05/comparison/prompt-comparison.json",
+      "bytes": 6595,
+      "sha256": "fa1f44694b51a7a9f0182da0d5b1828eaf749c76516a710be1a2d7b06f92ce85"
+    },
+    {
+      "path": "assets/S05/comparison/prompt-comparison.md",
+      "bytes": 5221,
+      "sha256": "087522d4e4975bfc95997e18376a569a0c9f36012b7dbc00bd74c2790278ab51"
+    },
+    {
+      "path": "assets/S05/comparison/prompts/A-ordinary.txt",
+      "bytes": 106,
+      "sha256": "a8a7cc344cc3c6c34aa1145024983324db7582aa5a42fa8987c3d9a30ccc9436"
+    },
+    {
+      "path": "assets/S05/comparison/prompts/B-structured.txt",
+      "bytes": 1198,
+      "sha256": "39539d4748fea42dd88553d5c4ef58f1df2c59901176c2d7751e31ef5b39d18f"
+    },
+    {
+      "path": "assets/S05/comparison/prompts/C-style-library.txt",
+      "bytes": 1530,
+      "sha256": "1ea678e13c45fca8921c89731e8402076f68125b01406203c16355bcba726bde"
+    },
+    {
+      "path": "assets/S05/comparison/prompts/D-memory-translator.txt",
+      "bytes": 1385,
+      "sha256": "aa9427047e7c61fcfc46a077d1fede66107aae2e6c008938435a64a3a7b937e0"
+    },
+    {
       "path": "assets/S05/poster-recipes.json",
-      "bytes": 5954,
-      "sha256": "c60b111dbd020641abb7ccd0f2bda9a2891b46d6769aefc9b89f0a1bf15ee3b6"
+      "bytes": 5788,
+      "sha256": "d8a216d086458886b474ecc77832f813e662396d33e42f3d7ebd2e80825529cb"
     },
     {
       "path": "assets/S05/poster.svg",
-      "bytes": 3042,
-      "sha256": "5b93ffbd84c3572003cf2a0a599b2888ae476ae14599e86642bc6e31f9ff0182"
+      "bytes": 2996,
+      "sha256": "75cc081bc72afcb4699586ae6089cfe6d8978507425558e234e45c20796a78bc"
+    },
+    {
+      "path": "assets/S05/prompt-coverage-comparison.svg",
+      "bytes": 4911,
+      "sha256": "026450f9ea003f5da7a044add51d119e69aa4926939bc92b78432a1cb139787f"
     }
   ],
-  "focused_tests": 3,
+  "focused_tests": 6,
   "quick_validate": "passed"
 }

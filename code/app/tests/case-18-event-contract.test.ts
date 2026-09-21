@@ -8,6 +8,7 @@ const definition = getCaseDefinition("18")!;
 const dataset = loadDatasetProjection(definition);
 const row = dataset.rows.find((item) => item.objectId === definition.featuredObjectId)!;
 const { objectId, decision: _decision, ...payload } = row;
+const featuredWindow = dataset.sceneRows.filter((item) => String(item.monitor_minute) >= "2022-03-29 17:22" && String(item.monitor_minute) <= "2022-03-29 17:46");
 
 function projection(overrides: Partial<CaseProjection> = {}): CaseProjection {
   return {
@@ -66,10 +67,10 @@ describe("case 18 event contract", () => {
     expect(objectId).toBe("18-BT-0044");
     expect(payload.event_id).toBe("BT-0044");
     expect(payload.source_samples).toBe("293");
-    expect(dataset.sceneRows).toHaveLength(25);
-    expect(dataset.sceneRows[0]?.monitor_minute).toBe("2022-03-29 17:22");
-    expect(dataset.sceneRows.at(-1)?.monitor_minute).toBe("2022-03-29 17:46");
-    const timestamps = dataset.sceneRows.map((item) => Date.parse(`${String(item.monitor_minute).replace(" ", "T")}:00Z`));
+    expect(featuredWindow).toHaveLength(25);
+    expect(featuredWindow[0]?.monitor_minute).toBe("2022-03-29 17:22");
+    expect(featuredWindow.at(-1)?.monitor_minute).toBe("2022-03-29 17:46");
+    const timestamps = featuredWindow.map((item) => Date.parse(`${String(item.monitor_minute).replace(" ", "T")}:00Z`));
     expect(timestamps.every((value, index) => index === 0 || value - timestamps[index - 1]! === 60_000)).toBe(true);
   });
 
@@ -85,7 +86,7 @@ describe("case 18 event contract", () => {
       data: { ...task, eventId: "BT-0043" },
     }))).toThrow("boiler_event_mismatch");
     expect(() => validateDomainCommand(dispatch({
-      sceneRows: dataset.sceneRows.slice(1),
+      sceneRows: featuredWindow.slice(1),
     }))).toThrow("boiler_window_invalid");
   });
 

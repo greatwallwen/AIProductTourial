@@ -4,6 +4,7 @@
   "skill_name": "metric-brief",
   "verification_status": "verified",
   "verified_scope": "deterministic member experiment metrics",
+  "verification_note": "Artifact structure and focused tests rechecked after path migration; browser observations and screenshots are historical, not rerun.",
   "provider_scope": null,
   "known_limitations": [],
   "commands": [
@@ -18,13 +19,13 @@
   "artifacts": [
     {
       "path": "assets/S03/business-brief.md",
-      "bytes": 1428,
-      "sha256": "bc9704e59711111fe02981fbb42a0c46de63cf1cd950f6a11890710b1642f17b"
+      "bytes": 1400,
+      "sha256": "d029e2dbfeb473651d085c0c4b34bc05a68e6a94b966776079bc2da89e612f4d"
     },
     {
       "path": "assets/S03/metrics.json",
-      "bytes": 6105,
-      "sha256": "d9b2abb17632286e593761cb10aca43d13a6001d0c12722084ce32eeac15a83c"
+      "bytes": 5937,
+      "sha256": "a0bfc5f590dbdff16513b51d8456075a06b78e3c9c767e5c07a62d0817fccd91"
     }
   ],
   "focused_tests": 3,

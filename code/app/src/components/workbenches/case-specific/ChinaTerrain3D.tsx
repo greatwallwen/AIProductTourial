@@ -4,7 +4,7 @@ import { Canvas, useLoader } from "@react-three/fiber";
 import { Html, OrbitControls } from "@react-three/drei";
 import { MapPin } from "lucide-react";
 import * as THREE from "three";
-import { Suspense, type CSSProperties } from "react";
+import { Suspense, useEffect, useState, type CSSProperties } from "react";
 import styles from "./PvLossWorkbench.module.css";
 
 const MAP_TEXTURE = "/case-assets/case-20/china_topographic_map_no_text.jpg";
@@ -152,6 +152,16 @@ function SceneLight() {
 }
 
 export function ChinaTerrain3D({ stations, selectedStationId, onSelectStation }: ChinaTerrain3DProps) {
+  const [supports3D, setSupports3D] = useState(false);
+  useEffect(() => {
+    setSupports3D(Boolean(window.WebGL2RenderingContext && window.ResizeObserver));
+  }, []);
+  const stationList = <div aria-label="电站导航">{stations.map((station) => (
+    <button key={station.id} type="button" aria-pressed={station.id === selectedStationId}
+      onClick={() => onSelectStation(station.id)}>
+      电站 PV-{station.id.padStart(2, "0")} · {station.capacityMw} MW
+    </button>
+  ))}</div>;
   return (
     <section className={styles.terrainOverview} aria-label="中国光伏区域三维地形总览">
       <div className={styles.terrainHeading}>
@@ -159,7 +169,8 @@ export function ChinaTerrain3D({ stations, selectedStationId, onSelectStation }:
         <small>区域标签用于核查导航，不表示匿名站点真实坐标</small>
       </div>
       <div className={styles.terrain3dCanvas}>
-        <Canvas
+        {supports3D ? <Canvas
+          fallback={stationList}
           camera={{ position: [0, 6, 5], fov: 42 }}
           gl={{ antialias: true, alpha: true }}
           style={{ background: "transparent" }}
@@ -190,10 +201,10 @@ export function ChinaTerrain3D({ stations, selectedStationId, onSelectStation }:
             enableDamping
             dampingFactor={0.08}
           />
-        </Canvas>
+        </Canvas> : stationList}
       </div>
       <div className={styles.terrainLegend}>
-        <i /><span>三维地形浮雕底图</span><b>可拖拽旋转查看</b>
+        <i /><span>区域示意底图</span><b>{supports3D ? "可拖拽旋转查看" : "选择电站查看核查数据"}</b>
       </div>
     </section>
   );

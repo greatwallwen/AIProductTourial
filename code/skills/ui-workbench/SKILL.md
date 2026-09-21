@@ -36,7 +36,7 @@ python3 -B code/skills/ui-workbench/scripts/build_ui_comparison.py \
   --input dataset/10-telecom-complaint-orchestration/case.csv \
   --allowed-root dataset/10-telecom-complaint-orchestration \
   --tabler-css vendor/tabler/1.4.0/tabler.min.css \
-  --output-dir assets/skill-cases/S10
+  --output-dir assets/S10
 ```
 
 Read [references/acceptance-contract.md](references/acceptance-contract.md) before changing the workflow or evaluation criteria.

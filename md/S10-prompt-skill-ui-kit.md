@@ -84,7 +84,7 @@ python3 -B code/skills/ui-workbench/scripts/build_ui_comparison.py \
   --input dataset/10-telecom-complaint-orchestration/case.csv \
   --allowed-root dataset/10-telecom-complaint-orchestration \
   --tabler-css vendor/tabler/1.4.0/tabler.min.css \
-  --output-dir assets/skill-cases/S10
+  --output-dir assets/S10
 ```
 
 生成回执见 [receipt.json](../assets/S10/receipt.json)，浏览器回执见 [browser-verification.json](../assets/S10/browser-check/browser-verification.json)。

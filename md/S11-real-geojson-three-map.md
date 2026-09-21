@@ -101,7 +101,7 @@ C 的 390×844 截图暴露了真实问题：顶部控制栏被压成竖排，�
 GeoJSON 下载是公开 URL，页面构建和浏览器渲染都在本机完成，不需要 OpenAI Key 或地图商业 API Key。数据已保存在仓库，后续离线展示只需本地静态服务器：
 
 ```bash
-cd assets/skill-cases/S11
+cd assets/S11
 python3 -m http.server 5292 --bind 127.0.0.1
 ```
 

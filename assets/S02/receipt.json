@@ -4,6 +4,7 @@
   "skill_name": "data-profile",
   "verification_status": "verified",
   "verified_scope": "read-only full CSV scan",
+  "verification_note": "Artifact structure and focused tests rechecked after path migration; browser observations and screenshots are historical, not rerun.",
   "provider_scope": null,
   "known_limitations": [],
   "commands": [
@@ -17,13 +18,13 @@
   "artifacts": [
     {
       "path": "assets/S02/profile.json",
-      "bytes": 2673,
-      "sha256": "4c0020e198956ed2bd9ad1ad10fe97389dd5d03f954321e34990845df776c8d0"
+      "bytes": 2539,
+      "sha256": "68e70559a6cd41fb9dd3945c22578596133f47131b10e6ea51d9d07082704e3a"
     },
     {
       "path": "assets/S02/profile.md",
-      "bytes": 821,
-      "sha256": "7fc0c62d6dbb5c3e307554ab3e6da17082e0a83e6e61564a2832f04172bf42b8"
+      "bytes": 793,
+      "sha256": "daeb240a4ac18f8c9614e84b3f0996d639171cebabdc0e57442108251ebcfc29"
     }
   ],
   "focused_tests": 3,
