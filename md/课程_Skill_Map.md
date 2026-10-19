@@ -50,12 +50,12 @@ AIGC 版 Skill Map 覆盖 9 个视觉生成 Skill，解决"分析结论→视觉
 | L3 | universe-subset-distinction | 全集/子集辨析，防辛普森悖论 | B16 风机下偏 |
 | L4 | reference-frame-selection | 参照系可比性检查 | B14/B18 |
 | L5 | correlation-not-causation | 阻断相关→因果跳跃 | B02 发券实验 |
-| L6 | falsification-thinking | 可证伪性检查，找反例 | 11 章 TDD |
+| L6 | falsification-thinking | 可证伪性检查，找反例 | 15 章 TDD |
 | L7 | logic-boundary-guard | 证据不足悬置判断，交人工 | S01 分诊停止 |
 | L8 | quantifier-rigor | 全称/存在量词严谨 | B17 切刀 |
 | L9 | logic-consistency-conditions | 条件要素偷换检查 | B14 浮选 |
 | L10 | induction-exception-warning | 归纳结论例外提醒 | B15 半导体 |
-| L11 | identity-law-check | 概念指代一致性 | 13 章六槽 |
+| L11 | identity-law-check | 概念指代一致性 | 17 章六槽 |
 | L12 | exclusivity-possibility-analysis | 结论强度分类（必然/可能/排他） | B19 液压 |
 | L13 | logic-three-step | 命题化→逻辑关系→链条 | 01 章推理 |
 | L14 | fact-opinion-separation | 事实/观点分离 | S03 简报 |
@@ -67,7 +67,7 @@ AIGC 版 Skill Map 覆盖 9 个视觉生成 Skill，解决"分析结论→视觉
 |---|---|---|---|---|
 | 0 | **supergrill** | [greatwallwen/supergrill](https://github.com/greatwallwen/supergrill/)（superpowers + grill-me 结合） | 以 grill-me 为决策访谈权威，叠加硬门控/检查点/方法论感知/自适应模型路由/跨项目学习，将不确定项目转化为基于事实、可恢复、成本感知的执行循环 | 选型前对方案做证伪式压力测试 + 项目治理门控 |
 
-### A. Agent/Skill 工程层（S01-S11 · 对应 03-Agent与Skill工程.md）
+### A. Agent/Skill 工程层（S01-S11 · 对应能力篇的 Agent 与 Skill 两章，独立案例见案例索引）
 
 > 开源 Skill 只作结构参考；课程保留实际采用的触发条件、输入输出、许可和测试。
 
@@ -100,7 +100,7 @@ AIGC 版 Skill Map 覆盖 9 个视觉生成 Skill，解决"分析结论→视觉
 |---|---|---|---|---|
 | 12 | test-driven-development | B05 转运单校验 | jnMetaCode/superpowers-zh（7.5k star，单卡） | 红绿重构协议，任一步跳过即视为未完成 |
 | 13 | multi-agent-review | B16 风机评审 | harish-info/claude-code-skills | Review Board：3 agent 并行审，Tech Lead 汇总 |
-| 14 | skill_lint | 13 章治理 | skill-scanner（13 章引用） | Skill 发布前四类检查：路由/样本/安全/版本 |
+| 14 | skill_lint | 17 章治理 | skill-scanner（17 章引用） | Skill 发布前四类检查：路由/样本/安全/版本 |
 
 > 以上 30 个 Skill 分属三层，但清单只是目录——真正的价值在**逻辑闭环**：每个工程 Skill 执行时，逻辑底层 skill 在方法论上把关，supergrill 在选型前拷问，治理层在产出后验收。以下 5 条主线展示闭环怎么跑。
 
@@ -118,7 +118,7 @@ AIGC 版 Skill Map 覆盖 9 个视觉生成 Skill，解决"分析结论→视觉
 
 **Prompt 要点**：不把相关性画成因果；组间差异只标"共变线索"，不标"券起效"；每个数据点标注来源字段和口径。
 
-### 主线 2：B20 光伏归因 → drawio-skill C4 四层图（05 章）
+### 主线 2：B20 光伏归因 → drawio-skill C4 四层图（08 章）
 
 **逻辑链**：L3 全集/子集辨析 → L4 参照系选择 → supergrill 拷问"边界是否划清" → drawio-skill 画 C4 → L11 同一律检查 status 字段歧义 → DDD 衔接
 
@@ -126,7 +126,7 @@ AIGC 版 Skill Map 覆盖 9 个视觉生成 Skill，解决"分析结论→视觉
 
 **已完成**：四张 SVG + .drawio 源文件 + 运行案例 md 均已生成（2026-08-06）。
 
-### 主线 3：S09 案例动态图 → Archify trace 动画（03 章）
+### 主线 3：S09 案例动态图 → Archify trace 动画（05 章）
 
 **逻辑链**：L13 逻辑三步法（命题化→关系→链条）→ supergrill 拷问"静态图能否看出流程方向" → Archify 渲染 → L9 逻辑一致性检查 trace 顺序
 
@@ -134,13 +134,13 @@ AIGC 版 Skill Map 覆盖 9 个视觉生成 Skill，解决"分析结论→视觉
 
 **三步管线**：① gen-json.mjs 生成 JSON IR → ② deliver-all.mjs 调 archify render → ③ make-webm.mjs 调 puppeteer+ffmpeg。换案例只需换 JSON，不动渲染代码。
 
-### 主线 4：B05 医院转运 → test-driven-development（11 章）
+### 主线 4：B05 医院转运 → test-driven-development（15 章）
 
 **逻辑链**：L6 证伪思维 → supergrill 拷问"已知反例是否消除" → TDD 红绿重构 → L10 归纳例外提醒"未知缺陷仍存在" → 4.4 健壮与安全补护栏
 
 **闭环**：B05 转运单缺患者ID → TDD 先写红测试"缺ID时返回 patient_id_required" → 绿测试消除已知反例 → L6 证伪：先写断言=先构造反例条件再消除 → supergrill 拷问"TDD 能保证没有未知缺陷吗？" → L10 提醒：TDD 只保证"已知反例被消除"，不保证"没有未知缺陷"（并发提交、权限绕过）→ 正是 4.4 健壮与安全要补的：错误处理+安全红线 → TDD 是证伪第一道，健壮与安全是第二道。
 
-### 主线 5：B16 风机欠发 → multi-agent-review（12 章）
+### 主线 5：B16 风机欠发 → multi-agent-review（16 章）
 
 **逻辑链**：L3 全集/子集辨析 → L11 同一律（Maker/Checker 不能同一）→ supergrill 拷问"验的人是否独立于做的人" → multi-agent-review 三 agent 并行审 → L7 边界守护把问题清单交门禁
 
@@ -174,7 +174,7 @@ AIGC 版 Skill Map 覆盖 9 个视觉生成 Skill，解决"分析结论→视觉
 | three-scope-map | songsummer920-dazzle/three-scope-map-skill（GPL-3.0，固定 commit `605867c0...`） | — | S11 真实 GeoJSON、Earth 入口、材质、hover 和下钻；移动端需专项适配 |
 | pixijs-game-contract | 课程自有 | — | S07 PixiJS 原型 |
 | asset-contract | 课程自有 | — | S08 3D 资产检查 |
-| skill_lint | skill-scanner（13 章引用） | — | Skill 发布前四类检查 |
+| skill_lint | skill-scanner（17 章引用） | — | Skill 发布前四类检查 |
 
 > 开源参考来源（skills-research-card.json）：openai/skills（结构）、deanpeters/Product-Manager-Skills（问题框定）、LiamGvchi/gc-minimal-zine-poster（视觉配方）、tristan-mcinnis/pptx-from-layouts-skill（模板布局）、pixijs/pixijs-skills（PixiJS v8）、DeemosTech/rodin3d-skills（3D 资产）。课程保留实际采用的触发条件、输入输出、许可和测试。
 

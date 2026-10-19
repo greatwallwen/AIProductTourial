@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>网络科学与计算｜第三讲小测</title>
+  <style>
+    :root { --ink:#17343f; --muted:#526d76; --line:#c9d9dc; --blue:#155d75; --soft:#e7f1f3; --green:#17694d; --red:#a43d32; --paper:#fff; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:#ebf1f2; color:var(--ink); font:16px/1.7 "Noto Sans CJK SC","Microsoft YaHei",system-ui,sans-serif; }
+    main { max-width:980px; margin:32px auto; padding:36px 56px 70px; background:var(--paper); border-top:6px solid var(--blue); box-shadow:0 16px 48px #17343f16; }
+    header { padding:0 0 24px; border-bottom:2px solid var(--ink); }
+    .masthead { display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .network-mark { width:110px; height:92px; flex:none; color:var(--blue); }
+    h1 { margin:12px 0 8px; font-size:clamp(25px,3vw,36px); line-height:1.3; letter-spacing:.01em; }
+    h2 { margin:32px 0 16px; font-size:21px; border-bottom:1px solid var(--line); padding-bottom:8px; }
+    h3 { margin:0 0 8px; font-size:18px; }
+    p { margin:8px 0; }
+    .meta { color:var(--muted); max-width:72ch; }
+    .material { display:flex; align-items:center; flex-wrap:wrap; gap:9px; margin-top:20px; padding:15px 0; border-top:1px solid var(--line); }
+    .material input { max-width:100%; font:inherit; font-size:14px; }
+    .chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:6px; }
+    .chip,.type { display:inline-block; padding:2px 8px; font-size:13px; background:var(--soft); color:var(--blue); }
+    .chip { background:transparent; border:1px solid var(--line); }
+    .card,.question { border:1px solid var(--line); padding:21px 24px; margin:12px 0; }
+    .question { position:relative; padding-left:78px; }
+    .question-head { display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:8px; }
+    .number { position:absolute; left:0; top:0; width:56px; min-height:56px; display:grid; place-items:center; font-size:18px; font-weight:700; color:#fff; background:var(--blue); }
+    .question > p { max-width:75ch; }
+    label.option { display:block; padding:7px 10px; margin:5px 0; border:1px solid transparent; cursor:pointer; }
+    label.option:hover, label.option:focus-within { background:var(--soft); border-color:var(--line); }
+    input { accent-color:var(--blue); }
+    input[type="text"],textarea { width:100%; border:1px solid var(--line); padding:10px; font:inherit; color:var(--ink); }
+    textarea { min-height:112px; resize:vertical; }
+    :focus-visible { outline:3px solid #a43d32; outline-offset:3px; }
+    .hint { color:var(--muted); font-size:14px; }
+    .actions { display:flex; gap:10px; flex-wrap:wrap; margin:26px 0; }
+    button { border:1px solid var(--blue); padding:11px 16px; font:inherit; cursor:pointer; }
+    button.primary { background:var(--blue); color:white; }
+    button.secondary { background:#fff; color:var(--blue); }
+    #result { display:none; }
+    .score { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; margin:14px 0; }
+    .score div { background:var(--soft); border-top:3px solid var(--blue); padding:13px; }
+    .score strong { display:block; font-size:25px; }
+    .feedback { border-top:1px solid var(--line); margin-top:12px; padding-top:12px; }
+    .ok { color:var(--green); } .bad { color:var(--red); }
+    details { margin-top:9px; color:var(--blue); }
+    footer { color:var(--muted); font-size:14px; margin-top:28px; }
+    @media (max-width:620px) { main { margin:0; padding:23px 16px 48px; box-shadow:none; } .network-mark { width:74px; height:68px; } .question { padding:70px 15px 17px; } .number { width:50px; min-height:50px; } .actions button { width:100%; } }
+    @media print { body { background:#fff; } main { margin:0; padding:0; box-shadow:none; } header,.card,.question { break-inside:avoid; } .actions { display:none; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="masthead"><span class="chip">课后自测 · 第三讲</span><svg class="network-mark" viewBox="0 0 120 100" fill="none" aria-hidden="true"><path d="M19 54 37 19 79 17 105 46 89 79 43 84 19 54 79 17M37 19 43 84M79 17 89 79" stroke="currentColor" stroke-width="2"/><g fill="currentColor"><circle cx="19" cy="54" r="5"/><circle cx="37" cy="19" r="5"/><circle cx="79" cy="17" r="5"/><circle cx="105" cy="46" r="5"/><circle cx="89" cy="79" r="5"/><circle cx="43" cy="84" r="5"/></g></svg></div>
+    <h1>网络科学与计算：典型网络模型小测</h1>
+    <p class="meta">先独立作答，再提交。范围只依据《2025 第三讲 网络模型》；客观题自动反馈，简答与综合题保留人工核对。</p>
+    <div class="material">
+      <label for="source-pdf">选择自己持有的第三讲 PDF 回看：</label>
+      <input id="source-pdf" type="file" accept="application/pdf,.pdf">
+      <a id="pdf-view" hidden target="_blank" rel="noopener">打开课件</a>
+      <span id="pdf-status" class="hint">课件只在当前浏览器中打开，不上传。</span>
+    </div>
+    <div class="chips"><span class="chip">单选</span><span class="chip">多选</span><span class="chip">判断</span><span class="chip">填空</span><span class="chip">简答</span><span class="chip">综合题</span></div>
+  </header>
+
+  <form id="quiz">
+    <h2>一、客观题</h2>
+    <section id="objective"></section>
+    <h2>二、主观题</h2>
+    <section id="subjective"></section>
+    <div class="actions">
+      <button class="primary" type="submit">提交并查看结果</button>
+      <button class="secondary" type="button" id="demo">查看示例结果</button>
+      <button class="secondary" type="button" id="reset">清空答案</button>
+    </div>
+  </form>
+
+  <section id="result" class="card" aria-live="polite">
+    <h2>本次结果</h2>
+    <p id="result-note" class="meta"></p>
+    <div class="score">
+      <div><strong id="objective-score">-</strong><span>客观题得分</span></div>
+      <div><strong id="objective-total">-</strong><span>客观题总分</span></div>
+      <div><strong id="manual-count">-</strong><span>待人工核对</span></div>
+    </div>
+    <div id="topic-feedback"></div>
+    <div class="feedback" id="manual-feedback"></div>
+  </section>
+
+  <footer>材料边界：第三讲 PDF p.3—p.57 为本页主要依据；复习课 PDF 只作第三章重点对照。其他模型和第 1、2、4 章不在本轮小测范围内。</footer>
+</main>
+<script>
+  const questions = [
+    { id:'q1', type:'single', topic:'建模目的', prompt:'材料给出的“为什么需要网络模型”包括哪一组原因？', options:['解释性分析、测试算法和分析方法、描述网络','预测所有节点未来状态、替代实验、保证结论正确','只计算平均度、只画网络图、只寻找最大节点','生成数据、压缩文件、自动完成考试'], answer:[0], evidence:'第三讲 p.3' },
+    { id:'q2', type:'single', topic:'小世界', prompt:'材料对小世界特性的概括最准确的是：', options:['高聚类、短的平均路径长度','低聚类、长的平均路径长度','幂律度分布、没有枢纽节点','所有节点都与其他节点直接相连'], answer:[0], evidence:'第三讲 p.4、p.25' },
+    { id:'q3', type:'multi', topic:'小世界模型', prompt:'关于 WS/NW 小世界模型，哪些说法符合第三讲材料？（多选）', options:['它们都试图同时保留较高聚类和较短路径','WS 通过随机重连引入捷径','NW 通过随机加边引入捷径','它们都以优先连接作为核心机制'], answer:[0,1,2], evidence:'第三讲 p.25、p.28、p.35' },
+    { id:'q4', type:'multi', topic:'BA 模型', prompt:'BA 无标度模型的两个核心机制和结果包括哪些？（多选）', options:['网络增长','优先连接已有较多连接的节点','节点度分布呈幂律特征','每一对节点以相同概率独立连边'], answer:[0,1,2], evidence:'第三讲 p.46—p.48、p.55—p.57' },
+    { id:'q5', type:'truefalse', topic:'ER 巨组元', prompt:'在 ER 随机图中，平均度接近并超过 1 时会出现巨组元，这是材料所说的渗流阈值现象。', options:['正确','错误'], answer:[0], evidence:'第三讲 p.11—p.12、p.23' },
+    { id:'q6', type:'truefalse', topic:'WS 与 NW 区别', prompt:'NW 模型通过随机重连原有边来产生小世界特性，而 WS 模型通过随机加边。', options:['正确','错误'], answer:[1], evidence:'第三讲 p.30、p.35' },
+    { id:'q7', type:'fill', topic:'ER 平均度', prompt:'在 G(N,p) 中，平均度 ⟨k⟩ = ______。请填写材料中的表达式。', accepted:['p(n-1)','p（n-1）','p(n − 1)','p(n−1)'], answerText:'p(N-1)', evidence:'第三讲 p.7、p.13' },
+    { id:'q8', type:'fill', topic:'无标度特性', prompt:'真实网络的无标度特性与节点度的 ______ 分布相关。', accepted:['幂律','幂律分布'], answerText:'幂律（分布）', evidence:'第三讲 p.4、p.22、p.55' },
+    { id:'q9', type:'short', topic:'ER 模型表示', prompt:'解释 G(N,p) 与 G(N,M) 的含义，并写出材料对两者统计特性的结论。', points:['G(N,p) 以节点对之间的连接概率 p 生成网络','G(N,M) 固定网络中的边数 M','材料指出二者生成的网络统计特性相同'], evidence:'第三讲 p.7' },
+    { id:'q10', type:'short', topic:'WS 与 NW', prompt:'用“随机重连”和“随机加边”两个词，说明 WS 与 NW 的区别，以及它们要解决的共同问题。', points:['WS 通过随机重连引入捷径','NW 通过随机加边引入捷径','共同目标是在较高聚类的基础上获得较短平均路径'], evidence:'第三讲 p.25、p.28、p.30、p.35' },
+    { id:'q11', type:'comprehensive', topic:'模型比较', prompt:'假设你要解释一个真实网络：它既有较短平均路径，又有明显的高度节点。请比较 ER、WS 和 BA 三种模型的生成机制与可解释现象，并说明你会先选哪一个模型、为什么。', points:['ER：随机连接或固定边数，能解释较短路径，但聚类较低且度分布不突出枢纽','WS：从规则网络出发随机重连，强调高聚类与短路径的小世界特性','BA：网络增长加优先连接，解释幂律度分布与高度节点','选择应与题干要解释的现象对应；若重点是高度节点，应优先以 BA 为主，再用指标核对'], evidence:'第三讲 p.18—p.23、p.25—p.35、p.46—p.57' }
+  ];
+  const typeNames = { single:'单选题', multi:'多选题', truefalse:'判断题', fill:'填空题', short:'简答题', comprehensive:'综合题' };
+  const objectiveTypes = new Set(['single','multi','truefalse','fill']);
+  const normalize = value => value.trim().toLowerCase().replaceAll(' ', '').replaceAll('（','(').replaceAll('）',')').replaceAll('−','-');
+  function renderQuestion(question) {
+    const wrapper = document.createElement('article');
+    wrapper.className = 'question';
+    wrapper.dataset.id = question.id;
+    const head = document.createElement('div');
+    head.className = 'question-head';
+    head.innerHTML = `<span class="number">${question.id.toUpperCase()}</span><span class="type">${typeNames[question.type]}</span><span class="hint">${question.topic}</span>`;
+    wrapper.append(head);
+    const prompt = document.createElement('p');
+    prompt.innerHTML = `<strong>${question.prompt}</strong>`;
+    wrapper.append(prompt);
+    if (question.options) {
+      question.options.forEach((option, index) => {
+        const label = document.createElement('label');
+        label.className = 'option';
+        const inputType = question.type === 'multi' ? 'checkbox' : 'radio';
+        label.innerHTML = `<input type="${inputType}" name="${question.id}" value="${index}"> ${String.fromCharCode(65 + index)}. ${option}`;
+        wrapper.append(label);
+      });
+    } else if (question.type === 'fill') {
+      wrapper.insertAdjacentHTML('beforeend', `<input name="${question.id}" type="text" aria-label="${question.id.toUpperCase()} 填空" placeholder="填写答案">`);
+    } else {
+      wrapper.insertAdjacentHTML('beforeend', `<textarea name="${question.id}" aria-label="${question.id.toUpperCase()} 作答" placeholder="写下你的答案，再对照材料核对"></textarea>`);
+    }
+    wrapper.insertAdjacentHTML('beforeend', `<details><summary>材料依据</summary><p>${question.evidence}</p></details>`);
+    return wrapper;
+  }
+  questions.forEach(question => document.querySelector(objectiveTypes.has(question.type) ? '#objective' : '#subjective').append(renderQuestion(question)));
+  function selected(question) {
+    if (question.type === 'fill') return [normalize(document.querySelector(`[name="${question.id}"]`).value)];
+    return [...document.querySelectorAll(`[name="${question.id}"]:checked`)].map(input => Number(input.value)).sort((a,b) => a-b);
+  }
+  function same(a,b) { return a.length === b.length && a.every((value,index) => value === b[index]); }
+  function evaluate(demoMode = false) {
+    let score = 0;
+    const rows = [];
+    const wrongTopics = [];
+    questions.forEach(question => {
+      if (!objectiveTypes.has(question.type)) return;
+      const value = selected(question);
+      const correct = question.type === 'fill' ? question.accepted.map(normalize).includes(value[0]) : same(value, question.answer);
+      if (correct) score += 1; else wrongTopics.push(question.topic);
+      const answer = question.type === 'fill' ? question.answerText : question.answer.map(index => `${String.fromCharCode(65 + index)}. ${question.options[index]}`).join('；');
+      rows.push(`<p class="${correct ? 'ok' : 'bad'}"><strong>${question.id.toUpperCase()}｜${correct ? '正确' : '需要回看'}</strong>：${question.topic}（${question.evidence}）${correct ? '' : `<br>参考答案：${answer}`}</p>`);
+    });
+    const manual = questions.filter(question => !objectiveTypes.has(question.type));
+    document.querySelector('#objective-score').textContent = `${score} / 8`;
+    document.querySelector('#objective-total').textContent = '8 题';
+    document.querySelector('#manual-count').textContent = `${manual.length} 题`;
+    document.querySelector('#result-note').textContent = demoMode ? '这是内置的模拟作答结果：故意保留几处错题，展示结果页如何提示回看。' : '客观题已完成自动核对；主观题请按每题材料依据人工检查。';
+    document.querySelector('#topic-feedback').innerHTML = `<h3>逐题反馈</h3>${rows.join('')}${wrongTopics.length ? `<p class="bad">建议优先回看：${[...new Set(wrongTopics)].join('、')}。</p>` : '<p class="ok">客观题没有发现错题。</p>'}`;
+    document.querySelector('#manual-feedback').innerHTML = `<strong>主观题：只做人工核对，不自动打分</strong><p>请先看自己写下的答案，再对照以下要点和材料页码：</p>${manual.map(question => `<details><summary>${question.id.toUpperCase()}｜${question.topic}（${question.evidence}）</summary><ul>${question.points.map(point => `<li>${point}</li>`).join('')}</ul></details>`).join('')}`;
+    document.querySelector('#result').style.display = 'block';
+    document.querySelector('#result').scrollIntoView({ behavior:'smooth', block:'start' });
+  }
+  function fillDemo() {
+    HTMLFormElement.prototype.reset.call(document.querySelector('#quiz'));
+    const setRadio = (id, value) => { const input = document.querySelector(`[name="${id}"][value="${value}"]`); if (input) input.checked = true; };
+    const setChecks = (id, values) => values.forEach(value => setRadio(id, String(value)));
+    setRadio('q1','0'); setRadio('q2','0'); setChecks('q3',[0,1]); setChecks('q4',[0,1,2]); setRadio('q5','0'); setRadio('q6','0');
+    document.querySelector('[name="q7"]').value = 'pN';
+    document.querySelector('[name="q8"]').value = '幂律';
+    document.querySelector('[name="q9"]').value = 'G(N,p) 是按概率连边，G(N,M) 是固定边数；它们统计特性相同。';
+    document.querySelector('[name="q10"]').value = 'WS 随机重连，NW 随机加边，都是为了缩短路径。';
+    document.querySelector('[name="q11"]').value = 'ER 用随机连接；WS 用重连；BA 用增长和优先连接。题目有高度节点，所以选 BA。';
+    evaluate(true);
+  }
+  document.querySelector('#quiz').addEventListener('submit', event => { event.preventDefault(); evaluate(false); });
+  document.querySelector('#demo').addEventListener('click', fillDemo);
+  document.querySelector('#reset').addEventListener('click', () => { HTMLFormElement.prototype.reset.call(document.querySelector('#quiz')); document.querySelector('#result').style.display = 'none'; });
+  let sourceUrl;
+  document.querySelector('#source-pdf').addEventListener('change', event => {
+    if (sourceUrl) URL.revokeObjectURL(sourceUrl);
+    const link = document.querySelector('#pdf-view');
+    const status = document.querySelector('#pdf-status');
+    link.hidden = true;
+    link.removeAttribute('href');
+    sourceUrl = undefined;
+    const file = event.target.files[0];
+    if (!file) { status.textContent = '课件只在当前浏览器中打开，不上传。'; return; }
+    if (file.type !== 'application/pdf') { status.textContent = '请选择 PDF 文件。'; return; }
+    sourceUrl = URL.createObjectURL(file);
+    link.href = sourceUrl;
+    link.hidden = false;
+    status.textContent = '已选择课件；请按题目所示页码回看。';
+  });
+  window.addEventListener('pagehide', () => { if (sourceUrl) URL.revokeObjectURL(sourceUrl); });
+</script>
+</body>
+</html>
