@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="40 110 1070 840" role="img" aria-labelledby="title description">
+  <title id="title">模拟卧室原始布局图</title>
+  <desc id="description">模拟卧室平面图，420乘330厘米；床150乘200厘米，衣柜120乘60厘米，床头柜45乘45厘米；北墙窗户130厘米，南墙房门80厘米。</desc>
+  <rect width="1200" height="1060" fill="#f3f1eb"/>
+  <rect x="160" y="200" width="840" height="660" fill="#fdfbf5"/>
+  <path d="M160 200 H480 M740 200 H1000 V860 M1000 860 H980 M820 860 H160 V200" fill="none" stroke="#344c54" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M480 201 H740" stroke="#5aafb6" stroke-width="11"/>
+  <path d="M480 214 H740" stroke="#8cd5d4" stroke-width="5"/>
+  <text x="576" y="178" fill="#2e818b" font-size="19" font-family="sans-serif">窗 130</text>
+  <path d="M820 860 L820 700" stroke="#9a7354" stroke-width="7" stroke-linecap="round"/>
+  <path d="M980 860 A160 160 0 0 0 820 700" fill="none" stroke="#bc9571" stroke-width="3" stroke-dasharray="9 7"/>
+  <circle cx="820" cy="860" r="7" fill="#9a7354"/>
+  <text x="850" y="915" fill="#8c6849" font-size="19" font-family="sans-serif">门 80</text>
+  <rect x="210" y="240" width="300" height="400" rx="8" fill="#b4cbc9" stroke="#57817d" stroke-width="3"/>
+  <rect x="227" y="255" width="266" height="82" rx="8" fill="#d9e6df"/>
+  <path d="M360 255 V337" stroke="#afc7bf" stroke-width="3"/>
+  <text x="303" y="449" fill="#264d50" font-size="25" font-weight="600" font-family="sans-serif">床</text>
+  <text x="276" y="487" fill="#345d5e" font-size="18" font-family="sans-serif">150 × 200</text>
+  <rect x="740" y="240" width="240" height="120" rx="5" fill="#c5b49c" stroke="#907964" stroke-width="3"/>
+  <path d="M860 250 V349" stroke="#947e67" stroke-width="2"/>
+  <text x="811" y="293" fill="#534a42" font-size="19" font-weight="600" font-family="sans-serif">衣柜</text>
+  <text x="820" y="324" fill="#534a42" font-size="17" font-family="sans-serif">120 × 60</text>
+  <rect x="540" y="270" width="90" height="90" rx="5" fill="#e4d4b8" stroke="#9c866a" stroke-width="3"/>
+  <text x="547" y="306" fill="#584a38" font-size="16" font-family="sans-serif">床头柜</text>
+  <text x="548" y="332" fill="#584a38" font-size="16" font-family="sans-serif">45 × 45</text>
+  <path d="M160 148 V180 M1000 148 V180 M160 163 H1000" stroke="#809399" stroke-width="2"/>
+  <path d="M160 148 L174 163 L160 178 M1000 148 L986 163 L1000 178" fill="none" stroke="#809399" stroke-width="2"/>
+  <text x="535" y="155" fill="#4a6066" font-size="21" font-weight="600" font-family="sans-serif">420</text>
+  <path d="M112 200 H141 M112 860 H141 M126 200 V860" stroke="#809399" stroke-width="2"/>
+  <path d="M112 200 L126 214 L140 200 M112 860 L126 846 L140 860" fill="none" stroke="#809399" stroke-width="2"/>
+  <text x="86" y="540" transform="rotate(-90 86 540)" fill="#4a6066" font-size="21" font-weight="600" font-family="sans-serif">330</text>
+</svg>

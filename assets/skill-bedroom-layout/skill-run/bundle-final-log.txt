@@ -1,0 +1,64 @@
+📦 Bundling React app to single HTML artifact...
+📦 Installing bundling dependencies...
+✓ Lockfile passes supply-chain policies (verified 14m ago)
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Progress: resolved 113, reused 81, downloaded 0, added 0
+Progress: resolved 319, reused 257, downloaded 0, added 0
+Already up to date
+Progress: resolved 419, reused 318, downloaded 0, added 0, done
+
+╭ Warning ─────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│   Ignored build scripts: @parcel/watcher@2.6.0, @swc/core@1.16.20,           │
+│   lmdb@2.8.5, msgpackr-extract@3.0.4.                                        │
+│   Run "pnpm approve-builds" to pick which dependencies should be allowed     │
+│   to run scripts.                                                            │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+Done in 4s using pnpm v11.25.0
+🧹 Cleaning previous build...
+🔨 Building with Parcel...
+Building...
+
+@parcel/transformer-postcss: WARNING: Using a JavaScript PostCSS config file 
+means losing out on caching features of Parcel. Use a .postcssrc(.json) file 
+whenever possible.
+
+@parcel/package-manager: ES module dependencies are experimental.
+
+  /tmp/aiproduct-web-artifacts-original-run/bedroom-skill-original/postcss.config.js
+  
+
+
+@parcel/package-manager: ES module dependencies are experimental.
+
+  /tmp/aiproduct-web-artifacts-original-run/bedroom-skill-original/postcss.config.js
+  
+
+
+@parcel/transformer-postcss: Parcel includes CSS transpilation and vendor 
+prefixing by default. PostCSS config postcss.config.js contains the following 
+redundant plugins: autoprefixer. Removing these may improve build performance.
+
+  /tmp/aiproduct-web-artifacts-original-run/bedroom-skill-original/postcss.config.js:1:1
+  > 1 | export default {
+  >   | ^
+    2 |   plugins: {
+    3 |     tailwindcss: {},
+
+  💡 Remove the above plugins from postcss.config.js
+  📝 Learn more: https://parceljs.org/languages/css/#default-plugins
+
+Bundling...
+✨ Built in 1.46s
+
+dist/index.html                                 357 B     49ms
+dist/bedroom-skill-original.efcc813d.js     276.29 kB    366ms
+dist/bedroom-skill-original.f2598b7d.css     49.85 kB     47ms
+🎯 Inlining all assets into single HTML file...
+
+✅ Bundle complete!
+📄 Output: bundle.html (320K)
+
+You can now use this single HTML file as an artifact in Claude conversations.
+To test locally: open bundle.html in your browser

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>潮汐音乐盒 · 规则试件</title>
+<style>
+:root{font-family:system-ui,'Noto Sans CJK SC',sans-serif;color:#204b43;background:#edf3ed}*{box-sizing:border-box}body{margin:0}.wrap{max-width:1220px;margin:auto;padding:28px 20px 70px}h1{font-size:30px;margin:4px 0 9px}h2{font-size:18px;margin:0 0 12px}h3{font-size:15px;margin:10px 0}p{line-height:1.65}small,.muted{color:#5b776d}.eyebrow{font-size:11px;letter-spacing:.15em;color:#a2663c;font-weight:800}.lead{font-size:15px;max-width:960px}.notice{border-left:3px solid #bf8350;padding-left:12px;color:#536e62}.grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:15px}.card{background:#fffefa;border:1px solid #d3e2d3;border-radius:15px;padding:18px;margin-top:14px;box-shadow:0 7px 18px #21442b0b}button{font:inherit;cursor:pointer;border:1px solid #b8d2be;background:#f5f9f3;border-radius:8px;color:#214d40;padding:7px 11px;margin:3px 4px 3px 0}button:hover,button:focus-visible{border-color:#b76e42;outline-offset:2px}button.active{color:white;background:#246754;border-color:#246754}.controls{display:flex;flex-wrap:wrap;gap:2px}.state{padding:12px;background:#f4f8f2;border-radius:9px;line-height:1.7}.state b{color:#164b3d}.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:10px}.slots div{background:#f4f8f2;border:1px solid #d9e5da;border-radius:8px;padding:9px;font-size:12px}.metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.metrics div{background:#eef5ea;padding:10px;border-radius:8px}.metrics strong{display:block;font-size:20px}.scroll{overflow:auto;max-height:360px}table{width:100%;border-collapse:collapse;font-size:12px;white-space:nowrap}th,td{text-align:left;padding:7px;border-bottom:1px solid #e3eee2}th{position:sticky;top:0;background:#fffefa}tr.edited{background:#fff3e7}.feedback{min-height:38px;color:#a15a35;font-weight:650}.tabs{display:flex;gap:6px;flex-wrap:wrap}.steps{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}audio{width:100%;margin-top:8px}.primary{background:#236551;color:#fff}.hint{font-size:12px;color:#60796e}@media(max-width:800px){.grid{grid-template-columns:1fr}.wrap{padding:14px 12px 90px}.slots{grid-template-columns:1fr}h1{font-size:24px}}
+.card{min-width:0}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.metrics div{min-width:0}.scroll{max-width:100%;overflow-x:auto}
+</style></head><body><main class="wrap"><div class="eyebrow">PROTOTYPE / LOGIC · 单问题试件 · 不是正式编曲台</div><h1>同一条潮位，换条规则，会发生什么？</h1><p class="lead">问题：十四天同一份历史观测，按“只看潮高”或“潮高＋涨落”生成旋律时，音符与时值如何变化？人工调过的一音能否保留在指定段落里，而不改动原始观测？</p><p class="notice">旧金山 9414290，2025 年 4 月 1—14 日，3360 条已校验的六分钟历史潮位（GMT、MLLW 米）。每隔 12 分钟取一个点，默认 192 拍。声音是合成音，不是潮声录音。此试件在工作台已存在后补做验证，不把补测写成最初产品诞生的原因。</p>
+<section class="card"><h2>任选操作 · 每点一下都能看状态</h2><div class="controls" id="free"><button data-free="first">选 4 月 1 日 06:00</button><button data-free="middle">选 4 月 7 日 12:00</button><button data-free="last">选 4 月 14 日 18:00</button><button data-free="old">仅按潮高</button><button data-free="new">潮高＋涨落</button><button data-free="edit">第 3 音升 4 半音、音量 80%</button><button data-free="place0">放入开场</button><button data-free="place1">放入转折</button><button data-free="place2">放入结尾</button><button data-free="reopen0">重开开场</button><button data-free="invalid">试越界片段</button><button data-free="quality">试非核验观测（教学注入）</button><button data-free="reset">回到起点</button></div></section>
+<section class="card"><h2>跟着走一遍 · 选情景即重置</h2><div class="tabs" id="tabs" role="tablist" aria-label="引导情景"></div><p class="hint" id="scenarioText"></p><div class="steps" id="steps"></div><div id="feedback" class="feedback" role="status" aria-live="polite"></div></section>
+<div class="grid"><section class="card"><h2>当前完整状态</h2><div class="state" id="state"></div><div class="slots" id="slots"></div><h3>同源片段，两种规则</h3><div class="metrics" id="metrics"></div><div class="controls"><button data-play="height" class="primary">试听当前片段 · 只看潮高</button><button data-play="contour" class="primary">试听当前片段 · 潮高＋涨落</button><button id="stop">停止</button></div><audio id="player" controls aria-label="原型片段播放器"></audio><p class="hint">音高种类和时长是机器可核对的差异；选用哪条规则、听起来怎样，仍由人决定。刷新后试件从头开始。</p></section>
+<section class="card"><h2>逐音追溯：观测 → 映射 → 人工修改</h2><p class="hint">下表每一行都来自同一条真实潮位；“旧/新”是合成音高，“当前”包含本次人工编辑。旧规则每音固定 2 拍；新规则随涨落分配音长。</p><div class="scroll"><table><thead><tr><th>观测时刻 GMT</th><th>潮高 m</th><th>涨落 m</th><th>旧音</th><th>新音 / 时值</th><th>当前音</th></tr></thead><tbody id="notes"></tbody></table></div></section></div>
+</main><script>__PURE__</script><script>
+const SOURCE = __SOURCE__;
+const context = Tide14.prepare(SOURCE);
+let draft = TideTrial.initial(context);
+let scenarioIndex = 0, nextStep = 0, audioUrl = null;
+const buttonActions = {
+  first: {type:'select',day:0,offset:60}, middle:{type:'select',day:6,offset:120}, last:{type:'select',day:13,offset:180},
+  old:{type:'mapping',value:'height'},new:{type:'mapping',value:'contour'},edit:{type:'edit',index:2,shift:4,volume:.8},
+  place0:{type:'place',slot:0},place1:{type:'place',slot:1},place2:{type:'place',slot:2},reopen0:{type:'reopen',slot:0},
+  invalid:{type:'select',day:13,offset:238},reset:{type:'reset'}
+};
+const labels={first:'挑 4 月 1 日片段',middle:'挑 4 月 7 日片段',last:'挑 4 月 14 日片段',old:'换旧规则',new:'换新规则',edit:'改第 3 音',place0:'放入开场',place1:'放入转折',place2:'放入结尾',reopen0:'重开开场',invalid:'试越界',quality:'试非核验观测'};
+const scenarios=[
+  {name:'同源换规则',description:'先只看潮高，再看潮高与涨落：逐行核对源时刻和潮高不变、生成的音高或时值改变。',steps:['first','old','new','edit']},
+  {name:'三段各自选材',description:'分别在三个不同日期取三小时片段：已放入的段落不会因换天而悄悄改写。',steps:['first','edit','place0','middle','place1','last','place2','reopen0']},
+  {name:'异常不能混入',description:'两种拒绝检查：日末片段越界；复制一条质量标记并人工注入非核验值。后者不是源数据。',steps:['invalid','quality','first']}
+];
+const $=selector=>document.querySelector(selector);
+const round=number=>number.toFixed(2);
+function render(){
+  const clip=draft.working, pair=TideTrial.compare(context,draft);
+  const current=draft.mapping==='height'?pair.old:pair.new;
+  const first=context.records[clip.start],last=context.records[clip.start+clip.span];
+  $('#state').innerHTML=`<b>来源</b>：14 天 / ${context.records.length} 条，全部已校验 · 观测时间 GMT、MLLW 米<br><b>选中素材</b>：${first.time}—${last.time} · 3 小时 / ${pair.old.length} 音<br><b>生成规则</b>：${draft.mapping==='contour'?'潮高＋涨落':'只看潮高'} · ${draft.tempo} 拍<br><b>尚未放入的人工调音</b>：${Object.keys(clip.edits).length} 处。切规则不改源潮位、素材日期和已编辑音符。`;
+  $('#slots').innerHTML=draft.slots.map((slot,index)=>`<div><b>${['开场','转折','结尾'][index]}</b><br>${slot?`${context.records[slot.start].time} · ${slot.span/2+1} 音 · ${Object.keys(slot.edits).length} 处人工修改`:'尚未放入'}</div>`).join('');
+  $('#metrics').innerHTML=[['旧 · 仅潮高',pair.old],['新 · 潮高＋涨落',pair.new]].map(([name,notes])=>`<div>${name}<strong>${new Set(notes.map(note=>note.baseMidi)).size} 种音高</strong>${round(notes.reduce((sum,note)=>sum+note.beats,0)*60/draft.tempo)} 秒 · ${new Set(notes.map(note=>note.beats)).size} 种音长</div>`).join('');
+  $('#notes').innerHTML=pair.old.map((note,index)=>`<tr class="${current[index].edited?'edited':''}"><td>${note.time.slice(5)}</td><td>${note.sourceValue.toFixed(3)}</td><td>${index?pair.new[index].trend.toFixed(3):'—'}</td><td>${note.baseMidi}</td><td>${pair.new[index].baseMidi} / ${pair.new[index].beats} 拍</td><td>${current[index].midi}${current[index].edited?'（人工）':''}</td></tr>`).join('');
+  $('#tabs').innerHTML=scenarios.map((item,index)=>`<button role="tab" aria-selected="${scenarioIndex===index}" class="${scenarioIndex===index?'active':''}" data-tab="${index}">${item.name}</button>`).join('');
+  $('#scenarioText').textContent=scenarios[scenarioIndex].description;
+  $('#steps').innerHTML=scenarios[scenarioIndex].steps.map((key,index)=>`<button data-step="${index}" ${index!==nextStep?'disabled':''}>${index+1}. ${labels[key]}</button>`).join('');
+}
+function status(message){$('#feedback').textContent=message}
+function act(key){
+  try{
+    if(key==='quality')TideTrial.rejectInjectedQuality(SOURCE);
+    else draft=TideTrial.act(context,draft,buttonActions[key]);
+    status(key==='reset'?'已回到起点。':'已操作：'+labels[key]+'；请核对上方与逐音表的状态。');
+  }catch(error){status(`${key==='quality'?'教学注入，不属于源数据：':'已拒绝：'}${error.message}；当前已核验潮位和草稿保持不变。`)}
+  render();
+}
+document.addEventListener('click',event=>{
+  const tab=event.target.closest('[data-tab]');
+  if(tab){scenarioIndex=Number(tab.dataset.tab);nextStep=0;draft=TideTrial.initial(context);status('已重置为同一起点，请按编号逐步操作。');render();return}
+  const free=event.target.closest('[data-free]');
+  if(free){act(free.dataset.free);return}
+  const step=event.target.closest('[data-step]');
+  if(step && Number(step.dataset.step)===nextStep){const key=scenarios[scenarioIndex].steps[nextStep];act(key);nextStep++;render()}
+});
+document.querySelectorAll('[data-play]').forEach(button=>button.addEventListener('click',async()=>{
+  try{
+    const mapping=button.dataset.play;
+    const candidate=TideTrial.act(context,draft,{type:'mapping',value:mapping});
+    const bytes=Tide14.wav(context,TideTrial.act(context,candidate,{type:'place',slot:0}),0);
+    $('#player').pause();if(audioUrl)URL.revokeObjectURL(audioUrl);
+    audioUrl=URL.createObjectURL(new Blob([bytes],{type:'audio/wav'}));$('#player').src=audioUrl;
+    await $('#player').play();status(`已请求播放当前片段的${mapping==='contour'?'新':'旧'}规则合成音；请用有声设备自行判断。`);
+  }catch(error){status('无法播放：'+error.message)}
+}));
+$('#stop').addEventListener('click',()=>{$('#player').pause();$('#player').currentTime=0;status('已停止播放。')});
+render();
+</script></body></html>

@@ -1,0 +1,18 @@
+{
+  "artifact": "skill-web-artifacts-builder/bundle.html",
+  "overlapWarning": true,
+  "saveBlocked": true,
+  "rotateOnMap": true,
+  "savedLabels": [
+    "候选书桌 B",
+    "候选书桌 C"
+  ],
+  "downloadedPngBytes": 80776,
+  "restoreA": true,
+  "dragMove": true,
+  "customFurniture": true,
+  "keyboardMove": true,
+  "mobileOverflow": 0,
+  "pageErrors": [],
+  "remoteRequests": []
+}

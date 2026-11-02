@@ -1,0 +1,69 @@
+{
+  "version": 3,
+  "source": "4c3a9eeda76ad2484326b7380f0aed4ddfdb8fd929964f8dd1c78f64562fd379",
+  "sourcePdf": "7263feafed630b808a2e52d3e404ea680549653f96693cbaba95cac46a8813f3",
+  "title": "旧金山 · 十四日潮汐练习曲",
+  "scale": "pentatonic",
+  "mapping": "contour",
+  "tempo": 192,
+  "tone": "warm",
+  "layer": true,
+  "working": {
+    "start": 3300,
+    "span": 30,
+    "edits": {
+      "4": {
+        "shift": 7,
+        "volume": 0.9
+      },
+      "11": {
+        "shift": -5,
+        "volume": 0.6
+      }
+    }
+  },
+  "slots": [
+    {
+      "start": 60,
+      "span": 30,
+      "edits": {
+        "2": {
+          "shift": 4,
+          "volume": 0.8
+        },
+        "6": {
+          "shift": -3,
+          "volume": 0.65
+        }
+      }
+    },
+    {
+      "start": 1560,
+      "span": 30,
+      "edits": {
+        "3": {
+          "shift": 5,
+          "volume": 0.75
+        },
+        "8": {
+          "shift": -2,
+          "volume": 0.9
+        }
+      }
+    },
+    {
+      "start": 3300,
+      "span": 30,
+      "edits": {
+        "4": {
+          "shift": 7,
+          "volume": 0.9
+        },
+        "11": {
+          "shift": -5,
+          "volume": 0.6
+        }
+      }
+    }
+  ]
+}

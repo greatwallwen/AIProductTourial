@@ -1,0 +1,176 @@
+🔍 Detected Node.js version: 24
+✅ Using Vite latest (Node 20+)
+🚀 Creating new React + Vite project: bedroom-skill-original
+.../mvtji9xq-1syu1                       | Progress: resolved 1, reused 0, downloaded 0, added 0
+.../mvtji9xq-1syu1                       |   +1 +
+Packages are hard linked from the content-addressable store to the virtual store.
+  Content-addressable store is at: /tmp/aiproduct-web-artifacts-original-run/pnpm-store/v11
+  Virtual store is at:             ../../tmp/aiproduct-web-artifacts-original-run/pnpm-store/v11/links
+.../mvtji9xq-1syu1                       | Progress: resolved 1, reused 0, downloaded 1, added 1, done
+
+create-vite v9.3.3
+
+│
+◇  Scaffolding project in /tmp/aiproduct-web-artifacts-original-run/bedroom-skill-original...
+│
+└  Done. Now run:
+
+  cd bedroom-skill-original
+  pnpm install
+  pnpm dev
+
+🧹 Cleaning up Vite template...
+📦 Installing base dependencies...
+Progress: resolved 1, reused 0, downloaded 0, added 0
+
+   ╭──────────────────────────────────────────────────────────────────────╮
+   │                                                                      │
+   │                 Update available! 11.25.0 → 12.16.1.                 │
+   │                 Changelog: https://pnpm.io/v/12.16.1                 │
+   │   To update, run: curl -fsSL https://get.pnpm.io/install.sh | sh -   │
+   │                                                                      │
+   ╰──────────────────────────────────────────────────────────────────────╯
+
+Progress: resolved 7, reused 0, downloaded 4, added 0
+Progress: resolved 8, reused 0, downloaded 8, added 0
+Progress: resolved 57, reused 0, downloaded 16, added 0
+Progress: resolved 83, reused 0, downloaded 24, added 0
+Packages: +28
+++++++++++++++++++++++++++++
+Packages are hard linked from the content-addressable store to the virtual store.
+  Content-addressable store is at: /tmp/aiproduct-web-artifacts-original-run/pnpm-store/v11
+  Virtual store is at:             node_modules/.pnpm
+Progress: resolved 90, reused 0, downloaded 24, added 24
+Progress: resolved 90, reused 0, downloaded 25, added 24
+Progress: resolved 90, reused 0, downloaded 27, added 27
+Progress: resolved 90, reused 0, downloaded 28, added 28, done
+
+dependencies:
++ react 19.3.1
++ react-dom 19.3.1
+
+devDependencies:
++ @types/node 24.19.2
++ @types/react 19.3.0
++ @types/react-dom 19.3.0
++ @vitejs/plugin-react 6.1.2
++ oxlint 1.90.0
++ typescript 7.0.2
++ vite 8.3.5
+
+Done in 9.1s using pnpm v11.25.0
+📦 Installing Tailwind CSS and dependencies...
+✓ Lockfile passes supply-chain policies (verified 1s ago)
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Progress: resolved 87, reused 23, downloaded 23, added 0
+Packages: +78 -2
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++--
+Progress: resolved 166, reused 28, downloaded 76, added 78, done
+
+devDependencies:
++ autoprefixer 10.6.2
++ postcss 8.5.32
++ tailwindcss 3.4.1 (4.3.3 is available)
++ tailwindcss-animate 1.0.7
+
+Done in 2.7s using pnpm v11.25.0
+✓ Lockfile passes supply-chain policies (verified 855ms ago)
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Progress: resolved 166, reused 98, downloaded 4, added 0
+Packages: +5
++++++
+Progress: resolved 171, reused 104, downloaded 5, added 5, done
+
+dependencies:
++ class-variance-authority 0.7.1
++ clsx 2.1.1
++ lucide-react 1.63.0
++ next-themes 0.4.6
++ tailwind-merge 3.7.0
+
+Done in 2.6s using pnpm v11.25.0
+⚙️  Creating Tailwind and PostCSS configuration...
+📝 Configuring Tailwind with shadcn theme...
+🎨 Adding Tailwind directives and CSS variables...
+🔧 Adding path aliases to tsconfig.json...
+🔧 Adding path aliases to tsconfig.app.json...
+⚙️  Updating Vite configuration...
+📦 Installing shadcn/ui dependencies...
+✓ Lockfile passes supply-chain policies (verified 902ms ago)
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Progress: resolved 47, reused 18, downloaded 25, added 0
+Progress: resolved 225, reused 101, downloaded 59, added 0
+Packages: +66
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 237, reused 109, downloaded 66, added 66, done
+
+dependencies:
++ @radix-ui/react-accordion 1.3.1
++ @radix-ui/react-aspect-ratio 1.2.0
++ @radix-ui/react-avatar 1.3.1
++ @radix-ui/react-checkbox 1.4.1
++ @radix-ui/react-collapsible 1.2.1
++ @radix-ui/react-context-menu 2.4.1
++ @radix-ui/react-dialog 1.3.1
++ @radix-ui/react-dropdown-menu 2.2.1
++ @radix-ui/react-hover-card 1.2.1
++ @radix-ui/react-label 2.1.17
++ @radix-ui/react-menubar 1.2.1
++ @radix-ui/react-navigation-menu 1.4.1
++ @radix-ui/react-popover 1.3.1
++ @radix-ui/react-progress 1.2.1
++ @radix-ui/react-radio-group 1.5.1
++ @radix-ui/react-scroll-area 1.4.0
++ @radix-ui/react-select 2.4.1
++ @radix-ui/react-separator 1.2.0
++ @radix-ui/react-slider 1.6.1
++ @radix-ui/react-slot 1.5.0
++ @radix-ui/react-switch 1.4.1
++ @radix-ui/react-tabs 1.2.1
++ @radix-ui/react-toast 1.3.1
++ @radix-ui/react-toggle 1.2.1
++ @radix-ui/react-toggle-group 1.2.1
++ @radix-ui/react-tooltip 1.4.1
+
+Done in 3.2s using pnpm v11.25.0
+✓ Lockfile passes supply-chain policies (verified 871ms ago)
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Progress: resolved 138, reused 84, downloaded 4, added 0
+Packages: +14
+++++++++++++++
+Progress: resolved 251, reused 175, downloaded 14, added 14, done
+
+dependencies:
++ @hookform/resolvers 6.0.2
++ cmdk 1.1.1
++ date-fns 4.4.0
++ embla-carousel-react 8.6.0
++ react-day-picker 10.0.2
++ react-hook-form 7.91.0
++ react-resizable-panels 4.15.0
++ sonner 2.0.8
++ vaul 1.1.2
++ zod 4.6.7
+
+Done in 3s using pnpm v11.25.0
+📦 Extracting shadcn/ui components...
+📝 Creating components.json config...
+✅ Setup complete! You can now use Tailwind CSS and shadcn/ui in your project.
+
+📦 Included components (40+ total):
+  - accordion, alert, aspect-ratio, avatar, badge, breadcrumb
+  - button, calendar, card, carousel, checkbox, collapsible
+  - command, context-menu, dialog, drawer, dropdown-menu
+  - form, hover-card, input, label, menubar, navigation-menu
+  - popover, progress, radio-group, resizable, scroll-area
+  - select, separator, sheet, skeleton, slider, sonner
+  - switch, table, tabs, textarea, toast, toggle, toggle-group, tooltip
+
+To start developing:
+  cd bedroom-skill-original
+  pnpm dev
+
+📚 Import components like:
+  import { Button } from '@/components/ui/button'
+  import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
+  import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'

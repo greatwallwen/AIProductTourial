@@ -1,0 +1,54 @@
+{
+  "checks": {
+    "initial": "14 days, 3360 observations, 16 editable notes, 3 empty slots",
+    "appOnly": "case evidence and A/B/C samples live in the chapter; the page keeps music controls",
+    "dragSelection": {
+      "start": 2296,
+      "span": 30
+    },
+    "musicAB": {
+      "contourPitches": 5,
+      "originalPitches": 4,
+      "sourceAndEditsPreserved": true
+    },
+    "threeIndependent": [
+      {
+        "start": 2296,
+        "notes": 16,
+        "edits": 1
+      },
+      {
+        "start": 1096,
+        "notes": 11,
+        "edits": 0
+      },
+      {
+        "start": 3300,
+        "notes": 11,
+        "edits": 0
+      }
+    ],
+    "reopenAndUndo": "slot unchanged until update; after update undo/redo restores notes",
+    "audio": {
+      "partDuration": 5.859501,
+      "totalDuration": 20.625397
+    },
+    "exportImport": {
+      "wavBytes": 909624,
+      "recipeReopened": true,
+      "oldRecipeMigrated": true,
+      "invalidRejected": true
+    },
+    "invalidTitleRejected": true,
+    "mobile": {
+      "width": 390,
+      "notesAndPlaceSameViewport": true,
+      "dayChangedWithinEditor": true,
+      "curveEditorShortcuts": true,
+      "slotReopenReturnsToEditor": true,
+      "noHorizontalOverflow": true
+    },
+    "realTouch": "mobile touch gesture moves one note 4 semitones; subsequent tap places once"
+  },
+  "errors": []
+}

@@ -1,0 +1,26 @@
+{
+  "checks": {
+    "initial": "3360 verified records; same-source 16-note comparison; three guided cases",
+    "rules": {
+      "sameThreeHourSources": true,
+      "distinctPitchesByDay": [
+        4,
+        5,
+        4
+      ],
+      "editsDoNotTouchSource": true
+    },
+    "states": "independent slots, reopened edit, invalid selection and injected quality both rejected",
+    "sound": {
+      "oldDuration": 9.999819,
+      "newDuration": 9.453243,
+      "stopped": true
+    },
+    "walkthrough": "scenario tab resets state; all guided steps execute real actions",
+    "mobile": {
+      "width": 390,
+      "scrollWidth": 390
+    }
+  },
+  "errors": []
+}
